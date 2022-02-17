@@ -2393,7 +2393,7 @@ namespace Cthangband
                     {
                         Profile.Instance.MsgPrint("There is message on the scroll. It says:");
                         Profile.Instance.MsgPrint(null);
-                        SaveGame.Instance.CommandEngine.DoRumour();
+                        SaveGame.Instance.CommandEngine.GetRumour();
                         identified = true;
                         break;
                     }

@@ -13,7 +13,7 @@ namespace Cthangband.Spells.Sorcery
             {
                 return;
             }
-            saveGame.CommandEngine.Fetch(dir, player.Level * 15, false);
+            saveGame.CommandEngine.SummonObject(dir, player.Level * 15, false);
         }
 
         public override void Initialise(int characterClass)

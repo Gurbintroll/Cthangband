@@ -155,7 +155,7 @@ namespace Cthangband
                 return;
             }
             Profile.Instance.MsgPrint($"You destroy {oName}.");
-            if (SaveGame.Instance.CommandEngine.HighLevelBook(oPtr))
+            if (SaveGame.Instance.CommandEngine.ItemFilterHighLevelBook(oPtr))
             {
                 bool gainExpr = false;
                 if (Player.ProfessionIndex == CharacterClass.Warrior)
@@ -625,7 +625,7 @@ namespace Cthangband
         {
             string act;
             string oName;
-            SaveGame.Instance.ItemFilter = SaveGame.Instance.CommandEngine.ItemTesterHookWear;
+            SaveGame.Instance.ItemFilter = SaveGame.Instance.CommandEngine.ItemFilterWearable;
             if (!SaveGame.Instance.GetItem(out int item, "Wear/Wield which item? ", false, true, true))
             {
                 if (item == -2)
@@ -1048,19 +1048,19 @@ namespace Cthangband
                             break;
 
                         case FloorTileAlterAction.Tunnel:
-                            more = SaveGame.Instance.CommandEngine.DoCmdTunnelAux(y, x);
+                            more = SaveGame.Instance.CommandEngine.TunnelThroughTile(y, x);
                             break;
 
                         case FloorTileAlterAction.Disarm:
-                            more = SaveGame.Instance.CommandEngine.DoCmdDisarmAux(y, x, dir);
+                            more = SaveGame.Instance.CommandEngine.DisarmTrap(y, x, dir);
                             break;
 
                         case FloorTileAlterAction.Open:
-                            more = SaveGame.Instance.CommandEngine.DoCmdOpenAux(y, x);
+                            more = SaveGame.Instance.CommandEngine.OpenDoor(y, x);
                             break;
 
                         case FloorTileAlterAction.Close:
-                            more = SaveGame.Instance.CommandEngine.DoCmdCloseAux(y, x);
+                            more = SaveGame.Instance.CommandEngine.CloseDoor(y, x);
                             break;
 
                         case FloorTileAlterAction.Bash:
@@ -1146,7 +1146,7 @@ namespace Cthangband
                 }
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.DoCmdCloseAux(y, x);
+                    more = SaveGame.Instance.CommandEngine.CloseDoor(y, x);
                 }
             }
             if (!more)
@@ -1267,11 +1267,11 @@ namespace Cthangband
                 }
                 else if (oIdx != 0)
                 {
-                    more = SaveGame.Instance.CommandEngine.DoCmdDisarmChest(y, x, oIdx);
+                    more = SaveGame.Instance.CommandEngine.DisarmChest(y, x, oIdx);
                 }
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.DoCmdDisarmAux(y, x, dir);
+                    more = SaveGame.Instance.CommandEngine.DisarmTrap(y, x, dir);
                 }
             }
             if (!more)
@@ -1576,11 +1576,11 @@ namespace Cthangband
                 }
                 else if (oIdx != 0)
                 {
-                    more = SaveGame.Instance.CommandEngine.DoCmdOpenChest(y, x, oIdx);
+                    more = SaveGame.Instance.CommandEngine.OpenChest(y, x, oIdx);
                 }
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.DoCmdOpenAux(y, x);
+                    more = SaveGame.Instance.CommandEngine.OpenDoor(y, x);
                 }
             }
             if (!more)
@@ -2148,7 +2148,7 @@ namespace Cthangband
                 }
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.DoCmdTunnelAux(y, x);
+                    more = SaveGame.Instance.CommandEngine.TunnelThroughTile(y, x);
                 }
             }
             if (!more)

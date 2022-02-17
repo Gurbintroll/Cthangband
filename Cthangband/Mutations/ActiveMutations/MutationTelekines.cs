@@ -16,7 +16,7 @@ namespace Cthangband.Mutations.ActiveMutations
             Profile.Instance.MsgPrint("You concentrate...");
             if (targetEngine.GetAimDir(out int dir))
             {
-                saveGame.CommandEngine.Fetch(dir, player.Level * 10, true);
+                saveGame.CommandEngine.SummonObject(dir, player.Level * 10, true);
             }
         }
 

@@ -1123,6 +1123,29 @@ namespace Cthangband
         }
 
         /// <summary>
+        /// Close a door
+        /// </summary>
+        /// <param name="y"> The y map coordinate of the door </param>
+        /// <param name="x"> The x map coordinate of the door </param>
+        /// <returns> True if the player should be disturbed by the door closing </returns>
+        public bool CloseDoor(int y, int x)
+        {
+            _saveGame.EnergyUse = 100;
+            GridTile cPtr = Level.Grid[y][x];
+            if (cPtr.FeatureType.Name == "BrokenDoor")
+            {
+                Profile.Instance.MsgPrint("The door appears to be broken.");
+            }
+            else
+            {
+                Level.CaveSetFeat(y, x, "LockedDoor0");
+                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                Gui.PlaySound(SoundEffect.ShutDoor);
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Count the number of chests adjacent to the player, filling in a map coordinate with the
         /// location of the last one found
         /// </summary>
@@ -1383,15 +1406,142 @@ namespace Cthangband
             return true;
         }
 
-        public bool DoCmdChannel(Item oPtr)
+        /// <summary>
+        /// Disarm a chest at a given location
+        /// </summary>
+        /// <param name="y"> The y coordinate of the location </param>
+        /// <param name="x"> The x coordinate of the location </param>
+        /// <param name="itemIndex"> The index of the chest item </param>
+        /// <returns> True if the player should be disturbed by the aciton </returns>
+        public bool DisarmChest(int y, int x, int itemIndex)
+        {
+            bool more = false;
+            Item item = Level.Items[itemIndex];
+            // Disarming a chest takes a turn
+            _saveGame.EnergyUse = 100;
+            int i = Player.SkillDisarmTraps;
+            // Disarming is tricky when you can't see
+            if (Player.TimedBlindness != 0 || Level.NoLight())
+            {
+                i /= 10;
+            }
+            // Disarming is tricky when confused
+            if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
+            {
+                i /= 10;
+            }
+            // Penalty for difficulty of trap
+            int j = i - item.TypeSpecificValue;
+            if (j < 2)
+            {
+                j = 2;
+            }
+            // If we don't know about the traps, we don't know what to disarm
+            if (!item.IsKnown())
+            {
+                Profile.Instance.MsgPrint("I don't see any traps.");
+            }
+            // If it has no traps there's nothing to disarm
+            else if (item.TypeSpecificValue <= 0)
+            {
+                Profile.Instance.MsgPrint("The chest is not trapped.");
+            }
+            // If it has a null trap then there's nothing to disarm
+            else if (GlobalData.ChestTraps[item.TypeSpecificValue] == 0)
+            {
+                Profile.Instance.MsgPrint("The chest is not trapped.");
+            }
+            // If we made the skill roll then we disarmed it
+            else if (Program.Rng.RandomLessThan(100) < j)
+            {
+                Profile.Instance.MsgPrint("You have disarmed the chest.");
+                Player.GainExperience(item.TypeSpecificValue);
+                item.TypeSpecificValue = 0 - item.TypeSpecificValue;
+            }
+            // If we failed to disarm it there's a chance it goes off
+            else if (i > 5 && Program.Rng.DieRoll(i) > 5)
+            {
+                more = true;
+                Profile.Instance.MsgPrint("You failed to disarm the chest.");
+            }
+            else
+            {
+                Profile.Instance.MsgPrint("You set off a trap!");
+                _saveGame.ChestTrap(y, x, itemIndex);
+            }
+            return more;
+        }
+
+        /// <summary>
+        /// Disarm a trap on the floor
+        /// </summary>
+        /// <param name="y"> The y coordinate of the trap </param>
+        /// <param name="x"> The x coordinate of the trap </param>
+        /// <param name="dir"> The direction the player should move in </param>
+        /// <returns> </returns>
+        public bool DisarmTrap(int y, int x, int dir)
+        {
+            bool more = false;
+            // Disarming a trap costs a turn
+            _saveGame.EnergyUse = 100;
+            GridTile tile = Level.Grid[y][x];
+            string trapName = tile.FeatureType.Description;
+            int i = Player.SkillDisarmTraps;
+            // Difficult, but possible, to disarm by feel
+            if (Player.TimedBlindness != 0 || Level.NoLight())
+            {
+                i /= 10;
+            }
+            // Difficult to disarm when we're confused
+            if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
+            {
+                i /= 10;
+            }
+            const int power = 5;
+            int j = i - power;
+            if (j < 2)
+            {
+                j = 2;
+            }
+            // Check the modified disarm skill
+            if (Program.Rng.RandomLessThan(100) < j)
+            {
+                Profile.Instance.MsgPrint($"You have disarmed the {trapName}.");
+                Player.GainExperience(power);
+                tile.TileFlags.Clear(GridTile.PlayerMemorised);
+                Level.CaveRemoveFeat(y, x);
+                MovePlayer(dir, true);
+            }
+            // We might set the trap off if we failed to disarm it
+            else if (i > 5 && Program.Rng.DieRoll(i) > 5)
+            {
+                Profile.Instance.MsgPrint($"You failed to disarm the {trapName}.");
+                more = true;
+            }
+            else
+            {
+                Profile.Instance.MsgPrint($"You set off the {trapName}!");
+                MovePlayer(dir, true);
+            }
+            return more;
+        }
+
+        /// <summary>
+        /// Channel mana to power an item instead
+        /// </summary>
+        /// <param name="item"> The item that we wish to power </param>
+        /// <returns> True if we successfully channeled it, false if not </returns>
+        public bool DoCmdChannel(Item item)
         {
             int cost;
-            int price = oPtr.ItemType.Cost;
+            int price = item.ItemType.Cost;
+            // Never channel worthless items
             if (price <= 0)
             {
                 return false;
             }
-            switch (oPtr.Category)
+            // Cost to channel is based on how much the item is worth and what type
+            switch (item.Category)
             {
                 case ItemCategory.Wand:
                     cost = price / 150;
@@ -1417,10 +1567,12 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("Tried to channel an unknown object type!");
                     return false;
             }
+            // Always cost at least 1 mana
             if (cost < 1)
             {
                 cost = 1;
             }
+            // Spend the mana if we can
             if (cost <= Player.Mana)
             {
                 Profile.Instance.MsgPrint("You channel mana to power the effect.");
@@ -1428,349 +1580,24 @@ namespace Cthangband
                 Player.RedrawFlags |= RedrawFlag.PrMana;
                 return true;
             }
+            // Use some mana in the attempt, even if we failed
             Profile.Instance.MsgPrint("You mana is insufficient to power the effect.");
             Player.Mana -= Program.Rng.RandomLessThan(Player.Mana / 2);
             Player.RedrawFlags |= RedrawFlag.PrMana;
             return false;
         }
 
-        public bool DoCmdCloseAux(int y, int x)
-        {
-            _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
-            if (cPtr.FeatureType.Name == "BrokenDoor")
-            {
-                Profile.Instance.MsgPrint("The door appears to be broken.");
-            }
-            else
-            {
-                Level.CaveSetFeat(y, x, "LockedDoor0");
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
-                Gui.PlaySound(SoundEffect.ShutDoor);
-            }
-            return false;
-        }
-
-        public bool DoCmdDisarmAux(int y, int x, int dir)
-        {
-            bool more = false;
-            _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
-            string name = cPtr.FeatureType.Description;
-            int i = Player.SkillDisarmTraps;
-            if (Player.TimedBlindness != 0 || Level.NoLight())
-            {
-                i /= 10;
-            }
-            if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
-            {
-                i /= 10;
-            }
-            const int power = 5;
-            int j = i - power;
-            if (j < 2)
-            {
-                j = 2;
-            }
-            if (Program.Rng.RandomLessThan(100) < j)
-            {
-                Profile.Instance.MsgPrint($"You have disarmed the {name}.");
-                Player.GainExperience(power);
-                cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
-                MovePlayer(dir, true);
-            }
-            else if (i > 5 && Program.Rng.DieRoll(i) > 5)
-            {
-                Profile.Instance.MsgPrint($"You failed to disarm the {name}.");
-                more = true;
-            }
-            else
-            {
-                Profile.Instance.MsgPrint($"You set off the {name}!");
-                MovePlayer(dir, true);
-            }
-            return more;
-        }
-
-        public bool DoCmdDisarmChest(int y, int x, int oIdx)
-        {
-            bool more = false;
-            Item oPtr = Level.Items[oIdx];
-            _saveGame.EnergyUse = 100;
-            int i = Player.SkillDisarmTraps;
-            if (Player.TimedBlindness != 0 || Level.NoLight())
-            {
-                i /= 10;
-            }
-            if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
-            {
-                i /= 10;
-            }
-            int j = i - oPtr.TypeSpecificValue;
-            if (j < 2)
-            {
-                j = 2;
-            }
-            if (!oPtr.IsKnown())
-            {
-                Profile.Instance.MsgPrint("I don't see any traps.");
-            }
-            else if (oPtr.TypeSpecificValue <= 0)
-            {
-                Profile.Instance.MsgPrint("The chest is not trapped.");
-            }
-            else if (GlobalData.ChestTraps[oPtr.TypeSpecificValue] == 0)
-            {
-                Profile.Instance.MsgPrint("The chest is not trapped.");
-            }
-            else if (Program.Rng.RandomLessThan(100) < j)
-            {
-                Profile.Instance.MsgPrint("You have disarmed the chest.");
-                Player.GainExperience(oPtr.TypeSpecificValue);
-                oPtr.TypeSpecificValue = 0 - oPtr.TypeSpecificValue;
-            }
-            else if (i > 5 && Program.Rng.DieRoll(i) > 5)
-            {
-                more = true;
-                Profile.Instance.MsgPrint("You failed to disarm the chest.");
-            }
-            else
-            {
-                Profile.Instance.MsgPrint("You set off a trap!");
-                _saveGame.ChestTrap(y, x, oIdx);
-            }
-            return more;
-        }
-
-        public bool DoCmdOpenAux(int y, int x)
-        {
-            bool more = false;
-            _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
-            if (cPtr.FeatureType.Name.Contains("Jammed"))
-            {
-                Profile.Instance.MsgPrint("The door appears to be stuck.");
-            }
-            else if (cPtr.FeatureType.Name != "LockedDoor0")
-            {
-                int i = Player.SkillDisarmTraps;
-                if (Player.TimedBlindness != 0 || Level.NoLight())
-                {
-                    i /= 10;
-                }
-                if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
-                {
-                    i /= 10;
-                }
-                int j = int.Parse(cPtr.FeatureType.Name.Substring(10));
-                j = i - (j * 4);
-                if (j < 2)
-                {
-                    j = 2;
-                }
-                if (Program.Rng.RandomLessThan(100) < j)
-                {
-                    Profile.Instance.MsgPrint("You have picked the lock.");
-                    Level.CaveSetFeat(y, x, "OpenDoor");
-                    Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
-                    Gui.PlaySound(SoundEffect.LockpickSuccess);
-                    Player.GainExperience(1);
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint("You failed to pick the lock.");
-                    more = true;
-                }
-            }
-            else
-            {
-                Level.CaveSetFeat(y, x, "OpenDoor");
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
-                Gui.PlaySound(SoundEffect.OpenDoor);
-            }
-            return more;
-        }
-
-        public bool DoCmdOpenChest(int y, int x, int oIdx)
-        {
-            bool flag = true;
-            bool more = false;
-            Item oPtr = Level.Items[oIdx];
-            _saveGame.EnergyUse = 100;
-            if (oPtr.TypeSpecificValue > 0)
-            {
-                flag = false;
-                int i = Player.SkillDisarmTraps;
-                if (Player.TimedBlindness != 0 || Level.NoLight())
-                {
-                    i /= 10;
-                }
-                if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
-                {
-                    i /= 10;
-                }
-                int j = i - oPtr.TypeSpecificValue;
-                if (j < 2)
-                {
-                    j = 2;
-                }
-                if (Program.Rng.RandomLessThan(100) < j)
-                {
-                    Profile.Instance.MsgPrint("You have picked the lock.");
-                    Player.GainExperience(1);
-                    flag = true;
-                }
-                else
-                {
-                    more = true;
-                    Profile.Instance.MsgPrint("You failed to pick the lock.");
-                }
-            }
-            if (flag)
-            {
-                _saveGame.ChestTrap(y, x, oIdx);
-                _saveGame.ChestDeath(y, x, oIdx);
-            }
-            return more;
-        }
-
-        public bool DoCmdTunnelAux(int y, int x)
-        {
-            bool more = false;
-            _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
-            if (cPtr.FeatureType.Category == FloorTileTypeCategory.Tree)
-            {
-                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(100) && Twall(y, x))
-                {
-                    Profile.Instance.MsgPrint($"You have chopped down the {cPtr.FeatureType.Description}.");
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint($"You hack away at the {cPtr.FeatureType.Description}.");
-                    more = true;
-                }
-            }
-            else if (cPtr.FeatureType.Name == "Pillar")
-            {
-                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(300) && Twall(y, x))
-                {
-                    Profile.Instance.MsgPrint("You have broken down the pillar.");
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint("You hack away at the pillar.");
-                    more = true;
-                }
-            }
-            else if (cPtr.FeatureType.Name == "Water")
-            {
-                Profile.Instance.MsgPrint("The water fills up your tunnel as quickly as you dig!");
-            }
-            else if (cPtr.FeatureType.IsPermanent)
-            {
-                Profile.Instance.MsgPrint($"The {cPtr.FeatureType.Description} resists your attempts to tunnel through it.");
-            }
-            else if (cPtr.FeatureType.Name.Contains("Wall"))
-            {
-                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(1600) && Twall(y, x))
-                {
-                    Profile.Instance.MsgPrint("You have finished the tunnel.");
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint("You tunnel into the granite wall.");
-                    more = true;
-                }
-            }
-            else if (cPtr.FeatureType.Name.Contains("Magma") || cPtr.FeatureType.Name.Contains("Quartz"))
-            {
-                bool okay;
-                bool gold = false;
-                bool hard = false;
-                if (cPtr.FeatureType.Name.Contains("Treas"))
-                {
-                    gold = true;
-                }
-                if (cPtr.FeatureType.Name.Contains("Magma"))
-                {
-                    hard = true;
-                }
-                if (hard)
-                {
-                    okay = Player.SkillDigging > 20 + Program.Rng.RandomLessThan(800);
-                }
-                else
-                {
-                    okay = Player.SkillDigging > 10 + Program.Rng.RandomLessThan(400);
-                }
-                if (okay && Twall(y, x))
-                {
-                    if (gold)
-                    {
-                        _saveGame.Level.PlaceGold(y, x);
-                        Profile.Instance.MsgPrint("You have found something!");
-                    }
-                    else
-                    {
-                        Profile.Instance.MsgPrint("You have finished the tunnel.");
-                    }
-                }
-                else if (hard)
-                {
-                    Profile.Instance.MsgPrint("You tunnel into the quartz vein.");
-                    more = true;
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint("You tunnel into the magma vein.");
-                    more = true;
-                }
-            }
-            else if (cPtr.FeatureType.Name == "Rubble")
-            {
-                if (Player.SkillDigging > Program.Rng.RandomLessThan(200) && Twall(y, x))
-                {
-                    Profile.Instance.MsgPrint("You have removed the rubble.");
-                    if (Program.Rng.RandomLessThan(100) < 10)
-                    {
-                        _saveGame.Level.PlaceObject(y, x, false, false);
-                        if (Level.PlayerCanSeeBold(y, x))
-                        {
-                            Profile.Instance.MsgPrint("You have found something!");
-                        }
-                    }
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint("You dig in the rubble.");
-                    more = true;
-                }
-            }
-            else
-            {
-                Profile.Instance.MsgPrint($"The {cPtr.FeatureType.Description} resists your attempts to tunnel through it.");
-                more = true;
-                Search();
-            }
-            if (!Level.GridPassable(y, x))
-            {
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuMonsters;
-            }
-            if (!more)
-            {
-                Gui.PlaySound(SoundEffect.Dig);
-            }
-            return more;
-        }
-
-        public void DoRumour()
+        /// <summary>
+        /// Give us a rumour, if possible one that we've not heard before
+        /// </summary>
+        public void GetRumour()
         {
             string rumor;
+            // Build an array of all the possible rumours we can get
             char[] rumorType = new char[_saveGame.Quests.Count + Constants.MaxCaves + Constants.MaxCaves];
             int[] rumorIndex = new int[_saveGame.Quests.Count + Constants.MaxCaves + Constants.MaxCaves];
             int maxRumor = 0;
+            // Add a rumour for each undiscovered quest
             for (int i = 0; i < _saveGame.Quests.Count; i++)
             {
                 if (_saveGame.Quests[i].Level > 0 && !_saveGame.Quests[i].Discovered)
@@ -1782,12 +1609,14 @@ namespace Cthangband
             }
             for (int i = 0; i < Constants.MaxCaves; i++)
             {
+                // Add a rumour for each dungeon we don't know the depth of
                 if (!_saveGame.Dungeons[i].KnownDepth)
                 {
                     rumorType[maxRumor] = 'd';
                     rumorIndex[maxRumor] = i;
                     maxRumor++;
                 }
+                //Add a rumour for each dungeon we don't know the offset of
                 if (!_saveGame.Dungeons[i].KnownOffset)
                 {
                     rumorType[maxRumor] = 'o';
@@ -1795,6 +1624,8 @@ namespace Cthangband
                     maxRumor++;
                 }
             }
+            // If we already know everything, we're going to need to be told something so add all
+            // the quest rumours and we'll get given a repeat of one of those
             if (maxRumor == 0)
             {
                 maxRumor = 0;
@@ -1805,16 +1636,20 @@ namespace Cthangband
                     maxRumor++;
                 }
             }
+            // Pick a random rumour from the list
             int choice = Program.Rng.RandomLessThan(maxRumor);
             char type = rumorType[choice];
             int index = rumorIndex[choice];
+            // Give us the appropriate information based on the rumour's type
             if (type == 'q')
             {
+                // The rumour describes a quest
                 _saveGame.Quests[index].Discovered = true;
                 rumor = _saveGame.Quests.DescribeQuest(index);
             }
             else if (type == 'd')
             {
+                // The rumour describes a dungeon depth
                 Dungeon d = _saveGame.Dungeons[index];
                 rumor = d.Tower
                     ? $"They say that {d.Name} has {d.MaxLevel} floors."
@@ -1823,6 +1658,7 @@ namespace Cthangband
             }
             else
             {
+                // The rumour describes a dungeon difficulty
                 Dungeon d = _saveGame.Dungeons[index];
                 rumor = $"They say that {d.Name} has a relative difficulty of {d.Offset}.";
                 d.KnownOffset = true;
@@ -1830,127 +1666,103 @@ namespace Cthangband
             Profile.Instance.MsgPrint(rumor);
         }
 
-        public void Fetch(int dir, int wgt, bool requireLos)
+        /// <summary>
+        /// Find a spike in the player's inventory
+        /// </summary>
+        /// <param name="inventoryIndex"> The inventory index of the spike found (if any) </param>
+        /// <returns> Whether or not a spike was found </returns>
+        public bool GetSpike(out int inventoryIndex)
         {
-            int ty, tx;
-            GridTile cPtr;
-            if (Level.Grid[Player.MapY][Player.MapX].Item != 0)
-            {
-                Profile.Instance.MsgPrint("You can't fetch when you're already standing on something.");
-                return;
-            }
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            if (dir == 5 && targetEngine.TargetOkay())
-            {
-                tx = _saveGame.TargetCol;
-                ty = _saveGame.TargetRow;
-                if (Level.Distance(Player.MapY, Player.MapX, ty, tx) > Constants.MaxRange)
-                {
-                    Profile.Instance.MsgPrint("You can't fetch something that far away!");
-                    return;
-                }
-                cPtr = Level.Grid[ty][tx];
-                if (requireLos && !Level.PlayerHasLosBold(ty, tx))
-                {
-                    Profile.Instance.MsgPrint("You have no direct line of sight to that location.");
-                    return;
-                }
-            }
-            else
-            {
-                ty = Player.MapY;
-                tx = Player.MapX;
-                do
-                {
-                    ty += Level.KeypadDirectionYOffset[dir];
-                    tx += Level.KeypadDirectionXOffset[dir];
-                    cPtr = Level.Grid[ty][tx];
-                    if (Level.Distance(Player.MapY, Player.MapX, ty, tx) > Constants.MaxRange ||
-                        !Level.GridPassable(ty, tx))
-                    {
-                        return;
-                    }
-                } while (cPtr.Item == 0);
-            }
-            Item oPtr = Level.Items[cPtr.Item];
-            if (oPtr.Weight > wgt)
-            {
-                Profile.Instance.MsgPrint("The object is too heavy.");
-                return;
-            }
-            int i = cPtr.Item;
-            cPtr.Item = 0;
-            Level.Grid[Player.MapY][Player.MapX].Item = i;
-            oPtr.Y = Player.MapY;
-            oPtr.X = Player.MapX;
-            Level.NoteSpot(Player.MapY, Player.MapX);
-            Player.RedrawFlags |= RedrawFlag.PrMap;
-        }
-
-        public bool GetSpike(out int ip)
-        {
+            // Loop through the inventory
             for (int i = 0; i < InventorySlot.Pack; i++)
             {
-                Item oPtr = Player.Inventory[i];
-                if (oPtr.ItemType == null)
+                Item item = Player.Inventory[i];
+                if (item.ItemType == null)
                 {
                     continue;
                 }
-                if (oPtr.Category == ItemCategory.Spike)
+                // If the item is a spike, return it
+                if (item.Category == ItemCategory.Spike)
                 {
-                    ip = i;
+                    inventoryIndex = i;
                     return true;
                 }
             }
-            ip = -1;
+            // We found nothing, so return false
+            inventoryIndex = -1;
             return false;
         }
 
-        public bool HighLevelBook(Item oPtr)
-        {
-            if (oPtr.Category == ItemCategory.LifeBook || oPtr.Category == ItemCategory.SorceryBook ||
-                oPtr.Category == ItemCategory.NatureBook || oPtr.Category == ItemCategory.ChaosBook ||
-                oPtr.Category == ItemCategory.DeathBook || oPtr.Category == ItemCategory.TarotBook)
-            {
-                return oPtr.ItemSubCategory > 1;
-            }
-            return false;
-        }
-
-        public bool ItemFilterActivatable(Item oPtr)
+        /// <summary>
+        /// Return whether or not an item can be activated
+        /// </summary>
+        /// <param name="item"> The item to check </param>
+        /// <returns> True if the item can be activated </returns>
+        public bool ItemFilterActivatable(Item item)
         {
             FlagSet f1 = new FlagSet();
             FlagSet f2 = new FlagSet();
             FlagSet f3 = new FlagSet();
-            if (!oPtr.IsKnown())
+            if (!item.IsKnown())
             {
                 return false;
             }
-            oPtr.GetMergedFlags(f1, f2, f3);
+            item.GetMergedFlags(f1, f2, f3);
             return f3.IsSet(ItemFlag3.Activate);
         }
 
-        public bool ItemFilterLanternFuel(Item oPtr)
+        /// <summary>
+        /// Return whether or not an item is a high level book
+        /// </summary>
+        /// <param name="item"> The item to check </param>
+        /// <returns> True if the item is a high level book </returns>
+        public bool ItemFilterHighLevelBook(Item item)
         {
-            if (oPtr.Category == ItemCategory.Flask)
+            if (item.Category == ItemCategory.LifeBook || item.Category == ItemCategory.SorceryBook ||
+                item.Category == ItemCategory.NatureBook || item.Category == ItemCategory.ChaosBook ||
+                item.Category == ItemCategory.DeathBook || item.Category == ItemCategory.TarotBook)
+            {
+                return item.ItemSubCategory > 1;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Return whether or not an item can fuel a lantern
+        /// </summary>
+        /// <param name="item"> The item to check </param>
+        /// <returns> True if the item can fuel a lantern </returns>
+        public bool ItemFilterLanternFuel(Item item)
+        {
+            if (item.Category == ItemCategory.Flask)
             {
                 return true;
             }
-            if (oPtr.Category == ItemCategory.Light && oPtr.ItemSubCategory == LightType.Lantern)
+            if (item.Category == ItemCategory.Light && item.ItemSubCategory == LightType.Lantern)
             {
                 return true;
             }
             return false;
         }
 
-        public bool ItemFilterTorchFuel(Item oPtr)
+        /// <summary>
+        /// Return whether or not an item can fuel a torch
+        /// </summary>
+        /// <param name="item"> The item to check </param>
+        /// <returns> True if the item can fuel a torch </returns>
+        public bool ItemFilterTorchFuel(Item item)
         {
-            return oPtr.Category == ItemCategory.Light && oPtr.ItemSubCategory == LightType.Torch;
+            return item.Category == ItemCategory.Light && item.ItemSubCategory == LightType.Torch;
         }
 
-        public bool ItemTesterHookWear(Item oPtr)
+        /// <summary>
+        /// Return whether or not an item can be worn or wielded
+        /// </summary>
+        /// <param name="item"> The item to check </param>
+        /// <returns> True if the item can be worn or wielded </returns>
+        public bool ItemFilterWearable(Item item)
         {
-            return Player.Inventory.WieldSlot(oPtr) >= InventorySlot.MeleeWeapon;
+            return Player.Inventory.WieldSlot(item) >= InventorySlot.MeleeWeapon;
         }
 
         public void MovePlayer(int dir, bool doPickup)
@@ -2014,7 +1826,7 @@ namespace Cthangband
             }
             if (!doPickup && cPtr.FeatureType.IsTrap)
             {
-                DoCmdDisarmAux(y, x, dir);
+                DisarmTrap(y, x, dir);
                 return;
             }
             if (!Level.GridPassable(y, x) && !pCanPassWalls)
@@ -2239,6 +2051,98 @@ namespace Cthangband
                     HitTrap();
                 }
             }
+        }
+
+        public bool OpenChest(int y, int x, int oIdx)
+        {
+            bool flag = true;
+            bool more = false;
+            Item oPtr = Level.Items[oIdx];
+            _saveGame.EnergyUse = 100;
+            if (oPtr.TypeSpecificValue > 0)
+            {
+                flag = false;
+                int i = Player.SkillDisarmTraps;
+                if (Player.TimedBlindness != 0 || Level.NoLight())
+                {
+                    i /= 10;
+                }
+                if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
+                {
+                    i /= 10;
+                }
+                int j = i - oPtr.TypeSpecificValue;
+                if (j < 2)
+                {
+                    j = 2;
+                }
+                if (Program.Rng.RandomLessThan(100) < j)
+                {
+                    Profile.Instance.MsgPrint("You have picked the lock.");
+                    Player.GainExperience(1);
+                    flag = true;
+                }
+                else
+                {
+                    more = true;
+                    Profile.Instance.MsgPrint("You failed to pick the lock.");
+                }
+            }
+            if (flag)
+            {
+                _saveGame.ChestTrap(y, x, oIdx);
+                _saveGame.ChestDeath(y, x, oIdx);
+            }
+            return more;
+        }
+
+        public bool OpenDoor(int y, int x)
+        {
+            bool more = false;
+            _saveGame.EnergyUse = 100;
+            GridTile cPtr = Level.Grid[y][x];
+            if (cPtr.FeatureType.Name.Contains("Jammed"))
+            {
+                Profile.Instance.MsgPrint("The door appears to be stuck.");
+            }
+            else if (cPtr.FeatureType.Name != "LockedDoor0")
+            {
+                int i = Player.SkillDisarmTraps;
+                if (Player.TimedBlindness != 0 || Level.NoLight())
+                {
+                    i /= 10;
+                }
+                if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
+                {
+                    i /= 10;
+                }
+                int j = int.Parse(cPtr.FeatureType.Name.Substring(10));
+                j = i - (j * 4);
+                if (j < 2)
+                {
+                    j = 2;
+                }
+                if (Program.Rng.RandomLessThan(100) < j)
+                {
+                    Profile.Instance.MsgPrint("You have picked the lock.");
+                    Level.CaveSetFeat(y, x, "OpenDoor");
+                    Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                    Gui.PlaySound(SoundEffect.LockpickSuccess);
+                    Player.GainExperience(1);
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("You failed to pick the lock.");
+                    more = true;
+                }
+            }
+            else
+            {
+                Level.CaveSetFeat(y, x, "OpenDoor");
+                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                Gui.PlaySound(SoundEffect.OpenDoor);
+            }
+            return more;
         }
 
         public void Phlogiston()
@@ -3730,6 +3634,63 @@ namespace Cthangband
             }
         }
 
+        public void SummonObject(int dir, int wgt, bool requireLos)
+        {
+            int ty, tx;
+            GridTile cPtr;
+            if (Level.Grid[Player.MapY][Player.MapX].Item != 0)
+            {
+                Profile.Instance.MsgPrint("You can't fetch when you're already standing on something.");
+                return;
+            }
+            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            if (dir == 5 && targetEngine.TargetOkay())
+            {
+                tx = _saveGame.TargetCol;
+                ty = _saveGame.TargetRow;
+                if (Level.Distance(Player.MapY, Player.MapX, ty, tx) > Constants.MaxRange)
+                {
+                    Profile.Instance.MsgPrint("You can't fetch something that far away!");
+                    return;
+                }
+                cPtr = Level.Grid[ty][tx];
+                if (requireLos && !Level.PlayerHasLosBold(ty, tx))
+                {
+                    Profile.Instance.MsgPrint("You have no direct line of sight to that location.");
+                    return;
+                }
+            }
+            else
+            {
+                ty = Player.MapY;
+                tx = Player.MapX;
+                do
+                {
+                    ty += Level.KeypadDirectionYOffset[dir];
+                    tx += Level.KeypadDirectionXOffset[dir];
+                    cPtr = Level.Grid[ty][tx];
+                    if (Level.Distance(Player.MapY, Player.MapX, ty, tx) > Constants.MaxRange ||
+                        !Level.GridPassable(ty, tx))
+                    {
+                        return;
+                    }
+                } while (cPtr.Item == 0);
+            }
+            Item oPtr = Level.Items[cPtr.Item];
+            if (oPtr.Weight > wgt)
+            {
+                Profile.Instance.MsgPrint("The object is too heavy.");
+                return;
+            }
+            int i = cPtr.Item;
+            cPtr.Item = 0;
+            Level.Grid[Player.MapY][Player.MapX].Item = i;
+            oPtr.Y = Player.MapY;
+            oPtr.X = Player.MapX;
+            Level.NoteSpot(Player.MapY, Player.MapX);
+            Player.RedrawFlags |= RedrawFlag.PrMap;
+        }
+
         public bool TestHitFire(int chance, int ac, bool vis)
         {
             int k = Program.Rng.RandomLessThan(100);
@@ -3746,6 +3707,136 @@ namespace Cthangband
                 chance = (chance + 1) / 2;
             }
             return Program.Rng.RandomLessThan(chance) >= ac * 3 / 4;
+        }
+
+        public bool TunnelThroughTile(int y, int x)
+        {
+            bool more = false;
+            _saveGame.EnergyUse = 100;
+            GridTile cPtr = Level.Grid[y][x];
+            if (cPtr.FeatureType.Category == FloorTileTypeCategory.Tree)
+            {
+                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(100) && Twall(y, x))
+                {
+                    Profile.Instance.MsgPrint($"You have chopped down the {cPtr.FeatureType.Description}.");
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint($"You hack away at the {cPtr.FeatureType.Description}.");
+                    more = true;
+                }
+            }
+            else if (cPtr.FeatureType.Name == "Pillar")
+            {
+                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(300) && Twall(y, x))
+                {
+                    Profile.Instance.MsgPrint("You have broken down the pillar.");
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("You hack away at the pillar.");
+                    more = true;
+                }
+            }
+            else if (cPtr.FeatureType.Name == "Water")
+            {
+                Profile.Instance.MsgPrint("The water fills up your tunnel as quickly as you dig!");
+            }
+            else if (cPtr.FeatureType.IsPermanent)
+            {
+                Profile.Instance.MsgPrint($"The {cPtr.FeatureType.Description} resists your attempts to tunnel through it.");
+            }
+            else if (cPtr.FeatureType.Name.Contains("Wall"))
+            {
+                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(1600) && Twall(y, x))
+                {
+                    Profile.Instance.MsgPrint("You have finished the tunnel.");
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("You tunnel into the granite wall.");
+                    more = true;
+                }
+            }
+            else if (cPtr.FeatureType.Name.Contains("Magma") || cPtr.FeatureType.Name.Contains("Quartz"))
+            {
+                bool okay;
+                bool gold = false;
+                bool hard = false;
+                if (cPtr.FeatureType.Name.Contains("Treas"))
+                {
+                    gold = true;
+                }
+                if (cPtr.FeatureType.Name.Contains("Magma"))
+                {
+                    hard = true;
+                }
+                if (hard)
+                {
+                    okay = Player.SkillDigging > 20 + Program.Rng.RandomLessThan(800);
+                }
+                else
+                {
+                    okay = Player.SkillDigging > 10 + Program.Rng.RandomLessThan(400);
+                }
+                if (okay && Twall(y, x))
+                {
+                    if (gold)
+                    {
+                        _saveGame.Level.PlaceGold(y, x);
+                        Profile.Instance.MsgPrint("You have found something!");
+                    }
+                    else
+                    {
+                        Profile.Instance.MsgPrint("You have finished the tunnel.");
+                    }
+                }
+                else if (hard)
+                {
+                    Profile.Instance.MsgPrint("You tunnel into the quartz vein.");
+                    more = true;
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("You tunnel into the magma vein.");
+                    more = true;
+                }
+            }
+            else if (cPtr.FeatureType.Name == "Rubble")
+            {
+                if (Player.SkillDigging > Program.Rng.RandomLessThan(200) && Twall(y, x))
+                {
+                    Profile.Instance.MsgPrint("You have removed the rubble.");
+                    if (Program.Rng.RandomLessThan(100) < 10)
+                    {
+                        _saveGame.Level.PlaceObject(y, x, false, false);
+                        if (Level.PlayerCanSeeBold(y, x))
+                        {
+                            Profile.Instance.MsgPrint("You have found something!");
+                        }
+                    }
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("You dig in the rubble.");
+                    more = true;
+                }
+            }
+            else
+            {
+                Profile.Instance.MsgPrint($"The {cPtr.FeatureType.Description} resists your attempts to tunnel through it.");
+                more = true;
+                Search();
+            }
+            if (!Level.GridPassable(y, x))
+            {
+                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuMonsters;
+            }
+            if (!more)
+            {
+                Gui.PlaySound(SoundEffect.Dig);
+            }
+            return more;
         }
 
         public void UseRacialPower()
