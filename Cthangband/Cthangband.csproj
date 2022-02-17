@@ -1,0 +1,1187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D251FCE9-8E34-4857-BF69-B7F99336FF8D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Cthangband</RootNamespace>
+    <AssemblyName>Cthangband</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Terminal\Cthangband.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="irrKlang.NET4">
+      <HintPath>..\irrKlang.NET4.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbilityScore.cs" />
+    <Compile Include="ActivationHandler.cs" />
+    <Compile Include="AllocationEntry.cs" />
+    <Compile Include="ArtificialIntelligence.cs" />
+    <Compile Include="Background.cs" />
+    <Compile Include="Debug\DebugMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debug\DebugMenu.designer.cs">
+      <DependentUpon>DebugMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Debug\EntityType.cs" />
+    <Compile Include="Debug\EntityTypeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debug\EntityTypeEditor.designer.cs">
+      <DependentUpon>EntityTypeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Debug\General.cs" />
+    <Compile Include="Debug\GenericEntityTypeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enumerations\AmmoType.cs" />
+    <Compile Include="Enumerations\AmuletType.cs" />
+    <Compile Include="Enumerations\BootsType.cs" />
+    <Compile Include="Enumerations\BowType.cs" />
+    <Compile Include="Enumerations\CloakType.cs" />
+    <Compile Include="Enumerations\CrownType.cs" />
+    <Compile Include="Enumerations\DiggerType.cs" />
+    <Compile Include="Enumerations\DragonArmour.cs" />
+    <Compile Include="Enumerations\FloorTileAlterAction.cs" />
+    <Compile Include="Enumerations\FloorTileTypeCategory.cs" />
+    <Compile Include="Enumerations\FoodType.cs" />
+    <Compile Include="Enumerations\GlovesType.cs" />
+    <Compile Include="Enumerations\HaftedType.cs" />
+    <Compile Include="Enumerations\HardArmourType.cs" />
+    <Compile Include="Enumerations\HelmType.cs" />
+    <Compile Include="Enumerations\ItemFlag1.cs" />
+    <Compile Include="Enumerations\ItemFlag2.cs" />
+    <Compile Include="Enumerations\ItemFlag3.cs" />
+    <Compile Include="Enumerations\ItemSubCategory.cs" />
+    <Compile Include="Enumerations\LevelStart.cs" />
+    <Compile Include="Enumerations\LightType.cs" />
+    <Compile Include="Enumerations\MoneyType.cs" />
+    <Compile Include="Enumerations\MutationAttackType.cs" />
+    <Compile Include="Enumerations\MutationGroup.cs" />
+    <Compile Include="Enumerations\PolearmType.cs" />
+    <Compile Include="Enumerations\PotionType.cs" />
+    <Compile Include="Enumerations\RingType.cs" />
+    <Compile Include="Enumerations\RodType.cs" />
+    <Compile Include="Enumerations\ScrollType.cs" />
+    <Compile Include="Enumerations\ShieldType.cs" />
+    <Compile Include="Enumerations\SoftArmourType.cs" />
+    <Compile Include="Enumerations\StaffType.cs" />
+    <Compile Include="Enumerations\SwordType.cs" />
+    <Compile Include="Enumerations\WandType.cs" />
+    <Compile Include="GameTime.cs" />
+    <Compile Include="ItemIdentifier.cs" />
+    <Compile Include="ItemTypeArray.cs" />
+    <Compile Include="Manual\ManualViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manual\ManualViewer.Designer.cs">
+      <DependentUpon>ManualViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonsterRace.cs" />
+    <Compile Include="MonsterRaceArray.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationMindBlst.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationBerserk.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationBlink.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationBrFire.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationColdTouch.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationDazzle.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationDetCurse.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationEarthquake.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationEatMagic.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationEatRock.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationGrowMold.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationHypnGaze.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationIllumine.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationLaserEye.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationLauncher.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationMidasTch.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationPolymorph.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationRadiation.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationRecall.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationResist.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationShriek.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationSmellMet.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationSmellMon.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationSpitAcid.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationSterility.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationSwapPos.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationTelekines.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationVampirism.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationVteleport.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationWeighMag.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationPanicHit.cs" />
+    <Compile Include="Mutations\Genome.cs" />
+    <Compile Include="Mutations\Mutation.cs" />
+    <Compile Include="Mutations\ActiveMutations\MutationBanish.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationAlbino.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationArthritis.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationBlankFac.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationElecTouc.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationEsp.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationFearless.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationFireBody.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationFleshRot.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationHyperInt.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationHyperStr.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationIllNorm.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationInfravis.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationIronSkin.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationLimber.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationMagicRes.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationMoronic.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationMotion.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationPuny.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationRegen.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationResilient.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationResTime.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationScales.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationShortLeg.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationSillyVoi.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationSusStats.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationVulnElem.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationWartSkin.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationWings.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationXtraEyes.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationXtraFat.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationXtraLegs.cs" />
+    <Compile Include="Mutations\PassiveMutations\MutationXtraNois.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationAttAnimal.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationAlcohol.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationAttDemon.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationAttDragon.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationBanishAll.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationBeak.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationBersRage.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationChaosGift.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationCowardice.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationDisarm.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationEatLight.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationFlatulent.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationHallu.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationHorns.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationHpToSp.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationInvuln.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationNausea.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationNormality.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationPolyWound.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationProdMana.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationRawChaos.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationRteleport.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationScorTail.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationSpeedFlux.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationSpToHp.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationTentacles.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationTrunk.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationWalkShad.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationWarning.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationWasting.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationWeirdMind.cs" />
+    <Compile Include="Mutations\RandomMutations\MutationWraith.cs" />
+    <Compile Include="NavigationState.cs" />
+    <Compile Include="Pantheon\God.cs" />
+    <Compile Include="Pantheon\GodName.cs" />
+    <Compile Include="Pantheon\Religion.cs" />
+    <Compile Include="Patrons\Patron.cs" />
+    <Compile Include="Patrons\PatronAbhoth.cs" />
+    <Compile Include="Patrons\PatronAzathoth.cs" />
+    <Compile Include="Patrons\PatronCthulhu.cs" />
+    <Compile Include="Patrons\PatronCyaegha.cs" />
+    <Compile Include="Patrons\PatronEihort.cs" />
+    <Compile Include="Patrons\PatronGlaaki.cs" />
+    <Compile Include="Patrons\PatronHastur.cs" />
+    <Compile Include="Patrons\PatronIod.cs" />
+    <Compile Include="Patrons\PatronYig.cs" />
+    <Compile Include="Patrons\PatronNyarlathotep.cs" />
+    <Compile Include="Patrons\PatronNyogtha.cs" />
+    <Compile Include="Patrons\PatronRhanTegoth.cs" />
+    <Compile Include="Patrons\PatronShubNiggurath.cs" />
+    <Compile Include="Patrons\PatronTsathoggua.cs" />
+    <Compile Include="Patrons\PatronUbboSathla.cs" />
+    <Compile Include="Patrons\PatronYogSothoth.cs" />
+    <Compile Include="PerlinNoise.cs" />
+    <Compile Include="Projection\ProjectAcid.cs" />
+    <Compile Include="Projection\ProjectArrow.cs" />
+    <Compile Include="Projection\ProjectAwayAll.cs" />
+    <Compile Include="Projection\ProjectAwayEvil.cs" />
+    <Compile Include="Projection\ProjectAwayUndead.cs" />
+    <Compile Include="Projection\ProjectChaos.cs" />
+    <Compile Include="Projection\ProjectCharm.cs" />
+    <Compile Include="Projection\ProjectCold.cs" />
+    <Compile Include="Projection\ProjectConfusion.cs" />
+    <Compile Include="Projection\ProjectControlAnimal.cs" />
+    <Compile Include="Projection\ProjectControlUndead.cs" />
+    <Compile Include="Projection\ProjectDark.cs" />
+    <Compile Include="Projection\ProjectDarkWeak.cs" />
+    <Compile Include="Projection\ProjectDeathRay.cs" />
+    <Compile Include="Projection\ProjectDisenchant.cs" />
+    <Compile Include="Projection\ProjectDisintegrate.cs" />
+    <Compile Include="Projection\ProjectDispAll.cs" />
+    <Compile Include="Projection\ProjectDispDemon.cs" />
+    <Compile Include="Projection\ProjectDispEvil.cs" />
+    <Compile Include="Projection\ProjectDispGood.cs" />
+    <Compile Include="Projection\ProjectDispLiving.cs" />
+    <Compile Include="Projection\ProjectDispUndead.cs" />
+    <Compile Include="Projection\ProjectDomination.cs" />
+    <Compile Include="Projection\ProjectElec.cs" />
+    <Compile Include="Projection\ProjectExplode.cs" />
+    <Compile Include="Projection\ProjectFire.cs" />
+    <Compile Include="Projection\ProjectForce.cs" />
+    <Compile Include="Projection\ProjectGravity.cs" />
+    <Compile Include="Projection\ProjectHellFire.cs" />
+    <Compile Include="Projection\ProjectHolyFire.cs" />
+    <Compile Include="Projection\ProjectIce.cs" />
+    <Compile Include="Projection\Projectile.cs" />
+    <Compile Include="Projection\ProjectInertia.cs" />
+    <Compile Include="Projection\ProjectJamDoor.cs" />
+    <Compile Include="Projection\ProjectKillDoor.cs" />
+    <Compile Include="Projection\ProjectKillTrap.cs" />
+    <Compile Include="Projection\ProjectKillWall.cs" />
+    <Compile Include="Projection\ProjectLight.cs" />
+    <Compile Include="Projection\ProjectLightWeak.cs" />
+    <Compile Include="Projection\ProjectMakeDoor.cs" />
+    <Compile Include="Projection\ProjectMakeElderSign.cs" />
+    <Compile Include="Projection\ProjectMakeTrap.cs" />
+    <Compile Include="Projection\ProjectMana.cs" />
+    <Compile Include="Projection\ProjectMeteor.cs" />
+    <Compile Include="Projection\ProjectMissile.cs" />
+    <Compile Include="Projection\ProjectNether.cs" />
+    <Compile Include="Projection\ProjectNexus.cs" />
+    <Compile Include="Projection\ProjectNuke.cs" />
+    <Compile Include="Projection\ProjectOldClone.cs" />
+    <Compile Include="Projection\ProjectOldConf.cs" />
+    <Compile Include="Projection\ProjectOldDrain.cs" />
+    <Compile Include="Projection\ProjectOldHeal.cs" />
+    <Compile Include="Projection\ProjectOldPoly.cs" />
+    <Compile Include="Projection\ProjectOldSleep.cs" />
+    <Compile Include="Projection\ProjectOldSlow.cs" />
+    <Compile Include="Projection\ProjectOldSpeed.cs" />
+    <Compile Include="Projection\ProjectPlasma.cs" />
+    <Compile Include="Projection\ProjectPois.cs" />
+    <Compile Include="Projection\ProjectPsi.cs" />
+    <Compile Include="Projection\ProjectPsiDrain.cs" />
+    <Compile Include="Projection\ProjectShard.cs" />
+    <Compile Include="Projection\ProjectSound.cs" />
+    <Compile Include="Projection\ProjectStasis.cs" />
+    <Compile Include="Projection\ProjectStoneWall.cs" />
+    <Compile Include="Projection\ProjectStun.cs" />
+    <Compile Include="Projection\ProjectTelekinesis.cs" />
+    <Compile Include="Projection\ProjectTime.cs" />
+    <Compile Include="Projection\ProjectTurnAll.cs" />
+    <Compile Include="Projection\ProjectTurnEvil.cs" />
+    <Compile Include="Projection\ProjectTurnUndead.cs" />
+    <Compile Include="Projection\ProjectWater.cs" />
+    <Compile Include="Projection\ProjectWizardBolt.cs" />
+    <Compile Include="Spells\CastingHandler.cs" />
+    <Compile Include="CharacterViewer.cs" />
+    <Compile Include="CombatEngine.cs" />
+    <Compile Include="CommandEngine.cs" />
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="Enumerations\Ability.cs" />
+    <Compile Include="Enumerations\ArtifactBias.cs" />
+    <Compile Include="Enumerations\AttackEffect.cs" />
+    <Compile Include="Enumerations\AttackType.cs" />
+    <Compile Include="Enumerations\BirthStage.cs" />
+    <Compile Include="Enumerations\CastingType.cs" />
+    <Compile Include="Enumerations\InventorySlot.cs" />
+    <Compile Include="Enumerations\CharacterClass.cs" />
+    <Compile Include="Enumerations\ChestTrap.cs" />
+    <Compile Include="Enumerations\Colour.cs" />
+    <Compile Include="Enumerations\FixedArtifactId.cs" />
+    <Compile Include="Enumerations\ItemCategory.cs" />
+    <Compile Include="Enumerations\MonsterFlag1.cs" />
+    <Compile Include="Enumerations\MonsterFlag2.cs" />
+    <Compile Include="Enumerations\MonsterFlag3.cs" />
+    <Compile Include="Enumerations\MonsterFlag4.cs" />
+    <Compile Include="Enumerations\MonsterFlag5.cs" />
+    <Compile Include="Enumerations\MonsterFlag6.cs" />
+    <Compile Include="Enumerations\ProjectionFlag.cs" />
+    <Compile Include="Enumerations\RaceID.cs" />
+    <Compile Include="Enumerations\RandomArtifactPower.cs" />
+    <Compile Include="Enumerations\RareItemType.cs" />
+    <Compile Include="Enumerations\Realm.cs" />
+    <Compile Include="Enumerations\RealmChoice.cs" />
+    <Compile Include="Enumerations\RedrawFlag.cs" />
+    <Compile Include="Enumerations\Reward.cs" />
+    <Compile Include="Enumerations\ScreenLocation.cs" />
+    <Compile Include="Enumerations\StoreType.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="MonsterKnowledge.cs" />
+    <Compile Include="PlayerStatus.cs" />
+    <Compile Include="SaveGame.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellAttunement.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellBatsSense.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellBlink.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellBravery.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellBurnResistance.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellCureCriticalWounds.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellCureLightWounds.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellCureMediumWounds.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellDetoxify.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellEaglesVision.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellHaste.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellHealing.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellHealingTrue.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellHeroism.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellHorrificVisage.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellHypnoticEyes.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellInvulnerability.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellKnowSelf.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellMindVision.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellMoveBody.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellMutateBody.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellResistTrue.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellRestoreBody.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellRestoreSoul.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellSatisfyHunger.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellSeeInvisible.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellSeeMagic.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellStoneSkin.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellTeleport.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellTeleportLevel.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellWordOfRecall.cs" />
+    <Compile Include="Spells\Corporeal\CorporealSpellWraithform.cs" />
+    <Compile Include="Spells\Death\DeathSpellBattleFrenzy.cs" />
+    <Compile Include="Spells\Death\DeathSpellBerserk.cs" />
+    <Compile Include="Spells\Death\DeathSpellBlackSleep.cs" />
+    <Compile Include="Spells\Death\DeathSpellDarkBolt.cs" />
+    <Compile Include="Spells\Death\DeathSpellDarknessStorm.cs" />
+    <Compile Include="Spells\Death\DeathSpellDeathRay.cs" />
+    <Compile Include="Spells\Death\DeathSpellDetectEvil.cs" />
+    <Compile Include="Spells\Death\DeathSpellDetectUnlife.cs" />
+    <Compile Include="Spells\Death\DeathSpellDispelGood.cs" />
+    <Compile Include="Spells\Death\DeathSpellEnslaveUndead.cs" />
+    <Compile Include="Spells\Death\DeathSpellEsoteria.cs" />
+    <Compile Include="Spells\Death\DeathSpellEvocation.cs" />
+    <Compile Include="Spells\Death\DeathSpellCarnage.cs" />
+    <Compile Include="Spells\Death\DeathSpellHellfire.cs" />
+    <Compile Include="Spells\Death\DeathSpellHorrify.cs" />
+    <Compile Include="Spells\Death\DeathSpellInvokeSpirits.cs" />
+    <Compile Include="Spells\Death\DeathSpellMalediction.cs" />
+    <Compile Include="Spells\Death\DeathSpellMassCarnage.cs" />
+    <Compile Include="Spells\Death\DeathSpellNetherBolt.cs" />
+    <Compile Include="Spells\Death\DeathSpellAnnihilation.cs" />
+    <Compile Include="Spells\Death\DeathSpellOrbOfEntropy.cs" />
+    <Compile Include="Spells\Death\DeathSpellPoisonBranding.cs" />
+    <Compile Include="Spells\Death\DeathSpellRaiseTheDead.cs" />
+    <Compile Include="Spells\Death\DeathSpellResistPoison.cs" />
+    <Compile Include="Spells\Death\DeathSpellRestoreLife.cs" />
+    <Compile Include="Spells\Death\DeathSpellStinkingCloud.cs" />
+    <Compile Include="Spells\Death\DeathSpellTerror.cs" />
+    <Compile Include="Spells\Death\DeathSpellVampiricBranding.cs" />
+    <Compile Include="Spells\Death\DeathSpellVampiricDrain.cs" />
+    <Compile Include="Spells\Death\DeathSpellVampirismTrue.cs" />
+    <Compile Include="Spells\Death\DeathSpellWordOfDeath.cs" />
+    <Compile Include="Spells\Death\DeathSpellWraithform.cs" />
+    <Compile Include="Spells\Folk\FolkSpellBlink.cs" />
+    <Compile Include="Spells\Folk\FolkSpellClairvoyance.cs" />
+    <Compile Include="Spells\Folk\FolkSpellCureLightWounds.cs" />
+    <Compile Include="Spells\Folk\FolkSpellCureMediumWounds.cs" />
+    <Compile Include="Spells\Folk\FolkSpellCurePoison.cs" />
+    <Compile Include="Spells\Folk\FolkSpellDetectDoorsAndTraps.cs" />
+    <Compile Include="Spells\Folk\FolkSpellDetectEnchantment.cs" />
+    <Compile Include="Spells\Folk\FolkSpellDetectInvisibility.cs" />
+    <Compile Include="Spells\Folk\FolkSpellDetection.cs" />
+    <Compile Include="Spells\Folk\FolkSpellDetectMonsters.cs" />
+    <Compile Include="Spells\Folk\FolkSpellDetectObjects.cs" />
+    <Compile Include="Spells\Folk\FolkSpellDetectTreasure.cs" />
+    <Compile Include="Spells\Folk\FolkSpellElementalBall.cs" />
+    <Compile Include="Spells\Folk\FolkSpellIdentify.cs" />
+    <Compile Include="Spells\Folk\FolkSpellLightArea.cs" />
+    <Compile Include="Spells\Folk\FolkSpellPhlogiston.cs" />
+    <Compile Include="Spells\Folk\FolkSpellRayOfLight.cs" />
+    <Compile Include="Spells\Folk\FolkSpellRecharging.cs" />
+    <Compile Include="Spells\Folk\FolkSpellResistAcid.cs" />
+    <Compile Include="Spells\Folk\FolkSpellResistCold.cs" />
+    <Compile Include="Spells\Folk\FolkSpellResistFire.cs" />
+    <Compile Include="Spells\Folk\FolkSpellResistLightning.cs" />
+    <Compile Include="Spells\Folk\FolkSpellSatisfyHunger.cs" />
+    <Compile Include="Spells\Folk\FolkSpellSeeInvisible.cs" />
+    <Compile Include="Spells\Folk\FolkSpellStoneToMud.cs" />
+    <Compile Include="Spells\Folk\FolkSpellTeleport.cs" />
+    <Compile Include="Spells\Folk\FolkSpellTeleportAway.cs" />
+    <Compile Include="Spells\Folk\FolkSpellTeleportLevel.cs" />
+    <Compile Include="Spells\Folk\FolkSpellTrapAndDoorDestruction.cs" />
+    <Compile Include="Spells\Folk\FolkSpellWizardLock.cs" />
+    <Compile Include="Spells\Folk\FolkSpellWordOfRecall.cs" />
+    <Compile Include="Spells\Folk\FolkSpellZap.cs" />
+    <Compile Include="Spells\SpellList.cs" />
+    <Compile Include="Spells\Spellcasting.cs" />
+    <Compile Include="Spells\SpellEffectsHandler.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellAlterReality.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellArcaneBinding.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellBreatheChaos.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellCallChaos.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellCallTheVoid.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellChaosBolt.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellChainLightning.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellChaosBranding.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellDisintegrate.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellDoomBolt.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellFireBall.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellFireBolt.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellFistOfForce.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellFlameStrike.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellFlashOfLight.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellGravityBeam.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellInvokeChaos.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellMagicMissile.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellManaBurst.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellManaStorm.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellMeteorSwarm.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellPolymorphOther.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellPolymorphSelf.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellShardBall.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellSonicBoom.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellSummonDemon.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellTeleportOther.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellTeleportSelf.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellTouchOfConfusion.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellTrapAndDoorDestruction.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellWonder.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellWordOfDestruction.cs" />
+    <Compile Include="Spells\IllegibleSpell.cs" />
+    <Compile Include="Spells\Life\LifeSpellBanish.cs" />
+    <Compile Include="Spells\Life\LifeSpellBless.cs" />
+    <Compile Include="Spells\Life\LifeSpellBlessWeapon.cs" />
+    <Compile Include="Spells\Life\LifeSpellCallLight.cs" />
+    <Compile Include="Spells\Life\LifeSpellCureCriticalWounds.cs" />
+    <Compile Include="Spells\Life\LifeSpellCureLightWounds.cs" />
+    <Compile Include="Spells\Life\LifeSpellCureMediumWounds.cs" />
+    <Compile Include="Spells\Life\LifeSpellCurePoison.cs" />
+    <Compile Include="Spells\Life\LifeSpellDayOfTheDove.cs" />
+    <Compile Include="Spells\Life\LifeSpellDetectEvil.cs" />
+    <Compile Include="Spells\Life\LifeSpellDetectTrapsAndSecretDoors.cs" />
+    <Compile Include="Spells\Life\LifeSpellDispelCurse.cs" />
+    <Compile Include="Spells\Life\LifeSpellDispelEvil.cs" />
+    <Compile Include="Spells\Life\LifeSpellDispelUndeadAndDemons.cs" />
+    <Compile Include="Spells\Life\LifeSpellDivineIntervention.cs" />
+    <Compile Include="Spells\Life\LifeSpellExorcism.cs" />
+    <Compile Include="Spells\Life\LifeSpellElderSign.cs" />
+    <Compile Include="Spells\Life\LifeSpellHealing.cs" />
+    <Compile Include="Spells\Life\LifeSpellHealingTrue.cs" />
+    <Compile Include="Spells\Life\LifeSpellHeroism.cs" />
+    <Compile Include="Spells\Life\LifeSpellHolyInvulnerability.cs" />
+    <Compile Include="Spells\Life\LifeSpellHolyOrb.cs" />
+    <Compile Include="Spells\Life\LifeSpellHolyVision.cs" />
+    <Compile Include="Spells\Life\LifeSpellHolyWord.cs" />
+    <Compile Include="Spells\Life\LifeSpellPrayer.cs" />
+    <Compile Include="Spells\Life\LifeSpellProtectionFromEvil.cs" />
+    <Compile Include="Spells\Life\LifeSpellRemoveCurse.cs" />
+    <Compile Include="Spells\Life\LifeSpellRemoveFear.cs" />
+    <Compile Include="Spells\Life\LifeSpellRestoration.cs" />
+    <Compile Include="Spells\Life\LifeSpellSatisfyHunger.cs" />
+    <Compile Include="Spells\Life\LifeSpellSenseUnseen.cs" />
+    <Compile Include="Spells\Life\LifeSpellWardingTrue.cs" />
+    <Compile Include="Spells\Nature\NatureSpellAnimalFriendship.cs" />
+    <Compile Include="Spells\Nature\NatureSpellAnimalTaming.cs" />
+    <Compile Include="Spells\Nature\NatureSpellBlizzard.cs" />
+    <Compile Include="Spells\Nature\NatureSpellCallSunlight.cs" />
+    <Compile Include="Spells\Nature\NatureSpellCureWoundsAndPoison.cs" />
+    <Compile Include="Spells\Nature\NatureSpellDaylight.cs" />
+    <Compile Include="Spells\Nature\NatureSpellDetectCreatures.cs" />
+    <Compile Include="Spells\Nature\NatureSpellDetectDoorsAndTraps.cs" />
+    <Compile Include="Spells\Nature\NatureSpellDoorCreation.cs" />
+    <Compile Include="Spells\Nature\NatureSpellEarthquake.cs" />
+    <Compile Include="Spells\Nature\NatureSpellElementalBranding.cs" />
+    <Compile Include="Spells\Nature\NatureSpellEntangle.cs" />
+    <Compile Include="Spells\Nature\NatureSpellFirstAid.cs" />
+    <Compile Include="Spells\Nature\NatureSpellForaging.cs" />
+    <Compile Include="Spells\Nature\NatureSpellFrostBolt.cs" />
+    <Compile Include="Spells\Nature\NatureSpellHerbalHealing.cs" />
+    <Compile Include="Spells\Nature\NatureSpellLightningBolt.cs" />
+    <Compile Include="Spells\Nature\NatureSpellLightningStorm.cs" />
+    <Compile Include="Spells\Nature\NatureSpellNatureAwareness.cs" />
+    <Compile Include="Spells\Nature\NatureSpellNaturesWrath.cs" />
+    <Compile Include="Spells\Nature\NatureSpellProtectFromCorrosion.cs" />
+    <Compile Include="Spells\Nature\NatureSpellRayOfSunlight.cs" />
+    <Compile Include="Spells\Nature\NatureSpellResistanceTrue.cs" />
+    <Compile Include="Spells\Nature\NatureSpellResistEnvironment.cs" />
+    <Compile Include="Spells\Nature\NatureSpellStairBuilding.cs" />
+    <Compile Include="Spells\Nature\NatureSpellStoneSkin.cs" />
+    <Compile Include="Spells\Nature\NatureSpellStoneTell.cs" />
+    <Compile Include="Spells\Nature\NatureSpellStoneToMud.cs" />
+    <Compile Include="Spells\Nature\NatureSpellSummonAnimal.cs" />
+    <Compile Include="Spells\Nature\NatureSpellWallOfStone.cs" />
+    <Compile Include="Spells\Nature\NatureSpellWhirlpool.cs" />
+    <Compile Include="Spells\Nature\NatureSpellWhirlwindAttack.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellAlchemy.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellCharmMonster.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellClairvoyance.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellConfuseMonster.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellDetectDoorsAndTraps.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellDetectEnchantment.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellDetectionTrue.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellDetectMonsters.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellDetectObjectsAndTreasure.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellDimensionDoor.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellEnchantArmour.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellEnchantWeapon.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellExplosiveRune.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellGlobeOfInvulnerability.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellHasteSelf.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellIdentify.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellIdentifyTrue.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellLightArea.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellMagicMapping.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellMassSleep.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellPhaseDoor.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellRecharging.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellSelfKnowledge.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellSenseMinds.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellSleepMonster.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellSlowMonster.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellStasis.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellTelekinesis.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellTeleport.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellTeleportAway.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellTeleportLevel.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellWordOfRecall.cs" />
+    <Compile Include="Spells\Spell.cs" />
+    <Compile Include="Spells\TalentList.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonAncientDragon.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellAstralBranding.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellAstralLore.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellAstralSpying.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellBanish.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellConjureElemental.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellDeathDealing.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellDimensionDoor.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellEtherealDivination.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellExtradimensionalBeing.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellMassSummons.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellMindBlast.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellPhantasmalServant.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellPhaseDoor.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellResetRecall.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonAnimal.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonDemon.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonDragon.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonGreaterUndead.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonHounds.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonMonster.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonObject.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonReaver.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonReptiles.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonSpiders.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellSummonUndead.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellTarotDraw.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellTeleport.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellTeleportAway.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellTeleportLevel.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellTheFool.cs" />
+    <Compile Include="Spells\Tarot\TarotSpellWordOfRecall.cs" />
+    <Compile Include="StaticData\AmuletFlavour.cs" />
+    <Compile Include="StaticData\Animation.cs" />
+    <Compile Include="StaticData\BaseFixedartifact.cs" />
+    <Compile Include="StaticData\BaseItemType.cs" />
+    <Compile Include="StaticData\BaseMonsterRace.cs" />
+    <Compile Include="StaticData\BaseRareItemType.cs" />
+    <Compile Include="StaticData\BaseVaultType.cs" />
+    <Compile Include="StaticData\Constants.cs" />
+    <Compile Include="StaticData\FloorTileType.cs" />
+    <Compile Include="StaticData\MushroomFlavour.cs" />
+    <Compile Include="StaticData\PotionFlavour.cs" />
+    <Compile Include="StaticData\ProjectileGraphic.cs" />
+    <Compile Include="StaticData\RingFlavour.cs" />
+    <Compile Include="StaticData\RodFlavour.cs" />
+    <Compile Include="StaticData\ScrollFlavour.cs" />
+    <Compile Include="StaticData\StaffFlavour.cs" />
+    <Compile Include="StaticData\StaticResources.cs" />
+    <Compile Include="StaticData\WandFlavour.cs" />
+    <Compile Include="StoreFactory.cs" />
+    <Compile Include="Talents\Talent.cs" />
+    <Compile Include="Talents\TalentAdrenalineChanneling.cs" />
+    <Compile Include="Talents\TalentCharacterArmour.cs" />
+    <Compile Include="Talents\TalentDomination.cs" />
+    <Compile Include="Talents\TalentMajorDisplacement.cs" />
+    <Compile Include="Talents\TalentMindWave.cs" />
+    <Compile Include="Talents\TalentMinorDisplacement.cs" />
+    <Compile Include="Talents\TalentNeuralBlast.cs" />
+    <Compile Include="Talents\TalentPrecognition.cs" />
+    <Compile Include="Talents\TalentPsychicDrain.cs" />
+    <Compile Include="Talents\TalentPsychometry.cs" />
+    <Compile Include="Talents\TalentPulverise.cs" />
+    <Compile Include="Talents\TalentTelekineticWave.cs" />
+    <Compile Include="TargetEngine.cs" />
+    <Compile Include="Terminal\BackgroundImage.cs" />
+    <Compile Include="UI\Display.cs" />
+    <Compile Include="Dungeon.cs" />
+    <Compile Include="ExPlayer.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FixedArtifact.cs" />
+    <Compile Include="FixedArtifactArray.cs" />
+    <Compile Include="FlagSet.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="StaticData\GlobalData.cs" />
+    <Compile Include="GridTile.cs" />
+    <Compile Include="UI\Gui.cs" />
+    <Compile Include="HighScore.cs" />
+    <Compile Include="HighScoreTable.cs" />
+    <Compile Include="Island.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemForge.cs" />
+    <Compile Include="ItemType.cs" />
+    <Compile Include="Journal.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="LevelBuildInfo.cs" />
+    <Compile Include="LevelFactory.cs" />
+    <Compile Include="MapCoordinate.cs" />
+    <Compile Include="MartialArtsAttack.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="Monster.cs" />
+    <Compile Include="MonsterAttack.cs" />
+    <Compile Include="MonsterList.cs" />
+    <Compile Include="PotentialMovesList.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerFactory.cs" />
+    <Compile Include="PlayerHistory.cs" />
+    <Compile Include="Profession.cs" />
+    <Compile Include="Profile.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quest.cs" />
+    <Compile Include="QuestArray.cs" />
+    <Compile Include="Race.cs" />
+    <Compile Include="RareItemType.cs" />
+    <Compile Include="RareItemTypeArray.cs" />
+    <Compile Include="Rng.cs" />
+    <Compile Include="Room.cs" />
+    <Compile Include="UI\Mixer.cs" />
+    <Compile Include="UI\MusicTrack.cs" />
+    <Compile Include="UI\Screen.cs" />
+    <Compile Include="UI\Settings.cs" />
+    <Compile Include="Store.cs" />
+    <Compile Include="StoreOwner.cs" />
+    <Compile Include="TargetLocation.cs" />
+    <Compile Include="Terminal\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Terminal\Terminal.cs" />
+    <Compile Include="Terminal\TerminalParameters.cs" />
+    <Compile Include="TileFeature.cs" />
+    <Compile Include="Town.cs" />
+    <Compile Include="TvalDescriptionPair.cs" />
+    <Compile Include="UI\SoundEffect.cs" />
+    <Compile Include="UI\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VaultFactory.cs" />
+    <Compile Include="VaultType.cs" />
+    <Compile Include="VaultTypeArray.cs" />
+    <Compile Include="WildernessRegion.cs" />
+    <Compile Include="WizardCommandHandler.cs" />
+    <EmbeddedResource Include="Data\Animations.csv" />
+    <EmbeddedResource Include="Debug\DebugMenu.resx">
+      <DependentUpon>DebugMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debug\EntityTypeEditor.resx">
+      <DependentUpon>EntityTypeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debug\GenericEntityTypeEditor.resx">
+      <DependentUpon>GenericEntityTypeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manual\ManualViewer.resx">
+      <DependentUpon>ManualViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Data\AmuletFlavours.csv" />
+    <EmbeddedResource Include="Data\BaseItemTypes.csv" />
+    <EmbeddedResource Include="Data\BaseMonsterRaces.csv" />
+    <EmbeddedResource Include="Data\FloorTileTypes.csv" />
+    <EmbeddedResource Include="Data\MushroomFlavours.csv" />
+    <EmbeddedResource Include="Data\PotionFlavours.csv" />
+    <EmbeddedResource Include="Data\ProjectileGraphics.csv" />
+    <EmbeddedResource Include="Data\RingFlavours.csv" />
+    <EmbeddedResource Include="Data\RodFlavours.csv" />
+    <EmbeddedResource Include="Data\ScrollFlavours.csv" />
+    <EmbeddedResource Include="Data\StaffFlavours.csv" />
+    <EmbeddedResource Include="Data\WandFlavours.csv" />
+    <EmbeddedResource Include="Data\BaseRareItemTypes.csv" />
+    <EmbeddedResource Include="Data\BaseFixedartifacts.csv" />
+    <EmbeddedResource Include="Data\BaseVaultTypes.csv" />
+    <EmbeddedResource Include="UI\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ikpFlac.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Ability Scores.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Channeler.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Chaos Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Charisma.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Chosen One.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Combat.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Commands.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Constitution.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Corporeal Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Cultist.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Death Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Great Ones.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Dexterity.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Druid.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Elements.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Fanatic.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Favour.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Feelings.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Folk Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\High-Mage.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\History.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Intelligence.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Introduction.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Items.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\License.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Life Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Mage.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Magic Basics.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\manual.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Monk.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Martial Arts.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Mentalism Powers.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Mindcrafter.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Mutations.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Mystic.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Nature Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Paladin.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Patrons.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Priest.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Ranger.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Rogue.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Score.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Sorcery Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Strength.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Tarot Spells.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Towns and Shops.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Turns, Time, and Speed.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Warrior-Mage.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\Warrior.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\What%27s New.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Home.ico" />
+    <None Include="Resources\Back.ico" />
+    <None Include="Resources\Forward.ico" />
+    <Content Include="Manual\Wisdom.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\splash.png" />
+    <Resource Include="Resources\Background2.png" />
+    <Resource Include="Resources\Background.png" />
+    <Resource Include="Resources\Paper.png" />
+    <Resource Include="Resources\Menu.png" />
+    <Resource Include="Resources\Tomb.png" />
+    <Resource Include="Resources\Crown.png" />
+    <Resource Include="Resources\Sunset.png" />
+    <Resource Include="Resources\Map.png" />
+    <None Include="Resources\SplashScreen.png" />
+    <EmbeddedResource Include="Sounds\amb_bell_metal1.wav" />
+    <EmbeddedResource Include="Sounds\amb_bell_metal2.wav" />
+    <EmbeddedResource Include="Sounds\amb_bell_tibet1.wav" />
+    <EmbeddedResource Include="Sounds\amb_bell_tibet2.wav" />
+    <EmbeddedResource Include="Sounds\amb_bell_tibet3.wav" />
+    <EmbeddedResource Include="Sounds\amb_door_doom.wav" />
+    <EmbeddedResource Include="Sounds\amb_door_iron.wav" />
+    <EmbeddedResource Include="Sounds\amb_dungeon_echo.wav" />
+    <EmbeddedResource Include="Sounds\amb_dungeon_echowet.wav" />
+    <EmbeddedResource Include="Sounds\amb_gong_chinese.wav" />
+    <EmbeddedResource Include="Sounds\amb_gong_low.wav" />
+    <EmbeddedResource Include="Sounds\amb_gong_strike.wav" />
+    <EmbeddedResource Include="Sounds\amb_gong_undertone.wav" />
+    <EmbeddedResource Include="Sounds\amb_guitar_chord.wav" />
+    <EmbeddedResource Include="Sounds\amb_pulse_low.wav" />
+    <EmbeddedResource Include="Sounds\amb_thunder_rain.wav" />
+    <EmbeddedResource Include="Sounds\amb_thunder_roll.wav" />
+    <EmbeddedResource Include="Sounds\id_bad_aww.wav" />
+    <EmbeddedResource Include="Sounds\id_bad_dang.wav" />
+    <EmbeddedResource Include="Sounds\id_bad_hmm.wav" />
+    <EmbeddedResource Include="Sounds\id_bad_hmph.wav" />
+    <EmbeddedResource Include="Sounds\id_bad_ohh.wav" />
+    <EmbeddedResource Include="Sounds\id_ego_whoa.wav" />
+    <EmbeddedResource Include="Sounds\id_ego_woohoo.wav" />
+    <EmbeddedResource Include="Sounds\id_ego_yeah.wav" />
+    <EmbeddedResource Include="Sounds\id_ego_yeah2.wav" />
+    <EmbeddedResource Include="Sounds\id_ego_yes.wav" />
+    <EmbeddedResource Include="Sounds\id_good_hey.wav" />
+    <EmbeddedResource Include="Sounds\id_good_hey2.wav" />
+    <EmbeddedResource Include="Sounds\id_good_hmm.wav" />
+    <EmbeddedResource Include="Sounds\id_good_huh.wav" />
+    <EmbeddedResource Include="Sounds\id_good_ooh.wav" />
+    <EmbeddedResource Include="Sounds\id_good_ooo.wav" />
+    <EmbeddedResource Include="Sounds\id_good_wow.wav" />
+    <EmbeddedResource Include="Sounds\mco_attack_breath.wav" />
+    <EmbeddedResource Include="Sounds\mco_attack_spray.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_chew.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_chomp.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_dainty.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_gnash.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_hard.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_long.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_munch.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_regular.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_short.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_small.wav" />
+    <EmbeddedResource Include="Sounds\mco_bite_soft.wav" />
+    <EmbeddedResource Include="Sounds\mco_card_shuffle.wav" />
+    <EmbeddedResource Include="Sounds\mco_castanet_trill.wav" />
+    <EmbeddedResource Include="Sounds\mco_ceramic_trill.wav" />
+    <EmbeddedResource Include="Sounds\mco_click_vibra.wav" />
+    <EmbeddedResource Include="Sounds\mco_creature_choking.wav" />
+    <EmbeddedResource Include="Sounds\mco_creature_groan.wav" />
+    <EmbeddedResource Include="Sounds\mco_creature_yelp.wav" />
+    <EmbeddedResource Include="Sounds\mco_cuica_rubbing.wav" />
+    <EmbeddedResource Include="Sounds\mco_dino_low.wav" />
+    <EmbeddedResource Include="Sounds\mco_dino_slur.wav" />
+    <EmbeddedResource Include="Sounds\mco_dino_talk.wav" />
+    <EmbeddedResource Include="Sounds\mco_dino_yawn.wav" />
+    <EmbeddedResource Include="Sounds\mco_dub_wobble.wav" />
+    <EmbeddedResource Include="Sounds\mco_frog_trill.wav" />
+    <EmbeddedResource Include="Sounds\mco_hit_whip.wav" />
+    <EmbeddedResource Include="Sounds\mco_howl_croak.wav" />
+    <EmbeddedResource Include="Sounds\mco_howl_deep.wav" />
+    <EmbeddedResource Include="Sounds\mco_howl_distressed.wav" />
+    <EmbeddedResource Include="Sounds\mco_howl_high.wav" />
+    <EmbeddedResource Include="Sounds\mco_howl_long.wav" />
+    <EmbeddedResource Include="Sounds\mco_liquid_squirt.wav" />
+    <EmbeddedResource Include="Sounds\mco_man_mumble.wav" />
+    <EmbeddedResource Include="Sounds\mco_mouse_squeaks.wav" />
+    <EmbeddedResource Include="Sounds\mco_rubber_thud.wav" />
+    <EmbeddedResource Include="Sounds\mco_scurry_dry.wav" />
+    <EmbeddedResource Include="Sounds\mco_shake_roll.wav" />
+    <EmbeddedResource Include="Sounds\mco_snarl_short.wav" />
+    <EmbeddedResource Include="Sounds\mco_spray_long.wav" />
+    <EmbeddedResource Include="Sounds\mco_squish_hit.wav" />
+    <EmbeddedResource Include="Sounds\mco_squish_snap.wav" />
+    <EmbeddedResource Include="Sounds\mco_strange_music.wav" />
+    <EmbeddedResource Include="Sounds\mco_strange_thwoink.wav" />
+    <EmbeddedResource Include="Sounds\mco_thoing_backwards.wav" />
+    <EmbeddedResource Include="Sounds\mco_thoing_deep.wav" />
+    <EmbeddedResource Include="Sounds\mco_thud_crash.wav" />
+    <EmbeddedResource Include="Sounds\mco_tube_hit.wav" />
+    <EmbeddedResource Include="Sounds\plc_bell_warn.wav" />
+    <EmbeddedResource Include="Sounds\plc_die_laugh.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_anvil.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_anvil2.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_arrow.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_body.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_groan.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_grunt.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_grunt2.wav" />
+    <EmbeddedResource Include="Sounds\plc_hit_hay.wav" />
+    <EmbeddedResource Include="Sounds\plc_miss_arrow.wav" />
+    <EmbeddedResource Include="Sounds\plc_miss_arrow2.wav" />
+    <EmbeddedResource Include="Sounds\plc_miss_swish.wav" />
+    <EmbeddedResource Include="Sounds\plm_aim_wand.wav" />
+    <EmbeddedResource Include="Sounds\plm_bang_ceramic.wav" />
+    <EmbeddedResource Include="Sounds\plm_bang_dumpster.wav" />
+    <EmbeddedResource Include="Sounds\plm_bang_metal.wav" />
+    <EmbeddedResource Include="Sounds\plm_book_pageturn.wav" />
+    <EmbeddedResource Include="Sounds\plm_bottle_clinks.wav" />
+    <EmbeddedResource Include="Sounds\plm_break_canister.wav" />
+    <EmbeddedResource Include="Sounds\plm_break_glass.wav" />
+    <EmbeddedResource Include="Sounds\plm_break_glass2.wav" />
+    <EmbeddedResource Include="Sounds\plm_break_plates.wav" />
+    <EmbeddedResource Include="Sounds\plm_break_shatter.wav" />
+    <EmbeddedResource Include="Sounds\plm_break_smash.wav" />
+    <EmbeddedResource Include="Sounds\plm_break_wood.wav" />
+    <EmbeddedResource Include="Sounds\plm_cabinet_open.wav" />
+    <EmbeddedResource Include="Sounds\plm_cabinet_shut.wav" />
+    <EmbeddedResource Include="Sounds\plm_chain_light.wav" />
+    <EmbeddedResource Include="Sounds\plm_chest_latch.wav" />
+    <EmbeddedResource Include="Sounds\plm_chest_unlatch.wav" />
+    <EmbeddedResource Include="Sounds\plm_chimes_jangle.wav" />
+    <EmbeddedResource Include="Sounds\plm_click_dry.wav" />
+    <EmbeddedResource Include="Sounds\plm_click_switch.wav" />
+    <EmbeddedResource Include="Sounds\plm_click_switch2.wav" />
+    <EmbeddedResource Include="Sounds\plm_click_switch3.wav" />
+    <EmbeddedResource Include="Sounds\plm_click_wood.wav" />
+    <EmbeddedResource Include="Sounds\plm_close_hatch.wav" />
+    <EmbeddedResource Include="Sounds\plm_coins_dump.wav" />
+    <EmbeddedResource Include="Sounds\plm_coins_light.wav" />
+    <EmbeddedResource Include="Sounds\plm_coins_pour.wav" />
+    <EmbeddedResource Include="Sounds\plm_coins_shake.wav" />
+    <EmbeddedResource Include="Sounds\plm_cork_pop.wav" />
+    <EmbeddedResource Include="Sounds\plm_cork_squeak.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_bolt.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_creak.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_creakshut.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_dungeon.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_echolock.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_entrance.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_knob.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_latch.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_open.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_opening.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_rusty.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_shut.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_slam.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_squeaky.wav" />
+    <EmbeddedResource Include="Sounds\plm_door_wooden.wav" />
+    <EmbeddedResource Include="Sounds\plm_drop_boot.wav" />
+    <EmbeddedResource Include="Sounds\plm_eat_bite.wav" />
+    <EmbeddedResource Include="Sounds\plm_floor_creak.wav" />
+    <EmbeddedResource Include="Sounds\plm_floor_creak2.wav" />
+    <EmbeddedResource Include="Sounds\plm_glass_break.wav" />
+    <EmbeddedResource Include="Sounds\plm_glass_breaking.wav" />
+    <EmbeddedResource Include="Sounds\plm_glass_smashing.wav" />
+    <EmbeddedResource Include="Sounds\plm_jar_ding.wav" />
+    <EmbeddedResource Include="Sounds\plm_levelup.wav" />
+    <EmbeddedResource Include="Sounds\plm_lock_case.wav" />
+    <EmbeddedResource Include="Sounds\plm_lock_distant.wav" />
+    <EmbeddedResource Include="Sounds\plm_metal_clank.wav" />
+    <EmbeddedResource Include="Sounds\plm_metal_sharpen.wav" />
+    <EmbeddedResource Include="Sounds\plm_open_case.wav" />
+    <EmbeddedResource Include="Sounds\plm_spell1.wav" />
+    <EmbeddedResource Include="Sounds\plm_spell2.wav" />
+    <EmbeddedResource Include="Sounds\plm_spell3.wav" />
+    <EmbeddedResource Include="Sounds\plm_use_staff.wav" />
+    <EmbeddedResource Include="Sounds\plm_wood_thud.wav" />
+    <EmbeddedResource Include="Sounds\plm_zap_rod.wav" />
+    <EmbeddedResource Include="Sounds\pls_bell_bowl.wav" />
+    <EmbeddedResource Include="Sounds\pls_bell_chime_new.wav" />
+    <EmbeddedResource Include="Sounds\pls_bell_glass.wav" />
+    <EmbeddedResource Include="Sounds\pls_bell_hibell_soft.wav" />
+    <EmbeddedResource Include="Sounds\pls_bell_mute.wav" />
+    <EmbeddedResource Include="Sounds\pls_bell_sustain.wav" />
+    <EmbeddedResource Include="Sounds\pls_breathe_in.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_argoh.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_gulp_new.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_oooh.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_scream2.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_sigh.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_sniff.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_sob.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_spit.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_ugh.wav" />
+    <EmbeddedResource Include="Sounds\pls_man_yell.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_blurk.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_clave6.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_clavelo8.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_conk.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_elec.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_goblet.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_guiro.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_headstock.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_scrape.wav" />
+    <EmbeddedResource Include="Sounds\pls_tone_stick.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_desk.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_ding.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_dingaling.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_jingles.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_register1.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_register2.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_ringing.wav" />
+    <EmbeddedResource Include="Sounds\sto_bell_shop.wav" />
+    <EmbeddedResource Include="Sounds\sto_coins_countertop.wav" />
+    <EmbeddedResource Include="Sounds\sto_man_haha.wav" />
+    <EmbeddedResource Include="Sounds\sto_man_hey.wav" />
+    <EmbeddedResource Include="Sounds\sto_man_whoohaha.wav" />
+    <EmbeddedResource Include="Sounds\sum_angel_song.wav" />
+    <EmbeddedResource Include="Sounds\sum_bell_crystal.wav" />
+    <EmbeddedResource Include="Sounds\sum_bell_hand.wav" />
+    <EmbeddedResource Include="Sounds\sum_bell_tone.wav" />
+    <EmbeddedResource Include="Sounds\sum_chime_jangle.wav" />
+    <EmbeddedResource Include="Sounds\sum_ghost_moan.wav" />
+    <EmbeddedResource Include="Sounds\sum_ghost_oooo.wav" />
+    <EmbeddedResource Include="Sounds\sum_ghost_wail.wav" />
+    <EmbeddedResource Include="Sounds\sum_gong_temple.wav" />
+    <EmbeddedResource Include="Sounds\sum_laugh_evil2.wav" />
+    <EmbeddedResource Include="Sounds\sum_lion_growl.wav" />
+    <EmbeddedResource Include="Sounds\sum_piano_scrape.wav" />
+    <EmbeddedResource Include="Music\anxiety.flac" />
+    <EmbeddedResource Include="Music\bent-and-broken.flac" />
+    <EmbeddedResource Include="Music\final-count.flac" />
+    <EmbeddedResource Include="Music\hush.flac" />
+    <EmbeddedResource Include="Music\midnight-tale.flac" />
+    <EmbeddedResource Include="Music\take-a-chance.flac" />
+    <EmbeddedResource Include="Music\the-house-of-leaves.flac" />
+    <EmbeddedResource Include="Music\umbrella-pants.flac" />
+    <Resource Include="Resources\WildMap.png" />
+    <Content Include="Terminal\Cthangband.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Terminal\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

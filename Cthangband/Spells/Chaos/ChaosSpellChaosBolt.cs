@@ -1,0 +1,99 @@
+﻿using Cthangband.Enumerations;
+using Cthangband.Projection;
+using System;
+
+namespace Cthangband.Spells.Chaos
+{
+    [Serializable]
+    internal class ChaosSpellChaosBolt : Spell
+    {
+        public override void Cast(SaveGame saveGame, Player player, Level level)
+        {
+            int beam;
+            switch (player.ProfessionIndex)
+            {
+                case CharacterClass.Mage:
+                    beam = player.Level;
+                    break;
+
+                case CharacterClass.HighMage:
+                    beam = player.Level + 10;
+                    break;
+
+                default:
+                    beam = player.Level / 2;
+                    break;
+            }
+            TargetEngine targetEngine = new TargetEngine(player, level);
+            if (!targetEngine.GetAimDir(out int dir))
+            {
+                return;
+            }
+            saveGame.SpellEffects.FireBoltOrBeam(beam, new ProjectChaos(SaveGame.Instance.SpellEffects), dir,
+                Program.Rng.DiceRoll(10 + ((player.Level - 5) / 4), 8));
+        }
+
+        public override void Initialise(int characterClass)
+        {
+            Name = "Chaos Bolt";
+            switch (characterClass)
+            {
+                case CharacterClass.Mage:
+                    Level = 19;
+                    ManaCost = 12;
+                    BaseFailure = 45;
+                    FirstCastExperience = 9;
+                    break;
+
+                case CharacterClass.Priest:
+                    Level = 21;
+                    ManaCost = 16;
+                    BaseFailure = 50;
+                    FirstCastExperience = 9;
+                    break;
+
+                case CharacterClass.Ranger:
+                    Level = 30;
+                    ManaCost = 25;
+                    BaseFailure = 60;
+                    FirstCastExperience = 8;
+                    break;
+
+                case CharacterClass.WarriorMage:
+                case CharacterClass.Monk:
+                    Level = 23;
+                    ManaCost = 22;
+                    BaseFailure = 45;
+                    FirstCastExperience = 9;
+                    break;
+
+                case CharacterClass.Fanatic:
+                    Level = 22;
+                    ManaCost = 14;
+                    BaseFailure = 45;
+                    FirstCastExperience = 9;
+                    break;
+
+                case CharacterClass.HighMage:
+                case CharacterClass.Cultist:
+                    Level = 17;
+                    ManaCost = 10;
+                    BaseFailure = 35;
+                    FirstCastExperience = 9;
+                    break;
+
+                default:
+                    Level = 99;
+                    ManaCost = 0;
+                    BaseFailure = 0;
+                    FirstCastExperience = 0;
+                    break;
+            }
+        }
+
+        protected override string Comment(Player player)
+        {
+            return $"dam {10 + ((player.Level - 5) / 4)}d8";
+        }
+    }
+}

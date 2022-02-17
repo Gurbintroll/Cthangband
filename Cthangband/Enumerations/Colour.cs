@@ -1,0 +1,39 @@
+﻿namespace Cthangband.Enumerations
+{
+    //The possible colours in which to display things
+    internal enum Colour
+    {
+        Background,
+        Black,
+        Grey,
+        BrightGrey,
+        Silver,
+        Beige,
+        BrightBeige,
+        White,
+        BrightWhite,
+        Red,
+        BrightRed,
+        Copper,
+        Orange,
+        BrightOrange,
+        Brown,
+        BrightBrown,
+        Gold,
+        Yellow,
+        BrightYellow,
+        Chartreuse,
+        BrightChartreuse,
+        Green,
+        BrightGreen,
+        Turquoise,
+        BrightTurquoise,
+        Blue,
+        BrightBlue,
+        Diamond,
+        Purple,
+        BrightPurple,
+        Pink,
+        BrightPink,
+    }
+}

@@ -1,0 +1,88 @@
+﻿using Cthangband.Enumerations;
+using Cthangband.Projection;
+using System;
+
+namespace Cthangband.Spells.Chaos
+{
+    [Serializable]
+    internal class ChaosSpellManaBurst : Spell
+    {
+        public override void Cast(SaveGame saveGame, Player player, Level level)
+        {
+            TargetEngine targetEngine = new TargetEngine(player, level);
+            if (!targetEngine.GetAimDir(out int dir))
+            {
+                return;
+            }
+            SaveGame.Instance.SpellEffects.FireBall(new ProjectMissile(SaveGame.Instance.SpellEffects), dir,
+                Program.Rng.DiceRoll(3, 5) + player.Level + (player.Level /
+                (player.ProfessionIndex == CharacterClass.Mage || player.ProfessionIndex == CharacterClass.HighMage ? 2 : 4)),
+                player.Level < 30 ? 2 : 3);
+        }
+
+        public override void Initialise(int characterClass)
+        {
+            Name = "Mana Burst";
+            switch (characterClass)
+            {
+                case CharacterClass.Mage:
+                    Level = 9;
+                    ManaCost = 6;
+                    BaseFailure = 50;
+                    FirstCastExperience = 1;
+                    break;
+
+                case CharacterClass.Priest:
+                    Level = 10;
+                    ManaCost = 6;
+                    BaseFailure = 30;
+                    FirstCastExperience = 5;
+                    break;
+
+                case CharacterClass.Ranger:
+                    Level = 14;
+                    ManaCost = 12;
+                    BaseFailure = 40;
+                    FirstCastExperience = 2;
+                    break;
+
+                case CharacterClass.WarriorMage:
+                case CharacterClass.Monk:
+                    Level = 8;
+                    ManaCost = 8;
+                    BaseFailure = 30;
+                    FirstCastExperience = 1;
+                    break;
+
+                case CharacterClass.Fanatic:
+                    Level = 7;
+                    ManaCost = 7;
+                    BaseFailure = 30;
+                    FirstCastExperience = 1;
+                    break;
+
+                case CharacterClass.HighMage:
+                case CharacterClass.Cultist:
+                    Level = 6;
+                    ManaCost = 4;
+                    BaseFailure = 40;
+                    FirstCastExperience = 1;
+                    break;
+
+                default:
+                    Level = 99;
+                    ManaCost = 0;
+                    BaseFailure = 0;
+                    FirstCastExperience = 0;
+                    break;
+            }
+        }
+
+        protected override string Comment(Player player)
+        {
+            int i = player.Level + (player.Level /
+                    (player.ProfessionIndex == CharacterClass.Mage || player.ProfessionIndex == CharacterClass.HighMage ? 2 : 4));
+            return $"dam 3d5+{i}";
+        }
+    }
+}

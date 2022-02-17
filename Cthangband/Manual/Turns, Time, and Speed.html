@@ -1,0 +1,143 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="manual.css">
+</head>
+<body>
+    <h1>Turns, Time, and Speed</h1>
+    <p>
+        In Cthangband, the passage of time is measured in turns. Each turn represents eight seconds of time within the game, although
+        since the game pauses for your input each time you need to decide on your character's next action a turn may take far longer
+        than eight seconds of real time to resolve.
+    </p>
+    <p>
+        Each turn, any creature with a normal speed takes one action; and creatures take it in turns to perform their action.
+        Typical actions are things like moving, attacking, or casting a spell.
+        It should be noted that you or another creature may get multiple attacks within the same action. If this is the case, all such attacks
+        will be resolved together before the next creature gets to take their action.
+    </p>
+    <h2>Speed</h2>
+    <p>
+        The simple description above applies only when creatures (and characters) have a normal speed. Some creatures are naturally faster or slower
+        than normal, and it is possible for the player to become faster or slower than normal by a variety of effects:
+    </p>
+    <ul>
+        <li>Magic items may increase or decrease your speed</li>
+        <li>If you are heavily encumbered, this will decrease your speed</li>
+        <li>Monks and Mystics get faster as they increase in level</li>
+        <li>Klackons and Sprites get faster as they increase in level</li>
+    </ul>
+    <p>All modifiers to your speed are cumulative (except for the increases for Monks, Mystics, Klackons, and Sprites) with positive and negative modifiers canceling each other out.</p>
+    <p>
+        If you are slower than normal, you will not be able to take an action per turn; and if you are faster than normal you will
+        be able to take more than one action per turn. Because it is possible (and, in fact, likely if you are fast or slow) that you
+        or another creature will be taking a fractional number of actions per turn, internally turns are sub-divided into tenths of
+        turns and actions can be taken on any tenth of a turn rather than just on whole turns.
+    </p>
+    <p>
+        The relationship between speed and the number of turns taken is not linear. Instead, it is measured on a curve with diminishing
+        returns in either direction. Going from a speed of +0 to a speed of +10 will double the number of actions you can take in a turn,
+        taking you from one action per turn to two actions per turn; but going from a speed of +30 to +40 will only add an extra two fifths
+        (0.4) of an action per turn, taking your from 3.8 actions per turn to 4.2 actions per turn.
+    </p>
+    <p>
+        The number of actions you get per turn at different speeds is shown in the table below (with speeds between those shown giving
+        a number of actions per turn between the values shown):
+    </p>
+    <p>
+        <table align=center>
+            <tr><th>Speed</th><th>Actions per Turn</th></tr>
+            <tr><td>&lt;= -45</td><td>0.1</td></tr>
+            <tr><td>-40</td><td>0.2</td></tr>
+            <tr><td>-35</td><td>0.2</td></tr>
+            <tr><td>-30</td><td>0.2</td></tr>
+            <tr><td>-25</td><td>0.2</td></tr>
+            <tr><td>-20</td><td>0.3</td></tr>
+            <tr><td>-15</td><td>0.4</td></tr>
+            <tr><td>-10</td><td>0.5</td></tr>
+            <tr><td>-5</td><td>0.6</td></tr>
+            <tr><td>+0</td><td>1</td></tr>
+            <tr><td>+5</td><td>1.5</td></tr>
+            <tr><td>+10</td><td>2</td></tr>
+            <tr><td>+15</td><td>2.5</td></tr>
+            <tr><td>+20</td><td>3</td></tr>
+            <tr><td>+25</td><td>3.5</td></tr>
+            <tr><td>+30</td><td>3.8</td></tr>
+            <tr><td>+35</td><td>4</td></tr>
+            <tr><td>+40</td><td>4.2</td></tr>
+            <tr><td>+45</td><td>4.3</td></tr>
+            <tr><td>+50</td><td>4.5</td></tr>
+            <tr><td>+55</td><td>4.6</td></tr>
+            <tr><td>+60</td><td>4.7</td></tr>
+            <tr><td>+65</td><td>4.8</td></tr>
+            <tr><td>&gt;= +70</td><td>4.9</td></tr>
+        </table>
+    </p>
+    <p>
+        During play, if your speed is not normal, it will be indicated with either the word "Fast" or "Slow" and the number of actions per
+        turn that you are currently getting. For example, "Fast 2.3" or "Slow 0.9". Your actual speed value is purely internal and is not shown.
+        Similarly, when you see the description of a monster, if you have seen it move enough to notice how fast it is then you will be told
+        its speed in terms of actions per turn.
+    </p>
+    <h2>Partial Actions</h2>
+    <p>
+        Although most activities you can do will take one action to perform, not everything takes exactly one action. Some things are quicker
+        and only take a partial action. If you do something that only takes a partial action then you will be able to do something else before a
+        full turn has passed. Again, since turns are internally measured in tenths this allows actions to be tracked in partial turns and taken
+        between full turns if necessary. Some things you can do take no time at all, although these are usually informational things rather
+        than things that will affect the world around you.
+    </p>
+    <p>The table below shows a list of commands and how long each one takes to perfom:</p>
+    <p>
+        <table align=center>
+            <tr><th>Command</th><th>Percentage of an Action</th><th>Comments</th></tr>
+            <tr><td>Moving one space</td><td>100%</td><td>Diagonal moves cost the same as orthogonal moves</td></tr>
+            <tr><td>Running one space</td><td>100%</td><td>"Running" is no quicker than walking, it is just more automated</td></tr>
+            <tr><td>Attacking a creature</td><td>100%</td><td>May involve more than one attack</td></tr>
+            <tr><td>Casting a spell</td><td>100%</td><td>Also includes using mentalism powers, mutations, and racial powers</td></tr>
+            <tr><td>Using an magic item</td><td>100%</td><td>All magic items take an action, regardless of type</td></tr>
+            <tr><td>Opening, Closing, Bashing or Spiking a door</td><td>100%</td><td></td></tr>
+            <tr><td>Picking a lock or disarming a trap</td><td>100%</td><td></td></tr>
+            <tr><td>Tunneling through rock</td><td>100%</td><td>May have to be repeated many times before it works</td></tr>
+            <tr><td>Searching</td><td>100%</td><td>May have to be repeated many times before it works</td></tr>
+            <tr><td>Destroying one or more items</td><td>100%</td><td>Free when done as part of a move</td></tr>
+            <tr><td>Picking up an item</td><td>100%</td><td>Free when done as part of a move</td></tr>
+            <tr><td>Throwing an item</td><td>100%</td><td></td></tr>
+            <tr><td>Wielding/wearing an item</td><td>100%</td><td></td></tr>
+            <tr><td>Taking off an item</td><td>50%</td><td>Free when done as part of wearing a new item in its place</td></tr>
+            <tr><td>Dropping an item</td><td>50%</td><td></td></tr>
+            <tr><td>Filling a lantern or combining torches</td><td>50%</td><td></td></tr>
+            <tr><td>Viewing your inventory</td><td>0%</td><td></td></tr>
+            <tr><td>Browsing a spell book</td><td>0%</td><td></td></tr>
+            <tr><td>Viewing your character sheet</td><td>0%</td><td></td></tr>
+            <tr><td>Viewing your journal</td><td>0%</td><td></td></tr>
+            <tr><td>Targeting a creature</td><td>0%</td><td></td></tr>
+        </table>
+    </p>
+    <h2>Multiple Attacks</h2>
+    <p>
+        When you attack a creature, or when a creature attacks you, it always takes an action to perform the set of attacks but you may
+        get more than one attack as part of that action. In the case of a monster, it will get from one to four attacks based on its race;
+        although more than one of these attacks may be of the same type. When you are attacking, you will get a number of attacks based on
+        a complex formula that takes into account:
+        <ul>
+            <li>Your class and level</li>
+            <li>Your strength</li>
+            <li>Your dexterity</li>
+            <li>The weight of the weapon you are wielding</li>
+        </ul>
+    <p>
+        Additionally, if you have any mutations that give you extra attacks, such as horns, these attacks will be performed after your
+        normal attacks as part of the same attack action. These extra attacks do not affect the normal number of attacks that you can make
+        in an action.
+    </p>
+    <p>The number of attacks you can make per action is shown on your character sheet, and may be different for melee and missile weapons.</p>
+    <p>
+        When firing a missile weapon, you will perform your attacks one at a time since you must select a target and select ammunition for
+        each attack. Because of this, it is possible to make less than your full number of missile attacks as you can stop attacking and perform
+        some other activity instead. Each individual missile attack therefore only takes a fraction of an action based on how many missile attacks
+        per action you get. For example if you get four missile attacks per action, each individual missile attack will take 25% of an action.
+        Note that this does not apply when you are simply throwing objects, since you never get multiple attacks when throwing objects. Throwing
+        an object always takes an entire action.
+    </p>
+</body>
+</html>

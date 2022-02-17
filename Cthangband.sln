@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cthangband", "Cthangband\Cthangband.csproj", "{D251FCE9-8E34-4857-BF69-B7F99336FF8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Debug|x86.Build.0 = Debug|Any CPU
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Release|x86.ActiveCfg = Release|Any CPU
+		{D251FCE9-8E34-4857-BF69-B7F99336FF8D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAEA4871-5943-4663-A75B-F73242F8E73D}
+	EndGlobalSection
+EndGlobal

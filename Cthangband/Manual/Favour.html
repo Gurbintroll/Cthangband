@@ -1,0 +1,89 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="manual.css" />
+</head>
+<body>
+    <h1>Favour</h1>
+    <p>
+        There are five <a href="Great Ones.html">Great Ones</a> that take an interest in adventurers, and each one will have an opinion on
+        your character. By default, they will all be indifferent to you, but it is possible to change that opinion by accruing a score known
+        as Favour.
+    </p>
+    <p>
+        You gain favour with a particular Great One by sacrificing items to them at a temple. The type of item sacrificed does not matter, only
+        the value of the item. The more valuable the item, the more favour you will gain with the Great One to whom you sacrificed it.
+    </p>
+    <p>
+        However, favour is a zero-sum game. Sacrificing to one Great One may please it, but it will also upset the others. This means that
+        your total combined favour with all the Great Ones is always zero - the only way to get one of the Great Ones to love you is to accept
+        that the other Great Ones will resent you, and getting positive favour with more than one Great One at the same time will require
+        repeated sacrifices.
+    </p>
+    <p>
+        The good news is that while Great Ones with whom you have positive favour will help you, those with whom you have negative favour will
+        not hinder you. Instead they will simply ignore you. On the one hand this means that you can happily ignore the Great Ones altogether and
+        if you never sacrifice to them they leave you alone. On the other hand, it means that there is nothing to lose by sacrificing to any of
+        the Great Ones (other than losing the items you have sacrificed, of course) as sacrifices will gain you benefits from the Great One who
+        now favours you but not give you any penalties from the others.
+    </p>
+    <p>
+        Over time, the Great Ones cease caring about sacrifices you have previously made; and your favour scores (both positive and negative)
+        decay back to zero. No matter how large a sacrifice you make, after a few weeks of game time the Great Ones will be indifferent towards
+        you once more. The exception to this is if you are a <a href="Priest.html">priest</a>. Each priest has a specific Great One as a patron,
+        and their 'resting state' is to have a positive favour score with that patron and a negative favour score with each of the other Great Ones.
+        If you are a priest, your favour scores will decay back to those values rather than decaying back to zero.
+    </p>
+    <p>
+        You can view your standing with the various Great Ones at any time by checking your journal, but this does not show your exact favour
+        score with each one, only how much they like you.
+    </p>
+    <h2>Favour Calculations</h2>
+    <p>
+        By default, you have a favour score of 0 with each of the five Great Ones, unless you are a priest - in which case you have a favour
+        score of 120 with your patron and a favour score of -30 with each of the other four Great Ones (so you still have a total favour of
+        zero). This is your 'resting favour' and it is the set of values that your favour score will slowly revert back to.
+    </p>
+    <p>
+        You gain additional favour by sacrificing items. Assuming you sacrifice an item of value, you will gain 4 favour with the Great One to
+        whom you sacrificed it per 10 gold that the item is worth, and you will lose 1 favour with each of the other four Great Ones per 10 gold that
+        the item is worth. If you accidentally (or deliberately) sacrifice a worthless item to a Great One, you will lose 40 favour with them
+        and gain 10 favour with each of the other four.
+    </p>
+    <p>
+        Each day, at midnight, the game checks each of the Great Ones to see which of them you have the most favour with compared to your
+        resting favour with that Great One. Assuming you are not at your resting favour with all the Great Ones, it then calculates 10%
+        (rounded down, but with a minimum of 1) of that increased favour as a 'decay' value. Your favour with that Great One is then
+        reduced by four times the decay value, while your favour with each of the other four is increased by the decay value.
+    </p>
+    <h2>Favour Benefits</h2>
+    <p>
+        Your favour with each Great One is converted into a bonus using the following conversion:
+    </p>
+    <p>
+        <table align=center>
+            <tr><th>Favour (non-priest)</th><th>Favour (priest)</th><th>Bonus</th></tr>
+            <tr><td>0 or less</td><td>0 or less</td><td>0%</td></tr>
+            <tr><td>1-9</td><td>1-4</td><td>10%</td></tr>
+            <tr><td>10-99</td><td>5-49</td><td>20%</td></tr>
+            <tr><td>100-999</td><td>50-499</td><td>30%</td></tr>
+            <tr><td>1,000-9,999</td><td>500-4,999</td><td>40%</td></tr>
+            <tr><td>10,000-99,999</td><td>5,000-49,999</td><td>50%</td></tr>
+            <tr><td>100,000-999,999</td><td>50,000-499,999</td><td>60%</td></tr>
+            <tr><td>1,000,000-9,999,999</td><td>500,000-4,999,999</td><td>70%</td></tr>
+            <tr><td>10,000,000-99,999,999</td><td>5,000,000-49,999,999</td><td>80%</td></tr>
+            <tr><td>100,000,000-999,999,999</td><td>50,000,000-499,999,999</td><td>90%</td></tr>
+            <tr><td>1,000,000,000 and over</td><td>500,000,000 and over</td><td>100%</td></tr>
+        </table>
+    </p>
+    <p>
+        The percentage bonuses in the table above are applied in situations based on each individual patron:
+    </p>
+    <ul>
+        <li>Hagarg Ryonis: The bonus is the chance to ignore poison or life drain.</li>
+        <li>Lobon: The bonus is the chance to ignore effects that drain your ability scores.</li>
+        <li>Nath-Horthath: The bonus is applied directly to your maximum health.</li>
+        <li>Tamash: The bonus is applied directly to your maximum mana.</li>
+        <li>Zo-Kalar: The bonus halved is the chance to negate an effect that would otherwise kill you.</li>
+    </ul>
+</body>
+</html>

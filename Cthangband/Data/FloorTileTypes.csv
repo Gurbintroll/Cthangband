@@ -1,0 +1,96 @@
+Name,AlterAction,AppearAs,BlocksLos,Category,Description,DimsOutsideLOS,IsBasicWall,IsClosedDoor,IsInteresting,IsOpenFloor,IsPassable,IsPermanent,IsShop,IsTrap,IsWall,MapPriority,RunPast,YellowInTorchlight,Character,Colour
+AcidTrap,Disarm,AcidTrap,False,Miscellaneous,discolored spot,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Brown
+Alchemist,Nothing,Alchemist,True,Miscellaneous,Alchemy Shop,False,False,False,True,False,True,True,True,False,False,0,False,False,5,Blue
+Armoury,Nothing,Armoury,True,Miscellaneous,Armoury,False,False,False,True,False,True,True,True,False,False,0,False,False,2,Grey
+BlackMarket,Nothing,BlackMarket,True,Miscellaneous,Black Market,False,False,False,True,False,True,True,True,False,False,0,False,False,7,Black
+BlindGas,Disarm,BlindGas,False,Miscellaneous,gas trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Green
+Bookstore,Nothing,Bookstore,True,Miscellaneous,Bookstore,False,False,False,True,False,True,True,True,False,False,0,False,False,9,Orange
+BrokenDoor,Close,BrokenDoor,False,OpenDoorway,broken door,True,False,False,False,False,True,False,False,False,False,17,False,False,',BrightBrown
+Bush,Tunnel,Bush,True,Tree,bush,True,False,False,False,False,True,True,False,False,False,0,False,False,*,BrightGreen
+ConDart,Disarm,ConDart,False,Miscellaneous,dart trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Red
+ConfuseGas,Disarm,ConfuseGas,False,Miscellaneous,gas trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Green
+DexDart,Disarm,DexDart,False,Miscellaneous,dart trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Red
+DownStair,Nothing,DownStair,False,DownStair,down staircase,True,False,False,True,False,True,True,False,False,False,25,False,False,>,BrightBrown
+DungeonFloor,Nothing,DungeonFloor,False,Floor,open floor,True,False,False,False,True,True,False,False,False,False,5,True,True,·,White
+ElderSign,Nothing,ElderSign,False,Sigil,Elder Sign,False,False,False,True,False,True,False,False,False,False,20,False,False,*,Green
+Field,Nothing,Field,False,Floor,field,True,False,False,False,True,True,False,False,False,False,0,False,True,·,BrightBrown
+FireTrap,Disarm,FireTrap,False,Miscellaneous,discolored spot,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Brown
+Fountain,Tunnel,Fountain,True,Miscellaneous,fountain,True,False,False,False,False,False,False,False,False,False,0,False,False,~,BrightBlue
+GeneralStore,Nothing,GeneralStore,True,Miscellaneous,General Store,False,False,False,True,False,True,True,True,False,False,0,False,False,1,BrightBrown
+Grass,Nothing,Grass,False,Floor,open floor,True,False,False,False,True,True,False,False,False,False,0,True,True,·,BrightGreen
+Grave,Tunnel,Grave,True,Miscellaneous,grave,True,False,False,False,False,False,False,False,False,False,0,True,True,+,White
+HallOfRecords,Nothing,HallOfRecords,True,Miscellaneous,Hall of Records,False,False,False,True,False,True,True,True,False,False,0,False,False,8,Yellow
+Home,Nothing,Home,True,Miscellaneous,Home,False,False,False,True,False,True,True,True,False,False,0,False,False,@,Pink
+Inn,Nothing,Inn,True,Miscellaneous,Inn,False,False,False,True,False,True,True,True,False,False,0,False,False,&,Purple
+InsideGatehouse,Nothing,InsideGatehouse,False,Miscellaneous,open floor,True,False,False,False,False,False,False,False,False,False,0,False,True,·,White
+Invis,Nothing,Invis,False,UnidentifiedTrap,invisible trap,True,False,False,False,False,True,False,False,False,False,5,True,True,·,White
+JammedDoor0,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+JammedDoor1,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+JammedDoor2,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+JammedDoor3,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+JammedDoor4,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+JammedDoor5,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+JammedDoor6,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+JammedDoor7,Bash,LockedDoor0,True,JammedDoor,jammed door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor0,Open,LockedDoor0,True,LockedDoor,door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor1,Open,LockedDoor0,True,LockedDoor,locked door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor2,Open,LockedDoor0,True,LockedDoor,locked door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor3,Open,LockedDoor0,True,LockedDoor,locked door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor4,Open,LockedDoor0,True,LockedDoor,locked door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor5,Open,LockedDoor0,True,LockedDoor,locked door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor6,Open,LockedDoor0,True,LockedDoor,locked door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+LockedDoor7,Open,LockedDoor0,True,LockedDoor,locked door,True,False,True,False,False,False,False,False,False,False,17,False,False,+,BrightBrown
+MagicShop,Nothing,MagicShop,True,Miscellaneous,Magic Shop,False,False,False,True,False,True,True,True,False,False,0,False,False,6,Red
+Magma,Tunnel,Magma,True,Vein,magma vein,True,False,False,False,False,False,False,False,False,True,11,True,True,#,Grey
+MagmaHidTreas,Tunnel,Magma,True,Vein,magma vein,True,False,False,False,False,False,False,False,False,True,11,True,True,#,Grey
+MagmaVisTreas,Tunnel,MagmaVisTreas,True,Vein,magma vein with treasure,True,False,False,False,False,False,False,False,False,True,19,True,False,*,BrightOrange
+Nothing,Nothing,Nothing,False,Miscellaneous,nothing,False,False,False,False,False,False,False,False,False,False,0,False,False, ,Background
+OpenDoor,Close,OpenDoor,False,OpenDoorway,open door,True,False,False,False,False,True,False,False,False,False,17,False,False,',BrightBrown
+PathBase,Nothing,PathBase,False,Miscellaneous,path base,True,False,False,False,False,True,False,False,False,False,0,True,False,·,BrightBrown
+PathBorderEW,Nothing,PathBorderEW,True,Border,path,True,False,False,False,False,False,True,False,False,False,0,False,False,-,BrightBrown
+PathBorderNS,Nothing,PathBorderNS,True,Border,path,True,False,False,False,False,False,True,False,False,False,0,False,False,|,BrightBrown
+PathEW,Nothing,PathEW,False,Miscellaneous,path,True,False,False,False,False,True,False,False,False,False,0,False,False,-,BrightBrown
+PathJunction,Nothing,PathJunction,False,Miscellaneous,path,True,False,False,False,False,True,False,False,False,False,0,False,False,+,BrightBrown
+PathNS,Nothing,PathNS,False,Miscellaneous,path,True,False,False,False,False,True,False,False,False,False,0,False,False,|,BrightBrown
+Pawnbrokers,Nothing,Pawnbrokers,True,Miscellaneous,Pawnbrokers,False,False,False,True,False,True,True,True,False,False,0,False,False,0,Turquoise
+Pillar,Tunnel,Pillar,True,Miscellaneous,pillar,True,False,False,False,False,False,False,False,False,False,12,True,True,#,White
+Pit,Disarm,Pit,False,Miscellaneous,pit,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Grey
+PoisonGas,Disarm,PoisonGas,False,Miscellaneous,gas trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Green
+PoisonPit,Disarm,PoisonPit,False,Miscellaneous,pit,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Grey
+Quartz,Tunnel,Quartz,True,Vein,quartz vein,True,False,False,False,False,False,False,False,False,True,11,True,True,#,White
+QuartzHidTreas,Tunnel,Quartz,True,Vein,quartz vein,True,False,False,False,False,False,False,False,False,True,11,True,True,#,White
+QuartzVisTreas,Tunnel,QuartzVisTreas,True,Vein,quartz vein with treasure,True,False,False,False,False,False,False,False,False,True,19,True,False,*,BrightRed
+Rock,Tunnel,Rock,True,Miscellaneous,rock,True,False,False,False,False,False,False,False,False,False,0,False,True,:,White
+Roof,Tunnel,Roof,True,Miscellaneous,building,True,False,False,False,False,False,True,False,False,True,0,True,False,#,BrightRed
+Rubble,Tunnel,Rubble,True,Rubble,pile of rubble,True,False,False,True,False,False,False,False,False,False,12,False,True,:,White
+Scarecrow,Tunnel,Scarecrow,True,Tree,scarecrow,True,False,False,False,False,False,False,False,False,False,0,False,False,t,BrightBrown
+SecretDoor,Tunnel,WallBasic,True,SecretDoor,granite wall,True,False,False,False,False,False,False,False,False,True,10,True,True,#,White
+Signpost,Tunnel,Signpost,False,Tree,signpost,True,False,False,False,False,False,False,False,False,False,0,False,False,:,BrightBrown
+SleepGas,Disarm,SleepGas,False,Miscellaneous,gas trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Green
+SlowDart,Disarm,SlowDart,False,Miscellaneous,dart trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Red
+SpikedPit,Disarm,SpikedPit,False,Miscellaneous,pit,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Grey
+Statue,Tunnel,Statue,True,Miscellaneous,statue,True,False,False,False,False,False,False,False,False,False,0,False,True,:,White
+StrDart,Disarm,StrDart,False,Miscellaneous,dart trap,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Red
+SummonRune,Disarm,SummonRune,False,Miscellaneous,strange rune,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Yellow
+TeleportRune,Disarm,TeleportRune,False,Miscellaneous,strange rune,False,False,False,True,False,True,False,False,True,False,20,False,False,^,Purple
+Temple,Nothing,Temple,True,Miscellaneous,Temple,False,False,False,True,False,True,True,True,False,False,0,False,False,4,Green
+TowerFloor,Nothing,TowerFloor,False,Floor,open floor,True,False,False,False,True,True,False,False,False,False,5,True,True,·,White
+TownWall,Tunnel,TownWall,True,Border,town wall,True,False,False,False,False,False,True,False,False,True,0,True,True,#,White
+TrapDoor,Disarm,TrapDoor,False,TrapDoor,trap door,False,False,False,True,False,True,False,False,True,False,20,False,False,^,White
+Tree,Tunnel,Tree,True,Tree,tree,True,False,False,False,False,False,False,False,False,False,0,False,False,#,BrightGreen
+UpStair,Nothing,UpStair,False,UpStair,up staircase,True,False,False,True,False,True,True,False,False,False,25,False,False,<,BrightBrown
+WallBasic,Tunnel,WallBasic,True,Miscellaneous,granite wall,True,True,False,False,False,False,False,False,False,True,10,True,True,#,White
+WallInner,Tunnel,WallBasic,True,Miscellaneous,granite wall,True,True,False,False,False,False,False,False,False,True,10,True,True,#,White
+WallOuter,Tunnel,WallBasic,True,Miscellaneous,granite wall,True,True,False,False,False,False,False,False,False,True,10,True,True,#,White
+WallPermBuilding,Tunnel,WallPermBuilding,True,Miscellaneous,building,True,False,False,False,False,False,True,False,False,True,0,True,True,#,White
+WallPermInner,Tunnel,WallPermInner,True,Miscellaneous,magically reinforced wall,True,False,False,False,False,False,True,False,False,True,10,True,True,#,White
+WallPermOuter,Tunnel,WallPermInner,True,Miscellaneous,magically reinforced wall,True,False,False,False,False,False,True,False,False,True,10,True,True,#,White
+WallPermSolid,Tunnel,WallPermInner,True,Miscellaneous,magically reinforced wall,True,False,False,False,False,False,True,False,False,True,10,True,True,#,White
+WallSolid,Tunnel,WallBasic,True,Miscellaneous,granite wall,True,True,False,False,False,False,False,False,False,True,10,True,True,#,White
+Water,Nothing,Water,False,Miscellaneous,water,True,False,False,False,False,False,False,False,False,False,0,False,False,~,Blue
+WaterBorder,Nothing,Water,True,Border,sea,True,False,False,False,False,False,True,False,False,False,0,False,False,~,BrightBlue
+Weaponsmiths,Nothing,Weaponsmiths,True,Miscellaneous,Weapon Smiths,False,False,False,True,False,True,True,True,False,False,0,False,False,3,White
+WildBorder,Nothing,Grass,True,Border,border,True,False,False,False,False,False,True,False,False,False,0,False,True,·,BrightGreen
+WildPathEW,Nothing,WildPathEW,False,Miscellaneous,path,True,False,False,False,False,True,False,False,False,False,0,False,False,-,BrightBrown
+WildPathNS,Nothing,WildPathNS,False,Miscellaneous,path,True,False,False,False,False,True,False,False,False,False,0,False,False,|,BrightBrown
+YellowSign,Nothing,YellowSign,False,Sigil,Yellow Sign,False,False,False,True,False,True,False,False,False,False,20,False,False,;,BrightYellow

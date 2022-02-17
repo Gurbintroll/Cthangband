@@ -1,0 +1,110 @@
+﻿using Cthangband.Enumerations;
+using Cthangband.StaticData;
+using System;
+
+namespace Cthangband.Spells.Tarot
+{
+    [Serializable]
+    internal class TarotSpellTheFool : Spell
+    {
+        public override void Cast(SaveGame saveGame, Player player, Level level)
+        {
+            int dummy = 0;
+            Profile.Instance.MsgPrint("You concentrate on the Fool card...");
+            switch (Program.Rng.DieRoll(4))
+            {
+                case 1:
+                    dummy = Constants.SummonBizarre1;
+                    break;
+
+                case 2:
+                    dummy = Constants.SummonBizarre2;
+                    break;
+
+                case 3:
+                    dummy = Constants.SummonBizarre4;
+                    break;
+
+                case 4:
+                    dummy = Constants.SummonBizarre5;
+                    break;
+            }
+            if (Program.Rng.DieRoll(2) == 1)
+            {
+                Profile.Instance.MsgPrint(level.Monsters.SummonSpecific(player.MapY, player.MapX, player.Level, dummy)
+                    ? "The summoned creature gets angry!"
+                    : "No-one ever turns up.");
+            }
+            else
+            {
+                if (!level.Monsters.SummonSpecificFriendly(player.MapY, player.MapX, player.Level, dummy, false))
+                {
+                    Profile.Instance.MsgPrint("No-one ever turns up.");
+                }
+            }
+        }
+
+        public override void Initialise(int characterClass)
+        {
+            Name = "The Fool";
+            switch (characterClass)
+            {
+                case CharacterClass.Mage:
+                    Level = 15;
+                    ManaCost = 15;
+                    BaseFailure = 80;
+                    FirstCastExperience = 8;
+                    break;
+
+                case CharacterClass.Priest:
+                case CharacterClass.Monk:
+                    Level = 17;
+                    ManaCost = 17;
+                    BaseFailure = 80;
+                    FirstCastExperience = 8;
+                    break;
+
+                case CharacterClass.Rogue:
+                    Level = 20;
+                    ManaCost = 15;
+                    BaseFailure = 80;
+                    FirstCastExperience = 20;
+                    break;
+
+                case CharacterClass.Ranger:
+                    Level = 20;
+                    ManaCost = 20;
+                    BaseFailure = 80;
+                    FirstCastExperience = 20;
+                    break;
+
+                case CharacterClass.WarriorMage:
+                case CharacterClass.Cultist:
+                    Level = 19;
+                    ManaCost = 18;
+                    BaseFailure = 80;
+                    FirstCastExperience = 20;
+                    break;
+
+                case CharacterClass.HighMage:
+                    Level = 11;
+                    ManaCost = 11;
+                    BaseFailure = 70;
+                    FirstCastExperience = 20;
+                    break;
+
+                default:
+                    Level = 99;
+                    ManaCost = 0;
+                    BaseFailure = 0;
+                    FirstCastExperience = 0;
+                    break;
+            }
+        }
+
+        protected override string Comment(Player player)
+        {
+            return "control 50%";
+        }
+    }
+}

@@ -1,0 +1,782 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="manual.css">
+</head>
+<body>
+    <h1>What's New?</h1>
+    <p>
+        Changes to Cthangband are added to the top of this list, so more recent changes are first and older changes
+        can be found towards the end. For a chronological order, read from the bottom up.
+    </p>
+    <h2>Cthangband 6.7</h2>
+    <ul>
+        <li>Potentially offensively named 'Genocide' spell (and its variants) renamed.</li>
+        <li>Fixed longstanding bug that stopped you running along the edge of a room (eventually!).</li>
+        <li>Monsters that steal gold will now drop it when killed.</li>
+        <li>Monsters will no longer try to summon help against other monsters if there isn't room to do so.</li>
+        <li>Adjusted a few character history text fragments to make them more diverse and lose some sexism/racism.</li>
+        <li>Fixed bug where a monster breathing on another monster would fire a ball instead of a cone.</li>
+        <li>Fixed bug where a monster attacking another monster with a theft attack would continue attacking it after having blinked away.</li>
+        <li>Fixed wrong message being given when a monster breaks through an Elder Sign.</li>
+        <li>Fixed sanity checks not being fired when eldritch horrors come into view.</li>
+        <li>Fixed Channelers' ability not working on scrolls of Rumour.</li>
+        <li>The chance of having your race changed through mutation has been reduced.</li>
+        <li>Priests have a patron deity (based on the realm of magic they choose), and they get increased favour with that god.</li>
+        <li>Sacrificing items to win the gods' favour (at the temple) will give you benefits.</li>
+        <li>Manual and Journal are now both accessible from within stores (racial high scores moved from 'h' to 'v' to make room).</li>
+        <li>Exact dungeon offsets will vary from game to game (randomised on world creation).</li>
+        <li>Cleaned up formatting of skill display.</li>
+        <li>Small balance tweaks have been made to most classes; in particular Channelers and Druids have been given a bit of a boost.</li>
+        <li>'Mindcrafting' powers have been renamed to 'Mentalism' powers, since the Mindcrafter class is no longer the only user of them.</li>
+        <li>The spell-using martial artist has now been renamed to 'Monk' and a mentalism-based martial artist (the 'Mystic') has been added.</li>
+        <li>Abilities screen now highlights abilities you have to make it easier to see at a glance.</li>
+        <li>Removed numerous annoying and useless wizard mode messages.</li>
+        <li>Huge amounts of behind-the-scenes code refactoring.</li>
+        <li>Fixed bug where monsters casting whirlpool on empty spaces would crash the game.</li>
+        <li>Last bits of confusion between 'allies' and 'pets' cleaned up.</li>
+        <li>The high score table now includes living characters from the three save slots.</li>
+        <li>Added documentation for how martial arts works.</li>
+        <li>When rolling stats, characters with too low a score in their class's main ability score will be rerolled automatically.</li>
+        <li>Fixed two vaults that had invalid definitions.</li>
+        <li>Fixed occasional crash when placing a greater vault on a level.</li>
+    </ul>
+    <h2>Cthangband 6.6</h2>
+    <ul>
+        <li>The 'K' command now recognises that rings and amulets with negative bonuses are worth destroying.</li>
+        <li>Being out and about at midnight might be really good or really bad depending on the date...</li>
+        <li>Fixed bug where quest info wasn't properly reset between characters.</li>
+        <li>Added documentation about the different towns and the types of shop that can be found in them, as well as the services provided by each shop.</li>
+        <li>Changed the colour of a couple of townsfolk to avoid overlaps.</li>
+        <li>Renamed the group versions of the various novices to apprentices so they don't get confused with the individual versions in the kill list and monster recall.</li>
+        <li>General stores now run an escort service.</li>
+        <li>Fixed lighting of town fortifications at night.</li>
+        <li>Corrected the spelling of Hlanith, which had been spelled wrongly for over two decades before I noticed!</li>
+        <li>Sunrise and sunset are now accurately(!) calculated, based on the date (assuming that the island is on the 51st parallel north).</li>
+        <li>Game time is now tracked properly, rather than just inferred from turn count.</li>
+        <li>Yig added to list of patrons, replacing Mordiggian.</li>
+        <li>You can now invoke the favour of Great Old Ones with a scroll even if you don't have one as a patron.</li>
+        <li>Thresholds for boring levels decreased to reduce amount of re-rolling.</li>
+        <li>Fixed a few incorrect pluralisations of monster names.</li>
+        <li>Curses can now be removed at the temple.</li>
+        <li>Fixed bug where if you had *exactly* the right amount of gold for a shop service it would think you couldn't afford it.</li>
+        <li>Fixed resting for the night/day recovering hit points but not mana.</li>
+        <li>Documentation about feelings updated to show the separate monster/treasure feelings.</li>
+        <li>Special levels now override the separate monster/treasure feelings.</li>
+        <li>Viva la slime molds!</li>
+        <li>Player skills now show a relative rating as well as an absolute percentage.</li>
+        <li>Changed a few UI text colours and symbols to make things easier to read against the textured backgrounds.</li>
+        <li>More behind-the-scenes code refactoring.</li>
+    </ul>
+    <h2>Cthangband 6.5</h2>
+    <ul>
+        <li>Fixed rounding error in character viewer where a Con of 6 was showing +0.5 hits per level rather than the -0.5 hits per level it actually gives.
+        <li>The 'Restoration' service has been moved to the Alchemists.</li>
+        <li>The 'Research an item' service has been moved to the Magic Shop, to replace the Ritual of Recall (which has been removed).</li>
+        <li>Chosen Ones have been rebalanced (mostly a reduction in combat skills and hit points).</li>
+        <li>Fixed bug where tall but narrow levels caused LOS glitches near the bottom of them.</li>
+        <li>Base ability scores are now generated in a new manner on character creation.</li>
+        <li>Fixed bug where characters with the 'other' gender weren't being given a height and weight.</li>
+        <li>Added atmospheric background music (don't worry, you can turn it off if you don't like it).</li>
+        <li>Added Amulet of Anti-Theft as a useful low-mid level item.</li>
+        <li>A Potion of New Life will now restore you to your original birth race as well as curing all mutations.</li>
+        <li>A new character based on the previous one will use the race the old character was born as rather than their race at the point of death (in case they had been polymorphed into a different race at any time).</li>
+        <li>Fixed rare hang condition when generating world map after character creation.</li>
+        <li>Replaced in-console splash screen with a proper one that includes game options, making them more visible.</li>
+        <li>Replaced most background textures.</li>
+        <li>Level feelings are now given separately for danger and treasure.</li>
+        <li>The slime molds are no longer revolting!</li>
+        <li>If players Word of Recall without ever having entered a dungeon, they will now end up on level 1 of the dungeon instead of returning to their starting town.</li>
+        <li>Kill count moved to end of monster description so that basic 'what is it' text comes first.</li>
+        <li>Corrected class documentation to properly include the Globe of Invulnerability spell on the various spell lists.</li>
+        <li>You no longer have to kill all the monsters in a multi-monster quest in one go. You can kill some, leave the level, then return later and kill the rest to finish the quest.</li>
+        <li>Wizard Bolt can no longer be reflected back on you by monsters.</li>
+    </ul>
+    <h2>Cthangband 6.4</h2>
+    <ul>
+        <li>The buildings in Kadath are now ruined rather than merely empty lots.</li>
+        <li>Replaced paper texture used for character sheet and journal with one that makes the text more readable.</li>
+        <li>Fixed bug where the known abilities of non-random artifacts weren't showing in the journal.</li>
+        <li>Fixed a handful of minor mistakes in the documentation.</li>
+        <li>Fixed bug where Tarot Draw spell was drawing multiple cards.</li>
+        <li>Fixed program hanging due to invalid quest target being unable to be placed when the Demon Spire is entered for the first time.</li>
+        <li>Fixed bug where using 's' to sell items would sometimes automatically sell a whole stack rather than letting you choose how many to sell.</li>
+        <li>Fixed crash when pack overflows after taking off an item or splitting a stack of items.</li>
+        <li>Fixed crash when recalling from wilderness outside a town into a dungeon.</li>
+    </ul>
+    <h2>Cthangband 6.3</h2>
+    <ul>
+        <li>Monster tracker now shows name of monster.</li>
+        <li>Game time is now shown on main screen.</li>
+        <li>Shops (and home) now have room for 26 items instead of 24.</li>
+        <li>Backpack now has 26 slots instead of 23.</li>
+        <li>Added wizard command to instantly win the game (rather anticlimactic, but useful for testing!)</li>
+        <li>Fixed bug where using &lt;Shift&gt; to run didn't work.</li>
+        <li>Graphical backgrounds added to game screens.</li>
+        <li>Dungeon size tweaked to match new squarer display. The maximum size has gone from 198x66 to 198x123, and the minimum size has gone from 80x22 to 80x42. So that this doesn't produce a level with too many rooms, rooms have been spaced out more in the north-south direction by an amount proportional to the size change.</li>
+        <li>Towns and wildernesses made smaller to fit new display.</li>
+        <li>Display changed from 80x25 to 80x45 so that grid squares are actually square (on a standard 16:9 widescreen monitor).</li>
+        <li>Event loop optimised, so game no longer uses 30%+ CPU while idle and waiting for a keypress.</li>
+    </ul>
+    <h2>Cthangband 6.2</h2>
+    <ul>
+        <li>Corrected cost/level of Chaos Bolt spell for Cultists.</li>
+        <li>Tunneling through trees no longer gives a confusing message about walls.</li>
+        <li>Recoloured a large number of items and dungeon features to take advantage of the new colours and enhanced lighting.</li>
+        <li>Explosive Rune changed to Yellow Sign</li>
+        <li>Glyph of Warding changed to Elder Sign</li>
+        <li>Changed the colour and/or character of over two hundred monster types to reduce ambiguity (fewer monsters now look identical); particularly Lovecraftian creatures, which have been mostly moved to the new characters of 'A' (for 'Abomination') for the races and 'X' (for 'Extradimensional Entity') for the unique Great Old Ones and Outer Gods.</li>
+        <li>Doubled the size of the colour palette.</li>
+        <li>Removed the (albeit very remote) possibility of getting an offensive name for a random artifact or an offensively shaped vault.</li>
+        <li>Fixed bug where unusual key combinations (e.g. Alt+Numpad2) could sometimes cause a crash.</li>
+        <li>Journal's pet list now identifies what your pets are even if you've not seen them.</li>
+        <li>Fixed bug where fixed-quest uniques could sometimes appear outside their designated level.</li>
+        <li>Fixed Journal's monster list so it doesn't skip monsters when browsing backwards.</li>
+        <li>Reverted to classic speed system.</li>
+        <li>Fixed bug where examining a disarmed but still locked chest would cause a crash.</li>
+        <li>Chests are now included in the Journal's "Worthless Items" section.</li>
+        <li>Fixed occasional crash where the game would try to delete a non-existent monster.</li>
+        <li>Recovery rate is now properly shown as a multiplier on the character sheet, rather than a misleading "Regen" bonus, since it does not actually affect health regeneration; only poison/stun/bleeding recovery rate.</li>
+        <li>When choosing to re-use a character, the character gains a generation after their name (which is displayed on the high score table, save game preview, and gravestone). For example, "Bob", "Bob II", "Bob III", "Bob IV"...</li>
+        <li>High Score Table is now versioned, so you're only comparing scores with characters who have had the same game experience as you.</li>
+        <li>New in-game "Cthangpedia" documentation added.</li>
+        <li>"Organic" cavern levels added (using the same Perlin Noise algorithm as the new terrain).</li>
+        <li>Lighting and line-of-sight is now visible on more than just basic walls and floors.</li>
+        <li>New animation system for spells and similar effects.</li>
+        <li>A metric ton more internal code refactoring.</li>
+        <li>Added an "Other" gender for those who want it (or those playing sexless golems).</li>
+        <li>Flavoured items now have their true appearance even when unidentified.</li>
+        <li>New town layouts to give towns more personality.</li>
+        <li>Replaced old plasma-based terrain generation with a Perlin Noise based one for a more realistic island.</li>
+    </ul>
+    <h2>Cthangband 6.1</h2>
+    <ul>
+        <li>Fixed bug where items/spells that did "Detect All" were stopping after the first type of thing they successfully detected, rather than continuing to call the other detection functions.</li>
+        <li>Fixed bug in character viewer where "Shots per Round" and "Blows per Round" were showing incorrect values.</li>
+        <li>Fixed bug where unidentified ammunition wasn't re-stacking when being picked up again after having been fired.</li>
+        <li>Fixed obscure bug where a particular combination of recalling and taking the stairs in different dungeons could result in a town temporarily containing the wrong shops.</li>
+        <li>Pets will now *actually* follow you from level to level. Usually.</li>
+        <li>New journal page added, listing current pets.</li>
+        <li>Fixed bug where selling a pile of items would tell you it was giving you the money for all of them but would actually only give you the money for one of them.</li>
+        <li>Characters now begin the game weilding their starting equipment (finally!)</li>
+        <li>Fixed bug where you couldn't dismiss pets if you had no mutations or racial powers.</li>
+        <li>Arrows now have a greater chance of being recovered after having been fired (75% rather than 50%).</li>
+        <li>Failing a sanity loss badly can now result in you gaining a random mutation.</li>
+        <li>Much behind-the-scenes code refactoring.</li>
+        <li>'Allies' renamed back to 'Pets'.</li>
+    </ul>
+    <h2>Cthangband 6.0.0 (July 2018 - 20th Anniversary)</h2>
+    <ul>
+        <li>Documentation now moved to a separate file (this file!)</li>
+        <li>“Lite” changed to “Light” throughout source code and user interface.</li>
+        <li>Spectres now have Feather Fall.</li>
+        <li>The sewers under Ulthar now have a bias towards animals.</li>
+        <li>Word of Recall now takes you back to your house, if you have one (if you don’t then you will be returned to the last town visited, as normal).</li>
+        <li>You can now only own a single house at a time, but on buying a new one any items stored in your old one will be moved into it for you.</li>
+        <li>Added “worthless items” section to journal, so you can designate any unwanted item type as being worthless (meaning it will be stomped on rather than picked up), not just those with zero value.</li>
+        <li>Character view screen re-arranged, and redundant pages removed.</li>
+        <li>You can no longer accidentally drop below the last level of a dungeon through a trap door.</li>
+        <li>Barbarian replaced with Tcho-Tcho.</li>
+        <li>Trap doors in towers now correctly take you to the previous (i.e. “lower”) level rather than the next level.</li>
+        <li>Increasing in level no longer restores all your ability scores.</li>
+        <li>Chaos Features changed back to Mutations.</li>
+        <li>Chaos-Mage and Chaos Warrior are now Cultist and Fanatic.</li>
+        <li>Digging items (spades, picks) now have their own equipment slot once more.</li>
+        <li>Broo replaced with Miri Nigri.</li>
+        <li>Chaos Patrons replaced with Cthuloid entities.</li>
+        <li>Entire program re-written from the ground up in C#!</li>
+    </ul>
+    <h2>Cthangband 5.1.0</h2>
+    <ul>
+        <li>“Look” and “Target” commands simplified and unified.</li>
+        <li>Pillars in rooms are now a separate feature type, so they can use a different display character to normal walls.</li>
+        <li>Added a new page to the character sheet showing ability score bonuses.</li>
+        <li>Replaced ancient terminal-based help files with proper documentation.</li>
+        <li>Information about dungeons (levels, danger, quests remaining) is now shown on the key to the mini-map (providing you’ve discovered that information, of course).</li>
+        <li>Examining a book in a store now only shows you the spells it contains if they are spells you can learn, to avoid confusion.</li>
+        <li>Quest text now pluralises monster names correctly.</li>
+        <li>Level display takes into account difficulty properly.</li>
+        <li>‘Stair Creation’ can no longer bypass quest levels in towers.</li>
+        <li>Searching now auto-repeats like door opening.</li>
+        <li>Moved chaos feature list to journal.</li>
+        <li>Added monsterpedia to journal</li>
+        <li>Moved “kill count” from self-knowledge to journal</li>
+        <li>Wilderness map made clearer. The player is now hilit with the cursor and the towns are marked with their initials rather than just numbers.</li>
+        <li>Rumour scrolls now give additional quest or dungeon information instead of random text.</li>
+        <li>Added quest information to journal.</li>
+        <li>Added a “Journal” command (‘J’) to access info gathered.</li>
+        <li>Combined debug options into a classic “Wizard” mode.</li>
+        <li>Fixed “experience needed” display for lvl 50 characters.</li>
+        <li>Pawnbrokers will now no longer buy worthless items.</li>
+        <li>Large amounts of redundant code for unused options removed.</li>
+        <li>Trying to go up a down stair (and vice versa) is now handled properly.</li>
+        <li>Inns now give you breakfast after you rest for the night.</li>
+        <li>Vampires are no longer given pointless scrolls of darkness as starting equipment.</li>
+        <li>Chosen ones and spectres are no longer given torches as starting equipment because they don’t need them. They’re given scrolls of light instead.</li>
+        <li>Added Pratchett-inspired “dwarf bread”.</li>
+        <li>Added an extra terminal hook, so that systems can support a change of application options such as windowed/fullscreen and screen resolution.</li>
+        <li>Added save-and-quit key to main game, for set-ups where you can’t simply close the game window to do so.</li>
+        <li>Windows Console version replaced with an Allegro 5 based pseudo-console version which allows us proper colours, better keyboard support, easier configuration, and full screen “console” play.</li>
+        <li>Corrected “White” and “Light White” definitions in console version (they were the wrong way round).</li>
+        <li>New descriptions/history for Yeek characters.</li>
+        <li>Completely new (and much more user-friendly) character generation system.</li>
+        <li>Removed redundant “pattern” code.</li>
+        <li>Program no longer shuts down after character death, but returns you to the character generation screen.</li>
+        <li>Removed redundant command line options.</li>
+        <li>Temp files used in the knowledge routines now save to the ‘dump’ folder rather than locally, to avoid security issues with not having permissions to write files to the local folder.</li>
+        <li>Movement and attack speeds are now consistently described in terms of what percentage of a “turn” it takes to do a move or make an attack.</li>
+        <li>Leaving a trap-detected area will disturb your run.</li>
+        <li>Added status indicator to show if you’re in a trap-detected area.</li>
+        <li>Shift-Numpad keys now properly run rather than walk in console version.</li>
+    </ul>
+    <h2>Cthangband 5.0.0</h2>
+    <ul>
+        <li>Many other minor code changes</li>
+        <li>Cleaned up commands (fewer need control pressed), and added a command list</li>
+        <li>Removed ‘pouch’ slots.</li>
+        <li>Mystics (now renamed “Martial Artists”) now have a choice of three realms of magic. They can be “Ascetics” who use corporeal magic to improve their body, “Street Fighters” who zap people with projected chi or “Ninja” who use planar magic to move around and summon allies.</li>
+        <li>Added Crafter class, who has no spells but who can use mana to prevent items from losing charges or being consumed when they are used.</li>
+        <li>Added Chosen One class, who has passive magical abilities but no active ones.</li>
+        <li>Fixed Thief (Rogue with Folk Magic) spell stats.</li>
+        <li>Fixed symbol identification for shop doorways.</li>
+        <li>Increasing in level now restores all stats.</li>
+        <li>Added warpstone crystals.</li>
+        <li>The screen is now refreshed after the options page is viewed - so the effects of any changed options are immediately visible.</li>
+        <li>Cleaned up character history tables.</li>
+        <li>Fixed display problem with bolts/balls.</li>
+        <li>‘help.hlp’ is now system specific (‘help-dos.txt’, ‘help-win.txt’ etc.) so that it can point to a different set of files for the different interfaces and systems.</li>
+        <li>The random character generator now picks a class first, then a race to fit, rather than picking a race first and then a class to fit.</li>
+        <li>The random name generator has been expanded to now provide ‘angelic’ names for Imps and to provide ‘yeekish’ names for Yeeks.</li>
+        <li>Swapped the order of effects in the ‘Major Displacement’ mindcrafter power.</li>
+        <li>Corporeal realm now gets ‘Wraithform’ instead of ‘Polymorph Self’.</li>
+        <li>The alchemist shop can now research an item, which identifies it fully.</li>
+        <li>The ‘Identify All’ shop function has been moved to the pawnbrokers.</li>
+        <li>Spectres now glow in the dark.</li>
+        <li>Imps now get fire immunity at level 20.</li>
+        <li>All Half-Trolls now get slow digestion, not just warriors.</li>
+        <li>Druids now have a smaller upkeep cost for pets.</li>
+        <li>Included character’s birthday in character display.</li>
+        <li>The ‘mini-map’ is now centred and bordered showing the size of the level.</li>
+        <li>A new spoiler (mon-stats) can be generated, which lists the frequency of each of the RFX_XXXX flags by monster level.</li>
+        <li>DEAD.TXT and NEWS.TXT files replaced with internal functions to enable full colour splash and death screens.</li>
+        <li>Some clean-up of folder structure implemented - ‘pref’ files are now located in the ‘pref’ folder (not the ‘user’ folder) and spoilers now have the suffix ‘.txt’ and are output to the ‘info’ folder.</li>
+        <li>Monster recall (and spoiler) now gives attack speed if at least one attack is known.</li>
+        <li>Added a ‘Destroy All’ command (‘K’) to destroy all worthless items in your pack and equipment list (equipped cursed items are not destroyed by this).</li>
+        <li>If the ‘auto-destroy’ option is on, worthless items are stomped on rather than picked up.</li>
+        <li>Removed most hard-coded ‘Special Monster’ hacks.</li>
+        <li>The slime molds are revolting!</li>
+        <li>Added Orbs, as described in RAK’s history of Moria</li>
+        <li>Character dump now dumps last 10 messages (so you can see how stupidly you died).</li>
+        <li>Stats over 18 are no longer displayed as percentages.</li>
+        <li>‘Dungeons’ may now be towers (tiny levels heading upwards) as well as caves (larger levels heading downwards).</li>
+        <li>5 new dungeons added.</li>
+        <li>Dungeons now have a ‘bias’ towards a certain type of creature.</li>
+        <li>Dungeons (but not towers) display offset depth, rather than true depth.</li>
+        <li>Startup options have their own option page, to reduce the number of questions the player is asked when creating a new character.</li>
+        <li>Paths are now lit like floors.</li>
+        <li>Problem with ‘missing’ options fixed.</li>
+        <li>Wizard Mode moved to ‘Cheat Options’ page.</li>
+        <li>Windows Console version added.</li>
+        <li>Player breath weapons (from dragon plate or mutations) and ‘wands of dragon breath’ now use cone shaped attacks.</li>
+        <li>Bug in ‘unified commands’ fixed so that objects on the floor no longer get prompted for twice.</li>
+        <li>Corrected ‘time of day’ algorithm and added time display.</li>
+        <li>Added Eric Bock’s code to combine similar messages in message recall.</li>
+        <li>Monster breaths are now cone shaped, rather than ball shaped (from Zangband)</li>
+        <li>Added Zangband’s view centring code.</li>
+        <li>Reorganised and cleaned up ‘options’.</li>
+        <li>Added (and modified) ???’s point based stat generation code.</li>
+        <li>Reverted source code to 3.1.2 base, undoing all 4.0.0 and 4.0.1 changes</li>
+    </ul>
+    <h2>Cthangband 4.0.1</h2>
+    <ul>
+        <li>Wizard Mode moved to ‘Cheat Options’ page.</li>
+        <li>‘graf-new’ flag removed since we only have Adam Bolt tiles these days.</li>
+        <li>Paths are now lit like floors.</li>
+        <li>Startup options have their own option page, to reduce the number of questions the player is asked when creating a new character.</li>
+        <li>Dungeons (but not towers) display offset depth, rather than true depth.</li>
+        <li>Player ghosts now use graphics if possible.</li>
+        <li>‘Dungeons’ may now be towers (tiny levels heading upwards) as well as caves (larger levels heading downwards).</li>
+        <li>5 new dungeons added.</li>
+        <li>Dungeons now have a ‘bias’ towards a certain type of creature.</li>
+        <li>Charm destruction and identify staff bugs fixed (thanks to Greg Wooledge).</li>
+        <li>Bug in spell energy calculation fixed.</li>
+        <li>Skills can only be improved if you are not bored (i.e. there is a minimum depth requirement based on your current skill value.)</li>
+        <li>Hedge magic is now easier to learn.</li>
+        <li>Skills are now slightly randomised on character generation.</li>
+        <li>Fixed bug with 100% Toughness reducing your hitpoints.</li>
+        <li>Spirits now have elvish/hobbitish names, rather than Cthuloid.</li>
+        <li>Character dump now dumps last 10 messages (so you can see how stupidly you died).</li>
+        <li>Problem with ‘missing’ options fixed.</li>
+        <li>‘Wizard Mode’ flag is cleared with cheat flags on character creation.</li>
+        <li>Extra cheat option - ‘cheat_skll’ to view skill checks.</li>
+        <li>Toughness is only increased when you lose more than 1/20th of your current hit points in a single hit.</li>
+        <li>Magic skills only improve if there was a 10% failure chance (or greater) for the spell/favour/power/cantrip.</li>
+        <li>No experience is gained on the surface, only in dungeons</li>
+        <li>Attacks only improve your attack skill (and/or martial arts) if you have less than 75% chance to hit.</li>
+        <li>Attacks with mutations (Horns, Tail etc.) give experience to your ‘close combat’ skill, not your weapon skill.</li>
+    </ul>
+    <h2>Cthangband 4.0.0</h2>
+    <ul>
+        <li>Windows version has updated menus and faster repaints and can now use monospaced system fonts as well as bitmap fonts. (From Tim Baker’s version of Kamband.)</li>
+        <li>Player breath weapons (from dragon plate or mutations) and ‘wands of dragon breath’ now use cone shaped attacks.</li>
+        <li>Bug in ‘unified commands’ fixed so that objects on the floor no longer get prompted for twice.</li>
+        <li>Angels (and their uniques) have been removed and replaced with extra Cthuloid entities.</li>
+        <li>Implemented Drangband style player ghosts.</li>
+        <li>Corrected ‘time of day’ algorithm and added time display.</li>
+        <li>Added Eric Bock’s code to combine similar messages in message recall.</li>
+        <li>Monster breaths are now cone shaped, rather than ball shaped (from Zangband)</li>
+        <li>Speed system cleaned up (a lot) with regard to spellcasting.</li>
+        <li>‘help.hlp’ is now system specific (‘help-dos.hlp’ etc.) so that it can point to a different set of files for the different interfaces and systems.</li>
+        <li>Windows version asks for a savefile name when starting a new file, rather than automatically naming it after the character that is generated.</li>
+        <li>‘New Game’ and ‘Load Game’ on Windows interface changed to ‘New Savefile’ and ‘Load Savefile’ as some people were confused and thought that they needed to use the ‘New Game’ command after they had died.</li>
+        <li>‘Help’ menu on Windows interface updated.</li>
+        <li>Hedge magic added as a third type of magic.</li>
+        <li>Shamanism added as a second type of magic.</li>
+        <li>Mindcrafting no longer uses ‘Mana’ but uses ‘Chi’ instead.</li>
+        <li>Levels and classes removed and replaced with a skill system.</li>
+        <li>Missing directories are re-created on Windows version.</li>
+        <li>Added Zangband’s view centring code.</li>
+        <li>Reorganised and cleaned up ‘options’.</li>
+        <li>Added (and modified) ???’s point based stat generation code.</li>
+    </ul>
+    <h2>Cthangband 3.1.2</h2>
+    <ul>
+        <li>Fixed bug with Corporeal Books not stacking properly.</li>
+        <li>Most object commands (e.g. ‘q’uaff, ‘z’ap, ‘E’at, ‘b’rowse, etc.) have been unified into a single ‘u’se command that will do whatever is most appropriate or the item.</li>
+        <li>Added 6 ‘Pouch’ equipment slots that can each hold a scroll, potion or wand.</li>
+        <li>Items readied in a pouch only take 1/10th of the time to use that normal items do.</li>
+        <li>Message about ‘Library’ when trying to gain spells changed to ‘Bookstore’ as it was confusing people.</li>
+        <li>Most (but not quite all) documentation files updated.</li>
+        <li>Stats over 18/100 are no longer displayed as ‘silly’ percentages.</li>
+        <li>Class ‘sub-names’ (used in documentation) are now used in game as well.</li>
+        <li>Vault code updated to handle large array of vaults properly.</li>
+        <li>Chopping down of trees and bushes is now included in ‘repeat obvious commands’.</li>
+        <li>Characters who can’t learn spells are no longer asked to study in the library.</li>
+        <li>Roads added between towns and forest made denser.</li>
+        <li>Chris Weisiger’s ‘v_info.txt’ file updated to the new version.</li>
+        <li>Cleaned up lots of dead code in Load/Save routines.</li>
+        <li>Fixed bug in home, which gave the wrong inventory after resting for the night.</li>
+    </ul>
+    <h2>Cthangband 3.1.1</h2>
+    <ul>
+        <li>Chaos Patrons now have more descriptive names on the ‘C’haracter display, and have been changed from the ‘Warhammer’ Chaos Gods to the ‘Glorantha’ Chaos Gods.</li>
+        <li>Adam Bolt’s Graphics for bolt and ball spells are now used.</li>
+        <li>Eric Bock’s bias remover for the RNG added.</li>
+        <li>Chris Weisiger’s new ‘v_info.txt’ file used.</li>
+        <li>‘Mutations’ renamed ‘Chaos Features’ to make them more in-genre.</li>
+        <li>‘Wizard Help’ command (&lt;ctrl&gt;’A’,’?’ in Wizard Mode) added to list wizard commands.</li>
+        <li>‘Debug’ mode and ‘Wizard’ mode combined to make things simpler. Wizard commands are now accessed through &lt;crtl&gt;’A’ in wizard mode.</li>
+        <li>Hack added to ‘fix’ savefiles saved from versions with guardian bug by resurrecting dead uniques so that they can re-used as guardians.</li>
+        <li>Guardians now drop their normal treasure as well as extra guardian treasure.</li>
+        <li>Last vestiges of hangs from invalid guardian placement now removed (hopefully...)</li>
+        <li>Uniques that appear as guardians now have their escorts with them.</li>
+        <li>The Inn will now sell scrolls of “Satisfy Hunger”.</li>
+        <li>Examining store books now tells you what’s in them.</li>
+        <li>Wilderness now uses the same lighting model as the town.</li>
+        <li>Secret doors may now be locked or jammed once found.</li>
+        <li>Huge code clean-up should make porting easier.</li>
+        <li>Wilderness map is now coloured.</li>
+        <li>3x and 2x experience for first kills downgraded to 2x and 1.5x.</li>
+        <li>Chaos-Mage class added.</li>
+        <li>Windows version no longer looks for the unused ‘8x8.bmp’ file.</li>
+        <li>Druid class added (a specialist nature priest).</li>
+        <li>Removed sound/midi options from main options menu as they did nothing anyway.</li>
+        <li>Fixed bug in ‘Mutate Body’ spell so it no longer always gives the same mutation.</li>
+    </ul>
+    <h2>Cthangband 3.1.0</h2>
+    <ul>
+        <li>Priests and Rangers no longer get Sorcery as it is to ‘magey’ for them.</li>
+        <li>Water now behaves properly (you can see over it and cast spells over it).</li>
+        <li>Occasional crashes when moving diagonally off edge of wilderness grids fixed.</li>
+        <li>The ‘Monk’ class has become the ‘Mystic’ class, and is now based on corporeal magic.</li>
+        <li>A new realm (‘Corporeal’) has been added. All the spells are self-affecting. It has a reasonably large overlap with Life (for the healing spells) and Planar (for the movement spells). It has sensing spells *very* early.</li>
+        <li>Characters will no longer start in the town of Nir.</li>
+        <li>The ‘M’ key displays a proper wilderness map with town and dungeon locations.</li>
+        <li>Allies (formerly called ‘Pets’) can move from level to level with the player.</li>
+        <li>Characters are now given randomly generated names when created.</li>
+        <li>Vampires no longer start on the stairs (no longer necessary now they start at night).</li>
+        <li>Experience for creatures now varies depending on how many you have killed.</li>
+        <li>Ironman option added.</li>
+        <li>Long Stairs is now a standard option, rather than a character generation option.</li>
+        <li>New speed system implemented.</li>
+        <li>Shops now have a unique set of owners each, rather than a selection per shop type.</li>
+        <li>Dungeon name printed with level feeling.</li>
+        <li>Quest info moved from &lt;crtl&gt;’Q’ to &lt;ctrl&gt;’F’ with level feeling.</li>
+        <li>Option for always having small levels added.</li>
+        <li>Fixed bug in home that turned it into an inn after resting for the night.</li>
+        <li>Breeder dying code removed (but generation limit left in).</li>
+    </ul>
+    <h2>Cthangband 3.0.1</h2>
+    <ul>
+        <li>Keys ‘O’ and ‘’’ mapped to racial power and time respectively in Rogue-like mode.</li>
+        <li>Robert Ruehlman’s ‘Equippy Chars’ code added.</li>
+        <li>Monsters can now cross bush tiles.</li>
+        <li>Jeff Duprey’s extra 52 mutations added.</li>
+        <li>Keldon Jones’ patch to automatically update ‘.raw’ files added.</li>
+        <li>Trees, bushes and water now handle tunneling correctly.</li>
+        <li>‘Quick Start’ option generates an entire character with a single keypress.</li>
+        <li>Windows version can cope without its ‘.ini’ file.</li>
+        <li>Robert Reuhlman’s improved pet AI added.</li>
+        <li>Preserve mode now preserves artifacts left in dungeon when Ritual goes off.</li>
+        <li>Changing the character name no longer creates a new savefile.</li>
+        <li>Menu structure for Windows version rearranged.</li>
+        <li>Source code fixed to make Windows version compile properly and use Adam Bolt graphics.</li>
+        <li>It is now possible to rest for the night (or day) at your home.</li>
+        <li>Undead races now start the game at night.</li>
+        <li>Dungeon names displayed on wilderness grids to make dungeons easier to find.</li>
+        <li>Bug in display code preventing unidentified potions/scrolls being shown properly in text mode fixed.</li>
+    </ul>
+    <h2>Cthangband 3.0.0</h2>
+    <ul>
+        <li>Finding secret doors earns 1xp, like picking locks.</li>
+        <li>Wilderness areas with dungeons have tougher monsters to make it easier to find the dungeon entrances.</li>
+        <li>15 different dungeons added, each with their own Guardians.</li>
+        <li>Wilderness levels added.</li>
+        <li>Extra functions added to most shops.</li>
+        <li>Pawnbroker, Inn and Hall of Records added to town.</li>
+        <li>QUESTOR and FORCE_LEVEL flags for monsters replaced with GUARDIAN and ALWAYS_GUARDIAN as part of clean-up of quest code.</li>
+        <li>Many more cosmetic changes to artifact names and most text files to keep them in genre.</li>
+        <li>Breeders can now only breed to 10 generations.</li>
+        <li>Breeders can no longer be Quest monsters.</li>
+        <li>Tim Baker’s Easy-Angband code added.</li>
+        <li>Robert Reuhlman’s quest generation algorithm used to tone down the level of quest monsters.</li>
+        <li>Fixed ‘Infinite Paralysis’ problem with floating eyes - They will now do at least 1pt of damage with each hit.</li>
+        <li>Store Owners’ Purses have been altered (generally but not always an increase).</li>
+        <li>DOS version now has Adam Bolt graphics for different race/classes of the player.</li>
+        <li>Bug in Pattern Vault fixed - it now cannot teleport you below a quest level.</li>
+        <li>Breeders now have 1 in 5 chance of dying off instead of reproducing, so they don’t get out of hand quite so much.</li>
+        <li>Level feelings are now only given after 2500 turns (about 250 moves) instead of immediately on entering a level, but there is no longer a prerequisite of staying on the previous level for a period of time.</li>
+        <li>Hit-Point rolls changed to give fixed totals at 50th level, making ‘Life Rating’ redundant.</li>
+    </ul>
+    <h2>Cthangband 2.1.0 (Released 12th July 1998)</h2>
+    <ul>
+        <li>Huge amounts of cosmetic changes to remove Zelazny stuff and replace it with Lovecraftian.</li>
+        <li>Warrior-Mages can now choose Sorcery.</li>
+        <li>Monster-Health bar now gives status of monster as text.</li>
+        <li>Heino Vander Sanden’s quest code ported from Quangband with minor changes.</li>
+        <li>Out of genre ‘Rockets’ replaced with ‘Shard balls’.</li>
+        <li>Most ‘silly’ monsters removed or replaced.</li>
+        <li>Multi-stair option for quick level ascending/descending.</li>
+        <li>‘How many?’ question for multiple objects now defaults to all rather than 1 (except for buying things).</li>
+        <li>Adam Bolt’s graphics used for DOS version.</li>
+        <li>Lots of redundant code removed.</li>
+    </ul>
+    <h2>Zangband 2.1.0e</h2>
+    <ul>
+        <li>Fixed some bugs with the new bookstore and the store maintenance and owner shuffling works for the bookstore.</li>
+        <li>Fixed the problem with compiling the main.c file on Unix/Linux systems.</li>
+    </ul>
+    <h2>Zangband 2.1.0d</h2>
+    <ul>
+        <li>Silas Dunsmore’s cumulative light radius patch added. Any object in your equipment that has the ‘glow’ flag will extend your lit-area radius by 1, up to a maximum of 5. The normal light-source objects still work the same, but glowing artifacts and helms of light are actually useful.</li>
+        <li>Added a bookstore to the town to free up space in the magic shop.</li>
+        <li>Fixed problems with the Summon Demon (Chaos), Raise Death (Death), Phantasmal Servant (Trump), Mindwave, and Adrenaline (Mindcraft) spells on systems without mathematical coprocessor.</li>
+        <li>Chaos Warriors are no longer hurt (or killed) by the “strain of casting (Mass) Genocide” when the chaos patron casts the Genocide spell (“Let me relieve thee of thine oppressors!”).</li>
+        <li>Fixed a bug with the sound-effects, the correct effects will be played now.</li>
+        <li>Added new sound-events for buying and selling in stores.</li>
+        <li>Added support for Adam Bolt’s new tile-graphics, transparency- and lighting-effects, MOD-, and S3M-files to the DOS version. Adam Bolt’s tiles for ZAngband are not yet finished, most of the ZAngband specific monsters are displayed with other tiles or with ASCII-characters. The special DOS options can be accessed by pressing ! while playing.</li>
+    </ul>
+    <h2>Zangband 2.1.0c</h2>
+    <ul>
+        <li>Command (in powers menu) to dismiss all pets (costs no mana, takes a turn)</li>
+        <li>Alberich has lost his “deadly touch”</li>
+        <li>Hilarious new nonsensical rumors courtesy of altavista translation service</li>
+        <li>A “pit” variant of the “symbol clone nest”</li>
+        <li>James Lockwood’s store-auto*id* and examine patch</li>
+        <li>Patches from Silas Dunsmore, lots of little fixes</li>
+        <li>Teleporting monsters have to pass a skill test to follow you</li>
+        <li>”Blessed” weapons are likely to resist cursing by monsters</li>
+        <li>Heavy cursing less likely; scrolls of *Remove curse* for sale in the temple</li>
+        <li>
+            TODO (features/ideas/bugfixes that have not yet been implemented):
+            <ul>
+                <li>Game difficulty levels (point-based / simple to impossible?)</li>
+                <li>Quests</li>
+                <li>Your own inscriptions should not be junked if an item becomes cursed</li>
+                <li>Potential bug: exploding unmakers crash / hang the game?</li>
+                <li>Maybe weapons of slay xxx should glow if xxx is nearby? (option)</li>
+                <li>Bug? Eldritch horrors seen first via ESP don’t blast your sanity?</li>
+                <li>Disintegration balls can explode out-of-bounds?</li>
+                <li>Add oriental melee weapons for monks (nunchaku, bo stick etc.)</li>
+                <li>Smashed potions should also affect the player (if within range)</li>
+                <li>Perhaps add Silas Dunsmore’s cumulative light radius patch</li>
+            </ul>
+        </li>
+    </ul>
+    <h2>Zangband 2.1.0</h2>
+    <ul>
+        <li>Version handling for save files, pre-210 save files loaded as 206 save files</li>
+        <li>Svga is the default; ‘-mibm’ for no graphics, ‘-mibm -g’ for font graphics</li>
+        <li>The Dos version can run in 3 modes: SVGA graphics, font graphics, text only</li>
+        <li>Lots of extra tests added to generate.c to avoid infinite loops</li>
+        <li>Special feelings caused by other than artifacts should be less common now</li>
+        <li>New options; Autosaving options; “Testing” options renamed (“Stacking”)</li>
+        <li>Confirm staircases turned into a runtime option</li>
+        <li>New plain_descriptions option (to split up show_labels)</li>
+        <li>New auto_destroy option to destroy known worthless items without prompting</li>
+        <li>New option to confirm wielding/wearing known cursed items</li>
+        <li>Confirm staircases is a runtime option now</li>
+        <li>Options menu reorganized. Zangband special options under a separate sub-menu</li>
+        <li>Activate power command (‘U’/’O’) uses a menu now</li>
+        <li>Total kill count option added in the ‘knowledge’ menu</li>
+        <li>The display command can dump to file (command ‘f’)</li>
+        <li>New texts added (into lib/file/) by jd9072@aol.com, for extra color</li>
+        <li>Gollum patch (by John May & ‘Tim’) implemented (slightly toned down version)</li>
+        <li>Fixed a number of bugs in the object absorption code (also in store.c)</li>
+        <li>2 new magic realms: Trump (teleport+summoning), Arcane (weak general purpose)</li>
+        <li>The “Polymorph Self” is a bit less useless now</li>
+        <li>Added chaos mutations</li>
+        <li>Potion of New Life gets rid of all mutations (in addition to normal effect)</li>
+        <li>Added (possible) activation effects for random artifacts</li>
+        <li>Immunities are a _lot_ less common in random artifacts now</li>
+        <li>Fixed (?) the bug which was causing the One Ring sometimes not being cursed</li>
+        <li>Four new types of amulets to make amulets more interesting</li>
+        <li>Feather Fall turned into Levitation (allows flying over trap doors)</li>
+        <li>Object flags: NO_TELE (prevents teleporting), NO_MAGIC (no spells, high save)</li>
+        <li>Added a very powerful new artifact, the Sword of the Dawn (as rare as Ringil)</li>
+        <li>Two new races: Sprite (very weak & smart), Chaos Beastman (gain mutations)</li>
+        <li>New class: High Mage (specializes in one realm, learns it really well)</li>
+        <li>Warrior/Paladin/DeathKn gain xp for destroying deep books (all/non-Life/Life)</li>
+        <li>Certain races gain no nutrition from food (they must use Satisfy Hunger)</li>
+        <li>Chaos warriors gain resist chaos at lvl 30, resist fear at lvl 40</li>
+        <li>Unencumbered monks gain free action at lvl 25</li>
+        <li>Monks are more likely to attack with the highest level attack available now</li>
+        <li>Added special breaths for Draconian Monks, Chaos Warriors and Warrior-Mages</li>
+        <li>Monsters which use the same symbol sometimes appear in ‘hordes’</li>
+        <li>Everybody’s favourite monster, ‘the Unmaker’, is far nastier now</li>
+        <li>Some monsters are ‘good’ (as opposed to ‘evil’), immune to holy fire</li>
+        <li>Some monsters are sanity-blasting ‘eldritch horrors’</li>
+        <li>For fairness’ sake, monsters can also have reflection & auras of fire/elec</li>
+        <li>Certain monsters may resist teleportation</li>
+        <li>Adjacent monsters which can teleport may follow you when you teleport</li>
+        <li>Clones drop treasure nor objects</li>
+        <li>The ‘xxx curses’ spells may actually make your equipment ‘cursed’</li>
+        <li>Added a new very powerful spell, Hand of Doom, for high level uniques</li>
+        <li>Killing Amberites can be dangerous -- ever heard of the Amberite blood curse?</li>
+        <li>The Serpent of Chaos is a bit tougher now</li>
+        <li>Various minor fixes & cosmetic enhancements & new icons</li>
+        <li>
+            Lots of features by Paul Sexton:
+            <ul>
+                <li>Major revision of the spell system (nature+death+chaos upgraded)</li>
+                <li>Summoning spells for friendly monsters</li>
+                <li>Charming spells to make new friends</li>
+                <li>Wand of Lightning Bolts -> Tame Monster</li>
+                <li>Two new races: Vampire & Spectre</li>
+                <li>Mindcrafter class</li>
+                <li>Potion smashing effects</li>
+                <li>Cosmetic changes (character info screen)</li>
+            </ul>
+        </li>
+        <li>
+            My own changes to the above:
+            <ul>
+                <li>You may accidentally attack friends if blind, confused etc.</li>
+                <li>No ‘friendly uniques’ can be summoned</li>
+                <li>You must pay upkeep (mana) for friendly monsters</li>
+                <li>Fixed the fatal “displacing crash” bug (caused by my own code)</li>
+                <li>‘Friends’ are also possible as Chaos rewards, artifact activation</li>
+            </ul>
+        </li>
+    </ul>
+    <h2>Zangband 2.0.6</h2>
+    <ul>
+        <li>Dos version compiled with Robert Ruehlmann’s SVGA graphics+windows code</li>
+        <li>The option display_spell_flags works slightly better now (on windowed systems)</li>
+        <li>Free Action _almost_ negates the paralyzing effect of ‘ancient curse’</li>
+        <li>Three new character classes: Warrior-Mage, Chaos Warrior and Monk</li>
+        <li>Three new (protective) item flags: Reflection, Auras of Fire and Electricity</li>
+        <li>Pattern Vaults implemented -- now any character can walk the Pattern</li>
+        <li>The artifacts you create yourself will be *identified* when created</li>
+        <li>Certain uniques may drop artifacts which ‘belong’ to them</li>
+        <li>Patch (by Daniel Nash): Wizard mode command to create specific artifacts</li>
+        <li>Patch (by Scott Bigham): Rods sort by recharging time left</li>
+        <li>Fixed a missing break which was crippling the “Summon Kin” code</li>
+        <li>Invulnerability no longer induces ‘blindness’ with graphics enabled</li>
+        <li>Hopefully fixed the char dump so that it no longer requires fp math unit</li>
+        <li>Certain ego items with digging actually receive + to digging</li>
+        <li>Empty dark levels are a lot less common early on now</li>
+        <li>Life magic Holy orb is resisted by non-evils (Hellfire works as before)</li>
+        <li>Detect Treasure / Objects also detects Treasure / Object ‘monsters’</li>
+        <li>Only ‘Assassins’ (Rogues with Death magic) get a poisoned weapon when created</li>
+        <li>Warriors get the extra shots later than rangers</li>
+        <li>Lots of minor and cosmetic fixes</li>
+    </ul>
+    <h2>*Bugfix* release: 2.0.6b:</h2>
+    <ul>
+        <li>Compiled the dos binary so that it asks for no confirmation with stairs</li>
+        <li>Birth.txt includes a description of monk attack types</li>
+        <li>Chaos Warriors get ‘nasty’ rewards much less often now</li>
+        <li>Fixed a missing break in self_knowledge</li>
+        <li>Fixed the ‘Tunneling bug’</li>
+        <li>Quick-fixed the infamous ‘two-eyed cyclopses bug’ (for new characters)</li>
+        <li>Fixed a minor display bug with equippy chars which did not update correctly</li>
+        <li>The function calc_spells() should work a bit more logically now</li>
+        <li>Caine and Hagen had their drops mixed; fixed.</li>
+        <li>Dworkin may now carry the JoJ. Smeagol may still NOT carry the ... Ring</li>
+        <li>Fixed the potion icon bug</li>
+        <li>Also redrew / modified / added icons</li>
+    </ul>
+    <h2>Zangband 2.0.5</h2>
+    <ul>
+        <li>Stuff from 2.8.2, including:</li>
+        <li>Auto-knowledge of standard ego item flags</li>
+        <li>The new generic “knowledge” command</li>
+        <li>Preserve artifacts when creation fails</li>
+        <li>‘Synchronized’ compact objects+monsters when saving</li>
+        <li>The old z-term.c replaced with the new one</li>
+        <li>Monsters stay visible as long as they are being detected</li>
+        <li>(Other bug fixes already present, like the stacking bug fix)</li>
+        <li>Fixed a bug which could cause teleport_player to hang the game</li>
+        <li>Fixed the “This race has no bonus power.” message bug (zombies, skeletons)</li>
+        <li>Halflings can cook some food</li>
+        <li>Klackon powers changed: they _become_ faster, activate to spit acid</li>
+        <li>Dark Elves gain their power (magic missile) one level earlier now</li>
+        <li>Most Chaos attack spells are a bit cheaper for mages</li>
+        <li>Chaos loses Blink, new spell (‘Wallbreaker’) for chaotic wall destruction</li>
+        <li>Death Ray (in Necronomicon) works a lot more often now</li>
+        <li>Healing II replaced w/ ‘Bless Weapon’, of use to priests (artifacts resist)</li>
+        <li>Blessings of the Grail is no longer ‘heavily blessed’ :)</li>
+        <li>Yellow Signs are no longer ‘permanent rock’</li>
+        <li>Self knowledge gives some info about your racial power now</li>
+        <li>’Amber’ skill rank (numeric value) is calculated differently now</li>
+        <li>Inscribe ‘.’ in a (non-cursed) teleporting item to prevent teleporting</li>
+        <li>They will also not teleport you if have the disturb_other option set to FALSE</li>
+        <li>Vampiric weapons can heal a maximum of 100 hp per round</li>
+        <li>Random bow artifacts no longer get ‘useless’ (slay xxx) flags</li>
+        <li>Immunities are somewhat less common in random artifacts</li>
+        <li>The ‘bias’ code no longer produces arbitrary resistances for ego items</li>
+        <li>Better random names for random artifacts</li>
+        <li>Also, Julian Lighton’s patch to fix crashes (w/ random artifacts) implemented</li>
+        <li>Wand of Rockets identifies itself if used (like other wands)</li>
+        <li>Scrolls of *identifyare a bit more common now</li>
+        <li>*Identify* gives correct info about Fear Resistance in an item</li>
+        <li>The temple buys blessed weapons</li>
+        <li>A certain artifact which is not in a_info will be cursed when created</li>
+        <li>Julian Lighton’s ingenious new monster spell to summon ‘relatives’ added</li>
+        <li>The boring Terminator monster replaced w/ Warriors of the Dawn (from Hawkmoon)</li>
+        <li>Some of the highest level uniques can now summon Cyberdemons to help them</li>
+        <li>Some of the Lovecraftian uniques have been boosted up a bit</li>
+        <li>Some of the other uniques have been upgraded a bit as well</li>
+        <li>Groo behaves in a more Grooish manner now</li>
+        <li>Themis and Mnemosyne have the correct gender now</li>
+        <li>Fixed a display bug (on a PC, w/ a shapechanger + no graphics)</li>
+        <li>Again, more minor and cosmetic fixes</li>
+    </ul>
+    <h2>Zangband 2.0.4</h2>
+    <ul>
+        <li>Correct version display</li>
+        <li>No less than 16 new player races (all new, although a few ideas are borrowed)</li>
+        <li>Recharging True replaced w/ Explosive Rune (explodes only if you stand on it)</li>
+        <li>Mages can choose Life magic (they are worse than paladins in it)</li>
+        <li>Death Knights (variant of the Paladin class) added</li>
+        <li>Warriors and Paladins become immune to fear at high levels</li>
+        <li>Rogues also get a (much weaker) backstab attack against fleeing foes</li>
+        <li>New vaults (vaguely based on ancient Egyptian tombs / temples)</li>
+        <li>Small levels have (initially) less monsters now (related to the level size)</li>
+        <li>More precautions to avoid (the rare) hangups when a small level is generated</li>
+        <li>Fixed a bug with spell selection (cmd5.c)</li>
+        <li>Rings of Flames etc. also give temporary resistance when activated</li>
+        <li>Rings of Flames etc. show their activation info now when *identified*</li>
+        <li>Weapons of fire will also work as light now</li>
+        <li>Slightly better, ‘smart’ generation of random artifacts</li>
+        <li>New summoning effects for ‘wild magic’</li>
+        <li>Level based bonus to the racial power activation test</li>
+        <li>Ball of Radiation & Invoke Logrus (monster attacks) are functional now</li>
+        <li>Radiation effects changed slightly</li>
+        <li>A certain artifact which is not in a_info no longer gets RES_DISEN</li>
+        <li>Minor changes to the PC font (hopefully for the better...)</li>
+        <li>Slightly saner price calculation for random items</li>
+        <li>Slightly better prompts (“recite which prayer” vs “cast which prayer”)</li>
+        <li>Other cosmetic and minor fixes</li>
+    </ul>
+    <h2>Zangband 2.0.3</h2>
+    <ul>
+        <li>Rings of Flames, Ice and Acid can now be activated (for an obvious effect)</li>
+        <li>New vaults (some have their floor plans borrowed from Nethack)</li>
+        <li>Cosmetic fixes (documentation)</li>
+        <li>Game balance fixes</li>
+        <li>Kharis no longer crashes the spoiler generation</li>
+        <li>Evil jellies (like death molds and shoggoths) no longer show up in jelly pits</li>
+        <li>Better ‘speech’ for uniques that are afraid (/lib/file/monfear.txt)</li>
+        <li>Trump weapons can now also be activated for teleport</li>
+        <li>Ego weapon damage dice loaded properly</li>
+        <li>Amberites can now open doors, ‘summon Amberites’ no longer produces undead</li>
+        <li>Monster special resistances fully implemented</li>
+        <li>Grayswandir is a sabre now</li>
+        <li>Rings of high resistance stack now (Lordly Protection doesn’t)</li>
+        <li>Fixed Rings of Extra Attacks</li>
+        <li>Curing also cures hallucination</li>
+        <li>Angels are fearless now</li>
+        <li>Nature’s Wrath (spell) damage upgraded</li>
+        <li>Call Chaos sometimes produces highly destructive beams now</li>
+    </ul>
+    <h2>Zangband 2.0.2</h2>
+    <ul>
+        <li>Internal version Angband 2.8.1, fake version (Z 2.0.2) displayed for commands</li>
+        <li>Finally updated (almost all of) the documentation!</li>
+        <li>Fixed more bugs in v_info</li>
+        <li>The stacking patch applied (fixes gold deleting all objects below it)</li>
+        <li>Redraw mana / hp after using racial powers & receiving rewards</li>
+        <li>Certain stationary monsters are fearless now</li>
+        <li>Priests can choose Life or Death magic (not both) + 1 from S / N / C</li>
+        <li>Some paladin prayers are slightly easier now</li>
+        <li>Sorcery spells are now available earlier (to make the realm more competitive)</li>
+        <li>Miscast Chaos spells may produce random “wild magic” effects</li>
+        <li>Miscast Death spells may hurt the player</li>
+        <li>Nature Awareness downgraded slightly</li>
+        <li>’Produce food’ (Nature spell) renamed to ‘Foraging’ (no real reason, though)</li>
+        <li>Other cosmetic fixes+enhancements (Ball of Cold has no longer “Duration” :)</li>
+        <li>Different colours for the special player symbol (level dependent)</li>
+        <li>Nightwalker CAN_SPEAK moved to Raphael (where it belongs)</li>
+        <li>Rotting corpses and malicious leprechauns have physical attacks now</li>
+        <li>No more freebie attacks on unseen monsters in walls (digging must be used)</li>
+        <li>Using certain aimed rods no longer randomly crashes the game</li>
+        <li>Small levels should no longer cause alloc_monster to hang the game</li>
+        <li>Dragon Helm of Dor-Lomin no longer crashes the game</li>
+        <li>Arcum Dagsson’s code to support separate macro files for different realms</li>
+        <li>Fixed a bug that prevented random resistances for some artifacts</li>
+        <li>Fixed a bug which prevented the saving of random flags from certain items</li>
+        <li>Better name-forming code for Random artifacts (created in Black Market)</li>
+        <li>Better descriptions for unidentified objects (without show_labels)</li>
+        <li>Equippy characters restored as an option by popular demand (I missed them too)</li>
+        <li>Initial life rating display moved to a more logical place</li>
+        <li>do_cmd_rerate will now be compiled even without wizard mode</li>
+        <li>Rewards for killing wanted uniques are at least 250 gold (not 0 gold)</li>
+        <li>Option to dump the ‘final’ screen (when you die)</li>
+    </ul>
+    <h2>Zangband 2.0.1</h2>
+    <ul>
+        <li>Nature Sense Surroundings upgraded to Nature Awareness</li>
+        <li>Removed ‘marginal’ item generation from temple, added 3 scroll of WoR</li>
+        <li>Compile time option to display different player symbols (/race, /class)</li>
+        <li>Fixed take_hit message for Scroll of Logrus (not “of Chaos”)</li>
+        <li>Fixed the major bug with spell remembrance/forgetting in xtra1.c</li>
+        <li>Fixed the damage display for Frost Bolt</li>
+        <li>Fixed “You can learn 1 new spells.” in cmd5.c</li>
+        <li>Magic traps are a bit less lethal early on</li>
+        <li>Silly hallucination monsters (as in Nethack)</li>
+        <li>Potion of Confusion -> Booze</li>
+        <li>Alchemy now takes into account the amount of items (max still 30k / spell)</li>
+        <li>Changes to options</li>
+        <li>Genocide True replaced with Vampiric Branding</li>
+        <li>Fixed a bug in v_info</li>
+        <li>Items stolen by the agents of black market may show up in the Black market</li>
+        <li>Racial intrinsics are a bit easier to use now</li>
+    </ul>
+    <h2>Zangband 2.0.0</h2>
+    <ul>
+        <li>New spell system (life, sorcery, nature, chaos, death magic)</li>
+        <li>New monsters list (mostly from the older Zangband)</li>
+        <li>User can_not_ set the colors of flavored objects (via pref files)</li>
+        <li>Warriors get extra blows and shots, increased damage</li>
+        <li>Rangers have a slightly better innate pseudo-id</li>
+        <li>Last words, speaking uniques, rumors, warrants, error messages</li>
+        <li>”Negative” level feelings</li>
+        <li>New ego items and artifacts</li>
+        <li>New object flags (VORPAL, CHAOTIC, VAMPIRIC, BRAND_POIS)</li>
+        <li>Rogues start with a poisoned dagger and can backstab nasties</li>
+        <li>xtra1.c, files.c: DUNADAN -> AMBERITE</li>
+        <li>Other stuff...</li>
+    </ul>
+</body>
+</html>

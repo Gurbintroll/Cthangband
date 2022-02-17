@@ -1,0 +1,88 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="manual.css">
+</head>
+<body>
+    <h1>Level Feelings</h1>
+    <p>
+        After you have been on a dungeon level for some time, you will get a feeling about how dangerous the level is. Once you have had
+        this feeling, you can be reminded of it by using the 'h' command.
+    </p>
+    <p>
+        The feeling for a level is based on its contents when it is generated, which includes the monsters and items that are placed during generation.
+        Things that are added to the level after generation (e.g. wandering monsters, or treasure that is dropped by monsters) do not contribute to the
+        feeling of a level. Similarly, if a level has a high feeling because of dangerous monsters and/or high level treasure then that feeling will not
+        drop if the monsters are killed or the treasure is picked up. The feeling that the level is generated with stays constant while you are on it.
+    </p>
+    <p>The feeling of a level is two parts and each part is based on a score that is accumulated as the level is generated:</p>
+    <h2>Monster Feelings</h2>
+    <ul>
+        <li>+X for each non-unique monster whose level is X levels greater than the depth of the dungeon level</li>
+        <li>+2X for each unique monster whose level is X levels greater than the depth of the dungeon level</li>
+        <li>+10 for a monster pit (a monster pit also has a chance of making the level "special" based on the depth of the level)</li>
+        <li>+5 to +50 for a vault (a vault also has a chance of making the level "special" based on the depth of the level)</li>
+    </ul>
+    <p>The total score for the level then determines how you "feel" about it - with a "special" level overriding the score and making the level feel special.</p>
+    <p>
+        <table align=center>
+            <tr><th>Score</th><th>Feeling</th></tr>
+            <tr><td>0</td><td>What a boring place</td></tr>
+            <tr><td>1-10</td><td>This level looks reasonably safe</td></tr>
+            <tr><td>11-20</td><td>You don't like the look of this place</td></tr>
+            <tr><td>21-30</td><td>You feel unsafe</td></tr>
+            <tr><td>31-40</td><td>You feel nervous</td></tr>
+            <tr><td>41-60</td><td>You have a bad feeling</td></tr>
+            <tr><td>61-80</td><td>You have a very bad feeling</td></tr>
+            <tr><td>81-100</td><td>This level looks very dangerous</td></tr>
+            <tr><td>&gt100</td><td>You nearly faint as horrible visions of death fill your mind</td></tr>
+        </table>
+    </p>
+    <h2>Treasure Feelings</h2>
+    <ul>
+        <li>+40 for each random artifact</li>
+        <li>+30 for each set of dragon scale mail</li>
+        <li>+25 for each ring of speed</li>
+        <li>+25 for each amulet of the magi</li>
+        <li>+20 for each non-random artifact (a non-random artifact also always makes the level "special")</li>
+        <li>+5 for each dragon shield</li>
+        <li>+5 for each dragon helm</li>
+        <li>+5 for each ring of lordly might</li>
+        <li>+0 to +30 for each other rare magic item, depending on the rare item type</li>
+        <li>+X for each item whose level is X levels greater than the depth of the dungeon level</li>
+    </ul>
+    <p>The total score for the level then determines how you "feel" about it - with a "special" level overriding the score and making the level feel special.</p>
+    <p>
+        <table align=center>
+            <tr><th>Score</th><th>Feeling</th></tr>
+            <tr><td>0</td><td>what meagre pickings...</td></tr>
+            <tr><td>1-10</td><td>nothing of worth.</td></tr>
+            <tr><td>11-20</td><td>there's not much of value here.</td></tr>
+            <tr><td>21-30</td><td>with significant treasure.</td></tr>
+            <tr><td>31-40</td><td>there's wealth to be found.</td></tr>
+            <tr><td>41-60</td><td>there's magic in the air.</td></tr>
+            <tr><td>61-80</td><td>powerful magic can be found here.</td></tr>
+            <tr><td>81-100</td><td>with a veritable hoard.</td></tr>
+            <tr><td>&gt100</td><td>treasure galore!</td></tr>
+        </table>
+    </p>
+    <h2>Special Feelings</h2>
+    <ul>
+        <li>A fixed artifact has a 100% chance of making a level feel special, regardless of depth.</li>
+        <li>
+            A monster pit has a lesser chance of making a level feel special based on the current depth (if the depth is 15 or less it will always make it feel special, but beyond this depth
+            the chance drops off sharply, so that at depth 23 there's around a 50% chance; at depth 34 there's around a 25% chance; at depth 54 there's around
+            a 10% chance; and at depth 78 or greater there's less than a 5% chance).
+        </li>
+        <li>
+            A vault has a greater chance of making a level feel special based on the current depth (if the depth is 58 or less it will always make it feel special, but beyond this depth
+            the chance drops off sharply, so that at depth 67 there's around a 50% chance; at depth 80 there's around a 25% chance; at depth 103 there's around
+            a 10% chance; and at depth 128 there's just over a 5% chance).
+        </li>
+    </ul>
+    <p>
+        This means that the deeper the level, the more likely it is that a "special" feeling indicates the presence of an artifact rather than a vault or pit; but just because there <em>is</em> a vault or pit doesn't mean that there isn't <em>also</em> an
+        artifact on the level, even on a shallow level. However, if you've fully explored a special level and there is no vault or pit on it, that
+        means that there must be a fixed artifact on it somewhere.
+    </p>
+</body>
+</html>

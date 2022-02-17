@@ -1,0 +1,78 @@
+﻿using Cthangband.Enumerations;
+using Cthangband.Projection;
+using System;
+
+namespace Cthangband.Spells.Nature
+{
+    [Serializable]
+    internal class NatureSpellCallSunlight : Spell
+    {
+        public override void Cast(SaveGame saveGame, Player player, Level level)
+        {
+            saveGame.SpellEffects.FireBall(new ProjectLight(SaveGame.Instance.SpellEffects), 0, 150, 8);
+            level.WizLight();
+            if (player.RaceIndex != RaceId.Vampire || player.HasLightResistance)
+            {
+                return;
+            }
+            Profile.Instance.MsgPrint("The sunlight scorches your flesh!");
+            player.TakeHit(50, "sunlight");
+        }
+
+        public override void Initialise(int characterClass)
+        {
+            Name = "Whirlpool";
+            switch (characterClass)
+            {
+                case CharacterClass.Mage:
+                    Level = 37;
+                    ManaCost = 35;
+                    BaseFailure = 90;
+                    FirstCastExperience = 100;
+                    break;
+
+                case CharacterClass.Priest:
+                    Level = 39;
+                    ManaCost = 38;
+                    BaseFailure = 90;
+                    FirstCastExperience = 100;
+                    break;
+
+                case CharacterClass.Ranger:
+                    Level = 40;
+                    ManaCost = 35;
+                    BaseFailure = 75;
+                    FirstCastExperience = 100;
+                    break;
+
+                case CharacterClass.WarriorMage:
+                case CharacterClass.Cultist:
+                    Level = 41;
+                    ManaCost = 41;
+                    BaseFailure = 90;
+                    FirstCastExperience = 100;
+                    break;
+
+                case CharacterClass.HighMage:
+                case CharacterClass.Druid:
+                    Level = 34;
+                    ManaCost = 30;
+                    BaseFailure = 80;
+                    FirstCastExperience = 100;
+                    break;
+
+                default:
+                    Level = 99;
+                    ManaCost = 0;
+                    BaseFailure = 0;
+                    FirstCastExperience = 0;
+                    break;
+            }
+        }
+
+        protected override string Comment(Player player)
+        {
+            return "dam 150";
+        }
+    }
+}

@@ -1,0 +1,82 @@
+﻿using Cthangband.Enumerations;
+using Cthangband.Projection;
+using System;
+
+namespace Cthangband.Spells.Folk
+{
+    [Serializable]
+    internal class FolkSpellTeleportAway : Spell
+    {
+        public override void Cast(SaveGame saveGame, Player player, Level level)
+        {
+            TargetEngine targetEngine = new TargetEngine(player, level);
+            if (!targetEngine.GetAimDir(out int dir))
+            {
+                return;
+            }
+            saveGame.SpellEffects.FireBeam(new ProjectAwayAll(SaveGame.Instance.SpellEffects), dir, player.Level);
+        }
+
+        public override void Initialise(int characterClass)
+        {
+            Name = "Teleport Away";
+            switch (characterClass)
+            {
+                case CharacterClass.Mage:
+                    Level = 40;
+                    ManaCost = 30;
+                    BaseFailure = 70;
+                    FirstCastExperience = 25;
+                    break;
+
+                case CharacterClass.Priest:
+                    Level = 42;
+                    ManaCost = 38;
+                    BaseFailure = 70;
+                    FirstCastExperience = 25;
+                    break;
+
+                case CharacterClass.Rogue:
+                    Level = 46;
+                    ManaCost = 40;
+                    BaseFailure = 70;
+                    FirstCastExperience = 25;
+                    break;
+
+                case CharacterClass.Ranger:
+                    Level = 46;
+                    ManaCost = 40;
+                    BaseFailure = 70;
+                    FirstCastExperience = 25;
+                    break;
+
+                case CharacterClass.WarriorMage:
+                case CharacterClass.Cultist:
+                    Level = 43;
+                    ManaCost = 42;
+                    BaseFailure = 70;
+                    FirstCastExperience = 25;
+                    break;
+
+                case CharacterClass.HighMage:
+                    Level = 38;
+                    ManaCost = 28;
+                    BaseFailure = 60;
+                    FirstCastExperience = 25;
+                    break;
+
+                default:
+                    Level = 99;
+                    ManaCost = 0;
+                    BaseFailure = 0;
+                    FirstCastExperience = 0;
+                    break;
+            }
+        }
+
+        protected override string Comment(Player player)
+        {
+            return string.Empty;
+        }
+    }
+}

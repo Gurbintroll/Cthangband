@@ -1,0 +1,151 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="manual.css">
+</head>
+<body>
+    <h1>Combat</h1>
+    <p>
+        Combat in Cthangband is generally very straightforward. To attack a monster, simply attempt to move into the square that it
+        occupies. Your character will then make a melee attack (or possibly a <a href="Turns,%20Time,%20and%20Speed.html">series of</a> melee attacks) against
+        the monster. Similarly, monsters that wish to attack you in melee will try to enter your square to do so and may also get more than one attack
+        when they do.
+    </p>
+    <p>
+        That's really all you need to know about how combat works. However, if you're the sort of person who likes to know how things work inside
+        the game, then the rest of this page is for you.
+    </p>
+    <h2>Combat Skill</h2>
+    <p>
+        Your character has a fighting skill that is derived from their race, class, and level. Each race in the game has a basic fighting skill
+        and each class has both a fixed bonus to that skill and an additional per-level bonus to it. This skill is expressed as a percentage,
+        although it is possible for it to be raised above 100%.
+    </p>
+    <p>
+        As well as your basic fighting skill, you may also have additional "to-hit" bonuses from high <a href="Ability%20Scores.html">ability scores</a>
+        or from equipment of various kinds (chiefly weapons). Particularly low ability scores may give you a to-hit penalty rather than a bonus,
+        and some equipment will also give you a penalty. The most common reason for a to-hit penalty from equipment is from heavy armour, but
+        some weapons may be damaged or cursed and these may also provide a penalty. Note that if weapons are unidentified, their to-hit bonuses
+        or penalties still apply behind the scenes - even if you are not being told what they are.
+    </p>
+    <h2>Hitting or Missing</h2>
+    <p>
+        A melee attack will either hit or miss its target, with a miss having no effect. The calculation for whether an attack hits or misses is the
+        same for you attacking monsters or for monsters attacking you.
+    </p>
+    <p>
+        Firstly, a d20 (a virtual die with twenty sides) is rolled. If this results in a 1 then the attack automatically misses regardless of other
+        factors. If it results in a 20 then the attack automatically hits regardless of other factors. Hence all attacks have a minimum 5% chance to hit
+        and a maximum 95% chance to hit.
+    </p>
+    <p>
+        Assuming that neither the auto-hit or auto-miss occurred, the program then calculates the chance of the attack hitting by comparing the skill and
+        modifiers of the attacker to the armour class of the defender. Basically, the skill of the attacker is divided by three and then any to-hit bonuses and
+        penalties are added to it (more than one of these may apply at once and they are simply added up). This gives a total "attack power" for the attack.
+        If the attacker can't see the target of its attack, for example if it is invisible, the entire attack power of the attack is halved.
+    <p>
+        A virtual die is then rolled with a number of sides equal to the attack power; and if the result is greater than or equal to a quarter of the opponent's armour class then
+        the attack hits. If it is less than a quarter of the opponent's armour class then the attack misses.
+    </p>
+    <p>
+        (Note that the above is simplified slightly - the actual formula avoids the rounding errors that would occur in the above by multiplying everything by three
+        so that every point of skill or armour class matters.)
+    </p>
+    <p>
+        For example, a first level human warrior with a strength of 18 and a dexterity of 15 is trying to hit a small kobold with a broad sword (2d5) (+0,+0).
+        The warrior is wearing chain mail (-2) [14,+0].
+    </p>
+    <p>
+        Humans get a base fighting skill of 0%, and warriors get a fighting skill of 70% + 4.5% per level. The warrior therefore has a total fighting skill of 74.5%.
+        The warrior's strength of 18 gives them a +1 to-hit bonus, but neither their dexterity nor their weapon give them a bonus. However, their bulky chain mail
+        gives them a to-hit penalty of -2. The fighter therefore has a total skill of 74.5% and a total to-hit penalty of -1.
+    </p>
+    <p>The attack power of the warrior's attack is therefore 74.5/3 + -1, i.e. approximately 24.</p>
+    <p>
+        The armour class of each type of monster is fixed, and as you adventure and attack monsters you will
+        learn their armour classes and can see them in your journal. A small kobold, the monster in our example, has an armour class of 16.
+    </p>
+    <p>Therefore when our human warrior attacks the small kobold the following rolls are made...</p>
+    <ul>
+        <li>A d20 is rolled, and if it rolls a 1 then the attack misses. If it rolls a 20 the attack hits.</li>
+        <li>
+            If the d20 rolled neither a 1 nor a 20, a d24 is rolled (matching the warrior's attack power). If the result is greater or equal
+            to 4 (a quarter of the small kobold's armour class) then the attack hits. Otherwise it misses.
+        </li>
+    </ul>
+    <h2>Ranged Attacks</h2>
+    <p>
+        Ranged attacks work in exactly the same way as melee attacks, except that instead of initiating them by trying to move into a monster's space
+        you initiate them by using the 'f' command. If you already have a monster targeted (and the monster is visible), this will throw or fire something
+        from your inventory at the monster. If you don't already have a monster targeted or the monster you previously targeted is no longer visible then
+        you will be prompted for a new target.
+    </p>
+    <p>
+        You can select any item from your inventory to throw at a monster, and every item has an amount of damage it will do when thrown. Note that for
+        the most part this will be very little. Just randomly throwing junk at a monster is unlikely to kill it. However, some potions may be quite effective
+        when thrown at a monster. Generally, though, you will want to fire missile weapons rather than just throwing things. As well as the equipment slot
+        for your melee weapon, you have an equipment slot for a missile weapon. When you use the 'f' command to fire/throw a piece of ammunition, the
+        game checks what weapon is in your missile slot. If its type matches that of the piece of ammunition, then you will get the to-hit and damage
+        bonus of the missile weapon on the attack, as well as the missile weapon's multiplier for the ammunition damage.
+    </p>
+    <p>
+        In any case, the actual chance to hit works in exactly the same way for missile attacks as it does for melee attacks, with the exception that
+        it uses your shooting skill rather than your fighting skill.
+    </p>
+    <p>
+        Note that ranged magical attacks such as those from spells, mentalism powers, racial powers, and mutations, automatically hit and do not need
+        to make an attack roll.
+    </p>
+    <h2>Damage</h2>
+    <p>
+        The basic calculation for damage is much simpler than that of whether an attack hits or not. Every weapon has a damage ratiing expressed
+        as a number of dice. For example the broad sword (2d5) (+0,+0) used in the example of an attack roll does 2d5 damage - that's two virtual five sided
+        dice added together. The dice are rolled and then any modifiers from strength or from weapons or other magic items are added.
+    </p>
+    <p>
+        When you are hit by a monster's attack, your armour protects you from some of the damage. For every five points of armour class you
+        have, you take 2% less damage from all attacks (to a maximum of taking 60% less damage if you have an armour class of 150 or higher).
+    </p>
+    <p>
+        Some weapons are enchanted to "slay" a particular type of monster, and do double or triple damage against monsters of that type. Similarly
+        some weapons are branded with a particular element and do triple damage to monster that are not immune to that element. The two types of multiplier
+        do not stack, however, should they both apply to a given monster.
+    </p>
+    <h2>Critical Hits and Sneak Attacks</h2>
+    <p>
+        After normal damage has been rolled, and possibly multiplied for the special properties of your weapon, it is possible that you can increase it still further. The main
+        way that this might happen is that you have a chance to do a "critical" hit. In order to work out whether or not this has happened, the game adds
+        the following things together:
+    </p>
+    <ul>
+        <li>The weight of your weapon (in tenths of pounds)</li>
+        <li>Five times your attack skill (fighting or ranged)</li>
+        <li>Five times your to-hit bonus</li>
+        <li>Three times your level</li>
+    </ul>
+    <p>
+        The game then rolls a d5000 (a virtual 5,000 sided die) and if it gets less than or equal to the total then you have done a critical hit and
+        your damage will be multiplied again by anywhere from two times to three and a half times. The actual multiplier is based on how high the d5000
+        roll was, so the higher the total you had the higher the roll can be and still be less than or equal to it. Therefore the higher the total
+        you have the bigger the critical multiplier you will be able to get.
+    </p>
+    <p>
+        Finally, in addition to criticals, if you are a rogue and you hit a monster that is either sleeping or fleeing then the damage may be
+        multiplied yet again - in the former case by three and in the latter case by one and a half.
+    </p>
+    <h2>Monster Attacks and Defences</h2>
+    <p>
+        As mentioned above, monster attacks work in fundamentally the same way as player attacks. They have the same 5% chance to auto-hit and
+        5% chance to auto-miss, and if they do neither then their chance of hitting is worked out in exactly the same way as for player attacks. However,
+        since monsters don't use equipment their to-hit bonus is simply equal to their level (the level on which they are normally found, not necessarily
+        the level on which you encounter them) and their melee skill is a fixed value based on what the effect of their attack will be. This fixed value
+        ranges from 0% for tricky attacks such as those that drain your ability scores up to 60% for attacks that simply hurt you. Monsters don't get to
+        multiply damage due to powerful weapons (this is already factored into the amount of damage they do when they hit) and neither are they able
+        to do critical hits.
+    </p>
+    <p>
+        The other difference between monsters and the player is that although the damage they do to you is reduced by your armour, the damage
+        you do to them is not. The armour class of monsters reduces your chance to hit them but does not reduce the damage you do to them. Instead,
+        particularly tough monsters just have more hit points.
+    </p>
+</body>
+</html>
