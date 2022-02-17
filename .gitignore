@@ -2,5 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Cthangband/obj/Debug
-/Cthangband/bin/Debug
+/Cthangband/obj
+/Cthangband/bin
+/.vs
