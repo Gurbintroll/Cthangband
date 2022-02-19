@@ -3628,7 +3628,7 @@ namespace Cthangband
                 SaveGame.Instance.Level.FloorItemDescribe(0 - itemIndex);
                 SaveGame.Instance.Level.FloorItemOptimize(0 - itemIndex);
             }
-            _player.UpdatesNeeded |= UpdateFlags.PuTorch;
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
         }
 
         /// <summary>
@@ -3689,7 +3689,7 @@ namespace Cthangband
                 SaveGame.Instance.Level.FloorItemDescribe(0 - itemIndex);
                 SaveGame.Instance.Level.FloorItemOptimize(0 - itemIndex);
             }
-            _player.UpdatesNeeded |= UpdateFlags.PuTorch;
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
         }
     }
 }

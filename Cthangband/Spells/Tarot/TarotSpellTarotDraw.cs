@@ -160,7 +160,7 @@ namespace Cthangband.Spells.Tarot
                 {
                     Profile.Instance.MsgPrint("You are cured of all mutations.");
                     player.Dna.LoseAllMutations();
-                    player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                    player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                     SaveGame.Instance.HandleStuff();
                 }
             }

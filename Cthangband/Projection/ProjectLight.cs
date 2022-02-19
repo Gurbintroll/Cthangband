@@ -238,7 +238,7 @@ namespace Cthangband.Projection
                 Player.TimedEtherealness = 0;
                 Profile.Instance.MsgPrint("The light forces you out of your incorporeal shadow form.");
                 Player.RedrawFlags |= RedrawFlag.PrMap;
-                Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             }
             SaveGame.Disturb(true);
             return true;

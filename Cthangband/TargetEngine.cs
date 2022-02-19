@@ -226,7 +226,7 @@ namespace Cthangband
             _level.PanelRowMin = prowMin;
             _level.PanelColMin = pcolMin;
             PanelBoundsCenter();
-            _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             _player.RedrawFlags |= RedrawFlag.PrMap;
         }
 

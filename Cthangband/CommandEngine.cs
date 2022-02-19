@@ -899,8 +899,8 @@ namespace Cthangband
                 Level.CaveSetFeat(y, x, Program.Rng.RandomLessThan(100) < 50 ? "BrokenDoor" : "OpenDoor");
                 Gui.PlaySound(SoundEffect.OpenDoor);
                 MovePlayer(dir, false);
-                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight;
-                Player.UpdatesNeeded |= UpdateFlags.PuDistance;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateDistances);
             }
             else if (Program.Rng.RandomLessThan(100) < Player.AbilityScores[Ability.Dexterity].DexTheftAvoidance + Player.Level)
             {
@@ -1164,7 +1164,7 @@ namespace Cthangband
             else
             {
                 Level.CaveSetFeat(y, x, "LockedDoor0");
-                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateMonsters);
                 Gui.PlaySound(SoundEffect.ShutDoor);
             }
             return false;
@@ -1350,7 +1350,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("Your light item is full.");
             }
             // We need to update our light after this
-            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
         }
 
         /// <summary>
@@ -1390,8 +1390,8 @@ namespace Cthangband
                 item.RandartFlags3.Clear();
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
-                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
-                Player.UpdatesNeeded |= UpdateFlags.PuMana;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateMana);
             }
             return true;
         }
@@ -1433,8 +1433,8 @@ namespace Cthangband
                 item.RandartFlags3.Clear();
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
-                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
-                Player.UpdatesNeeded |= UpdateFlags.PuMana;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateMana);
             }
             return true;
         }
@@ -2078,8 +2078,8 @@ namespace Cthangband
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             targetEngine.RecenterScreenAroundPlayer();
             // We'll need to update and redraw various things
-            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
-            Player.UpdatesNeeded |= UpdateFlags.PuDistance;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateDistances);
             Player.RedrawFlags |= RedrawFlag.PrMap;
             // If we're not actively searching, then have a chance of doing it passively
             if (Player.SkillSearchFrequency >= 50 || 0 == Program.Rng.RandomLessThan(50 - Player.SkillSearchFrequency))
@@ -2217,7 +2217,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You have picked the lock.");
                     Level.CaveSetFeat(y, x, "OpenDoor");
-                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
+                    Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateMonsters);
                     Gui.PlaySound(SoundEffect.LockpickSuccess);
                     // Picking a lock gains you an experience point
                     Player.GainExperience(1);
@@ -2232,7 +2232,7 @@ namespace Cthangband
             else
             {
                 Level.CaveSetFeat(y, x, "OpenDoor");
-                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateMonsters);
                 Gui.PlaySound(SoundEffect.OpenDoor);
             }
             return more;
@@ -3487,7 +3487,7 @@ namespace Cthangband
                         {
                             Profile.Instance.MsgPrint("You are cured of all mutations.");
                             Player.Dna.LoseAllMutations();
-                            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                             _saveGame.HandleStuff();
                         }
                         if (Player.RaceIndex != Player.RaceIndexAtBirth)
@@ -3766,7 +3766,7 @@ namespace Cthangband
                     _saveGame.Disturb(false);
                     return;
                 }
-                Player.UpdatesNeeded |= UpdateFlags.PuTorch;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
                 RunInit(direction);
             }
             else
@@ -4065,7 +4065,7 @@ namespace Cthangband
             }
             if (!Level.GridPassable(y, x))
             {
-                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
             }
             if (!more)
             {
@@ -4599,7 +4599,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You have picked the lock.");
                     Level.CaveSetFeat(y, x, "OpenDoor");
-                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
+                    Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateMonsters);
                     Gui.PlaySound(SoundEffect.LockpickSuccess);
                     Player.GainExperience(1);
                 }
@@ -4611,7 +4611,7 @@ namespace Cthangband
             else
             {
                 Level.CaveSetFeat(y, x, "OpenDoor");
-                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateMonsters);
                 Gui.PlaySound(SoundEffect.OpenDoor);
             }
             return true;
@@ -5302,7 +5302,7 @@ namespace Cthangband
             }
             cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
             Level.CaveRemoveFeat(y, x);
-            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
             return true;
         }
     }

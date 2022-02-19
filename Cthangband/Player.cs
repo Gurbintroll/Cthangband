@@ -173,7 +173,7 @@ namespace Cthangband
         public int TimedSuperheroism;
         public int TimedTelepathy;
         public int TownWithHouse;
-        public uint UpdatesNeeded;
+        public FlagSet UpdatesNeeded;
         public int Weight;
         public int WeightCarried;
         public int WildernessX;
@@ -253,7 +253,7 @@ namespace Cthangband
             CheckExperience();
             MaxLevelGained = Level;
             RedrawFlags |= RedrawFlag.PrBasic;
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -287,7 +287,7 @@ namespace Cthangband
             {
                 Level--;
                 SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
-                UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp | UpdateFlags.PuMana | UpdateFlags.PuSpells;
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
                 RedrawFlags |= RedrawFlag.PrLev | RedrawFlag.PrTitle;
                 SaveGame.Instance.HandleStuff();
             }
@@ -316,7 +316,7 @@ namespace Cthangband
                 }
                 Gui.PlaySound(SoundEffect.LevelGain);
                 Profile.Instance.MsgPrint($"Welcome to level {Level}.");
-                UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp | UpdateFlags.PuMana | UpdateFlags.PuSpells;
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
                 RedrawFlags |= RedrawFlag.PrExp | RedrawFlag.PrLev | RedrawFlag.PrTitle;
                 SaveGame.Instance.HandleStuff();
                 if (levelReward)
@@ -487,7 +487,7 @@ namespace Cthangband
             {
                 AbilityScores[stat].Innate = cur;
                 AbilityScores[stat].InnateMax = max;
-                UpdatesNeeded |= UpdateFlags.PuBonus;
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             }
             return res;
         }
@@ -1295,7 +1295,7 @@ namespace Cthangband
             {
                 PlayerHp[i] = PlayerHp[i - 1] + PlayerHp[i];
             }
-            UpdatesNeeded |= UpdateFlags.PuHp;
+            UpdatesNeeded.Set(UpdateFlags.UpdateHealth);
             RedrawFlags |= RedrawFlag.PrHp;
             SaveGame.Instance.HandleStuff();
         }
@@ -1305,7 +1305,7 @@ namespace Cthangband
             if (AbilityScores[stat].Innate != AbilityScores[stat].InnateMax)
             {
                 AbilityScores[stat].Innate = AbilityScores[stat].InnateMax;
-                UpdatesNeeded |= UpdateFlags.PuBonus;
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                 return true;
             }
             return false;
@@ -1651,7 +1651,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             RedrawFlags |= RedrawFlag.PrHunger;
             SaveGame.Instance.HandleStuff();
             return true;
@@ -1822,7 +1822,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             RedrawFlags |= RedrawFlag.PrCut;
             SaveGame.Instance.HandleStuff();
             return true;
@@ -1854,7 +1854,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -1885,9 +1885,9 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuUnView | UpdateFlags.PuUnLight;
-            UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight;
-            UpdatesNeeded |= UpdateFlags.PuMonsters;
+            UpdatesNeeded.Set(UpdateFlags.UpdateRemoveView | UpdateFlags.UpdateRemoveLight);
+            UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
+            UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             RedrawFlags |= RedrawFlag.PrMap;
             RedrawFlags |= RedrawFlag.PrBlind;
             SaveGame.Instance.HandleStuff();
@@ -1967,7 +1967,7 @@ namespace Cthangband
                     notice = true;
                     {
                         RedrawFlags |= RedrawFlag.PrMap;
-                        UpdatesNeeded |= UpdateFlags.PuMonsters;
+                        UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
             }
@@ -1979,7 +1979,7 @@ namespace Cthangband
                     notice = true;
                     {
                         RedrawFlags |= RedrawFlag.PrMap;
-                        UpdatesNeeded |= UpdateFlags.PuMonsters;
+                        UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
             }
@@ -1989,7 +1989,7 @@ namespace Cthangband
                 return;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -2081,7 +2081,7 @@ namespace Cthangband
             }
             SaveGame.Instance.Disturb(false);
             RedrawFlags |= RedrawFlag.PrMap;
-            UpdatesNeeded |= UpdateFlags.PuMonsters;
+            UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2112,7 +2112,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2143,8 +2143,8 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
-            UpdatesNeeded |= UpdateFlags.PuHp;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+            UpdatesNeeded.Set(UpdateFlags.UpdateHealth);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2175,8 +2175,8 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
-            UpdatesNeeded |= UpdateFlags.PuMonsters;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+            UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2193,7 +2193,7 @@ namespace Cthangband
                     notice = true;
                     {
                         RedrawFlags |= RedrawFlag.PrMap;
-                        UpdatesNeeded |= UpdateFlags.PuMonsters;
+                        UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
             }
@@ -2205,7 +2205,7 @@ namespace Cthangband
                     notice = true;
                     {
                         RedrawFlags |= RedrawFlag.PrMap;
-                        UpdatesNeeded |= UpdateFlags.PuMonsters;
+                        UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
             }
@@ -2215,7 +2215,7 @@ namespace Cthangband
                 return;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -2395,8 +2395,8 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
-            UpdatesNeeded |= UpdateFlags.PuMonsters;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+            UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2427,7 +2427,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2458,7 +2458,7 @@ namespace Cthangband
                 return;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -2567,7 +2567,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             RedrawFlags |= RedrawFlag.PrStun;
             SaveGame.Instance.HandleStuff();
             return true;
@@ -2599,8 +2599,8 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
-            UpdatesNeeded |= UpdateFlags.PuHp;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+            UpdatesNeeded.Set(UpdateFlags.UpdateHealth);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2631,8 +2631,8 @@ namespace Cthangband
                 return;
             }
             SaveGame.Instance.Disturb(false);
-            UpdatesNeeded |= UpdateFlags.PuBonus;
-            UpdatesNeeded |= UpdateFlags.PuMonsters;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+            UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -2651,7 +2651,7 @@ namespace Cthangband
             AbilityScores[ii].Innate = cur2;
             AbilityScores[jj].InnateMax = max1;
             AbilityScores[jj].Innate = cur1;
-            UpdatesNeeded |= UpdateFlags.PuBonus;
+            UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
         }
 
         public bool SpellOkay(int spell, bool known, bool realm2)
@@ -2883,7 +2883,7 @@ namespace Cthangband
                 {
                     AbilityScores[which].InnateMax = value;
                 }
-                UpdatesNeeded |= UpdateFlags.PuBonus;
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                 return true;
             }
             return false;

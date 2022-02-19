@@ -918,27 +918,27 @@ namespace Cthangband
                     _player.AbilityScores[i].TableIndex = ind;
                     if (i == Ability.Constitution)
                     {
-                        _player.UpdatesNeeded |= UpdateFlags.PuHp;
+                        _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth);
                     }
                     else if (i == Ability.Intelligence)
                     {
                         if (_player.Spellcasting.SpellStat == Ability.Intelligence)
                         {
-                            _player.UpdatesNeeded |= UpdateFlags.PuMana | UpdateFlags.PuSpells;
+                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
                         }
                     }
                     else if (i == Ability.Wisdom)
                     {
                         if (_player.Spellcasting.SpellStat == Ability.Wisdom)
                         {
-                            _player.UpdatesNeeded |= UpdateFlags.PuMana | UpdateFlags.PuSpells;
+                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
                         }
                     }
                     else if (i == Ability.Charisma)
                     {
                         if (_player.Spellcasting.SpellStat == Ability.Charisma)
                         {
-                            _player.UpdatesNeeded |= UpdateFlags.PuMana | UpdateFlags.PuSpells;
+                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
                         }
                     }
                 }
@@ -1027,11 +1027,11 @@ namespace Cthangband
             }
             if (_player.HasTelepathy != oldTelepathy)
             {
-                _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+                _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             }
             if (_player.HasSeeInvisibility != oldSeeInv)
             {
-                _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+                _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             }
             int j = _player.WeightCarried;
             i = WeightLimit();
@@ -1765,8 +1765,8 @@ namespace Cthangband
             }
             if (_player.OldLightLevel != _player.LightLevel)
             {
-                _player.UpdatesNeeded |= UpdateFlags.PuLight;
-                _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+                _player.UpdatesNeeded.Set(UpdateFlags.UpdateLight);
+                _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                 _player.OldLightLevel = _player.LightLevel;
             }
         }

@@ -2206,7 +2206,7 @@ namespace Cthangband
             // Update the view if necessary
             if (doView)
             {
-                _player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
+                _player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
             }
             // If we did something unusual and the player saw, let them remember we can do that
             if (monster.IsVisible)

@@ -117,11 +117,22 @@ namespace Cthangband
             return Value != 0;
         }
 
+        /// <summary>
+        /// Checks whether specific flags match in both flagsets
+        /// </summary>
+        /// <param name="other"> The other flagset to check against </param>
+        /// <param name="flags"> The specific flag or flags to check </param>
+        /// <returns> True if the flags are the same in both sets </returns>
         public bool Matches(FlagSet other, uint flags)
         {
             return (Value & flags) == (other.Value & flags);
         }
 
+        /// <summary>
+        /// Checks whether all flags match in both flagsets
+        /// </summary>
+        /// <param name="other"> The other flagset to check against </param>
+        /// <returns> True if the flags are the same in both sets </returns>
         public bool Matches(FlagSet other)
         {
             return Value == other.Value;

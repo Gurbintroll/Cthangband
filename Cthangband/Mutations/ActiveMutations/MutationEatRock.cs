@@ -62,8 +62,8 @@ namespace Cthangband.Mutations.ActiveMutations
             level.RedrawSingleLocation(player.MapY, player.MapX);
             level.RedrawSingleLocation(oy, ox);
             targetEngine.RecenterScreenAroundPlayer();
-            player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
-            player.UpdatesNeeded |= UpdateFlags.PuDistance;
+            player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
+            player.UpdatesNeeded.Set(UpdateFlags.UpdateDistances);
         }
 
         public override string ActivationSummary(int lvl)

@@ -257,8 +257,8 @@ namespace Cthangband
             Profile.Instance.MsgPrint(null);
             Gui.Clear();
             Gui.SetBackground(Terminal.BackgroundImage.Overhead);
-            _player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight;
-            _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             _player.RedrawFlags |= RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy;
             _player.RedrawFlags |= RedrawFlag.PrMap;
         }
@@ -922,7 +922,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("You eat a hearty breakfast.");
             }
             _player.Religion.DecayFavour();
-            _player.UpdatesNeeded |= UpdateFlags.PuHp | UpdateFlags.PuMana;
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana);
             _player.SetFood(Constants.PyFoodMax - 1);
             foreach (Town town in SaveGame.Instance.Towns)
             {
@@ -1061,7 +1061,7 @@ namespace Cthangband
             {
                 Profile.Instance.MsgPrint($"{deityName} is delighted by your sacrifice!");
             }
-            _player.UpdatesNeeded |= UpdateFlags.PuHp | UpdateFlags.PuMana;
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana);
         }
 
         private void SayComment_1()

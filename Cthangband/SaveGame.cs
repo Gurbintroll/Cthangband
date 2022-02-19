@@ -331,12 +331,12 @@ namespace Cthangband
             if (Running != 0)
             {
                 Running = 0;
-                Player.UpdatesNeeded |= UpdateFlags.PuTorch;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
             }
             if (stopSearch && Player.IsSearching)
             {
                 Player.IsSearching = false;
-                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                 Player.RedrawFlags |= RedrawFlag.PrState;
             }
         }
@@ -639,7 +639,7 @@ namespace Cthangband
             {
                 return;
             }
-            if (Player.UpdatesNeeded != 0)
+            if (Player.UpdatesNeeded.IsSet())
             {
                 UpdateStuff();
             }
@@ -819,7 +819,7 @@ namespace Cthangband
                     Level.DeleteObject(y, x);
                     Profile.Instance.MsgPrint("A magical stairway appears...");
                     Level.CaveSetFeat(y, x, CurDungeon.Tower ? "UpStair" : "DownStair");
-                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
+                    Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
                 }
             }
         }
@@ -951,7 +951,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdatesNeeded != 0)
+                if (Player.UpdatesNeeded.IsSet())
                 {
                     UpdateStuff();
                 }
@@ -986,34 +986,34 @@ namespace Cthangband
 
         public void UpdateStuff()
         {
-            if (Player.UpdatesNeeded == 0)
+            if (Player.UpdatesNeeded.IsClear())
             {
                 return;
             }
             PlayerStatus playerStatus = new PlayerStatus(Player, Level);
-            if ((Player.UpdatesNeeded & UpdateFlags.PuBonus) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateBonuses))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuBonus;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateBonuses);
                 playerStatus.CalcBonuses();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuTorch) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateTorchRadius))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuTorch;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateTorchRadius);
                 playerStatus.CalcTorch();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuHp) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateHealth))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuHp;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateHealth);
                 playerStatus.CalcHitpoints();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuMana) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateMana))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuMana;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateMana);
                 playerStatus.CalcMana();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuSpells) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateSpells))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuSpells;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateSpells);
                 playerStatus.CalcSpells();
             }
             if (Player == null)
@@ -1024,40 +1024,40 @@ namespace Cthangband
             {
                 return;
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuUnLight) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateRemoveLight))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuUnLight;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateRemoveLight);
                 Level.ForgetLight();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuUnView) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateRemoveView))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuUnView;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateRemoveView);
                 Level.ForgetView();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuView) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateView))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuView;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateView);
                 Level.UpdateView();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuLight) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateLight))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuLight;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateLight);
                 Level.UpdateLight();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuFlow) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateScent))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuFlow;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateScent);
                 Level.UpdateFlow();
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuDistance) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateDistances))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuDistance;
-                Player.UpdatesNeeded &= ~UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateDistances);
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateMonsters);
                 Level.UpdateMonsters(true);
             }
-            if ((Player.UpdatesNeeded & UpdateFlags.PuMonsters) != 0)
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateMonsters))
             {
-                Player.UpdatesNeeded &= ~UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateMonsters);
                 Level.UpdateMonsters(false);
             }
         }
@@ -1329,15 +1329,15 @@ namespace Cthangband
             CharacterXtra = true;
             Player.RedrawFlags |= RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy;
             Player.RedrawFlags |= RedrawFlag.PrMap;
-            Player.UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp | UpdateFlags.PuMana | UpdateFlags.PuSpells;
-            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
             UpdateStuff();
             RedrawStuff();
-            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuDistance;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateDistances);
             UpdateStuff();
             RedrawStuff();
             CharacterXtra = false;
-            Player.UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp | UpdateFlags.PuMana | UpdateFlags.PuSpells;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             NoticeStuff();
             UpdateStuff();
@@ -1405,7 +1405,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdatesNeeded != 0)
+                if (Player.UpdatesNeeded.IsSet())
                 {
                     UpdateStuff();
                 }
@@ -1426,7 +1426,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdatesNeeded != 0)
+                if (Player.UpdatesNeeded.IsSet())
                 {
                     UpdateStuff();
                 }
@@ -1444,7 +1444,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdatesNeeded != 0)
+                if (Player.UpdatesNeeded.IsSet())
                 {
                     UpdateStuff();
                 }
@@ -1874,7 +1874,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdatesNeeded != 0)
+                if (Player.UpdatesNeeded.IsSet())
                 {
                     UpdateStuff();
                 }
@@ -1900,7 +1900,7 @@ namespace Cthangband
                     {
                         NoticeStuff();
                     }
-                    if (Player.UpdatesNeeded != 0)
+                    if (Player.UpdatesNeeded.IsSet())
                     {
                         UpdateStuff();
                     }
@@ -2069,13 +2069,13 @@ namespace Cthangband
                         }
                     }
                 }
-                Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                 Player.RedrawFlags |= RedrawFlag.PrMap;
             }
             if (Player.GameTime.IsMidnight)
             {
                 Player.Religion.DecayFavour();
-                Player.UpdatesNeeded |= UpdateFlags.PuHp | UpdateFlags.PuMana;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana);
                 foreach (Town town in Towns)
                 {
                     foreach (Store store in town.Stores)
@@ -2428,7 +2428,7 @@ namespace Cthangband
                     }
                 }
             }
-            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
             if (Player.HasExperienceDrain)
             {
                 if (Program.Rng.RandomLessThan(100) < 10 && Player.ExperiencePoints > 0)

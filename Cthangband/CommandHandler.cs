@@ -698,9 +698,9 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("Oops! It feels deathly cold!");
                 oPtr.IdentifyFlags.Set(Constants.IdentSense);
             }
-            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
-            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
-            Player.UpdatesNeeded |= UpdateFlags.PuMana;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateMana);
             Player.RedrawFlags |= RedrawFlag.PrEquippy;
         }
 
@@ -1515,13 +1515,13 @@ namespace Cthangband
                     Level.PanelRow = y2;
                     Level.PanelCol = x2;
                     targetEngine.PanelBounds();
-                    Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+                    Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     Player.RedrawFlags |= RedrawFlag.PrMap;
                     SaveGame.Instance.HandleStuff();
                 }
             }
             targetEngine.RecenterScreenAroundPlayer();
-            Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             Player.RedrawFlags |= RedrawFlag.PrMap;
             SaveGame.Instance.HandleStuff();
         }
@@ -1998,7 +1998,7 @@ namespace Cthangband
             SaveGame.Instance.EnergyUse = 100;
             SaveGame.Instance.Resting = Gui.CommandArg;
             Player.IsSearching = false;
-            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.RedrawFlags |= RedrawFlag.PrState;
             SaveGame.Instance.HandleStuff();
             Gui.Refresh();
@@ -2106,13 +2106,13 @@ namespace Cthangband
             if (Player.IsSearching)
             {
                 Player.IsSearching = false;
-                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                 Player.RedrawFlags |= RedrawFlag.PrState;
             }
             else
             {
                 Player.IsSearching = true;
-                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                 Player.RedrawFlags |= RedrawFlag.PrState | RedrawFlag.PrSpeed;
             }
         }

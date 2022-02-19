@@ -262,7 +262,7 @@ namespace Cthangband.Projection
                             {
                                 Player.AbilityScores[k].Innate = 3;
                             }
-                            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                             break;
                         }
                     case 10:
@@ -276,7 +276,7 @@ namespace Cthangband.Projection
                                     Player.AbilityScores[k].Innate = 3;
                                 }
                             }
-                            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                             break;
                         }
                 }
