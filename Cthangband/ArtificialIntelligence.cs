@@ -2078,8 +2078,8 @@ namespace Cthangband
                     monster.MapY = newY;
                     monster.MapX = newX;
                     _level.Monsters.UpdateMonsterVisibility(monsterIndex, true);
-                    _level.LightSpot(oldY, oldX);
-                    _level.LightSpot(newY, newX);
+                    _level.RedrawSingleLocation(oldY, oldX);
+                    _level.RedrawSingleLocation(newY, newX);
                     // If we are hostile and the player saw us move, then disturb them
                     if (monster.IsVisible && (monster.IndividualMonsterFlags & Constants.MflagView) != 0)
                     {

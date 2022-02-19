@@ -343,7 +343,7 @@ namespace Cthangband
             _level.MCnt--;
             if (visibly)
             {
-                _level.LightSpot(y, x);
+                _level.RedrawSingleLocation(y, x);
             }
         }
 
@@ -966,7 +966,7 @@ namespace Cthangband
                 if (!mPtr.IsVisible)
                 {
                     mPtr.IsVisible = true;
-                    _level.LightSpot(fy, fx);
+                    _level.RedrawSingleLocation(fy, fx);
                     if (SaveGame.Instance.TrackedMonsterIndex == mIdx)
                     {
                         SaveGame.Instance.Player.RedrawFlags |= RedrawFlag.PrHealth;
@@ -1009,7 +1009,7 @@ namespace Cthangband
                 if (mPtr.IsVisible)
                 {
                     mPtr.IsVisible = false;
-                    _level.LightSpot(fy, fx);
+                    _level.RedrawSingleLocation(fy, fx);
                     if (SaveGame.Instance.TrackedMonsterIndex == mIdx)
                     {
                         SaveGame.Instance.Player.RedrawFlags |= RedrawFlag.PrHealth;

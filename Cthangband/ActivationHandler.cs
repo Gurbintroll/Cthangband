@@ -1810,7 +1810,7 @@ namespace Cthangband
                     _level.MoveCursorRelative(y, x);
                     Gui.Refresh();
                     Gui.Pause(msec);
-                    _level.LightSpot(y, x);
+                    _level.RedrawSingleLocation(y, x);
                     Gui.Refresh();
                 }
                 else
@@ -2621,7 +2621,7 @@ namespace Cthangband
                     _level.MoveCursorRelative(y, x);
                     Gui.Refresh();
                     Gui.Pause(msec);
-                    _level.LightSpot(y, x);
+                    _level.RedrawSingleLocation(y, x);
                     Gui.Refresh();
                 }
                 else

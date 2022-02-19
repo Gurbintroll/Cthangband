@@ -59,9 +59,9 @@ namespace Cthangband.Mutations.ActiveMutations
             int ox = player.MapX;
             player.MapY = y;
             player.MapX = x;
-            level.LightSpot(player.MapY, player.MapX);
-            level.LightSpot(oy, ox);
-            targetEngine.VerifyPanel();
+            level.RedrawSingleLocation(player.MapY, player.MapX);
+            level.RedrawSingleLocation(oy, ox);
+            targetEngine.RecenterScreenAroundPlayer();
             player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
             player.UpdateFlags |= Constants.PuDistance;
         }

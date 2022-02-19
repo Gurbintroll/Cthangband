@@ -141,7 +141,7 @@ namespace Cthangband.Projection
                             Gui.Refresh();
                             visual = true;
                             Gui.Pause(msec);
-                            Level.LightSpot(y9, x9);
+                            Level.RedrawSingleLocation(y9, x9);
                             Gui.Refresh();
                         }
                     }
@@ -298,7 +298,7 @@ namespace Cthangband.Projection
                         x = gx[i];
                         if (Level.PlayerHasLosBold(y, x) && Level.PanelContains(y, x))
                         {
-                            Level.LightSpot(y, x);
+                            Level.RedrawSingleLocation(y, x);
                         }
                     }
                     Level.MoveCursorRelative(y2, x2);

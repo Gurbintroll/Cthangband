@@ -1068,61 +1068,6 @@ namespace Cthangband
         }
 
         /// <summary>
-        /// Step onto a grid with an item, possibly picking it up and possibly stomping on it
-        /// </summary>
-        /// <param name="pickup">
-        /// True if we should pick up the object, or false if we should leave it where it is
-        /// </param>
-        public void Carry(bool pickup)
-        {
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
-            int nextItemIndex;
-            for (int thisItemIndex = tile.Item; thisItemIndex != 0; thisItemIndex = nextItemIndex)
-            {
-                Item item = Level.Items[thisItemIndex];
-                string itemName = item.Description(true, 3);
-                nextItemIndex = item.NextInStack;
-                _saveGame.Disturb(false);
-                // We always pick up gold
-                if (item.Category == ItemCategory.Gold)
-                {
-                    Profile.Instance.MsgPrint($"You collect {item.TypeSpecificValue} gold pieces worth of {itemName}.");
-                    Player.Gold += item.TypeSpecificValue;
-                    Player.RedrawFlags |= RedrawFlag.PrGold;
-                    _saveGame.Level.DeleteObjectIdx(thisItemIndex);
-                }
-                else
-                {
-                    // If we're not interested, simply say that we see it
-                    if (!pickup)
-                    {
-                        Profile.Instance.MsgPrint($"You see {itemName}.");
-                    }
-                    // If it's worthless, stomp on it
-                    else if (item.Stompable())
-                    {
-                        _saveGame.Level.DeleteObjectIdx(thisItemIndex);
-                        Profile.Instance.MsgPrint($"You stomp on {itemName}.");
-                    }
-                    // If we can't carry the item, let us know
-                    else if (!Player.Inventory.InvenCarryOkay(item))
-                    {
-                        Profile.Instance.MsgPrint($"You have no room for {itemName}.");
-                    }
-                    else
-                    {
-                        // Actually pick up the item
-                        int slot = Player.Inventory.InvenCarry(item, false);
-                        item = Player.Inventory[slot];
-                        itemName = item.Description(true, 3);
-                        Profile.Instance.MsgPrint($"You have {itemName} ({slot.IndexToLabel()}).");
-                        _saveGame.Level.DeleteObjectIdx(thisItemIndex);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Close a door
         /// </summary>
         /// <param name="y"> The y map coordinate of the door </param>
@@ -1285,6 +1230,47 @@ namespace Cthangband
                 mapCoordinate.X = xx;
             }
             return count;
+        }
+
+        /// <summary>
+        /// Create phlogiston to refill a lantern or torch with
+        /// </summary>
+        public void CreatePhlogiston()
+        {
+            int maxPhlogiston;
+            Item item = Player.Inventory[InventorySlot.Lightsource];
+            // Maximum phlogiston is the capacity of the light source
+            if (item.Category == ItemCategory.Light && item.ItemSubCategory == LightType.Lantern)
+            {
+                maxPhlogiston = Constants.FuelLamp;
+            }
+            else if (item.Category == ItemCategory.Light && item.ItemSubCategory == LightType.Torch)
+            {
+                maxPhlogiston = Constants.FuelTorch;
+            }
+            // Probably using an orb or a star essence (or maybe not holding a light source at all)
+            else
+            {
+                Profile.Instance.MsgPrint("You are not wielding anything which uses phlogiston.");
+                return;
+            }
+            // Item is already full
+            if (item.TypeSpecificValue >= maxPhlogiston)
+            {
+                Profile.Instance.MsgPrint("No more phlogiston can be put in this item.");
+                return;
+            }
+            // Add half the max fuel of the item to its current fuel
+            item.TypeSpecificValue += maxPhlogiston / 2;
+            Profile.Instance.MsgPrint("You add phlogiston to your light item.");
+            // Make sure it doesn't overflow
+            if (item.TypeSpecificValue >= maxPhlogiston)
+            {
+                item.TypeSpecificValue = maxPhlogiston;
+                Profile.Instance.MsgPrint("Your light item is full.");
+            }
+            // We need to update our light after this
+            Player.UpdateFlags |= Constants.PuTorch;
         }
 
         /// <summary>
@@ -1765,123 +1751,134 @@ namespace Cthangband
             return Player.Inventory.WieldSlot(item) >= InventorySlot.MeleeWeapon;
         }
 
-        public void MovePlayer(int dir, bool doPickup)
+        /// <summary>
+        /// Attempt to move the player in the given direction
+        /// </summary>
+        /// <param name="direction"> The direction in which to move </param>
+        /// <param name="doPickup"> Whether or not to pick up any objects we step on </param>
+        public void MovePlayer(int direction, bool doPickup)
         {
-            bool pCanPassWalls = false;
-            bool stormbringer = false;
-            int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-            int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-            GridTile cPtr = Level.Grid[y][x];
-            Monster mPtr = Level.Monsters[cPtr.Monster];
-            if (!string.IsNullOrEmpty(Player.Inventory[InventorySlot.MeleeWeapon].RandartName) && Player.Inventory[InventorySlot.MeleeWeapon].RandartName == "'Stormbringer'")
-            {
-                stormbringer = true;
-            }
+            bool canPassWalls = false;
+            int newY = Player.MapY + Level.KeypadDirectionYOffset[direction];
+            int newX = Player.MapX + Level.KeypadDirectionXOffset[direction];
+            GridTile tile = Level.Grid[newY][newX];
+            Monster monster = Level.Monsters[tile.Monster];
+            // Check if we can pass through walls
             if (Player.TimedEtherealness != 0 || Player.RaceIndex == RaceId.Spectre)
             {
-                pCanPassWalls = true;
-                if (Level.Grid[y][x].FeatureType.IsPermanent)
+                canPassWalls = true;
+                // Permanent features can't be passed through even if we could otherwise
+                if (Level.Grid[newY][newX].FeatureType.IsPermanent)
                 {
-                    pCanPassWalls = false;
+                    canPassWalls = false;
                 }
             }
-            if (cPtr.Monster != 0 && (mPtr.IsVisible || Level.GridPassable(y, x) || pCanPassWalls))
+            // If there's a monster we can see or an invisible monster on a tile we can move to,
+            // deal with it
+            if (tile.Monster != 0 && (monster.IsVisible || Level.GridPassable(newY, newX) || canPassWalls))
             {
-                if ((mPtr.Mind & Constants.SmFriendly) != 0 &&
-                    !(Player.TimedConfusion != 0 || Player.TimedHallucinations != 0 || !mPtr.IsVisible || Player.TimedStun != 0) &&
-                    (Level.GridPassable(y, x) || pCanPassWalls))
+                // Check if it's a friend, and if we are in a fit state to distinguish friend from foe
+                if ((monster.Mind & Constants.SmFriendly) != 0 &&
+                    !(Player.TimedConfusion != 0 || Player.TimedHallucinations != 0 || !monster.IsVisible || Player.TimedStun != 0) &&
+                    (Level.GridPassable(newY, newX) || canPassWalls))
                 {
-                    mPtr.SleepLevel = 0;
-                    string mName = mPtr.MonsterDesc(0);
-                    if (mPtr.IsVisible)
+                    // Wake up the monster, and track it
+                    monster.SleepLevel = 0;
+                    string monsterName = monster.MonsterDesc(0);
+                    // If we can see it, no need to mention it
+                    if (monster.IsVisible)
                     {
-                        _saveGame.HealthTrack(cPtr.Monster);
+                        _saveGame.HealthTrack(tile.Monster);
                     }
-                    if (stormbringer && Program.Rng.DieRoll(1000) > 666)
-                    {
-                        PyAttack(y, x);
-                    }
+                    // If we can't see it then let us push past it and tell us what happened
                     else if (Level.GridPassable(Player.MapY, Player.MapX) ||
-                             (mPtr.Race.Flags2 & MonsterFlag2.PassWall) != 0)
+                             (monster.Race.Flags2 & MonsterFlag2.PassWall) != 0)
                     {
-                        Profile.Instance.MsgPrint($"You push past {mName}.");
-                        mPtr.MapY = Player.MapY;
-                        mPtr.MapX = Player.MapX;
-                        Level.Grid[Player.MapY][Player.MapX].Monster = cPtr.Monster;
-                        cPtr.Monster = 0;
+                        Profile.Instance.MsgPrint($"You push past {monsterName}.");
+                        monster.MapY = Player.MapY;
+                        monster.MapX = Player.MapX;
+                        Level.Grid[Player.MapY][Player.MapX].Monster = tile.Monster;
+                        tile.Monster = 0;
                         Level.Monsters.UpdateMonsterVisibility(Level.Grid[Player.MapY][Player.MapX].Monster, true);
                     }
+                    // If we couldn't push past it, tell us it was in the way
                     else
                     {
-                        Profile.Instance.MsgPrint($"{mName} is in your way!");
+                        Profile.Instance.MsgPrint($"{monsterName} is in your way!");
                         _saveGame.EnergyUse = 0;
                         return;
                     }
                 }
+                // If the monster wasn't friendly, attack it
                 else
                 {
-                    PyAttack(y, x);
+                    PyAttack(newY, newX);
                     return;
                 }
             }
-            if (!doPickup && cPtr.FeatureType.IsTrap)
+            // We didn't attack a monster or get blocked by one, so start testing terrain features
+            if (!doPickup && tile.FeatureType.IsTrap)
             {
-                DisarmTrap(y, x, dir);
+                // If we're walking onto a known trap, assume we're trying to disarm it
+                DisarmTrap(newY, newX, direction);
                 return;
             }
-            if (!Level.GridPassable(y, x) && !pCanPassWalls)
+            // If the tile we're moving onto isn't passable then we can't move onto it
+            if (!Level.GridPassable(newY, newX) && !canPassWalls)
             {
                 _saveGame.Disturb(false);
-                if (cPtr.TileFlags.IsClear(GridTile.PlayerMemorised) &&
-                    (Player.TimedBlindness != 0 || cPtr.TileFlags.IsClear(GridTile.PlayerLit)))
+                // If we can't see it and haven't memories it, tell us what we bumped into
+                if (tile.TileFlags.IsClear(GridTile.PlayerMemorised) &&
+                    (Player.TimedBlindness != 0 || tile.TileFlags.IsClear(GridTile.PlayerLit)))
                 {
-                    if (cPtr.FeatureType.Name == "Rubble")
+                    if (tile.FeatureType.Name == "Rubble")
                     {
                         Profile.Instance.MsgPrint("You feel some rubble blocking your way.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
-                    else if (cPtr.FeatureType.Category == FloorTileTypeCategory.Tree)
+                    else if (tile.FeatureType.Category == FloorTileTypeCategory.Tree)
                     {
-                        Profile.Instance.MsgPrint($"You feel a {cPtr.FeatureType.Description} blocking your way.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        Profile.Instance.MsgPrint($"You feel a {tile.FeatureType.Description} blocking your way.");
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
-                    else if (cPtr.FeatureType.Name == "Pillar")
+                    else if (tile.FeatureType.Name == "Pillar")
                     {
                         Profile.Instance.MsgPrint("You feel a pillar blocking your way.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
-                    else if (cPtr.FeatureType.Name.Contains("Water"))
+                    else if (tile.FeatureType.Name.Contains("Water"))
                     {
                         Profile.Instance.MsgPrint("Your way seems to be blocked by water.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
-                    else if (cPtr.FeatureType.Name.Contains("Border"))
+                    // If we're moving onto a border, change wilderness location
+                    else if (tile.FeatureType.Name.Contains("Border"))
                     {
                         if (_saveGame.Wilderness[Player.WildernessY][Player.WildernessX].Town != null)
                         {
                             _saveGame.CurTown = _saveGame.Wilderness[Player.WildernessY][Player.WildernessX].Town;
                             Profile.Instance.MsgPrint($"You stumble out of {_saveGame.CurTown.Name}.");
                         }
-                        if (y == 0)
+                        if (newY == 0)
                         {
                             Player.MapY = Level.CurHgt - 2;
                             Player.WildernessY--;
                         }
-                        if (y == Level.CurHgt - 1)
+                        if (newY == Level.CurHgt - 1)
                         {
                             Player.MapY = 1;
                             Player.WildernessY++;
                         }
-                        if (x == 0)
+                        if (newX == 0)
                         {
                             Player.MapX = Level.CurWid - 2;
                             Player.WildernessX--;
                         }
-                        if (x == Level.CurWid - 1)
+                        if (newX == Level.CurWid - 1)
                         {
                             Player.MapX = 1;
                             Player.WildernessX++;
@@ -1890,29 +1887,32 @@ namespace Cthangband
                         {
                             _saveGame.CurTown = _saveGame.Wilderness[Player.WildernessY][Player.WildernessX].Town;
                             Profile.Instance.MsgPrint($"You stumble into {_saveGame.CurTown.Name}.");
+                            _saveGame.CurTown.Visited = true;
                         }
+                        // We'll need a new level
                         _saveGame.NewLevelFlag = true;
                         _saveGame.CameFrom = LevelStart.StartWalk;
                         _saveGame.IsAutosave = true;
                         _saveGame.DoCmdSaveGame();
                         _saveGame.IsAutosave = false;
                     }
-                    else if (cPtr.FeatureType.IsClosedDoor)
+                    else if (tile.FeatureType.IsClosedDoor)
                     {
                         Profile.Instance.MsgPrint("You feel a closed door blocking your way.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
                     else
                     {
-                        Profile.Instance.MsgPrint($"You feel a {cPtr.FeatureType.Description} blocking your way.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        Profile.Instance.MsgPrint($"You feel a {tile.FeatureType.Description} blocking your way.");
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
                 }
+                // We can see it, so give a different message
                 else
                 {
-                    if (cPtr.FeatureType.Name == "Rubble")
+                    if (tile.FeatureType.Name == "Rubble")
                     {
                         Profile.Instance.MsgPrint("There is rubble blocking your way.");
                         if (!(Player.TimedConfusion != 0 || Player.TimedStun != 0 || Player.TimedHallucinations != 0))
@@ -1920,25 +1920,26 @@ namespace Cthangband
                             _saveGame.EnergyUse = 0;
                         }
                     }
-                    else if (cPtr.FeatureType.Category == FloorTileTypeCategory.Tree)
+                    else if (tile.FeatureType.Category == FloorTileTypeCategory.Tree)
                     {
-                        Profile.Instance.MsgPrint($"There is a {cPtr.FeatureType.Description} blocking your way.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        Profile.Instance.MsgPrint($"There is a {tile.FeatureType.Description} blocking your way.");
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
-                    else if (cPtr.FeatureType.Name == "Pillar")
+                    else if (tile.FeatureType.Name == "Pillar")
                     {
                         Profile.Instance.MsgPrint("There is a pillar blocking your way.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
-                    else if (cPtr.FeatureType.Name.Contains("Water"))
+                    else if (tile.FeatureType.Name.Contains("Water"))
                     {
                         Profile.Instance.MsgPrint("You cannot swim.");
-                        cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        tile.TileFlags.Set(GridTile.PlayerMemorised);
+                        Level.RedrawSingleLocation(newY, newX);
                     }
-                    else if (cPtr.FeatureType.Name.Contains("Border"))
+                    // Again, walking onto a border means a change of wilderness grid
+                    else if (tile.FeatureType.Name.Contains("Border"))
                     {
                         if (_saveGame.Wilderness[Player.WildernessY][Player.WildernessX].Town != null)
                         {
@@ -1946,22 +1947,22 @@ namespace Cthangband
                             Profile.Instance.MsgPrint($"You leave {_saveGame.CurTown.Name}.");
                             _saveGame.CurTown.Visited = true;
                         }
-                        if (y == 0)
+                        if (newY == 0)
                         {
                             Player.MapY = Level.CurHgt - 2;
                             Player.WildernessY--;
                         }
-                        if (y == Level.CurHgt - 1)
+                        if (newY == Level.CurHgt - 1)
                         {
                             Player.MapY = 1;
                             Player.WildernessY++;
                         }
-                        if (x == 0)
+                        if (newX == 0)
                         {
                             Player.MapX = Level.CurWid - 2;
                             Player.WildernessX--;
                         }
-                        if (x == Level.CurWid - 1)
+                        if (newX == Level.CurWid - 1)
                         {
                             Player.MapX = 1;
                             Player.WildernessX++;
@@ -1972,22 +1973,24 @@ namespace Cthangband
                             Profile.Instance.MsgPrint($"You enter {_saveGame.CurTown.Name}.");
                             _saveGame.CurTown.Visited = true;
                         }
+                        // We need a new map
                         _saveGame.NewLevelFlag = true;
                         _saveGame.CameFrom = LevelStart.StartWalk;
                         _saveGame.IsAutosave = true;
                         _saveGame.DoCmdSaveGame();
                         _saveGame.IsAutosave = false;
                     }
-                    else if (cPtr.FeatureType.IsClosedDoor)
+                    // If we can see that we're walking into a closed door, try to open it
+                    else if (tile.FeatureType.IsClosedDoor)
                     {
-                        if (EasyOpenDoor(y, x))
+                        if (EasyOpenDoor(newY, newX))
                         {
                             return;
                         }
                     }
                     else
                     {
-                        Profile.Instance.MsgPrint($"There is a {cPtr.FeatureType.Description} blocking your way.");
+                        Profile.Instance.MsgPrint($"There is a {tile.FeatureType.Description} blocking your way.");
                         if (!(Player.TimedConfusion != 0 || Player.TimedStun != 0 || Player.TimedHallucinations != 0))
                         {
                             _saveGame.EnergyUse = 0;
@@ -1997,13 +2000,17 @@ namespace Cthangband
                 Gui.PlaySound(SoundEffect.BumpWall);
                 return;
             }
-            bool oldDtrap = Level.Grid[Player.MapY][Player.MapX].TileFlags.IsSet(GridTile.TrapsDetected);
-            bool newDtrap = Level.Grid[y][x].TileFlags.IsSet(GridTile.TrapsDetected);
-            if (oldDtrap != newDtrap)
+            // Assuming we didn't bump into anything, maybe we can actually move
+            bool oldTrapsDetected = Level.Grid[Player.MapY][Player.MapX].TileFlags.IsSet(GridTile.TrapsDetected);
+            bool newTrapsDetected = Level.Grid[newY][newX].TileFlags.IsSet(GridTile.TrapsDetected);
+            // If we're moving into or out of an area where we've detected traps, remember to redraw
+            // the notification
+            if (oldTrapsDetected != newTrapsDetected)
             {
                 Player.RedrawFlags |= RedrawFlag.PrDtrap;
             }
-            if (_saveGame.Running != 0 && oldDtrap && !newDtrap)
+            // If we're leaving an area where we've detected traps at a run, then stop running
+            if (_saveGame.Running != 0 && oldTrapsDetected && !newTrapsDetected)
             {
                 if (!(Player.TimedConfusion != 0 || Player.TimedStun != 0 || Player.TimedHallucinations != 0))
                 {
@@ -2012,75 +2019,97 @@ namespace Cthangband
                 _saveGame.Disturb(false);
                 return;
             }
+            // We've run out of things that could prevent us moving, so do the move
+            int oldY = Player.MapY;
+            int oldX = Player.MapX;
+            Player.MapY = newY;
+            Player.MapX = newX;
+            // Redraw our old and new locations
+            Level.RedrawSingleLocation(Player.MapY, Player.MapX);
+            Level.RedrawSingleLocation(oldY, oldX);
+            // Recenter the screen if we have to
+            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            targetEngine.RecenterScreenAroundPlayer();
+            // We'll need to update and redraw various things
+            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
+            Player.UpdateFlags |= Constants.PuDistance;
+            Player.RedrawFlags |= RedrawFlag.PrMap;
+            // If we're not actively searching, then have a chance of doing it passively
+            if (Player.SkillSearchFrequency >= 50 || 0 == Program.Rng.RandomLessThan(50 - Player.SkillSearchFrequency))
             {
-                int oy = Player.MapY;
-                int ox = Player.MapX;
-                Player.MapY = y;
-                Player.MapX = x;
-                Level.LightSpot(Player.MapY, Player.MapX);
-                Level.LightSpot(oy, ox);
-                TargetEngine targetEngine = new TargetEngine(Player, Level);
-                targetEngine.VerifyPanel();
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-                Player.UpdateFlags |= Constants.PuDistance;
-                Player.RedrawFlags |= RedrawFlag.PrMap;
-                if (Player.SkillSearchFrequency >= 50 || 0 == Program.Rng.RandomLessThan(50 - Player.SkillSearchFrequency))
-                {
-                    Search();
-                }
-                if (Player.IsSearching)
-                {
-                    Search();
-                }
-                Carry(!doPickup);
-                if (cPtr.FeatureType.IsShop)
-                {
-                    _saveGame.Disturb(false);
-                    Gui.CommandNew = '_';
-                }
-                else if (cPtr.FeatureType.Name == "Invis")
-                {
-                    _saveGame.Disturb(false);
-                    Profile.Instance.MsgPrint("You found a trap!");
-                    _saveGame.Level.PickTrap(Player.MapY, Player.MapX);
-                    HitTrap();
-                }
-                else if (cPtr.FeatureType.IsTrap)
-                {
-                    _saveGame.Disturb(false);
-                    HitTrap();
-                }
+                Search();
+            }
+            // If we're actively searching then always do it
+            if (Player.IsSearching)
+            {
+                Search();
+            }
+            // Pick up an object on our tile if there is one
+            PickUpItems(!doPickup);
+            // If we've just entered a shop tile, then enter the actual shop
+            if (tile.FeatureType.IsShop)
+            {
+                _saveGame.Disturb(false);
+                Gui.CommandNew = '_';
+            }
+            // If we've just stepped on an unknown trap then activate it
+            else if (tile.FeatureType.Name == "Invis")
+            {
+                _saveGame.Disturb(false);
+                Profile.Instance.MsgPrint("You found a trap!");
+                _saveGame.Level.PickTrap(Player.MapY, Player.MapX);
+                StepOnTrap();
+            }
+            // If it's a trap we couldn't (or didn't) disarm, then activate it
+            else if (tile.FeatureType.IsTrap)
+            {
+                _saveGame.Disturb(false);
+                StepOnTrap();
             }
         }
 
-        public bool OpenChest(int y, int x, int oIdx)
+        /// <summary>
+        /// Open a chest at a given location
+        /// </summary>
+        /// <param name="y"> The y coordinate of the location </param>
+        /// <param name="x"> The x coordinate of the location </param>
+        /// <param name="itemIndex"> The index of the chest item </param>
+        /// <returns> Whether or not the player should be disturbed by the action </returns>
+        public bool OpenChest(int y, int x, int itemIndex)
         {
-            bool flag = true;
+            bool openedSuccessfully = true;
             bool more = false;
-            Item oPtr = Level.Items[oIdx];
+            Item item = Level.Items[itemIndex];
+            // Opening a chest takes an action
             _saveGame.EnergyUse = 100;
-            if (oPtr.TypeSpecificValue > 0)
+            // If the chest is locked, we may need to pick it
+            if (item.TypeSpecificValue > 0)
             {
-                flag = false;
+                openedSuccessfully = false;
+                // Our disable traps skill also doubles up as a lockpicking skill
                 int i = Player.SkillDisarmTraps;
+                // Hard to pick locks in the dark
                 if (Player.TimedBlindness != 0 || Level.NoLight())
                 {
                     i /= 10;
                 }
+                // Hard to pick locks when you're confused or hallucinating
                 if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
                 {
                     i /= 10;
                 }
-                int j = i - oPtr.TypeSpecificValue;
+                // Some locks are harder to pick than others
+                int j = i - item.TypeSpecificValue;
                 if (j < 2)
                 {
                     j = 2;
                 }
+                // See if we succeeded
                 if (Program.Rng.RandomLessThan(100) < j)
                 {
                     Profile.Instance.MsgPrint("You have picked the lock.");
                     Player.GainExperience(1);
-                    flag = true;
+                    openedSuccessfully = true;
                 }
                 else
                 {
@@ -2088,46 +2117,62 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("You failed to pick the lock.");
                 }
             }
-            if (flag)
+            // If we successfully opened it, set of any traps and then actually open the chest
+            if (openedSuccessfully)
             {
-                _saveGame.ChestTrap(y, x, oIdx);
-                _saveGame.ChestDeath(y, x, oIdx);
+                _saveGame.ChestTrap(y, x, itemIndex);
+                _saveGame.OpenChest(y, x, itemIndex);
             }
             return more;
         }
 
+        /// <summary>
+        /// Open a door at a given location
+        /// </summary>
+        /// <param name="y"> The y coordinate of the location </param>
+        /// <param name="x"> The x coordinate of the location </param>
+        /// <returns> True if opening the door should disturb the player </returns>
         public bool OpenDoor(int y, int x)
         {
             bool more = false;
+            // Opening a door takes an action
             _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
-            if (cPtr.FeatureType.Name.Contains("Jammed"))
+            GridTile tile = Level.Grid[y][x];
+            // Some doors are simply jammed
+            if (tile.FeatureType.Name.Contains("Jammed"))
             {
                 Profile.Instance.MsgPrint("The door appears to be stuck.");
             }
-            else if (cPtr.FeatureType.Name != "LockedDoor0")
+            // Some doors are locked
+            else if (tile.FeatureType.Name != "LockedDoor0")
             {
+                // Our disarm traps skill doubles up as a lockpicking skill
                 int i = Player.SkillDisarmTraps;
+                // Hard to pick locks when you can't see
                 if (Player.TimedBlindness != 0 || Level.NoLight())
                 {
                     i /= 10;
                 }
+                // Hard to pick locks when you're confused or hallucinating
                 if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
                 {
                     i /= 10;
                 }
-                int j = int.Parse(cPtr.FeatureType.Name.Substring(10));
+                // Work out the difficulty from the feature name
+                int j = int.Parse(tile.FeatureType.Name.Substring(10));
                 j = i - (j * 4);
                 if (j < 2)
                 {
                     j = 2;
                 }
+                // Check if we succeeded in opening it
                 if (Program.Rng.RandomLessThan(100) < j)
                 {
                     Profile.Instance.MsgPrint("You have picked the lock.");
                     Level.CaveSetFeat(y, x, "OpenDoor");
                     Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
                     Gui.PlaySound(SoundEffect.LockpickSuccess);
+                    // Picking a lock gains you an experience point
                     Player.GainExperience(1);
                 }
                 else
@@ -2136,6 +2181,7 @@ namespace Cthangband
                     more = true;
                 }
             }
+            // If the door wasn't locked, simply open it
             else
             {
                 Level.CaveSetFeat(y, x, "OpenDoor");
@@ -2145,118 +2191,157 @@ namespace Cthangband
             return more;
         }
 
-        public void Phlogiston()
+        /// <summary>
+        /// Step onto a grid with an item, possibly picking it up and possibly stomping on it
+        /// </summary>
+        /// <param name="pickup">
+        /// True if we should pick up the object, or false if we should leave it where it is
+        /// </param>
+        public void PickUpItems(bool pickup)
         {
-            int maxFlog;
-            Item oPtr = Player.Inventory[InventorySlot.Lightsource];
-            if (oPtr.Category == ItemCategory.Light && oPtr.ItemSubCategory == LightType.Lantern)
+            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            int nextItemIndex;
+            for (int thisItemIndex = tile.Item; thisItemIndex != 0; thisItemIndex = nextItemIndex)
             {
-                maxFlog = Constants.FuelLamp;
+                Item item = Level.Items[thisItemIndex];
+                string itemName = item.Description(true, 3);
+                nextItemIndex = item.NextInStack;
+                _saveGame.Disturb(false);
+                // We always pick up gold
+                if (item.Category == ItemCategory.Gold)
+                {
+                    Profile.Instance.MsgPrint($"You collect {item.TypeSpecificValue} gold pieces worth of {itemName}.");
+                    Player.Gold += item.TypeSpecificValue;
+                    Player.RedrawFlags |= RedrawFlag.PrGold;
+                    _saveGame.Level.DeleteObjectIdx(thisItemIndex);
+                }
+                else
+                {
+                    // If we're not interested, simply say that we see it
+                    if (!pickup)
+                    {
+                        Profile.Instance.MsgPrint($"You see {itemName}.");
+                    }
+                    // If it's worthless, stomp on it
+                    else if (item.Stompable())
+                    {
+                        _saveGame.Level.DeleteObjectIdx(thisItemIndex);
+                        Profile.Instance.MsgPrint($"You stomp on {itemName}.");
+                    }
+                    // If we can't carry the item, let us know
+                    else if (!Player.Inventory.InvenCarryOkay(item))
+                    {
+                        Profile.Instance.MsgPrint($"You have no room for {itemName}.");
+                    }
+                    else
+                    {
+                        // Actually pick up the item
+                        int slot = Player.Inventory.InvenCarry(item, false);
+                        item = Player.Inventory[slot];
+                        itemName = item.Description(true, 3);
+                        Profile.Instance.MsgPrint($"You have {itemName} ({slot.IndexToLabel()}).");
+                        _saveGame.Level.DeleteObjectIdx(thisItemIndex);
+                    }
+                }
             }
-            else if (oPtr.Category == ItemCategory.Light && oPtr.ItemSubCategory == LightType.Torch)
-            {
-                maxFlog = Constants.FuelTorch;
-            }
-            else
-            {
-                Profile.Instance.MsgPrint("You are not wielding anything which uses phlogiston.");
-                return;
-            }
-            if (oPtr.TypeSpecificValue >= maxFlog)
-            {
-                Profile.Instance.MsgPrint("No more phlogiston can be put in this item.");
-                return;
-            }
-            oPtr.TypeSpecificValue += maxFlog / 2;
-            Profile.Instance.MsgPrint("You add phlogiston to your light item.");
-            if (oPtr.TypeSpecificValue >= maxFlog)
-            {
-                oPtr.TypeSpecificValue = maxFlog;
-                Profile.Instance.MsgPrint("Your light item is full.");
-            }
-            Player.UpdateFlags |= Constants.PuTorch;
         }
 
-        public bool PotionEffect(int sval)
+        /// <summary>
+        /// Have a potion affect the player
+        /// </summary>
+        /// <param name="itemSubCategory"> The sub-category of potion we're drinking </param>
+        /// <returns> True if drinking the potion identified it </returns>
+        public bool PotionEffect(int itemSubCategory)
         {
-            bool ident = false;
-            switch (sval)
+            bool identified = false;
+            switch (itemSubCategory)
             {
+                // Water or apple juice has no effect
                 case PotionType.Water:
                 case PotionType.AppleJuice:
                     {
                         Profile.Instance.MsgPrint("You feel less thirsty.");
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Slime mold juice has a random effect (calling this function again recusively)
                 case PotionType.SlimeMold:
                     {
                         Profile.Instance.MsgPrint("That tastes awful.");
                         PotionEffect(RandomPotion());
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Slowness slows you down
                 case PotionType.Slowness:
                     {
                         if (Player.SetTimedSlow(Player.TimedSlow + Program.Rng.DieRoll(25) + 15))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Salt water makes you vomit, but gets rid of poison
                 case PotionType.SaltWater:
                     {
                         Profile.Instance.MsgPrint("The saltiness makes you vomit!");
                         Player.SetFood(Constants.PyFoodStarve - 1);
                         Player.SetTimedPoison(0);
                         Player.SetTimedParalysis(Player.TimedParalysis + 4);
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Poison simply poisons you
                 case PotionType.Poison:
                     {
                         if (!(Player.HasPoisonResistance || Player.TimedPoisonResistance != 0))
                         {
+                            // Hagarg Ryonis can protect you against poison
                             if (Program.Rng.DieRoll(10) <= Player.Religion.GetNamedDeity(Pantheon.GodName.Hagarg_Ryonis).AdjustedFavour)
                             {
                                 Profile.Instance.MsgPrint("Hagarg Ryonis's favour protects you!");
                             }
                             else if (Player.SetTimedPoison(Player.TimedPoison + Program.Rng.RandomLessThan(15) + 10))
                             {
-                                ident = true;
+                                identified = true;
                             }
                         }
                         break;
                     }
+                // Blindness makes you blind
                 case PotionType.Blindness:
                     {
                         if (!Player.HasBlindnessResistance)
                         {
                             if (Player.SetTimedBlindness(Player.TimedBlindness + Program.Rng.RandomLessThan(100) + 100))
                             {
-                                ident = true;
+                                identified = true;
                             }
                         }
                         break;
                     }
+                // Confusion makes you confused and possibly other effects
                 case PotionType.Confusion:
                     {
                         if (!(Player.HasConfusionResistance || Player.HasChaosResistance))
                         {
                             if (Player.SetTimedConfusion(Player.TimedConfusion + Program.Rng.RandomLessThan(20) + 15))
                             {
-                                ident = true;
+                                identified = true;
                             }
+                            // 50% chance of having hallucinations
                             if (Program.Rng.DieRoll(2) == 1)
                             {
                                 if (Player.SetTimedHallucinations(Player.TimedHallucinations + Program.Rng.RandomLessThan(150) + 150))
                                 {
-                                    ident = true;
+                                    identified = true;
                                 }
                             }
+                            // 1 in 13 chance of blacking out and waking up somewhere else
                             if (Program.Rng.DieRoll(13) == 1)
                             {
-                                ident = true;
+                                identified = true;
+                                // 1 in 3 chance of losing your memories after blacking out
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
                                     _saveGame.SpellEffects.LoseAllInfo();
@@ -2273,151 +2358,169 @@ namespace Cthangband
                         }
                         break;
                     }
+                // Sleep paralyses you
                 case PotionType.Sleep:
                     {
                         if (!Player.HasFreeAction)
                         {
                             if (Player.SetTimedParalysis(Player.TimedParalysis + Program.Rng.RandomLessThan(4) + 4))
                             {
-                                ident = true;
+                                identified = true;
                             }
                         }
                         break;
                     }
+                // Lose Memories reduces your experience
                 case PotionType.LoseMemories:
                     {
                         if (!Player.HasHoldLife && Player.ExperiencePoints > 0)
                         {
                             Profile.Instance.MsgPrint("You feel your memories fade.");
                             Player.LoseExperience(Player.ExperiencePoints / 4);
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Ruination does 10d10 damage and reduces all your ability scores, bypassing
+                // sustains and divine protection
                 case PotionType.Ruination:
                     {
                         Profile.Instance.MsgPrint("Your nerves and muscles feel weak and lifeless!");
                         Player.TakeHit(Program.Rng.DiceRoll(10, 10), "a potion of Ruination");
-                        Player.DecreaeAbilityScore(Ability.Dexterity, 25, true);
-                        Player.DecreaeAbilityScore(Ability.Wisdom, 25, true);
-                        Player.DecreaeAbilityScore(Ability.Constitution, 25, true);
-                        Player.DecreaeAbilityScore(Ability.Strength, 25, true);
-                        Player.DecreaeAbilityScore(Ability.Charisma, 25, true);
-                        Player.DecreaeAbilityScore(Ability.Intelligence, 25, true);
-                        ident = true;
+                        Player.DecreaseAbilityScore(Ability.Dexterity, 25, true);
+                        Player.DecreaseAbilityScore(Ability.Wisdom, 25, true);
+                        Player.DecreaseAbilityScore(Ability.Constitution, 25, true);
+                        Player.DecreaseAbilityScore(Ability.Strength, 25, true);
+                        Player.DecreaseAbilityScore(Ability.Charisma, 25, true);
+                        Player.DecreaseAbilityScore(Ability.Intelligence, 25, true);
+                        identified = true;
                         break;
                     }
+                // Weakness tries to reduce your strength
                 case PotionType.DecStr:
                     {
                         if (Player.TryDecreasingAbilityScore(Ability.Strength))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Stupidity tries to reduce your intelligence
                 case PotionType.DecInt:
                     {
                         if (Player.TryDecreasingAbilityScore(Ability.Intelligence))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Naivety tries to reduce your wisdom
                 case PotionType.DecWis:
                     {
                         if (Player.TryDecreasingAbilityScore(Ability.Wisdom))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Clumsiness tries to reduce your dexterity
                 case PotionType.DecDex:
                     {
                         if (Player.TryDecreasingAbilityScore(Ability.Dexterity))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Sickliness tries to reduce your constitution
                 case PotionType.DecCon:
                     {
                         if (Player.TryDecreasingAbilityScore(Ability.Constitution))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Ugliness tries to reduce your charisma
                 case PotionType.DecCha:
                     {
                         if (Player.TryDecreasingAbilityScore(Ability.Charisma))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Detonations does 50d20 damage, stuns you, and gives you a stupid amount of bleeding
                 case PotionType.Detonations:
                     {
                         Profile.Instance.MsgPrint("Massive explosions rupture your body!");
                         Player.TakeHit(Program.Rng.DiceRoll(50, 20), "a potion of Detonation");
                         Player.SetTimedStun(Player.TimedStun + 75);
                         Player.SetTimedBleeding(Player.TimedBleeding + 5000);
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Iocaine simply does 5000 damage
                 case PotionType.Death:
                     {
                         Profile.Instance.MsgPrint("A feeling of Death flows through your body.");
                         Player.TakeHit(5000, "a potion of Death");
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Infravision gives you timed infravision
                 case PotionType.Infravision:
                     {
                         if (Player.SetTimedInfravision(Player.TimedInfravision + 100 + Program.Rng.DieRoll(100)))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Detect invisible gives you times see invisibility
                 case PotionType.DetectInvis:
                     {
                         if (Player.SetTimedSeeInvisibility(Player.TimedSeeInvisibility + 12 + Program.Rng.DieRoll(12)))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Slow poison halves the remaining duration of any poison you have
                 case PotionType.SlowPoison:
                     {
                         if (Player.SetTimedPoison(Player.TimedPoison / 2))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Cure poison removes any poison you have
                 case PotionType.CurePoison:
                     {
                         if (Player.SetTimedPoison(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Boldness stops you being afraid
                 case PotionType.Boldness:
                     {
                         if (Player.SetTimedFear(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Speed temporarily hastes you
                 case PotionType.Speed:
                     {
                         if (Player.TimedHaste == 0)
                         {
                             if (Player.SetTimedHaste(Program.Rng.DieRoll(25) + 15))
                             {
-                                ident = true;
+                                identified = true;
                             }
                         }
                         else
@@ -2426,170 +2529,184 @@ namespace Cthangband
                         }
                         break;
                     }
+                // Resist heat gives you timed fire resistance
                 case PotionType.ResistHeat:
                     {
                         if (Player.SetTimedFireResistance(Player.TimedFireResistance + Program.Rng.DieRoll(10) + 10))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Resist cold gives you timed frost resistance
                 case PotionType.ResistCold:
                     {
                         if (Player.SetTimedColdResistance(Player.TimedColdResistance + Program.Rng.DieRoll(10) + 10))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Heroism removes fear, cures 10 health, and gives you timed heroism
                 case PotionType.Heroism:
                     {
                         if (Player.SetTimedFear(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedHeroism(Player.TimedHeroism + Program.Rng.DieRoll(25) + 25))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.RestoreHealth(10))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Berserk strength removes fear, heals 30 health, and gives you timed super heroism
                 case PotionType.BeserkStrength:
                     {
                         if (Player.SetTimedFear(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedSuperheroism(Player.TimedSuperheroism + Program.Rng.DieRoll(25) + 25))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.RestoreHealth(30))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Cure light wounds heals you 2d8 health and reduces bleeding
                 case PotionType.CureLight:
                     {
                         if (Player.RestoreHealth(Program.Rng.DiceRoll(2, 8)))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBleeding(Player.TimedBleeding - 10))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Cure serious wounds heals you 4d8 health, cures blindness and confusion, and
+                // reduces bleeding
                 case PotionType.CureSerious:
                     {
                         if (Player.RestoreHealth(Program.Rng.DiceRoll(4, 8)))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBlindness(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedConfusion(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBleeding((Player.TimedBleeding / 2) - 50))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Cure critical wounds heals you 6d8 health, and cures blindness, confusion, stun,
+                // poison, and bleeding
                 case PotionType.CureCritical:
                     {
                         if (Player.RestoreHealth(Program.Rng.DiceRoll(6, 8)))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBlindness(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedConfusion(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedPoison(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedStun(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBleeding(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Healing heals you 300 health, and cures blindness, confusion, stun, poison, and bleeding
                 case PotionType.Healing:
                     {
                         if (Player.RestoreHealth(300))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBlindness(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedConfusion(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedPoison(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedStun(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBleeding(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // *Healing* heals you 1200 health, and cures blindness, confusion, stun, poison,
+                // and bleeding
                 case PotionType.StarHealing:
                     {
                         if (Player.RestoreHealth(1200))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBlindness(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedConfusion(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedPoison(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedStun(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBleeding(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Life heals you 5000 health, removes experience and ability score drains, and
+                // cures blindness, confusion, stun, poison, and bleeding
                 case PotionType.Life:
                     {
                         Profile.Instance.MsgPrint("You feel life flow through your body!");
@@ -2607,9 +2724,10 @@ namespace Cthangband
                         Player.TryRestoringAbilityScore(Ability.Wisdom);
                         Player.TryRestoringAbilityScore(Ability.Intelligence);
                         Player.TryRestoringAbilityScore(Ability.Charisma);
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Restore mana restores your to maximum mana
                 case PotionType.RestoreMana:
                     {
                         if (Player.Mana < Player.MaxMana)
@@ -2618,149 +2736,166 @@ namespace Cthangband
                             Player.FractionalMana = 0;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
                             Player.RedrawFlags |= RedrawFlag.PrMana;
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Restore life levels restores any lost experience
                 case PotionType.RestoreExp:
                     {
                         if (Player.RestoreLevel())
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Restore strength restores your strength
                 case PotionType.ResStr:
                     {
                         if (Player.TryRestoringAbilityScore(Ability.Strength))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Restore intelligence restores your intelligence
                 case PotionType.ResInt:
                     {
                         if (Player.TryRestoringAbilityScore(Ability.Intelligence))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Restore wisdom restores your wisdom
                 case PotionType.ResWis:
                     {
                         if (Player.TryRestoringAbilityScore(Ability.Wisdom))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Restore dexterity restores your dexterity
                 case PotionType.ResDex:
                     {
                         if (Player.TryRestoringAbilityScore(Ability.Dexterity))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Restore constitution restores your constitution
                 case PotionType.ResCon:
                     {
                         if (Player.TryRestoringAbilityScore(Ability.Constitution))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Restore charisma restores your charisma
                 case PotionType.ResCha:
                     {
                         if (Player.TryRestoringAbilityScore(Ability.Charisma))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Strength increases your strength
                 case PotionType.IncStr:
                     {
                         if (Player.TryIncreasingAbilityScore(Ability.Strength))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Intelligence increases your intelligence
                 case PotionType.IncInt:
                     {
                         if (Player.TryIncreasingAbilityScore(Ability.Intelligence))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Wisdom increases your wisdom
                 case PotionType.IncWis:
                     {
                         if (Player.TryIncreasingAbilityScore(Ability.Wisdom))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Dexterity increases your dexterity
                 case PotionType.IncDex:
                     {
                         if (Player.TryIncreasingAbilityScore(Ability.Dexterity))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Constitution increases your constitution
                 case PotionType.IncCon:
                     {
                         if (Player.TryIncreasingAbilityScore(Ability.Constitution))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Charisma increases your charisma
                 case PotionType.IncCha:
                     {
                         if (Player.TryIncreasingAbilityScore(Ability.Charisma))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Augmentation increases all ability scores
                 case PotionType.Augmentation:
                     {
                         if (Player.TryIncreasingAbilityScore(Ability.Strength))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.TryIncreasingAbilityScore(Ability.Intelligence))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.TryIncreasingAbilityScore(Ability.Wisdom))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.TryIncreasingAbilityScore(Ability.Dexterity))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.TryIncreasingAbilityScore(Ability.Constitution))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.TryIncreasingAbilityScore(Ability.Charisma))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Enlightenment shows you the whole level
                 case PotionType.Enlightenment:
                     {
                         Profile.Instance.MsgPrint("An image of your surroundings forms in your mind...");
                         Level.WizLight();
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // *Enlightenment* shows you the whole level, increases your intelligence and
+                // wisdom, identifies all your items, and detects everything
                 case PotionType.StarEnlightenment:
                     {
                         Profile.Instance.MsgPrint("You begin to feel more enlightened...");
@@ -2776,17 +2911,20 @@ namespace Cthangband
                         _saveGame.SpellEffects.DetectObjectsNormal();
                         _saveGame.SpellEffects.IdentifyPack();
                         _saveGame.SpellEffects.SelfKnowledge();
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Self knowledge gives you information about yourself
                 case PotionType.SelfKnowledge:
                     {
                         Profile.Instance.MsgPrint("You begin to know yourself a little better...");
                         Profile.Instance.MsgPrint(null);
                         _saveGame.SpellEffects.SelfKnowledge();
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Experience increases your experience points by 50%, with a minimum of +10 and
+                // maximuum of +10,000
                 case PotionType.Experience:
                     {
                         if (Player.ExperiencePoints < Constants.PyMaxExp)
@@ -2798,10 +2936,11 @@ namespace Cthangband
                             }
                             Profile.Instance.MsgPrint("You feel more experienced.");
                             Player.GainExperience(ee);
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Resistance gives you all timed resistances
                 case PotionType.Resistance:
                     {
                         Player.SetTimedAcidResistance(Player.TimedAcidResistance + Program.Rng.DieRoll(20) + 20);
@@ -2809,47 +2948,51 @@ namespace Cthangband
                         Player.SetTimedFireResistance(Player.TimedFireResistance + Program.Rng.DieRoll(20) + 20);
                         Player.SetTimedColdResistance(Player.TimedColdResistance + Program.Rng.DieRoll(20) + 20);
                         Player.SetTimedPoisonResistance(Player.TimedPoisonResistance + Program.Rng.DieRoll(20) + 20);
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // Curing heals you 50 health, and cures blindness, confusion, stun, poison,
+                // bleeding, and hallucinations
                 case PotionType.Curing:
                     {
                         if (Player.RestoreHealth(50))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBlindness(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedPoison(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedConfusion(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedStun(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedBleeding(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         if (Player.SetTimedHallucinations(0))
                         {
-                            ident = true;
+                            identified = true;
                         }
                         break;
                     }
+                // Invulnerability gives you temporary invulnerability
                 case PotionType.Invulnerability:
                     {
                         Player.SetTimedInvulnerability(Player.TimedInvulnerability + Program.Rng.DieRoll(7) + 7);
-                        ident = true;
+                        identified = true;
                         break;
                     }
+                // New life rerolls your health, cures all mutations, and restores you to your birth race
                 case PotionType.NewLife:
                     {
                         Player.RerollHitPoints();
@@ -2864,13 +3007,13 @@ namespace Cthangband
                         {
                             Profile.Instance.MsgPrint("You are restored to your original race.");
                             Player.ChangeRace(Player.RaceIndexAtBirth);
-                            SaveGame.Instance.Level.LightSpot(Player.MapY, Player.MapX);
+                            SaveGame.Instance.Level.RedrawSingleLocation(Player.MapY, Player.MapX);
                         }
-                        ident = true;
+                        identified = true;
                         break;
                     }
             }
-            return ident;
+            return identified;
         }
 
         public void PyAttack(int y, int x)
@@ -3486,12 +3629,12 @@ namespace Cthangband
                 case 2:
                     {
                         Profile.Instance.MsgPrint("You are surrounded by a malignant aura.");
-                        Player.DecreaeAbilityScore(Ability.Strength, 50, true);
-                        Player.DecreaeAbilityScore(Ability.Intelligence, 50, true);
-                        Player.DecreaeAbilityScore(Ability.Wisdom, 50, true);
-                        Player.DecreaeAbilityScore(Ability.Dexterity, 50, true);
-                        Player.DecreaeAbilityScore(Ability.Constitution, 50, true);
-                        Player.DecreaeAbilityScore(Ability.Charisma, 50, true);
+                        Player.DecreaseAbilityScore(Ability.Strength, 50, true);
+                        Player.DecreaseAbilityScore(Ability.Intelligence, 50, true);
+                        Player.DecreaseAbilityScore(Ability.Wisdom, 50, true);
+                        Player.DecreaseAbilityScore(Ability.Dexterity, 50, true);
+                        Player.DecreaseAbilityScore(Ability.Constitution, 50, true);
+                        Player.DecreaseAbilityScore(Ability.Charisma, 50, true);
                         Player.ExperiencePoints -= Player.ExperiencePoints / 4;
                         Player.MaxExperienceGained -= Player.ExperiencePoints / 4;
                         Player.CheckExperience();
@@ -4417,261 +4560,6 @@ namespace Cthangband
             return true;
         }
 
-        private void HitTrap()
-        {
-            int dam;
-            string name = "a trap";
-            _saveGame.Disturb(false);
-            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
-            switch (cPtr.FeatureType.Name)
-            {
-                case "TrapDoor":
-                    {
-                        if (Player.HasFeatherFall)
-                        {
-                            Profile.Instance.MsgPrint("You fly over a trap door.");
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("You fell through a trap door!");
-                            dam = Program.Rng.DiceRoll(2, 8);
-                            name = "a trap door";
-                            Player.TakeHit(dam, name);
-                            if (Player.Health >= 0)
-                            {
-                                _saveGame.IsAutosave = true;
-                                _saveGame.DoCmdSaveGame();
-                                _saveGame.IsAutosave = false;
-                            }
-                            _saveGame.NewLevelFlag = true;
-                            if (_saveGame.CurDungeon.Tower)
-                            {
-                                _saveGame.DunLevel--;
-                            }
-                            else
-                            {
-                                _saveGame.DunLevel++;
-                            }
-                        }
-                        break;
-                    }
-                case "Pit":
-                    {
-                        if (Player.HasFeatherFall)
-                        {
-                            Profile.Instance.MsgPrint("You fly over a pit trap.");
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("You fell into a pit!");
-                            dam = Program.Rng.DiceRoll(2, 6);
-                            name = "a pit trap";
-                            Player.TakeHit(dam, name);
-                        }
-                        break;
-                    }
-                case "SpikedPit":
-                    {
-                        if (Player.HasFeatherFall)
-                        {
-                            Profile.Instance.MsgPrint("You fly over a spiked pit.");
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("You fall into a spiked pit!");
-                            name = "a pit trap";
-                            dam = Program.Rng.DiceRoll(2, 6);
-                            if (Program.Rng.RandomLessThan(100) < 50)
-                            {
-                                Profile.Instance.MsgPrint("You are impaled!");
-                                name = "a spiked pit";
-                                dam *= 2;
-                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(dam));
-                            }
-                            Player.TakeHit(dam, name);
-                        }
-                        break;
-                    }
-                case "PoisonPit":
-                    {
-                        if (Player.HasFeatherFall)
-                        {
-                            Profile.Instance.MsgPrint("You fly over a spiked pit.");
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("You fall into a spiked pit!");
-                            dam = Program.Rng.DiceRoll(2, 6);
-                            name = "a pit trap";
-                            if (Program.Rng.RandomLessThan(100) < 50)
-                            {
-                                Profile.Instance.MsgPrint("You are impaled on poisonous spikes!");
-                                name = "a spiked pit";
-                                dam *= 2;
-                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(dam));
-                                if (Player.HasPoisonResistance || Player.TimedPoisonResistance != 0)
-                                {
-                                    Profile.Instance.MsgPrint("The poison does not affect you!");
-                                }
-                                else if (Program.Rng.DieRoll(10) <= Player.Religion.GetNamedDeity(Pantheon.GodName.Hagarg_Ryonis).AdjustedFavour)
-                                {
-                                    Profile.Instance.MsgPrint("Hagarg Ryonis's favour protects you!");
-                                }
-                                else
-                                {
-                                    dam *= 2;
-                                    Player.SetTimedPoison(Player.TimedPoison + Program.Rng.DieRoll(dam));
-                                }
-                            }
-                            Player.TakeHit(dam, name);
-                        }
-                        break;
-                    }
-                case "SummonRune":
-                    {
-                        Profile.Instance.MsgPrint("There is a flash of shimmering light!");
-                        cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                        Level.CaveRemoveFeat(Player.MapY, Player.MapX);
-                        int num = 2 + Program.Rng.DieRoll(3);
-                        for (int i = 0; i < num; i++)
-                        {
-                            Level.Monsters.SummonSpecific(Player.MapY, Player.MapX, _saveGame.Difficulty, 0);
-                        }
-                        if (_saveGame.Difficulty > Program.Rng.DieRoll(100))
-                        {
-                            do
-                            {
-                                _saveGame.ActivateDreadCurse();
-                            } while (Program.Rng.DieRoll(6) == 1);
-                        }
-                        break;
-                    }
-                case "TeleportRune":
-                    {
-                        Profile.Instance.MsgPrint("You hit a teleport trap!");
-                        _saveGame.SpellEffects.TeleportPlayer(100);
-                        break;
-                    }
-                case "FireTrap":
-                    {
-                        Profile.Instance.MsgPrint("You are enveloped in flames!");
-                        dam = Program.Rng.DiceRoll(4, 6);
-                        _saveGame.SpellEffects.FireDam(dam, "a fire trap");
-                        break;
-                    }
-                case "AcidTrap":
-                    {
-                        Profile.Instance.MsgPrint("You are splashed with acid!");
-                        dam = Program.Rng.DiceRoll(4, 6);
-                        _saveGame.SpellEffects.AcidDam(dam, "an acid trap");
-                        break;
-                    }
-                case "SlowDart":
-                    {
-                        if (CheckHit(125))
-                        {
-                            Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, name);
-                            Player.SetTimedSlow(Player.TimedSlow + Program.Rng.RandomLessThan(20) + 20);
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("A small dart barely misses you.");
-                        }
-                        break;
-                    }
-                case "StrDart":
-                    {
-                        if (CheckHit(125))
-                        {
-                            Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, "a dart trap");
-                            Player.TryDecreasingAbilityScore(Ability.Strength);
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("A small dart barely misses you.");
-                        }
-                        break;
-                    }
-                case "DexDart":
-                    {
-                        if (CheckHit(125))
-                        {
-                            Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, "a dart trap");
-                            Player.TryDecreasingAbilityScore(Ability.Dexterity);
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("A small dart barely misses you.");
-                        }
-                        break;
-                    }
-                case "ConDart":
-                    {
-                        if (CheckHit(125))
-                        {
-                            Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, "a dart trap");
-                            Player.TryDecreasingAbilityScore(Ability.Constitution);
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint("A small dart barely misses you.");
-                        }
-                        break;
-                    }
-                case "BlindGas":
-                    {
-                        Profile.Instance.MsgPrint("A black gas surrounds you!");
-                        if (!Player.HasBlindnessResistance)
-                        {
-                            Player.SetTimedBlindness(Player.TimedBlindness + Program.Rng.RandomLessThan(50) + 25);
-                        }
-                        break;
-                    }
-                case "ConfuseGas":
-                    {
-                        Profile.Instance.MsgPrint("A gas of scintillating colours surrounds you!");
-                        if (!Player.HasConfusionResistance)
-                        {
-                            Player.SetTimedConfusion(Player.TimedConfusion + Program.Rng.RandomLessThan(20) + 10);
-                        }
-                        break;
-                    }
-                case "PoisonGas":
-                    {
-                        Profile.Instance.MsgPrint("A pungent green gas surrounds you!");
-                        if (!Player.HasPoisonResistance && Player.TimedPoisonResistance == 0)
-                        {
-                            if (Program.Rng.DieRoll(10) <= Player.Religion.GetNamedDeity(Pantheon.GodName.Hagarg_Ryonis).AdjustedFavour)
-                            {
-                                Profile.Instance.MsgPrint("Hagarg Ryonis's favour protects you!");
-                            }
-                            else
-                            {
-                                Player.SetTimedPoison(Player.TimedPoison + Program.Rng.RandomLessThan(20) + 10);
-                            }
-                        }
-                        break;
-                    }
-                case "SleepGas":
-                    {
-                        Profile.Instance.MsgPrint("A strange white mist surrounds you!");
-                        if (!Player.HasFreeAction)
-                        {
-                            Player.SetTimedParalysis(Player.TimedParalysis + Program.Rng.RandomLessThan(10) + 5);
-                        }
-                        break;
-                    }
-            }
-        }
-
         private void NaturalAttack(int mIdx, Mutation attack, out bool fear, out bool mdeath)
         {
             fear = false;
@@ -4995,6 +4883,261 @@ namespace Cthangband
                 return false;
             }
             return true;
+        }
+
+        private void StepOnTrap()
+        {
+            int dam;
+            string name = "a trap";
+            _saveGame.Disturb(false);
+            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
+            switch (cPtr.FeatureType.Name)
+            {
+                case "TrapDoor":
+                    {
+                        if (Player.HasFeatherFall)
+                        {
+                            Profile.Instance.MsgPrint("You fly over a trap door.");
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("You fell through a trap door!");
+                            dam = Program.Rng.DiceRoll(2, 8);
+                            name = "a trap door";
+                            Player.TakeHit(dam, name);
+                            if (Player.Health >= 0)
+                            {
+                                _saveGame.IsAutosave = true;
+                                _saveGame.DoCmdSaveGame();
+                                _saveGame.IsAutosave = false;
+                            }
+                            _saveGame.NewLevelFlag = true;
+                            if (_saveGame.CurDungeon.Tower)
+                            {
+                                _saveGame.DunLevel--;
+                            }
+                            else
+                            {
+                                _saveGame.DunLevel++;
+                            }
+                        }
+                        break;
+                    }
+                case "Pit":
+                    {
+                        if (Player.HasFeatherFall)
+                        {
+                            Profile.Instance.MsgPrint("You fly over a pit trap.");
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("You fell into a pit!");
+                            dam = Program.Rng.DiceRoll(2, 6);
+                            name = "a pit trap";
+                            Player.TakeHit(dam, name);
+                        }
+                        break;
+                    }
+                case "SpikedPit":
+                    {
+                        if (Player.HasFeatherFall)
+                        {
+                            Profile.Instance.MsgPrint("You fly over a spiked pit.");
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("You fall into a spiked pit!");
+                            name = "a pit trap";
+                            dam = Program.Rng.DiceRoll(2, 6);
+                            if (Program.Rng.RandomLessThan(100) < 50)
+                            {
+                                Profile.Instance.MsgPrint("You are impaled!");
+                                name = "a spiked pit";
+                                dam *= 2;
+                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(dam));
+                            }
+                            Player.TakeHit(dam, name);
+                        }
+                        break;
+                    }
+                case "PoisonPit":
+                    {
+                        if (Player.HasFeatherFall)
+                        {
+                            Profile.Instance.MsgPrint("You fly over a spiked pit.");
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("You fall into a spiked pit!");
+                            dam = Program.Rng.DiceRoll(2, 6);
+                            name = "a pit trap";
+                            if (Program.Rng.RandomLessThan(100) < 50)
+                            {
+                                Profile.Instance.MsgPrint("You are impaled on poisonous spikes!");
+                                name = "a spiked pit";
+                                dam *= 2;
+                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(dam));
+                                if (Player.HasPoisonResistance || Player.TimedPoisonResistance != 0)
+                                {
+                                    Profile.Instance.MsgPrint("The poison does not affect you!");
+                                }
+                                else if (Program.Rng.DieRoll(10) <= Player.Religion.GetNamedDeity(Pantheon.GodName.Hagarg_Ryonis).AdjustedFavour)
+                                {
+                                    Profile.Instance.MsgPrint("Hagarg Ryonis's favour protects you!");
+                                }
+                                else
+                                {
+                                    dam *= 2;
+                                    Player.SetTimedPoison(Player.TimedPoison + Program.Rng.DieRoll(dam));
+                                }
+                            }
+                            Player.TakeHit(dam, name);
+                        }
+                        break;
+                    }
+                case "SummonRune":
+                    {
+                        Profile.Instance.MsgPrint("There is a flash of shimmering light!");
+                        cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
+                        Level.CaveRemoveFeat(Player.MapY, Player.MapX);
+                        int num = 2 + Program.Rng.DieRoll(3);
+                        for (int i = 0; i < num; i++)
+                        {
+                            Level.Monsters.SummonSpecific(Player.MapY, Player.MapX, _saveGame.Difficulty, 0);
+                        }
+                        if (_saveGame.Difficulty > Program.Rng.DieRoll(100))
+                        {
+                            do
+                            {
+                                _saveGame.ActivateDreadCurse();
+                            } while (Program.Rng.DieRoll(6) == 1);
+                        }
+                        break;
+                    }
+                case "TeleportRune":
+                    {
+                        Profile.Instance.MsgPrint("You hit a teleport trap!");
+                        _saveGame.SpellEffects.TeleportPlayer(100);
+                        break;
+                    }
+                case "FireTrap":
+                    {
+                        Profile.Instance.MsgPrint("You are enveloped in flames!");
+                        dam = Program.Rng.DiceRoll(4, 6);
+                        _saveGame.SpellEffects.FireDam(dam, "a fire trap");
+                        break;
+                    }
+                case "AcidTrap":
+                    {
+                        Profile.Instance.MsgPrint("You are splashed with acid!");
+                        dam = Program.Rng.DiceRoll(4, 6);
+                        _saveGame.SpellEffects.AcidDam(dam, "an acid trap");
+                        break;
+                    }
+                case "SlowDart":
+                    {
+                        if (CheckHit(125))
+                        {
+                            Profile.Instance.MsgPrint("A small dart hits you!");
+                            dam = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(dam, name);
+                            Player.SetTimedSlow(Player.TimedSlow + Program.Rng.RandomLessThan(20) + 20);
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("A small dart barely misses you.");
+                        }
+                        break;
+                    }
+                case "StrDart":
+                    {
+                        if (CheckHit(125))
+                        {
+                            Profile.Instance.MsgPrint("A small dart hits you!");
+                            dam = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(dam, "a dart trap");
+                            Player.TryDecreasingAbilityScore(Ability.Strength);
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("A small dart barely misses you.");
+                        }
+                        break;
+                    }
+                case "DexDart":
+                    {
+                        if (CheckHit(125))
+                        {
+                            Profile.Instance.MsgPrint("A small dart hits you!");
+                            dam = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(dam, "a dart trap");
+                            Player.TryDecreasingAbilityScore(Ability.Dexterity);
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("A small dart barely misses you.");
+                        }
+                        break;
+                    }
+                case "ConDart":
+                    {
+                        if (CheckHit(125))
+                        {
+                            Profile.Instance.MsgPrint("A small dart hits you!");
+                            dam = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(dam, "a dart trap");
+                            Player.TryDecreasingAbilityScore(Ability.Constitution);
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint("A small dart barely misses you.");
+                        }
+                        break;
+                    }
+                case "BlindGas":
+                    {
+                        Profile.Instance.MsgPrint("A black gas surrounds you!");
+                        if (!Player.HasBlindnessResistance)
+                        {
+                            Player.SetTimedBlindness(Player.TimedBlindness + Program.Rng.RandomLessThan(50) + 25);
+                        }
+                        break;
+                    }
+                case "ConfuseGas":
+                    {
+                        Profile.Instance.MsgPrint("A gas of scintillating colours surrounds you!");
+                        if (!Player.HasConfusionResistance)
+                        {
+                            Player.SetTimedConfusion(Player.TimedConfusion + Program.Rng.RandomLessThan(20) + 10);
+                        }
+                        break;
+                    }
+                case "PoisonGas":
+                    {
+                        Profile.Instance.MsgPrint("A pungent green gas surrounds you!");
+                        if (!Player.HasPoisonResistance && Player.TimedPoisonResistance == 0)
+                        {
+                            if (Program.Rng.DieRoll(10) <= Player.Religion.GetNamedDeity(Pantheon.GodName.Hagarg_Ryonis).AdjustedFavour)
+                            {
+                                Profile.Instance.MsgPrint("Hagarg Ryonis's favour protects you!");
+                            }
+                            else
+                            {
+                                Player.SetTimedPoison(Player.TimedPoison + Program.Rng.RandomLessThan(20) + 10);
+                            }
+                        }
+                        break;
+                    }
+                case "SleepGas":
+                    {
+                        Profile.Instance.MsgPrint("A strange white mist surrounds you!");
+                        if (!Player.HasFreeAction)
+                        {
+                            Player.SetTimedParalysis(Player.TimedParalysis + Program.Rng.RandomLessThan(10) + 5);
+                        }
+                        break;
+                    }
+            }
         }
 
         private bool TestHitNorm(int chance, int ac, bool vis)

@@ -2150,7 +2150,7 @@ namespace Cthangband
             }
             if (IsFixedArtifact() || !string.IsNullOrEmpty(RandartName))
             {
-                return "good";
+                return "special";
             }
             if (IsRare())
             {

@@ -1520,7 +1520,7 @@ namespace Cthangband
                     SaveGame.Instance.HandleStuff();
                 }
             }
-            targetEngine.VerifyPanel();
+            targetEngine.RecenterScreenAroundPlayer();
             Player.UpdateFlags |= Constants.PuMonsters;
             Player.RedrawFlags |= RedrawFlag.PrMap;
             SaveGame.Instance.HandleStuff();
@@ -2049,7 +2049,7 @@ namespace Cthangband
             {
                 SaveGame.Instance.CommandEngine.Search();
             }
-            SaveGame.Instance.CommandEngine.Carry(pickup);
+            SaveGame.Instance.CommandEngine.PickUpItems(pickup);
             if (cPtr.FeatureType.IsShop)
             {
                 SaveGame.Instance.Disturb(false);

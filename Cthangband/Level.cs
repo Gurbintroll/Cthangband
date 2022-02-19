@@ -11,14 +11,14 @@ namespace Cthangband
     {
         public const int MaxHgt = 126;
         public const int MaxWid = 198;
-        public readonly int[] KeypadDirectionXOffset = { 0, -1, 0, 1, -1, 0, 1, -1, 0, 1 };
-        public readonly int[] KeypadDirectionYOffset = { 0, 1, 1, 1, 0, 0, 0, -1, -1, -1 };
-        public readonly int[] OrderedDirectionYOffset = { 1, -1, 0, 0, 1, 1, -1, -1, 0 };
-        public readonly int[] OrderedDirectionXOffset = { 0, 0, 1, -1, 1, -1, 1, -1, 0 };
         public readonly GridTile[][] Grid = new GridTile[MaxHgt][];
         public readonly Item[] Items = new Item[Constants.MaxOIdx];
+        public readonly int[] KeypadDirectionXOffset = { 0, -1, 0, 1, -1, 0, 1, -1, 0, 1 };
+        public readonly int[] KeypadDirectionYOffset = { 0, 1, 1, 1, 0, 0, 0, -1, -1, -1 };
         public readonly MonsterList Monsters;
         public readonly int[] OrderedDirection = { 2, 8, 6, 4, 3, 1, 9, 7, 5 };
+        public readonly int[] OrderedDirectionXOffset = { 0, 0, 1, -1, 1, -1, 1, -1, 0 };
+        public readonly int[] OrderedDirectionYOffset = { 1, -1, 0, 0, 1, 1, -1, -1, 0 };
         public readonly int[] TempX = new int[Constants.TempMax];
         public readonly int[] TempY = new int[Constants.TempMax];
         public int CurHgt;
@@ -101,7 +101,7 @@ namespace Cthangband
             GridTile cPtr = Grid[y][x];
             cPtr.RevertToBackground();
             NoteSpot(y, x);
-            LightSpot(y, x);
+            RedrawSingleLocation(y, x);
         }
 
         public void CaveSetBackground(int y, int x, string feat)
@@ -115,7 +115,7 @@ namespace Cthangband
             GridTile cPtr = Grid[y][x];
             cPtr.FeatureType = StaticResources.Instance.FloorTileTypes[feat];
             NoteSpot(y, x);
-            LightSpot(y, x);
+            RedrawSingleLocation(y, x);
         }
 
         public bool CaveValidBold(int y, int x)
@@ -266,7 +266,7 @@ namespace Cthangband
                 OCnt--;
             }
             cPtr.Item = 0;
-            LightSpot(y, x);
+            RedrawSingleLocation(y, x);
         }
 
         public void DeleteObjectIdx(int oIdx)
@@ -277,7 +277,7 @@ namespace Cthangband
             {
                 int y = jPtr.Y;
                 int x = jPtr.X;
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             Items[oIdx] = new Item();
             OCnt--;
@@ -545,7 +545,7 @@ namespace Cthangband
                 cPtr.Item = oIdx;
             }
             NoteSpot(by, bx);
-            LightSpot(by, bx);
+            RedrawSingleLocation(by, bx);
             Gui.PlaySound(SoundEffect.Drop);
             if (chance != 0 && by == SaveGame.Instance.Player.MapY && bx == SaveGame.Instance.Player.MapX)
             {
@@ -658,7 +658,7 @@ namespace Cthangband
                 int y = _lightY[i];
                 int x = _lightX[i];
                 Grid[y][x].TileFlags.Clear(GridTile.PlayerLit);
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             _lightN = 0;
         }
@@ -675,7 +675,7 @@ namespace Cthangband
                 int x = _viewX[i];
                 GridTile cPtr = Grid[y][x];
                 cPtr.TileFlags.Clear(GridTile.IsVisible);
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             _viewN = 0;
         }
@@ -709,27 +709,6 @@ namespace Cthangband
         public bool InBounds2(int y, int x)
         {
             return y >= 0 && x >= 0 && y < CurHgt && x < CurWid;
-        }
-
-        public void LightSpot(int y, int x)
-        {
-            if (PanelContains(y, x))
-            {
-                Colour a;
-                char c;
-                {
-                    MapInfo(y, x, out a, out c);
-                }
-                if (_player.TimedInvulnerability != 0)
-                {
-                    a = Colour.White;
-                }
-                else if (_player.TimedEtherealness != 0)
-                {
-                    a = Colour.Black;
-                }
-                Gui.Print(a, c, y - PanelRowPrt, x - PanelColPrt);
-            }
         }
 
         public bool Los(int y1, int x1, int y2, int x2)
@@ -1184,7 +1163,7 @@ namespace Cthangband
                 oPtr.NextInStack = cPtr.Item;
                 cPtr.Item = oIdx;
                 NoteSpot(y, x);
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
         }
 
@@ -1214,7 +1193,7 @@ namespace Cthangband
                 oPtr.NextInStack = cPtr.Item;
                 cPtr.Item = oIdx;
                 NoteSpot(y, x);
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             else
             {
@@ -1326,7 +1305,7 @@ namespace Cthangband
                     Gui.Print(a, c, y - PanelRowPrt, x - PanelColPrt);
                 }
             }
-            LightSpot(_player.MapY, _player.MapX);
+            RedrawSingleLocation(_player.MapY, _player.MapX);
             Gui.CursorVisible = v;
         }
 
@@ -1356,6 +1335,27 @@ namespace Cthangband
                     }
                 }
             } while (!Monsters.PlaceMonsterByIndex(y, x, rIdx, false, false, false));
+        }
+
+        public void RedrawSingleLocation(int y, int x)
+        {
+            if (PanelContains(y, x))
+            {
+                Colour a;
+                char c;
+                {
+                    MapInfo(y, x, out a, out c);
+                }
+                if (_player.TimedInvulnerability != 0)
+                {
+                    a = Colour.White;
+                }
+                else if (_player.TimedEtherealness != 0)
+                {
+                    a = Colour.Black;
+                }
+                Gui.Print(a, c, y - PanelRowPrt, x - PanelColPrt);
+            }
         }
 
         public void ReplacePets(int y, int x, List<Monster> petList)
@@ -1476,7 +1476,7 @@ namespace Cthangband
             if (_player.LightLevel <= 0)
             {
                 ForgetLight();
-                LightSpot(_player.MapY, _player.MapX);
+                RedrawSingleLocation(_player.MapY, _player.MapX);
                 return;
             }
             for (i = 0; i < _lightN; i++)
@@ -1603,7 +1603,7 @@ namespace Cthangband
                     continue;
                 }
                 NoteSpot(y, x);
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             for (i = 0; i < TempN; i++)
             {
@@ -1614,7 +1614,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             TempN = 0;
         }
@@ -1969,7 +1969,7 @@ namespace Cthangband
                     continue;
                 }
                 NoteSpot(y, x);
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             for (n = 0; n < TempN; n++)
             {
@@ -1981,7 +1981,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                LightSpot(y, x);
+                RedrawSingleLocation(y, x);
             }
             TempN = 0;
         }

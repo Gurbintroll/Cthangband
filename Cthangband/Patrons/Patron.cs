@@ -286,7 +286,7 @@ namespace Cthangband.Patrons
                     Profile.Instance.MsgPrint("You feel less powerful!");
                     for (dummy = 0; dummy < 6; dummy++)
                     {
-                        player.DecreaeAbilityScore(dummy, 10 + Program.Rng.DieRoll(15), true);
+                        player.DecreaseAbilityScore(dummy, 10 + Program.Rng.DieRoll(15), true);
                     }
                     break;
 
@@ -367,7 +367,7 @@ namespace Cthangband.Patrons
                         default:
                             for (dummy = 0; dummy < 6; dummy++)
                             {
-                                player.DecreaeAbilityScore(dummy, 10 + Program.Rng.DieRoll(15), true);
+                                player.DecreaseAbilityScore(dummy, 10 + Program.Rng.DieRoll(15), true);
                             }
                             break;
                     }
@@ -379,7 +379,7 @@ namespace Cthangband.Patrons
                     player.TakeHit(player.Level * 4, wrathReason);
                     for (dummy = 0; dummy < 6; dummy++)
                     {
-                        player.DecreaeAbilityScore(dummy, 10 + Program.Rng.DieRoll(15), false);
+                        player.DecreaseAbilityScore(dummy, 10 + Program.Rng.DieRoll(15), false);
                     }
                     saveGame.SpellEffects.ActivateHiSummon();
                     saveGame.ActivateDreadCurse();

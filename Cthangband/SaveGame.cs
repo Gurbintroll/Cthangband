@@ -78,7 +78,7 @@ namespace Cthangband
             PatronList = Patron.NewPatronList();
         }
 
-        internal delegate bool ItemFilterDelegate(Item oPtr);
+        internal delegate bool ItemFilterDelegate(Item item);
 
         public static SaveGame Instance
         {
@@ -170,7 +170,7 @@ namespace Cthangband
             } while (Program.Rng.DieRoll(3) == 1);
         }
 
-        public void ChestDeath(int y, int x, int oIdx)
+        public void OpenChest(int y, int x, int oIdx)
         {
             Item oPtr = Level.Items[oIdx];
             bool small = oPtr.ItemSubCategory < ItemSubCategory.SvChestMinLarge;
@@ -1323,7 +1323,7 @@ namespace Cthangband
                 CreateDownStair = false;
                 CreateUpStair = false;
             }
-            targetEngine.VerifyPanel();
+            targetEngine.RecenterScreenAroundPlayer();
             targetEngine.PanelBoundsCenter();
             Profile.Instance.MsgPrint(null);
             CharacterXtra = true;
@@ -1968,7 +1968,7 @@ namespace Cthangband
                                 continue;
                             }
                             Level.Monsters.ShimmerMonsters = true;
-                            Level.LightSpot(mPtr.MapY, mPtr.MapX);
+                            Level.RedrawSingleLocation(mPtr.MapY, mPtr.MapX);
                         }
                     }
                     if (Level.Monsters.RepairMonsters)
@@ -1997,7 +1997,7 @@ namespace Cthangband
                                     mPtr.IndividualMonsterFlags &= ~Constants.MflagMark;
                                     mPtr.IsVisible = false;
                                     Level.Monsters.UpdateMonsterVisibility(i, false);
-                                    Level.LightSpot(mPtr.MapY, mPtr.MapX);
+                                    Level.RedrawSingleLocation(mPtr.MapY, mPtr.MapX);
                                 }
                             }
                         }

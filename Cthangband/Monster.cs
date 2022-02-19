@@ -343,11 +343,11 @@ namespace Cthangband
             }
             if (Program.Rng.DieRoll(power) < player.SkillSavingThrow)
             {
-                if (player.DecreaeAbilityScore(Ability.Intelligence, 10, true))
+                if (player.DecreaseAbilityScore(Ability.Intelligence, 10, true))
                 {
                     happened = true;
                 }
-                if (player.DecreaeAbilityScore(Ability.Wisdom, 10, true))
+                if (player.DecreaseAbilityScore(Ability.Wisdom, 10, true))
                 {
                     happened = true;
                 }

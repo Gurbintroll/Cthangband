@@ -846,7 +846,7 @@ namespace Cthangband.Spells
                         cPtr.FeatureType.Category == FloorTileTypeCategory.OpenDoorway)
                     {
                         cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        Level.RedrawSingleLocation(y, x);
                         detect = true;
                     }
                 }
@@ -881,7 +881,7 @@ namespace Cthangband.Spells
                     Level.Monsters.RepairMonsters = true;
                     mPtr.IndividualMonsterFlags |= Constants.MflagMark | Constants.MflagShow;
                     mPtr.IsVisible = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     flag = true;
                 }
             }
@@ -915,7 +915,7 @@ namespace Cthangband.Spells
                     Level.Monsters.RepairMonsters = true;
                     mPtr.IndividualMonsterFlags |= Constants.MflagMark | Constants.MflagShow;
                     mPtr.IsVisible = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     flag = true;
                 }
             }
@@ -949,7 +949,7 @@ namespace Cthangband.Spells
                     Level.Monsters.RepairMonsters = true;
                     mPtr.IndividualMonsterFlags |= Constants.MflagMark | Constants.MflagShow;
                     mPtr.IsVisible = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     flag = true;
                 }
             }
@@ -981,7 +981,7 @@ namespace Cthangband.Spells
                     Level.Monsters.RepairMonsters = true;
                     mPtr.IndividualMonsterFlags |= Constants.MflagMark | Constants.MflagShow;
                     mPtr.IsVisible = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     flag = true;
                 }
             }
@@ -1015,7 +1015,7 @@ namespace Cthangband.Spells
                 if (oPtr.Category == ItemCategory.Gold)
                 {
                     oPtr.Marked = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     detect = true;
                 }
             }
@@ -1060,7 +1060,7 @@ namespace Cthangband.Spells
                     oPtr.BonusArmourClass > 0 || oPtr.BonusToHit + oPtr.BonusDamage > 0)
                 {
                     oPtr.Marked = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     detect = true;
                 }
             }
@@ -1093,7 +1093,7 @@ namespace Cthangband.Spells
                 if (oPtr.Category != ItemCategory.Gold)
                 {
                     oPtr.Marked = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     detect = true;
                 }
             }
@@ -1119,7 +1119,7 @@ namespace Cthangband.Spells
                     if (cPtr.FeatureType.Category == FloorTileTypeCategory.UpStair || cPtr.FeatureType.Category == FloorTileTypeCategory.DownStair)
                     {
                         cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        Level.RedrawSingleLocation(y, x);
                         detect = true;
                     }
                 }
@@ -1140,7 +1140,7 @@ namespace Cthangband.Spells
                 {
                     GridTile cPtr = Level.Grid[y][x];
                     cPtr.TileFlags.Set(GridTile.TrapsDetected);
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     if (cPtr.FeatureType.Category == FloorTileTypeCategory.UnidentifiedTrap)
                     {
                         Level.PickTrap(y, x);
@@ -1176,7 +1176,7 @@ namespace Cthangband.Spells
                     if (cPtr.FeatureType.Name.Contains("VisTreas"))
                     {
                         cPtr.TileFlags.Set(GridTile.PlayerMemorised);
-                        Level.LightSpot(y, x);
+                        Level.RedrawSingleLocation(y, x);
                         detect = true;
                     }
                 }
@@ -1366,9 +1366,9 @@ namespace Cthangband.Spells
                     int ox = Player.MapX;
                     Player.MapY = sy;
                     Player.MapX = sx;
-                    Level.LightSpot(oy, ox);
-                    Level.LightSpot(Player.MapY, Player.MapX);
-                    targetEngine.VerifyPanel();
+                    Level.RedrawSingleLocation(oy, ox);
+                    Level.RedrawSingleLocation(Player.MapY, Player.MapX);
+                    targetEngine.RecenterScreenAroundPlayer();
                 }
                 map[16 + Player.MapY - cy][16 + Player.MapX - cx] = false;
                 if (damage != 0)
@@ -1444,8 +1444,8 @@ namespace Cthangband.Spells
                                 mPtr.MapY = sy;
                                 mPtr.MapX = sx;
                                 Level.Monsters.UpdateMonsterVisibility(mIdx, true);
-                                Level.LightSpot(yy, xx);
-                                Level.LightSpot(sy, sx);
+                                Level.RedrawSingleLocation(yy, xx);
+                                Level.RedrawSingleLocation(sy, sx);
                             }
                         }
                     }
@@ -3334,8 +3334,8 @@ namespace Cthangband.Spells
             mPtr.MapY = ny;
             mPtr.MapX = nx;
             Level.Monsters.UpdateMonsterVisibility(mIdx, true);
-            Level.LightSpot(oy, ox);
-            Level.LightSpot(ny, nx);
+            Level.RedrawSingleLocation(oy, ox);
+            Level.RedrawSingleLocation(ny, nx);
         }
 
         public bool TeleportMonster(int dir)
@@ -3400,7 +3400,7 @@ namespace Cthangband.Spells
             int ox = Player.MapX;
             Player.MapY = y;
             Player.MapX = x;
-            Level.LightSpot(oy, ox);
+            Level.RedrawSingleLocation(oy, ox);
             while (xx < 2)
             {
                 int yy = -1;
@@ -3429,9 +3429,9 @@ namespace Cthangband.Spells
                 }
                 xx++;
             }
-            Level.LightSpot(Player.MapY, Player.MapX);
+            Level.RedrawSingleLocation(Player.MapY, Player.MapX);
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            targetEngine.VerifyPanel();
+            targetEngine.RecenterScreenAroundPlayer();
             Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
             Player.UpdateFlags |= Constants.PuDistance;
             _saveGame.HandleStuff();
@@ -3519,10 +3519,10 @@ namespace Cthangband.Spells
             int ox = Player.MapX;
             Player.MapY = y;
             Player.MapX = x;
-            Level.LightSpot(oy, ox);
-            Level.LightSpot(Player.MapY, Player.MapX);
+            Level.RedrawSingleLocation(oy, ox);
+            Level.RedrawSingleLocation(Player.MapY, Player.MapX);
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            targetEngine.VerifyPanel();
+            targetEngine.RecenterScreenAroundPlayer();
             Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
             Player.UpdateFlags |= Constants.PuDistance;
             _saveGame.HandleStuff();
@@ -3567,9 +3567,9 @@ namespace Cthangband.Spells
                     tx = mPtr.MapX;
                     ty = mPtr.MapY;
                     Level.Monsters.UpdateMonsterVisibility(Level.Grid[ty][tx].Monster, true);
-                    Level.LightSpot(ty, tx);
-                    Level.LightSpot(Player.MapY, Player.MapX);
-                    targetEngine.VerifyPanel();
+                    Level.RedrawSingleLocation(ty, tx);
+                    Level.RedrawSingleLocation(Player.MapY, Player.MapX);
+                    targetEngine.RecenterScreenAroundPlayer();
                     Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
                     Player.UpdateFlags |= Constants.PuDistance;
                     _saveGame.HandleStuff();
@@ -3743,7 +3743,7 @@ namespace Cthangband.Spells
                     }
                 }
                 Level.NoteSpot(y, x);
-                Level.LightSpot(y, x);
+                Level.RedrawSingleLocation(y, x);
             }
             Level.TempN = 0;
         }
@@ -3766,7 +3766,7 @@ namespace Cthangband.Spells
                 {
                     Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
                 }
-                Level.LightSpot(y, x);
+                Level.RedrawSingleLocation(y, x);
             }
             Level.TempN = 0;
         }
@@ -3793,7 +3793,7 @@ namespace Cthangband.Spells
                     Level.Monsters.RepairMonsters = true;
                     mPtr.IndividualMonsterFlags |= Constants.MflagMark | Constants.MflagShow;
                     mPtr.IsVisible = true;
-                    Level.LightSpot(y, x);
+                    Level.RedrawSingleLocation(y, x);
                     flag = true;
                 }
             }
@@ -4083,8 +4083,8 @@ namespace Cthangband.Spells
             mPtr.MapY = ny;
             mPtr.MapX = nx;
             Level.Monsters.UpdateMonsterVisibility(mIdx, true);
-            Level.LightSpot(oy, ox);
-            Level.LightSpot(ny, nx);
+            Level.RedrawSingleLocation(oy, ox);
+            Level.RedrawSingleLocation(ny, nx);
         }
     }
 }

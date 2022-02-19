@@ -152,7 +152,7 @@ namespace Cthangband.Projection
                 }
             }
             Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
-            Level.LightSpot(y, x);
+            Level.RedrawSingleLocation(y, x);
             ProjectMn++;
             ProjectMx = x;
             ProjectMy = y;

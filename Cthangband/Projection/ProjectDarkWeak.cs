@@ -24,7 +24,7 @@ namespace Cthangband.Projection
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
                 Level.NoteSpot(y, x);
             }
-            Level.LightSpot(y, x);
+            Level.RedrawSingleLocation(y, x);
             if (cPtr.Monster != 0)
             {
                 Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
@@ -141,7 +141,7 @@ namespace Cthangband.Projection
                 }
             }
             Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
-            Level.LightSpot(y, x);
+            Level.RedrawSingleLocation(y, x);
             ProjectMn++;
             ProjectMx = x;
             ProjectMy = y;

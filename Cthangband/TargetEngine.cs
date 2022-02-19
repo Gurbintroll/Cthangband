@@ -195,6 +195,41 @@ namespace Cthangband
             _level.PanelColPrt = _level.PanelColMin - 13;
         }
 
+        public void RecenterScreenAroundPlayer()
+        {
+            int y = _player.MapY;
+            int x = _player.MapX;
+            int maxProwMin = _level.MaxPanelRows * (Constants.ScreenHgt / 2);
+            int maxPcolMin = _level.MaxPanelCols * (Constants.ScreenWid / 2);
+            int prowMin = y - (Constants.ScreenHgt / 2);
+            if (prowMin > maxProwMin)
+            {
+                prowMin = maxProwMin;
+            }
+            else if (prowMin < 0)
+            {
+                prowMin = 0;
+            }
+            int pcolMin = x - (Constants.ScreenWid / 2);
+            if (pcolMin > maxPcolMin)
+            {
+                pcolMin = maxPcolMin;
+            }
+            else if (pcolMin < 0)
+            {
+                pcolMin = 0;
+            }
+            if (prowMin == _level.PanelRowMin && pcolMin == _level.PanelColMin)
+            {
+                return;
+            }
+            _level.PanelRowMin = prowMin;
+            _level.PanelColMin = pcolMin;
+            PanelBoundsCenter();
+            _player.UpdateFlags |= Constants.PuMonsters;
+            _player.RedrawFlags |= RedrawFlag.PrMap;
+        }
+
         public bool TargetOkay()
         {
             if (SaveGame.Instance.TargetWho < 0)
@@ -368,41 +403,6 @@ namespace Cthangband
             Gui.CursorVisible = cv;
             Gui.Refresh();
             return success;
-        }
-
-        public void VerifyPanel()
-        {
-            int y = _player.MapY;
-            int x = _player.MapX;
-            int maxProwMin = _level.MaxPanelRows * (Constants.ScreenHgt / 2);
-            int maxPcolMin = _level.MaxPanelCols * (Constants.ScreenWid / 2);
-            int prowMin = y - (Constants.ScreenHgt / 2);
-            if (prowMin > maxProwMin)
-            {
-                prowMin = maxProwMin;
-            }
-            else if (prowMin < 0)
-            {
-                prowMin = 0;
-            }
-            int pcolMin = x - (Constants.ScreenWid / 2);
-            if (pcolMin > maxPcolMin)
-            {
-                pcolMin = maxPcolMin;
-            }
-            else if (pcolMin < 0)
-            {
-                pcolMin = 0;
-            }
-            if (prowMin == _level.PanelRowMin && pcolMin == _level.PanelColMin)
-            {
-                return;
-            }
-            _level.PanelRowMin = prowMin;
-            _level.PanelColMin = pcolMin;
-            PanelBoundsCenter();
-            _player.UpdateFlags |= Constants.PuMonsters;
-            _player.RedrawFlags |= RedrawFlag.PrMap;
         }
 
         private string LookMonDesc(int mIdx)

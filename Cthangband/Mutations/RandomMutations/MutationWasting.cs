@@ -84,7 +84,7 @@ namespace Cthangband.Mutations.RandomMutations
             }
             Profile.Instance.MsgPrint("You can feel yourself wasting away!");
             Profile.Instance.MsgPrint(null);
-            player.DecreaeAbilityScore(whichStat, Program.Rng.DieRoll(6) + 6, Program.Rng.DieRoll(3) == 1);
+            player.DecreaseAbilityScore(whichStat, Program.Rng.DieRoll(6) + 6, Program.Rng.DieRoll(3) == 1);
         }
     }
 }

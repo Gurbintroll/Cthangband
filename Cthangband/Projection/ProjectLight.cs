@@ -20,7 +20,7 @@ namespace Cthangband.Projection
             bool obvious = false;
             cPtr.TileFlags.Set(GridTile.SelfLit);
             Level.NoteSpot(y, x);
-            Level.LightSpot(y, x);
+            Level.RedrawSingleLocation(y, x);
             if (Level.PlayerCanSeeBold(y, x))
             {
                 obvious = true;
@@ -163,7 +163,7 @@ namespace Cthangband.Projection
                 }
             }
             Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
-            Level.LightSpot(y, x);
+            Level.RedrawSingleLocation(y, x);
             ProjectMn++;
             ProjectMx = x;
             ProjectMy = y;

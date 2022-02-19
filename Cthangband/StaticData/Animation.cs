@@ -44,7 +44,7 @@ namespace Cthangband.StaticData
             {
                 if (level.PlayerHasLosBold(y, x) && level.PanelContains(y, x))
                 {
-                    level.LightSpot(y, x);
+                    level.RedrawSingleLocation(y, x);
                 }
                 Gui.Refresh();
             }
@@ -80,7 +80,7 @@ namespace Cthangband.StaticData
                 {
                     if (level.PlayerHasLosBold(y[j], x[j]) && level.PanelContains(y[j], x[j]))
                     {
-                        level.LightSpot(y[j], x[j]);
+                        level.RedrawSingleLocation(y[j], x[j]);
                     }
                 }
                 Gui.Refresh();

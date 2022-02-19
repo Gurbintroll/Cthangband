@@ -239,7 +239,7 @@ namespace Cthangband.Spells
                 {
                     bool perm = Program.Rng.RandomLessThan(100) < 25;
                     Profile.Instance.MsgPrint("You have damaged your health!");
-                    _player.DecreaeAbilityScore(Ability.Constitution, 15 + Program.Rng.DieRoll(10), perm);
+                    _player.DecreaseAbilityScore(Ability.Constitution, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
             _player.RedrawFlags |= RedrawFlag.PrMana;
@@ -323,7 +323,7 @@ namespace Cthangband.Spells
                 {
                     bool perm = Program.Rng.RandomLessThan(100) < 25;
                     Profile.Instance.MsgPrint("You have damaged your mind!");
-                    _player.DecreaeAbilityScore(Ability.Wisdom, 15 + Program.Rng.DieRoll(10), perm);
+                    _player.DecreaseAbilityScore(Ability.Wisdom, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
             _player.RedrawFlags |= RedrawFlag.PrMana;

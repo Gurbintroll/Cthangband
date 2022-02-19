@@ -286,7 +286,7 @@ namespace Cthangband
             while (Level > 1 && ExperiencePoints < GlobalData.PlayerExp[Level - 2] * ExperienceMultiplier / 100L)
             {
                 Level--;
-                SaveGame.Instance.Level.LightSpot(MapY, MapX);
+                SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
                 UpdateFlags |= Constants.PuBonus | Constants.PuHp | Constants.PuMana | Constants.PuSpells;
                 RedrawFlags |= RedrawFlag.PrLev | RedrawFlag.PrTitle;
                 SaveGame.Instance.HandleStuff();
@@ -294,7 +294,7 @@ namespace Cthangband
             while (Level < Constants.PyMaxLevel && ExperiencePoints >= GlobalData.PlayerExp[Level - 1] * ExperienceMultiplier / 100L)
             {
                 Level++;
-                SaveGame.Instance.Level.LightSpot(MapY, MapX);
+                SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
                 if (Level > MaxLevelGained)
                 {
                     MaxLevelGained = Level;
@@ -390,7 +390,7 @@ namespace Cthangband
             }
         }
 
-        public bool DecreaeAbilityScore(int stat, int amount, bool permanent)
+        public bool DecreaseAbilityScore(int stat, int amount, bool permanent)
         {
             int loss;
             bool res = false;
@@ -1144,7 +1144,7 @@ namespace Cthangband
                             Profile.Instance.MsgPrint($"You turn into a{n} {Race.RaceInfo[newRace].Title}!");
                             ChangeRace(newRace);
                         }
-                        SaveGame.Instance.Level.LightSpot(MapY, MapX);
+                        SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
                         moreEffects = false;
                         break;
 
@@ -1152,7 +1152,7 @@ namespace Cthangband
                         Profile.Instance.MsgPrint("You polymorph into an abomination!");
                         while (tmp < 6)
                         {
-                            DecreaeAbilityScore(tmp, Program.Rng.FixedSeed + 6, Program.Rng.DieRoll(3) == 1);
+                            DecreaseAbilityScore(tmp, Program.Rng.FixedSeed + 6, Program.Rng.DieRoll(3) == 1);
                             tmp++;
                         }
                         if (Program.Rng.DieRoll(6) == 1)
@@ -2816,7 +2816,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint($"You feel { GlobalData.DescStatNeg[stat]} for a moment, but Lobon's favour protects you.");
                 return true;
             }
-            if (DecreaeAbilityScore(stat, 10, false))
+            if (DecreaseAbilityScore(stat, 10, false))
             {
                 Profile.Instance.MsgPrint($"You feel very {GlobalData.DescStatNeg[stat]}.");
                 return true;

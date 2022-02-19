@@ -78,7 +78,7 @@ namespace Cthangband.Projection
                         {
                             SpellEffects.PotionSmashEffect(who, y, x, oSval);
                         }
-                        Level.LightSpot(y, x);
+                        Level.RedrawSingleLocation(y, x);
                     }
                 }
             }
@@ -222,7 +222,7 @@ namespace Cthangband.Projection
                 }
             }
             Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
-            Level.LightSpot(y, x);
+            Level.RedrawSingleLocation(y, x);
             ProjectMn++;
             ProjectMx = x;
             ProjectMy = y;
