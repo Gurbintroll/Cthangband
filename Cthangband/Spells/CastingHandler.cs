@@ -242,7 +242,7 @@ namespace Cthangband.Spells
                     _player.DecreaseAbilityScore(Ability.Constitution, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
-            _player.RedrawFlags |= RedrawFlag.PrMana;
+            _player.RedrawNeeded.Set(RedrawFlag.PrMana);
         }
 
         private void DoCmdMindcraft()
@@ -326,7 +326,7 @@ namespace Cthangband.Spells
                     _player.DecreaseAbilityScore(Ability.Wisdom, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
-            _player.RedrawFlags |= RedrawFlag.PrMana;
+            _player.RedrawNeeded.Set(RedrawFlag.PrMana);
         }
 
         private bool GetMindcraftPower(out int sn)

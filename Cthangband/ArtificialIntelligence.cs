@@ -2975,7 +2975,7 @@ namespace Cthangband
             // Track the monster that has just taken damage
             if (_saveGame.TrackedMonsterIndex == monsterIndex)
             {
-                _player.RedrawFlags |= RedrawFlag.PrHealth;
+                _player.RedrawNeeded.Set(RedrawFlag.PrHealth);
             }
             monster.SleepLevel = 0;
             // Take the damage
@@ -3658,7 +3658,7 @@ namespace Cthangband
                                 }
                                 if (_saveGame.TrackedMonsterIndex == monsterIndex)
                                 {
-                                    _player.RedrawFlags |= RedrawFlag.PrHealth;
+                                    _player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                                 }
                                 if (seen)
                                 {
@@ -4239,7 +4239,7 @@ namespace Cthangband
                         }
                         if (_saveGame.TrackedMonsterIndex == monsterIndex)
                         {
-                            _player.RedrawFlags |= RedrawFlag.PrHealth;
+                            _player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                         }
                         if (monster.FearLevel != 0)
                         {
@@ -5431,7 +5431,7 @@ namespace Cthangband
                         {
                             _player.Mana -= r1;
                         }
-                        _player.RedrawFlags |= RedrawFlag.PrMana;
+                        _player.RedrawNeeded.Set(RedrawFlag.PrMana);
                         if (monster.Health < monster.MaxHealth)
                         {
                             monster.Health += 6 * r1;
@@ -5441,7 +5441,7 @@ namespace Cthangband
                             }
                             if (_saveGame.TrackedMonsterIndex == monsterIndex)
                             {
-                                _player.RedrawFlags |= RedrawFlag.PrHealth;
+                                _player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                             }
                             if (seenByPlayer)
                             {
@@ -5830,7 +5830,7 @@ namespace Cthangband
                     }
                     if (_saveGame.TrackedMonsterIndex == monsterIndex)
                     {
-                        _player.RedrawFlags |= RedrawFlag.PrHealth;
+                        _player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                     }
                     if (monster.FearLevel != 0)
                     {

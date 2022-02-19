@@ -31,7 +31,7 @@ namespace Cthangband.Spells.Death
                 player.TakeHit(Program.Rng.DieRoll(4), "the strain of casting Annihilation");
                 player.Mana++;
                 level.MoveCursorRelative(player.MapY, player.MapX);
-                player.RedrawFlags |= RedrawFlag.PrHp | RedrawFlag.PrMana;
+                player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrMana);
                 SaveGame.Instance.HandleStuff();
                 Gui.Refresh();
                 Gui.Pause(GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor);

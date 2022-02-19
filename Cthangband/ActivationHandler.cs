@@ -3008,7 +3008,7 @@ namespace Cthangband
                             _player.FractionalMana = 0;
                             identified = true;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
-                            _player.RedrawFlags |= RedrawFlag.PrMana;
+                            _player.RedrawNeeded.Set(RedrawFlag.PrMana);
                         }
                         break;
                     }

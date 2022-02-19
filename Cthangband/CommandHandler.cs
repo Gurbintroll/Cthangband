@@ -87,8 +87,8 @@ namespace Cthangband
             Gui.SetBackground(Terminal.BackgroundImage.Overhead);
             Gui.Load();
             Gui.FullScreenOverlay = false;
-            Player.RedrawFlags |= RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrMap |
-                             RedrawFlag.PrEquippy;
+            Player.RedrawNeeded.Set(RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrMap |
+                             RedrawFlag.PrEquippy);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -151,7 +151,7 @@ namespace Cthangband
                 oPtr.Inscription = feel;
                 oPtr.IdentifyFlags.Set(Constants.IdentSense);
                 Player.NoticeFlags |= Constants.PnCombine;
-                Player.RedrawFlags |= RedrawFlag.PrEquippy;
+                Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
                 return;
             }
             Profile.Instance.MsgPrint($"You destroy {oName}.");
@@ -597,7 +597,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint($"You can learn {Player.NewSpells} more {p}{s}.");
             }
             Player.OldSpells = Player.NewSpells;
-            Player.RedrawFlags |= RedrawFlag.PrStudy;
+            Player.RedrawNeeded.Set(RedrawFlag.PrStudy);
         }
 
         public void DoCmdTakeoff()
@@ -618,7 +618,7 @@ namespace Cthangband
             }
             SaveGame.Instance.EnergyUse = 50;
             Player.Inventory.InvenTakeoff(item, 255);
-            Player.RedrawFlags |= RedrawFlag.PrEquippy;
+            Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 
         public void DoCmdWield()
@@ -701,7 +701,7 @@ namespace Cthangband
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateMana);
-            Player.RedrawFlags |= RedrawFlag.PrEquippy;
+            Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 
         public void ProcessCommand()
@@ -1026,7 +1026,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
@@ -1085,7 +1085,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
@@ -1126,7 +1126,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
@@ -1246,7 +1246,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
@@ -1307,7 +1307,7 @@ namespace Cthangband
             }
             SaveGame.Instance.EnergyUse = 50;
             Player.Inventory.InvenDrop(item, amt);
-            Player.RedrawFlags |= RedrawFlag.PrEquippy;
+            Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 
         private void DoCmdGoDown()
@@ -1516,13 +1516,13 @@ namespace Cthangband
                     Level.PanelCol = x2;
                     targetEngine.PanelBounds();
                     Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-                    Player.RedrawFlags |= RedrawFlag.PrMap;
+                    Player.RedrawNeeded.Set(RedrawFlag.PrMap);
                     SaveGame.Instance.HandleStuff();
                 }
             }
             targetEngine.RecenterScreenAroundPlayer();
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -1553,7 +1553,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             TargetEngine targetEngine = new TargetEngine(Player, Level);
@@ -1999,7 +1999,7 @@ namespace Cthangband
             SaveGame.Instance.Resting = Gui.CommandArg;
             Player.IsSearching = false;
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-            Player.RedrawFlags |= RedrawFlag.PrState;
+            Player.RedrawNeeded.Set(RedrawFlag.PrState);
             SaveGame.Instance.HandleStuff();
             Gui.Refresh();
         }
@@ -2024,7 +2024,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             SaveGame.Instance.EnergyUse = 100;
@@ -2037,7 +2037,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             SaveGame.Instance.EnergyUse = 100;
@@ -2107,13 +2107,13 @@ namespace Cthangband
             {
                 Player.IsSearching = false;
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
             }
             else
             {
                 Player.IsSearching = true;
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                Player.RedrawFlags |= RedrawFlag.PrState | RedrawFlag.PrSpeed;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState | RedrawFlag.PrSpeed);
             }
         }
 
@@ -2124,7 +2124,7 @@ namespace Cthangband
             if (Gui.CommandArg != 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
@@ -2203,7 +2203,7 @@ namespace Cthangband
             if (Gui.CommandArg > 0)
             {
                 CommandRep = Gui.CommandArg - 1;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArg = 0;
             }
             if (targetEngine.GetRepDir(out int dir))

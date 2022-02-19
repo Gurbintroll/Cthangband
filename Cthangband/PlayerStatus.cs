@@ -885,7 +885,7 @@ namespace Cthangband
                 if (_player.AbilityScores[i].AdjustedMax != top)
                 {
                     _player.AbilityScores[i].AdjustedMax = top;
-                    _player.RedrawFlags |= RedrawFlag.PrStats;
+                    _player.RedrawNeeded.Set(RedrawFlag.PrStats);
                 }
                 int use = _player.AbilityScores[i]
                     .ModifyStatValue(_player.AbilityScores[i].Innate, _player.AbilityScores[i].Bonus);
@@ -899,7 +899,7 @@ namespace Cthangband
                 if (_player.AbilityScores[i].Adjusted != use)
                 {
                     _player.AbilityScores[i].Adjusted = use;
-                    _player.RedrawFlags |= RedrawFlag.PrStats;
+                    _player.RedrawNeeded.Set(RedrawFlag.PrStats);
                 }
                 if (use <= 18)
                 {
@@ -1049,7 +1049,7 @@ namespace Cthangband
             }
             if (_player.Speed != oldSpeed)
             {
-                _player.RedrawFlags |= RedrawFlag.PrSpeed;
+                _player.RedrawNeeded.Set(RedrawFlag.PrSpeed);
             }
             _player.ArmourClassBonus += _player.AbilityScores[Ability.Dexterity].DexArmourClassBonus;
             _player.DamageBonus += _player.AbilityScores[Ability.Strength].StrDamageBonus;
@@ -1061,7 +1061,7 @@ namespace Cthangband
             _player.DisplayedAttackBonus += _player.AbilityScores[Ability.Strength].StrAttackBonus;
             if (_player.DisplayedBaseArmourClass != oldDisAc || _player.DisplayedArmourClassBonus != oldDisToA)
             {
-                _player.RedrawFlags |= RedrawFlag.PrArmor;
+                _player.RedrawNeeded.Set(RedrawFlag.PrArmor);
             }
             int hold = _player.AbilityScores[Ability.Strength].StrMaxWeaponWeight;
             oPtr = _player.Inventory[InventorySlot.RangedWeapon];
@@ -1429,7 +1429,7 @@ namespace Cthangband
                     _player.FractionalHealth = 0;
                 }
                 _player.MaxHealth = mhp;
-                _player.RedrawFlags |= RedrawFlag.PrHp;
+                _player.RedrawNeeded.Set(RedrawFlag.PrHp);
             }
         }
 
@@ -1511,7 +1511,7 @@ namespace Cthangband
                     _player.FractionalMana = 0;
                 }
                 _player.MaxMana = msp;
-                _player.RedrawFlags |= RedrawFlag.PrMana;
+                _player.RedrawNeeded.Set(RedrawFlag.PrMana);
             }
             if (SaveGame.Instance.CharacterXtra)
             {
@@ -1706,7 +1706,7 @@ namespace Cthangband
                     }
                 }
                 _player.OldSpells = _player.NewSpells;
-                _player.RedrawFlags |= RedrawFlag.PrStudy;
+                _player.RedrawNeeded.Set(RedrawFlag.PrStudy);
             }
         }
 

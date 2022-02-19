@@ -75,7 +75,7 @@ namespace Cthangband.Projection
             {
                 if (SaveGame.TrackedMonsterIndex == cPtr.Monster)
                 {
-                    Player.RedrawFlags |= RedrawFlag.PrHealth;
+                    Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                 }
                 mPtr.SleepLevel = 0;
                 mPtr.Health -= dam;

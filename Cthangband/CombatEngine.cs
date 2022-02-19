@@ -433,7 +433,7 @@ namespace Cthangband
                                         }
                                         if (_saveGame.TrackedMonsterIndex == monsterIndex)
                                         {
-                                            player.RedrawFlags |= RedrawFlag.PrHealth;
+                                            player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                                         }
                                         item.TypeSpecificValue = 0;
                                         player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
@@ -491,7 +491,7 @@ namespace Cthangband
                                         Profile.Instance.MsgPrint("Your purse feels lighter.");
                                         Profile.Instance.MsgPrint("All of your coins were stolen!");
                                     }
-                                    player.RedrawFlags |= RedrawFlag.PrGold;
+                                    player.RedrawNeeded.Set(RedrawFlag.PrGold);
                                     blinked = true;
                                 }
                                 break;

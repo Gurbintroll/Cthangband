@@ -1134,8 +1134,8 @@ namespace Cthangband
                 Player.Mana -= (cost / 2) + Program.Rng.DieRoll(cost / 2);
             }
             // We'll need to redraw
-            Player.RedrawFlags |= RedrawFlag.PrHp;
-            Player.RedrawFlags |= RedrawFlag.PrMana;
+            Player.RedrawNeeded.Set(RedrawFlag.PrHp);
+            Player.RedrawNeeded.Set(RedrawFlag.PrMana);
             // Check to see if we were successful
             if (Program.Rng.DieRoll(Player.AbilityScores[useStat].Innate) >=
                 (difficulty / 2) + Program.Rng.DieRoll(difficulty / 2))
@@ -1610,13 +1610,13 @@ namespace Cthangband
             {
                 Profile.Instance.MsgPrint("You channel mana to power the effect.");
                 Player.Mana -= cost;
-                Player.RedrawFlags |= RedrawFlag.PrMana;
+                Player.RedrawNeeded.Set(RedrawFlag.PrMana);
                 return true;
             }
             // Use some mana in the attempt, even if we failed
             Profile.Instance.MsgPrint("You mana is insufficient to power the effect.");
             Player.Mana -= Program.Rng.RandomLessThan(Player.Mana / 2);
-            Player.RedrawFlags |= RedrawFlag.PrMana;
+            Player.RedrawNeeded.Set(RedrawFlag.PrMana);
             return false;
         }
 
@@ -2054,7 +2054,7 @@ namespace Cthangband
             // the notification
             if (oldTrapsDetected != newTrapsDetected)
             {
-                Player.RedrawFlags |= RedrawFlag.PrDtrap;
+                Player.RedrawNeeded.Set(RedrawFlag.PrDtrap);
             }
             // If we're leaving an area where we've detected traps at a run, then stop running
             if (_saveGame.Running != 0 && oldTrapsDetected && !newTrapsDetected)
@@ -2080,7 +2080,7 @@ namespace Cthangband
             // We'll need to update and redraw various things
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateDistances);
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
             // If we're not actively searching, then have a chance of doing it passively
             if (Player.SkillSearchFrequency >= 50 || 0 == Program.Rng.RandomLessThan(50 - Player.SkillSearchFrequency))
             {
@@ -2259,7 +2259,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint($"You collect {item.TypeSpecificValue} gold pieces worth of {itemName}.");
                     Player.Gold += item.TypeSpecificValue;
-                    Player.RedrawFlags |= RedrawFlag.PrGold;
+                    Player.RedrawNeeded.Set(RedrawFlag.PrGold);
                     _saveGame.Level.DeleteObjectIdx(thisItemIndex);
                 }
                 else
@@ -3222,7 +3222,7 @@ namespace Cthangband
                             Player.Mana = Player.MaxMana;
                             Player.FractionalMana = 0;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
-                            Player.RedrawFlags |= RedrawFlag.PrMana;
+                            Player.RedrawNeeded.Set(RedrawFlag.PrMana);
                             identified = true;
                         }
                         break;
@@ -3923,7 +3923,7 @@ namespace Cthangband
             oPtr.Y = Player.MapY;
             oPtr.X = Player.MapX;
             Level.NoteSpot(Player.MapY, Player.MapX);
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public bool TestHitFire(int chance, int ac, bool vis)
@@ -4549,7 +4549,7 @@ namespace Cthangband
                     _saveGame.EnergyUse = 0;
                     break;
             }
-            Player.RedrawFlags |= RedrawFlag.PrHp | RedrawFlag.PrMana;
+            Player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrMana);
         }
 
         private bool CheckHit(int power)

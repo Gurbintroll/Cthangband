@@ -161,7 +161,7 @@ namespace Cthangband
             if (size != 0)
             {
                 Profile.Instance.MsgPrint("Compacting objects...");
-                SaveGame.Instance.Player.RedrawFlags |= RedrawFlag.PrMap;
+                SaveGame.Instance.Player.RedrawNeeded.Set(RedrawFlag.PrMap);
             }
             for (num = 0, cnt = 1; num < size; cnt++)
             {
@@ -928,7 +928,7 @@ namespace Cthangband
                     }
                 }
             }
-            _player.RedrawFlags |= RedrawFlag.PrMap;
+            _player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public void MoveCursorRelative(int row, int col)
@@ -2039,7 +2039,7 @@ namespace Cthangband
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateRemoveView | UpdateFlags.UpdateRemoveLight);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            _player.RedrawFlags |= RedrawFlag.PrMap;
+            _player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public void WizLight()
@@ -2081,7 +2081,7 @@ namespace Cthangband
                 }
             }
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            _player.RedrawFlags |= RedrawFlag.PrMap;
+            _player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         private void CaveLightHack(int y, int x)

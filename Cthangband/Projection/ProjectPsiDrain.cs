@@ -81,7 +81,7 @@ namespace Cthangband.Projection
                         string killer = mPtr.MonsterDesc(0x88);
                         Profile.Instance.MsgPrint("Your psychic energy is drained!");
                         Player.Mana = Math.Max(0, Player.Mana - (Program.Rng.DiceRoll(5, dam) / 2));
-                        Player.RedrawFlags |= RedrawFlag.PrMana;
+                        Player.RedrawNeeded.Set(RedrawFlag.PrMana);
                         Player.TakeHit(dam, killer);
                     }
                     dam = 0;
@@ -94,7 +94,7 @@ namespace Cthangband.Projection
                 Profile.Instance.MsgPrint($"You convert {mName}{s} pain into psychic energy!");
                 b = Math.Min(Player.MaxMana, Player.Mana + b);
                 Player.Mana = b;
-                Player.RedrawFlags |= RedrawFlag.PrMana;
+                Player.RedrawNeeded.Set(RedrawFlag.PrMana);
             }
             string noteDies = " collapses, a mindless husk.";
             if ((rPtr.Flags1 & MonsterFlag1.Guardian) != 0)
@@ -119,7 +119,7 @@ namespace Cthangband.Projection
             {
                 if (SaveGame.TrackedMonsterIndex == cPtr.Monster)
                 {
-                    Player.RedrawFlags |= RedrawFlag.PrHealth;
+                    Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                 }
                 mPtr.SleepLevel = 0;
                 mPtr.Health -= dam;

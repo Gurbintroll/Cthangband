@@ -25,7 +25,7 @@ namespace Cthangband.Mutations.RandomMutations
                 return;
             }
             saveGame.Disturb(false);
-            player.RedrawFlags |= RedrawFlag.PrExtra;
+            player.RedrawNeeded.Set(RedrawFlag.PrExtra);
             Profile.Instance.MsgPrint("You feel a SSSCHtupor cOmINg over yOu... *HIC*!");
             if (Program.Rng.DieRoll(20) == 1)
             {

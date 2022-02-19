@@ -260,7 +260,7 @@ namespace Cthangband.Spells
                 }
                 Profile.Instance.MsgPrint($"You turn {oName} to {price} coins worth of gold.");
                 Player.Gold += price;
-                Player.RedrawFlags |= RedrawFlag.PrGold;
+                Player.RedrawNeeded.Set(RedrawFlag.PrGold);
             }
             if (item >= 0)
             {
@@ -650,7 +650,7 @@ namespace Cthangband.Spells
                     Player.TakeHit(Program.Rng.DieRoll(4), "the strain of casting Carnage");
                 }
                 Level.MoveCursorRelative(Player.MapY, Player.MapX);
-                Player.RedrawFlags |= RedrawFlag.PrHp;
+                Player.RedrawNeeded.Set(RedrawFlag.PrHp);
                 _saveGame.HandleStuff();
                 Gui.Refresh();
                 Gui.Pause(msec);
@@ -802,7 +802,7 @@ namespace Cthangband.Spells
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateRemoveView | UpdateFlags.UpdateRemoveLight);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public bool DestroyDoor(int dir)
@@ -1152,8 +1152,8 @@ namespace Cthangband.Spells
                     }
                 }
             }
-            Player.RedrawFlags |= RedrawFlag.PrDtrap;
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrDtrap);
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
             if (detect)
             {
                 Profile.Instance.MsgPrint("You sense the presence of traps!");
@@ -1493,8 +1493,8 @@ namespace Cthangband.Spells
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateRemoveView | UpdateFlags.UpdateRemoveLight);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateDistances);
-            Player.RedrawFlags |= RedrawFlag.PrHealth;
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public void ElderSign()
@@ -2004,7 +2004,7 @@ namespace Cthangband.Spells
                     Player.TakeHit(Program.Rng.DieRoll(3), "the strain of casting Mass Carnage");
                 }
                 Level.MoveCursorRelative(Player.MapY, Player.MapX);
-                Player.RedrawFlags |= RedrawFlag.PrHp;
+                Player.RedrawNeeded.Set(RedrawFlag.PrHp);
                 _saveGame.HandleStuff();
                 Gui.Refresh();
                 Gui.Pause(msec);
@@ -3661,7 +3661,7 @@ namespace Cthangband.Spells
             _ = Project(0, 1, Player.MapY, Player.MapX, 0, new ProjectStoneWall(this), flg);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public bool WallToMud(int dir)

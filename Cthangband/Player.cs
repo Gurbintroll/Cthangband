@@ -132,7 +132,7 @@ namespace Cthangband
         public int RaceIndexAtBirth;
         public Realm Realm1;
         public Realm Realm2;
-        public uint RedrawFlags;
+        public FlagSet RedrawNeeded = new FlagSet();
         public Religion Religion = new Religion();
         public int SkillDigging;
         public int SkillDisarmTraps;
@@ -173,7 +173,7 @@ namespace Cthangband
         public int TimedSuperheroism;
         public int TimedTelepathy;
         public int TownWithHouse;
-        public FlagSet UpdatesNeeded;
+        public FlagSet UpdatesNeeded = new FlagSet();
         public int Weight;
         public int WeightCarried;
         public int WildernessX;
@@ -252,7 +252,7 @@ namespace Cthangband
             }
             CheckExperience();
             MaxLevelGained = Level;
-            RedrawFlags |= RedrawFlag.PrBasic;
+            RedrawNeeded.Set(RedrawFlag.PrBasic);
             UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             SaveGame.Instance.HandleStuff();
         }
@@ -281,14 +281,14 @@ namespace Cthangband
             {
                 MaxExperienceGained = ExperiencePoints;
             }
-            RedrawFlags |= RedrawFlag.PrExp;
+            RedrawNeeded.Set(RedrawFlag.PrExp);
             SaveGame.Instance.HandleStuff();
             while (Level > 1 && ExperiencePoints < GlobalData.PlayerExp[Level - 2] * ExperienceMultiplier / 100L)
             {
                 Level--;
                 SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
                 UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
-                RedrawFlags |= RedrawFlag.PrLev | RedrawFlag.PrTitle;
+                RedrawNeeded.Set(RedrawFlag.PrLev | RedrawFlag.PrTitle);
                 SaveGame.Instance.HandleStuff();
             }
             while (Level < Constants.PyMaxLevel && ExperiencePoints >= GlobalData.PlayerExp[Level - 1] * ExperienceMultiplier / 100L)
@@ -317,7 +317,7 @@ namespace Cthangband
                 Gui.PlaySound(SoundEffect.LevelGain);
                 Profile.Instance.MsgPrint($"Welcome to level {Level}.");
                 UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
-                RedrawFlags |= RedrawFlag.PrExp | RedrawFlag.PrLev | RedrawFlag.PrTitle;
+                RedrawNeeded.Set(RedrawFlag.PrExp | RedrawFlag.PrLev | RedrawFlag.PrTitle);
                 SaveGame.Instance.HandleStuff();
                 if (levelReward)
                 {
@@ -1236,7 +1236,7 @@ namespace Cthangband
             }
             if (oldHealth != Health)
             {
-                RedrawFlags |= RedrawFlag.PrHp;
+                RedrawNeeded.Set(RedrawFlag.PrHp);
             }
         }
 
@@ -1266,7 +1266,7 @@ namespace Cthangband
             }
             if (oldMana != Mana)
             {
-                RedrawFlags |= RedrawFlag.PrMana;
+                RedrawNeeded.Set(RedrawFlag.PrMana);
             }
         }
 
@@ -1296,7 +1296,7 @@ namespace Cthangband
                 PlayerHp[i] = PlayerHp[i - 1] + PlayerHp[i];
             }
             UpdatesNeeded.Set(UpdateFlags.UpdateHealth);
-            RedrawFlags |= RedrawFlag.PrHp;
+            RedrawNeeded.Set(RedrawFlag.PrHp);
             SaveGame.Instance.HandleStuff();
         }
 
@@ -1321,7 +1321,7 @@ namespace Cthangband
                     Health = MaxHealth;
                     FractionalHealth = 0;
                 }
-                RedrawFlags |= RedrawFlag.PrHp;
+                RedrawNeeded.Set(RedrawFlag.PrHp);
                 if (num < 5)
                 {
                     Profile.Instance.MsgPrint("You feel a little better.");
@@ -1652,7 +1652,7 @@ namespace Cthangband
             }
             SaveGame.Instance.Disturb(false);
             UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-            RedrawFlags |= RedrawFlag.PrHunger;
+            RedrawNeeded.Set(RedrawFlag.PrHunger);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -1823,7 +1823,7 @@ namespace Cthangband
             }
             SaveGame.Instance.Disturb(false);
             UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-            RedrawFlags |= RedrawFlag.PrCut;
+            RedrawNeeded.Set(RedrawFlag.PrCut);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -1888,8 +1888,8 @@ namespace Cthangband
             UpdatesNeeded.Set(UpdateFlags.UpdateRemoveView | UpdateFlags.UpdateRemoveLight);
             UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
             UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            RedrawFlags |= RedrawFlag.PrMap;
-            RedrawFlags |= RedrawFlag.PrBlind;
+            RedrawNeeded.Set(RedrawFlag.PrMap);
+            RedrawNeeded.Set(RedrawFlag.PrBlind);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -1950,7 +1950,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            RedrawFlags |= RedrawFlag.PrConfused;
+            RedrawNeeded.Set(RedrawFlag.PrConfused);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -1966,7 +1966,7 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("You leave the physical world and turn into a wraith-being!");
                     notice = true;
                     {
-                        RedrawFlags |= RedrawFlag.PrMap;
+                        RedrawNeeded.Set(RedrawFlag.PrMap);
                         UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
@@ -1978,7 +1978,7 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("You feel opaque.");
                     notice = true;
                     {
-                        RedrawFlags |= RedrawFlag.PrMap;
+                        RedrawNeeded.Set(RedrawFlag.PrMap);
                         UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
@@ -2019,7 +2019,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            RedrawFlags |= RedrawFlag.PrAfraid;
+            RedrawNeeded.Set(RedrawFlag.PrAfraid);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2080,7 +2080,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            RedrawFlags |= RedrawFlag.PrMap;
+            RedrawNeeded.Set(RedrawFlag.PrMap);
             UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             SaveGame.Instance.HandleStuff();
             return true;
@@ -2192,7 +2192,7 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("Invulnerability!");
                     notice = true;
                     {
-                        RedrawFlags |= RedrawFlag.PrMap;
+                        RedrawNeeded.Set(RedrawFlag.PrMap);
                         UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
@@ -2204,7 +2204,7 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("The invulnerability wears off.");
                     notice = true;
                     {
-                        RedrawFlags |= RedrawFlag.PrMap;
+                        RedrawNeeded.Set(RedrawFlag.PrMap);
                         UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     }
                 }
@@ -2274,7 +2274,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            RedrawFlags |= RedrawFlag.PrState;
+            RedrawNeeded.Set(RedrawFlag.PrState);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2305,7 +2305,7 @@ namespace Cthangband
                 return false;
             }
             SaveGame.Instance.Disturb(false);
-            RedrawFlags |= RedrawFlag.PrPoisoned;
+            RedrawNeeded.Set(RedrawFlag.PrPoisoned);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2568,7 +2568,7 @@ namespace Cthangband
             }
             SaveGame.Instance.Disturb(false);
             UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-            RedrawFlags |= RedrawFlag.PrStun;
+            RedrawNeeded.Set(RedrawFlag.PrStun);
             SaveGame.Instance.HandleStuff();
             return true;
         }
@@ -2702,7 +2702,7 @@ namespace Cthangband
                 }
             }
             Health -= damage;
-            RedrawFlags |= RedrawFlag.PrHp;
+            RedrawNeeded.Set(RedrawFlag.PrHp);
             if (penInvuln)
             {
                 Profile.Instance.MsgPrint("The attack penetrates your shield of invulnerability!");

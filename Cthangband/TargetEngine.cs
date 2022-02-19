@@ -227,7 +227,7 @@ namespace Cthangband
             _level.PanelColMin = pcolMin;
             PanelBoundsCenter();
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            _player.RedrawFlags |= RedrawFlag.PrMap;
+            _player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public bool TargetOkay()

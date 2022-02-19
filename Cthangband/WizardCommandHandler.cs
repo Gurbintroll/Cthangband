@@ -151,7 +151,7 @@ namespace Cthangband
 
                 case 'W':
                     _player.IsWinner = true;
-                    _player.RedrawFlags |= RedrawFlag.PrTitle;
+                    _player.RedrawNeeded.Set(RedrawFlag.PrTitle);
                     Profile.Instance.MsgPrint("*** CONGRATULATIONS ***");
                     Profile.Instance.MsgPrint("You have won the game!");
                     Profile.Instance.MsgPrint("You may retire ('Q') when you are ready.");
@@ -195,7 +195,7 @@ namespace Cthangband
             {
                 _player.IsWizard = true;
                 Profile.Instance.MsgPrint("Wizard mode activated.");
-                _player.RedrawFlags |= RedrawFlag.PrTitle;
+                _player.RedrawNeeded.Set(RedrawFlag.PrTitle);
             }
         }
 
@@ -207,8 +207,8 @@ namespace Cthangband
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateRemoveView | UpdateFlags.UpdateRemoveLight);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            _player.RedrawFlags |= RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrMap |
-                              RedrawFlag.PrEquippy;
+            _player.RedrawNeeded.Set(RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrMap |
+                              RedrawFlag.PrEquippy);
             SaveGame.Instance.HandleStuff();
             Gui.Redraw();
         }

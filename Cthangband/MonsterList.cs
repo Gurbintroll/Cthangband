@@ -187,7 +187,7 @@ namespace Cthangband
             MonsterRace rPtr = mPtr.Race;
             if (SaveGame.Instance.TrackedMonsterIndex == mIdx)
             {
-                SaveGame.Instance.Player.RedrawFlags |= RedrawFlag.PrHealth;
+                SaveGame.Instance.Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
             }
             mPtr.SleepLevel = 0;
             mPtr.Health -= dam;
@@ -969,7 +969,7 @@ namespace Cthangband
                     _level.RedrawSingleLocation(fy, fx);
                     if (SaveGame.Instance.TrackedMonsterIndex == mIdx)
                     {
-                        SaveGame.Instance.Player.RedrawFlags |= RedrawFlag.PrHealth;
+                        SaveGame.Instance.Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                     }
                     if (rPtr.Knowledge.RSights < Constants.MaxShort)
                     {
@@ -1012,7 +1012,7 @@ namespace Cthangband
                     _level.RedrawSingleLocation(fy, fx);
                     if (SaveGame.Instance.TrackedMonsterIndex == mIdx)
                     {
-                        SaveGame.Instance.Player.RedrawFlags |= RedrawFlag.PrHealth;
+                        SaveGame.Instance.Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                     }
                 }
             }

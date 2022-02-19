@@ -259,8 +259,8 @@ namespace Cthangband
             Gui.SetBackground(Terminal.BackgroundImage.Overhead);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-            _player.RedrawFlags |= RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy;
-            _player.RedrawFlags |= RedrawFlag.PrMap;
+            _player.RedrawNeeded.Set(RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy);
+            _player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
         public void StoreInit()

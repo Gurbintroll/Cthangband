@@ -110,7 +110,7 @@ namespace Cthangband.Projection
             {
                 if (SaveGame.TrackedMonsterIndex == cPtr.Monster)
                 {
-                    Player.RedrawFlags |= RedrawFlag.PrHealth;
+                    Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                 }
                 mPtr.SleepLevel = 0;
                 mPtr.Health -= dam;
@@ -237,7 +237,7 @@ namespace Cthangband.Projection
             {
                 Player.TimedEtherealness = 0;
                 Profile.Instance.MsgPrint("The light forces you out of your incorporeal shadow form.");
-                Player.RedrawFlags |= RedrawFlag.PrMap;
+                Player.RedrawNeeded.Set(RedrawFlag.PrMap);
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             }
             SaveGame.Disturb(true);

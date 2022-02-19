@@ -25,7 +25,7 @@ namespace Cthangband.Mutations.RandomMutations
                 return;
             }
             saveGame.Disturb(false);
-            player.RedrawFlags |= RedrawFlag.PrExtra;
+            player.RedrawNeeded.Set(RedrawFlag.PrExtra);
             player.SetTimedHallucinations(player.TimedHallucinations + Program.Rng.RandomLessThan(50) + 20);
         }
     }

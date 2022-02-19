@@ -27,7 +27,7 @@ namespace Cthangband.Mutations.RandomMutations
             }
             saveGame.Disturb(false);
             Profile.Instance.MsgPrint("It's so dark... so scary!");
-            player.RedrawFlags |= RedrawFlag.PrAfraid;
+            player.RedrawNeeded.Set(RedrawFlag.PrAfraid);
             player.TimedFear = player.TimedFear + 13 + Program.Rng.DieRoll(26);
         }
     }

@@ -321,12 +321,12 @@ namespace Cthangband
             if (Command.CommandRep != 0)
             {
                 Command.CommandRep = 0;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
             }
             if (Resting != 0)
             {
                 Resting = 0;
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
             }
             if (Running != 0)
             {
@@ -337,7 +337,7 @@ namespace Cthangband
             {
                 Player.IsSearching = false;
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                Player.RedrawFlags |= RedrawFlag.PrState;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
             }
         }
 
@@ -643,7 +643,7 @@ namespace Cthangband
             {
                 UpdateStuff();
             }
-            if (Player.RedrawFlags != 0)
+            if (Player.RedrawNeeded.IsSet())
             {
                 RedrawStuff();
             }
@@ -652,7 +652,7 @@ namespace Cthangband
         public void HealthTrack(int mIdx)
         {
             TrackedMonsterIndex = mIdx;
-            Player.RedrawFlags |= RedrawFlag.PrHealth;
+            Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
         }
 
         public void Initialise()
@@ -800,7 +800,7 @@ namespace Cthangband
             if (Quests.ActiveQuests == 0)
             {
                 Player.IsWinner = true;
-                Player.RedrawFlags |= RedrawFlag.PrTitle;
+                Player.RedrawNeeded.Set(RedrawFlag.PrTitle);
                 Profile.Instance.MsgPrint("*** CONGRATULATIONS ***");
                 Profile.Instance.MsgPrint("You have won the game!");
                 Profile.Instance.MsgPrint("You may retire ('Q') when you are ready.");
@@ -955,7 +955,7 @@ namespace Cthangband
                 {
                     UpdateStuff();
                 }
-                if (Player.RedrawFlags != 0)
+                if (Player.RedrawNeeded.IsSet())
                 {
                     RedrawStuff();
                 }
@@ -1327,8 +1327,8 @@ namespace Cthangband
             targetEngine.PanelBoundsCenter();
             Profile.Instance.MsgPrint(null);
             CharacterXtra = true;
-            Player.RedrawFlags |= RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy;
-            Player.RedrawFlags |= RedrawFlag.PrMap;
+            Player.RedrawNeeded.Set(RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy);
+            Player.RedrawNeeded.Set(RedrawFlag.PrMap);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
             UpdateStuff();
@@ -1409,7 +1409,7 @@ namespace Cthangband
                 {
                     UpdateStuff();
                 }
-                if (Player.RedrawFlags != 0)
+                if (Player.RedrawNeeded.IsSet())
                 {
                     RedrawStuff();
                 }
@@ -1430,7 +1430,7 @@ namespace Cthangband
                 {
                     UpdateStuff();
                 }
-                if (Player.RedrawFlags != 0)
+                if (Player.RedrawNeeded.IsSet())
                 {
                     RedrawStuff();
                 }
@@ -1448,7 +1448,7 @@ namespace Cthangband
                 {
                     UpdateStuff();
                 }
-                if (Player.RedrawFlags != 0)
+                if (Player.RedrawNeeded.IsSet())
                 {
                     RedrawStuff();
                 }
@@ -1869,7 +1869,7 @@ namespace Cthangband
             }
             while (Player.Energy >= 100)
             {
-                Player.RedrawFlags |= RedrawFlag.PrDtrap;
+                Player.RedrawNeeded.Set(RedrawFlag.PrDtrap);
                 if (Player.NoticeFlags != 0)
                 {
                     NoticeStuff();
@@ -1878,7 +1878,7 @@ namespace Cthangband
                 {
                     UpdateStuff();
                 }
-                if (Player.RedrawFlags != 0)
+                if (Player.RedrawNeeded.IsSet())
                 {
                     RedrawStuff();
                 }
@@ -1904,7 +1904,7 @@ namespace Cthangband
                     {
                         UpdateStuff();
                     }
-                    if (Player.RedrawFlags != 0)
+                    if (Player.RedrawNeeded.IsSet())
                     {
                         RedrawStuff();
                     }
@@ -1923,7 +1923,7 @@ namespace Cthangband
                     if (Resting > 0)
                     {
                         Resting--;
-                        Player.RedrawFlags |= RedrawFlag.PrState;
+                        Player.RedrawNeeded.Set(RedrawFlag.PrState);
                     }
                     EnergyUse = 100;
                 }
@@ -1934,7 +1934,7 @@ namespace Cthangband
                 else if (Command.CommandRep != 0)
                 {
                     Command.CommandRep--;
-                    Player.RedrawFlags |= RedrawFlag.PrState;
+                    Player.RedrawNeeded.Set(RedrawFlag.PrState);
                     RedrawStuff();
                     Profile.Instance.MsgFlag = false;
                     Gui.PrintLine("", 0, 0);
@@ -2070,7 +2070,7 @@ namespace Cthangband
                     }
                 }
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
-                Player.RedrawFlags |= RedrawFlag.PrMap;
+                Player.RedrawNeeded.Set(RedrawFlag.PrMap);
             }
             if (Player.GameTime.IsMidnight)
             {
@@ -2576,7 +2576,7 @@ namespace Cthangband
 
         private void RedrawStuff()
         {
-            if (Player.RedrawFlags == 0)
+            if (Player.RedrawNeeded.IsClear())
             {
                 return;
             }
@@ -2589,56 +2589,56 @@ namespace Cthangband
                 return;
             }
             PlayerStatus playerStatus = new PlayerStatus(Player, Level);
-            if ((Player.RedrawFlags & RedrawFlag.PrWipe) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrWipe))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrWipe;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrWipe);
                 Profile.Instance.MsgPrint(null);
                 Gui.Clear();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrMap) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrMap))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrMap;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrMap);
                 Level.PrtMap();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrBasic) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrBasic))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrBasic;
-                Player.RedrawFlags &= ~(RedrawFlag.PrMisc | RedrawFlag.PrTitle | RedrawFlag.PrStats);
-                Player.RedrawFlags &= ~(RedrawFlag.PrLev | RedrawFlag.PrExp | RedrawFlag.PrGold);
-                Player.RedrawFlags &= ~(RedrawFlag.PrArmor | RedrawFlag.PrHp | RedrawFlag.PrMana);
-                Player.RedrawFlags &= ~(RedrawFlag.PrDepth | RedrawFlag.PrHealth);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrBasic);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrMisc | RedrawFlag.PrTitle | RedrawFlag.PrStats);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrLev | RedrawFlag.PrExp | RedrawFlag.PrGold);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrArmor | RedrawFlag.PrHp | RedrawFlag.PrMana);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrDepth | RedrawFlag.PrHealth);
                 playerStatus.PrtFrameBasic();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrEquippy) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrEquippy))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrEquippy;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrEquippy);
                 CharacterViewer.PrintEquippy(Player);
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrMisc) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrMisc))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrMisc;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrMisc);
                 playerStatus.PrtField(Player.Race.Title, ScreenLocation.RowRace, ScreenLocation.ColRace);
                 playerStatus.PrtField(Profession.ClassSubName(Player.ProfessionIndex, Player.Realm1), ScreenLocation.RowClass,
                     ScreenLocation.ColClass);
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrTitle) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrTitle))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrTitle;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrTitle);
                 playerStatus.PrtTitle();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrLev) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrLev))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrLev;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrLev);
                 playerStatus.PrtLevel();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrExp) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrExp))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrExp;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrExp);
                 playerStatus.PrtExp();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrStats) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrStats))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrStats;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrStats);
                 playerStatus.PrtStat(Ability.Strength);
                 playerStatus.PrtStat(Ability.Intelligence);
                 playerStatus.PrtStat(Ability.Wisdom);
@@ -2646,99 +2646,99 @@ namespace Cthangband
                 playerStatus.PrtStat(Ability.Constitution);
                 playerStatus.PrtStat(Ability.Charisma);
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrArmor) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrArmor))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrArmor;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrArmor);
                 playerStatus.PrtAc();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrHp) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrHp))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrHp;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrHp);
                 playerStatus.PrtHp();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrMana) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrMana))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrMana;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrMana);
                 playerStatus.PrtSp();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrGold) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrGold))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrGold;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrGold);
                 playerStatus.PrtGold();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrDepth) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrDepth))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrDepth;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrDepth);
                 playerStatus.PrtDepth();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrHealth) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrHealth))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrHealth;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrHealth);
                 playerStatus.HealthRedraw();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrExtra) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrExtra))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrExtra;
-                Player.RedrawFlags &= ~(RedrawFlag.PrCut | RedrawFlag.PrStun);
-                Player.RedrawFlags &= ~(RedrawFlag.PrHunger | RedrawFlag.PrDtrap);
-                Player.RedrawFlags &= ~(RedrawFlag.PrBlind | RedrawFlag.PrConfused);
-                Player.RedrawFlags &= ~(RedrawFlag.PrAfraid | RedrawFlag.PrPoisoned);
-                Player.RedrawFlags &= ~(RedrawFlag.PrState | RedrawFlag.PrSpeed | RedrawFlag.PrStudy);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrExtra);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrCut | RedrawFlag.PrStun);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrHunger | RedrawFlag.PrDtrap);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrBlind | RedrawFlag.PrConfused);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrAfraid | RedrawFlag.PrPoisoned);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrState | RedrawFlag.PrSpeed | RedrawFlag.PrStudy);
                 playerStatus.PrtFrameExtra();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrCut) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrCut))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrCut;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrCut);
                 playerStatus.PrtCut();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrStun) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrStun))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrStun;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrStun);
                 playerStatus.PrtStun();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrHunger) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrHunger))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrHunger;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrHunger);
                 playerStatus.PrtHunger();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrDtrap) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrDtrap))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrDtrap;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrDtrap);
                 playerStatus.PrtDtrap();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrBlind) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrBlind))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrBlind;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrBlind);
                 playerStatus.PrtBlind();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrConfused) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrConfused))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrConfused;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrConfused);
                 playerStatus.PrtConfused();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrAfraid) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrAfraid))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrAfraid;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrAfraid);
                 playerStatus.PrtAfraid();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrPoisoned) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrPoisoned))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrPoisoned;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrPoisoned);
                 playerStatus.PrtPoisoned();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrState) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrState))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrState;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrState);
                 playerStatus.PrtState();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrSpeed) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrSpeed))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrSpeed;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrSpeed);
                 playerStatus.PrtSpeed();
             }
-            if ((Player.RedrawFlags & RedrawFlag.PrStudy) != 0)
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrStudy))
             {
-                Player.RedrawFlags &= ~RedrawFlag.PrStudy;
+                Player.RedrawNeeded.Clear(RedrawFlag.PrStudy);
                 playerStatus.PrtStudy();
             }
             playerStatus.PrtTime();
@@ -2772,7 +2772,7 @@ namespace Cthangband
                     }
                     if (TrackedMonsterIndex == i)
                     {
-                        Player.RedrawFlags |= RedrawFlag.PrHealth;
+                        Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                     }
                 }
             }
