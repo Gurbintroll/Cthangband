@@ -2008,7 +2008,7 @@ namespace Cthangband
                 // If we're trying to move onto the player, then attack them instead
                 if (doMove && newY == _player.MapY && newX == _player.MapX)
                 {
-                    _saveGame.CombatEngine.MakeAttackNormal(monsterIndex);
+                    _saveGame.CombatEngine.MonsterAttackPlayer(monsterIndex);
                     doMove = false;
                     doTurn = true;
                 }
@@ -2206,7 +2206,7 @@ namespace Cthangband
             // Update the view if necessary
             if (doView)
             {
-                _player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuMonsters;
+                _player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
             }
             // If we did something unusual and the player saw, let them remember we can do that
             if (monster.IsVisible)

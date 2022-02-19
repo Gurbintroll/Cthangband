@@ -292,7 +292,7 @@ namespace Cthangband
                                 Monster mPtr = Level.Monsters[cPtr.Monster];
                                 if (cPtr.Monster != 0 && (mPtr.IsVisible || Level.GridPassable(y, x)))
                                 {
-                                    PyAttack(y, x);
+                                    PlayerAttackMonster(y, x);
                                 }
                             }
                         }
@@ -899,8 +899,8 @@ namespace Cthangband
                 Level.CaveSetFeat(y, x, Program.Rng.RandomLessThan(100) < 50 ? "BrokenDoor" : "OpenDoor");
                 Gui.PlaySound(SoundEffect.OpenDoor);
                 MovePlayer(dir, false);
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight;
-                Player.UpdateFlags |= Constants.PuDistance;
+                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight;
+                Player.UpdatesNeeded |= UpdateFlags.PuDistance;
             }
             else if (Program.Rng.RandomLessThan(100) < Player.AbilityScores[Ability.Dexterity].DexTheftAvoidance + Player.Level)
             {
@@ -1068,6 +1068,86 @@ namespace Cthangband
         }
 
         /// <summary>
+        /// Check to see if a racial power works
+        /// </summary>
+        /// <param name="minLevel"> The minimum level for the power </param>
+        /// <param name="cost"> The cost in mana to use the power </param>
+        /// <param name="useStat"> The ability score used for the power </param>
+        /// <param name="difficulty"> The difficulty of the power to use </param>
+        /// <returns> True if the power worked, false if it didn't </returns>
+        public bool CheckIfRacialPowerWorks(int minLevel, int cost, int useStat, int difficulty)
+        {
+            // If we don't have enough mana we'll use health instead
+            bool useHealth = Player.Mana < cost;
+            // Can't use it if we're too low level
+            if (Player.Level < minLevel)
+            {
+                Profile.Instance.MsgPrint($"You need to attain level {minLevel} to use this power.");
+                _saveGame.EnergyUse = 0;
+                return false;
+            }
+            // Can't use it if we're confused
+            if (Player.TimedConfusion != 0)
+            {
+                Profile.Instance.MsgPrint("You are too confused to use this power.");
+                _saveGame.EnergyUse = 0;
+                return false;
+            }
+            // If we're about to kill ourselves, give us chance to back out
+            if (useHealth && Player.Health < cost)
+            {
+                if (!Gui.GetCheck("Really use the power in your weakened state? "))
+                {
+                    _saveGame.EnergyUse = 0;
+                    return false;
+                }
+            }
+            // Harder to use powers when you're stunned
+            if (Player.TimedStun != 0)
+            {
+                difficulty += Player.TimedStun;
+            }
+            // Easier to use powers if you're higher level than you need to be
+            else if (Player.Level > minLevel)
+            {
+                int levAdj = (Player.Level - minLevel) / 3;
+                if (levAdj > 10)
+                {
+                    levAdj = 10;
+                }
+                difficulty -= levAdj;
+            }
+            // We have a minimum difficulty
+            if (difficulty < 5)
+            {
+                difficulty = 5;
+            }
+            // Using a power takes a turn
+            _saveGame.EnergyUse = 100;
+            // Reduce our health or mana
+            if (useHealth)
+            {
+                Player.TakeHit((cost / 2) + Program.Rng.DieRoll(cost / 2), "concentrating too hard");
+            }
+            else
+            {
+                Player.Mana -= (cost / 2) + Program.Rng.DieRoll(cost / 2);
+            }
+            // We'll need to redraw
+            Player.RedrawFlags |= RedrawFlag.PrHp;
+            Player.RedrawFlags |= RedrawFlag.PrMana;
+            // Check to see if we were successful
+            if (Program.Rng.DieRoll(Player.AbilityScores[useStat].Innate) >=
+                (difficulty / 2) + Program.Rng.DieRoll(difficulty / 2))
+            {
+                return true;
+            }
+            // Let us know we failed
+            Profile.Instance.MsgPrint("You've failed to concentrate hard enough.");
+            return false;
+        }
+
+        /// <summary>
         /// Close a door
         /// </summary>
         /// <param name="y"> The y map coordinate of the door </param>
@@ -1084,7 +1164,7 @@ namespace Cthangband
             else
             {
                 Level.CaveSetFeat(y, x, "LockedDoor0");
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
                 Gui.PlaySound(SoundEffect.ShutDoor);
             }
             return false;
@@ -1270,40 +1350,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("Your light item is full.");
             }
             // We need to update our light after this
-            Player.UpdateFlags |= Constants.PuTorch;
-        }
-
-        /// <summary>
-        /// Work out whether the player's missile attack was a critical hit
-        /// </summary>
-        /// <param name="weight"> The weight of the player's weapon </param>
-        /// <param name="plus"> The magical plusses on the weapon </param>
-        /// <param name="damage"> The damage done </param>
-        /// <returns> The modified damage based on the level of critical </returns>
-        public int CriticalShot(int weight, int plus, int damage)
-        {
-            // Chance of a critical is based on weight, level, and plusses
-            int i = weight + ((Player.AttackBonus + plus) * 4) + (Player.Level * 2);
-            if (Program.Rng.DieRoll(5000) <= i)
-            {
-                int k = weight + Program.Rng.DieRoll(500);
-                if (k < 500)
-                {
-                    Profile.Instance.MsgPrint("It was a good hit!");
-                    damage = (2 * damage) + 5;
-                }
-                else if (k < 1000)
-                {
-                    Profile.Instance.MsgPrint("It was a great hit!");
-                    damage = (2 * damage) + 10;
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint("It was a superb hit!");
-                    damage = (3 * damage) + 15;
-                }
-            }
-            return damage;
+            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
         }
 
         /// <summary>
@@ -1343,8 +1390,8 @@ namespace Cthangband
                 item.RandartFlags3.Clear();
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
-                Player.UpdateFlags |= Constants.PuBonus;
-                Player.UpdateFlags |= Constants.PuMana;
+                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                Player.UpdatesNeeded |= UpdateFlags.PuMana;
             }
             return true;
         }
@@ -1386,8 +1433,8 @@ namespace Cthangband
                 item.RandartFlags3.Clear();
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
-                Player.UpdateFlags |= Constants.PuBonus;
-                Player.UpdateFlags |= Constants.PuMana;
+                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                Player.UpdatesNeeded |= UpdateFlags.PuMana;
             }
             return true;
         }
@@ -1812,7 +1859,7 @@ namespace Cthangband
                 // If the monster wasn't friendly, attack it
                 else
                 {
-                    PyAttack(newY, newX);
+                    PlayerAttackMonster(newY, newX);
                     return;
                 }
             }
@@ -2031,8 +2078,8 @@ namespace Cthangband
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             targetEngine.RecenterScreenAroundPlayer();
             // We'll need to update and redraw various things
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-            Player.UpdateFlags |= Constants.PuDistance;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+            Player.UpdatesNeeded |= UpdateFlags.PuDistance;
             Player.RedrawFlags |= RedrawFlag.PrMap;
             // If we're not actively searching, then have a chance of doing it passively
             if (Player.SkillSearchFrequency >= 50 || 0 == Program.Rng.RandomLessThan(50 - Player.SkillSearchFrequency))
@@ -2170,7 +2217,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You have picked the lock.");
                     Level.CaveSetFeat(y, x, "OpenDoor");
-                    Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
                     Gui.PlaySound(SoundEffect.LockpickSuccess);
                     // Picking a lock gains you an experience point
                     Player.GainExperience(1);
@@ -2185,7 +2232,7 @@ namespace Cthangband
             else
             {
                 Level.CaveSetFeat(y, x, "OpenDoor");
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
                 Gui.PlaySound(SoundEffect.OpenDoor);
             }
             return more;
@@ -2244,6 +2291,446 @@ namespace Cthangband
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Have the player attack a monster
+        /// </summary>
+        /// <param name="y"> The y coordinate of the location being attacked </param>
+        /// <param name="x"> The x coordinate of the location being attacked </param>
+        public void PlayerAttackMonster(int y, int x)
+        {
+            GridTile tile = Level.Grid[y][x];
+            Monster monster = Level.Monsters[tile.Monster];
+            MonsterRace race = monster.Race;
+            bool fear = false;
+            bool backstab = false;
+            bool stabFleeing = false;
+            bool doQuake = false;
+            const bool drainMsg = true;
+            int drainResult = 0;
+            const int drainLeft = _maxVampiricDrain;
+            FlagSet f1 = new FlagSet();
+            FlagSet f2 = new FlagSet();
+            FlagSet f3 = new FlagSet();
+            bool noExtra = false;
+            _saveGame.Disturb(false);
+            // If we're a rogue then we can backstab monsters
+            if (Player.ProfessionIndex == CharacterClass.Rogue)
+            {
+                if (monster.SleepLevel != 0 && monster.IsVisible)
+                {
+                    backstab = true;
+                }
+                else if (monster.FearLevel != 0 && monster.IsVisible)
+                {
+                    stabFleeing = true;
+                }
+            }
+            _saveGame.Disturb(true);
+            // Being attacked always wakes a monster
+            monster.SleepLevel = 0;
+            string monsterName = monster.MonsterDesc(0);
+            // If we can see the monster, track its health
+            if (monster.IsVisible)
+            {
+                _saveGame.HealthTrack(tile.Monster);
+            }
+            // if the monster is our friend and we're not confused, we can avoid hitting it
+            if ((monster.Mind & Constants.SmFriendly) != 0 &&
+                !(Player.TimedStun != 0 || Player.TimedConfusion != 0 || Player.TimedHallucinations != 0 || !monster.IsVisible))
+            {
+                Profile.Instance.MsgPrint($"You stop to avoid hitting {monsterName}.");
+                return;
+            }
+            // Can't attack if we're afraid
+            if (Player.TimedFear != 0)
+            {
+                Profile.Instance.MsgPrint(monster.IsVisible
+                    ? $"You are too afraid to attack {monsterName}!"
+                    : "There is something scary in your way!");
+                return;
+            }
+            Item item = Player.Inventory[InventorySlot.MeleeWeapon];
+            int bonus = Player.AttackBonus + item.BonusToHit;
+            int chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
+            // Attacking uses a full turn
+            _saveGame.EnergyUse = 100;
+            int num = 0;
+            // We have a number of attacks per round
+            while (num++ < Player.MeleeAttacksPerRound)
+            {
+                // Check if we hit
+                if (PlayerCheckHitOnMonster(chance, race.ArmourClass, monster.IsVisible))
+                {
+                    PlayerStatus playerStatus = new PlayerStatus(Player, Level);
+                    Gui.PlaySound(SoundEffect.MeleeHit);
+                    // Tell the player they hit it with the appropriate message
+                    if (!(backstab || stabFleeing))
+                    {
+                        if (!((Player.ProfessionIndex == CharacterClass.Monk || Player.ProfessionIndex == CharacterClass.Mystic) && playerStatus.MartialArtistEmptyHands()))
+                        {
+                            Profile.Instance.MsgPrint($"You hit {monsterName}.");
+                        }
+                    }
+                    else if (backstab)
+                    {
+                        Profile.Instance.MsgPrint(
+                            $"You cruelly stab the helpless, sleeping {monster.Race.Name}!");
+                    }
+                    else
+                    {
+                        Profile.Instance.MsgPrint(
+                            $"You backstab the fleeing {monster.Race.Name}!");
+                    }
+                    // Default to 1 damage for an unarmed hit
+                    int totalDamage = 1;
+                    // Get our weapon's flags to see if we need to do anything special
+                    item.GetMergedFlags(f1, f2, f3);
+                    bool chaosEffect = f1.IsSet(ItemFlag1.Chaotic) && Program.Rng.DieRoll(2) == 1;
+                    if (f1.IsSet(ItemFlag1.Vampiric) || (chaosEffect && Program.Rng.DieRoll(5) < 3))
+                    {
+                        // Vampiric overrides chaotic
+                        chaosEffect = false;
+                        if (!((race.Flags3 & MonsterFlag3.Undead) != 0 || (race.Flags3 & MonsterFlag3.Nonliving) != 0))
+                        {
+                            drainResult = monster.Health;
+                        }
+                        else
+                        {
+                            drainResult = 0;
+                        }
+                    }
+                    // Vorpal weapons have a chance of a deep cut
+                    bool vorpalCut = f1.IsSet(ItemFlag1.Vorpal) &&
+                        Program.Rng.DieRoll(item.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade ? 3 : 6) == 1;
+                    // If we're a martial artist then we have special attacks
+                    if ((Player.ProfessionIndex == CharacterClass.Monk || Player.ProfessionIndex == CharacterClass.Mystic) && playerStatus.MartialArtistEmptyHands())
+                    {
+                        int specialEffect = 0;
+                        int stunEffect = 0;
+                        int times;
+                        MartialArtsAttack martialArtsAttack = GlobalData.MaBlows[0];
+                        MartialArtsAttack oldMartialArtsAttack = GlobalData.MaBlows[0];
+                        // Monsters of various types resist being stunned by martial arts
+                        int resistStun = 0;
+                        if ((race.Flags1 & MonsterFlag1.Unique) != 0)
+                        {
+                            resistStun += 88;
+                        }
+                        if ((race.Flags3 & MonsterFlag3.ImmuneConfusion) != 0)
+                        {
+                            resistStun += 44;
+                        }
+                        if ((race.Flags3 & MonsterFlag3.ImmuneSleep) != 0)
+                        {
+                            resistStun += 44;
+                        }
+                        if ((race.Flags3 & MonsterFlag3.Undead) != 0 || (race.Flags3 & MonsterFlag3.Nonliving) != 0)
+                        {
+                            resistStun += 88;
+                        }
+                        // Have a number of attempts to choose a martial arts attack
+                        for (times = 0; times < (Player.Level < 7 ? 1 : Player.Level / 7); times++)
+                        {
+                            // Choose an attack randomly, but reject it and re-choose if it's too
+                            // high level or we fail a chance roll
+                            do
+                            {
+                                martialArtsAttack = GlobalData.MaBlows[Program.Rng.DieRoll(Constants.MaxMa) - 1];
+                            } while (martialArtsAttack.MinLevel > Player.Level || Program.Rng.DieRoll(Player.Level) < martialArtsAttack.Chance);
+                            // We've chosen an attack, use it if it's better than the previous
+                            // choice (unless we're stunned or confused in which case we're stuck
+                            // with the weakest attack type
+                            if (martialArtsAttack.MinLevel > oldMartialArtsAttack.MinLevel && !(Player.TimedStun != 0 || Player.TimedConfusion != 0))
+                            {
+                                oldMartialArtsAttack = martialArtsAttack;
+                            }
+                            else
+                            {
+                                martialArtsAttack = oldMartialArtsAttack;
+                            }
+                        }
+                        // Get damage from the martial arts attack
+                        totalDamage = Program.Rng.DiceRoll(martialArtsAttack.Dd, martialArtsAttack.Ds);
+                        // If it was a knee attack and the monster is male, hit it in the groin
+                        if (martialArtsAttack.Effect == Constants.MaKnee)
+                        {
+                            if ((race.Flags1 & MonsterFlag1.Male) != 0)
+                            {
+                                Profile.Instance.MsgPrint($"You hit {monsterName} in the groin with your knee!");
+                                specialEffect = Constants.MaKnee;
+                            }
+                            else
+                            {
+                                Profile.Instance.MsgPrint(string.Format(martialArtsAttack.Desc, monsterName));
+                            }
+                        }
+                        // If it was an ankle kick and the monster has legs, slow it
+                        else if (martialArtsAttack.Effect == Constants.MaSlow)
+                        {
+                            if ((race.Flags1 & MonsterFlag1.NeverMove) == 0 ||
+                                "UjmeEv$,DdsbBFIJQSXclnw!=?".Contains(race.Character.ToString()))
+                            {
+                                Profile.Instance.MsgPrint($"You kick {monsterName} in the ankle.");
+                                specialEffect = Constants.MaSlow;
+                            }
+                            else
+                            {
+                                Profile.Instance.MsgPrint(string.Format(martialArtsAttack.Desc, monsterName));
+                            }
+                        }
+                        // Have a chance of stunning based on the martial arts attack type chosen
+                        else
+                        {
+                            if (martialArtsAttack.Effect != 0)
+                            {
+                                stunEffect = (martialArtsAttack.Effect / 2) + Program.Rng.DieRoll(martialArtsAttack.Effect / 2);
+                            }
+                            Profile.Instance.MsgPrint(string.Format(martialArtsAttack.Desc, monsterName));
+                        }
+                        // It might be a critical hit
+                        totalDamage = PlayerCriticalMelee(Player.Level * Program.Rng.DieRoll(10), martialArtsAttack.MinLevel, totalDamage);
+                        // Make a groin attack into a stunning attack
+                        if (specialEffect == Constants.MaKnee && totalDamage + Player.DamageBonus < monster.Health)
+                        {
+                            Profile.Instance.MsgPrint($"{monsterName} moans in agony!");
+                            stunEffect = 7 + Program.Rng.DieRoll(13);
+                            resistStun /= 3;
+                        }
+                        // Slow if we had a knee attack
+                        else if (specialEffect == Constants.MaSlow && totalDamage + Player.DamageBonus < monster.Health)
+                        {
+                            if ((race.Flags1 & MonsterFlag1.Unique) == 0 && Program.Rng.DieRoll(Player.Level) > race.Level &&
+                                monster.Speed > 60)
+                            {
+                                Profile.Instance.MsgPrint($"{monsterName} starts limping slower.");
+                                monster.Speed -= 10;
+                            }
+                        }
+                        // Stun if we had a stunning attack
+                        if (stunEffect != 0 && totalDamage + Player.DamageBonus < monster.Health)
+                        {
+                            if (Player.Level > Program.Rng.DieRoll(race.Level + resistStun + 10))
+                            {
+                                Profile.Instance.MsgPrint(monster.StunLevel != 0
+                                    ? $"{monsterName} is more stunned."
+                                    : $"{monsterName} is stunned.");
+                                monster.StunLevel += stunEffect;
+                            }
+                        }
+                    }
+                    // We have a weapon
+                    else if (item.ItemType != null)
+                    {
+                        // Roll damage for the weapon
+                        totalDamage = Program.Rng.DiceRoll(item.DamageDice, item.DamageDiceSides);
+                        totalDamage = item.AdjustDamageForMonsterType(totalDamage, monster);
+                        // Extra damage for backstabbing
+                        if (backstab)
+                        {
+                            totalDamage *= 3 + (Player.Level / 40);
+                        }
+                        else if (stabFleeing)
+                        {
+                            totalDamage = 3 * totalDamage / 2;
+                        }
+                        // We might need to do an earthquake
+                        if ((Player.HasQuakeWeapon && (totalDamage > 50 || Program.Rng.DieRoll(7) == 1)) ||
+                            (chaosEffect && Program.Rng.DieRoll(250) == 1))
+                        {
+                            doQuake = true;
+                            chaosEffect = false;
+                        }
+                        // Check if we did a critical
+                        totalDamage = PlayerCriticalMelee(item.Weight, item.BonusToHit, totalDamage);
+                        // If we did a vorpal cut, do extra damage
+                        if (vorpalCut)
+                        {
+                            int stepK = totalDamage;
+                            Profile.Instance.MsgPrint(item.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade
+                                ? "Your Vorpal Blade goes snicker-snack!"
+                                : $"Your weapon cuts deep into {monsterName}!");
+                            do
+                            {
+                                totalDamage += stepK;
+                            } while (Program.Rng.DieRoll(item.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade
+                                         ? 2
+                                         : 4) == 1);
+                        }
+                        // Add bonus damage for the weapon
+                        totalDamage += item.BonusDamage;
+                    }
+                    // Add bonus damage for strength etc.
+                    totalDamage += Player.DamageBonus;
+                    // Can't do negative damage
+                    if (totalDamage < 0)
+                    {
+                        totalDamage = 0;
+                    }
+                    // Apply damage to the monster
+                    if (Level.Monsters.DamageMonster(tile.Monster, totalDamage, out fear, null))
+                    {
+                        // Can't have any more attacks because the monster's dead
+                        noExtra = true;
+                        break;
+                    }
+                    // Hitting a friend gets it angry
+                    if ((monster.Mind & Constants.SmFriendly) != 0)
+                    {
+                        Profile.Instance.MsgPrint($"{monsterName} gets angry!");
+                        monster.Mind &= ~Constants.SmFriendly;
+                    }
+                    // The monster might have an aura that hurts the player
+                    TouchZapPlayer(monster);
+                    // If we drain health, do so
+                    if (drainResult != 0)
+                    {
+                        // drainResult was set to the monsters health before we hit it, so
+                        // subtracting the monster's new health lets us know how much damage we've done
+                        drainResult -= monster.Health;
+                        if (drainResult > 0)
+                        {
+                            // Draining heals us
+                            int drainHeal = Program.Rng.DiceRoll(4, drainResult / 6);
+                            // We have a maximum drain per round to prevent it from getting out of
+                            // hand if we have multiple attacks
+                            if (drainLeft != 0)
+                            {
+                                if (drainHeal >= drainLeft)
+                                {
+                                    drainHeal = drainLeft;
+                                }
+                                if (drainMsg)
+                                {
+                                    Profile.Instance.MsgPrint($"Your weapon drains life from {monsterName}!");
+                                }
+                                Player.RestoreHealth(drainHeal);
+                            }
+                        }
+                    }
+                    // We might have a confusing touch (or have this effect from a chaos blade)
+                    if (Player.HasConfusingTouch || (chaosEffect && Program.Rng.DieRoll(10) != 1))
+                    {
+                        // If it wasn't from a chaos blade, cancel the confusing touch and let us know
+                        Player.HasConfusingTouch = false;
+                        if (!chaosEffect)
+                        {
+                            Profile.Instance.MsgPrint("Your hands stop glowing.");
+                        }
+                        // Some monsters are immune
+                        if ((race.Flags3 & MonsterFlag3.ImmuneConfusion) != 0)
+                        {
+                            if (monster.IsVisible)
+                            {
+                                race.Knowledge.RFlags3 |= MonsterFlag3.ImmuneConfusion;
+                            }
+                            Profile.Instance.MsgPrint($"{monsterName} is unaffected.");
+                        }
+                        // Even if not immune, the monster might resist
+                        else if (Program.Rng.RandomLessThan(100) < race.Level)
+                        {
+                            Profile.Instance.MsgPrint($"{monsterName} is unaffected.");
+                        }
+                        // It didn't resist, so it's confused
+                        else
+                        {
+                            Profile.Instance.MsgPrint($"{monsterName} appears confused.");
+                            monster.ConfusionLevel += 10 + (Program.Rng.RandomLessThan(Player.Level) / 5);
+                        }
+                    }
+                    // A chaos blade might teleport the monster away
+                    else if (chaosEffect && Program.Rng.DieRoll(2) == 1)
+                    {
+                        Profile.Instance.MsgPrint($"{monsterName} disappears!");
+                        _saveGame.SpellEffects.TeleportAway(tile.Monster, 50);
+                        // Can't have any more attacks because the monster isn't here any more
+                        noExtra = true;
+                        break;
+                    }
+                    // a chaos blade might polymorph the monsterf
+                    else if (chaosEffect && Level.GridPassable(y, x) && Program.Rng.DieRoll(90) > race.Level)
+                    {
+                        // Can't polymorph a unique or a guardian
+                        if (!((race.Flags1 & MonsterFlag1.Unique) != 0 || (race.Flags4 & MonsterFlag4.BreatheChaos) != 0 ||
+                              (race.Flags1 & MonsterFlag1.Guardian) != 0))
+                        {
+                            int newRaceIndex = _saveGame.SpellEffects.PolymorphMonster(monster.Race);
+                            if (newRaceIndex != monster.Race.Index)
+                            {
+                                Profile.Instance.MsgPrint($"{monsterName} changes!");
+                                Level.Monsters.DeleteMonsterByIndex(tile.Monster, true);
+                                MonsterRace newRace = Profile.Instance.MonsterRaces[newRaceIndex];
+                                Level.Monsters.PlaceMonsterAux(y, x, newRace, false, false, false);
+                                monster = Level.Monsters[tile.Monster];
+                                monsterName = monster.MonsterDesc(0);
+                                fear = false;
+                            }
+                        }
+                        // Monster was immune to polymorph
+                        else
+                        {
+                            Profile.Instance.MsgPrint($"{monsterName} is unaffected.");
+                        }
+                    }
+                }
+                // We missed
+                else
+                {
+                    Gui.PlaySound(SoundEffect.Miss);
+                    Profile.Instance.MsgPrint($"You miss {monsterName}.");
+                }
+            }
+            // Only make extra attacks if the monster is still there
+            foreach (Mutation naturalAttack in Player.Dna.NaturalAttacks)
+            {
+                if (!noExtra)
+                {
+                    NaturalAttack(tile.Monster, naturalAttack, out fear, out noExtra);
+                }
+            }
+            if (fear && monster.IsVisible && !noExtra)
+            {
+                Gui.PlaySound(SoundEffect.MonsterFlees);
+                Profile.Instance.MsgPrint($"{monsterName} flees in terror!");
+            }
+            if (doQuake)
+            {
+                _saveGame.SpellEffects.Earthquake(Player.MapY, Player.MapX, 10);
+            }
+        }
+
+        /// <summary>
+        /// Work out whether the player's missile attack was a critical hit
+        /// </summary>
+        /// <param name="weight"> The weight of the player's weapon </param>
+        /// <param name="plus"> The magical plusses on the weapon </param>
+        /// <param name="damage"> The damage done </param>
+        /// <returns> The modified damage based on the level of critical </returns>
+        public int PlayerCriticalRanged(int weight, int plus, int damage)
+        {
+            // Chance of a critical is based on weight, level, and plusses
+            int i = weight + ((Player.AttackBonus + plus) * 4) + (Player.Level * 2);
+            if (Program.Rng.DieRoll(5000) <= i)
+            {
+                int k = weight + Program.Rng.DieRoll(500);
+                if (k < 500)
+                {
+                    Profile.Instance.MsgPrint("It was a good hit!");
+                    damage = (2 * damage) + 5;
+                }
+                else if (k < 1000)
+                {
+                    Profile.Instance.MsgPrint("It was a great hit!");
+                    damage = (2 * damage) + 10;
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("It was a superb hit!");
+                    damage = (3 * damage) + 15;
+                }
+            }
+            return damage;
         }
 
         /// <summary>
@@ -3000,7 +3487,7 @@ namespace Cthangband
                         {
                             Profile.Instance.MsgPrint("You are cured of all mutations.");
                             Player.Dna.LoseAllMutations();
-                            Player.UpdateFlags |= Constants.PuBonus;
+                            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
                             _saveGame.HandleStuff();
                         }
                         if (Player.RaceIndex != Player.RaceIndexAtBirth)
@@ -3016,618 +3503,218 @@ namespace Cthangband
             return identified;
         }
 
-        public void PyAttack(int y, int x)
-        {
-            GridTile cPtr = Level.Grid[y][x];
-            Monster mPtr = Level.Monsters[cPtr.Monster];
-            MonsterRace rPtr = mPtr.Race;
-            bool fear = false;
-            bool backstab = false;
-            bool stabFleeing = false;
-            bool doQuake = false;
-            const bool drainMsg = true;
-            int drainResult = 0;
-            const int drainLeft = _maxVampiricDrain;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            bool noExtra = false;
-            _saveGame.Disturb(false);
-            if (Player.ProfessionIndex == CharacterClass.Rogue)
-            {
-                if (mPtr.SleepLevel != 0 && mPtr.IsVisible)
-                {
-                    backstab = true;
-                }
-                else if (mPtr.FearLevel != 0 && mPtr.IsVisible)
-                {
-                    stabFleeing = true;
-                }
-            }
-            _saveGame.Disturb(true);
-            mPtr.SleepLevel = 0;
-            string mName = mPtr.MonsterDesc(0);
-            if (mPtr.IsVisible)
-            {
-                _saveGame.HealthTrack(cPtr.Monster);
-            }
-            if ((mPtr.Mind & Constants.SmFriendly) != 0 &&
-                !(Player.TimedStun != 0 || Player.TimedConfusion != 0 || Player.TimedHallucinations != 0 || !mPtr.IsVisible))
-            {
-                if (string.IsNullOrEmpty(Player.Inventory[InventorySlot.MeleeWeapon].RandartName))
-                {
-                    Profile.Instance.MsgPrint($"You stop to avoid hitting {mName}.");
-                    return;
-                }
-                if (Player.Inventory[InventorySlot.MeleeWeapon].RandartName != "'Stormbringer'")
-                {
-                    Profile.Instance.MsgPrint($"You stop to avoid hitting {mName}.");
-                    return;
-                }
-                Profile.Instance.MsgPrint($"Your black blade greedily attacks {mName}!");
-            }
-            if (Player.TimedFear != 0)
-            {
-                Profile.Instance.MsgPrint(mPtr.IsVisible
-                    ? $"You are too afraid to attack {mName}!"
-                    : "There is something scary in your way!");
-                return;
-            }
-            Item oPtr = Player.Inventory[InventorySlot.MeleeWeapon];
-            int bonus = Player.AttackBonus + oPtr.BonusToHit;
-            int chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
-            _saveGame.EnergyUse = 100;
-            int num = 0;
-            while (num++ < Player.MeleeAttacksPerRound)
-            {
-                if (TestHitNorm(chance, rPtr.ArmourClass, mPtr.IsVisible))
-                {
-                    PlayerStatus playerStatus = new PlayerStatus(Player, Level);
-                    Gui.PlaySound(SoundEffect.MeleeHit);
-                    if (!(backstab || stabFleeing))
-                    {
-                        if (!((Player.ProfessionIndex == CharacterClass.Monk || Player.ProfessionIndex == CharacterClass.Mystic) && playerStatus.MartialArtistEmptyHands()))
-                        {
-                            Profile.Instance.MsgPrint($"You hit {mName}.");
-                        }
-                    }
-                    else if (backstab)
-                    {
-                        Profile.Instance.MsgPrint(
-                            $"You cruelly stab the helpless, sleeping {mPtr.Race.Name}!");
-                    }
-                    else
-                    {
-                        Profile.Instance.MsgPrint(
-                            $"You backstab the fleeing {mPtr.Race.Name}!");
-                    }
-                    int k = 1;
-                    oPtr.GetMergedFlags(f1, f2, f3);
-                    bool chaosEffect = f1.IsSet(ItemFlag1.Chaotic) && Program.Rng.DieRoll(2) == 1;
-                    if (f1.IsSet(ItemFlag1.Vampiric) || (chaosEffect && Program.Rng.DieRoll(5) < 3))
-                    {
-                        chaosEffect = false;
-                        if (!((rPtr.Flags3 & MonsterFlag3.Undead) != 0 || (rPtr.Flags3 & MonsterFlag3.Nonliving) != 0))
-                        {
-                            drainResult = mPtr.Health;
-                        }
-                        else
-                        {
-                            drainResult = 0;
-                        }
-                    }
-                    bool vorpalCut = f1.IsSet(ItemFlag1.Vorpal) &&
-                        Program.Rng.DieRoll(oPtr.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade ? 3 : 6) == 1;
-                    if ((Player.ProfessionIndex == CharacterClass.Monk || Player.ProfessionIndex == CharacterClass.Mystic) && playerStatus.MartialArtistEmptyHands())
-                    {
-                        int specialEffect = 0, stunEffect = 0, times;
-                        MartialArtsAttack maPtr = GlobalData.MaBlows[0];
-                        MartialArtsAttack oldPtr = GlobalData.MaBlows[0];
-                        int resistStun = 0;
-                        if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
-                        {
-                            resistStun += 88;
-                        }
-                        if ((rPtr.Flags3 & MonsterFlag3.ImmuneConfusion) != 0)
-                        {
-                            resistStun += 44;
-                        }
-                        if ((rPtr.Flags3 & MonsterFlag3.ImmuneSleep) != 0)
-                        {
-                            resistStun += 44;
-                        }
-                        if ((rPtr.Flags3 & MonsterFlag3.Undead) != 0 || (rPtr.Flags3 & MonsterFlag3.Nonliving) != 0)
-                        {
-                            resistStun += 88;
-                        }
-                        for (times = 0; times < (Player.Level < 7 ? 1 : Player.Level / 7); times++)
-                        {
-                            do
-                            {
-                                maPtr = GlobalData.MaBlows[Program.Rng.DieRoll(Constants.MaxMa) - 1];
-                            } while (maPtr.MinLevel > Player.Level || Program.Rng.DieRoll(Player.Level) < maPtr.Chance);
-                            if (maPtr.MinLevel > oldPtr.MinLevel && !(Player.TimedStun != 0 || Player.TimedConfusion != 0))
-                            {
-                                oldPtr = maPtr;
-                            }
-                            else
-                            {
-                                maPtr = oldPtr;
-                            }
-                        }
-                        k = Program.Rng.DiceRoll(maPtr.Dd, maPtr.Ds);
-                        if (maPtr.Effect == Constants.MaKnee)
-                        {
-                            if ((rPtr.Flags1 & MonsterFlag1.Male) != 0)
-                            {
-                                Profile.Instance.MsgPrint($"You hit {mName} in the groin with your knee!");
-                                specialEffect = Constants.MaKnee;
-                            }
-                            else
-                            {
-                                Profile.Instance.MsgPrint(string.Format(maPtr.Desc, mName));
-                            }
-                        }
-                        else if (maPtr.Effect == Constants.MaSlow)
-                        {
-                            if ((rPtr.Flags1 & MonsterFlag1.NeverMove) == 0 ||
-                                "UjmeEv$,DdsbBFIJQSXclnw!=?".Contains(rPtr.Character.ToString()))
-                            {
-                                Profile.Instance.MsgPrint($"You kick {mName} in the ankle.");
-                                specialEffect = Constants.MaSlow;
-                            }
-                            else
-                            {
-                                Profile.Instance.MsgPrint(string.Format(maPtr.Desc, mName));
-                            }
-                        }
-                        else
-                        {
-                            if (maPtr.Effect != 0)
-                            {
-                                stunEffect = (maPtr.Effect / 2) + Program.Rng.DieRoll(maPtr.Effect / 2);
-                            }
-                            Profile.Instance.MsgPrint(string.Format(maPtr.Desc, mName));
-                        }
-                        k = CriticalNorm(Player.Level * Program.Rng.DieRoll(10), maPtr.MinLevel, k);
-                        if (specialEffect == Constants.MaKnee && k + Player.DamageBonus < mPtr.Health)
-                        {
-                            Profile.Instance.MsgPrint($"{mName} moans in agony!");
-                            stunEffect = 7 + Program.Rng.DieRoll(13);
-                            resistStun /= 3;
-                        }
-                        else if (specialEffect == Constants.MaSlow && k + Player.DamageBonus < mPtr.Health)
-                        {
-                            if ((rPtr.Flags1 & MonsterFlag1.Unique) == 0 && Program.Rng.DieRoll(Player.Level) > rPtr.Level &&
-                                mPtr.Speed > 60)
-                            {
-                                Profile.Instance.MsgPrint($"{mName} starts limping slower.");
-                                mPtr.Speed -= 10;
-                            }
-                        }
-                        if (stunEffect != 0 && k + Player.DamageBonus < mPtr.Health)
-                        {
-                            if (Player.Level > Program.Rng.DieRoll(rPtr.Level + resistStun + 10))
-                            {
-                                Profile.Instance.MsgPrint(mPtr.StunLevel != 0
-                                    ? $"{mName} is more stunned."
-                                    : $"{mName} is stunned.");
-                                mPtr.StunLevel += stunEffect;
-                            }
-                        }
-                    }
-                    else if (oPtr.ItemType != null)
-                    {
-                        k = Program.Rng.DiceRoll(oPtr.DamageDice, oPtr.DamageDiceSides);
-                        k = oPtr.AdjustDamageForMonsterType(k, mPtr);
-                        if (backstab)
-                        {
-                            k *= 3 + (Player.Level / 40);
-                        }
-                        else if (stabFleeing)
-                        {
-                            k = 3 * k / 2;
-                        }
-                        if ((Player.HasQuakeWeapon && (k > 50 || Program.Rng.DieRoll(7) == 1)) ||
-                            (chaosEffect && Program.Rng.DieRoll(250) == 1))
-                        {
-                            doQuake = true;
-                            chaosEffect = false;
-                        }
-                        k = CriticalNorm(oPtr.Weight, oPtr.BonusToHit, k);
-                        if (vorpalCut)
-                        {
-                            int stepK = k;
-                            Profile.Instance.MsgPrint(oPtr.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade
-                                ? "Your Vorpal Blade goes snicker-snack!"
-                                : $"Your weapon cuts deep into {mName}!");
-                            do
-                            {
-                                k += stepK;
-                            } while (Program.Rng.DieRoll(oPtr.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade
-                                         ? 2
-                                         : 4) == 1);
-                        }
-                        k += oPtr.BonusDamage;
-                    }
-                    k += Player.DamageBonus;
-                    if (k < 0)
-                    {
-                        k = 0;
-                    }
-                    if (Level.Monsters.DamageMonster(cPtr.Monster, k, out fear, null))
-                    {
-                        noExtra = true;
-                        break;
-                    }
-                    if ((mPtr.Mind & Constants.SmFriendly) != 0)
-                    {
-                        Profile.Instance.MsgPrint($"{mName} gets angry!");
-                        mPtr.Mind &= ~Constants.SmFriendly;
-                    }
-                    TouchZapPlayer(mPtr);
-                    if (drainResult != 0)
-                    {
-                        drainResult -= mPtr.Health;
-                        if (drainResult > 0)
-                        {
-                            int drainHeal = Program.Rng.DiceRoll(4, drainResult / 6);
-                            if (drainLeft != 0)
-                            {
-                                if (drainHeal >= drainLeft)
-                                {
-                                    drainHeal = drainLeft;
-                                }
-                                if (drainMsg)
-                                {
-                                    Profile.Instance.MsgPrint($"Your weapon drains life from {mName}!");
-                                }
-                                Player.RestoreHealth(drainHeal);
-                            }
-                        }
-                    }
-                    if (Player.HasConfusingTouch || (chaosEffect && Program.Rng.DieRoll(10) != 1))
-                    {
-                        Player.HasConfusingTouch = false;
-                        if (!chaosEffect)
-                        {
-                            Profile.Instance.MsgPrint("Your hands stop glowing.");
-                        }
-                        if ((rPtr.Flags3 & MonsterFlag3.ImmuneConfusion) != 0)
-                        {
-                            if (mPtr.IsVisible)
-                            {
-                                rPtr.Knowledge.RFlags3 |= MonsterFlag3.ImmuneConfusion;
-                            }
-                            Profile.Instance.MsgPrint($"{mName} is unaffected.");
-                        }
-                        else if (Program.Rng.RandomLessThan(100) < rPtr.Level)
-                        {
-                            Profile.Instance.MsgPrint($"{mName} is unaffected.");
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint($"{mName} appears confused.");
-                            mPtr.ConfusionLevel += 10 + (Program.Rng.RandomLessThan(Player.Level) / 5);
-                        }
-                    }
-                    else if (chaosEffect && Program.Rng.DieRoll(2) == 1)
-                    {
-                        Profile.Instance.MsgPrint($"{mName} disappears!");
-                        _saveGame.SpellEffects.TeleportAway(cPtr.Monster, 50);
-                        noExtra = true;
-                        break;
-                    }
-                    else if (chaosEffect && Level.GridPassable(y, x) && Program.Rng.DieRoll(90) > rPtr.Level)
-                    {
-                        if (!((rPtr.Flags1 & MonsterFlag1.Unique) != 0 || (rPtr.Flags4 & MonsterFlag4.BreatheChaos) != 0 ||
-                              (rPtr.Flags1 & MonsterFlag1.Guardian) != 0))
-                        {
-                            int tmp = _saveGame.SpellEffects.PolyRIdx(mPtr.Race);
-                            if (tmp != mPtr.Race.Index)
-                            {
-                                Profile.Instance.MsgPrint($"{mName} changes!");
-                                Level.Monsters.DeleteMonsterByIndex(cPtr.Monster, true);
-                                MonsterRace race = Profile.Instance.MonsterRaces[tmp];
-                                Level.Monsters.PlaceMonsterAux(y, x, race, false, false, false);
-                                mPtr = Level.Monsters[cPtr.Monster];
-                                mName = mPtr.MonsterDesc(0);
-                                fear = false;
-                            }
-                        }
-                        else
-                        {
-                            Profile.Instance.MsgPrint($"{mName} is unaffected.");
-                        }
-                    }
-                }
-                else
-                {
-                    Gui.PlaySound(SoundEffect.Miss);
-                    Profile.Instance.MsgPrint($"You miss {mName}.");
-                }
-            }
-            if (!noExtra)
-            {
-                foreach (Mutation naturalAttack in Player.Dna.NaturalAttacks)
-                {
-                    NaturalAttack(cPtr.Monster, naturalAttack, out fear, out _);
-                }
-            }
-            if (fear && mPtr.IsVisible)
-            {
-                Gui.PlaySound(SoundEffect.MonsterFlees);
-                Profile.Instance.MsgPrint($"{mName} flees in terror!");
-            }
-            if (doQuake)
-            {
-                _saveGame.SpellEffects.Earthquake(Player.MapY, Player.MapX, 10);
-            }
-        }
-
-        public bool RacialAux(int minLevel, int cost, int useStat, int difficulty)
-        {
-            bool useHp = Player.Mana < cost;
-            if (Player.Level < minLevel)
-            {
-                Profile.Instance.MsgPrint($"You need to attain level {minLevel} to use this power.");
-                _saveGame.EnergyUse = 0;
-                return false;
-            }
-            if (Player.TimedConfusion != 0)
-            {
-                Profile.Instance.MsgPrint("You are too confused to use this power.");
-                _saveGame.EnergyUse = 0;
-                return false;
-            }
-            if (useHp && Player.Health < cost)
-            {
-                if (!Gui.GetCheck("Really use the power in your weakened state? "))
-                {
-                    _saveGame.EnergyUse = 0;
-                    return false;
-                }
-            }
-            if (Player.TimedStun != 0)
-            {
-                difficulty += Player.TimedStun;
-            }
-            else if (Player.Level > minLevel)
-            {
-                int levAdj = (Player.Level - minLevel) / 3;
-                if (levAdj > 10)
-                {
-                    levAdj = 10;
-                }
-                difficulty -= levAdj;
-            }
-            if (difficulty < 5)
-            {
-                difficulty = 5;
-            }
-            _saveGame.EnergyUse = 100;
-            if (useHp)
-            {
-                Player.TakeHit((cost / 2) + Program.Rng.DieRoll(cost / 2), "concentrating too hard");
-            }
-            else
-            {
-                Player.Mana -= (cost / 2) + Program.Rng.DieRoll(cost / 2);
-            }
-            Player.RedrawFlags |= RedrawFlag.PrHp;
-            Player.RedrawFlags |= RedrawFlag.PrMana;
-            if (Program.Rng.DieRoll(Player.AbilityScores[useStat].Innate) >=
-                (difficulty / 2) + Program.Rng.DieRoll(difficulty / 2))
-            {
-                return true;
-            }
-            Profile.Instance.MsgPrint("You've failed to concentrate hard enough.");
-            return false;
-        }
-
+        /// <summary>
+        /// Pick a random potion to use from a selection that won't kill us
+        /// </summary>
+        /// <returns> The item sub-category of the potion to use </returns>
         public int RandomPotion()
         {
-            var fakeSval = 0;
+            var itemSubCategory = 0;
             switch (Program.Rng.DieRoll(48))
             {
                 case 1:
-                    fakeSval = PotionType.Water;
+                    itemSubCategory = PotionType.Water;
                     break;
 
                 case 2:
-                    fakeSval = PotionType.AppleJuice;
+                    itemSubCategory = PotionType.AppleJuice;
                     break;
 
                 case 3:
-                    fakeSval = PotionType.Slowness;
+                    itemSubCategory = PotionType.Slowness;
                     break;
 
                 case 4:
-                    fakeSval = PotionType.SaltWater;
+                    itemSubCategory = PotionType.SaltWater;
                     break;
 
                 case 5:
-                    fakeSval = PotionType.Poison;
+                    itemSubCategory = PotionType.Poison;
                     break;
 
                 case 6:
-                    fakeSval = PotionType.Blindness;
+                    itemSubCategory = PotionType.Blindness;
                     break;
 
                 case 7:
-                    fakeSval = PotionType.Confusion;
+                    itemSubCategory = PotionType.Confusion;
                     break;
 
                 case 8:
-                    fakeSval = PotionType.Sleep;
+                    itemSubCategory = PotionType.Sleep;
                     break;
 
                 case 9:
-                    fakeSval = PotionType.Infravision;
+                    itemSubCategory = PotionType.Infravision;
                     break;
 
                 case 10:
-                    fakeSval = PotionType.DetectInvis;
+                    itemSubCategory = PotionType.DetectInvis;
                     break;
 
                 case 11:
-                    fakeSval = PotionType.SlowPoison;
+                    itemSubCategory = PotionType.SlowPoison;
                     break;
 
                 case 12:
-                    fakeSval = PotionType.CurePoison;
+                    itemSubCategory = PotionType.CurePoison;
                     break;
 
                 case 13:
-                    fakeSval = PotionType.Boldness;
+                    itemSubCategory = PotionType.Boldness;
                     break;
 
                 case 14:
-                    fakeSval = PotionType.Speed;
+                    itemSubCategory = PotionType.Speed;
                     break;
 
                 case 15:
-                    fakeSval = PotionType.ResistHeat;
+                    itemSubCategory = PotionType.ResistHeat;
                     break;
 
                 case 16:
-                    fakeSval = PotionType.ResistCold;
+                    itemSubCategory = PotionType.ResistCold;
                     break;
 
                 case 17:
-                    fakeSval = PotionType.Heroism;
+                    itemSubCategory = PotionType.Heroism;
                     break;
 
                 case 18:
-                    fakeSval = PotionType.BeserkStrength;
+                    itemSubCategory = PotionType.BeserkStrength;
                     break;
 
                 case 19:
-                    fakeSval = PotionType.CureLight;
+                    itemSubCategory = PotionType.CureLight;
                     break;
 
                 case 20:
-                    fakeSval = PotionType.CureSerious;
+                    itemSubCategory = PotionType.CureSerious;
                     break;
 
                 case 21:
-                    fakeSval = PotionType.CureCritical;
+                    itemSubCategory = PotionType.CureCritical;
                     break;
 
                 case 22:
-                    fakeSval = PotionType.Healing;
+                    itemSubCategory = PotionType.Healing;
                     break;
 
                 case 23:
-                    fakeSval = PotionType.StarHealing;
+                    itemSubCategory = PotionType.StarHealing;
                     break;
 
                 case 24:
-                    fakeSval = PotionType.Life;
+                    itemSubCategory = PotionType.Life;
                     break;
 
                 case 25:
-                    fakeSval = PotionType.RestoreMana;
+                    itemSubCategory = PotionType.RestoreMana;
                     break;
 
                 case 26:
-                    fakeSval = PotionType.RestoreExp;
+                    itemSubCategory = PotionType.RestoreExp;
                     break;
 
                 case 27:
-                    fakeSval = PotionType.ResStr;
+                    itemSubCategory = PotionType.ResStr;
                     break;
 
                 case 28:
-                    fakeSval = PotionType.ResInt;
+                    itemSubCategory = PotionType.ResInt;
                     break;
 
                 case 29:
-                    fakeSval = PotionType.ResWis;
+                    itemSubCategory = PotionType.ResWis;
                     break;
 
                 case 30:
-                    fakeSval = PotionType.ResDex;
+                    itemSubCategory = PotionType.ResDex;
                     break;
 
                 case 31:
-                    fakeSval = PotionType.ResCon;
+                    itemSubCategory = PotionType.ResCon;
                     break;
 
                 case 32:
-                    fakeSval = PotionType.ResCha;
+                    itemSubCategory = PotionType.ResCha;
                     break;
 
                 case 33:
-                    fakeSval = PotionType.IncStr;
+                    itemSubCategory = PotionType.IncStr;
                     break;
 
                 case 34:
-                    fakeSval = PotionType.IncInt;
+                    itemSubCategory = PotionType.IncInt;
                     break;
 
                 case 35:
-                    fakeSval = PotionType.IncWis;
+                    itemSubCategory = PotionType.IncWis;
                     break;
 
                 case 36:
-                    fakeSval = PotionType.IncDex;
+                    itemSubCategory = PotionType.IncDex;
                     break;
 
                 case 38:
-                    fakeSval = PotionType.IncCon;
+                    itemSubCategory = PotionType.IncCon;
                     break;
 
                 case 39:
-                    fakeSval = PotionType.IncCha;
+                    itemSubCategory = PotionType.IncCha;
                     break;
 
                 case 40:
-                    fakeSval = PotionType.Augmentation;
+                    itemSubCategory = PotionType.Augmentation;
                     break;
 
                 case 41:
-                    fakeSval = PotionType.Enlightenment;
+                    itemSubCategory = PotionType.Enlightenment;
                     break;
 
                 case 42:
-                    fakeSval = PotionType.StarEnlightenment;
+                    itemSubCategory = PotionType.StarEnlightenment;
                     break;
 
                 case 43:
-                    fakeSval = PotionType.SelfKnowledge;
+                    itemSubCategory = PotionType.SelfKnowledge;
                     break;
 
                 case 44:
-                    fakeSval = PotionType.Experience;
+                    itemSubCategory = PotionType.Experience;
                     break;
 
                 case 45:
-                    fakeSval = PotionType.Resistance;
+                    itemSubCategory = PotionType.Resistance;
                     break;
 
                 case 46:
-                    fakeSval = PotionType.Curing;
+                    itemSubCategory = PotionType.Curing;
                     break;
 
                 case 47:
-                    fakeSval = PotionType.Invulnerability;
+                    itemSubCategory = PotionType.Invulnerability;
                     break;
 
                 case 48:
-                    fakeSval = PotionType.NewLife;
+                    itemSubCategory = PotionType.NewLife;
                     break;
             }
-            return fakeSval;
+            return itemSubCategory;
         }
 
-        public void RingOfPower(int dir)
+        /// <summary>
+        /// Invoke a random power from the Ring of Set
+        /// </summary>
+        /// <param name="direction"> The direction the player is aiming </param>
+        public void RingOfSetPower(int direction)
         {
             switch (Program.Rng.DieRoll(10))
             {
                 case 1:
                 case 2:
                     {
+                        // Decrease all the players ability scores, bypassing sustain and divine protection
                         Profile.Instance.MsgPrint("You are surrounded by a malignant aura.");
                         Player.DecreaseAbilityScore(Ability.Strength, 50, true);
                         Player.DecreaseAbilityScore(Ability.Intelligence, 50, true);
@@ -3635,6 +3722,7 @@ namespace Cthangband
                         Player.DecreaseAbilityScore(Ability.Dexterity, 50, true);
                         Player.DecreaseAbilityScore(Ability.Constitution, 50, true);
                         Player.DecreaseAbilityScore(Ability.Charisma, 50, true);
+                        // Reduce both experience and maximum experience
                         Player.ExperiencePoints -= Player.ExperiencePoints / 4;
                         Player.MaxExperienceGained -= Player.ExperiencePoints / 4;
                         Player.CheckExperience();
@@ -3642,6 +3730,7 @@ namespace Cthangband
                     }
                 case 3:
                     {
+                        // Dispel monsters
                         Profile.Instance.MsgPrint("You are surrounded by a powerful aura.");
                         _saveGame.SpellEffects.DispelMonsters(1000);
                         break;
@@ -3650,7 +3739,8 @@ namespace Cthangband
                 case 5:
                 case 6:
                     {
-                        _saveGame.SpellEffects.FireBall(new ProjectMana(SaveGame.Instance.SpellEffects), dir, 300, 3);
+                        // Do a 300 damage mana ball
+                        _saveGame.SpellEffects.FireBall(new ProjectMana(SaveGame.Instance.SpellEffects), direction, 300, 3);
                         break;
                     }
                 case 7:
@@ -3658,24 +3748,26 @@ namespace Cthangband
                 case 9:
                 case 10:
                     {
-                        _saveGame.SpellEffects.FireBolt(new ProjectMana(SaveGame.Instance.SpellEffects), dir, 250);
+                        // Do a 250 damage mana bolt
+                        _saveGame.SpellEffects.FireBolt(new ProjectMana(SaveGame.Instance.SpellEffects), direction, 250);
                         break;
                     }
             }
         }
 
-        public void RunStep(int dir)
+        // Run a single step of automated movement
+        public void RunStep(int direction)
         {
-            if (dir != 0)
+            if (direction != 0)
             {
-                if (SeeWall(dir, Player.MapY, Player.MapX))
+                if (SeeWall(direction, Player.MapY, Player.MapX))
                 {
                     Profile.Instance.MsgPrint("You cannot run in that direction.");
                     _saveGame.Disturb(false);
                     return;
                 }
-                Player.UpdateFlags |= Constants.PuTorch;
-                RunInit(dir);
+                Player.UpdatesNeeded |= UpdateFlags.PuTorch;
+                RunInit(direction);
             }
             else
             {
@@ -3690,7 +3782,7 @@ namespace Cthangband
                 return;
             }
             _saveGame.EnergyUse = 100;
-            MovePlayer(_navigationState._findCurrent, false);
+            MovePlayer(_navigationState.CurrentRunDirection, false);
         }
 
         public void Rustproof()
@@ -3973,7 +4065,7 @@ namespace Cthangband
             }
             if (!Level.GridPassable(y, x))
             {
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuMonsters;
+                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
             }
             if (!more)
             {
@@ -4002,7 +4094,7 @@ namespace Cthangband
             switch (Player.RaceIndex)
             {
                 case RaceId.Dwarf:
-                    if (RacialAux(5, 5, Ability.Wisdom, 12))
+                    if (CheckIfRacialPowerWorks(5, 5, Ability.Wisdom, 12))
                     {
                         Profile.Instance.MsgPrint("You examine your surroundings.");
                         _saveGame.SpellEffects.DetectTraps();
@@ -4012,7 +4104,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Hobbit:
-                    if (RacialAux(15, 10, Ability.Intelligence, 10))
+                    if (CheckIfRacialPowerWorks(15, 10, Ability.Intelligence, 10))
                     {
                         Item qPtr = new Item();
                         qPtr.AssignItemType(Profile.Instance.ItemTypes.LookupKind(ItemCategory.Food, FoodType.Ration));
@@ -4022,7 +4114,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Gnome:
-                    if (RacialAux(5, 5 + (plev / 5), Ability.Intelligence, 12))
+                    if (CheckIfRacialPowerWorks(5, 5 + (plev / 5), Ability.Intelligence, 12))
                     {
                         Profile.Instance.MsgPrint("Blink!");
                         _saveGame.SpellEffects.TeleportPlayer(10 + plev);
@@ -4030,7 +4122,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.HalfOrc:
-                    if (RacialAux(3, 5, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 5 : 10))
+                    if (CheckIfRacialPowerWorks(3, 5, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 5 : 10))
                     {
                         Profile.Instance.MsgPrint("You play tough.");
                         Player.SetTimedFear(0);
@@ -4038,7 +4130,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.HalfTroll:
-                    if (RacialAux(10, 12, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 6 : 12))
+                    if (CheckIfRacialPowerWorks(10, 12, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 6 : 12))
                     {
                         Profile.Instance.MsgPrint("RAAAGH!");
                         Player.SetTimedFear(0);
@@ -4069,7 +4161,7 @@ namespace Cthangband
                     }
                     if (amberPower == 1)
                     {
-                        if (RacialAux(40, 75, Ability.Wisdom, 50))
+                        if (CheckIfRacialPowerWorks(40, 75, Ability.Wisdom, 50))
                         {
                             Profile.Instance.MsgPrint("You dream of a time of health and peace...");
                             Player.SetTimedPoison(0);
@@ -4089,7 +4181,7 @@ namespace Cthangband
                     }
                     else if (amberPower == 2)
                     {
-                        if (RacialAux(30, 50, Ability.Intelligence, 50))
+                        if (CheckIfRacialPowerWorks(30, 50, Ability.Intelligence, 50))
                         {
                             Profile.Instance.MsgPrint("You start walking around. Your surroundings change.");
                             _saveGame.IsAutosave = true;
@@ -4102,7 +4194,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.TchoTcho:
-                    if (RacialAux(8, 10, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 6 : 12))
+                    if (CheckIfRacialPowerWorks(8, 10, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 6 : 12))
                     {
                         Profile.Instance.MsgPrint("Raaagh!");
                         Player.SetTimedFear(0);
@@ -4112,7 +4204,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.HalfOgre:
-                    if (RacialAux(25, 35, Ability.Intelligence, 15))
+                    if (CheckIfRacialPowerWorks(25, 35, Ability.Intelligence, 15))
                     {
                         Profile.Instance.MsgPrint("You carefully set an Yellow Sign...");
                         _saveGame.SpellEffects.YellowSign();
@@ -4120,7 +4212,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.HalfGiant:
-                    if (RacialAux(20, 10, Ability.Strength, 12))
+                    if (CheckIfRacialPowerWorks(20, 10, Ability.Strength, 12))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4132,7 +4224,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.HalfTitan:
-                    if (RacialAux(35, 20, Ability.Intelligence, 12))
+                    if (CheckIfRacialPowerWorks(35, 20, Ability.Intelligence, 12))
                     {
                         Profile.Instance.MsgPrint("You examine your foes...");
                         _saveGame.SpellEffects.Probing();
@@ -4140,7 +4232,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Cyclops:
-                    if (RacialAux(20, 15, Ability.Strength, 12))
+                    if (CheckIfRacialPowerWorks(20, 15, Ability.Strength, 12))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4153,7 +4245,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Yeek:
-                    if (RacialAux(15, 15, Ability.Wisdom, 10))
+                    if (CheckIfRacialPowerWorks(15, 15, Ability.Wisdom, 10))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4165,7 +4257,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Klackon:
-                    if (RacialAux(9, 9, Ability.Dexterity, 14))
+                    if (CheckIfRacialPowerWorks(9, 9, Ability.Dexterity, 14))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4185,7 +4277,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Kobold:
-                    if (RacialAux(12, 8, Ability.Dexterity, 14))
+                    if (CheckIfRacialPowerWorks(12, 8, Ability.Dexterity, 14))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4197,7 +4289,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Nibelung:
-                    if (RacialAux(5, 5, Ability.Wisdom, 10))
+                    if (CheckIfRacialPowerWorks(5, 5, Ability.Wisdom, 10))
                     {
                         Profile.Instance.MsgPrint("You examine your surroundings.");
                         _saveGame.SpellEffects.DetectTraps();
@@ -4207,7 +4299,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.DarkElf:
-                    if (RacialAux(2, 2, Ability.Intelligence, 9))
+                    if (CheckIfRacialPowerWorks(2, 2, Ability.Intelligence, 9))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4325,7 +4417,7 @@ namespace Cthangband
                                 break;
                         }
                     }
-                    if (RacialAux(1, Player.Level, Ability.Constitution, 12))
+                    if (CheckIfRacialPowerWorks(1, Player.Level, Ability.Constitution, 12))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4337,7 +4429,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.MindFlayer:
-                    if (RacialAux(15, 12, Ability.Intelligence, 14))
+                    if (CheckIfRacialPowerWorks(15, 12, Ability.Intelligence, 14))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4349,7 +4441,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Imp:
-                    if (RacialAux(9, 15, Ability.Wisdom, 15))
+                    if (CheckIfRacialPowerWorks(9, 15, Ability.Wisdom, 15))
                     {
                         if (!targetEngine.GetAimDir(out dir))
                         {
@@ -4370,7 +4462,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Golem:
-                    if (RacialAux(20, 15, Ability.Constitution, 8))
+                    if (CheckIfRacialPowerWorks(20, 15, Ability.Constitution, 8))
                     {
                         Player.SetTimedStoneskin(Player.TimedStoneskin + Program.Rng.DieRoll(20) + 30);
                     }
@@ -4378,7 +4470,7 @@ namespace Cthangband
 
                 case RaceId.Skeleton:
                 case RaceId.Zombie:
-                    if (RacialAux(30, 30, Ability.Wisdom, 18))
+                    if (CheckIfRacialPowerWorks(30, 30, Ability.Wisdom, 18))
                     {
                         Profile.Instance.MsgPrint("You attempt to restore your lost energies.");
                         Player.RestoreLevel();
@@ -4386,7 +4478,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Vampire:
-                    if (RacialAux(2, 1 + (plev / 3), Ability.Constitution, 9))
+                    if (CheckIfRacialPowerWorks(2, 1 + (plev / 3), Ability.Constitution, 9))
                     {
                         if (!targetEngine.GetRepDir(out dir))
                         {
@@ -4426,7 +4518,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Spectre:
-                    if (RacialAux(4, 6, Ability.Intelligence, 3))
+                    if (CheckIfRacialPowerWorks(4, 6, Ability.Intelligence, 3))
                     {
                         Profile.Instance.MsgPrint("You emit an eldritch howl!");
                         if (!targetEngine.GetAimDir(out dir))
@@ -4438,7 +4530,7 @@ namespace Cthangband
                     break;
 
                 case RaceId.Sprite:
-                    if (RacialAux(12, 12, Ability.Intelligence, 15))
+                    if (CheckIfRacialPowerWorks(12, 12, Ability.Intelligence, 15))
                     {
                         Profile.Instance.MsgPrint("You throw some magic dust...");
                         if (Player.Level < 25)
@@ -4475,41 +4567,6 @@ namespace Cthangband
             return Program.Rng.DieRoll(power) > ac * 3 / 4;
         }
 
-        private int CriticalNorm(int weight, int plus, int dam)
-        {
-            int i = weight + ((Player.AttackBonus + plus) * 5) + (Player.Level * 3);
-            if (Program.Rng.DieRoll(5000) <= i)
-            {
-                int k = weight + Program.Rng.DieRoll(650);
-                if (k < 400)
-                {
-                    Profile.Instance.MsgPrint("It was a good hit!");
-                    dam = (2 * dam) + 5;
-                }
-                else if (k < 700)
-                {
-                    Profile.Instance.MsgPrint("It was a great hit!");
-                    dam = (2 * dam) + 10;
-                }
-                else if (k < 900)
-                {
-                    Profile.Instance.MsgPrint("It was a superb hit!");
-                    dam = (3 * dam) + 15;
-                }
-                else if (k < 1300)
-                {
-                    Profile.Instance.MsgPrint("It was a *GREAT* hit!");
-                    dam = (3 * dam) + 20;
-                }
-                else
-                {
-                    Profile.Instance.MsgPrint("It was a *SUPERB* hit!");
-                    dam = (7 * dam / 2) + 25;
-                }
-            }
-            return dam;
-        }
-
         private bool EasyOpenDoor(int y, int x)
         {
             GridTile cPtr = Level.Grid[y][x];
@@ -4542,7 +4599,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You have picked the lock.");
                     Level.CaveSetFeat(y, x, "OpenDoor");
-                    Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
                     Gui.PlaySound(SoundEffect.LockpickSuccess);
                     Player.GainExperience(1);
                 }
@@ -4554,7 +4611,7 @@ namespace Cthangband
             else
             {
                 Level.CaveSetFeat(y, x, "OpenDoor");
-                Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
                 Gui.PlaySound(SoundEffect.OpenDoor);
             }
             return true;
@@ -4573,12 +4630,12 @@ namespace Cthangband
             string mName = mPtr.MonsterDesc(0);
             int bonus = Player.AttackBonus;
             int chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
-            if (TestHitNorm(chance, rPtr.ArmourClass, mPtr.IsVisible))
+            if (PlayerCheckHitOnMonster(chance, rPtr.ArmourClass, mPtr.IsVisible))
             {
                 Gui.PlaySound(SoundEffect.MeleeHit);
                 Profile.Instance.MsgPrint($"You hit {mName} with your {atkDesc}.");
                 int k = Program.Rng.DiceRoll(ddd, dss);
-                k = CriticalNorm(nWeight, Player.AttackBonus, k);
+                k = PlayerCriticalMelee(nWeight, Player.AttackBonus, k);
                 k += Player.DamageBonus;
                 if (k < 0)
                 {
@@ -4614,11 +4671,64 @@ namespace Cthangband
             }
         }
 
-        private void RunInit(int dir)
+        private bool PlayerCheckHitOnMonster(int chance, int ac, bool vis)
+        {
+            int k = Program.Rng.RandomLessThan(100);
+            if (k < 10)
+            {
+                return k < 5;
+            }
+            if (chance <= 0)
+            {
+                return false;
+            }
+            if (!vis)
+            {
+                chance = (chance + 1) / 2;
+            }
+            return Program.Rng.RandomLessThan(chance) >= ac * 3 / 4;
+        }
+
+        private int PlayerCriticalMelee(int weight, int plus, int dam)
+        {
+            int i = weight + ((Player.AttackBonus + plus) * 5) + (Player.Level * 3);
+            if (Program.Rng.DieRoll(5000) <= i)
+            {
+                int k = weight + Program.Rng.DieRoll(650);
+                if (k < 400)
+                {
+                    Profile.Instance.MsgPrint("It was a good hit!");
+                    dam = (2 * dam) + 5;
+                }
+                else if (k < 700)
+                {
+                    Profile.Instance.MsgPrint("It was a great hit!");
+                    dam = (2 * dam) + 10;
+                }
+                else if (k < 900)
+                {
+                    Profile.Instance.MsgPrint("It was a superb hit!");
+                    dam = (3 * dam) + 15;
+                }
+                else if (k < 1300)
+                {
+                    Profile.Instance.MsgPrint("It was a *GREAT* hit!");
+                    dam = (3 * dam) + 20;
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("It was a *SUPERB* hit!");
+                    dam = (7 * dam / 2) + 25;
+                }
+            }
+            return dam;
+        }
+
+        private void RunInit(int direction)
         {
             _navigationState = new NavigationState();
-            _navigationState._findCurrent = dir;
-            _navigationState._findPrevdir = dir;
+            _navigationState.CurrentRunDirection = direction;
+            _navigationState.PreviousRunDirection = direction;
             _navigationState._findOpenarea = true;
             _navigationState._findBreakright = false;
             _navigationState._findBreakleft = false;
@@ -4626,9 +4736,9 @@ namespace Cthangband
             bool deepright = false;
             bool shortright = false;
             bool shortleft = false;
-            int row = Player.MapY + Level.KeypadDirectionYOffset[dir];
-            int col = Player.MapX + Level.KeypadDirectionXOffset[dir];
-            int i = _navigationState.Chome[dir];
+            int row = Player.MapY + Level.KeypadDirectionYOffset[direction];
+            int col = Player.MapX + Level.KeypadDirectionXOffset[direction];
+            int i = _navigationState.Chome[direction];
             if (SeeWall(_navigationState.Cycle[i + 1], Player.MapY, Player.MapX))
             {
                 _navigationState._findBreakleft = true;
@@ -4652,26 +4762,26 @@ namespace Cthangband
             if (_navigationState._findBreakleft && _navigationState._findBreakright)
             {
                 _navigationState._findOpenarea = false;
-                if ((dir & 0x01) != 0)
+                if ((direction & 0x01) != 0)
                 {
                     if (deepleft && !deepright)
                     {
-                        _navigationState._findPrevdir = _navigationState.Cycle[i - 1];
+                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i - 1];
                     }
                     else if (deepright && !deepleft)
                     {
-                        _navigationState._findPrevdir = _navigationState.Cycle[i + 1];
+                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i + 1];
                     }
                 }
                 else if (SeeWall(_navigationState.Cycle[i], row, col))
                 {
                     if (shortleft && !shortright)
                     {
-                        _navigationState._findPrevdir = _navigationState.Cycle[i - 2];
+                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i - 2];
                     }
                     else if (shortright && !shortleft)
                     {
-                        _navigationState._findPrevdir = _navigationState.Cycle[i + 2];
+                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i + 2];
                     }
                 }
             }
@@ -4685,7 +4795,7 @@ namespace Cthangband
             GridTile cPtr;
             int option = 0;
             int option2 = 0;
-            int prevDir = _navigationState._findPrevdir;
+            int prevDir = _navigationState.PreviousRunDirection;
             int max = (prevDir & 0x01) + 1;
             for (i = -max; i <= max; i++)
             {
@@ -4818,8 +4928,8 @@ namespace Cthangband
                 }
                 if (option2 == 0)
                 {
-                    _navigationState._findCurrent = option;
-                    _navigationState._findPrevdir = option;
+                    _navigationState.CurrentRunDirection = option;
+                    _navigationState.PreviousRunDirection = option;
                 }
                 else
                 {
@@ -4829,8 +4939,8 @@ namespace Cthangband
                     {
                         if (SeeNothing(option, row, col) && SeeNothing(option2, row, col))
                         {
-                            _navigationState._findCurrent = option;
-                            _navigationState._findPrevdir = option2;
+                            _navigationState.CurrentRunDirection = option;
+                            _navigationState.PreviousRunDirection = option2;
                         }
                         else
                         {
@@ -4839,12 +4949,12 @@ namespace Cthangband
                     }
                     else
                     {
-                        _navigationState._findCurrent = option2;
-                        _navigationState._findPrevdir = option2;
+                        _navigationState.CurrentRunDirection = option2;
+                        _navigationState.PreviousRunDirection = option2;
                     }
                 }
             }
-            return SeeWall(_navigationState._findCurrent, Player.MapY, Player.MapX);
+            return SeeWall(_navigationState.CurrentRunDirection, Player.MapY, Player.MapX);
         }
 
         private bool SeeNothing(int dir, int y, int x)
@@ -5140,24 +5250,6 @@ namespace Cthangband
             }
         }
 
-        private bool TestHitNorm(int chance, int ac, bool vis)
-        {
-            int k = Program.Rng.RandomLessThan(100);
-            if (k < 10)
-            {
-                return k < 5;
-            }
-            if (chance <= 0)
-            {
-                return false;
-            }
-            if (!vis)
-            {
-                chance = (chance + 1) / 2;
-            }
-            return Program.Rng.RandomLessThan(chance) >= ac * 3 / 4;
-        }
-
         private void TouchZapPlayer(Monster mPtr)
         {
             int auraDamage;
@@ -5210,7 +5302,7 @@ namespace Cthangband
             }
             cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
             Level.CaveRemoveFeat(y, x);
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuMonsters;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
             return true;
         }
     }

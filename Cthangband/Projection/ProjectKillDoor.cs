@@ -26,7 +26,7 @@ namespace Cthangband.Projection
                     obvious = true;
                     if (cPtr.FeatureType.IsClosedDoor)
                     {
-                        Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+                        Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
                     }
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);

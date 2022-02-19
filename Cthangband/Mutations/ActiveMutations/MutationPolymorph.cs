@@ -8,7 +8,7 @@ namespace Cthangband.Mutations.ActiveMutations
     {
         public override void Activate(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.RacialAux(18, 20, Ability.Constitution, 18))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(18, 20, Ability.Constitution, 18))
             {
                 player.PolymorphSelf();
             }

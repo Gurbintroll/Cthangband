@@ -8,7 +8,7 @@ namespace Cthangband.Mutations.ActiveMutations
     {
         public override void Activate(SaveGame saveGame, Player player, Level level)
         {
-            if (!saveGame.CommandEngine.RacialAux(1, player.Level, Ability.Strength, 6))
+            if (!saveGame.CommandEngine.CheckIfRacialPowerWorks(1, player.Level, Ability.Strength, 6))
             {
                 return;
             }

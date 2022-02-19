@@ -367,7 +367,7 @@ namespace Cthangband
             }
             Profile.Instance.MsgPrint("The exposure to eldritch forces warps you.");
             player.Dna.GainMutation();
-            player.UpdateFlags |= Constants.PuBonus;
+            player.UpdatesNeeded |= UpdateFlags.PuBonus;
             SaveGame.Instance.HandleStuff();
         }
     }

@@ -1946,7 +1946,7 @@ namespace Cthangband
                         _player.Spellcasting = new Spellcasting(_player);
                         _player.GooPatron =
                             SaveGame.Instance.PatronList[Program.Rng.DieRoll(SaveGame.Instance.PatronList.Length) - 1];
-                        _player.UpdateFlags |= Constants.PuBonus | Constants.PuHp;
+                        _player.UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp;
                         SaveGame.Instance.Player = _player;
                         SaveGame.Instance.UpdateStuff();
                         SaveGame.Instance.Player = null;

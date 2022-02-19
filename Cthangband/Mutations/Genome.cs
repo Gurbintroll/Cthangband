@@ -208,7 +208,7 @@ namespace Cthangband.Mutations
                 _possessed.Add(mutation);
                 mutation.OnGain(this);
                 Profile.Instance.MsgPrint(mutation.GainMessage);
-                SaveGame.Instance.Player.UpdateFlags |= Constants.PuBonus;
+                SaveGame.Instance.Player.UpdatesNeeded |= UpdateFlags.PuBonus;
                 SaveGame.Instance.HandleStuff();
                 return;
             }
@@ -244,7 +244,7 @@ namespace Cthangband.Mutations
                 _notPossessed.Add(mutation);
                 Profile.Instance.MsgPrint(mutation.LoseMessage);
             } while (_possessed.Count > 0);
-            SaveGame.Instance.Player.UpdateFlags |= Constants.PuBonus;
+            SaveGame.Instance.Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             SaveGame.Instance.HandleStuff();
         }
 
@@ -276,7 +276,7 @@ namespace Cthangband.Mutations
                 return;
             }
             Profile.Instance.MsgPrint("Oops! Fell out of mutation list!");
-            SaveGame.Instance.Player.UpdateFlags |= Constants.PuBonus;
+            SaveGame.Instance.Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             SaveGame.Instance.HandleStuff();
         }
 

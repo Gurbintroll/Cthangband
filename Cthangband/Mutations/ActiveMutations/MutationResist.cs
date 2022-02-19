@@ -8,7 +8,7 @@ namespace Cthangband.Mutations.ActiveMutations
     {
         public override void Activate(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.RacialAux(10, 12, Ability.Constitution, 12))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(10, 12, Ability.Constitution, 12))
             {
                 int num = player.Level / 10;
                 int dur = Program.Rng.DieRoll(20) + 20;

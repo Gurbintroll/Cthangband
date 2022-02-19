@@ -2036,9 +2036,9 @@ namespace Cthangband
                 }
                 oPtr.Marked = false;
             }
-            _player.UpdateFlags |= Constants.PuUnView | Constants.PuUnLight;
-            _player.UpdateFlags |= Constants.PuView | Constants.PuLight;
-            _player.UpdateFlags |= Constants.PuMonsters;
+            _player.UpdatesNeeded |= UpdateFlags.PuUnView | UpdateFlags.PuUnLight;
+            _player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight;
+            _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
             _player.RedrawFlags |= RedrawFlag.PrMap;
         }
 
@@ -2080,7 +2080,7 @@ namespace Cthangband
                     }
                 }
             }
-            _player.UpdateFlags |= Constants.PuMonsters;
+            _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
             _player.RedrawFlags |= RedrawFlag.PrMap;
         }
 

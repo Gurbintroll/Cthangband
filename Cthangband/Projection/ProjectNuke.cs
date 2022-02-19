@@ -106,7 +106,7 @@ namespace Cthangband.Projection
             {
                 note = " is unaffected!";
                 bool charm = (mPtr.Mind & Constants.SmFriendly) != 0;
-                int tmp = SpellEffects.PolyRIdx(mPtr.Race);
+                int tmp = SpellEffects.PolymorphMonster(mPtr.Race);
                 if (tmp != mPtr.Race.Index)
                 {
                     note = " changes!";

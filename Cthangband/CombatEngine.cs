@@ -22,7 +22,7 @@ namespace Cthangband
         /// Have a monster make an attack on the player
         /// </summary>
         /// <param name="monsterIndex"> The index of the monster making the attack </param>
-        public void MakeAttackNormal(int monsterIndex)
+        public void MonsterAttackPlayer(int monsterIndex)
         {
             Player player = _saveGame.Player;
             Level level = _saveGame.Level;
@@ -190,7 +190,7 @@ namespace Cthangband
                         break;
                 }
                 // Check if the monster actually hits us
-                if (effect == 0 || CheckHit(power, monsterLevel))
+                if (effect == 0 || MonsterCheckHitOnPlayer(power, monsterLevel))
                 {
                     _saveGame.Disturb(true);
                     // Protection From Evil might repel the attack
@@ -1121,7 +1121,7 @@ namespace Cthangband
         /// <param name="attackPower"> The power of the attack </param>
         /// <param name="monsterLevel"> The level of the monster making the attack </param>
         /// <returns> True if the attack hit, false if not </returns>
-        private bool CheckHit(int attackPower, int monsterLevel)
+        private bool MonsterCheckHitOnPlayer(int attackPower, int monsterLevel)
         {
             // Straight five percent chance of hit or miss
             int k = Program.Rng.RandomLessThan(100);

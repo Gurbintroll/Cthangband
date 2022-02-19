@@ -367,7 +367,7 @@ namespace Cthangband.Spells
             }
             s = oPtr.Count != 1 ? "were" : "was";
             Profile.Instance.MsgPrint($"Your {oName} ({t.IndexToLabel()}) {s} disenchanted!");
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             return true;
         }
 
@@ -502,7 +502,7 @@ namespace Cthangband.Spells
                 oPtr.IdentifyFlags.Clear(Constants.IdentCursed);
                 oPtr.IdentifyFlags.Set(Constants.IdentSense);
                 oPtr.Inscription = "uncursed";
-                Player.UpdateFlags |= Constants.PuBonus;
+                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             }
             if (f3.IsSet(ItemFlag3.Blessed))
             {
@@ -558,7 +558,7 @@ namespace Cthangband.Spells
                     Profile.Instance.MsgPrint($"{your} {oName} {s} disenchanted!");
                 }
             }
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
         }
 
         public void CallChaos()
@@ -799,9 +799,9 @@ namespace Cthangband.Spells
                     Player.SetTimedBlindness(Player.TimedBlindness + 10 + Program.Rng.DieRoll(10));
                 }
             }
-            Player.UpdateFlags |= Constants.PuUnView | Constants.PuUnLight;
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-            Player.UpdateFlags |= Constants.PuMonsters;
+            Player.UpdatesNeeded |= UpdateFlags.PuUnView | UpdateFlags.PuUnLight;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+            Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
             Player.RedrawFlags |= RedrawFlag.PrMap;
         }
 
@@ -1490,9 +1490,9 @@ namespace Cthangband.Spells
                     }
                 }
             }
-            Player.UpdateFlags |= Constants.PuUnView | Constants.PuUnLight;
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-            Player.UpdateFlags |= Constants.PuDistance;
+            Player.UpdatesNeeded |= UpdateFlags.PuUnView | UpdateFlags.PuUnLight;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+            Player.UpdatesNeeded |= UpdateFlags.PuDistance;
             Player.RedrawFlags |= RedrawFlag.PrHealth;
             Player.RedrawFlags |= RedrawFlag.PrMap;
         }
@@ -1677,7 +1677,7 @@ namespace Cthangband.Spells
             {
                 return false;
             }
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             return true;
         }
@@ -1823,7 +1823,7 @@ namespace Cthangband.Spells
             oPtr.BecomeFlavourAware();
             oPtr.BecomeKnown();
             oPtr.IdentifyFlags.Set(Constants.IdentMental);
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             _saveGame.HandleStuff();
             string oName = oPtr.Description(true, 3);
@@ -1856,7 +1856,7 @@ namespace Cthangband.Spells
             Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
             oPtr.BecomeFlavourAware();
             oPtr.BecomeKnown();
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             string oName = oPtr.Description(true, 3);
             if (item >= InventorySlot.MeleeWeapon)
@@ -1969,7 +1969,7 @@ namespace Cthangband.Spells
                 oPtr.IdentifyFlags.Clear(Constants.IdentKnown);
                 oPtr.IdentifyFlags.Clear(Constants.IdentSense);
             }
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             Level.WizDark();
             return true;
@@ -2022,7 +2022,7 @@ namespace Cthangband.Spells
             return TargetedProject(new ProjectOldPoly(this), dir, Player.Level, flg);
         }
 
-        public int PolyRIdx(MonsterRace rPtr)
+        public int PolymorphMonster(MonsterRace rPtr)
         {
             int index = rPtr.Index;
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0 || (rPtr.Flags1 & MonsterFlag1.Guardian) != 0)
@@ -3432,8 +3432,8 @@ namespace Cthangband.Spells
             Level.RedrawSingleLocation(Player.MapY, Player.MapX);
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             targetEngine.RecenterScreenAroundPlayer();
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-            Player.UpdateFlags |= Constants.PuDistance;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+            Player.UpdatesNeeded |= UpdateFlags.PuDistance;
             _saveGame.HandleStuff();
         }
 
@@ -3523,8 +3523,8 @@ namespace Cthangband.Spells
             Level.RedrawSingleLocation(Player.MapY, Player.MapX);
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             targetEngine.RecenterScreenAroundPlayer();
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-            Player.UpdateFlags |= Constants.PuDistance;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+            Player.UpdatesNeeded |= UpdateFlags.PuDistance;
             _saveGame.HandleStuff();
         }
 
@@ -3570,8 +3570,8 @@ namespace Cthangband.Spells
                     Level.RedrawSingleLocation(ty, tx);
                     Level.RedrawSingleLocation(Player.MapY, Player.MapX);
                     targetEngine.RecenterScreenAroundPlayer();
-                    Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-                    Player.UpdateFlags |= Constants.PuDistance;
+                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+                    Player.UpdatesNeeded |= UpdateFlags.PuDistance;
                     _saveGame.HandleStuff();
                 }
             }
@@ -3659,8 +3659,8 @@ namespace Cthangband.Spells
         {
             ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
             _ = Project(0, 1, Player.MapY, Player.MapX, 0, new ProjectStoneWall(this), flg);
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-            Player.UpdateFlags |= Constants.PuMonsters;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+            Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
             Player.RedrawFlags |= RedrawFlag.PrMap;
         }
 
@@ -3899,7 +3899,7 @@ namespace Cthangband.Spells
             }
             Profile.Instance.MsgPrint($"Your {oName} is damaged!");
             oPtr.BonusArmourClass--;
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             return true;
         }
 
@@ -3965,7 +3965,7 @@ namespace Cthangband.Spells
                     oPtr.RandartFlags3.Clear(ItemFlag3.HeavyCurse);
                 }
                 oPtr.Inscription = "uncursed";
-                Player.UpdateFlags |= Constants.PuBonus;
+                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
                 cnt++;
             }
             return cnt > 0;

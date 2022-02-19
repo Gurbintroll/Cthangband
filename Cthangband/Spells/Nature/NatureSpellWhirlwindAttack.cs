@@ -16,7 +16,7 @@ namespace Cthangband.Spells.Nature
                 Monster mPtr = level.Monsters[cPtr.Monster];
                 if (cPtr.Monster != 0 && (mPtr.IsVisible || level.GridPassable(y, x)))
                 {
-                    SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
             }
         }

@@ -227,7 +227,7 @@ namespace Cthangband
                             {
                                 return;
                             }
-                            SaveGame.Instance.CommandEngine.RingOfPower(dir);
+                            SaveGame.Instance.CommandEngine.RingOfSetPower(dir);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
@@ -1859,7 +1859,7 @@ namespace Cthangband
                         }
                         // Work out the damage done
                         shotDamage = individualAmmunition.AdjustDamageForMonsterType(shotDamage, monster);
-                        shotDamage = SaveGame.Instance.CommandEngine.CriticalShot(individualAmmunition.Weight, individualAmmunition.BonusToHit, shotDamage);
+                        shotDamage = SaveGame.Instance.CommandEngine.PlayerCriticalRanged(individualAmmunition.Weight, individualAmmunition.BonusToHit, shotDamage);
                         if (shotDamage < 0)
                         {
                             shotDamage = 0;
@@ -2503,7 +2503,7 @@ namespace Cthangband
                         // Attempting costs a turn anyway
                         SaveGame.Instance.EnergyUse = 100;
                         Profile.Instance.MsgPrint("There is a monster in the way!");
-                        SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                        SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                     }
                     else
                     {
@@ -2664,7 +2664,7 @@ namespace Cthangband
                         }
                         // Adjust the damage for the particular monster type
                         damage = missile.AdjustDamageForMonsterType(damage, monster);
-                        damage = SaveGame.Instance.CommandEngine.CriticalShot(missile.Weight, missile.BonusToHit, damage);
+                        damage = SaveGame.Instance.CommandEngine.PlayerCriticalRanged(missile.Weight, missile.BonusToHit, damage);
                         if (damage < 0)
                         {
                             damage = 0;
@@ -3628,7 +3628,7 @@ namespace Cthangband
                 SaveGame.Instance.Level.FloorItemDescribe(0 - itemIndex);
                 SaveGame.Instance.Level.FloorItemOptimize(0 - itemIndex);
             }
-            _player.UpdateFlags |= Constants.PuTorch;
+            _player.UpdatesNeeded |= UpdateFlags.PuTorch;
         }
 
         /// <summary>
@@ -3689,7 +3689,7 @@ namespace Cthangband
                 SaveGame.Instance.Level.FloorItemDescribe(0 - itemIndex);
                 SaveGame.Instance.Level.FloorItemOptimize(0 - itemIndex);
             }
-            _player.UpdateFlags |= Constants.PuTorch;
+            _player.UpdatesNeeded |= UpdateFlags.PuTorch;
         }
     }
 }

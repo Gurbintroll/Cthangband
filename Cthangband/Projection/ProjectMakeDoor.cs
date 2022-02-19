@@ -27,7 +27,7 @@ namespace Cthangband.Projection
             {
                 obvious = true;
             }
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuMonsters;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuMonsters;
             return obvious;
         }
 

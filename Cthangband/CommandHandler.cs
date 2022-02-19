@@ -698,9 +698,9 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("Oops! It feels deathly cold!");
                 oPtr.IdentifyFlags.Set(Constants.IdentSense);
             }
-            Player.UpdateFlags |= Constants.PuBonus;
-            Player.UpdateFlags |= Constants.PuTorch;
-            Player.UpdateFlags |= Constants.PuMana;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
+            Player.UpdatesNeeded |= UpdateFlags.PuMana;
             Player.RedrawFlags |= RedrawFlag.PrEquippy;
         }
 
@@ -1037,7 +1037,7 @@ namespace Cthangband
                 SaveGame.Instance.EnergyUse = 100;
                 if (cPtr.Monster != 0)
                 {
-                    SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else
                 {
@@ -1101,7 +1101,7 @@ namespace Cthangband
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
-                    SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else
                 {
@@ -1142,7 +1142,7 @@ namespace Cthangband
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
-                    SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else
                 {
@@ -1263,7 +1263,7 @@ namespace Cthangband
                 else if (cPtr.Monster != 0)
                 {
                     Profile.Instance.MsgPrint("There is a monster in the way!");
-                    SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else if (oIdx != 0)
                 {
@@ -1515,13 +1515,13 @@ namespace Cthangband
                     Level.PanelRow = y2;
                     Level.PanelCol = x2;
                     targetEngine.PanelBounds();
-                    Player.UpdateFlags |= Constants.PuMonsters;
+                    Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
                     Player.RedrawFlags |= RedrawFlag.PrMap;
                     SaveGame.Instance.HandleStuff();
                 }
             }
             targetEngine.RecenterScreenAroundPlayer();
-            Player.UpdateFlags |= Constants.PuMonsters;
+            Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
             Player.RedrawFlags |= RedrawFlag.PrMap;
             SaveGame.Instance.HandleStuff();
         }
@@ -1572,7 +1572,7 @@ namespace Cthangband
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
-                    SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else if (oIdx != 0)
                 {
@@ -1998,7 +1998,7 @@ namespace Cthangband
             SaveGame.Instance.EnergyUse = 100;
             SaveGame.Instance.Resting = Gui.CommandArg;
             Player.IsSearching = false;
-            Player.UpdateFlags |= Constants.PuBonus;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus;
             Player.RedrawFlags |= RedrawFlag.PrState;
             SaveGame.Instance.HandleStuff();
             Gui.Refresh();
@@ -2106,13 +2106,13 @@ namespace Cthangband
             if (Player.IsSearching)
             {
                 Player.IsSearching = false;
-                Player.UpdateFlags |= Constants.PuBonus;
+                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
                 Player.RedrawFlags |= RedrawFlag.PrState;
             }
             else
             {
                 Player.IsSearching = true;
-                Player.UpdateFlags |= Constants.PuBonus;
+                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
                 Player.RedrawFlags |= RedrawFlag.PrState | RedrawFlag.PrSpeed;
             }
         }
@@ -2144,7 +2144,7 @@ namespace Cthangband
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
-                    SaveGame.Instance.CommandEngine.PyAttack(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else
                 {

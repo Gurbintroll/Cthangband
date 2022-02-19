@@ -9,7 +9,7 @@ namespace Cthangband.Mutations.ActiveMutations
     {
         public override void Activate(SaveGame saveGame, Player player, Level level)
         {
-            if (!saveGame.CommandEngine.RacialAux(8, 12, Ability.Constitution, 18))
+            if (!saveGame.CommandEngine.CheckIfRacialPowerWorks(8, 12, Ability.Constitution, 18))
             {
                 return;
             }
@@ -62,8 +62,8 @@ namespace Cthangband.Mutations.ActiveMutations
             level.RedrawSingleLocation(player.MapY, player.MapX);
             level.RedrawSingleLocation(oy, ox);
             targetEngine.RecenterScreenAroundPlayer();
-            player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow;
-            player.UpdateFlags |= Constants.PuDistance;
+            player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow;
+            player.UpdatesNeeded |= UpdateFlags.PuDistance;
         }
 
         public override string ActivationSummary(int lvl)

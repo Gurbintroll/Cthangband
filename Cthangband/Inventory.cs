@@ -149,7 +149,7 @@ namespace Cthangband
                     {
                         jPtr.Absorb(oPtr);
                         _player.WeightCarried += oPtr.Count * oPtr.Weight;
-                        _player.UpdateFlags |= Constants.PuBonus;
+                        _player.UpdatesNeeded |= UpdateFlags.PuBonus;
                         return j;
                     }
                 }
@@ -260,7 +260,7 @@ namespace Cthangband
             oPtr.HoldingMonsterIndex = 0;
             _player.WeightCarried += oPtr.Count * oPtr.Weight;
             _invenCnt++;
-            _player.UpdateFlags |= Constants.PuBonus;
+            _player.UpdatesNeeded |= UpdateFlags.PuBonus;
             _player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             return i;
         }
@@ -382,8 +382,8 @@ namespace Cthangband
             {
                 oPtr.Count += num;
                 _player.WeightCarried += num * oPtr.Weight;
-                _player.UpdateFlags |= Constants.PuBonus;
-                _player.UpdateFlags |= Constants.PuMana;
+                _player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                _player.UpdatesNeeded |= UpdateFlags.PuMana;
                 _player.NoticeFlags |= Constants.PnCombine;
             }
         }
@@ -412,9 +412,9 @@ namespace Cthangband
             else
             {
                 _items[item] = new Item();
-                _player.UpdateFlags |= Constants.PuBonus;
-                _player.UpdateFlags |= Constants.PuTorch;
-                _player.UpdateFlags |= Constants.PuMana;
+                _player.UpdatesNeeded |= UpdateFlags.PuBonus;
+                _player.UpdatesNeeded |= UpdateFlags.PuTorch;
+                _player.UpdatesNeeded |= UpdateFlags.PuMana;
             }
         }
 

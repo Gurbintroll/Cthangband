@@ -87,7 +87,7 @@ namespace Cthangband.Projection
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
                 Level.CaveRemoveFeat(y, x);
             }
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuMonsters;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
             return obvious;
         }
 

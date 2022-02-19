@@ -202,11 +202,11 @@ namespace Cthangband
         private void DoCmdRedraw()
         {
             _player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
-            _player.UpdateFlags |= Constants.PuTorch;
-            _player.UpdateFlags |= Constants.PuBonus | Constants.PuHp | Constants.PuMana | Constants.PuSpells;
-            _player.UpdateFlags |= Constants.PuUnView | Constants.PuUnLight;
-            _player.UpdateFlags |= Constants.PuView | Constants.PuLight;
-            _player.UpdateFlags |= Constants.PuMonsters;
+            _player.UpdatesNeeded |= UpdateFlags.PuTorch;
+            _player.UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp | UpdateFlags.PuMana | UpdateFlags.PuSpells;
+            _player.UpdatesNeeded |= UpdateFlags.PuUnView | UpdateFlags.PuUnLight;
+            _player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight;
+            _player.UpdatesNeeded |= UpdateFlags.PuMonsters;
             _player.RedrawFlags |= RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrMap |
                               RedrawFlag.PrEquippy;
             SaveGame.Instance.HandleStuff();
@@ -542,7 +542,7 @@ namespace Cthangband
                 {
                     _level.Items[0 - item] = qPtr;
                 }
-                _player.UpdateFlags |= Constants.PuBonus;
+                _player.UpdatesNeeded |= UpdateFlags.PuBonus;
                 _player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             }
             else
@@ -851,7 +851,7 @@ namespace Cthangband
             }
             if (changed)
             {
-                _player.UpdateFlags |= Constants.PuBonus;
+                _player.UpdatesNeeded |= UpdateFlags.PuBonus;
                 _player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
                 return qPtr;
             }

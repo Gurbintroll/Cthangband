@@ -8,7 +8,7 @@ namespace Cthangband.Mutations.ActiveMutations
     {
         public override void Activate(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.RacialAux(10, 5, Ability.Intelligence, 12))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(10, 5, Ability.Intelligence, 12))
             {
                 saveGame.SpellEffects.Alchemy();
             }

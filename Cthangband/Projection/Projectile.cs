@@ -240,8 +240,8 @@ namespace Cthangband.Projection
                                     {
                                         Level.CaveRemoveFeat(y, x);
                                     }
-                                    Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow |
-                                                      Constants.PuMonsters;
+                                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow |
+                                                      UpdateFlags.PuMonsters;
                                 }
                                 else
                                 {

@@ -170,42 +170,6 @@ namespace Cthangband
             } while (Program.Rng.DieRoll(3) == 1);
         }
 
-        public void OpenChest(int y, int x, int oIdx)
-        {
-            Item oPtr = Level.Items[oIdx];
-            bool small = oPtr.ItemSubCategory < ItemSubCategory.SvChestMinLarge;
-            int number = oPtr.ItemSubCategory % ItemSubCategory.SvChestMinLarge * 2;
-            if (oPtr.TypeSpecificValue == 0)
-            {
-                number = 0;
-            }
-            Level.OpeningChest = true;
-            Level.ObjectLevel = Math.Abs(oPtr.TypeSpecificValue) + 10;
-            for (; number > 0; --number)
-            {
-                Item qPtr = new Item();
-                if (small && Program.Rng.RandomLessThan(100) < 75)
-                {
-                    if (!qPtr.MakeGold())
-                    {
-                        continue;
-                    }
-                }
-                else
-                {
-                    if (!qPtr.MakeObject(false, false))
-                    {
-                        continue;
-                    }
-                }
-                Level.DropNear(qPtr, -1, y, x);
-            }
-            Level.ObjectLevel = Difficulty;
-            Level.OpeningChest = false;
-            oPtr.TypeSpecificValue = 0;
-            oPtr.BecomeKnown();
-        }
-
         public void ChestTrap(int y, int x, int oIdx)
         {
             Item oPtr = Level.Items[oIdx];
@@ -367,12 +331,12 @@ namespace Cthangband
             if (Running != 0)
             {
                 Running = 0;
-                Player.UpdateFlags |= Constants.PuTorch;
+                Player.UpdatesNeeded |= UpdateFlags.PuTorch;
             }
             if (stopSearch && Player.IsSearching)
             {
                 Player.IsSearching = false;
-                Player.UpdateFlags |= Constants.PuBonus;
+                Player.UpdatesNeeded |= UpdateFlags.PuBonus;
                 Player.RedrawFlags |= RedrawFlag.PrState;
             }
         }
@@ -675,7 +639,7 @@ namespace Cthangband
             {
                 return;
             }
-            if (Player.UpdateFlags != 0)
+            if (Player.UpdatesNeeded != 0)
             {
                 UpdateStuff();
             }
@@ -855,7 +819,7 @@ namespace Cthangband
                     Level.DeleteObject(y, x);
                     Profile.Instance.MsgPrint("A magical stairway appears...");
                     Level.CaveSetFeat(y, x, CurDungeon.Tower ? "UpStair" : "DownStair");
-                    Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuMonsters;
+                    Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuMonsters;
                 }
             }
         }
@@ -876,6 +840,42 @@ namespace Cthangband
                 Player.NoticeFlags &= ~Constants.PnReorder;
                 Player.Inventory.ReorderPack();
             }
+        }
+
+        public void OpenChest(int y, int x, int oIdx)
+        {
+            Item oPtr = Level.Items[oIdx];
+            bool small = oPtr.ItemSubCategory < ItemSubCategory.SvChestMinLarge;
+            int number = oPtr.ItemSubCategory % ItemSubCategory.SvChestMinLarge * 2;
+            if (oPtr.TypeSpecificValue == 0)
+            {
+                number = 0;
+            }
+            Level.OpeningChest = true;
+            Level.ObjectLevel = Math.Abs(oPtr.TypeSpecificValue) + 10;
+            for (; number > 0; --number)
+            {
+                Item qPtr = new Item();
+                if (small && Program.Rng.RandomLessThan(100) < 75)
+                {
+                    if (!qPtr.MakeGold())
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (!qPtr.MakeObject(false, false))
+                    {
+                        continue;
+                    }
+                }
+                Level.DropNear(qPtr, -1, y, x);
+            }
+            Level.ObjectLevel = Difficulty;
+            Level.OpeningChest = false;
+            oPtr.TypeSpecificValue = 0;
+            oPtr.BecomeKnown();
         }
 
         public void Play()
@@ -951,7 +951,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdateFlags != 0)
+                if (Player.UpdatesNeeded != 0)
                 {
                     UpdateStuff();
                 }
@@ -986,34 +986,34 @@ namespace Cthangband
 
         public void UpdateStuff()
         {
-            if (Player.UpdateFlags == 0)
+            if (Player.UpdatesNeeded == 0)
             {
                 return;
             }
             PlayerStatus playerStatus = new PlayerStatus(Player, Level);
-            if ((Player.UpdateFlags & Constants.PuBonus) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuBonus) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuBonus;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuBonus;
                 playerStatus.CalcBonuses();
             }
-            if ((Player.UpdateFlags & Constants.PuTorch) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuTorch) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuTorch;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuTorch;
                 playerStatus.CalcTorch();
             }
-            if ((Player.UpdateFlags & Constants.PuHp) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuHp) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuHp;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuHp;
                 playerStatus.CalcHitpoints();
             }
-            if ((Player.UpdateFlags & Constants.PuMana) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuMana) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuMana;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuMana;
                 playerStatus.CalcMana();
             }
-            if ((Player.UpdateFlags & Constants.PuSpells) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuSpells) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuSpells;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuSpells;
                 playerStatus.CalcSpells();
             }
             if (Player == null)
@@ -1024,40 +1024,40 @@ namespace Cthangband
             {
                 return;
             }
-            if ((Player.UpdateFlags & Constants.PuUnLight) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuUnLight) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuUnLight;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuUnLight;
                 Level.ForgetLight();
             }
-            if ((Player.UpdateFlags & Constants.PuUnView) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuUnView) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuUnView;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuUnView;
                 Level.ForgetView();
             }
-            if ((Player.UpdateFlags & Constants.PuView) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuView) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuView;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuView;
                 Level.UpdateView();
             }
-            if ((Player.UpdateFlags & Constants.PuLight) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuLight) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuLight;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuLight;
                 Level.UpdateLight();
             }
-            if ((Player.UpdateFlags & Constants.PuFlow) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuFlow) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuFlow;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuFlow;
                 Level.UpdateFlow();
             }
-            if ((Player.UpdateFlags & Constants.PuDistance) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuDistance) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuDistance;
-                Player.UpdateFlags &= ~Constants.PuMonsters;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuDistance;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuMonsters;
                 Level.UpdateMonsters(true);
             }
-            if ((Player.UpdateFlags & Constants.PuMonsters) != 0)
+            if ((Player.UpdatesNeeded & UpdateFlags.PuMonsters) != 0)
             {
-                Player.UpdateFlags &= ~Constants.PuMonsters;
+                Player.UpdatesNeeded &= ~UpdateFlags.PuMonsters;
                 Level.UpdateMonsters(false);
             }
         }
@@ -1329,15 +1329,15 @@ namespace Cthangband
             CharacterXtra = true;
             Player.RedrawFlags |= RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy;
             Player.RedrawFlags |= RedrawFlag.PrMap;
-            Player.UpdateFlags |= Constants.PuBonus | Constants.PuHp | Constants.PuMana | Constants.PuSpells;
-            Player.UpdateFlags |= Constants.PuTorch;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp | UpdateFlags.PuMana | UpdateFlags.PuSpells;
+            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
             UpdateStuff();
             RedrawStuff();
-            Player.UpdateFlags |= Constants.PuView | Constants.PuLight | Constants.PuFlow | Constants.PuDistance;
+            Player.UpdatesNeeded |= UpdateFlags.PuView | UpdateFlags.PuLight | UpdateFlags.PuFlow | UpdateFlags.PuDistance;
             UpdateStuff();
             RedrawStuff();
             CharacterXtra = false;
-            Player.UpdateFlags |= Constants.PuBonus | Constants.PuHp | Constants.PuMana | Constants.PuSpells;
+            Player.UpdatesNeeded |= UpdateFlags.PuBonus | UpdateFlags.PuHp | UpdateFlags.PuMana | UpdateFlags.PuSpells;
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             NoticeStuff();
             UpdateStuff();
@@ -1405,7 +1405,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdateFlags != 0)
+                if (Player.UpdatesNeeded != 0)
                 {
                     UpdateStuff();
                 }
@@ -1426,7 +1426,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdateFlags != 0)
+                if (Player.UpdatesNeeded != 0)
                 {
                     UpdateStuff();
                 }
@@ -1444,7 +1444,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdateFlags != 0)
+                if (Player.UpdatesNeeded != 0)
                 {
                     UpdateStuff();
                 }
@@ -1874,7 +1874,7 @@ namespace Cthangband
                 {
                     NoticeStuff();
                 }
-                if (Player.UpdateFlags != 0)
+                if (Player.UpdatesNeeded != 0)
                 {
                     UpdateStuff();
                 }
@@ -1900,7 +1900,7 @@ namespace Cthangband
                     {
                         NoticeStuff();
                     }
-                    if (Player.UpdateFlags != 0)
+                    if (Player.UpdatesNeeded != 0)
                     {
                         UpdateStuff();
                     }
@@ -2069,13 +2069,13 @@ namespace Cthangband
                         }
                     }
                 }
-                Player.UpdateFlags |= Constants.PuMonsters;
+                Player.UpdatesNeeded |= UpdateFlags.PuMonsters;
                 Player.RedrawFlags |= RedrawFlag.PrMap;
             }
             if (Player.GameTime.IsMidnight)
             {
                 Player.Religion.DecayFavour();
-                Player.UpdateFlags |= Constants.PuHp | Constants.PuMana;
+                Player.UpdatesNeeded |= UpdateFlags.PuHp | UpdateFlags.PuMana;
                 foreach (Town town in Towns)
                 {
                     foreach (Store store in town.Stores)
@@ -2428,7 +2428,7 @@ namespace Cthangband
                     }
                 }
             }
-            Player.UpdateFlags |= Constants.PuTorch;
+            Player.UpdatesNeeded |= UpdateFlags.PuTorch;
             if (Player.HasExperienceDrain)
             {
                 if (Program.Rng.RandomLessThan(100) < 10 && Player.ExperiencePoints > 0)

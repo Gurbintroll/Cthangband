@@ -122,6 +122,7 @@
     <Compile Include="Enumerations\SoftArmourType.cs" />
     <Compile Include="Enumerations\StaffType.cs" />
     <Compile Include="Enumerations\SwordType.cs" />
+    <Compile Include="Enumerations\UpdateFlags.cs" />
     <Compile Include="Enumerations\WandType.cs" />
     <Compile Include="GameTime.cs" />
     <Compile Include="ItemIdentifier.cs" />
