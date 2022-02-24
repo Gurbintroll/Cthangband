@@ -21,7 +21,7 @@ namespace Cthangband.Mutations.ActiveMutations
             int y = player.MapY + level.KeypadDirectionYOffset[dir];
             int x = player.MapX + level.KeypadDirectionXOffset[dir];
             GridTile cPtr = level.Grid[y][x];
-            if (cPtr.Monster == 0)
+            if (cPtr.MonsterIndex == 0)
             {
                 Profile.Instance.MsgPrint("You wave your hands in the air.");
                 return;

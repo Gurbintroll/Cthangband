@@ -289,8 +289,8 @@ namespace Cthangband
                                 int y = Player.MapY + Level.KeypadDirectionYOffset[direction];
                                 int x = Player.MapX + Level.KeypadDirectionXOffset[direction];
                                 GridTile cPtr = Level.Grid[y][x];
-                                Monster mPtr = Level.Monsters[cPtr.Monster];
-                                if (cPtr.Monster != 0 && (mPtr.IsVisible || Level.GridPassable(y, x)))
+                                Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
+                                if (cPtr.MonsterIndex != 0 && (mPtr.IsVisible || Level.GridPassable(y, x)))
                                 {
                                     PlayerAttackMonster(y, x);
                                 }
@@ -1809,7 +1809,7 @@ namespace Cthangband
             int newY = Player.MapY + Level.KeypadDirectionYOffset[direction];
             int newX = Player.MapX + Level.KeypadDirectionXOffset[direction];
             GridTile tile = Level.Grid[newY][newX];
-            Monster monster = Level.Monsters[tile.Monster];
+            Monster monster = Level.Monsters[tile.MonsterIndex];
             // Check if we can pass through walls
             if (Player.TimedEtherealness != 0 || Player.RaceIndex == RaceId.Spectre)
             {
@@ -1822,7 +1822,7 @@ namespace Cthangband
             }
             // If there's a monster we can see or an invisible monster on a tile we can move to,
             // deal with it
-            if (tile.Monster != 0 && (monster.IsVisible || Level.GridPassable(newY, newX) || canPassWalls))
+            if (tile.MonsterIndex != 0 && (monster.IsVisible || Level.GridPassable(newY, newX) || canPassWalls))
             {
                 // Check if it's a friend, and if we are in a fit state to distinguish friend from foe
                 if ((monster.Mind & Constants.SmFriendly) != 0 &&
@@ -1835,7 +1835,7 @@ namespace Cthangband
                     // If we can see it, no need to mention it
                     if (monster.IsVisible)
                     {
-                        _saveGame.HealthTrack(tile.Monster);
+                        _saveGame.HealthTrack(tile.MonsterIndex);
                     }
                     // If we can't see it then let us push past it and tell us what happened
                     else if (Level.GridPassable(Player.MapY, Player.MapX) ||
@@ -1844,9 +1844,9 @@ namespace Cthangband
                         Profile.Instance.MsgPrint($"You push past {monsterName}.");
                         monster.MapY = Player.MapY;
                         monster.MapX = Player.MapX;
-                        Level.Grid[Player.MapY][Player.MapX].Monster = tile.Monster;
-                        tile.Monster = 0;
-                        Level.Monsters.UpdateMonsterVisibility(Level.Grid[Player.MapY][Player.MapX].Monster, true);
+                        Level.Grid[Player.MapY][Player.MapX].MonsterIndex = tile.MonsterIndex;
+                        tile.MonsterIndex = 0;
+                        Level.Monsters.UpdateMonsterVisibility(Level.Grid[Player.MapY][Player.MapX].MonsterIndex, true);
                     }
                     // If we couldn't push past it, tell us it was in the way
                     else
@@ -2248,7 +2248,7 @@ namespace Cthangband
         {
             GridTile tile = Level.Grid[Player.MapY][Player.MapX];
             int nextItemIndex;
-            for (int thisItemIndex = tile.Item; thisItemIndex != 0; thisItemIndex = nextItemIndex)
+            for (int thisItemIndex = tile.ItemIndex; thisItemIndex != 0; thisItemIndex = nextItemIndex)
             {
                 Item item = Level.Items[thisItemIndex];
                 string itemName = item.Description(true, 3);
@@ -2301,7 +2301,7 @@ namespace Cthangband
         public void PlayerAttackMonster(int y, int x)
         {
             GridTile tile = Level.Grid[y][x];
-            Monster monster = Level.Monsters[tile.Monster];
+            Monster monster = Level.Monsters[tile.MonsterIndex];
             MonsterRace race = monster.Race;
             bool fear = false;
             bool backstab = false;
@@ -2334,7 +2334,7 @@ namespace Cthangband
             // If we can see the monster, track its health
             if (monster.IsVisible)
             {
-                _saveGame.HealthTrack(tile.Monster);
+                _saveGame.HealthTrack(tile.MonsterIndex);
             }
             // if the monster is our friend and we're not confused, we can avoid hitting it
             if ((monster.Mind & Constants.SmFriendly) != 0 &&
@@ -2569,7 +2569,7 @@ namespace Cthangband
                         totalDamage = 0;
                     }
                     // Apply damage to the monster
-                    if (Level.Monsters.DamageMonster(tile.Monster, totalDamage, out fear, null))
+                    if (Level.Monsters.DamageMonster(tile.MonsterIndex, totalDamage, out fear, null))
                     {
                         // Can't have any more attacks because the monster's dead
                         noExtra = true;
@@ -2643,7 +2643,7 @@ namespace Cthangband
                     else if (chaosEffect && Program.Rng.DieRoll(2) == 1)
                     {
                         Profile.Instance.MsgPrint($"{monsterName} disappears!");
-                        _saveGame.SpellEffects.TeleportAway(tile.Monster, 50);
+                        _saveGame.SpellEffects.TeleportAway(tile.MonsterIndex, 50);
                         // Can't have any more attacks because the monster isn't here any more
                         noExtra = true;
                         break;
@@ -2659,10 +2659,10 @@ namespace Cthangband
                             if (newRaceIndex != monster.Race.Index)
                             {
                                 Profile.Instance.MsgPrint($"{monsterName} changes!");
-                                Level.Monsters.DeleteMonsterByIndex(tile.Monster, true);
+                                Level.Monsters.DeleteMonsterByIndex(tile.MonsterIndex, true);
                                 MonsterRace newRace = Profile.Instance.MonsterRaces[newRaceIndex];
                                 Level.Monsters.PlaceMonsterAux(y, x, newRace, false, false, false);
-                                monster = Level.Monsters[tile.Monster];
+                                monster = Level.Monsters[tile.MonsterIndex];
                                 monsterName = monster.MonsterDesc(0);
                                 fear = false;
                             }
@@ -2686,7 +2686,7 @@ namespace Cthangband
             {
                 if (!noExtra)
                 {
-                    NaturalAttack(tile.Monster, naturalAttack, out fear, out noExtra);
+                    NaturalAttack(tile.MonsterIndex, naturalAttack, out fear, out noExtra);
                 }
             }
             if (fear && monster.IsVisible && !noExtra)
@@ -2698,6 +2698,35 @@ namespace Cthangband
             {
                 _saveGame.SpellEffects.Earthquake(Player.MapY, Player.MapX, 10);
             }
+        }
+
+        /// <summary>
+        /// Check whether a ranged attack by the player hits a monster
+        /// </summary>
+        /// <param name="attackBonus"> The player's attack bonus </param>
+        /// <param name="armourClass"> The monster's armour class </param>
+        /// <param name="monsterIsVisible"> Whether or not the monster is visible </param>
+        /// <returns> True if the player hit the monster, false otherwise </returns>
+        public bool PlayerCheckRangedHitOnMonster(int attackBonus, int armourClass, bool monsterIsVisible)
+        {
+            int k = Program.Rng.RandomLessThan(100);
+            // Always a 5% chance to hit and a 5% chance to miss
+            if (k < 10)
+            {
+                return k < 5;
+            }
+            // If we have no chance of hitting don't bother checking
+            if (attackBonus <= 0)
+            {
+                return false;
+            }
+            // Invisible monsters are hard to hit
+            if (!monsterIsVisible)
+            {
+                attackBonus = (attackBonus + 1) / 2;
+            }
+            // Return the hit or miss
+            return Program.Rng.RandomLessThan(attackBonus) >= armourClass * 3 / 4;
         }
 
         /// <summary>
@@ -3755,11 +3784,17 @@ namespace Cthangband
             }
         }
 
-        // Run a single step of automated movement
+        /// <summary>
+        /// Run a single step
+        /// </summary>
+        /// <param name="direction">
+        /// The direction in which we wish to run, or 0 if we are already running
+        /// </param>
         public void RunStep(int direction)
         {
             if (direction != 0)
             {
+                // Check if we can actually run in that direction
                 if (SeeWall(direction, Player.MapY, Player.MapX))
                 {
                     Profile.Instance.MsgPrint("You cannot run in that direction.");
@@ -3767,100 +3802,124 @@ namespace Cthangband
                     return;
                 }
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
+                // Initialise our run
                 RunInit(direction);
             }
             else
             {
+                // We're already running, so check if we have to stop
                 if (RunTest())
                 {
                     _saveGame.Disturb(false);
                     return;
                 }
             }
+            // Running has a limit, just in case, but in practice we'll never reach it
             if (--_saveGame.Running <= 0)
             {
                 return;
             }
+            // We can run, so use a move's worth of energy and actually make the move
             _saveGame.EnergyUse = 100;
             MovePlayer(_navigationState.CurrentRunDirection, false);
         }
 
+        /// <summary>
+        /// Make a piece of armour immune to acid damage, removing any penalty at the same time
+        /// </summary>
         public void Rustproof()
         {
+            // Get a piece of armour
             _saveGame.ItemFilter = _saveGame.SpellEffects.ItemTesterHookArmour;
-            if (!_saveGame.GetItem(out int item, "Rustproof which piece of armour? ", true, true, true))
+            if (!_saveGame.GetItem(out int itemIndex, "Rustproof which piece of armour? ", true, true, true))
             {
-                if (item == -2)
+                if (itemIndex == -2)
                 {
                     Profile.Instance.MsgPrint("You have nothing to rustproof.");
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            string oName = oPtr.Description(false, 0);
-            oPtr.RandartFlags3.Set(ItemFlag3.IgnoreAcid);
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            string itenName = item.Description(false, 0);
+            // Set the ignore acid flag
+            item.RandartFlags3.Set(ItemFlag3.IgnoreAcid);
+            // Make sure the grammar of the message is correct
             string your;
             string s;
-            if (oPtr.BonusArmourClass < 0 && oPtr.IdentifyFlags.IsClear(Constants.IdentCursed))
+            if (item.BonusArmourClass < 0 && item.IdentifyFlags.IsClear(Constants.IdentCursed))
             {
-                your = item > 0 ? "Your" : "The";
-                s = oPtr.Count > 1 ? "" : "s";
-                Profile.Instance.MsgPrint($"{your} {oName} look{s} as good as new!");
-                oPtr.BonusArmourClass = 0;
+                your = itemIndex > 0 ? "Your" : "The";
+                s = item.Count > 1 ? "" : "s";
+                Profile.Instance.MsgPrint($"{your} {itenName} look{s} as good as new!");
+                item.BonusArmourClass = 0;
             }
-            your = item > 0 ? "Your" : "The";
-            s = oPtr.Count > 1 ? "are" : "is";
-            Profile.Instance.MsgPrint($"{your} {oName} {s} now protected against corrosion.");
+            your = itemIndex > 0 ? "Your" : "The";
+            s = item.Count > 1 ? "are" : "is";
+            Profile.Instance.MsgPrint($"{your} {itenName} {s} now protected against corrosion.");
         }
 
+        /// <summary>
+        /// Search around the player for secret doors and traps
+        /// </summary>
         public void Search()
         {
+            // The basic chance is equal to our searching skill
             int chance = Player.SkillSearching;
+            // If we can't see it's hard to search
             if (Player.TimedBlindness != 0 || Level.NoLight())
             {
                 chance /= 10;
             }
+            // If we're confused it's hard to search
             if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
             {
                 chance /= 10;
             }
+            // Check the eight squares around us
             for (int y = Player.MapY - 1; y <= Player.MapY + 1; y++)
             {
                 for (int x = Player.MapX - 1; x <= Player.MapX + 1; x++)
                 {
+                    // Check if we succeed
                     if (Program.Rng.RandomLessThan(100) < chance)
                     {
-                        GridTile cPtr = Level.Grid[y][x];
-                        if (cPtr.FeatureType.Name == "Invis")
+                        // If there's a trap, then find it
+                        GridTile tile = Level.Grid[y][x];
+                        if (tile.FeatureType.Name == "Invis")
                         {
+                            // Pick a random trap to replace the undetected one with
                             _saveGame.Level.PickTrap(y, x);
                             Profile.Instance.MsgPrint("You have found a trap.");
                             _saveGame.Disturb(false);
                         }
-                        if (cPtr.FeatureType.Name == "SecretDoor")
+                        if (tile.FeatureType.Name == "SecretDoor")
                         {
+                            // Replace the secret door with a visible door
                             Profile.Instance.MsgPrint("You have found a secret door.");
                             Player.GainExperience(1);
                             Level.ReplaceSecretDoor(y, x);
                             _saveGame.Disturb(false);
                         }
-                        int nextOIdx;
-                        for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+                        int nextItemIndex;
+                        // Check the items on the tile
+                        for (int itemIndex = tile.ItemIndex; itemIndex != 0; itemIndex = nextItemIndex)
                         {
-                            Item oPtr = Level.Items[thisOIdx];
-                            nextOIdx = oPtr.NextInStack;
-                            if (oPtr.Category != ItemCategory.Chest)
+                            Item item = Level.Items[itemIndex];
+                            nextItemIndex = item.NextInStack;
+                            // If one of them is a chest, determine if it is trapped
+                            if (item.Category != ItemCategory.Chest)
                             {
                                 continue;
                             }
-                            if (GlobalData.ChestTraps[oPtr.TypeSpecificValue] == 0)
+                            if (GlobalData.ChestTraps[item.TypeSpecificValue] == 0)
                             {
                                 continue;
                             }
-                            if (!oPtr.IsKnown())
+                            // It was a trapped chest - if we didn't already know that then let us know
+                            if (!item.IsKnown())
                             {
                                 Profile.Instance.MsgPrint("You have discovered a trap on the chest!");
-                                oPtr.BecomeKnown();
+                                item.BecomeKnown();
                                 _saveGame.Disturb(false);
                             }
                         }
@@ -3869,27 +3928,38 @@ namespace Cthangband
             }
         }
 
-        public void SummonObject(int dir, int wgt, bool requireLos)
+        /// <summary>
+        /// Summon an item to the player via telekinesis
+        /// </summary>
+        /// <param name="dir"> The direction to check for items </param>
+        /// <param name="maxWeight"> The maximum weight we can summon </param>
+        /// <param name="requireLos"> Whether or not we require line of sight to the item </param>
+        public void SummonItem(int dir, int maxWeight, bool requireLos)
         {
-            int ty, tx;
-            GridTile cPtr;
-            if (Level.Grid[Player.MapY][Player.MapX].Item != 0)
+            int targetY;
+            int targetX;
+            GridTile tile;
+            // Can't summon something if we're already standing on something
+            if (Level.Grid[Player.MapY][Player.MapX].ItemIndex != 0)
             {
                 Profile.Instance.MsgPrint("You can't fetch when you're already standing on something.");
                 return;
             }
             TargetEngine targetEngine = new TargetEngine(Player, Level);
+            // If we didn't have a direction, we might have an existing target
             if (dir == 5 && targetEngine.TargetOkay())
             {
-                tx = _saveGame.TargetCol;
-                ty = _saveGame.TargetRow;
-                if (Level.Distance(Player.MapY, Player.MapX, ty, tx) > Constants.MaxRange)
+                targetX = _saveGame.TargetCol;
+                targetY = _saveGame.TargetRow;
+                // Check the range
+                if (Level.Distance(Player.MapY, Player.MapX, targetY, targetX) > Constants.MaxRange)
                 {
                     Profile.Instance.MsgPrint("You can't fetch something that far away!");
                     return;
                 }
-                cPtr = Level.Grid[ty][tx];
-                if (requireLos && !Level.PlayerHasLosBold(ty, tx))
+                // Check the line of sight if needed
+                tile = Level.Grid[targetY][targetX];
+                if (requireLos && !Level.PlayerHasLosBold(targetY, targetX))
                 {
                     Profile.Instance.MsgPrint("You have no direct line of sight to that location.");
                     return;
@@ -3897,51 +3967,37 @@ namespace Cthangband
             }
             else
             {
-                ty = Player.MapY;
-                tx = Player.MapX;
+                // We have a direction, so move along it until we find an item
+                targetY = Player.MapY;
+                targetX = Player.MapX;
                 do
                 {
-                    ty += Level.KeypadDirectionYOffset[dir];
-                    tx += Level.KeypadDirectionXOffset[dir];
-                    cPtr = Level.Grid[ty][tx];
-                    if (Level.Distance(Player.MapY, Player.MapX, ty, tx) > Constants.MaxRange ||
-                        !Level.GridPassable(ty, tx))
+                    targetY += Level.KeypadDirectionYOffset[dir];
+                    targetX += Level.KeypadDirectionXOffset[dir];
+                    tile = Level.Grid[targetY][targetX];
+                    // Stop if we hit max range or we're blocked by something
+                    if (Level.Distance(Player.MapY, Player.MapX, targetY, targetX) > Constants.MaxRange ||
+                        !Level.GridPassable(targetY, targetX))
                     {
                         return;
                     }
-                } while (cPtr.Item == 0);
+                } while (tile.ItemIndex == 0);
             }
-            Item oPtr = Level.Items[cPtr.Item];
-            if (oPtr.Weight > wgt)
+            Item item = Level.Items[tile.ItemIndex];
+            // Check the weight of the item
+            if (item.Weight > maxWeight)
             {
                 Profile.Instance.MsgPrint("The object is too heavy.");
                 return;
             }
-            int i = cPtr.Item;
-            cPtr.Item = 0;
-            Level.Grid[Player.MapY][Player.MapX].Item = i;
-            oPtr.Y = Player.MapY;
-            oPtr.X = Player.MapX;
+            // Remove the entire item stack from the tile and move it to the player's tile
+            int itemIndex = tile.ItemIndex;
+            tile.ItemIndex = 0;
+            Level.Grid[Player.MapY][Player.MapX].ItemIndex = itemIndex;
+            item.Y = Player.MapY;
+            item.X = Player.MapX;
             Level.NoteSpot(Player.MapY, Player.MapX);
             Player.RedrawNeeded.Set(RedrawFlag.PrMap);
-        }
-
-        public bool TestHitFire(int chance, int ac, bool vis)
-        {
-            int k = Program.Rng.RandomLessThan(100);
-            if (k < 10)
-            {
-                return k < 5;
-            }
-            if (chance <= 0)
-            {
-                return false;
-            }
-            if (!vis)
-            {
-                chance = (chance + 1) / 2;
-            }
-            return Program.Rng.RandomLessThan(chance) >= ac * 3 / 4;
         }
 
         public bool TunnelThroughTile(int y, int x)
@@ -4487,7 +4543,7 @@ namespace Cthangband
                         int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                         int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
                         GridTile cPtr = Level.Grid[y][x];
-                        if (cPtr.Monster == 0)
+                        if (cPtr.MonsterIndex == 0)
                         {
                             Profile.Instance.MsgPrint("You bite into thin air!");
                             break;
@@ -4804,15 +4860,15 @@ namespace Cthangband
                 row = Player.MapY + Level.KeypadDirectionYOffset[newDir];
                 col = Player.MapX + Level.KeypadDirectionXOffset[newDir];
                 cPtr = Level.Grid[row][col];
-                if (cPtr.Monster != 0)
+                if (cPtr.MonsterIndex != 0)
                 {
-                    Monster mPtr = Level.Monsters[cPtr.Monster];
+                    Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
                     if (mPtr.IsVisible)
                     {
                         return true;
                     }
                 }
-                for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+                for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                 {
                     Item oPtr = Level.Items[thisOIdx];
                     nextOIdx = oPtr.NextInStack;

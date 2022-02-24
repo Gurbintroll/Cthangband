@@ -111,7 +111,7 @@ namespace Cthangband.Projection
                 {
                     break;
                 }
-                if (cPtr.Monster != 0 && dist != 0 && (flg & ProjectionFlag.ProjectStop) != 0)
+                if (cPtr.MonsterIndex != 0 && dist != 0 && (flg & ProjectionFlag.ProjectStop) != 0)
                 {
                     break;
                 }
@@ -368,11 +368,11 @@ namespace Cthangband.Projection
                     }
                     else
                     {
-                        if (cPtr.Monster == 0)
+                        if (cPtr.MonsterIndex == 0)
                         {
                             continue;
                         }
-                        MonsterRace refPtr = Level.Monsters[cPtr.Monster].Race;
+                        MonsterRace refPtr = Level.Monsters[cPtr.MonsterIndex].Race;
                         if ((refPtr.Flags2 & MonsterFlag2.Reflecting) != 0 && Program.Rng.DieRoll(10) != 1 &&
                             distHack > 1 && GetType().Name != "ProjectWizardBolt")
                         {
@@ -389,12 +389,12 @@ namespace Cthangband.Projection
                                 tY = ySaver;
                                 tX = xSaver;
                             }
-                            if (Level.Monsters[cPtr.Monster].IsVisible)
+                            if (Level.Monsters[cPtr.MonsterIndex].IsVisible)
                             {
                                 Profile.Instance.MsgPrint("The attack bounces!");
                                 refPtr.Knowledge.RFlags2 |= MonsterFlag2.Reflecting;
                             }
-                            Fire(cPtr.Monster, 0, tY, tX, dam, flg);
+                            Fire(cPtr.MonsterIndex, 0, tY, tX, dam, flg);
                         }
                         else
                         {
@@ -410,12 +410,12 @@ namespace Cthangband.Projection
                     x = ProjectMx;
                     y = ProjectMy;
                     cPtr = Level.Grid[y][x];
-                    if (cPtr.Monster != 0)
+                    if (cPtr.MonsterIndex != 0)
                     {
-                        Monster mPtr = Level.Monsters[cPtr.Monster];
+                        Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
                         if (mPtr.IsVisible)
                         {
-                            SaveGame.HealthTrack(cPtr.Monster);
+                            SaveGame.HealthTrack(cPtr.MonsterIndex);
                         }
                     }
                 }

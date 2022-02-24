@@ -13,7 +13,7 @@ namespace Cthangband.Spells.Tarot
             {
                 return;
             }
-            saveGame.CommandEngine.SummonObject(dir, player.Level * 15, true);
+            saveGame.CommandEngine.SummonItem(dir, player.Level * 15, true);
         }
 
         public override void Initialise(int characterClass)

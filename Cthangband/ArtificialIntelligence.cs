@@ -892,9 +892,9 @@ namespace Cthangband
                     break;
                 }
                 // If there's another monster in the way and it is friendly, give up
-                if (distance != 0 && _level.Grid[y][x].Monster > 0)
+                if (distance != 0 && _level.Grid[y][x].MonsterIndex > 0)
                 {
-                    if ((_level.Monsters[_level.Grid[y][x].Monster].Mind & Constants.SmFriendly) == 0)
+                    if ((_level.Monsters[_level.Grid[y][x].MonsterIndex].Mind & Constants.SmFriendly) == 0)
                     {
                         break;
                     }
@@ -1129,9 +1129,9 @@ namespace Cthangband
                 // Check if we're in bounds and have a monster
                 if (_level.InBounds(y, x))
                 {
-                    if (_level.Grid[y][x].Monster != 0)
+                    if (_level.Grid[y][x].MonsterIndex != 0)
                     {
-                        Monster enemy = _level.Monsters[_level.Grid[y][x].Monster];
+                        Monster enemy = _level.Monsters[_level.Grid[y][x].MonsterIndex];
                         // Only go for monsters who are awake and on the opposing side
                         if ((enemy.Mind & Constants.SmFriendly) != (monster.Mind & Constants.SmFriendly) &&
                             enemy.SleepLevel == 0)
@@ -1700,7 +1700,7 @@ namespace Cthangband
                 {
                     for (int x = oldX - 1; x <= oldX + 1; x++)
                     {
-                        if (_level.Grid[y][x].Monster != 0)
+                        if (_level.Grid[y][x].MonsterIndex != 0)
                         {
                             k++;
                         }
@@ -1844,7 +1844,7 @@ namespace Cthangband
                 int newY = oldY + _level.KeypadDirectionYOffset[d];
                 int newX = oldX + _level.KeypadDirectionXOffset[d];
                 GridTile tile = _level.Grid[newY][newX];
-                Monster monsterInTargetTile = _level.Monsters[tile.Monster];
+                Monster monsterInTargetTile = _level.Monsters[tile.MonsterIndex];
                 // If we can simply move there, then we will do so
                 if (_level.GridPassable(newY, newX))
                 {
@@ -1861,7 +1861,7 @@ namespace Cthangband
                     doMove = true;
                 }
                 // We can always attack another monster, even if the move would otherwise not be allowed
-                else if (tile.Monster != -0)
+                else if (tile.MonsterIndex != -0)
                 {
                     doMove = true;
                 }
@@ -2013,7 +2013,7 @@ namespace Cthangband
                     doTurn = true;
                 }
                 // If we're trying to move onto another monster
-                if (doMove && tile.Monster != 0)
+                if (doMove && tile.MonsterIndex != 0)
                 {
                     MonsterRace targetMonsterRace = monsterInTargetTile.Race;
                     // Assume for the moment we're not doing the move
@@ -2028,7 +2028,7 @@ namespace Cthangband
                         doMove = true;
                         didKillBody = true;
                         _level.DeleteMonster(newY, newX);
-                        monsterInTargetTile = _level.Monsters[tile.Monster];
+                        monsterInTargetTile = _level.Monsters[tile.MonsterIndex];
                     }
                     // If we're not on the same team as the other monster or we're confused
                     else if ((monster.Mind & Constants.SmFriendly) != (monsterInTargetTile.Mind & Constants.SmFriendly) || monster.ConfusionLevel != 0)
@@ -2037,7 +2037,7 @@ namespace Cthangband
                         // Attack the monster in the target tile
                         if (monsterInTargetTile.Race != null && monsterInTargetTile.Health >= 0)
                         {
-                            if (AttackAnotherMonster(monsterIndex, tile.Monster))
+                            if (AttackAnotherMonster(monsterIndex, tile.MonsterIndex))
                             {
                                 return;
                             }
@@ -2063,18 +2063,18 @@ namespace Cthangband
                     int nextItemIndex;
                     doTurn = true;
                     // Swap positions with the monster that is in the tile we're aiming for
-                    _level.Grid[oldY][oldX].Monster = tile.Monster;
+                    _level.Grid[oldY][oldX].MonsterIndex = tile.MonsterIndex;
                     // If it was actually a monster then update it accordingly
-                    if (tile.Monster != 0)
+                    if (tile.MonsterIndex != 0)
                     {
                         monsterInTargetTile.MapY = oldY;
                         monsterInTargetTile.MapX = oldX;
-                        _level.Monsters.UpdateMonsterVisibility(tile.Monster, true);
+                        _level.Monsters.UpdateMonsterVisibility(tile.MonsterIndex, true);
                         // Pushing past something wakes it up
-                        _level.Monsters[tile.Monster].SleepLevel = 0;
+                        _level.Monsters[tile.MonsterIndex].SleepLevel = 0;
                     }
                     // Update our position
-                    tile.Monster = monsterIndex;
+                    tile.MonsterIndex = monsterIndex;
                     monster.MapY = newY;
                     monster.MapX = newX;
                     _level.Monsters.UpdateMonsterVisibility(monsterIndex, true);
@@ -2089,7 +2089,7 @@ namespace Cthangband
                         }
                     }
                     // Check through the items in the tile we just entered
-                    for (int thisItemIndex = tile.Item; thisItemIndex != 0; thisItemIndex = nextItemIndex)
+                    for (int thisItemIndex = tile.ItemIndex; thisItemIndex != 0; thisItemIndex = nextItemIndex)
                     {
                         Item item = _level.Items[thisItemIndex];
                         nextItemIndex = item.NextInStack;

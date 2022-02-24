@@ -1387,9 +1387,9 @@ namespace Cthangband.Spells
                         continue;
                     }
                     cPtr = Level.Grid[yy][xx];
-                    if (cPtr.Monster != 0)
+                    if (cPtr.MonsterIndex != 0)
                     {
-                        Monster mPtr = Level.Monsters[cPtr.Monster];
+                        Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
                         MonsterRace rPtr = mPtr.Race;
                         if ((rPtr.Flags2 & MonsterFlag2.KillWall) == 0 && (rPtr.Flags2 & MonsterFlag2.PassWall) == 0)
                         {
@@ -1438,9 +1438,9 @@ namespace Cthangband.Spells
                             }
                             if (sn != 0)
                             {
-                                int mIdx = Level.Grid[yy][xx].Monster;
-                                Level.Grid[sy][sx].Monster = mIdx;
-                                Level.Grid[yy][xx].Monster = 0;
+                                int mIdx = Level.Grid[yy][xx].MonsterIndex;
+                                Level.Grid[sy][sx].MonsterIndex = mIdx;
+                                Level.Grid[yy][xx].MonsterIndex = 0;
                                 mPtr.MapY = sy;
                                 mPtr.MapX = sx;
                                 Level.Monsters.UpdateMonsterVisibility(mIdx, true);
@@ -3329,8 +3329,8 @@ namespace Cthangband.Spells
                 min /= 2;
             }
             Gui.PlaySound(SoundEffect.Teleport);
-            Level.Grid[ny][nx].Monster = mIdx;
-            Level.Grid[oy][ox].Monster = 0;
+            Level.Grid[ny][nx].MonsterIndex = mIdx;
+            Level.Grid[oy][ox].MonsterIndex = 0;
             mPtr.MapY = ny;
             mPtr.MapX = nx;
             Level.Monsters.UpdateMonsterVisibility(mIdx, true);
@@ -3411,16 +3411,16 @@ namespace Cthangband.Spells
                     }
                     else
                     {
-                        if (Level.Grid[oy + yy][ox + xx].Monster != 0)
+                        if (Level.Grid[oy + yy][ox + xx].MonsterIndex != 0)
                         {
-                            if ((Level.Monsters[Level.Grid[oy + yy][ox + xx].Monster].Race.Flags6 &
+                            if ((Level.Monsters[Level.Grid[oy + yy][ox + xx].MonsterIndex].Race.Flags6 &
                                  MonsterFlag6.TeleportSelf) != 0 &&
-                                (Level.Monsters[Level.Grid[oy + yy][ox + xx].Monster].Race.Flags3 &
+                                (Level.Monsters[Level.Grid[oy + yy][ox + xx].MonsterIndex].Race.Flags3 &
                                  MonsterFlag3.ResistTeleport) == 0)
                             {
-                                if (Level.Monsters[Level.Grid[oy + yy][ox + xx].Monster].SleepLevel == 0)
+                                if (Level.Monsters[Level.Grid[oy + yy][ox + xx].MonsterIndex].SleepLevel == 0)
                                 {
-                                    TeleportToPlayer(Level.Grid[oy + yy][ox + xx].Monster);
+                                    TeleportToPlayer(Level.Grid[oy + yy][ox + xx].MonsterIndex);
                                 }
                             }
                         }
@@ -3543,13 +3543,13 @@ namespace Cthangband.Spells
                 ty = Player.MapY + Level.KeypadDirectionYOffset[dir];
             }
             GridTile cPtr = Level.Grid[ty][tx];
-            if (cPtr.Monster == 0)
+            if (cPtr.MonsterIndex == 0)
             {
                 Profile.Instance.MsgPrint("You can't trade places with that!");
             }
             else
             {
-                Monster mPtr = Level.Monsters[cPtr.Monster];
+                Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
                 MonsterRace rPtr = mPtr.Race;
                 if ((rPtr.Flags3 & MonsterFlag3.ResistTeleport) != 0)
                 {
@@ -3558,15 +3558,15 @@ namespace Cthangband.Spells
                 else
                 {
                     Gui.PlaySound(SoundEffect.Teleport);
-                    Level.Grid[Player.MapY][Player.MapX].Monster = cPtr.Monster;
-                    cPtr.Monster = 0;
+                    Level.Grid[Player.MapY][Player.MapX].MonsterIndex = cPtr.MonsterIndex;
+                    cPtr.MonsterIndex = 0;
                     mPtr.MapY = Player.MapY;
                     mPtr.MapX = Player.MapX;
                     Player.MapX = tx;
                     Player.MapY = ty;
                     tx = mPtr.MapX;
                     ty = mPtr.MapY;
-                    Level.Monsters.UpdateMonsterVisibility(Level.Grid[ty][tx].Monster, true);
+                    Level.Monsters.UpdateMonsterVisibility(Level.Grid[ty][tx].MonsterIndex, true);
                     Level.RedrawSingleLocation(ty, tx);
                     Level.RedrawSingleLocation(Player.MapY, Player.MapX);
                     targetEngine.RecenterScreenAroundPlayer();
@@ -3718,12 +3718,12 @@ namespace Cthangband.Spells
                 GridTile cPtr = Level.Grid[y][x];
                 cPtr.TileFlags.Clear(GridTile.TempFlag);
                 cPtr.TileFlags.Set(GridTile.SelfLit);
-                if (cPtr.Monster != 0)
+                if (cPtr.MonsterIndex != 0)
                 {
                     int chance = 25;
-                    Monster mPtr = Level.Monsters[cPtr.Monster];
+                    Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
                     MonsterRace rPtr = mPtr.Race;
-                    Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
+                    Level.Monsters.UpdateMonsterVisibility(cPtr.MonsterIndex, false);
                     if ((rPtr.Flags2 & MonsterFlag2.Stupid) != 0)
                     {
                         chance = 10;
@@ -3762,9 +3762,9 @@ namespace Cthangband.Spells
                     cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
                     Level.NoteSpot(y, x);
                 }
-                if (cPtr.Monster != 0)
+                if (cPtr.MonsterIndex != 0)
                 {
-                    Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
+                    Level.Monsters.UpdateMonsterVisibility(cPtr.MonsterIndex, false);
                 }
                 Level.RedrawSingleLocation(y, x);
             }
@@ -4078,8 +4078,8 @@ namespace Cthangband.Spells
                 return;
             }
             Gui.PlaySound(SoundEffect.Teleport);
-            Level.Grid[ny][nx].Monster = mIdx;
-            Level.Grid[oy][ox].Monster = 0;
+            Level.Grid[ny][nx].MonsterIndex = mIdx;
+            Level.Grid[oy][ox].MonsterIndex = 0;
             mPtr.MapY = ny;
             mPtr.MapX = nx;
             Level.Monsters.UpdateMonsterVisibility(mIdx, true);

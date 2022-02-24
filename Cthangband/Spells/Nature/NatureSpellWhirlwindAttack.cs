@@ -13,8 +13,8 @@ namespace Cthangband.Spells.Nature
                 int y = player.MapY + level.KeypadDirectionYOffset[dir];
                 int x = player.MapX + level.KeypadDirectionXOffset[dir];
                 GridTile cPtr = level.Grid[y][x];
-                Monster mPtr = level.Monsters[cPtr.Monster];
-                if (cPtr.Monster != 0 && (mPtr.IsVisible || level.GridPassable(y, x)))
+                Monster mPtr = level.Monsters[cPtr.MonsterIndex];
+                if (cPtr.MonsterIndex != 0 && (mPtr.IsVisible || level.GridPassable(y, x)))
                 {
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }

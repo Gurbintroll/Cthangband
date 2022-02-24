@@ -31,7 +31,7 @@ namespace Cthangband.Mutations.ActiveMutations
                 Profile.Instance.MsgPrint("Ouch!  This wall is harder than your teeth!");
                 return;
             }
-            if (cPtr.Monster != 0)
+            if (cPtr.MonsterIndex != 0)
             {
                 Profile.Instance.MsgPrint("There's something in the way!");
                 return;

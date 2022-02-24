@@ -266,7 +266,7 @@ namespace Cthangband
             while (!done)
             {
                 GridTile cPtr = _level.Grid[y][x];
-                string info = TargetAble(cPtr.Monster) ? "t,T,*" : "T,*";
+                string info = TargetAble(cPtr.MonsterIndex) ? "t,T,*" : "T,*";
                 char query = TargetSetAux(y, x, mode | Constants.TargetLook, info);
                 switch (query)
                 {
@@ -277,10 +277,10 @@ namespace Cthangband
                         }
                     case 't':
                         {
-                            if (TargetAble(cPtr.Monster))
+                            if (TargetAble(cPtr.MonsterIndex))
                             {
-                                SaveGame.Instance.HealthTrack(cPtr.Monster);
-                                SaveGame.Instance.TargetWho = cPtr.Monster;
+                                SaveGame.Instance.HealthTrack(cPtr.MonsterIndex);
+                                SaveGame.Instance.TargetWho = cPtr.MonsterIndex;
                                 SaveGame.Instance.TargetRow = y;
                                 SaveGame.Instance.TargetCol = x;
                                 done = true;
@@ -480,15 +480,15 @@ namespace Cthangband
                 return false;
             }
             GridTile cPtr = _level.Grid[y][x];
-            if (cPtr.Monster != 0)
+            if (cPtr.MonsterIndex != 0)
             {
-                Monster mPtr = _level.Monsters[cPtr.Monster];
+                Monster mPtr = _level.Monsters[cPtr.MonsterIndex];
                 if (mPtr.IsVisible)
                 {
                     return true;
                 }
             }
-            for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = _level.Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
@@ -536,16 +536,16 @@ namespace Cthangband
                 }
                 int thisOIdx;
                 int nextOIdx;
-                if (cPtr.Monster != 0)
+                if (cPtr.MonsterIndex != 0)
                 {
-                    Monster mPtr = _level.Monsters[cPtr.Monster];
+                    Monster mPtr = _level.Monsters[cPtr.MonsterIndex];
                     MonsterRace rPtr = mPtr.Race;
                     if (mPtr.IsVisible)
                     {
                         bool recall = false;
                         boring = false;
                         string mName = mPtr.MonsterDesc(0x08);
-                        SaveGame.Instance.HealthTrack(cPtr.Monster);
+                        SaveGame.Instance.HealthTrack(cPtr.MonsterIndex);
                         SaveGame.Instance.HandleStuff();
                         while (true)
                         {
@@ -561,7 +561,7 @@ namespace Cthangband
                             {
                                 string c = (mPtr.Mind & Constants.SmCloned) != 0 ? " (clone)" : "";
                                 string a = (mPtr.Mind & Constants.SmFriendly) != 0 ? " (allied) " : " ";
-                                outVal = $"{s1}{s2}{s3}{mName} ({LookMonDesc(cPtr.Monster)}){c}{a}[r,{info}]";
+                                outVal = $"{s1}{s2}{s3}{mName} ({LookMonDesc(cPtr.MonsterIndex)}){c}{a}[r,{info}]";
                                 Gui.PrintLine(outVal, 0, 0);
                                 _level.MoveCursorRelative(y, x);
                                 query = Gui.Inkey();
@@ -616,7 +616,7 @@ namespace Cthangband
                         s2 = "on ";
                     }
                 }
-                for (thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+                for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                 {
                     Item oPtr = _level.Items[thisOIdx];
                     nextOIdx = oPtr.NextInStack;
@@ -703,7 +703,7 @@ namespace Cthangband
                     {
                         continue;
                     }
-                    if ((mode & Constants.TargetKill) != 0 && !TargetAble(cPtr.Monster))
+                    if ((mode & Constants.TargetKill) != 0 && !TargetAble(cPtr.MonsterIndex))
                     {
                         continue;
                     }

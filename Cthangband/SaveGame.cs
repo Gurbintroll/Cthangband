@@ -396,7 +396,7 @@ namespace Cthangband
             }
             if (floor)
             {
-                for (thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+                for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                 {
                     Item oPtr = Level.Items[thisOIdx];
                     nextOIdx = oPtr.NextInStack;
@@ -546,7 +546,7 @@ namespace Cthangband
                         {
                             if (allowFloor)
                             {
-                                for (thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+                                for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                                 {
                                     Item oPtr = Level.Items[thisOIdx];
                                     nextOIdx = oPtr.NextInStack;

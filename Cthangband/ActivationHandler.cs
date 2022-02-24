@@ -1820,15 +1820,15 @@ namespace Cthangband
                     Gui.Pause(msec);
                 }
                 // Check if we might hit a monster (not necessarily the one we were aiming at)
-                if (_level.Grid[y][x].Monster != 0)
+                if (_level.Grid[y][x].MonsterIndex != 0)
                 {
                     GridTile tile = _level.Grid[y][x];
-                    Monster monster = _level.Monsters[tile.Monster];
+                    Monster monster = _level.Monsters[tile.MonsterIndex];
                     MonsterRace race = monster.Race;
                     bool visible = monster.IsVisible;
                     hitBody = true;
                     // Check if we actually hit it
-                    if (SaveGame.Instance.CommandEngine.TestHitFire(chanceToHit - curDis, race.ArmourClass, monster.IsVisible))
+                    if (SaveGame.Instance.CommandEngine.PlayerCheckRangedHitOnMonster(chanceToHit - curDis, race.ArmourClass, monster.IsVisible))
                     {
                         string noteDies = " dies.";
                         if ((race.Flags3 & MonsterFlag3.Demon) != 0 || (race.Flags3 & MonsterFlag3.Undead) != 0 ||
@@ -1847,7 +1847,7 @@ namespace Cthangband
                             Profile.Instance.MsgPrint($"The {missileName} hits {monsterName}.");
                             if (monster.IsVisible)
                             {
-                                SaveGame.Instance.HealthTrack(tile.Monster);
+                                SaveGame.Instance.HealthTrack(tile.MonsterIndex);
                             }
                             // Note that pets only get angry if they see us and we see them
                             if ((monster.Mind & Constants.SmFriendly) != 0)
@@ -1864,13 +1864,13 @@ namespace Cthangband
                         {
                             shotDamage = 0;
                         }
-                        if (_level.Monsters.DamageMonster(tile.Monster, shotDamage, out bool fear, noteDies))
+                        if (_level.Monsters.DamageMonster(tile.MonsterIndex, shotDamage, out bool fear, noteDies))
                         {
                             // The monster is dead, so don't add further statuses or messages
                         }
                         else
                         {
-                            _level.Monsters.MessagePain(tile.Monster, shotDamage);
+                            _level.Monsters.MessagePain(tile.MonsterIndex, shotDamage);
                             if (fear && monster.IsVisible)
                             {
                                 Gui.PlaySound(SoundEffect.MonsterFlees);
@@ -2498,7 +2498,7 @@ namespace Cthangband
                         Profile.Instance.MsgPrint("You have no spikes!");
                     }
                     // Can't close a door if there's someone in the way
-                    else if (tile.Monster != 0)
+                    else if (tile.MonsterIndex != 0)
                     {
                         // Attempting costs a turn anyway
                         SaveGame.Instance.EnergyUse = 100;
@@ -2631,15 +2631,15 @@ namespace Cthangband
                 }
                 // If there's a monster in the way, we might hit it regardless of whether or not it
                 // is our intended target
-                if (_level.Grid[y][x].Monster != 0)
+                if (_level.Grid[y][x].MonsterIndex != 0)
                 {
                     GridTile tile = _level.Grid[y][x];
-                    Monster monster = _level.Monsters[tile.Monster];
+                    Monster monster = _level.Monsters[tile.MonsterIndex];
                     MonsterRace race = monster.Race;
                     bool visible = monster.IsVisible;
                     hitBody = true;
                     // See if it actually hit the monster
-                    if (SaveGame.Instance.CommandEngine.TestHitFire(chance - curDis, race.ArmourClass, monster.IsVisible))
+                    if (SaveGame.Instance.CommandEngine.PlayerCheckRangedHitOnMonster(chance - curDis, race.ArmourClass, monster.IsVisible))
                     {
                         string noteDies = " dies.";
                         if ((race.Flags3 & MonsterFlag3.Demon) != 0 || (race.Flags3 & MonsterFlag3.Undead) != 0 ||
@@ -2659,7 +2659,7 @@ namespace Cthangband
                             Profile.Instance.MsgPrint($"The {missileName} hits {mName}.");
                             if (monster.IsVisible)
                             {
-                                SaveGame.Instance.HealthTrack(tile.Monster);
+                                SaveGame.Instance.HealthTrack(tile.MonsterIndex);
                             }
                         }
                         // Adjust the damage for the particular monster type
@@ -2669,14 +2669,14 @@ namespace Cthangband
                         {
                             damage = 0;
                         }
-                        if (_level.Monsters.DamageMonster(tile.Monster, damage, out bool fear, noteDies))
+                        if (_level.Monsters.DamageMonster(tile.MonsterIndex, damage, out bool fear, noteDies))
                         {
                             // The monster is dead, so don't add further statuses or messages
                         }
                         else
                         {
                             // Let the player know what happens to the monster
-                            _level.Monsters.MessagePain(tile.Monster, damage);
+                            _level.Monsters.MessagePain(tile.MonsterIndex, damage);
                             if ((monster.Mind & Constants.SmFriendly) != 0 &&
                                 missile.ItemType.Category != ItemCategory.Potion)
                             {
@@ -2705,12 +2705,12 @@ namespace Cthangband
                     Profile.Instance.MsgPrint($"The {missileName} shatters!");
                     if (SaveGame.Instance.SpellEffects.PotionSmashEffect(1, y, x, missile.ItemSubCategory))
                     {
-                        if (_level.Grid[y][x].Monster != 0 &&
-                            (_level.Monsters[_level.Grid[y][x].Monster].Mind & Constants.SmFriendly) != 0)
+                        if (_level.Grid[y][x].MonsterIndex != 0 &&
+                            (_level.Monsters[_level.Grid[y][x].MonsterIndex].Mind & Constants.SmFriendly) != 0)
                         {
-                            string mName = _level.Monsters[_level.Grid[y][x].Monster].MonsterDesc(0);
+                            string mName = _level.Monsters[_level.Grid[y][x].MonsterIndex].MonsterDesc(0);
                             Profile.Instance.MsgPrint($"{mName} gets angry!");
-                            _level.Monsters[_level.Grid[y][x].Monster].Mind &= ~Constants.SmFriendly;
+                            _level.Monsters[_level.Grid[y][x].MonsterIndex].Mind &= ~Constants.SmFriendly;
                         }
                     }
                     return;

@@ -331,7 +331,7 @@ namespace Cthangband
             {
                 SaveGame.Instance.HealthTrack(0);
             }
-            _level.Grid[y][x].Monster = 0;
+            _level.Grid[y][x].MonsterIndex = 0;
             for (int thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = _level.Items[thisOIdx];
@@ -750,13 +750,13 @@ namespace Cthangband
                 return;
             }
             GridTile cPtr = _level.Grid[y][x];
-            cPtr.Monster = MPop();
-            if (cPtr.Monster == 0)
+            cPtr.MonsterIndex = MPop();
+            if (cPtr.MonsterIndex == 0)
             {
                 Profile.Instance.MsgPrint($"You lose sight of {monster.MonsterDesc(0)}.");
                 return;
             }
-            _monsters[cPtr.Monster] = monster;
+            _monsters[cPtr.MonsterIndex] = monster;
             monster.MapY = y;
             monster.MapX = x;
             MonsterRace rPtr = monster.Race;
@@ -1244,7 +1244,7 @@ namespace Cthangband
                     continue;
                 }
                 rPtr.CurNum--;
-                _level.Grid[mPtr.MapY][mPtr.MapX].Monster = 0;
+                _level.Grid[mPtr.MapY][mPtr.MapX].MonsterIndex = 0;
                 _monsters[i] = new Monster();
             }
             _level.MMax = 1;
@@ -1265,7 +1265,7 @@ namespace Cthangband
             int y = mPtr.MapY;
             int x = mPtr.MapX;
             GridTile cPtr = _level.Grid[y][x];
-            cPtr.Monster = i2;
+            cPtr.MonsterIndex = i2;
             for (int thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = _level.Items[thisOIdx];
@@ -1450,13 +1450,13 @@ namespace Cthangband
                 }
             }
             GridTile cPtr = _level.Grid[y][x];
-            cPtr.Monster = MPop();
-            _hackMIdxIi = cPtr.Monster;
-            if (cPtr.Monster == 0)
+            cPtr.MonsterIndex = MPop();
+            _hackMIdxIi = cPtr.MonsterIndex;
+            if (cPtr.MonsterIndex == 0)
             {
                 return false;
             }
-            Monster mPtr = _monsters[cPtr.Monster];
+            Monster mPtr = _monsters[cPtr.MonsterIndex];
             mPtr.Race = rPtr;
             mPtr.MapY = y;
             mPtr.MapX = x;
@@ -1496,11 +1496,11 @@ namespace Cthangband
                 mPtr.IndividualMonsterFlags |= Constants.MflagNice;
                 RepairMonsters = true;
             }
-            if (cPtr.Monster < CurrentlyActingMonster)
+            if (cPtr.MonsterIndex < CurrentlyActingMonster)
             {
                 mPtr.IndividualMonsterFlags |= Constants.MflagBorn;
             }
-            UpdateMonsterVisibility(cPtr.Monster, true);
+            UpdateMonsterVisibility(cPtr.MonsterIndex, true);
             rPtr.CurNum++;
             if ((rPtr.Flags2 & MonsterFlag2.Multiply) != 0)
             {

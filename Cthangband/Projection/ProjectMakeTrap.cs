@@ -32,16 +32,16 @@ namespace Cthangband.Projection
         protected override bool AffectMonster(int who, int r, int y, int x, int dam)
         {
             GridTile cPtr = Level.Grid[y][x];
-            Monster mPtr = Level.Monsters[cPtr.Monster];
+            Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
             MonsterRace rPtr = mPtr.Race;
             bool seen = mPtr.IsVisible;
             string note = null;
             string noteDies = " dies.";
-            if (cPtr.Monster == 0)
+            if (cPtr.MonsterIndex == 0)
             {
                 return false;
             }
-            if (who != 0 && cPtr.Monster == who)
+            if (who != 0 && cPtr.MonsterIndex == who)
             {
                 return false;
             }
@@ -73,7 +73,7 @@ namespace Cthangband.Projection
             }
             if (who != 0)
             {
-                if (SaveGame.TrackedMonsterIndex == cPtr.Monster)
+                if (SaveGame.TrackedMonsterIndex == cPtr.MonsterIndex)
                 {
                     Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
                 }
@@ -82,8 +82,8 @@ namespace Cthangband.Projection
                 if (mPtr.Health < 0)
                 {
                     bool sad = (mPtr.Mind & Constants.SmFriendly) != 0 && !mPtr.IsVisible;
-                    SaveGame.MonsterDeath(cPtr.Monster);
-                    Level.Monsters.DeleteMonsterByIndex(cPtr.Monster, true);
+                    SaveGame.MonsterDeath(cPtr.MonsterIndex);
+                    Level.Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);
                     if (string.IsNullOrEmpty(note) == false)
                     {
                         Profile.Instance.MsgPrint($"{mName}{note}");
@@ -101,13 +101,13 @@ namespace Cthangband.Projection
                     }
                     else if (dam > 0)
                     {
-                        Level.Monsters.MessagePain(cPtr.Monster, dam);
+                        Level.Monsters.MessagePain(cPtr.MonsterIndex, dam);
                     }
                 }
             }
             else
             {
-                if (Level.Monsters.DamageMonster(cPtr.Monster, dam, out bool fear, noteDies))
+                if (Level.Monsters.DamageMonster(cPtr.MonsterIndex, dam, out bool fear, noteDies))
                 {
                 }
                 else
@@ -118,7 +118,7 @@ namespace Cthangband.Projection
                     }
                     else if (dam > 0)
                     {
-                        Level.Monsters.MessagePain(cPtr.Monster, dam);
+                        Level.Monsters.MessagePain(cPtr.MonsterIndex, dam);
                     }
                     if (fear && mPtr.IsVisible)
                     {
@@ -127,7 +127,7 @@ namespace Cthangband.Projection
                     }
                 }
             }
-            Level.Monsters.UpdateMonsterVisibility(cPtr.Monster, false);
+            Level.Monsters.UpdateMonsterVisibility(cPtr.MonsterIndex, false);
             Level.RedrawSingleLocation(y, x);
             ProjectMn++;
             ProjectMx = x;

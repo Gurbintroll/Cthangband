@@ -126,7 +126,7 @@ namespace Cthangband
             {
                 return false;
             }
-            for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
@@ -142,7 +142,7 @@ namespace Cthangband
         {
             GridTile cPtr = Grid[y][x];
             int nextOIdx;
-            for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
@@ -244,9 +244,9 @@ namespace Cthangband
                 return;
             }
             GridTile cPtr = Grid[y][x];
-            if (cPtr.Monster != 0)
+            if (cPtr.MonsterIndex != 0)
             {
-                Monsters.DeleteMonsterByIndex(cPtr.Monster, true);
+                Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);
             }
         }
 
@@ -258,14 +258,14 @@ namespace Cthangband
                 return;
             }
             GridTile cPtr = Grid[y][x];
-            for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 Items[thisOIdx] = new Item();
                 OCnt--;
             }
-            cPtr.Item = 0;
+            cPtr.ItemIndex = 0;
             RedrawSingleLocation(y, x);
         }
 
@@ -443,7 +443,7 @@ namespace Cthangband
                         continue;
                     }
                     int k = 0;
-                    for (thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+                    for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                     {
                         Item oPtr = Items[thisOIdx];
                         nextOIdx = oPtr.NextInStack;
@@ -512,7 +512,7 @@ namespace Cthangband
                 flag = true;
             }
             cPtr = Grid[by][bx];
-            for (thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
@@ -541,8 +541,8 @@ namespace Cthangband
                 jPtr.Y = by;
                 jPtr.X = bx;
                 jPtr.HoldingMonsterIndex = 0;
-                jPtr.NextInStack = cPtr.Item;
-                cPtr.Item = oIdx;
+                jPtr.NextInStack = cPtr.ItemIndex;
+                cPtr.ItemIndex = oIdx;
             }
             NoteSpot(by, bx);
             RedrawSingleLocation(by, bx);
@@ -587,7 +587,7 @@ namespace Cthangband
                 int y = jPtr.Y;
                 int x = jPtr.X;
                 GridTile cPtr = Grid[y][x];
-                for (thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+                for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                 {
                     Item oPtr = Items[thisOIdx];
                     nextOIdx = oPtr.NextInStack;
@@ -595,7 +595,7 @@ namespace Cthangband
                     {
                         if (prevOIdx == 0)
                         {
-                            cPtr.Item = nextOIdx;
+                            cPtr.ItemIndex = nextOIdx;
                         }
                         else
                         {
@@ -682,12 +682,12 @@ namespace Cthangband
 
         public bool GridOpenNoItem(int y, int x)
         {
-            return Grid[y][x].FeatureType.IsOpenFloor && Grid[y][x].Item == 0;
+            return Grid[y][x].FeatureType.IsOpenFloor && Grid[y][x].ItemIndex == 0;
         }
 
         public bool GridOpenNoItemOrCreature(int y, int x)
         {
-            return Grid[y][x].FeatureType.IsOpenFloor && Grid[y][x].Item == 0 && Grid[y][x].Monster == 0 &&
+            return Grid[y][x].FeatureType.IsOpenFloor && Grid[y][x].ItemIndex == 0 && Grid[y][x].MonsterIndex == 0 &&
                    !(y == _player.MapY && x == _player.MapX);
         }
 
@@ -698,7 +698,7 @@ namespace Cthangband
 
         public bool GridPassableNoCreature(int y, int x)
         {
-            return GridPassable(y, x) && Grid[y][x].Monster == 0 && !(y == _player.MapY && x == _player.MapX);
+            return GridPassable(y, x) && Grid[y][x].MonsterIndex == 0 && !(y == _player.MapY && x == _player.MapX);
         }
 
         public bool InBounds(int y, int x)
@@ -991,7 +991,7 @@ namespace Cthangband
                     return;
                 }
             }
-            for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
@@ -1160,8 +1160,8 @@ namespace Cthangband
                 oPtr.Y = y;
                 oPtr.X = x;
                 GridTile cPtr = Grid[y][x];
-                oPtr.NextInStack = cPtr.Item;
-                cPtr.Item = oIdx;
+                oPtr.NextInStack = cPtr.ItemIndex;
+                cPtr.ItemIndex = oIdx;
                 NoteSpot(y, x);
                 RedrawSingleLocation(y, x);
             }
@@ -1190,8 +1190,8 @@ namespace Cthangband
                 oPtr.Y = y;
                 oPtr.X = x;
                 GridTile cPtr = Grid[y][x];
-                oPtr.NextInStack = cPtr.Item;
-                cPtr.Item = oIdx;
+                oPtr.NextInStack = cPtr.ItemIndex;
+                cPtr.ItemIndex = oIdx;
                 NoteSpot(y, x);
                 RedrawSingleLocation(y, x);
             }
@@ -2005,7 +2005,7 @@ namespace Cthangband
                     int y = oPtr.Y;
                     int x = oPtr.X;
                     GridTile cPtr = Grid[y][x];
-                    cPtr.Item = 0;
+                    cPtr.ItemIndex = 0;
                 }
                 Items[i] = new Item();
             }
@@ -2133,9 +2133,9 @@ namespace Cthangband
                 int y = oPtr.Y;
                 int x = oPtr.X;
                 GridTile cPtr = Grid[y][x];
-                if (cPtr.Item == i1)
+                if (cPtr.ItemIndex == i1)
                 {
-                    cPtr.Item = i2;
+                    cPtr.ItemIndex = i2;
                 }
             }
             Items[i2] = Items[i1];
@@ -2352,7 +2352,7 @@ namespace Cthangband
                 ap = a;
                 cp = c;
             }
-            for (int thisOIdx = cPtr.Item; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
@@ -2367,9 +2367,9 @@ namespace Cthangband
                     break;
                 }
             }
-            if (cPtr.Monster != 0)
+            if (cPtr.MonsterIndex != 0)
             {
-                Monster mPtr = Monsters[cPtr.Monster];
+                Monster mPtr = Monsters[cPtr.MonsterIndex];
                 if (mPtr.IsVisible)
                 {
                     MonsterRace rPtr = mPtr.Race;

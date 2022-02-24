@@ -1035,7 +1035,7 @@ namespace Cthangband
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
                 GridTile cPtr = Level.Grid[y][x];
                 SaveGame.Instance.EnergyUse = 100;
-                if (cPtr.Monster != 0)
+                if (cPtr.MonsterIndex != 0)
                 {
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
@@ -1097,7 +1097,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You see nothing there to bash.");
                 }
-                else if (cPtr.Monster != 0)
+                else if (cPtr.MonsterIndex != 0)
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
@@ -1138,7 +1138,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You see nothing there to close.");
                 }
-                else if (cPtr.Monster != 0)
+                else if (cPtr.MonsterIndex != 0)
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
@@ -1260,7 +1260,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You see nothing there to disarm.");
                 }
-                else if (cPtr.Monster != 0)
+                else if (cPtr.MonsterIndex != 0)
                 {
                     Profile.Instance.MsgPrint("There is a monster in the way!");
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
@@ -1568,7 +1568,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You see nothing there to open.");
                 }
-                else if (cPtr.Monster != 0)
+                else if (cPtr.MonsterIndex != 0)
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
@@ -2140,7 +2140,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You cannot tunnel through doors.");
                 }
-                else if (cPtr.Monster != 0)
+                else if (cPtr.MonsterIndex != 0)
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");

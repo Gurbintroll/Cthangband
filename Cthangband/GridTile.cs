@@ -70,14 +70,14 @@ namespace Cthangband
         public FloorTileType FeatureType = StaticResources.Instance.FloorTileTypes["Nothing"];
 
         /// <summary>
-        /// The object that is in this grid tile
+        /// The index of the first item that is in this grid tile
         /// </summary>
-        public int Item;
+        public int ItemIndex;
 
         /// <summary>
-        /// The monster that is in this grid tile
+        /// The index of the monster that is in this grid tile
         /// </summary>
-        public int Monster;
+        public int MonsterIndex;
 
         /// <summary>
         /// The time since the player's scent in the tile was calculated

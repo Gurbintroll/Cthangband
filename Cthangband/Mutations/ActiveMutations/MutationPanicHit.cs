@@ -19,7 +19,7 @@ namespace Cthangband.Mutations.ActiveMutations
             }
             int y = player.MapY + level.KeypadDirectionYOffset[dir];
             int x = player.MapX + level.KeypadDirectionXOffset[dir];
-            if (level.Grid[y][x].Monster != 0)
+            if (level.Grid[y][x].MonsterIndex != 0)
             {
                 SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 SaveGame.Instance.SpellEffects.TeleportPlayer(30);

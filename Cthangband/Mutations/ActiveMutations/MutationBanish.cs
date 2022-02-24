@@ -20,16 +20,16 @@ namespace Cthangband.Mutations.ActiveMutations
             int y = player.MapY + level.KeypadDirectionYOffset[dir];
             int x = player.MapX + level.KeypadDirectionXOffset[dir];
             GridTile cPtr = level.Grid[y][x];
-            if (cPtr.Monster == 0)
+            if (cPtr.MonsterIndex == 0)
             {
                 Profile.Instance.MsgPrint("You sense no evil there!");
                 return;
             }
-            Monster mPtr = level.Monsters[cPtr.Monster];
+            Monster mPtr = level.Monsters[cPtr.MonsterIndex];
             MonsterRace rPtr = mPtr.Race;
             if ((rPtr.Flags3 & MonsterFlag3.Evil) != 0)
             {
-                level.Monsters.DeleteMonsterByIndex(cPtr.Monster, true);
+                level.Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);
                 Profile.Instance.MsgPrint("The evil creature vanishes in a puff of sulfurous smoke!");
             }
             else
