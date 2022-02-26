@@ -35,7 +35,7 @@ namespace Cthangband.Projection
                     obvious = true;
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
                 Level.PlaceGold(y, x);
             }
             else if (cPtr.FeatureType.Name.Contains("Magma") || cPtr.FeatureType.Name.Contains("Quartz"))
@@ -46,7 +46,7 @@ namespace Cthangband.Projection
                     obvious = true;
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
             }
             else if (cPtr.FeatureType.IsWall)
             {
@@ -56,7 +56,7 @@ namespace Cthangband.Projection
                     obvious = true;
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
             }
             else if (cPtr.FeatureType.Name == "Rubble")
             {
@@ -66,7 +66,7 @@ namespace Cthangband.Projection
                     obvious = true;
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
                 if (Program.Rng.RandomLessThan(100) < 10)
                 {
                     if (Level.PlayerCanSeeBold(y, x))
@@ -85,7 +85,7 @@ namespace Cthangband.Projection
                     obvious = true;
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
             }
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
             return obvious;

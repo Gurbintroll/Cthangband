@@ -1889,7 +1889,7 @@ namespace Cthangband
                     // Remove the wall (and the player's memory of it) and remind ourselves to
                     // update the view if the player can see it
                     tile.TileFlags.Clear(GridTile.PlayerMemorised);
-                    _level.CaveRemoveFeat(newY, newX);
+                    _level.RevertTileToBackground(newY, newX);
                     if (_level.PlayerHasLosBold(newY, newX))
                     {
                         doView = true;
@@ -1965,7 +1965,7 @@ namespace Cthangband
                             Profile.Instance.MsgPrint("The Elder Sign is broken!");
                         }
                         tile.TileFlags.Clear(GridTile.PlayerMemorised);
-                        _level.CaveRemoveFeat(newY, newX);
+                        _level.RevertTileToBackground(newY, newX);
                         // Breaking the sign means we can move after all
                         doMove = true;
                     }
@@ -1995,7 +1995,7 @@ namespace Cthangband
                             }
                         }
                         tile.TileFlags.Clear(GridTile.PlayerMemorised);
-                        _level.CaveRemoveFeat(newY, newX);
+                        _level.RevertTileToBackground(newY, newX);
                         // We can do the move after all
                         doMove = true;
                     }

@@ -26,7 +26,7 @@ namespace Cthangband.Projection
                     obvious = true;
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
             }
             else if (cPtr.FeatureType.Category == FloorTileTypeCategory.SecretDoor ||
                      cPtr.FeatureType.Category == FloorTileTypeCategory.LockedDoor)

@@ -12,10 +12,10 @@ namespace Cthangband.Mutations.RandomMutations
             GainMessage = "Evil-looking tentacles sprout from your sides.";
             HaveMessage = "You have evil looking tentacles (dam 2d5).";
             LoseMessage = "Your tentacles vanish from your sides.";
-            Dss = 2;
-            Ddd = 5;
-            NWeight = 5;
-            AtkDesc = "tentacles";
+            DamageDiceSize = 2;
+            DamageDiceNumber = 5;
+            EquivalentWeaponWeight = 5;
+            AttackDescription = "tentacles";
             MutationAttackType = MutationAttackType.Hellfire;
         }
 

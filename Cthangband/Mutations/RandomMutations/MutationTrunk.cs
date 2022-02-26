@@ -13,10 +13,10 @@ namespace Cthangband.Mutations.RandomMutations
             HaveMessage = "You have an elephantine trunk (dam 1d4).";
             LoseMessage = "Your nose returns to a normal length.";
             Group = MutationGroup.Mouth;
-            Dss = 1;
-            Ddd = 4;
-            NWeight = 35;
-            AtkDesc = "trunk";
+            DamageDiceSize = 1;
+            DamageDiceNumber = 4;
+            EquivalentWeaponWeight = 35;
+            AttackDescription = "trunk";
         }
 
         public override void OnGain(Genome genome)

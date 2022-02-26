@@ -30,7 +30,7 @@ namespace Cthangband.Projection
                     }
                 }
                 cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
             }
             return obvious;
         }

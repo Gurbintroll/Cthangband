@@ -1542,7 +1542,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint($"You have disarmed the {trapName}.");
                 Player.GainExperience(power);
                 tile.TileFlags.Clear(GridTile.PlayerMemorised);
-                Level.CaveRemoveFeat(y, x);
+                Level.RevertTileToBackground(y, x);
                 MovePlayer(dir, true);
             }
             // We might set the trap off if we failed to disarm it
@@ -2686,7 +2686,7 @@ namespace Cthangband
             {
                 if (!noExtra)
                 {
-                    NaturalAttack(tile.MonsterIndex, naturalAttack, out fear, out noExtra);
+                    PlayerNaturalAttackOnMonster(tile.MonsterIndex, naturalAttack, out fear, out noExtra);
                 }
             }
             if (fear && monster.IsVisible && !noExtra)
@@ -4000,69 +4000,83 @@ namespace Cthangband
             Player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
+        /// <summary>
+        /// Tunnel through a grid tile
+        /// </summary>
+        /// <param name="y"> The y coordinate of the tile to be tunneled through </param>
+        /// <param name="x"> The x coordinate of the tile to be tunneled through </param>
+        /// <returns> Whether or not the command can be repeated </returns>
         public bool TunnelThroughTile(int y, int x)
         {
-            bool more = false;
+            bool repeat = false;
+            // Tunnelling uses an entire turn
             _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
-            if (cPtr.FeatureType.Category == FloorTileTypeCategory.Tree)
+            GridTile tile = Level.Grid[y][x];
+            // Trees are easy to chop down
+            if (tile.FeatureType.Category == FloorTileTypeCategory.Tree)
             {
-                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(100) && Twall(y, x))
+                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(100) && RemoveTileViaTunnelling(y, x))
                 {
-                    Profile.Instance.MsgPrint($"You have chopped down the {cPtr.FeatureType.Description}.");
+                    Profile.Instance.MsgPrint($"You have chopped down the {tile.FeatureType.Description}.");
                 }
                 else
                 {
-                    Profile.Instance.MsgPrint($"You hack away at the {cPtr.FeatureType.Description}.");
-                    more = true;
+                    Profile.Instance.MsgPrint($"You hack away at the {tile.FeatureType.Description}.");
+                    repeat = true;
                 }
             }
-            else if (cPtr.FeatureType.Name == "Pillar")
+            // Pillars are a bit easier than walls
+            else if (tile.FeatureType.Name == "Pillar")
             {
-                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(300) && Twall(y, x))
+                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(300) && RemoveTileViaTunnelling(y, x))
                 {
                     Profile.Instance.MsgPrint("You have broken down the pillar.");
                 }
                 else
                 {
                     Profile.Instance.MsgPrint("You hack away at the pillar.");
-                    more = true;
+                    repeat = true;
                 }
             }
-            else if (cPtr.FeatureType.Name == "Water")
+            // We can't tunnel through water
+            else if (tile.FeatureType.Name == "Water")
             {
                 Profile.Instance.MsgPrint("The water fills up your tunnel as quickly as you dig!");
             }
-            else if (cPtr.FeatureType.IsPermanent)
+            // Permanent features resist being tunneled through
+            else if (tile.FeatureType.IsPermanent)
             {
-                Profile.Instance.MsgPrint($"The {cPtr.FeatureType.Description} resists your attempts to tunnel through it.");
+                Profile.Instance.MsgPrint($"The {tile.FeatureType.Description} resists your attempts to tunnel through it.");
             }
-            else if (cPtr.FeatureType.Name.Contains("Wall"))
+            // It's a wall, so we tunnel normally
+            else if (tile.FeatureType.Name.Contains("Wall"))
             {
-                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(1600) && Twall(y, x))
+                if (Player.SkillDigging > 40 + Program.Rng.RandomLessThan(1600) && RemoveTileViaTunnelling(y, x))
                 {
                     Profile.Instance.MsgPrint("You have finished the tunnel.");
                 }
                 else
                 {
                     Profile.Instance.MsgPrint("You tunnel into the granite wall.");
-                    more = true;
+                    repeat = true;
                 }
             }
-            else if (cPtr.FeatureType.Name.Contains("Magma") || cPtr.FeatureType.Name.Contains("Quartz"))
+            // It's a rock seam, so it might have treasure
+            else if (tile.FeatureType.Name.Contains("Magma") || tile.FeatureType.Name.Contains("Quartz"))
             {
                 bool okay;
-                bool gold = false;
-                bool hard = false;
-                if (cPtr.FeatureType.Name.Contains("Treas"))
+                bool hasValue = false;
+                bool isMagma = false;
+                if (tile.FeatureType.Name.Contains("Treas"))
                 {
-                    gold = true;
+                    hasValue = true;
                 }
-                if (cPtr.FeatureType.Name.Contains("Magma"))
+                if (tile.FeatureType.Name.Contains("Magma"))
                 {
-                    hard = true;
+                    isMagma = true;
                 }
-                if (hard)
+                // Magma needs a higher tunneling skill than quartz
+                if (isMagma)
                 {
                     okay = Player.SkillDigging > 20 + Program.Rng.RandomLessThan(800);
                 }
@@ -4070,9 +4084,10 @@ namespace Cthangband
                 {
                     okay = Player.SkillDigging > 10 + Program.Rng.RandomLessThan(400);
                 }
-                if (okay && Twall(y, x))
+                // Do the actual tunnelling
+                if (okay && RemoveTileViaTunnelling(y, x))
                 {
-                    if (gold)
+                    if (hasValue)
                     {
                         _saveGame.Level.PlaceGold(y, x);
                         Profile.Instance.MsgPrint("You have found something!");
@@ -4082,22 +4097,25 @@ namespace Cthangband
                         Profile.Instance.MsgPrint("You have finished the tunnel.");
                     }
                 }
-                else if (hard)
+                // Tunnelling failed, so let us know
+                else if (isMagma)
                 {
-                    Profile.Instance.MsgPrint("You tunnel into the quartz vein.");
-                    more = true;
+                    Profile.Instance.MsgPrint("You tunnel into the magma vein.");
+                    repeat = true;
                 }
                 else
                 {
-                    Profile.Instance.MsgPrint("You tunnel into the magma vein.");
-                    more = true;
+                    Profile.Instance.MsgPrint("You tunnel into the quartz vein.");
+                    repeat = true;
                 }
             }
-            else if (cPtr.FeatureType.Name == "Rubble")
+            // Rubble is easy to tunnel through
+            else if (tile.FeatureType.Name == "Rubble")
             {
-                if (Player.SkillDigging > Program.Rng.RandomLessThan(200) && Twall(y, x))
+                if (Player.SkillDigging > Program.Rng.RandomLessThan(200) && RemoveTileViaTunnelling(y, x))
                 {
                     Profile.Instance.MsgPrint("You have removed the rubble.");
+                    // 10% chance of finding something
                     if (Program.Rng.RandomLessThan(100) < 10)
                     {
                         _saveGame.Level.PlaceObject(y, x, false, false);
@@ -4110,45 +4128,53 @@ namespace Cthangband
                 else
                 {
                     Profile.Instance.MsgPrint("You dig in the rubble.");
-                    more = true;
+                    repeat = true;
                 }
             }
+            // We don't recognise what we're tunnelling into, so just assume it's permanent
             else
             {
-                Profile.Instance.MsgPrint($"The {cPtr.FeatureType.Description} resists your attempts to tunnel through it.");
-                more = true;
+                Profile.Instance.MsgPrint($"The {tile.FeatureType.Description} resists your attempts to tunnel through it.");
+                repeat = true;
                 Search();
             }
+            // If we successfully made the tunnel,
             if (!Level.GridPassable(y, x))
             {
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
             }
-            if (!more)
+            if (!repeat)
             {
                 Gui.PlaySound(SoundEffect.Dig);
             }
-            return more;
+            return repeat;
         }
 
+        /// <summary>
+        /// Use the player's racial power, if they have one
+        /// </summary>
         public void UseRacialPower()
         {
-            int plev = Player.Level;
-            int dir;
-            Projectile type;
-            string typeDesc;
+            int playerLevel = Player.Level;
+            int direction;
+            Projectile projectile;
+            string projectileDescription;
+            // Default to being randomly fire (66% chance) or cold (33% chance)
             if (Program.Rng.DieRoll(3) == 1)
             {
-                type = new ProjectCold(SaveGame.Instance.SpellEffects);
-                typeDesc = "cold";
+                projectile = new ProjectCold(SaveGame.Instance.SpellEffects);
+                projectileDescription = "cold";
             }
             else
             {
-                type = new ProjectFire(SaveGame.Instance.SpellEffects);
-                typeDesc = "fire";
+                projectile = new ProjectFire(SaveGame.Instance.SpellEffects);
+                projectileDescription = "fire";
             }
             TargetEngine targetEngine = new TargetEngine(Player, Level);
+            // Check the player's race to see what their power is
             switch (Player.RaceIndex)
             {
+                // Dwarves can detect traps, doors, and stairs
                 case RaceId.Dwarf:
                     if (CheckIfRacialPowerWorks(5, 5, Ability.Wisdom, 12))
                     {
@@ -4158,25 +4184,25 @@ namespace Cthangband
                         _saveGame.SpellEffects.DetectStairs();
                     }
                     break;
-
+                // Hobbits can cook food
                 case RaceId.Hobbit:
                     if (CheckIfRacialPowerWorks(15, 10, Ability.Intelligence, 10))
                     {
-                        Item qPtr = new Item();
-                        qPtr.AssignItemType(Profile.Instance.ItemTypes.LookupKind(ItemCategory.Food, FoodType.Ration));
-                        _saveGame.Level.DropNear(qPtr, -1, Player.MapY, Player.MapX);
+                        Item item = new Item();
+                        item.AssignItemType(Profile.Instance.ItemTypes.LookupKind(ItemCategory.Food, FoodType.Ration));
+                        _saveGame.Level.DropNear(item, -1, Player.MapY, Player.MapX);
                         Profile.Instance.MsgPrint("You cook some food.");
                     }
                     break;
-
+                // Gnomes can do a short-range teleport
                 case RaceId.Gnome:
-                    if (CheckIfRacialPowerWorks(5, 5 + (plev / 5), Ability.Intelligence, 12))
+                    if (CheckIfRacialPowerWorks(5, 5 + (playerLevel / 5), Ability.Intelligence, 12))
                     {
                         Profile.Instance.MsgPrint("Blink!");
-                        _saveGame.SpellEffects.TeleportPlayer(10 + plev);
+                        _saveGame.SpellEffects.TeleportPlayer(10 + playerLevel);
                     }
                     break;
-
+                // Half-orcs can remove fear
                 case RaceId.HalfOrc:
                     if (CheckIfRacialPowerWorks(3, 5, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 5 : 10))
                     {
@@ -4184,38 +4210,38 @@ namespace Cthangband
                         Player.SetTimedFear(0);
                     }
                     break;
-
+                // Half-trolls can go berserk, which also heals them
                 case RaceId.HalfTroll:
                     if (CheckIfRacialPowerWorks(10, 12, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 6 : 12))
                     {
                         Profile.Instance.MsgPrint("RAAAGH!");
                         Player.SetTimedFear(0);
-                        Player.SetTimedSuperheroism(Player.TimedSuperheroism + 10 + Program.Rng.DieRoll(plev));
+                        Player.SetTimedSuperheroism(Player.TimedSuperheroism + 10 + Program.Rng.DieRoll(playerLevel));
                         Player.RestoreHealth(30);
                     }
                     break;
-
+                // Great ones can heal themselves or swap to a new level
                 case RaceId.Great:
-                    int amberPower;
+                    int dreamPower;
                     while (true)
                     {
                         if (!Gui.GetCom("Use Dream [T]ravel or [D]reaming? ", out char ch))
                         {
-                            amberPower = 0;
+                            dreamPower = 0;
                             break;
                         }
                         if (ch == 'D' || ch == 'd')
                         {
-                            amberPower = 1;
+                            dreamPower = 1;
                             break;
                         }
                         if (ch == 'T' || ch == 't')
                         {
-                            amberPower = 2;
+                            dreamPower = 2;
                             break;
                         }
                     }
-                    if (amberPower == 1)
+                    if (dreamPower == 1)
                     {
                         if (CheckIfRacialPowerWorks(40, 75, Ability.Wisdom, 50))
                         {
@@ -4235,7 +4261,7 @@ namespace Cthangband
                             Player.RestoreLevel();
                         }
                     }
-                    else if (amberPower == 2)
+                    else if (dreamPower == 2)
                     {
                         if (CheckIfRacialPowerWorks(30, 50, Ability.Intelligence, 50))
                         {
@@ -4248,37 +4274,37 @@ namespace Cthangband
                         }
                     }
                     break;
-
+                // Tcho-Tcho can create The Yellow Sign
                 case RaceId.TchoTcho:
+                    if (CheckIfRacialPowerWorks(25, 35, Ability.Intelligence, 15))
+                    {
+                        Profile.Instance.MsgPrint("You carefully draw The Yellow Sign...");
+                        _saveGame.SpellEffects.YellowSign();
+                    }
+                    break;
+                // Hlf-Ogres can go berserk
+                case RaceId.HalfOgre:
                     if (CheckIfRacialPowerWorks(8, 10, Ability.Wisdom, Player.ProfessionIndex == CharacterClass.Warrior ? 6 : 12))
                     {
                         Profile.Instance.MsgPrint("Raaagh!");
                         Player.SetTimedFear(0);
-                        Player.SetTimedSuperheroism(Player.TimedSuperheroism + 10 + Program.Rng.DieRoll(plev));
+                        Player.SetTimedSuperheroism(Player.TimedSuperheroism + 10 + Program.Rng.DieRoll(playerLevel));
                         Player.RestoreHealth(30);
                     }
                     break;
-
-                case RaceId.HalfOgre:
-                    if (CheckIfRacialPowerWorks(25, 35, Ability.Intelligence, 15))
-                    {
-                        Profile.Instance.MsgPrint("You carefully set an Yellow Sign...");
-                        _saveGame.SpellEffects.YellowSign();
-                    }
-                    break;
-
+                // Half-giants can bash through stone walls
                 case RaceId.HalfGiant:
                     if (CheckIfRacialPowerWorks(20, 10, Ability.Strength, 12))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         Profile.Instance.MsgPrint("You bash at a stone wall.");
-                        _saveGame.SpellEffects.WallToMud(dir);
+                        _saveGame.SpellEffects.WallToMud(direction);
                     }
                     break;
-
+                // Half-Titans can probe enemies
                 case RaceId.HalfTitan:
                     if (CheckIfRacialPowerWorks(35, 20, Ability.Intelligence, 12))
                     {
@@ -4286,64 +4312,64 @@ namespace Cthangband
                         _saveGame.SpellEffects.Probing();
                     }
                     break;
-
+                // Cyclopes can throw boulders
                 case RaceId.Cyclops:
                     if (CheckIfRacialPowerWorks(20, 15, Ability.Strength, 12))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         Profile.Instance.MsgPrint("You throw a huge boulder.");
-                        _saveGame.SpellEffects.FireBolt(new ProjectMissile(SaveGame.Instance.SpellEffects), dir,
+                        _saveGame.SpellEffects.FireBolt(new ProjectMissile(SaveGame.Instance.SpellEffects), direction,
                             3 * Player.Level / 2);
                     }
                     break;
-
+                // Yeeks can scream
                 case RaceId.Yeek:
                     if (CheckIfRacialPowerWorks(15, 15, Ability.Wisdom, 10))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         Profile.Instance.MsgPrint("You make a horrible scream!");
-                        _saveGame.SpellEffects.FearMonster(dir, plev);
+                        _saveGame.SpellEffects.FearMonster(direction, playerLevel);
                     }
                     break;
-
+                // Klackons can spit acid
                 case RaceId.Klackon:
                     if (CheckIfRacialPowerWorks(9, 9, Ability.Dexterity, 14))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         Profile.Instance.MsgPrint("You spit acid.");
                         if (Player.Level < 25)
                         {
-                            _saveGame.SpellEffects.FireBolt(new ProjectAcid(SaveGame.Instance.SpellEffects), dir, plev);
+                            _saveGame.SpellEffects.FireBolt(new ProjectAcid(SaveGame.Instance.SpellEffects), direction, playerLevel);
                         }
                         else
                         {
-                            _saveGame.SpellEffects.FireBall(new ProjectAcid(SaveGame.Instance.SpellEffects), dir, plev,
+                            _saveGame.SpellEffects.FireBall(new ProjectAcid(SaveGame.Instance.SpellEffects), direction, playerLevel,
                                 2);
                         }
                     }
                     break;
-
+                // Kobolds can throw poison darts
                 case RaceId.Kobold:
                     if (CheckIfRacialPowerWorks(12, 8, Ability.Dexterity, 14))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         Profile.Instance.MsgPrint("You throw a dart of poison.");
-                        _saveGame.SpellEffects.FireBolt(new ProjectPois(SaveGame.Instance.SpellEffects), dir, plev);
+                        _saveGame.SpellEffects.FireBolt(new ProjectPois(SaveGame.Instance.SpellEffects), direction, playerLevel);
                     }
                     break;
-
+                // Nibelungen can detect traps, doors, and stairs
                 case RaceId.Nibelung:
                     if (CheckIfRacialPowerWorks(5, 5, Ability.Wisdom, 10))
                     {
@@ -4353,21 +4379,22 @@ namespace Cthangband
                         _saveGame.SpellEffects.DetectStairs();
                     }
                     break;
-
+                // Dark elves can cast magic missile
                 case RaceId.DarkElf:
                     if (CheckIfRacialPowerWorks(2, 2, Ability.Intelligence, 9))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         Profile.Instance.MsgPrint("You cast a magic missile.");
                         _saveGame.SpellEffects.FireBoltOrBeam(10, new ProjectMissile(SaveGame.Instance.SpellEffects),
-                            dir, Program.Rng.DiceRoll(3 + ((plev - 1) / 5), 4));
+                            direction, Program.Rng.DiceRoll(3 + ((playerLevel - 1) / 5), 4));
                     }
                     break;
-
+                // Draconians can breathe an element based on their class and level
                 case RaceId.Draconian:
+                    // Chance of replacing the default fire/cold element with a special one
                     if (Program.Rng.DieRoll(100) < Player.Level)
                     {
                         switch (Player.ProfessionIndex)
@@ -4378,13 +4405,13 @@ namespace Cthangband
                             case CharacterClass.ChosenOne:
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
-                                    type = new ProjectMissile(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "the elements";
+                                    projectile = new ProjectMissile(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "the elements";
                                 }
                                 else
                                 {
-                                    type = new ProjectExplode(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "shards";
+                                    projectile = new ProjectExplode(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "shards";
                                 }
                                 break;
 
@@ -4394,13 +4421,13 @@ namespace Cthangband
                             case CharacterClass.Channeler:
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
-                                    type = new ProjectMana(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "mana";
+                                    projectile = new ProjectMana(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "mana";
                                 }
                                 else
                                 {
-                                    type = new ProjectDisenchant(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "disenchantment";
+                                    projectile = new ProjectDisenchant(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "disenchantment";
                                 }
                                 break;
 
@@ -4408,26 +4435,26 @@ namespace Cthangband
                             case CharacterClass.Cultist:
                                 if (Program.Rng.DieRoll(3) != 1)
                                 {
-                                    type = new ProjectConfusion(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "confusion";
+                                    projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "confusion";
                                 }
                                 else
                                 {
-                                    type = new ProjectChaos(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "chaos";
+                                    projectile = new ProjectChaos(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "chaos";
                                 }
                                 break;
 
                             case CharacterClass.Monk:
                                 if (Program.Rng.DieRoll(3) != 1)
                                 {
-                                    type = new ProjectConfusion(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "confusion";
+                                    projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "confusion";
                                 }
                                 else
                                 {
-                                    type = new ProjectSound(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "sound";
+                                    projectile = new ProjectSound(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "sound";
                                 }
                                 break;
 
@@ -4435,13 +4462,13 @@ namespace Cthangband
                             case CharacterClass.Mystic:
                                 if (Program.Rng.DieRoll(3) != 1)
                                 {
-                                    type = new ProjectConfusion(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "confusion";
+                                    projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "confusion";
                                 }
                                 else
                                 {
-                                    type = new ProjectPsi(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "mental energy";
+                                    projectile = new ProjectPsi(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "mental energy";
                                 }
                                 break;
 
@@ -4449,81 +4476,81 @@ namespace Cthangband
                             case CharacterClass.Paladin:
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
-                                    type = new ProjectHellFire(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "hellfire";
+                                    projectile = new ProjectHellFire(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "hellfire";
                                 }
                                 else
                                 {
-                                    type = new ProjectHolyFire(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "holy fire";
+                                    projectile = new ProjectHolyFire(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "holy fire";
                                 }
                                 break;
 
                             case CharacterClass.Rogue:
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
-                                    type = new ProjectDark(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "darkness";
+                                    projectile = new ProjectDark(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "darkness";
                                 }
                                 else
                                 {
-                                    type = new ProjectPois(SaveGame.Instance.SpellEffects);
-                                    typeDesc = "poison";
+                                    projectile = new ProjectPois(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "poison";
                                 }
                                 break;
                         }
                     }
                     if (CheckIfRacialPowerWorks(1, Player.Level, Ability.Constitution, 12))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
-                        Profile.Instance.MsgPrint($"You breathe {typeDesc}.");
-                        _saveGame.SpellEffects.FireBall(type, dir, Player.Level * 2, -(Player.Level / 15) + 1);
+                        Profile.Instance.MsgPrint($"You breathe {projectileDescription}.");
+                        _saveGame.SpellEffects.FireBall(projectile, direction, Player.Level * 2, -(Player.Level / 15) + 1);
                     }
                     break;
-
+                // Mind Flayers can shoot psychic bolts
                 case RaceId.MindFlayer:
                     if (CheckIfRacialPowerWorks(15, 12, Ability.Intelligence, 14))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         Profile.Instance.MsgPrint("You concentrate and your eyes glow red...");
-                        _saveGame.SpellEffects.FireBolt(new ProjectPsi(SaveGame.Instance.SpellEffects), dir, plev);
+                        _saveGame.SpellEffects.FireBolt(new ProjectPsi(SaveGame.Instance.SpellEffects), direction, playerLevel);
                     }
                     break;
-
+                // Imps can cast fire bolt/ball
                 case RaceId.Imp:
                     if (CheckIfRacialPowerWorks(9, 15, Ability.Wisdom, 15))
                     {
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
                         if (Player.Level >= 30)
                         {
                             Profile.Instance.MsgPrint("You cast a ball of fire.");
-                            _saveGame.SpellEffects.FireBall(new ProjectFire(SaveGame.Instance.SpellEffects), dir, plev,
+                            _saveGame.SpellEffects.FireBall(new ProjectFire(SaveGame.Instance.SpellEffects), direction, playerLevel,
                                 2);
                         }
                         else
                         {
                             Profile.Instance.MsgPrint("You cast a bolt of fire.");
-                            _saveGame.SpellEffects.FireBolt(new ProjectFire(SaveGame.Instance.SpellEffects), dir, plev);
+                            _saveGame.SpellEffects.FireBolt(new ProjectFire(SaveGame.Instance.SpellEffects), direction, playerLevel);
                         }
                     }
                     break;
-
+                // Golems can harden their skin
                 case RaceId.Golem:
                     if (CheckIfRacialPowerWorks(20, 15, Ability.Constitution, 8))
                     {
                         Player.SetTimedStoneskin(Player.TimedStoneskin + Program.Rng.DieRoll(20) + 30);
                     }
                     break;
-
+                // Skeletons and zombies can restore their life energy
                 case RaceId.Skeleton:
                 case RaceId.Zombie:
                     if (CheckIfRacialPowerWorks(30, 30, Ability.Wisdom, 18))
@@ -4532,25 +4559,25 @@ namespace Cthangband
                         Player.RestoreLevel();
                     }
                     break;
-
+                // Vampires can drain health
                 case RaceId.Vampire:
-                    if (CheckIfRacialPowerWorks(2, 1 + (plev / 3), Ability.Constitution, 9))
+                    if (CheckIfRacialPowerWorks(2, 1 + (playerLevel / 3), Ability.Constitution, 9))
                     {
-                        if (!targetEngine.GetRepDir(out dir))
+                        if (!targetEngine.GetRepDir(out direction))
                         {
                             break;
                         }
-                        int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                        int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                        GridTile cPtr = Level.Grid[y][x];
-                        if (cPtr.MonsterIndex == 0)
+                        int y = Player.MapY + Level.KeypadDirectionYOffset[direction];
+                        int x = Player.MapX + Level.KeypadDirectionXOffset[direction];
+                        GridTile tile = Level.Grid[y][x];
+                        if (tile.MonsterIndex == 0)
                         {
                             Profile.Instance.MsgPrint("You bite into thin air!");
                             break;
                         }
                         Profile.Instance.MsgPrint("You grin and bare your fangs...");
-                        int dummy = plev + (Program.Rng.DieRoll(plev) * Math.Max(1, plev / 10));
-                        if (_saveGame.SpellEffects.DrainLife(dir, dummy))
+                        int dummy = playerLevel + (Program.Rng.DieRoll(playerLevel) * Math.Max(1, playerLevel / 10));
+                        if (_saveGame.SpellEffects.DrainLife(direction, dummy))
                         {
                             if (Player.Food < Constants.PyFoodFull)
                             {
@@ -4572,19 +4599,19 @@ namespace Cthangband
                         }
                     }
                     break;
-
+                // Spectres can howl
                 case RaceId.Spectre:
                     if (CheckIfRacialPowerWorks(4, 6, Ability.Intelligence, 3))
                     {
                         Profile.Instance.MsgPrint("You emit an eldritch howl!");
-                        if (!targetEngine.GetAimDir(out dir))
+                        if (!targetEngine.GetAimDir(out direction))
                         {
                             break;
                         }
-                        _saveGame.SpellEffects.FearMonster(dir, plev);
+                        _saveGame.SpellEffects.FearMonster(direction, playerLevel);
                     }
                     break;
-
+                // Sprites can sleep monsters
                 case RaceId.Sprite:
                     if (CheckIfRacialPowerWorks(12, 12, Ability.Intelligence, 15))
                     {
@@ -4599,7 +4626,7 @@ namespace Cthangband
                         }
                     }
                     break;
-
+                // Other races don't have powers
                 default:
                     Profile.Instance.MsgPrint("This race has no bonus power.");
                     _saveGame.EnergyUse = 0;
@@ -4608,50 +4635,47 @@ namespace Cthangband
             Player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrMana);
         }
 
-        private bool CheckHit(int power)
-        {
-            int k = Program.Rng.RandomLessThan(100);
-            if (k < 10)
-            {
-                return k < 5;
-            }
-            if (power <= 0)
-            {
-                return false;
-            }
-            int ac = Player.BaseArmourClass + Player.ArmourClassBonus;
-            return Program.Rng.DieRoll(power) > ac * 3 / 4;
-        }
-
+        /// <summary>
+        /// React to having walked into a door by trying to open it
+        /// </summary>
+        /// <param name="y"> The y coordinate of the door tile </param>
+        /// <param name="x"> The x coordinate of the door tile </param>
+        /// <returns> True if we opened it, false otherwise </returns>
         private bool EasyOpenDoor(int y, int x)
         {
-            GridTile cPtr = Level.Grid[y][x];
-            if (!cPtr.FeatureType.IsClosedDoor)
+            GridTile tile = Level.Grid[y][x];
+            // If it isn't closed, we can't open it
+            if (!tile.FeatureType.IsClosedDoor)
             {
                 return false;
             }
-            if (cPtr.FeatureType.Name.Contains("Jammed"))
+            // If it's jammed we'll need to bash it
+            if (tile.FeatureType.Name.Contains("Jammed"))
             {
                 Profile.Instance.MsgPrint("The door appears to be stuck.");
             }
-            else if (!cPtr.FeatureType.Name.Contains("0"))
+            // Most doors are locked, so try to pick the lock
+            else if (!tile.FeatureType.Name.Contains("0"))
             {
-                int i = Player.SkillDisarmTraps;
+                int skill = Player.SkillDisarmTraps;
+                // Lockpicking is hard in the dark
                 if (Player.TimedBlindness != 0 || Level.NoLight())
                 {
-                    i /= 10;
+                    skill /= 10;
                 }
+                // Lockpicking is hard when you're confused
                 if (Player.TimedConfusion != 0 || Player.TimedHallucinations != 0)
                 {
-                    i /= 10;
+                    skill /= 10;
                 }
-                int j = int.Parse(cPtr.FeatureType.Name.Substring(10));
-                j = i - (j * 4);
-                if (j < 2)
+                int chance = int.Parse(tile.FeatureType.Name.Substring(10));
+                chance = skill - (chance * 4);
+                if (chance < 2)
                 {
-                    j = 2;
+                    chance = 2;
                 }
-                if (Program.Rng.RandomLessThan(100) < j)
+                // See if we succeed
+                if (Program.Rng.RandomLessThan(100) < chance)
                 {
                     Profile.Instance.MsgPrint("You have picked the lock.");
                     Level.CaveSetFeat(y, x, "OpenDoor");
@@ -4659,11 +4683,13 @@ namespace Cthangband
                     Gui.PlaySound(SoundEffect.LockpickSuccess);
                     Player.GainExperience(1);
                 }
+                // If we failed, simply let us know
                 else
                 {
                     Profile.Instance.MsgPrint("You failed to pick the lock.");
                 }
             }
+            // It wasn't locked, so simply open it
             else
             {
                 Level.CaveSetFeat(y, x, "OpenDoor");
@@ -4673,79 +4699,42 @@ namespace Cthangband
             return true;
         }
 
-        private void NaturalAttack(int mIdx, Mutation attack, out bool fear, out bool mdeath)
+        /// <summary>
+        /// Determine if a player's attack hits a monster
+        /// </summary>
+        /// <param name="power"> The strength of the attack </param>
+        /// <param name="armourClass"> The monster's armour class </param>
+        /// <param name="isVisible"> Whether or not the monster is visible </param>
+        /// <returns> True if the attack hit, false if not </returns>
+        private bool PlayerCheckHitOnMonster(int power, int armourClass, bool isVisible)
         {
-            fear = false;
-            mdeath = false;
-            Monster mPtr = Level.Monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
-            int dss = attack.Dss;
-            int ddd = attack.Ddd;
-            int nWeight = attack.NWeight;
-            string atkDesc = attack.AtkDesc;
-            string mName = mPtr.MonsterDesc(0);
-            int bonus = Player.AttackBonus;
-            int chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
-            if (PlayerCheckHitOnMonster(chance, rPtr.ArmourClass, mPtr.IsVisible))
+            // Always have a 5% chance to hit or miss
+            int roll = Program.Rng.RandomLessThan(100);
+            if (roll < 10)
             {
-                Gui.PlaySound(SoundEffect.MeleeHit);
-                Profile.Instance.MsgPrint($"You hit {mName} with your {atkDesc}.");
-                int k = Program.Rng.DiceRoll(ddd, dss);
-                k = PlayerCriticalMelee(nWeight, Player.AttackBonus, k);
-                k += Player.DamageBonus;
-                if (k < 0)
-                {
-                    k = 0;
-                }
-                if ((mPtr.Mind & Constants.SmFriendly) != 0)
-                {
-                    Profile.Instance.MsgPrint($"{mName} gets angry!");
-                    mPtr.Mind &= ~Constants.SmFriendly;
-                }
-                switch (attack.MutationAttackType)
-                {
-                    case MutationAttackType.Physical:
-                        mdeath = Level.Monsters.DamageMonster(mIdx, k, out fear, null);
-                        break;
-
-                    case MutationAttackType.Poison:
-                        _saveGame.SpellEffects.Project(0, 0, mPtr.MapY, mPtr.MapX, k,
-                            new ProjectPois(SaveGame.Instance.SpellEffects), ProjectionFlag.ProjectKill);
-                        break;
-
-                    case MutationAttackType.Hellfire:
-                        _saveGame.SpellEffects.Project(0, 0, mPtr.MapY, mPtr.MapX, k,
-                            new ProjectHellFire(SaveGame.Instance.SpellEffects), ProjectionFlag.ProjectKill);
-                        break;
-                }
-                TouchZapPlayer(mPtr);
+                return roll < 5;
             }
-            else
-            {
-                Gui.PlaySound(SoundEffect.Miss);
-                Profile.Instance.MsgPrint($"You miss {mName}.");
-            }
-        }
-
-        private bool PlayerCheckHitOnMonster(int chance, int ac, bool vis)
-        {
-            int k = Program.Rng.RandomLessThan(100);
-            if (k < 10)
-            {
-                return k < 5;
-            }
-            if (chance <= 0)
+            if (power <= 0)
             {
                 return false;
             }
-            if (!vis)
+            // It's hard to hit invisible monsters
+            if (!isVisible)
             {
-                chance = (chance + 1) / 2;
+                power = (power + 1) / 2;
             }
-            return Program.Rng.RandomLessThan(chance) >= ac * 3 / 4;
+            // Work out whether we hit or not
+            return Program.Rng.RandomLessThan(power) >= armourClass * 3 / 4;
         }
 
-        private int PlayerCriticalMelee(int weight, int plus, int dam)
+        /// <summary>
+        /// Work out the level of critical hit the player did in melee
+        /// </summary>
+        /// <param name="weight"> The weight of the player's weapon </param>
+        /// <param name="plus"> The bonuses to hit the player has </param>
+        /// <param name="damage"> The amount of base damage that was done </param>
+        /// <returns> The damage total modified for a critical hit </returns>
+        private int PlayerCriticalMelee(int weight, int plus, int damage)
         {
             int i = weight + ((Player.AttackBonus + plus) * 5) + (Player.Level * 3);
             if (Program.Rng.DieRoll(5000) <= i)
@@ -4754,30 +4743,120 @@ namespace Cthangband
                 if (k < 400)
                 {
                     Profile.Instance.MsgPrint("It was a good hit!");
-                    dam = (2 * dam) + 5;
+                    damage = (2 * damage) + 5;
                 }
                 else if (k < 700)
                 {
                     Profile.Instance.MsgPrint("It was a great hit!");
-                    dam = (2 * dam) + 10;
+                    damage = (2 * damage) + 10;
                 }
                 else if (k < 900)
                 {
                     Profile.Instance.MsgPrint("It was a superb hit!");
-                    dam = (3 * dam) + 15;
+                    damage = (3 * damage) + 15;
                 }
                 else if (k < 1300)
                 {
                     Profile.Instance.MsgPrint("It was a *GREAT* hit!");
-                    dam = (3 * dam) + 20;
+                    damage = (3 * damage) + 20;
                 }
                 else
                 {
                     Profile.Instance.MsgPrint("It was a *SUPERB* hit!");
-                    dam = (7 * dam / 2) + 25;
+                    damage = (7 * damage / 2) + 25;
                 }
             }
-            return dam;
+            return damage;
+        }
+
+        /// <summary>
+        /// Resolve a natural attack the player has from a mutation
+        /// </summary>
+        /// <param name="monsterIndex"> The monster being attacked </param>
+        /// <param name="mutation"> The mutation being used to attack </param>
+        /// <param name="fear"> Whether or not the monster is scared by the attack </param>
+        /// <param name="monsterDies"> Whether or not the monster is killed by the attack </param>
+        private void PlayerNaturalAttackOnMonster(int monsterIndex, Mutation mutation, out bool fear, out bool monsterDies)
+        {
+            fear = false;
+            monsterDies = false;
+            Monster monster = Level.Monsters[monsterIndex];
+            MonsterRace race = monster.Race;
+            int damageSides = mutation.DamageDiceSize;
+            int damageDice = mutation.DamageDiceNumber;
+            int effectiveWeight = mutation.EquivalentWeaponWeight;
+            string attackDescription = mutation.AttackDescription;
+            string monsterName = monster.MonsterDesc(0);
+            // See if the player hit the monster
+            int bonus = Player.AttackBonus;
+            int chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
+            if (PlayerCheckHitOnMonster(chance, race.ArmourClass, monster.IsVisible))
+            {
+                // It was a hit, so let the player know
+                Gui.PlaySound(SoundEffect.MeleeHit);
+                Profile.Instance.MsgPrint($"You hit {monsterName} with your {attackDescription}.");
+                // Roll the damage, with possible critical damage
+                int damage = Program.Rng.DiceRoll(damageDice, damageSides);
+                damage = PlayerCriticalMelee(effectiveWeight, Player.AttackBonus, damage);
+                damage += Player.DamageBonus;
+                // Can't have negative damage
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+                // If it's a friend, it will get angry
+                if ((monster.Mind & Constants.SmFriendly) != 0)
+                {
+                    Profile.Instance.MsgPrint($"{monsterName} gets angry!");
+                    monster.Mind &= ~Constants.SmFriendly;
+                }
+                // Apply damage of the correct type to the monster
+                switch (mutation.MutationAttackType)
+                {
+                    case MutationAttackType.Physical:
+                        monsterDies = Level.Monsters.DamageMonster(monsterIndex, damage, out fear, null);
+                        break;
+
+                    case MutationAttackType.Poison:
+                        _saveGame.SpellEffects.Project(0, 0, monster.MapY, monster.MapX, damage,
+                            new ProjectPois(SaveGame.Instance.SpellEffects), ProjectionFlag.ProjectKill);
+                        break;
+
+                    case MutationAttackType.Hellfire:
+                        _saveGame.SpellEffects.Project(0, 0, monster.MapY, monster.MapX, damage,
+                            new ProjectHellFire(SaveGame.Instance.SpellEffects), ProjectionFlag.ProjectKill);
+                        break;
+                }
+                // The monster might hurt when we touch it
+                TouchZapPlayer(monster);
+            }
+            else
+            {
+                // We missed, so just let us know
+                Gui.PlaySound(SoundEffect.Miss);
+                Profile.Instance.MsgPrint($"You miss {monsterName}.");
+            }
+        }
+
+        /// <summary>
+        /// Remove a tile by tunnelling through it
+        /// </summary>
+        /// <param name="y"> The y coordinate of the tile </param>
+        /// <param name="x"> The x coordinate of the tile </param>
+        /// <returns> True if the tunnel succeeded, false if not </returns>
+        private bool RemoveTileViaTunnelling(int y, int x)
+        {
+            GridTile tile = Level.Grid[y][x];
+            // If we can already get through it, we can't tunnel through it
+            if (Level.GridPassable(y, x))
+            {
+                return false;
+            }
+            // Clear the tile
+            tile.TileFlags.Clear(GridTile.PlayerMemorised);
+            Level.RevertTileToBackground(y, x);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
+            return true;
         }
 
         private void RunInit(int direction)
@@ -5165,7 +5244,7 @@ namespace Cthangband
                     {
                         Profile.Instance.MsgPrint("There is a flash of shimmering light!");
                         cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-                        Level.CaveRemoveFeat(Player.MapY, Player.MapX);
+                        Level.RevertTileToBackground(Player.MapY, Player.MapX);
                         int num = 2 + Program.Rng.DieRoll(3);
                         for (int i = 0; i < num; i++)
                         {
@@ -5202,7 +5281,7 @@ namespace Cthangband
                     }
                 case "SlowDart":
                     {
-                        if (CheckHit(125))
+                        if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
                             dam = Program.Rng.DiceRoll(1, 4);
@@ -5217,7 +5296,7 @@ namespace Cthangband
                     }
                 case "StrDart":
                     {
-                        if (CheckHit(125))
+                        if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
                             dam = Program.Rng.DiceRoll(1, 4);
@@ -5232,7 +5311,7 @@ namespace Cthangband
                     }
                 case "DexDart":
                     {
-                        if (CheckHit(125))
+                        if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
                             dam = Program.Rng.DiceRoll(1, 4);
@@ -5247,7 +5326,7 @@ namespace Cthangband
                     }
                 case "ConDart":
                     {
-                        if (CheckHit(125))
+                        if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
                             dam = Program.Rng.DiceRoll(1, 4);
@@ -5349,17 +5428,19 @@ namespace Cthangband
             }
         }
 
-        private bool Twall(int y, int x)
+        private bool TrapCheckHitOnPlayer(int power)
         {
-            GridTile cPtr = Level.Grid[y][x];
-            if (Level.GridPassable(y, x))
+            int k = Program.Rng.RandomLessThan(100);
+            if (k < 10)
+            {
+                return k < 5;
+            }
+            if (power <= 0)
             {
                 return false;
             }
-            cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
-            Level.CaveRemoveFeat(y, x);
-            Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent | UpdateFlags.UpdateMonsters);
-            return true;
+            int ac = Player.BaseArmourClass + Player.ArmourClassBonus;
+            return Program.Rng.DieRoll(power) > ac * 3 / 4;
         }
     }
 }

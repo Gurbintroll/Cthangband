@@ -12,10 +12,10 @@ namespace Cthangband.Mutations.RandomMutations
             GainMessage = "You grow a scorpion tail!";
             HaveMessage = "You have a scorpion tail (poison, 3d7).";
             LoseMessage = "You lose your scorpion tail!";
-            Dss = 3;
-            Ddd = 7;
-            NWeight = 5;
-            AtkDesc = "tail";
+            DamageDiceSize = 3;
+            DamageDiceNumber = 7;
+            EquivalentWeaponWeight = 5;
+            AttackDescription = "tail";
             MutationAttackType = MutationAttackType.Poison;
         }
 

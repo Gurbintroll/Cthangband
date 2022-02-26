@@ -6,16 +6,16 @@ namespace Cthangband.Mutations
     [Serializable]
     internal abstract class Mutation
     {
-        public string AtkDesc;
-        public int Ddd;
-        public int Dss;
+        public string AttackDescription;
+        public int DamageDiceNumber;
+        public int DamageDiceSize;
         public int Frequency;
         public string GainMessage;
         public MutationGroup Group = MutationGroup.None;
         public string HaveMessage;
         public string LoseMessage;
         public MutationAttackType MutationAttackType = MutationAttackType.Physical;
-        public int NWeight;
+        public int EquivalentWeaponWeight;
 
         public virtual void Activate(SaveGame saveGame, Player player, Level level)
         {

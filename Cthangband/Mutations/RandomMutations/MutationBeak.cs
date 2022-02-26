@@ -13,10 +13,10 @@ namespace Cthangband.Mutations.RandomMutations
             HaveMessage = "You have a beak (dam. 2d4).";
             LoseMessage = "Your mouth reverts to normal!";
             Group = MutationGroup.Mouth;
-            Dss = 2;
-            Ddd = 4;
-            NWeight = 5;
-            AtkDesc = "beak";
+            DamageDiceSize = 2;
+            DamageDiceNumber = 4;
+            EquivalentWeaponWeight = 5;
+            AttackDescription = "beak";
         }
 
         public override void OnGain(Genome genome)

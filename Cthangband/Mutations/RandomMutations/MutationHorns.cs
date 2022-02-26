@@ -11,10 +11,10 @@ namespace Cthangband.Mutations.RandomMutations
             GainMessage = "Horns pop forth into your forehead!";
             HaveMessage = "You have horns (dam. 2d6).";
             LoseMessage = "Your horns vanish from your forehead!";
-            Dss = 2;
-            Ddd = 6;
-            NWeight = 15;
-            AtkDesc = "horns";
+            DamageDiceSize = 2;
+            DamageDiceNumber = 6;
+            EquivalentWeaponWeight = 15;
+            AttackDescription = "horns";
         }
 
         public override void OnGain(Genome genome)

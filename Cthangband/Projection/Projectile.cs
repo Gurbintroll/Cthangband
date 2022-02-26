@@ -238,7 +238,7 @@ namespace Cthangband.Projection
                                 {
                                     if (Level.CaveValidBold(y, x))
                                     {
-                                        Level.CaveRemoveFeat(y, x);
+                                        Level.RevertTileToBackground(y, x);
                                     }
                                     Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent |
                                                       UpdateFlags.UpdateMonsters);

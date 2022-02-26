@@ -641,8 +641,8 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "Tcho-Tchos are hairless cannibalistic near-humans who dwell", 30, 20);
                     Gui.Print(Colour.Purple, "in isolated parts of the world away from more civilised", 31, 20);
                     Gui.Print(Colour.Purple, "places where their dark rituals and sacrifices go unseen.", 32, 20);
-                    Gui.Print(Colour.Purple, "Tcho-Tchos are immune to fear, and can enter a berserk", 33, 20);
-                    Gui.Print(Colour.Purple, "rage (at lvl 8).", 34, 20);
+                    Gui.Print(Colour.Purple, "Tcho-Tchos are immune to fear, and can also learn to create", 33, 20);
+                    Gui.Print(Colour.Purple, "The Yellow Sign (at lvl 35).", 34, 20);
                     break;
 
                 case RaceId.MiriNigri:
@@ -742,8 +742,8 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "Half-Ogres are both strong and naturally magical, although", 30, 20);
                     Gui.Print(Colour.Purple, "they don't usually have the intelligence to make the most", 31, 20);
                     Gui.Print(Colour.Purple, "of their magic. They resist darkness and can't have their", 32, 20);
-                    Gui.Print(Colour.Purple, "strength reduced. They can also learn to create protective", 33, 20);
-                    Gui.Print(Colour.Purple, "runes (at lvl 35).", 34, 20);
+                    Gui.Print(Colour.Purple, "strength reduced. They can also can enter a berserk", 33, 20);
+                    Gui.Print(Colour.Purple, "rage (at lvl 8).", 34, 20);
                     break;
 
                 case RaceId.HalfOrc:

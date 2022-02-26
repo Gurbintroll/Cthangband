@@ -96,14 +96,6 @@ namespace Cthangband
             }
         }
 
-        public void CaveRemoveFeat(int y, int x)
-        {
-            GridTile cPtr = Grid[y][x];
-            cPtr.RevertToBackground();
-            NoteSpot(y, x);
-            RedrawSingleLocation(y, x);
-        }
-
         public void CaveSetBackground(int y, int x, string feat)
         {
             GridTile cPtr = Grid[y][x];
@@ -1397,6 +1389,14 @@ namespace Cthangband
             Profile.Instance.MsgPrint(oPtr.TypeSpecificValue != 1
                 ? $"There are {oPtr.TypeSpecificValue} charges remaining."
                 : $"There is {oPtr.TypeSpecificValue} charge remaining.");
+        }
+
+        public void RevertTileToBackground(int y, int x)
+        {
+            GridTile cPtr = Grid[y][x];
+            cPtr.RevertToBackground();
+            NoteSpot(y, x);
+            RedrawSingleLocation(y, x);
         }
 
         public void Scatter(out int yp, out int xp, int y, int x, int d)
