@@ -2015,7 +2015,7 @@ namespace Cthangband
             if (targetEngine.GetRepDir(out int dir))
             {
                 SaveGame.Instance.Running = Gui.CommandArg != 0 ? Gui.CommandArg : 1000;
-                SaveGame.Instance.CommandEngine.RunStep(dir);
+                SaveGame.Instance.CommandEngine.RunOneStep(dir);
             }
         }
 

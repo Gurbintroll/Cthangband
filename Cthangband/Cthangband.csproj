@@ -233,7 +233,7 @@
     <Compile Include="Mutations\RandomMutations\MutationWasting.cs" />
     <Compile Include="Mutations\RandomMutations\MutationWeirdMind.cs" />
     <Compile Include="Mutations\RandomMutations\MutationWraith.cs" />
-    <Compile Include="NavigationState.cs" />
+    <Compile Include="AutoNavigator.cs" />
     <Compile Include="Pantheon\God.cs" />
     <Compile Include="Pantheon\GodName.cs" />
     <Compile Include="Pantheon\Religion.cs" />

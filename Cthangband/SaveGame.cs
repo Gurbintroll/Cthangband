@@ -1929,7 +1929,7 @@ namespace Cthangband
                 }
                 else if (Running != 0)
                 {
-                    CommandEngine.RunStep(0);
+                    CommandEngine.RunOneStep(0);
                 }
                 else if (Command.CommandRep != 0)
                 {

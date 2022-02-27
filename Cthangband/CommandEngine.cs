@@ -23,7 +23,7 @@ namespace Cthangband
         /// <summary>
         /// The current state of navigation stored from turn to turn while the player is running
         /// </summary>
-        private NavigationState _navigationState = new NavigationState();
+        private AutoNavigator _autoNavigator = new AutoNavigator();
 
         public CommandEngine(SaveGame saveGame)
         {
@@ -3790,25 +3790,25 @@ namespace Cthangband
         /// <param name="direction">
         /// The direction in which we wish to run, or 0 if we are already running
         /// </param>
-        public void RunStep(int direction)
+        public void RunOneStep(int direction)
         {
             if (direction != 0)
             {
                 // Check if we can actually run in that direction
-                if (SeeWall(direction, Player.MapY, Player.MapX))
+                if (_autoNavigator.SeeWall(direction, Player.MapY, Player.MapX))
                 {
                     Profile.Instance.MsgPrint("You cannot run in that direction.");
                     _saveGame.Disturb(false);
                     return;
                 }
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
-                // Initialise our run
-                RunInit(direction);
+                // Initialise our navigation state
+                _autoNavigator = new AutoNavigator(direction);
             }
             else
             {
                 // We're already running, so check if we have to stop
-                if (RunTest())
+                if (_autoNavigator.NavigateNextStep())
                 {
                     _saveGame.Disturb(false);
                     return;
@@ -3821,7 +3821,7 @@ namespace Cthangband
             }
             // We can run, so use a move's worth of energy and actually make the move
             _saveGame.EnergyUse = 100;
-            MovePlayer(_navigationState.CurrentRunDirection, false);
+            MovePlayer(_autoNavigator.CurrentRunDirection, false);
         }
 
         /// <summary>
@@ -4859,287 +4859,21 @@ namespace Cthangband
             return true;
         }
 
-        private void RunInit(int direction)
-        {
-            _navigationState = new NavigationState();
-            _navigationState.CurrentRunDirection = direction;
-            _navigationState.PreviousRunDirection = direction;
-            _navigationState._findOpenarea = true;
-            _navigationState._findBreakright = false;
-            _navigationState._findBreakleft = false;
-            bool deepleft = false;
-            bool deepright = false;
-            bool shortright = false;
-            bool shortleft = false;
-            int row = Player.MapY + Level.KeypadDirectionYOffset[direction];
-            int col = Player.MapX + Level.KeypadDirectionXOffset[direction];
-            int i = _navigationState.Chome[direction];
-            if (SeeWall(_navigationState.Cycle[i + 1], Player.MapY, Player.MapX))
-            {
-                _navigationState._findBreakleft = true;
-                shortleft = true;
-            }
-            else if (SeeWall(_navigationState.Cycle[i + 1], row, col))
-            {
-                _navigationState._findBreakleft = true;
-                deepleft = true;
-            }
-            if (SeeWall(_navigationState.Cycle[i - 1], Player.MapY, Player.MapX))
-            {
-                _navigationState._findBreakright = true;
-                shortright = true;
-            }
-            else if (SeeWall(_navigationState.Cycle[i - 1], row, col))
-            {
-                _navigationState._findBreakright = true;
-                deepright = true;
-            }
-            if (_navigationState._findBreakleft && _navigationState._findBreakright)
-            {
-                _navigationState._findOpenarea = false;
-                if ((direction & 0x01) != 0)
-                {
-                    if (deepleft && !deepright)
-                    {
-                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i - 1];
-                    }
-                    else if (deepright && !deepleft)
-                    {
-                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i + 1];
-                    }
-                }
-                else if (SeeWall(_navigationState.Cycle[i], row, col))
-                {
-                    if (shortleft && !shortright)
-                    {
-                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i - 2];
-                    }
-                    else if (shortright && !shortleft)
-                    {
-                        _navigationState.PreviousRunDirection = _navigationState.Cycle[i + 2];
-                    }
-                }
-            }
-        }
-
-        private bool RunTest()
-        {
-            int newDir, checkDir = 0;
-            int row, col;
-            int i;
-            GridTile cPtr;
-            int option = 0;
-            int option2 = 0;
-            int prevDir = _navigationState.PreviousRunDirection;
-            int max = (prevDir & 0x01) + 1;
-            for (i = -max; i <= max; i++)
-            {
-                int nextOIdx;
-                newDir = _navigationState.Cycle[_navigationState.Chome[prevDir] + i];
-                row = Player.MapY + Level.KeypadDirectionYOffset[newDir];
-                col = Player.MapX + Level.KeypadDirectionXOffset[newDir];
-                cPtr = Level.Grid[row][col];
-                if (cPtr.MonsterIndex != 0)
-                {
-                    Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
-                    if (mPtr.IsVisible)
-                    {
-                        return true;
-                    }
-                }
-                for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
-                {
-                    Item oPtr = Level.Items[thisOIdx];
-                    nextOIdx = oPtr.NextInStack;
-                    if (oPtr.Marked)
-                    {
-                        return true;
-                    }
-                }
-                bool inv = true;
-                if (cPtr.TileFlags.IsSet(GridTile.PlayerMemorised))
-                {
-                    bool notice = !cPtr.FeatureType.RunPast;
-                    if (notice)
-                    {
-                        return true;
-                    }
-                    inv = false;
-                }
-                if (inv || Level.GridPassable(row, col))
-                {
-                    if (_navigationState._findOpenarea)
-                    {
-                    }
-                    else if (option == 0)
-                    {
-                        option = newDir;
-                    }
-                    else if (option2 != 0)
-                    {
-                        return true;
-                    }
-                    else if (option != _navigationState.Cycle[_navigationState.Chome[prevDir] + i - 1])
-                    {
-                        return true;
-                    }
-                    else if ((newDir & 0x01) != 0)
-                    {
-                        checkDir = _navigationState.Cycle[_navigationState.Chome[prevDir] + i - 2];
-                        option2 = newDir;
-                    }
-                    else
-                    {
-                        checkDir = _navigationState.Cycle[_navigationState.Chome[prevDir] + i + 1];
-                        option2 = option;
-                        option = newDir;
-                    }
-                }
-                else
-                {
-                    if (_navigationState._findOpenarea)
-                    {
-                        if (i < 0)
-                        {
-                            _navigationState._findBreakright = true;
-                        }
-                        else if (i > 0)
-                        {
-                            _navigationState._findBreakleft = true;
-                        }
-                    }
-                }
-            }
-            if (_navigationState._findOpenarea)
-            {
-                for (i = -max; i < 0; i++)
-                {
-                    newDir = _navigationState.Cycle[_navigationState.Chome[prevDir] + i];
-                    row = Player.MapY + Level.KeypadDirectionYOffset[newDir];
-                    col = Player.MapX + Level.KeypadDirectionXOffset[newDir];
-                    cPtr = Level.Grid[row][col];
-                    if (cPtr.TileFlags.IsClear(GridTile.PlayerMemorised) || !cPtr.FeatureType.IsWall)
-                    {
-                        if (_navigationState._findBreakright)
-                        {
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        if (_navigationState._findBreakleft)
-                        {
-                            return true;
-                        }
-                    }
-                }
-                for (i = max; i > 0; i--)
-                {
-                    newDir = _navigationState.Cycle[_navigationState.Chome[prevDir] + i];
-                    row = Player.MapY + Level.KeypadDirectionYOffset[newDir];
-                    col = Player.MapX + Level.KeypadDirectionXOffset[newDir];
-                    cPtr = Level.Grid[row][col];
-                    if (cPtr.TileFlags.IsClear(GridTile.PlayerMemorised) || !cPtr.FeatureType.IsWall)
-                    {
-                        if (_navigationState._findBreakleft)
-                        {
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        if (_navigationState._findBreakright)
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (option == 0)
-                {
-                    return true;
-                }
-                if (option2 == 0)
-                {
-                    _navigationState.CurrentRunDirection = option;
-                    _navigationState.PreviousRunDirection = option;
-                }
-                else
-                {
-                    row = Player.MapY + Level.KeypadDirectionYOffset[option];
-                    col = Player.MapX + Level.KeypadDirectionXOffset[option];
-                    if (!SeeWall(option, row, col) || !SeeWall(checkDir, row, col))
-                    {
-                        if (SeeNothing(option, row, col) && SeeNothing(option2, row, col))
-                        {
-                            _navigationState.CurrentRunDirection = option;
-                            _navigationState.PreviousRunDirection = option2;
-                        }
-                        else
-                        {
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        _navigationState.CurrentRunDirection = option2;
-                        _navigationState.PreviousRunDirection = option2;
-                    }
-                }
-            }
-            return SeeWall(_navigationState.CurrentRunDirection, Player.MapY, Player.MapX);
-        }
-
-        private bool SeeNothing(int dir, int y, int x)
-        {
-            y += Level.KeypadDirectionYOffset[dir];
-            x += Level.KeypadDirectionXOffset[dir];
-            if (!Level.InBounds2(y, x))
-            {
-                return true;
-            }
-            if (Level.Grid[y][x].TileFlags.IsSet(GridTile.PlayerMemorised))
-            {
-                return false;
-            }
-            if (!Level.GridPassable(y, x))
-            {
-                return true;
-            }
-            return !Level.PlayerCanSeeBold(y, x);
-        }
-
-        private bool SeeWall(int dir, int y, int x)
-        {
-            y += Level.KeypadDirectionYOffset[dir];
-            x += Level.KeypadDirectionXOffset[dir];
-            if (!Level.InBounds2(y, x))
-            {
-                return false;
-            }
-            if (Level.GridPassable(y, x))
-            {
-                return false;
-            }
-            if (Level.Grid[y][x].TileFlags.IsClear(GridTile.PlayerMemorised))
-            {
-                return false;
-            }
-            return true;
-        }
-
+        /// <summary>
+        /// Handle the player stepping on a trap
+        /// </summary>
         private void StepOnTrap()
         {
-            int dam;
+            int damage;
             string name = "a trap";
             _saveGame.Disturb(false);
-            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
-            switch (cPtr.FeatureType.Name)
+            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            // Check the type of trap
+            switch (tile.FeatureType.Name)
             {
                 case "TrapDoor":
                     {
+                        // Trap doors can be flown over with feather fall
                         if (Player.HasFeatherFall)
                         {
                             Profile.Instance.MsgPrint("You fly over a trap door.");
@@ -5147,9 +4881,11 @@ namespace Cthangband
                         else
                         {
                             Profile.Instance.MsgPrint("You fell through a trap door!");
-                            dam = Program.Rng.DiceRoll(2, 8);
+                            // Trap doors do 2d8 fall damage
+                            damage = Program.Rng.DiceRoll(2, 8);
                             name = "a trap door";
-                            Player.TakeHit(dam, name);
+                            Player.TakeHit(damage, name);
+                            // Even if we survived, we need a new level
                             if (Player.Health >= 0)
                             {
                                 _saveGame.IsAutosave = true;
@@ -5157,6 +4893,8 @@ namespace Cthangband
                                 _saveGame.IsAutosave = false;
                             }
                             _saveGame.NewLevelFlag = true;
+                            // In dungeons we fall to a deeper level, but in towers we fall to a
+                            // shallower level because they go up instead of down
                             if (_saveGame.CurDungeon.Tower)
                             {
                                 _saveGame.DunLevel--;
@@ -5170,6 +4908,7 @@ namespace Cthangband
                     }
                 case "Pit":
                     {
+                        // A pit can be flown over with feather fall
                         if (Player.HasFeatherFall)
                         {
                             Profile.Instance.MsgPrint("You fly over a pit trap.");
@@ -5177,14 +4916,16 @@ namespace Cthangband
                         else
                         {
                             Profile.Instance.MsgPrint("You fell into a pit!");
-                            dam = Program.Rng.DiceRoll(2, 6);
+                            // Pits do 2d6 fall damage
+                            damage = Program.Rng.DiceRoll(2, 6);
                             name = "a pit trap";
-                            Player.TakeHit(dam, name);
+                            Player.TakeHit(damage, name);
                         }
                         break;
                     }
                 case "SpikedPit":
                     {
+                        // A pit can be flown over with feather fall
                         if (Player.HasFeatherFall)
                         {
                             Profile.Instance.MsgPrint("You fly over a spiked pit.");
@@ -5193,20 +4934,23 @@ namespace Cthangband
                         {
                             Profile.Instance.MsgPrint("You fall into a spiked pit!");
                             name = "a pit trap";
-                            dam = Program.Rng.DiceRoll(2, 6);
+                            // A pit does 2d6 fall damage
+                            damage = Program.Rng.DiceRoll(2, 6);
+                            // 50% chance of doing double damage plus bleeding
                             if (Program.Rng.RandomLessThan(100) < 50)
                             {
                                 Profile.Instance.MsgPrint("You are impaled!");
                                 name = "a spiked pit";
-                                dam *= 2;
-                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(dam));
+                                damage *= 2;
+                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(damage));
                             }
-                            Player.TakeHit(dam, name);
+                            Player.TakeHit(damage, name);
                         }
                         break;
                     }
                 case "PoisonPit":
                     {
+                        // A pit can be flown over with feather fall
                         if (Player.HasFeatherFall)
                         {
                             Profile.Instance.MsgPrint("You fly over a spiked pit.");
@@ -5214,14 +4958,17 @@ namespace Cthangband
                         else
                         {
                             Profile.Instance.MsgPrint("You fall into a spiked pit!");
-                            dam = Program.Rng.DiceRoll(2, 6);
+                            // A pit does 2d6 fall damage
+                            damage = Program.Rng.DiceRoll(2, 6);
                             name = "a pit trap";
+                            // 50% chance of doing double damage plus bleeding plus poison
                             if (Program.Rng.RandomLessThan(100) < 50)
                             {
                                 Profile.Instance.MsgPrint("You are impaled on poisonous spikes!");
                                 name = "a spiked pit";
-                                dam *= 2;
-                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(dam));
+                                damage *= 2;
+                                Player.SetTimedBleeding(Player.TimedBleeding + Program.Rng.DieRoll(damage));
+                                // Hagarg Ryonis can save us from the poison
                                 if (Player.HasPoisonResistance || Player.TimedPoisonResistance != 0)
                                 {
                                     Profile.Instance.MsgPrint("The poison does not affect you!");
@@ -5232,24 +4979,27 @@ namespace Cthangband
                                 }
                                 else
                                 {
-                                    dam *= 2;
-                                    Player.SetTimedPoison(Player.TimedPoison + Program.Rng.DieRoll(dam));
+                                    damage *= 2;
+                                    Player.SetTimedPoison(Player.TimedPoison + Program.Rng.DieRoll(damage));
                                 }
                             }
-                            Player.TakeHit(dam, name);
+                            Player.TakeHit(damage, name);
                         }
                         break;
                     }
                 case "SummonRune":
                     {
                         Profile.Instance.MsgPrint("There is a flash of shimmering light!");
-                        cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
+                        // Trap disappears when triggered
+                        tile.TileFlags.Clear(GridTile.PlayerMemorised);
                         Level.RevertTileToBackground(Player.MapY, Player.MapX);
+                        // Summon 1d3+2 monsters
                         int num = 2 + Program.Rng.DieRoll(3);
                         for (int i = 0; i < num; i++)
                         {
                             Level.Monsters.SummonSpecific(Player.MapY, Player.MapX, _saveGame.Difficulty, 0);
                         }
+                        // Have a chance of also cursing the player
                         if (_saveGame.Difficulty > Program.Rng.DieRoll(100))
                         {
                             do
@@ -5261,31 +5011,36 @@ namespace Cthangband
                     }
                 case "TeleportRune":
                     {
+                        // Teleport the player up to 100 squares
                         Profile.Instance.MsgPrint("You hit a teleport trap!");
                         _saveGame.SpellEffects.TeleportPlayer(100);
                         break;
                     }
                 case "FireTrap":
                     {
+                        // Do 4d6 fire damage
                         Profile.Instance.MsgPrint("You are enveloped in flames!");
-                        dam = Program.Rng.DiceRoll(4, 6);
-                        _saveGame.SpellEffects.FireDam(dam, "a fire trap");
+                        damage = Program.Rng.DiceRoll(4, 6);
+                        _saveGame.SpellEffects.FireDam(damage, "a fire trap");
                         break;
                     }
                 case "AcidTrap":
                     {
+                        // Do 4d6 acid damage
                         Profile.Instance.MsgPrint("You are splashed with acid!");
-                        dam = Program.Rng.DiceRoll(4, 6);
-                        _saveGame.SpellEffects.AcidDam(dam, "an acid trap");
+                        damage = Program.Rng.DiceRoll(4, 6);
+                        _saveGame.SpellEffects.AcidDam(damage, "an acid trap");
                         break;
                     }
                 case "SlowDart":
                     {
+                        // Dart traps need a to-hit roll
                         if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, name);
+                            // Do 1d4 damage plus slow
+                            damage = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(damage, name);
                             Player.SetTimedSlow(Player.TimedSlow + Program.Rng.RandomLessThan(20) + 20);
                         }
                         else
@@ -5296,11 +5051,13 @@ namespace Cthangband
                     }
                 case "StrDart":
                     {
+                        // Dart traps need a to-hit roll
                         if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, "a dart trap");
+                            // Do 1d4 damage plus strength drain
+                            damage = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(damage, "a dart trap");
                             Player.TryDecreasingAbilityScore(Ability.Strength);
                         }
                         else
@@ -5311,11 +5068,13 @@ namespace Cthangband
                     }
                 case "DexDart":
                     {
+                        // Dart traps need a to-hit roll
                         if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, "a dart trap");
+                            // Do 1d4 damage plus dexterity drain
+                            damage = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(damage, "a dart trap");
                             Player.TryDecreasingAbilityScore(Ability.Dexterity);
                         }
                         else
@@ -5326,11 +5085,13 @@ namespace Cthangband
                     }
                 case "ConDart":
                     {
+                        // Dart traps need a to-hit roll
                         if (TrapCheckHitOnPlayer(125))
                         {
                             Profile.Instance.MsgPrint("A small dart hits you!");
-                            dam = Program.Rng.DiceRoll(1, 4);
-                            Player.TakeHit(dam, "a dart trap");
+                            // Do 1d4 damage plus constitution drain
+                            damage = Program.Rng.DiceRoll(1, 4);
+                            Player.TakeHit(damage, "a dart trap");
                             Player.TryDecreasingAbilityScore(Ability.Constitution);
                         }
                         else
@@ -5341,6 +5102,7 @@ namespace Cthangband
                     }
                 case "BlindGas":
                     {
+                        // Blind the player
                         Profile.Instance.MsgPrint("A black gas surrounds you!");
                         if (!Player.HasBlindnessResistance)
                         {
@@ -5350,6 +5112,7 @@ namespace Cthangband
                     }
                 case "ConfuseGas":
                     {
+                        // Confuse the player
                         Profile.Instance.MsgPrint("A gas of scintillating colours surrounds you!");
                         if (!Player.HasConfusionResistance)
                         {
@@ -5359,9 +5122,11 @@ namespace Cthangband
                     }
                 case "PoisonGas":
                     {
+                        // Poison the player
                         Profile.Instance.MsgPrint("A pungent green gas surrounds you!");
                         if (!Player.HasPoisonResistance && Player.TimedPoisonResistance == 0)
                         {
+                            // Hagarg Ryonis may save you from the poison
                             if (Program.Rng.DieRoll(10) <= Player.Religion.GetNamedDeity(Pantheon.GodName.Hagarg_Ryonis).AdjustedFavour)
                             {
                                 Profile.Instance.MsgPrint("Hagarg Ryonis's favour protects you!");
@@ -5375,6 +5140,7 @@ namespace Cthangband
                     }
                 case "SleepGas":
                     {
+                        // Paralyse the player
                         Profile.Instance.MsgPrint("A strange white mist surrounds you!");
                         if (!Player.HasFreeAction)
                         {
@@ -5385,16 +5151,21 @@ namespace Cthangband
             }
         }
 
-        private void TouchZapPlayer(Monster mPtr)
+        /// <summary>
+        /// Check to see if a monster has damaging aura, and if so damage the player with it
+        /// </summary>
+        /// <param name="monster"> The monster to check </param>
+        private void TouchZapPlayer(Monster monster)
         {
             int auraDamage;
-            MonsterRace rPtr = mPtr.Race;
-            if ((rPtr.Flags2 & MonsterFlag2.FireAura) != 0)
+            MonsterRace race = monster.Race;
+            // If we have a fire aura, apply it
+            if ((race.Flags2 & MonsterFlag2.FireAura) != 0)
             {
                 if (!Player.HasFireImmunity)
                 {
-                    auraDamage = Program.Rng.DiceRoll(1 + (rPtr.Level / 26), 1 + (rPtr.Level / 17));
-                    string auraDam = mPtr.MonsterDesc(0x88);
+                    auraDamage = Program.Rng.DiceRoll(1 + (race.Level / 26), 1 + (race.Level / 17));
+                    string auraDam = monster.MonsterDesc(0x88);
                     Profile.Instance.MsgPrint("You are suddenly very hot!");
                     if (Player.TimedFireResistance != 0)
                     {
@@ -5405,14 +5176,15 @@ namespace Cthangband
                         auraDamage = (auraDamage + 2) / 3;
                     }
                     Player.TakeHit(auraDamage, auraDam);
-                    rPtr.Knowledge.RFlags2 |= MonsterFlag2.FireAura;
+                    race.Knowledge.RFlags2 |= MonsterFlag2.FireAura;
                     _saveGame.HandleStuff();
                 }
             }
-            if ((rPtr.Flags2 & MonsterFlag2.LightningAura) != 0 && !Player.HasLightningImmunity)
+            // If we have a lightning aura, apply it
+            if ((race.Flags2 & MonsterFlag2.LightningAura) != 0 && !Player.HasLightningImmunity)
             {
-                auraDamage = Program.Rng.DiceRoll(1 + (rPtr.Level / 26), 1 + (rPtr.Level / 17));
-                string auraDam = mPtr.MonsterDesc(0x88);
+                auraDamage = Program.Rng.DiceRoll(1 + (race.Level / 26), 1 + (race.Level / 17));
+                string auraDam = monster.MonsterDesc(0x88);
                 if (Player.TimedLightningResistance != 0)
                 {
                     auraDamage = (auraDamage + 2) / 3;
@@ -5423,24 +5195,32 @@ namespace Cthangband
                 }
                 Profile.Instance.MsgPrint("You get zapped!");
                 Player.TakeHit(auraDamage, auraDam);
-                rPtr.Knowledge.RFlags2 |= MonsterFlag2.LightningAura;
+                race.Knowledge.RFlags2 |= MonsterFlag2.LightningAura;
                 _saveGame.HandleStuff();
             }
         }
 
-        private bool TrapCheckHitOnPlayer(int power)
+        /// <summary>
+        /// Check to see if a trap hits a player
+        /// </summary>
+        /// <param name="attackStrength"> The power of the trap's attack </param>
+        /// <returns> True if the player was hit, false otherwise </returns>
+        private bool TrapCheckHitOnPlayer(int attackStrength)
         {
+            // Always a 5% chance to hit and 5% chance to miss
             int k = Program.Rng.RandomLessThan(100);
             if (k < 10)
             {
                 return k < 5;
             }
-            if (power <= 0)
+            // If negative chance we miss
+            if (attackStrength <= 0)
             {
                 return false;
             }
-            int ac = Player.BaseArmourClass + Player.ArmourClassBonus;
-            return Program.Rng.DieRoll(power) > ac * 3 / 4;
+            // Roll for the attack
+            int armourClass = Player.BaseArmourClass + Player.ArmourClassBonus;
+            return Program.Rng.DieRoll(attackStrength) > armourClass * 3 / 4;
         }
     }
 }
