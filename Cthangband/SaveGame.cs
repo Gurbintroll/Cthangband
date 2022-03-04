@@ -934,8 +934,9 @@ namespace Cthangband
             ApplyFlavourVisuals();
             if (Level == null)
             {
-                LevelFactory factory = new LevelFactory();
-                Level = factory.GenerateLevel();
+                Level = new Level();
+                LevelFactory factory = new LevelFactory(Level);
+                factory.GenerateNewLevel();
             }
             Gui.FullScreenOverlay = false;
             Gui.SetBackground(Terminal.BackgroundImage.Overhead);
@@ -977,8 +978,9 @@ namespace Cthangband
                     Profile.Instance.ExPlayer = new ExPlayer(Player);
                     break;
                 }
-                LevelFactory factory = new LevelFactory();
-                Level = factory.GenerateLevel();
+                Level = new Level();
+                LevelFactory factory = new LevelFactory(Level);
+                factory.GenerateNewLevel();
                 Level.ReplacePets(Player.MapY, Player.MapX, _petList);
             }
             CloseGame();

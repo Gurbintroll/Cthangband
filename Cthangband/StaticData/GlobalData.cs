@@ -285,7 +285,7 @@ namespace Cthangband.StaticData
             "treasure galore!", "with a veritable hoard.",
             "powerful magic can be found here.", "there's magic in the air.", "there's wealth to be found.",
             "with significant treasure.", "there's not much of value here.",
-            "nothing of worth.", "what meagre pickings..."
+            "with nothing of worth.", "what meagre pickings..."
         };
 
         public static void PopulateNewProfile(Profile profile)

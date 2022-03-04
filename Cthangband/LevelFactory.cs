@@ -53,11 +53,260 @@ namespace Cthangband
         private LevelBuildInfo _dun;
         private Level _level;
 
-        public Level GenerateLevel()
+        public LevelFactory(Level level)
         {
-            _level = new Level();
-            GenerateNewLevel();
-            return _level;
+            _level = level;
+        }
+
+        public void GenerateNewLevel()
+        {
+            for (int num = 0; ; num++)
+            {
+                bool okay = true;
+                _level.OMax = 1;
+                int i;
+                for (i = 0; i < Level.MaxHgt; i++)
+                {
+                    _level.Grid[i] = new GridTile[Level.MaxWid];
+                    for (int j = 0; j < Level.MaxWid; j++)
+                    {
+                        _level.Grid[i][j] = new GridTile();
+                        if (SaveGame.Instance.DunLevel == 0)
+                        {
+                            _level.Grid[i][j].SetBackgroundFeature("Grass");
+                        }
+                        else if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX].Dungeon.Tower)
+                        {
+                            _level.Grid[i][j].SetBackgroundFeature("TowerFloor");
+                        }
+                        else
+                        {
+                            _level.Grid[i][j].SetBackgroundFeature("DungeonFloor");
+                        }
+                    }
+                }
+                _level.PanelRowMin = 0;
+                _level.PanelRowMax = 0;
+                _level.PanelColMin = 0;
+                _level.PanelColMax = 0;
+                if (SaveGame.Instance.DunLevel == 0)
+                {
+                    if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
+                            .Town != null)
+                    {
+                        SaveGame.Instance.CurTown =
+                            SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
+                                .Town;
+                        SaveGame.Instance.DunOffset = 0;
+                        _level.Monsters.DunBias = 0;
+                        if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
+                                .Town.Char == 'K')
+                        {
+                            SaveGame.Instance.DunOffset = 35;
+                            _level.Monsters.DunBias = Constants.SummonCthuloid;
+                        }
+                    }
+                    else if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][
+                                 SaveGame.Instance.Player.WildernessX].Dungeon != null)
+                    {
+                        SaveGame.Instance.DunOffset =
+                            SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
+                                .Dungeon.Offset / 2;
+                        if (SaveGame.Instance.DunOffset < 4)
+                        {
+                            SaveGame.Instance.DunOffset = 4;
+                        }
+                        _level.Monsters.DunBias =
+                            SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
+                                .Dungeon.Bias;
+                    }
+                    else
+                    {
+                        SaveGame.Instance.DunOffset = 2;
+                        _level.Monsters.DunBias = Constants.SummonAnimal;
+                    }
+                }
+                else
+                {
+                    SaveGame.Instance.DunOffset = SaveGame.Instance.CurDungeon.Offset;
+                    _level.Monsters.DunBias = SaveGame.Instance.CurDungeon.Bias;
+                }
+                _level.MonsterLevel = SaveGame.Instance.Difficulty;
+                _level.ObjectLevel = SaveGame.Instance.Difficulty;
+                _level.SpecialTreasure = false;
+                _level.SpecialDanger = false;
+                _level.TreasureRating = 0;
+                _level.DangerRating = 0;
+                if (SaveGame.Instance.DunLevel == 0)
+                {
+                    _level.CurHgt = Constants.ScreenHgt;
+                    _level.CurWid = Constants.ScreenWid;
+                    _level.MaxPanelRows = (_level.CurHgt / Constants.ScreenHgt * 2) - 2;
+                    _level.MaxPanelCols = (_level.CurWid / Constants.ScreenWid * 2) - 2;
+                    _level.PanelRow = _level.MaxPanelRows;
+                    _level.PanelCol = _level.MaxPanelCols;
+                    if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
+                            .Town != null)
+                    {
+                        TownGen();
+                    }
+                    else
+                    {
+                        WildernessGen();
+                    }
+                }
+                else
+                {
+                    if (SaveGame.Instance.CurDungeon.Tower)
+                    {
+                        _level.CurHgt = Constants.ScreenHgt;
+                        _level.CurWid = Constants.ScreenWid;
+                        _level.MaxPanelRows = 0;
+                        _level.MaxPanelCols = 0;
+                        _level.PanelRow = 0;
+                        _level.PanelCol = 0;
+                    }
+                    else
+                    {
+                        if (Program.Rng.DieRoll(_smallLevel) == 1)
+                        {
+                            int tester1 = Program.Rng.DieRoll(Level.MaxHgt / Constants.ScreenHgt);
+                            int tester2 = Program.Rng.DieRoll(Level.MaxWid / Constants.ScreenWid);
+                            _level.CurHgt = tester1 * Constants.ScreenHgt;
+                            _level.CurWid = tester2 * Constants.ScreenWid;
+                            _level.MaxPanelRows = (_level.CurHgt / Constants.ScreenHgt * 2) - 2;
+                            _level.MaxPanelCols = (_level.CurWid / Constants.ScreenWid * 2) - 2;
+                            _level.PanelRow = _level.MaxPanelRows;
+                            _level.PanelCol = _level.MaxPanelCols;
+                        }
+                        else
+                        {
+                            _level.CurHgt = Level.MaxHgt;
+                            _level.CurWid = Level.MaxWid;
+                            _level.MaxPanelRows = (_level.CurHgt / Constants.ScreenHgt * 2) - 2;
+                            _level.MaxPanelCols = (_level.CurWid / Constants.ScreenWid * 2) - 2;
+                            _level.PanelRow = _level.MaxPanelRows;
+                            _level.PanelCol = _level.MaxPanelCols;
+                        }
+                    }
+                    if (!UndergroundGen())
+                    {
+                        okay = false;
+                    }
+                }
+                if (_level.TreasureRating > 100)
+                {
+                    _level.TreasureFeeling = 2;
+                }
+                else if (_level.TreasureRating > 80)
+                {
+                    _level.TreasureFeeling = 3;
+                }
+                else if (_level.TreasureRating > 60)
+                {
+                    _level.TreasureFeeling = 4;
+                }
+                else if (_level.TreasureRating > 40)
+                {
+                    _level.TreasureFeeling = 5;
+                }
+                else if (_level.TreasureRating > 30)
+                {
+                    _level.TreasureFeeling = 6;
+                }
+                else if (_level.TreasureRating > 20)
+                {
+                    _level.TreasureFeeling = 7;
+                }
+                else if (_level.TreasureRating > 10)
+                {
+                    _level.TreasureFeeling = 8;
+                }
+                else if (_level.TreasureRating > 0)
+                {
+                    _level.TreasureFeeling = 9;
+                }
+                else
+                {
+                    _level.TreasureFeeling = 10;
+                }
+                if (_level.SpecialTreasure)
+                {
+                    _level.TreasureRating = 1;
+                }
+                if (_level.DangerRating > 100)
+                {
+                    _level.DangerFeeling = 2;
+                }
+                else if (_level.DangerRating > 80)
+                {
+                    _level.DangerFeeling = 3;
+                }
+                else if (_level.DangerRating > 60)
+                {
+                    _level.DangerFeeling = 4;
+                }
+                else if (_level.DangerRating > 40)
+                {
+                    _level.DangerFeeling = 5;
+                }
+                else if (_level.DangerRating > 30)
+                {
+                    _level.DangerFeeling = 6;
+                }
+                else if (_level.DangerRating > 20)
+                {
+                    _level.DangerFeeling = 7;
+                }
+                else if (_level.DangerRating > 10)
+                {
+                    _level.DangerFeeling = 8;
+                }
+                else if (_level.DangerRating > 0)
+                {
+                    _level.DangerFeeling = 9;
+                }
+                else
+                {
+                    _level.DangerFeeling = 10;
+                }
+                if (_level.SpecialDanger)
+                {
+                    _level.DangerFeeling = 1;
+                }
+                if (SaveGame.Instance.DunLevel <= 0)
+                {
+                    _level.TreasureFeeling = 0;
+                    _level.DangerFeeling = 0;
+                }
+                if (_level.OMax >= Constants.MaxOIdx)
+                {
+                    okay = false;
+                }
+                if (_level.MMax >= Constants.MaxMIdx)
+                {
+                    okay = false;
+                }
+                if (num < 100)
+                {
+                    int totalFeeling = _level.TreasureFeeling + _level.DangerFeeling;
+                    if (totalFeeling > 18 ||
+                        (SaveGame.Instance.Difficulty >= 5 && totalFeeling > 16) ||
+                        (SaveGame.Instance.Difficulty >= 10 && totalFeeling > 14) ||
+                        (SaveGame.Instance.Difficulty >= 20 && totalFeeling > 12) ||
+                        (SaveGame.Instance.Difficulty >= 40 && totalFeeling > 10))
+                    {
+                        okay = false;
+                    }
+                }
+                if (okay)
+                {
+                    break;
+                }
+                _level.WipeOList();
+                _level.Monsters.WipeMList();
+            }
+            SaveGame.Instance.Player.GameTime.MarkLevelEntry();
         }
 
         private void AllocObject(int set, int typ, int num)
@@ -574,257 +823,6 @@ namespace Cthangband
                     }
                 }
             }
-        }
-
-        private void GenerateNewLevel()
-        {
-            for (int num = 0; ; num++)
-            {
-                bool okay = true;
-                _level.OMax = 1;
-                int i;
-                for (i = 0; i < Level.MaxHgt; i++)
-                {
-                    _level.Grid[i] = new GridTile[Level.MaxWid];
-                    for (int j = 0; j < Level.MaxWid; j++)
-                    {
-                        _level.Grid[i][j] = new GridTile();
-                        if (SaveGame.Instance.DunLevel == 0)
-                        {
-                            _level.Grid[i][j].SetBackgroundFeature("Grass");
-                        }
-                        else if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX].Dungeon.Tower)
-                        {
-                            _level.Grid[i][j].SetBackgroundFeature("TowerFloor");
-                        }
-                        else
-                        {
-                            _level.Grid[i][j].SetBackgroundFeature("DungeonFloor");
-                        }
-                    }
-                }
-                _level.PanelRowMin = 0;
-                _level.PanelRowMax = 0;
-                _level.PanelColMin = 0;
-                _level.PanelColMax = 0;
-                if (SaveGame.Instance.DunLevel == 0)
-                {
-                    if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
-                            .Town != null)
-                    {
-                        SaveGame.Instance.CurTown =
-                            SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
-                                .Town;
-                        SaveGame.Instance.DunOffset = 0;
-                        _level.Monsters.DunBias = 0;
-                        if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
-                                .Town.Char == 'K')
-                        {
-                            SaveGame.Instance.DunOffset = 35;
-                            _level.Monsters.DunBias = Constants.SummonCthuloid;
-                        }
-                    }
-                    else if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][
-                                 SaveGame.Instance.Player.WildernessX].Dungeon != null)
-                    {
-                        SaveGame.Instance.DunOffset =
-                            SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
-                                .Dungeon.Offset / 2;
-                        if (SaveGame.Instance.DunOffset < 4)
-                        {
-                            SaveGame.Instance.DunOffset = 4;
-                        }
-                        _level.Monsters.DunBias =
-                            SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
-                                .Dungeon.Bias;
-                    }
-                    else
-                    {
-                        SaveGame.Instance.DunOffset = 2;
-                        _level.Monsters.DunBias = Constants.SummonAnimal;
-                    }
-                }
-                else
-                {
-                    SaveGame.Instance.DunOffset = SaveGame.Instance.CurDungeon.Offset;
-                    _level.Monsters.DunBias = SaveGame.Instance.CurDungeon.Bias;
-                }
-                _level.MonsterLevel = SaveGame.Instance.Difficulty;
-                _level.ObjectLevel = SaveGame.Instance.Difficulty;
-                _level.SpecialTreasure = false;
-                _level.SpecialDanger = false;
-                _level.TreasureRating = 0;
-                _level.DangerRating = 0;
-                if (SaveGame.Instance.DunLevel == 0)
-                {
-                    _level.CurHgt = Constants.ScreenHgt;
-                    _level.CurWid = Constants.ScreenWid;
-                    _level.MaxPanelRows = (_level.CurHgt / Constants.ScreenHgt * 2) - 2;
-                    _level.MaxPanelCols = (_level.CurWid / Constants.ScreenWid * 2) - 2;
-                    _level.PanelRow = _level.MaxPanelRows;
-                    _level.PanelCol = _level.MaxPanelCols;
-                    if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
-                            .Town != null)
-                    {
-                        TownGen();
-                    }
-                    else
-                    {
-                        WildernessGen();
-                    }
-                }
-                else
-                {
-                    if (SaveGame.Instance.CurDungeon.Tower)
-                    {
-                        _level.CurHgt = Constants.ScreenHgt;
-                        _level.CurWid = Constants.ScreenWid;
-                        _level.MaxPanelRows = 0;
-                        _level.MaxPanelCols = 0;
-                        _level.PanelRow = 0;
-                        _level.PanelCol = 0;
-                    }
-                    else
-                    {
-                        if (Program.Rng.DieRoll(_smallLevel) == 1)
-                        {
-                            int tester1 = Program.Rng.DieRoll(Level.MaxHgt / Constants.ScreenHgt);
-                            int tester2 = Program.Rng.DieRoll(Level.MaxWid / Constants.ScreenWid);
-                            _level.CurHgt = tester1 * Constants.ScreenHgt;
-                            _level.CurWid = tester2 * Constants.ScreenWid;
-                            _level.MaxPanelRows = (_level.CurHgt / Constants.ScreenHgt * 2) - 2;
-                            _level.MaxPanelCols = (_level.CurWid / Constants.ScreenWid * 2) - 2;
-                            _level.PanelRow = _level.MaxPanelRows;
-                            _level.PanelCol = _level.MaxPanelCols;
-                        }
-                        else
-                        {
-                            _level.CurHgt = Level.MaxHgt;
-                            _level.CurWid = Level.MaxWid;
-                            _level.MaxPanelRows = (_level.CurHgt / Constants.ScreenHgt * 2) - 2;
-                            _level.MaxPanelCols = (_level.CurWid / Constants.ScreenWid * 2) - 2;
-                            _level.PanelRow = _level.MaxPanelRows;
-                            _level.PanelCol = _level.MaxPanelCols;
-                        }
-                    }
-                    if (!UndergroundGen())
-                    {
-                        okay = false;
-                    }
-                }
-                if (_level.TreasureRating > 100)
-                {
-                    _level.TreasureFeeling = 2;
-                }
-                else if (_level.TreasureRating > 80)
-                {
-                    _level.TreasureFeeling = 3;
-                }
-                else if (_level.TreasureRating > 60)
-                {
-                    _level.TreasureFeeling = 4;
-                }
-                else if (_level.TreasureRating > 40)
-                {
-                    _level.TreasureFeeling = 5;
-                }
-                else if (_level.TreasureRating > 30)
-                {
-                    _level.TreasureFeeling = 6;
-                }
-                else if (_level.TreasureRating > 20)
-                {
-                    _level.TreasureFeeling = 7;
-                }
-                else if (_level.TreasureRating > 10)
-                {
-                    _level.TreasureFeeling = 8;
-                }
-                else if (_level.TreasureRating > 0)
-                {
-                    _level.TreasureFeeling = 9;
-                }
-                else
-                {
-                    _level.TreasureFeeling = 10;
-                }
-                if (_level.SpecialTreasure)
-                {
-                    _level.TreasureRating = 1;
-                }
-                if (_level.DangerRating > 100)
-                {
-                    _level.DangerFeeling = 2;
-                }
-                else if (_level.DangerRating > 80)
-                {
-                    _level.DangerFeeling = 3;
-                }
-                else if (_level.DangerRating > 60)
-                {
-                    _level.DangerFeeling = 4;
-                }
-                else if (_level.DangerRating > 40)
-                {
-                    _level.DangerFeeling = 5;
-                }
-                else if (_level.DangerRating > 30)
-                {
-                    _level.DangerFeeling = 6;
-                }
-                else if (_level.DangerRating > 20)
-                {
-                    _level.DangerFeeling = 7;
-                }
-                else if (_level.DangerRating > 10)
-                {
-                    _level.DangerFeeling = 8;
-                }
-                else if (_level.DangerRating > 0)
-                {
-                    _level.DangerFeeling = 9;
-                }
-                else
-                {
-                    _level.DangerFeeling = 10;
-                }
-                if (_level.SpecialDanger)
-                {
-                    _level.DangerFeeling = 1;
-                }
-                if (SaveGame.Instance.DunLevel <= 0)
-                {
-                    _level.TreasureFeeling = 0;
-                    _level.DangerFeeling = 0;
-                }
-                if (_level.OMax >= Constants.MaxOIdx)
-                {
-                    okay = false;
-                }
-                if (_level.MMax >= Constants.MaxMIdx)
-                {
-                    okay = false;
-                }
-                if (num < 100)
-                {
-                    int totalFeeling = _level.TreasureFeeling + _level.DangerFeeling;
-                    if (totalFeeling > 18 ||
-                        (SaveGame.Instance.Difficulty >= 5 && totalFeeling > 16) ||
-                        (SaveGame.Instance.Difficulty >= 10 && totalFeeling > 14) ||
-                        (SaveGame.Instance.Difficulty >= 20 && totalFeeling > 12) ||
-                        (SaveGame.Instance.Difficulty >= 40 && totalFeeling > 10))
-                    {
-                        okay = false;
-                    }
-                }
-                if (okay)
-                {
-                    break;
-                }
-                _level.WipeOList();
-                _level.Monsters.WipeMList();
-            }
-            SaveGame.Instance.Player.GameTime.MarkLevelEntry();
         }
 
         private void MakeCavernLevel()
