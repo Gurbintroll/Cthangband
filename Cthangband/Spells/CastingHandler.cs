@@ -57,7 +57,7 @@ namespace Cthangband.Spells
             string p = _player.Spellcasting.Type == CastingType.Divine ? "prayer" : "spell";
             for (spell = 0; spell < 32; spell++)
             {
-                if ((GlobalData.FakeSpellFlags[sval] & (1u << spell)) != 0)
+                if ((GlobalData.BookSpellFlags[sval] & (1u << spell)) != 0)
                 {
                     spells[num++] = spell;
                 }

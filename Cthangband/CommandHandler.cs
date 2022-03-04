@@ -7,6 +7,10 @@ using System.Reflection;
 
 namespace Cthangband
 {
+    /// <summary>
+    /// Class for handling player commands - simple commands are handled directly and complex
+    /// commands use routines from the command engine
+    /// </summary>
     [Serializable]
     internal class CommandHandler
     {
@@ -14,22 +18,28 @@ namespace Cthangband
         public Level Level;
         public Player Player;
 
-        public void DoCmdBrowse(int item)
+        /// <summary>
+        /// Browse a book
+        /// </summary>
+        /// <param name="itemIndex"> </param>
+        public void DoCmdBrowse(int itemIndex)
         {
             int spell;
-            int num = 0;
+            int spellIndex = 0;
             int[] spells = new int[64];
+            // Make sure we can read
             if (Player.Realm1 == 0 && Player.Realm2 == 0)
             {
                 Profile.Instance.MsgPrint("You cannot read books!");
                 return;
             }
+            // Get a book to read if we don't already have one
             Inventory.ItemFilterUseableSpellBook = true;
-            if (item < 0)
+            if (itemIndex < 0)
             {
-                if (!SaveGame.Instance.GetItem(out item, "Browse which book? ", false, true, true))
+                if (!SaveGame.Instance.GetItem(out itemIndex, "Browse which book? ", false, true, true))
                 {
-                    if (item == -2)
+                    if (itemIndex == -2)
                     {
                         Profile.Instance.MsgPrint("You have no books that you can read.");
                     }
@@ -37,125 +47,110 @@ namespace Cthangband
                     return;
                 }
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            // Check that the book is useable by the player
             Inventory.ItemFilterUseableSpellBook = true;
-            if (!Player.Inventory.ItemMatchesFilter(oPtr))
+            if (!Player.Inventory.ItemMatchesFilter(item))
             {
                 Profile.Instance.MsgPrint("You can't read that.");
                 Inventory.ItemFilterUseableSpellBook = false;
                 return;
             }
             Inventory.ItemFilterUseableSpellBook = false;
-            int sval = oPtr.ItemSubCategory;
+            int bookSubCategory = item.ItemSubCategory;
             SaveGame.Instance.HandleStuff();
+            // Find all spells in the book and add them to the array
             for (spell = 0; spell < 32; spell++)
             {
-                if ((GlobalData.FakeSpellFlags[sval] & (1u << spell)) != 0)
+                if ((GlobalData.BookSpellFlags[bookSubCategory] & (1u << spell)) != 0)
                 {
-                    spells[num++] = spell;
+                    spells[spellIndex++] = spell;
                 }
             }
+            // Save the screen and overprint the spells in the book
             Gui.Save();
-            Player.PrintSpells(spells, num, 1, 20, oPtr.Category.SpellBookToToRealm());
+            Player.PrintSpells(spells, spellIndex, 1, 20, item.Category.SpellBookToToRealm());
             Gui.PrintLine("", 0, 0);
+            // Wait for a keypress and re-load the screen
             Gui.Print("[Press any key to continue]", 0, 23);
             Gui.Inkey();
             Gui.Load();
         }
 
-        public void DoCmdChangeName()
-        {
-            Gui.FullScreenOverlay = true;
-            Gui.Save();
-            Gui.SetBackground(Terminal.BackgroundImage.Paper);
-            CharacterViewer characterViewer = new CharacterViewer(Player);
-            while (true)
-            {
-                characterViewer.DisplayPlayer();
-                Gui.Print(Colour.Orange, "[Press 'c' to change name, or ESC]", 43, 23);
-                char c = Gui.Inkey();
-                if (c == '\x1b')
-                {
-                    break;
-                }
-                if (c == 'c')
-                {
-                    Player.InputPlayerName();
-                }
-                Profile.Instance.MsgPrint(null);
-            }
-            Gui.SetBackground(Terminal.BackgroundImage.Overhead);
-            Gui.Load();
-            Gui.FullScreenOverlay = false;
-            Player.RedrawNeeded.Set(RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrMap |
-                             RedrawFlag.PrEquippy);
-            SaveGame.Instance.HandleStuff();
-        }
-
+        /// <summary>
+        /// Destroy a single item
+        /// </summary>
         public void DoCmdDestroy()
         {
-            int amt = 1;
+            int amount = 1;
             bool force = Gui.CommandArg > 0;
-            if (!SaveGame.Instance.GetItem(out int item, "Destroy which item? ", false, true, true))
+            // Get an item to destroy
+            if (!SaveGame.Instance.GetItem(out int itemIndex, "Destroy which item? ", false, true, true))
             {
-                if (item == -2)
+                if (itemIndex == -2)
                 {
                     Profile.Instance.MsgPrint("You have nothing to destroy.");
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            if (oPtr.Count > 1)
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            // If we have more than one we might not want to destroy all of them
+            if (item.Count > 1)
             {
-                amt = Gui.GetQuantity(null, oPtr.Count, true);
-                if (amt <= 0)
+                amount = Gui.GetQuantity(null, item.Count, true);
+                if (amount <= 0)
                 {
                     return;
                 }
             }
-            int oldNumber = oPtr.Count;
-            oPtr.Count = amt;
-            string oName = oPtr.Description(true, 3);
-            oPtr.Count = oldNumber;
+            int oldNumber = item.Count;
+            item.Count = amount;
+            string itemName = item.Description(true, 3);
+            item.Count = oldNumber;
+            //Only confirm if it's not a worthless item
             if (!force)
             {
-                if (!oPtr.Stompable())
+                if (!item.Stompable())
                 {
-                    string outVal = $"Really destroy {oName}? ";
+                    string outVal = $"Really destroy {itemName}? ";
                     if (!Gui.GetCheck(outVal))
                     {
                         return;
                     }
-                    if (!oPtr.ItemType.HasQuality() && oPtr.ItemType.Category != ItemCategory.Chest)
+                    // If it was something we might want to destroy again, ask
+                    if (!item.ItemType.HasQuality() && item.ItemType.Category != ItemCategory.Chest)
                     {
-                        if (oPtr.IsKnown())
+                        if (item.IsKnown())
                         {
-                            if (Gui.GetCheck($"Always destroy {oName}?"))
+                            if (Gui.GetCheck($"Always destroy {itemName}?"))
                             {
-                                oPtr.ItemType.Stompable[0] = true;
+                                item.ItemType.Stompable[0] = true;
                             }
                         }
                     }
                 }
             }
+            // Destroying something takes a turn
             SaveGame.Instance.EnergyUse = 100;
-            if (oPtr.IsFixedArtifact() || !string.IsNullOrEmpty(oPtr.RandartName))
+            // Can't destroy an artifact artifact
+            if (item.IsFixedArtifact() || !string.IsNullOrEmpty(item.RandartName))
             {
                 string feel = "special";
                 SaveGame.Instance.EnergyUse = 0;
-                Profile.Instance.MsgPrint($"You cannot destroy {oName}.");
-                if (oPtr.IsCursed() || oPtr.IsBroken())
+                Profile.Instance.MsgPrint($"You cannot destroy {itemName}.");
+                if (item.IsCursed() || item.IsBroken())
                 {
                     feel = "terrible";
                 }
-                oPtr.Inscription = feel;
-                oPtr.IdentifyFlags.Set(Constants.IdentSense);
+                item.Inscription = feel;
+                item.IdentifyFlags.Set(Constants.IdentSense);
                 Player.NoticeFlags |= Constants.PnCombine;
                 Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
                 return;
             }
-            Profile.Instance.MsgPrint($"You destroy {oName}.");
-            if (SaveGame.Instance.CommandEngine.ItemFilterHighLevelBook(oPtr))
+            Profile.Instance.MsgPrint($"You destroy {itemName}.");
+            // Warriors and paladins get experience for destroying magic books
+            if (SaveGame.Instance.CommandEngine.ItemFilterHighLevelBook(item))
             {
                 bool gainExpr = false;
                 if (Player.ProfessionIndex == CharacterClass.Warrior)
@@ -166,14 +161,14 @@ namespace Cthangband
                 {
                     if (Player.Realm1 == Realm.Life)
                     {
-                        if (oPtr.Category == ItemCategory.DeathBook)
+                        if (item.Category == ItemCategory.DeathBook)
                         {
                             gainExpr = true;
                         }
                     }
                     else
                     {
-                        if (oPtr.Category == ItemCategory.LifeBook)
+                        if (item.Category == ItemCategory.LifeBook)
                         {
                             gainExpr = true;
                         }
@@ -186,7 +181,7 @@ namespace Cthangband
                     {
                         testerExp = 10000;
                     }
-                    if (oPtr.ItemSubCategory < 3)
+                    if (item.ItemSubCategory < 3)
                     {
                         testerExp /= 4;
                     }
@@ -195,52 +190,65 @@ namespace Cthangband
                         testerExp = 1;
                     }
                     Profile.Instance.MsgPrint("You feel more experienced.");
-                    Player.GainExperience(testerExp * amt);
+                    Player.GainExperience(testerExp * amount);
                 }
             }
-            if (item >= 0)
+            // Tidy up the player's inventory
+            if (itemIndex >= 0)
             {
-                Player.Inventory.InvenItemIncrease(item, -amt);
-                Player.Inventory.InvenItemDescribe(item);
-                Player.Inventory.InvenItemOptimize(item);
+                Player.Inventory.InvenItemIncrease(itemIndex, -amount);
+                Player.Inventory.InvenItemDescribe(itemIndex);
+                Player.Inventory.InvenItemOptimize(itemIndex);
             }
             else
             {
-                SaveGame.Instance.Level.FloorItemIncrease(0 - item, -amt);
-                SaveGame.Instance.Level.FloorItemDescribe(0 - item);
-                SaveGame.Instance.Level.FloorItemOptimize(0 - item);
+                SaveGame.Instance.Level.FloorItemIncrease(0 - itemIndex, -amount);
+                SaveGame.Instance.Level.FloorItemDescribe(0 - itemIndex);
+                SaveGame.Instance.Level.FloorItemOptimize(0 - itemIndex);
             }
         }
 
+        /// <summary>
+        /// Destroy all worthless items in your pack
+        /// </summary>
         public void DoCmdDestroyAll()
         {
             int count = 0;
+            // Look for worthless items
             for (int i = InventorySlot.Pack - 1; i >= 0; i--)
             {
-                Item oPtr = Player.Inventory[i];
-                if (oPtr.ItemType == null)
+                Item item = Player.Inventory[i];
+                if (item.ItemType == null)
                 {
                     continue;
                 }
-                if (!oPtr.Stompable())
+                // Only destroy if it's stompable (i.e. worthless or marked as unwanted)
+                if (!item.Stompable())
                 {
                     continue;
                 }
-                string oName = oPtr.Description(true, 3);
-                Profile.Instance.MsgPrint($"You destroy {oName}.");
+                string itemName = item.Description(true, 3);
+                Profile.Instance.MsgPrint($"You destroy {itemName}.");
                 count++;
-                int amt = oPtr.Count;
-                Player.Inventory.InvenItemIncrease(i, -amt);
+                int amount = item.Count;
+                Player.Inventory.InvenItemIncrease(i, -amount);
                 Player.Inventory.InvenItemOptimize(i);
             }
-            SaveGame.Instance.EnergyUse = 100;
             if (count == 0)
             {
                 Profile.Instance.MsgPrint("You are carrying nothing worth destroying.");
-                SaveGame.Instance.EnergyUse = 0; // Don't take a turn after all
+                SaveGame.Instance.EnergyUse = 0;
+            }
+            else
+            {
+                // If we destroyed at least one thing, take a turn
+                SaveGame.Instance.EnergyUse = 100;
             }
         }
 
+        /// <summary>
+        /// Equip an item
+        /// </summary>
         public void DoCmdEquip()
         {
             SaveGame.Instance.CommandWrk = true;
@@ -556,7 +564,7 @@ namespace Cthangband
                 int gift = -1;
                 for (spell = 0; spell < 32; spell++)
                 {
-                    if ((GlobalData.FakeSpellFlags[sval] & (1u << spell)) != 0)
+                    if ((GlobalData.BookSpellFlags[sval] & (1u << spell)) != 0)
                     {
                         if (!Player.SpellOkay(spell, false, useSetTwo))
                         {
@@ -619,6 +627,35 @@ namespace Cthangband
             SaveGame.Instance.EnergyUse = 50;
             Player.Inventory.InvenTakeoff(item, 255);
             Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
+        }
+
+        public void DoCmdViewCharacter()
+        {
+            Gui.FullScreenOverlay = true;
+            Gui.Save();
+            Gui.SetBackground(Terminal.BackgroundImage.Paper);
+            CharacterViewer characterViewer = new CharacterViewer(Player);
+            while (true)
+            {
+                characterViewer.DisplayPlayer();
+                Gui.Print(Colour.Orange, "[Press 'c' to change name, or ESC]", 43, 23);
+                char c = Gui.Inkey();
+                if (c == '\x1b')
+                {
+                    break;
+                }
+                if (c == 'c')
+                {
+                    Player.InputPlayerName();
+                }
+                Profile.Instance.MsgPrint(null);
+            }
+            Gui.SetBackground(Terminal.BackgroundImage.Overhead);
+            Gui.Load();
+            Gui.FullScreenOverlay = false;
+            Player.RedrawNeeded.Set(RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrMap |
+                             RedrawFlag.PrEquippy);
+            SaveGame.Instance.HandleStuff();
         }
 
         public void DoCmdWield()
@@ -863,7 +900,7 @@ namespace Cthangband
                     }
                 case 'C':
                     {
-                        DoCmdChangeName();
+                        DoCmdViewCharacter();
                         break;
                     }
                 case 'D':

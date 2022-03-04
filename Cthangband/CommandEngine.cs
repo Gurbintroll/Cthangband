@@ -8,7 +8,7 @@ using System;
 namespace Cthangband
 {
     /// <summary>
-    /// Class for handling most player commands
+    /// Class for handling complex player commands
     /// </summary>
     [Serializable]
     internal class CommandEngine

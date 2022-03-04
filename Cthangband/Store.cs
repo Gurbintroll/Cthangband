@@ -467,7 +467,7 @@ namespace Cthangband
             int sval = oPtr.ItemSubCategory;
             for (int spell = 0; spell < 32; spell++)
             {
-                if ((GlobalData.FakeSpellFlags[sval] & (1u << spell)) != 0)
+                if ((GlobalData.BookSpellFlags[sval] & (1u << spell)) != 0)
                 {
                     spells[num++] = spell;
                 }
@@ -1891,7 +1891,7 @@ namespace Cthangband
                     break;
 
                 case 'C':
-                    _command.DoCmdChangeName();
+                    _command.DoCmdViewCharacter();
                     DisplayStore();
                     break;
 

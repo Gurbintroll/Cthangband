@@ -8,8 +8,13 @@ namespace Cthangband.StaticData
         public const int DelayFactor = 4;
         public const int HitpointWarn = 2;
 
+        /// <summary>
+        /// Spell flags for each book
+        /// </summary>
+        public static readonly uint[] BookSpellFlags = { 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 };
+
         public static readonly int[] ChestTraps =
-        {
+                {
             0, ChestTrap.ChestPoison, ChestTrap.ChestLoseStr, ChestTrap.ChestLoseCon, ChestTrap.ChestLoseStr,
             ChestTrap.ChestLoseCon, 0, ChestTrap.ChestPoison, ChestTrap.ChestPoison, ChestTrap.ChestLoseStr,
             ChestTrap.ChestLoseCon, ChestTrap.ChestPoison, ChestTrap.ChestLoseStr | ChestTrap.ChestLoseCon,
@@ -76,8 +81,6 @@ namespace Cthangband.StaticData
 	/* F+70 */    49, 49, 49, 49, 49, 49, 49, 49, 49, 49,
 	/* Fast */    49, 49, 49, 49, 49, 49, 49, 49, 49, 49
         };
-
-        public static readonly uint[] FakeSpellFlags = { 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 };
 
         public static readonly string[] IdentInfo =
         {
