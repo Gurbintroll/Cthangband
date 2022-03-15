@@ -650,7 +650,7 @@ namespace Cthangband
             int[] outIndex = new int[23];
             Colour[] outColour = new Colour[23];
             string[] outDesc = new string[23];
-            int col = SaveGame.Instance.CommandGap;
+            int col = SaveGame.Instance.ItemDisplayColumn;
             int len = 79 - col;
             int lim = 79 - 3;
             lim -= 14 + 2;
@@ -710,7 +710,7 @@ namespace Cthangband
             {
                 Gui.PrintLine("", j + 1, col != 0 ? col - 2 : col);
             }
-            SaveGame.Instance.CommandGap = col;
+            SaveGame.Instance.ItemDisplayColumn = col;
         }
 
         public void ShowInven()
@@ -720,7 +720,7 @@ namespace Cthangband
             int[] outIndex = new int[26];
             Colour[] outColour = new Colour[26];
             string[] outDesc = new string[26];
-            int col = SaveGame.Instance.CommandGap;
+            int col = SaveGame.Instance.ItemDisplayColumn;
             int len = 79 - col;
             int lim = 79 - 3;
             lim -= 9;
@@ -778,7 +778,7 @@ namespace Cthangband
             {
                 Gui.PrintLine("", j + 1, col != 0 ? col - 2 : col);
             }
-            SaveGame.Instance.CommandGap = col;
+            SaveGame.Instance.ItemDisplayColumn = col;
         }
 
         public int WieldSlot(Item oPtr)

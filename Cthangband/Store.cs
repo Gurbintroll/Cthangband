@@ -253,7 +253,7 @@ namespace Cthangband
             SaveGame.Instance.EnergyUse = 0;
             Gui.FullScreenOverlay = false;
             Gui.CommandNew = '\0';
-            SaveGame.Instance.CommandSee = false;
+            SaveGame.Instance.ViewingItemList = false;
             Profile.Instance.MsgPrint(null);
             Gui.Clear();
             Gui.SetBackground(Terminal.BackgroundImage.Overhead);

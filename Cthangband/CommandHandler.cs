@@ -251,7 +251,7 @@ namespace Cthangband
         /// </summary>
         public void DoCmdEquip()
         {
-            SaveGame.Instance.CommandWrk = true;
+            SaveGame.Instance.ViewingEquipment = true;
             Gui.Save();
             SaveGame.Instance.ItemFilterAll = true;
             Player.Inventory.ShowEquip();
@@ -264,11 +264,11 @@ namespace Cthangband
             if (Gui.CommandNew == '\x1b')
             {
                 Gui.CommandNew = (char)0;
-                SaveGame.Instance.CommandGap = 50;
+                SaveGame.Instance.ItemDisplayColumn = 50;
             }
             else
             {
-                SaveGame.Instance.CommandSee = true;
+                SaveGame.Instance.ViewingItemList = true;
             }
         }
 
@@ -339,7 +339,7 @@ namespace Cthangband
 
         public void DoCmdInven()
         {
-            SaveGame.Instance.CommandWrk = false;
+            SaveGame.Instance.ViewingEquipment = false;
             Gui.Save();
             SaveGame.Instance.ItemFilterAll = true;
             Player.Inventory.ShowInven();
@@ -352,11 +352,11 @@ namespace Cthangband
             if (Gui.CommandNew == '\x1b')
             {
                 Gui.CommandNew = (char)0;
-                SaveGame.Instance.CommandGap = 50;
+                SaveGame.Instance.ItemDisplayColumn = 50;
             }
             else
             {
-                SaveGame.Instance.CommandSee = true;
+                SaveGame.Instance.ViewingItemList = true;
             }
         }
 

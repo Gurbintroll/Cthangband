@@ -28,9 +28,6 @@ namespace Cthangband
         public List<AmuletFlavour> AmuletFlavours;
         public LevelStart CameFrom;
         public bool CharacterXtra;
-        public int CommandGap = 50;
-        public bool CommandSee;
-        public bool CommandWrk;
         public bool CreateDownStair;
         public bool CreateUpStair;
         public Dungeon CurDungeon;
@@ -41,6 +38,7 @@ namespace Cthangband
         public int EnergyUse;
         public bool HackMind;
         public bool IsAutosave;
+        public int ItemDisplayColumn = 50;
         public ItemFilterDelegate ItemFilter;
         public bool ItemFilterAll;
         public Level Level;
@@ -64,6 +62,8 @@ namespace Cthangband
         public int TotalFriendLevels;
         public int TotalFriends;
         public int TrackedMonsterIndex;
+        public bool ViewingEquipment;
+        public bool ViewingItemList;
         public List<WandFlavour> WandFlavours;
         private List<Monster> _petList = new List<Monster>();
         private int _seedFlavor;
@@ -356,19 +356,20 @@ namespace Cthangband
             DiedFrom = "(alive and well)";
         }
 
-        public bool GetItem(out int cp, string pmt, bool equip, bool inven, bool floor)
+        public bool GetItem(out int itemIndex, string prompt, bool canChooseFromEquipment, bool canChooseFromInventory, bool canChooseFromFloor)
         {
-            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
+            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
             Inventory inventory = Player.Inventory;
-            int thisOIdx, nextOIdx;
+            int currentItemIndex;
+            int nextItemIndex;
             bool allowFloor = false;
             Profile.Instance.MsgPrint(null);
             bool done = false;
             bool item = false;
-            cp = -1;
+            itemIndex = -1;
             int i1 = 0;
             int i2 = InventorySlot.Pack - 1;
-            if (!inven)
+            if (!canChooseFromInventory)
             {
                 i2 = -1;
             }
@@ -382,7 +383,7 @@ namespace Cthangband
             }
             int e1 = InventorySlot.MeleeWeapon;
             int e2 = InventorySlot.Total - 1;
-            if (!equip)
+            if (!canChooseFromEquipment)
             {
                 e2 = -1;
             }
@@ -394,12 +395,12 @@ namespace Cthangband
             {
                 e2--;
             }
-            if (floor)
+            if (canChooseFromFloor)
             {
-                for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+                for (currentItemIndex = tile.ItemIndex; currentItemIndex != 0; currentItemIndex = nextItemIndex)
                 {
-                    Item oPtr = Level.Items[thisOIdx];
-                    nextOIdx = oPtr.NextInStack;
+                    Item oPtr = Level.Items[currentItemIndex];
+                    nextItemIndex = oPtr.NextInStack;
                     if (inventory.ItemMatchesFilter(oPtr))
                     {
                         allowFloor = true;
@@ -408,44 +409,44 @@ namespace Cthangband
             }
             if (!allowFloor && i1 > i2 && e1 > e2)
             {
-                CommandSee = false;
-                cp = -2;
+                ViewingItemList = false;
+                itemIndex = -2;
                 done = true;
             }
             else
             {
-                if (!CommandSee)
+                if (!ViewingItemList)
                 {
-                    CommandGap = 50;
+                    ItemDisplayColumn = 50;
                 }
-                if (CommandSee && CommandWrk && equip)
+                if (ViewingItemList && ViewingEquipment && canChooseFromEquipment)
                 {
-                    CommandWrk = true;
+                    ViewingEquipment = true;
                 }
-                else if (inven)
+                else if (canChooseFromInventory)
                 {
-                    CommandWrk = false;
+                    ViewingEquipment = false;
                 }
-                else if (equip)
+                else if (canChooseFromEquipment)
                 {
-                    CommandWrk = true;
+                    ViewingEquipment = true;
                 }
                 else
                 {
-                    CommandWrk = false;
+                    ViewingEquipment = false;
                 }
             }
-            if (CommandSee)
+            if (ViewingItemList)
             {
                 Gui.Save();
             }
             while (!done)
             {
-                if (!CommandWrk)
+                if (!ViewingEquipment)
                 {
                     i1.I2A();
                     i2.I2A();
-                    if (CommandSee)
+                    if (ViewingItemList)
                     {
                         Player.Inventory.ShowInven();
                     }
@@ -454,14 +455,14 @@ namespace Cthangband
                 {
                     (e1 - InventorySlot.MeleeWeapon).I2A();
                     (e2 - InventorySlot.MeleeWeapon).I2A();
-                    if (CommandSee)
+                    if (ViewingItemList)
                     {
                         Player.Inventory.ShowEquip();
                     }
                 }
                 string tmpVal;
                 string outVal;
-                if (!CommandWrk)
+                if (!ViewingEquipment)
                 {
                     outVal = "Inven:";
                     if (i1 <= i2)
@@ -469,11 +470,11 @@ namespace Cthangband
                         tmpVal = $" {i1.IndexToLabel()}-{i2.IndexToLabel()},";
                         outVal += tmpVal;
                     }
-                    if (!CommandSee)
+                    if (!ViewingItemList)
                     {
                         outVal += " * to see,";
                     }
-                    if (equip)
+                    if (canChooseFromEquipment)
                     {
                         outVal += " / for Equip,";
                     }
@@ -486,11 +487,11 @@ namespace Cthangband
                         tmpVal = $" {e1.IndexToLabel()}-{e2.IndexToLabel()}";
                         outVal += tmpVal;
                     }
-                    if (!CommandSee)
+                    if (!ViewingItemList)
                     {
                         outVal += " * to see,";
                     }
-                    if (inven)
+                    if (canChooseFromInventory)
                     {
                         outVal += " / for Inven,";
                     }
@@ -500,7 +501,7 @@ namespace Cthangband
                     outVal += " - for floor,";
                 }
                 outVal += " ESC";
-                tmpVal = $"({outVal}) {pmt}";
+                tmpVal = $"({outVal}) {prompt}";
                 Gui.PrintLine(tmpVal, 0, 0);
                 char which = Gui.Inkey();
                 int k;
@@ -508,7 +509,7 @@ namespace Cthangband
                 {
                     case '\x1b':
                         {
-                            CommandGap = 50;
+                            ItemDisplayColumn = 50;
                             done = true;
                             break;
                         }
@@ -516,45 +517,45 @@ namespace Cthangband
                     case '?':
                     case ' ':
                         {
-                            if (!CommandSee)
+                            if (!ViewingItemList)
                             {
                                 Gui.Save();
-                                CommandSee = true;
+                                ViewingItemList = true;
                             }
                             else
                             {
                                 Gui.Load();
-                                CommandSee = false;
+                                ViewingItemList = false;
                             }
                             break;
                         }
                     case '/':
                         {
-                            if (!inven || !equip)
+                            if (!canChooseFromInventory || !canChooseFromEquipment)
                             {
                                 break;
                             }
-                            if (CommandSee)
+                            if (ViewingItemList)
                             {
                                 Gui.Load();
                                 Gui.Save();
                             }
-                            CommandWrk = !CommandWrk;
+                            ViewingEquipment = !ViewingEquipment;
                             break;
                         }
                     case '-':
                         {
                             if (allowFloor)
                             {
-                                for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+                                for (currentItemIndex = tile.ItemIndex; currentItemIndex != 0; currentItemIndex = nextItemIndex)
                                 {
-                                    Item oPtr = Level.Items[thisOIdx];
-                                    nextOIdx = oPtr.NextInStack;
+                                    Item oPtr = Level.Items[currentItemIndex];
+                                    nextItemIndex = oPtr.NextInStack;
                                     if (!inventory.ItemMatchesFilter(oPtr))
                                     {
                                         continue;
                                     }
-                                    cp = 0 - thisOIdx;
+                                    itemIndex = 0 - currentItemIndex;
                                     item = true;
                                     done = true;
                                     break;
@@ -568,7 +569,7 @@ namespace Cthangband
                     case '\n':
                     case '\r':
                         {
-                            if (!CommandWrk)
+                            if (!ViewingEquipment)
                             {
                                 k = i1 == i2 ? i1 : -1;
                             }
@@ -580,7 +581,7 @@ namespace Cthangband
                             {
                                 break;
                             }
-                            cp = k;
+                            itemIndex = k;
                             item = true;
                             done = true;
                             break;
@@ -592,7 +593,7 @@ namespace Cthangband
                             {
                                 which = char.ToLower(which);
                             }
-                            k = !CommandWrk ? Player.Inventory.LabelToInven(which) : Player.Inventory.LabelToEquip(which);
+                            k = !ViewingEquipment ? Player.Inventory.LabelToInven(which) : Player.Inventory.LabelToEquip(which);
                             if (!inventory.GetItemOkay(k))
                             {
                                 break;
@@ -602,18 +603,18 @@ namespace Cthangband
                                 done = true;
                                 break;
                             }
-                            cp = k;
+                            itemIndex = k;
                             item = true;
                             done = true;
                             break;
                         }
                 }
             }
-            if (CommandSee)
+            if (ViewingItemList)
             {
                 Gui.Load();
             }
-            CommandSee = false;
+            ViewingItemList = false;
             Inventory.ItemFilterCategory = 0;
             ItemFilter = null;
             Gui.PrintLine("", 0, 0);
@@ -1913,7 +1914,7 @@ namespace Cthangband
                 }
                 if (Gui.CommandNew == 0)
                 {
-                    CommandSee = false;
+                    ViewingItemList = false;
                 }
                 EnergyUse = 0;
                 if (Player.TimedParalysis != 0 || Player.TimedStun >= 100)
