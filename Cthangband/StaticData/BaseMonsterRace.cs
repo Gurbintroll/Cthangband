@@ -1,4 +1,11 @@
-﻿using Cthangband.Debug;
+﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
+//
+// This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
+// Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
+// and not for profit purposes provided that this copyright and statement are included in all such
+// copies. Other copyrights may also apply.”
+using Cthangband.Debug;
 using Cthangband.Enumerations;
 using System.ComponentModel;
 
@@ -13,38 +20,6 @@ namespace Cthangband.StaticData
             Attack3 = new MonsterAttack();
             Attack4 = new MonsterAttack();
         }
-
-        [Browsable(true)]
-        [Category("Base")]
-        [Description("The shortened name of the monster")]
-        [DefaultValue(false)]
-        public string SplitName1
-        {
-            get;
-            set;
-        }
-
-        [Browsable(true)]
-        [Category("Base")]
-        [Description("The shortened name of the monster")]
-        [DefaultValue(false)]
-        public string SplitName2
-        {
-            get;
-            set;
-        }
-
-        [Browsable(true)]
-        [Category("Base")]
-        [Description("The shortened name of the monster")]
-        [DefaultValue(false)]
-        public string SplitName3
-        {
-            get;
-            set;
-        }
-
-
 
         [Browsable(true)]
         [Category("Spells")]
@@ -1484,6 +1459,36 @@ namespace Cthangband.StaticData
         [Category("Behaviour")]
         [Description("how fast the monster moves (110 = normal speed, higher is better)")]
         public int Speed
+        {
+            get;
+            set;
+        }
+
+        [Browsable(true)]
+        [Category("Base")]
+        [Description("The shortened name of the monster")]
+        [DefaultValue(false)]
+        public string SplitName1
+        {
+            get;
+            set;
+        }
+
+        [Browsable(true)]
+        [Category("Base")]
+        [Description("The shortened name of the monster")]
+        [DefaultValue(false)]
+        public string SplitName2
+        {
+            get;
+            set;
+        }
+
+        [Browsable(true)]
+        [Category("Base")]
+        [Description("The shortened name of the monster")]
+        [DefaultValue(false)]
+        public string SplitName3
         {
             get;
             set;
