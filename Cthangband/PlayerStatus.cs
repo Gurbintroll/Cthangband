@@ -1575,7 +1575,7 @@ namespace Cthangband
                     numKnown++;
                 }
             }
-            _player.NewSpells = numAllowed - numKnown;
+            _player.SpareSpellSlots = numAllowed - numKnown;
             for (i = 63; i >= 0; i--)
             {
                 if (numKnown == 0)
@@ -1600,11 +1600,11 @@ namespace Cthangband
                 sPtr.Learned = false;
                 numKnown--;
                 Profile.Instance.MsgPrint($"You have forgotten the {p} of {sPtr.Name}.");
-                _player.NewSpells++;
+                _player.SpareSpellSlots++;
             }
             for (i = 63; i >= 0; i--)
             {
-                if (_player.NewSpells >= 0)
+                if (_player.SpareSpellSlots >= 0)
                 {
                     break;
                 }
@@ -1626,7 +1626,7 @@ namespace Cthangband
                 sPtr.Learned = false;
                 numKnown--;
                 Profile.Instance.MsgPrint($"You have forgotten the {p} of {sPtr.Name}.");
-                _player.NewSpells++;
+                _player.SpareSpellSlots++;
             }
             int forgottenTotal = 0;
             for (int l = 0; l < 64; l++)
@@ -1638,7 +1638,7 @@ namespace Cthangband
             }
             for (i = 0; i < 64; i++)
             {
-                if (_player.NewSpells <= 0)
+                if (_player.SpareSpellSlots <= 0)
                 {
                     break;
                 }
@@ -1667,7 +1667,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint($"You have remembered the {p} of {sPtr.Name}.");
                 }
-                _player.NewSpells--;
+                _player.SpareSpellSlots--;
             }
             int k = 0;
             int limit = _player.Realm2 == Realm.None ? 32 : 64;
@@ -1698,21 +1698,21 @@ namespace Cthangband
                     k = 64;
                 }
             }
-            if (_player.NewSpells > k)
+            if (_player.SpareSpellSlots > k)
             {
-                _player.NewSpells = k;
+                _player.SpareSpellSlots = k;
             }
-            if (_player.OldSpells != _player.NewSpells)
+            if (_player.OldSpareSpellSlots != _player.SpareSpellSlots)
             {
-                if (_player.NewSpells != 0)
+                if (_player.SpareSpellSlots != 0)
                 {
                     if (!Gui.FullScreenOverlay)
                     {
-                        string suffix = _player.NewSpells != 1 ? "s" : "";
-                        Profile.Instance.MsgPrint($"You can learn {_player.NewSpells} more {p}{suffix}.");
+                        string suffix = _player.SpareSpellSlots != 1 ? "s" : "";
+                        Profile.Instance.MsgPrint($"You can learn {_player.SpareSpellSlots} more {p}{suffix}.");
                     }
                 }
-                _player.OldSpells = _player.NewSpells;
+                _player.OldSpareSpellSlots = _player.SpareSpellSlots;
                 _player.RedrawNeeded.Set(RedrawFlag.PrStudy);
             }
         }
@@ -2289,7 +2289,7 @@ namespace Cthangband
 
         public void PrtStudy()
         {
-            Gui.Print(_player.NewSpells != 0 ? "Study" : "     ", ScreenLocation.RowStudy, ScreenLocation.ColStudy);
+            Gui.Print(_player.SpareSpellSlots != 0 ? "Study" : "     ", ScreenLocation.RowStudy, ScreenLocation.ColStudy);
         }
 
         public void PrtStun()

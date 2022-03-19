@@ -2781,7 +2781,7 @@ namespace Cthangband.Spells
             {
                 info[i++] = "You are looking around very carefully.";
             }
-            if (Player.NewSpells != 0)
+            if (Player.SpareSpellSlots != 0)
             {
                 info[i++] = "You can learn some spells/prayers.";
             }

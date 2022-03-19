@@ -185,11 +185,11 @@ namespace Cthangband
 
         private void DisplayMonster(int rIdx, int num, int of)
         {
-            for (int i = 0; GlobalData.IdentInfo[i] != null; i++)
+            for (int i = 0; GlobalData.SymbolIdentification[i] != null; i++)
             {
-                if (GlobalData.IdentInfo[i][0] == Profile.Instance.MonsterRaces[rIdx].Character)
+                if (GlobalData.SymbolIdentification[i][0] == Profile.Instance.MonsterRaces[rIdx].Character)
                 {
-                    string name = GlobalData.IdentInfo[i].Substring(2);
+                    string name = GlobalData.SymbolIdentification[i].Substring(2);
                     string buf = $"Monster Type: {name} ({num + 1} of {of})";
                     Gui.Print(Colour.Blue, buf, 3, 0);
                     break;

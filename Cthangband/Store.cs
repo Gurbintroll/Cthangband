@@ -1886,7 +1886,7 @@ namespace Cthangband
                     break;
 
                 case 'I':
-                    _command.DoCmdObserve();
+                    _command.DoCmdExamine();
                     break;
 
                 case 'b':

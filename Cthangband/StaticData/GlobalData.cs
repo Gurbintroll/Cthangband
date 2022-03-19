@@ -82,7 +82,7 @@ namespace Cthangband.StaticData
 	/* Fast */    49, 49, 49, 49, 49, 49, 49, 49, 49, 49
         };
 
-        public static readonly string[] IdentInfo =
+        public static readonly string[] SymbolIdentification =
         {
             " :A dark grid", "!:A potion (or oil)", "\":An amulet (or necklace)", "#:A wall (or secret door)",
             "$:Treasure (gold or gems)", "%:A vein (magma or quartz)", "&:Entrance to Inn", "':An open door",

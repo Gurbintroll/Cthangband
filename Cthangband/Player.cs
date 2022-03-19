@@ -123,14 +123,14 @@ namespace Cthangband
         public int MeleeAttacksPerRound;
         public int MissileAttacksPerRound;
         public string Name;
-        public int NewSpells;
+        public int SpareSpellSlots;
         public uint NoticeFlags;
         public bool OldHeavyBow;
         public bool OldHeavyWeapon;
         public int OldLightLevel;
         public bool OldRestrictingArmour;
         public bool OldRestrictingGloves;
-        public int OldSpells;
+        public int OldSpareSpellSlots;
         public bool OldUnpriestlyWeapon;
         public Profession Profession = new Profession();
         public int ProfessionIndex;

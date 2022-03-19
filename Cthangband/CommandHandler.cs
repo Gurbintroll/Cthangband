@@ -258,16 +258,20 @@ namespace Cthangband
         /// </summary>
         public void DoCmdEquip()
         {
+            // We're viewing equipment
             SaveGame.Instance.ViewingEquipment = true;
             Gui.Save();
+            // We're interested in seeing everything
             SaveGame.Instance.ItemFilterAll = true;
             Player.Inventory.ShowEquip();
             SaveGame.Instance.ItemFilterAll = false;
+            // Get a command
             string outVal =
                 $"Equipment: carrying {Player.WeightCarried / 10}.{Player.WeightCarried % 10} pounds ({Player.WeightCarried * 100 / (Player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100 / 2)}% of capacity). Command: ";
             Gui.PrintLine(outVal, 0, 0);
             Gui.CommandNew = Gui.Inkey();
             Gui.Load();
+            // Display details if the player wants
             if (Gui.CommandNew == '\x1b')
             {
                 Gui.CommandNew = (char)0;
@@ -279,8 +283,46 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Examine an item
+        /// </summary>
+        public void DoCmdExamine()
+        {
+            // Get the item to examine
+            if (!SaveGame.Instance.GetItem(out int itemIndex, "Examine which item? ", true, true, true))
+            {
+                if (itemIndex == -2)
+                {
+                    Profile.Instance.MsgPrint("You have nothing to examine.");
+                }
+                return;
+            }
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            // Do we know anything about it?
+            if (item.IdentifyFlags.IsClear(Constants.IdentMental))
+            {
+                Profile.Instance.MsgPrint("You have no special knowledge about that item.");
+                return;
+            }
+            string itemName = item.Description(true, 3);
+            Profile.Instance.MsgPrint($"Examining {itemName}...");
+            // We're not actually identifying it, because it's already itentified, but we want to
+            // repeat the identification text
+            if (!item.IdentifyFully())
+            {
+                Profile.Instance.MsgPrint("You see nothing special.");
+            }
+        }
+
+        /// <summary>
+        /// Repeat the level feeling for the player
+        /// </summary>
+        /// <param name="feelingOnly">
+        /// True to show the feeling only, false to also say where we are
+        /// </param>
         public void DoCmdFeeling(bool feelingOnly)
         {
+            // Some sanity checks
             if (Level.DangerFeeling < 0)
             {
                 Level.DangerFeeling = 0;
@@ -299,6 +341,7 @@ namespace Cthangband
             }
             if (SaveGame.Instance.DunLevel <= 0)
             {
+                // If we need to say where we are, do so
                 if (!feelingOnly)
                 {
                     if (SaveGame.Instance.Wilderness[Player.WildernessY][Player.WildernessX].Town != null)
@@ -315,8 +358,10 @@ namespace Cthangband
                         Profile.Instance.MsgPrint("You are wandering around outside.");
                     }
                 }
+                // If we're not in a dungeon, there's no feeling to be had
                 return;
             }
+            // If we need to say where we are, do so
             if (!feelingOnly)
             {
                 Profile.Instance.MsgPrint($"You are in {SaveGame.Instance.CurDungeon.Name}.");
@@ -325,6 +370,7 @@ namespace Cthangband
                     SaveGame.Instance.Quests.PrintQuestMessage();
                 }
             }
+            // Special feeling overrides the normal two-part feeling
             if (Level.DangerFeeling == 1 || Level.TreasureFeeling == 1)
             {
                 string message = GlobalData.DangerFeelingText[1];
@@ -333,6 +379,7 @@ namespace Cthangband
             }
             else
             {
+                // Make the two-part feeling make a bit more sense by using the correct conjunction
                 string conjunction = ", and ";
                 if ((Level.DangerFeeling > 5 && Level.TreasureFeeling < 6) || (Level.DangerFeeling < 6 && Level.TreasureFeeling > 5))
                 {
@@ -344,18 +391,25 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Show the player's inventory
+        /// </summary>
         public void DoCmdInven()
         {
+            // We're not viewing equipment
             SaveGame.Instance.ViewingEquipment = false;
             Gui.Save();
+            // We want to see everything
             SaveGame.Instance.ItemFilterAll = true;
             Player.Inventory.ShowInven();
             SaveGame.Instance.ItemFilterAll = false;
+            // Get a new command
             string outVal =
                 $"Inventory: carrying {Player.WeightCarried / 10}.{Player.WeightCarried % 10} pounds ({Player.WeightCarried * 100 / (Player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100 / 2)}% of capacity). Command: ";
             Gui.PrintLine(outVal, 0, 0);
             Gui.CommandNew = Gui.Inkey();
             Gui.Load();
+            // Display details if the player wants
             if (Gui.CommandNew == '\x1b')
             {
                 Gui.CommandNew = (char)0;
@@ -367,12 +421,19 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Look in the player's journal for any one of a number of different reasons
+        /// </summary>
         public void DoCmdJournal()
         {
+            // Let the journal itself handle it from here
             Journal journal = new Journal(Player);
             journal.ShowMenu();
         }
 
+        /// <summary>
+        /// Show the game manual
+        /// </summary>
         public void DoCmdManual()
         {
             using (Manual.ManualViewer manual = new Manual.ManualViewer())
@@ -381,131 +442,131 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Show the previous message
+        /// </summary>
         public void DoCmdMessageOne()
         {
             Gui.PrintLine($"> {Profile.Instance.MessageStr(0)}", 0, 0);
         }
 
+        /// <summary>
+        /// Let the player scroll through previous messages
+        /// </summary>
         public void DoCmdMessages()
         {
-            int n = Profile.Instance.MessageNum();
-            int i = 0;
-            int q = 0;
+            int messageNumber = Profile.Instance.MessageNum();
+            int index = 0;
+            int horizontalOffset = 0;
             Gui.FullScreenOverlay = true;
             Gui.Save();
             Gui.SetBackground(Terminal.BackgroundImage.Normal);
+            // Infinite loop showing a page of messages from the index
             while (true)
             {
+                // Clear the screen
                 Gui.Clear();
-                int j;
-                for (j = 0; j < 40 && i + j < n; j++)
+                int row;
+                // Print the messages
+                for (row = 0; row < 40 && index + row < messageNumber; row++)
                 {
-                    string msg = Profile.Instance.MessageStr((short)(i + j));
-                    msg = msg.Length >= q ? msg.Substring(q) : "";
-                    Gui.Print(Colour.White, msg, 41 - j, 0);
+                    string msg = Profile.Instance.MessageStr((short)(index + row));
+                    msg = msg.Length >= horizontalOffset ? msg.Substring(horizontalOffset) : "";
+                    Gui.Print(Colour.White, msg, 41 - row, 0);
                 }
-                Gui.PrintLine($"Message Recall ({i}-{i + j - 1} of {n}), Offset {q}", 0, 0);
+                // Get a command
+                Gui.PrintLine($"Message Recall ({index}-{index + row - 1} of {messageNumber}), Offset {horizontalOffset}", 0, 0);
                 Gui.PrintLine("[Press 'p' for older, 'n' for newer, <dir> to scroll, or ESCAPE]", 43, 0);
-                int k = Gui.Inkey();
-                if (k == '\x1b')
+                int keyCode = Gui.Inkey();
+                if (keyCode == '\x1b')
                 {
+                    // Break out of the infinite loop
                     break;
                 }
-                if (k == '4')
+                if (keyCode == '4')
                 {
-                    q = q >= 40 ? q - 40 : 0;
+                    horizontalOffset = horizontalOffset >= 40 ? horizontalOffset - 40 : 0;
                     continue;
                 }
-                if (k == '6')
+                if (keyCode == '6')
                 {
-                    q += 40;
+                    horizontalOffset += 40;
                     continue;
                 }
-                if (k == '8' || k == '\n' || k == '\r')
+                if (keyCode == '8' || keyCode == '\n' || keyCode == '\r')
                 {
-                    if (i + 1 < n)
+                    if (index + 1 < messageNumber)
                     {
-                        i++;
+                        index++;
                     }
                 }
-                if (k == 'p' || k == ' ')
+                if (keyCode == 'p' || keyCode == ' ')
                 {
-                    if (i + 40 < n)
+                    if (index + 40 < messageNumber)
                     {
-                        i += 40;
+                        index += 40;
                     }
                 }
-                if (k == 'n')
+                if (keyCode == 'n')
                 {
-                    i = i >= 40 ? i - 40 : 0;
+                    index = index >= 40 ? index - 40 : 0;
                 }
-                if (k == '2')
+                if (keyCode == '2')
                 {
-                    i = i >= 1 ? i - 1 : 0;
+                    index = index >= 1 ? index - 1 : 0;
                 }
             }
+            // Tidy up after ourselves
             Gui.Load();
             Gui.FullScreenOverlay = false;
         }
 
-        public void DoCmdObserve()
-        {
-            if (!SaveGame.Instance.GetItem(out int item, "Examine which item? ", true, true, true))
-            {
-                if (item == -2)
-                {
-                    Profile.Instance.MsgPrint("You have nothing to examine.");
-                }
-                return;
-            }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            if (oPtr.IdentifyFlags.IsClear(Constants.IdentMental))
-            {
-                Profile.Instance.MsgPrint("You have no special knowledge about that item.");
-                return;
-            }
-            string oName = oPtr.Description(true, 3);
-            Profile.Instance.MsgPrint($"Examining {oName}...");
-            if (!oPtr.IdentifyFully())
-            {
-                Profile.Instance.MsgPrint("You see nothing special.");
-            }
-        }
-
+        /// <summary>
+        /// Show the player what a particular symbol represents
+        /// </summary>
         public void DoCmdQuerySymbol()
         {
-            int i;
-            if (!Gui.GetCom("Enter character to be identified: ", out char sym))
+            int index;
+            // Get the symbol
+            if (!Gui.GetCom("Enter character to be identified: ", out char symbol))
             {
                 return;
             }
-            for (i = 0; GlobalData.IdentInfo[i] != null; ++i)
+            // Run through the identification array till we find the symbol
+            for (index = 0; GlobalData.SymbolIdentification[index] != null; ++index)
             {
-                if (sym == GlobalData.IdentInfo[i][0])
+                if (symbol == GlobalData.SymbolIdentification[index][0])
                 {
                     break;
                 }
             }
-            string buf = GlobalData.IdentInfo[i] != null
-                ? $"{sym} - {GlobalData.IdentInfo[i].Substring(2)}."
-                : $"{sym} - Unknown Symbol";
+            // Display the symbol and its idenfitication
+            string buf = GlobalData.SymbolIdentification[index] != null
+                ? $"{symbol} - {GlobalData.SymbolIdentification[index].Substring(2)}."
+                : $"{symbol} - Unknown Symbol";
             Profile.Instance.MsgPrint(buf);
         }
 
+        /// <summary>
+        /// Enter a store
+        /// </summary>
         public void DoCmdStore()
         {
-            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
-            if (!cPtr.FeatureType.IsShop)
+            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            // Make sure we're actually on a shop tile
+            if (!tile.FeatureType.IsShop)
             {
                 Profile.Instance.MsgPrint("You see no Stores here.");
                 return;
             }
             Store which = SaveGame.Instance.GetWhichStore();
+            // We can't enter a house unless we own it
             if (which.StoreType == StoreType.StoreHome && Player.TownWithHouse != SaveGame.Instance.CurTown.Index)
             {
                 Profile.Instance.MsgPrint("The door is locked.");
                 return;
             }
+            // Switch from the normal game interface to the store interface
             Level.ForgetLight();
             Level.ForgetView();
             Gui.FullScreenOverlay = true;
@@ -515,14 +576,19 @@ namespace Cthangband
             which.EnterStore(Player, this);
         }
 
+        /// <summary>
+        /// Study a book to learn spells from it
+        /// </summary>
         public void DoCmdStudy()
         {
-            string p = Player.Spellcasting.Type == CastingType.Arcane ? "spell" : "prayer";
+            string spellType = Player.Spellcasting.Type == CastingType.Arcane ? "spell" : "prayer";
+            // If we don't have a realm then we can't do anything
             if (Player.Realm1 == 0)
             {
                 Profile.Instance.MsgPrint("You cannot read books!");
                 return;
             }
+            // We can't learn spells if we're blind or confused
             if (Player.TimedBlindness != 0)
             {
                 Profile.Instance.MsgPrint("You cannot see!");
@@ -533,18 +599,20 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("You are too confused!");
                 return;
             }
-            if (Player.NewSpells == 0)
+            // We can only learn new spells if we have spare slots
+            if (Player.SpareSpellSlots == 0)
             {
-                Profile.Instance.MsgPrint($"You cannot learn any new {p}s!");
+                Profile.Instance.MsgPrint($"You cannot learn any new {spellType}s!");
                 return;
             }
-            string s = Player.NewSpells == 1 ? "" : "s";
-            Profile.Instance.MsgPrint($"You can learn {Player.NewSpells} new {p}{s}.");
+            string plural = Player.SpareSpellSlots == 1 ? "" : "s";
+            Profile.Instance.MsgPrint($"You can learn {Player.SpareSpellSlots} new {spellType}{plural}.");
             Profile.Instance.MsgPrint(null);
+            // Get the spell books we have
             Inventory.ItemFilterUseableSpellBook = true;
-            if (!SaveGame.Instance.GetItem(out int item, "Study which book? ", false, true, true))
+            if (!SaveGame.Instance.GetItem(out int itemIndex, "Study which book? ", false, true, true))
             {
-                if (item == -2)
+                if (itemIndex == -2)
                 {
                     Profile.Instance.MsgPrint("You have no books that you can read.");
                 }
@@ -552,49 +620,57 @@ namespace Cthangband
                 return;
             }
             Inventory.ItemFilterUseableSpellBook = false;
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            int sval = oPtr.ItemSubCategory;
-            bool useSetTwo = oPtr.Category == Player.Realm2.ToSpellBookItemCategory();
+            // Check each book
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            int itemSubCategory = item.ItemSubCategory;
+            bool useSetTwo = item.Category == Player.Realm2.ToSpellBookItemCategory();
             SaveGame.Instance.HandleStuff();
-            int spell;
+            int spellIndex;
+            // Arcane casters can choose their spell
             if (Player.Spellcasting.Type != CastingType.Divine)
             {
                 CastingHandler castingHandler = new CastingHandler(SaveGame.Instance.Player, SaveGame.Instance.Level);
-                if (!castingHandler.GetSpell(out spell, "study", sval, false, useSetTwo) && spell == -1)
+                if (!castingHandler.GetSpell(out spellIndex, "study", itemSubCategory, false, useSetTwo) && spellIndex == -1)
                 {
                     return;
                 }
             }
             else
             {
+                // We need to choose a spell at random
                 int k = 0;
                 int gift = -1;
-                for (spell = 0; spell < 32; spell++)
+                // Gather the potential spells from the book
+                for (spellIndex = 0; spellIndex < 32; spellIndex++)
                 {
-                    if ((GlobalData.BookSpellFlags[sval] & (1u << spell)) != 0)
+                    if ((GlobalData.BookSpellFlags[itemSubCategory] & (1u << spellIndex)) != 0)
                     {
-                        if (!Player.SpellOkay(spell, false, useSetTwo))
+                        if (!Player.SpellOkay(spellIndex, false, useSetTwo))
                         {
                             continue;
                         }
                         k++;
                         if (Program.Rng.RandomLessThan(k) == 0)
                         {
-                            gift = spell;
+                            gift = spellIndex;
                         }
                     }
                 }
-                spell = gift;
+                spellIndex = gift;
             }
-            if (spell < 0)
+            // If we failed to get a spell, return
+            if (spellIndex < 0)
             {
-                Profile.Instance.MsgPrint($"You cannot learn any {p}s from that book.");
+                Profile.Instance.MsgPrint($"You cannot learn any {spellType}s from that book.");
                 return;
             }
+            // Learning a spell takes a turn (although that's not very relevant)
             SaveGame.Instance.EnergyUse = 100;
-            Spell sPtr = useSetTwo ? Player.Spellcasting.Spells[1][spell] : Player.Spellcasting.Spells[0][spell];
-            sPtr.Learned = true;
+            // Mark the spell as learned
+            Spell spell = useSetTwo ? Player.Spellcasting.Spells[1][spellIndex] : Player.Spellcasting.Spells[0][spellIndex];
+            spell.Learned = true;
             int i;
+            // Mark the spell as the last spell learned, in case we need to start forgetting them
             for (i = 0; i < 64; i++)
             {
                 if (Player.Spellcasting.SpellOrder[i] == 99)
@@ -602,16 +678,17 @@ namespace Cthangband
                     break;
                 }
             }
-            Player.Spellcasting.SpellOrder[i] = spell;
-            Profile.Instance.MsgPrint($"You have learned the {p} of {sPtr.Name}.");
+            Player.Spellcasting.SpellOrder[i] = spellIndex;
+            // Let the player know they've learned a spell
+            Profile.Instance.MsgPrint($"You have learned the {spellType} of {spell.Name}.");
             Gui.PlaySound(SoundEffect.Study);
-            Player.NewSpells--;
-            if (Player.NewSpells != 0)
+            Player.SpareSpellSlots--;
+            if (Player.SpareSpellSlots != 0)
             {
-                s = Player.NewSpells != 1 ? "s" : "";
-                Profile.Instance.MsgPrint($"You can learn {Player.NewSpells} more {p}{s}.");
+                plural = Player.SpareSpellSlots != 1 ? "s" : "";
+                Profile.Instance.MsgPrint($"You can learn {Player.SpareSpellSlots} more {spellType}{plural}.");
             }
-            Player.OldSpells = Player.NewSpells;
+            Player.OldSpareSpellSlots = Player.SpareSpellSlots;
             Player.RedrawNeeded.Set(RedrawFlag.PrStudy);
         }
 
@@ -885,7 +962,7 @@ namespace Cthangband
                     }
                 case 'x':
                     {
-                        DoCmdObserve();
+                        DoCmdExamine();
                         break;
                     }
                 case 'z':
