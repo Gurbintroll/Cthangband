@@ -326,9 +326,9 @@ namespace Cthangband
 
         public void Disturb(bool stopSearch)
         {
-            if (Command.CommandRep != 0)
+            if (Command.CommandRepeat != 0)
             {
-                Command.CommandRep = 0;
+                Command.CommandRepeat = 0;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
             }
             if (Resting != 0)
@@ -1289,11 +1289,11 @@ namespace Cthangband
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             NewLevelFlag = false;
             HackMind = false;
-            Gui.CommandCmd = (char)0;
-            Gui.CommandNew = (char)0;
-            Command.CommandRep = 0;
-            Gui.CommandArg = 0;
-            Gui.CommandDir = 0;
+            Gui.CurrentCommand = (char)0;
+            Gui.QueuedCommand = (char)0;
+            Command.CommandRepeat = 0;
+            Gui.CommandArgument = 0;
+            Gui.CommandDirection = 0;
             TargetWho = 0;
             HealthTrack(0);
             Level.Monsters.ShimmerMonsters = true;
@@ -1869,7 +1869,7 @@ namespace Cthangband
                     }
                 }
             }
-            if (Running != 0 || Command.CommandRep != 0 || (Resting != 0 && (Resting & 0x0F) == 0))
+            if (Running != 0 || Command.CommandRepeat != 0 || (Resting != 0 && (Resting & 0x0F) == 0))
             {
                 Gui.DoNotWaitOnInkey = true;
                 if (Gui.Inkey() != 0)
@@ -1920,7 +1920,7 @@ namespace Cthangband
                         RedrawStuff();
                     }
                 }
-                if (Gui.CommandNew == 0)
+                if (Gui.QueuedCommand == 0)
                 {
                     ViewingItemList = false;
                 }
@@ -1942,9 +1942,9 @@ namespace Cthangband
                 {
                     CommandEngine.RunOneStep(0);
                 }
-                else if (Command.CommandRep != 0)
+                else if (Command.CommandRepeat != 0)
                 {
-                    Command.CommandRep--;
+                    Command.CommandRepeat--;
                     Player.RedrawNeeded.Set(RedrawFlag.PrState);
                     RedrawStuff();
                     Profile.Instance.MsgFlag = false;

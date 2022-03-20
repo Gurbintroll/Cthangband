@@ -21,7 +21,7 @@ namespace Cthangband
     [Serializable]
     internal class CommandHandler
     {
-        public int CommandRep;
+        public int CommandRepeat;
         public Level Level;
         public Player Player;
 
@@ -90,7 +90,7 @@ namespace Cthangband
         public void DoCmdDestroy()
         {
             int amount = 1;
-            bool force = Gui.CommandArg > 0;
+            bool force = Gui.CommandArgument > 0;
             // Get an item to destroy
             if (!SaveGame.Instance.GetItem(out int itemIndex, "Destroy which item? ", false, true, true))
             {
@@ -269,12 +269,12 @@ namespace Cthangband
             string outVal =
                 $"Equipment: carrying {Player.WeightCarried / 10}.{Player.WeightCarried % 10} pounds ({Player.WeightCarried * 100 / (Player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100 / 2)}% of capacity). Command: ";
             Gui.PrintLine(outVal, 0, 0);
-            Gui.CommandNew = Gui.Inkey();
+            Gui.QueuedCommand = Gui.Inkey();
             Gui.Load();
             // Display details if the player wants
-            if (Gui.CommandNew == '\x1b')
+            if (Gui.QueuedCommand == '\x1b')
             {
-                Gui.CommandNew = (char)0;
+                Gui.QueuedCommand = (char)0;
                 SaveGame.Instance.ItemDisplayColumn = 50;
             }
             else
@@ -407,12 +407,12 @@ namespace Cthangband
             string outVal =
                 $"Inventory: carrying {Player.WeightCarried / 10}.{Player.WeightCarried % 10} pounds ({Player.WeightCarried * 100 / (Player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100 / 2)}% of capacity). Command: ";
             Gui.PrintLine(outVal, 0, 0);
-            Gui.CommandNew = Gui.Inkey();
+            Gui.QueuedCommand = Gui.Inkey();
             Gui.Load();
             // Display details if the player wants
-            if (Gui.CommandNew == '\x1b')
+            if (Gui.QueuedCommand == '\x1b')
             {
-                Gui.CommandNew = (char)0;
+                Gui.QueuedCommand = (char)0;
                 SaveGame.Instance.ItemDisplayColumn = 50;
             }
             else
@@ -570,9 +570,9 @@ namespace Cthangband
             Level.ForgetLight();
             Level.ForgetView();
             Gui.FullScreenOverlay = true;
-            Gui.CommandArg = 0;
-            CommandRep = 0;
-            Gui.CommandNew = '\0';
+            Gui.CommandArgument = 0;
+            CommandRepeat = 0;
+            Gui.QueuedCommand = '\0';
             which.EnterStore(Player, this);
         }
 
@@ -692,48 +692,62 @@ namespace Cthangband
             Player.RedrawNeeded.Set(RedrawFlag.PrStudy);
         }
 
+        /// <summary>
+        /// Take off an item
+        /// </summary>
         public void DoCmdTakeoff()
         {
-            if (!SaveGame.Instance.GetItem(out int item, "Take off which item? ", true, false, false))
+            // Get the item to take off
+            if (!SaveGame.Instance.GetItem(out int itemIndex, "Take off which item? ", true, false, false))
             {
-                if (item == -2)
+                if (itemIndex == -2)
                 {
                     Profile.Instance.MsgPrint("You are not wearing anything to take off.");
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            if (oPtr.IsCursed())
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            // Can't take of cursed items
+            if (item.IsCursed())
             {
                 Profile.Instance.MsgPrint("Hmmm, it seems to be cursed.");
                 return;
             }
+            // Take off the item
             SaveGame.Instance.EnergyUse = 50;
-            Player.Inventory.InvenTakeoff(item, 255);
+            Player.Inventory.InvenTakeoff(itemIndex, 255);
             Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 
+        /// <summary>
+        /// View the character sheet
+        /// </summary>
         public void DoCmdViewCharacter()
         {
+            // Save the current screen
             Gui.FullScreenOverlay = true;
             Gui.Save();
             Gui.SetBackground(Terminal.BackgroundImage.Paper);
+            // Load the character viewer
             CharacterViewer characterViewer = new CharacterViewer(Player);
             while (true)
             {
                 characterViewer.DisplayPlayer();
                 Gui.Print(Colour.Orange, "[Press 'c' to change name, or ESC]", 43, 23);
-                char c = Gui.Inkey();
-                if (c == '\x1b')
+                char keyPress = Gui.Inkey();
+                // Escape breaks us out of the loop
+                if (keyPress == '\x1b')
                 {
                     break;
                 }
-                if (c == 'c')
+                // 'c' changes name
+                if (keyPress == 'c' || keyPress == 'C')
                 {
                     Player.InputPlayerName();
                 }
                 Profile.Instance.MsgPrint(null);
             }
+            // Restore the screen
             Gui.SetBackground(Terminal.BackgroundImage.Overhead);
             Gui.Load();
             Gui.FullScreenOverlay = false;
@@ -742,82 +756,96 @@ namespace Cthangband
             SaveGame.Instance.HandleStuff();
         }
 
+        /// <summary>
+        /// Wield/wear an item
+        /// </summary>
         public void DoCmdWield()
         {
-            string act;
-            string oName;
+            string weildPhrase;
+            string itemName;
+            // Only interested in wearable items
             SaveGame.Instance.ItemFilter = SaveGame.Instance.CommandEngine.ItemFilterWearable;
-            if (!SaveGame.Instance.GetItem(out int item, "Wear/Wield which item? ", false, true, true))
+            if (!SaveGame.Instance.GetItem(out int itemIndex, "Wear/Wield which item? ", false, true, true))
             {
-                if (item == -2)
+                if (itemIndex == -2)
                 {
                     Profile.Instance.MsgPrint("You have nothing you can wear or wield.");
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            int slot = Player.Inventory.WieldSlot(oPtr);
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            // Find the correct item slot
+            int slot = Player.Inventory.WieldSlot(item);
+            // Can't replace a cursed item
             if (Player.Inventory[slot].IsCursed())
             {
-                oName = Player.Inventory[slot].Description(false, 0);
-                Profile.Instance.MsgPrint($"The {oName} you are {Player.DescribeWieldLocation(slot)} appears to be cursed.");
+                itemName = Player.Inventory[slot].Description(false, 0);
+                Profile.Instance.MsgPrint($"The {itemName} you are {Player.DescribeWieldLocation(slot)} appears to be cursed.");
                 return;
             }
-            if (oPtr.IsCursed() && (oPtr.IsKnown() || oPtr.IdentifyFlags.IsSet(Constants.IdentSense)))
+            // If we know the item to be cursed, confirm its wearing
+            if (item.IsCursed() && (item.IsKnown() || item.IdentifyFlags.IsSet(Constants.IdentSense)))
             {
-                oName = oPtr.Description(false, 0);
-                string dummy = $"Really use the {oName} {{cursed}}? ";
+                itemName = item.Description(false, 0);
+                string dummy = $"Really use the {itemName} {{cursed}}? ";
                 if (!Gui.GetCheck(dummy))
                 {
                     return;
                 }
             }
+            // Use some energy
             SaveGame.Instance.EnergyUse = 100;
-            Item qPtr = new Item(oPtr) { Count = 1 };
-            if (item >= 0)
+            // Pull one item out of the item stack
+            Item wornItem = new Item(item) { Count = 1 };
+            // Reduce the count of the item stack accordingly
+            if (itemIndex >= 0)
             {
-                Player.Inventory.InvenItemIncrease(item, -1);
-                Player.Inventory.InvenItemOptimize(item);
+                Player.Inventory.InvenItemIncrease(itemIndex, -1);
+                Player.Inventory.InvenItemOptimize(itemIndex);
             }
             else
             {
-                SaveGame.Instance.Level.FloorItemIncrease(0 - item, -1);
-                SaveGame.Instance.Level.FloorItemOptimize(0 - item);
+                SaveGame.Instance.Level.FloorItemIncrease(0 - itemIndex, -1);
+                SaveGame.Instance.Level.FloorItemOptimize(0 - itemIndex);
             }
-            oPtr = Player.Inventory[slot];
-            if (oPtr.ItemType != null)
+            // Take off the old item
+            item = Player.Inventory[slot];
+            if (item.ItemType != null)
             {
                 Player.Inventory.InvenTakeoff(slot, 255);
             }
-            Player.Inventory[slot] = new Item(qPtr);
-            oPtr = Player.Inventory[slot];
-            Player.WeightCarried += qPtr.Weight;
+            // Put the item into the wield slot
+            Player.Inventory[slot] = wornItem;
+            // Add the weight of the item
+            Player.WeightCarried += wornItem.Weight;
+            // Inform us what we did
             if (slot == InventorySlot.MeleeWeapon)
             {
-                act = "You are wielding";
+                weildPhrase = "You are wielding";
             }
             else if (slot == InventorySlot.RangedWeapon)
             {
-                act = "You are shooting with";
+                weildPhrase = "You are shooting with";
             }
             else if (slot == InventorySlot.Lightsource)
             {
-                act = "Your light source is";
+                weildPhrase = "Your light source is";
             }
             else if (slot == InventorySlot.Digger)
             {
-                act = "You are digging with";
+                weildPhrase = "You are digging with";
             }
             else
             {
-                act = "You are wearing";
+                weildPhrase = "You are wearing";
             }
-            oName = oPtr.Description(true, 3);
-            Profile.Instance.MsgPrint($"{act} {oName} ({slot.IndexToLabel()}).");
-            if (oPtr.IsCursed())
+            itemName = wornItem.Description(true, 3);
+            Profile.Instance.MsgPrint($"{weildPhrase} {itemName} ({slot.IndexToLabel()}).");
+            // Let us know if it's cursed
+            if (wornItem.IsCursed())
             {
                 Profile.Instance.MsgPrint("Oops! It feels deathly cold!");
-                oPtr.IdentifyFlags.Set(Constants.IdentSense);
+                wornItem.IdentifyFlags.Set(Constants.IdentSense);
             }
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
@@ -825,9 +853,14 @@ namespace Cthangband
             Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 
+        /// <summary>
+        /// Process the player's latest command
+        /// </summary>
         public void ProcessCommand()
         {
-            char c = Gui.CommandCmd;
+            // Get the current command
+            char c = Gui.CurrentCommand;
+            // Big honking switch statement to call the correct function to handle the command
             switch (c)
             {
                 case ' ':
@@ -1040,7 +1073,7 @@ namespace Cthangband
                     }
                 case 'Q':
                     {
-                        DoCmdSuicide();
+                        DoCmdRetire();
                         break;
                     }
                 case 'R':
@@ -1140,52 +1173,62 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Alter a tile in a 'sensibe' way given the tile type
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"> </exception>
         private void DoCmdAlter()
         {
-            bool more = false;
+            // Assume we won't disturb the player
+            bool disturb = false;
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            if (Gui.CommandArg != 0)
+            // We might have a repeat command
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
+            // Get the direction in which to alter something
             if (targetEngine.GetRepDir(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile cPtr = Level.Grid[y][x];
+                GridTile tile = Level.Grid[y][x];
+                // Altering a tile will take a turn
                 SaveGame.Instance.EnergyUse = 100;
-                if (cPtr.MonsterIndex != 0)
+                // We 'alter' a tile by attacking it
+                if (tile.MonsterIndex != 0)
                 {
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else
                 {
-                    switch (cPtr.FeatureType.AlterAction)
+                    // Check the action based on the type of tile
+                    switch (tile.FeatureType.AlterAction)
                     {
                         case FloorTileAlterAction.Nothing:
                             Profile.Instance.MsgPrint("You're not sure what you can do with that...");
                             break;
 
                         case FloorTileAlterAction.Tunnel:
-                            more = SaveGame.Instance.CommandEngine.TunnelThroughTile(y, x);
+                            disturb = SaveGame.Instance.CommandEngine.TunnelThroughTile(y, x);
                             break;
 
                         case FloorTileAlterAction.Disarm:
-                            more = SaveGame.Instance.CommandEngine.DisarmTrap(y, x, dir);
+                            disturb = SaveGame.Instance.CommandEngine.DisarmTrap(y, x, dir);
                             break;
 
                         case FloorTileAlterAction.Open:
-                            more = SaveGame.Instance.CommandEngine.OpenDoor(y, x);
+                            disturb = SaveGame.Instance.CommandEngine.OpenDoor(y, x);
                             break;
 
                         case FloorTileAlterAction.Close:
-                            more = SaveGame.Instance.CommandEngine.CloseDoor(y, x);
+                            disturb = SaveGame.Instance.CommandEngine.CloseDoor(y, x);
                             break;
 
                         case FloorTileAlterAction.Bash:
-                            more = SaveGame.Instance.CommandEngine.BashClosedDoor(y, x, dir);
+                            disturb = SaveGame.Instance.CommandEngine.BashClosedDoor(y, x, dir);
                             break;
 
                         default:
@@ -1193,43 +1236,52 @@ namespace Cthangband
                     }
                 }
             }
-            if (!more)
+            if (!disturb)
             {
                 SaveGame.Instance.Disturb(false);
             }
         }
 
+        /// <summary>
+        /// Bash a door to open it
+        /// </summary>
         private void DoCmdBash()
         {
-            bool more = false;
+            // Assume it won't disturb us
+            bool disturb = false;
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            if (Gui.CommandArg != 0)
+            // We might have a repeat command
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
+            // Get the direction to bash
             if (targetEngine.GetRepDir(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile cPtr = Level.Grid[y][x];
-                if (!cPtr.FeatureType.IsClosedDoor)
+                GridTile tile = Level.Grid[y][x];
+                // Can only bash closed doors
+                if (!tile.FeatureType.IsClosedDoor)
                 {
                     Profile.Instance.MsgPrint("You see nothing there to bash.");
                 }
-                else if (cPtr.MonsterIndex != 0)
+                else if (tile.MonsterIndex != 0)
                 {
+                    // Oops - a montser got in the way
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.BashClosedDoor(y, x, dir);
+                    // Bash the door
+                    disturb = SaveGame.Instance.CommandEngine.BashClosedDoor(y, x, dir);
                 }
             }
-            if (!more)
+            if (!disturb)
             {
                 SaveGame.Instance.Disturb(false);
             }
@@ -1242,13 +1294,13 @@ namespace Cthangband
             bool more = false;
             if (SaveGame.Instance.CommandEngine.CountOpenDoors(coord) == 1)
             {
-                Gui.CommandDir = Level.CoordsToDir(coord.Y, coord.X);
+                Gui.CommandDirection = Level.CoordsToDir(coord.Y, coord.X);
             }
-            if (Gui.CommandArg != 0)
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
             {
@@ -1283,64 +1335,70 @@ namespace Cthangband
             Gui.Refresh();
             Gui.Clear();
             Gui.SetBackground(Terminal.BackgroundImage.Normal);
-            Gui.Print(Colour.Yellow, "Movement Commands", 1, 1);
+            Gui.Print(Colour.Yellow, "Numpad", 1, 1);
             Gui.Print("7 8 9", 3, 1);
             Gui.Print(" \\|/", 4, 1);
             Gui.Print("4- -6 = Move", 5, 1);
             Gui.Print(" /|\\    (+Shift = run)", 6, 1);
             Gui.Print("1 2 3", 7, 1);
             Gui.Print("5 = Stand still", 8, 1);
-            Gui.Print(". = Run", 9, 1);
-            Gui.Print("< = Go up stairs", 10, 1);
-            Gui.Print("> = Go down stairs", 11, 1);
-            Gui.Print("T = Tunnel", 12, 1);
-            Gui.Print("o = Open a door/chest", 13, 1);
-            Gui.Print("c = Close a door", 14, 1);
-            Gui.Print("D = Disarm a trap", 15, 1);
-            Gui.Print("s = Search for traps", 16, 1);
-            Gui.Print("B = Bash a stuck door", 17, 1);
-            Gui.Print("S = Auto-search on/off", 18, 1);
-            Gui.Print("+ = Auto-alter a space", 19, 1);
-            Gui.Print("L = Locate player", 20, 1);
-            Gui.Print("M = View the map", 21, 1);
-            Gui.Print(Colour.Yellow, "Object Commands", 1, 25);
-            Gui.Print("i = Show Inventory", 3, 25);
-            Gui.Print("e = Show equipment", 4, 25);
-            Gui.Print("w = Wield/wear an item", 5, 25);
-            Gui.Print("t = Take off an item", 6, 25);
-            Gui.Print("d = Drop object", 7, 25);
-            Gui.Print("k = Destroy an item", 8, 25);
-            Gui.Print("a = Aim a wand", 9, 25);
-            Gui.Print("b = Browse a book", 10, 25);
-            Gui.Print("r = Read a scroll", 11, 25);
-            Gui.Print("z = Zap a rod", 12, 25);
-            Gui.Print("A = Activate an artifact", 13, 25);
-            Gui.Print("q = Quaff a potion", 14, 25);
-            Gui.Print("r = Read a scroll", 15, 25);
-            Gui.Print("u = Use a staff", 16, 25);
-            Gui.Print("E = Eat some food", 17, 25);
-            Gui.Print("f = Fire a missile weapon", 18, 25);
-            Gui.Print("j = Jam spike in a door", 19, 25);
-            Gui.Print("F = Fuel a light source", 20, 25);
-            Gui.Print("K = Destroy trash objects", 21, 25);
-            Gui.Print(Colour.Yellow, "Other Commands", 1, 52);
-            Gui.Print("C = View your character", 3, 52);
-            Gui.Print("J = View your journal", 4, 52);
-            Gui.Print("R = Rest", 5, 52);
-            Gui.Print("m = Spell/Mentalism power", 6, 52);
-            Gui.Print("p = Racial power", 7, 52);
-            Gui.Print("l = Look around", 8, 52);
+            Gui.Print(Colour.Yellow, "Other Symbols", 10, 1);
+            Gui.Print(". = Run", 12, 1);
+            Gui.Print("< = Go up stairs", 13, 1);
+            Gui.Print("> = Go down stairs", 14, 1);
+            Gui.Print("+ = Auto-alter a space", 15, 1);
+            Gui.Print("* = Target a creature", 16, 1);
+            Gui.Print("/ = Identify a symbol", 17, 1);
+            Gui.Print("? = Command list", 18, 1);
+            Gui.Print("Esc = Save and quit", 20, 1);
+            Gui.Print(Colour.Yellow, "Without Shift", 1, 25);
+            Gui.Print("a = Aim a wand", 3, 25);
+            Gui.Print("b = Browse a book", 4, 25);
+            Gui.Print("c = Close a door", 5, 25);
+            Gui.Print("d = Drop object", 6, 25);
+            Gui.Print("e = Show equipment", 7, 25);
+            Gui.Print("f = Fire a missile weapon", 8, 25);
+            Gui.Print("g = Get (pick up) object", 9, 25);
+            Gui.Print("h = View game help", 10, 25);
+            Gui.Print("i = Show Inventory", 11, 25);
+            Gui.Print("j = Jam spike in a door", 12, 25);
+            Gui.Print("k = Destroy an item", 13, 25);
+            Gui.Print("l = Look around", 14, 25);
+            Gui.Print("m = Spell/Mentalism power", 15, 25);
+            Gui.Print("n =", 16, 25);
+            Gui.Print("o = Open a door/chest", 17, 25);
+            Gui.Print("p = Racial power", 18, 25);
+            Gui.Print("q = Quaff a potion", 19, 25);
+            Gui.Print("r = Read a scroll", 20, 25);
+            Gui.Print("s = Search for traps", 21, 25);
+            Gui.Print("t = Take off an item", 22, 25);
+            Gui.Print("u = Use a staff", 23, 25);
+            Gui.Print("v = Throw object", 24, 25);
+            Gui.Print("w = Wield/wear an item", 25, 25);
+            Gui.Print("x = Examine an object", 26, 25);
+            Gui.Print("y =", 27, 25);
+            Gui.Print("z = Zap a rod", 28, 25);
+            Gui.Print(Colour.Yellow, "With Shift", 1, 52);
+            Gui.Print("A = Activate an artifact", 3, 52);
+            Gui.Print("B = Bash a stuck door", 4, 52);
+            Gui.Print("C = View your character", 5, 52);
+            Gui.Print("D = Disarm a trap", 6, 52);
+            Gui.Print("E = Eat some food", 7, 52);
+            Gui.Print("F = Fuel a light source", 8, 52);
             Gui.Print("H = How you feel here", 10, 52);
-            Gui.Print("O = Show last message", 11, 52);
-            Gui.Print("P = Show previous messages", 12, 52);
-            Gui.Print("* = Target a creature", 13, 52);
-            Gui.Print("/ = Identify a symbol", 14, 52);
-            Gui.Print("x = Examine an object", 15, 52);
-            Gui.Print("Q = Commit suicide", 16, 52);
-            Gui.Print("h = View game help", 9, 52);
+            Gui.Print("J = View your journal", 12, 52);
+            Gui.Print("K = Destroy trash objects", 13, 52);
+            Gui.Print("L = Locate player", 14, 52);
+            Gui.Print("M = View the map", 15, 52);
+            Gui.Print("O = Show last message", 17, 52);
+            Gui.Print("P = Show previous messages", 18, 52);
+            Gui.Print("Q = Quit (Retire character)", 19, 52);
+            Gui.Print("R = Rest", 20, 52);
+            Gui.Print("S = Auto-search on/off", 21, 52);
+            Gui.Print("T = Tunnel", 22, 52);
             if (Player.IsWizard)
             {
-                Gui.Print("W = Wizard command", 17, 52);
+                Gui.Print("W = Wizard command", 25, 52);
             }
             Gui.AnyKey(44);
             Gui.Load();
@@ -1361,14 +1419,14 @@ namespace Cthangband
                 bool tooMany = (numTraps != 0 && numChests != 0) || numTraps > 1 || numChests > 1;
                 if (!tooMany)
                 {
-                    Gui.CommandDir = Level.CoordsToDir(coord.Y, coord.X);
+                    Gui.CommandDirection = Level.CoordsToDir(coord.Y, coord.X);
                 }
             }
-            if (Gui.CommandArg != 0)
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
             {
@@ -1668,14 +1726,14 @@ namespace Cthangband
                 bool tooMany = (numDoors != 0 && numChests != 0) || numDoors > 1 || numChests > 1;
                 if (!tooMany)
                 {
-                    Gui.CommandDir = Level.CoordsToDir(coord.Y, coord.X);
+                    Gui.CommandDirection = Level.CoordsToDir(coord.Y, coord.X);
                 }
             }
-            if (Gui.CommandArg != 0)
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             if (targetEngine.GetRepDir(out int dir))
@@ -2081,7 +2139,7 @@ namespace Cthangband
 
         private void DoCmdRest()
         {
-            if (Gui.CommandArg <= 0)
+            if (Gui.CommandArgument <= 0)
             {
                 const string p = "Rest (0-9999, '*' for HP/SP, '&' as needed): ";
                 if (!Gui.GetString(p, out string outVal, "&", 4))
@@ -2094,35 +2152,66 @@ namespace Cthangband
                 }
                 if (outVal[0] == '&')
                 {
-                    Gui.CommandArg = -2;
+                    Gui.CommandArgument = -2;
                 }
                 else if (outVal[0] == '*')
                 {
-                    Gui.CommandArg = -1;
+                    Gui.CommandArgument = -1;
                 }
                 else
                 {
                     if (int.TryParse(outVal, out int i))
                     {
-                        Gui.CommandArg = i;
+                        Gui.CommandArgument = i;
                     }
-                    if (Gui.CommandArg <= 0)
+                    if (Gui.CommandArgument <= 0)
                     {
                         return;
                     }
                 }
             }
-            if (Gui.CommandArg > 9999)
+            if (Gui.CommandArgument > 9999)
             {
-                Gui.CommandArg = 9999;
+                Gui.CommandArgument = 9999;
             }
             SaveGame.Instance.EnergyUse = 100;
-            SaveGame.Instance.Resting = Gui.CommandArg;
+            SaveGame.Instance.Resting = Gui.CommandArgument;
             Player.IsSearching = false;
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.RedrawNeeded.Set(RedrawFlag.PrState);
             SaveGame.Instance.HandleStuff();
             Gui.Refresh();
+        }
+
+        private void DoCmdRetire()
+        {
+            if (Player.IsWinner)
+            {
+                if (!Gui.GetCheck("Do you want to retire? "))
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (!Player.IsWizard)
+                {
+                    if (!Gui.GetCheck("Do you really want to give up? "))
+                    {
+                        return;
+                    }
+                    Gui.PrintLine("Type the '@' sign to give up (this character will no longer be playable): ", 0, 0);
+                    int i = Gui.Inkey();
+                    Gui.PrintLine("", 0, 0);
+                    if (i != '@')
+                    {
+                        return;
+                    }
+                }
+            }
+            SaveGame.Instance.Playing = false;
+            Player.IsDead = true;
+            SaveGame.Instance.DiedFrom = "quitting";
         }
 
         private void DoCmdRun()
@@ -2135,18 +2224,18 @@ namespace Cthangband
             }
             if (targetEngine.GetRepDir(out int dir))
             {
-                SaveGame.Instance.Running = Gui.CommandArg != 0 ? Gui.CommandArg : 1000;
+                SaveGame.Instance.Running = Gui.CommandArgument != 0 ? Gui.CommandArgument : 1000;
                 SaveGame.Instance.CommandEngine.RunOneStep(dir);
             }
         }
 
         private void DoCmdSearch()
         {
-            if (Gui.CommandArg != 0)
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
             SaveGame.Instance.EnergyUse = 100;
             SaveGame.Instance.CommandEngine.Search();
@@ -2155,11 +2244,11 @@ namespace Cthangband
         private void DoCmdStay(bool pickup)
         {
             GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
-            if (Gui.CommandArg != 0)
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
             SaveGame.Instance.EnergyUse = 100;
             if (Player.SkillSearchFrequency >= 50 || 0 == Program.Rng.RandomLessThan(50 - Player.SkillSearchFrequency))
@@ -2174,39 +2263,8 @@ namespace Cthangband
             if (cPtr.FeatureType.IsShop)
             {
                 SaveGame.Instance.Disturb(false);
-                Gui.CommandNew = '_';
+                Gui.QueuedCommand = '_';
             }
-        }
-
-        private void DoCmdSuicide()
-        {
-            if (Player.IsWinner)
-            {
-                if (!Gui.GetCheck("Do you want to retire? "))
-                {
-                    return;
-                }
-            }
-            else
-            {
-                if (!Player.IsWizard)
-                {
-                    if (!Gui.GetCheck("Do you really want to end it all? "))
-                    {
-                        return;
-                    }
-                    Gui.PrintLine("Please verify SUICIDE by typing the '@' sign: ", 0, 0);
-                    int i = Gui.Inkey();
-                    Gui.PrintLine("", 0, 0);
-                    if (i != '@')
-                    {
-                        return;
-                    }
-                }
-            }
-            SaveGame.Instance.Playing = false;
-            Player.IsDead = true;
-            SaveGame.Instance.DiedFrom = "Suicide";
         }
 
         private void DoCmdTarget()
@@ -2242,11 +2300,11 @@ namespace Cthangband
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             bool more = false;
-            if (Gui.CommandArg != 0)
+            if (Gui.CommandArgument != 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
             {
@@ -2321,11 +2379,11 @@ namespace Cthangband
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             bool more = false;
-            if (Gui.CommandArg > 0)
+            if (Gui.CommandArgument > 0)
             {
-                CommandRep = Gui.CommandArg - 1;
+                CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArg = 0;
+                Gui.CommandArgument = 0;
             }
             if (targetEngine.GetRepDir(out int dir))
             {

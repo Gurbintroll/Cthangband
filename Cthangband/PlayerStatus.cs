@@ -2265,15 +2265,15 @@ namespace Cthangband
                     text += "?????";
                 }
             }
-            else if (SaveGame.Instance.Command.CommandRep != 0)
+            else if (SaveGame.Instance.Command.CommandRepeat != 0)
             {
-                if (SaveGame.Instance.Command.CommandRep > 999)
+                if (SaveGame.Instance.Command.CommandRepeat > 999)
                 {
-                    text = "Rep. " + SaveGame.Instance.Command.CommandRep.ToString().PadRight(5);
+                    text = "Rep. " + SaveGame.Instance.Command.CommandRepeat.ToString().PadRight(5);
                 }
                 else
                 {
-                    text = "Repeat " + SaveGame.Instance.Command.CommandRep.ToString().PadRight(3);
+                    text = "Repeat " + SaveGame.Instance.Command.CommandRepeat.ToString().PadRight(3);
                 }
             }
             else if (_player.IsSearching)

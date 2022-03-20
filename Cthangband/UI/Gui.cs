@@ -20,10 +20,10 @@ namespace Cthangband.UI
     internal static class Gui
     {
         public static readonly Dictionary<Colour, Color> ColorData = new Dictionary<Colour, Color>();
-        public static int CommandArg;
-        public static char CommandCmd;
-        public static int CommandDir;
-        public static char CommandNew;
+        public static int CommandArgument;
+        public static char CurrentCommand;
+        public static int CommandDirection;
+        public static char QueuedCommand;
 
         /// <summary>
         /// Set to skip waiting for a keypress in the Inkey() function
@@ -303,10 +303,10 @@ namespace Cthangband.UI
         public static int GetQuantity(string prompt, int max, bool allbydefault)
         {
             int amt;
-            if (CommandArg != 0)
+            if (CommandArgument != 0)
             {
-                amt = CommandArg;
-                CommandArg = 0;
+                amt = CommandArgument;
+                CommandArgument = 0;
                 if (amt > max)
                 {
                     amt = max;
@@ -846,17 +846,17 @@ namespace Cthangband.UI
         public static void RequestCommand(bool shopping)
         {
             const int mode = Constants.KeymapModeOrig;
-            CommandCmd = (char)0;
-            CommandArg = 0;
-            CommandDir = 0;
+            CurrentCommand = (char)0;
+            CommandArgument = 0;
+            CommandDirection = 0;
             while (true)
             {
                 char cmd;
-                if (CommandNew != 0)
+                if (QueuedCommand != 0)
                 {
                     Profile.Instance.MsgPrint(null);
-                    cmd = CommandNew;
-                    CommandNew = (char)0;
+                    cmd = QueuedCommand;
+                    QueuedCommand = (char)0;
                 }
                 else
                 {
@@ -867,49 +867,49 @@ namespace Cthangband.UI
                 PrintLine("", 0, 0);
                 if (cmd == '0')
                 {
-                    int oldArg = CommandArg;
-                    CommandArg = 0;
+                    int oldArg = CommandArgument;
+                    CommandArgument = 0;
                     PrintLine("Count: ", 0, 0);
                     while (true)
                     {
                         cmd = Inkey();
                         if (cmd == 0x7F || cmd == 0x08)
                         {
-                            CommandArg /= 10;
-                            PrintLine($"Count: {CommandArg}", 0, 0);
+                            CommandArgument /= 10;
+                            PrintLine($"Count: {CommandArgument}", 0, 0);
                         }
                         else if (cmd >= '0' && cmd <= '9')
                         {
-                            if (CommandArg >= 1000)
+                            if (CommandArgument >= 1000)
                             {
-                                CommandArg = 9999;
+                                CommandArgument = 9999;
                             }
                             else
                             {
-                                CommandArg = (CommandArg * 10) + cmd.ToString().ToInt();
+                                CommandArgument = (CommandArgument * 10) + cmd.ToString().ToInt();
                             }
-                            PrintLine($"Count: {CommandArg}", 0, 0);
+                            PrintLine($"Count: {CommandArgument}", 0, 0);
                         }
                         else
                         {
                             break;
                         }
                     }
-                    if (CommandArg == 0)
+                    if (CommandArgument == 0)
                     {
-                        CommandArg = 99;
-                        PrintLine($"Count: {CommandArg}", 0, 0);
+                        CommandArgument = 99;
+                        PrintLine($"Count: {CommandArgument}", 0, 0);
                     }
                     if (oldArg != 0)
                     {
-                        CommandArg = oldArg;
-                        PrintLine($"Count: {CommandArg}", 0, 0);
+                        CommandArgument = oldArg;
+                        PrintLine($"Count: {CommandArgument}", 0, 0);
                     }
                     if (cmd == ' ' || cmd == '\n' || cmd == '\r')
                     {
                         if (!GetCom("Command: ", out cmd))
                         {
-                            CommandArg = 0;
+                            CommandArgument = 0;
                             continue;
                         }
                     }
@@ -933,30 +933,30 @@ namespace Cthangband.UI
                 {
                     continue;
                 }
-                CommandCmd = cmd;
+                CurrentCommand = cmd;
                 break;
             }
-            if (CommandArg <= 0 && !shopping)
+            if (CommandArgument <= 0 && !shopping)
             {
-                if ("TBDocs+".Contains(CommandCmd.ToString()))
+                if ("TBDocs+".Contains(CurrentCommand.ToString()))
                 {
-                    CommandArg = 99;
+                    CommandArgument = 99;
                 }
             }
             if (shopping)
             {
-                switch (CommandCmd)
+                switch (CurrentCommand)
                 {
                     case 'p':
-                        CommandCmd = 'g';
+                        CurrentCommand = 'g';
                         break;
 
                     case 'm':
-                        CommandCmd = 'g';
+                        CurrentCommand = 'g';
                         break;
 
                     case 's':
-                        CommandCmd = 'd';
+                        CurrentCommand = 'd';
                         break;
                 }
             }

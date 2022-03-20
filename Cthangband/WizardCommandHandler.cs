@@ -57,7 +57,7 @@ namespace Cthangband
                     break;
 
                 case 'C':
-                    WizCreateNamedArt((FixedArtifactId)Gui.CommandArg);
+                    WizCreateNamedArt((FixedArtifactId)Gui.CommandArgument);
                     break;
 
                 case 'd':
@@ -73,11 +73,11 @@ namespace Cthangband
                     break;
 
                 case 'g':
-                    if (Gui.CommandArg <= 0)
+                    if (Gui.CommandArgument <= 0)
                     {
-                        Gui.CommandArg = 1;
+                        Gui.CommandArgument = 1;
                     }
-                    SaveGame.Instance.Level.Acquirement(_player.MapY, _player.MapX, Gui.CommandArg, false);
+                    SaveGame.Instance.Level.Acquirement(_player.MapY, _player.MapX, Gui.CommandArgument, false);
                     break;
 
                 case 'h':
@@ -117,11 +117,11 @@ namespace Cthangband
                     break;
 
                 case 'N':
-                    DoCmdWizNamedFriendly(Gui.CommandArg, true);
+                    DoCmdWizNamedFriendly(Gui.CommandArgument, true);
                     break;
 
                 case 'n':
-                    DoCmdWizNamed(Gui.CommandArg, true);
+                    DoCmdWizNamed(Gui.CommandArgument, true);
                     break;
 
                 case 'o':
@@ -133,11 +133,11 @@ namespace Cthangband
                     break;
 
                 case 's':
-                    if (Gui.CommandArg <= 0)
+                    if (Gui.CommandArgument <= 0)
                     {
-                        Gui.CommandArg = 1;
+                        Gui.CommandArgument = 1;
                     }
-                    DoCmdWizSummon(Gui.CommandArg);
+                    DoCmdWizSummon(Gui.CommandArgument);
                     break;
 
                 case 't':
@@ -145,11 +145,11 @@ namespace Cthangband
                     break;
 
                 case 'v':
-                    if (Gui.CommandArg <= 0)
+                    if (Gui.CommandArgument <= 0)
                     {
-                        Gui.CommandArg = 1;
+                        Gui.CommandArgument = 1;
                     }
-                    SaveGame.Instance.Level.Acquirement(_player.MapY, _player.MapX, Gui.CommandArg, true);
+                    SaveGame.Instance.Level.Acquirement(_player.MapY, _player.MapX, Gui.CommandArgument, true);
                     break;
 
                 case 'w':
@@ -165,9 +165,9 @@ namespace Cthangband
                     break;
 
                 case 'x':
-                    if (Gui.CommandArg != 0)
+                    if (Gui.CommandArgument != 0)
                     {
-                        _player.GainExperience(Gui.CommandArg);
+                        _player.GainExperience(Gui.CommandArgument);
                     }
                     else
                     {
@@ -411,7 +411,7 @@ namespace Cthangband
 
         private void DoCmdWizJump()
         {
-            if (Gui.CommandArg <= 0)
+            if (Gui.CommandArgument <= 0)
             {
                 string ppp = $"Jump to level (0-{SaveGame.Instance.CurDungeon.MaxLevel}): ";
                 string def = $"{SaveGame.Instance.DunLevel}";
@@ -419,21 +419,21 @@ namespace Cthangband
                 {
                     return;
                 }
-                Gui.CommandArg = int.TryParse(tmpVal, out int i) ? i : 0;
+                Gui.CommandArgument = int.TryParse(tmpVal, out int i) ? i : 0;
             }
-            if (Gui.CommandArg < 1)
+            if (Gui.CommandArgument < 1)
             {
-                Gui.CommandArg = 1;
+                Gui.CommandArgument = 1;
             }
-            if (Gui.CommandArg > SaveGame.Instance.CurDungeon.MaxLevel)
+            if (Gui.CommandArgument > SaveGame.Instance.CurDungeon.MaxLevel)
             {
-                Gui.CommandArg = SaveGame.Instance.CurDungeon.MaxLevel;
+                Gui.CommandArgument = SaveGame.Instance.CurDungeon.MaxLevel;
             }
-            Profile.Instance.MsgPrint($"You jump to dungeon level {Gui.CommandArg}.");
+            Profile.Instance.MsgPrint($"You jump to dungeon level {Gui.CommandArgument}.");
             SaveGame.Instance.IsAutosave = true;
             SaveGame.Instance.DoCmdSaveGame();
             SaveGame.Instance.IsAutosave = false;
-            SaveGame.Instance.DunLevel = Gui.CommandArg;
+            SaveGame.Instance.DunLevel = Gui.CommandArgument;
             SaveGame.Instance.NewLevelFlag = true;
         }
 
@@ -442,7 +442,7 @@ namespace Cthangband
             for (int i = 1; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 ItemType kPtr = Profile.Instance.ItemTypes[i];
-                if (kPtr.Level <= Gui.CommandArg)
+                if (kPtr.Level <= Gui.CommandArgument)
                 {
                     kPtr.FlavourAware = true;
                 }

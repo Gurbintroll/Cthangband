@@ -204,7 +204,7 @@ namespace Cthangband.Spells
         public void Alchemy()
         {
             int amt = 1;
-            bool force = Gui.CommandArg > 0;
+            bool force = Gui.CommandArgument > 0;
             if (!_saveGame.GetItem(out int item, "Turn which item to gold? ", false, true, true))
             {
                 if (item == -2)

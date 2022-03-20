@@ -2104,7 +2104,7 @@ namespace Cthangband
             if (tile.FeatureType.IsShop)
             {
                 _saveGame.Disturb(false);
-                Gui.CommandNew = '_';
+                Gui.QueuedCommand = '_';
             }
             // If we've just stepped on an unknown trap then activate it
             else if (tile.FeatureType.Name == "Invis")

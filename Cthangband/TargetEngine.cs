@@ -26,7 +26,7 @@ namespace Cthangband
         public bool GetAimDir(out int dp)
         {
             dp = 0;
-            int dir = Gui.CommandDir;
+            int dir = Gui.CommandDirection;
             if (TargetOkay())
             {
                 dir = 5;
@@ -74,12 +74,12 @@ namespace Cthangband
             {
                 return false;
             }
-            Gui.CommandDir = dir;
+            Gui.CommandDirection = dir;
             if (_player.TimedConfusion != 0)
             {
                 dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
             }
-            if (Gui.CommandDir != dir)
+            if (Gui.CommandDirection != dir)
             {
                 Profile.Instance.MsgPrint("You are confused.");
             }
@@ -134,12 +134,12 @@ namespace Cthangband
             {
                 return;
             }
-            Gui.CommandDir = dir;
+            Gui.CommandDirection = dir;
             if (_player.TimedConfusion != 0)
             {
                 dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
             }
-            if (Gui.CommandDir != dir)
+            if (Gui.CommandDirection != dir)
             {
                 Profile.Instance.MsgPrint("You are confused.");
             }
@@ -149,7 +149,7 @@ namespace Cthangband
         public bool GetRepDir(out int dp)
         {
             dp = 0;
-            int dir = Gui.CommandDir;
+            int dir = Gui.CommandDirection;
             while (dir == 0)
             {
                 if (!Gui.GetCom("Direction (Escape to cancel)? ", out char ch))
@@ -166,7 +166,7 @@ namespace Cthangband
             {
                 return false;
             }
-            Gui.CommandDir = dir;
+            Gui.CommandDirection = dir;
             if (_player.TimedConfusion != 0)
             {
                 if (Program.Rng.RandomLessThan(100) < 75)
@@ -174,7 +174,7 @@ namespace Cthangband
                     dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
                 }
             }
-            if (Gui.CommandDir != dir)
+            if (Gui.CommandDirection != dir)
             {
                 Profile.Instance.MsgPrint("You are confused.");
             }

@@ -259,7 +259,7 @@ namespace Cthangband
             }
             SaveGame.Instance.EnergyUse = 0;
             Gui.FullScreenOverlay = false;
-            Gui.CommandNew = '\0';
+            Gui.QueuedCommand = '\0';
             SaveGame.Instance.ViewingItemList = false;
             Profile.Instance.MsgPrint(null);
             Gui.Clear();
@@ -1531,7 +1531,7 @@ namespace Cthangband
 
         private void StoreProcessCommand()
         {
-            switch (Gui.CommandCmd)
+            switch (Gui.CurrentCommand)
             {
                 case '\x1b':
                     _leaveStore = true;
