@@ -60,74 +60,74 @@ namespace Cthangband
 
         public static string PluraliseMonsterName(this string name)
         {
-            string dummy;
+            string plural;
             if (name.Contains(" of "))
             {
                 int i = name.IndexOf(" of ", StringComparison.Ordinal);
-                dummy = name.Substring(0, i);
-                if (dummy.EndsWith("s"))
+                plural = name.Substring(0, i);
+                if (plural.EndsWith("s"))
                 {
-                    dummy += "es";
+                    plural += "es";
                 }
-                else if (dummy.EndsWith("ng") || dummy.EndsWith("wn"))
+                else if (plural.EndsWith("ng") || plural.EndsWith("wn"))
                 {
                     // Plural matches singular
                 }
                 else
                 {
-                    dummy += "s";
+                    plural += "s";
                 }
-                dummy += name.Substring(i);
+                plural += name.Substring(i);
             }
             else if (name.Contains("coins"))
             {
-                dummy = "piles of " + name;
+                plural = "piles of " + name;
             }
             else if (name == "Manes" || name == "Mi-Go")
             {
-                dummy = name;
+                plural = name;
             }
             else if (name == "Homonculous")
             {
-                dummy = "Homonculi";
+                plural = "Homonculi";
             }
             else if (name == "Stairway to hell")
             {
-                dummy = "Stairways to hell";
+                plural = "Stairways to hell";
             }
             else if (name.EndsWith("y"))
             {
-                dummy = name.Substring(0, name.Length - 1) + "ies";
+                plural = name.Substring(0, name.Length - 1) + "ies";
             }
             else if (name.EndsWith("ouse"))
             {
-                dummy = name.Substring(0, name.Length - 4) + "ice";
+                plural = name.Substring(0, name.Length - 4) + "ice";
             }
             else if (name.EndsWith("kelman") || name.EndsWith(" man"))
             {
-                dummy = name.Substring(0, name.Length - 2) + "en";
+                plural = name.Substring(0, name.Length - 2) + "en";
             }
             else if (name.EndsWith("hild"))
             {
-                dummy = name + "ren";
+                plural = name + "ren";
             }
             else if (name.EndsWith("ex"))
             {
-                dummy = name.Substring(0, name.Length - 2) + "ices";
+                plural = name.Substring(0, name.Length - 2) + "ices";
             }
             else if (name.EndsWith("olf") || name.EndsWith("ief"))
             {
-                dummy = name.Substring(0, name.Length - 1) + "ves";
+                plural = name.Substring(0, name.Length - 1) + "ves";
             }
             else if (name.EndsWith("ch") || name.EndsWith("s"))
             {
-                dummy = name + "es";
+                plural = name + "es";
             }
             else
             {
-                dummy = name + "s";
+                plural = name + "s";
             }
-            return dummy;
+            return plural;
         }
 
         public static Realm SpellBookToToRealm(this ItemCategory category)

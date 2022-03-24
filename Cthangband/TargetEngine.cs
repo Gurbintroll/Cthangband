@@ -23,52 +23,21 @@ namespace Cthangband
             _level = level;
         }
 
-        public bool GetAimDir(out int dp)
+        public bool GetDirectionNoAim(out int dp)
         {
             dp = 0;
             int dir = Gui.CommandDirection;
-            if (TargetOkay())
-            {
-                dir = 5;
-            }
             while (dir == 0)
             {
-                string p = !TargetOkay()
-                    ? "Direction ('*' to choose a target, Escape to cancel)? "
-                    : "Direction ('5' for target, '*' to re-target, Escape to cancel)? ";
-                if (!Gui.GetCom(p, out char command))
+                if (!Gui.GetCom("Direction (Escape to cancel)? ", out char ch))
                 {
                     break;
                 }
-                switch (command)
-                {
-                    case 'T':
-                    case 't':
-                    case '.':
-                    case '5':
-                    case '0':
-                        {
-                            dir = 5;
-                            break;
-                        }
-                    case '*':
-                        {
-                            if (TargetSet(Constants.TargetKill))
-                            {
-                                dir = 5;
-                            }
-                            break;
-                        }
-                    default:
-                        {
-                            dir = Gui.GetKeymapDir(command);
-                            break;
-                        }
-                }
-                if (dir == 5 && !TargetOkay())
-                {
-                    dir = 0;
-                }
+                dir = Gui.GetKeymapDir(ch);
+            }
+            if (dir == 5)
+            {
+                dir = 0;
             }
             if (dir == 0)
             {
@@ -77,7 +46,10 @@ namespace Cthangband
             Gui.CommandDirection = dir;
             if (_player.TimedConfusion != 0)
             {
-                dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
+                if (Program.Rng.RandomLessThan(100) < 75)
+                {
+                    dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
+                }
             }
             if (Gui.CommandDirection != dir)
             {
@@ -87,7 +59,7 @@ namespace Cthangband
             return true;
         }
 
-        public void GetHackDir(out int dp)
+        public void GetDirectionNoAutoAim(out int dp)
         {
             dp = 0;
             int dir = 0;
@@ -146,21 +118,52 @@ namespace Cthangband
             dp = dir;
         }
 
-        public bool GetRepDir(out int dp)
+        public bool GetDirectionWithAim(out int dp)
         {
             dp = 0;
             int dir = Gui.CommandDirection;
+            if (TargetOkay())
+            {
+                dir = 5;
+            }
             while (dir == 0)
             {
-                if (!Gui.GetCom("Direction (Escape to cancel)? ", out char ch))
+                string p = !TargetOkay()
+                    ? "Direction ('*' to choose a target, Escape to cancel)? "
+                    : "Direction ('5' for target, '*' to re-target, Escape to cancel)? ";
+                if (!Gui.GetCom(p, out char command))
                 {
                     break;
                 }
-                dir = Gui.GetKeymapDir(ch);
-            }
-            if (dir == 5)
-            {
-                dir = 0;
+                switch (command)
+                {
+                    case 'T':
+                    case 't':
+                    case '.':
+                    case '5':
+                    case '0':
+                        {
+                            dir = 5;
+                            break;
+                        }
+                    case '*':
+                        {
+                            if (TargetSet(Constants.TargetKill))
+                            {
+                                dir = 5;
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            dir = Gui.GetKeymapDir(command);
+                            break;
+                        }
+                }
+                if (dir == 5 && !TargetOkay())
+                {
+                    dir = 0;
+                }
             }
             if (dir == 0)
             {
@@ -169,10 +172,7 @@ namespace Cthangband
             Gui.CommandDirection = dir;
             if (_player.TimedConfusion != 0)
             {
-                if (Program.Rng.RandomLessThan(100) < 75)
-                {
-                    dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
-                }
+                dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
             }
             if (Gui.CommandDirection != dir)
             {

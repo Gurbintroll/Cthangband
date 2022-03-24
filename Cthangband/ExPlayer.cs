@@ -13,26 +13,26 @@ namespace Cthangband
     [Serializable]
     internal class ExPlayer
     {
+        public readonly int GenderIndex;
         public readonly int Generation;
-        public readonly int Lev;
+        public readonly int Level;
         public readonly string Name;
-        public readonly int PBirthRace;
-        public readonly int Pclass;
-        public readonly int Prace;
-        public readonly int Psex;
+        public readonly int ProfessionIndex;
+        public readonly int RaceIndex;
+        public readonly int RaceIndexAtBirth;
         public readonly Realm Realm1;
         public readonly Realm Realm2;
 
         public ExPlayer(Player player)
         {
-            Psex = player.GenderIndex;
-            Prace = player.RaceIndex;
-            PBirthRace = player.RaceIndexAtBirth;
-            Pclass = player.ProfessionIndex;
+            GenderIndex = player.GenderIndex;
+            RaceIndex = player.RaceIndex;
+            RaceIndexAtBirth = player.RaceIndexAtBirth;
+            ProfessionIndex = player.ProfessionIndex;
             Realm1 = player.Realm1;
             Realm2 = player.Realm2;
             Name = player.Name;
-            Lev = player.Level;
+            Level = player.Level;
             Generation = player.Generation;
         }
     }

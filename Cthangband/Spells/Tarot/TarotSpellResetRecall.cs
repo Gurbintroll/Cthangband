@@ -17,7 +17,7 @@ namespace Cthangband.Spells.Tarot
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             string ppp = $"Reset to which level (1-{player.MaxDlv[SaveGame.Instance.CurDungeon.Index]}): ";
-            string def = $"{Math.Max(SaveGame.Instance.DunLevel, 1)}";
+            string def = $"{Math.Max(SaveGame.Instance.CurrentDepth, 1)}";
             if (!Gui.GetString(ppp, out string tmpVal, def, 10))
             {
                 return;

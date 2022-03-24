@@ -210,9 +210,9 @@ namespace Cthangband
             if (tempDeath)
             {
                 color = Colour.Grey;
-                tempLev = tempProfile.ExPlayer.Lev;
-                tempRace = tempProfile.ExPlayer.Prace;
-                tempClass = tempProfile.ExPlayer.Pclass;
+                tempLev = tempProfile.ExPlayer.Level;
+                tempRace = tempProfile.ExPlayer.RaceIndex;
+                tempClass = tempProfile.ExPlayer.ProfessionIndex;
                 tempRealm = tempProfile.ExPlayer.Realm1;
                 tempName = tempProfile.ExPlayer.Name.Trim() + tempProfile.ExPlayer.Generation.ToRoman(true);
             }

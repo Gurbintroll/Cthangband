@@ -90,7 +90,7 @@ namespace Cthangband
         {
             for (int i = 0; i < Count; i++)
             {
-                if (this[i].Level == SaveGame.Instance.DunLevel &&
+                if (this[i].Level == SaveGame.Instance.CurrentDepth &&
                     this[i].Dungeon == SaveGame.Instance.CurDungeon.Index)
                 {
                     return this[i].RIdx;
@@ -103,7 +103,7 @@ namespace Cthangband
         {
             for (int i = 0; i < Count; i++)
             {
-                if (this[i].Level == SaveGame.Instance.DunLevel &&
+                if (this[i].Level == SaveGame.Instance.CurrentDepth &&
                     this[i].Dungeon == SaveGame.Instance.CurDungeon.Index)
                 {
                     return i;

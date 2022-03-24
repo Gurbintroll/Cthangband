@@ -613,7 +613,7 @@ namespace Cthangband.Spells
             }
             else
             {
-                if (!targetEngine.GetAimDir(out int dir))
+                if (!targetEngine.GetDirectionWithAim(out int dir))
                 {
                     return;
                 }
@@ -3231,12 +3231,12 @@ namespace Cthangband.Spells
                 return;
             }
             Level.DeleteObject(Player.MapY, Player.MapX);
-            if (_saveGame.DunLevel <= 0)
+            if (_saveGame.CurrentDepth <= 0)
             {
                 Level.CaveSetFeat(Player.MapY, Player.MapX, "DownStair");
             }
-            else if (_saveGame.Quests.IsQuest(_saveGame.DunLevel) ||
-                     _saveGame.DunLevel >= _saveGame.CurDungeon.MaxLevel)
+            else if (_saveGame.Quests.IsQuest(_saveGame.CurrentDepth) ||
+                     _saveGame.CurrentDepth >= _saveGame.CurDungeon.MaxLevel)
             {
                 Level.CaveSetFeat(Player.MapY, Player.MapX,
                     _saveGame.CurDungeon.Tower ? "DownStair" : "UpStair");
@@ -3452,23 +3452,23 @@ namespace Cthangband.Spells
                 Profile.Instance.MsgPrint("A mysterious force prevents you from teleporting!");
                 return;
             }
-            if (_saveGame.DunLevel <= 0)
+            if (_saveGame.CurrentDepth <= 0)
             {
                 Profile.Instance.MsgPrint("You sink through the floor.");
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
-                _saveGame.DunLevel++;
+                _saveGame.CurrentDepth++;
                 _saveGame.NewLevelFlag = true;
             }
-            else if (_saveGame.Quests.IsQuest(_saveGame.DunLevel) ||
-                     _saveGame.DunLevel >= _saveGame.CurDungeon.MaxLevel)
+            else if (_saveGame.Quests.IsQuest(_saveGame.CurrentDepth) ||
+                     _saveGame.CurrentDepth >= _saveGame.CurDungeon.MaxLevel)
             {
                 Profile.Instance.MsgPrint("You rise up through the ceiling.");
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
-                _saveGame.DunLevel--;
+                _saveGame.CurrentDepth--;
                 _saveGame.NewLevelFlag = true;
             }
             else if (Program.Rng.RandomLessThan(100) < 50)
@@ -3477,7 +3477,7 @@ namespace Cthangband.Spells
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
-                _saveGame.DunLevel--;
+                _saveGame.CurrentDepth--;
                 _saveGame.NewLevelFlag = true;
                 _saveGame.CameFrom = LevelStart.StartRandom;
             }
@@ -3487,7 +3487,7 @@ namespace Cthangband.Spells
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
-                _saveGame.DunLevel++;
+                _saveGame.CurrentDepth++;
                 _saveGame.NewLevelFlag = true;
             }
             Gui.PlaySound(SoundEffect.TeleportLevel);

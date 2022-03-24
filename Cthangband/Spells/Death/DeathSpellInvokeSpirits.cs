@@ -34,7 +34,7 @@ namespace Cthangband.Spells.Death
             }
             TargetEngine targetEngine = new TargetEngine(player, level);
             int die = Program.Rng.DieRoll(100) + (player.Level / 5);
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }

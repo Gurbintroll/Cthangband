@@ -19,7 +19,7 @@ namespace Cthangband.Mutations.ActiveMutations
             {
                 return;
             }
-            if (!saveGame.Quests.IsQuest(saveGame.DunLevel) && saveGame.DunLevel != 0)
+            if (!saveGame.Quests.IsQuest(saveGame.CurrentDepth) && saveGame.CurrentDepth != 0)
             {
                 saveGame.SpellEffects.Earthquake(player.MapY, player.MapX, 10);
             }

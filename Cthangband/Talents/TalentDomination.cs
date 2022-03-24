@@ -26,7 +26,7 @@ namespace Cthangband.Talents
             TargetEngine targetEngine = new TargetEngine(player, level);
             if (player.Level < 30)
             {
-                if (!targetEngine.GetAimDir(out int dir))
+                if (!targetEngine.GetDirectionWithAim(out int dir))
                 {
                     return;
                 }

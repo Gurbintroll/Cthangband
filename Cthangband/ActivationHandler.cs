@@ -165,7 +165,7 @@ namespace Cthangband
                     case FixedArtifactId.RingOfMagic:
                         {
                             Profile.Instance.MsgPrint("You order Frakir to strangle your opponent.");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -194,7 +194,7 @@ namespace Cthangband
                     case FixedArtifactId.RingOfElementalPowerFire:
                         {
                             Profile.Instance.MsgPrint("The ring glows deep red...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -206,7 +206,7 @@ namespace Cthangband
                     case FixedArtifactId.RingOfElementalPowerIce:
                         {
                             Profile.Instance.MsgPrint("The ring glows bright white...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -218,7 +218,7 @@ namespace Cthangband
                     case FixedArtifactId.RingOfElementalPowerStorm:
                         {
                             Profile.Instance.MsgPrint("The ring glows deep blue...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -230,7 +230,7 @@ namespace Cthangband
                     case FixedArtifactId.RingOfSet:
                         {
                             Profile.Instance.MsgPrint("The ring glows intensely black...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -252,7 +252,7 @@ namespace Cthangband
                     // Bladeturner heals you and gives you timed resistances
                     case FixedArtifactId.DragonScaleBladeturner:
                         {
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -386,7 +386,7 @@ namespace Cthangband
                     case FixedArtifactId.GlovesOfLight:
                         {
                             Profile.Instance.MsgPrint("Your gloves glow extremely brightly...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -399,7 +399,7 @@ namespace Cthangband
                     case FixedArtifactId.GauntletIronfist:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in fire...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -411,7 +411,7 @@ namespace Cthangband
                     case FixedArtifactId.GauntletsOfGhouls:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in frost...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -423,7 +423,7 @@ namespace Cthangband
                     case FixedArtifactId.GauntletsWhiteSpark:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in sparks...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -435,7 +435,7 @@ namespace Cthangband
                     case FixedArtifactId.GauntletsOfTheDead:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in acid...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -447,7 +447,7 @@ namespace Cthangband
                     case FixedArtifactId.CestiOfCombat:
                         {
                             Profile.Instance.MsgPrint("Your cesti grows magical spikes...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -483,7 +483,7 @@ namespace Cthangband
                     case FixedArtifactId.DaggerOfFaith:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in fire...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -495,7 +495,7 @@ namespace Cthangband
                     case FixedArtifactId.DaggerOfHope:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in frost...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -507,7 +507,7 @@ namespace Cthangband
                     case FixedArtifactId.DaggerOfCharity:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in sparks...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -519,7 +519,7 @@ namespace Cthangband
                     case FixedArtifactId.DaggerOfThoth:
                         {
                             Profile.Instance.MsgPrint("Your dagger throbs deep green...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -531,7 +531,7 @@ namespace Cthangband
                     case FixedArtifactId.DaggerIcicle:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in frost...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -585,7 +585,7 @@ namespace Cthangband
                     case FixedArtifactId.SwordExcalibur:
                         {
                             Profile.Instance.MsgPrint("Your sword glows an intense blue...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -606,7 +606,7 @@ namespace Cthangband
                     case FixedArtifactId.SwordOfEverflame:
                         {
                             Profile.Instance.MsgPrint("Your sword glows an intense red...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -618,7 +618,7 @@ namespace Cthangband
                     case FixedArtifactId.AxeOfTheoden:
                         {
                             Profile.Instance.MsgPrint("Your axe blade glows black...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -630,7 +630,7 @@ namespace Cthangband
                     case FixedArtifactId.SpearGungnir:
                         {
                             Profile.Instance.MsgPrint("Your spear crackles with electricity...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -642,7 +642,7 @@ namespace Cthangband
                     case FixedArtifactId.SpearOfDestiny:
                         {
                             Profile.Instance.MsgPrint("Your spear pulsates...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -671,7 +671,7 @@ namespace Cthangband
                     case FixedArtifactId.TridentOfTheGnorri:
                         {
                             Profile.Instance.MsgPrint("Your trident glows deep red...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -691,7 +691,7 @@ namespace Cthangband
                     case FixedArtifactId.FlailTotila:
                         {
                             Profile.Instance.MsgPrint("Your flail glows in scintillating colours...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -703,7 +703,7 @@ namespace Cthangband
                     case FixedArtifactId.MorningStarFirestarter:
                         {
                             Profile.Instance.MsgPrint("Your morning star rages in fire...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -751,7 +751,7 @@ namespace Cthangband
                     case FixedArtifactId.HammerJustice:
                         {
                             Profile.Instance.MsgPrint("Your hammer glows white...");
-                            if (!targetEngine.GetAimDir(out dir))
+                            if (!targetEngine.GetDirectionWithAim(out dir))
                             {
                                 return;
                             }
@@ -781,7 +781,7 @@ namespace Cthangband
             // Dragon armour gives you a ball of the relevant damage type
             if (item.Category == ItemCategory.DragArmor)
             {
-                if (!targetEngine.GetAimDir(out dir))
+                if (!targetEngine.GetDirectionWithAim(out dir))
                 {
                     return;
                 }
@@ -932,7 +932,7 @@ namespace Cthangband
             // Elemental rings give you a ball of the appropriate element
             if (item.Category == ItemCategory.Ring)
             {
-                if (!targetEngine.GetAimDir(out dir))
+                if (!targetEngine.GetDirectionWithAim(out dir))
                 {
                     return;
                 }
@@ -1003,7 +1003,7 @@ namespace Cthangband
             }
             // Aim the wand
             TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }
@@ -1712,7 +1712,7 @@ namespace Cthangband
             Item ammunitionStack = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             TargetEngine targetEngine = new TargetEngine(_player, _level);
             // Find out where we're aiming at
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }
@@ -2488,7 +2488,7 @@ namespace Cthangband
         {
             // Get the location to be spiked
             TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (targetEngine.GetRepDir(out int dir))
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 int y = _player.MapY + _level.KeypadDirectionYOffset[dir];
                 int x = _player.MapX + _level.KeypadDirectionXOffset[dir];
@@ -2556,7 +2556,7 @@ namespace Cthangband
             }
             Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }
@@ -3210,7 +3210,7 @@ namespace Cthangband
                 !item.IsFlavourAware())
             {
                 TargetEngine targetEngine = new TargetEngine(_player, _level);
-                if (!targetEngine.GetAimDir(out dir))
+                if (!targetEngine.GetDirectionWithAim(out dir))
                 {
                     return;
                 }

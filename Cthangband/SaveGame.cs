@@ -38,10 +38,10 @@ namespace Cthangband
         public bool CreateDownStair;
         public bool CreateUpStair;
         public Dungeon CurDungeon;
+        public int CurrentDepth;
         public Town CurTown;
         public string DiedFrom;
-        public int DunLevel;
-        public int DunOffset;
+        public int DungeonDifficulty;
         public int EnergyUse;
         public bool HackMind;
         public bool IsAutosave;
@@ -93,7 +93,7 @@ namespace Cthangband
             get; set;
         }
 
-        public int Difficulty => DunLevel + DunOffset;
+        public int Difficulty => CurrentDepth + DungeonDifficulty;
 
         public void ActivateDreadCurse()
         {
@@ -744,7 +744,7 @@ namespace Cthangband
             {
                 number = 0;
             }
-            if (Quests.IsQuest(DunLevel) && (rPtr.Flags1 & MonsterFlag1.Guardian) != 0)
+            if (Quests.IsQuest(CurrentDepth) && (rPtr.Flags1 & MonsterFlag1.Guardian) != 0)
             {
                 qIdx = Quests.GetQuestNumber();
                 Quests[qIdx].Killed++;
@@ -816,7 +816,7 @@ namespace Cthangband
             }
             else
             {
-                if (DunLevel < CurDungeon.MaxLevel)
+                if (CurrentDepth < CurDungeon.MaxLevel)
                 {
                     while (!Level.CaveValidBold(y, x))
                     {
@@ -921,7 +921,7 @@ namespace Cthangband
                     dungeon.RandomiseOffset();
                 }
                 Profile.Instance.ItemTypes.ResetStompability();
-                DunLevel = 0;
+                CurrentDepth = 0;
                 CurTown = Towns[Program.Rng.RandomLessThan(Towns.Length)];
                 while (CurTown.Char == 'K' || CurTown.Char == 'N')
                 {
@@ -930,7 +930,7 @@ namespace Cthangband
                 CurDungeon = Dungeons[CurTown.Index];
                 RecallDungeon = CurDungeon.Index;
                 Player.MaxDlv[RecallDungeon] = 1;
-                DunOffset = 0;
+                DungeonDifficulty = 0;
                 Player.WildernessX = CurTown.X;
                 Player.WildernessY = CurTown.Y;
                 CameFrom = LevelStart.StartRandom;
@@ -1303,11 +1303,11 @@ namespace Cthangband
             {
                 Player.MaxLevelGained = Player.Level;
             }
-            if (Player.MaxDlv[CurDungeon.Index] < DunLevel)
+            if (Player.MaxDlv[CurDungeon.Index] < CurrentDepth)
             {
-                Player.MaxDlv[CurDungeon.Index] = DunLevel;
+                Player.MaxDlv[CurDungeon.Index] = CurrentDepth;
             }
-            if (Quests.IsQuest(DunLevel))
+            if (Quests.IsQuest(CurrentDepth))
             {
                 if (CurDungeon.Tower)
                 {
@@ -1318,7 +1318,7 @@ namespace Cthangband
                     CreateDownStair = false;
                 }
             }
-            if (DunLevel <= 0)
+            if (CurrentDepth <= 0)
             {
                 CreateDownStair = false;
                 CreateUpStair = false;
@@ -1358,7 +1358,7 @@ namespace Cthangband
             {
                 return;
             }
-            if (Quests.IsQuest(DunLevel))
+            if (Quests.IsQuest(CurrentDepth))
             {
                 Quests.QuestDiscovery();
             }
@@ -1371,7 +1371,7 @@ namespace Cthangband
                 Command.DoCmdStore();
                 CameFrom = LevelStart.StartRandom;
             }
-            if (DunLevel == 0)
+            if (CurrentDepth == 0)
             {
                 if (Difficulty == 0)
                 {
@@ -1384,7 +1384,7 @@ namespace Cthangband
             }
             else
             {
-                if (Quests.IsQuest(DunLevel))
+                if (Quests.IsQuest(CurrentDepth))
                 {
                     Gui.Mixer.Play(MusicTrack.QuestLevel);
                 }
@@ -1473,7 +1473,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                if (DunLevel > 0)
+                if (CurrentDepth > 0)
                 {
                     Command.DoCmdFeeling(true);
                 }
@@ -1752,7 +1752,7 @@ namespace Cthangband
 
         private void Kingly()
         {
-            DunLevel = 0;
+            CurrentDepth = 0;
             DiedFrom = "Ripe Old Age";
             Player.ExperiencePoints = Player.MaxExperienceGained;
             Player.Level = Player.MaxLevelGained;
@@ -1826,7 +1826,7 @@ namespace Cthangband
                 Gui.Print(buf, 39, 1);
                 buf = $"Level {corpse.Level} {Profession.ClassSubName(corpse.ProfessionIndex, corpse.Realm1)}";
                 Gui.Print(buf, 40, 1);
-                string tmp = $"Killed on Level {DunLevel}".PadLeft(45);
+                string tmp = $"Killed on Level {CurrentDepth}".PadLeft(45);
                 Gui.Print(tmp, 39, 34);
                 tmp = $"by {DiedFrom}".PadLeft(45);
                 Gui.Print(tmp, 40, 34);
@@ -2042,7 +2042,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("All Hallows Eve and the ghouls come out to play...");
                 Level.Monsters.SummonSpecific(Player.MapY, Player.MapX, Difficulty, Constants.SummonUndead);
             }
-            if (DunLevel <= 0)
+            if (CurrentDepth <= 0)
             {
                 if (Player.GameTime.IsDawn)
                 {
@@ -2121,7 +2121,7 @@ namespace Cthangband
             bool caveNoRegen = false;
             if (Player.RaceIndex == RaceId.Vampire)
             {
-                if (DunLevel <= 0 && !Player.HasLightResistance && Player.TimedInvulnerability == 0 &&
+                if (CurrentDepth <= 0 && !Player.HasLightResistance && Player.TimedInvulnerability == 0 &&
                     Player.GameTime.IsLight)
                 {
                     if (Level.Grid[Player.MapY][Player.MapX].TileFlags.IsSet(GridTile.SelfLit))
@@ -2536,7 +2536,7 @@ namespace Cthangband
                 if (Player.WordOfRecallDelay == 0)
                 {
                     Disturb(false);
-                    if (DunLevel != 0)
+                    if (CurrentDepth != 0)
                     {
                         Profile.Instance.MsgPrint(CurDungeon.Tower
                             ? "You feel yourself yanked downwards!"
@@ -2545,7 +2545,7 @@ namespace Cthangband
                         DoCmdSaveGame();
                         IsAutosave = false;
                         RecallDungeon = CurDungeon.Index;
-                        DunLevel = 0;
+                        CurrentDepth = 0;
                         if (Player.TownWithHouse > -1)
                         {
                             CurTown = Towns[Player.TownWithHouse];
@@ -2573,10 +2573,10 @@ namespace Cthangband
                         CurDungeon = Dungeons[RecallDungeon];
                         Player.WildernessX = CurDungeon.X;
                         Player.WildernessY = CurDungeon.Y;
-                        DunLevel = Player.MaxDlv[CurDungeon.Index];
-                        if (DunLevel < 1)
+                        CurrentDepth = Player.MaxDlv[CurDungeon.Index];
+                        if (CurrentDepth < 1)
                         {
-                            DunLevel = 1;
+                            CurrentDepth = 1;
                         }
                         NewLevelFlag = true;
                     }

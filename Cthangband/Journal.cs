@@ -786,7 +786,7 @@ namespace Cthangband
                 recallTown = "your house in " + SaveGame.Instance.Dungeons[_player.TownWithHouse].Shortname;
             }
             Gui.Print(Colour.Brown,
-                SaveGame.Instance.DunLevel == 0
+                SaveGame.Instance.CurrentDepth == 0
                     ? $"If you recall now, you will return to level {recallLev} of {recallDungeon}."
                     : $"If you recall now, you will return to {recallTown}.", 6, 0);
             string description =

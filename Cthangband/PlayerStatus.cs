@@ -1953,7 +1953,7 @@ namespace Cthangband
         public void PrtDepth()
         {
             string depths;
-            if (SaveGame.Instance.DunLevel == 0)
+            if (SaveGame.Instance.CurrentDepth == 0)
             {
                 if (SaveGame.Instance.Wilderness[_player.WildernessY][_player.WildernessX].Dungeon != null)
                 {
@@ -1967,9 +1967,9 @@ namespace Cthangband
             }
             else
             {
-                depths = $"lvl {SaveGame.Instance.DunLevel}+{SaveGame.Instance.DunOffset}";
+                depths = $"lvl {SaveGame.Instance.CurrentDepth}+{SaveGame.Instance.DungeonDifficulty}";
                 SaveGame.Instance.CurDungeon.KnownOffset = true;
-                if (SaveGame.Instance.DunLevel == SaveGame.Instance.CurDungeon.MaxLevel)
+                if (SaveGame.Instance.CurrentDepth == SaveGame.Instance.CurDungeon.MaxLevel)
                 {
                     SaveGame.Instance.CurDungeon.KnownDepth = true;
                 }

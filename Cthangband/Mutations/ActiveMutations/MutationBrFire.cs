@@ -22,7 +22,7 @@ namespace Cthangband.Mutations.ActiveMutations
             }
             TargetEngine targetEngine = new TargetEngine(player, level);
             Profile.Instance.MsgPrint("You breathe fire...");
-            if (targetEngine.GetAimDir(out int dir))
+            if (targetEngine.GetDirectionWithAim(out int dir))
             {
                 saveGame.SpellEffects.FireBall(new ProjectFire(SaveGame.Instance.SpellEffects), dir, player.Level * 2, -(1 + (player.Level / 20)));
             }

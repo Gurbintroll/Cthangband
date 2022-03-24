@@ -22,7 +22,7 @@ namespace Cthangband.Mutations.ActiveMutations
             }
             TargetEngine targetEngine = new TargetEngine(player, level);
             Profile.Instance.MsgPrint("You spit acid...");
-            if (targetEngine.GetAimDir(out int dir))
+            if (targetEngine.GetDirectionWithAim(out int dir))
             {
                 saveGame.SpellEffects.FireBall(new ProjectAcid(SaveGame.Instance.SpellEffects), dir, player.Level, 1 + (player.Level / 30));
             }

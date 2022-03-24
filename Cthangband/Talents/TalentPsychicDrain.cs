@@ -24,7 +24,7 @@ namespace Cthangband.Talents
         public override void Use(Player player, Level level, SaveGame saveGame)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }

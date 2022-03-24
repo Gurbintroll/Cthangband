@@ -16,7 +16,7 @@ namespace Cthangband.Spells.Nature
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }

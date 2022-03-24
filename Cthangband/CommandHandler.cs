@@ -339,7 +339,7 @@ namespace Cthangband
             {
                 Level.TreasureFeeling = 10;
             }
-            if (SaveGame.Instance.DunLevel <= 0)
+            if (SaveGame.Instance.CurrentDepth <= 0)
             {
                 // If we need to say where we are, do so
                 if (!feelingOnly)
@@ -365,7 +365,7 @@ namespace Cthangband
             if (!feelingOnly)
             {
                 Profile.Instance.MsgPrint($"You are in {SaveGame.Instance.CurDungeon.Name}.");
-                if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel))
+                if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
                 {
                     SaveGame.Instance.Quests.PrintQuestMessage();
                 }
@@ -1190,7 +1190,7 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // Get the direction in which to alter something
-            if (targetEngine.GetRepDir(out int dir))
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
@@ -1258,7 +1258,7 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // Get the direction to bash
-            if (targetEngine.GetRepDir(out int dir))
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
@@ -1287,11 +1287,15 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Close a door
+        /// </summary>
         private void DoCmdClose()
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             MapCoordinate coord = new MapCoordinate();
-            bool more = false;
+            bool disturb = false;
+            // If there's only one door, assume we mean that one and don't ask for a direction
             if (SaveGame.Instance.CommandEngine.CountOpenDoors(coord) == 1)
             {
                 Gui.CommandDirection = Level.CoordsToDir(coord.Y, coord.X);
@@ -1302,32 +1306,39 @@ namespace Cthangband
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArgument = 0;
             }
-            if (targetEngine.GetRepDir(out int dir))
+            // Tet the location to close
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile cPtr = Level.Grid[y][x];
-                if (cPtr.FeatureType.Category != FloorTileTypeCategory.OpenDoorway)
+                GridTile tile = Level.Grid[y][x];
+                // Can only close actual open doors
+                if (tile.FeatureType.Category != FloorTileTypeCategory.OpenDoorway)
                 {
                     Profile.Instance.MsgPrint("You see nothing there to close.");
                 }
-                else if (cPtr.MonsterIndex != 0)
+                // Can't close if there's a monster in the way
+                else if (tile.MonsterIndex != 0)
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
+                // Actually close the door
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.CloseDoor(y, x);
+                    disturb = SaveGame.Instance.CommandEngine.CloseDoor(y, x);
                 }
             }
-            if (!more)
+            if (!disturb)
             {
                 SaveGame.Instance.Disturb(false);
             }
         }
 
+        /// <summary>
+        /// Display a list of all the keyboard commands
+        /// </summary>
         private void DoCmdCommandList()
         {
             Gui.FullScreenOverlay = true;
@@ -1396,6 +1407,7 @@ namespace Cthangband
             Gui.Print("R = Rest", 20, 52);
             Gui.Print("S = Auto-search on/off", 21, 52);
             Gui.Print("T = Tunnel", 22, 52);
+            Gui.Print("V = Version info", 24, 52);
             if (Player.IsWizard)
             {
                 Gui.Print("W = Wizard command", 25, 52);
@@ -1406,111 +1418,136 @@ namespace Cthangband
             Gui.FullScreenOverlay = false;
         }
 
+        /// <summary>
+        /// Attempt to disarm a trap on a door or chest
+        /// </summary>
         private void DoCmdDisarm()
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            bool more = false;
+            bool disturb = false;
             MapCoordinate coord = new MapCoordinate();
             int numTraps =
                 SaveGame.Instance.CommandEngine.CountKnownTraps(coord);
             int numChests = SaveGame.Instance.CommandEngine.CountChests(coord, true);
+            // Count the possible traps and chests we might want to disarm
             if (numTraps != 0 || numChests != 0)
             {
                 bool tooMany = (numTraps != 0 && numChests != 0) || numTraps > 1 || numChests > 1;
+                // If only one then we have our target
                 if (!tooMany)
                 {
                     Gui.CommandDirection = Level.CoordsToDir(coord.Y, coord.X);
                 }
             }
+            // We might be repeating the command
             if (Gui.CommandArgument != 0)
             {
                 CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArgument = 0;
             }
-            if (targetEngine.GetRepDir(out int dir))
+            // Get a direction if we don't already have one
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile cPtr = Level.Grid[y][x];
-                int oIdx = Level.ChestCheck(y, x);
-                if (!cPtr.FeatureType.IsTrap &&
-                    oIdx == 0)
+                GridTile tile = Level.Grid[y][x];
+                // Check for a chest
+                int itemIndex = Level.ChestCheck(y, x);
+                if (!tile.FeatureType.IsTrap &&
+                    itemIndex == 0)
                 {
                     Profile.Instance.MsgPrint("You see nothing there to disarm.");
                 }
-                else if (cPtr.MonsterIndex != 0)
+                // Can't disarm with a monster in the way
+                else if (tile.MonsterIndex != 0)
                 {
                     Profile.Instance.MsgPrint("There is a monster in the way!");
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
-                else if (oIdx != 0)
+                // Disarm the chest or trap
+                else if (itemIndex != 0)
                 {
-                    more = SaveGame.Instance.CommandEngine.DisarmChest(y, x, oIdx);
+                    disturb = SaveGame.Instance.CommandEngine.DisarmChest(y, x, itemIndex);
                 }
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.DisarmTrap(y, x, dir);
+                    disturb = SaveGame.Instance.CommandEngine.DisarmTrap(y, x, dir);
                 }
             }
-            if (!more)
+            if (!disturb)
             {
                 SaveGame.Instance.Disturb(false);
             }
         }
 
+        /// <summary>
+        /// Drop an item
+        /// </summary>
         private void DoCmdDrop()
         {
-            int amt = 1;
-            if (!SaveGame.Instance.GetItem(out int item, "Drop which item? ", true, true, false))
+            int amount = 1;
+            // Get an item from the inventory/equipment
+            if (!SaveGame.Instance.GetItem(out int itemIndex, "Drop which item? ", true, true, false))
             {
-                if (item == -2)
+                if (itemIndex == -2)
                 {
                     Profile.Instance.MsgPrint("You have nothing to drop.");
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            if (item >= InventorySlot.MeleeWeapon && oPtr.IsCursed())
+            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            // Can't drop a cursed item
+            if (itemIndex >= InventorySlot.MeleeWeapon && item.IsCursed())
             {
                 Profile.Instance.MsgPrint("Hmmm, it seems to be cursed.");
                 return;
             }
-            if (oPtr.Count > 1)
+            // It's a stack, so find out how many to drop
+            if (item.Count > 1)
             {
-                amt = Gui.GetQuantity(null, oPtr.Count, true);
-                if (amt <= 0)
+                amount = Gui.GetQuantity(null, item.Count, true);
+                if (amount <= 0)
                 {
                     return;
                 }
             }
+            // Dropping things takes half a turn
             SaveGame.Instance.EnergyUse = 50;
-            Player.Inventory.InvenDrop(item, amt);
+            // Drop it
+            Player.Inventory.InvenDrop(itemIndex, amount);
             Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 
+        /// <summary>
+        /// Use a down staircase or trapdoor
+        /// </summary>
         private void DoCmdGoDown()
         {
-            bool fallTrap = false;
-            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
-            if (cPtr.FeatureType.Category == FloorTileTypeCategory.TrapDoor)
+            bool isTrapDoor = false;
+            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            if (tile.FeatureType.Category == FloorTileTypeCategory.TrapDoor)
             {
-                fallTrap = true;
+                isTrapDoor = true;
             }
-            if (cPtr.FeatureType.Name != "DownStair" && !fallTrap)
+            // Need to be on a staircase or trapdoor
+            if (tile.FeatureType.Name != "DownStair" && !isTrapDoor)
             {
                 Profile.Instance.MsgPrint("I see no down staircase here.");
                 SaveGame.Instance.EnergyUse = 0;
                 return;
             }
+            // Going onto a new level takes no energy, so the monsters on that level don't get to
+            // move before us
             SaveGame.Instance.EnergyUse = 0;
-            if (fallTrap)
+            if (isTrapDoor)
             {
                 Profile.Instance.MsgPrint("You deliberately jump through the trap door.");
             }
             else
             {
-                if (SaveGame.Instance.DunLevel == 0)
+                // If we're on the surface, enter the relevant dungeon
+                if (SaveGame.Instance.CurrentDepth == 0)
                 {
                     SaveGame.Instance.CurDungeon = SaveGame.Instance.Wilderness[Player.WildernessY][Player.WildernessX].Dungeon;
                     Profile.Instance.MsgPrint($"You enter {SaveGame.Instance.CurDungeon.Name}");
@@ -1519,23 +1556,26 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint("You enter a maze of down staircases.");
                 }
+                // Save the game, just in case
                 SaveGame.Instance.IsAutosave = true;
                 SaveGame.Instance.DoCmdSaveGame();
                 SaveGame.Instance.IsAutosave = false;
             }
+            // If we're in a tower, a down staircase reduces our level number
             if (SaveGame.Instance.CurDungeon.Tower)
             {
-                int j = Program.Rng.DieRoll(5);
-                if (j > SaveGame.Instance.DunLevel)
+                int stairLength = Program.Rng.DieRoll(5);
+                if (stairLength > SaveGame.Instance.CurrentDepth)
                 {
-                    j = 1;
+                    stairLength = 1;
                 }
-                SaveGame.Instance.DunLevel -= j;
-                if (SaveGame.Instance.DunLevel < 0)
+                SaveGame.Instance.CurrentDepth -= stairLength;
+                if (SaveGame.Instance.CurrentDepth < 0)
                 {
-                    SaveGame.Instance.DunLevel = 0;
+                    SaveGame.Instance.CurrentDepth = 0;
                 }
-                if (SaveGame.Instance.DunLevel == 0)
+                // If we left the dungeon, remember where we are
+                if (SaveGame.Instance.CurrentDepth == 0)
                 {
                     Player.WildernessX = SaveGame.Instance.CurDungeon.X;
                     Player.WildernessY = SaveGame.Instance.CurDungeon.Y;
@@ -1544,46 +1584,57 @@ namespace Cthangband
             }
             else
             {
-                int j = Program.Rng.DieRoll(5);
-                if (j > SaveGame.Instance.DunLevel)
+                // We're not in a tower, so a down staircase increases our level number
+                int stairLength = Program.Rng.DieRoll(5);
+                if (stairLength > SaveGame.Instance.CurrentDepth)
                 {
-                    j = 1;
+                    stairLength = 1;
                 }
-                for (int i = 0; i < j; i++)
+                // Check if we're about to go past a quest level
+                for (int i = 0; i < stairLength; i++)
                 {
-                    SaveGame.Instance.DunLevel++;
-                    if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel))
+                    SaveGame.Instance.CurrentDepth++;
+                    if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
                     {
+                        // Stop on the quest level
                         break;
                     }
                 }
-                if (SaveGame.Instance.DunLevel > SaveGame.Instance.CurDungeon.MaxLevel)
+                // Don't go past the max dungeon level
+                if (SaveGame.Instance.CurrentDepth > SaveGame.Instance.CurDungeon.MaxLevel)
                 {
-                    SaveGame.Instance.DunLevel = SaveGame.Instance.CurDungeon.MaxLevel;
+                    SaveGame.Instance.CurrentDepth = SaveGame.Instance.CurDungeon.MaxLevel;
                 }
-                if (SaveGame.Instance.DunLevel == 0)
+                // From the surface we always go to the first level
+                if (SaveGame.Instance.CurrentDepth == 0)
                 {
-                    SaveGame.Instance.DunLevel++;
+                    SaveGame.Instance.CurrentDepth++;
                 }
             }
+            // We need a new level
             SaveGame.Instance.NewLevelFlag = true;
-            if (!fallTrap)
+            if (!isTrapDoor)
             {
+                // Create an up staircase if we went down a staircase
                 SaveGame.Instance.CreateUpStair = true;
             }
         }
 
+        // Go up a staircase
         private void DoCmdGoUp()
         {
-            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
-            if (cPtr.FeatureType.Name != "UpStair")
+            // We need to actually be on an up staircase
+            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            if (tile.FeatureType.Name != "UpStair")
             {
                 Profile.Instance.MsgPrint("I see no up staircase here.");
                 SaveGame.Instance.EnergyUse = 0;
                 return;
             }
+            // Use no energy, so monsters in the new level don't get to go first
             SaveGame.Instance.EnergyUse = 0;
-            if (SaveGame.Instance.DunLevel == 0)
+            // If we're outside then we must be entering a tower
+            if (SaveGame.Instance.CurrentDepth == 0)
             {
                 SaveGame.Instance.CurDungeon = SaveGame.Instance.Wilderness[Player.WildernessY][Player.WildernessX].Dungeon;
                 Profile.Instance.MsgPrint($"You enter {SaveGame.Instance.CurDungeon.Name}");
@@ -1592,42 +1643,47 @@ namespace Cthangband
             {
                 Profile.Instance.MsgPrint("You enter a maze of up staircases.");
             }
+            // Autosave, just in case
             SaveGame.Instance.IsAutosave = true;
             SaveGame.Instance.DoCmdSaveGame();
             SaveGame.Instance.IsAutosave = false;
+            // In a tower, going up increases our level number
             if (SaveGame.Instance.CurDungeon.Tower)
             {
-                int j = Program.Rng.DieRoll(5);
-                if (j > SaveGame.Instance.DunLevel)
+                int stairLength = Program.Rng.DieRoll(5);
+                if (stairLength > SaveGame.Instance.CurrentDepth)
                 {
-                    j = 1;
+                    stairLength = 1;
                 }
-                for (int i = 0; i < j; i++)
+                // Make sure we don't go past a quest level
+                for (int i = 0; i < stairLength; i++)
                 {
-                    SaveGame.Instance.DunLevel++;
-                    if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel))
+                    SaveGame.Instance.CurrentDepth++;
+                    if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
                     {
                         break;
                     }
                 }
-                if (SaveGame.Instance.DunLevel > SaveGame.Instance.CurDungeon.MaxLevel)
+                // Make sure we don't go deeper than the dungeon depth
+                if (SaveGame.Instance.CurrentDepth > SaveGame.Instance.CurDungeon.MaxLevel)
                 {
-                    SaveGame.Instance.DunLevel = SaveGame.Instance.CurDungeon.MaxLevel;
+                    SaveGame.Instance.CurrentDepth = SaveGame.Instance.CurDungeon.MaxLevel;
                 }
             }
             else
             {
+                // We're not in a tower, so going up decreases our level number
                 int j = Program.Rng.DieRoll(5);
-                if (j > SaveGame.Instance.DunLevel)
+                if (j > SaveGame.Instance.CurrentDepth)
                 {
                     j = 1;
                 }
-                SaveGame.Instance.DunLevel -= j;
-                if (SaveGame.Instance.DunLevel < 0)
+                SaveGame.Instance.CurrentDepth -= j;
+                if (SaveGame.Instance.CurrentDepth < 0)
                 {
-                    SaveGame.Instance.DunLevel = 0;
+                    SaveGame.Instance.CurrentDepth = 0;
                 }
-                if (SaveGame.Instance.DunLevel == 0)
+                if (SaveGame.Instance.CurrentDepth == 0)
                 {
                     Player.WildernessX = SaveGame.Instance.CurDungeon.X;
                     Player.WildernessY = SaveGame.Instance.CurDungeon.Y;
@@ -1736,7 +1792,7 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            if (targetEngine.GetRepDir(out int dir))
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
@@ -2222,7 +2278,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("You are too confused!");
                 return;
             }
-            if (targetEngine.GetRepDir(out int dir))
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 SaveGame.Instance.Running = Gui.CommandArgument != 0 ? Gui.CommandArgument : 1000;
                 SaveGame.Instance.CommandEngine.RunOneStep(dir);
@@ -2306,7 +2362,7 @@ namespace Cthangband
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArgument = 0;
             }
-            if (targetEngine.GetRepDir(out int dir))
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
                 int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
@@ -2350,7 +2406,7 @@ namespace Cthangband
             Gui.FullScreenOverlay = true;
             Gui.Save();
             Gui.Clear();
-            if (SaveGame.Instance.DunLevel == 0)
+            if (SaveGame.Instance.CurrentDepth == 0)
             {
                 Gui.SetBackground(Terminal.BackgroundImage.WildMap);
                 SaveGame.Instance.DisplayWildMap();
@@ -2361,7 +2417,7 @@ namespace Cthangband
                 Level.DisplayMap(out cy, out cx);
             }
             Gui.Print(Colour.Orange, "[Press any key to continue]", 43, 26);
-            if (SaveGame.Instance.DunLevel == 0)
+            if (SaveGame.Instance.CurrentDepth == 0)
             {
                 Gui.Goto(Player.WildernessY + 2, Player.WildernessX + 2);
             }
@@ -2385,7 +2441,7 @@ namespace Cthangband
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArgument = 0;
             }
-            if (targetEngine.GetRepDir(out int dir))
+            if (targetEngine.GetDirectionNoAim(out int dir))
             {
                 SaveGame.Instance.EnergyUse = 100;
                 SaveGame.Instance.CommandEngine.MovePlayer(dir, pickup);

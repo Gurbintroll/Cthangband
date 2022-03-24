@@ -148,7 +148,7 @@ namespace Cthangband.Spells.Tarot
             else if (die < 96)
             {
                 Profile.Instance.MsgPrint("It's the Lovers.");
-                if (!targetEngine.GetAimDir(out int dir))
+                if (!targetEngine.GetDirectionWithAim(out int dir))
                 {
                     return;
                 }

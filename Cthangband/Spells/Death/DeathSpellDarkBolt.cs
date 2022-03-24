@@ -32,7 +32,7 @@ namespace Cthangband.Spells.Death
                     break;
             }
             TargetEngine targetEngine = new TargetEngine(player, level);
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }

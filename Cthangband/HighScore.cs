@@ -49,9 +49,9 @@ namespace Cthangband
             }
             Who =
                 $"{player.Name.Trim()}{player.Generation.ToRoman(true)} the level {player.Level} {Race.RaceInfo[player.RaceIndex].Title} {Profession.ClassSubName(player.ProfessionIndex, player.Realm1)}";
-            if (saveGame.DunLevel > 0)
+            if (saveGame.CurrentDepth > 0)
             {
-                Where = $"on level {saveGame.DunLevel} of {saveGame.CurDungeon.Name}";
+                Where = $"on level {saveGame.CurrentDepth} of {saveGame.CurDungeon.Name}";
             }
             else
             {

@@ -20,7 +20,7 @@ namespace Cthangband.Mutations.ActiveMutations
                 return;
             }
             TargetEngine targetEngine = new TargetEngine(player, level);
-            if (!targetEngine.GetRepDir(out int dir))
+            if (!targetEngine.GetDirectionNoAim(out int dir))
             {
                 return;
             }

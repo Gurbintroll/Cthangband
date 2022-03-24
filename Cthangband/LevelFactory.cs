@@ -79,7 +79,7 @@ namespace Cthangband
                     for (int j = 0; j < Level.MaxWid; j++)
                     {
                         _level.Grid[i][j] = new GridTile();
-                        if (SaveGame.Instance.DunLevel == 0)
+                        if (SaveGame.Instance.CurrentDepth == 0)
                         {
                             _level.Grid[i][j].SetBackgroundFeature("Grass");
                         }
@@ -97,7 +97,7 @@ namespace Cthangband
                 _level.PanelRowMax = 0;
                 _level.PanelColMin = 0;
                 _level.PanelColMax = 0;
-                if (SaveGame.Instance.DunLevel == 0)
+                if (SaveGame.Instance.CurrentDepth == 0)
                 {
                     if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
                             .Town != null)
@@ -105,24 +105,24 @@ namespace Cthangband
                         SaveGame.Instance.CurTown =
                             SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
                                 .Town;
-                        SaveGame.Instance.DunOffset = 0;
+                        SaveGame.Instance.DungeonDifficulty = 0;
                         _level.Monsters.DunBias = 0;
                         if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
                                 .Town.Char == 'K')
                         {
-                            SaveGame.Instance.DunOffset = 35;
+                            SaveGame.Instance.DungeonDifficulty = 35;
                             _level.Monsters.DunBias = Constants.SummonCthuloid;
                         }
                     }
                     else if (SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][
                                  SaveGame.Instance.Player.WildernessX].Dungeon != null)
                     {
-                        SaveGame.Instance.DunOffset =
+                        SaveGame.Instance.DungeonDifficulty =
                             SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
                                 .Dungeon.Offset / 2;
-                        if (SaveGame.Instance.DunOffset < 4)
+                        if (SaveGame.Instance.DungeonDifficulty < 4)
                         {
-                            SaveGame.Instance.DunOffset = 4;
+                            SaveGame.Instance.DungeonDifficulty = 4;
                         }
                         _level.Monsters.DunBias =
                             SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX]
@@ -130,13 +130,13 @@ namespace Cthangband
                     }
                     else
                     {
-                        SaveGame.Instance.DunOffset = 2;
+                        SaveGame.Instance.DungeonDifficulty = 2;
                         _level.Monsters.DunBias = Constants.SummonAnimal;
                     }
                 }
                 else
                 {
-                    SaveGame.Instance.DunOffset = SaveGame.Instance.CurDungeon.Offset;
+                    SaveGame.Instance.DungeonDifficulty = SaveGame.Instance.CurDungeon.Offset;
                     _level.Monsters.DunBias = SaveGame.Instance.CurDungeon.Bias;
                 }
                 _level.MonsterLevel = SaveGame.Instance.Difficulty;
@@ -145,7 +145,7 @@ namespace Cthangband
                 _level.SpecialDanger = false;
                 _level.TreasureRating = 0;
                 _level.DangerRating = 0;
-                if (SaveGame.Instance.DunLevel == 0)
+                if (SaveGame.Instance.CurrentDepth == 0)
                 {
                     _level.CurHgt = Constants.ScreenHgt;
                     _level.CurWid = Constants.ScreenWid;
@@ -282,7 +282,7 @@ namespace Cthangband
                 {
                     _level.DangerFeeling = 1;
                 }
-                if (SaveGame.Instance.DunLevel <= 0)
+                if (SaveGame.Instance.CurrentDepth <= 0)
                 {
                     _level.TreasureFeeling = 0;
                     _level.DangerFeeling = 0;
@@ -393,12 +393,12 @@ namespace Cthangband
                             continue;
                         }
                         GridTile cPtr = _level.Grid[y][x];
-                        if (SaveGame.Instance.DunLevel <= 0)
+                        if (SaveGame.Instance.CurrentDepth <= 0)
                         {
                             cPtr.SetFeature("DownStair");
                         }
-                        else if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel) ||
-                                 SaveGame.Instance.DunLevel == SaveGame.Instance.CurDungeon.MaxLevel)
+                        else if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth) ||
+                                 SaveGame.Instance.CurrentDepth == SaveGame.Instance.CurDungeon.MaxLevel)
                         {
                             cPtr.SetFeature(SaveGame.Instance.CurDungeon.Tower ? "DownStair" : "UpStair");
                         }
@@ -1058,7 +1058,7 @@ namespace Cthangband
             {
                 destroyed = true;
             }
-            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel))
+            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
             {
                 destroyed = false;
             }
@@ -2549,7 +2549,7 @@ namespace Cthangband
             int i;
             int k;
             Profile.Instance.MonsterRaces.ResetGuardians();
-            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel))
+            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
             {
                 Profile.Instance.MonsterRaces[SaveGame.Instance.Quests.GetQuestMonster()].Flags1 |=
                     MonsterFlag1.Guardian;
@@ -2577,7 +2577,7 @@ namespace Cthangband
             {
                 k = 2;
             }
-            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel))
+            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
             {
                 int rIdx = SaveGame.Instance.Quests.GetQuestMonster();
                 int qIdx = SaveGame.Instance.Quests.GetQuestNumber();

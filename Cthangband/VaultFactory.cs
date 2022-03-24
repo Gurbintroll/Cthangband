@@ -1241,11 +1241,11 @@ namespace Cthangband
             {
                 return;
             }
-            if (SaveGame.Instance.DunLevel <= 0)
+            if (SaveGame.Instance.CurrentDepth <= 0)
             {
             }
-            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel) ||
-                SaveGame.Instance.DunLevel == SaveGame.Instance.CurDungeon.MaxLevel)
+            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth) ||
+                SaveGame.Instance.CurrentDepth == SaveGame.Instance.CurDungeon.MaxLevel)
             {
                 if (SaveGame.Instance.CurDungeon.Tower)
                 {

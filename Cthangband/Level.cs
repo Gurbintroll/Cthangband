@@ -1060,11 +1060,11 @@ namespace Cthangband
                 return;
             }
             int trapType = Program.Rng.DieRoll(16);
-            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.DunLevel))
+            if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
             {
                 trapType = Program.Rng.DieRoll(15);
             }
-            if (SaveGame.Instance.DunLevel >= SaveGame.Instance.CurDungeon.MaxLevel)
+            if (SaveGame.Instance.CurrentDepth >= SaveGame.Instance.CurDungeon.MaxLevel)
             {
                 trapType = Program.Rng.DieRoll(15);
             }

@@ -1205,9 +1205,9 @@ namespace Cthangband
             }
             else
             {
-                _prevSex = ex.Psex;
-                _prevRace = ex.PBirthRace;
-                _prevClass = ex.Pclass;
+                _prevSex = ex.GenderIndex;
+                _prevRace = ex.RaceIndexAtBirth;
+                _prevClass = ex.ProfessionIndex;
                 _prevRealm1 = ex.Realm1;
                 _prevRealm2 = ex.Realm2;
                 _prevName = ex.Name;

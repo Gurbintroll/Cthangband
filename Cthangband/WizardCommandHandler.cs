@@ -240,7 +240,7 @@ namespace Cthangband
             ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
                       ProjectionFlag.ProjectKill;
             TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (!targetEngine.GetAimDir(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out int dir))
             {
                 return;
             }
@@ -414,7 +414,7 @@ namespace Cthangband
             if (Gui.CommandArgument <= 0)
             {
                 string ppp = $"Jump to level (0-{SaveGame.Instance.CurDungeon.MaxLevel}): ";
-                string def = $"{SaveGame.Instance.DunLevel}";
+                string def = $"{SaveGame.Instance.CurrentDepth}";
                 if (!Gui.GetString(ppp, out string tmpVal, def, 10))
                 {
                     return;
@@ -433,7 +433,7 @@ namespace Cthangband
             SaveGame.Instance.IsAutosave = true;
             SaveGame.Instance.DoCmdSaveGame();
             SaveGame.Instance.IsAutosave = false;
-            SaveGame.Instance.DunLevel = Gui.CommandArgument;
+            SaveGame.Instance.CurrentDepth = Gui.CommandArgument;
             SaveGame.Instance.NewLevelFlag = true;
         }
 

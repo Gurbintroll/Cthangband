@@ -21,7 +21,7 @@ namespace Cthangband.Mutations.ActiveMutations
             }
             TargetEngine targetEngine = new TargetEngine(player, level);
             Profile.Instance.MsgPrint("Your eyes look mesmerizing...");
-            if (targetEngine.GetAimDir(out int dir))
+            if (targetEngine.GetDirectionWithAim(out int dir))
             {
                 saveGame.SpellEffects.CharmMonster(dir, player.Level);
             }

@@ -62,7 +62,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActSunlight:
                     {
                         // Aim a line of light in a direction of the player's choice
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -75,7 +75,7 @@ namespace Cthangband
                     {
                         // Shoot a magic missile that does 2d6 damage
                         Profile.Instance.MsgPrint("It glows extremely brightly...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -88,7 +88,7 @@ namespace Cthangband
                     {
                         // Shoot a 12-damage ball of poison
                         Profile.Instance.MsgPrint("It throbs deep green...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -100,7 +100,7 @@ namespace Cthangband
                     {
                         //Shoot a lightning bolt that does 4d8 damage
                         Profile.Instance.MsgPrint("It is covered in sparks...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -113,7 +113,7 @@ namespace Cthangband
                     {
                         // Shoot an acid bolt that does 5d8 damage
                         Profile.Instance.MsgPrint("It is covered in acid...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -126,7 +126,7 @@ namespace Cthangband
                     {
                         // Shoot a frost bolt that does 6d8 damage
                         Profile.Instance.MsgPrint("It is covered in frost...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -139,7 +139,7 @@ namespace Cthangband
                     {
                         // Shoot a fire bolt that does 9d8 damage
                         Profile.Instance.MsgPrint("It is covered in fire...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -152,7 +152,7 @@ namespace Cthangband
                     {
                         // Shoot a frost ball that does 48 damage
                         Profile.Instance.MsgPrint("It is covered in frost...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -164,7 +164,7 @@ namespace Cthangband
                     {
                         // Shoot a fire ball that does 72 damage
                         Profile.Instance.MsgPrint("It glows an intense red...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -176,7 +176,7 @@ namespace Cthangband
                     {
                         // Drain up to 100 life from an opponent
                         Profile.Instance.MsgPrint("It glows black...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -190,7 +190,7 @@ namespace Cthangband
                     {
                         // Shoot a frost ball that does 100 damage
                         Profile.Instance.MsgPrint("It glows an intense blue...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -202,7 +202,7 @@ namespace Cthangband
                     {
                         // Shoot a lightning storm that does 100 damage with a larger radius
                         Profile.Instance.MsgPrint("It crackles with electricity...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -214,7 +214,7 @@ namespace Cthangband
                     {
                         // Drain up to 120 life from an opponent
                         Profile.Instance.MsgPrint("It glows black...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -225,7 +225,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActVampire1:
                     {
                         // Drain up to 50 life from an opponent, and give it to the player
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -243,7 +243,7 @@ namespace Cthangband
                     {
                         // Shoot an arrow that does 150 damage
                         Profile.Instance.MsgPrint("It grows magical spikes...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -255,7 +255,7 @@ namespace Cthangband
                     {
                         // Shoot a fire ball that does 120 damage with a larger radius
                         Profile.Instance.MsgPrint("It glows deep red...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -267,7 +267,7 @@ namespace Cthangband
                     {
                         // Shoot a frost ball that does 200 damage with a larger radius
                         Profile.Instance.MsgPrint("It glows bright white...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -279,7 +279,7 @@ namespace Cthangband
                     {
                         // Shoot a lightning storm that does 250 damage with a larger radius
                         Profile.Instance.MsgPrint("It glows deep blue...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -309,7 +309,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActVampire2:
                     {
                         // Drain 100 health from an opponent, and give it to the player
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -334,7 +334,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActShard:
                     {
                         // Shoot a shard ball for 120 + level damage
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -362,7 +362,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActBaMiss3:
                     {
                         // Shoot a 'magic missile' cone that does 300 damage
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -375,7 +375,7 @@ namespace Cthangband
                     {
                         // Confuse an opponent
                         Profile.Instance.MsgPrint("It glows in scintillating colours...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -408,7 +408,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActTeleAway:
                     {
                         // Teleport away an opponent
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -445,7 +445,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActCharmAnimal:
                     {
                         // Charm an animal
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -456,7 +456,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActCharmUndead:
                     {
                         // Charm an undead
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -467,7 +467,7 @@ namespace Cthangband
                 case RandomArtifactPower.ActCharmOther:
                     {
                         // Charm a monster
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -818,7 +818,7 @@ namespace Cthangband
                     {
                         // Rock to mud
                         Profile.Instance.MsgPrint("It pulsates...");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             return;
                         }
@@ -4303,7 +4303,7 @@ namespace Cthangband
                 case RaceId.HalfGiant:
                     if (CheckIfRacialPowerWorks(20, 10, Ability.Strength, 12))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4323,7 +4323,7 @@ namespace Cthangband
                 case RaceId.Cyclops:
                     if (CheckIfRacialPowerWorks(20, 15, Ability.Strength, 12))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4336,7 +4336,7 @@ namespace Cthangband
                 case RaceId.Yeek:
                     if (CheckIfRacialPowerWorks(15, 15, Ability.Wisdom, 10))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4348,7 +4348,7 @@ namespace Cthangband
                 case RaceId.Klackon:
                     if (CheckIfRacialPowerWorks(9, 9, Ability.Dexterity, 14))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4368,7 +4368,7 @@ namespace Cthangband
                 case RaceId.Kobold:
                     if (CheckIfRacialPowerWorks(12, 8, Ability.Dexterity, 14))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4390,7 +4390,7 @@ namespace Cthangband
                 case RaceId.DarkElf:
                     if (CheckIfRacialPowerWorks(2, 2, Ability.Intelligence, 9))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4509,7 +4509,7 @@ namespace Cthangband
                     }
                     if (CheckIfRacialPowerWorks(1, Player.Level, Ability.Constitution, 12))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4521,7 +4521,7 @@ namespace Cthangband
                 case RaceId.MindFlayer:
                     if (CheckIfRacialPowerWorks(15, 12, Ability.Intelligence, 14))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4533,7 +4533,7 @@ namespace Cthangband
                 case RaceId.Imp:
                     if (CheckIfRacialPowerWorks(9, 15, Ability.Wisdom, 15))
                     {
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4570,7 +4570,7 @@ namespace Cthangband
                 case RaceId.Vampire:
                     if (CheckIfRacialPowerWorks(2, 1 + (playerLevel / 3), Ability.Constitution, 9))
                     {
-                        if (!targetEngine.GetRepDir(out direction))
+                        if (!targetEngine.GetDirectionNoAim(out direction))
                         {
                             break;
                         }
@@ -4611,7 +4611,7 @@ namespace Cthangband
                     if (CheckIfRacialPowerWorks(4, 6, Ability.Intelligence, 3))
                     {
                         Profile.Instance.MsgPrint("You emit an eldritch howl!");
-                        if (!targetEngine.GetAimDir(out direction))
+                        if (!targetEngine.GetDirectionWithAim(out direction))
                         {
                             break;
                         }
@@ -4904,11 +4904,11 @@ namespace Cthangband
                             // shallower level because they go up instead of down
                             if (_saveGame.CurDungeon.Tower)
                             {
-                                _saveGame.DunLevel--;
+                                _saveGame.CurrentDepth--;
                             }
                             else
                             {
-                                _saveGame.DunLevel++;
+                                _saveGame.CurrentDepth++;
                             }
                         }
                         break;
