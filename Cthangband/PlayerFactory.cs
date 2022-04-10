@@ -359,7 +359,7 @@ namespace Cthangband
                     break;
 
                 case CharacterClass.Mystic:
-                    Gui.Print(Colour.Purple, "Mystics' master both martial and psionic arts, which they", 30, 20);
+                    Gui.Print(Colour.Purple, "Mystics master both martial and psionic arts, which they", 30, 20);
                     Gui.Print(Colour.Purple, "power using WIS. Can resist confusion (at lvl 10), fear", 31, 20);
                     Gui.Print(Colour.Purple, "(lvl 25), paralysis (lvl 30). Telepathy (lvl 40). While", 32, 20);
                     Gui.Print(Colour.Purple, "wearing only light armour they can move faster and dodge,", 33, 20);
