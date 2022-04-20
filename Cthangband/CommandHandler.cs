@@ -872,7 +872,7 @@ namespace Cthangband
                         break;
                     }
                 case '\x1b':
-                    DoCmdQuit();
+                    DoCmdExit();
                     break;
 
                 case 'a':
@@ -1520,6 +1520,18 @@ namespace Cthangband
         }
 
         /// <summary>
+        /// Exit the game, returning to the main menu
+        /// </summary>
+        private void DoCmdExit()
+        {
+            if (!Gui.GetCheck("Are you sure you want to save and exit? "))
+            {
+                return;
+            }
+            SaveGame.Instance.Playing = false;
+        }
+
+        /// <summary>
         /// Use a down staircase or trapdoor
         /// </summary>
         private void DoCmdGoDown()
@@ -1694,30 +1706,37 @@ namespace Cthangband
             SaveGame.Instance.CreateDownStair = true;
         }
 
+        /// <summary>
+        /// Locate the player on the level and let them scroll the map around
+        /// </summary>
         private void DoCmdLocate()
         {
-            int y1, x1;
-            int y2 = y1 = Level.PanelRow;
-            int x2 = x1 = Level.PanelCol;
+            int startRow = Level.PanelRow;
+            int startCol = Level.PanelCol;
+            int currentRow = startRow;
+            int currentCol = startCol;
             TargetEngine targetEngine = new TargetEngine(Player, Level);
+            // Enter a loop so the player can browse the level
             while (true)
             {
-                string tmpVal;
-                if (y2 == y1 && x2 == x1)
+                // Describe the location being viewed
+                string offsetText;
+                if (currentRow == startRow && currentCol == startCol)
                 {
-                    tmpVal = "";
+                    offsetText = "";
                 }
                 else
                 {
-                    string d1 = y2 < y1 ? " North" : y2 > y1 ? " South" : "";
-                    string d2 = x2 < x1 ? " West" : x2 > x1 ? " East" : "";
-                    tmpVal = $"{d1}{d2} of";
+                    string northSouth = currentRow < startRow ? " North" : currentRow > startRow ? " South" : "";
+                    string eastWest = currentCol < startCol ? " West" : currentCol > startCol ? " East" : "";
+                    offsetText = $"{northSouth}{eastWest} of";
                 }
-                string outVal = $"Map sector [{y2},{x2}], which is{tmpVal} your sector. Direction?";
+                string message = $"Map sector [{currentRow},{currentCol}], which is{offsetText} your sector. Direction?";
+                // Get a direction command or escape
                 int dir = 0;
                 while (dir == 0)
                 {
-                    if (!Gui.GetCom(outVal, out char command))
+                    if (!Gui.GetCom(message, out char command))
                     {
                         break;
                     }
@@ -1727,40 +1746,47 @@ namespace Cthangband
                 {
                     break;
                 }
-                y2 += Level.KeypadDirectionYOffset[dir];
-                x2 += Level.KeypadDirectionXOffset[dir];
-                if (y2 > Level.MaxPanelRows)
+                // Move the view based on the direction
+                currentRow += Level.KeypadDirectionYOffset[dir];
+                currentCol += Level.KeypadDirectionXOffset[dir];
+                if (currentRow > Level.MaxPanelRows)
                 {
-                    y2 = Level.MaxPanelRows;
+                    currentRow = Level.MaxPanelRows;
                 }
-                else if (y2 < 0)
+                else if (currentRow < 0)
                 {
-                    y2 = 0;
+                    currentRow = 0;
                 }
-                if (x2 > Level.MaxPanelCols)
+                if (currentCol > Level.MaxPanelCols)
                 {
-                    x2 = Level.MaxPanelCols;
+                    currentCol = Level.MaxPanelCols;
                 }
-                else if (x2 < 0)
+                else if (currentCol < 0)
                 {
-                    x2 = 0;
+                    currentCol = 0;
                 }
-                if (y2 != Level.PanelRow || x2 != Level.PanelCol)
+                // Update the view if necessary
+                if (currentRow != Level.PanelRow || currentCol != Level.PanelCol)
                 {
-                    Level.PanelRow = y2;
-                    Level.PanelCol = x2;
+                    Level.PanelRow = currentRow;
+                    Level.PanelCol = currentCol;
                     targetEngine.PanelBounds();
                     Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
                     Player.RedrawNeeded.Set(RedrawFlag.PrMap);
                     SaveGame.Instance.HandleStuff();
                 }
             }
+            // We've finished, so snap back to the player's location
             targetEngine.RecenterScreenAroundPlayer();
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             Player.RedrawNeeded.Set(RedrawFlag.PrMap);
             SaveGame.Instance.HandleStuff();
         }
 
+        /// <summary>
+        /// Look around (using the target code) stopping on anything interesting rather than just
+        /// things that can be targeted
+        /// </summary>
         private void DoCmdLook()
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
@@ -1822,15 +1848,6 @@ namespace Cthangband
             {
                 SaveGame.Instance.Disturb(false);
             }
-        }
-
-        private void DoCmdQuit()
-        {
-            if (!Gui.GetCheck("Are you sure you want to save and quit? "))
-            {
-                return;
-            }
-            SaveGame.Instance.Playing = false;
         }
 
         private void DoCmdRacialPower()
