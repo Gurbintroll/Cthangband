@@ -951,7 +951,7 @@ namespace Cthangband
                     }
                 case 'p':
                     {
-                        DoCmdRacialPower();
+                        DoCmdMutantPower();
                         break;
                     }
                 case 'q':
@@ -1375,10 +1375,10 @@ namespace Cthangband
             Gui.Print("j = Jam spike in a door", 12, 25);
             Gui.Print("k = Destroy an item", 13, 25);
             Gui.Print("l = Look around", 14, 25);
-            Gui.Print("m = Spell/Mentalism power", 15, 25);
+            Gui.Print("m = Cast spell/Use talent", 15, 25);
             Gui.Print("n =", 16, 25);
             Gui.Print("o = Open a door/chest", 17, 25);
-            Gui.Print("p = Racial power", 18, 25);
+            Gui.Print("p = Mutant/Racial power", 18, 25);
             Gui.Print("q = Quaff a potion", 19, 25);
             Gui.Print("r = Read a scroll", 20, 25);
             Gui.Print("s = Search for traps", 21, 25);
@@ -1796,61 +1796,10 @@ namespace Cthangband
             }
         }
 
-        private void DoCmdOpen()
-        {
-            bool more = false;
-            MapCoordinate coord = new MapCoordinate();
-            int numDoors =
-                SaveGame.Instance.CommandEngine.CountClosedDoors(coord);
-            int numChests = SaveGame.Instance.CommandEngine.CountChests(coord, false);
-            if (numDoors != 0 || numChests != 0)
-            {
-                bool tooMany = (numDoors != 0 && numChests != 0) || numDoors > 1 || numChests > 1;
-                if (!tooMany)
-                {
-                    Gui.CommandDirection = Level.CoordsToDir(coord.Y, coord.X);
-                }
-            }
-            if (Gui.CommandArgument != 0)
-            {
-                CommandRepeat = Gui.CommandArgument - 1;
-                Player.RedrawNeeded.Set(RedrawFlag.PrState);
-                Gui.CommandArgument = 0;
-            }
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            if (targetEngine.GetDirectionNoAim(out int dir))
-            {
-                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile cPtr = Level.Grid[y][x];
-                int oIdx = Level.ChestCheck(y, x);
-                if (!cPtr.FeatureType.IsClosedDoor &&
-                    oIdx == 0)
-                {
-                    Profile.Instance.MsgPrint("You see nothing there to open.");
-                }
-                else if (cPtr.MonsterIndex != 0)
-                {
-                    SaveGame.Instance.EnergyUse = 100;
-                    Profile.Instance.MsgPrint("There is a monster in the way!");
-                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
-                }
-                else if (oIdx != 0)
-                {
-                    more = SaveGame.Instance.CommandEngine.OpenChest(y, x, oIdx);
-                }
-                else
-                {
-                    more = SaveGame.Instance.CommandEngine.OpenDoor(y, x);
-                }
-            }
-            if (!more)
-            {
-                SaveGame.Instance.Disturb(false);
-            }
-        }
-
-        private void DoCmdRacialPower()
+        /// <summary>
+        /// Use a mutant or racial power
+        /// </summary>
+        private void DoCmdMutantPower()
         {
             int i = 0;
             int num;
@@ -2207,6 +2156,70 @@ namespace Cthangband
             {
                 SaveGame.Instance.EnergyUse = 100;
                 activeMutations[powers[i] - 100].Activate(SaveGame.Instance, Player, Level);
+            }
+        }
+
+        /// <summary>
+        /// Open a door or chest
+        /// </summary>
+        private void DoCmdOpen()
+        {
+            bool disturb = false;
+            // Check if there's only one thing we can open
+            MapCoordinate coord = new MapCoordinate();
+            int numDoors =
+                SaveGame.Instance.CommandEngine.CountClosedDoors(coord);
+            int numChests = SaveGame.Instance.CommandEngine.CountChests(coord, false);
+            if (numDoors != 0 || numChests != 0)
+            {
+                bool tooMany = (numDoors != 0 && numChests != 0) || numDoors > 1 || numChests > 1;
+                if (!tooMany)
+                {
+                    // There's only one thing we can open, so assume we mean that thing
+                    Gui.CommandDirection = Level.CoordsToDir(coord.Y, coord.X);
+                }
+            }
+            // If we're repeatedly trying to open something, mark the repeat flag
+            if (Gui.CommandArgument != 0)
+            {
+                CommandRepeat = Gui.CommandArgument - 1;
+                Player.RedrawNeeded.Set(RedrawFlag.PrState);
+                Gui.CommandArgument = 0;
+            }
+            // If we don't already have a direction, prompt for one
+            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            if (targetEngine.GetDirectionNoAim(out int dir))
+            {
+                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                GridTile tile = Level.Grid[y][x];
+                int itemIndex = Level.ChestCheck(y, x);
+                // Make sure there is something to open in the direction we chose
+                if (!tile.FeatureType.IsClosedDoor &&
+                    itemIndex == 0)
+                {
+                    Profile.Instance.MsgPrint("You see nothing there to open.");
+                }
+                // Can't open something if there's a monster in the way
+                else if (tile.MonsterIndex != 0)
+                {
+                    SaveGame.Instance.EnergyUse = 100;
+                    Profile.Instance.MsgPrint("There is a monster in the way!");
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
+                }
+                // Open the chest or door
+                else if (itemIndex != 0)
+                {
+                    disturb = SaveGame.Instance.CommandEngine.OpenChest(y, x, itemIndex);
+                }
+                else
+                {
+                    disturb = SaveGame.Instance.CommandEngine.OpenDoor(y, x);
+                }
+            }
+            if (!disturb)
+            {
+                SaveGame.Instance.Disturb(false);
             }
         }
 

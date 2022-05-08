@@ -880,7 +880,7 @@
     <Content Include="Manual\Martial Arts.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Manual\Mentalism Powers.html">
+    <Content Include="Manual\Mentalism Talents.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Manual\Mindcrafter.html">

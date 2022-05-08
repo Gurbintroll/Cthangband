@@ -29,23 +29,23 @@ namespace Cthangband.Spells
         {
             if (_player.HasAntiMagic)
             {
-                string whichPower = "magic";
+                string whichMagicType = "magic";
                 if (_player.ProfessionIndex == CharacterClass.Mindcrafter || _player.ProfessionIndex == CharacterClass.Mystic)
                 {
-                    whichPower = "psychic talents";
+                    whichMagicType = "psychic talents";
                 }
                 else if (_player.Spellcasting.Type == CastingType.Divine)
                 {
-                    whichPower = "prayer";
+                    whichMagicType = "prayer";
                 }
-                Profile.Instance.MsgPrint($"An anti-magic shell disrupts your {whichPower}!");
+                Profile.Instance.MsgPrint($"An anti-magic shell disrupts your {whichMagicType}!");
                 SaveGame.Instance.EnergyUse = 5;
             }
             else
             {
                 if (_player.Spellcasting.Type == CastingType.Mentalism)
                 {
-                    DoCmdMindcraft();
+                    DoCmdMentalism();
                 }
                 else
                 {
@@ -252,7 +252,7 @@ namespace Cthangband.Spells
             _player.RedrawNeeded.Set(RedrawFlag.PrMana);
         }
 
-        private void DoCmdMindcraft()
+        private void DoCmdMentalism()
         {
             int plev = _player.Level;
             if (_player.TimedConfusion != 0)
@@ -260,14 +260,14 @@ namespace Cthangband.Spells
                 Profile.Instance.MsgPrint("You are too confused!");
                 return;
             }
-            if (!GetMindcraftPower(out int n))
+            if (!GetMentalismTalent(out int n))
             {
                 return;
             }
             Talents.Talent talent = _player.Spellcasting.Talents[n];
             if (talent.ManaCost > _player.Mana)
             {
-                Profile.Instance.MsgPrint("You do not have enough mana to use this power.");
+                Profile.Instance.MsgPrint("You do not have enough mana to use this talent.");
                 if (!Gui.GetCheck("Attempt it anyway? "))
                 {
                     return;
@@ -336,14 +336,14 @@ namespace Cthangband.Spells
             _player.RedrawNeeded.Set(RedrawFlag.PrMana);
         }
 
-        private bool GetMindcraftPower(out int sn)
+        private bool GetMentalismTalent(out int sn)
         {
             int i;
             int num = 0;
             int y = 1;
             int x = 20;
             int plev = _player.Level;
-            string p = "power";
+            string p = "talent";
             sn = -1;
             bool flag = false;
             bool redraw = false;
