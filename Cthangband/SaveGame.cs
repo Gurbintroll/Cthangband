@@ -1801,7 +1801,6 @@ namespace Cthangband
         private void PrintTomb(Player corpse)
         {
             {
-                string p;
                 DateTime ct = DateTime.Now;
                 if (corpse.IsWinner)
                 {
@@ -1814,15 +1813,11 @@ namespace Cthangband
                     Gui.Mixer.Play(MusicTrack.Death);
                 }
                 Gui.Clear();
+                string buf = corpse.Name.Trim() + corpse.Generation.ToRoman(true);
                 if (corpse.IsWinner || corpse.Level > Constants.PyMaxLevel)
                 {
-                    p = "Magnificent";
+                    buf += " the Magnificent";
                 }
-                else
-                {
-                    p = GlobalData.PlayerTitle[corpse.ProfessionIndex][(corpse.Level - 1) / 5];
-                }
-                string buf = corpse.Name.Trim() + corpse.Generation.ToRoman(true) + " the " + p;
                 Gui.Print(buf, 39, 1);
                 buf = $"Level {corpse.Level} {Profession.ClassSubName(corpse.ProfessionIndex, corpse.Realm1)}";
                 Gui.Print(buf, 40, 1);

@@ -123,7 +123,6 @@ namespace Cthangband
         public int MeleeAttacksPerRound;
         public int MissileAttacksPerRound;
         public string Name;
-        public int SpareSpellSlots;
         public uint NoticeFlags;
         public bool OldHeavyBow;
         public bool OldHeavyWeapon;
@@ -152,6 +151,7 @@ namespace Cthangband
         public int SkillThrowing;
         public int SkillUseDevice;
         public int SocialClass;
+        public int SpareSpellSlots;
         public int Speed;
         public Spellcasting Spellcasting;
         public int TimedAcidResistance;
@@ -1093,7 +1093,7 @@ namespace Cthangband
             {
                 Gui.Goto(2, col);
                 string tmp = Name;
-                if (!Gui.AskforAux(out Name, tmp, 15))
+                if (!Gui.AskforAux(out Name, tmp, 12))
                 {
                     Name = tmp;
                 }

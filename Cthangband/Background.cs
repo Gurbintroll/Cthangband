@@ -793,88 +793,91 @@ namespace Cthangband
         public static string CreateRandomName(int raceIndex)
         {
             string name = "";
-            switch (raceIndex)
+            do
             {
-                case RaceId.Cyclops:
-                case RaceId.Dwarf:
-                case RaceId.HalfGiant:
-                case RaceId.Golem:
-                case RaceId.Nibelung:
-                    name = _dwarfSyllable1[Program.Rng.RandomLessThan(_dwarfSyllable1.Length)];
-                    name += _dwarfSyllable2[Program.Rng.RandomLessThan(_dwarfSyllable2.Length)];
-                    name += _dwarfSyllable3[Program.Rng.RandomLessThan(_dwarfSyllable3.Length)];
-                    break;
+                switch (raceIndex)
+                {
+                    case RaceId.Cyclops:
+                    case RaceId.Dwarf:
+                    case RaceId.HalfGiant:
+                    case RaceId.Golem:
+                    case RaceId.Nibelung:
+                        name = _dwarfSyllable1[Program.Rng.RandomLessThan(_dwarfSyllable1.Length)];
+                        name += _dwarfSyllable2[Program.Rng.RandomLessThan(_dwarfSyllable2.Length)];
+                        name += _dwarfSyllable3[Program.Rng.RandomLessThan(_dwarfSyllable3.Length)];
+                        break;
 
-                case RaceId.DarkElf:
-                case RaceId.Elf:
-                case RaceId.HalfElf:
-                case RaceId.HighElf:
-                case RaceId.Sprite:
-                    name = _elfSyllable1[Program.Rng.RandomLessThan(_elfSyllable1.Length)];
-                    name += _elfSyllable2[Program.Rng.RandomLessThan(_elfSyllable2.Length)];
-                    name += _elfSyllable3[Program.Rng.RandomLessThan(_elfSyllable3.Length)];
-                    break;
+                    case RaceId.DarkElf:
+                    case RaceId.Elf:
+                    case RaceId.HalfElf:
+                    case RaceId.HighElf:
+                    case RaceId.Sprite:
+                        name = _elfSyllable1[Program.Rng.RandomLessThan(_elfSyllable1.Length)];
+                        name += _elfSyllable2[Program.Rng.RandomLessThan(_elfSyllable2.Length)];
+                        name += _elfSyllable3[Program.Rng.RandomLessThan(_elfSyllable3.Length)];
+                        break;
 
-                case RaceId.Draconian:
-                case RaceId.Gnome:
-                    name = _gnomeSyllable1[Program.Rng.RandomLessThan(_gnomeSyllable1.Length)];
-                    name += _gnomeSyllable2[Program.Rng.RandomLessThan(_gnomeSyllable2.Length)];
-                    name += _gnomeSyllable3[Program.Rng.RandomLessThan(_gnomeSyllable3.Length)];
-                    break;
+                    case RaceId.Draconian:
+                    case RaceId.Gnome:
+                        name = _gnomeSyllable1[Program.Rng.RandomLessThan(_gnomeSyllable1.Length)];
+                        name += _gnomeSyllable2[Program.Rng.RandomLessThan(_gnomeSyllable2.Length)];
+                        name += _gnomeSyllable3[Program.Rng.RandomLessThan(_gnomeSyllable3.Length)];
+                        break;
 
-                case RaceId.Hobbit:
-                case RaceId.Kobold:
-                    name = _hobbitSyllable1[Program.Rng.RandomLessThan(_hobbitSyllable1.Length)];
-                    name += _hobbitSyllable2[Program.Rng.RandomLessThan(_hobbitSyllable2.Length)];
-                    name += _hobbitSyllable3[Program.Rng.RandomLessThan(_hobbitSyllable3.Length)];
-                    break;
+                    case RaceId.Hobbit:
+                    case RaceId.Kobold:
+                        name = _hobbitSyllable1[Program.Rng.RandomLessThan(_hobbitSyllable1.Length)];
+                        name += _hobbitSyllable2[Program.Rng.RandomLessThan(_hobbitSyllable2.Length)];
+                        name += _hobbitSyllable3[Program.Rng.RandomLessThan(_hobbitSyllable3.Length)];
+                        break;
 
-                case RaceId.Yeek:
-                    name = _yeekSyllable1[Program.Rng.RandomLessThan(_yeekSyllable1.Length)];
-                    name += _yeekSyllable2[Program.Rng.RandomLessThan(_yeekSyllable2.Length)];
-                    name += _yeekSyllable3[Program.Rng.RandomLessThan(_yeekSyllable3.Length)];
-                    break;
+                    case RaceId.Yeek:
+                        name = _yeekSyllable1[Program.Rng.RandomLessThan(_yeekSyllable1.Length)];
+                        name += _yeekSyllable2[Program.Rng.RandomLessThan(_yeekSyllable2.Length)];
+                        name += _yeekSyllable3[Program.Rng.RandomLessThan(_yeekSyllable3.Length)];
+                        break;
 
-                case RaceId.Great:
-                case RaceId.HalfTitan:
-                case RaceId.Human:
-                case RaceId.Skeleton:
-                case RaceId.Spectre:
-                case RaceId.Vampire:
-                case RaceId.Zombie:
-                    name = _humanSyllable1[Program.Rng.RandomLessThan(_humanSyllable1.Length)];
-                    name += _humanSyllable2[Program.Rng.RandomLessThan(_humanSyllable2.Length)];
-                    name += _humanSyllable3[Program.Rng.RandomLessThan(_humanSyllable3.Length)];
-                    break;
+                    case RaceId.Great:
+                    case RaceId.HalfTitan:
+                    case RaceId.Human:
+                    case RaceId.Skeleton:
+                    case RaceId.Spectre:
+                    case RaceId.Vampire:
+                    case RaceId.Zombie:
+                        name = _humanSyllable1[Program.Rng.RandomLessThan(_humanSyllable1.Length)];
+                        name += _humanSyllable2[Program.Rng.RandomLessThan(_humanSyllable2.Length)];
+                        name += _humanSyllable3[Program.Rng.RandomLessThan(_humanSyllable3.Length)];
+                        break;
 
-                case RaceId.HalfOgre:
-                case RaceId.HalfOrc:
-                case RaceId.HalfTroll:
-                    name = _orcSyllable1[Program.Rng.RandomLessThan(_orcSyllable1.Length)];
-                    name += _orcSyllable2[Program.Rng.RandomLessThan(_orcSyllable2.Length)];
-                    name += _orcSyllable3[Program.Rng.RandomLessThan(_orcSyllable3.Length)];
-                    break;
+                    case RaceId.HalfOgre:
+                    case RaceId.HalfOrc:
+                    case RaceId.HalfTroll:
+                        name = _orcSyllable1[Program.Rng.RandomLessThan(_orcSyllable1.Length)];
+                        name += _orcSyllable2[Program.Rng.RandomLessThan(_orcSyllable2.Length)];
+                        name += _orcSyllable3[Program.Rng.RandomLessThan(_orcSyllable3.Length)];
+                        break;
 
-                case RaceId.Klackon:
-                    name = _klackonSyllable1[Program.Rng.RandomLessThan(_klackonSyllable1.Length)];
-                    name += _klackonSyllable2[Program.Rng.RandomLessThan(_klackonSyllable2.Length)];
-                    name += _klackonSyllable3[Program.Rng.RandomLessThan(_klackonSyllable3.Length)];
-                    break;
+                    case RaceId.Klackon:
+                        name = _klackonSyllable1[Program.Rng.RandomLessThan(_klackonSyllable1.Length)];
+                        name += _klackonSyllable2[Program.Rng.RandomLessThan(_klackonSyllable2.Length)];
+                        name += _klackonSyllable3[Program.Rng.RandomLessThan(_klackonSyllable3.Length)];
+                        break;
 
-                case RaceId.MiriNigri:
-                case RaceId.MindFlayer:
-                case RaceId.TchoTcho:
-                    name = _cthuloidSyllable1[Program.Rng.RandomLessThan(_cthuloidSyllable1.Length)];
-                    name += _cthuloidSyllable2[Program.Rng.RandomLessThan(_cthuloidSyllable2.Length)];
-                    name += _cthuloidSyllable3[Program.Rng.RandomLessThan(_cthuloidSyllable3.Length)];
-                    break;
+                    case RaceId.MiriNigri:
+                    case RaceId.MindFlayer:
+                    case RaceId.TchoTcho:
+                        name = _cthuloidSyllable1[Program.Rng.RandomLessThan(_cthuloidSyllable1.Length)];
+                        name += _cthuloidSyllable2[Program.Rng.RandomLessThan(_cthuloidSyllable2.Length)];
+                        name += _cthuloidSyllable3[Program.Rng.RandomLessThan(_cthuloidSyllable3.Length)];
+                        break;
 
-                case RaceId.Imp:
-                    name = _angelSyllable1[Program.Rng.RandomLessThan(_angelSyllable1.Length)];
-                    name += _angelSyllable2[Program.Rng.RandomLessThan(_angelSyllable2.Length)];
-                    name += _angelSyllable3[Program.Rng.RandomLessThan(_angelSyllable3.Length)];
-                    break;
-            }
+                    case RaceId.Imp:
+                        name = _angelSyllable1[Program.Rng.RandomLessThan(_angelSyllable1.Length)];
+                        name += _angelSyllable2[Program.Rng.RandomLessThan(_angelSyllable2.Length)];
+                        name += _angelSyllable3[Program.Rng.RandomLessThan(_angelSyllable3.Length)];
+                        break;
+                }
+            } while (name.Length > 12);
             return name;
         }
 

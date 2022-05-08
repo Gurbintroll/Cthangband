@@ -28,6 +28,7 @@ namespace Cthangband.Enumerations
         public const int ColLevel = 0;
         public const int ColMaxhp = 0;
         public const int ColMaxsp = 0;
+        public const int ColName = 0;
         public const int ColPoisoned = 33;
         public const int ColRace = 0;
         public const int ColSpeed = 43;
@@ -40,7 +41,7 @@ namespace Cthangband.Enumerations
         public const int RowAc = 22;
         public const int RowAfraid = 44;
         public const int RowBlind = 44;
-        public const int RowClass = 2;
+        public const int RowClass = 3;
         public const int RowConfused = 44;
         public const int RowCurhp = 24;
         public const int RowCursp = 26;
@@ -56,14 +57,15 @@ namespace Cthangband.Enumerations
         public const int RowLevel = 5;
         public const int RowMaxhp = 23;
         public const int RowMaxsp = 25;
+        public const int RowName = 1;
         public const int RowPoisoned = 44;
-        public const int RowRace = 1;
+        public const int RowRace = 2;
         public const int RowSpeed = 44;
         public const int RowStat = 15;
         public const int RowState = 43;
         public const int RowStudy = 44;
         public const int RowStun = 43;
         public const int RowTime = 8;
-        public const int RowTitle = 3;
+        public const int RowTitle = 4;
     }
 }

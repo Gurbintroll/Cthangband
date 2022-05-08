@@ -2039,6 +2039,7 @@ namespace Cthangband
 
         public void PrtFrameBasic()
         {
+            PrtField(_player.Name, ScreenLocation.RowName, ScreenLocation.ColName);
             PrtField(_player.Race.Title, ScreenLocation.RowRace, ScreenLocation.ColRace);
             PrtField(Profession.ClassSubName(_player.ProfessionIndex, _player.Realm1), ScreenLocation.RowClass,
                 ScreenLocation.ColClass);
@@ -2327,16 +2328,13 @@ namespace Cthangband
             if (_player.IsWizard)
             {
                 p = "-=<WIZARD>=-";
+                PrtField(p, ScreenLocation.RowTitle, ScreenLocation.ColTitle);
             }
             else if (_player.IsWinner || _player.Level > Constants.PyMaxLevel)
             {
                 p = "***WINNER***";
+                PrtField(p, ScreenLocation.RowTitle, ScreenLocation.ColTitle);
             }
-            else
-            {
-                p = GlobalData.PlayerTitle[_player.ProfessionIndex][(_player.Level - 1) / 5];
-            }
-            PrtField(p, ScreenLocation.RowTitle, ScreenLocation.ColTitle);
         }
 
         private int WeightLimit()

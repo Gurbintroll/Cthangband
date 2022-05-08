@@ -1,4 +1,11 @@
-﻿using Cthangband.Enumerations;
+﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
+//
+// This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
+// Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
+// and not for profit purposes provided that this copyright and statement are included in all such
+// copies. Other copyrights may also apply.”
+using Cthangband.Enumerations;
 using System.Collections.Generic;
 
 namespace Cthangband.StaticData
@@ -82,29 +89,6 @@ namespace Cthangband.StaticData
 	/* Fast */    49, 49, 49, 49, 49, 49, 49, 49, 49, 49
         };
 
-        public static readonly string[] SymbolIdentification =
-        {
-            " :A dark grid", "!:A potion (or oil)", "\":An amulet (or necklace)", "#:A wall (or secret door)",
-            "$:Treasure (gold or gems)", "%:A vein (magma or quartz)", "&:Entrance to Inn", "':An open door",
-            "(:Soft armour", "):A shield", "*:A vein with treasure", "+:A closed door", ",:Food (or mushroom patch)",
-            "-:A wand (or rod)", ".:Floor", "/:A polearm (Axe/Pike/etc)", "0:Entrance to Pawnbrokers",
-            "1:Entrance to General Store", "2:Entrance to Armoury", "3:Entrance to Weaponsmith", "4:Entrance to Temple",
-            "5:Entrance to Alchemy shop", "6:Entrance to Magic Stores", "7:Entrance to Black Market",
-            "8:Entrance to Hall of Records", "9:Entrance to Bookstore", "::Rubble",
-            ";:An Elder Sign / Yellow Sign", "<:An up staircase", "=:A ring", ">:A down staircase",
-            "?:A scroll", "@:You (or the entrance to your home)", "A:Abomination", "B:Bird", "C:Canine",
-            "D:Ancient Dragon/Wyrm", "E:Elemental", "F:Dragon Fly", "G:Ghost", "H:Hybrid", "I:Insect", "J:Snake",
-            "K:Killer Beetle", "L:Lich", "M:Multi-Headed Reptile", "O:Ogre", "P:Giant Humanoid",
-            "Q:Quylthulg (Pulsing Flesh Mound)", "R:Reptile/Amphibian", "S:Spider/Scorpion/Tick", "T:Troll",
-            "U:Major Demon", "V:Vampire", "W:Wight/Wraith/etc", "X:Extradimensional Entity", "Y:Yeti", "Z:Zephyr Hound",
-            "[:Hard armour", "\\:A hafted weapon (mace/whip/etc)", "]:Misc. armour", "^:A trap", "_:A staff", "a:Ant",
-            "b:Bat", "c:Centipede", "d:Dragon", "e:Floating Eye", "f:Feline", "g:Golem", "h:Hobbit/Elf/Dwarf",
-            "i:Icky Thing", "j:Jelly", "k:Kobold", "l:Louse", "m:Mold", "n:Naga", "o:Orc", "p:Person/Human",
-            "q:Quadruped", "r:Rodent", "s:Skeleton", "t:Townsperson", "u:Minor Demon", "v:Vortex", "w:Worm/Worm-Mass",
-            "x:Xorn/Xaren/etc", "y:Yeek", "z:Zombie/Mummy", "{:A missile (arrow/bolt/shot)", "|:An edged weapon (sword/dagger/etc)",
-            "}:A launcher (bow/crossbow/sling)", "~:A tool (or miscellaneous item)", null
-        };
-
         public static readonly MartialArtsAttack[] MaBlows =
         {
             new MartialArtsAttack("You punch {0}.", 1, 0, 1, 4, 0),
@@ -167,89 +151,6 @@ namespace Cthangband.StaticData
             4000000, 4500000, 5000000
         };
 
-        public static readonly string[][] PlayerTitle =
-        {
-            new[]
-            {
-                "Rookie", "Soldier", "Mercenary", "Veteran", "Swordsman", "Champion", "Hero", "Baron", "Duke", "Lord"
-            },
-            new[]
-            {
-                "Apprentice", "Trickster", "Illusionist", "Spellbinder", "Evoker", "Conjurer", "Warlock", "Sorcerer",
-                "Ipsissimus", "Archimage"
-            },
-            new[]
-            {
-                "Believer", "Acolyte", "Adept", "Curate", "Canon", "Priest", "High Priest", "Cardinal", "Inquisitor",
-                "Pope"
-            },
-            new[]
-            {
-                "Sneak", "Cutpurse", "Robber", "Burglar", "Filcher", "Mountebank", "Low Thief", "High Thief",
-                "Master Thief", "Guildmaster"
-            },
-            new[]
-            {
-                "Runner", "Strider", "Scout", "Courser", "Tracker", "Guide", "Pathfinder", "Low Ranger", "High Ranger",
-                "Ranger Lord"
-            },
-            new[]
-            {
-                "Gallant", "Keeper", "Protector", "Defender", "Warder", "Knight", "Guardian", "Low Paladin",
-                "High Paladin", "Paladin Lord"
-            },
-            new[]
-            {
-                "Novice", "Apprentice", "Journeyman", "Veteran", "Enchanter", "Champion", "Mage-Hero", "Baron Mage",
-                "Battlemage", "Wizard Lord"
-            },
-            new[]
-            {
-                "Rookie", "Soldier", "Mercenary", "Veteran", "Swordsman", "Champion", "Chaos Hero", "Chaos Baron",
-                "Chaos Duke", "Chaos Lord"
-            },
-            new[]
-            {
-                "Initiate", "Brother", "Disciple", "Immaculate", "Master", "Soft Master", "Hard Master",
-                "Flower Master", "Dragon Master", "Grand Master"
-            },
-            new[]
-            {
-                "Trainee", "Acolyte", "Adept", "Immaculate", "Contemplator", "Mentalist", "Psychic", "Psionicist",
-                "Esper", "Mindmaster"
-            },
-            new[]
-            {
-                "Apprentice", "Trickster", "Illusionist", "Spellbinder", "Evoker", "Conjurer", "Warlock", "Sorcerer",
-                "Ipsissimus", "Archimage"
-            },
-            new[]
-            {
-                "Neophyte", "Initiate", "Adept", "Lesser Druid", "Druid", "Silver Druid", "Golden Druid", "Great Druid",
-                "Arch-Druid", "Grand Druid"
-            },
-            new[]
-            {
-                "Apprentice", "Trickster", "Illusionist", "Spellbinder", "Entropist", "Chaotic", "Randomiser",
-                "Chaos-Mage", "Chaos-Archmage", "Chaos Master"
-            },
-            new[]
-            {
-                "Apprentice", "Journeyman", "Guilder", "Alchemist", "Wandsmith", "Rodsmith", "Stavemaster", "Artificer",
-                "Master Channeler", "Grand Channeler"
-            },
-            new[]
-            {
-                "Favoured", "Martyr", "Trusted One", "Celebrity", "Diva", "Champion", "Holy One", "Paragon", "Idol",
-                "Saint"
-            },
-            new[]
-            {
-                "Initiate", "Brother", "Disciple", "Immaculate", "Master", "Soft Master", "Hard Master",
-                "Flower Master", "Dragon Master", "Grand Master"
-            }
-        };
-
         public static readonly string[] ReportMagicDurations =
         {
             "for a short time", "for a little while", "for a while", "for a long while", "for a long time",
@@ -259,6 +160,29 @@ namespace Cthangband.StaticData
         public static readonly string[] StatNames = { "STR: ", "INT: ", "WIS: ", "DEX: ", "CON: ", "CHA: " };
 
         public static readonly string[] StatNamesReduced = { "str: ", "int: ", "wis: ", "dex: ", "con: ", "cha: " };
+
+        public static readonly string[] SymbolIdentification =
+                                                                {
+            " :A dark grid", "!:A potion (or oil)", "\":An amulet (or necklace)", "#:A wall (or secret door)",
+            "$:Treasure (gold or gems)", "%:A vein (magma or quartz)", "&:Entrance to Inn", "':An open door",
+            "(:Soft armour", "):A shield", "*:A vein with treasure", "+:A closed door", ",:Food (or mushroom patch)",
+            "-:A wand (or rod)", ".:Floor", "/:A polearm (Axe/Pike/etc)", "0:Entrance to Pawnbrokers",
+            "1:Entrance to General Store", "2:Entrance to Armoury", "3:Entrance to Weaponsmith", "4:Entrance to Temple",
+            "5:Entrance to Alchemy shop", "6:Entrance to Magic Stores", "7:Entrance to Black Market",
+            "8:Entrance to Hall of Records", "9:Entrance to Bookstore", "::Rubble",
+            ";:An Elder Sign / Yellow Sign", "<:An up staircase", "=:A ring", ">:A down staircase",
+            "?:A scroll", "@:You (or the entrance to your home)", "A:Abomination", "B:Bird", "C:Canine",
+            "D:Ancient Dragon/Wyrm", "E:Elemental", "F:Dragon Fly", "G:Ghost", "H:Hybrid", "I:Insect", "J:Snake",
+            "K:Killer Beetle", "L:Lich", "M:Multi-Headed Reptile", "O:Ogre", "P:Giant Humanoid",
+            "Q:Quylthulg (Pulsing Flesh Mound)", "R:Reptile/Amphibian", "S:Spider/Scorpion/Tick", "T:Troll",
+            "U:Major Demon", "V:Vampire", "W:Wight/Wraith/etc", "X:Extradimensional Entity", "Y:Yeti", "Z:Zephyr Hound",
+            "[:Hard armour", "\\:A hafted weapon (mace/whip/etc)", "]:Misc. armour", "^:A trap", "_:A staff", "a:Ant",
+            "b:Bat", "c:Centipede", "d:Dragon", "e:Floating Eye", "f:Feline", "g:Golem", "h:Hobbit/Elf/Dwarf",
+            "i:Icky Thing", "j:Jelly", "k:Kobold", "l:Louse", "m:Mold", "n:Naga", "o:Orc", "p:Person/Human",
+            "q:Quadruped", "r:Rodent", "s:Skeleton", "t:Townsperson", "u:Minor Demon", "v:Vortex", "w:Worm/Worm-Mass",
+            "x:Xorn/Xaren/etc", "y:Yeek", "z:Zombie/Mummy", "{:A missile (arrow/bolt/shot)", "|:An edged weapon (sword/dagger/etc)",
+            "}:A launcher (bow/crossbow/sling)", "~:A tool (or miscellaneous item)", null
+        };
 
         public static readonly string[] TextElvish =
 {
