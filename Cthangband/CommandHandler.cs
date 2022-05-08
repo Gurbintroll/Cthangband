@@ -1806,10 +1806,10 @@ namespace Cthangband
             int[] powers = new int[36];
             string[] powerDesc = new string[36];
             int lvl = Player.Level;
-            bool warrior = Player.ProfessionIndex == CharacterClass.Warrior;
-            int pets = 0, petCtr;
+            int pets = 0;
+            int petCtr;
             bool allPets = false;
-            Monster mPtr;
+            Monster monster;
             bool hasRacial = false;
             string racialPower = "(none)";
             for (num = 0; num < 36; num++)
@@ -1855,50 +1855,23 @@ namespace Cthangband
                     break;
 
                 case RaceId.HalfOrc:
-                    if (lvl < 3)
-                    {
-                        racialPower = "remove fear        (racial, unusable until level 3)";
-                    }
-                    else if (warrior)
-                    {
-                        racialPower = "remove fear        (racial, cost 5, WIS based)";
-                    }
-                    else
-                    {
-                        racialPower = "remove fear        (racial, cost 5, WIS based)";
-                    }
+                    racialPower = lvl < 3
+                        ? "remove fear        (racial, unusable until level 3)"
+                        : "remove fear        (racial, cost 5, WIS based)";
                     hasRacial = true;
                     break;
 
                 case RaceId.HalfTroll:
-                    if (lvl < 10)
-                    {
-                        racialPower = "berserk            (racial, unusable until level 10)";
-                    }
-                    else if (warrior)
-                    {
-                        racialPower = "berserk            (racial, cost 12, WIS based)";
-                    }
-                    else
-                    {
-                        racialPower = "berserk            (racial, cost 12, WIS based)";
-                    }
+                    racialPower = lvl < 10
+                        ? "berserk            (racial, unusable until level 10)"
+                        : "berserk            (racial, cost 12, WIS based)";
                     hasRacial = true;
                     break;
 
                 case RaceId.TchoTcho:
-                    if (lvl < 8)
-                    {
-                        racialPower = "berserk            (racial, unusable until level 8)";
-                    }
-                    else if (warrior)
-                    {
-                        racialPower = "berserk            (racial, cost 10, WIS based)";
-                    }
-                    else
-                    {
-                        racialPower = "berserk            (racial, cost 10, WIS based)";
-                    }
+                    racialPower = lvl < 8
+                        ? "berserk            (racial, unusable until level 8)"
+                        : "berserk            (racial, cost 10, WIS based)";
                     hasRacial = true;
                     break;
 
@@ -2020,8 +1993,8 @@ namespace Cthangband
             }
             for (petCtr = Level.MMax - 1; petCtr >= 1; petCtr--)
             {
-                mPtr = Level.Monsters[petCtr];
-                if ((mPtr.Mind & Constants.SmFriendly) != 0)
+                monster = Level.Monsters[petCtr];
+                if ((monster.Mind & Constants.SmFriendly) != 0)
                 {
                     pets++;
                 }
@@ -2125,8 +2098,8 @@ namespace Cthangband
                 }
                 for (petCtr = Level.MMax - 1; petCtr >= 1; petCtr--)
                 {
-                    mPtr = Level.Monsters[petCtr];
-                    if ((mPtr.Mind & Constants.SmFriendly) != 0)
+                    monster = Level.Monsters[petCtr];
+                    if ((monster.Mind & Constants.SmFriendly) != 0)
                     {
                         bool deleteThis = false;
                         if (allPets)
@@ -2135,7 +2108,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            string friendName = mPtr.MonsterDesc(0x80);
+                            string friendName = monster.MonsterDesc(0x80);
                             string checkFriend = $"Dismiss {friendName}? ";
                             if (Gui.GetCheck(checkFriend))
                             {

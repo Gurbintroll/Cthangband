@@ -1967,10 +1967,18 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint($"That costs {best} gold per item.");
                 }
-                amt = Gui.GetQuantity(null, oPtr.Count, false);
-                if (amt <= 0)
+                int maxBuy = Math.Min(_player.Gold / best, oPtr.Count);
+                if (maxBuy < 2)
                 {
-                    return;
+                    amt = 1;
+                }
+                else
+                {
+                    amt = Gui.GetQuantity(null, maxBuy, false);
+                    if (amt <= 0)
+                    {
+                        return;
+                    }
                 }
             }
             jPtr = new Item(oPtr) { Count = amt };
