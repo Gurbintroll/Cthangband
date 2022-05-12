@@ -21,9 +21,8 @@ namespace Cthangband.UI
     {
         public static readonly Dictionary<Colour, Color> ColorData = new Dictionary<Colour, Color>();
         public static int CommandArgument;
-        public static char CurrentCommand;
         public static int CommandDirection;
-        public static char QueuedCommand;
+        public static char CurrentCommand;
 
         /// <summary>
         /// Set to skip waiting for a keypress in the Inkey() function
@@ -42,7 +41,7 @@ namespace Cthangband.UI
         public static bool HideCursorOnFullScreenInkey;
 
         public static Mixer Mixer = new Mixer();
-
+        public static char QueuedCommand;
         private static Display _display;
 
         /// <summary>
@@ -425,7 +424,7 @@ namespace Cthangband.UI
             ColorData.Add(Colour.BrightPurple, Color.Violet);
             ColorData.Add(Colour.Pink, Color.DeepPink);
             ColorData.Add(Colour.BrightPink, Color.HotPink);
-            _display = new Display(Constants.ConsoleWidth, 45, 256);
+            _display = new Display(Constants.ConsoleWidth, Constants.ConsoleHeight, 256);
             MapMovementKeys();
         }
 
@@ -447,9 +446,13 @@ namespace Cthangband.UI
             }
             _keyBuffer = null;
             bool v = CursorVisible;
-            if (!DoNotWaitOnInkey && (!HideCursorOnFullScreenInkey || FullScreenOverlay))
+            if (!DoNotWaitOnInkey && (!HideCursorOnFullScreenInkey && FullScreenOverlay))
             {
                 CursorVisible = true;
+            }
+            else
+            {
+                CursorVisible = false;
             }
             while (ch == 0)
             {

@@ -10,6 +10,7 @@ using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace Cthangband
@@ -863,18 +864,16 @@ namespace Cthangband
             // Big honking switch statement to call the correct function to handle the command
             switch (c)
             {
-                case ' ':
+                case '\x1b':
                     {
+                        DoCmdPopupMenu();
                         break;
                     }
+                case ' ':
                 case '\r':
                     {
                         break;
                     }
-                case '\x1b':
-                    DoCmdExit();
-                    break;
-
                 case 'a':
                     {
                         ActivationHandler handler = new ActivationHandler(Level, Player);
@@ -1517,18 +1516,6 @@ namespace Cthangband
             // Drop it
             Player.Inventory.InvenDrop(itemIndex, amount);
             Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
-        }
-
-        /// <summary>
-        /// Exit the game, returning to the main menu
-        /// </summary>
-        private void DoCmdExit()
-        {
-            if (!Gui.GetCheck("Are you sure you want to save and exit? "))
-            {
-                return;
-            }
-            SaveGame.Instance.Playing = false;
         }
 
         /// <summary>
@@ -2193,6 +2180,32 @@ namespace Cthangband
             if (!disturb)
             {
                 SaveGame.Instance.Disturb(false);
+            }
+        }
+
+        private void DoCmdPopupMenu()
+        {
+            var menuItems = new List<string>() { "Resume Game", "Options", "Quit to Menu", "Quit to Desktop" };
+            var menu = new PopupMenu(menuItems);
+            var result = menu.Show();
+            switch (result)
+            {
+                // Escape or Resume Game
+                case -1:
+                case 0:
+                    return;
+                // Options
+                case 1:
+                    break;
+                // Quit to Menu
+                case 2:
+                    SaveGame.Instance.Playing = false;
+                    break;
+                // Quit to Desktop
+                case 3:
+                    SaveGame.Instance.Playing = false;
+                    Program.SuperQuit = true;
+                    break;
             }
         }
 

@@ -24,6 +24,7 @@ namespace Cthangband
         public static HighScoreTable HiScores;
         public static string SaveFolder;
 
+        public static bool SuperQuit;
         private static string _activeSaveSlot;
         private static string _saveSlot1;
         private static string _saveSlot2;
@@ -172,6 +173,10 @@ namespace Cthangband
             {
                 ShowMainMenu();
                 Profile.Instance.Run();
+                if (SuperQuit)
+                {
+                    return;
+                }
             }
 #if !DEBUG
             }
@@ -256,7 +261,7 @@ namespace Cthangband
             {
                 Gui.SetBackground(BackgroundImage.Menu);
                 Gui.Clear();
-                Gui.Print(Colour.Red, $"{Constants.VersionStamp} ({Constants.CompileTime})", 43, 45);
+                Gui.Print(Colour.Red, $"{Constants.VersionStamp} ({Constants.CompileTime})".PadCenter(80), 43, 0);
                 Gui.Print(Colour.White, "                      Press 1-3 to load or create a game.", 18, 0);
                 if (HiScores.Count > 0)
                 {

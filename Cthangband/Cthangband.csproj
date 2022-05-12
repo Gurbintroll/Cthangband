@@ -704,6 +704,7 @@
     <Compile Include="Room.cs" />
     <Compile Include="UI\Mixer.cs" />
     <Compile Include="UI\MusicTrack.cs" />
+    <Compile Include="UI\PopupMenu.cs" />
     <Compile Include="UI\Screen.cs" />
     <Compile Include="UI\Settings.cs" />
     <Compile Include="Store.cs" />
