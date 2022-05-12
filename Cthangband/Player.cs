@@ -1103,7 +1103,7 @@ namespace Cthangband
                 }
                 break;
             }
-            Name = Name.PadRight(15);
+            Name = Name.PadRight(12);
             Gui.Print(Colour.Brown, Name, 2, col);
             Gui.Clear(22);
         }
