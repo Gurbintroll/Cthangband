@@ -660,6 +660,7 @@
     <Compile Include="Talents\TalentTelekineticWave.cs" />
     <Compile Include="TargetEngine.cs" />
     <Compile Include="Terminal\BackgroundImage.cs" />
+    <Compile Include="Terminal\Resolution.cs" />
     <Compile Include="UI\Display.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="ExPlayer.cs" />
@@ -719,12 +720,6 @@
     <Compile Include="Town.cs" />
     <Compile Include="TvalDescriptionPair.cs" />
     <Compile Include="UI\SoundEffect.cs" />
-    <Compile Include="UI\SplashScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\SplashScreen.Designer.cs">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="VaultFactory.cs" />
     <Compile Include="VaultType.cs" />
     <Compile Include="VaultTypeArray.cs" />
@@ -768,9 +763,6 @@
     <EmbeddedResource Include="Data\BaseRareItemTypes.csv" />
     <EmbeddedResource Include="Data\BaseFixedartifacts.csv" />
     <EmbeddedResource Include="Data\BaseVaultTypes.csv" />
-    <EmbeddedResource Include="UI\SplashScreen.resx">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

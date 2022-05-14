@@ -21,14 +21,12 @@ namespace Cthangband
     internal static class Program
     {
         public static readonly Rng Rng = new Rng();
+        public static bool ExitToDesktop;
         public static HighScoreTable HiScores;
         public static string SaveFolder;
-
-        public static bool SuperQuit;
         private static string _activeSaveSlot;
-        private static string _saveSlot1;
-        private static string _saveSlot2;
-        private static string _saveSlot3;
+        private static string[] _saveSlot;
+        private static Settings _settings;
 
         public static string ActiveSaveSlot
         {
@@ -81,9 +79,11 @@ namespace Cthangband
             savePath = Path.Combine(savePath, "My Games");
             savePath = Path.Combine(savePath, Constants.VersionName);
             SaveFolder = savePath;
-            _saveSlot1 = Path.Combine(savePath, $"slot1.v_{Constants.VersionMajor}_{Constants.VersionMinor}_savefile");
-            _saveSlot2 = Path.Combine(savePath, $"slot2.v_{Constants.VersionMajor}_{Constants.VersionMinor}_savefile");
-            _saveSlot3 = Path.Combine(savePath, $"slot3.v_{Constants.VersionMajor}_{Constants.VersionMinor}_savefile");
+            _saveSlot = new string[4];
+            for (int i = 0; i < 4; i++)
+            {
+                _saveSlot[i] = Path.Combine(savePath, $"slot{i + 1}.v_{Constants.VersionMajor}_{Constants.VersionMinor}_savefile");
+            }
         }
 
         public static void Quit(string reason)
@@ -106,25 +106,315 @@ namespace Cthangband
             }
         }
 
+        internal static void ChangeOptions()
+        {
+            var fonts = Gui.Terminal.EnumerateFonts();
+            var font = 0;
+            for (int i = 0; i < fonts.Count; i++)
+            {
+                if (fonts[i] == _settings.Font)
+                {
+                    font = i;
+                    break;
+                }
+            }
+            var resolutions = Gui.Terminal.EnumerateResolutions();
+            var styles = new List<string> { "Regular", "Bold", "Italic", "Bold Italic" };
+            var resolution = _settings.Resolution;
+            var menuItem = 0;
+            if (resolution == 0)
+            {
+                resolution = 5;
+            }
+            int textStyle = 0;
+            if (_settings.Bold)
+            {
+                textStyle += 1;
+            }
+            if (_settings.Italic)
+            {
+                textStyle += 2;
+            }
+            Gui.Save();
+            Gui.FullScreenOverlay = true;
+            Gui.SetBackground(BackgroundImage.Normal);
+            while (true)
+            {
+                Gui.Clear();
+                Gui.Print(Colour.White, "    Text font:", 1, 1);
+                Gui.Print(Colour.White, "   Text style:", 2, 1);
+                Gui.Print(Colour.White, "Display style:", 4, 1);
+                Gui.Print(Colour.White, "  Window size:", 5, 1);
+                Gui.Print(Colour.White, " Music volume:", 7, 1);
+                Gui.Print(Colour.White, " Sound volume:", 8, 1);
+                Gui.Print(menuItem == 0 ? Colour.BrightPurple : Colour.White, _settings.Font, 1, 16);
+                Gui.Print(menuItem == 1 ? Colour.BrightPurple : Colour.White, styles[textStyle], 2, 16);
+                Gui.Print(menuItem == 2 ? Colour.BrightPurple : Colour.White, (_settings.Resolution == 0 ? "Fullscreen" : "Windowed"), 4, 16);
+                Gui.Print(menuItem == 3 ? Colour.BrightPurple : Colour.White, resolutions[resolution - 1].ToString(), 5, 16);
+                Gui.Print(menuItem == 4 ? Colour.BrightPurple : Colour.White, _settings.MusicVolume.ToString() + "%", 7, 16);
+                Gui.Print(menuItem == 5 ? Colour.BrightPurple : Colour.White, _settings.SoundVolume.ToString() + "%", 8, 16);
+                Gui.HideCursorOnFullScreenInkey = true;
+                var c = Gui.Inkey();
+                if (c == '\r' || c == ' ' || c == '\x1b')
+                {
+                    break;
+                }
+                if (c == '2')
+                {
+                    menuItem++;
+                    if (menuItem == 6)
+                    {
+                        menuItem = 0;
+                    }
+                }
+                if (c == '8')
+                {
+                    menuItem--;
+                    if (menuItem == -1)
+                    {
+                        menuItem = 5;
+                    }
+                }
+                if (c == '6')
+                {
+                    switch (menuItem)
+                    {
+                        case 0:
+                            font++;
+                            if (font >= fonts.Count)
+                            {
+                                font = 0;
+                            }
+                            _settings.Font = fonts[font];
+                            Gui.Terminal.SetNewFont(_settings.Font, _settings.Bold, _settings.Italic);
+                            break;
+
+                        case 1:
+                            textStyle++;
+                            if (textStyle >= styles.Count)
+                            {
+                                textStyle = 0;
+                            }
+                            _settings.Bold = (textStyle == 1 || textStyle == 3);
+                            _settings.Italic = (textStyle == 2 || textStyle == 3);
+                            Gui.Terminal.SetNewFont(_settings.Font, _settings.Bold, _settings.Italic);
+                            break;
+
+                        case 2:
+                            _settings.Resolution = _settings.Resolution == 0 ? resolution : 0;
+                            Gui.Terminal.ResizeWindow(_settings.Resolution == 0, resolutions[resolution - 1].Width, resolutions[resolution - 1].Height);
+                            break;
+
+                        case 3:
+                            if (resolution < resolutions.Count)
+                            {
+                                resolution++;
+                                if (_settings.Resolution != 0)
+                                {
+                                    _settings.Resolution = resolution;
+                                    Gui.Terminal.ResizeWindow(false, resolutions[resolution - 1].Width, resolutions[resolution - 1].Height);
+                                }
+                            }
+                            break;
+
+                        case 4:
+                            if (_settings.MusicVolume < 100)
+                            {
+                                _settings.MusicVolume += 5;
+                            }
+                            Gui.Mixer.MusicVolume = _settings.MusicVolume / 100.0f;
+                            Gui.Mixer.ResetCurrentMusicVolume();
+                            break;
+
+                        case 5:
+                            if (_settings.SoundVolume < 100)
+                            {
+                                _settings.SoundVolume += 5;
+                            }
+                            Gui.Mixer.SoundVolume = _settings.SoundVolume / 100.0f;
+                            break;
+                    }
+                }
+                if (c == '4')
+                {
+                    switch (menuItem)
+                    {
+                        case 0:
+                            font--;
+                            if (font < 0)
+                            {
+                                font = fonts.Count - 1;
+                            }
+                            _settings.Font = fonts[font];
+                            Gui.Terminal.SetNewFont(_settings.Font, _settings.Bold, _settings.Italic);
+                            break;
+
+                        case 1:
+                            textStyle--;
+                            if (textStyle < 0)
+                            {
+                                textStyle = styles.Count - 1;
+                            }
+                            _settings.Bold = (textStyle == 1 || textStyle == 3);
+                            _settings.Italic = (textStyle == 2 || textStyle == 3);
+                            Gui.Terminal.SetNewFont(_settings.Font, _settings.Bold, _settings.Italic);
+                            break;
+
+                        case 2:
+                            _settings.Resolution = _settings.Resolution == 0 ? resolution : 0;
+                            Gui.Terminal.ResizeWindow(_settings.Resolution == 0, resolutions[resolution - 1].Width, resolutions[resolution - 1].Height);
+                            break;
+
+                        case 3:
+                            if (resolution > 1)
+                            {
+                                resolution--;
+                                if (_settings.Resolution != 0)
+                                {
+                                    _settings.Resolution = resolution;
+                                    Gui.Terminal.ResizeWindow(false, resolutions[resolution - 1].Width, resolutions[resolution - 1].Height);
+                                }
+                            }
+                            break;
+
+                        case 4:
+                            if (_settings.MusicVolume > 0)
+                            {
+                                _settings.MusicVolume -= 5;
+                            }
+                            Gui.Mixer.MusicVolume = _settings.MusicVolume / 100.0f;
+                            Gui.Mixer.ResetCurrentMusicVolume();
+                            break;
+
+                        case 5:
+                            if (_settings.SoundVolume > 0)
+                            {
+                                _settings.SoundVolume -= 5;
+                            }
+                            Gui.Mixer.SoundVolume = _settings.SoundVolume / 100.0f;
+                            break;
+                    }
+                }
+            }
+            Gui.FullScreenOverlay = false;
+            Gui.Load();
+        }
+
         internal static Dictionary<string, HighScore> GetHighScoreFromSaves()
         {
             var saves = new Dictionary<string, HighScore>();
-            var score1 = GetHighScoreFromSave(_saveSlot1);
-            if (score1 != null)
+            for (int i = 0; i < 4; i++)
             {
-                saves.Add(_saveSlot1, score1);
-            }
-            var score2 = GetHighScoreFromSave(_saveSlot2);
-            if (score2 != null)
-            {
-                saves.Add(_saveSlot2, score2);
-            }
-            var score3 = GetHighScoreFromSave(_saveSlot3);
-            if (score3 != null)
-            {
-                saves.Add(_saveSlot3, score3);
+                var score = GetHighScoreFromSave(_saveSlot[i]);
+                if (score != null)
+                {
+                    saves.Add(_saveSlot[i], score);
+                }
             }
             return saves;
+        }
+
+        private static int ChooseProfile(int saveIndex, string action)
+        {
+            Gui.SetBackground(BackgroundImage.Normal);
+            Gui.Clear();
+            for (int i = 0; i < 4; i++)
+            {
+                PeekSavefile(_saveSlot[i], i, false);
+            }
+            Gui.Print(Colour.BrightTurquoise, "Savegame 1", 5, 15);
+            Gui.Print(Colour.BrightTurquoise, "Savegame 2", 5, 55);
+            Gui.Print(Colour.BrightTurquoise, "Savegame 3", 28, 15);
+            Gui.Print(Colour.BrightTurquoise, "Savegame 4", 28, 55);
+            Gui.Print(Colour.BrightTurquoise, $"Select a savegame to {action}.".PadCenter(80), 23, 0);
+            Gui.Refresh();
+            Gui.Save();
+            int displayRow = 0;
+            int displayCol = 0;
+            while (true)
+            {
+                Gui.Load();
+                switch (saveIndex)
+                {
+                    case 0:
+                        displayRow = 9;
+                        displayCol = 6;
+                        break;
+
+                    case 1:
+                        displayRow = 9;
+                        displayCol = 46;
+                        break;
+
+                    case 2:
+                        displayRow = 31;
+                        displayCol = 6;
+                        break;
+
+                    case 3:
+                        displayRow = 31;
+                        displayCol = 46;
+                        break;
+                }
+                Gui.Print(Colour.BrightPurple, "+----------------+", displayRow - 2, displayCol + 5);
+                Gui.Print(Colour.BrightPurple, "+----------------+", displayRow + 5, displayCol + 5);
+                for (int i = -1; i < 5; i++)
+                {
+                    Gui.Print(Colour.BrightPurple, "|", displayRow + i, displayCol + 5);
+                    Gui.Print(Colour.BrightPurple, "|", displayRow + i, displayCol + 22);
+                }
+                var c = Gui.Inkey();
+                if (c == '6' || c == '4')
+                {
+                    switch (saveIndex)
+                    {
+                        case 0:
+                            saveIndex = 1;
+                            break;
+
+                        case 1:
+                            saveIndex = 0;
+                            break;
+
+                        case 2:
+                            saveIndex = 3;
+                            break;
+
+                        case 3:
+                            saveIndex = 2;
+                            break;
+                    }
+                }
+                if (c == '8' || c == '2')
+                {
+                    switch (saveIndex)
+                    {
+                        case 0:
+                            saveIndex = 2;
+                            break;
+
+                        case 1:
+                            saveIndex = 3;
+                            break;
+
+                        case 2:
+                            saveIndex = 0;
+                            break;
+
+                        case 3:
+                            saveIndex = 1;
+                            break;
+                    }
+                }
+                if (c == '\r' || c == ' ')
+                {
+                    return saveIndex;
+                }
+                if (c == '\x1b')
+                {
+                    return -1;
+                }
+            }
         }
 
         private static HighScore GetHighScoreFromSave(string save)
@@ -154,6 +444,19 @@ namespace Cthangband
             return new HighScore(tempProfile.Game.Player, tempProfile.Game);
         }
 
+        private static int LoadGame(int saveIndex)
+        {
+            int choice = ChooseProfile(saveIndex, "load");
+            if (choice >= 0)
+            {
+                if (PeekSavefile(_saveSlot[choice], 0, true))
+                {
+                    return choice;
+                }
+            }
+            return -1;
+        }
+
         [STAThread]
         private static void Main()
         {
@@ -164,20 +467,20 @@ namespace Cthangband
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             General.CheckDebugStatus();
-            SplashScreen splashScreen = new SplashScreen();
-            if (splashScreen.ShowDialog() != DialogResult.OK)
+            GetDefaultFolder();
+            _settings = DeserializeFromSaveFolder<Settings>("game.settings") ?? new Settings();
+            if (!DirCreate(SaveFolder))
             {
-                return;
+                Quit($"Cannot create '{SaveFolder}'");
             }
-            while (true)
+            StaticResources.LoadOrCreate();
+            HiScores = new HighScoreTable();
+            Gui.Initialise(_settings);
+            while (!ExitToDesktop)
             {
                 ShowMainMenu();
-                Profile.Instance.Run();
-                if (SuperQuit)
-                {
-                    return;
-                }
             }
+            SerializeToSaveFolder(_settings, "game.settings");
 #if !DEBUG
             }
             catch (Exception ex)
@@ -187,13 +490,82 @@ namespace Cthangband
 #endif
         }
 
-        private static void PeekSavefile(string save, int displayRow)
+        private static int NewGame(int saveIndex)
         {
+            int choice = ChooseProfile(saveIndex, "overwrite");
+            if (choice >= 0)
+            {
+                if (PeekSavefile(_saveSlot[choice], 0, true))
+                {
+                    var text = new List<string>
+                    {
+                        $"Savegame {choice} already exists.",
+                        "Overwriting it with a new game will",
+                        "lose the information about monsters",
+                        "that previous characters in that",
+                        "savegame have collected. If all you",
+                        "want to do is play a new character,",
+                        "you should load it instead of over-",
+                        "witing it. Are you sure you wish to",
+                        $"overwrite savegame {choice}?"
+                    };
+                    var options = new List<string> { "Overwrite", "Cancel" };
+                    var popup = new PopupMenu(options, text, 36);
+                    var result = popup.Show();
+                    switch (result)
+                    {
+                        case -1:
+                        case 1:
+                            return -1;
+
+                        case 0:
+                            FileInfo fileInfo = new FileInfo(_saveSlot[choice]);
+                            if (fileInfo.Exists)
+                            {
+                                fileInfo.Delete();
+                            }
+                            return choice;
+                    }
+                }
+                return choice;
+            }
+            return -1;
+        }
+
+        private static bool PeekSavefile(string save, int index, bool silently)
+        {
+            int displayRow = 0;
+            int displayCol = 0;
+            switch (index)
+            {
+                case 0:
+                    displayRow = 9;
+                    displayCol = 6;
+                    break;
+
+                case 1:
+                    displayRow = 9;
+                    displayCol = 46;
+                    break;
+
+                case 2:
+                    displayRow = 31;
+                    displayCol = 6;
+                    break;
+
+                case 3:
+                    displayRow = 31;
+                    displayCol = 46;
+                    break;
+            }
             FileInfo file = new FileInfo(save);
             if (!file.Exists)
             {
-                Gui.Print(Colour.Green, "<Empty>", 34, displayRow + 10);
-                return;
+                if (!silently)
+                {
+                    Gui.Print(Colour.BrightTurquoise, "<Empty>", displayRow, displayCol + 11);
+                }
+                return false;
             }
             Profile tempProfile;
             try
@@ -202,8 +574,15 @@ namespace Cthangband
             }
             catch (Exception)
             {
-                Gui.Print(Colour.BrightRed, "<Unreadable>", 34, displayRow + 8);
-                return;
+                if (!silently)
+                {
+                    Gui.Print(Colour.BrightRed, "<Unreadable>", displayRow, displayCol + 8);
+                }
+                return false;
+            }
+            if (silently)
+            {
+                return true;
             }
             bool tempDeath = tempProfile.Game.Player == null;
             Colour color;
@@ -234,23 +613,24 @@ namespace Cthangband
                 tempRealm = tempProfile.Game.Player.Realm1;
                 tempName = tempProfile.Game.Player.Name.Trim() + tempProfile.Game.Player.Generation.ToRoman(true);
             }
-            Gui.Print(color, tempName, 34, displayRow + 14 - (tempName.Length / 2));
+            Gui.Print(color, tempName, displayRow, displayCol + 14 - (tempName.Length / 2));
             string tempchar = $"the level {tempLev}";
-            Gui.Print(color, tempchar, 35, displayRow + 14 - (tempchar.Length / 2));
+            Gui.Print(color, tempchar, displayRow + 1, displayCol + 14 - (tempchar.Length / 2));
             tempchar = Race.RaceInfo[tempRace].Title;
-            Gui.Print(color, tempchar, 36, displayRow + 14 - (tempchar.Length / 2));
+            Gui.Print(color, tempchar, displayRow + 2, displayCol + 14 - (tempchar.Length / 2));
             tempchar = Profession.ClassSubName(tempClass, tempRealm);
-            Gui.Print(color, tempchar, 37, displayRow + 14 - (tempchar.Length / 2));
+            Gui.Print(color, tempchar, displayRow + 3, displayCol + 14 - (tempchar.Length / 2));
             if (tempDeath)
             {
                 tempchar = "(deceased)";
-                Gui.Print(color, tempchar, 38, displayRow + 14 - (tempchar.Length / 2));
+                Gui.Print(color, tempchar, displayRow + 4, displayCol + 14 - (tempchar.Length / 2));
             }
             else if (tempProfile.Game.Player.IsWizard)
             {
                 tempchar = "-=<WIZARD>=-";
-                Gui.Print(color, tempchar, 38, displayRow + 14 - (tempchar.Length / 2));
+                Gui.Print(color, tempchar, displayRow + 4, displayCol + 14 - (tempchar.Length / 2));
             }
+            return true;
         }
 
         private static void ShowMainMenu()
@@ -261,101 +641,133 @@ namespace Cthangband
             {
                 Gui.SetBackground(BackgroundImage.Menu);
                 Gui.Clear();
-                Gui.Print(Colour.Red, $"{Constants.VersionStamp} ({Constants.CompileTime})".PadCenter(80), 43, 0);
-                Gui.Print(Colour.White, "                      Press 1-3 to load or create a game.", 18, 0);
-                if (HiScores.Count > 0)
+                Gui.Print(Colour.BrightRed, $"© 1997-{Constants.CompileTime:yyyy} Dean Anderson".PadCenter(80), 41, 0);
+                Gui.Print(Colour.BrightRed, "See Cthangpedia for license and credits.".PadCenter(80), 42, 0);
+                Gui.Print(Colour.BrightRed, $"{Constants.VersionStamp} ({Constants.CompileTime})".PadCenter(80), 43, 0);
+                // Check to see if we have a savefile that we can continue
+                var saveIndex = _settings.LastProfileUsed;
+                var canContinue = PeekSavefile(_saveSlot[saveIndex], 0, true); ;
+                var profileChoice = -1;
+                if (canContinue)
                 {
-                    Gui.Print(Colour.White, "                      Press 's' to view the high scores.", 20, 0);
+                    var list = new List<string> { "Continue Game", "New Game", "Load Game", "High Scores", "Cthangpedia", "Options", "Quit to Desktop" };
+                    var menu = new PopupMenu(list);
+                    var menuChoice = menu.Show();
+                    {
+                        switch (menuChoice)
+                        {
+                            case -1:
+                            case 6:
+                                // Exit to Desktop
+                                ExitToDesktop = true;
+                                return;
+
+                            case 0:
+                                // Continue Game
+                                ActiveSaveSlot = _saveSlot[saveIndex];
+                                Profile.Instance.Run();
+                                return;
+
+                            case 1:
+                                // New Game
+                                profileChoice = NewGame(saveIndex);
+                                if (profileChoice >= 0)
+                                {
+                                    _settings.LastProfileUsed = profileChoice;
+                                    ActiveSaveSlot = _saveSlot[profileChoice];
+                                    Profile.Instance.Run();
+                                    return;
+                                }
+                                break;
+
+                            case 2:
+                                // Load Game
+                                profileChoice = LoadGame(saveIndex);
+                                if (profileChoice >= 0)
+                                {
+                                    _settings.LastProfileUsed = profileChoice;
+                                    ActiveSaveSlot = _saveSlot[profileChoice];
+                                    Profile.Instance.Run();
+                                    return;
+                                }
+                                break;
+
+                            case 3:
+                                // High Scores
+                                HiScores.DisplayScores();
+                                break;
+
+                            case 4:
+                                // Cthangpedia
+                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
+                                {
+                                    manual.ShowDialog();
+                                }
+                                break;
+
+                            case 5:
+                                // Options
+                                ChangeOptions();
+                                break;
+                        }
+                    }
                 }
-                Gui.Print(Colour.White, "                               Press 'q' to quit.", 22, 0);
-                Gui.Print(Colour.White, "                           Press 'h' for help/manual.", 23, 0);
-                General.PrintDebugOption();
-                Gui.Print(Colour.Red, "                        Press 'x' to delete a save slot.", 26, 0);
-                Gui.Print(Colour.BrightTurquoise, "               Slot 1                Slot 2                Slot 3", 32, 0);
-                PeekSavefile(_saveSlot1, 4);
-                PeekSavefile(_saveSlot2, 26);
-                PeekSavefile(_saveSlot3, 48);
-                Gui.Refresh();
-                while (true)
+                else
                 {
-                    Gui.FullScreenOverlay = false;
-                    Gui.HideCursorOnFullScreenInkey = true;
-                    char c = Gui.Inkey();
-                    Gui.HideCursorOnFullScreenInkey = false;
-                    if (c == 'q' || c == 'Q')
+                    var list = new List<string> { "New Game", "Load Game", "High Scores", "Cthangpedia", "Options", "Quit to Desktop" };
+                    var menu = new PopupMenu(list);
+                    var menuChoice = menu.Show();
                     {
-                        Quit(null);
-                    }
-                    if (c == 's' || c == 'S')
-                    {
-                        HiScores.DisplayScores();
-                        break;
-                    }
-                    if (c == 'h' || c == 'H')
-                    {
-                        using (Manual.ManualViewer manual = new Manual.ManualViewer())
+                        switch (menuChoice)
                         {
-                            manual.ShowDialog();
+                            case -1:
+                            case 5:
+                                // Exit to Desktop
+                                ExitToDesktop = true;
+                                return;
+
+                            case 0:
+                                // New Game
+                                profileChoice = NewGame(saveIndex);
+                                if (profileChoice >= 0)
+                                {
+                                    _settings.LastProfileUsed = profileChoice;
+                                    ActiveSaveSlot = _saveSlot[profileChoice];
+                                    Profile.Instance.Run();
+                                    return;
+                                }
+                                break;
+
+                            case 1:
+                                // Load Game
+                                profileChoice = LoadGame(saveIndex);
+                                if (profileChoice >= 0)
+                                {
+                                    _settings.LastProfileUsed = profileChoice;
+                                    ActiveSaveSlot = _saveSlot[profileChoice];
+                                    Profile.Instance.Run();
+                                    return;
+                                }
+                                break;
+
+                            case 2:
+                                // High Scores
+                                HiScores.DisplayScores();
+                                break;
+
+                            case 3:
+                                // Cthangpedia
+                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
+                                {
+                                    manual.ShowDialog();
+                                }
+                                break;
+
+                            case 4:
+                                // Options
+                                ChangeOptions();
+                                break;
                         }
-                        break;
-                    }
-                    if (c == '1')
-                    {
-                        ActiveSaveSlot = _saveSlot1;
-                        return;
-                    }
-                    if (c == '2')
-                    {
-                        ActiveSaveSlot = _saveSlot2;
-                        return;
-                    }
-                    if (c == '3')
-                    {
-                        ActiveSaveSlot = _saveSlot3;
-                        return;
-                    }
-                    if (c == 'd' || c == 'D')
-                    {
-                        General.ShowDebugMenu();
-                    }
-                    if (c == 'x' || c == 'X')
-                    {
-                        Gui.Print(Colour.Grey, "                                                                 ", 7,
-                            0);
-                        Gui.Print(Colour.BrightRed,
-                            "  ***  WARNING! This will delete all character history from the save slot. ***", 26, 0);
-                        Gui.Print(Colour.BrightRed,
-                            "  ***        Press 1-3 if you are sure you want to delete a save slot,     ***", 27, 0);
-                        Gui.Print(Colour.BrightRed,
-                            "  ***                     or any other key to cancel.                      ***", 28, 0);
-                        Gui.HideCursorOnFullScreenInkey = true;
-                        c = Gui.Inkey();
-                        Gui.HideCursorOnFullScreenInkey = false;
-                        if (c == '1')
-                        {
-                            FileInfo fileInfo = new FileInfo(_saveSlot1);
-                            if (fileInfo.Exists)
-                            {
-                                fileInfo.Delete();
-                            }
-                        }
-                        if (c == '2')
-                        {
-                            FileInfo fileInfo = new FileInfo(_saveSlot2);
-                            if (fileInfo.Exists)
-                            {
-                                fileInfo.Delete();
-                            }
-                        }
-                        if (c == '3')
-                        {
-                            FileInfo fileInfo = new FileInfo(_saveSlot3);
-                            if (fileInfo.Exists)
-                            {
-                                fileInfo.Delete();
-                            }
-                        }
-                        break;
                     }
                 }
             }

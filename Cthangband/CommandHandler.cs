@@ -8,6 +8,7 @@
 using Cthangband.Enumerations;
 using Cthangband.Spells;
 using Cthangband.StaticData;
+using Cthangband.Terminal;
 using Cthangband.UI;
 using System;
 using System.Collections.Generic;
@@ -2196,6 +2197,8 @@ namespace Cthangband
                     return;
                 // Options
                 case 1:
+                    Program.ChangeOptions();
+                    Gui.SetBackground(BackgroundImage.Overhead);
                     break;
                 // Quit to Menu
                 case 2:
@@ -2204,7 +2207,7 @@ namespace Cthangband
                 // Quit to Desktop
                 case 3:
                     SaveGame.Instance.Playing = false;
-                    Program.SuperQuit = true;
+                    Program.ExitToDesktop = true;
                     break;
             }
         }

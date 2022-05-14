@@ -1115,7 +1115,7 @@ namespace Cthangband
             {
                 IsAutosave = false;
                 DoCmdSaveGame();
-                if (!Program.SuperQuit)
+                if (!Program.ExitToDesktop)
                 {
                     Gui.Mixer.Play(MusicTrack.Menu);
                     Program.HiScores.DisplayScores(new HighScore(Player));

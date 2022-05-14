@@ -156,49 +156,6 @@ namespace Cthangband.Terminal
         }
 
         /// <summary>
-        /// Returns a list of the names of all the fonts that are installed and can be used
-        /// </summary>
-        /// <returns> A list of font names </returns>
-        public static List<string> EnumerateFonts()
-        {
-            List<string> names = new List<string>();
-            ICollection<FontFamily> fonts = Fonts.SystemFontFamilies;
-            foreach (FontFamily font in fonts)
-            {
-                Typeface typeface = new Typeface(font.ToString());
-                double iWidth = new FormattedText("i", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
-                    12, Brushes.Black).Width;
-                double wWidth = new FormattedText("W", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
-                    12, Brushes.Black).Width;
-                if (Math.Abs(wWidth - iWidth) > 0.0001)
-                {
-                    continue;
-                }
-                double percentWidth = new FormattedText("%", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight,
-                    typeface, 12, Brushes.Black).Width;
-                if (Math.Abs(percentWidth - iWidth) > 0.0001)
-                {
-                    continue;
-                }
-                double zWidth = new FormattedText("z", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
-                    12, Brushes.Black).Width;
-                if (Math.Abs(zWidth - iWidth) > 0.0001)
-                {
-                    continue;
-                }
-                double lWidth = new FormattedText("l", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
-                    12, Brushes.Black).Width;
-                if (Math.Abs(lWidth - iWidth) > 0.0001)
-                {
-                    continue;
-                }
-                names.Add(font.ToString());
-            }
-            names.Sort();
-            return names;
-        }
-
-        /// <summary>
         /// Clears the entire screen
         /// </summary>
         public void Clear()
@@ -248,6 +205,71 @@ namespace Cthangband.Terminal
         public void ClearKeyQueue()
         {
             _window.KeyQueue.Clear();
+        }
+
+        /// <summary>
+        /// Returns a list of the names of all the fonts that are installed and can be used
+        /// </summary>
+        /// <returns> A list of font names </returns>
+        public List<string> EnumerateFonts()
+        {
+            List<string> names = new List<string>();
+            ICollection<FontFamily> fonts = Fonts.SystemFontFamilies;
+            foreach (FontFamily font in fonts)
+            {
+                Typeface typeface = new Typeface(font.ToString());
+                double iWidth = new FormattedText("iiii", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                    12, Brushes.Black).Width;
+                double wWidth = new FormattedText("WWWW", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                    12, Brushes.Black).Width;
+                if (Math.Abs(wWidth - iWidth) > 0.0001)
+                {
+                    continue;
+                }
+                double percentWidth = new FormattedText("%%%%", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight,
+                    typeface, 12, Brushes.Black).Width;
+                if (Math.Abs(percentWidth - iWidth) > 0.0001)
+                {
+                    continue;
+                }
+                double zWidth = new FormattedText("zzzz", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                    12, Brushes.Black).Width;
+                if (Math.Abs(zWidth - iWidth) > 0.0001)
+                {
+                    continue;
+                }
+                double lWidth = new FormattedText("llll", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                    12, Brushes.Black).Width;
+                if (Math.Abs(lWidth - iWidth) > 0.0001)
+                {
+                    continue;
+                }
+                double dotWidth = new FormattedText("....", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                    12, Brushes.Black).Width;
+                if (Math.Abs(dotWidth - iWidth) > 0.0001)
+                {
+                    continue;
+                }
+                double underscoreWidth = new FormattedText("____", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                    12, Brushes.Black).Width;
+                if (Math.Abs(underscoreWidth - iWidth) > 0.0001)
+                {
+                    continue;
+                }
+                names.Add(font.ToString());
+            }
+            names.Sort();
+            return names;
+        }
+
+        public List<Resolution> EnumerateResolutions()
+        {
+            var list = new List<Resolution>();
+            for (int i = 0; i < 11; i++)
+            {
+                list.Add(new Resolution(i));
+            }
+            return list;
         }
 
         /// <summary>

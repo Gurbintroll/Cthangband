@@ -139,43 +139,27 @@ namespace Cthangband.StaticData
         /// <summary>
         /// Load the dictionaries from the binary resource file
         /// </summary>
-        public static void LoadOrCreate(Action<int> Callback)
+        public static void LoadOrCreate()
         {
             Instance = new StaticResources
             {
                 BaseMonsterRaces = ReadEntitiesFromCsv(new BaseMonsterRace())
             };
-            Callback(1);
             Instance.BaseItemTypes = ReadEntitiesFromCsv(new BaseItemType());
-            Callback(1);
             Instance.BaseFixedartifacts = ReadEntitiesFromCsv(new BaseFixedartifact());
-            Callback(1);
             Instance.BaseRareItemTypes = ReadEntitiesFromCsv(new BaseRareItemType());
-            Callback(1);
             Instance.BaseVaultTypes = ReadEntitiesFromCsv(new BaseVaultType());
-            Callback(1);
             Instance.FloorTileTypes = ReadEntitiesFromCsv(new FloorTileType());
-            Callback(1);
             Instance.Animations = ReadEntitiesFromCsv(new Animation());
-            Callback(1);
             Instance.ProjectileGraphics = ReadEntitiesFromCsv(new ProjectileGraphic());
-            Callback(1);
             Instance.AmuletFlavours = ReadEntitiesFromCsv(new AmuletFlavour());
-            Callback(1);
             Instance.MushroomFlavours = ReadEntitiesFromCsv(new MushroomFlavour());
-            Callback(1);
             Instance.PotionFlavours = ReadEntitiesFromCsv(new PotionFlavour());
-            Callback(1);
             Instance.WandFlavours = ReadEntitiesFromCsv(new WandFlavour());
-            Callback(1);
             Instance.ScrollFlavours = ReadEntitiesFromCsv(new ScrollFlavour());
-            Callback(1);
             Instance.StaffFlavours = ReadEntitiesFromCsv(new StaffFlavour());
-            Callback(1);
             Instance.RingFlavours = ReadEntitiesFromCsv(new RingFlavour());
-            Callback(1);
             Instance.RodFlavours = ReadEntitiesFromCsv(new RodFlavour());
-            Callback(1);
         }
 
         /// <summary>

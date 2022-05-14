@@ -62,6 +62,14 @@ namespace Cthangband.UI
             set => _display.Scr.Cv = value;
         }
 
+        public static Terminal.Terminal Terminal
+        {
+            get
+            {
+                return _terminal;
+            }
+        }
+
         /// <summary>
         /// Prints a 'press any key' message and waits for a key press
         /// </summary>

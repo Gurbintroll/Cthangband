@@ -1,4 +1,11 @@
-﻿using IrrKlang;
+﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
+//
+// This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
+// Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
+// and not for profit purposes provided that this copyright and statement are included in all such
+// copies. Other copyrights may also apply.”
+using IrrKlang;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -173,19 +180,19 @@ namespace Cthangband.UI
             {
                 return;
             }
+            _currentMusicTrack = musicTrack;
+            _currentMusicISound?.Stop();
+            _currentMusicISound = null;
             if (MusicVolume == 0)
             {
                 return;
             }
-            _currentMusicISound?.Stop();
-            _currentMusicISound = null;
             if (musicTrack == MusicTrack.None)
             {
                 return;
             }
             _musicSources[musicTrack].DefaultVolume = MusicVolume;
             _currentMusicISound = _engine.Play2D(_musicSources[musicTrack], true, false, false);
-            _currentMusicTrack = musicTrack;
         }
 
         public void Play(SoundEffect sound)
@@ -199,6 +206,28 @@ namespace Cthangband.UI
             var soundSource = _soundSources[soundResourceName];
             soundSource.DefaultVolume = SoundVolume;
             _engine.Play2D(soundSource, false, false, false);
+        }
+
+        public void ResetCurrentMusicVolume()
+        {
+            if (MusicVolume == 0)
+            {
+                _currentMusicISound?.Stop();
+                _currentMusicISound = null;
+            }
+            else
+            {
+                if (_currentMusicISound == null)
+                {
+                    var track = _currentMusicTrack;
+                    _currentMusicTrack = MusicTrack.None;
+                    Play(track);
+                }
+                else
+                {
+                    _currentMusicISound.Volume = MusicVolume;
+                }
+            }
         }
 
         private ISoundSource MusicTrackFromResource(string resourceName)
