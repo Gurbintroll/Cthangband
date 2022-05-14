@@ -936,7 +936,6 @@
     <Content Include="Manual\Wisdom.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\splash.png" />
     <Resource Include="Resources\Background2.png" />
     <Resource Include="Resources\Background.png" />
     <Resource Include="Resources\Paper.png" />
@@ -945,7 +944,6 @@
     <Resource Include="Resources\Crown.png" />
     <Resource Include="Resources\Sunset.png" />
     <Resource Include="Resources\Map.png" />
-    <None Include="Resources\SplashScreen.png" />
     <EmbeddedResource Include="Sounds\amb_bell_metal1.wav" />
     <EmbeddedResource Include="Sounds\amb_bell_metal2.wav" />
     <EmbeddedResource Include="Sounds\amb_bell_tibet1.wav" />

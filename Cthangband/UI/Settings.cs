@@ -19,9 +19,9 @@ namespace Cthangband.UI
         public string Font = FontFamily.GenericMonospace.Name;
         public bool Italic = false;
         public int LastProfileUsed = 0;
-        public int MusicVolume = 0; //100;
+        public int MusicVolume = 100;
         public int Resolution = 0;
-        public int SoundVolume = 0; //100;
+        public int SoundVolume = 100;
 
         public TerminalParameters Parameters()
         {
