@@ -40,6 +40,7 @@ namespace Cthangband.UI
         /// </summary>
         public static bool HideCursorOnFullScreenInkey;
 
+        public static bool InPopupMenu;
         public static Mixer Mixer = new Mixer();
         public static char QueuedCommand;
         private static Display _display;
@@ -454,11 +455,11 @@ namespace Cthangband.UI
             }
             _keyBuffer = null;
             bool v = CursorVisible;
-            if (!DoNotWaitOnInkey && (!HideCursorOnFullScreenInkey && FullScreenOverlay))
+            if (!DoNotWaitOnInkey && (!HideCursorOnFullScreenInkey || FullScreenOverlay))
             {
                 CursorVisible = true;
             }
-            else
+            if (InPopupMenu)
             {
                 CursorVisible = false;
             }

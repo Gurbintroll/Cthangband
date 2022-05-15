@@ -137,22 +137,22 @@ namespace Cthangband
             }
             Gui.Save();
             Gui.FullScreenOverlay = true;
+            Gui.InPopupMenu = true;
             Gui.SetBackground(BackgroundImage.Normal);
+            PrintOptionsScreen();
+            var blank = new string(' ', 34);
             while (true)
             {
-                Gui.Clear();
-                Gui.Print(Colour.White, "    Text font:", 1, 1);
-                Gui.Print(Colour.White, "   Text style:", 2, 1);
-                Gui.Print(Colour.White, "Display style:", 4, 1);
-                Gui.Print(Colour.White, "  Window size:", 5, 1);
-                Gui.Print(Colour.White, " Music volume:", 7, 1);
-                Gui.Print(Colour.White, " Sound volume:", 8, 1);
-                Gui.Print(menuItem == 0 ? Colour.BrightPurple : Colour.White, _settings.Font, 1, 16);
-                Gui.Print(menuItem == 1 ? Colour.BrightPurple : Colour.White, styles[textStyle], 2, 16);
-                Gui.Print(menuItem == 2 ? Colour.BrightPurple : Colour.White, (_settings.Resolution == 0 ? "Fullscreen" : "Windowed"), 4, 16);
-                Gui.Print(menuItem == 3 ? Colour.BrightPurple : Colour.White, resolutions[resolution - 1].ToString(), 5, 16);
-                Gui.Print(menuItem == 4 ? Colour.BrightPurple : Colour.White, _settings.MusicVolume.ToString() + "%", 7, 16);
-                Gui.Print(menuItem == 5 ? Colour.BrightPurple : Colour.White, _settings.SoundVolume.ToString() + "%", 8, 16);
+                for (int i = 4; i < 10; i++)
+                {
+                    Gui.Print(Colour.White, blank, i, 16);
+                }
+                Gui.Print(menuItem == 0 ? Colour.BrightPurple : Colour.White, _settings.Font, 4, 16);
+                Gui.Print(menuItem == 1 ? Colour.BrightPurple : Colour.White, styles[textStyle], 5, 16);
+                Gui.Print(menuItem == 2 ? Colour.BrightPurple : Colour.White, (_settings.Resolution == 0 ? "Fullscreen" : "Windowed"), 6, 16);
+                Gui.Print(menuItem == 3 ? Colour.BrightPurple : Colour.White, resolutions[resolution - 1].ToString(), 7, 16);
+                Gui.Print(menuItem == 4 ? Colour.BrightPurple : Colour.White, _settings.MusicVolume.ToString() + "%", 8, 16);
+                Gui.Print(menuItem == 5 ? Colour.BrightPurple : Colour.White, _settings.SoundVolume.ToString() + "%", 9, 16);
                 Gui.HideCursorOnFullScreenInkey = true;
                 var c = Gui.Inkey();
                 if (c == '\r' || c == ' ' || c == '\x1b')
@@ -296,6 +296,7 @@ namespace Cthangband
                     }
                 }
             }
+            Gui.InPopupMenu = false;
             Gui.FullScreenOverlay = false;
             Gui.Load();
         }
@@ -631,6 +632,54 @@ namespace Cthangband
                 Gui.Print(color, tempchar, displayRow + 4, displayCol + 14 - (tempchar.Length / 2));
             }
             return true;
+        }
+
+        private static void PrintOptionsScreen()
+        {
+            Gui.Clear();
+            Gui.Print(Colour.Yellow, "Options", 1, 10);
+            Gui.Print(Colour.Yellow, "=======", 2, 10);
+            Gui.Print(Colour.White, "    Text font:", 4, 1);
+            Gui.Print(Colour.White, "   Text style:", 5, 1);
+            Gui.Print(Colour.White, "Display style:", 6, 1);
+            Gui.Print(Colour.White, "  Window size:", 7, 1);
+            Gui.Print(Colour.White, " Music volume:", 8, 1);
+            Gui.Print(Colour.White, " Sound volume:", 9, 1);
+            // 13
+            Gui.Print(Colour.Red, "Red", 15, 1);
+            Gui.Print(Colour.BrightRed, "Bright Red", 15, 15);
+            Gui.Print(Colour.Orange, "Orange", 16, 1);
+            Gui.Print(Colour.BrightOrange, "Bright Orange", 16, 15);
+            Gui.Print(Colour.Yellow, "Yellow", 17, 1);
+            Gui.Print(Colour.BrightYellow, "Bright Yellow", 17, 15);
+            Gui.Print(Colour.Chartreuse, "Chartreuse", 18, 1);
+            Gui.Print(Colour.BrightChartreuse, "Bright Chartreuse", 18, 15);
+            Gui.Print(Colour.Green, "Green", 19, 1);
+            Gui.Print(Colour.BrightGreen, "Bright Green", 19, 15);
+            Gui.Print(Colour.Turquoise, "Turquoise", 20, 1);
+            Gui.Print(Colour.BrightTurquoise, "Bright Turquoise", 20, 15);
+            Gui.Print(Colour.Blue, "Blue", 21, 1);
+            Gui.Print(Colour.BrightBlue, "Bright Blue", 21, 15);
+            Gui.Print(Colour.Purple, "Purple", 22, 1);
+            Gui.Print(Colour.BrightPurple, "Bright Purple", 22, 15);
+            Gui.Print(Colour.Pink, "Pink", 23, 1);
+            Gui.Print(Colour.BrightPink, "Bright Pink", 23, 15);
+            Gui.Print(Colour.Brown, "Brown", 25, 1);
+            Gui.Print(Colour.BrightBrown, "Bright Brown", 25, 15);
+            Gui.Print(Colour.Beige, "Beige", 26, 1);
+            Gui.Print(Colour.BrightBeige, "Bright Beige", 26, 15);
+            Gui.Print(Colour.Black, "Black", 28, 1);
+            Gui.Print(Colour.Grey, "Grey", 29, 1);
+            Gui.Print(Colour.BrightGrey, "Bright Grey", 30, 1);
+            Gui.Print(Colour.White, "White", 31, 1);
+            Gui.Print(Colour.BrightWhite, "Bright White", 32, 1);
+            Gui.Print(Colour.Copper, "Copper", 28, 15);
+            Gui.Print(Colour.Silver, "Silver", 29, 15);
+            Gui.Print(Colour.Gold, "Gold", 30, 15);
+            Gui.Print(Colour.Diamond, "Diamond", 31, 15);
+            Gui.Print(Colour.White, "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG", 35, 1);
+            Gui.Print(Colour.White, "the quick brown fox jumps over the lazy dog", 36, 1);
+            Gui.Print(Colour.White, "1234567890 !\"$%^&·*()_+-={}[]<>.,/?:@~;'#\\|", 37, 1);
         }
 
         private static void ShowMainMenu()

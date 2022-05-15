@@ -104,10 +104,12 @@ namespace Cthangband.UI
 
         public int Show()
         {
+            Gui.InPopupMenu = true;
             Gui.FullScreenOverlay = true;
             Gui.Save();
             var result = DisplayMenu();
             Gui.Load();
+            Gui.InPopupMenu = false;
             Gui.FullScreenOverlay = false;
             return result;
         }
