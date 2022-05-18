@@ -1166,6 +1166,7 @@
     <EmbeddedResource Include="Music\the-house-of-leaves.flac" />
     <EmbeddedResource Include="Music\umbrella-pants.flac" />
     <Resource Include="Resources\WildMap.png" />
+    <Resource Include="Resources\Options.png" />
     <Content Include="Terminal\Cthangband.ico" />
   </ItemGroup>
   <ItemGroup>

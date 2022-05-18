@@ -138,7 +138,7 @@ namespace Cthangband
             Gui.Save();
             Gui.FullScreenOverlay = true;
             Gui.InPopupMenu = true;
-            Gui.SetBackground(BackgroundImage.Normal);
+            Gui.SetBackground(BackgroundImage.Options);
             PrintOptionsScreen();
             var blank = new string(' ', 34);
             while (true)
@@ -147,12 +147,12 @@ namespace Cthangband
                 {
                     Gui.Print(Colour.White, blank, i, 16);
                 }
-                Gui.Print(menuItem == 0 ? Colour.BrightPurple : Colour.White, _settings.Font, 4, 16);
-                Gui.Print(menuItem == 1 ? Colour.BrightPurple : Colour.White, styles[textStyle], 5, 16);
-                Gui.Print(menuItem == 2 ? Colour.BrightPurple : Colour.White, (_settings.Resolution == 0 ? "Fullscreen" : "Windowed"), 6, 16);
-                Gui.Print(menuItem == 3 ? Colour.BrightPurple : Colour.White, resolutions[resolution - 1].ToString(), 7, 16);
-                Gui.Print(menuItem == 4 ? Colour.BrightPurple : Colour.White, _settings.MusicVolume.ToString() + "%", 8, 16);
-                Gui.Print(menuItem == 5 ? Colour.BrightPurple : Colour.White, _settings.SoundVolume.ToString() + "%", 9, 16);
+                Gui.Print(menuItem == 0 ? Colour.Pink : Colour.Purple, _settings.Font, 4, 16);
+                Gui.Print(menuItem == 1 ? Colour.Pink : Colour.Purple, styles[textStyle], 5, 16);
+                Gui.Print(menuItem == 2 ? Colour.Pink : Colour.Purple, (_settings.Resolution == 0 ? "Fullscreen" : "Windowed"), 6, 16);
+                Gui.Print(menuItem == 3 ? Colour.Pink : Colour.Purple, resolutions[resolution - 1].ToString(), 7, 16);
+                Gui.Print(menuItem == 4 ? Colour.Pink : Colour.Purple, _settings.MusicVolume.ToString() + "%", 8, 16);
+                Gui.Print(menuItem == 5 ? Colour.Pink : Colour.Purple, _settings.SoundVolume.ToString() + "%", 9, 16);
                 Gui.HideCursorOnFullScreenInkey = true;
                 var c = Gui.Inkey();
                 if (c == '\r' || c == ' ' || c == '\x1b')
@@ -637,15 +637,17 @@ namespace Cthangband
         private static void PrintOptionsScreen()
         {
             Gui.Clear();
-            Gui.Print(Colour.Yellow, "Options", 1, 10);
-            Gui.Print(Colour.Yellow, "=======", 2, 10);
-            Gui.Print(Colour.White, "    Text font:", 4, 1);
-            Gui.Print(Colour.White, "   Text style:", 5, 1);
-            Gui.Print(Colour.White, "Display style:", 6, 1);
-            Gui.Print(Colour.White, "  Window size:", 7, 1);
-            Gui.Print(Colour.White, " Music volume:", 8, 1);
-            Gui.Print(Colour.White, " Sound volume:", 9, 1);
-            // 13
+            Gui.Print(Colour.Green, "Options", 1, 10);
+            Gui.Print(Colour.Green, "=======", 2, 10);
+            Gui.Print(Colour.Blue, "    Text font:", 4, 1);
+            Gui.Print(Colour.Blue, "   Text style:", 5, 1);
+            Gui.Print(Colour.Blue, "Display style:", 6, 1);
+            Gui.Print(Colour.Blue, "  Window size:", 7, 1);
+            Gui.Print(Colour.Blue, " Music volume:", 8, 1);
+            Gui.Print(Colour.Blue, " Sound volume:", 9, 1);
+
+            Gui.Print(Colour.Green, "Sample Text", 12, 8);
+            Gui.Print(Colour.Green, "===========", 13, 8);
             Gui.Print(Colour.Red, "Red", 15, 1);
             Gui.Print(Colour.BrightRed, "Bright Red", 15, 15);
             Gui.Print(Colour.Orange, "Orange", 16, 1);
@@ -677,9 +679,96 @@ namespace Cthangband
             Gui.Print(Colour.Silver, "Silver", 29, 15);
             Gui.Print(Colour.Gold, "Gold", 30, 15);
             Gui.Print(Colour.Diamond, "Diamond", 31, 15);
-            Gui.Print(Colour.White, "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG", 35, 1);
-            Gui.Print(Colour.White, "the quick brown fox jumps over the lazy dog", 36, 1);
-            Gui.Print(Colour.White, "1234567890 !\"$%^&·*()_+-={}[]<>.,/?:@~;'#\\|", 37, 1);
+            Gui.Print(Colour.Black, "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG", 35, 1);
+            Gui.Print(Colour.Black, "the quick brown fox jumps over the lazy dog", 36, 1);
+            Gui.Print(Colour.Black, "1234567890 !\"$%^&·*()_+-={}[]<>.,/?:@~;'#\\|", 37, 1);
+
+            Gui.Print(Colour.Green, "Sample Layout", 1, 58);
+            Gui.Print(Colour.Green, "=============", 2, 58);
+            Gui.Print(Colour.Grey, "                   # #       ", 4, 50);
+            Gui.Print(Colour.Grey, "            ########+########", 5, 50);
+            Gui.Print(Colour.Grey, "            #      + +       ", 6, 50);
+            Gui.Print(Colour.Grey, "            # ###############", 7, 50);
+            Gui.Print(Colour.Grey, "            # #              ", 8, 50);
+            Gui.Print(Colour.Grey, "      #######·########       ", 9, 50);
+            Gui.Print(Colour.Grey, "      #··············#       ", 10, 50);
+            Gui.Print(Colour.Grey, "      #·!·······@····#       ", 11, 50);
+            Gui.Print(Colour.Grey, "#######···o··········#       ", 12, 50);
+            Gui.Print(Colour.Grey, "··^·k·'··············#       ", 13, 50);
+            Gui.Print(Colour.Grey, "#######·oo······$····#       ", 14, 50);
+            Gui.Print(Colour.Grey, "      #··o···········#       ", 15, 50);
+            Gui.Print(Colour.Grey, "      #######c########       ", 16, 50);
+            Gui.Print(Colour.Grey, "            #·#              ", 17, 50);
+            Gui.Print(Colour.Grey, "            #·#######        ", 18, 50);
+            Gui.Print(Colour.Grey, "            #·······#        ", 19, 50);
+            Gui.Print(Colour.Grey, "            #######·#        ", 20, 50);
+            Gui.Print(Colour.Grey, "                  #'#########", 21, 50);
+            Gui.Print(Colour.Grey, "                  #·'········", 22, 50);
+            Gui.Print(Colour.Grey, "                  #'#########", 23, 50);
+            Gui.Print(Colour.Grey, "                  #·#        ", 24, 50);
+            Gui.Print(Colour.Grey, "      #############·#        ", 25, 50);
+            Gui.Print(Colour.Grey, "      #·············#        ", 26, 50);
+            Gui.Print(Colour.Grey, "      *·#############        ", 27, 50);
+            Gui.Print(Colour.Grey, "      #·# ################   ", 28, 50);
+            Gui.Print(Colour.Grey, "      #·###·····>········#   ", 29, 50);
+            Gui.Print(Colour.Grey, "      #···'··········^···#   ", 30, 50);
+            Gui.Print(Colour.Grey, "      #####·······|······#   ", 31, 50);
+            Gui.Print(Colour.Grey, "          #·~············#   ", 32, 50);
+            Gui.Print(Colour.Grey, "          #··············#   ", 33, 50);
+            Gui.Print(Colour.Grey, "          ######'############", 34, 50);
+            Gui.Print(Colour.Grey, "               #·##··········", 35, 50);
+            Gui.Print(Colour.Grey, "               #····#########", 36, 50);
+            Gui.Print(Colour.Grey, "               ######        ", 37, 50);
+
+            Gui.Print(Colour.Brown, "+", 5, 70);
+            Gui.Print(Colour.Brown, "+ +", 6, 69);
+            Gui.Print(Colour.White, "#######·########       ", 9, 56);
+            Gui.Print(Colour.White, "#··············#       ", 10, 56);
+            Gui.Print(Colour.White, "#·!·······@····#       ", 11, 56);
+            Gui.Print(Colour.White, "#···o··········#       ", 12, 56);
+            Gui.Print(Colour.White, "^·k·'··············#       ", 13, 52);
+            Gui.Print(Colour.White, "#######·oo······$····#       ", 14, 50);
+            Gui.Print(Colour.White, "      #··o···········#       ", 15, 50);
+            Gui.Print(Colour.White, "      #######c########       ", 16, 50);
+            Gui.Print(Colour.BrightYellow, "···", 10, 65);
+            Gui.Print(Colour.BrightYellow, "·@·", 11, 65);
+            Gui.Print(Colour.BrightYellow, "···", 12, 65);
+            Gui.Print(Colour.BrightWhite, "@", 11, 66);
+            Gui.Print(Colour.Orange, "!", 11, 58);
+            Gui.Print(Colour.BrightGreen, "o", 12, 60);
+            Gui.Print(Colour.Red, "^", 13, 52);
+            Gui.Print(Colour.Green, "k", 13, 54);
+            Gui.Print(Colour.BrightBrown, "'", 13, 56);
+            Gui.Print(Colour.Black, "oo", 14, 58);
+            Gui.Print(Colour.Copper, "$", 14, 66);
+            Gui.Print(Colour.Black, "o", 15, 59);
+            Gui.Print(Colour.BrightBlue, "c", 16, 63);
+            Gui.Print(Colour.White, "#", 17, 62);
+            Gui.Print(Colour.Black, "·", 17, 63);
+            Gui.Print(Colour.Black, "·", 18, 63);
+            Gui.Print(Colour.Black, "·······", 19, 63);
+            Gui.Print(Colour.Black, "·", 20, 69);
+            Gui.Print(Colour.Brown, "'", 21, 69);
+            Gui.Print(Colour.Black, "·'········", 22, 69);
+            Gui.Print(Colour.Brown, "'", 22, 70);
+            Gui.Print(Colour.Brown, "'", 23, 69);
+            Gui.Print(Colour.Black, "·", 24, 69);
+            Gui.Print(Colour.Black, "·", 25, 69);
+            Gui.Print(Colour.Black, "·············", 26, 57);
+            Gui.Print(Colour.Red, "*", 27, 56);
+            Gui.Print(Colour.Black, "·", 27, 57);
+            Gui.Print(Colour.Black, "·", 28, 57);
+            Gui.Print(Colour.Black, "·", 29, 57);
+            Gui.Print(Colour.Brown, ">", 29, 66);
+            Gui.Print(Colour.Black, "···", 30, 57);
+            Gui.Print(Colour.Brown, "'", 30, 60);
+            Gui.Print(Colour.Purple, "^", 30, 71);
+            Gui.Print(Colour.BrightWhite, "|", 31, 68);
+            Gui.Print(Colour.Beige, "~", 32, 62);
+            Gui.Print(Colour.Brown, "'", 34, 66);
+            Gui.Print(Colour.Black, "·", 35, 66);
+            Gui.Print(Colour.Black, "··········", 35, 69);
+            Gui.Print(Colour.Black, "····", 36, 66);
         }
 
         private static void ShowMainMenu()
