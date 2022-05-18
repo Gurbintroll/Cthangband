@@ -15,29 +15,46 @@
         <li>Mindcrafters and Mystics use Mentalism</li>
         <li>Fighters don't use magic at all</li>
     </ul>
-    <h2>Common Features</h2>
+    <h2>Mana</h2>
     <p>
         All three types of magic use ‘mana’ (sometimes called ‘spell points’) to power their effects.
-        Characters gain spell points based on one of their ability scores and based upon their level.
+        Characters gain mana based on one of their ability scores and based upon their level.
         When a spell is cast, some of these points are spent.
-        It is theoretically possible to still cast a spell without having enough power points to do so.
+        It is theoretically possible to still cast a spell without having enough mana to do so.
         This is rather dangerous, however, since the caster can damage their health or leave themselves vulnerable to attacks when doing so.
     </p>
-    <p>Spell points recover with time. If you have run out, then resting is the best course of action.</p>
-    <div class=side>
-        <p>
-            Channeling is a subset of arcane magic used by channelers,who do not cast spells directly, but instead are able to use their own store of mana to power magical devices in order to avoid expending the charges of those items.
-            Channelers need not study books, but they do need to carry around items containing the powers that they wish to use.
-            Channelers who attempt to channel an item without sufficient mana to do so will drain a charge from the item as normal.
-            As with other arcane spell users, channelers are hampered by wearing too much armour, although there are no particular types of armour (e.g. gloves, helmets) that they need to avoid.
-        </p>
-    </div>
+    <p>
+        The amount of mana you have is based on the following formula:
+    </p>
+    <ul>
+        <li>1 base mana if you are a spell caster with a casting ability score above 7.</li>
+        <li>+ (mana per level for your casting ability score) * level.</li>
+        <li>+ 25% mana if you are a high mage.</li>
+        <li>- 25% mana if you are wearing gloves (other than gloves that provide Free Action or a Dexterity bonus).</li>
+        <li>
+            - 1 mana per pound of armour worn above your class limit:
+            <ul>
+                <li>30lb for cultists, high mages, mages, mindcrafters, monks, and mystics.</li>
+                <li>35lb for druids, priests, warrior mages, and rogues.</li>
+                <li>40lb for channelers, fanatics, paladins, and rangers</li>
+            </ul>
+        </li>
+        <li>+ X% based on your <a href="Favour.html">divine favour</a> with <a href="Great Ones.html">Tamash</a>.</li>
+    </ul>
+    <p>Spent mana returns with time. If you have run out, then resting is the best course of action.</p>
     <h2>Arcane Magic</h2>
     <p>Arcane spell users learn their spells through study at the Library. They need a book to learn the spell from, and they must carry this book to use as a reference when they wish to use the spell.</p>
     <p>Arcane spell users can choose which spell they will study.</p>
     <p>
         Arcane magic relies on the aura of the caster being relatively free. As such, it is easily disrupted if the caster is wearing too much armour. Wearing heavy armour reduces the amount of spell points that a caster has available. Gloves, in particular, hamper them;
         as they restrict finger movement (gloves of agility are exempt from this).
+    </p>
+    <h2>Channeling</h2>
+    <p>
+        Channeling is a subset of arcane magic used by channelers, who do not cast spells directly but instead are able to use their own store of mana to power magical devices in order to avoid expending the charges of those items.
+        Channelers need not study books, but they do need to carry around items containing the powers that they wish to use.
+        Channelers who attempt to channel an item without sufficient mana to do so will drain a charge from the item as normal.
+        As with other arcane spell users, channelers are hampered by wearing too much armour, although there are no particular types of armour (e.g. gloves, helmets) that they need to avoid.
     </p>
     <h2>Divine Magic</h2>
     <p>
