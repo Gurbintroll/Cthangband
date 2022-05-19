@@ -944,6 +944,8 @@
     <Resource Include="Resources\Crown.png" />
     <Resource Include="Resources\Sunset.png" />
     <Resource Include="Resources\Map.png" />
+    <Resource Include="Resources\WildMap.png" />
+    <Resource Include="Resources\Options.png" />
     <EmbeddedResource Include="Sounds\amb_bell_metal1.wav" />
     <EmbeddedResource Include="Sounds\amb_bell_metal2.wav" />
     <EmbeddedResource Include="Sounds\amb_bell_tibet1.wav" />
@@ -1165,8 +1167,6 @@
     <EmbeddedResource Include="Music\take-a-chance.flac" />
     <EmbeddedResource Include="Music\the-house-of-leaves.flac" />
     <EmbeddedResource Include="Music\umbrella-pants.flac" />
-    <Resource Include="Resources\WildMap.png" />
-    <Resource Include="Resources\Options.png" />
     <Content Include="Terminal\Cthangband.ico" />
   </ItemGroup>
   <ItemGroup>
