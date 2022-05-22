@@ -395,8 +395,7 @@ namespace Cthangband.UI
         /// </summary>
         public static void Initialise(Settings settings)
         {
-            Mixer.MusicVolume = settings.MusicVolume / 100.0f;
-            Mixer.SoundVolume = settings.SoundVolume / 100.0f;
+            Mixer.Initialise(settings.MusicVolume / 100.0f, settings.SoundVolume / 100.0f);
             TerminalParameters startupParameters = settings.Parameters();
             _terminal = new Terminal.Terminal(startupParameters);
             _terminal.Refresh();

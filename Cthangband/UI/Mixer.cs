@@ -5,10 +5,11 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
-using IrrKlang;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
+using System;
+using System.Windows.Media;
+using System.Media;
 
 namespace Cthangband.UI
 {
@@ -17,23 +18,22 @@ namespace Cthangband.UI
         public float MusicVolume = 1;
         public float SoundVolume = 1;
         private readonly Assembly _assembly = Assembly.GetExecutingAssembly();
-        private readonly Dictionary<MusicTrack, ISoundSource> _musicSources = new Dictionary<MusicTrack, ISoundSource>();
+        private readonly Dictionary<MusicTrack, Uri> _musicSources = new Dictionary<MusicTrack, Uri>();
         private readonly Dictionary<SoundEffect, List<string>> _soundResourceLists = new Dictionary<SoundEffect, List<string>>();
-        private readonly Dictionary<string, ISoundSource> _soundSources = new Dictionary<string, ISoundSource>();
-        private ISound _currentMusicISound;
         private MusicTrack _currentMusicTrack = MusicTrack.None;
-        private ISoundEngine _engine = new ISoundEngine();
+        private MediaPlayer _musicPlayer = new MediaPlayer();
+        private MediaPlayer _soundPlayer = new MediaPlayer();
 
         public Mixer()
         {
-            _musicSources.Add(MusicTrack.Chargen, MusicTrackFromResource("umbrella-pants.flac"));
-            _musicSources.Add(MusicTrack.Death, MusicTrackFromResource("final-count.flac"));
-            _musicSources.Add(MusicTrack.Dungeon, MusicTrackFromResource("bent-and-broken.flac"));
-            _musicSources.Add(MusicTrack.Menu, MusicTrackFromResource("anxiety.flac"));
-            _musicSources.Add(MusicTrack.QuestLevel, MusicTrackFromResource("the-house-of-leaves.flac"));
-            _musicSources.Add(MusicTrack.Town, MusicTrackFromResource("midnight-tale.flac"));
-            _musicSources.Add(MusicTrack.Victory, MusicTrackFromResource("take-a-chance.flac"));
-            _musicSources.Add(MusicTrack.Wilderness, MusicTrackFromResource("hush.flac"));
+            _musicSources.Add(MusicTrack.Chargen, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Death, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Dungeon, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Menu, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.QuestLevel, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Town, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Victory, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Wilderness, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
             _soundResourceLists.Add(SoundEffect.ActivateArtifact, new List<string> { "plm_aim_wand.wav" });
             _soundResourceLists.Add(SoundEffect.Bell, new List<string> { "plm_jar_ding.wav" });
             _soundResourceLists.Add(SoundEffect.BreathWeapon, new List<string> { "mco_attack_breath.wav" });
@@ -160,18 +160,7 @@ namespace Cthangband.UI
             _soundResourceLists.Add(SoundEffect.UseStaff, new List<string> { "plm_use_staff.wav" });
             _soundResourceLists.Add(SoundEffect.WieldWeapon, new List<string> { "plm_metal_sharpen.wav" });
             _soundResourceLists.Add(SoundEffect.ZapRod, new List<string> { "plm_zap_rod.wav" });
-            foreach (var soundResourceList in _soundResourceLists)
-            {
-                foreach (var resourceName in soundResourceList.Value)
-                {
-                    if (!_soundSources.ContainsKey(resourceName))
-                    {
-                        var stream = _assembly.GetManifestResourceStream("Cthangband.Sounds." + resourceName);
-                        _soundSources.Add(resourceName, _engine.AddSoundSourceFromIOStream(stream, resourceName));
-                        stream.Close();
-                    }
-                }
-            }
+            _musicPlayer.MediaEnded += _mediaPlayer_MediaEnded;
         }
 
         public void Play(MusicTrack musicTrack)
@@ -181,8 +170,7 @@ namespace Cthangband.UI
                 return;
             }
             _currentMusicTrack = musicTrack;
-            _currentMusicISound?.Stop();
-            _currentMusicISound = null;
+            _musicPlayer.Stop();
             if (MusicVolume == 0)
             {
                 return;
@@ -191,8 +179,9 @@ namespace Cthangband.UI
             {
                 return;
             }
-            _musicSources[musicTrack].DefaultVolume = MusicVolume;
-            _currentMusicISound = _engine.Play2D(_musicSources[musicTrack], true, false, false);
+            _musicPlayer.Volume = MusicVolume;
+            _musicPlayer.Open(_musicSources[_currentMusicTrack]);
+            _musicPlayer.Play();
         }
 
         public void Play(SoundEffect sound)
@@ -202,22 +191,23 @@ namespace Cthangband.UI
                 return;
             }
             var list = _soundResourceLists[sound];
-            var soundResourceName = list[Program.Rng.DieRoll(list.Count) - 1];
-            var soundSource = _soundSources[soundResourceName];
-            soundSource.DefaultVolume = SoundVolume;
-            _engine.Play2D(soundSource, false, false, false);
+            var soundResourceName = @"Sounds\" + list[Program.Rng.DieRoll(list.Count) - 1];
+            var uri = new Uri(soundResourceName, UriKind.Relative);
+            _soundPlayer.Volume = SoundVolume;
+            _soundPlayer.Open(uri);
+            _soundPlayer.Play();
         }
 
         public void ResetCurrentMusicVolume()
         {
             if (MusicVolume == 0)
             {
-                _currentMusicISound?.Stop();
-                _currentMusicISound = null;
+                _musicPlayer.Volume = 0;
+                _musicPlayer.Stop();
             }
             else
             {
-                if (_currentMusicISound == null)
+                if (_musicPlayer.Volume < 0.01)
                 {
                     var track = _currentMusicTrack;
                     _currentMusicTrack = MusicTrack.None;
@@ -225,17 +215,23 @@ namespace Cthangband.UI
                 }
                 else
                 {
-                    _currentMusicISound.Volume = MusicVolume;
+                    _musicPlayer.Volume = MusicVolume;
                 }
             }
         }
 
-        private ISoundSource MusicTrackFromResource(string resourceName)
+        internal void Initialise(float musicVolume, float soundVolume)
         {
-            var stream = _assembly.GetManifestResourceStream("Cthangband.Music." + resourceName);
-            var soundSource = _engine.AddSoundSourceFromIOStream(stream, resourceName);
-            stream.Close();
-            return soundSource;
+            MusicVolume = musicVolume;
+            SoundVolume = soundVolume;
+            _musicPlayer.Volume = MusicVolume;
+            _soundPlayer.Volume = SoundVolume;
+        }
+
+        private void _mediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            _musicPlayer.Position = TimeSpan.Zero;
+            _musicPlayer.Play();
         }
     }
 }
