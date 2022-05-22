@@ -26,14 +26,14 @@ namespace Cthangband.UI
 
         public Mixer()
         {
-            _musicSources.Add(MusicTrack.Chargen, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
-            _musicSources.Add(MusicTrack.Death, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
-            _musicSources.Add(MusicTrack.Dungeon, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Chargen, new Uri("Music/scissors-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Death, new Uri("Music/final-count-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Dungeon, new Uri("Music/bent-and-broken-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
             _musicSources.Add(MusicTrack.Menu, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
-            _musicSources.Add(MusicTrack.QuestLevel, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
-            _musicSources.Add(MusicTrack.Town, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
-            _musicSources.Add(MusicTrack.Victory, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
-            _musicSources.Add(MusicTrack.Wilderness, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.QuestLevel, new Uri("Music/the-house-of-leaves-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Town, new Uri("Music/ghost-processional-digitally-processed-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Victory, new Uri("Music/take-a-chance-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Wilderness, new Uri("Music/land-of-phantoms-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
             _soundResourceLists.Add(SoundEffect.ActivateArtifact, new List<string> { "plm_aim_wand.wav" });
             _soundResourceLists.Add(SoundEffect.Bell, new List<string> { "plm_jar_ding.wav" });
             _soundResourceLists.Add(SoundEffect.BreathWeapon, new List<string> { "mco_attack_breath.wav" });
