@@ -1234,7 +1234,7 @@ namespace Cthangband
                 ItemType itemType;
                 if (StoreType == StoreType.StoreBlack)
                 {
-                    level = 25 + Program.Rng.RandomLessThan(25);
+                    level = 35 + Program.Rng.RandomLessThan(35);
                     itemType = ItemType.RandomItemType(level);
                     if (itemType == null)
                     {
