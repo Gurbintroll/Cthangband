@@ -937,7 +937,6 @@ namespace Cthangband
             }
             Profile.Instance.MsgFlag = false;
             Profile.Instance.MsgPrint(null);
-            Gui.PrintLine("Please wait...", 0, 0);
             Gui.Refresh();
             FlavorInit();
             ApplyFlavourVisuals();

@@ -50,57 +50,57 @@ namespace Cthangband.Terminal
                 switch (value)
                 {
                     case BackgroundImage.Splash:
-                        uri = new Uri("pack://application:,,,/Resources/splash.png");
+                        uri = new Uri("Backgrounds/splash.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Normal:
-                        uri = new Uri("pack://application:,,,/Resources/Background2.png");
+                        uri = new Uri("Backgrounds/Default.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Overhead:
-                        uri = new Uri("pack://application:,,,/Resources/Background.png");
+                        uri = new Uri("Backgrounds/InGame.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Paper:
-                        uri = new Uri("pack://application:,,,/Resources/Paper.png");
+                        uri = new Uri("Backgrounds/Paper.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Menu:
-                        uri = new Uri("pack://application:,,,/Resources/Menu.png");
+                        uri = new Uri("Backgrounds/Menu.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Options:
-                        uri = new Uri("pack://application:,,,/Resources/Options.png");
+                        uri = new Uri("Backgrounds/Options.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Tomb:
-                        uri = new Uri("pack://application:,,,/Resources/Tomb.png");
+                        uri = new Uri("Backgrounds/Tomb.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Crown:
-                        uri = new Uri("pack://application:,,,/Resources/Crown.png");
+                        uri = new Uri("Backgrounds/Crown.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Sunset:
-                        uri = new Uri("pack://application:,,,/Resources/Sunset.png");
+                        uri = new Uri("Backgrounds/Sunset.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.Map:
-                        uri = new Uri("pack://application:,,,/Resources/Map.png");
+                        uri = new Uri("Backgrounds/Map.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
 
                     case BackgroundImage.WildMap:
-                        uri = new Uri("pack://application:,,,/Resources/WildMap.png");
+                        uri = new Uri("Backgrounds/WildMap.png", UriKind.Relative);
                         bitmapImage.UriSource = uri;
                         break;
                 }
