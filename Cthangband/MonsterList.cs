@@ -1060,6 +1060,10 @@ namespace Cthangband
             Player player = SaveGame.Instance.Player;
             Monster mPtr = _monsters[mIdx];
             MonsterRace rPtr = mPtr.Race;
+            if (rPtr == null)
+            {
+                return;
+            }
             if ((rPtr.Flags2 & MonsterFlag2.Stupid) != 0)
             {
                 return;
