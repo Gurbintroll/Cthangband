@@ -28,7 +28,7 @@ namespace Cthangband.UI
         {
             _musicSources.Add(MusicTrack.Chargen, new Uri("Music/scissors-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
             _musicSources.Add(MusicTrack.Death, new Uri("Music/final-count-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
-            _musicSources.Add(MusicTrack.Dungeon, new Uri("Music/bent-and-broken-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
+            _musicSources.Add(MusicTrack.Dungeon, new Uri("Music/controlled-chaos---no-percussion-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
             _musicSources.Add(MusicTrack.Menu, new Uri("Music/come-play-with-me-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
             _musicSources.Add(MusicTrack.QuestLevel, new Uri("Music/the-house-of-leaves-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));
             _musicSources.Add(MusicTrack.Town, new Uri("Music/ghost-processional-digitally-processed-by-kevin-macleod-from-filmmusic-io.mp3", UriKind.Relative));

@@ -960,7 +960,7 @@
     <Content Include="Manual\Wisdom.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Music\bent-and-broken-by-kevin-macleod-from-filmmusic-io.mp3">
+    <Content Include="Music\controlled-chaos---no-percussion-by-kevin-macleod-from-filmmusic-io.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Music\final-count-by-kevin-macleod-from-filmmusic-io.mp3">
