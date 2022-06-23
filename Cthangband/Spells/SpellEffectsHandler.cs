@@ -1838,10 +1838,25 @@ namespace Cthangband.Spells
             if (item >= InventorySlot.MeleeWeapon)
             {
                 Profile.Instance.MsgPrint($"{Player.DescribeWieldLocation(item)}: {oName} ({item.IndexToLabel()}).");
+                if (oPtr.Stompable())
+                {
+                    string itemName = oPtr.Description(true, 3);
+                    Profile.Instance.MsgPrint($"You destroy {oName}.");
+                    int amount = oPtr.Count;
+                    Player.Inventory.InvenItemIncrease(item, -amount);
+                    Player.Inventory.InvenItemOptimize(item);
+                }
             }
             else if (item >= 0)
             {
                 Profile.Instance.MsgPrint($"In your pack: {oName} ({item.IndexToLabel()}).");
+                if (oPtr.Stompable())
+                {
+                    Profile.Instance.MsgPrint($"You destroy {oName}.");
+                    int amount = oPtr.Count;
+                    Player.Inventory.InvenItemIncrease(item, -amount);
+                    Player.Inventory.InvenItemOptimize(item);
+                }
             }
             else
             {
@@ -1870,10 +1885,24 @@ namespace Cthangband.Spells
             if (item >= InventorySlot.MeleeWeapon)
             {
                 Profile.Instance.MsgPrint($"{Player.DescribeWieldLocation(item)}: {oName} ({item.IndexToLabel()}).");
+                if (oPtr.Stompable())
+                {
+                    Profile.Instance.MsgPrint($"You destroy {oName}.");
+                    int amount = oPtr.Count;
+                    Player.Inventory.InvenItemIncrease(item, -amount);
+                    Player.Inventory.InvenItemOptimize(item);
+                }
             }
             else if (item >= 0)
             {
                 Profile.Instance.MsgPrint($"In your pack: {oName} ({item.IndexToLabel()}).");
+                if (oPtr.Stompable())
+                {
+                    Profile.Instance.MsgPrint($"You destroy {oName}.");
+                    int amount = oPtr.Count;
+                    Player.Inventory.InvenItemIncrease(item, -amount);
+                    Player.Inventory.InvenItemOptimize(item);
+                }
             }
             else
             {
@@ -1893,6 +1922,15 @@ namespace Cthangband.Spells
                 }
                 oPtr.BecomeFlavourAware();
                 oPtr.BecomeKnown();
+                if (oPtr.Stompable())
+                {
+                    string itemName = oPtr.Description(true, 3);
+                    Profile.Instance.MsgPrint($"You destroy {itemName}.");
+                    int amount = oPtr.Count;
+                    Player.Inventory.InvenItemIncrease(i, -amount);
+                    Player.Inventory.InvenItemOptimize(i);
+                    i--;
+                }
             }
         }
 
@@ -3452,9 +3490,11 @@ namespace Cthangband.Spells
                 Profile.Instance.MsgPrint("A mysterious force prevents you from teleporting!");
                 return;
             }
+            var downDesc = _saveGame.CurDungeon.Tower ? "You rise up through the ceiling." : "You sink through the floor.";
+            var upDesc = _saveGame.CurDungeon.Tower ? "You sink through the floor." : "You rise up through the ceiling.";
             if (_saveGame.CurrentDepth <= 0)
             {
-                Profile.Instance.MsgPrint("You sink through the floor.");
+                Profile.Instance.MsgPrint(downDesc);
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
@@ -3464,7 +3504,7 @@ namespace Cthangband.Spells
             else if (_saveGame.Quests.IsQuest(_saveGame.CurrentDepth) ||
                      _saveGame.CurrentDepth >= _saveGame.CurDungeon.MaxLevel)
             {
-                Profile.Instance.MsgPrint("You rise up through the ceiling.");
+                Profile.Instance.MsgPrint(upDesc);
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
@@ -3473,7 +3513,7 @@ namespace Cthangband.Spells
             }
             else if (Program.Rng.RandomLessThan(100) < 50)
             {
-                Profile.Instance.MsgPrint("You rise up through the ceiling.");
+                Profile.Instance.MsgPrint(upDesc);
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
@@ -3483,13 +3523,18 @@ namespace Cthangband.Spells
             }
             else
             {
-                Profile.Instance.MsgPrint("You sink through the floor.");
+                Profile.Instance.MsgPrint(downDesc);
                 _saveGame.IsAutosave = true;
                 _saveGame.DoCmdSaveGame();
                 _saveGame.IsAutosave = false;
                 _saveGame.CurrentDepth++;
                 _saveGame.NewLevelFlag = true;
             }
+            _saveGame.IsAutosave = true;
+            _saveGame.DoCmdSaveGame();
+            _saveGame.IsAutosave = false;
+            _saveGame.CurrentDepth++;
+            _saveGame.NewLevelFlag = true;
             Gui.PlaySound(SoundEffect.TeleportLevel);
         }
 
