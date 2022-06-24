@@ -2184,6 +2184,9 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Fire the popup menu for quitting and changing options
+        /// </summary>
         private void DoCmdPopupMenu()
         {
             var menuItems = new List<string>() { "Resume Game", "Options", "Quit to Menu", "Quit to Desktop" };
@@ -2212,43 +2215,54 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Rest for either a fixed amount of time or until back to max health and mana
+        /// </summary>
         private void DoCmdRest()
         {
             if (Gui.CommandArgument <= 0)
             {
-                const string p = "Rest (0-9999, '*' for HP/SP, '&' as needed): ";
-                if (!Gui.GetString(p, out string outVal, "&", 4))
+                const string prompt = "Rest (0-9999, '*' for HP/SP, '&' as needed): ";
+                if (!Gui.GetString(prompt, out string choice, "&", 4))
                 {
                     return;
                 }
-                if (string.IsNullOrEmpty(outVal))
+                // Default to resting until we're fine
+                if (string.IsNullOrEmpty(choice))
                 {
-                    outVal = "&";
+                    choice = "&";
                 }
-                if (outVal[0] == '&')
+                // -2 means rest until we're fine
+                if (choice[0] == '&')
                 {
                     Gui.CommandArgument = -2;
                 }
-                else if (outVal[0] == '*')
+                // -1 means rest until we're at full health, but don't worry about waiting for other
+                // status effects to go away
+                else if (choice[0] == '*')
                 {
                     Gui.CommandArgument = -1;
                 }
                 else
                 {
-                    if (int.TryParse(outVal, out int i))
+                    // A number means rest for that many turns
+                    if (int.TryParse(choice, out int i))
                     {
                         Gui.CommandArgument = i;
                     }
+                    // The player might not have put a number in - so abandon if they didn't
                     if (Gui.CommandArgument <= 0)
                     {
                         return;
                     }
                 }
             }
+            // Can't rest for more than 9999 turns
             if (Gui.CommandArgument > 9999)
             {
                 Gui.CommandArgument = 9999;
             }
+            // Resting takes at least one turn (we'll also be skipping future turns)
             SaveGame.Instance.EnergyUse = 100;
             SaveGame.Instance.Resting = Gui.CommandArgument;
             Player.IsSearching = false;
@@ -2258,8 +2272,12 @@ namespace Cthangband
             Gui.Refresh();
         }
 
+        /// <summary>
+        /// Retire (if a winner) or give up (if not a winner)
+        /// </summary>
         private void DoCmdRetire()
         {
+            // If we're a winner it's a simple question with a more positive connotation
             if (Player.IsWinner)
             {
                 if (!Gui.GetCheck("Do you want to retire? "))
@@ -2269,12 +2287,16 @@ namespace Cthangband
             }
             else
             {
+                // If we're not a winner, only ask if we're not also a wizard - giving up a wizard
+                // character doesn't need a prompt/confirmation
                 if (!Player.IsWizard)
                 {
                     if (!Gui.GetCheck("Do you really want to give up? "))
                     {
                         return;
                     }
+                    // Require a confirmation to make sure the player doesn't accidentally give up a
+                    // long-running character
                     Gui.PrintLine("Type the '@' sign to give up (this character will no longer be playable): ", 0, 0);
                     int i = Gui.Inkey();
                     Gui.PrintLine("", 0, 0);
@@ -2284,26 +2306,37 @@ namespace Cthangband
                     }
                 }
             }
+            // Assuming whe player didn't give up, "kill" the character by quitting
             SaveGame.Instance.Playing = false;
             Player.IsDead = true;
             SaveGame.Instance.DiedFrom = "quitting";
         }
 
+        /// <summary>
+        /// Start running
+        /// </summary>
         private void DoCmdRun()
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
+            // Can't run if we're confused
             if (Player.TimedConfusion != 0)
             {
                 Profile.Instance.MsgPrint("You are too confused!");
                 return;
             }
+            // Get a direction if we don't already have one
             if (targetEngine.GetDirectionNoAim(out int dir))
             {
+                // If we don't have a distance, assume we'll run for 1,000 steps
                 SaveGame.Instance.Running = Gui.CommandArgument != 0 ? Gui.CommandArgument : 1000;
+                // Run one step in the chosen direction
                 SaveGame.Instance.CommandEngine.RunOneStep(dir);
             }
         }
 
+        /// <summary>
+        /// Spend a turn searching for traps and secret doors
+        /// </summary>
         private void DoCmdSearch()
         {
             if (Gui.CommandArgument != 0)
@@ -2316,32 +2349,45 @@ namespace Cthangband
             SaveGame.Instance.CommandEngine.Search();
         }
 
+        /// <summary>
+        /// Stand still for a turn, possibly picking up and item
+        /// </summary>
+        /// <param name="pickup"> Whether or not we should pick up an object in our location </param>
         private void DoCmdStay(bool pickup)
         {
-            GridTile cPtr = Level.Grid[Player.MapY][Player.MapX];
+            // We might be staying still for multiple turns
             if (Gui.CommandArgument != 0)
             {
                 CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArgument = 0;
             }
+            // Standing still takes a turn
             SaveGame.Instance.EnergyUse = 100;
+            // Periodically search if we're not actively in search mode
             if (Player.SkillSearchFrequency >= 50 || 0 == Program.Rng.RandomLessThan(50 - Player.SkillSearchFrequency))
             {
                 SaveGame.Instance.CommandEngine.Search();
             }
+            // Always search if we are actively in search mode
             if (Player.IsSearching)
             {
                 SaveGame.Instance.CommandEngine.Search();
             }
+            // Pick up items if we should
             SaveGame.Instance.CommandEngine.PickUpItems(pickup);
-            if (cPtr.FeatureType.IsShop)
+            // If we're in a shop doorway, enter the shop
+            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            if (tile.FeatureType.IsShop)
             {
                 SaveGame.Instance.Disturb(false);
                 Gui.QueuedCommand = '_';
             }
         }
 
+        /// <summary>
+        /// Select a target in advance for attacks. Note that this does not cost any in-game time
+        /// </summary>
         private void DoCmdTarget()
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
@@ -2355,6 +2401,9 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Toggle whether we're automatically searching while moving
+        /// </summary>
         private void DoCmdToggleSearch()
         {
             if (Player.IsSearching)
@@ -2371,46 +2420,59 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Tunnel into the wall (or whatever is in front of us
+        /// </summary>
         private void DoCmdTunnel()
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            bool more = false;
+            bool disturb = false;
+            // We might be tunnelling for multiple turns
             if (Gui.CommandArgument != 0)
             {
                 CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArgument = 0;
             }
+            // Get the direction in which we wish to tunnel
             if (targetEngine.GetDirectionNoAim(out int dir))
             {
-                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile cPtr = Level.Grid[y][x];
-                if (cPtr.FeatureType.IsPassable || cPtr.FeatureType.Name == "YellowSign")
+                // Pick up the tile that the player wishes to tunnel through
+                int tileY = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                int tileX = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                GridTile tile = Level.Grid[tileY][tileX];
+                // Check if it can be tunneled through
+                if (tile.FeatureType.IsPassable || tile.FeatureType.Name == "YellowSign")
                 {
                     Profile.Instance.MsgPrint("You cannot tunnel through air.");
                 }
-                else if (cPtr.FeatureType.IsClosedDoor)
+                else if (tile.FeatureType.IsClosedDoor)
                 {
                     Profile.Instance.MsgPrint("You cannot tunnel through doors.");
                 }
-                else if (cPtr.MonsterIndex != 0)
+                // Can't tunnel if there's a monster there - so attack the monster instead
+                else if (tile.MonsterIndex != 0)
                 {
                     SaveGame.Instance.EnergyUse = 100;
                     Profile.Instance.MsgPrint("There is a monster in the way!");
-                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
+                    SaveGame.Instance.CommandEngine.PlayerAttackMonster(tileY, tileX);
                 }
                 else
                 {
-                    more = SaveGame.Instance.CommandEngine.TunnelThroughTile(y, x);
+                    // Tunnel through the tile
+                    disturb = SaveGame.Instance.CommandEngine.TunnelThroughTile(tileY, tileX);
                 }
             }
-            if (!more)
+            // Something might have disturbed us
+            if (!disturb)
             {
                 SaveGame.Instance.Disturb(false);
             }
         }
 
+        /// <summary>
+        /// Print the version number and build info of the game
+        /// </summary>
         private void DoCmdVersion()
         {
             AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
@@ -2419,22 +2481,29 @@ namespace Cthangband
             Profile.Instance.MsgPrint($"(Build time: {Constants.CompileTime})");
         }
 
+        /// <summary>
+        /// Display a map of the area on screen
+        /// </summary>
         private void DoCmdViewMap()
         {
-            int cy = -1, cx = -1;
+            int cy = -1;
+            int cx = -1;
             Gui.FullScreenOverlay = true;
             Gui.Save();
             Gui.Clear();
+            // If we're on the surface, display the island map
             if (SaveGame.Instance.CurrentDepth == 0)
             {
-                Gui.SetBackground(Terminal.BackgroundImage.WildMap);
+                Gui.SetBackground(BackgroundImage.WildMap);
                 SaveGame.Instance.DisplayWildMap();
             }
             else
             {
-                Gui.SetBackground(Terminal.BackgroundImage.Map);
+                // We're not on the surface, so draw the level map
+                Gui.SetBackground(BackgroundImage.Map);
                 Level.DisplayMap(out cy, out cx);
             }
+            // Give us a prompt, and display the cursor in the player's location
             Gui.Print(Colour.Orange, "[Press any key to continue]", 43, 26);
             if (SaveGame.Instance.CurrentDepth == 0)
             {
@@ -2444,29 +2513,38 @@ namespace Cthangband
             {
                 Gui.Goto(cy, cx);
             }
+            // Wait for a keypress, and restore the screen (looking at the map takes no time)
             Gui.Inkey();
             Gui.Load();
             Gui.FullScreenOverlay = false;
-            Gui.SetBackground(Terminal.BackgroundImage.Overhead);
+            Gui.SetBackground(BackgroundImage.Overhead);
         }
 
+        /// <summary>
+        /// Take a single step in a direction
+        /// </summary>
+        /// <param name="pickup"> Whether or not we should pick up an object that we step on </param>
         private void DoCmdWalk(bool pickup)
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
-            bool more = false;
+            bool disturb = false;
+            // We might be walking (or running!) more than one step
             if (Gui.CommandArgument > 0)
             {
                 CommandRepeat = Gui.CommandArgument - 1;
                 Player.RedrawNeeded.Set(RedrawFlag.PrState);
                 Gui.CommandArgument = 0;
             }
+            // If we don't already have a direction, get one
             if (targetEngine.GetDirectionNoAim(out int dir))
             {
+                // Walking takes a full turn
                 SaveGame.Instance.EnergyUse = 100;
                 SaveGame.Instance.CommandEngine.MovePlayer(dir, pickup);
-                more = true;
+                disturb = true;
             }
-            if (!more)
+            // We will have been disturbed, unless we cancelled the direction prompt
+            if (!disturb)
             {
                 SaveGame.Instance.Disturb(false);
             }
