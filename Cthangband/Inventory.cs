@@ -500,7 +500,7 @@ namespace Cthangband
 
         public int LabelToEquip(char c)
         {
-            int i = (char.IsLower(c) ? c.A2I() : -1) + InventorySlot.MeleeWeapon;
+            int i = (char.IsLower(c) ? c.LetterToNumber() : -1) + InventorySlot.MeleeWeapon;
             if (i < InventorySlot.MeleeWeapon || i >= InventorySlot.Total)
             {
                 return -1;
@@ -514,7 +514,7 @@ namespace Cthangband
 
         public int LabelToInven(char c)
         {
-            int i = char.IsLower(c) ? c.A2I() : -1;
+            int i = char.IsLower(c) ? c.LetterToNumber() : -1;
             if (i < 0 || i > InventorySlot.Pack)
             {
                 return -1;

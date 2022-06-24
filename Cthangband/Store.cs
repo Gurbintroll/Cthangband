@@ -364,7 +364,7 @@ namespace Cthangband
             int maxwid;
             Item oPtr = _stock[pos];
             int i = pos % 26;
-            string outVal = $"{i.I2A()}) ";
+            string outVal = $"{i.IndexToLetter()}) ";
             Gui.PrintLine(outVal, i + 6, 0);
             Colour a = oPtr.ItemType.Colour;
             char c = oPtr.ItemType.Character;
@@ -561,10 +561,10 @@ namespace Cthangband
             char command;
             Profile.Instance.MsgPrint(null);
             comVal = -1;
-            string outVal = $"(Items {i.I2A()}-{j.I2A()}, ESC to exit) {pmt}";
+            string outVal = $"(Items {i.IndexToLetter()}-{j.IndexToLetter()}, ESC to exit) {pmt}";
             while (Gui.GetCom(outVal, out command))
             {
-                int k = char.IsLower(command) ? command.A2I() : -1;
+                int k = char.IsLower(command) ? command.LetterToNumber() : -1;
                 if (k >= i && k <= j)
                 {
                     comVal = k;
@@ -2001,7 +2001,7 @@ namespace Cthangband
                     oName = StoreType == StoreType.StorePawn
                         ? jPtr.Description(true, 3)
                         : jPtr.StoreDescription(true, 3);
-                    Profile.Instance.MsgPrint($"Buying {oName} ({item.I2A()}).");
+                    Profile.Instance.MsgPrint($"Buying {oName} ({item.IndexToLetter()}).");
                     Profile.Instance.MsgPrint(null);
                     choice = PurchaseHaggle(jPtr, out price);
                 }

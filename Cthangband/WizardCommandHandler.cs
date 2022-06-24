@@ -983,7 +983,7 @@ namespace Cthangband
             {
                 return;
             }
-            oPtr.TypeSpecificValue = tmpVal.ToInt();
+            oPtr.TypeSpecificValue = tmpVal.ToIntSafely();
             WizDisplayItem(oPtr);
             p = "Enter new 'BonusArmourClass' setting: ";
             def = $"{oPtr.BonusArmourClass}";
@@ -991,7 +991,7 @@ namespace Cthangband
             {
                 return;
             }
-            oPtr.BonusArmourClass = tmpVal.ToInt();
+            oPtr.BonusArmourClass = tmpVal.ToIntSafely();
             WizDisplayItem(oPtr);
             p = "Enter new 'BonusToHit' setting: ";
             def = $"{oPtr.BonusToHit}";
@@ -999,7 +999,7 @@ namespace Cthangband
             {
                 return;
             }
-            oPtr.BonusToHit = tmpVal.ToInt();
+            oPtr.BonusToHit = tmpVal.ToIntSafely();
             WizDisplayItem(oPtr);
             p = "Enter new 'BonusDamage' setting: ";
             def = $"{oPtr.BonusDamage}";
@@ -1007,7 +1007,7 @@ namespace Cthangband
             {
                 return;
             }
-            oPtr.BonusDamage = tmpVal.ToInt();
+            oPtr.BonusDamage = tmpVal.ToIntSafely();
             WizDisplayItem(oPtr);
         }
     }

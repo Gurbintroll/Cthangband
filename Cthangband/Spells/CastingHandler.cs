@@ -85,7 +85,7 @@ namespace Cthangband.Spells
             sn = -1;
             bool flag = false;
             bool redraw = false;
-            string outVal = $"({p}s {0.I2A()}-{(num - 1).I2A()}, *=List, ESC=exit) {prompt} which {p}? ";
+            string outVal = $"({p}s {0.IndexToLetter()}-{(num - 1).IndexToLetter()}, *=List, ESC=exit) {prompt} which {p}? ";
             while (!flag && Gui.GetCom(outVal, out char choice))
             {
                 if (choice == ' ' || choice == '*' || choice == '?')
@@ -108,7 +108,7 @@ namespace Cthangband.Spells
                 {
                     choice = char.ToLower(choice);
                 }
-                i = char.IsLower(choice) ? choice.A2I() : -1;
+                i = char.IsLower(choice) ? choice.LetterToNumber() : -1;
                 if (i < 0 || i >= num)
                 {
                     continue;
@@ -355,7 +355,7 @@ namespace Cthangband.Spells
                     num++;
                 }
             }
-            string outVal = $"({p}s {0.I2A()}-{(num - 1).I2A()}, *=List, ESC=exit) Use which {p}? ";
+            string outVal = $"({p}s {0.IndexToLetter()}-{(num - 1).IndexToLetter()}, *=List, ESC=exit) Use which {p}? ";
             while (!flag && Gui.GetCom(outVal, out char choice))
             {
                 if (choice == ' ' || choice == '*' || choice == '?')
@@ -374,7 +374,7 @@ namespace Cthangband.Spells
                             {
                                 break;
                             }
-                            string psiDesc = $"  {i.I2A()}) {talent.SummaryLine(_player)}";
+                            string psiDesc = $"  {i.IndexToLetter()}) {talent.SummaryLine(_player)}";
                             Gui.PrintLine(psiDesc, y + i + 1, x);
                         }
                         Gui.PrintLine("", y + i + 1, x);
@@ -391,7 +391,7 @@ namespace Cthangband.Spells
                 {
                     choice = char.ToLower(choice);
                 }
-                i = char.IsLower(choice) ? choice.A2I() : -1;
+                i = char.IsLower(choice) ? choice.LetterToNumber() : -1;
                 if (i < 0 || i >= num)
                 {
                     continue;

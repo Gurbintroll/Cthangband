@@ -452,8 +452,8 @@ namespace Cthangband
             {
                 if (!ViewingEquipment)
                 {
-                    i1.I2A();
-                    i2.I2A();
+                    i1.IndexToLetter();
+                    i2.IndexToLetter();
                     if (ViewingItemList)
                     {
                         Player.Inventory.ShowInven();
@@ -461,8 +461,8 @@ namespace Cthangband
                 }
                 else
                 {
-                    (e1 - InventorySlot.MeleeWeapon).I2A();
-                    (e2 - InventorySlot.MeleeWeapon).I2A();
+                    (e1 - InventorySlot.MeleeWeapon).IndexToLetter();
+                    (e2 - InventorySlot.MeleeWeapon).IndexToLetter();
                     if (ViewingItemList)
                     {
                         Player.Inventory.ShowEquip();

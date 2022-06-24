@@ -897,7 +897,7 @@ namespace Cthangband.UI
                             }
                             else
                             {
-                                CommandArgument = (CommandArgument * 10) + cmd.ToString().ToInt();
+                                CommandArgument = (CommandArgument * 10) + cmd.ToString().ToIntSafely();
                             }
                             PrintLine($"Count: {CommandArgument}", 0, 0);
                         }

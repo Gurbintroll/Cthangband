@@ -1212,7 +1212,7 @@ namespace Cthangband
             {
                 int spell = spells[i];
                 Spell sPtr = Spellcasting.Spells[set][spell];
-                Gui.PrintLine($"{i.I2A()}) {sPtr.SummaryLine(this)}", y + i + 1, x);
+                Gui.PrintLine($"{i.IndexToLetter()}) {sPtr.SummaryLine(this)}", y + i + 1, x);
             }
             Gui.PrintLine("", y + i + 1, x);
         }

@@ -2013,7 +2013,7 @@ namespace Cthangband
             }
             bool flag = false;
             bool redraw = false;
-            string outVal = $"(Powers {0.I2A()}-{(num - 1).I2A()}, *=List, ESC=exit) Use which power? ";
+            string outVal = $"(Powers {0.IndexToLetter()}-{(num - 1).IndexToLetter()}, *=List, ESC=exit) Use which power? ";
             while (!flag && Gui.GetCom(outVal, out char choice))
             {
                 if (choice == ' ' || choice == '*' || choice == '?')
@@ -2027,7 +2027,7 @@ namespace Cthangband
                         Gui.PrintLine("", y++, x);
                         while (ctr < num)
                         {
-                            string dummy = $"{ctr.I2A()}) {powerDesc[ctr]}";
+                            string dummy = $"{ctr.IndexToLetter()}) {powerDesc[ctr]}";
                             Gui.PrintLine(dummy, y + ctr, x);
                             ctr++;
                         }
@@ -2049,7 +2049,7 @@ namespace Cthangband
                 {
                     choice = char.ToLower(choice);
                 }
-                i = char.IsLower(choice) ? choice.A2I() : -1;
+                i = char.IsLower(choice) ? choice.LetterToNumber() : -1;
                 if (i < 0 || i >= num)
                 {
                     continue;
