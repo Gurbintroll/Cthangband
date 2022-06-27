@@ -53,6 +53,7 @@ namespace Cthangband.UI
         private static string[][] _keymapAct;
         private static string _requestCommandBuffer;
         private static Terminal.Terminal _terminal;
+        private static Manual.ManualViewer ManualViewer;
 
         /// <summary>
         /// Sets or returns whether the cursor is visible
@@ -982,6 +983,20 @@ namespace Cthangband.UI
             int w = _display.Width;
             int h = _display.Height;
             (_display.Mem ?? (_display.Mem = new Screen(w, h))).Copy(_display.Scr, w, h);
+        }
+
+        public static void ShowManual()
+        {
+            if (ManualViewer == null)
+            {
+                ManualViewer = new Manual.ManualViewer();
+            }
+            if (ManualViewer.IsDisposed)
+            {
+                ManualViewer = new Manual.ManualViewer();
+            }
+            ManualViewer.Show();
+            ManualViewer.Activate();
         }
 
         internal static void SetBackground(BackgroundImage image)

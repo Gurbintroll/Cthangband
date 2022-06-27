@@ -837,10 +837,7 @@ namespace Cthangband
 
                             case 4:
                                 // Cthangpedia
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                                 break;
 
                             case 5:
@@ -895,10 +892,7 @@ namespace Cthangband
 
                             case 3:
                                 // Cthangpedia
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                                 break;
 
                             case 4:

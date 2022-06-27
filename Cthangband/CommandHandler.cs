@@ -438,10 +438,7 @@ namespace Cthangband
         /// </summary>
         public void DoCmdManual()
         {
-            using (Manual.ManualViewer manual = new Manual.ManualViewer())
-            {
-                manual.ShowDialog();
-            }
+            Gui.ShowManual();
         }
 
         /// <summary>

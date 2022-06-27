@@ -1315,10 +1315,7 @@ namespace Cthangband
                             }
                             if (c == 'h')
                             {
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                             }
                         }
                         break;
@@ -1391,10 +1388,7 @@ namespace Cthangband
                             }
                             if (c == 'h')
                             {
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                             }
                         }
                         if (stage > BirthStage.ClassSelection)
@@ -1478,10 +1472,7 @@ namespace Cthangband
                             }
                             if (c == 'h')
                             {
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                             }
                         }
                         if (stage > BirthStage.RaceSelection)
@@ -1627,10 +1618,7 @@ namespace Cthangband
                             }
                             if (c == 'h')
                             {
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                             }
                         }
                         if (stage > BirthStage.RealmSelection1)
@@ -1807,10 +1795,7 @@ namespace Cthangband
                             }
                             if (c == 'h')
                             {
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                             }
                         }
                         if (stage > BirthStage.RealmSelection2)
@@ -1919,10 +1904,7 @@ namespace Cthangband
                             }
                             if (c == 'h')
                             {
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                             }
                         }
                         if (stage > BirthStage.GenderSelection)
@@ -1999,10 +1981,7 @@ namespace Cthangband
                             }
                             if (c == 'h')
                             {
-                                using (Manual.ManualViewer manual = new Manual.ManualViewer())
-                                {
-                                    manual.ShowDialog();
-                                }
+                                Gui.ShowManual();
                             }
                         }
                         break;
