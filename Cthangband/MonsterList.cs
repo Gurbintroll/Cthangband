@@ -477,9 +477,40 @@ namespace Cthangband
         {
             Monster mPtr = _monsters[mIdx];
             MonsterRace rPtr = mPtr.Race;
-            rPtr.Knowledge.RFlags1 = rPtr.Flags1;
-            rPtr.Knowledge.RFlags2 = rPtr.Flags2;
-            rPtr.Knowledge.RFlags3 = rPtr.Flags3;
+            var knowledge = rPtr.Knowledge;
+            for (var m = 0; m < 4; m++)
+            {
+                if (rPtr.Attack[m].Effect != 0 || rPtr.Attack[m].Method != 0)
+                {
+                    knowledge.RBlows[m] = Constants.MaxUchar;
+                }
+            }
+            knowledge.RProbed = true;
+            knowledge.RWake = Constants.MaxUchar;
+            knowledge.RIgnore = Constants.MaxUchar;
+            knowledge.RDropItem = ((rPtr.Flags1 & MonsterFlag1.Drop_4D2) != 0 ? 8 : 0) +
+                                  ((rPtr.Flags1 & MonsterFlag1.Drop_3D2) != 0 ? 6 : 0) +
+                                  ((rPtr.Flags1 & MonsterFlag1.Drop_2D2) != 0 ? 4 : 0) +
+                                  ((rPtr.Flags1 & MonsterFlag1.Drop_1D2) != 0 ? 2 : 0) +
+                                  ((rPtr.Flags1 & MonsterFlag1.Drop90) != 0 ? 1 : 0) +
+                                  ((rPtr.Flags1 & MonsterFlag1.Drop60) != 0 ? 1 : 0);
+            knowledge.RDropGold = knowledge.RDropItem;
+            if ((rPtr.Flags1 & MonsterFlag1.OnlyDropGold) != 0)
+            {
+                knowledge.RDropItem = 0;
+            }
+            if ((rPtr.Flags1 & MonsterFlag1.OnlyDropItem) != 0)
+            {
+                knowledge.RDropGold = 0;
+            }
+            knowledge.RCastInate = Constants.MaxUchar;
+            knowledge.RCastSpell = Constants.MaxUchar;
+            knowledge.RFlags1 = rPtr.Flags1;
+            knowledge.RFlags2 = rPtr.Flags2;
+            knowledge.RFlags3 = rPtr.Flags3;
+            knowledge.RFlags4 = rPtr.Flags4;
+            knowledge.RFlags5 = rPtr.Flags5;
+            knowledge.RFlags6 = rPtr.Flags6;
         }
 
         public void LoreTreasure(int mIdx, int numItem, int numGold)

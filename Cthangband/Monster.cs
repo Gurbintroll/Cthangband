@@ -60,8 +60,28 @@ namespace Cthangband
             "sacrilegious", "terrible", "unclean", "unspeakable"
         };
 
+        /// <summary>
+        /// </summary>
+        /// <param name="mode"> </param>
+        /// <returns> </returns>
         public string MonsterDesc(int mode)
         {
+            // * Mode Flags:
+            // *   0x01 --&gt; Objective(or Reflexive)
+            // *   0x02 --&gt; Possessive(or Reflexive)
+            // *   0x04 --&gt; Use indefinites for hidden monsters("something")
+            // *   0x08 --&gt; Use indefinites for visible monsters("a kobold")
+            // *   0x10 --&gt; Pronominalize hidden monsters
+            // *   0x20 --&gt; Pronominalize visible monsters
+            // *   0x40 --&gt; Assume the monster is hidden
+            // *   0x80 --&gt; Assume the monster is visible *
+            // * Useful Modes:
+            // *   0x00 --&gt; Full nominative name("the kobold") or "it"
+            // *   0x04 --&gt; Full nominative name("the kobold") or "something"
+            // *   0x80 --&gt; Genocide resistance name("the kobold")
+            // *   0x88 --&gt; Killing name("a kobold")
+            // *   0x22 --&gt; Possessive, genderized if visable("his") or "its"
+            // *   0x23 --&gt; Reflexive, genderized if visable("himself") or "itself"
             if (Race == null)
             {
                 return string.Empty;

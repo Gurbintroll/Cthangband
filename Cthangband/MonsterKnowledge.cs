@@ -30,10 +30,10 @@ namespace Cthangband
         public uint RFlags6;
         public int RIgnore;
         public int RPkills;
+        public bool RProbed;
         public int RSights;
         public int RTkills;
         public int RWake;
-
         private readonly MonsterRace _monsterType;
         private readonly string[] _wdHe = { "it", "he", "she" };
         private readonly string[] _wdHeCap = { "It", "He", "She" };
@@ -70,7 +70,7 @@ namespace Cthangband
                         knowledge.RBlows[m] = Constants.MaxUchar;
                     }
                 }
-                knowledge.RTkills = Constants.MaxShort;
+                knowledge.RProbed = true;
                 knowledge.RWake = Constants.MaxUchar;
                 knowledge.RIgnore = Constants.MaxUchar;
                 knowledge.RDropItem = ((_monsterType.Flags1 & MonsterFlag1.Drop_4D2) != 0 ? 8 : 0) +
@@ -139,7 +139,7 @@ namespace Cthangband
             {
                 flags1 |= MonsterFlag1.EscortsGroup;
             }
-            if (knowledge.RTkills != 0)
+            if (knowledge.RTkills != 0 || knowledge.RProbed)
             {
                 if ((_monsterType.Flags3 & MonsterFlag3.Orc) != 0)
                 {
@@ -199,7 +199,7 @@ namespace Cthangband
                 _description.Append(_wdHeCap[msex]).Append(" lives in the town");
                 old = true;
             }
-            else if (knowledge.RTkills != 0)
+            else if (knowledge.RTkills != 0 || knowledge.RProbed)
             {
                 _description.Append(_wdHeCap[msex]).Append(" is normally found at level ").Append(_monsterType.Level);
                 old = true;
@@ -283,7 +283,7 @@ namespace Cthangband
             }
             string q;
             string p;
-            if (knowledge.RTkills != 0)
+            if (knowledge.RTkills != 0 || knowledge.RProbed)
             {
                 _description.Append((flags1 & MonsterFlag1.Unique) != 0 ? "Killing this" : "A kill of this");
                 if ((flags2 & MonsterFlag2.EldritchHorror) != 0)
@@ -1128,7 +1128,7 @@ namespace Cthangband
                 _description.Append(". ");
             }
             if (knowledge.RWake * knowledge.RWake > _monsterType.Sleep || knowledge.RIgnore == Constants.MaxUchar ||
-                (_monsterType.Sleep == 0 && knowledge.RTkills >= 10))
+                (_monsterType.Sleep == 0 && (knowledge.RTkills >= 10 || knowledge.RProbed)))
             {
                 string act;
                 if (_monsterType.Sleep > 200)
@@ -1603,7 +1603,7 @@ namespace Cthangband
         private bool KnowArmour(MonsterRace monsterType, MonsterKnowledge knowledge)
         {
             int kills = knowledge.RTkills;
-            if (kills > 304 / (4 + monsterType.Level))
+            if ((kills > 304 / (4 + monsterType.Level)) || knowledge.RProbed)
             {
                 return true;
             }
