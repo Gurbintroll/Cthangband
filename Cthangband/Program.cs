@@ -364,6 +364,7 @@ namespace Cthangband
                     Gui.Print(Colour.BrightPurple, "|", displayRow + i, displayCol + 5);
                     Gui.Print(Colour.BrightPurple, "|", displayRow + i, displayCol + 22);
                 }
+                Gui.HideCursorOnFullScreenInkey = true;
                 var c = Gui.Inkey();
                 if (c == '6' || c == '4')
                 {
