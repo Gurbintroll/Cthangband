@@ -3918,6 +3918,10 @@ namespace Cthangband
                             {
                                 continue;
                             }
+                            if (item.TypeSpecificValue <= 0)
+                            {
+                                continue;
+                            }
                             if (GlobalData.ChestTraps[item.TypeSpecificValue] == 0)
                             {
                                 continue;
