@@ -3528,7 +3528,8 @@ namespace Cthangband
                         }
                         if (Player.RaceIndex != Player.RaceIndexAtBirth)
                         {
-                            Profile.Instance.MsgPrint("You are restored to your original race.");
+                            var oldRaceName = Race.RaceInfo[Player.RaceIndexAtBirth].Title;
+                            Profile.Instance.MsgPrint($"You feel more {oldRaceName} again.");
                             Player.ChangeRace(Player.RaceIndexAtBirth);
                             SaveGame.Instance.Level.RedrawSingleLocation(Player.MapY, Player.MapX);
                         }
