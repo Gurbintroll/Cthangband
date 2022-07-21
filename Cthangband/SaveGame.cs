@@ -5,6 +5,7 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using Cthangband.Commands;
 using Cthangband.Debug;
 using Cthangband.Enumerations;
 using Cthangband.Patrons;
@@ -1370,7 +1371,7 @@ namespace Cthangband
             if (CameFrom == LevelStart.StartHouse)
             {
                 UpdateCommand();
-                Command.DoCmdStore();
+                StoreCommand.DoCmdStore(Player, SaveGame.Instance.Level);
                 CameFrom = LevelStart.StartRandom;
             }
             if (CurrentDepth == 0)
@@ -1477,7 +1478,7 @@ namespace Cthangband
                 }
                 if (CurrentDepth > 0)
                 {
-                    Command.DoCmdFeeling(true);
+                    Commands.FeelingAndLocationCommand.DoCmdFeeling(Player, Level, true);
                 }
             }
         }
@@ -1947,14 +1948,14 @@ namespace Cthangband
                     Profile.Instance.MsgFlag = false;
                     Gui.PrintLine("", 0, 0);
                     UpdateCommand();
-                    Command.ProcessCommand();
+                    Command.ProcessCommand(true);
                 }
                 else
                 {
                     Level.MoveCursorRelative(Player.MapY, Player.MapX);
                     Gui.RequestCommand(false);
                     UpdateCommand();
-                    Command.ProcessCommand();
+                    Command.ProcessCommand(false);
                 }
                 if (EnergyUse != 0)
                 {

@@ -948,13 +948,6 @@ namespace Cthangband.UI
                 CurrentCommand = cmd;
                 break;
             }
-            if (CommandArgument <= 0 && !shopping)
-            {
-                if ("TBDocs+".Contains(CurrentCommand.ToString()))
-                {
-                    CommandArgument = 99;
-                }
-            }
             if (shopping)
             {
                 switch (CurrentCommand)

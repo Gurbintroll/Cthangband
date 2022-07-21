@@ -1809,8 +1809,8 @@ namespace Cthangband
         /// Attempt to move the player in the given direction
         /// </summary>
         /// <param name="direction"> The direction in which to move </param>
-        /// <param name="doPickup"> Whether or not to pick up any objects we step on </param>
-        public void MovePlayer(int direction, bool doPickup)
+        /// <param name="dontPickup"> Whether or not to skip picking up any objects we step on </param>
+        public void MovePlayer(int direction, bool dontPickup)
         {
             bool canPassWalls = false;
             int newY = Player.MapY + Level.KeypadDirectionYOffset[direction];
@@ -1871,7 +1871,7 @@ namespace Cthangband
                 }
             }
             // We didn't attack a monster or get blocked by one, so start testing terrain features
-            if (!doPickup && tile.FeatureType.IsTrap)
+            if (!dontPickup && tile.FeatureType.IsTrap)
             {
                 // If we're walking onto a known trap, assume we're trying to disarm it
                 DisarmTrap(newY, newX, direction);
@@ -2099,7 +2099,7 @@ namespace Cthangband
                 Search();
             }
             // Pick up an object on our tile if there is one
-            PickUpItems(!doPickup);
+            PickUpItems(!dontPickup);
             // If we've just entered a shop tile, then enter the actual shop
             if (tile.FeatureType.IsShop)
             {

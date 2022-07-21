@@ -5,8 +5,10 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using Cthangband.Commands;
 using Cthangband.Enumerations;
 using Cthangband.Pantheon;
+using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -135,10 +137,9 @@ namespace Cthangband
             }
         }
 
-        public void EnterStore(Player player, CommandHandler command)
+        public void EnterStore(Player player)
         {
             _player = player;
-            _command = command;
             _storeTop = 0;
             DisplayStore();
             _leaveStore = false;
@@ -1529,9 +1530,140 @@ namespace Cthangband
             return true;
         }
 
+        private void DoCmdStudy()
+        {
+            string spellType = _player.Spellcasting.Type == CastingType.Arcane ? "spell" : "prayer";
+            // If we don't have a realm then we can't do anything
+            if (_player.Realm1 == 0)
+            {
+                Profile.Instance.MsgPrint("You cannot read books!");
+                return;
+            }
+            // We can't learn spells if we're blind or confused
+            if (_player.TimedBlindness != 0)
+            {
+                Profile.Instance.MsgPrint("You cannot see!");
+                return;
+            }
+            if (_player.TimedConfusion != 0)
+            {
+                Profile.Instance.MsgPrint("You are too confused!");
+                return;
+            }
+            // We can only learn new spells if we have spare slots
+            if (_player.SpareSpellSlots == 0)
+            {
+                Profile.Instance.MsgPrint($"You cannot learn any new {spellType}s!");
+                return;
+            }
+            string plural = _player.SpareSpellSlots == 1 ? "" : "s";
+            Profile.Instance.MsgPrint($"You can learn {_player.SpareSpellSlots} new {spellType}{plural}.");
+            Profile.Instance.MsgPrint(null);
+            // Get the spell books we have
+            Inventory.ItemFilterUseableSpellBook = true;
+            if (!SaveGame.Instance.GetItem(out int itemIndex, "Study which book? ", false, true, true))
+            {
+                if (itemIndex == -2)
+                {
+                    Profile.Instance.MsgPrint("You have no books that you can read.");
+                }
+                Inventory.ItemFilterUseableSpellBook = false;
+                return;
+            }
+            Inventory.ItemFilterUseableSpellBook = false;
+            // Check each book
+            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : SaveGame.Instance.Level.Items[0 - itemIndex];
+            int itemSubCategory = item.ItemSubCategory;
+            bool useSetTwo = item.Category == _player.Realm2.ToSpellBookItemCategory();
+            SaveGame.Instance.HandleStuff();
+            int spellIndex;
+            // Arcane casters can choose their spell
+            if (_player.Spellcasting.Type != CastingType.Divine)
+            {
+                if (!CastCommand.GetSpell(out spellIndex, "study", itemSubCategory, false, useSetTwo, _player) && spellIndex == -1)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                // We need to choose a spell at random
+                int k = 0;
+                int gift = -1;
+                // Gather the potential spells from the book
+                for (spellIndex = 0; spellIndex < 32; spellIndex++)
+                {
+                    if ((GlobalData.BookSpellFlags[itemSubCategory] & (1u << spellIndex)) != 0)
+                    {
+                        if (!_player.SpellOkay(spellIndex, false, useSetTwo))
+                        {
+                            continue;
+                        }
+                        k++;
+                        if (Program.Rng.RandomLessThan(k) == 0)
+                        {
+                            gift = spellIndex;
+                        }
+                    }
+                }
+                spellIndex = gift;
+            }
+            // If we failed to get a spell, return
+            if (spellIndex < 0)
+            {
+                Profile.Instance.MsgPrint($"You cannot learn any {spellType}s from that book.");
+                return;
+            }
+            // Learning a spell takes a turn (although that's not very relevant)
+            SaveGame.Instance.EnergyUse = 100;
+            // Mark the spell as learned
+            Spell spell = useSetTwo ? _player.Spellcasting.Spells[1][spellIndex] : _player.Spellcasting.Spells[0][spellIndex];
+            spell.Learned = true;
+            int i;
+            // Mark the spell as the last spell learned, in case we need to start forgetting them
+            for (i = 0; i < 64; i++)
+            {
+                if (_player.Spellcasting.SpellOrder[i] == 99)
+                {
+                    break;
+                }
+            }
+            _player.Spellcasting.SpellOrder[i] = spellIndex;
+            // Let the player know they've learned a spell
+            Profile.Instance.MsgPrint($"You have learned the {spellType} of {spell.Name}.");
+            Gui.PlaySound(SoundEffect.Study);
+            _player.SpareSpellSlots--;
+            if (_player.SpareSpellSlots != 0)
+            {
+                plural = _player.SpareSpellSlots != 1 ? "s" : "";
+                Profile.Instance.MsgPrint($"You can learn {_player.SpareSpellSlots} more {spellType}{plural}.");
+            }
+            _player.OldSpareSpellSlots = _player.SpareSpellSlots;
+            _player.RedrawNeeded.Set(RedrawFlag.PrStudy);
+        }
+
         private void StoreProcessCommand()
         {
-            switch (Gui.CurrentCommand)
+            char c = Gui.CurrentCommand;
+
+            // Process commands
+            foreach (IStoreCommand command in CommandManager.StoreCommands)
+            {
+                // TODO: The IF statement below can be converted into a dictionary with the applicable object 
+                // attached for improved performance.
+                if (command.IsEnabled && command.Key == c)
+                {
+                    command.Execute(_player);
+
+                    if (command.RequiresRerendering)
+                        DisplayStore();
+
+                    // The command was processed.  Skip the SWITCH statement.
+                    return;
+                }
+            }
+
+            switch (c)
             {
                 case '\x1b':
                     _leaveStore = true;
@@ -1581,10 +1713,6 @@ namespace Cthangband
                     {
                         Profile.Instance.MsgPrint("That command does not work in this Stores.");
                     }
-                    break;
-
-                case 'h':
-                    _command.DoCmdManual();
                     break;
 
                 case 'r':
@@ -1762,7 +1890,7 @@ namespace Cthangband
                             break;
 
                         case StoreType.StoreLibrary:
-                            _command.DoCmdStudy();
+                            DoCmdStudy();
                             break;
 
                         case StoreType.StoreInn:
@@ -1859,60 +1987,6 @@ namespace Cthangband
                     break;
 
                 case '\r':
-                    break;
-
-                case 'w':
-                    _command.DoCmdWield();
-                    break;
-
-                case 't':
-                    _command.DoCmdTakeoff();
-                    break;
-
-                case 'k':
-                    _command.DoCmdDestroy();
-                    break;
-
-                case 'K':
-                    _command.DoCmdDestroyAll();
-                    break;
-
-                case 'e':
-                    _command.DoCmdEquip();
-                    break;
-
-                case 'i':
-                    _command.DoCmdInven();
-                    break;
-
-                case 'I':
-                    _command.DoCmdExamine();
-                    break;
-
-                case 'b':
-                    _command.DoCmdBrowse(-1);
-                    break;
-
-                case '/':
-                    _command.DoCmdQuerySymbol();
-                    break;
-
-                case 'C':
-                    _command.DoCmdViewCharacter();
-                    DisplayStore();
-                    break;
-
-                case 'O':
-                    _command.DoCmdMessageOne();
-                    break;
-
-                case 'J':
-                    _command.DoCmdJournal();
-                    DisplayStore();
-                    break;
-
-                case 'P':
-                    _command.DoCmdMessages();
                     break;
 
                 default:

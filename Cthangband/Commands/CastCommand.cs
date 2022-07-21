@@ -1,40 +1,30 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
-// Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
-//
-// This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
-// Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
-// and not for profit purposes provided that this copyright and statement are included in all such
-// copies. Other copyrights may also apply.”
-using Cthangband.Enumerations;
+ï»¿using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
 
-namespace Cthangband.Spells
+namespace Cthangband.Commands
 {
-    [Serializable]
-    internal class CastingHandler
+    internal class CastCommand : ICommand
     {
-        private readonly Level _level;
-        private readonly Player _player;
+        public char Key => 'm';
 
-        public CastingHandler(Player player, Level level)
-        {
-            _player = player;
-            _level = level;
-        }
+        public int? Repeat => 0;
 
-        public void Cast()
+        public bool IsEnabled => true;
+
+        public void Execute(Player player, Level level)
         {
-            if (_player.HasAntiMagic)
+            if (player.HasAntiMagic)
             {
                 string whichMagicType = "magic";
-                if (_player.ProfessionIndex == CharacterClass.Mindcrafter || _player.ProfessionIndex == CharacterClass.Mystic)
+                if (player.ProfessionIndex == CharacterClass.Mindcrafter || player.ProfessionIndex == CharacterClass.Mystic)
                 {
                     whichMagicType = "psychic talents";
                 }
-                else if (_player.Spellcasting.Type == CastingType.Divine)
+                else if (player.Spellcasting.Type == CastingType.Divine)
                 {
                     whichMagicType = "prayer";
                 }
@@ -43,25 +33,25 @@ namespace Cthangband.Spells
             }
             else
             {
-                if (_player.Spellcasting.Type == CastingType.Mentalism)
+                if (player.Spellcasting.Type == CastingType.Mentalism)
                 {
-                    DoCmdMentalism();
+                    DoCmdMentalism(player, level);
                 }
                 else
                 {
-                    DoCmdCast();
+                    DoCmdCast(player, level);
                 }
             }
         }
 
-        public bool GetSpell(out int sn, string prompt, int sval, bool known, bool realm2)
+        public static bool GetSpell(out int sn, string prompt, int sval, bool known, bool realm2, Player player)
         {
             int i;
             int spell;
             int num = 0;
             int[] spells = new int[64];
-            Realm useRealm = realm2 ? _player.Realm2 : _player.Realm1;
-            string p = _player.Spellcasting.Type == CastingType.Divine ? "prayer" : "spell";
+            Realm useRealm = realm2 ? player.Realm2 : player.Realm1;
+            string p = player.Spellcasting.Type == CastingType.Divine ? "prayer" : "spell";
             for (spell = 0; spell < 32; spell++)
             {
                 if ((GlobalData.BookSpellFlags[sval] & (1u << spell)) != 0)
@@ -73,7 +63,7 @@ namespace Cthangband.Spells
             sn = -2;
             for (i = 0; i < num; i++)
             {
-                if (_player.SpellOkay(spells[i], known, realm2))
+                if (player.SpellOkay(spells[i], known, realm2))
                 {
                     okay = true;
                 }
@@ -94,7 +84,7 @@ namespace Cthangband.Spells
                     {
                         redraw = true;
                         Gui.Save();
-                        _player.PrintSpells(spells, num, 1, 20, useRealm);
+                        player.PrintSpells(spells, num, 1, 20, useRealm);
                     }
                     else
                     {
@@ -114,15 +104,15 @@ namespace Cthangband.Spells
                     continue;
                 }
                 spell = spells[i];
-                if (!_player.SpellOkay(spell, known, realm2))
+                if (!player.SpellOkay(spell, known, realm2))
                 {
                     Profile.Instance.MsgPrint($"You may not {prompt} that {p}.");
                     continue;
                 }
                 if (ask)
                 {
-                    Spell sPtr = _player.Spellcasting.Spells[realm2 ? 1 : 0][spell % 32];
-                    string tmpVal = $"{prompt} {sPtr.Name} ({sPtr.ManaCost} mana, {sPtr.FailureChance(_player)}% fail)? ";
+                    Spell sPtr = player.Spellcasting.Spells[realm2 ? 1 : 0][spell % 32];
+                    string tmpVal = $"{prompt} {sPtr.Name} ({sPtr.ManaCost} mana, {sPtr.FailureChance(player)}% fail)? ";
                     if (!Gui.GetCheck(tmpVal))
                     {
                         continue;
@@ -142,20 +132,20 @@ namespace Cthangband.Spells
             return true;
         }
 
-        private void DoCmdCast()
+        private void DoCmdCast(Player player, Level level)
         {
-            string prayer = _player.Spellcasting.Type == CastingType.Divine ? "prayer" : "spell";
-            if (_player.Realm1 == 0)
+            string prayer = player.Spellcasting.Type == CastingType.Divine ? "prayer" : "spell";
+            if (player.Realm1 == 0)
             {
                 Profile.Instance.MsgPrint("You cannot cast spells!");
                 return;
             }
-            if (_player.TimedBlindness != 0 || _level.NoLight())
+            if (player.TimedBlindness != 0 || level.NoLight())
             {
                 Profile.Instance.MsgPrint("You cannot see!");
                 return;
             }
-            if (_player.TimedConfusion != 0)
+            if (player.TimedConfusion != 0)
             {
                 Profile.Instance.MsgPrint("You are too confused!");
                 return;
@@ -171,12 +161,12 @@ namespace Cthangband.Spells
                 return;
             }
             Inventory.ItemFilterUseableSpellBook = false;
-            Item oPtr = item >= 0 ? _player.Inventory[item] : _level.Items[0 - item];
+            Item oPtr = item >= 0 ? player.Inventory[item] : level.Items[0 - item];
             int sval = oPtr.ItemSubCategory;
-            bool useSetTwo = oPtr.Category == _player.Realm2.ToSpellBookItemCategory();
+            bool useSetTwo = oPtr.Category == player.Realm2.ToSpellBookItemCategory();
             SaveGame.Instance.HandleStuff();
-            if (!GetSpell(out int spell, _player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast", sval,
-                true, useSetTwo))
+            if (!GetSpell(out int spell, player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast", sval,
+                true, useSetTwo, player))
             {
                 if (spell == -2)
                 {
@@ -184,88 +174,88 @@ namespace Cthangband.Spells
                 }
                 return;
             }
-            Spell sPtr = useSetTwo ? _player.Spellcasting.Spells[1][spell] : _player.Spellcasting.Spells[0][spell];
-            if (sPtr.ManaCost > _player.Mana)
+            Spell sPtr = useSetTwo ? player.Spellcasting.Spells[1][spell] : player.Spellcasting.Spells[0][spell];
+            if (sPtr.ManaCost > player.Mana)
             {
-                string cast = _player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast";
+                string cast = player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast";
                 Profile.Instance.MsgPrint($"You do not have enough mana to {cast} this {prayer}.");
                 if (!Gui.GetCheck("Attempt it anyway? "))
                 {
                     return;
                 }
             }
-            int chance = sPtr.FailureChance(_player);
+            int chance = sPtr.FailureChance(player);
             if (Program.Rng.RandomLessThan(100) < chance)
             {
                 Profile.Instance.MsgPrint($"You failed to get the {prayer} off!");
                 if (oPtr.Category == ItemCategory.ChaosBook && Program.Rng.DieRoll(100) < spell)
                 {
                     Profile.Instance.MsgPrint("You produce a chaotic effect!");
-                    WildMagic(spell);
+                    WildMagic(spell, player, level);
                 }
                 else if (oPtr.Category == ItemCategory.DeathBook && Program.Rng.DieRoll(100) < spell)
                 {
                     if (sval == 3 && Program.Rng.DieRoll(2) == 1)
                     {
-                        _level.Monsters[0].SanityBlast(true);
+                        level.Monsters[0].SanityBlast(true);
                     }
                     else
                     {
                         Profile.Instance.MsgPrint("It hurts!");
-                        _player.TakeHit(Program.Rng.DiceRoll(oPtr.ItemSubCategory + 1, 6), "a miscast Death spell");
-                        if (spell > 15 && Program.Rng.DieRoll(6) == 1 && !_player.HasHoldLife)
+                        player.TakeHit(Program.Rng.DiceRoll(oPtr.ItemSubCategory + 1, 6), "a miscast Death spell");
+                        if (spell > 15 && Program.Rng.DieRoll(6) == 1 && !player.HasHoldLife)
                         {
-                            _player.LoseExperience(spell * 250);
+                            player.LoseExperience(spell * 250);
                         }
                     }
                 }
             }
             else
             {
-                sPtr.Cast(SaveGame.Instance, _player, _level);
+                sPtr.Cast(SaveGame.Instance, player, level);
                 if (!sPtr.Worked)
                 {
                     int e = sPtr.FirstCastExperience;
                     sPtr.Worked = true;
-                    _player.GainExperience(e * sPtr.Level);
+                    player.GainExperience(e * sPtr.Level);
                 }
             }
             SaveGame.Instance.EnergyUse = 100;
-            if (sPtr.ManaCost <= _player.Mana)
+            if (sPtr.ManaCost <= player.Mana)
             {
-                _player.Mana -= sPtr.ManaCost;
+                player.Mana -= sPtr.ManaCost;
             }
             else
             {
-                int oops = sPtr.ManaCost - _player.Mana;
-                _player.Mana = 0;
-                _player.FractionalMana = 0;
+                int oops = sPtr.ManaCost - player.Mana;
+                player.Mana = 0;
+                player.FractionalMana = 0;
                 Profile.Instance.MsgPrint("You faint from the effort!");
-                _player.SetTimedParalysis(_player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
+                player.SetTimedParalysis(player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
                 if (Program.Rng.RandomLessThan(100) < 50)
                 {
                     bool perm = Program.Rng.RandomLessThan(100) < 25;
                     Profile.Instance.MsgPrint("You have damaged your health!");
-                    _player.DecreaseAbilityScore(Ability.Constitution, 15 + Program.Rng.DieRoll(10), perm);
+                    player.DecreaseAbilityScore(Ability.Constitution, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
-            _player.RedrawNeeded.Set(RedrawFlag.PrMana);
+            player.RedrawNeeded.Set(RedrawFlag.PrMana);
         }
 
-        private void DoCmdMentalism()
+        private void DoCmdMentalism(Player player, Level level)
         {
-            int plev = _player.Level;
-            if (_player.TimedConfusion != 0)
+            int plev = player.Level;
+            if (player.TimedConfusion != 0)
             {
                 Profile.Instance.MsgPrint("You are too confused!");
                 return;
             }
-            if (!GetMentalismTalent(out int n))
+            if (!GetMentalismTalent(out int n, player))
             {
                 return;
             }
-            Talents.Talent talent = _player.Spellcasting.Talents[n];
-            if (talent.ManaCost > _player.Mana)
+            Talents.Talent talent = player.Spellcasting.Talents[n];
+            if (talent.ManaCost > player.Mana)
             {
                 Profile.Instance.MsgPrint("You do not have enough mana to use this talent.");
                 if (!Gui.GetCheck("Attempt it anyway? "))
@@ -273,7 +263,7 @@ namespace Cthangband.Spells
                     return;
                 }
             }
-            int chance = talent.FailureChance(_player);
+            int chance = talent.FailureChance(player);
             if (Program.Rng.RandomLessThan(100) < chance)
             {
                 Profile.Instance.MsgPrint("You failed to concentrate hard enough!");
@@ -288,66 +278,66 @@ namespace Cthangband.Spells
                     else if (i < 15)
                     {
                         Profile.Instance.MsgPrint("Weird visions seem to dance before your eyes...");
-                        _player.SetTimedHallucinations(_player.TimedHallucinations + 5 + Program.Rng.DieRoll(10));
+                        player.SetTimedHallucinations(player.TimedHallucinations + 5 + Program.Rng.DieRoll(10));
                     }
                     else if (i < 45)
                     {
                         Profile.Instance.MsgPrint("Your brain is addled!");
-                        _player.SetTimedConfusion(_player.TimedConfusion + Program.Rng.DieRoll(8));
+                        player.SetTimedConfusion(player.TimedConfusion + Program.Rng.DieRoll(8));
                     }
                     else if (i < 90)
                     {
-                        _player.SetTimedStun(_player.TimedStun + Program.Rng.DieRoll(8));
+                        player.SetTimedStun(player.TimedStun + Program.Rng.DieRoll(8));
                     }
                     else
                     {
                         Profile.Instance.MsgPrint("Your mind unleashes its power in an uncontrollable storm!");
-                        SaveGame.Instance.SpellEffects.Project(1, 2 + (plev / 10), _player.MapY, _player.MapX, plev * 2,
+                        SaveGame.Instance.SpellEffects.Project(1, 2 + (plev / 10), player.MapY, player.MapX, plev * 2,
                             new ProjectMana(SaveGame.Instance.SpellEffects),
                             ProjectionFlag.ProjectJump | ProjectionFlag.ProjectKill | ProjectionFlag.ProjectGrid |
                             ProjectionFlag.ProjectItem);
-                        _player.Mana = Math.Max(0, _player.Mana - (plev * Math.Max(1, plev / 10)));
+                        player.Mana = Math.Max(0, player.Mana - (plev * Math.Max(1, plev / 10)));
                     }
                 }
             }
             else
             {
-                talent.Use(_player, _level, SaveGame.Instance);
+                talent.Use(player, level, SaveGame.Instance);
             }
             SaveGame.Instance.EnergyUse = 100;
-            if (talent.ManaCost <= _player.Mana)
+            if (talent.ManaCost <= player.Mana)
             {
-                _player.Mana -= talent.ManaCost;
+                player.Mana -= talent.ManaCost;
             }
             else
             {
-                int oops = talent.ManaCost - _player.Mana;
-                _player.Mana = 0;
-                _player.FractionalMana = 0;
+                int oops = talent.ManaCost - player.Mana;
+                player.Mana = 0;
+                player.FractionalMana = 0;
                 Profile.Instance.MsgPrint("You faint from the effort!");
-                _player.SetTimedParalysis(_player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
+                player.SetTimedParalysis(player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
                 if (Program.Rng.RandomLessThan(100) < 50)
                 {
                     bool perm = Program.Rng.RandomLessThan(100) < 25;
                     Profile.Instance.MsgPrint("You have damaged your mind!");
-                    _player.DecreaseAbilityScore(Ability.Wisdom, 15 + Program.Rng.DieRoll(10), perm);
+                    player.DecreaseAbilityScore(Ability.Wisdom, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
-            _player.RedrawNeeded.Set(RedrawFlag.PrMana);
+            player.RedrawNeeded.Set(RedrawFlag.PrMana);
         }
 
-        private bool GetMentalismTalent(out int sn)
+        private bool GetMentalismTalent(out int sn, Player player)
         {
             int i;
             int num = 0;
             int y = 1;
             int x = 20;
-            int plev = _player.Level;
+            int plev = player.Level;
             string p = "talent";
             sn = -1;
             bool flag = false;
             bool redraw = false;
-            TalentList talents = _player.Spellcasting.Talents;
+            TalentList talents = player.Spellcasting.Talents;
             for (i = 0; i < talents.Count; i++)
             {
                 if (talents[i].Level <= plev)
@@ -374,7 +364,7 @@ namespace Cthangband.Spells
                             {
                                 break;
                             }
-                            string psiDesc = $"  {i.IndexToLetter()}) {talent.SummaryLine(_player)}";
+                            string psiDesc = $"  {i.IndexToLetter()}) {talent.SummaryLine(player)}";
                             Gui.PrintLine(psiDesc, y + i + 1, x);
                         }
                         Gui.PrintLine("", y + i + 1, x);
@@ -418,7 +408,7 @@ namespace Cthangband.Spells
             return true;
         }
 
-        private void WildMagic(int spell)
+        private void WildMagic(int spell, Player player, Level level)
         {
             int counter = 0;
             int type = Constants.SummonBizarre1 - 1 + Program.Rng.DieRoll(6);
@@ -491,12 +481,12 @@ namespace Cthangband.Spells
                     break;
 
                 case 26:
-                    SaveGame.Instance.SpellEffects.Earthquake(_player.MapY, _player.MapX, 5);
+                    SaveGame.Instance.SpellEffects.Earthquake(player.MapY, player.MapX, 5);
                     break;
 
                 case 27:
                 case 28:
-                    _player.Dna.GainMutation();
+                    player.Dna.GainMutation();
                     break;
 
                 case 29:
@@ -520,7 +510,7 @@ namespace Cthangband.Spells
                 case 35:
                     while (counter++ < 8)
                     {
-                        _level.Monsters.SummonSpecific(_player.MapY, _player.MapX, SaveGame.Instance.Difficulty * 3 / 2,
+                        level.Monsters.SummonSpecific(player.MapY, player.MapX, SaveGame.Instance.Difficulty * 3 / 2,
                             type);
                     }
                     break;
