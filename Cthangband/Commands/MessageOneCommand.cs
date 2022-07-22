@@ -1,5 +1,4 @@
-﻿using Cthangband.UI;
-using System;
+﻿using System;
 
 namespace Cthangband.Commands
 {
@@ -7,7 +6,7 @@ namespace Cthangband.Commands
     /// Show the previous message
     /// </summary>
     [Serializable]
-    internal class MessageOneCommand : ICommand, IStoreCommand
+    internal class MessageOneCommand : ICommand
     {
         public char Key => 'O';
 
@@ -15,16 +14,9 @@ namespace Cthangband.Commands
 
         public bool IsEnabled => true;
 
-        public bool RequiresRerendering => false;
-
         public void Execute(Player player, Level level)
         {
-            Execute(player);
-        }
-
-        public void Execute(Player player)
-        {
-            Gui.PrintLine($"> {Profile.Instance.MessageStr(0)}", 0, 0);
+            MessageOneStoreCommand.DoCmdMessageOne();
         }
     }
 }

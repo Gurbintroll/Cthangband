@@ -10,24 +10,29 @@ using Cthangband.Enumerations;
 using Cthangband.Pantheon;
 using Cthangband.Spells;
 using Cthangband.StaticData;
+using Cthangband.Stores;
 using Cthangband.UI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Cthangband
 {
     [Serializable]
-    internal class Store
+    internal abstract class Store : IStore
     {
         public readonly StoreType StoreType;
 
-        public int X;
+        public int X => _x;
 
-        public int Y;
+        public int Y => _y;
+
+        private int _x;
+        private int _y;
 
         private static readonly string[] _comment_7A =
-                                    {"Arrgghh!", "You bastard!", "You hear someone sobbing...", "The shopkeeper howls in agony!"};
+            {"Arrgghh!", "You bastard!", "You hear someone sobbing...", "The shopkeeper howls in agony!"};
 
         private static readonly string[] _comment_7B =
             {"Damn!", "You bastard!", "The shopkeeper curses at you.", "The shopkeeper glares at you."};
@@ -43,12 +48,48 @@ namespace Cthangband
         private readonly int _stockSize;
         private readonly int[] _table;
         private readonly int _tableNum;
-        private CommandHandler _command;
         private bool _leaveStore;
         private StoreOwner _owner;
         private Player _player;
         private int _stockNum;
         private int _storeTop;
+
+
+        protected virtual ItemIdentifier[] GetStoreTable()
+        {
+            return new[]
+            {
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0),
+                new ItemIdentifier(ItemCategory.None, 0), new ItemIdentifier(ItemCategory.None, 0)
+            };
+        }
+
+        /// <summary>
+        /// Returns true, by default, if the store generates item identifier tables.
+        /// </summary>
+        protected virtual bool HasStoreTable => true;
 
         public Store(StoreType storeType)
         {
@@ -59,15 +100,13 @@ namespace Cthangband
             {
                 _stock[k] = new Item();
             }
-            if (StoreType == StoreType.StoreBlack || StoreType == StoreType.StoreHome ||
-                StoreType == StoreType.StorePawn || StoreType == StoreType.StoreHall ||
-                StoreType == StoreType.StoreEmptyLot)
+            if (!HasStoreTable)
             {
                 return;
             }
             const int tableSize = Constants.StoreChoices;
             _table = new int[tableSize];
-            ItemIdentifier[] master = StoreFactory.GetStoreTable(StoreType);
+            ItemIdentifier[] master = GetStoreTable();
             for (int k = 0; k < Constants.StoreChoices; k++)
             {
                 int kIdx;
@@ -89,55 +128,15 @@ namespace Cthangband
             }
         }
 
-        public string FeatureType
+        public void SetLocation(int x, int y)
         {
-            get
-            {
-                switch (StoreType)
-                {
-                    case StoreType.StoreGeneral:
-                        return "GeneralStore";
-
-                    case StoreType.StoreArmoury:
-                        return "Armoury";
-
-                    case StoreType.StoreWeapon:
-                        return "Weaponsmiths";
-
-                    case StoreType.StoreTemple:
-                        return "Temple";
-
-                    case StoreType.StoreAlchemist:
-                        return "Alchemist";
-
-                    case StoreType.StoreMagic:
-                        return "MagicShop";
-
-                    case StoreType.StoreBlack:
-                        return "BlackMarket";
-
-                    case StoreType.StoreHome:
-                        return "Home";
-
-                    case StoreType.StoreLibrary:
-                        return "Bookstore";
-
-                    case StoreType.StoreInn:
-                        return "Inn";
-
-                    case StoreType.StoreHall:
-                        return "HallOfRecords";
-
-                    case StoreType.StorePawn:
-                        return "Pawnbrokers";
-
-                    default:
-                        return "GeneralStore";
-                }
-            }
+            _x = x;
+            _y = y;
         }
 
-        public void EnterStore(Player player)
+        public abstract string FeatureType { get; }
+
+        public virtual void EnterStore(Player player)
         {
             _player = player;
             _storeTop = 0;
@@ -271,7 +270,7 @@ namespace Cthangband
             _player.RedrawNeeded.Set(RedrawFlag.PrMap);
         }
 
-        public void StoreInit()
+        public virtual void StoreInit()
         {
             _owner = StoreFactory.GetRandomOwner(StoreType);
             _stockNum = 0;
@@ -281,27 +280,47 @@ namespace Cthangband
             }
         }
 
-        public void StoreMaint()
+        /// <summary>
+        /// Returns whether or not the store should perform maintenance.  When true, which is by default, the store will automatically 
+        /// maintain stock levels based on the MinKeep, MaxKeep and Turnover values.
+        /// </summary>
+        protected virtual bool MaintainsStockLevels => true;
+
+        /// <summary>
+        /// Returns the maximum number of items the store should maintain.  Applies only when MaintainsStockLevels returns true.
+        /// </summary>
+        public virtual int StoreMaxKeep => 18;
+
+        /// <summary>
+        /// Returns the minimum number of items the store should maintain.  Applies only when MaintainsStockLevels returns true.
+        /// </summary>
+        public virtual int StoreMinKeep => 6;
+
+        /// <summary>
+        /// Returns the number of items the store should delete during maintenance.  Applies only when MaintainsStockLevels returns true.
+        /// </summary>
+        public virtual int StoreTurnover => 9;
+
+        public virtual void StoreMaint()
         {
             int oldRating = 0;
             if (SaveGame.Instance.Level != null)
             {
                 oldRating = SaveGame.Instance.Level.TreasureRating;
             }
-            if (StoreType == StoreType.StoreHome || StoreType == StoreType.StoreHall ||
-                StoreType == StoreType.StorePawn || StoreType == StoreType.StoreEmptyLot)
+            if (!MaintainsStockLevels)
             {
                 return;
             }
             int j = _stockNum;
-            j -= Program.Rng.DieRoll(Constants.StoreTurnover);
-            if (j > Constants.StoreMaxKeep)
+            j -= Program.Rng.DieRoll(StoreTurnover);
+            if (j > StoreMaxKeep)
             {
-                j = Constants.StoreMaxKeep;
+                j = StoreMaxKeep;
             }
-            if (j < Constants.StoreMinKeep)
+            if (j < StoreMinKeep)
             {
-                j = Constants.StoreMinKeep;
+                j = StoreMinKeep;
             }
             if (j < 0)
             {
@@ -312,22 +331,18 @@ namespace Cthangband
                 StoreDelete();
             }
             j = _stockNum;
-            j += Program.Rng.DieRoll(Constants.StoreTurnover);
-            if (j > Constants.StoreMaxKeep)
+            j += Program.Rng.DieRoll(StoreTurnover);
+            if (j > StoreMaxKeep)
             {
-                j = Constants.StoreMaxKeep;
+                j = StoreMaxKeep;
             }
-            if (j < Constants.StoreMinKeep)
+            if (j < StoreMinKeep)
             {
-                j = Constants.StoreMinKeep;
+                j = StoreMinKeep;
             }
             if (j >= _stockSize)
             {
                 j = _stockSize - 1;
-            }
-            if (j > 4 && StoreType == StoreType.StoreInn)
-            {
-                j = 4;
             }
             while (_stockNum < j)
             {
@@ -339,10 +354,15 @@ namespace Cthangband
             }
         }
 
-        public void StoreShuffle()
+        /// <summary>
+        /// Returns whether or not the store should occasionally change the owner and put items on sale.  When true, which is by default, the store will
+        /// automatically perform this shuffling.
+        /// </summary>
+        public virtual bool ShufflesOwnersAndPricing => true;
+
+        public virtual void StoreShuffle()
         {
-            if (StoreType == StoreType.StoreHome || StoreType == StoreType.StoreHall ||
-                StoreType == StoreType.StorePawn || StoreType == StoreType.StoreEmptyLot)
+            if (!ShufflesOwnersAndPricing)
             {
                 return;
             }
@@ -437,32 +457,63 @@ namespace Cthangband
             }
         }
 
+        /// <summary>
+        /// Returns the name of the owner.  By default, the name of the owner and their race is returned.
+        /// </summary>
+        protected virtual string OwnerName
+        {
+            get
+            {
+                string ownerName = _owner.OwnerName;
+                string raceName = Race.RaceInfo[_owner.OwnerRace].Title;
+                return $"{ownerName} ({raceName})";                
+            }
+        }
+
+        /// <summary>
+        /// Returns the title of the store.  By default, this name of the store and their maximum cost is returned.
+        /// </summary>
+        protected virtual string Title
+        {
+            get
+            {
+                string storeName = StaticResources.Instance.FloorTileTypes[FeatureType].Description;
+                return $"{storeName} ({_owner.MaxCost})";
+            }
+        }
+
+        /// <summary>
+        /// Returns whether or not the store should show an item inventory.
+        /// </summary>
+        protected virtual StoreInventoryDisplayTypeEnum ShowInventoryDisplayType => StoreInventoryDisplayTypeEnum.InventoryWithPrice;
+
         private void DisplayStore()
         {
             Gui.Clear();
             Gui.SetBackground(Terminal.BackgroundImage.Normal);
-            if (StoreType == StoreType.StoreHome)
+            string ownerName = OwnerName;
+            if (String.IsNullOrEmpty(ownerName))
             {
-                Gui.Print("Your Home", 3, 30);
-                Gui.Print("Item Description", 5, 3);
-                Gui.Print("Weight", 5, 70);
+                Gui.PrintLine(Title, 3, 30);
             }
-            if (StoreType == StoreType.StoreHall)
+            else
             {
-                Gui.Print("Hall Of Records", 3, 30);
+                Gui.Print(OwnerName, 3, 10);
+                Gui.PrintLine(Title, 3, 50);
             }
-            if (StoreType != StoreType.StoreHome && StoreType != StoreType.StoreHall)
+
+            if (ShowInventoryDisplayType != StoreInventoryDisplayTypeEnum.DoNotShowInventory)
             {
-                string storeName = StaticResources.Instance.FloorTileTypes[FeatureType].Description;
-                string ownerName = _owner.OwnerName;
-                string raceName = Race.RaceInfo[_owner.OwnerRace].Title;
-                string buf = $"{ownerName} ({raceName})";
-                Gui.Print(buf, 3, 10);
-                buf = $"{storeName} ({_owner.MaxCost})";
-                Gui.PrintLine(buf, 3, 50);
                 Gui.Print("Item Description", 5, 3);
+            }
+            if (ShowInventoryDisplayType == StoreInventoryDisplayTypeEnum.InventoryWithPrice)
+            {
                 Gui.Print("Weight", 5, 60);
                 Gui.Print("Price", 5, 72);
+            }
+            else if (ShowInventoryDisplayType == StoreInventoryDisplayTypeEnum.InventoryWithoutPrice)
+            {
+                Gui.Print("Weight", 5, 70);
             }
             StorePrtGold();
             DisplayInventory();
@@ -576,6 +627,86 @@ namespace Cthangband
             return command != '\x1b';
         }
 
+        private int StoreCarry(Item oPtr)
+        {
+            int slot;
+            Item jPtr;
+            int value = oPtr.Value();
+            if (value <= 0)
+            {
+                return -1;
+            }
+            if (StoreType != StoreType.StorePawn)
+            {
+                oPtr.IdentifyFlags.Set(Constants.IdentMental);
+                oPtr.Inscription = "";
+            }
+            for (slot = 0; slot < _stockNum; slot++)
+            {
+                jPtr = _stock[slot];
+                if (StoreObjectSimilar(jPtr, oPtr))
+                {
+                    StoreObjectAbsorb(jPtr, oPtr);
+                    return slot;
+                }
+            }
+            if (_stockNum >= _stockSize)
+            {
+                return -1;
+            }
+            for (slot = 0; slot < _stockNum; slot++)
+            {
+                jPtr = _stock[slot];
+                if (oPtr.Category > jPtr.Category)
+                {
+                    break;
+                }
+                if (oPtr.Category < jPtr.Category)
+                {
+                    continue;
+                }
+                if (oPtr.ItemSubCategory < jPtr.ItemSubCategory)
+                {
+                    break;
+                }
+                if (oPtr.ItemSubCategory > jPtr.ItemSubCategory)
+                {
+                    continue;
+                }
+                if (oPtr.Category == ItemCategory.Rod)
+                {
+                    if (oPtr.TypeSpecificValue < jPtr.TypeSpecificValue)
+                    {
+                        break;
+                    }
+                    if (oPtr.TypeSpecificValue > jPtr.TypeSpecificValue)
+                    {
+                        continue;
+                    }
+                }
+                int jValue = jPtr.Value();
+                if (value > jValue)
+                {
+                    break;
+                }
+                if (value < jValue)
+                {
+                }
+            }
+            for (int i = _stockNum; i > slot; i--)
+            {
+                _stock[i] = _stock[i - 1];
+            }
+            _stockNum++;
+            _stock[slot] = oPtr;
+            return slot;
+        }
+
+        /// <summary>
+        /// Items sold (not pawned) items
+        /// </summary>
+        /// <param name="oPtr"></param>
+        /// <returns></returns>
         private int HomeCarry(Item oPtr)
         {
             int slot;
@@ -656,15 +787,6 @@ namespace Cthangband
             _stockNum++;
             _stock[slot] = new Item(oPtr);
             return slot;
-        }
-
-        private bool IsBlessed(Item oPtr)
-        {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            oPtr.GetMergedFlags(f1, f2, f3);
-            return f3.IsSet(ItemFlag3.Blessed);
         }
 
         private void MassProduce(Item oPtr)
@@ -827,7 +949,9 @@ namespace Cthangband
             oldStore._stockNum = 0;
         }
 
-        private int PriceItem(Item oPtr, int greed, bool flip)
+        protected virtual int PriceMultiplier => 1;
+
+        private int PriceItem(Item oPtr, int greed, bool trueToMarkDownFalseToMarkUp)
         {
             int adjust;
             int price = oPtr.Value();
@@ -837,21 +961,14 @@ namespace Cthangband
             }
             int factor = 100;
             factor += _player.AbilityScores[Ability.Charisma].ChaPriceAdjustment;
-            if (flip)
+            if (trueToMarkDownFalseToMarkUp == true)
             {
                 adjust = 100 + (300 - (greed + factor));
                 if (adjust > 100)
                 {
                     adjust = 100;
                 }
-                if (StoreType == StoreType.StoreBlack)
-                {
-                    price /= 2;
-                }
-                if (StoreType == StoreType.StorePawn)
-                {
-                    price /= 3;
-                }
+                price /= PriceMultiplier;
             }
             else
             {
@@ -860,14 +977,7 @@ namespace Cthangband
                 {
                     adjust = 100;
                 }
-                if (StoreType == StoreType.StoreBlack)
-                {
-                    price *= 2;
-                }
-                if (StoreType == StoreType.StorePawn)
-                {
-                    price /= 3;
-                }
+                price *= PriceMultiplier;
             }
             price = ((price * adjust) + 50) / 100;
             if (price <= 0)
@@ -994,7 +1104,7 @@ namespace Cthangband
             SaveGame.Instance.CameFrom = LevelStart.StartWalk;
         }
 
-        private void SacrificeItem()
+        public void SacrificeItem()
         {
             var godName = GetSacrificeTarget();
             if (godName == GodName.None)
@@ -1114,81 +1224,6 @@ namespace Cthangband
             return !Gui.GetCheck("Accept deal? ");
         }
 
-        private int StoreCarry(Item oPtr)
-        {
-            int slot;
-            Item jPtr;
-            int value = oPtr.Value();
-            if (value <= 0)
-            {
-                return -1;
-            }
-            if (StoreType != StoreType.StorePawn)
-            {
-                oPtr.IdentifyFlags.Set(Constants.IdentMental);
-                oPtr.Inscription = "";
-            }
-            for (slot = 0; slot < _stockNum; slot++)
-            {
-                jPtr = _stock[slot];
-                if (StoreObjectSimilar(jPtr, oPtr))
-                {
-                    StoreObjectAbsorb(jPtr, oPtr);
-                    return slot;
-                }
-            }
-            if (_stockNum >= _stockSize)
-            {
-                return -1;
-            }
-            for (slot = 0; slot < _stockNum; slot++)
-            {
-                jPtr = _stock[slot];
-                if (oPtr.Category > jPtr.Category)
-                {
-                    break;
-                }
-                if (oPtr.Category < jPtr.Category)
-                {
-                    continue;
-                }
-                if (oPtr.ItemSubCategory < jPtr.ItemSubCategory)
-                {
-                    break;
-                }
-                if (oPtr.ItemSubCategory > jPtr.ItemSubCategory)
-                {
-                    continue;
-                }
-                if (oPtr.Category == ItemCategory.Rod)
-                {
-                    if (oPtr.TypeSpecificValue < jPtr.TypeSpecificValue)
-                    {
-                        break;
-                    }
-                    if (oPtr.TypeSpecificValue > jPtr.TypeSpecificValue)
-                    {
-                        continue;
-                    }
-                }
-                int jValue = jPtr.Value();
-                if (value > jValue)
-                {
-                    break;
-                }
-                if (value < jValue)
-                {
-                }
-            }
-            for (int i = _stockNum; i > slot; i--)
-            {
-                _stock[i] = _stock[i - 1];
-            }
-            _stockNum++;
-            _stock[slot] = oPtr;
-            return slot;
-        }
-
         private bool StoreCheckNum(Item oPtr)
         {
             int i;
@@ -1304,13 +1339,11 @@ namespace Cthangband
             StoreItemOptimize(what);
         }
 
-        private void StoreExamine()
+        public void StoreExamine()
         {
             if (_stockNum <= 0)
             {
-                Profile.Instance.MsgPrint(StoreType == StoreType.StoreHome
-                    ? "Your home is empty."
-                    : "I am currently out of stock.");
+                Profile.Instance.MsgPrint(NoStockMessage);
                 return;
             }
             int i = _stockNum - _storeTop;
@@ -1646,353 +1679,325 @@ namespace Cthangband
         {
             char c = Gui.CurrentCommand;
 
-            // Process commands
-            foreach (IStoreCommand command in CommandManager.StoreCommands)
+            if (c == '\x1b')
             {
-                // TODO: The IF statement below can be converted into a dictionary with the applicable object 
-                // attached for improved performance.
-                if (command.IsEnabled && command.Key == c)
+                _leaveStore = true;
+            }
+            else
+            {
+                bool matchingCommandFound = false;
+
+                // Process commands
+                foreach (IStoreCommand command in CommandManager.StoreCommands)
                 {
-                    command.Execute(_player);
+                    // TODO: The IF statement below can be converted into a dictionary with the applicable object 
+                    // attached for improved performance.
+                    if (command.Key == c)
+                    {
+                        matchingCommandFound = true;
+                        if (command.IsEnabled(this))
+                        {
+                            command.Execute(_player, this);
 
-                    if (command.RequiresRerendering)
-                        DisplayStore();
+                            if (command.RequiresRerendering)
+                                DisplayStore();
 
-                    // The command was processed.  Skip the SWITCH statement.
-                    return;
+                            // The command was processed.  Skip the SWITCH statement.
+                            return;
+                        }
+                    }
+                }
+
+                if (matchingCommandFound)
+                {
+                    Profile.Instance.MsgPrint("That command does not work in this Store.");
+                }
+                else
+                {
+                    Profile.Instance.MsgPrint("That command does not work in stores.");
                 }
             }
+        }
 
-            switch (c)
+        public void IdentifyAll()       
+        {
+            int price;
+            if (!ServiceHaggle(500, out price))
             {
-                case '\x1b':
-                    _leaveStore = true;
-                    break;
-
-                case 'g':
-                    StorePurchase();
-                    break;
-
-                case 'd':
-                    StoreSell();
-                    break;
-
-                case 'x':
-                    StoreExamine();
-                    break;
-
-                case 'c':
-                    if (StoreType == StoreType.StoreHall)
-                    {
-                        Gui.Save();
-                        Program.HiScores.ClassFilter = _player.ProfessionIndex;
-                        Program.HiScores.DisplayScores(new HighScore(_player));
-                        Program.HiScores.ClassFilter = -1;
-                        Gui.Load();
-                    }
-                    else
-                    {
-                        Profile.Instance.MsgPrint("That command does not work in this Stores.");
-                    }
-                    break;
-
-                case 'v':
-                    if (StoreType == StoreType.StoreHall)
-                    {
-                        Gui.Save();
-                        Program.HiScores.RaceFilter = _player.RaceIndex;
-                        Program.HiScores.DisplayScores(new HighScore(_player));
-                        Program.HiScores.RaceFilter = -1;
-                        Gui.Load();
-                    }
-                    else if (StoreType == StoreType.StoreTemple)
-                    {
-                        SacrificeItem();
-                    }
-                    else
-                    {
-                        Profile.Instance.MsgPrint("That command does not work in this Stores.");
-                    }
-                    break;
-
-                case 'r':
-                    int price;
-                    switch (StoreType)
-                    {
-                        case StoreType.StoreGeneral:
-                            var escortable = new Dictionary<char, Town>();
-                            foreach (var town in SaveGame.Instance.Towns)
-                            {
-                                if (town.Visited && town.Name != SaveGame.Instance.CurTown.Name && town.Char != 'K')
-                                {
-                                    escortable.Add(town.Char, town);
-                                }
-                            }
-                            if (escortable.Count == 0)
-                            {
-                                Profile.Instance.MsgPrint("There are no valid destinations to be escorted to.");
-                                Profile.Instance.MsgPrint("You must have visited a town before you can be escorted there.");
-                            }
-                            else
-                            {
-                                var destination = GetEscortDestination(escortable);
-                                if (destination != null)
-                                {
-                                    if (!ServiceHaggle(200, out price))
-                                    {
-                                        if (price > _player.Gold)
-                                        {
-                                            Profile.Instance.MsgPrint("You do not have the gold!");
-                                        }
-                                        else
-                                        {
-                                            _player.Gold -= price;
-                                            SayComment_1();
-                                            Gui.PlaySound(SoundEffect.StoreTransaction);
-                                            StorePrtGold();
-                                            _player.WildernessX = destination.X;
-                                            _player.WildernessY = destination.Y;
-                                            SaveGame.Instance.CurTown = destination;
-                                            SaveGame.Instance.NewLevelFlag = true;
-                                            SaveGame.Instance.CameFrom = LevelStart.StartRandom;
-                                            Profile.Instance.MsgPrint("The journey takes all day.");
-                                            _player.GameTime.ToNextDusk();
-                                            _leaveStore = true;
-                                        }
-                                    }
-                                }
-                            }
-                            SaveGame.Instance.HandleStuff();
-                            break;
-
-                        case StoreType.StoreArmoury:
-                            if (!ServiceHaggle(400, out price))
-                            {
-                                if (price > _player.Gold)
-                                {
-                                    Profile.Instance.MsgPrint("You do not have the gold!");
-                                }
-                                else
-                                {
-                                    _player.Gold -= price;
-                                    SayComment_1();
-                                    Gui.PlaySound(SoundEffect.StoreTransaction);
-                                    StorePrtGold();
-                                    SaveGame.Instance.SpellEffects.EnchantSpell(0, 0, 4);
-                                }
-                                SaveGame.Instance.HandleStuff();
-                            }
-                            break;
-
-                        case StoreType.StoreWeapon:
-                            if (!ServiceHaggle(800, out price))
-                            {
-                                if (price > _player.Gold)
-                                {
-                                    Profile.Instance.MsgPrint("You do not have the gold!");
-                                }
-                                else
-                                {
-                                    _player.Gold -= price;
-                                    SayComment_1();
-                                    Gui.PlaySound(SoundEffect.StoreTransaction);
-                                    StorePrtGold();
-                                    SaveGame.Instance.SpellEffects.EnchantSpell(4, 4, 0);
-                                }
-                                SaveGame.Instance.HandleStuff();
-                            }
-                            break;
-
-                        case StoreType.StoreTemple:
-                            if (!ServiceHaggle(500, out price))
-                            {
-                                if (price > _player.Gold)
-                                {
-                                    Profile.Instance.MsgPrint("You do not have the gold!");
-                                }
-                                else
-                                {
-                                    _player.Gold -= price;
-                                    SayComment_1();
-                                    Gui.PlaySound(SoundEffect.StoreTransaction);
-                                    StorePrtGold();
-                                    SaveGame.Instance.SpellEffects.RemoveCurse();
-                                }
-                                SaveGame.Instance.HandleStuff();
-                            }
-                            break;
-
-                        case StoreType.StoreAlchemist:
-                            if (!ServiceHaggle(750, out price))
-                            {
-                                if (price > _player.Gold)
-                                {
-                                    Profile.Instance.MsgPrint("You do not have the gold!");
-                                }
-                                else
-                                {
-                                    _player.Gold -= price;
-                                    SayComment_1();
-                                    Gui.PlaySound(SoundEffect.StoreTransaction);
-                                    StorePrtGold();
-                                    _player.TryRestoringAbilityScore(Ability.Strength);
-                                    _player.TryRestoringAbilityScore(Ability.Intelligence);
-                                    _player.TryRestoringAbilityScore(Ability.Wisdom);
-                                    _player.TryRestoringAbilityScore(Ability.Dexterity);
-                                    _player.TryRestoringAbilityScore(Ability.Constitution);
-                                    _player.TryRestoringAbilityScore(Ability.Charisma);
-                                    _player.RestoreLevel();
-                                }
-                                SaveGame.Instance.HandleStuff();
-                            }
-                            break;
-
-                        case StoreType.StoreMagic:
-                            if (!ServiceHaggle(2000, out price))
-                            {
-                                if (price > _player.Gold)
-                                {
-                                    Profile.Instance.MsgPrint("You do not have the gold!");
-                                }
-                                else
-                                {
-                                    _player.Gold -= price;
-                                    SayComment_1();
-                                    Gui.PlaySound(SoundEffect.StoreTransaction);
-                                    StorePrtGold();
-                                    SaveGame.Instance.SpellEffects.IdentifyFully();
-                                }
-                                SaveGame.Instance.HandleStuff();
-                            }
-                            break;
-
-                        case StoreType.StoreBlack:
-                            Profile.Instance.MsgPrint("That command does not work in this Stores.");
-                            break;
-
-                        case StoreType.StoreHome:
-                            if (_player.TimedPoison > 0 || _player.TimedBleeding > 0)
-                            {
-                                Profile.Instance.MsgPrint("Your wounds prevent you from sleeping.");
-                            }
-                            else
-                            {
-                                if (_player.RaceIndex == RaceId.Spectre || _player.RaceIndex == RaceId.Zombie ||
-                                    _player.RaceIndex == RaceId.Skeleton || _player.RaceIndex == RaceId.Vampire)
-                                {
-                                    RoomRest(true);
-                                }
-                                else
-                                {
-                                    RoomRest(false);
-                                }
-                            }
-                            break;
-
-                        case StoreType.StoreLibrary:
-                            DoCmdStudy();
-                            break;
-
-                        case StoreType.StoreInn:
-                            if (_player.TimedPoison > 0 || _player.TimedBleeding > 0)
-                            {
-                                Profile.Instance.MsgPrint("You need a healer, not a room!");
-                                Profile.Instance.MsgPrint("I'm sorry, but  I don't want anyone dying in here.");
-                            }
-                            else
-                            {
-                                if (!ServiceHaggle(10, out price))
-                                {
-                                    if (price >= _player.Gold)
-                                    {
-                                        Profile.Instance.MsgPrint("You do not have the gold!");
-                                    }
-                                    else
-                                    {
-                                        _player.Gold -= price;
-                                        SayComment_1();
-                                        Gui.PlaySound(SoundEffect.StoreTransaction);
-                                        StorePrtGold();
-                                        if (_player.RaceIndex == RaceId.Spectre || _player.RaceIndex == RaceId.Zombie ||
-                                            _player.RaceIndex == RaceId.Skeleton || _player.RaceIndex == RaceId.Vampire)
-                                        {
-                                            RoomRest(true);
-                                        }
-                                        else
-                                        {
-                                            RoomRest(false);
-                                        }
-                                    }
-                                }
-                            }
-                            break;
-
-                        case StoreType.StoreHall:
-                            if (_player.TownWithHouse == SaveGame.Instance.CurTown.Index)
-                            {
-                                Profile.Instance.MsgPrint("You already have the deeds!");
-                            }
-                            else
-                            {
-                                if (!ServiceHaggle(SaveGame.Instance.CurTown.HousePrice, out price))
-                                {
-                                    if (price >= _player.Gold)
-                                    {
-                                        Profile.Instance.MsgPrint("You do not have the gold!");
-                                    }
-                                    else
-                                    {
-                                        _player.Gold -= price;
-                                        SayComment_1();
-                                        Gui.PlaySound(SoundEffect.StoreTransaction);
-                                        StorePrtGold();
-                                        int oldHouse = _player.TownWithHouse;
-                                        _player.TownWithHouse = SaveGame.Instance.CurTown.Index;
-                                        if (oldHouse == -1)
-                                        {
-                                            Profile.Instance.MsgPrint("You may move in at once.");
-                                        }
-                                        else
-                                        {
-                                            Profile.Instance.MsgPrint(
-                                                "I've sold your old house to pay for the removal service.");
-                                            MoveHouse(oldHouse, _player.TownWithHouse);
-                                        }
-                                    }
-                                    SaveGame.Instance.HandleStuff();
-                                }
-                            }
-                            break;
-
-                        case StoreType.StorePawn:
-                            if (!ServiceHaggle(500, out price))
-                            {
-                                if (price >= _player.Gold)
-                                {
-                                    Profile.Instance.MsgPrint("You do not have the gold!");
-                                }
-                                else
-                                {
-                                    _player.Gold -= price;
-                                    SayComment_1();
-                                    Gui.PlaySound(SoundEffect.StoreTransaction);
-                                    StorePrtGold();
-                                    SaveGame.Instance.SpellEffects.IdentifyPack();
-                                    Profile.Instance.MsgPrint("All your goods have been identified.");
-                                }
-                                SaveGame.Instance.HandleStuff();
-                            }
-                            break;
-                    }
-                    break;
-
-                case '\r':
-                    break;
-
-                default:
-                    Profile.Instance.MsgPrint("That command does not work in stores.");
-                    break;
+                if (price >= _player.Gold)
+                {
+                    Profile.Instance.MsgPrint("You do not have the gold!");
+                }
+                else
+                {
+                    _player.Gold -= price;
+                    SayComment_1();
+                    Gui.PlaySound(SoundEffect.StoreTransaction);
+                    StorePrtGold();
+                    SaveGame.Instance.SpellEffects.IdentifyPack();
+                    Profile.Instance.MsgPrint("All your goods have been identified.");
+                }
+                SaveGame.Instance.HandleStuff();
             }
+        }
+
+        public void BuyHouse()
+        {
+            int price;
+            if (_player.TownWithHouse == SaveGame.Instance.CurTown.Index)
+            {
+                Profile.Instance.MsgPrint("You already have the deeds!");
+            }
+            else
+            {
+                if (!ServiceHaggle(SaveGame.Instance.CurTown.HousePrice, out price))
+                {
+                    if (price >= _player.Gold)
+                    {
+                        Profile.Instance.MsgPrint("You do not have the gold!");
+                    }
+                    else
+                    {
+                        _player.Gold -= price;
+                        SayComment_1();
+                        Gui.PlaySound(SoundEffect.StoreTransaction);
+                        StorePrtGold();
+                        int oldHouse = _player.TownWithHouse;
+                        _player.TownWithHouse = SaveGame.Instance.CurTown.Index;
+                        if (oldHouse == -1)
+                        {
+                            Profile.Instance.MsgPrint("You may move in at once.");
+                        }
+                        else
+                        {
+                            Profile.Instance.MsgPrint(
+                                "I've sold your old house to pay for the removal service.");
+                            MoveHouse(oldHouse, _player.TownWithHouse);
+                        }
+                    }
+                    SaveGame.Instance.HandleStuff();
+                }
+            }
+        }
+
+        public void HireRoom()
+        {
+            int price;
+            if (_player.TimedPoison > 0 || _player.TimedBleeding > 0)
+            {
+                Profile.Instance.MsgPrint("You need a healer, not a room!");
+                Profile.Instance.MsgPrint("I'm sorry, but  I don't want anyone dying in here.");
+            }
+            else
+            {
+                if (!ServiceHaggle(10, out price))
+                {
+                    if (price >= _player.Gold)
+                    {
+                        Profile.Instance.MsgPrint("You do not have the gold!");
+                    }
+                    else
+                    {
+                        _player.Gold -= price;
+                        SayComment_1();
+                        Gui.PlaySound(SoundEffect.StoreTransaction);
+                        StorePrtGold();
+                        if (_player.RaceIndex == RaceId.Spectre || _player.RaceIndex == RaceId.Zombie ||
+                            _player.RaceIndex == RaceId.Skeleton || _player.RaceIndex == RaceId.Vampire)
+                        {
+                            RoomRest(true);
+                        }
+                        else
+                        {
+                            RoomRest(false);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void ResearchSpell()
+        {
+            DoCmdStudy();
+        }
+
+        public void Rest()
+        {
+            if (_player.TimedPoison > 0 || _player.TimedBleeding > 0)
+            {
+                Profile.Instance.MsgPrint("Your wounds prevent you from sleeping.");
+            }
+            else
+            {
+                if (_player.RaceIndex == RaceId.Spectre || _player.RaceIndex == RaceId.Zombie ||
+                    _player.RaceIndex == RaceId.Skeleton || _player.RaceIndex == RaceId.Vampire)
+                {
+                    RoomRest(true);
+                }
+                else
+                {
+                    RoomRest(false);
+                }
+            }
+        }
+
+        public void ResearchItem()
+        {
+            int price;
+            if (!ServiceHaggle(2000, out price))
+            {
+                if (price > _player.Gold)
+                {
+                    Profile.Instance.MsgPrint("You do not have the gold!");
+                }
+                else
+                {
+                    _player.Gold -= price;
+                    SayComment_1();
+                    Gui.PlaySound(SoundEffect.StoreTransaction);
+                    StorePrtGold();
+                    SaveGame.Instance.SpellEffects.IdentifyFully();
+                }
+                SaveGame.Instance.HandleStuff();
+            }
+        }
+
+        public void Restoration()
+        {
+            int price;
+            if (!ServiceHaggle(750, out price))
+            {
+                if (price > _player.Gold)
+                {
+                    Profile.Instance.MsgPrint("You do not have the gold!");
+                }
+                else
+                {
+                    _player.Gold -= price;
+                    SayComment_1();
+                    Gui.PlaySound(SoundEffect.StoreTransaction);
+                    StorePrtGold();
+                    _player.TryRestoringAbilityScore(Ability.Strength);
+                    _player.TryRestoringAbilityScore(Ability.Intelligence);
+                    _player.TryRestoringAbilityScore(Ability.Wisdom);
+                    _player.TryRestoringAbilityScore(Ability.Dexterity);
+                    _player.TryRestoringAbilityScore(Ability.Constitution);
+                    _player.TryRestoringAbilityScore(Ability.Charisma);
+                    _player.RestoreLevel();
+                }
+                SaveGame.Instance.HandleStuff();
+            }
+        }
+
+        public void RemoveCurse()
+        {
+            int price;
+            if (!ServiceHaggle(500, out price))
+            {
+                if (price > _player.Gold)
+                {
+                    Profile.Instance.MsgPrint("You do not have the gold!");
+                }
+                else
+                {
+                    _player.Gold -= price;
+                    SayComment_1();
+                    Gui.PlaySound(SoundEffect.StoreTransaction);
+                    StorePrtGold();
+                    SaveGame.Instance.SpellEffects.RemoveCurse();
+                }
+                SaveGame.Instance.HandleStuff();
+            }
+        }
+
+        public void EnchantWeapon()
+        {
+            int price;
+            if (!ServiceHaggle(800, out price))
+            {
+                if (price > _player.Gold)
+                {
+                    Profile.Instance.MsgPrint("You do not have the gold!");
+                }
+                else
+                {
+                    _player.Gold -= price;
+                    SayComment_1();
+                    Gui.PlaySound(SoundEffect.StoreTransaction);
+                    StorePrtGold();
+                    SaveGame.Instance.SpellEffects.EnchantSpell(4, 4, 0);
+                }
+                SaveGame.Instance.HandleStuff();
+            }
+        }
+
+        public void EnchantArmour()
+        {
+            int price;
+            if (!ServiceHaggle(400, out price))
+            {
+                if (price > _player.Gold)
+                {
+                    Profile.Instance.MsgPrint("You do not have the gold!");
+                }
+                else
+                {
+                    _player.Gold -= price;
+                    SayComment_1();
+                    Gui.PlaySound(SoundEffect.StoreTransaction);
+                    StorePrtGold();
+                    SaveGame.Instance.SpellEffects.EnchantSpell(0, 0, 4);
+                }
+                SaveGame.Instance.HandleStuff();
+            }
+        }
+
+        public void HireAnEscort()
+        {
+            int price;
+            var escortable = new Dictionary<char, Town>();
+            foreach (var town in SaveGame.Instance.Towns)
+            {
+                if (town.Visited && town.Name != SaveGame.Instance.CurTown.Name && town.Char != 'K')
+                {
+                    escortable.Add(town.Char, town);
+                }
+            }
+            if (escortable.Count == 0)
+            {
+                Profile.Instance.MsgPrint("There are no valid destinations to be escorted to.");
+                Profile.Instance.MsgPrint("You must have visited a town before you can be escorted there.");
+            }
+            else
+            {
+                var destination = GetEscortDestination(escortable);
+                if (destination != null)
+                {
+                    if (!ServiceHaggle(200, out price))
+                    {
+                        if (price > _player.Gold)
+                        {
+                            Profile.Instance.MsgPrint("You do not have the gold!");
+                        }
+                        else
+                        {
+                            _player.Gold -= price;
+                            SayComment_1();
+                            Gui.PlaySound(SoundEffect.StoreTransaction);
+                            StorePrtGold();
+                            _player.WildernessX = destination.X;
+                            _player.WildernessY = destination.Y;
+                            SaveGame.Instance.CurTown = destination;
+                            SaveGame.Instance.NewLevelFlag = true;
+                            SaveGame.Instance.CameFrom = LevelStart.StartRandom;
+                            Profile.Instance.MsgPrint("The journey takes all day.");
+                            _player.GameTime.ToNextDusk();
+                            _leaveStore = true;
+                        }
+                    }
+                }
+            }
+            SaveGame.Instance.HandleStuff();
         }
 
         private void StorePrtGold()
@@ -2002,15 +2007,16 @@ namespace Cthangband
             Gui.PrintLine(outVal, 39, 68);
         }
 
-        private void StorePurchase()
+        protected virtual string NoStockMessage => "I am currently out of stock.";
+        protected virtual string PurchaseMessage => "Which item are you interested in? ";
+
+        public void StorePurchase()
         {
             int itemNew;
             string oName;
             if (_stockNum <= 0)
             {
-                Profile.Instance.MsgPrint(StoreType == StoreType.StoreHome
-                    ? "Your home is empty."
-                    : "I am currently out of stock.");
+                Profile.Instance.MsgPrint(NoStockMessage);
                 return;
             }
             int i = _stockNum - _storeTop;
@@ -2018,9 +2024,7 @@ namespace Cthangband
             {
                 i = 26;
             }
-            string outVal = StoreType == StoreType.StoreHome
-                ? "Which item do you want to take? "
-                : "Which item are you interested in? ";
+            string outVal = PurchaseMessage;
             if (!GetStock(out int item, outVal, 0, i - 1))
             {
                 return;
@@ -2177,16 +2181,19 @@ namespace Cthangband
             }
         }
 
-        private void StoreSell()
+        protected virtual string SellPrompt => "Sell which item? ";
+        protected virtual string StoreFullMessage => "I have not the room in my Stores to keep it.";
+
+        protected virtual bool ItemsInstantlyIdentified => true;
+
+        protected virtual bool BuysItems => true;
+        protected virtual string BoughtVerb => "sold";
+
+        public void StoreSell()
         {
             int itemPos;
-            string pmt = "Sell which item? ";
-            if (StoreType == StoreType.StoreHome)
-            {
-                pmt = "Drop which item? ";
-            }
             SaveGame.Instance.ItemFilter = StoreWillBuy;
-            if (!SaveGame.Instance.GetItem(out int item, pmt, true, true, false))
+            if (!SaveGame.Instance.GetItem(out int item, SellPrompt, true, true, false))
             {
                 if (item == -2)
                 {
@@ -2211,18 +2218,16 @@ namespace Cthangband
             }
             Item qPtr = new Item(oPtr) { Count = amt };
             string oName = qPtr.Description(true, 3);
-            if (StoreType != StoreType.StoreHome)
+            if (ItemsInstantlyIdentified)
             {
                 qPtr.Inscription = "";
             }
             if (!StoreCheckNum(qPtr))
             {
-                Profile.Instance.MsgPrint(StoreType == StoreType.StoreHome
-                    ? "Your home is full."
-                    : "I have not the room in my Stores to keep it.");
+                Profile.Instance.MsgPrint(StoreFullMessage);
                 return;
             }
-            if (StoreType != StoreType.StoreHome)
+            if (BuysItems)
             {
                 Profile.Instance.MsgPrint($"Selling {oName} ({item.IndexToLabel()}).");
                 Profile.Instance.MsgPrint(null);
@@ -2251,204 +2256,27 @@ namespace Cthangband
                         value = qPtr.Value() * qPtr.Count;
                         oName = qPtr.Description(true, 3);
                     }
-                    Profile.Instance.MsgPrint(StoreType != StoreType.StorePawn
-                        ? $"You sold {oName} for {price} gold."
-                        : $"You pawn {oName} for {price} gold.");
+                    Profile.Instance.MsgPrint($"You {BoughtVerb} {oName} for {price} gold.");
                     PurchaseAnalyze(price, value, dummy);
-                    _player.Inventory.InvenItemIncrease(item, -amt);
-                    _player.Inventory.InvenItemDescribe(item);
-                    _player.Inventory.InvenItemOptimize(item);
-                    SaveGame.Instance.HandleStuff();
-                    itemPos = StoreType != StoreType.StorePawn ? StoreCarry(qPtr) : HomeCarry(qPtr);
-                    if (itemPos >= 0)
-                    {
-                        _storeTop = itemPos / 26 * 26;
-                        DisplayInventory();
-                    }
                 }
             }
             else
             {
                 Profile.Instance.MsgPrint($"You drop {oName} ({item.IndexToLabel()}).");
-                _player.Inventory.InvenItemIncrease(item, -amt);
-                _player.Inventory.InvenItemDescribe(item);
-                _player.Inventory.InvenItemOptimize(item);
-                SaveGame.Instance.HandleStuff();
-                itemPos = HomeCarry(qPtr);
-                if (itemPos >= 0)
-                {
-                    _storeTop = itemPos / 26 * 26;
-                    DisplayInventory();
-                }
             }
-        }
 
-        private bool StoreWillBuy(Item oPtr)
-        {
-            switch (StoreType)
+            _player.Inventory.InvenItemIncrease(item, -amt);
+            _player.Inventory.InvenItemDescribe(item);
+            _player.Inventory.InvenItemOptimize(item);
+            SaveGame.Instance.HandleStuff();
+            itemPos = StoreType != StoreType.StorePawn ? StoreCarry(qPtr) : HomeCarry(qPtr);
+            if (itemPos >= 0)
             {
-                case StoreType.StoreGeneral:
-                    {
-                        switch (oPtr.Category)
-                        {
-                            case ItemCategory.Food:
-                            case ItemCategory.Light:
-                            case ItemCategory.Flask:
-                            case ItemCategory.Spike:
-                            case ItemCategory.Shot:
-                            case ItemCategory.Arrow:
-                            case ItemCategory.Bolt:
-                            case ItemCategory.Digging:
-                            case ItemCategory.Cloak:
-                            case ItemCategory.Bottle:
-                                break;
-
-                            default:
-                                return false;
-                        }
-                        break;
-                    }
-                case StoreType.StoreArmoury:
-                    {
-                        switch (oPtr.Category)
-                        {
-                            case ItemCategory.Boots:
-                            case ItemCategory.Gloves:
-                            case ItemCategory.Crown:
-                            case ItemCategory.Helm:
-                            case ItemCategory.Shield:
-                            case ItemCategory.Cloak:
-                            case ItemCategory.SoftArmor:
-                            case ItemCategory.HardArmor:
-                            case ItemCategory.DragArmor:
-                                break;
-
-                            default:
-                                return false;
-                        }
-                        break;
-                    }
-                case StoreType.StoreWeapon:
-                    {
-                        switch (oPtr.Category)
-                        {
-                            case ItemCategory.Shot:
-                            case ItemCategory.Bolt:
-                            case ItemCategory.Arrow:
-                            case ItemCategory.Bow:
-                            case ItemCategory.Digging:
-                            case ItemCategory.Hafted:
-                            case ItemCategory.Polearm:
-                            case ItemCategory.Sword:
-                                break;
-
-                            default:
-                                return false;
-                        }
-                        break;
-                    }
-                case StoreType.StoreTemple:
-                    {
-                        switch (oPtr.Category)
-                        {
-                            case ItemCategory.LifeBook:
-                            case ItemCategory.Scroll:
-                            case ItemCategory.Potion:
-                            case ItemCategory.Hafted:
-                                break;
-
-                            case ItemCategory.Polearm:
-                            case ItemCategory.Sword:
-                                if (IsBlessed(oPtr))
-                                {
-                                    break;
-                                }
-                                return false;
-
-                            default:
-                                return false;
-                        }
-                        break;
-                    }
-                case StoreType.StoreAlchemist:
-                    {
-                        switch (oPtr.Category)
-                        {
-                            case ItemCategory.Scroll:
-                            case ItemCategory.Potion:
-                                break;
-
-                            default:
-                                return false;
-                        }
-                        break;
-                    }
-                case StoreType.StoreMagic:
-                    {
-                        switch (oPtr.Category)
-                        {
-                            case ItemCategory.SorceryBook:
-                            case ItemCategory.NatureBook:
-                            case ItemCategory.ChaosBook:
-                            case ItemCategory.DeathBook:
-                            case ItemCategory.TarotBook:
-                            case ItemCategory.FolkBook:
-                            case ItemCategory.CorporealBook:
-                            case ItemCategory.Amulet:
-                            case ItemCategory.Ring:
-                            case ItemCategory.Staff:
-                            case ItemCategory.Wand:
-                            case ItemCategory.Rod:
-                            case ItemCategory.Scroll:
-                            case ItemCategory.Potion:
-                                break;
-
-                            default:
-                                return false;
-                        }
-                        break;
-                    }
-                case StoreType.StoreHome:
-                    {
-                        return true;
-                    }
-                case StoreType.StoreLibrary:
-                    {
-                        switch (oPtr.Category)
-                        {
-                            case ItemCategory.SorceryBook:
-                            case ItemCategory.NatureBook:
-                            case ItemCategory.ChaosBook:
-                            case ItemCategory.DeathBook:
-                            case ItemCategory.LifeBook:
-                            case ItemCategory.TarotBook:
-                            case ItemCategory.FolkBook:
-                            case ItemCategory.CorporealBook:
-                                break;
-
-                            default:
-                                return false;
-                        }
-                        break;
-                    }
-                case StoreType.StoreHall:
-                    {
-                        return false;
-                    }
-                case StoreType.StoreInn:
-                    {
-                        return false;
-                    }
-                case StoreType.StorePawn:
-                    {
-                        break;
-                    }
-                case StoreType.StoreEmptyLot:
-                    {
-                        return false;
-                    }
+                _storeTop = itemPos / 26 * 26;
+                DisplayInventory();
             }
-            return oPtr.Value() > 0;
         }
+
+        protected abstract bool StoreWillBuy(Item item);
     }
 }

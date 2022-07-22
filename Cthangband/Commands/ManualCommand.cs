@@ -7,7 +7,7 @@ namespace Cthangband.Commands
     /// Show the game manual
     /// </summary>
     [Serializable]
-    internal class ManualCommand : ICommand, IStoreCommand
+    internal class ManualCommand : ICommand
     {
         public char Key => 'h';
 
@@ -15,16 +15,9 @@ namespace Cthangband.Commands
 
         public bool IsEnabled => true;
 
-        public bool RequiresRerendering => false;
-
         public void Execute(Player player, Level level)
         {
-            Execute(player);
-        }
-
-        public void Execute(Player player)
-        {
-            Gui.ShowManual();
+            ManualStoreCommand.DoCmdManual();
         }
     }
 }

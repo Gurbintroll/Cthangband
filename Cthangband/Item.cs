@@ -51,6 +51,15 @@ namespace Cthangband
         {
         }
 
+        public bool IsBlessed()
+        {
+            FlagSet f1 = new FlagSet();
+            FlagSet f2 = new FlagSet();
+            FlagSet f3 = new FlagSet();
+            GetMergedFlags(f1, f2, f3);
+            return f3.IsSet(ItemFlag3.Blessed);
+        }
+
         public Item(Item original)
         {
             BaseArmourClass = original.BaseArmourClass;

@@ -160,11 +160,8 @@ namespace Cthangband.StaticData
         public const uint SmResSound = 0x00004000;
         public const int StoreChoices = 48;
         public const int StoreInvenMax = 26;
-        public const int StoreMaxKeep = 18;
-        public const int StoreMinKeep = 6;
         public const int StoreObjLevel = 5;
         public const int StoreShuffle = 21;
-        public const int StoreTurnover = 9;
         public const int StoreTurns = 1000;
         public const int SummonAnimal = 42;
         public const int SummonAnimalRanger = 43;

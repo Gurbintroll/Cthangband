@@ -541,8 +541,7 @@ namespace Cthangband
             {
                 cPtr.SetFeature(store.FeatureType);
             }
-            store.X = x;
-            store.Y = y;
+            store.SetLocation(x, y);
             for (++y; y < y0 + 7; y++)
             {
                 cPtr = _level.Grid[y][x];

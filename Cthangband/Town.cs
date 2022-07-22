@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Stores;
 using System;
 
 namespace Cthangband
@@ -23,13 +24,13 @@ namespace Cthangband
         public int X;
         public int Y;
 
-        private Town(Store[] store, int housePrice, string name, char character)
+        private Town(Store[] stores, int housePrice, string name, char character)
         {
             X = 0;
             Y = 0;
             Seed = 0;
             Visited = false;
-            Stores = store;
+            Stores = stores;
             HousePrice = housePrice;
             Name = name;
             Char = character;
@@ -41,91 +42,91 @@ namespace Cthangband
             {
                 // Celephais
                 new Town(
-                    new[]
+                    new Store[]
                     {
-                        new Store(StoreType.StoreGeneral), new Store(StoreType.StoreArmoury),
-                        new Store(StoreType.StoreWeapon), new Store(StoreType.StoreTemple),
-                        new Store(StoreType.StoreTemple), new Store(StoreType.StoreAlchemist),
-                        new Store(StoreType.StoreMagic), new Store(StoreType.StoreHome),
-                        new Store(StoreType.StoreLibrary), new Store(StoreType.StoreInn),
-                        new Store(StoreType.StoreHall), new Store(StoreType.StorePawn)
+                        new GeneralStore(), new ArmouryStore(),
+                        new WeaponStore(), new TempleStore(),
+                        new TempleStore(), new AlchemistStore(),
+                        new MagicStore(), new HomeStore(),
+                        new LibraryStore(), new InnStore(),
+                        new HallStore(), new PawnStore()
                     }, 50000, "the beautiful city of Celephais", 'C'),
                 // Dylath-Leen
                 new Town(
-                    new[]
+                    new Store[]
                     {
-                        new Store(StoreType.StoreGeneral), new Store(StoreType.StoreArmoury),
-                        new Store(StoreType.StoreWeapon), new Store(StoreType.StoreBlack),
-                        new Store(StoreType.StoreBlack), new Store(StoreType.StoreBlack),
-                        new Store(StoreType.StoreHome), new Store(StoreType.StoreLibrary),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreInn),
-                        new Store(StoreType.StoreHall), new Store(StoreType.StorePawn)
+                        new GeneralStore(), new ArmouryStore(),
+                        new WeaponStore(), new BlackStore(),
+                        new BlackStore(), new BlackStore(),
+                        new HomeStore(), new LibraryStore(),
+                        new EmptyLotStore(), new InnStore(),
+                        new HallStore(), new PawnStore()
                     }, 25000, "the unwholesome city of Dylath-Leen", 'D'),
                 // Hlanith
                 new Town(
-                    new[]
+                    new Store[]
                     {
-                        new Store(StoreType.StoreGeneral), new Store(StoreType.StoreArmoury),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreWeapon),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreAlchemist),
-                        new Store(StoreType.StoreMagic), new Store(StoreType.StoreBlack),
-                        new Store(StoreType.StoreHome), new Store(StoreType.StoreLibrary),
-                        new Store(StoreType.StoreInn), new Store(StoreType.StoreHall)
+                        new GeneralStore(), new ArmouryStore(),
+                        new EmptyLotStore(), new WeaponStore(),
+                        new EmptyLotStore(), new AlchemistStore(),
+                        new MagicStore(), new BlackStore(),
+                        new HomeStore(), new LibraryStore(),
+                        new InnStore(), new HallStore()
                     }, 45000, "the market town of Hlanith", 'H'),
                 // Inganok
                 new Town(
-                    new[]
+                    new Store[]
                     {
-                        new Store(StoreType.StoreGeneral), new Store(StoreType.StoreArmoury),
-                        new Store(StoreType.StoreWeapon), new Store(StoreType.StoreTemple),
-                        new Store(StoreType.StoreAlchemist), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreMagic), new Store(StoreType.StoreBlack),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreLibrary),
-                        new Store(StoreType.StoreInn), new Store(StoreType.StorePawn)
+                        new GeneralStore(), new ArmouryStore(),
+                        new WeaponStore(), new TempleStore(),
+                        new AlchemistStore(), new EmptyLotStore(),
+                        new MagicStore(), new BlackStore(),
+                        new EmptyLotStore(), new LibraryStore(),
+                        new InnStore(), new PawnStore()
                     }, 0, "the industrious town of Inganok", 'I'),
                 // Kadath
                 new Town(
                     new[]
                     {
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot)
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore()
                     }, 0, "Kadath, home of the Gods", 'K'),
                 // Nir
                 new Town(
-                    new[]
+                    new Store[]
                     {
-                        new Store(StoreType.StoreGeneral), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreInn), new Store(StoreType.StorePawn)
+                        new GeneralStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new EmptyLotStore(), new EmptyLotStore(),
+                        new InnStore(), new PawnStore()
                     }, 0, "the hamlet of Nir", 'N'),
                 // Ulthar
                 new Town(
-                    new[]
+                    new Store[]
                     {
-                        new Store(StoreType.StoreGeneral), new Store(StoreType.StoreArmoury),
-                        new Store(StoreType.StoreWeapon), new Store(StoreType.StoreTemple),
-                        new Store(StoreType.StoreAlchemist), new Store(StoreType.StoreMagic),
-                        new Store(StoreType.StoreEmptyLot), new Store(StoreType.StoreHome),
-                        new Store(StoreType.StoreLibrary), new Store(StoreType.StoreInn),
-                        new Store(StoreType.StoreHall), new Store(StoreType.StorePawn)
+                        new GeneralStore(), new ArmouryStore(),
+                        new WeaponStore(), new TempleStore(),
+                        new AlchemistStore(), new MagicStore(),
+                        new EmptyLotStore(), new HomeStore(),
+                        new LibraryStore(), new InnStore(),
+                        new HallStore(), new PawnStore()
                     }, 45000, "the picturesque town of Ulthar", 'U'),
                 // Ilek-Vad
                 new Town(
-                    new[]
+                    new Store[]
                     {
-                        new Store(StoreType.StoreGeneral), new Store(StoreType.StoreArmoury),
-                        new Store(StoreType.StoreWeapon), new Store(StoreType.StoreTemple),
-                        new Store(StoreType.StoreAlchemist), new Store(StoreType.StoreMagic),
-                        new Store(StoreType.StoreBlack), new Store(StoreType.StoreHome),
-                        new Store(StoreType.StoreLibrary), new Store(StoreType.StoreEmptyLot),
-                        new Store(StoreType.StoreInn), new Store(StoreType.StoreHall)
+                        new GeneralStore(), new ArmouryStore(),
+                        new WeaponStore(), new TempleStore(),
+                        new AlchemistStore(), new MagicStore(),
+                        new BlackStore(), new HomeStore(),
+                        new LibraryStore(), new EmptyLotStore(),
+                        new InnStore(), new HallStore()
                     }, 60000, "the city of Ilek-Vad", 'V')
             };
             for (int i = 0; i < array.Length; i++)

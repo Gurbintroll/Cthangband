@@ -3,8 +3,8 @@
     internal interface IStoreCommand
     {
         char Key { get; }
-        bool IsEnabled { get; }
+        bool IsEnabled(Store store);
         bool RequiresRerendering { get; }
-        void Execute(Player player);
+        void Execute(Player player, Store store);
     }
 }
