@@ -470,7 +470,8 @@ namespace Cthangband
             Application.SetCompatibleTextRenderingDefault(false);
             General.CheckDebugStatus();
             GetDefaultFolder();
-            _settings = DeserializeFromSaveFolder<Settings>("game.settings") ?? new Settings();
+            var settingsFile = $"game.v_{Constants.VersionMajor}_{Constants.VersionMinor}_settings";
+            _settings = DeserializeFromSaveFolder<Settings>(settingsFile) ?? new Settings();
             if (!DirCreate(SaveFolder))
             {
                 Quit($"Cannot create '{SaveFolder}'");
@@ -482,7 +483,7 @@ namespace Cthangband
             {
                 ShowMainMenu();
             }
-            SerializeToSaveFolder(_settings, "game.settings");
+            SerializeToSaveFolder(_settings, settingsFile);
 #if !DEBUG
             }
             catch (Exception ex)
