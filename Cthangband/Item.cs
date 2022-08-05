@@ -1160,9 +1160,14 @@ namespace Cthangband
             else if (Category == ItemCategory.Light &&
                      (ItemSubCategory == Enumerations.LightType.Torch || ItemSubCategory == Enumerations.LightType.Lantern))
             {
-                t += " (with ";
-                t += TypeSpecificValue;
-                t += " turns of light)";
+                if (TypeSpecificValue == 1)
+                {
+                    t += $" (with 1 turn of light)";
+                }
+                else
+                {
+                    t += $" (with {TypeSpecificValue} turns of light)";
+                }
             }
             if (known && f1.IsSet(ItemFlag1.PvalMask))
             {
@@ -1700,6 +1705,10 @@ namespace Cthangband
                 {
                     total += 1500;
                 }
+                else if (type == RandomArtifactPower.ActBaElec3)
+                {
+                    total += 2000;
+                }
                 else if (type == RandomArtifactPower.ActDrain2)
                 {
                     total += 750;
@@ -1772,6 +1781,10 @@ namespace Cthangband
                 {
                     total += 2000;
                 }
+                else if (type == RandomArtifactPower.ActBanishEvil)
+                {
+                    total += 3000;
+                }
                 else if (type == RandomArtifactPower.ActCarnage)
                 {
                     total += 10000;
@@ -1827,6 +1840,10 @@ namespace Cthangband
                 else if (type == RandomArtifactPower.ActCureMw)
                 {
                     total += 750;
+                }
+                else if (type == RandomArtifactPower.ActCurePoison)
+                {
+                    total += 1000;
                 }
                 else if (type == RandomArtifactPower.ActRestLife)
                 {

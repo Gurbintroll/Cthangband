@@ -328,7 +328,7 @@ namespace Cthangband
                         _item.Category <= ItemCategory.HardArmor &&
                         _item.RandartFlags3.IsClear(ItemFlag3.ShElec))
                     {
-                        _item.RandartFlags2.Set(ItemFlag3.ShElec);
+                        _item.RandartFlags3.Set(ItemFlag3.ShElec);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
@@ -357,7 +357,7 @@ namespace Cthangband
                         _item.Category <= ItemCategory.HardArmor &&
                         _item.RandartFlags3.IsClear(ItemFlag3.ShFire))
                     {
-                        _item.RandartFlags2.Set(ItemFlag3.ShFire);
+                        _item.RandartFlags3.Set(ItemFlag3.ShFire);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
@@ -481,7 +481,7 @@ namespace Cthangband
                 case 1:
                     if (Program.Rng.DieRoll(Constants.WeirdLuck) != 1)
                     {
-                        ApplyRandomResistance(specific);
+                        ApplyRandomResistance(0);
                     }
                     else
                     {
@@ -496,7 +496,7 @@ namespace Cthangband
                 case 2:
                     if (Program.Rng.DieRoll(Constants.WeirdLuck) != 1)
                     {
-                        ApplyRandomResistance(specific);
+                        ApplyRandomResistance(0);
                     }
                     else
                     {
@@ -511,7 +511,7 @@ namespace Cthangband
                 case 3:
                     if (Program.Rng.DieRoll(Constants.WeirdLuck) != 1)
                     {
-                        ApplyRandomResistance(specific);
+                        ApplyRandomResistance(0);
                     }
                     else
                     {
@@ -526,7 +526,7 @@ namespace Cthangband
                 case 4:
                     if (Program.Rng.DieRoll(Constants.WeirdLuck) != 1)
                     {
-                        ApplyRandomResistance(specific);
+                        ApplyRandomResistance(0);
                     }
                     else
                     {
@@ -672,7 +672,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        ApplyRandomResistance(specific);
+                        ApplyRandomResistance(0);
                     }
                     if (_artifactBias == 0)
                     {
@@ -688,7 +688,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        ApplyRandomResistance(specific);
+                        ApplyRandomResistance(0);
                     }
                     if (_artifactBias == 0)
                     {
@@ -705,7 +705,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        ApplyRandomResistance(specific);
+                        ApplyRandomResistance(0);
                     }
                     break;
             }
@@ -4152,11 +4152,11 @@ namespace Cthangband
                     chance = 66;
                     if (Program.Rng.DieRoll(20) == 1)
                     {
-                        type = Constants.SummonElemental;
+                        type = RandomArtifactPower.ActSummonElemental;
                     }
                     else if (Program.Rng.DieRoll(10) == 1)
                     {
-                        type = Constants.SummonPhantom;
+                        type = RandomArtifactPower.ActSummonPhantom;
                     }
                     else if (Program.Rng.DieRoll(5) == 1)
                     {
