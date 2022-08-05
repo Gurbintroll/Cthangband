@@ -296,6 +296,8 @@ namespace Cthangband
                     }
                 }
             }
+            var settingsFile = $"game.v_{Constants.VersionMajor}_{Constants.VersionMinor}_settings";
+            SerializeToSaveFolder(_settings, settingsFile);
             Gui.InPopupMenu = false;
             Gui.FullScreenOverlay = false;
             Gui.Load();
@@ -483,7 +485,6 @@ namespace Cthangband
             {
                 ShowMainMenu();
             }
-            SerializeToSaveFolder(_settings, settingsFile);
 #if !DEBUG
             }
             catch (Exception ex)
