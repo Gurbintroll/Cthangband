@@ -8,21 +8,22 @@
 using Cthangband.Enumerations;
 using System;
 
-namespace Cthangband.Mutations
+namespace Cthangband.Mutations.Base
 {
     [Serializable]
-    internal abstract class Mutation
+    internal abstract class BaseMutation : IMutation
     {
-        public string AttackDescription;
-        public int DamageDiceNumber;
-        public int DamageDiceSize;
-        public int EquivalentWeaponWeight;
-        public int Frequency;
-        public string GainMessage;
-        public MutationGroup Group = MutationGroup.None;
-        public string HaveMessage;
-        public string LoseMessage;
-        public MutationAttackType MutationAttackType = MutationAttackType.Physical;
+        public string AttackDescription { get; set; }
+        public int DamageDiceNumber { get; set; }
+        public int DamageDiceSize { get; set; }
+        public int EquivalentWeaponWeight { get; set; }
+        public int Frequency { get; set; }
+        public string GainMessage { get; set; }
+        public string GainMessage1 { get; set; }
+        public MutationGroup Group { get; set; }
+        public string HaveMessage { get; set; }
+        public string LoseMessage { get; set; }
+        public MutationAttackType MutationAttackType { get; set; }
 
         public virtual void Activate(SaveGame saveGame, Player player, Level level)
         {

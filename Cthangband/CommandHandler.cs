@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Mutations.Base;
 using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.Terminal;
@@ -1984,7 +1985,7 @@ namespace Cthangband
                     pets++;
                 }
             }
-            System.Collections.Generic.List<Mutations.Mutation> activeMutations = Player.Dna.ActivatableMutations(Player);
+            System.Collections.Generic.List<IMutation> activeMutations = Player.Dna.ActivatableMutations(Player);
             if (!hasRacial && activeMutations.Count == 0 && pets == 0)
             {
                 Profile.Instance.MsgPrint("You have no powers to activate.");

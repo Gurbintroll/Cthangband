@@ -6,7 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Mutations;
+using Cthangband.Mutations.Base;
 using Cthangband.Projection;
 using Cthangband.StaticData;
 using Cthangband.UI;
@@ -2689,7 +2689,7 @@ namespace Cthangband
                 }
             }
             // Only make extra attacks if the monster is still there
-            foreach (Mutation naturalAttack in Player.Dna.NaturalAttacks)
+            foreach (IMutation naturalAttack in Player.Dna.NaturalAttacks)
             {
                 if (!noExtra)
                 {
@@ -4788,7 +4788,7 @@ namespace Cthangband
         /// <param name="mutation"> The mutation being used to attack </param>
         /// <param name="fear"> Whether or not the monster is scared by the attack </param>
         /// <param name="monsterDies"> Whether or not the monster is killed by the attack </param>
-        private void PlayerNaturalAttackOnMonster(int monsterIndex, Mutation mutation, out bool fear, out bool monsterDies)
+        private void PlayerNaturalAttackOnMonster(int monsterIndex, IMutation mutation, out bool fear, out bool monsterDies)
         {
             fear = false;
             monsterDies = false;

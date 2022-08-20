@@ -7,9 +7,9 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Mutations.ActiveMutations;
+using Cthangband.Mutations.Base;
 using Cthangband.Mutations.PassiveMutations;
 using Cthangband.Mutations.RandomMutations;
-using Cthangband.StaticData;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +18,7 @@ namespace Cthangband.Mutations
     [Serializable]
     internal class Genome
     {
-        public readonly List<Mutation> NaturalAttacks = new List<Mutation>();
+        public readonly List<IMutation> NaturalAttacks = new List<IMutation>();
         public int ArmourClassBonus;
         public bool ChaosGift;
         public int CharismaBonus;
@@ -44,8 +44,8 @@ namespace Cthangband.Mutations
         public bool SustainAll;
         public bool Vulnerable;
         public int WisdomBonus;
-        private readonly List<Mutation> _notPossessed = new List<Mutation>();
-        private readonly List<Mutation> _possessed = new List<Mutation>();
+        private readonly List<IMutation> _notPossessed = new List<IMutation>();
+        private readonly List<IMutation> _possessed = new List<IMutation>();
 
         public Genome()
         {
@@ -149,7 +149,7 @@ namespace Cthangband.Mutations
             _notPossessed.Add(new MutationWasting());
             _notPossessed.Add(new MutationWeirdMind());
             _notPossessed.Add(new MutationWraith());
-            foreach (Mutation mutation in _notPossessed)
+            foreach (IMutation mutation in _notPossessed)
             {
                 mutation.Initialise();
             }
@@ -157,10 +157,10 @@ namespace Cthangband.Mutations
 
         public bool HasMutations => _possessed.Count > 0;
 
-        public List<Mutation> ActivatableMutations(Player player)
+        public List<IMutation> ActivatableMutations(Player player)
         {
-            List<Mutation> list = new List<Mutation>();
-            foreach (Mutation mutation in _possessed)
+            List<IMutation> list = new List<IMutation>();
+            foreach (IMutation mutation in _possessed)
             {
                 if (string.IsNullOrEmpty(mutation.ActivationSummary(player.Level)))
                 {
@@ -179,7 +179,7 @@ namespace Cthangband.Mutations
             }
             Profile.Instance.MsgPrint("You change...");
             int total = 0;
-            foreach (Mutation mutation in _notPossessed)
+            foreach (IMutation mutation in _notPossessed)
             {
                 total += mutation.Frequency;
             }
@@ -191,7 +191,7 @@ namespace Cthangband.Mutations
                 {
                     continue;
                 }
-                Mutation mutation = _notPossessed[i];
+                IMutation mutation = _notPossessed[i];
                 _notPossessed.RemoveAt(i);
                 if (_possessed.Count > 0 && mutation.Group != MutationGroup.None)
                 {
@@ -200,7 +200,7 @@ namespace Cthangband.Mutations
                     {
                         if (_possessed[j].Group == mutation.Group)
                         {
-                            Mutation other = _possessed[j];
+                            IMutation other = _possessed[j];
                             _possessed.RemoveAt(j);
                             other.OnLose(this);
                             Profile.Instance.MsgPrint(other.LoseMessage);
@@ -245,7 +245,7 @@ namespace Cthangband.Mutations
             Profile.Instance.MsgPrint("You change...");
             do
             {
-                Mutation mutation = _possessed[0];
+                IMutation mutation = _possessed[0];
                 _possessed.RemoveAt(0);
                 mutation.OnLose(this);
                 _notPossessed.Add(mutation);
@@ -263,7 +263,7 @@ namespace Cthangband.Mutations
             }
             Profile.Instance.MsgPrint("You change...");
             int total = 0;
-            foreach (Mutation mutation in _possessed)
+            foreach (IMutation mutation in _possessed)
             {
                 total += mutation.Frequency;
             }
@@ -275,7 +275,7 @@ namespace Cthangband.Mutations
                 {
                     continue;
                 }
-                Mutation mutation = _possessed[i];
+                IMutation mutation = _possessed[i];
                 _possessed.RemoveAt(i);
                 mutation.OnLose(this);
                 _notPossessed.Add(mutation);
@@ -289,7 +289,7 @@ namespace Cthangband.Mutations
 
         public void OnProcessWorld(SaveGame saveGame, Player player, Level level)
         {
-            foreach (Mutation mutation in _possessed)
+            foreach (IMutation mutation in _possessed)
             {
                 mutation.OnProcessWorld(saveGame, player, level);
             }

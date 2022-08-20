@@ -5,13 +5,14 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using Cthangband.Mutations.Base;
 using Cthangband.Projection;
 using System;
 
 namespace Cthangband.Mutations.RandomMutations
 {
     [Serializable]
-    internal class MutationRawChaos : Mutation
+    internal class MutationRawChaos : BaseMutation
     {
         public override void Initialise()
         {

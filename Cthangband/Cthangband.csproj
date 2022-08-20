@@ -147,8 +147,9 @@
     <Compile Include="Mutations\ActiveMutations\MutationVteleport.cs" />
     <Compile Include="Mutations\ActiveMutations\MutationWeighMag.cs" />
     <Compile Include="Mutations\ActiveMutations\MutationPanicHit.cs" />
+    <Compile Include="Mutations\Base\IMutation.cs" />
     <Compile Include="Mutations\Genome.cs" />
-    <Compile Include="Mutations\Mutation.cs" />
+    <Compile Include="Mutations\Base\BaseMutation.cs" />
     <Compile Include="Mutations\ActiveMutations\MutationBanish.cs" />
     <Compile Include="Mutations\PassiveMutations\MutationAlbino.cs" />
     <Compile Include="Mutations\PassiveMutations\MutationArthritis.cs" />

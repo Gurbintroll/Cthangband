@@ -6,12 +6,13 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Mutations.Base;
 using System;
 
 namespace Cthangband.Mutations.PassiveMutations
 {
     [Serializable]
-    internal class MutationScales : Mutation
+    internal class MutationScales : BaseMutation
     {
         public override void Initialise()
         {
