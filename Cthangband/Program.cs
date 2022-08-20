@@ -86,15 +86,6 @@ namespace Cthangband
             }
         }
 
-        public static void Quit(string reason)
-        {
-            if (!string.IsNullOrEmpty(reason))
-            {
-                MessageBox.Show(reason, Constants.VersionName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            Environment.Exit(0);
-        }
-
         public static void SerializeToSaveFolder<T>(T o, string filename)
         {
             string path = Path.Combine(SaveFolder, filename);
@@ -470,20 +461,18 @@ namespace Cthangband
 #endif
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            General.CheckDebugStatus();
             GetDefaultFolder();
             var settingsFile = $"game.v_{Constants.VersionMajor}_{Constants.VersionMinor}_settings";
-            _settings = DeserializeFromSaveFolder<Settings>(settingsFile) ?? new Settings();
-            if (!DirCreate(SaveFolder))
+            if (DirCreate(SaveFolder))
             {
-                Quit($"Cannot create '{SaveFolder}'");
-            }
-            StaticResources.LoadOrCreate();
-            HiScores = new HighScoreTable();
-            Gui.Initialise(_settings);
-            while (!ExitToDesktop)
-            {
-                ShowMainMenu();
+                _settings = DeserializeFromSaveFolder<Settings>(settingsFile) ?? new Settings();
+                StaticResources.LoadOrCreate();
+                HiScores = new HighScoreTable();
+                Gui.Initialise(_settings);
+                while (!ExitToDesktop)
+                {
+                    ShowMainMenu();
+                }
             }
 #if !DEBUG
             }

@@ -69,23 +69,7 @@
     <Compile Include="AllocationEntry.cs" />
     <Compile Include="ArtificialIntelligence.cs" />
     <Compile Include="Background.cs" />
-    <Compile Include="Debug\DebugMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Debug\DebugMenu.designer.cs">
-      <DependentUpon>DebugMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Debug\EntityType.cs" />
-    <Compile Include="Debug\EntityTypeEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Debug\EntityTypeEditor.designer.cs">
-      <DependentUpon>EntityTypeEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Debug\General.cs" />
-    <Compile Include="Debug\GenericEntityTypeEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Enumerations\AmmoType.cs" />
     <Compile Include="Enumerations\AmuletType.cs" />
     <Compile Include="Enumerations\BootsType.cs" />
@@ -723,15 +707,6 @@
     <Compile Include="WildernessRegion.cs" />
     <Compile Include="WizardCommandHandler.cs" />
     <EmbeddedResource Include="Data\Animations.csv" />
-    <EmbeddedResource Include="Debug\DebugMenu.resx">
-      <DependentUpon>DebugMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Debug\EntityTypeEditor.resx">
-      <DependentUpon>EntityTypeEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Debug\GenericEntityTypeEditor.resx">
-      <DependentUpon>GenericEntityTypeEditor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Manual\ManualViewer.resx">
       <DependentUpon>ManualViewer.cs</DependentUpon>
     </EmbeddedResource>

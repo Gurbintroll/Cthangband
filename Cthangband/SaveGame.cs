@@ -1677,10 +1677,6 @@ namespace Cthangband
             {
                 num[i] += num[i - 1];
             }
-            if (num[0] == 0)
-            {
-                Program.Quit("No town objects!");
-            }
             AllocKindTable = new AllocationEntry[AllocKindSize];
             for (int k = 0; k < AllocKindSize; k++)
             {
@@ -1722,10 +1718,6 @@ namespace Cthangband
             for (i = 1; i < Constants.MaxDepth; i++)
             {
                 num[i] += num[i - 1];
-            }
-            if (num[0] == 0)
-            {
-                Program.Quit("No town monsters!");
             }
             AllocRaceTable = new AllocationEntry[AllocRaceSize];
             for (int k = 0; k < AllocRaceSize; k++)
