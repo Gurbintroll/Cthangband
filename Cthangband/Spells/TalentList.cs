@@ -6,13 +6,14 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Talents;
+using Cthangband.Talents.Base;
 using System;
 using System.Collections.Generic;
 
 namespace Cthangband.Spells
 {
     [Serializable]
-    internal class TalentList : List<Talent>
+    internal class TalentList : List<ITalent>
     {
         public TalentList(int characterClass)
         {
@@ -28,7 +29,7 @@ namespace Cthangband.Spells
             Add(new TalentAdrenalineChanneling());
             Add(new TalentPsychicDrain());
             Add(new TalentTelekineticWave());
-            foreach (Talent talent in this)
+            foreach (ITalent talent in this)
             {
                 talent.Initialise(characterClass);
             }

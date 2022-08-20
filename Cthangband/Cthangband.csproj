@@ -627,7 +627,8 @@
     <Compile Include="StaticData\StaticResources.cs" />
     <Compile Include="StaticData\WandFlavour.cs" />
     <Compile Include="StoreFactory.cs" />
-    <Compile Include="Talents\Talent.cs" />
+    <Compile Include="Talents\Base\BaseTalent.cs" />
+    <Compile Include="Talents\Base\ITalent.cs" />
     <Compile Include="Talents\TalentAdrenalineChanneling.cs" />
     <Compile Include="Talents\TalentCharacterArmour.cs" />
     <Compile Include="Talents\TalentDomination.cs" />

@@ -6,12 +6,13 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.StaticData;
+using Cthangband.Talents.Base;
 using System;
 
 namespace Cthangband.Talents
 {
     [Serializable]
-    internal class TalentPsychometry : Talent
+    internal class TalentPsychometry : BaseTalent
     {
         public override void Initialise(int characterClass)
         {

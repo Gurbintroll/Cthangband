@@ -7,12 +7,13 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Talents.Base;
 using System;
 
 namespace Cthangband.Talents
 {
     [Serializable]
-    internal class TalentMindWave : Talent
+    internal class TalentMindWave : BaseTalent
     {
         public override void Initialise(int characterClass)
         {

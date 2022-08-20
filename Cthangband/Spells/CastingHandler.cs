@@ -8,6 +8,7 @@
 using Cthangband.Enumerations;
 using Cthangband.Projection;
 using Cthangband.StaticData;
+using Cthangband.Talents.Base;
 using Cthangband.UI;
 using System;
 
@@ -264,7 +265,7 @@ namespace Cthangband.Spells
             {
                 return;
             }
-            Talents.Talent talent = _player.Spellcasting.Talents[n];
+            ITalent talent = _player.Spellcasting.Talents[n];
             if (talent.ManaCost > _player.Mana)
             {
                 Profile.Instance.MsgPrint("You do not have enough mana to use this talent.");
@@ -369,7 +370,7 @@ namespace Cthangband.Spells
                         Gui.Print("Lv Mana Fail Info", y, x + 35);
                         for (i = 0; i < talents.Count; i++)
                         {
-                            Talents.Talent talent = talents[i];
+                            ITalent talent = talents[i];
                             if (talent.Level > plev)
                             {
                                 break;
