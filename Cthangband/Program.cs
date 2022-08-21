@@ -5,7 +5,6 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
-using Cthangband.Debug;
 using Cthangband.Enumerations;
 using Cthangband.StaticData;
 using Cthangband.Terminal;
@@ -804,6 +803,7 @@ namespace Cthangband
                                 if (profileChoice >= 0)
                                 {
                                     _settings.LastProfileUsed = profileChoice;
+                                    File.Delete(_saveSlot[profileChoice]);
                                     ActiveSaveSlot = _saveSlot[profileChoice];
                                     Profile.Instance.Run();
                                     return;
@@ -859,6 +859,7 @@ namespace Cthangband
                                 if (profileChoice >= 0)
                                 {
                                     _settings.LastProfileUsed = profileChoice;
+                                    File.Delete(_saveSlot[profileChoice]);
                                     ActiveSaveSlot = _saveSlot[profileChoice];
                                     Profile.Instance.Run();
                                     return;
