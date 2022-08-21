@@ -7,12 +7,13 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Spells.Base;
 using System;
 
 namespace Cthangband.Spells.Chaos
 {
     [Serializable]
-    internal class ChaosSpellTeleportOther : Spell
+    internal class ChaosSpellTeleportOther : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

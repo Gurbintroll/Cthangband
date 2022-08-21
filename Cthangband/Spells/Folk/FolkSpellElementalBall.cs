@@ -8,12 +8,13 @@
 using Cthangband.Enumerations;
 using Cthangband.Projection;
 using Cthangband.Projection.Base;
+using Cthangband.Spells.Base;
 using System;
 
 namespace Cthangband.Spells.Folk
 {
     [Serializable]
-    internal class FolkSpellElementalBall : Spell
+    internal class FolkSpellElementalBall : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

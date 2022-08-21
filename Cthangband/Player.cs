@@ -13,6 +13,7 @@ using Cthangband.UI;
 using Cthangband.Pantheon;
 using System;
 using Cthangband.Patrons.Base;
+using Cthangband.Spells.Base;
 
 namespace Cthangband
 {
@@ -1211,7 +1212,7 @@ namespace Cthangband
             for (i = 0; i < num; i++)
             {
                 int spell = spells[i];
-                Spell sPtr = Spellcasting.Spells[set][spell];
+                ISpell sPtr = Spellcasting.Spells[set][spell];
                 Gui.PrintLine($"{i.IndexToLetter()}) {sPtr.SummaryLine(this)}", y + i + 1, x);
             }
             Gui.PrintLine("", y + i + 1, x);
@@ -2664,7 +2665,7 @@ namespace Cthangband
         public bool SpellOkay(int spell, bool known, bool realm2)
         {
             int set = realm2 ? 1 : 0;
-            Spell sPtr = Spellcasting.Spells[set][spell % 32];
+            ISpell sPtr = Spellcasting.Spells[set][spell % 32];
             if (sPtr.Level > Level)
             {
                 return false;

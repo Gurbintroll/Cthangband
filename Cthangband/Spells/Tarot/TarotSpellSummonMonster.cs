@@ -6,13 +6,14 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using System;
 
 namespace Cthangband.Spells.Tarot
 {
     [Serializable]
-    internal class TarotSpellSummonMonster : Spell
+    internal class TarotSpellSummonMonster : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

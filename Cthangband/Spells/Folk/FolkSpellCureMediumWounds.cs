@@ -6,12 +6,13 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Spells.Base;
 using System;
 
 namespace Cthangband.Spells.Folk
 {
     [Serializable]
-    internal class FolkSpellCureMediumWounds : Spell
+    internal class FolkSpellCureMediumWounds : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

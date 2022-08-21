@@ -311,6 +311,7 @@
     <Compile Include="Projection\ProjectTurnUndead.cs" />
     <Compile Include="Projection\ProjectWater.cs" />
     <Compile Include="Projection\ProjectWizardBolt.cs" />
+    <Compile Include="Spells\Base\ISpell.cs" />
     <Compile Include="Spells\CastingHandler.cs" />
     <Compile Include="CharacterViewer.cs" />
     <Compile Include="CombatEngine.cs" />
@@ -576,7 +577,7 @@
     <Compile Include="Spells\Sorcery\SorcerySpellTeleportAway.cs" />
     <Compile Include="Spells\Sorcery\SorcerySpellTeleportLevel.cs" />
     <Compile Include="Spells\Sorcery\SorcerySpellWordOfRecall.cs" />
-    <Compile Include="Spells\Spell.cs" />
+    <Compile Include="Spells\Base\BaseSpell.cs" />
     <Compile Include="Spells\TalentList.cs" />
     <Compile Include="Spells\Tarot\TarotSpellSummonAncientDragon.cs" />
     <Compile Include="Spells\Tarot\TarotSpellAstralBranding.cs" />

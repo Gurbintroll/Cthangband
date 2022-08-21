@@ -6,7 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Spells;
+using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -1543,7 +1543,7 @@ namespace Cthangband
         public void CalcSpells()
         {
             int i, j;
-            Spell sPtr;
+            ISpell sPtr;
             if (_player == null)
             {
                 return;

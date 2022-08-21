@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Spells.Base;
 using Cthangband.Spells.Chaos;
 using Cthangband.Spells.Corporeal;
 using Cthangband.Spells.Death;
@@ -23,7 +24,7 @@ namespace Cthangband.Spells
     /// A set of four spell books from a single realm, containing a total of thirty two spells
     /// </summary>
     [Serializable]
-    internal class SpellList : List<Spell>
+    internal class SpellList : List<BaseSpell>
     {
         public SpellList(Realm realm, int characterClass)
         {
@@ -348,7 +349,7 @@ namespace Cthangband.Spells
                     }
                     break;
             }
-            foreach (Spell spell in this)
+            foreach (BaseSpell spell in this)
             {
                 spell.Initialise(characterClass);
             }

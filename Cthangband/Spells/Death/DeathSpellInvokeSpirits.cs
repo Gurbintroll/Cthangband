@@ -7,13 +7,14 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using System;
 
 namespace Cthangband.Spells.Death
 {
     [Serializable]
-    internal class DeathSpellInvokeSpirits : Spell
+    internal class DeathSpellInvokeSpirits : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

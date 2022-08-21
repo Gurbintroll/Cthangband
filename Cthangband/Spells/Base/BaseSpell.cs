@@ -8,35 +8,27 @@
 using Cthangband.Enumerations;
 using System;
 
-namespace Cthangband.Spells
+namespace Cthangband.Spells.Base
 {
     [Serializable]
-    internal abstract class Spell
+    internal abstract class BaseSpell : ISpell
     {
-        public bool Forgotten;
-        public bool Learned;
-        public string Name;
-        public bool Worked;
+        public int FirstCastExperience { get; set; }
 
-        public int FirstCastExperience
-        {
-            get; protected set;
-        }
+        public bool Forgotten { get; set; }
+        public bool Learned { get; set; }
 
         public int Level
         {
-            get; protected set;
-        }
-
-        public int ManaCost
-        {
-            get; protected set;
-        }
-
-        protected int BaseFailure
-        {
             get; set;
         }
+
+        public int ManaCost { get; set; }
+
+        public string Name { get; set; }
+        public bool Worked { get; set; }
+
+        protected int BaseFailure { get; set; }
 
         public abstract void Cast(SaveGame saveGame, Player player, Level level);
 

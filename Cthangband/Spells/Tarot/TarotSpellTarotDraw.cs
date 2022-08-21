@@ -7,13 +7,14 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using System;
 
 namespace Cthangband.Spells.Tarot
 {
     [Serializable]
-    internal class TarotSpellTarotDraw : Spell
+    internal class TarotSpellTarotDraw : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

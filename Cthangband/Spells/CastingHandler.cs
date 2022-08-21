@@ -7,6 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using Cthangband.Talents.Base;
 using Cthangband.UI;
@@ -122,7 +123,7 @@ namespace Cthangband.Spells
                 }
                 if (ask)
                 {
-                    Spell sPtr = _player.Spellcasting.Spells[realm2 ? 1 : 0][spell % 32];
+                    ISpell sPtr = _player.Spellcasting.Spells[realm2 ? 1 : 0][spell % 32];
                     string tmpVal = $"{prompt} {sPtr.Name} ({sPtr.ManaCost} mana, {sPtr.FailureChance(_player)}% fail)? ";
                     if (!Gui.GetCheck(tmpVal))
                     {
@@ -185,7 +186,7 @@ namespace Cthangband.Spells
                 }
                 return;
             }
-            Spell sPtr = useSetTwo ? _player.Spellcasting.Spells[1][spell] : _player.Spellcasting.Spells[0][spell];
+            ISpell sPtr = useSetTwo ? _player.Spellcasting.Spells[1][spell] : _player.Spellcasting.Spells[0][spell];
             if (sPtr.ManaCost > _player.Mana)
             {
                 string cast = _player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast";

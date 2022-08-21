@@ -8,6 +8,7 @@
 using Cthangband.Enumerations;
 using Cthangband.Mutations.Base;
 using Cthangband.Spells;
+using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using Cthangband.Terminal;
 using Cthangband.UI;
@@ -667,7 +668,7 @@ namespace Cthangband
             // Learning a spell takes a turn (although that's not very relevant)
             SaveGame.Instance.EnergyUse = 100;
             // Mark the spell as learned
-            Spell spell = useSetTwo ? Player.Spellcasting.Spells[1][spellIndex] : Player.Spellcasting.Spells[0][spellIndex];
+            ISpell spell = useSetTwo ? Player.Spellcasting.Spells[1][spellIndex] : Player.Spellcasting.Spells[0][spellIndex];
             spell.Learned = true;
             int i;
             // Mark the spell as the last spell learned, in case we need to start forgetting them

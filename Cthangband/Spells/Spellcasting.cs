@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Spells.Base;
 using System;
 
 namespace Cthangband.Spells
@@ -119,7 +120,7 @@ namespace Cthangband.Spells
             SpellFirst = 100;
             foreach (SpellList bookset in Spells)
             {
-                foreach (Spell spell in bookset)
+                foreach (ISpell spell in bookset)
                 {
                     if (spell.Level < SpellFirst)
                     {
