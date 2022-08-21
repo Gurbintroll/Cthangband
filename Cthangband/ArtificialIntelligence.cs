@@ -7,6 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Projection.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -422,7 +423,7 @@ namespace Cthangband
                     obvious = true;
                     damage = Program.Rng.DiceRoll(dDice, dSide);
                     // Default to a missile attack
-                    Projectile pt = new ProjectMissile(SaveGame.Instance.SpellEffects);
+                    IProjection pt = new ProjectMissile(SaveGame.Instance.SpellEffects);
                     // Choose the correct type of attack to display, as well as any other special
                     // effects for the attack
                     switch (effect)
@@ -691,7 +692,7 @@ namespace Cthangband
         /// <param name="projectile"> The type of breath being used </param>
         /// <param name="damage"> The damage the breath will do </param>
         /// <param name="radius"> The radius of the attack, or zero for the default radius </param>
-        private void BreatheAtMonster(int monsterIndex, int targetY, int targetX, Projectile projectile, int damage, int radius)
+        private void BreatheAtMonster(int monsterIndex, int targetY, int targetX, IProjection projectile, int damage, int radius)
         {
             const ProjectionFlag projectionFlags = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectKill;
             Monster monster = _level.Monsters[monsterIndex];
@@ -715,7 +716,7 @@ namespace Cthangband
         /// <param name="radius">
         /// The (positive) radius of the breath weapon, or zero for the default radius
         /// </param>
-        private void BreatheAtPlayer(int monsterIndex, Projectile projectile, int damage, int radius)
+        private void BreatheAtPlayer(int monsterIndex, IProjection projectile, int damage, int radius)
         {
             const ProjectionFlag projectionFlags = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectKill;
             Monster monster = _level.Monsters[monsterIndex];
@@ -1067,7 +1068,7 @@ namespace Cthangband
         /// <param name="projectile"> The type of effect the ball has </param>
         /// <param name="damage"> The damage done by the ball </param>
         /// <param name="radius"> The radius of the ball, or zero to use the default radius </param>
-        private void FireBallAtPlayer(int monsterIndex, Projectile projectile, int damage, int radius)
+        private void FireBallAtPlayer(int monsterIndex, IProjection projectile, int damage, int radius)
         {
             const ProjectionFlag projectionFlag = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectKill;
             Monster monster = _level.Monsters[monsterIndex];
@@ -1087,7 +1088,7 @@ namespace Cthangband
         /// <param name="targetX"> The x coordinate of the target </param>
         /// <param name="projectile"> The projectile to be fired </param>
         /// <param name="damage"> The damage the projectile should do </param>
-        private void FireBoltAtMonster(int monsterIndex, int targetY, int targetX, Projectile projectile, int damage)
+        private void FireBoltAtMonster(int monsterIndex, int targetY, int targetX, IProjection projectile, int damage)
         {
             const ProjectionFlag projectionFlags = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             _saveGame.SpellEffects.Project(monsterIndex, 0, targetY, targetX, damage, projectile, projectionFlags);
@@ -1099,7 +1100,7 @@ namespace Cthangband
         /// <param name="monsterIndex"> The index of the monster casting the bolt </param>
         /// <param name="projectile"> The projectile being used for the bolt </param>
         /// <param name="damage"> The damage that the bolt will do </param>
-        private void FireBoltAtPlayer(int monsterIndex, Projectile projectile, int damage)
+        private void FireBoltAtPlayer(int monsterIndex, IProjection projectile, int damage)
         {
             const ProjectionFlag projectionFlags = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             _saveGame.SpellEffects.Project(monsterIndex, 0, _player.MapY, _player.MapX, damage, projectile, projectionFlags);

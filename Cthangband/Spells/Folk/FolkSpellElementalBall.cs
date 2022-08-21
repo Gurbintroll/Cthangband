@@ -7,6 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Projection.Base;
 using System;
 
 namespace Cthangband.Spells.Folk
@@ -21,7 +22,7 @@ namespace Cthangband.Spells.Folk
             {
                 return;
             }
-            Projectile dummy;
+            IProjection dummy;
             switch (Program.Rng.DieRoll(4))
             {
                 case 1:

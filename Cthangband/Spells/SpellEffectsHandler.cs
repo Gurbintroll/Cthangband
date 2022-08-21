@@ -7,6 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Projection.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -574,7 +575,7 @@ namespace Cthangband.Spells
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             int plev = Player.Level;
             bool lineChaos = false;
-            Projectile[] hurtTypes =
+            IProjection[] hurtTypes =
             {
                 new ProjectElec(this), new ProjectPois(this), new ProjectAcid(this), new ProjectCold(this),
                 new ProjectFire(this), new ProjectMissile(this), new ProjectArrow(this), new ProjectPlasma(this),
@@ -585,7 +586,7 @@ namespace Cthangband.Spells
                 new ProjectTime(this), new ProjectGravity(this), new ProjectShard(this), new ProjectNuke(this),
                 new ProjectHellFire(this), new ProjectDisintegrate(this)
             };
-            Projectile chaosType = hurtTypes[Program.Rng.DieRoll(30) - 1];
+            IProjection chaosType = hurtTypes[Program.Rng.DieRoll(30) - 1];
             if (Program.Rng.DieRoll(4) == 1)
             {
                 lineChaos = true;
@@ -1736,7 +1737,7 @@ namespace Cthangband.Spells
             return TargetedProject(new ProjectTurnAll(this), dir, plev, flg);
         }
 
-        public bool FireBall(Projectile projectile, int dir, int dam, int rad)
+        public bool FireBall(IProjection projectile, int dir, int dam, int rad)
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
@@ -1752,19 +1753,19 @@ namespace Cthangband.Spells
             return Project(0, rad, ty, tx, dam, projectile, flg);
         }
 
-        public void FireBeam(Projectile projectile, int dir, int dam)
+        public void FireBeam(IProjection projectile, int dir, int dam)
         {
             ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectKill;
             TargetedProject(projectile, dir, dam, flg);
         }
 
-        public void FireBolt(Projectile projectile, int dir, int dam)
+        public void FireBolt(IProjection projectile, int dir, int dam)
         {
             ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             TargetedProject(projectile, dir, dam, flg);
         }
 
-        public void FireBoltOrBeam(int prob, Projectile projectile, int dir, int dam)
+        public void FireBoltOrBeam(int prob, IProjection projectile, int dir, int dam)
         {
             if (Program.Rng.RandomLessThan(100) < prob)
             {
@@ -2102,7 +2103,7 @@ namespace Cthangband.Spells
         public bool PotionSmashEffect(int who, int y, int x, int oSval)
         {
             int radius = 2;
-            Projectile dt = null;
+            IProjection dt = null;
             int dam = 0;
             bool angry = false;
             switch (oSval)
@@ -2267,7 +2268,7 @@ namespace Cthangband.Spells
             }
         }
 
-        public bool Project(int who, int rad, int y, int x, int dam, Projectile projectile, ProjectionFlag flg)
+        public bool Project(int who, int rad, int y, int x, int dam, IProjection projectile, ProjectionFlag flg)
         {
             return projectile.Fire(who, rad, y, x, dam, flg);
         }
@@ -3956,7 +3957,7 @@ namespace Cthangband.Spells
             return true;
         }
 
-        private bool ProjectAtAllInLos(Projectile projectile, int dam)
+        private bool ProjectAtAllInLos(IProjection projectile, int dam)
         {
             ProjectionFlag flg = ProjectionFlag.ProjectJump | ProjectionFlag.ProjectKill | ProjectionFlag.ProjectHide;
             bool obvious = false;
@@ -4053,7 +4054,7 @@ namespace Cthangband.Spells
             return 6;
         }
 
-        private bool TargetedProject(Projectile projectile, int dir, int dam, ProjectionFlag flg)
+        private bool TargetedProject(IProjection projectile, int dir, int dam, ProjectionFlag flg)
         {
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             flg |= ProjectionFlag.ProjectThru;

@@ -10,9 +10,9 @@ using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
 
-namespace Cthangband.Projection
+namespace Cthangband.Projection.Base
 {
-    internal abstract class Projectile
+    internal abstract class BaseProjection : IProjection
     {
         protected readonly Level Level;
         protected readonly Player Player;
@@ -25,7 +25,7 @@ namespace Cthangband.Projection
         protected int ProjectMx;
         protected int ProjectMy;
 
-        public Projectile(SpellEffectsHandler spellEffectsHandler)
+        public BaseProjection(SpellEffectsHandler spellEffectsHandler)
         {
             SpellEffects = spellEffectsHandler;
             SaveGame = SaveGame.Instance;

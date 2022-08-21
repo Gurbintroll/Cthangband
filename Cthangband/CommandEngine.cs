@@ -8,6 +8,7 @@
 using Cthangband.Enumerations;
 using Cthangband.Mutations.Base;
 using Cthangband.Projection;
+using Cthangband.Projection.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -4169,7 +4170,7 @@ namespace Cthangband
         {
             int playerLevel = Player.Level;
             int direction;
-            Projectile projectile;
+            IProjection projectile;
             string projectileDescription;
             // Default to being randomly fire (66% chance) or cold (33% chance)
             if (Program.Rng.DieRoll(3) == 1)

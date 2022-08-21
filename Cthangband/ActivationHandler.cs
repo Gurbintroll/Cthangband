@@ -7,6 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Projection;
+using Cthangband.Projection.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -879,7 +880,7 @@ namespace Cthangband
                             string element = chance == 1 ? "chaos" : "disenchantment";
                             Profile.Instance.MsgPrint($"You breathe {element}.");
                             SaveGame.Instance.SpellEffects.FireBall(
-                                projectile: chance == 1 ? (Projectile)new ProjectChaos(SaveGame.Instance.SpellEffects) : new ProjectDisenchant(SaveGame.Instance.SpellEffects), dir: dir, dam: 220, rad: -2);
+                                projectile: chance == 1 ? (IProjection)new ProjectChaos(SaveGame.Instance.SpellEffects) : new ProjectDisenchant(SaveGame.Instance.SpellEffects), dir: dir, dam: 220, rad: -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }
@@ -889,7 +890,7 @@ namespace Cthangband
                             string element = chance == 1 ? "sound" : "shards";
                             Profile.Instance.MsgPrint($"You breathe {element}.");
                             SaveGame.Instance.SpellEffects.FireBall(
-                                chance == 1 ? (Projectile)new ProjectSound(SaveGame.Instance.SpellEffects) : new ProjectExplode(SaveGame.Instance.SpellEffects), dir, 230, -2);
+                                chance == 1 ? (IProjection)new ProjectSound(SaveGame.Instance.SpellEffects) : new ProjectExplode(SaveGame.Instance.SpellEffects), dir, 230, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }
@@ -905,7 +906,7 @@ namespace Cthangband
                                     ? new ProjectChaos(SaveGame.Instance.SpellEffects)
                                     : (chance == 2
                                         ? new ProjectDisenchant(SaveGame.Instance.SpellEffects)
-                                        : (chance == 3 ? (Projectile)new ProjectSound(SaveGame.Instance.SpellEffects) : new ProjectExplode(SaveGame.Instance.SpellEffects))), dir, 250, -2);
+                                        : (chance == 3 ? (IProjection)new ProjectSound(SaveGame.Instance.SpellEffects) : new ProjectExplode(SaveGame.Instance.SpellEffects))), dir, 250, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }
@@ -915,7 +916,7 @@ namespace Cthangband
                             string element = chance == 0 ? "light" : "darkness";
                             Profile.Instance.MsgPrint($"You breathe {element}.");
                             SaveGame.Instance.SpellEffects.FireBall(
-                                chance == 0 ? (Projectile)new ProjectLight(SaveGame.Instance.SpellEffects) : new ProjectDark(SaveGame.Instance.SpellEffects), dir, 200, -2);
+                                chance == 0 ? (IProjection)new ProjectLight(SaveGame.Instance.SpellEffects) : new ProjectDark(SaveGame.Instance.SpellEffects), dir, 200, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }

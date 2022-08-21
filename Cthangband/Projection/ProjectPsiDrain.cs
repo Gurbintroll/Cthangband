@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Projection.Base;
 using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
@@ -13,7 +14,7 @@ using System;
 
 namespace Cthangband.Projection
 {
-    internal class ProjectPsiDrain : Projectile
+    internal class ProjectPsiDrain : BaseProjection
     {
         public ProjectPsiDrain(SpellEffectsHandler spellEffectsHandler) : base(spellEffectsHandler)
         {

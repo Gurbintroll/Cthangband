@@ -238,6 +238,7 @@
     <Compile Include="Patrons\PatronUbboSathla.cs" />
     <Compile Include="Patrons\PatronYogSothoth.cs" />
     <Compile Include="PerlinNoise.cs" />
+    <Compile Include="Projection\Base\IProjection.cs" />
     <Compile Include="Projection\ProjectAcid.cs" />
     <Compile Include="Projection\ProjectArrow.cs" />
     <Compile Include="Projection\ProjectAwayAll.cs" />
@@ -269,7 +270,7 @@
     <Compile Include="Projection\ProjectHellFire.cs" />
     <Compile Include="Projection\ProjectHolyFire.cs" />
     <Compile Include="Projection\ProjectIce.cs" />
-    <Compile Include="Projection\Projectile.cs" />
+    <Compile Include="Projection\Base\BaseProjection.cs" />
     <Compile Include="Projection\ProjectInertia.cs" />
     <Compile Include="Projection\ProjectJamDoor.cs" />
     <Compile Include="Projection\ProjectKillDoor.cs" />
