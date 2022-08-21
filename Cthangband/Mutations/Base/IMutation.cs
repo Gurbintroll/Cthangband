@@ -15,23 +15,10 @@ namespace Cthangband.Mutations.Base
         int DamageDiceNumber { get; set; }
         int DamageDiceSize { get; set; }
         int EquivalentWeaponWeight { get; set; }
-        int Frequency { get; set; }
-        string GainMessage { get; set; }
-        MutationGroup Group { get; set; }
-        string HaveMessage { get; set; }
-        string LoseMessage { get; set; }
         MutationAttackType MutationAttackType { get; set; }
 
         void Activate(SaveGame saveGame, Player player, Level level);
 
         string ActivationSummary(int lvl);
-
-        void Initialise();
-
-        void OnGain(Genome genome);
-
-        void OnLose(Genome genome);
-
-        void OnProcessWorld(SaveGame saveGame, Player player, Level level);
     }
 }
