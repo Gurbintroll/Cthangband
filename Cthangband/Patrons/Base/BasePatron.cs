@@ -10,28 +10,27 @@ using Cthangband.Projection;
 using Cthangband.StaticData;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patrons.Base
 {
     [Serializable]
-    internal abstract class Patron
+    internal abstract class BasePatron : IPatron
     {
-        public string LongName;
-        public bool MultiRew;
-
         protected int PreferredAbility;
         protected Reward[] Rewards;
         protected string ShortName;
+        public string LongName { get; set; }
+        public bool MultiRew { get; set; }
 
-        public static Patron[] NewPatronList()
+        public static IPatron[] NewPatronList()
         {
-            Patron[] list = new Patron[]
+            BasePatron[] list = new BasePatron[]
             {
                 new PatronEihort(), new PatronGlaaki(), new PatronYogSothoth(), new PatronYig(),
                 new PatronAzathoth(), new PatronRhanTegoth(), new PatronNyarlathotep(), new PatronTsathoggua(),
                 new PatronNyogtha(), new PatronIod(), new PatronHastur(), new PatronAbhoth(), new PatronUbboSathla(),
                 new PatronCthulhu(), new PatronShubNiggurath(), new PatronCyaegha()
             };
-            foreach (Patron patron in list)
+            foreach (BasePatron patron in list)
             {
                 patron.Initialise();
             }
@@ -98,7 +97,7 @@ namespace Cthangband.Patrons
                     Profile.Instance.MsgPrint("'Well done, mortal! Lead on!'");
                     if (player.ExperiencePoints < Constants.PyMaxExp)
                     {
-                        int ee = (player.ExperiencePoints / 2) + 10;
+                        int ee = player.ExperiencePoints / 2 + 10;
                         if (ee > 100000)
                         {
                             ee = 100000;
@@ -216,8 +215,8 @@ namespace Cthangband.Patrons
                             break;
                     }
                     qPtr.AssignItemType(Profile.Instance.ItemTypes.LookupKind(ItemCategory.Sword, dummy2));
-                    qPtr.BonusToHit = 3 + (Program.Rng.DieRoll(saveGame.Difficulty) % 10);
-                    qPtr.BonusDamage = 3 + (Program.Rng.DieRoll(saveGame.Difficulty) % 10);
+                    qPtr.BonusToHit = 3 + Program.Rng.DieRoll(saveGame.Difficulty) % 10;
+                    qPtr.BonusDamage = 3 + Program.Rng.DieRoll(saveGame.Difficulty) % 10;
                     qPtr.ApplyRandomResistance(Program.Rng.DieRoll(34) + 4);
                     qPtr.RareItemTypeIndex = Enumerations.RareItemType.WeaponChaotic;
                     level.DropNear(qPtr, -1, player.MapY, player.MapX);

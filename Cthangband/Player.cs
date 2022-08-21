@@ -7,12 +7,12 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Mutations;
-using Cthangband.Patrons;
 using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using Cthangband.Pantheon;
 using System;
+using Cthangband.Patrons.Base;
 
 namespace Cthangband
 {
@@ -48,7 +48,7 @@ namespace Cthangband
         public int Generation;
         public bool GetFirstLevelMutation;
         public int Gold;
-        public Patron GooPatron;
+        public IPatron GooPatron;
         public bool HasAcidImmunity;
         public bool HasAcidResistance;
         public bool HasAggravation;
@@ -2820,7 +2820,7 @@ namespace Cthangband
             }
             if (Program.Rng.DieRoll(10) <= Religion.GetNamedDeity(GodName.Lobon).AdjustedFavour)
             {
-                Profile.Instance.MsgPrint($"You feel { GlobalData.DescStatNeg[stat]} for a moment, but Lobon's favour protects you.");
+                Profile.Instance.MsgPrint($"You feel {GlobalData.DescStatNeg[stat]} for a moment, but Lobon's favour protects you.");
                 return true;
             }
             if (DecreaseAbilityScore(stat, 10, false))

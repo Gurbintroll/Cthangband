@@ -219,7 +219,8 @@
     <Compile Include="Pantheon\God.cs" />
     <Compile Include="Pantheon\GodName.cs" />
     <Compile Include="Pantheon\Religion.cs" />
-    <Compile Include="Patrons\Patron.cs" />
+    <Compile Include="Patrons\Base\BasePatron.cs" />
+    <Compile Include="Patrons\Base\IPatron.cs" />
     <Compile Include="Patrons\PatronAbhoth.cs" />
     <Compile Include="Patrons\PatronAzathoth.cs" />
     <Compile Include="Patrons\PatronCthulhu.cs" />
