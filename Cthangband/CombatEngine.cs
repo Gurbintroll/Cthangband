@@ -524,7 +524,7 @@ namespace Cthangband
                                     {
                                         continue;
                                     }
-                                    if (item.IsFixedArtifact() || !string.IsNullOrEmpty(item.RandartName))
+                                    if (item.IsFixedArtifact() || item.IsRandomArtifact())
                                     {
                                         continue;
                                     }

@@ -238,7 +238,7 @@ namespace Cthangband.Spells
                     }
                 }
             }
-            if (oPtr.IsFixedArtifact() || string.IsNullOrEmpty(oPtr.RandartName) == false)
+            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
             {
                 string feel = "special";
                 Profile.Instance.MsgPrint($"You fail to turn {oName} to gold!");
@@ -343,7 +343,7 @@ namespace Cthangband.Spells
             }
             string oName = oPtr.Description(false, 0);
             string s;
-            if ((oPtr.IsFixedArtifact() || string.IsNullOrEmpty(oPtr.RandartName) == false) &&
+            if ((oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact()) &&
                 Program.Rng.RandomLessThan(100) < 71)
             {
                 s = oPtr.Count != 1 ? "" : "s";
@@ -438,7 +438,7 @@ namespace Cthangband.Spells
             string your = item >= 0 ? "Your" : "The";
             string s = oPtr.Count > 1 ? "" : "s";
             Profile.Instance.MsgPrint($"{your} {oName} radiate{s} a blinding light!");
-            if (oPtr.FixedArtifactIndex != 0 || string.IsNullOrEmpty(oPtr.RandartName) == false)
+            if (oPtr.FixedArtifactIndex != 0 || oPtr.IsRandomArtifact())
             {
                 string are = oPtr.Count > 1 ? "are" : "is";
                 s = oPtr.Count > 1 ? "artifacts" : "an artifact";
@@ -520,7 +520,7 @@ namespace Cthangband.Spells
                 Profile.Instance.MsgPrint($"{your} {oName} {s} blessed already.");
                 return;
             }
-            if (!(string.IsNullOrEmpty(oPtr.RandartName) == false || oPtr.FixedArtifactIndex != 0) ||
+            if (!(oPtr.IsRandomArtifact() || oPtr.FixedArtifactIndex != 0) ||
                 Program.Rng.DieRoll(3) == 1)
             {
                 string your = item >= 0 ? "your" : "the";
@@ -1060,7 +1060,7 @@ namespace Cthangband.Spells
                     continue;
                 }
                 ItemCategory tv = oPtr.Category;
-                if (oPtr.IsFixedArtifact() || oPtr.IsRare() || string.IsNullOrEmpty(oPtr.RandartName) == false ||
+                if (oPtr.IsFixedArtifact() || oPtr.IsRare() || oPtr.IsRandomArtifact() ||
                     tv == ItemCategory.Amulet || tv == ItemCategory.Ring || tv == ItemCategory.Staff ||
                     tv == ItemCategory.Wand || tv == ItemCategory.Rod || tv == ItemCategory.Scroll ||
                     tv == ItemCategory.Potion || tv == ItemCategory.LifeBook || tv == ItemCategory.SorceryBook ||
@@ -1555,7 +1555,7 @@ namespace Cthangband.Spells
         public bool Enchant(Item oPtr, int n, int eflag)
         {
             bool res = false;
-            bool a = oPtr.IsFixedArtifact() || string.IsNullOrEmpty(oPtr.RandartName) == false;
+            bool a = oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact();
             FlagSet f1 = new FlagSet();
             FlagSet f2 = new FlagSet();
             FlagSet f3 = new FlagSet();

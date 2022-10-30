@@ -100,7 +100,7 @@ namespace Cthangband
             Profile.Instance.MsgPrint("You activate it...");
             Gui.PlaySound(SoundEffect.ActivateArtifact);
             // If it is a random artifact then use its ability and quit
-            if (string.IsNullOrEmpty(item.RandartName) == false)
+            if (item.IsRandomArtifact())
             {
                 SaveGame.Instance.CommandEngine.ActivateRandomArtifact(item);
                 return;

@@ -2155,7 +2155,7 @@ namespace Cthangband
                             }
                             // Monsters won't pick up artifacts or items that hurt them
                             if (item.IsFixedArtifact() || (race.Flags3 & flg3) != 0 ||
-                                !string.IsNullOrEmpty(item.RandartName))
+                                item.IsRandomArtifact())
                             {
                                 if ((race.Flags2 & MonsterFlag2.TakeItem) != 0)
                                 {

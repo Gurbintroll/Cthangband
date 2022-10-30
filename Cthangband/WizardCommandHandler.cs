@@ -796,7 +796,7 @@ namespace Cthangband
 
         private void WizQuantityItem(Item oPtr)
         {
-            if (oPtr.IsFixedArtifact() || !string.IsNullOrEmpty(oPtr.RandartName))
+            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
             {
                 return;
             }
@@ -822,7 +822,7 @@ namespace Cthangband
         private Item WizRerollItem(Item oPtr)
         {
             bool changed;
-            if (oPtr.IsFixedArtifact() || !string.IsNullOrEmpty(oPtr.RandartName))
+            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
             {
                 return oPtr;
             }
@@ -973,7 +973,7 @@ namespace Cthangband
 
         private void WizTweakItem(Item oPtr)
         {
-            if (oPtr.IsFixedArtifact() || !string.IsNullOrEmpty(oPtr.RandartName))
+            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
             {
                 return;
             }

@@ -144,7 +144,7 @@ namespace Cthangband
             // Destroying something takes a turn
             SaveGame.Instance.EnergyUse = 100;
             // Can't destroy an artifact artifact
-            if (item.IsFixedArtifact() || !string.IsNullOrEmpty(item.RandartName))
+            if (item.IsFixedArtifact() || item.IsRandomArtifact())
             {
                 string feel = "special";
                 SaveGame.Instance.EnergyUse = 0;

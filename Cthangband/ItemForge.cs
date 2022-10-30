@@ -165,7 +165,7 @@ namespace Cthangband
                         break;
                     }
             }
-            if (!string.IsNullOrEmpty(_item.RandartName))
+            if (_item.IsRandomArtifact())
             {
                 if (SaveGame.Instance.Level != null)
                 {
@@ -221,7 +221,7 @@ namespace Cthangband
                             break;
                         }
                 }
-                if (_item.BonusPowerType != 0 && string.IsNullOrEmpty(_item.RandartName))
+                if (_item.BonusPowerType != 0 && !_item.IsRandomArtifact())
                 {
                     _item.BonusPowerSubType = Program.Rng.DieRoll(256);
                 }

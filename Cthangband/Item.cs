@@ -497,7 +497,7 @@ namespace Cthangband
                     {
                         return false;
                     }
-                    if (!string.IsNullOrEmpty(RandartName) || !string.IsNullOrEmpty(other.RandartName))
+                    if (IsRandomArtifact() || other.IsRandomArtifact())
                     {
                         return false;
                     }
@@ -554,7 +554,7 @@ namespace Cthangband
                     {
                         return false;
                     }
-                    if (!string.IsNullOrEmpty(RandartName) || !string.IsNullOrEmpty(other.RandartName))
+                    if (IsRandomArtifact() || other.IsRandomArtifact())
                     {
                         return false;
                     }
@@ -860,7 +860,7 @@ namespace Cthangband
                     t += Count;
                     t += ' ';
                 }
-                else if (known && (IsFixedArtifact() || !string.IsNullOrEmpty(RandartName)))
+                else if (known && (IsFixedArtifact() || IsRandomArtifact()))
                 {
                     t += "The ";
                 }
@@ -892,7 +892,7 @@ namespace Cthangband
                     t += Count;
                     t += ' ';
                 }
-                else if (known && (IsFixedArtifact() || !string.IsNullOrEmpty(RandartName)))
+                else if (known && (IsFixedArtifact() || IsRandomArtifact()))
                 {
                     t += "The ";
                 }
@@ -927,7 +927,7 @@ namespace Cthangband
             }
             if (known)
             {
-                if (!string.IsNullOrEmpty(RandartName))
+                if (IsRandomArtifact())
                 {
                     t += ' ';
                     t += RandartName;
@@ -1654,7 +1654,7 @@ namespace Cthangband
             {
                 total -= 15000;
             }
-            if (!string.IsNullOrEmpty(RandartName) && RandartFlags3.IsSet(ItemFlag3.Activate))
+            if (IsRandomArtifact() && RandartFlags3.IsSet(ItemFlag3.Activate))
             {
                 int type = BonusPowerSubType;
                 if (type == RandomArtifactPower.ActSunlight)
@@ -1963,7 +1963,7 @@ namespace Cthangband
 
         public string GetDetailedFeeling()
         {
-            if (IsFixedArtifact() || !string.IsNullOrEmpty(RandartName))
+            if (IsFixedArtifact() || IsRandomArtifact())
             {
                 if (IsCursed() || IsBroken())
                 {
@@ -2036,7 +2036,7 @@ namespace Cthangband
                 f2.Set(RandartFlags2);
                 f3.Set(RandartFlags3);
             }
-            if (!string.IsNullOrEmpty(RandartName))
+            if (IsRandomArtifact())
             {
                 switch (BonusPowerType)
                 {
@@ -2172,7 +2172,7 @@ namespace Cthangband
             {
                 return "broken";
             }
-            if (IsFixedArtifact() || !string.IsNullOrEmpty(RandartName))
+            if (IsFixedArtifact() || IsRandomArtifact())
             {
                 return "special";
             }
@@ -2739,6 +2739,11 @@ namespace Cthangband
                 return true;
             }
             return false;
+        }
+
+        public bool IsRandomArtifact()
+        {
+            return !string.IsNullOrEmpty(RandartName);
         }
 
         public bool IsRare()

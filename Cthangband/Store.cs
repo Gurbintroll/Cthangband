@@ -349,7 +349,7 @@ namespace Cthangband
             for (int i = 0; i < _stockNum; i++)
             {
                 Item oPtr = _stock[i];
-                if (string.IsNullOrEmpty(oPtr.RandartName))
+                if (!oPtr.IsRandomArtifact())
                 {
                     oPtr.Discount = 50;
                 }
@@ -787,7 +787,7 @@ namespace Cthangband
             {
                 discount = 90;
             }
-            if (!string.IsNullOrEmpty(oPtr.RandartName))
+            if (oPtr.IsRandomArtifact())
             {
                 discount = 0;
             }
@@ -1488,7 +1488,7 @@ namespace Cthangband
             {
                 return false;
             }
-            if (!string.IsNullOrEmpty(oPtr.RandartName) || !string.IsNullOrEmpty(jPtr.RandartName))
+            if (oPtr.IsRandomArtifact() || jPtr.IsRandomArtifact())
             {
                 return false;
             }

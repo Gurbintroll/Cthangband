@@ -366,7 +366,7 @@ namespace Cthangband
             }
             if (Program.Rng.DieRoll(100) <= heavyChance &&
                 (oPtr.FixedArtifactIndex != 0 || oPtr.RareItemTypeIndex != 0 ||
-                 !string.IsNullOrEmpty(oPtr.RandartName)))
+                 oPtr.IsRandomArtifact()))
             {
                 if (o3.IsClear(ItemFlag3.HeavyCurse))
                 {

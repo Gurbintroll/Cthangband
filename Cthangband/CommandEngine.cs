@@ -53,7 +53,7 @@ namespace Cthangband
             int direction;
             int i;
             // If we don't have a random artifact, abort
-            if (string.IsNullOrEmpty(item.RandartName))
+            if (!item.IsRandomArtifact())
             {
                 return;
             }
@@ -936,7 +936,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                if (!string.IsNullOrEmpty(item.RandartName) || item.IsFixedArtifact() || item.IsRare())
+                if (item.IsRandomArtifact() || item.IsFixedArtifact() || item.IsRare())
                 {
                     continue;
                 }
@@ -971,7 +971,7 @@ namespace Cthangband
             Item item = Player.Inventory[InventorySlot.MeleeWeapon];
             // We must have a non-rare, non-artifact weapon that isn't cursed
             if (item.ItemType != null && !item.IsFixedArtifact() && !item.IsRare() &&
-                string.IsNullOrEmpty(item.RandartName) && !item.IsCursed())
+                !item.IsRandomArtifact() && !item.IsCursed())
             {
                 string act;
                 string itemName = item.Description(false, 0);
@@ -1375,7 +1375,7 @@ namespace Cthangband
             }
             // Artifacts can't be cursed, and normal armour has a chance to save
             string itemName = item.Description(false, 3);
-            if ((!string.IsNullOrEmpty(item.RandartName) || item.IsFixedArtifact()) &&
+            if ((item.IsRandomArtifact() || item.IsFixedArtifact()) &&
                 Program.Rng.RandomLessThan(100) < 50)
             {
                 Profile.Instance.MsgPrint(
@@ -1418,7 +1418,7 @@ namespace Cthangband
             }
             string itemName = item.Description(false, 3);
             // Artifacts can't be cursed, and other items have a chance to resist
-            if ((item.IsFixedArtifact() || !string.IsNullOrEmpty(item.RandartName)) &&
+            if ((item.IsFixedArtifact() || item.IsRandomArtifact()) &&
                 Program.Rng.RandomLessThan(100) < 50)
             {
                 Profile.Instance.MsgPrint(

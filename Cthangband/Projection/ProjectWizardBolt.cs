@@ -47,7 +47,7 @@ namespace Cthangband.Projection
                 {
                     plural = true;
                 }
-                if (oPtr.IsFixedArtifact() || string.IsNullOrEmpty(oPtr.RandartName) == false)
+                if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
                 {
                     isArt = true;
                 }

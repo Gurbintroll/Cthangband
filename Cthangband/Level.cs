@@ -130,7 +130,7 @@ namespace Cthangband
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
-                if (!string.IsNullOrEmpty(oPtr.RandartName) || oPtr.IsFixedArtifact())
+                if (oPtr.IsRandomArtifact() || oPtr.IsFixedArtifact())
                 {
                     return false;
                 }
@@ -201,7 +201,7 @@ namespace Cthangband
                         continue;
                     }
                     int chance = 90;
-                    if ((oPtr.IsFixedArtifact() || !string.IsNullOrEmpty(oPtr.RandartName)) && cnt < 1000)
+                    if ((oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact()) && cnt < 1000)
                     {
                         chance = 100;
                     }
@@ -406,7 +406,7 @@ namespace Cthangband
             bool done = false;
             bool plural = jPtr.Count != 1;
             string oName = jPtr.Description(false, 0);
-            if (!(!string.IsNullOrEmpty(jPtr.RandartName) || jPtr.IsFixedArtifact()) &&
+            if (!(jPtr.IsRandomArtifact() || jPtr.IsFixedArtifact()) &&
                 Program.Rng.RandomLessThan(100) < chance)
             {
                 string p = plural ? "" : "s";
@@ -480,7 +480,7 @@ namespace Cthangband
                     flag = true;
                 }
             }
-            if (!flag && !(jPtr.IsFixedArtifact() || !string.IsNullOrEmpty(jPtr.RandartName)))
+            if (!flag && !(jPtr.IsFixedArtifact() || jPtr.IsRandomArtifact()))
             {
                 string p = plural ? "" : "s";
                 Profile.Instance.MsgPrint($"The {oName} disappear{p}.");
