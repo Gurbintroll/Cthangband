@@ -214,7 +214,7 @@ namespace Cthangband.StaticData
 
         public static void PopulateNewProfile(Profile profile)
         {
-            profile.FixedArtifacts = new FixedArtifactArray();
+            profile.Artifacts = new ArtifactArray();
             profile.MonsterRaces = new MonsterRaceArray();
             profile.MonsterRaces.AddKnowledge();
             profile.RareItemTypes = new RareItemTypeArray();

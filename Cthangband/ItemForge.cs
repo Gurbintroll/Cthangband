@@ -14,8 +14,8 @@ namespace Cthangband
     internal class ItemForge
     {
         private readonly Item _item;
-        private int _artifactBias;
         private GetObjNumHookDelegate _getObjNumHook;
+        private int _legendaryItemBias;
 
         public ItemForge(Item item)
         {
@@ -66,20 +66,20 @@ namespace Cthangband
             {
                 rolls = 4;
             }
-            if (!okay || _item.FixedArtifactIndex != 0)
+            if (!okay || _item.ArtifactIndex != 0)
             {
                 rolls = 0;
             }
             for (int i = 0; i < rolls; i++)
             {
-                if (ApplyFixedArtifact())
+                if (ApplyArtifact())
                 {
                     break;
                 }
             }
-            if (_item.FixedArtifactIndex != 0)
+            if (_item.ArtifactIndex != 0)
             {
-                FixedArtifact aPtr = Profile.Instance.FixedArtifacts[_item.FixedArtifactIndex];
+                Artifact aPtr = Profile.Instance.Artifacts[_item.ArtifactIndex];
                 aPtr.CurNum = 1;
                 _item.TypeSpecificValue = aPtr.Pval;
                 _item.BaseArmourClass = aPtr.Ac;
@@ -165,7 +165,7 @@ namespace Cthangband
                         break;
                     }
             }
-            if (_item.IsRandomArtifact())
+            if (_item.IsLegendary())
             {
                 if (SaveGame.Instance.Level != null)
                 {
@@ -221,7 +221,7 @@ namespace Cthangband
                             break;
                         }
                 }
-                if (_item.BonusPowerType != 0 && !_item.IsRandomArtifact())
+                if (_item.BonusPowerType != 0 && !_item.IsLegendary())
                 {
                     _item.BonusPowerSubType = Program.Rng.DieRoll(256);
                 }
@@ -295,30 +295,30 @@ namespace Cthangband
         {
             if (specific == 0)
             {
-                if (_artifactBias == ArtifactBias.Acid)
+                if (_legendaryItemBias == LegendaryItemBias.Acid)
                 {
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResAcid))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResAcid))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResAcid);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResAcid);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
-                    if (Program.Rng.DieRoll(ArtifactBias.Luck) == 1 && _item.RandartFlags2.IsClear(ItemFlag2.ImAcid))
+                    if (Program.Rng.DieRoll(LegendaryItemBias.Luck) == 1 && _item.LegendaryFlags2.IsClear(ItemFlag2.ImAcid))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ImAcid);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImAcid);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Electricity)
+                else if (_legendaryItemBias == LegendaryItemBias.Electricity)
                 {
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResElec))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResElec))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResElec);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResElec);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
@@ -326,28 +326,28 @@ namespace Cthangband
                     }
                     if (_item.Category >= ItemCategory.Cloak &&
                         _item.Category <= ItemCategory.HardArmor &&
-                        _item.RandartFlags3.IsClear(ItemFlag3.ShElec))
+                        _item.LegendaryFlags3.IsClear(ItemFlag3.ShElec))
                     {
-                        _item.RandartFlags3.Set(ItemFlag3.ShElec);
+                        _item.LegendaryFlags3.Set(ItemFlag3.ShElec);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
-                    if (Program.Rng.DieRoll(ArtifactBias.Luck) == 1 && _item.RandartFlags2.IsClear(ItemFlag2.ImElec))
+                    if (Program.Rng.DieRoll(LegendaryItemBias.Luck) == 1 && _item.LegendaryFlags2.IsClear(ItemFlag2.ImElec))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ImElec);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImElec);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Fire)
+                else if (_legendaryItemBias == LegendaryItemBias.Fire)
                 {
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResFire))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResFire))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResFire);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResFire);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
@@ -355,120 +355,120 @@ namespace Cthangband
                     }
                     if (_item.Category >= ItemCategory.Cloak &&
                         _item.Category <= ItemCategory.HardArmor &&
-                        _item.RandartFlags3.IsClear(ItemFlag3.ShFire))
+                        _item.LegendaryFlags3.IsClear(ItemFlag3.ShFire))
                     {
-                        _item.RandartFlags3.Set(ItemFlag3.ShFire);
+                        _item.LegendaryFlags3.Set(ItemFlag3.ShFire);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
-                    if (Program.Rng.DieRoll(ArtifactBias.Luck) == 1 && _item.RandartFlags2.IsClear(ItemFlag2.ImFire))
+                    if (Program.Rng.DieRoll(LegendaryItemBias.Luck) == 1 && _item.LegendaryFlags2.IsClear(ItemFlag2.ImFire))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ImFire);
-                        if (Program.Rng.DieRoll(2) == 1)
-                        {
-                            return;
-                        }
-                    }
-                }
-                else if (_artifactBias == ArtifactBias.Cold)
-                {
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResCold))
-                    {
-                        _item.RandartFlags2.Set(ItemFlag2.ResCold);
-                        if (Program.Rng.DieRoll(2) == 1)
-                        {
-                            return;
-                        }
-                    }
-                    if (Program.Rng.DieRoll(ArtifactBias.Luck) == 1 && _item.RandartFlags2.IsClear(ItemFlag2.ImCold))
-                    {
-                        _item.RandartFlags2.Set(ItemFlag2.ImCold);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImFire);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Poison)
+                else if (_legendaryItemBias == LegendaryItemBias.Cold)
                 {
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResPois))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResCold))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResPois);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResCold);
+                        if (Program.Rng.DieRoll(2) == 1)
+                        {
+                            return;
+                        }
+                    }
+                    if (Program.Rng.DieRoll(LegendaryItemBias.Luck) == 1 && _item.LegendaryFlags2.IsClear(ItemFlag2.ImCold))
+                    {
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImCold);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Warrior)
+                else if (_legendaryItemBias == LegendaryItemBias.Poison)
                 {
-                    if (Program.Rng.DieRoll(3) != 1 && _item.RandartFlags2.IsClear(ItemFlag2.ResFear))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResPois))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResFear);
-                        if (Program.Rng.DieRoll(2) == 1)
-                        {
-                            return;
-                        }
-                    }
-                    if (Program.Rng.DieRoll(3) == 1 && _item.RandartFlags3.IsClear(ItemFlag3.NoMagic))
-                    {
-                        _item.RandartFlags3.Set(ItemFlag3.NoMagic);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Necromantic)
+                else if (_legendaryItemBias == LegendaryItemBias.Warrior)
                 {
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResNether))
+                    if (Program.Rng.DieRoll(3) != 1 && _item.LegendaryFlags2.IsClear(ItemFlag2.ResFear))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResNether);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResFear);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResPois))
+                    if (Program.Rng.DieRoll(3) == 1 && _item.LegendaryFlags3.IsClear(ItemFlag3.NoMagic))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResPois);
-                        if (Program.Rng.DieRoll(2) == 1)
-                        {
-                            return;
-                        }
-                    }
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResDark))
-                    {
-                        _item.RandartFlags2.Set(ItemFlag2.ResDark);
+                        _item.LegendaryFlags3.Set(ItemFlag3.NoMagic);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Chaos)
+                else if (_legendaryItemBias == LegendaryItemBias.Necromantic)
                 {
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResChaos))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResNether))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResChaos);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResNether);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResConf))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResPois))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResConf);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
                         }
                     }
-                    if (_item.RandartFlags2.IsClear(ItemFlag2.ResDisen))
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResDark))
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ResDisen);
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResDark);
+                        if (Program.Rng.DieRoll(2) == 1)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (_legendaryItemBias == LegendaryItemBias.Chaos)
+                {
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResChaos))
+                    {
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResChaos);
+                        if (Program.Rng.DieRoll(2) == 1)
+                        {
+                            return;
+                        }
+                    }
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResConf))
+                    {
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResConf);
+                        if (Program.Rng.DieRoll(2) == 1)
+                        {
+                            return;
+                        }
+                    }
+                    if (_item.LegendaryFlags2.IsClear(ItemFlag2.ResDisen))
+                    {
+                        _item.LegendaryFlags2.Set(ItemFlag2.ResDisen);
                         if (Program.Rng.DieRoll(2) == 1)
                         {
                             return;
@@ -485,10 +485,10 @@ namespace Cthangband
                     }
                     else
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ImAcid);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImAcid);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Acid;
+                            _legendaryItemBias = LegendaryItemBias.Acid;
                         }
                     }
                     break;
@@ -500,10 +500,10 @@ namespace Cthangband
                     }
                     else
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ImElec);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImElec);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Electricity;
+                            _legendaryItemBias = LegendaryItemBias.Electricity;
                         }
                     }
                     break;
@@ -515,10 +515,10 @@ namespace Cthangband
                     }
                     else
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ImCold);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImCold);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Cold;
+                            _legendaryItemBias = LegendaryItemBias.Cold;
                         }
                     }
                     break;
@@ -530,10 +530,10 @@ namespace Cthangband
                     }
                     else
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.ImFire);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags2.Set(ItemFlag2.ImFire);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Fire;
+                            _legendaryItemBias = LegendaryItemBias.Fire;
                         }
                     }
                     break;
@@ -541,142 +541,142 @@ namespace Cthangband
                 case 5:
                 case 6:
                 case 13:
-                    _item.RandartFlags2.Set(ItemFlag2.ResAcid);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResAcid);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Acid;
+                        _legendaryItemBias = LegendaryItemBias.Acid;
                     }
                     break;
 
                 case 7:
                 case 8:
                 case 14:
-                    _item.RandartFlags2.Set(ItemFlag2.ResElec);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResElec);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Electricity;
+                        _legendaryItemBias = LegendaryItemBias.Electricity;
                     }
                     break;
 
                 case 9:
                 case 10:
                 case 15:
-                    _item.RandartFlags2.Set(ItemFlag2.ResFire);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResFire);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Fire;
+                        _legendaryItemBias = LegendaryItemBias.Fire;
                     }
                     break;
 
                 case 11:
                 case 12:
                 case 16:
-                    _item.RandartFlags2.Set(ItemFlag2.ResCold);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResCold);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Cold;
+                        _legendaryItemBias = LegendaryItemBias.Cold;
                     }
                     break;
 
                 case 17:
                 case 18:
-                    _item.RandartFlags2.Set(ItemFlag2.ResPois);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(4) != 1)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(4) != 1)
                     {
-                        _artifactBias = ArtifactBias.Poison;
+                        _legendaryItemBias = LegendaryItemBias.Poison;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(2) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(2) == 1)
                     {
-                        _artifactBias = ArtifactBias.Necromantic;
+                        _legendaryItemBias = LegendaryItemBias.Necromantic;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(2) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(2) == 1)
                     {
-                        _artifactBias = ArtifactBias.Rogue;
+                        _legendaryItemBias = LegendaryItemBias.Rogue;
                     }
                     break;
 
                 case 19:
                 case 20:
-                    _item.RandartFlags2.Set(ItemFlag2.ResFear);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(3) == 1)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResFear);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(3) == 1)
                     {
-                        _artifactBias = ArtifactBias.Warrior;
+                        _legendaryItemBias = LegendaryItemBias.Warrior;
                     }
                     break;
 
                 case 21:
-                    _item.RandartFlags2.Set(ItemFlag2.ResLight);
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResLight);
                     break;
 
                 case 22:
-                    _item.RandartFlags2.Set(ItemFlag2.ResDark);
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResDark);
                     break;
 
                 case 23:
                 case 24:
-                    _item.RandartFlags2.Set(ItemFlag2.ResBlind);
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResBlind);
                     break;
 
                 case 25:
                 case 26:
-                    _item.RandartFlags2.Set(ItemFlag2.ResConf);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(6) == 1)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResConf);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(6) == 1)
                     {
-                        _artifactBias = ArtifactBias.Chaos;
+                        _legendaryItemBias = LegendaryItemBias.Chaos;
                     }
                     break;
 
                 case 27:
                 case 28:
-                    _item.RandartFlags2.Set(ItemFlag2.ResSound);
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResSound);
                     break;
 
                 case 29:
                 case 30:
-                    _item.RandartFlags2.Set(ItemFlag2.ResShards);
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResShards);
                     break;
 
                 case 31:
                 case 32:
-                    _item.RandartFlags2.Set(ItemFlag2.ResNether);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(3) == 1)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResNether);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(3) == 1)
                     {
-                        _artifactBias = ArtifactBias.Necromantic;
+                        _legendaryItemBias = LegendaryItemBias.Necromantic;
                     }
                     break;
 
                 case 33:
                 case 34:
-                    _item.RandartFlags2.Set(ItemFlag2.ResNexus);
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResNexus);
                     break;
 
                 case 35:
                 case 36:
-                    _item.RandartFlags2.Set(ItemFlag2.ResChaos);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(2) == 1)
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResChaos);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(2) == 1)
                     {
-                        _artifactBias = ArtifactBias.Chaos;
+                        _legendaryItemBias = LegendaryItemBias.Chaos;
                     }
                     break;
 
                 case 37:
                 case 38:
-                    _item.RandartFlags2.Set(ItemFlag2.ResDisen);
+                    _item.LegendaryFlags2.Set(ItemFlag2.ResDisen);
                     break;
 
                 case 39:
                     if (_item.Category >= ItemCategory.Cloak &&
                         _item.Category <= ItemCategory.HardArmor)
                     {
-                        _item.RandartFlags3.Set(ItemFlag3.ShElec);
+                        _item.LegendaryFlags3.Set(ItemFlag3.ShElec);
                     }
                     else
                     {
                         ApplyRandomResistance(0);
                     }
-                    if (_artifactBias == 0)
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Electricity;
+                        _legendaryItemBias = LegendaryItemBias.Electricity;
                     }
                     break;
 
@@ -684,15 +684,15 @@ namespace Cthangband
                     if (_item.Category >= ItemCategory.Cloak &&
                         _item.Category <= ItemCategory.HardArmor)
                     {
-                        _item.RandartFlags3.Set(ItemFlag3.ShFire);
+                        _item.LegendaryFlags3.Set(ItemFlag3.ShFire);
                     }
                     else
                     {
                         ApplyRandomResistance(0);
                     }
-                    if (_artifactBias == 0)
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Fire;
+                        _legendaryItemBias = LegendaryItemBias.Fire;
                     }
                     break;
 
@@ -701,7 +701,7 @@ namespace Cthangband
                         _item.Category == ItemCategory.Cloak || _item.Category == ItemCategory.Helm ||
                         _item.Category == ItemCategory.HardArmor)
                     {
-                        _item.RandartFlags2.Set(ItemFlag2.Reflect);
+                        _item.LegendaryFlags2.Set(ItemFlag2.Reflect);
                     }
                     else
                     {
@@ -711,76 +711,76 @@ namespace Cthangband
             }
         }
 
-        public bool CreateRandart(bool fromScroll)
+        public bool CreateLegendary(bool fromScroll)
         {
             bool hasPval = false;
             int powers = Program.Rng.DieRoll(5) + 1;
             int maxType = _item.Category < ItemCategory.Boots ? 7 : 5;
             bool aCursed = false;
             int warriorArtifactBias = 0;
-            _artifactBias = 0;
+            _legendaryItemBias = 0;
             if (fromScroll && Program.Rng.DieRoll(4) == 1)
             {
                 switch (SaveGame.Instance.Player.ProfessionIndex)
                 {
                     case CharacterClass.Warrior:
                     case CharacterClass.ChosenOne:
-                        _artifactBias = ArtifactBias.Warrior;
+                        _legendaryItemBias = LegendaryItemBias.Warrior;
                         break;
 
                     case CharacterClass.Mage:
                     case CharacterClass.HighMage:
                     case CharacterClass.Cultist:
                     case CharacterClass.Channeler:
-                        _artifactBias = ArtifactBias.Mage;
+                        _legendaryItemBias = LegendaryItemBias.Mage;
                         break;
 
                     case CharacterClass.Priest:
                     case CharacterClass.Druid:
-                        _artifactBias = ArtifactBias.Priestly;
+                        _legendaryItemBias = LegendaryItemBias.Priestly;
                         break;
 
                     case CharacterClass.Rogue:
-                        _artifactBias = ArtifactBias.Rogue;
+                        _legendaryItemBias = LegendaryItemBias.Rogue;
                         warriorArtifactBias = 25;
                         break;
 
                     case CharacterClass.Ranger:
-                        _artifactBias = ArtifactBias.Ranger;
+                        _legendaryItemBias = LegendaryItemBias.Ranger;
                         warriorArtifactBias = 30;
                         break;
 
                     case CharacterClass.Paladin:
-                        _artifactBias = ArtifactBias.Priestly;
+                        _legendaryItemBias = LegendaryItemBias.Priestly;
                         warriorArtifactBias = 40;
                         break;
 
                     case CharacterClass.WarriorMage:
-                        _artifactBias = ArtifactBias.Mage;
+                        _legendaryItemBias = LegendaryItemBias.Mage;
                         warriorArtifactBias = 40;
                         break;
 
                     case CharacterClass.Fanatic:
-                        _artifactBias = ArtifactBias.Chaos;
+                        _legendaryItemBias = LegendaryItemBias.Chaos;
                         warriorArtifactBias = 40;
                         break;
 
                     case CharacterClass.Monk:
                     case CharacterClass.Mystic:
-                        _artifactBias = ArtifactBias.Priestly;
+                        _legendaryItemBias = LegendaryItemBias.Priestly;
                         break;
 
                     case CharacterClass.Mindcrafter:
                         if (Program.Rng.DieRoll(5) > 2)
                         {
-                            _artifactBias = ArtifactBias.Priestly;
+                            _legendaryItemBias = LegendaryItemBias.Priestly;
                         }
                         break;
                 }
             }
             if (Program.Rng.DieRoll(100) <= warriorArtifactBias && fromScroll)
             {
-                _artifactBias = ArtifactBias.Warrior;
+                _legendaryItemBias = LegendaryItemBias.Warrior;
             }
             string newName;
             if (!fromScroll && Program.Rng.DieRoll(Constants.ArifactCurseChance) == 1)
@@ -830,7 +830,7 @@ namespace Cthangband
             }
             if (hasPval)
             {
-                if (_item.RandartFlags1.IsSet(ItemFlag1.Blows))
+                if (_item.LegendaryFlags1.IsSet(ItemFlag1.Blows))
                 {
                     _item.TypeSpecificValue = Program.Rng.DieRoll(2) + 1;
                 }
@@ -857,12 +857,12 @@ namespace Cthangband
                 _item.BonusToHit += Program.Rng.DieRoll(_item.BonusToHit > 19 ? 1 : 20 - _item.BonusToHit);
                 _item.BonusDamage += Program.Rng.DieRoll(_item.BonusDamage > 19 ? 1 : 20 - _item.BonusDamage);
             }
-            _item.RandartFlags3.Set(ItemFlag3.IgnoreAcid | ItemFlag3.IgnoreElec | ItemFlag3.IgnoreFire |
+            _item.LegendaryFlags3.Set(ItemFlag3.IgnoreAcid | ItemFlag3.IgnoreElec | ItemFlag3.IgnoreFire |
                                     ItemFlag3.IgnoreCold);
             int totalFlags = _item.FlagBasedCost(_item.TypeSpecificValue);
             if (aCursed)
             {
-                CurseRandart();
+                CurseLegendary();
             }
             if (!aCursed && Program.Rng.DieRoll(_item.Category >= ItemCategory.Boots
                     ? Constants.ActivationChance * 2
@@ -892,14 +892,14 @@ namespace Cthangband
             {
                 newName = GetTableName();
             }
-            _item.RandartName = newName;
+            _item.LegendaryName = newName;
             return true;
         }
 
-        public void GetFixedArtifactResistances()
+        public void GetArtifactResistances()
         {
             bool giveResistance = false, givePower = false;
-            if (_item.FixedArtifactIndex == FixedArtifactId.HelmTerrorMask)
+            if (_item.ArtifactIndex == ArtifactId.HelmTerrorMask)
             {
                 if (SaveGame.Instance.Player.ProfessionIndex == CharacterClass.Warrior)
                 {
@@ -908,45 +908,45 @@ namespace Cthangband
                 }
                 else
                 {
-                    _item.RandartFlags3.Set(ItemFlag3.Cursed | ItemFlag3.HeavyCurse | ItemFlag3.Aggravate |
+                    _item.LegendaryFlags3.Set(ItemFlag3.Cursed | ItemFlag3.HeavyCurse | ItemFlag3.Aggravate |
                                             ItemFlag3.DreadCurse);
                     _item.IdentifyFlags.Set(Constants.IdentCursed);
                     return;
                 }
             }
-            switch (_item.FixedArtifactIndex)
+            switch (_item.ArtifactIndex)
             {
-                case FixedArtifactId.ArmourOfTheOrcs:
-                case FixedArtifactId.ChainMailHeartguard:
-                case FixedArtifactId.ArmourOfTheOgreLords:
-                case FixedArtifactId.ArmourOfTheKoboldChief:
-                case FixedArtifactId.ArmourOfSerpents:
-                case FixedArtifactId.ShieldRawhide:
-                case FixedArtifactId.ShieldOfStability:
-                case FixedArtifactId.CapOfTheMindcrafter:
-                case FixedArtifactId.ShadowCloakOfNyogtha:
-                case FixedArtifactId.BootsOfTheBlackReaver:
-                case FixedArtifactId.ShieldVitriol:
-                case FixedArtifactId.DaggerOfHope:
-                case FixedArtifactId.DaggerOfCharity:
-                case FixedArtifactId.DaggerOfFaith:
-                case FixedArtifactId.SmallSwordSting:
-                case FixedArtifactId.HammerJustice:
-                case FixedArtifactId.ScaleMailWyvernscale:
+                case ArtifactId.ArmourOfTheOrcs:
+                case ArtifactId.ChainMailHeartguard:
+                case ArtifactId.ArmourOfTheOgreLords:
+                case ArtifactId.ArmourOfTheKoboldChief:
+                case ArtifactId.ArmourOfSerpents:
+                case ArtifactId.ShieldRawhide:
+                case ArtifactId.ShieldOfStability:
+                case ArtifactId.CapOfTheMindcrafter:
+                case ArtifactId.ShadowCloakOfNyogtha:
+                case ArtifactId.BootsOfTheBlackReaver:
+                case ArtifactId.ShieldVitriol:
+                case ArtifactId.DaggerOfHope:
+                case ArtifactId.DaggerOfCharity:
+                case ArtifactId.DaggerOfFaith:
+                case ArtifactId.SmallSwordSting:
+                case ArtifactId.HammerJustice:
+                case ArtifactId.ScaleMailWyvernscale:
                     {
                         giveResistance = true;
                     }
                     break;
 
-                case FixedArtifactId.MainGaucheOfDefence:
-                case FixedArtifactId.SwordBrightblade:
-                case FixedArtifactId.SwordBlackIce:
-                case FixedArtifactId.SwordOfEverflame:
-                case FixedArtifactId.SwordFiretongue:
-                case FixedArtifactId.SwordDragonSlayer:
-                case FixedArtifactId.ScimitarSoulsword:
-                case FixedArtifactId.BowOfSerpents:
-                case FixedArtifactId.CrossbowOfDeath:
+                case ArtifactId.MainGaucheOfDefence:
+                case ArtifactId.SwordBrightblade:
+                case ArtifactId.SwordBlackIce:
+                case ArtifactId.SwordOfEverflame:
+                case ArtifactId.SwordFiretongue:
+                case ArtifactId.SwordDragonSlayer:
+                case ArtifactId.ScimitarSoulsword:
+                case ArtifactId.BowOfSerpents:
+                case ArtifactId.CrossbowOfDeath:
                     {
                         if (Program.Rng.DieRoll(2) == 1)
                         {
@@ -959,21 +959,21 @@ namespace Cthangband
                     }
                     break;
 
-                case FixedArtifactId.RingOfElementalPowerIce:
-                case FixedArtifactId.RingOfElementalPowerStorm:
-                case FixedArtifactId.CrownOfMisery:
-                case FixedArtifactId.CestiOfCombat:
-                case FixedArtifactId.CloakOfTheSwashbuckler:
-                case FixedArtifactId.TridentOfTheGnorri:
-                case FixedArtifactId.QuarterstaffOfAtal:
+                case ArtifactId.RingOfElementalPowerIce:
+                case ArtifactId.RingOfElementalPowerStorm:
+                case ArtifactId.CrownOfMisery:
+                case ArtifactId.CestiOfCombat:
+                case ArtifactId.CloakOfTheSwashbuckler:
+                case ArtifactId.TridentOfTheGnorri:
+                case ArtifactId.QuarterstaffOfAtal:
                     {
                         givePower = true;
                     }
                     break;
 
-                case FixedArtifactId.RingOfSet:
-                case FixedArtifactId.CrownOfTheSun:
-                case FixedArtifactId.HammerMjolnir:
+                case ArtifactId.RingOfSet:
+                case ArtifactId.CrownOfTheSun:
+                case ArtifactId.HammerMjolnir:
                     {
                         givePower = true;
                         giveResistance = true;
@@ -988,7 +988,7 @@ namespace Cthangband
                     _item.BonusPowerSubType = Program.Rng.DieRoll(256);
                 }
             }
-            _artifactBias = 0;
+            _legendaryItemBias = 0;
             if (giveResistance)
             {
                 ApplyRandomResistance(Program.Rng.DieRoll(22) + 16);
@@ -999,7 +999,7 @@ namespace Cthangband
         {
             int prob = good ? 10 : 1000;
             int baselevel = good ? SaveGame.Instance.Level.ObjectLevel + 10 : SaveGame.Instance.Level.ObjectLevel;
-            if (Program.Rng.RandomLessThan(prob) != 0 || !MakeFixedArtifact())
+            if (Program.Rng.RandomLessThan(prob) != 0 || !MakeArtifact())
             {
                 if (good)
                 {
@@ -1042,31 +1042,15 @@ namespace Cthangband
             return true;
         }
 
-        private void ApplyDragonscaleResistance()
-        {
-            do
-            {
-                _artifactBias = 0;
-                if (Program.Rng.DieRoll(4) == 1)
-                {
-                    ApplyRandomResistance(Program.Rng.DieRoll(14) + 4);
-                }
-                else
-                {
-                    ApplyRandomResistance(Program.Rng.DieRoll(22) + 16);
-                }
-            } while (Program.Rng.DieRoll(2) == 1);
-        }
-
-        private bool ApplyFixedArtifact()
+        private bool ApplyArtifact()
         {
             if (_item.Count != 1)
             {
                 return false;
             }
-            foreach (System.Collections.Generic.KeyValuePair<FixedArtifactId, FixedArtifact> pair in Profile.Instance.FixedArtifacts)
+            foreach (System.Collections.Generic.KeyValuePair<ArtifactId, Artifact> pair in Profile.Instance.Artifacts)
             {
-                FixedArtifact aPtr = pair.Value;
+                Artifact aPtr = pair.Value;
                 if (aPtr.HasOwnType)
                 {
                     continue;
@@ -1095,18 +1079,34 @@ namespace Cthangband
                 {
                     continue;
                 }
-                _item.FixedArtifactIndex = pair.Key;
-                GetFixedArtifactResistances();
+                _item.ArtifactIndex = pair.Key;
+                GetArtifactResistances();
                 return true;
             }
             return false;
+        }
+
+        private void ApplyDragonscaleResistance()
+        {
+            do
+            {
+                _legendaryItemBias = 0;
+                if (Program.Rng.DieRoll(4) == 1)
+                {
+                    ApplyRandomResistance(Program.Rng.DieRoll(14) + 4);
+                }
+                else
+                {
+                    ApplyRandomResistance(Program.Rng.DieRoll(22) + 16);
+                }
+            } while (Program.Rng.DieRoll(2) == 1);
         }
 
         private void ApplyMagicToArmour(int level, int power)
         {
             int toac1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
             int toac2 = GetBonusValue(10, level);
-            _artifactBias = 0;
+            _legendaryItemBias = 0;
             if (power > 0)
             {
                 _item.BonusArmourClass += toac1;
@@ -1188,7 +1188,7 @@ namespace Cthangband
                                         _item.RareItemTypeIndex = Enumerations.RareItemType.ArmourOfResistance;
                                         if (Program.Rng.DieRoll(4) == 1)
                                         {
-                                            _item.RandartFlags2.Set(ItemFlag2.ResPois);
+                                            _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                                         }
                                         ApplyRandomResistance(Program.Rng.DieRoll(22) + 16);
                                         break;
@@ -1201,7 +1201,7 @@ namespace Cthangband
                                     }
                                 default:
                                     {
-                                        CreateRandart(false);
+                                        CreateLegendary(false);
                                         break;
                                     }
                             }
@@ -1264,7 +1264,7 @@ namespace Cthangband
                                             ApplyRandomResistance(Program.Rng.DieRoll(34) + 4);
                                             if (Program.Rng.DieRoll(4) == 1)
                                             {
-                                                _item.RandartFlags2.Set(ItemFlag2.ResPois);
+                                                _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                                             }
                                             _item.RareItemTypeIndex = Enumerations.RareItemType.ShieldOfResistance;
                                             break;
@@ -1277,7 +1277,7 @@ namespace Cthangband
                                         }
                                     default:
                                         {
-                                            CreateRandart(false);
+                                            CreateLegendary(false);
                                             break;
                                         }
                                 }
@@ -1291,7 +1291,7 @@ namespace Cthangband
                         {
                             if (Program.Rng.DieRoll(20) == 1)
                             {
-                                CreateRandart(false);
+                                CreateLegendary(false);
                             }
                             else
                             {
@@ -1351,7 +1351,7 @@ namespace Cthangband
                         {
                             if (Program.Rng.DieRoll(20) == 1)
                             {
-                                CreateRandart(false);
+                                CreateLegendary(false);
                             }
                             else
                             {
@@ -1423,7 +1423,7 @@ namespace Cthangband
                         {
                             if (Program.Rng.DieRoll(20) == 1)
                             {
-                                CreateRandart(false);
+                                CreateLegendary(false);
                             }
                             else
                             {
@@ -1463,7 +1463,7 @@ namespace Cthangband
                                             _item.RareItemTypeIndex = Enumerations.RareItemType.HatOfSeeing;
                                             if (Program.Rng.DieRoll(3) == 1)
                                             {
-                                                _item.RandartFlags3.Set(ItemFlag3.Telepathy);
+                                                _item.LegendaryFlags3.Set(ItemFlag3.Telepathy);
                                             }
                                             break;
                                         }
@@ -1521,7 +1521,7 @@ namespace Cthangband
                             {
                                 if (Program.Rng.DieRoll(20) == 1)
                                 {
-                                    CreateRandart(false);
+                                    CreateLegendary(false);
                                 }
                                 else
                                 {
@@ -1551,7 +1551,7 @@ namespace Cthangband
                                                 _item.RareItemTypeIndex = Enumerations.RareItemType.HatOfSeeing;
                                                 if (Program.Rng.DieRoll(7) == 1)
                                                 {
-                                                    _item.RandartFlags3.Set(ItemFlag3.Telepathy);
+                                                    _item.LegendaryFlags3.Set(ItemFlag3.Telepathy);
                                                 }
                                                 break;
                                             }
@@ -1615,7 +1615,7 @@ namespace Cthangband
                         {
                             if (Program.Rng.DieRoll(20) == 1)
                             {
-                                CreateRandart(false);
+                                CreateLegendary(false);
                             }
                             else
                             {
@@ -1691,7 +1691,7 @@ namespace Cthangband
 
         private void ApplyMagicToJewellery(int level, int power)
         {
-            _artifactBias = 0;
+            _legendaryItemBias = 0;
             switch (_item.Category)
             {
                 case ItemCategory.Ring:
@@ -1877,7 +1877,7 @@ namespace Cthangband
                                     }
                                     if (Program.Rng.DieRoll(5) == 1)
                                     {
-                                        _item.RandartFlags2.Set(ItemFlag2.ResPois);
+                                        _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                                     }
                                 }
                                 break;
@@ -1899,7 +1899,7 @@ namespace Cthangband
                                     _item.BonusArmourClass = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
                                     if (Program.Rng.DieRoll(3) == 1)
                                     {
-                                        _item.RandartFlags3.Set(ItemFlag3.SlowDigest);
+                                        _item.LegendaryFlags3.Set(ItemFlag3.SlowDigest);
                                     }
                                     if (SaveGame.Instance.Level != null)
                                     {
@@ -2125,147 +2125,147 @@ namespace Cthangband
                         case 1:
                         case 2:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResDark);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResDark);
                                 break;
                             }
                         case 3:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResLight);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResLight);
                                 break;
                             }
                         case 4:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResBlind);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResBlind);
                                 break;
                             }
                         case 5:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResFear);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResFear);
                                 break;
                             }
                         case 6:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResAcid);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResAcid);
                                 break;
                             }
                         case 7:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResElec);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResElec);
                                 break;
                             }
                         case 8:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResFire);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResFire);
                                 break;
                             }
                         case 9:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResCold);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResCold);
                                 break;
                             }
                         case 10:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResPois);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                                 break;
                             }
                         case 11:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResConf);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResConf);
                                 break;
                             }
                         case 12:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResSound);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResSound);
                                 break;
                             }
                         case 13:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResShards);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResShards);
                                 break;
                             }
                         case 14:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResNether);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResNether);
                                 break;
                             }
                         case 15:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResNexus);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResNexus);
                                 break;
                             }
                         case 16:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResChaos);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResChaos);
                                 break;
                             }
                         case 17:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.ResDisen);
+                                _item.LegendaryFlags2.Set(ItemFlag2.ResDisen);
                                 break;
                             }
                         case 18:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.FreeAct);
+                                _item.LegendaryFlags2.Set(ItemFlag2.FreeAct);
                                 break;
                             }
                         case 19:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.HoldLife);
+                                _item.LegendaryFlags2.Set(ItemFlag2.HoldLife);
                                 break;
                             }
                         case 20:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.SustStr);
+                                _item.LegendaryFlags2.Set(ItemFlag2.SustStr);
                                 break;
                             }
                         case 21:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.SustInt);
+                                _item.LegendaryFlags2.Set(ItemFlag2.SustInt);
                                 break;
                             }
                         case 22:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.SustWis);
+                                _item.LegendaryFlags2.Set(ItemFlag2.SustWis);
                                 break;
                             }
                         case 23:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.SustDex);
+                                _item.LegendaryFlags2.Set(ItemFlag2.SustDex);
                                 break;
                             }
                         case 24:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.SustCon);
+                                _item.LegendaryFlags2.Set(ItemFlag2.SustCon);
                                 break;
                             }
                         case 25:
                             {
-                                _item.RandartFlags2.Set(ItemFlag2.SustCha);
+                                _item.LegendaryFlags2.Set(ItemFlag2.SustCha);
                                 break;
                             }
                         case 26:
                             {
-                                _item.RandartFlags3.Set(ItemFlag3.Feather);
+                                _item.LegendaryFlags3.Set(ItemFlag3.Feather);
                                 break;
                             }
                         case 27:
                             {
-                                _item.RandartFlags3.Set(ItemFlag3.SeeInvis);
+                                _item.LegendaryFlags3.Set(ItemFlag3.SeeInvis);
                                 break;
                             }
                         case 28:
                             {
-                                _item.RandartFlags3.Set(ItemFlag3.Telepathy);
+                                _item.LegendaryFlags3.Set(ItemFlag3.Telepathy);
                                 break;
                             }
                         case 29:
                             {
-                                _item.RandartFlags3.Set(ItemFlag3.SlowDigest);
+                                _item.LegendaryFlags3.Set(ItemFlag3.SlowDigest);
                                 break;
                             }
                         case 30:
                             {
-                                _item.RandartFlags3.Set(ItemFlag3.Regen);
+                                _item.LegendaryFlags3.Set(ItemFlag3.Regen);
                                 break;
                             }
                     }
@@ -2310,7 +2310,7 @@ namespace Cthangband
             int todam1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
             int tohit2 = GetBonusValue(10, level);
             int todam2 = GetBonusValue(10, level);
-            _artifactBias = 0;
+            _legendaryItemBias = 0;
             if (power > 0)
             {
                 _item.BonusToHit += tohit1;
@@ -2366,7 +2366,7 @@ namespace Cthangband
                                         _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponElderSign;
                                         if (Program.Rng.DieRoll(4) == 1)
                                         {
-                                            _item.RandartFlags1.Set(ItemFlag1.Blows);
+                                            _item.LegendaryFlags1.Set(ItemFlag1.Blows);
                                             if (_item.TypeSpecificValue > 2)
                                             {
                                                 _item.TypeSpecificValue -= Program.Rng.DieRoll(2);
@@ -2379,7 +2379,7 @@ namespace Cthangband
                                         _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponDefender;
                                         if (Program.Rng.DieRoll(3) == 1)
                                         {
-                                            _item.RandartFlags2.Set(ItemFlag2.ResPois);
+                                            _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                                         }
                                         ApplyRandomResistance(Program.Rng.DieRoll(22) + 16);
                                         break;
@@ -2423,7 +2423,7 @@ namespace Cthangband
                                         {
                                             if (Program.Rng.DieRoll(3) == 1)
                                             {
-                                                _item.RandartFlags2.Set(ItemFlag2.ResPois);
+                                                _item.LegendaryFlags2.Set(ItemFlag2.ResPois);
                                             }
                                             ApplyRandomResistance(Program.Rng.DieRoll(14) + 4);
                                             _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfDragonBane;
@@ -2436,8 +2436,8 @@ namespace Cthangband
                                         _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfSlayEvil;
                                         if (Program.Rng.RandomLessThan(100) < 20)
                                         {
-                                            _item.RandartFlags2.Set(ItemFlag2.ResFear);
-                                            _item.RandartFlags3.Set(ItemFlag3.Blessed);
+                                            _item.LegendaryFlags2.Set(ItemFlag2.ResFear);
+                                            _item.LegendaryFlags3.Set(ItemFlag3.Blessed);
                                             _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfEvilBane;
                                         }
                                         break;
@@ -2446,10 +2446,10 @@ namespace Cthangband
                                 case 14:
                                     {
                                         _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfSlayUndead;
-                                        _item.RandartFlags2.Set(ItemFlag2.HoldLife);
+                                        _item.LegendaryFlags2.Set(ItemFlag2.HoldLife);
                                         if (Program.Rng.RandomLessThan(100) < 20)
                                         {
-                                            _item.RandartFlags2.Set(ItemFlag2.ResNether);
+                                            _item.LegendaryFlags2.Set(ItemFlag2.ResNether);
                                             _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfUndeadBane;
                                         }
                                         break;
@@ -2487,7 +2487,7 @@ namespace Cthangband
                                         _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfKadath;
                                         if (Program.Rng.DieRoll(3) == 1)
                                         {
-                                            _item.RandartFlags2.Set(ItemFlag2.ResFear);
+                                            _item.LegendaryFlags2.Set(ItemFlag2.ResFear);
                                         }
                                         break;
                                     }
@@ -2521,7 +2521,7 @@ namespace Cthangband
                                     }
                                 case 35:
                                     {
-                                        CreateRandart(false);
+                                        CreateLegendary(false);
                                         break;
                                     }
                                 case 36:
@@ -2545,11 +2545,11 @@ namespace Cthangband
                                         }
                                         if (Program.Rng.DieRoll(5) == 1)
                                         {
-                                            _item.RandartFlags1.Set(ItemFlag1.BrandPois);
+                                            _item.LegendaryFlags1.Set(ItemFlag1.BrandPois);
                                         }
                                         if (_item.Category == ItemCategory.Sword && Program.Rng.DieRoll(3) == 1)
                                         {
-                                            _item.RandartFlags1.Set(ItemFlag1.Vorpal);
+                                            _item.LegendaryFlags1.Set(ItemFlag1.Vorpal);
                                         }
                                         break;
                                     }
@@ -2560,7 +2560,7 @@ namespace Cthangband
                                         ApplyRandomResistance(Program.Rng.DieRoll(22) + 16);
                                         if (Program.Rng.DieRoll(5) == 1)
                                         {
-                                            _item.RandartFlags1.Set(ItemFlag1.SlayDemon);
+                                            _item.LegendaryFlags1.Set(ItemFlag1.SlayDemon);
                                         }
                                         break;
                                     }
@@ -2569,15 +2569,15 @@ namespace Cthangband
                                         _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfLaw;
                                         if (Program.Rng.DieRoll(3) == 1)
                                         {
-                                            _item.RandartFlags2.Set(ItemFlag2.HoldLife);
+                                            _item.LegendaryFlags2.Set(ItemFlag2.HoldLife);
                                         }
                                         if (Program.Rng.DieRoll(3) == 1)
                                         {
-                                            _item.RandartFlags1.Set(ItemFlag1.Dex);
+                                            _item.LegendaryFlags1.Set(ItemFlag1.Dex);
                                         }
                                         if (Program.Rng.DieRoll(5) == 1)
                                         {
-                                            _item.RandartFlags2.Set(ItemFlag2.ResFear);
+                                            _item.LegendaryFlags2.Set(ItemFlag2.ResFear);
                                         }
                                         ApplyRandomResistance(Program.Rng.DieRoll(22) + 16);
                                         break;
@@ -2594,7 +2594,7 @@ namespace Cthangband
                                             _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfEarthquakes;
                                             if (Program.Rng.DieRoll(3) == 1)
                                             {
-                                                _item.RandartFlags1.Set(ItemFlag1.Blows);
+                                                _item.LegendaryFlags1.Set(ItemFlag1.Blows);
                                             }
                                             _item.TypeSpecificValue = GetBonusValue(3, level);
                                         }
@@ -2617,7 +2617,7 @@ namespace Cthangband
                                 _item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfLeng;
                                 if (Program.Rng.DieRoll(6) == 1)
                                 {
-                                    _item.RandartFlags3.Set(ItemFlag3.DreadCurse);
+                                    _item.LegendaryFlags3.Set(ItemFlag3.DreadCurse);
                                 }
                             }
                         }
@@ -2668,7 +2668,7 @@ namespace Cthangband
                                     }
                                 default:
                                     {
-                                        CreateRandart(false);
+                                        CreateLegendary(false);
                                         break;
                                     }
                             }
@@ -2753,161 +2753,161 @@ namespace Cthangband
         private void ApplyRandomBonuses()
         {
             int thisType = _item.Category < ItemCategory.Boots ? 23 : 19;
-            if (_artifactBias == ArtifactBias.Warrior)
+            if (_legendaryItemBias == LegendaryItemBias.Warrior)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Str))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Str))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Str);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Str);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Con))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Con))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Con);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Con);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Dex))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Dex))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Dex);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Dex);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Mage)
+            else if (_legendaryItemBias == LegendaryItemBias.Mage)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Int))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Int))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Int);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Int);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Priestly)
+            else if (_legendaryItemBias == LegendaryItemBias.Priestly)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Wis))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Wis))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Wis);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Wis);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Ranger)
+            else if (_legendaryItemBias == LegendaryItemBias.Ranger)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Con))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Con))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Con);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Con);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Dex))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Dex))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Dex);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Dex);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Str))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Str))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Str);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Str);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Rogue)
+            else if (_legendaryItemBias == LegendaryItemBias.Rogue)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Stealth))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Stealth))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Stealth);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Stealth);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Search))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Search))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Search);
-                    if (Program.Rng.DieRoll(2) == 1)
-                    {
-                        return;
-                    }
-                }
-            }
-            else if (_artifactBias == ArtifactBias.Strength)
-            {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Str))
-                {
-                    _item.RandartFlags1.Set(ItemFlag1.Str);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Search);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Wisdom)
+            else if (_legendaryItemBias == LegendaryItemBias.Strength)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Wis))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Str))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Wis);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Str);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Intelligence)
+            else if (_legendaryItemBias == LegendaryItemBias.Wisdom)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Int))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Wis))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Int);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Wis);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Dexterity)
+            else if (_legendaryItemBias == LegendaryItemBias.Intelligence)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Dex))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Int))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Dex);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Int);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Constitution)
+            else if (_legendaryItemBias == LegendaryItemBias.Dexterity)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Con))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Dex))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Con);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Dex);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Charisma)
+            else if (_legendaryItemBias == LegendaryItemBias.Constitution)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Cha))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Con))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Cha);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Con);
+                    if (Program.Rng.DieRoll(2) == 1)
+                    {
+                        return;
+                    }
+                }
+            }
+            else if (_legendaryItemBias == LegendaryItemBias.Charisma)
+            {
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Cha))
+                {
+                    _item.LegendaryFlags1.Set(ItemFlag1.Cha);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
@@ -2918,112 +2918,112 @@ namespace Cthangband
             {
                 case 1:
                 case 2:
-                    _item.RandartFlags1.Set(ItemFlag1.Str);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(13) != 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Str);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(13) != 1)
                     {
-                        _artifactBias = ArtifactBias.Strength;
+                        _legendaryItemBias = LegendaryItemBias.Strength;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(7) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(7) == 1)
                     {
-                        _artifactBias = ArtifactBias.Warrior;
+                        _legendaryItemBias = LegendaryItemBias.Warrior;
                     }
                     break;
 
                 case 3:
                 case 4:
-                    _item.RandartFlags1.Set(ItemFlag1.Int);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(13) != 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Int);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(13) != 1)
                     {
-                        _artifactBias = ArtifactBias.Intelligence;
+                        _legendaryItemBias = LegendaryItemBias.Intelligence;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(7) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(7) == 1)
                     {
-                        _artifactBias = ArtifactBias.Mage;
+                        _legendaryItemBias = LegendaryItemBias.Mage;
                     }
                     break;
 
                 case 5:
                 case 6:
-                    _item.RandartFlags1.Set(ItemFlag1.Wis);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(13) != 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Wis);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(13) != 1)
                     {
-                        _artifactBias = ArtifactBias.Wisdom;
+                        _legendaryItemBias = LegendaryItemBias.Wisdom;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(7) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(7) == 1)
                     {
-                        _artifactBias = ArtifactBias.Priestly;
+                        _legendaryItemBias = LegendaryItemBias.Priestly;
                     }
                     break;
 
                 case 7:
                 case 8:
-                    _item.RandartFlags1.Set(ItemFlag1.Dex);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(13) != 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Dex);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(13) != 1)
                     {
-                        _artifactBias = ArtifactBias.Dexterity;
+                        _legendaryItemBias = LegendaryItemBias.Dexterity;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(7) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(7) == 1)
                     {
-                        _artifactBias = ArtifactBias.Rogue;
+                        _legendaryItemBias = LegendaryItemBias.Rogue;
                     }
                     break;
 
                 case 9:
                 case 10:
-                    _item.RandartFlags1.Set(ItemFlag1.Con);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(13) != 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Con);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(13) != 1)
                     {
-                        _artifactBias = ArtifactBias.Constitution;
+                        _legendaryItemBias = LegendaryItemBias.Constitution;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                     {
-                        _artifactBias = ArtifactBias.Ranger;
+                        _legendaryItemBias = LegendaryItemBias.Ranger;
                     }
                     break;
 
                 case 11:
                 case 12:
-                    _item.RandartFlags1.Set(ItemFlag1.Cha);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(13) != 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Cha);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(13) != 1)
                     {
-                        _artifactBias = ArtifactBias.Charisma;
+                        _legendaryItemBias = LegendaryItemBias.Charisma;
                     }
                     break;
 
                 case 13:
                 case 14:
-                    _item.RandartFlags1.Set(ItemFlag1.Stealth);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(3) == 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Stealth);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(3) == 1)
                     {
-                        _artifactBias = ArtifactBias.Rogue;
+                        _legendaryItemBias = LegendaryItemBias.Rogue;
                     }
                     break;
 
                 case 15:
                 case 16:
-                    _item.RandartFlags1.Set(ItemFlag1.Search);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Search);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                     {
-                        _artifactBias = ArtifactBias.Ranger;
+                        _legendaryItemBias = LegendaryItemBias.Ranger;
                     }
                     break;
 
                 case 17:
                 case 18:
-                    _item.RandartFlags1.Set(ItemFlag1.Infra);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Infra);
                     break;
 
                 case 19:
-                    _item.RandartFlags1.Set(ItemFlag1.Speed);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(11) == 1)
+                    _item.LegendaryFlags1.Set(ItemFlag1.Speed);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(11) == 1)
                     {
-                        _artifactBias = ArtifactBias.Rogue;
+                        _legendaryItemBias = LegendaryItemBias.Rogue;
                     }
                     break;
 
                 case 20:
                 case 21:
-                    _item.RandartFlags1.Set(ItemFlag1.Tunnel);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Tunnel);
                     break;
 
                 case 22:
@@ -3034,10 +3034,10 @@ namespace Cthangband
                     }
                     else
                     {
-                        _item.RandartFlags1.Set(ItemFlag1.Blows);
-                        if (_artifactBias == 0 && Program.Rng.DieRoll(11) == 1)
+                        _item.LegendaryFlags1.Set(ItemFlag1.Blows);
+                        if (_legendaryItemBias == 0 && Program.Rng.DieRoll(11) == 1)
                         {
-                            _artifactBias = ArtifactBias.Warrior;
+                            _legendaryItemBias = LegendaryItemBias.Warrior;
                         }
                     }
                     break;
@@ -3046,205 +3046,205 @@ namespace Cthangband
 
         private void ApplyRandomMiscPower()
         {
-            if (_artifactBias == ArtifactBias.Ranger)
+            if (_legendaryItemBias == LegendaryItemBias.Ranger)
             {
-                if (_item.RandartFlags2.IsClear(ItemFlag2.SustCon))
+                if (_item.LegendaryFlags2.IsClear(ItemFlag2.SustCon))
                 {
-                    _item.RandartFlags2.Set(ItemFlag2.SustCon);
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustCon);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Strength)
+            else if (_legendaryItemBias == LegendaryItemBias.Strength)
             {
-                if (_item.RandartFlags2.IsClear(ItemFlag2.SustStr))
+                if (_item.LegendaryFlags2.IsClear(ItemFlag2.SustStr))
                 {
-                    _item.RandartFlags2.Set(ItemFlag2.SustStr);
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustStr);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Wisdom)
+            else if (_legendaryItemBias == LegendaryItemBias.Wisdom)
             {
-                if (_item.RandartFlags2.IsClear(ItemFlag2.SustWis))
+                if (_item.LegendaryFlags2.IsClear(ItemFlag2.SustWis))
                 {
-                    _item.RandartFlags2.Set(ItemFlag2.SustWis);
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustWis);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Intelligence)
+            else if (_legendaryItemBias == LegendaryItemBias.Intelligence)
             {
-                if (_item.RandartFlags2.IsClear(ItemFlag2.SustInt))
+                if (_item.LegendaryFlags2.IsClear(ItemFlag2.SustInt))
                 {
-                    _item.RandartFlags2.Set(ItemFlag2.SustInt);
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustInt);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Dexterity)
+            else if (_legendaryItemBias == LegendaryItemBias.Dexterity)
             {
-                if (_item.RandartFlags2.IsClear(ItemFlag2.SustDex))
+                if (_item.LegendaryFlags2.IsClear(ItemFlag2.SustDex))
                 {
-                    _item.RandartFlags2.Set(ItemFlag2.SustDex);
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustDex);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Constitution)
+            else if (_legendaryItemBias == LegendaryItemBias.Constitution)
             {
-                if (_item.RandartFlags2.IsClear(ItemFlag2.SustCon))
+                if (_item.LegendaryFlags2.IsClear(ItemFlag2.SustCon))
                 {
-                    _item.RandartFlags2.Set(ItemFlag2.SustCon);
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustCon);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Charisma)
+            else if (_legendaryItemBias == LegendaryItemBias.Charisma)
             {
-                if (_item.RandartFlags2.IsClear(ItemFlag2.SustCha))
+                if (_item.LegendaryFlags2.IsClear(ItemFlag2.SustCha))
                 {
-                    _item.RandartFlags2.Set(ItemFlag2.SustCha);
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustCha);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Chaos)
+            else if (_legendaryItemBias == LegendaryItemBias.Chaos)
             {
-                if (_item.RandartFlags3.IsClear(ItemFlag3.Teleport))
+                if (_item.LegendaryFlags3.IsClear(ItemFlag3.Teleport))
                 {
-                    _item.RandartFlags3.Set(ItemFlag3.Teleport);
+                    _item.LegendaryFlags3.Set(ItemFlag3.Teleport);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Fire)
+            else if (_legendaryItemBias == LegendaryItemBias.Fire)
             {
-                if (_item.RandartFlags3.IsClear(ItemFlag3.Lightsource))
+                if (_item.LegendaryFlags3.IsClear(ItemFlag3.Lightsource))
                 {
-                    _item.RandartFlags3.Set(ItemFlag3.Lightsource);
+                    _item.LegendaryFlags3.Set(ItemFlag3.Lightsource);
                 }
             }
             switch (Program.Rng.DieRoll(31))
             {
                 case 1:
-                    _item.RandartFlags2.Set(ItemFlag2.SustStr);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustStr);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Strength;
+                        _legendaryItemBias = LegendaryItemBias.Strength;
                     }
                     break;
 
                 case 2:
-                    _item.RandartFlags2.Set(ItemFlag2.SustInt);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustInt);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Intelligence;
+                        _legendaryItemBias = LegendaryItemBias.Intelligence;
                     }
                     break;
 
                 case 3:
-                    _item.RandartFlags2.Set(ItemFlag2.SustWis);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustWis);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Wisdom;
+                        _legendaryItemBias = LegendaryItemBias.Wisdom;
                     }
                     break;
 
                 case 4:
-                    _item.RandartFlags2.Set(ItemFlag2.SustDex);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustDex);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Dexterity;
+                        _legendaryItemBias = LegendaryItemBias.Dexterity;
                     }
                     break;
 
                 case 5:
-                    _item.RandartFlags2.Set(ItemFlag2.SustCon);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustCon);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Constitution;
+                        _legendaryItemBias = LegendaryItemBias.Constitution;
                     }
                     break;
 
                 case 6:
-                    _item.RandartFlags2.Set(ItemFlag2.SustCha);
-                    if (_artifactBias == 0)
+                    _item.LegendaryFlags2.Set(ItemFlag2.SustCha);
+                    if (_legendaryItemBias == 0)
                     {
-                        _artifactBias = ArtifactBias.Charisma;
+                        _legendaryItemBias = LegendaryItemBias.Charisma;
                     }
                     break;
 
                 case 7:
                 case 8:
                 case 14:
-                    _item.RandartFlags2.Set(ItemFlag2.FreeAct);
+                    _item.LegendaryFlags2.Set(ItemFlag2.FreeAct);
                     break;
 
                 case 9:
-                    _item.RandartFlags2.Set(ItemFlag2.HoldLife);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(5) == 1)
+                    _item.LegendaryFlags2.Set(ItemFlag2.HoldLife);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(5) == 1)
                     {
-                        _artifactBias = ArtifactBias.Priestly;
+                        _legendaryItemBias = LegendaryItemBias.Priestly;
                     }
-                    else if (_artifactBias == 0 && Program.Rng.DieRoll(6) == 1)
+                    else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(6) == 1)
                     {
-                        _artifactBias = ArtifactBias.Necromantic;
+                        _legendaryItemBias = LegendaryItemBias.Necromantic;
                     }
                     break;
 
                 case 10:
                 case 11:
-                    _item.RandartFlags3.Set(ItemFlag3.Lightsource);
+                    _item.LegendaryFlags3.Set(ItemFlag3.Lightsource);
                     break;
 
                 case 12:
                 case 13:
-                    _item.RandartFlags3.Set(ItemFlag3.Feather);
+                    _item.LegendaryFlags3.Set(ItemFlag3.Feather);
                     break;
 
                 case 15:
                 case 16:
                 case 17:
-                    _item.RandartFlags3.Set(ItemFlag3.SeeInvis);
+                    _item.LegendaryFlags3.Set(ItemFlag3.SeeInvis);
                     break;
 
                 case 18:
-                    _item.RandartFlags3.Set(ItemFlag3.Telepathy);
-                    if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                    _item.LegendaryFlags3.Set(ItemFlag3.Telepathy);
+                    if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                     {
-                        _artifactBias = ArtifactBias.Mage;
+                        _legendaryItemBias = LegendaryItemBias.Mage;
                     }
                     break;
 
                 case 19:
                 case 20:
-                    _item.RandartFlags3.Set(ItemFlag3.SlowDigest);
+                    _item.LegendaryFlags3.Set(ItemFlag3.SlowDigest);
                     break;
 
                 case 21:
                 case 22:
-                    _item.RandartFlags3.Set(ItemFlag3.Regen);
+                    _item.LegendaryFlags3.Set(ItemFlag3.Regen);
                     break;
 
                 case 23:
-                    _item.RandartFlags3.Set(ItemFlag3.Teleport);
+                    _item.LegendaryFlags3.Set(ItemFlag3.Teleport);
                     break;
 
                 case 24:
@@ -3256,7 +3256,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        _item.RandartFlags3.Set(ItemFlag3.ShowMods);
+                        _item.LegendaryFlags3.Set(ItemFlag3.ShowMods);
                         _item.BonusArmourClass = 4 + Program.Rng.DieRoll(11);
                     }
                     break;
@@ -3264,158 +3264,158 @@ namespace Cthangband
                 case 27:
                 case 28:
                 case 29:
-                    _item.RandartFlags3.Set(ItemFlag3.ShowMods);
+                    _item.LegendaryFlags3.Set(ItemFlag3.ShowMods);
                     _item.BonusToHit += 4 + Program.Rng.DieRoll(11);
                     _item.BonusDamage += 4 + Program.Rng.DieRoll(11);
                     break;
 
                 case 30:
-                    _item.RandartFlags3.Set(ItemFlag3.NoMagic);
+                    _item.LegendaryFlags3.Set(ItemFlag3.NoMagic);
                     break;
 
                 case 31:
-                    _item.RandartFlags3.Set(ItemFlag3.NoTele);
+                    _item.LegendaryFlags3.Set(ItemFlag3.NoTele);
                     break;
             }
         }
 
         private void ApplyRandomSlaying()
         {
-            if (_artifactBias == ArtifactBias.Chaos && _item.Category != ItemCategory.Bow)
+            if (_legendaryItemBias == LegendaryItemBias.Chaos && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Chaotic))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Chaotic))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Chaotic);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Chaotic);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Priestly &&
+            else if (_legendaryItemBias == LegendaryItemBias.Priestly &&
                      (_item.Category == ItemCategory.Sword ||
                       _item.Category == ItemCategory.Polearm) &&
-                     _item.RandartFlags3.IsClear(ItemFlag3.Blessed))
+                     _item.LegendaryFlags3.IsClear(ItemFlag3.Blessed))
             {
-                _item.RandartFlags3.Set(ItemFlag3.Blessed);
+                _item.LegendaryFlags3.Set(ItemFlag3.Blessed);
             }
-            else if (_artifactBias == ArtifactBias.Necromantic && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Necromantic && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.Vampiric))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.Vampiric))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.Vampiric);
+                    _item.LegendaryFlags1.Set(ItemFlag1.Vampiric);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.BrandPois) && Program.Rng.DieRoll(2) == 1)
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.BrandPois) && Program.Rng.DieRoll(2) == 1)
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.BrandPois);
-                    if (Program.Rng.DieRoll(2) == 1)
-                    {
-                        return;
-                    }
-                }
-            }
-            else if (_artifactBias == ArtifactBias.Ranger && _item.Category != ItemCategory.Bow)
-            {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.SlayAnimal))
-                {
-                    _item.RandartFlags1.Set(ItemFlag1.SlayAnimal);
+                    _item.LegendaryFlags1.Set(ItemFlag1.BrandPois);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Rogue && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Ranger && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.BrandPois))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.SlayAnimal))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.BrandPois);
+                    _item.LegendaryFlags1.Set(ItemFlag1.SlayAnimal);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Poison && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Rogue && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.BrandPois))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.BrandPois))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.BrandPois);
+                    _item.LegendaryFlags1.Set(ItemFlag1.BrandPois);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Fire && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Poison && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.BrandFire))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.BrandPois))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.BrandFire);
+                    _item.LegendaryFlags1.Set(ItemFlag1.BrandPois);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Cold && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Fire && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.BrandCold))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.BrandFire))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.BrandCold);
+                    _item.LegendaryFlags1.Set(ItemFlag1.BrandFire);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Electricity && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Cold && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.BrandElec))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.BrandCold))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.BrandElec);
+                    _item.LegendaryFlags1.Set(ItemFlag1.BrandCold);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Acid && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Electricity && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.BrandAcid))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.BrandElec))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.BrandAcid);
+                    _item.LegendaryFlags1.Set(ItemFlag1.BrandElec);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
             }
-            else if (_artifactBias == ArtifactBias.Law && _item.Category != ItemCategory.Bow)
+            else if (_legendaryItemBias == LegendaryItemBias.Acid && _item.Category != ItemCategory.Bow)
             {
-                if (_item.RandartFlags1.IsClear(ItemFlag1.SlayEvil))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.BrandAcid))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.SlayEvil);
+                    _item.LegendaryFlags1.Set(ItemFlag1.BrandAcid);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.SlayUndead))
+            }
+            else if (_legendaryItemBias == LegendaryItemBias.Law && _item.Category != ItemCategory.Bow)
+            {
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.SlayEvil))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.SlayUndead);
+                    _item.LegendaryFlags1.Set(ItemFlag1.SlayEvil);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
                     }
                 }
-                if (_item.RandartFlags1.IsClear(ItemFlag1.SlayDemon))
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.SlayUndead))
                 {
-                    _item.RandartFlags1.Set(ItemFlag1.SlayDemon);
+                    _item.LegendaryFlags1.Set(ItemFlag1.SlayUndead);
+                    if (Program.Rng.DieRoll(2) == 1)
+                    {
+                        return;
+                    }
+                }
+                if (_item.LegendaryFlags1.IsClear(ItemFlag1.SlayDemon))
+                {
+                    _item.LegendaryFlags1.Set(ItemFlag1.SlayDemon);
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         return;
@@ -3428,72 +3428,72 @@ namespace Cthangband
                 {
                     case 1:
                     case 2:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayAnimal);
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayAnimal);
                         break;
 
                     case 3:
                     case 4:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayEvil);
-                        if (_artifactBias == 0 && Program.Rng.DieRoll(2) == 1)
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayEvil);
+                        if (_legendaryItemBias == 0 && Program.Rng.DieRoll(2) == 1)
                         {
-                            _artifactBias = ArtifactBias.Law;
+                            _legendaryItemBias = LegendaryItemBias.Law;
                         }
-                        else if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                        else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                         {
-                            _artifactBias = ArtifactBias.Priestly;
+                            _legendaryItemBias = LegendaryItemBias.Priestly;
                         }
                         break;
 
                     case 5:
                     case 6:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayUndead);
-                        if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayUndead);
+                        if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                         {
-                            _artifactBias = ArtifactBias.Priestly;
+                            _legendaryItemBias = LegendaryItemBias.Priestly;
                         }
                         break;
 
                     case 7:
                     case 8:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayDemon);
-                        if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayDemon);
+                        if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                         {
-                            _artifactBias = ArtifactBias.Priestly;
+                            _legendaryItemBias = LegendaryItemBias.Priestly;
                         }
                         break;
 
                     case 9:
                     case 10:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayOrc);
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayOrc);
                         break;
 
                     case 11:
                     case 12:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayTroll);
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayTroll);
                         break;
 
                     case 13:
                     case 14:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayGiant);
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayGiant);
                         break;
 
                     case 15:
                     case 16:
-                        _item.RandartFlags1.Set(ItemFlag1.SlayDragon);
+                        _item.LegendaryFlags1.Set(ItemFlag1.SlayDragon);
                         break;
 
                     case 17:
-                        _item.RandartFlags1.Set(ItemFlag1.KillDragon);
+                        _item.LegendaryFlags1.Set(ItemFlag1.KillDragon);
                         break;
 
                     case 18:
                     case 19:
                         if (_item.Category == ItemCategory.Sword)
                         {
-                            _item.RandartFlags1.Set(ItemFlag1.Vorpal);
-                            if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                            _item.LegendaryFlags1.Set(ItemFlag1.Vorpal);
+                            if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                             {
-                                _artifactBias = ArtifactBias.Warrior;
+                                _legendaryItemBias = LegendaryItemBias.Warrior;
                             }
                         }
                         else
@@ -3503,76 +3503,76 @@ namespace Cthangband
                         break;
 
                     case 20:
-                        _item.RandartFlags1.Set(ItemFlag1.Impact);
+                        _item.LegendaryFlags1.Set(ItemFlag1.Impact);
                         break;
 
                     case 21:
                     case 22:
-                        _item.RandartFlags1.Set(ItemFlag1.BrandFire);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags1.Set(ItemFlag1.BrandFire);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Fire;
+                            _legendaryItemBias = LegendaryItemBias.Fire;
                         }
                         break;
 
                     case 23:
                     case 24:
-                        _item.RandartFlags1.Set(ItemFlag1.BrandCold);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags1.Set(ItemFlag1.BrandCold);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Cold;
+                            _legendaryItemBias = LegendaryItemBias.Cold;
                         }
                         break;
 
                     case 25:
                     case 26:
-                        _item.RandartFlags1.Set(ItemFlag1.BrandElec);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags1.Set(ItemFlag1.BrandElec);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Electricity;
+                            _legendaryItemBias = LegendaryItemBias.Electricity;
                         }
                         break;
 
                     case 27:
                     case 28:
-                        _item.RandartFlags1.Set(ItemFlag1.BrandAcid);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags1.Set(ItemFlag1.BrandAcid);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Acid;
+                            _legendaryItemBias = LegendaryItemBias.Acid;
                         }
                         break;
 
                     case 29:
                     case 30:
-                        _item.RandartFlags1.Set(ItemFlag1.BrandPois);
-                        if (_artifactBias == 0 && Program.Rng.DieRoll(3) != 1)
+                        _item.LegendaryFlags1.Set(ItemFlag1.BrandPois);
+                        if (_legendaryItemBias == 0 && Program.Rng.DieRoll(3) != 1)
                         {
-                            _artifactBias = ArtifactBias.Poison;
+                            _legendaryItemBias = LegendaryItemBias.Poison;
                         }
-                        else if (_artifactBias == 0 && Program.Rng.DieRoll(6) == 1)
+                        else if (_legendaryItemBias == 0 && Program.Rng.DieRoll(6) == 1)
                         {
-                            _artifactBias = ArtifactBias.Necromantic;
+                            _legendaryItemBias = LegendaryItemBias.Necromantic;
                         }
-                        else if (_artifactBias == 0)
+                        else if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Rogue;
+                            _legendaryItemBias = LegendaryItemBias.Rogue;
                         }
                         break;
 
                     case 31:
                     case 32:
-                        _item.RandartFlags1.Set(ItemFlag1.Vampiric);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags1.Set(ItemFlag1.Vampiric);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Necromantic;
+                            _legendaryItemBias = LegendaryItemBias.Necromantic;
                         }
                         break;
 
                     default:
-                        _item.RandartFlags1.Set(ItemFlag1.Chaotic);
-                        if (_artifactBias == 0)
+                        _item.LegendaryFlags1.Set(ItemFlag1.Chaotic);
+                        if (_legendaryItemBias == 0)
                         {
-                            _artifactBias = ArtifactBias.Chaos;
+                            _legendaryItemBias = LegendaryItemBias.Chaos;
                         }
                         break;
                 }
@@ -3584,18 +3584,18 @@ namespace Cthangband
                     case 1:
                     case 2:
                     case 3:
-                        _item.RandartFlags3.Set(ItemFlag3.XtraMight);
-                        if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                        _item.LegendaryFlags3.Set(ItemFlag3.XtraMight);
+                        if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                         {
-                            _artifactBias = ArtifactBias.Ranger;
+                            _legendaryItemBias = LegendaryItemBias.Ranger;
                         }
                         break;
 
                     default:
-                        _item.RandartFlags3.Set(ItemFlag3.XtraShots);
-                        if (_artifactBias == 0 && Program.Rng.DieRoll(9) == 1)
+                        _item.LegendaryFlags3.Set(ItemFlag3.XtraShots);
+                        if (_legendaryItemBias == 0 && Program.Rng.DieRoll(9) == 1)
                         {
-                            _artifactBias = ArtifactBias.Ranger;
+                            _legendaryItemBias = LegendaryItemBias.Ranger;
                         }
                         break;
                 }
@@ -3854,7 +3854,7 @@ namespace Cthangband
             }
         }
 
-        private void CurseRandart()
+        private void CurseLegendary()
         {
             if (_item.TypeSpecificValue != 0)
             {
@@ -3872,34 +3872,34 @@ namespace Cthangband
             {
                 _item.BonusDamage = 0 - (_item.BonusDamage + Program.Rng.DieRoll(4));
             }
-            _item.RandartFlags3.Set(ItemFlag3.HeavyCurse | ItemFlag3.Cursed);
+            _item.LegendaryFlags3.Set(ItemFlag3.HeavyCurse | ItemFlag3.Cursed);
             if (Program.Rng.DieRoll(4) == 1)
             {
-                _item.RandartFlags3.Set(ItemFlag3.PermaCurse);
+                _item.LegendaryFlags3.Set(ItemFlag3.PermaCurse);
             }
             if (Program.Rng.DieRoll(3) == 1)
             {
-                _item.RandartFlags3.Set(ItemFlag3.DreadCurse);
+                _item.LegendaryFlags3.Set(ItemFlag3.DreadCurse);
             }
             if (Program.Rng.DieRoll(2) == 1)
             {
-                _item.RandartFlags3.Set(ItemFlag3.Aggravate);
+                _item.LegendaryFlags3.Set(ItemFlag3.Aggravate);
             }
             if (Program.Rng.DieRoll(3) == 1)
             {
-                _item.RandartFlags3.Set(ItemFlag3.DrainExp);
+                _item.LegendaryFlags3.Set(ItemFlag3.DrainExp);
             }
             if (Program.Rng.DieRoll(2) == 1)
             {
-                _item.RandartFlags3.Set(ItemFlag3.Teleport);
+                _item.LegendaryFlags3.Set(ItemFlag3.Teleport);
             }
             else if (Program.Rng.DieRoll(3) == 1)
             {
-                _item.RandartFlags3.Set(ItemFlag3.NoTele);
+                _item.LegendaryFlags3.Set(ItemFlag3.NoTele);
             }
             if (SaveGame.Instance.Player.ProfessionIndex != CharacterClass.Warrior && Program.Rng.DieRoll(3) == 1)
             {
-                _item.RandartFlags3.Set(ItemFlag3.NoMagic);
+                _item.LegendaryFlags3.Set(ItemFlag3.NoMagic);
             }
             _item.IdentifyFlags.Set(Constants.IdentCursed);
         }
@@ -3965,241 +3965,241 @@ namespace Cthangband
         {
             int type = 0;
             int chance = 0;
-            if (_artifactBias != 0)
+            if (_legendaryItemBias != 0)
             {
-                if (_artifactBias == ArtifactBias.Electricity)
+                if (_legendaryItemBias == LegendaryItemBias.Electricity)
                 {
                     if (Program.Rng.DieRoll(3) != 1)
                     {
-                        type = RandomArtifactPower.ActBoElec1;
+                        type = LegendaryPower.ActBoElec1;
                     }
                     else if (Program.Rng.DieRoll(5) != 1)
                     {
-                        type = RandomArtifactPower.ActBaElec2;
+                        type = LegendaryPower.ActBaElec2;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActBaElec3;
+                        type = LegendaryPower.ActBaElec3;
                     }
                     chance = 101;
                 }
-                else if (_artifactBias == ArtifactBias.Poison)
+                else if (_legendaryItemBias == LegendaryItemBias.Poison)
                 {
-                    type = RandomArtifactPower.ActBaPois1;
+                    type = LegendaryPower.ActBaPois1;
                     chance = 101;
                 }
-                else if (_artifactBias == ArtifactBias.Fire)
+                else if (_legendaryItemBias == LegendaryItemBias.Fire)
                 {
                     if (Program.Rng.DieRoll(3) != 1)
                     {
-                        type = RandomArtifactPower.ActBoFire1;
+                        type = LegendaryPower.ActBoFire1;
                     }
                     else if (Program.Rng.DieRoll(5) != 1)
                     {
-                        type = RandomArtifactPower.ActBaFire1;
+                        type = LegendaryPower.ActBaFire1;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActBaFire2;
+                        type = LegendaryPower.ActBaFire2;
                     }
                     chance = 101;
                 }
-                else if (_artifactBias == ArtifactBias.Cold)
+                else if (_legendaryItemBias == LegendaryItemBias.Cold)
                 {
                     chance = 101;
                     if (Program.Rng.DieRoll(3) != 1)
                     {
-                        type = RandomArtifactPower.ActBoCold1;
+                        type = LegendaryPower.ActBoCold1;
                     }
                     else if (Program.Rng.DieRoll(3) != 1)
                     {
-                        type = RandomArtifactPower.ActBaCold1;
+                        type = LegendaryPower.ActBaCold1;
                     }
                     else if (Program.Rng.DieRoll(3) != 1)
                     {
-                        type = RandomArtifactPower.ActBaCold2;
+                        type = LegendaryPower.ActBaCold2;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActBaCold3;
+                        type = LegendaryPower.ActBaCold3;
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Chaos)
+                else if (_legendaryItemBias == LegendaryItemBias.Chaos)
                 {
                     chance = 50;
                     type = Program.Rng.DieRoll(6) == 1
-                        ? RandomArtifactPower.ActSummonDemon
-                        : RandomArtifactPower.ActCallChaos;
+                        ? LegendaryPower.ActSummonDemon
+                        : LegendaryPower.ActCallChaos;
                 }
-                else if (_artifactBias == ArtifactBias.Priestly)
+                else if (_legendaryItemBias == LegendaryItemBias.Priestly)
                 {
                     chance = 101;
                     if (Program.Rng.DieRoll(13) == 1)
                     {
-                        type = RandomArtifactPower.ActCharmUndead;
+                        type = LegendaryPower.ActCharmUndead;
                     }
                     else if (Program.Rng.DieRoll(12) == 1)
                     {
-                        type = RandomArtifactPower.ActBanishEvil;
+                        type = LegendaryPower.ActBanishEvil;
                     }
                     else if (Program.Rng.DieRoll(11) == 1)
                     {
-                        type = RandomArtifactPower.ActDispEvil;
+                        type = LegendaryPower.ActDispEvil;
                     }
                     else if (Program.Rng.DieRoll(10) == 1)
                     {
-                        type = RandomArtifactPower.ActProtEvil;
+                        type = LegendaryPower.ActProtEvil;
                     }
                     else if (Program.Rng.DieRoll(9) == 1)
                     {
-                        type = RandomArtifactPower.ActCure1000;
+                        type = LegendaryPower.ActCure1000;
                     }
                     else if (Program.Rng.DieRoll(8) == 1)
                     {
-                        type = RandomArtifactPower.ActCure700;
+                        type = LegendaryPower.ActCure700;
                     }
                     else if (Program.Rng.DieRoll(7) == 1)
                     {
-                        type = RandomArtifactPower.ActRestAll;
+                        type = LegendaryPower.ActRestAll;
                     }
                     else if (Program.Rng.DieRoll(6) == 1)
                     {
-                        type = RandomArtifactPower.ActRestLife;
+                        type = LegendaryPower.ActRestLife;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActCureMw;
+                        type = LegendaryPower.ActCureMw;
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Necromantic)
+                else if (_legendaryItemBias == LegendaryItemBias.Necromantic)
                 {
                     chance = 101;
                     if (Program.Rng.DieRoll(66) == 1)
                     {
-                        type = RandomArtifactPower.ActWraith;
+                        type = LegendaryPower.ActWraith;
                     }
                     else if (Program.Rng.DieRoll(13) == 1)
                     {
-                        type = RandomArtifactPower.ActDispGood;
+                        type = LegendaryPower.ActDispGood;
                     }
                     else if (Program.Rng.DieRoll(9) == 1)
                     {
-                        type = RandomArtifactPower.ActMassGeno;
+                        type = LegendaryPower.ActMassGeno;
                     }
                     else if (Program.Rng.DieRoll(8) == 1)
                     {
-                        type = RandomArtifactPower.ActCarnage;
+                        type = LegendaryPower.ActCarnage;
                     }
                     else if (Program.Rng.DieRoll(13) == 1)
                     {
-                        type = RandomArtifactPower.ActSummonUndead;
+                        type = LegendaryPower.ActSummonUndead;
                     }
                     else if (Program.Rng.DieRoll(9) == 1)
                     {
-                        type = RandomArtifactPower.ActVampire2;
+                        type = LegendaryPower.ActVampire2;
                     }
                     else if (Program.Rng.DieRoll(6) == 1)
                     {
-                        type = RandomArtifactPower.ActCharmUndead;
+                        type = LegendaryPower.ActCharmUndead;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActVampire1;
+                        type = LegendaryPower.ActVampire1;
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Law)
+                else if (_legendaryItemBias == LegendaryItemBias.Law)
                 {
                     chance = 101;
                     if (Program.Rng.DieRoll(8) == 1)
                     {
-                        type = RandomArtifactPower.ActBanishEvil;
+                        type = LegendaryPower.ActBanishEvil;
                     }
                     else if (Program.Rng.DieRoll(4) == 1)
                     {
-                        type = RandomArtifactPower.ActDispEvil;
+                        type = LegendaryPower.ActDispEvil;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActProtEvil;
+                        type = LegendaryPower.ActProtEvil;
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Rogue)
+                else if (_legendaryItemBias == LegendaryItemBias.Rogue)
                 {
                     chance = 101;
                     if (Program.Rng.DieRoll(50) == 1)
                     {
-                        type = RandomArtifactPower.ActSpeed;
+                        type = LegendaryPower.ActSpeed;
                     }
                     else if (Program.Rng.DieRoll(4) == 1)
                     {
-                        type = RandomArtifactPower.ActSleep;
+                        type = LegendaryPower.ActSleep;
                     }
                     else if (Program.Rng.DieRoll(3) == 1)
                     {
-                        type = RandomArtifactPower.ActDetectAll;
+                        type = LegendaryPower.ActDetectAll;
                     }
                     else if (Program.Rng.DieRoll(8) == 1)
                     {
-                        type = RandomArtifactPower.ActIdFull;
+                        type = LegendaryPower.ActIdFull;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActIdPlain;
+                        type = LegendaryPower.ActIdPlain;
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Mage)
+                else if (_legendaryItemBias == LegendaryItemBias.Mage)
                 {
                     chance = 66;
                     if (Program.Rng.DieRoll(20) == 1)
                     {
-                        type = RandomArtifactPower.ActSummonElemental;
+                        type = LegendaryPower.ActSummonElemental;
                     }
                     else if (Program.Rng.DieRoll(10) == 1)
                     {
-                        type = RandomArtifactPower.ActSummonPhantom;
+                        type = LegendaryPower.ActSummonPhantom;
                     }
                     else if (Program.Rng.DieRoll(5) == 1)
                     {
-                        type = RandomArtifactPower.ActRuneExplo;
+                        type = LegendaryPower.ActRuneExplo;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActEsp;
+                        type = LegendaryPower.ActEsp;
                     }
                 }
-                else if (_artifactBias == ArtifactBias.Warrior)
+                else if (_legendaryItemBias == LegendaryItemBias.Warrior)
                 {
                     chance = 80;
                     type = Program.Rng.DieRoll(100) == 1
-                        ? RandomArtifactPower.ActInvuln
-                        : RandomArtifactPower.ActBerserk;
+                        ? LegendaryPower.ActInvuln
+                        : LegendaryPower.ActBerserk;
                 }
-                else if (_artifactBias == ArtifactBias.Ranger)
+                else if (_legendaryItemBias == LegendaryItemBias.Ranger)
                 {
                     chance = 101;
                     if (Program.Rng.DieRoll(20) == 1)
                     {
-                        type = RandomArtifactPower.ActCharmAnimals;
+                        type = LegendaryPower.ActCharmAnimals;
                     }
                     else if (Program.Rng.DieRoll(7) == 1)
                     {
-                        type = RandomArtifactPower.ActSummonAnimal;
+                        type = LegendaryPower.ActSummonAnimal;
                     }
                     else if (Program.Rng.DieRoll(6) == 1)
                     {
-                        type = RandomArtifactPower.ActCharmAnimal;
+                        type = LegendaryPower.ActCharmAnimal;
                     }
                     else if (Program.Rng.DieRoll(4) == 1)
                     {
-                        type = RandomArtifactPower.ActResistAll;
+                        type = LegendaryPower.ActResistAll;
                     }
                     else if (Program.Rng.DieRoll(3) == 1)
                     {
-                        type = RandomArtifactPower.ActSatiate;
+                        type = LegendaryPower.ActSatiate;
                     }
                     else
                     {
-                        type = RandomArtifactPower.ActCurePoison;
+                        type = LegendaryPower.ActCurePoison;
                     }
                 }
             }
@@ -4208,105 +4208,105 @@ namespace Cthangband
                 type = Program.Rng.DieRoll(255);
                 switch (type)
                 {
-                    case RandomArtifactPower.ActSunlight:
-                    case RandomArtifactPower.ActBoMiss1:
-                    case RandomArtifactPower.ActBaPois1:
-                    case RandomArtifactPower.ActBoElec1:
-                    case RandomArtifactPower.ActBoAcid1:
-                    case RandomArtifactPower.ActBoCold1:
-                    case RandomArtifactPower.ActBoFire1:
-                    case RandomArtifactPower.ActConfuse:
-                    case RandomArtifactPower.ActSleep:
-                    case RandomArtifactPower.ActQuake:
-                    case RandomArtifactPower.ActCureLw:
-                    case RandomArtifactPower.ActCureMw:
-                    case RandomArtifactPower.ActCurePoison:
-                    case RandomArtifactPower.ActBerserk:
-                    case RandomArtifactPower.ActLight:
-                    case RandomArtifactPower.ActMapLight:
-                    case RandomArtifactPower.ActDestDoor:
-                    case RandomArtifactPower.ActStoneMud:
-                    case RandomArtifactPower.ActTeleport:
+                    case LegendaryPower.ActSunlight:
+                    case LegendaryPower.ActBoMiss1:
+                    case LegendaryPower.ActBaPois1:
+                    case LegendaryPower.ActBoElec1:
+                    case LegendaryPower.ActBoAcid1:
+                    case LegendaryPower.ActBoCold1:
+                    case LegendaryPower.ActBoFire1:
+                    case LegendaryPower.ActConfuse:
+                    case LegendaryPower.ActSleep:
+                    case LegendaryPower.ActQuake:
+                    case LegendaryPower.ActCureLw:
+                    case LegendaryPower.ActCureMw:
+                    case LegendaryPower.ActCurePoison:
+                    case LegendaryPower.ActBerserk:
+                    case LegendaryPower.ActLight:
+                    case LegendaryPower.ActMapLight:
+                    case LegendaryPower.ActDestDoor:
+                    case LegendaryPower.ActStoneMud:
+                    case LegendaryPower.ActTeleport:
                         chance = 101;
                         break;
 
-                    case RandomArtifactPower.ActBaCold1:
-                    case RandomArtifactPower.ActBaFire1:
-                    case RandomArtifactPower.ActDrain1:
-                    case RandomArtifactPower.ActTeleAway:
-                    case RandomArtifactPower.ActEsp:
-                    case RandomArtifactPower.ActResistAll:
-                    case RandomArtifactPower.ActDetectAll:
-                    case RandomArtifactPower.ActRecall:
-                    case RandomArtifactPower.ActSatiate:
-                    case RandomArtifactPower.ActRecharge:
+                    case LegendaryPower.ActBaCold1:
+                    case LegendaryPower.ActBaFire1:
+                    case LegendaryPower.ActDrain1:
+                    case LegendaryPower.ActTeleAway:
+                    case LegendaryPower.ActEsp:
+                    case LegendaryPower.ActResistAll:
+                    case LegendaryPower.ActDetectAll:
+                    case LegendaryPower.ActRecall:
+                    case LegendaryPower.ActSatiate:
+                    case LegendaryPower.ActRecharge:
                         chance = 85;
                         break;
 
-                    case RandomArtifactPower.ActTerror:
-                    case RandomArtifactPower.ActProtEvil:
-                    case RandomArtifactPower.ActIdPlain:
+                    case LegendaryPower.ActTerror:
+                    case LegendaryPower.ActProtEvil:
+                    case LegendaryPower.ActIdPlain:
                         chance = 75;
                         break;
 
-                    case RandomArtifactPower.ActDrain2:
-                    case RandomArtifactPower.ActVampire1:
-                    case RandomArtifactPower.ActBoMiss2:
-                    case RandomArtifactPower.ActBaFire2:
-                    case RandomArtifactPower.ActRestLife:
+                    case LegendaryPower.ActDrain2:
+                    case LegendaryPower.ActVampire1:
+                    case LegendaryPower.ActBoMiss2:
+                    case LegendaryPower.ActBaFire2:
+                    case LegendaryPower.ActRestLife:
                         chance = 66;
                         break;
 
-                    case RandomArtifactPower.ActBaCold3:
-                    case RandomArtifactPower.ActBaElec3:
-                    case RandomArtifactPower.ActWhirlwind:
-                    case RandomArtifactPower.ActVampire2:
-                    case RandomArtifactPower.ActCharmAnimal:
+                    case LegendaryPower.ActBaCold3:
+                    case LegendaryPower.ActBaElec3:
+                    case LegendaryPower.ActWhirlwind:
+                    case LegendaryPower.ActVampire2:
+                    case LegendaryPower.ActCharmAnimal:
                         chance = 50;
                         break;
 
-                    case RandomArtifactPower.ActSummonAnimal:
+                    case LegendaryPower.ActSummonAnimal:
                         chance = 40;
                         break;
 
-                    case RandomArtifactPower.ActDispEvil:
-                    case RandomArtifactPower.ActBaMiss3:
-                    case RandomArtifactPower.ActDispGood:
-                    case RandomArtifactPower.ActBanishEvil:
-                    case RandomArtifactPower.ActCarnage:
-                    case RandomArtifactPower.ActMassGeno:
-                    case RandomArtifactPower.ActCharmUndead:
-                    case RandomArtifactPower.ActCharmOther:
-                    case RandomArtifactPower.ActSummonPhantom:
-                    case RandomArtifactPower.ActRestAll:
-                    case RandomArtifactPower.ActRuneExplo:
+                    case LegendaryPower.ActDispEvil:
+                    case LegendaryPower.ActBaMiss3:
+                    case LegendaryPower.ActDispGood:
+                    case LegendaryPower.ActBanishEvil:
+                    case LegendaryPower.ActCarnage:
+                    case LegendaryPower.ActMassGeno:
+                    case LegendaryPower.ActCharmUndead:
+                    case LegendaryPower.ActCharmOther:
+                    case LegendaryPower.ActSummonPhantom:
+                    case LegendaryPower.ActRestAll:
+                    case LegendaryPower.ActRuneExplo:
                         chance = 33;
                         break;
 
-                    case RandomArtifactPower.ActCallChaos:
-                    case RandomArtifactPower.ActShard:
-                    case RandomArtifactPower.ActCharmAnimals:
-                    case RandomArtifactPower.ActCharmOthers:
-                    case RandomArtifactPower.ActSummonElemental:
-                    case RandomArtifactPower.ActCure700:
-                    case RandomArtifactPower.ActSpeed:
-                    case RandomArtifactPower.ActIdFull:
-                    case RandomArtifactPower.ActRuneProt:
+                    case LegendaryPower.ActCallChaos:
+                    case LegendaryPower.ActShard:
+                    case LegendaryPower.ActCharmAnimals:
+                    case LegendaryPower.ActCharmOthers:
+                    case LegendaryPower.ActSummonElemental:
+                    case LegendaryPower.ActCure700:
+                    case LegendaryPower.ActSpeed:
+                    case LegendaryPower.ActIdFull:
+                    case LegendaryPower.ActRuneProt:
                         chance = 25;
                         break;
 
-                    case RandomArtifactPower.ActCure1000:
-                    case RandomArtifactPower.ActXtraSpeed:
-                    case RandomArtifactPower.ActDetectXtra:
-                    case RandomArtifactPower.ActDimDoor:
+                    case LegendaryPower.ActCure1000:
+                    case LegendaryPower.ActXtraSpeed:
+                    case LegendaryPower.ActDetectXtra:
+                    case LegendaryPower.ActDimDoor:
                         chance = 10;
                         break;
 
-                    case RandomArtifactPower.ActSummonUndead:
-                    case RandomArtifactPower.ActSummonDemon:
-                    case RandomArtifactPower.ActWraith:
-                    case RandomArtifactPower.ActInvuln:
-                    case RandomArtifactPower.ActAlchemy:
+                    case LegendaryPower.ActSummonUndead:
+                    case LegendaryPower.ActSummonDemon:
+                    case LegendaryPower.ActWraith:
+                    case LegendaryPower.ActInvuln:
+                    case LegendaryPower.ActAlchemy:
                         chance = 5;
                         break;
 
@@ -4316,15 +4316,15 @@ namespace Cthangband
                 }
             }
             _item.BonusPowerSubType = type;
-            _item.RandartFlags3.Set(ItemFlag3.Activate);
+            _item.LegendaryFlags3.Set(ItemFlag3.Activate);
             _item.RechargeTimeLeft = 0;
         }
 
-        private bool MakeFixedArtifact()
+        private bool MakeArtifact()
         {
-            foreach (System.Collections.Generic.KeyValuePair<FixedArtifactId, FixedArtifact> pair in Profile.Instance.FixedArtifacts)
+            foreach (System.Collections.Generic.KeyValuePair<ArtifactId, Artifact> pair in Profile.Instance.Artifacts)
             {
-                FixedArtifact aPtr = pair.Value;
+                Artifact aPtr = pair.Value;
                 if (!aPtr.HasOwnType)
                 {
                     continue;
@@ -4355,7 +4355,7 @@ namespace Cthangband
                     }
                 }
                 _item.AssignItemType(kIdx);
-                _item.FixedArtifactIndex = pair.Key;
+                _item.ArtifactIndex = pair.Key;
                 return true;
             }
             return false;

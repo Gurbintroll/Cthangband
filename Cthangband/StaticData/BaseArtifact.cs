@@ -10,7 +10,7 @@ using Cthangband.Enumerations;
 
 namespace Cthangband.StaticData
 {
-    internal class BaseFixedartifact : EntityType
+    internal class BaseArtifact : EntityType
     {
         public int Ac
         {
@@ -144,7 +144,7 @@ namespace Cthangband.StaticData
             set;
         }
 
-        public FixedArtifactId FixedArtifactID
+        public ArtifactId ArtifactID
         {
             get;
             set;

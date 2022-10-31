@@ -349,7 +349,7 @@ namespace Cthangband
             for (int i = 0; i < _stockNum; i++)
             {
                 Item oPtr = _stock[i];
-                if (!oPtr.IsRandomArtifact())
+                if (!oPtr.IsLegendary())
                 {
                     oPtr.Discount = 50;
                 }
@@ -787,7 +787,7 @@ namespace Cthangband
             {
                 discount = 90;
             }
-            if (oPtr.IsRandomArtifact())
+            if (oPtr.IsLegendary())
             {
                 discount = 0;
             }
@@ -1480,7 +1480,7 @@ namespace Cthangband
             {
                 return false;
             }
-            if (oPtr.FixedArtifactIndex != jPtr.FixedArtifactIndex)
+            if (oPtr.ArtifactIndex != jPtr.ArtifactIndex)
             {
                 return false;
             }
@@ -1488,13 +1488,13 @@ namespace Cthangband
             {
                 return false;
             }
-            if (oPtr.IsRandomArtifact() || jPtr.IsRandomArtifact())
+            if (oPtr.IsLegendary() || jPtr.IsLegendary())
             {
                 return false;
             }
-            if (oPtr.RandartFlags1.Value != jPtr.RandartFlags1.Value ||
-                oPtr.RandartFlags2.Value != jPtr.RandartFlags2.Value ||
-                oPtr.RandartFlags3.Value != jPtr.RandartFlags3.Value)
+            if (oPtr.LegendaryFlags1.Value != jPtr.LegendaryFlags1.Value ||
+                oPtr.LegendaryFlags2.Value != jPtr.LegendaryFlags2.Value ||
+                oPtr.LegendaryFlags3.Value != jPtr.LegendaryFlags3.Value)
             {
                 return false;
             }

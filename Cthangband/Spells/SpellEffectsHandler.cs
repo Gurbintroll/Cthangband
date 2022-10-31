@@ -238,7 +238,7 @@ namespace Cthangband.Spells
                     }
                 }
             }
-            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
+            if (oPtr.IsArtifact() || oPtr.IsLegendary())
             {
                 string feel = "special";
                 Profile.Instance.MsgPrint($"You fail to turn {oName} to gold!");
@@ -343,7 +343,7 @@ namespace Cthangband.Spells
             }
             string oName = oPtr.Description(false, 0);
             string s;
-            if ((oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact()) &&
+            if ((oPtr.IsArtifact() || oPtr.IsLegendary()) &&
                 Program.Rng.RandomLessThan(100) < 71)
             {
                 s = oPtr.Count != 1 ? "" : "s";
@@ -438,7 +438,7 @@ namespace Cthangband.Spells
             string your = item >= 0 ? "Your" : "The";
             string s = oPtr.Count > 1 ? "" : "s";
             Profile.Instance.MsgPrint($"{your} {oName} radiate{s} a blinding light!");
-            if (oPtr.FixedArtifactIndex != 0 || oPtr.IsRandomArtifact())
+            if (oPtr.ArtifactIndex != 0 || oPtr.IsLegendary())
             {
                 string are = oPtr.Count > 1 ? "are" : "is";
                 s = oPtr.Count > 1 ? "artifacts" : "an artifact";
@@ -461,7 +461,7 @@ namespace Cthangband.Spells
                     Profile.Instance.MsgPrint($"{oPtr.Count - 1} of your oName {s} destroyed!");
                     oPtr.Count = 1;
                 }
-                okay = oPtr.CreateRandart(true);
+                okay = oPtr.CreateLegendary(true);
             }
             if (!okay)
             {
@@ -520,18 +520,19 @@ namespace Cthangband.Spells
                 Profile.Instance.MsgPrint($"{your} {oName} {s} blessed already.");
                 return;
             }
-            if (!(oPtr.IsRandomArtifact() || oPtr.FixedArtifactIndex != 0) ||
+            if (!(oPtr.IsLegendary() || oPtr.ArtifactIndex != 0) ||
                 Program.Rng.DieRoll(3) == 1)
             {
                 string your = item >= 0 ? "your" : "the";
                 string s = oPtr.Count > 1 ? "" : "s";
                 Profile.Instance.MsgPrint($"{your} {oName} shine{s}!");
-                oPtr.RandartFlags3.Set(ItemFlag3.Blessed);
+                oPtr.LegendaryFlags3.Set(ItemFlag3.Blessed);
             }
             else
             {
                 bool disHappened = false;
-                Profile.Instance.MsgPrint("The artifact resists your blessing!");
+                string rarity = oPtr.IsLegendary() ? "legendary item" : "artifact";
+                Profile.Instance.MsgPrint($"The {rarity} resists your blessing!");
                 if (oPtr.BonusToHit > 0)
                 {
                     oPtr.BonusToHit--;
@@ -1060,7 +1061,7 @@ namespace Cthangband.Spells
                     continue;
                 }
                 ItemCategory tv = oPtr.Category;
-                if (oPtr.IsFixedArtifact() || oPtr.IsRare() || oPtr.IsRandomArtifact() ||
+                if (oPtr.IsArtifact() || oPtr.IsRare() || oPtr.IsLegendary() ||
                     tv == ItemCategory.Amulet || tv == ItemCategory.Ring || tv == ItemCategory.Staff ||
                     tv == ItemCategory.Wand || tv == ItemCategory.Rod || tv == ItemCategory.Scroll ||
                     tv == ItemCategory.Potion || tv == ItemCategory.LifeBook || tv == ItemCategory.SorceryBook ||
@@ -1555,7 +1556,7 @@ namespace Cthangband.Spells
         public bool Enchant(Item oPtr, int n, int eflag)
         {
             bool res = false;
-            bool a = oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact();
+            bool a = oPtr.IsArtifact() || oPtr.IsLegendary();
             FlagSet f1 = new FlagSet();
             FlagSet f2 = new FlagSet();
             FlagSet f3 = new FlagSet();
@@ -1597,13 +1598,13 @@ namespace Cthangband.Spells
                             Profile.Instance.MsgPrint("The curse is broken!");
                             oPtr.IdentifyFlags.Clear(Constants.IdentCursed);
                             oPtr.IdentifyFlags.Set(Constants.IdentSense);
-                            if (oPtr.RandartFlags3.IsSet(ItemFlag3.Cursed))
+                            if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.Cursed))
                             {
-                                oPtr.RandartFlags3.Clear(ItemFlag3.Cursed);
+                                oPtr.LegendaryFlags3.Clear(ItemFlag3.Cursed);
                             }
-                            if (oPtr.RandartFlags3.IsSet(ItemFlag3.HeavyCurse))
+                            if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.HeavyCurse))
                             {
-                                oPtr.RandartFlags3.Clear(ItemFlag3.HeavyCurse);
+                                oPtr.LegendaryFlags3.Clear(ItemFlag3.HeavyCurse);
                             }
                             oPtr.Inscription = "uncursed";
                         }
@@ -1633,13 +1634,13 @@ namespace Cthangband.Spells
                             Profile.Instance.MsgPrint("The curse is broken!");
                             oPtr.IdentifyFlags.Clear(Constants.IdentCursed);
                             oPtr.IdentifyFlags.Set(Constants.IdentSense);
-                            if (oPtr.RandartFlags3.IsSet(ItemFlag3.Cursed))
+                            if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.Cursed))
                             {
-                                oPtr.RandartFlags3.Clear(ItemFlag3.Cursed);
+                                oPtr.LegendaryFlags3.Clear(ItemFlag3.Cursed);
                             }
-                            if (oPtr.RandartFlags3.IsSet(ItemFlag3.HeavyCurse))
+                            if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.HeavyCurse))
                             {
-                                oPtr.RandartFlags3.Clear(ItemFlag3.HeavyCurse);
+                                oPtr.LegendaryFlags3.Clear(ItemFlag3.HeavyCurse);
                             }
                             oPtr.Inscription = "uncursed";
                         }
@@ -1669,13 +1670,13 @@ namespace Cthangband.Spells
                             Profile.Instance.MsgPrint("The curse is broken!");
                             oPtr.IdentifyFlags.Clear(Constants.IdentCursed);
                             oPtr.IdentifyFlags.Set(Constants.IdentSense);
-                            if (oPtr.RandartFlags3.IsSet(ItemFlag3.Cursed))
+                            if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.Cursed))
                             {
-                                oPtr.RandartFlags3.Clear(ItemFlag3.Cursed);
+                                oPtr.LegendaryFlags3.Clear(ItemFlag3.Cursed);
                             }
-                            if (oPtr.RandartFlags3.IsSet(ItemFlag3.HeavyCurse))
+                            if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.HeavyCurse))
                             {
-                                oPtr.RandartFlags3.Clear(ItemFlag3.HeavyCurse);
+                                oPtr.LegendaryFlags3.Clear(ItemFlag3.HeavyCurse);
                             }
                             oPtr.Inscription = "uncursed";
                         }
@@ -4010,13 +4011,13 @@ namespace Cthangband.Spells
                 }
                 oPtr.IdentifyFlags.Clear(Constants.IdentCursed);
                 oPtr.IdentifyFlags.Set(Constants.IdentSense);
-                if (oPtr.RandartFlags3.IsSet(ItemFlag3.Cursed))
+                if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.Cursed))
                 {
-                    oPtr.RandartFlags3.Clear(ItemFlag3.Cursed);
+                    oPtr.LegendaryFlags3.Clear(ItemFlag3.Cursed);
                 }
-                if (oPtr.RandartFlags3.IsSet(ItemFlag3.HeavyCurse))
+                if (oPtr.LegendaryFlags3.IsSet(ItemFlag3.HeavyCurse))
                 {
-                    oPtr.RandartFlags3.Clear(ItemFlag3.HeavyCurse);
+                    oPtr.LegendaryFlags3.Clear(ItemFlag3.HeavyCurse);
                 }
                 oPtr.Inscription = "uncursed";
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);

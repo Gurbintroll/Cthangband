@@ -59,7 +59,7 @@ namespace Cthangband.Projection
                 if (oPtr.Count > 1)
                 {
                 }
-                if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
+                if (oPtr.IsArtifact() || oPtr.IsLegendary())
                 {
                 }
                 if (oPtr.Category == ItemCategory.Chest)

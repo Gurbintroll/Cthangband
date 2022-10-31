@@ -7,7 +7,7 @@
 // copies. Other copyrights may also apply.”
 namespace Cthangband.Enumerations
 {
-    internal enum FixedArtifactId
+    internal enum ArtifactId
     {
         None = 0,
         StarEssenceOfPolaris = 1,

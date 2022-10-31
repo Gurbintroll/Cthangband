@@ -7,7 +7,7 @@
 // copies. Other copyrights may also apply.”
 namespace Cthangband.Enumerations
 {
-    internal static class RandomArtifactPower
+    internal static class LegendaryPower
     {
         public const int ActAlchemy = 123;
         public const int ActBaCold1 = 8;

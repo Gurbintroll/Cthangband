@@ -67,9 +67,9 @@ namespace Cthangband
             SaveGame.Instance.EnergyUse = 100;
             // Get the level of the item
             int itemLevel = item.ItemType.Level;
-            if (item.IsFixedArtifact())
+            if (item.IsArtifact())
             {
-                itemLevel = Profile.Instance.FixedArtifacts[item.FixedArtifactIndex].Level;
+                itemLevel = Profile.Instance.Artifacts[item.ArtifactIndex].Level;
             }
             // Work out the chance of using the item successfully based on its level and the
             // player's skill
@@ -99,19 +99,19 @@ namespace Cthangband
             // We passed the checks, so the item is activated
             Profile.Instance.MsgPrint("You activate it...");
             Gui.PlaySound(SoundEffect.ActivateArtifact);
-            // If it is a random artifact then use its ability and quit
-            if (item.IsRandomArtifact())
+            // If it is a legendary item then use its ability and quit
+            if (item.IsLegendary())
             {
-                SaveGame.Instance.CommandEngine.ActivateRandomArtifact(item);
+                SaveGame.Instance.CommandEngine.ActivateLegendary(item);
                 return;
             }
-            // If it's a fixed artifact then use its ability
-            if (item.FixedArtifactIndex != 0)
+            // If it's an artifact then use its ability
+            if (item.ArtifactIndex != 0)
             {
-                switch (item.FixedArtifactIndex)
+                switch (item.ArtifactIndex)
                 {
                     // Star Essence of Polaris lights the area
-                    case FixedArtifactId.StarEssenceOfPolaris:
+                    case ArtifactId.StarEssenceOfPolaris:
                         {
                             Profile.Instance.MsgPrint("The essence wells with clear light...");
                             SaveGame.Instance.SpellEffects.LightArea(Program.Rng.DiceRoll(2, 15), 3);
@@ -119,7 +119,7 @@ namespace Cthangband
                             break;
                         }
                     // Star essence of Xoth lights and maps the area
-                    case FixedArtifactId.StarEssenceOfXoth:
+                    case ArtifactId.StarEssenceOfXoth:
                         {
                             Profile.Instance.MsgPrint("The essence shines brightly...");
                             _level.MapArea();
@@ -129,7 +129,7 @@ namespace Cthangband
                         }
                     // Shining Trapezohedron lights the entire level and recalls us, but drains
                     // health to do so
-                    case FixedArtifactId.ShiningTrapezohedron:
+                    case ArtifactId.ShiningTrapezohedron:
                         {
                             Profile.Instance.MsgPrint("The gemstone flashes bright red!");
                             _level.WizLight();
@@ -146,7 +146,7 @@ namespace Cthangband
                             break;
                         }
                     // Amulet of Lobon protects us from evil
-                    case FixedArtifactId.AmuletOfLobon:
+                    case ArtifactId.AmuletOfLobon:
                         {
                             Profile.Instance.MsgPrint("The amulet lets out a shrill wail...");
                             int k = 3 * _player.Level;
@@ -155,7 +155,7 @@ namespace Cthangband
                             break;
                         }
                     // Amulet of Abdul Alhazred dispels evil
-                    case FixedArtifactId.AmuletOfAbdulAlhazred:
+                    case ArtifactId.AmuletOfAbdulAlhazred:
                         {
                             Profile.Instance.MsgPrint("The amulet floods the area with goodness...");
                             SaveGame.Instance.SpellEffects.DispelEvil(_player.Level * 5);
@@ -163,7 +163,7 @@ namespace Cthangband
                             break;
                         }
                     // Ring of Magic has a djinn in it that drains life from an opponent
-                    case FixedArtifactId.RingOfMagic:
+                    case ArtifactId.RingOfMagic:
                         {
                             Profile.Instance.MsgPrint("You order Frakir to strangle your opponent.");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -177,7 +177,7 @@ namespace Cthangband
                             break;
                         }
                     // Ring of Bast hastes you
-                    case FixedArtifactId.RingOfBast:
+                    case ArtifactId.RingOfBast:
                         {
                             Profile.Instance.MsgPrint("The ring glows brightly...");
                             if (_player.TimedHaste == 0)
@@ -192,7 +192,7 @@ namespace Cthangband
                             break;
                         }
                     // Ring of Elemental Fire casts a fireball
-                    case FixedArtifactId.RingOfElementalPowerFire:
+                    case ArtifactId.RingOfElementalPowerFire:
                         {
                             Profile.Instance.MsgPrint("The ring glows deep red...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -204,7 +204,7 @@ namespace Cthangband
                             break;
                         }
                     // Ring of Elemental Ice casts a coldball
-                    case FixedArtifactId.RingOfElementalPowerIce:
+                    case ArtifactId.RingOfElementalPowerIce:
                         {
                             Profile.Instance.MsgPrint("The ring glows bright white...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -216,7 +216,7 @@ namespace Cthangband
                             break;
                         }
                     // Ring of Elemental Lightning casts a lightning ball
-                    case FixedArtifactId.RingOfElementalPowerStorm:
+                    case ArtifactId.RingOfElementalPowerStorm:
                         {
                             Profile.Instance.MsgPrint("The ring glows deep blue...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -228,7 +228,7 @@ namespace Cthangband
                             break;
                         }
                     // Ring of Set has a random effect
-                    case FixedArtifactId.RingOfSet:
+                    case ArtifactId.RingOfSet:
                         {
                             Profile.Instance.MsgPrint("The ring glows intensely black...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -240,7 +240,7 @@ namespace Cthangband
                             break;
                         }
                     // Razorback gives you a point-blank lightning ball
-                    case FixedArtifactId.DragonScaleRazorback:
+                    case ArtifactId.DragonScaleRazorback:
                         {
                             Profile.Instance.MsgPrint("Your armor is surrounded by lightning...");
                             for (int i = 0; i < 8; i++)
@@ -251,7 +251,7 @@ namespace Cthangband
                             break;
                         }
                     // Bladeturner heals you and gives you timed resistances
-                    case FixedArtifactId.DragonScaleBladeturner:
+                    case ArtifactId.DragonScaleBladeturner:
                         {
                             if (!targetEngine.GetDirectionWithAim(out dir))
                             {
@@ -273,7 +273,7 @@ namespace Cthangband
                             break;
                         }
                     // Soulkeeper heals you a lot
-                    case FixedArtifactId.PlateMailSoulkeeper:
+                    case ArtifactId.PlateMailSoulkeeper:
                         {
                             Profile.Instance.MsgPrint("Your armor glows a bright white...");
                             Profile.Instance.MsgPrint("You feel much better...");
@@ -283,7 +283,7 @@ namespace Cthangband
                             break;
                         }
                     // Vampire Hunter cures most ailments
-                    case FixedArtifactId.ArmourOfTheVampireHunter:
+                    case ArtifactId.ArmourOfTheVampireHunter:
                         {
                             Profile.Instance.MsgPrint("A heavenly choir sings...");
                             _player.SetTimedPoison(0);
@@ -297,7 +297,7 @@ namespace Cthangband
                             break;
                         }
                     // Orc does Carnage
-                    case FixedArtifactId.ArmourOfTheOrcs:
+                    case ArtifactId.ArmourOfTheOrcs:
                         {
                             Profile.Instance.MsgPrint("Your armor glows deep blue...");
                             SaveGame.Instance.SpellEffects.Carnage(true);
@@ -305,7 +305,7 @@ namespace Cthangband
                             break;
                         }
                     // Ogre Lords destroys doors
-                    case FixedArtifactId.ArmourOfTheOgreLords:
+                    case ArtifactId.ArmourOfTheOgreLords:
                         {
                             Profile.Instance.MsgPrint("Your armor glows bright red...");
                             SaveGame.Instance.SpellEffects.DestroyDoorsTouch();
@@ -313,15 +313,15 @@ namespace Cthangband
                             break;
                         }
                     // Dragon Helm and Terror Mask cause fear
-                    case FixedArtifactId.DragonHelmOfPower:
-                    case FixedArtifactId.HelmTerrorMask:
+                    case ArtifactId.DragonHelmOfPower:
+                    case ArtifactId.HelmTerrorMask:
                         {
                             SaveGame.Instance.SpellEffects.TurnMonsters(40 + _player.Level);
                             item.RechargeTimeLeft = 3 * (_player.Level + 10);
                             break;
                         }
                     // Skull Keeper detects everything
-                    case FixedArtifactId.HelmSkullkeeper:
+                    case ArtifactId.HelmSkullkeeper:
                         {
                             Profile.Instance.MsgPrint("Your helm glows bright white...");
                             Profile.Instance.MsgPrint("An image forms in your mind...");
@@ -330,7 +330,7 @@ namespace Cthangband
                             break;
                         }
                     // Sun Crown heals
-                    case FixedArtifactId.CrownOfTheSun:
+                    case ArtifactId.CrownOfTheSun:
                         {
                             Profile.Instance.MsgPrint("Your crown glows deep yellow...");
                             Profile.Instance.MsgPrint("You feel a warm tingling inside...");
@@ -340,7 +340,7 @@ namespace Cthangband
                             break;
                         }
                     // Cloak of Barzai gives resistances
-                    case FixedArtifactId.CloakOfBarzai:
+                    case ArtifactId.CloakOfBarzai:
                         {
                             Profile.Instance.MsgPrint("Your cloak glows many colours...");
                             _player.SetTimedAcidResistance(_player.TimedAcidResistance + Program.Rng.DieRoll(20) + 20);
@@ -352,7 +352,7 @@ namespace Cthangband
                             break;
                         }
                     // Darkness sends monsters to sleep
-                    case FixedArtifactId.CloakDarkness:
+                    case ArtifactId.CloakDarkness:
                         {
                             Profile.Instance.MsgPrint("Your cloak glows deep blue...");
                             SaveGame.Instance.SpellEffects.SleepMonstersTouch();
@@ -360,7 +360,7 @@ namespace Cthangband
                             break;
                         }
                     // Swashbuckler recharges items
-                    case FixedArtifactId.CloakOfTheSwashbuckler:
+                    case ArtifactId.CloakOfTheSwashbuckler:
                         {
                             Profile.Instance.MsgPrint("Your cloak glows bright yellow...");
                             SaveGame.Instance.SpellEffects.Recharge(60);
@@ -368,7 +368,7 @@ namespace Cthangband
                             break;
                         }
                     // Shifter teleports you
-                    case FixedArtifactId.CloakShifter:
+                    case ArtifactId.CloakShifter:
                         {
                             Profile.Instance.MsgPrint("Your cloak twists space around you...");
                             SaveGame.Instance.SpellEffects.TeleportPlayer(100);
@@ -376,7 +376,7 @@ namespace Cthangband
                             break;
                         }
                     // Nyogtha restores experience
-                    case FixedArtifactId.ShadowCloakOfNyogtha:
+                    case ArtifactId.ShadowCloakOfNyogtha:
                         {
                             Profile.Instance.MsgPrint("Your cloak glows a deep red...");
                             _player.RestoreLevel();
@@ -384,7 +384,7 @@ namespace Cthangband
                             break;
                         }
                     // Light shoots magic missiles
-                    case FixedArtifactId.GlovesOfLight:
+                    case ArtifactId.GlovesOfLight:
                         {
                             Profile.Instance.MsgPrint("Your gloves glow extremely brightly...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -397,7 +397,7 @@ namespace Cthangband
                             break;
                         }
                     // Iron Fist shoots fire bolts
-                    case FixedArtifactId.GauntletIronfist:
+                    case ArtifactId.GauntletIronfist:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in fire...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -409,7 +409,7 @@ namespace Cthangband
                             break;
                         }
                     // Ghouls shoot cold bolts
-                    case FixedArtifactId.GauntletsOfGhouls:
+                    case ArtifactId.GauntletsOfGhouls:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in frost...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -421,7 +421,7 @@ namespace Cthangband
                             break;
                         }
                     // White Spark shoot lightning bolts
-                    case FixedArtifactId.GauntletsWhiteSpark:
+                    case ArtifactId.GauntletsWhiteSpark:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in sparks...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -433,7 +433,7 @@ namespace Cthangband
                             break;
                         }
                     // The Dead shoot acid bolts
-                    case FixedArtifactId.GauntletsOfTheDead:
+                    case ArtifactId.GauntletsOfTheDead:
                         {
                             Profile.Instance.MsgPrint("Your gauntlets are covered in acid...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -445,7 +445,7 @@ namespace Cthangband
                             break;
                         }
                     // Cesti shoot arrows
-                    case FixedArtifactId.CestiOfCombat:
+                    case ArtifactId.CestiOfCombat:
                         {
                             Profile.Instance.MsgPrint("Your cesti grows magical spikes...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -457,7 +457,7 @@ namespace Cthangband
                             break;
                         }
                     // Boots haste you
-                    case FixedArtifactId.BootsOfIthaqua:
+                    case ArtifactId.BootsOfIthaqua:
                         {
                             Profile.Instance.MsgPrint("A wind swirls around your boots...");
                             if (_player.TimedHaste == 0)
@@ -472,7 +472,7 @@ namespace Cthangband
                             break;
                         }
                     // Dancing heal poison and fear
-                    case FixedArtifactId.BootsOfDancing:
+                    case ArtifactId.BootsOfDancing:
                         {
                             Profile.Instance.MsgPrint("Your boots glow deep blue...");
                             _player.SetTimedFear(0);
@@ -481,7 +481,7 @@ namespace Cthangband
                             break;
                         }
                     // Faith shoots a fire bolt
-                    case FixedArtifactId.DaggerOfFaith:
+                    case ArtifactId.DaggerOfFaith:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in fire...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -493,7 +493,7 @@ namespace Cthangband
                             break;
                         }
                     // Hope shoots a frost bolt
-                    case FixedArtifactId.DaggerOfHope:
+                    case ArtifactId.DaggerOfHope:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in frost...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -505,7 +505,7 @@ namespace Cthangband
                             break;
                         }
                     // Charity shoots a lightning bolt
-                    case FixedArtifactId.DaggerOfCharity:
+                    case ArtifactId.DaggerOfCharity:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in sparks...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -517,7 +517,7 @@ namespace Cthangband
                             break;
                         }
                     // Thoth shoots a poison ball
-                    case FixedArtifactId.DaggerOfThoth:
+                    case ArtifactId.DaggerOfThoth:
                         {
                             Profile.Instance.MsgPrint("Your dagger throbs deep green...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -529,7 +529,7 @@ namespace Cthangband
                             break;
                         }
                     // Icicle shoots a cold ball
-                    case FixedArtifactId.DaggerIcicle:
+                    case ArtifactId.DaggerIcicle:
                         {
                             Profile.Instance.MsgPrint("Your dagger is covered in frost...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -541,7 +541,7 @@ namespace Cthangband
                             break;
                         }
                     // Karakal teleports you randomly
-                    case FixedArtifactId.SwordOfKarakal:
+                    case ArtifactId.SwordOfKarakal:
                         {
                             switch (Program.Rng.DieRoll(13))
                             {
@@ -583,7 +583,7 @@ namespace Cthangband
                             break;
                         }
                     // Excalibur shoots a frost ball
-                    case FixedArtifactId.SwordExcalibur:
+                    case ArtifactId.SwordExcalibur:
                         {
                             Profile.Instance.MsgPrint("Your sword glows an intense blue...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -595,7 +595,7 @@ namespace Cthangband
                             break;
                         }
                     // Dawn Sword summons a reaver
-                    case FixedArtifactId.SwordOfTheDawn:
+                    case ArtifactId.SwordOfTheDawn:
                         {
                             Profile.Instance.MsgPrint("Your sword flickers black for a moment...");
                             _level.Monsters.SummonSpecificFriendly(_player.MapY, _player.MapX, SaveGame.Instance.Difficulty,
@@ -604,7 +604,7 @@ namespace Cthangband
                             break;
                         }
                     // Everflame shoots a fire ball
-                    case FixedArtifactId.SwordOfEverflame:
+                    case ArtifactId.SwordOfEverflame:
                         {
                             Profile.Instance.MsgPrint("Your sword glows an intense red...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -616,7 +616,7 @@ namespace Cthangband
                             break;
                         }
                     // Theoden drains life
-                    case FixedArtifactId.AxeOfTheoden:
+                    case ArtifactId.AxeOfTheoden:
                         {
                             Profile.Instance.MsgPrint("Your axe blade glows black...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -628,7 +628,7 @@ namespace Cthangband
                             break;
                         }
                     // Grungnir shoots a lightning ball
-                    case FixedArtifactId.SpearGungnir:
+                    case ArtifactId.SpearGungnir:
                         {
                             Profile.Instance.MsgPrint("Your spear crackles with electricity...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -640,7 +640,7 @@ namespace Cthangband
                             break;
                         }
                     // Destiny does rock to mud
-                    case FixedArtifactId.SpearOfDestiny:
+                    case ArtifactId.SpearOfDestiny:
                         {
                             Profile.Instance.MsgPrint("Your spear pulsates...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -652,7 +652,7 @@ namespace Cthangband
                             break;
                         }
                     // Trolls does mass carnage
-                    case FixedArtifactId.AxeOfTheTrolls:
+                    case ArtifactId.AxeOfTheTrolls:
                         {
                             Profile.Instance.MsgPrint("Your axe lets out a long, shrill note...");
                             SaveGame.Instance.SpellEffects.MassCarnage(true);
@@ -660,7 +660,7 @@ namespace Cthangband
                             break;
                         }
                     // Spleens Slicer heals you
-                    case FixedArtifactId.AxeSpleenSlicer:
+                    case ArtifactId.AxeSpleenSlicer:
                         {
                             Profile.Instance.MsgPrint("Your battle axe radiates deep purple...");
                             _player.RestoreHealth(Program.Rng.DiceRoll(4, 8));
@@ -669,7 +669,7 @@ namespace Cthangband
                             break;
                         }
                     // Gnorri teleports monsters away
-                    case FixedArtifactId.TridentOfTheGnorri:
+                    case ArtifactId.TridentOfTheGnorri:
                         {
                             Profile.Instance.MsgPrint("Your trident glows deep red...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -681,7 +681,7 @@ namespace Cthangband
                             break;
                         }
                     // G'Harne does Word of Recall
-                    case FixedArtifactId.ScytheOfGharne:
+                    case ArtifactId.ScytheOfGharne:
                         {
                             Profile.Instance.MsgPrint("Your scythe glows soft white...");
                             _player.ToggleRecall();
@@ -689,7 +689,7 @@ namespace Cthangband
                             break;
                         }
                     // Totila does confusion
-                    case FixedArtifactId.FlailTotila:
+                    case ArtifactId.FlailTotila:
                         {
                             Profile.Instance.MsgPrint("Your flail glows in scintillating colours...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -701,7 +701,7 @@ namespace Cthangband
                             break;
                         }
                     // Firestarter does fire ball
-                    case FixedArtifactId.MorningStarFirestarter:
+                    case ArtifactId.MorningStarFirestarter:
                         {
                             Profile.Instance.MsgPrint("Your morning star rages in fire...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -713,7 +713,7 @@ namespace Cthangband
                             break;
                         }
                     // Thunder does haste
-                    case FixedArtifactId.MaceThunder:
+                    case ArtifactId.MaceThunder:
                         {
                             Profile.Instance.MsgPrint("Your mace glows bright green...");
                             if (_player.TimedHaste == 0)
@@ -728,7 +728,7 @@ namespace Cthangband
                             break;
                         }
                     // Ereril does identify
-                    case FixedArtifactId.QuarterstaffEriril:
+                    case ArtifactId.QuarterstaffEriril:
                         {
                             Profile.Instance.MsgPrint("Your quarterstaff glows yellow...");
                             if (!SaveGame.Instance.SpellEffects.IdentifyItem())
@@ -739,7 +739,7 @@ namespace Cthangband
                             break;
                         }
                     // Atal does full identify
-                    case FixedArtifactId.QuarterstaffOfAtal:
+                    case ArtifactId.QuarterstaffOfAtal:
                         {
                             Profile.Instance.MsgPrint("Your quarterstaff glows brightly...");
                             SaveGame.Instance.SpellEffects.DetectAll();
@@ -749,7 +749,7 @@ namespace Cthangband
                             break;
                         }
                     // Justice drains life
-                    case FixedArtifactId.HammerJustice:
+                    case ArtifactId.HammerJustice:
                         {
                             Profile.Instance.MsgPrint("Your hammer glows white...");
                             if (!targetEngine.GetDirectionWithAim(out dir))
@@ -761,7 +761,7 @@ namespace Cthangband
                             break;
                         }
                     // Death brands your bolts
-                    case FixedArtifactId.CrossbowOfDeath:
+                    case ArtifactId.CrossbowOfDeath:
                         {
                             Profile.Instance.MsgPrint("Your crossbow glows deep red...");
                             SaveGame.Instance.CommandEngine.BrandBolts();

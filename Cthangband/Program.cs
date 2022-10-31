@@ -499,7 +499,7 @@ namespace Cthangband
                         "want to do is play a new character,",
                         "you should load it instead of over-",
                         "witing it. Are you sure you wish to",
-                        $"overwrite savegame {choice}?"
+                        $"overwrite savegame {choice + 1}?"
                     };
                     var options = new List<string> { "Overwrite", "Cancel" };
                     var popup = new PopupMenu(options, text, 36);

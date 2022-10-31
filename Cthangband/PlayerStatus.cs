@@ -1744,7 +1744,7 @@ namespace Cthangband
                         _player.LightLevel += 2;
                         continue;
                     }
-                    if (oPtr.IsFixedArtifact())
+                    if (oPtr.IsArtifact())
                     {
                         _player.LightLevel += 3;
                     }

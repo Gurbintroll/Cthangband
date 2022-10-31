@@ -304,7 +304,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
+                if (oPtr.IsArtifact() || oPtr.IsLegendary())
                 {
                     continue;
                 }

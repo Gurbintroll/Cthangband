@@ -12,7 +12,7 @@ using System;
 namespace Cthangband
 {
     [Serializable]
-    internal class FixedArtifact
+    internal class Artifact
     {
         public readonly FlagSet Flags1 = new FlagSet();
         public readonly FlagSet Flags2 = new FlagSet();
@@ -34,11 +34,11 @@ namespace Cthangband
         public ItemCategory Tval;
         public int Weight;
 
-        public FixedArtifact()
+        public Artifact()
         {
         }
 
-        public FixedArtifact(BaseFixedartifact baseItem)
+        public Artifact(BaseArtifact baseItem)
         {
             Flags1 = new FlagSet();
             Flags2 = new FlagSet();

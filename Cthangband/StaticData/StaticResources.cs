@@ -46,7 +46,7 @@ namespace Cthangband.StaticData
             private set;
         }
 
-        public Dictionary<string, BaseFixedartifact> BaseFixedartifacts
+        public Dictionary<string, BaseArtifact> BaseArtifacts
         {
             get;
             private set;
@@ -146,7 +146,7 @@ namespace Cthangband.StaticData
                 BaseMonsterRaces = ReadEntitiesFromCsv(new BaseMonsterRace())
             };
             Instance.BaseItemTypes = ReadEntitiesFromCsv(new BaseItemType());
-            Instance.BaseFixedartifacts = ReadEntitiesFromCsv(new BaseFixedartifact());
+            Instance.BaseArtifacts = ReadEntitiesFromCsv(new BaseArtifact());
             Instance.BaseRareItemTypes = ReadEntitiesFromCsv(new BaseRareItemType());
             Instance.BaseVaultTypes = ReadEntitiesFromCsv(new BaseVaultType());
             Instance.FloorTileTypes = ReadEntitiesFromCsv(new FloorTileType());
@@ -169,7 +169,7 @@ namespace Cthangband.StaticData
         {
             WriteEntitiesToCsv(BaseMonsterRaces, new BaseMonsterRace());
             WriteEntitiesToCsv(BaseItemTypes, new BaseItemType());
-            WriteEntitiesToCsv(BaseFixedartifacts, new BaseFixedartifact());
+            WriteEntitiesToCsv(BaseArtifacts, new BaseArtifact());
             WriteEntitiesToCsv(BaseRareItemTypes, new BaseRareItemType());
             WriteEntitiesToCsv(BaseVaultTypes, new BaseVaultType());
             WriteEntitiesToCsv(FloorTileTypes, new FloorTileType());
@@ -250,8 +250,8 @@ namespace Cthangband.StaticData
                                                         p.SetValue(entity, Enum.Parse(typeof(FloorTileAlterAction), stringValue));
                                                         break;
 
-                                                    case "FixedArtifactId":
-                                                        p.SetValue(entity, Enum.Parse(typeof(FixedArtifactId), stringValue));
+                                                    case "ArtifactId":
+                                                        p.SetValue(entity, Enum.Parse(typeof(ArtifactId), stringValue));
                                                         break;
 
                                                     case "FloorTileTypeCategory":

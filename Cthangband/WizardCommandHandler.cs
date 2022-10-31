@@ -57,7 +57,7 @@ namespace Cthangband
                     break;
 
                 case 'C':
-                    WizCreateNamedArt((FixedArtifactId)Gui.CommandArgument);
+                    WizCreateNamedArt((ArtifactId)Gui.CommandArgument);
                     break;
 
                 case 'd':
@@ -706,13 +706,13 @@ namespace Cthangband
             return choice[num];
         }
 
-        private void WizCreateNamedArt(FixedArtifactId aIdx)
+        private void WizCreateNamedArt(ArtifactId aIdx)
         {
-            if (aIdx == FixedArtifactId.None)
+            if (aIdx == ArtifactId.None)
             {
                 return;
             }
-            FixedArtifact aPtr = Profile.Instance.FixedArtifacts[aIdx];
+            Artifact aPtr = Profile.Instance.Artifacts[aIdx];
             Item qPtr = new Item();
             if (string.IsNullOrEmpty(aPtr.Name))
             {
@@ -724,7 +724,7 @@ namespace Cthangband
                 return;
             }
             qPtr.AssignItemType(i);
-            qPtr.FixedArtifactIndex = aIdx;
+            qPtr.ArtifactIndex = aIdx;
             qPtr.TypeSpecificValue = aPtr.Pval;
             qPtr.BaseArmourClass = aPtr.Ac;
             qPtr.DamageDice = aPtr.Dd;
@@ -737,7 +737,7 @@ namespace Cthangband
             {
                 qPtr.IdentifyFlags.Set(Constants.IdentCursed);
             }
-            qPtr.GetFixedArtifactResistances();
+            qPtr.GetArtifactResistances();
             SaveGame.Instance.Level.DropNear(qPtr, -1, _player.MapY, _player.MapX);
             Profile.Instance.MsgPrint("Allocated.");
         }
@@ -765,7 +765,7 @@ namespace Cthangband
                 $"TypeSpecificValue = {oPtr.TypeSpecificValue,5}  toac = {oPtr.BonusArmourClass,5}  tohit = {oPtr.BonusToHit,4}  todam = {oPtr.BonusDamage,4}",
                 6, j);
             Gui.PrintLine(
-                $"FixedArtifactIndex = {oPtr.FixedArtifactIndex,4}  name2 = {oPtr.RareItemTypeIndex,4}  cost = {oPtr.Value()}",
+                $"ArtifactIndex = {oPtr.ArtifactIndex,4}  name2 = {oPtr.RareItemTypeIndex,4}  cost = {oPtr.Value()}",
                 7, j);
             Gui.PrintLine($"IdentifyFlags = {oPtr.IdentifyFlags:x4}  timeout = {oPtr.RechargeTimeLeft}", 8, j);
             Gui.PrintLine("+------------FLAGS1------------+", 10, j);
@@ -796,7 +796,7 @@ namespace Cthangband
 
         private void WizQuantityItem(Item oPtr)
         {
-            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
+            if (oPtr.IsArtifact() || oPtr.IsLegendary())
             {
                 return;
             }
@@ -822,7 +822,7 @@ namespace Cthangband
         private Item WizRerollItem(Item oPtr)
         {
             bool changed;
-            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
+            if (oPtr.IsArtifact() || oPtr.IsLegendary())
             {
                 return oPtr;
             }
@@ -868,9 +868,9 @@ namespace Cthangband
         private void WizStatistics(Item oPtr)
         {
             const string q = "Rolls: {0}, Matches: {1}, Better: {2}, Worse: {3}, Other: {4}";
-            if (oPtr.IsFixedArtifact())
+            if (oPtr.IsArtifact())
             {
-                Profile.Instance.FixedArtifacts[oPtr.FixedArtifactIndex].CurNum = 0;
+                Profile.Instance.Artifacts[oPtr.ArtifactIndex].CurNum = 0;
             }
             while (true)
             {
@@ -927,9 +927,9 @@ namespace Cthangband
                     }
                     Item qPtr = new Item();
                     qPtr.MakeObject(good, great);
-                    if (qPtr.IsFixedArtifact())
+                    if (qPtr.IsArtifact())
                     {
-                        Profile.Instance.FixedArtifacts[qPtr.FixedArtifactIndex].CurNum = 0;
+                        Profile.Instance.Artifacts[qPtr.ArtifactIndex].CurNum = 0;
                     }
                     if (oPtr.Category != qPtr.Category)
                     {
@@ -965,15 +965,15 @@ namespace Cthangband
                 Profile.Instance.MsgPrint(string.Format(q, i, matches, better, worse, other));
                 Profile.Instance.MsgPrint(null);
             }
-            if (oPtr.IsFixedArtifact())
+            if (oPtr.IsArtifact())
             {
-                Profile.Instance.FixedArtifacts[oPtr.FixedArtifactIndex].CurNum = 1;
+                Profile.Instance.Artifacts[oPtr.ArtifactIndex].CurNum = 1;
             }
         }
 
         private void WizTweakItem(Item oPtr)
         {
-            if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
+            if (oPtr.IsArtifact() || oPtr.IsLegendary())
             {
                 return;
             }

@@ -130,7 +130,7 @@ namespace Cthangband
             {
                 Item oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
-                if (oPtr.IsRandomArtifact() || oPtr.IsFixedArtifact())
+                if (oPtr.IsLegendary() || oPtr.IsArtifact())
                 {
                     return false;
                 }
@@ -201,7 +201,7 @@ namespace Cthangband
                         continue;
                     }
                     int chance = 90;
-                    if ((oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact()) && cnt < 1000)
+                    if ((oPtr.IsArtifact() || oPtr.IsLegendary()) && cnt < 1000)
                     {
                         chance = 100;
                     }
@@ -406,7 +406,7 @@ namespace Cthangband
             bool done = false;
             bool plural = jPtr.Count != 1;
             string oName = jPtr.Description(false, 0);
-            if (!(jPtr.IsRandomArtifact() || jPtr.IsFixedArtifact()) &&
+            if (!(jPtr.IsLegendary() || jPtr.IsArtifact()) &&
                 Program.Rng.RandomLessThan(100) < chance)
             {
                 string p = plural ? "" : "s";
@@ -480,7 +480,7 @@ namespace Cthangband
                     flag = true;
                 }
             }
-            if (!flag && !(jPtr.IsFixedArtifact() || jPtr.IsRandomArtifact()))
+            if (!flag && !(jPtr.IsArtifact() || jPtr.IsLegendary()))
             {
                 string p = plural ? "" : "s";
                 Profile.Instance.MsgPrint($"The {oName} disappear{p}.");
@@ -528,9 +528,9 @@ namespace Cthangband
             {
                 string p = plural ? "" : "s";
                 Profile.Instance.MsgPrint($"The {oName} disappear{p}.");
-                if (jPtr.FixedArtifactIndex != 0)
+                if (jPtr.ArtifactIndex != 0)
                 {
-                    Profile.Instance.FixedArtifacts[jPtr.FixedArtifactIndex].CurNum = 0;
+                    Profile.Instance.Artifacts[jPtr.ArtifactIndex].CurNum = 0;
                 }
                 return;
             }
@@ -1197,9 +1197,9 @@ namespace Cthangband
             }
             else
             {
-                if (qPtr.FixedArtifactIndex != 0)
+                if (qPtr.ArtifactIndex != 0)
                 {
-                    Profile.Instance.FixedArtifacts[qPtr.FixedArtifactIndex].CurNum = 0;
+                    Profile.Instance.Artifacts[qPtr.ArtifactIndex].CurNum = 0;
                 }
             }
         }

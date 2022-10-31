@@ -524,7 +524,7 @@ namespace Cthangband
                                     {
                                         continue;
                                     }
-                                    if (item.IsFixedArtifact() || item.IsRandomArtifact())
+                                    if (item.IsArtifact() || item.IsLegendary())
                                     {
                                         continue;
                                     }
@@ -584,7 +584,7 @@ namespace Cthangband
                                 player.TakeHit(damage, monsterDescription);
                                 item = player.Inventory[InventorySlot.Lightsource];
                                 // Only dim lights that consume fuel
-                                if (item.TypeSpecificValue > 0 && !item.IsFixedArtifact())
+                                if (item.TypeSpecificValue > 0 && !item.IsArtifact())
                                 {
                                     item.TypeSpecificValue -= 250 + Program.Rng.DieRoll(250);
                                     if (item.TypeSpecificValue < 1)

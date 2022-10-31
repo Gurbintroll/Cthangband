@@ -18,7 +18,7 @@ namespace Cthangband
     internal class Profile
     {
         public ExPlayer ExPlayer;
-        public FixedArtifactArray FixedArtifacts;
+        public ArtifactArray Artifacts;
         public ItemTypeArray ItemTypes;
         public MonsterRaceArray MonsterRaces;
         public bool MsgFlag;

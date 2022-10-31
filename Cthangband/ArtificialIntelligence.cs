@@ -2154,8 +2154,8 @@ namespace Cthangband
                                 flg3 |= MonsterFlag3.Evil;
                             }
                             // Monsters won't pick up artifacts or items that hurt them
-                            if (item.IsFixedArtifact() || (race.Flags3 & flg3) != 0 ||
-                                item.IsRandomArtifact())
+                            if (item.IsArtifact() || (race.Flags3 & flg3) != 0 ||
+                                item.IsLegendary())
                             {
                                 if ((race.Flags2 & MonsterFlag2.TakeItem) != 0)
                                 {

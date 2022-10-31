@@ -43,24 +43,24 @@ namespace Cthangband
         private Player Player => _saveGame.Player;
 
         /// <summary>
-        /// Activate a randomly generated artifact that will therefore have been given a random power
+        /// Activate a legendary item that will therefore have been given a random power
         /// </summary>
-        /// <param name="item"> The artifact being activated </param>
-        public void ActivateRandomArtifact(Item item)
+        /// <param name="item"> The legendary item being activated </param>
+        public void ActivateLegendary(Item item)
         {
             int playerLevel = Player.Level;
             TargetEngine targetEngine = new TargetEngine(Player, Level);
             int direction;
             int i;
-            // If we don't have a random artifact, abort
-            if (!item.IsRandomArtifact())
+            // If we don't have a legendary item, abort
+            if (!item.IsLegendary())
             {
                 return;
             }
-            // Big stonking switch based on the artifact type
+            // Big stonking switch based on the activation power
             switch (item.BonusPowerSubType)
             {
-                case RandomArtifactPower.ActSunlight:
+                case LegendaryPower.ActSunlight:
                     {
                         // Aim a line of light in a direction of the player's choice
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -72,7 +72,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 10;
                         break;
                     }
-                case RandomArtifactPower.ActBoMiss1:
+                case LegendaryPower.ActBoMiss1:
                     {
                         // Shoot a magic missile that does 2d6 damage
                         Profile.Instance.MsgPrint("It glows extremely brightly...");
@@ -85,7 +85,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 2;
                         break;
                     }
-                case RandomArtifactPower.ActBaPois1:
+                case LegendaryPower.ActBaPois1:
                     {
                         // Shoot a 12-damage ball of poison
                         Profile.Instance.MsgPrint("It throbs deep green...");
@@ -97,7 +97,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(4) + 4;
                         break;
                     }
-                case RandomArtifactPower.ActBoElec1:
+                case LegendaryPower.ActBoElec1:
                     {
                         //Shoot a lightning bolt that does 4d8 damage
                         Profile.Instance.MsgPrint("It is covered in sparks...");
@@ -110,7 +110,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(6) + 6;
                         break;
                     }
-                case RandomArtifactPower.ActBoAcid1:
+                case LegendaryPower.ActBoAcid1:
                     {
                         // Shoot an acid bolt that does 5d8 damage
                         Profile.Instance.MsgPrint("It is covered in acid...");
@@ -123,7 +123,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(5) + 5;
                         break;
                     }
-                case RandomArtifactPower.ActBoCold1:
+                case LegendaryPower.ActBoCold1:
                     {
                         // Shoot a frost bolt that does 6d8 damage
                         Profile.Instance.MsgPrint("It is covered in frost...");
@@ -136,7 +136,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(7) + 7;
                         break;
                     }
-                case RandomArtifactPower.ActBoFire1:
+                case LegendaryPower.ActBoFire1:
                     {
                         // Shoot a fire bolt that does 9d8 damage
                         Profile.Instance.MsgPrint("It is covered in fire...");
@@ -149,7 +149,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(8) + 8;
                         break;
                     }
-                case RandomArtifactPower.ActBaCold1:
+                case LegendaryPower.ActBaCold1:
                     {
                         // Shoot a frost ball that does 48 damage
                         Profile.Instance.MsgPrint("It is covered in frost...");
@@ -161,7 +161,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActBaFire1:
+                case LegendaryPower.ActBaFire1:
                     {
                         // Shoot a fire ball that does 72 damage
                         Profile.Instance.MsgPrint("It glows an intense red...");
@@ -173,7 +173,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActDrain1:
+                case LegendaryPower.ActDrain1:
                     {
                         // Drain up to 100 life from an opponent
                         Profile.Instance.MsgPrint("It glows black...");
@@ -187,7 +187,7 @@ namespace Cthangband
                         }
                         break;
                     }
-                case RandomArtifactPower.ActBaCold2:
+                case LegendaryPower.ActBaCold2:
                     {
                         // Shoot a frost ball that does 100 damage
                         Profile.Instance.MsgPrint("It glows an intense blue...");
@@ -199,7 +199,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 300;
                         break;
                     }
-                case RandomArtifactPower.ActBaElec2:
+                case LegendaryPower.ActBaElec2:
                     {
                         // Shoot a lightning storm that does 100 damage with a larger radius
                         Profile.Instance.MsgPrint("It crackles with electricity...");
@@ -211,7 +211,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 500;
                         break;
                     }
-                case RandomArtifactPower.ActDrain2:
+                case LegendaryPower.ActDrain2:
                     {
                         // Drain up to 120 life from an opponent
                         Profile.Instance.MsgPrint("It glows black...");
@@ -223,7 +223,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActVampire1:
+                case LegendaryPower.ActVampire1:
                     {
                         // Drain up to 50 life from an opponent, and give it to the player
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -240,7 +240,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActBoMiss2:
+                case LegendaryPower.ActBoMiss2:
                     {
                         // Shoot an arrow that does 150 damage
                         Profile.Instance.MsgPrint("It grows magical spikes...");
@@ -252,7 +252,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(90) + 90;
                         break;
                     }
-                case RandomArtifactPower.ActBaFire2:
+                case LegendaryPower.ActBaFire2:
                     {
                         // Shoot a fire ball that does 120 damage with a larger radius
                         Profile.Instance.MsgPrint("It glows deep red...");
@@ -264,7 +264,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(225) + 225;
                         break;
                     }
-                case RandomArtifactPower.ActBaCold3:
+                case LegendaryPower.ActBaCold3:
                     {
                         // Shoot a frost ball that does 200 damage with a larger radius
                         Profile.Instance.MsgPrint("It glows bright white...");
@@ -276,7 +276,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(325) + 325;
                         break;
                     }
-                case RandomArtifactPower.ActBaElec3:
+                case LegendaryPower.ActBaElec3:
                     {
                         // Shoot a lightning storm that does 250 damage with a larger radius
                         Profile.Instance.MsgPrint("It glows deep blue...");
@@ -288,7 +288,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(425) + 425;
                         break;
                     }
-                case RandomArtifactPower.ActWhirlwind:
+                case LegendaryPower.ActWhirlwind:
                     {
                         {
                             // Make a physical attack against each adjacent monster
@@ -307,7 +307,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 250;
                         break;
                     }
-                case RandomArtifactPower.ActVampire2:
+                case LegendaryPower.ActVampire2:
                     {
                         // Drain 100 health from an opponent, and give it to the player
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -324,7 +324,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActCallChaos:
+                case LegendaryPower.ActCallChaos:
                     {
                         // Activate the Call Chaos spell
                         Profile.Instance.MsgPrint("It glows in scintillating colours...");
@@ -332,7 +332,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 350;
                         break;
                     }
-                case RandomArtifactPower.ActShard:
+                case LegendaryPower.ActShard:
                     {
                         // Shoot a shard ball for 120 + level damage
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -344,7 +344,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActDispEvil:
+                case LegendaryPower.ActDispEvil:
                     {
                         // Dispel evil with a strength of x5
                         Profile.Instance.MsgPrint("It floods the area with goodness...");
@@ -352,7 +352,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                         break;
                     }
-                case RandomArtifactPower.ActDispGood:
+                case LegendaryPower.ActDispGood:
                     {
                         // Dispel good with a strength of x5
                         Profile.Instance.MsgPrint("It floods the area with evil...");
@@ -360,7 +360,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                         break;
                     }
-                case RandomArtifactPower.ActBaMiss3:
+                case LegendaryPower.ActBaMiss3:
                     {
                         // Shoot a 'magic missile' cone that does 300 damage
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -372,7 +372,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 500;
                         break;
                     }
-                case RandomArtifactPower.ActConfuse:
+                case LegendaryPower.ActConfuse:
                     {
                         // Confuse an opponent
                         Profile.Instance.MsgPrint("It glows in scintillating colours...");
@@ -384,7 +384,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 15;
                         break;
                     }
-                case RandomArtifactPower.ActSleep:
+                case LegendaryPower.ActSleep:
                     {
                         // Activate sleep on touch
                         Profile.Instance.MsgPrint("It glows deep blue...");
@@ -392,21 +392,21 @@ namespace Cthangband
                         item.RechargeTimeLeft = 55;
                         break;
                     }
-                case RandomArtifactPower.ActQuake:
+                case LegendaryPower.ActQuake:
                     {
                         // Cause an earthquake around the player
                         _saveGame.SpellEffects.Earthquake(Player.MapY, Player.MapX, 10);
                         item.RechargeTimeLeft = 50;
                         break;
                     }
-                case RandomArtifactPower.ActTerror:
+                case LegendaryPower.ActTerror:
                     {
                         // Scare monsters with a 40+level strength
                         _saveGame.SpellEffects.TurnMonsters(40 + playerLevel);
                         item.RechargeTimeLeft = 3 * (Player.Level + 10);
                         break;
                     }
-                case RandomArtifactPower.ActTeleAway:
+                case LegendaryPower.ActTeleAway:
                     {
                         // Teleport away an opponent
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -417,17 +417,17 @@ namespace Cthangband
                         item.RechargeTimeLeft = 200;
                         break;
                     }
-                case RandomArtifactPower.ActBanishEvil:
+                case LegendaryPower.ActBanishEvil:
                     {
                         // Banish evil creatures
                         if (_saveGame.SpellEffects.BanishEvil(100))
                         {
-                            Profile.Instance.MsgPrint("The power of the artifact banishes evil!");
+                            Profile.Instance.MsgPrint("The power of the item banishes evil!");
                         }
                         item.RechargeTimeLeft = 250 + Program.Rng.DieRoll(250);
                         break;
                     }
-                case RandomArtifactPower.ActCarnage:
+                case LegendaryPower.ActCarnage:
                     {
                         // Carnage a chosen creature type
                         Profile.Instance.MsgPrint("It glows deep blue...");
@@ -435,7 +435,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 500;
                         break;
                     }
-                case RandomArtifactPower.ActMassGeno:
+                case LegendaryPower.ActMassGeno:
                     {
                         // Mass carnage creatures near the player
                         Profile.Instance.MsgPrint("It lets out a long, shrill note...");
@@ -443,7 +443,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 1000;
                         break;
                     }
-                case RandomArtifactPower.ActCharmAnimal:
+                case LegendaryPower.ActCharmAnimal:
                     {
                         // Charm an animal
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -454,7 +454,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 300;
                         break;
                     }
-                case RandomArtifactPower.ActCharmUndead:
+                case LegendaryPower.ActCharmUndead:
                     {
                         // Charm an undead
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -465,7 +465,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 333;
                         break;
                     }
-                case RandomArtifactPower.ActCharmOther:
+                case LegendaryPower.ActCharmOther:
                     {
                         // Charm a monster
                         if (!targetEngine.GetDirectionWithAim(out direction))
@@ -476,21 +476,21 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActCharmAnimals:
+                case LegendaryPower.ActCharmAnimals:
                     {
                         // Charm multiple animals
                         _saveGame.SpellEffects.CharmAnimals(playerLevel * 2);
                         item.RechargeTimeLeft = 500;
                         break;
                     }
-                case RandomArtifactPower.ActCharmOthers:
+                case LegendaryPower.ActCharmOthers:
                     {
                         // Charm multiple monsters
                         _saveGame.SpellEffects.CharmMonsters(playerLevel * 2);
                         item.RechargeTimeLeft = 750;
                         break;
                     }
-                case RandomArtifactPower.ActSummonAnimal:
+                case LegendaryPower.ActSummonAnimal:
                     {
                         // Summon animals
                         Level.Monsters.SummonSpecificFriendly(Player.MapY, Player.MapX, playerLevel, Constants.SummonAnimalRanger,
@@ -498,7 +498,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 200 + Program.Rng.DieRoll(300);
                         break;
                     }
-                case RandomArtifactPower.ActSummonPhantom:
+                case LegendaryPower.ActSummonPhantom:
                     {
                         // Summon phantom warriors or beasts
                         Profile.Instance.MsgPrint("You summon a phantasmal servant.");
@@ -507,7 +507,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 200 + Program.Rng.DieRoll(200);
                         break;
                     }
-                case RandomArtifactPower.ActSummonElemental:
+                case LegendaryPower.ActSummonElemental:
                     {
                         // Summon an elemental, with a 1-in-3 chance of it being hostile
                         if (Program.Rng.DieRoll(3) == 1)
@@ -531,7 +531,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 750;
                         break;
                     }
-                case RandomArtifactPower.ActSummonDemon:
+                case LegendaryPower.ActSummonDemon:
                     {
                         // Summon a demon, with a 1-in-3 chance of it being hostile
                         if (Program.Rng.DieRoll(3) == 1)
@@ -555,7 +555,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 666 + Program.Rng.DieRoll(333);
                         break;
                     }
-                case RandomArtifactPower.ActSummonUndead:
+                case LegendaryPower.ActSummonUndead:
                     {
                         // Summon undead, with a 1-in-3 chance of it being hostile
                         if (Program.Rng.DieRoll(3) == 1)
@@ -582,7 +582,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 666 + Program.Rng.DieRoll(333);
                         break;
                     }
-                case RandomArtifactPower.ActCureLw:
+                case LegendaryPower.ActCureLw:
                     {
                         // Heal 30 health and remove fear
                         Player.SetTimedFear(0);
@@ -590,7 +590,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 10;
                         break;
                     }
-                case RandomArtifactPower.ActCureMw:
+                case LegendaryPower.ActCureMw:
                     {
                         // Heal 4d8 health and reduce bleeding
                         Profile.Instance.MsgPrint("It radiates deep purple...");
@@ -599,7 +599,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(3) + 3;
                         break;
                     }
-                case RandomArtifactPower.ActCurePoison:
+                case LegendaryPower.ActCurePoison:
                     {
                         // Remove fear and poison
                         Profile.Instance.MsgPrint("It glows deep blue...");
@@ -608,7 +608,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 5;
                         break;
                     }
-                case RandomArtifactPower.ActRestLife:
+                case LegendaryPower.ActRestLife:
                     {
                         // Restore lost experience
                         Profile.Instance.MsgPrint("It glows a deep red...");
@@ -616,7 +616,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 450;
                         break;
                     }
-                case RandomArtifactPower.ActRestAll:
+                case LegendaryPower.ActRestAll:
                     {
                         // Restore all ability drain and lost experience
                         Profile.Instance.MsgPrint("It glows a deep green...");
@@ -630,7 +630,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 750;
                         break;
                     }
-                case RandomArtifactPower.ActCure700:
+                case LegendaryPower.ActCure700:
                     {
                         // Heal 700 health and remove all bleding
                         Profile.Instance.MsgPrint("It glows deep blue...");
@@ -640,7 +640,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 250;
                         break;
                     }
-                case RandomArtifactPower.ActCure1000:
+                case LegendaryPower.ActCure1000:
                     {
                         // Heal 1000 health and remove all bleeding
                         Profile.Instance.MsgPrint("It glows a bright white...");
@@ -650,14 +650,14 @@ namespace Cthangband
                         item.RechargeTimeLeft = 888;
                         break;
                     }
-                case RandomArtifactPower.ActEsp:
+                case LegendaryPower.ActEsp:
                     {
                         // Give temporary telepathy
                         Player.SetTimedTelepathy(Player.TimedTelepathy + Program.Rng.DieRoll(30) + 25);
                         item.RechargeTimeLeft = 200;
                         break;
                     }
-                case RandomArtifactPower.ActBerserk:
+                case LegendaryPower.ActBerserk:
                     {
                         // Bless us and make us a superhero
                         Player.SetTimedSuperheroism(Player.TimedSuperheroism + Program.Rng.DieRoll(50) + 50);
@@ -665,7 +665,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 100 + Program.Rng.DieRoll(100);
                         break;
                     }
-                case RandomArtifactPower.ActProtEvil:
+                case LegendaryPower.ActProtEvil:
                     {
                         // Give us protection from evil
                         Profile.Instance.MsgPrint("It lets out a shrill wail...");
@@ -674,7 +674,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(225) + 225;
                         break;
                     }
-                case RandomArtifactPower.ActResistAll:
+                case LegendaryPower.ActResistAll:
                     {
                         // Give us temporary resistance to the basic elements
                         Profile.Instance.MsgPrint("It glows many colours...");
@@ -686,7 +686,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 200;
                         break;
                     }
-                case RandomArtifactPower.ActSpeed:
+                case LegendaryPower.ActSpeed:
                     {
                         // Give us temporary haste
                         Profile.Instance.MsgPrint("It glows bright green...");
@@ -701,7 +701,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 250;
                         break;
                     }
-                case RandomArtifactPower.ActXtraSpeed:
+                case LegendaryPower.ActXtraSpeed:
                     {
                         // Give us extra haste for a long time
                         Profile.Instance.MsgPrint("It glows brightly...");
@@ -716,21 +716,21 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(200) + 200;
                         break;
                     }
-                case RandomArtifactPower.ActWraith:
+                case LegendaryPower.ActWraith:
                     {
                         // Give us temporary etherealness
                         Player.SetTimedEtherealness(Player.TimedEtherealness + Program.Rng.DieRoll(playerLevel / 2) + (playerLevel / 2));
                         item.RechargeTimeLeft = 1000;
                         break;
                     }
-                case RandomArtifactPower.ActInvuln:
+                case LegendaryPower.ActInvuln:
                     {
                         // Give us temporary invulnerabliity
                         Player.SetTimedInvulnerability(Player.TimedInvulnerability + Program.Rng.DieRoll(8) + 8);
                         item.RechargeTimeLeft = 1000;
                         break;
                     }
-                case RandomArtifactPower.ActLight:
+                case LegendaryPower.ActLight:
                     {
                         // Light the area
                         Profile.Instance.MsgPrint("It wells with clear light...");
@@ -738,7 +738,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(10) + 10;
                         break;
                     }
-                case RandomArtifactPower.ActMapLight:
+                case LegendaryPower.ActMapLight:
                     {
                         // Map the local area
                         Profile.Instance.MsgPrint("It shines brightly...");
@@ -747,7 +747,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(50) + 50;
                         break;
                     }
-                case RandomArtifactPower.ActDetectAll:
+                case LegendaryPower.ActDetectAll:
                     {
                         // Detect everything
                         Profile.Instance.MsgPrint("It glows bright white...");
@@ -756,7 +756,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(55) + 55;
                         break;
                     }
-                case RandomArtifactPower.ActDetectXtra:
+                case LegendaryPower.ActDetectXtra:
                     {
                         // Detect everything and do probing and identify an item fully
                         Profile.Instance.MsgPrint("It glows brightly...");
@@ -766,7 +766,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 1000;
                         break;
                     }
-                case RandomArtifactPower.ActIdFull:
+                case LegendaryPower.ActIdFull:
                     {
                         // Identify an item fully
                         Profile.Instance.MsgPrint("It glows yellow...");
@@ -774,7 +774,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 750;
                         break;
                     }
-                case RandomArtifactPower.ActIdPlain:
+                case LegendaryPower.ActIdPlain:
                     {
                         // Identify an item
                         if (!_saveGame.SpellEffects.IdentifyItem())
@@ -784,7 +784,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 10;
                         break;
                     }
-                case RandomArtifactPower.ActRuneExplo:
+                case LegendaryPower.ActRuneExplo:
                     {
                         // Place a Yellow Sign
                         Profile.Instance.MsgPrint("It glows a sickly yellow...");
@@ -792,7 +792,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 200;
                         break;
                     }
-                case RandomArtifactPower.ActRuneProt:
+                case LegendaryPower.ActRuneProt:
                     {
                         // Place an ElderSign
                         Profile.Instance.MsgPrint("It glows light blue...");
@@ -800,14 +800,14 @@ namespace Cthangband
                         item.RechargeTimeLeft = 400;
                         break;
                     }
-                case RandomArtifactPower.ActSatiate:
+                case LegendaryPower.ActSatiate:
                     {
                         // Fill us up
                         Player.SetFood(Constants.PyFoodMax - 1);
                         item.RechargeTimeLeft = 200;
                         break;
                     }
-                case RandomArtifactPower.ActDestDoor:
+                case LegendaryPower.ActDestDoor:
                     {
                         // Destroy nearby doors
                         Profile.Instance.MsgPrint("It glows bright red...");
@@ -815,7 +815,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 10;
                         break;
                     }
-                case RandomArtifactPower.ActStoneMud:
+                case LegendaryPower.ActStoneMud:
                     {
                         // Rock to mud
                         Profile.Instance.MsgPrint("It pulsates...");
@@ -827,14 +827,14 @@ namespace Cthangband
                         item.RechargeTimeLeft = 5;
                         break;
                     }
-                case RandomArtifactPower.ActRecharge:
+                case LegendaryPower.ActRecharge:
                     {
                         // Recharge an item
                         _saveGame.SpellEffects.Recharge(60);
                         item.RechargeTimeLeft = 70;
                         break;
                     }
-                case RandomArtifactPower.ActAlchemy:
+                case LegendaryPower.ActAlchemy:
                     {
                         // Turn an item to gold
                         Profile.Instance.MsgPrint("It glows bright yellow...");
@@ -842,7 +842,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 500;
                         break;
                     }
-                case RandomArtifactPower.ActDimDoor:
+                case LegendaryPower.ActDimDoor:
                     {
                         // Short range teleport to a specific destination
                         Profile.Instance.MsgPrint("You open a dimensional gate. Choose a destination.");
@@ -866,7 +866,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 100;
                         break;
                     }
-                case RandomArtifactPower.ActTeleport:
+                case LegendaryPower.ActTeleport:
                     {
                         // Long range teleport
                         Profile.Instance.MsgPrint("It twists space around you...");
@@ -874,7 +874,7 @@ namespace Cthangband
                         item.RechargeTimeLeft = 45;
                         break;
                     }
-                case RandomArtifactPower.ActRecall:
+                case LegendaryPower.ActRecall:
                     {
                         // Word of Recall
                         Profile.Instance.MsgPrint("It glows soft white...");
@@ -936,7 +936,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                if (item.IsRandomArtifact() || item.IsFixedArtifact() || item.IsRare())
+                if (item.IsLegendary() || item.IsArtifact() || item.IsRare())
                 {
                     continue;
                 }
@@ -970,8 +970,8 @@ namespace Cthangband
         {
             Item item = Player.Inventory[InventorySlot.MeleeWeapon];
             // We must have a non-rare, non-artifact weapon that isn't cursed
-            if (item.ItemType != null && !item.IsFixedArtifact() && !item.IsRare() &&
-                !item.IsRandomArtifact() && !item.IsCursed())
+            if (item.ItemType != null && !item.IsArtifact() && !item.IsRare() &&
+                !item.IsLegendary() && !item.IsCursed())
             {
                 string act;
                 string itemName = item.Description(false, 0);
@@ -1375,7 +1375,7 @@ namespace Cthangband
             }
             // Artifacts can't be cursed, and normal armour has a chance to save
             string itemName = item.Description(false, 3);
-            if ((item.IsRandomArtifact() || item.IsFixedArtifact()) &&
+            if ((item.IsLegendary() || item.IsArtifact()) &&
                 Program.Rng.RandomLessThan(100) < 50)
             {
                 Profile.Instance.MsgPrint(
@@ -1385,7 +1385,7 @@ namespace Cthangband
             {
                 // Completely remake the armour into a set of blasted armour
                 Profile.Instance.MsgPrint($"A terrible black aura blasts your {itemName}!");
-                item.FixedArtifactIndex = 0;
+                item.ArtifactIndex = 0;
                 item.RareItemTypeIndex = Enumerations.RareItemType.ArmourBlasted;
                 item.BonusArmourClass = 0 - Program.Rng.DieRoll(5) - Program.Rng.DieRoll(5);
                 item.BonusToHit = 0;
@@ -1393,9 +1393,9 @@ namespace Cthangband
                 item.BaseArmourClass = 0;
                 item.DamageDice = 0;
                 item.DamageDiceSides = 0;
-                item.RandartFlags1.Clear();
-                item.RandartFlags2.Clear();
-                item.RandartFlags3.Clear();
+                item.LegendaryFlags1.Clear();
+                item.LegendaryFlags2.Clear();
+                item.LegendaryFlags3.Clear();
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
@@ -1418,7 +1418,7 @@ namespace Cthangband
             }
             string itemName = item.Description(false, 3);
             // Artifacts can't be cursed, and other items have a chance to resist
-            if ((item.IsFixedArtifact() || item.IsRandomArtifact()) &&
+            if ((item.IsArtifact() || item.IsLegendary()) &&
                 Program.Rng.RandomLessThan(100) < 50)
             {
                 Profile.Instance.MsgPrint(
@@ -1428,7 +1428,7 @@ namespace Cthangband
             {
                 // Completely remake the item into a shattered weapon
                 Profile.Instance.MsgPrint($"A terrible black aura blasts your {itemName}!");
-                item.FixedArtifactIndex = 0;
+                item.ArtifactIndex = 0;
                 item.RareItemTypeIndex = Enumerations.RareItemType.WeaponShattered;
                 item.BonusToHit = 0 - Program.Rng.DieRoll(5) - Program.Rng.DieRoll(5);
                 item.BonusDamage = 0 - Program.Rng.DieRoll(5) - Program.Rng.DieRoll(5);
@@ -1436,9 +1436,9 @@ namespace Cthangband
                 item.BaseArmourClass = 0;
                 item.DamageDice = 0;
                 item.DamageDiceSides = 0;
-                item.RandartFlags1.Clear();
-                item.RandartFlags2.Clear();
-                item.RandartFlags3.Clear();
+                item.LegendaryFlags1.Clear();
+                item.LegendaryFlags2.Clear();
+                item.LegendaryFlags3.Clear();
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
@@ -2411,7 +2411,7 @@ namespace Cthangband
                     }
                     // Vorpal weapons have a chance of a deep cut
                     bool vorpalCut = f1.IsSet(ItemFlag1.Vorpal) &&
-                        Program.Rng.DieRoll(item.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade ? 3 : 6) == 1;
+                        Program.Rng.DieRoll(item.ArtifactIndex == ArtifactId.SwordVorpalBlade ? 3 : 6) == 1;
                     // If we're a martial artist then we have special attacks
                     if ((Player.ProfessionIndex == CharacterClass.Monk || Player.ProfessionIndex == CharacterClass.Mystic) && playerStatus.MartialArtistEmptyHands())
                     {
@@ -2556,13 +2556,13 @@ namespace Cthangband
                         if (vorpalCut)
                         {
                             int stepK = totalDamage;
-                            Profile.Instance.MsgPrint(item.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade
+                            Profile.Instance.MsgPrint(item.ArtifactIndex == ArtifactId.SwordVorpalBlade
                                 ? "Your Vorpal Blade goes snicker-snack!"
                                 : $"Your weapon cuts deep into {monsterName}!");
                             do
                             {
                                 totalDamage += stepK;
-                            } while (Program.Rng.DieRoll(item.FixedArtifactIndex == FixedArtifactId.SwordVorpalBlade
+                            } while (Program.Rng.DieRoll(item.ArtifactIndex == ArtifactId.SwordVorpalBlade
                                          ? 2
                                          : 4) == 1);
                         }
@@ -3851,7 +3851,7 @@ namespace Cthangband
             Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
             string itenName = item.Description(false, 0);
             // Set the ignore acid flag
-            item.RandartFlags3.Set(ItemFlag3.IgnoreAcid);
+            item.LegendaryFlags3.Set(ItemFlag3.IgnoreAcid);
             // Make sure the grammar of the message is correct
             string your;
             string s;

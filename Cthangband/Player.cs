@@ -200,9 +200,9 @@ namespace Cthangband
             }
             WeightCarried = 0;
             Inventory = new Inventory(this);
-            foreach (System.Collections.Generic.KeyValuePair<FixedArtifactId, FixedArtifact> pair in Profile.Instance.FixedArtifacts)
+            foreach (System.Collections.Generic.KeyValuePair<ArtifactId, Artifact> pair in Profile.Instance.Artifacts)
             {
-                FixedArtifact aPtr = pair.Value;
+                Artifact aPtr = pair.Value;
                 aPtr.CurNum = 0;
             }
             for (int i = 1; i < Profile.Instance.ItemTypes.Count; i++)
@@ -365,15 +365,15 @@ namespace Cthangband
                 return;
             }
             if (Program.Rng.DieRoll(100) <= heavyChance &&
-                (oPtr.FixedArtifactIndex != 0 || oPtr.RareItemTypeIndex != 0 ||
-                 oPtr.IsRandomArtifact()))
+                (oPtr.ArtifactIndex != 0 || oPtr.RareItemTypeIndex != 0 ||
+                 oPtr.IsLegendary()))
             {
                 if (o3.IsClear(ItemFlag3.HeavyCurse))
                 {
                     changed = true;
                 }
-                oPtr.RandartFlags3.Set(ItemFlag3.HeavyCurse);
-                oPtr.RandartFlags3.Set(ItemFlag3.Cursed);
+                oPtr.LegendaryFlags3.Set(ItemFlag3.HeavyCurse);
+                oPtr.LegendaryFlags3.Set(ItemFlag3.Cursed);
                 oPtr.IdentifyFlags.Set(Constants.IdentCursed);
             }
             else
@@ -382,7 +382,7 @@ namespace Cthangband
                 {
                     changed = true;
                 }
-                oPtr.RandartFlags3.Set(ItemFlag3.Cursed);
+                oPtr.LegendaryFlags3.Set(ItemFlag3.Cursed);
                 oPtr.IdentifyFlags.Set(Constants.IdentCursed);
             }
             if (changed)

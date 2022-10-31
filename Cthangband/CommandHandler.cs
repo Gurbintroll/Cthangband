@@ -143,8 +143,8 @@ namespace Cthangband
             }
             // Destroying something takes a turn
             SaveGame.Instance.EnergyUse = 100;
-            // Can't destroy an artifact artifact
-            if (item.IsFixedArtifact() || item.IsRandomArtifact())
+            // Can't destroy an artifact or legendary item
+            if (item.IsArtifact() || item.IsLegendary())
             {
                 string feel = "special";
                 SaveGame.Instance.EnergyUse = 0;

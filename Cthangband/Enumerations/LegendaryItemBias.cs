@@ -8,9 +8,9 @@
 namespace Cthangband.Enumerations
 {
     /// <summary>
-    /// The bias used when giving random powers to an artifact
+    /// The bias used when giving random powers to a legendary item
     /// </summary>
-    internal static class ArtifactBias
+    internal static class LegendaryItemBias
     {
         public const int Acid = 5;
         public const int Chaos = 12;

@@ -318,7 +318,7 @@
     <Compile Include="CommandEngine.cs" />
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Enumerations\Ability.cs" />
-    <Compile Include="Enumerations\ArtifactBias.cs" />
+    <Compile Include="Enumerations\LegendaryItemBias.cs" />
     <Compile Include="Enumerations\AttackEffect.cs" />
     <Compile Include="Enumerations\AttackType.cs" />
     <Compile Include="Enumerations\BirthStage.cs" />
@@ -327,7 +327,7 @@
     <Compile Include="Enumerations\CharacterClass.cs" />
     <Compile Include="Enumerations\ChestTrap.cs" />
     <Compile Include="Enumerations\Colour.cs" />
-    <Compile Include="Enumerations\FixedArtifactId.cs" />
+    <Compile Include="Enumerations\ArtifactId.cs" />
     <Compile Include="Enumerations\ItemCategory.cs" />
     <Compile Include="Enumerations\MonsterFlag1.cs" />
     <Compile Include="Enumerations\MonsterFlag2.cs" />
@@ -337,7 +337,7 @@
     <Compile Include="Enumerations\MonsterFlag6.cs" />
     <Compile Include="Enumerations\ProjectionFlag.cs" />
     <Compile Include="Enumerations\RaceID.cs" />
-    <Compile Include="Enumerations\RandomArtifactPower.cs" />
+    <Compile Include="Enumerations\LegendaryPower.cs" />
     <Compile Include="Enumerations\RareItemType.cs" />
     <Compile Include="Enumerations\Realm.cs" />
     <Compile Include="Enumerations\RealmChoice.cs" />
@@ -613,7 +613,7 @@
     <Compile Include="Spells\Tarot\TarotSpellWordOfRecall.cs" />
     <Compile Include="StaticData\AmuletFlavour.cs" />
     <Compile Include="StaticData\Animation.cs" />
-    <Compile Include="StaticData\BaseFixedartifact.cs" />
+    <Compile Include="StaticData\BaseArtifact.cs" />
     <Compile Include="StaticData\BaseItemType.cs" />
     <Compile Include="StaticData\BaseMonsterRace.cs" />
     <Compile Include="StaticData\BaseRareItemType.cs" />
@@ -651,8 +651,8 @@
     <Compile Include="Dungeon.cs" />
     <Compile Include="ExPlayer.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="FixedArtifact.cs" />
-    <Compile Include="FixedArtifactArray.cs" />
+    <Compile Include="Artifact.cs" />
+    <Compile Include="ArtifactArray.cs" />
     <Compile Include="FlagSet.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="StaticData\GlobalData.cs" />
@@ -738,7 +738,7 @@
     <EmbeddedResource Include="Data\StaffFlavours.csv" />
     <EmbeddedResource Include="Data\WandFlavours.csv" />
     <EmbeddedResource Include="Data\BaseRareItemTypes.csv" />
-    <EmbeddedResource Include="Data\BaseFixedartifacts.csv" />
+    <EmbeddedResource Include="Data\BaseArtifacts.csv" />
     <EmbeddedResource Include="Data\BaseVaultTypes.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -50,7 +50,7 @@ namespace Cthangband.Projection
                 {
                     plural = true;
                 }
-                if (oPtr.IsFixedArtifact() || oPtr.IsRandomArtifact())
+                if (oPtr.IsArtifact() || oPtr.IsLegendary())
                 {
                     isArt = true;
                 }

@@ -14,17 +14,17 @@ using System.Runtime.Serialization;
 namespace Cthangband
 {
     [Serializable]
-    internal class FixedArtifactArray : Dictionary<FixedArtifactId, FixedArtifact>
+    internal class ArtifactArray : Dictionary<ArtifactId, Artifact>
     {
-        public FixedArtifactArray()
+        public ArtifactArray()
         {
-            foreach (KeyValuePair<string, BaseFixedartifact> pair in StaticResources.Instance.BaseFixedartifacts)
+            foreach (KeyValuePair<string, BaseArtifact> pair in StaticResources.Instance.BaseArtifacts)
             {
-                Add(pair.Value.FixedArtifactID, new FixedArtifact(pair.Value));
+                Add(pair.Value.ArtifactID, new Artifact(pair.Value));
             }
         }
 
-        public FixedArtifactArray(SerializationInfo info, StreamingContext context) : base(info, context)
+        public ArtifactArray(SerializationInfo info, StreamingContext context) : base(info, context)
         {
             // Needed for serialising a dictionary
         }

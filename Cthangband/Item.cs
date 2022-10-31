@@ -18,9 +18,9 @@ namespace Cthangband
     {
         public static int CoinType;
         public readonly FlagSet IdentifyFlags = new FlagSet();
-        public readonly FlagSet RandartFlags1 = new FlagSet();
-        public readonly FlagSet RandartFlags2 = new FlagSet();
-        public readonly FlagSet RandartFlags3 = new FlagSet();
+        public readonly FlagSet LegendaryFlags1 = new FlagSet();
+        public readonly FlagSet LegendaryFlags2 = new FlagSet();
+        public readonly FlagSet LegendaryFlags3 = new FlagSet();
         public int BaseArmourClass;
         public int BonusArmourClass;
         public int BonusDamage;
@@ -32,14 +32,14 @@ namespace Cthangband
         public int DamageDice;
         public int DamageDiceSides;
         public int Discount;
-        public FixedArtifactId FixedArtifactIndex;
+        public ArtifactId ArtifactIndex;
         public int HoldingMonsterIndex;
         public string Inscription = "";
         public int ItemSubCategory;
         public ItemType ItemType;
         public bool Marked;
         public int NextInStack;
-        public string RandartName = "";
+        public string LegendaryName = "";
         public Enumerations.RareItemType RareItemTypeIndex;
         public int RechargeTimeLeft;
         public int TypeSpecificValue;
@@ -54,10 +54,10 @@ namespace Cthangband
         public Item(Item original)
         {
             BaseArmourClass = original.BaseArmourClass;
-            RandartFlags1.Copy(original.RandartFlags1);
-            RandartFlags2.Copy(original.RandartFlags2);
-            RandartFlags3.Copy(original.RandartFlags3);
-            RandartName = original.RandartName;
+            LegendaryFlags1.Copy(original.LegendaryFlags1);
+            LegendaryFlags2.Copy(original.LegendaryFlags2);
+            LegendaryFlags3.Copy(original.LegendaryFlags3);
+            LegendaryName = original.LegendaryName;
             DamageDice = original.DamageDice;
             Discount = original.Discount;
             DamageDiceSides = original.DamageDiceSides;
@@ -67,7 +67,7 @@ namespace Cthangband
             Y = original.Y;
             ItemType = original.ItemType;
             Marked = original.Marked;
-            FixedArtifactIndex = original.FixedArtifactIndex;
+            ArtifactIndex = original.ArtifactIndex;
             RareItemTypeIndex = original.RareItemTypeIndex;
             NextInStack = original.NextInStack;
             Inscription = original.Inscription;
@@ -234,7 +234,7 @@ namespace Cthangband
                             {
                                 mult = 5;
                             }
-                            if (FixedArtifactIndex == FixedArtifactId.SwordLightning)
+                            if (ArtifactIndex == ArtifactId.SwordLightning)
                             {
                                 mult *= 3;
                             }
@@ -493,11 +493,11 @@ namespace Cthangband
                     {
                         return false;
                     }
-                    if (FixedArtifactIndex != other.FixedArtifactIndex)
+                    if (ArtifactIndex != other.ArtifactIndex)
                     {
                         return false;
                     }
-                    if (IsRandomArtifact() || other.IsRandomArtifact())
+                    if (IsLegendary() || other.IsLegendary())
                     {
                         return false;
                     }
@@ -550,11 +550,11 @@ namespace Cthangband
                     {
                         return false;
                     }
-                    if (FixedArtifactIndex != other.FixedArtifactIndex)
+                    if (ArtifactIndex != other.ArtifactIndex)
                     {
                         return false;
                     }
-                    if (IsRandomArtifact() || other.IsRandomArtifact())
+                    if (IsLegendary() || other.IsLegendary())
                     {
                         return false;
                     }
@@ -591,8 +591,8 @@ namespace Cthangband
                     }
                     break;
             }
-            if (RandartFlags1.Value != other.RandartFlags1.Value || RandartFlags2.Value != other.RandartFlags2.Value ||
-                RandartFlags3.Value != other.RandartFlags3.Value)
+            if (LegendaryFlags1.Value != other.LegendaryFlags1.Value || LegendaryFlags2.Value != other.LegendaryFlags2.Value ||
+                LegendaryFlags3.Value != other.LegendaryFlags3.Value)
             {
                 return false;
             }
@@ -616,10 +616,10 @@ namespace Cthangband
             return total < Constants.MaxStackSize;
         }
 
-        public bool CreateRandart(bool fromScroll)
+        public bool CreateLegendary(bool fromScroll)
         {
             ItemForge forge = new ItemForge(this);
-            return forge.CreateRandart(fromScroll);
+            return forge.CreateLegendary(fromScroll);
         }
 
         public string Description(bool pref, int mode)
@@ -695,7 +695,7 @@ namespace Cthangband
                     break;
 
                 case ItemCategory.Amulet:
-                    if (IsFixedArtifact() && aware)
+                    if (IsArtifact() && aware)
                     {
                         break;
                     }
@@ -708,7 +708,7 @@ namespace Cthangband
                     break;
 
                 case ItemCategory.Ring:
-                    if (IsFixedArtifact() && aware)
+                    if (IsArtifact() && aware)
                     {
                         break;
                     }
@@ -860,7 +860,7 @@ namespace Cthangband
                     t += Count;
                     t += ' ';
                 }
-                else if (known && (IsFixedArtifact() || IsRandomArtifact()))
+                else if (known && (IsArtifact() || IsLegendary()))
                 {
                     t += "The ";
                 }
@@ -892,7 +892,7 @@ namespace Cthangband
                     t += Count;
                     t += ' ';
                 }
-                else if (known && (IsFixedArtifact() || IsRandomArtifact()))
+                else if (known && (IsArtifact() || IsLegendary()))
                 {
                     t += "The ";
                 }
@@ -927,14 +927,14 @@ namespace Cthangband
             }
             if (known)
             {
-                if (IsRandomArtifact())
+                if (IsLegendary())
                 {
                     t += ' ';
-                    t += RandartName;
+                    t += LegendaryName;
                 }
-                else if (FixedArtifactIndex != 0)
+                else if (ArtifactIndex != 0)
                 {
-                    FixedArtifact aPtr = Profile.Instance.FixedArtifacts[FixedArtifactIndex];
+                    Artifact aPtr = Profile.Instance.Artifacts[ArtifactIndex];
                     t += ' ';
                     t += aPtr.Name;
                 }
@@ -1654,306 +1654,306 @@ namespace Cthangband
             {
                 total -= 15000;
             }
-            if (IsRandomArtifact() && RandartFlags3.IsSet(ItemFlag3.Activate))
+            if (IsLegendary() && LegendaryFlags3.IsSet(ItemFlag3.Activate))
             {
                 int type = BonusPowerSubType;
-                if (type == RandomArtifactPower.ActSunlight)
+                if (type == LegendaryPower.ActSunlight)
                 {
                     total += 250;
                 }
-                else if (type == RandomArtifactPower.ActBoMiss1)
+                else if (type == LegendaryPower.ActBoMiss1)
                 {
                     total += 250;
                 }
-                else if (type == RandomArtifactPower.ActBaPois1)
+                else if (type == LegendaryPower.ActBaPois1)
                 {
                     total += 300;
                 }
-                else if (type == RandomArtifactPower.ActBoElec1)
+                else if (type == LegendaryPower.ActBoElec1)
                 {
                     total += 250;
                 }
-                else if (type == RandomArtifactPower.ActBoAcid1)
+                else if (type == LegendaryPower.ActBoAcid1)
                 {
                     total += 250;
                 }
-                else if (type == RandomArtifactPower.ActBoCold1)
+                else if (type == LegendaryPower.ActBoCold1)
                 {
                     total += 250;
                 }
-                else if (type == RandomArtifactPower.ActBoFire1)
+                else if (type == LegendaryPower.ActBoFire1)
                 {
                     total += 250;
                 }
-                else if (type == RandomArtifactPower.ActBaCold1)
+                else if (type == LegendaryPower.ActBaCold1)
                 {
                     total += 750;
                 }
-                else if (type == RandomArtifactPower.ActBaFire1)
+                else if (type == LegendaryPower.ActBaFire1)
                 {
                     total += 1000;
                 }
-                else if (type == RandomArtifactPower.ActDrain1)
+                else if (type == LegendaryPower.ActDrain1)
                 {
                     total += 500;
                 }
-                else if (type == RandomArtifactPower.ActBaCold2)
+                else if (type == LegendaryPower.ActBaCold2)
                 {
                     total += 1250;
                 }
-                else if (type == RandomArtifactPower.ActBaElec2)
+                else if (type == LegendaryPower.ActBaElec2)
                 {
                     total += 1500;
                 }
-                else if (type == RandomArtifactPower.ActBaElec3)
+                else if (type == LegendaryPower.ActBaElec3)
                 {
                     total += 2000;
                 }
-                else if (type == RandomArtifactPower.ActDrain2)
+                else if (type == LegendaryPower.ActDrain2)
                 {
                     total += 750;
                 }
-                else if (type == RandomArtifactPower.ActVampire1)
+                else if (type == LegendaryPower.ActVampire1)
                 {
                     total = 1000;
                 }
-                else if (type == RandomArtifactPower.ActBoMiss2)
+                else if (type == LegendaryPower.ActBoMiss2)
                 {
                     total += 1000;
                 }
-                else if (type == RandomArtifactPower.ActBaFire2)
+                else if (type == LegendaryPower.ActBaFire2)
                 {
                     total += 1750;
                 }
-                else if (type == RandomArtifactPower.ActBaCold3)
+                else if (type == LegendaryPower.ActBaCold3)
                 {
                     total += 2500;
                 }
-                else if (type == RandomArtifactPower.ActBaElec3)
+                else if (type == LegendaryPower.ActBaElec3)
                 {
                     total += 2500;
                 }
-                else if (type == RandomArtifactPower.ActWhirlwind)
+                else if (type == LegendaryPower.ActWhirlwind)
                 {
                     total += 7500;
                 }
-                else if (type == RandomArtifactPower.ActVampire2)
+                else if (type == LegendaryPower.ActVampire2)
                 {
                     total += 2500;
                 }
-                else if (type == RandomArtifactPower.ActCallChaos)
+                else if (type == LegendaryPower.ActCallChaos)
                 {
                     total += 5000;
                 }
-                else if (type == RandomArtifactPower.ActShard)
+                else if (type == LegendaryPower.ActShard)
                 {
                     total += 5000;
                 }
-                else if (type == RandomArtifactPower.ActDispEvil)
+                else if (type == LegendaryPower.ActDispEvil)
                 {
                     total += 4000;
                 }
-                else if (type == RandomArtifactPower.ActDispGood)
+                else if (type == LegendaryPower.ActDispGood)
                 {
                     total += 3500;
                 }
-                else if (type == RandomArtifactPower.ActBaMiss3)
+                else if (type == LegendaryPower.ActBaMiss3)
                 {
                     total += 5000;
                 }
-                else if (type == RandomArtifactPower.ActConfuse)
+                else if (type == LegendaryPower.ActConfuse)
                 {
                     total += 500;
                 }
-                else if (type == RandomArtifactPower.ActSleep)
+                else if (type == LegendaryPower.ActSleep)
                 {
                     total += 750;
                 }
-                else if (type == RandomArtifactPower.ActQuake)
+                else if (type == LegendaryPower.ActQuake)
                 {
                     total += 600;
                 }
-                else if (type == RandomArtifactPower.ActTerror)
+                else if (type == LegendaryPower.ActTerror)
                 {
                     total += 2500;
                 }
-                else if (type == RandomArtifactPower.ActTeleAway)
+                else if (type == LegendaryPower.ActTeleAway)
                 {
                     total += 2000;
                 }
-                else if (type == RandomArtifactPower.ActBanishEvil)
+                else if (type == LegendaryPower.ActBanishEvil)
                 {
                     total += 3000;
                 }
-                else if (type == RandomArtifactPower.ActCarnage)
+                else if (type == LegendaryPower.ActCarnage)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActMassGeno)
+                else if (type == LegendaryPower.ActMassGeno)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActCharmAnimal)
+                else if (type == LegendaryPower.ActCharmAnimal)
                 {
                     total += 7500;
                 }
-                else if (type == RandomArtifactPower.ActCharmUndead)
+                else if (type == LegendaryPower.ActCharmUndead)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActCharmOther)
+                else if (type == LegendaryPower.ActCharmOther)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActCharmAnimals)
+                else if (type == LegendaryPower.ActCharmAnimals)
                 {
                     total += 12500;
                 }
-                else if (type == RandomArtifactPower.ActCharmOthers)
+                else if (type == LegendaryPower.ActCharmOthers)
                 {
                     total += 17500;
                 }
-                else if (type == RandomArtifactPower.ActSummonAnimal)
+                else if (type == LegendaryPower.ActSummonAnimal)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActSummonPhantom)
+                else if (type == LegendaryPower.ActSummonPhantom)
                 {
                     total += 12000;
                 }
-                else if (type == RandomArtifactPower.ActSummonElemental)
+                else if (type == LegendaryPower.ActSummonElemental)
                 {
                     total += 15000;
                 }
-                else if (type == RandomArtifactPower.ActSummonDemon)
+                else if (type == LegendaryPower.ActSummonDemon)
                 {
                     total += 20000;
                 }
-                else if (type == RandomArtifactPower.ActSummonUndead)
+                else if (type == LegendaryPower.ActSummonUndead)
                 {
                     total += 20000;
                 }
-                else if (type == RandomArtifactPower.ActCureLw)
+                else if (type == LegendaryPower.ActCureLw)
                 {
                     total += 500;
                 }
-                else if (type == RandomArtifactPower.ActCureMw)
+                else if (type == LegendaryPower.ActCureMw)
                 {
                     total += 750;
                 }
-                else if (type == RandomArtifactPower.ActCurePoison)
+                else if (type == LegendaryPower.ActCurePoison)
                 {
                     total += 1000;
                 }
-                else if (type == RandomArtifactPower.ActRestLife)
+                else if (type == LegendaryPower.ActRestLife)
                 {
                     total += 7500;
                 }
-                else if (type == RandomArtifactPower.ActRestAll)
+                else if (type == LegendaryPower.ActRestAll)
                 {
                     total += 15000;
                 }
-                else if (type == RandomArtifactPower.ActCure700)
+                else if (type == LegendaryPower.ActCure700)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActCure1000)
+                else if (type == LegendaryPower.ActCure1000)
                 {
                     total += 15000;
                 }
-                else if (type == RandomArtifactPower.ActEsp)
+                else if (type == LegendaryPower.ActEsp)
                 {
                     total += 1500;
                 }
-                else if (type == RandomArtifactPower.ActBerserk)
+                else if (type == LegendaryPower.ActBerserk)
                 {
                     total += 800;
                 }
-                else if (type == RandomArtifactPower.ActProtEvil)
+                else if (type == LegendaryPower.ActProtEvil)
                 {
                     total += 5000;
                 }
-                else if (type == RandomArtifactPower.ActResistAll)
+                else if (type == LegendaryPower.ActResistAll)
                 {
                     total += 5000;
                 }
-                else if (type == RandomArtifactPower.ActSpeed)
+                else if (type == LegendaryPower.ActSpeed)
                 {
                     total += 15000;
                 }
-                else if (type == RandomArtifactPower.ActXtraSpeed)
+                else if (type == LegendaryPower.ActXtraSpeed)
                 {
                     total += 25000;
                 }
-                else if (type == RandomArtifactPower.ActWraith)
+                else if (type == LegendaryPower.ActWraith)
                 {
                     total += 25000;
                 }
-                else if (type == RandomArtifactPower.ActInvuln)
+                else if (type == LegendaryPower.ActInvuln)
                 {
                     total += 25000;
                 }
-                else if (type == RandomArtifactPower.ActLight)
+                else if (type == LegendaryPower.ActLight)
                 {
                     total += 150;
                 }
-                else if (type == RandomArtifactPower.ActMapLight)
+                else if (type == LegendaryPower.ActMapLight)
                 {
                     total += 500;
                 }
-                else if (type == RandomArtifactPower.ActDetectAll)
+                else if (type == LegendaryPower.ActDetectAll)
                 {
                     total += 1000;
                 }
-                else if (type == RandomArtifactPower.ActDetectXtra)
+                else if (type == LegendaryPower.ActDetectXtra)
                 {
                     total += 12500;
                 }
-                else if (type == RandomArtifactPower.ActIdFull)
+                else if (type == LegendaryPower.ActIdFull)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActIdPlain)
+                else if (type == LegendaryPower.ActIdPlain)
                 {
                     total += 1250;
                 }
-                else if (type == RandomArtifactPower.ActRuneExplo)
+                else if (type == LegendaryPower.ActRuneExplo)
                 {
                     total += 4000;
                 }
-                else if (type == RandomArtifactPower.ActRuneProt)
+                else if (type == LegendaryPower.ActRuneProt)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActSatiate)
+                else if (type == LegendaryPower.ActSatiate)
                 {
                     total += 2000;
                 }
-                else if (type == RandomArtifactPower.ActDestDoor)
+                else if (type == LegendaryPower.ActDestDoor)
                 {
                     total += 100;
                 }
-                else if (type == RandomArtifactPower.ActStoneMud)
+                else if (type == LegendaryPower.ActStoneMud)
                 {
                     total += 1000;
                 }
-                else if (type == RandomArtifactPower.ActRecharge)
+                else if (type == LegendaryPower.ActRecharge)
                 {
                     total += 1000;
                 }
-                else if (type == RandomArtifactPower.ActAlchemy)
+                else if (type == LegendaryPower.ActAlchemy)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActDimDoor)
+                else if (type == LegendaryPower.ActDimDoor)
                 {
                     total += 10000;
                 }
-                else if (type == RandomArtifactPower.ActTeleport)
+                else if (type == LegendaryPower.ActTeleport)
                 {
                     total += 2000;
                 }
-                else if (type == RandomArtifactPower.ActRecall)
+                else if (type == LegendaryPower.ActRecall)
                 {
                     total += 7500;
                 }
@@ -1963,7 +1963,7 @@ namespace Cthangband
 
         public string GetDetailedFeeling()
         {
-            if (IsFixedArtifact() || IsRandomArtifact())
+            if (IsArtifact() || IsLegendary())
             {
                 if (IsCursed() || IsBroken())
                 {
@@ -1998,10 +1998,10 @@ namespace Cthangband
             return "average";
         }
 
-        public void GetFixedArtifactResistances()
+        public void GetArtifactResistances()
         {
             ItemForge forge = new ItemForge(this);
-            forge.GetFixedArtifactResistances();
+            forge.GetArtifactResistances();
         }
 
         public void GetMergedFlags(FlagSet f1, FlagSet f2, FlagSet f3)
@@ -2016,9 +2016,9 @@ namespace Cthangband
             f1.Set(ItemType.Flags1);
             f2.Set(ItemType.Flags2);
             f3.Set(ItemType.Flags3);
-            if (FixedArtifactIndex != 0)
+            if (ArtifactIndex != 0)
             {
-                FixedArtifact aPtr = Profile.Instance.FixedArtifacts[FixedArtifactIndex];
+                Artifact aPtr = Profile.Instance.Artifacts[ArtifactIndex];
                 f1.Set(aPtr.Flags1);
                 f2.Set(aPtr.Flags2);
                 f3.Set(aPtr.Flags3);
@@ -2030,13 +2030,13 @@ namespace Cthangband
                 f2.Set(ePtr.Flags2);
                 f3.Set(ePtr.Flags3);
             }
-            if (RandartFlags1.IsSet() || RandartFlags2.IsSet() || RandartFlags3.IsSet())
+            if (LegendaryFlags1.IsSet() || LegendaryFlags2.IsSet() || LegendaryFlags3.IsSet())
             {
-                f1.Set(RandartFlags1);
-                f2.Set(RandartFlags2);
-                f3.Set(RandartFlags3);
+                f1.Set(LegendaryFlags1);
+                f2.Set(LegendaryFlags2);
+                f3.Set(LegendaryFlags3);
             }
-            if (IsRandomArtifact())
+            if (IsLegendary())
             {
                 switch (BonusPowerType)
                 {
@@ -2172,7 +2172,7 @@ namespace Cthangband
             {
                 return "broken";
             }
-            if (IsFixedArtifact() || IsRandomArtifact())
+            if (IsArtifact() || IsLegendary())
             {
                 return "special";
             }
@@ -2315,7 +2315,7 @@ namespace Cthangband
             }
             if (Category == ItemCategory.Light)
             {
-                if (IsFixedArtifact())
+                if (IsArtifact())
                 {
                     info[i++] = "It provides light (radius 3) forever.";
                 }
@@ -2710,9 +2710,9 @@ namespace Cthangband
             return IdentifyFlags.IsSet(Constants.IdentCursed);
         }
 
-        public bool IsFixedArtifact()
+        public bool IsArtifact()
         {
-            return FixedArtifactIndex != 0;
+            return ArtifactIndex != 0;
         }
 
         public bool IsFlavourAware()
@@ -2741,9 +2741,9 @@ namespace Cthangband
             return false;
         }
 
-        public bool IsRandomArtifact()
+        public bool IsLegendary()
         {
-            return !string.IsNullOrEmpty(RandartName);
+            return !string.IsNullOrEmpty(LegendaryName);
         }
 
         public bool IsRare()
@@ -2886,13 +2886,13 @@ namespace Cthangband
             }
             int value = kPtr.Cost;
             GetMergedFlags(f1, f2, f3);
-            if (RandartFlags1.IsSet() || RandartFlags2.IsSet() || RandartFlags3.IsSet())
+            if (LegendaryFlags1.IsSet() || LegendaryFlags2.IsSet() || LegendaryFlags3.IsSet())
             {
                 value += FlagBasedCost(TypeSpecificValue);
             }
-            else if (FixedArtifactIndex != 0)
+            else if (ArtifactIndex != 0)
             {
-                FixedArtifact aPtr = Profile.Instance.FixedArtifacts[FixedArtifactIndex];
+                Artifact aPtr = Profile.Instance.Artifacts[ArtifactIndex];
                 if (aPtr.Cost == 0)
                 {
                     return 0;
@@ -3252,299 +3252,299 @@ namespace Cthangband
             {
                 return null;
             }
-            if (FixedArtifactIndex == 0 && RareItemTypeIndex == 0 && BonusPowerType == 0 && BonusPowerSubType != 0)
+            if (ArtifactIndex == 0 && RareItemTypeIndex == 0 && BonusPowerType == 0 && BonusPowerSubType != 0)
             {
                 switch (BonusPowerSubType)
                 {
-                    case RandomArtifactPower.ActSunlight:
+                    case LegendaryPower.ActSunlight:
                         {
                             return "beam of sunlight every 10 turns";
                         }
-                    case RandomArtifactPower.ActBoMiss1:
+                    case LegendaryPower.ActBoMiss1:
                         {
                             return "magic missile (2d6) every 2 turns";
                         }
-                    case RandomArtifactPower.ActBaPois1:
+                    case LegendaryPower.ActBaPois1:
                         {
                             return "stinking cloud (12), rad. 3, every 4+d4 turns";
                         }
-                    case RandomArtifactPower.ActBoElec1:
+                    case LegendaryPower.ActBoElec1:
                         {
                             return "lightning bolt (4d8) every 6+d6 turns";
                         }
-                    case RandomArtifactPower.ActBoAcid1:
+                    case LegendaryPower.ActBoAcid1:
                         {
                             return "acid bolt (5d8) every 5+d5 turns";
                         }
-                    case RandomArtifactPower.ActBoCold1:
+                    case LegendaryPower.ActBoCold1:
                         {
                             return "frost bolt (6d8) every 7+d7 turns";
                         }
-                    case RandomArtifactPower.ActBoFire1:
+                    case LegendaryPower.ActBoFire1:
                         {
                             return "fire bolt (9d8) every 8+d8 turns";
                         }
-                    case RandomArtifactPower.ActBaCold1:
+                    case LegendaryPower.ActBaCold1:
                         {
                             return "ball of cold (48) every 400 turns";
                         }
-                    case RandomArtifactPower.ActBaFire1:
+                    case LegendaryPower.ActBaFire1:
                         {
                             return "ball of fire (72) every 400 turns";
                         }
-                    case RandomArtifactPower.ActDrain1:
+                    case LegendaryPower.ActDrain1:
                         {
                             return "drain life (100) every 100+d100 turns";
                         }
-                    case RandomArtifactPower.ActBaCold2:
+                    case LegendaryPower.ActBaCold2:
                         {
                             return "ball of cold (100) every 300 turns";
                         }
-                    case RandomArtifactPower.ActBaElec2:
+                    case LegendaryPower.ActBaElec2:
                         {
                             return "ball of lightning (100) every 500 turns";
                         }
-                    case RandomArtifactPower.ActDrain2:
+                    case LegendaryPower.ActDrain2:
                         {
                             return "drain life (120) every 400 turns";
                         }
-                    case RandomArtifactPower.ActVampire1:
+                    case LegendaryPower.ActVampire1:
                         {
                             return "vampiric drain (3*50) every 400 turns";
                         }
-                    case RandomArtifactPower.ActBoMiss2:
+                    case LegendaryPower.ActBoMiss2:
                         {
                             return "arrows (150) every 90+d90 turns";
                         }
-                    case RandomArtifactPower.ActBaFire2:
+                    case LegendaryPower.ActBaFire2:
                         {
                             return "fire ball (120) every 225+d225 turns";
                         }
-                    case RandomArtifactPower.ActBaCold3:
+                    case LegendaryPower.ActBaCold3:
                         {
                             return "ball of cold (200) every 325+d325 turns";
                         }
-                    case RandomArtifactPower.ActWhirlwind:
+                    case LegendaryPower.ActWhirlwind:
                         {
                             return "whirlwind attack every 250 turns";
                         }
-                    case RandomArtifactPower.ActVampire2:
+                    case LegendaryPower.ActVampire2:
                         {
                             return "vampiric drain (3*100) every 400 turns";
                         }
-                    case RandomArtifactPower.ActCallChaos:
+                    case LegendaryPower.ActCallChaos:
                         {
                             return "call chaos every 350 turns";
                         }
-                    case RandomArtifactPower.ActShard:
+                    case LegendaryPower.ActShard:
                         {
                             return "shard ball (120+level) every 400 turns";
                         }
-                    case RandomArtifactPower.ActDispEvil:
+                    case LegendaryPower.ActDispEvil:
                         {
                             return "dispel evil (level*5) every 300+d300 turns";
                         }
-                    case RandomArtifactPower.ActDispGood:
+                    case LegendaryPower.ActDispGood:
                         {
                             return "dispel good (level*5) every 300+d300 turns";
                         }
-                    case RandomArtifactPower.ActBaMiss3:
+                    case LegendaryPower.ActBaMiss3:
                         {
                             return "elemental breath (300) every 500 turns";
                         }
-                    case RandomArtifactPower.ActConfuse:
+                    case LegendaryPower.ActConfuse:
                         {
                             return "confuse monster every 15 turns";
                         }
-                    case RandomArtifactPower.ActSleep:
+                    case LegendaryPower.ActSleep:
                         {
                             return "sleep nearby monsters every 55 turns";
                         }
-                    case RandomArtifactPower.ActQuake:
+                    case LegendaryPower.ActQuake:
                         {
                             return "earthquake (rad 10) every 50 turns";
                         }
-                    case RandomArtifactPower.ActTerror:
+                    case LegendaryPower.ActTerror:
                         {
                             return "terror every 3 * (level+10) turns";
                         }
-                    case RandomArtifactPower.ActTeleAway:
+                    case LegendaryPower.ActTeleAway:
                         {
                             return "teleport away every 200 turns";
                         }
-                    case RandomArtifactPower.ActBanishEvil:
+                    case LegendaryPower.ActBanishEvil:
                         {
                             return "banish evil every 250+d250 turns";
                         }
-                    case RandomArtifactPower.ActCarnage:
+                    case LegendaryPower.ActCarnage:
                         {
                             return "carnage every 500 turns";
                         }
-                    case RandomArtifactPower.ActMassGeno:
+                    case LegendaryPower.ActMassGeno:
                         {
                             return "mass carnage every 1000 turns";
                         }
-                    case RandomArtifactPower.ActCharmAnimal:
+                    case LegendaryPower.ActCharmAnimal:
                         {
                             return "charm animal every 300 turns";
                         }
-                    case RandomArtifactPower.ActCharmUndead:
+                    case LegendaryPower.ActCharmUndead:
                         {
                             return "enslave undead every 333 turns";
                         }
-                    case RandomArtifactPower.ActCharmOther:
+                    case LegendaryPower.ActCharmOther:
                         {
                             return "charm monster every 400 turns";
                         }
-                    case RandomArtifactPower.ActCharmAnimals:
+                    case LegendaryPower.ActCharmAnimals:
                         {
                             return "animal friendship every 500 turns";
                         }
-                    case RandomArtifactPower.ActCharmOthers:
+                    case LegendaryPower.ActCharmOthers:
                         {
                             return "mass charm every 750 turns";
                         }
-                    case RandomArtifactPower.ActSummonAnimal:
+                    case LegendaryPower.ActSummonAnimal:
                         {
                             return "summon animal every 200+d300 turns";
                         }
-                    case RandomArtifactPower.ActSummonPhantom:
+                    case LegendaryPower.ActSummonPhantom:
                         {
                             return "summon phantasmal servant every 200+d200 turns";
                         }
-                    case RandomArtifactPower.ActSummonElemental:
+                    case LegendaryPower.ActSummonElemental:
                         {
                             return "summon elemental every 750 turns";
                         }
-                    case RandomArtifactPower.ActSummonDemon:
+                    case LegendaryPower.ActSummonDemon:
                         {
                             return "summon demon every 666+d333 turns";
                         }
-                    case RandomArtifactPower.ActSummonUndead:
+                    case LegendaryPower.ActSummonUndead:
                         {
                             return "summon undead every 666+d333 turns";
                         }
-                    case RandomArtifactPower.ActCureLw:
+                    case LegendaryPower.ActCureLw:
                         {
                             return "remove fear & heal 30 hp every 10 turns";
                         }
-                    case RandomArtifactPower.ActCureMw:
+                    case LegendaryPower.ActCureMw:
                         {
                             return "heal 4d8 & wounds every 3+d3 turns";
                         }
-                    case RandomArtifactPower.ActCurePoison:
+                    case LegendaryPower.ActCurePoison:
                         {
                             return "remove fear and cure poison every 5 turns";
                         }
-                    case RandomArtifactPower.ActRestLife:
+                    case LegendaryPower.ActRestLife:
                         {
                             return "restore life levels every 450 turns";
                         }
-                    case RandomArtifactPower.ActRestAll:
+                    case LegendaryPower.ActRestAll:
                         {
                             return "restore stats and life levels every 750 turns";
                         }
-                    case RandomArtifactPower.ActCure700:
+                    case LegendaryPower.ActCure700:
                         {
                             return "heal 700 hit points every 250 turns";
                         }
-                    case RandomArtifactPower.ActCure1000:
+                    case LegendaryPower.ActCure1000:
                         {
                             return "heal 1000 hit points every 888 turns";
                         }
-                    case RandomArtifactPower.ActEsp:
+                    case LegendaryPower.ActEsp:
                         {
                             return "temporary ESP (dur 25+d30) every 200 turns";
                         }
-                    case RandomArtifactPower.ActBerserk:
+                    case LegendaryPower.ActBerserk:
                         {
                             return "heroism and berserk (dur 50+d50) every 100+d100 turns";
                         }
-                    case RandomArtifactPower.ActProtEvil:
+                    case LegendaryPower.ActProtEvil:
                         {
                             return "protect evil (dur level*3 + d25) every 225+d225 turns";
                         }
-                    case RandomArtifactPower.ActResistAll:
+                    case LegendaryPower.ActResistAll:
                         {
                             return "resist elements (dur 40+d40) every 200 turns";
                         }
-                    case RandomArtifactPower.ActSpeed:
+                    case LegendaryPower.ActSpeed:
                         {
                             return "speed (dur 20+d20) every 250 turns";
                         }
-                    case RandomArtifactPower.ActXtraSpeed:
+                    case LegendaryPower.ActXtraSpeed:
                         {
                             return "speed (dur 75+d75) every 200+d200 turns";
                         }
-                    case RandomArtifactPower.ActWraith:
+                    case LegendaryPower.ActWraith:
                         {
                             return "wraith form (level/2 + d(level/2)) every 1000 turns";
                         }
-                    case RandomArtifactPower.ActInvuln:
+                    case LegendaryPower.ActInvuln:
                         {
                             return "invulnerability (dur 8+d8) every 1000 turns";
                         }
-                    case RandomArtifactPower.ActLight:
+                    case LegendaryPower.ActLight:
                         {
                             return "light area (dam 2d15) every 10+d10 turns";
                         }
-                    case RandomArtifactPower.ActMapLight:
+                    case LegendaryPower.ActMapLight:
                         {
                             return "light (dam 2d15) & map area every 50+d50 turns";
                         }
-                    case RandomArtifactPower.ActDetectAll:
+                    case LegendaryPower.ActDetectAll:
                         {
                             return "detection every 55+d55 turns";
                         }
-                    case RandomArtifactPower.ActDetectXtra:
+                    case LegendaryPower.ActDetectXtra:
                         {
                             return "detection, probing and identify true every 1000 turns";
                         }
-                    case RandomArtifactPower.ActIdFull:
+                    case LegendaryPower.ActIdFull:
                         {
                             return "identify true every 750 turns";
                         }
-                    case RandomArtifactPower.ActIdPlain:
+                    case LegendaryPower.ActIdPlain:
                         {
                             return "identify spell every 10 turns";
                         }
-                    case RandomArtifactPower.ActRuneExplo:
+                    case LegendaryPower.ActRuneExplo:
                         {
                             return "Yellow Sign every 200 turns";
                         }
-                    case RandomArtifactPower.ActRuneProt:
+                    case LegendaryPower.ActRuneProt:
                         {
                             return "rune of protection every 400 turns";
                         }
-                    case RandomArtifactPower.ActSatiate:
+                    case LegendaryPower.ActSatiate:
                         {
                             return "satisfy hunger every 200 turns";
                         }
-                    case RandomArtifactPower.ActDestDoor:
+                    case LegendaryPower.ActDestDoor:
                         {
                             return "destroy doors every 10 turns";
                         }
-                    case RandomArtifactPower.ActStoneMud:
+                    case LegendaryPower.ActStoneMud:
                         {
                             return "stone to mud every 5 turns";
                         }
-                    case RandomArtifactPower.ActRecharge:
+                    case LegendaryPower.ActRecharge:
                         {
                             return "recharging every 70 turns";
                         }
-                    case RandomArtifactPower.ActAlchemy:
+                    case LegendaryPower.ActAlchemy:
                         {
                             return "alchemy every 500 turns";
                         }
-                    case RandomArtifactPower.ActDimDoor:
+                    case LegendaryPower.ActDimDoor:
                         {
                             return "dimension door every 100 turns";
                         }
-                    case RandomArtifactPower.ActTeleport:
+                    case LegendaryPower.ActTeleport:
                         {
                             return "teleport (range 100) every 45 turns";
                         }
-                    case RandomArtifactPower.ActRecall:
+                    case LegendaryPower.ActRecall:
                         {
                             return "word of recall every 200 turns";
                         }
@@ -3554,230 +3554,230 @@ namespace Cthangband
                         }
                 }
             }
-            switch (FixedArtifactIndex)
+            switch (ArtifactIndex)
             {
-                case FixedArtifactId.DaggerOfFaith:
+                case ArtifactId.DaggerOfFaith:
                     {
                         return "fire bolt (9d8) every 8+d8 turns";
                     }
-                case FixedArtifactId.DaggerOfHope:
+                case ArtifactId.DaggerOfHope:
                     {
                         return "frost bolt (6d8) every 7+d7 turns";
                     }
-                case FixedArtifactId.DaggerOfCharity:
+                case ArtifactId.DaggerOfCharity:
                     {
                         return "lightning bolt (4d8) every 6+d6 turns";
                     }
-                case FixedArtifactId.DaggerOfThoth:
+                case ArtifactId.DaggerOfThoth:
                     {
                         return "stinking cloud (12) every 4+d4 turns";
                     }
-                case FixedArtifactId.DaggerIcicle:
+                case ArtifactId.DaggerIcicle:
                     {
                         return "frost ball (48) every 5+d5 turns";
                     }
-                case FixedArtifactId.BootsOfDancing:
+                case ArtifactId.BootsOfDancing:
                     {
                         return "remove fear and cure poison every 5 turns";
                     }
-                case FixedArtifactId.SwordExcalibur:
+                case ArtifactId.SwordExcalibur:
                     {
                         return "frost ball (100) every 300 turns";
                     }
-                case FixedArtifactId.SwordOfTheDawn:
+                case ArtifactId.SwordOfTheDawn:
                     {
                         return "summon a Black Reaver every 500+d500 turns";
                     }
-                case FixedArtifactId.SwordOfEverflame:
+                case ArtifactId.SwordOfEverflame:
                     {
                         return "fire ball (72) every 400 turns";
                     }
-                case FixedArtifactId.MorningStarFirestarter:
+                case ArtifactId.MorningStarFirestarter:
                     {
                         return "large fire ball (72) every 100 turns";
                     }
-                case FixedArtifactId.BootsOfIthaqua:
+                case ArtifactId.BootsOfIthaqua:
                     {
                         return "haste self (20+d20 turns) every 200 turns";
                     }
-                case FixedArtifactId.AxeOfTheoden:
+                case ArtifactId.AxeOfTheoden:
                     {
                         return "drain life (120) every 400 turns";
                     }
-                case FixedArtifactId.HammerJustice:
+                case ArtifactId.HammerJustice:
                     {
                         return "drain life (90) every 70 turns";
                     }
-                case FixedArtifactId.ArmourOfTheOgreLords:
+                case ArtifactId.ArmourOfTheOgreLords:
                     {
                         return "door and trap destruction every 10 turns";
                     }
-                case FixedArtifactId.ScytheOfGharne:
+                case ArtifactId.ScytheOfGharne:
                     {
                         return "word of recall every 200 turns";
                     }
-                case FixedArtifactId.MaceThunder:
+                case ArtifactId.MaceThunder:
                     {
                         return "haste self (20+d20 turns) every 100+d100 turns";
                     }
-                case FixedArtifactId.QuarterstaffEriril:
+                case ArtifactId.QuarterstaffEriril:
                     {
                         return "identify every 10 turns";
                     }
-                case FixedArtifactId.QuarterstaffOfAtal:
+                case ArtifactId.QuarterstaffOfAtal:
                     {
                         return "probing, detection and full id  every 1000 turns";
                     }
-                case FixedArtifactId.AxeOfTheTrolls:
+                case ArtifactId.AxeOfTheTrolls:
                     {
                         return "mass carnage every 1000 turns";
                     }
-                case FixedArtifactId.AxeSpleenSlicer:
+                case ArtifactId.AxeSpleenSlicer:
                     {
                         return "cure wounds (4d7) every 3+d3 turns";
                     }
-                case FixedArtifactId.CrossbowOfDeath:
+                case ArtifactId.CrossbowOfDeath:
                     {
                         return "fire branding of bolts every 999 turns";
                     }
-                case FixedArtifactId.SwordOfKarakal:
+                case ArtifactId.SwordOfKarakal:
                     {
                         return "a getaway every 35 turns";
                     }
-                case FixedArtifactId.SpearGungnir:
+                case ArtifactId.SpearGungnir:
                     {
                         return "lightning ball (100) every 500 turns";
                     }
-                case FixedArtifactId.SpearOfDestiny:
+                case ArtifactId.SpearOfDestiny:
                     {
                         return "stone to mud every 5 turns";
                     }
-                case FixedArtifactId.PlateMailSoulkeeper:
+                case ArtifactId.PlateMailSoulkeeper:
                     {
                         return "heal (1000) every 888 turns";
                     }
-                case FixedArtifactId.ArmourOfTheVampireHunter:
+                case ArtifactId.ArmourOfTheVampireHunter:
                     {
                         return "heal (777), curing and heroism every 300 turns";
                     }
-                case FixedArtifactId.ArmourOfTheOrcs:
+                case ArtifactId.ArmourOfTheOrcs:
                     {
                         return "carnage every 500 turns";
                     }
-                case FixedArtifactId.ShadowCloakOfNyogtha:
+                case ArtifactId.ShadowCloakOfNyogtha:
                     {
                         return "restore life levels every 450 turns";
                     }
-                case FixedArtifactId.TridentOfTheGnorri:
+                case ArtifactId.TridentOfTheGnorri:
                     {
                         return "teleport away every 150 turns";
                     }
-                case FixedArtifactId.CloakOfBarzai:
+                case ArtifactId.CloakOfBarzai:
                     {
                         return "resistance (20+d20 turns) every 111 turns";
                     }
-                case FixedArtifactId.CloakDarkness:
+                case ArtifactId.CloakDarkness:
                     {
                         return "Sleep II every 55 turns";
                     }
-                case FixedArtifactId.CloakOfTheSwashbuckler:
+                case ArtifactId.CloakOfTheSwashbuckler:
                     {
                         return "recharge item I every 70 turns";
                     }
-                case FixedArtifactId.CloakShifter:
+                case ArtifactId.CloakShifter:
                     {
                         return "teleport every 45 turns";
                     }
-                case FixedArtifactId.FlailTotila:
+                case ArtifactId.FlailTotila:
                     {
                         return "confuse monster every 15 turns";
                     }
-                case FixedArtifactId.GlovesOfLight:
+                case ArtifactId.GlovesOfLight:
                     {
                         return "magic missile (2d6) every 2 turns";
                     }
-                case FixedArtifactId.GauntletIronfist:
+                case ArtifactId.GauntletIronfist:
                     {
                         return "fire bolt (9d8) every 8+d8 turns";
                     }
-                case FixedArtifactId.GauntletsOfGhouls:
+                case ArtifactId.GauntletsOfGhouls:
                     {
                         return "frost bolt (6d8) every 7+d7 turns";
                     }
-                case FixedArtifactId.GauntletsWhiteSpark:
+                case ArtifactId.GauntletsWhiteSpark:
                     {
                         return "lightning bolt (4d8) every 6+d6 turns";
                     }
-                case FixedArtifactId.GauntletsOfTheDead:
+                case ArtifactId.GauntletsOfTheDead:
                     {
                         return "acid bolt (5d8) every 5+d5 turns";
                     }
-                case FixedArtifactId.CestiOfCombat:
+                case ArtifactId.CestiOfCombat:
                     {
                         return "a magical arrow (150) every 90+d90 turns";
                     }
-                case FixedArtifactId.HelmSkullkeeper:
+                case ArtifactId.HelmSkullkeeper:
                     {
                         return "detection every 55+d55 turns";
                     }
-                case FixedArtifactId.CrownOfTheSun:
+                case ArtifactId.CrownOfTheSun:
                     {
                         return "heal (700) every 250 turns";
                     }
-                case FixedArtifactId.DragonScaleRazorback:
+                case ArtifactId.DragonScaleRazorback:
                     {
                         return "star ball (150) every 1000 turns";
                     }
-                case FixedArtifactId.DragonScaleBladeturner:
+                case ArtifactId.DragonScaleBladeturner:
                     {
                         return "breathe elements (300), berserk rage, bless, and resistance";
                     }
-                case FixedArtifactId.StarEssenceOfPolaris:
+                case ArtifactId.StarEssenceOfPolaris:
                     {
                         return "illumination every 10+d10 turns";
                     }
-                case FixedArtifactId.StarEssenceOfXoth:
+                case ArtifactId.StarEssenceOfXoth:
                     {
                         return "magic mapping and light every 50+d50 turns";
                     }
-                case FixedArtifactId.ShiningTrapezohedron:
+                case ArtifactId.ShiningTrapezohedron:
                     {
                         return "clairvoyance and recall, draining you";
                     }
-                case FixedArtifactId.AmuletOfAbdulAlhazred:
+                case ArtifactId.AmuletOfAbdulAlhazred:
                     {
                         return "dispel evil (x5) every 300+d300 turns";
                     }
-                case FixedArtifactId.AmuletOfLobon:
+                case ArtifactId.AmuletOfLobon:
                     {
                         return "protection from evil every 225+d225 turns";
                     }
-                case FixedArtifactId.RingOfMagic:
+                case ArtifactId.RingOfMagic:
                     {
                         return "a strangling attack (100) every 100+d100 turns";
                     }
-                case FixedArtifactId.RingOfBast:
+                case ArtifactId.RingOfBast:
                     {
                         return "haste self (75+d75 turns) every 150+d150 turns";
                     }
-                case FixedArtifactId.RingOfElementalPowerFire:
+                case ArtifactId.RingOfElementalPowerFire:
                     {
                         return "large fire ball (120) every 225+d225 turns";
                     }
-                case FixedArtifactId.RingOfElementalPowerIce:
+                case ArtifactId.RingOfElementalPowerIce:
                     {
                         return "large frost ball (200) every 325+d325 turns";
                     }
-                case FixedArtifactId.RingOfElementalPowerStorm:
+                case ArtifactId.RingOfElementalPowerStorm:
                     {
                         return "large lightning ball (250) every 425+d425 turns";
                     }
-                case FixedArtifactId.RingOfSet:
+                case ArtifactId.RingOfSet:
                     {
                         return "bizarre things every 450+d450 turns";
                     }
-                case FixedArtifactId.DragonHelmOfPower:
-                case FixedArtifactId.HelmTerrorMask:
+                case ArtifactId.DragonHelmOfPower:
+                case ArtifactId.HelmTerrorMask:
                     {
                         return "rays of fear in every direction";
                     }
