@@ -89,8 +89,24 @@ namespace Cthangband.StaticData
 	/* Fast */    49, 49, 49, 49, 49, 49, 49, 49, 49, 49
         };
 
-        public static readonly MartialArtsAttack[] MaBlows =
+        public static readonly string[] LegendaryNameEnds =
         {
+            "biter", "breaker", "chopper", "masher", "bane", "kicker", "mangler", "crusher", "howler", "sealer",
+            "stopper", "stomper", "halter", "burster", "snapper", "render", "buster", "puncher", "ripper", "tearer",
+            "finder", "howler", "screamer", "lighter", "burster", "cracker", "shatterer", "violator", "ruiner", "humiliater",
+            "scatterer", "spiller", "wrecker", "basher", "spoiler", "shatterer", "chewer", "blighter", "fouler", "stinger", "bringer"
+        };
+
+        public static readonly string[] LegendaryNameStarts =
+        {
+            "Wolf", "Tooth", "Knee", "Foe", "Enemy", "Nose", "Brain", "Head", "Bowel", "Evil", "Slime", "Blood", "Beast",
+            "Foul", "Poison", "Venom", "Ichor", "Skin", "Dark", "Wicked", "Anger", "Fury", "Hate", "Spine", "Bone", "Rotten",
+            "Beast", "Bite", "Sword", "Armour", "Shield", "Fetid", "Rank", "Back", "Neck", "Face", "Eye", "King", "Queen",
+            "God", "Devil", "Angel", "Fiend", "Friend", "Self", "Chest", "Groin", "Table", "Rock"
+        };
+
+        public static readonly MartialArtsAttack[] MaBlows =
+                        {
             new MartialArtsAttack("You punch {0}.", 1, 0, 1, 4, 0),
             new MartialArtsAttack("You kick {0}.", 2, 0, 1, 6, 0),
             new MartialArtsAttack("You strike {0}.", 3, 0, 1, 7, 0),
@@ -182,25 +198,6 @@ namespace Cthangband.StaticData
             "q:Quadruped", "r:Rodent", "s:Skeleton", "t:Townsperson", "u:Minor Demon", "v:Vortex", "w:Worm/Worm-Mass",
             "x:Xorn/Xaren/etc", "y:Yeek", "z:Zombie/Mummy", "{:A missile (arrow/bolt/shot)", "|:An edged weapon (sword/dagger/etc)",
             "}:A launcher (bow/crossbow/sling)", "~:A tool (or miscellaneous item)", null
-        };
-
-        public static readonly string[] TextElvish =
-{
-            "adan", "ael", "in", "agl", "ar", "aina", "alda", "al", "qua", "am", "arth", "amon", "anca", "an", "dune",
-            "anga", "anna", "ann", "on", "ar", "ien", "atar", "band", "bar", "ad", "bel", "eg", "brag", "ol", "breth",
-            "il", "brith", "cal", "en", "gal", "en", "cam", "car", "ak", "cel", "eb", "cor", "on", "cu", "cui", "vie",
-            "cul", "curu", "dae", "dag", "or", "del", "din", "dol", "dor", "draug", "du", "duin", "dur", "ear", "ech",
-            "or", "edh", "el", "eith", "elen", "er", "ereg", "es", "gal", "fal", "as", "far", "oth", "faug", "fea",
-            "fin", "for", "men", "fuin", "gaer", "gaur", "gil", "gir", "ith", "glin", "gol", "odh", "gond", "gor",
-            "groth", "grod", "gul", "gurth", "gwaith", "gwath", "wath", "had", "hod", "haudh", "heru", "him", "hini",
-            "hith", "hoth", "hyar", "men", "ia", "iant", "iath", "iaur", "ilm", "iluve", "kal", "gal", "kano", "kel",
-            "kemen", "khel", "ek", "khil", "kir", "lad", "laure", "lhach", "lin", "lith", "lok", "lom", "lome", "londe",
-            "los", "loth", "luin", "maeg", "mal", "man", "mel", "men", "menel", "mer", "eth", "min", "as", "mir",
-            "mith", "mor", "moth", "nan", "nar", "naug", "dil", "dur", "nel", "dor", "nen", "nim", "orn", "orod", "os",
-            "pal", "an", "pel", "quen", "quet", "ram", "ran", "rant", "ras", "rauko", "ril", "rim", "ring", "ris",
-            "roch", "rom", "rond", "ros", "ruin", "ruth", "sarn", "ser", "eg", "sil", "sir", "sul", "tal", "dal", "tal",
-            "ath", "tar", "tath", "ar", "taur", "tel", "thal", "thang", "thar", "thaur", "thin", "thol", "thon", "thor",
-            "on", "til", "tin", "tir", "tol", "tum", "tur", "uial", "ur", "val", "wen", "wing", "yave"
         };
 
         public static readonly string[] TreasureFeelingText =

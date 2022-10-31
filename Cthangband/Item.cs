@@ -21,6 +21,7 @@ namespace Cthangband
         public readonly FlagSet LegendaryFlags1 = new FlagSet();
         public readonly FlagSet LegendaryFlags2 = new FlagSet();
         public readonly FlagSet LegendaryFlags3 = new FlagSet();
+        public ArtifactId ArtifactIndex;
         public int BaseArmourClass;
         public int BonusArmourClass;
         public int BonusDamage;
@@ -32,14 +33,13 @@ namespace Cthangband
         public int DamageDice;
         public int DamageDiceSides;
         public int Discount;
-        public ArtifactId ArtifactIndex;
         public int HoldingMonsterIndex;
         public string Inscription = "";
         public int ItemSubCategory;
         public ItemType ItemType;
+        public string LegendaryName = "";
         public bool Marked;
         public int NextInStack;
-        public string LegendaryName = "";
         public Enumerations.RareItemType RareItemTypeIndex;
         public int RechargeTimeLeft;
         public int TypeSpecificValue;
@@ -929,8 +929,9 @@ namespace Cthangband
             {
                 if (IsLegendary())
                 {
-                    t += ' ';
+                    t += " '";
                     t += LegendaryName;
+                    t += "'";
                 }
                 else if (ArtifactIndex != 0)
                 {
@@ -1961,6 +1962,12 @@ namespace Cthangband
             return total;
         }
 
+        public void GetArtifactResistances()
+        {
+            ItemForge forge = new ItemForge(this);
+            forge.GetArtifactResistances();
+        }
+
         public string GetDetailedFeeling()
         {
             if (IsArtifact() || IsLegendary())
@@ -1996,12 +2003,6 @@ namespace Cthangband
                 return "good";
             }
             return "average";
-        }
-
-        public void GetArtifactResistances()
-        {
-            ItemForge forge = new ItemForge(this);
-            forge.GetArtifactResistances();
         }
 
         public void GetMergedFlags(FlagSet f1, FlagSet f2, FlagSet f3)
@@ -2700,6 +2701,11 @@ namespace Cthangband
             return true;
         }
 
+        public bool IsArtifact()
+        {
+            return ArtifactIndex != 0;
+        }
+
         public bool IsBroken()
         {
             return IdentifyFlags.IsSet(Constants.IdentBroken);
@@ -2708,11 +2714,6 @@ namespace Cthangband
         public bool IsCursed()
         {
             return IdentifyFlags.IsSet(Constants.IdentCursed);
-        }
-
-        public bool IsArtifact()
-        {
-            return ArtifactIndex != 0;
         }
 
         public bool IsFlavourAware()

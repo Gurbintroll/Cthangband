@@ -875,7 +875,7 @@ namespace Cthangband
             {
                 _item.IdentifyFully();
                 _item.IdentifyFlags.Set(Constants.IdentStoreb);
-                if (!Gui.GetString("What do you want to call the artifact? ", out string dummyName, "(a DIY artifact)",
+                if (!Gui.GetString("What do you want to call the legendary item? ", out string dummyName, "(an item of legend)",
                     80))
                 {
                     newName = "(a DIY artifact)";
@@ -890,7 +890,7 @@ namespace Cthangband
             }
             else
             {
-                newName = GetTableName();
+                newName = GetLegendaryItemName();
             }
             _item.LegendaryName = newName;
             return true;
@@ -3934,31 +3934,14 @@ namespace Cthangband
             return value;
         }
 
+        private string GetLegendaryItemName()
+        {
+            return GetRndLineInternal(GlobalData.LegendaryNameStarts) + GetRndLineInternal(GlobalData.LegendaryNameEnds);
+        }
+
         private string GetRndLineInternal(string[] list)
         {
             return list[Program.Rng.RandomLessThan(list.Length)];
-        }
-
-        private string GetTableName()
-        {
-            int testcounter = Program.Rng.DieRoll(3) + 1;
-            string outString = "";
-            if (Program.Rng.DieRoll(3) == 2)
-            {
-                while (testcounter-- != 0)
-                {
-                    outString += ScrollFlavour.Syllables[Program.Rng.RandomLessThan(ScrollFlavour.Syllables.Length)];
-                }
-            }
-            else
-            {
-                testcounter = Program.Rng.DieRoll(2) + 1;
-                while (testcounter-- != 0)
-                {
-                    outString += GetRndLineInternal(GlobalData.TextElvish);
-                }
-            }
-            return "'" + outString.Substring(0, 1).ToUpper() + outString.Substring(1) + "'";
         }
 
         private void GiveActivationPower()
