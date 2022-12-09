@@ -17,7 +17,7 @@ namespace Cthangband.Talents
         {
             Name = "Minor Displacement";
             Level = 3;
-            ManaCost = 2;
+            VrilCost = 2;
             BaseFailure = 25;
         }
 

@@ -43,7 +43,7 @@ namespace Cthangband.Spells.Tarot
             {
                 case CharacterClass.Mage:
                     Level = 24;
-                    ManaCost = 22;
+                    VrilCost = 22;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
@@ -51,21 +51,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.Priest:
                 case CharacterClass.Monk:
                     Level = 26;
-                    ManaCost = 24;
+                    VrilCost = 24;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 30;
-                    ManaCost = 26;
+                    VrilCost = 26;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 28;
-                    ManaCost = 25;
+                    VrilCost = 25;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
@@ -73,21 +73,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 28;
-                    ManaCost = 25;
+                    VrilCost = 25;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 20;
-                    ManaCost = 20;
+                    VrilCost = 20;
                     BaseFailure = 50;
                     FirstCastExperience = 8;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

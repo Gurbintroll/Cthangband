@@ -17,7 +17,7 @@ namespace Cthangband.Talents
         {
             Name = "Adrenaline Channeling";
             Level = 23;
-            ManaCost = 15;
+            VrilCost = 15;
             BaseFailure = 50;
         }
 

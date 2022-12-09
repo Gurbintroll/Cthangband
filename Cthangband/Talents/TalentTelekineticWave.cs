@@ -19,7 +19,7 @@ namespace Cthangband.Talents
         {
             Name = "Telekinetic Wave";
             Level = 28;
-            ManaCost = 20;
+            VrilCost = 20;
             BaseFailure = 45;
         }
 

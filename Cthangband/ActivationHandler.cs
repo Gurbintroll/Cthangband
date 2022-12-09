@@ -1298,13 +1298,13 @@ namespace Cthangband
                 item.BecomeFlavourAware();
                 _player.GainExperience((itemLevel + (_player.Level >> 1)) / _player.Level);
             }
-            // If we're a channeler then we should be using mana instead of charges
+            // If we're a channeler then we should be using vril instead of charges
             bool channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
             }
-            // We didn't use mana, so decrease the wand's charges
+            // We didn't use vril, so decrease the wand's charges
             if (!channeled)
             {
                 item.TypeSpecificValue--;
@@ -1948,7 +1948,7 @@ namespace Cthangband
             // Most potions give us a bit of food too
             _player.SetFood(_player.Food + item.TypeSpecificValue);
             bool channeled = false;
-            // If we're a channeler, we might be able to spend mana instead of using it up
+            // If we're a channeler, we might be able to spend vril instead of using it up
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
@@ -2429,7 +2429,7 @@ namespace Cthangband
                 _player.GainExperience((itemLevel + (_player.Level >> 1)) / _player.Level);
             }
             bool channeled = false;
-            // Channelers can use mana instead of the scroll being used up
+            // Channelers can use vril instead of the scroll being used up
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
@@ -3010,13 +3010,13 @@ namespace Cthangband
                         {
                             identified = true;
                         }
-                        if (_player.Mana < _player.MaxMana)
+                        if (_player.Vril < _player.MaxVril)
                         {
-                            _player.Mana = _player.MaxMana;
-                            _player.FractionalMana = 0;
+                            _player.Vril = _player.MaxVril;
+                            _player.FractionalVril = 0;
                             identified = true;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
-                            _player.RedrawNeeded.Set(RedrawFlag.PrMana);
+                            _player.RedrawNeeded.Set(RedrawFlag.PrVril);
                         }
                         break;
                     }
@@ -3138,7 +3138,7 @@ namespace Cthangband
             {
                 return;
             }
-            // Channelers can use mana instead of a charge
+            // Channelers can use vril instead of a charge
             bool channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
@@ -3557,7 +3557,7 @@ namespace Cthangband
                 item.TypeSpecificValue = 0;
                 return;
             }
-            // Channelers can spend mana instead of a charge
+            // Channelers can spend vril instead of a charge
             bool channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {

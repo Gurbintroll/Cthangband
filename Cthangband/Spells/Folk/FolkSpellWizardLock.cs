@@ -31,28 +31,28 @@ namespace Cthangband.Spells.Folk
             {
                 case CharacterClass.Mage:
                     Level = 1;
-                    ManaCost = 1;
+                    VrilCost = 1;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 1;
-                    ManaCost = 1;
+                    VrilCost = 1;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 5;
-                    ManaCost = 2;
+                    VrilCost = 2;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 3;
-                    ManaCost = 2;
+                    VrilCost = 2;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
@@ -60,21 +60,21 @@ namespace Cthangband.Spells.Folk
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 2;
-                    ManaCost = 1;
+                    VrilCost = 1;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 1;
-                    ManaCost = 1;
+                    VrilCost = 1;
                     BaseFailure = 23;
                     FirstCastExperience = 5;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

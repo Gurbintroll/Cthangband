@@ -18,7 +18,7 @@ namespace Cthangband.Spells.Death
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            player.Mana -= 100;
+            player.Vril -= 100;
             for (int i = 1; i < level.MMax; i++)
             {
                 Monster mPtr = level.Monsters[i];
@@ -37,14 +37,14 @@ namespace Cthangband.Spells.Death
                 }
                 level.Monsters.DeleteMonsterByIndex(i, true);
                 player.TakeHit(Program.Rng.DieRoll(4), "the strain of casting Annihilation");
-                player.Mana++;
+                player.Vril++;
                 level.MoveCursorRelative(player.MapY, player.MapX);
-                player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrMana);
+                player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrVril);
                 SaveGame.Instance.HandleStuff();
                 Gui.Refresh();
                 Gui.Pause(GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor);
             }
-            player.Mana += 100;
+            player.Vril += 100;
         }
 
         public override void Initialise(int characterClass)
@@ -54,35 +54,35 @@ namespace Cthangband.Spells.Death
             {
                 case CharacterClass.Mage:
                     Level = 45;
-                    ManaCost = 100;
+                    VrilCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 49;
-                    ManaCost = 100;
+                    VrilCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
                 case CharacterClass.Paladin:
                     Level = 50;
-                    ManaCost = 100;
+                    VrilCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
@@ -90,21 +90,21 @@ namespace Cthangband.Spells.Death
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 50;
-                    ManaCost = 100;
+                    VrilCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 41;
-                    ManaCost = 85;
+                    VrilCost = 85;
                     BaseFailure = 80;
                     FirstCastExperience = 250;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

@@ -27,7 +27,7 @@ namespace Cthangband.Enumerations
         public const uint BreatheInertia = 0x00400000;
         public const uint BreatheLight = 0x00004000;
         public const uint BreatheLightning = 0x00000200;
-        public const uint BreatheMana = 0x08000000;
+        public const uint BreatheVril = 0x08000000;
         public const uint BreatheNether = 0x00002000;
         public const uint BreatheNexus = 0x00100000;
         public const uint BreathePlasma = 0x02000000;

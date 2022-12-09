@@ -1260,10 +1260,10 @@ namespace Cthangband
                     }
                     break;
 
-                case Constants.DrsMana:
-                    if (player.MaxMana == 0)
+                case Constants.DrsVril:
+                    if (player.MaxVril == 0)
                     {
-                        mPtr.Mind |= Constants.SmImmMana;
+                        mPtr.Mind |= Constants.SmImmVril;
                     }
                     break;
 

@@ -42,7 +42,7 @@ namespace Cthangband
         public int Food;
         public int FractionalExperiencePoints;
         public int FractionalHealth;
-        public int FractionalMana;
+        public int FractionalVril;
         public GameTime GameTime;
         public Gender Gender = new Gender();
         public int GenderIndex;
@@ -114,13 +114,13 @@ namespace Cthangband
         public bool IsWizard;
         public int Level;
         public int LightLevel;
-        public int Mana;
+        public int Vril;
         public int MapX;
         public int MapY;
         public int MaxExperienceGained;
         public int MaxHealth;
         public int MaxLevelGained;
-        public int MaxMana;
+        public int MaxVril;
         public int MeleeAttacksPerRound;
         public int MissileAttacksPerRound;
         public string Name;
@@ -295,7 +295,7 @@ namespace Cthangband
             {
                 Level--;
                 SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
-                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
                 RedrawNeeded.Set(RedrawFlag.PrLev | RedrawFlag.PrTitle);
                 SaveGame.Instance.HandleStuff();
             }
@@ -324,7 +324,7 @@ namespace Cthangband
                 }
                 Gui.PlaySound(SoundEffect.LevelGain);
                 Profile.Instance.MsgPrint($"Welcome to level {Level}.");
-                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateMana | UpdateFlags.UpdateSpells);
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
                 RedrawNeeded.Set(RedrawFlag.PrExp | RedrawFlag.PrLev | RedrawFlag.PrTitle);
                 SaveGame.Instance.HandleStuff();
                 if (levelReward)
@@ -1208,7 +1208,7 @@ namespace Cthangband
             int set = realm == Realm1 ? 0 : 1;
             Gui.PrintLine("", y, x);
             Gui.Print("Name", y, x + 5);
-            Gui.Print("Lv Mana Fail Info", y, x + 35);
+            Gui.Print("Lv Vril Fail Info", y, x + 35);
             for (i = 0; i < num; i++)
             {
                 int spell = spells[i];
@@ -1248,33 +1248,33 @@ namespace Cthangband
             }
         }
 
-        public void RegenerateMana(int percent)
+        public void RegenerateVril(int percent)
         {
-            int oldMana = Mana;
-            int newMana = (MaxMana * percent) + Constants.PyRegenMnbase;
-            Mana += newMana >> 16;
-            if (Mana < 0 && oldMana > 0)
+            int oldVril = Vril;
+            int newVril = (MaxVril * percent) + Constants.PyRegenMnbase;
+            Vril += newVril >> 16;
+            if (Vril < 0 && oldVril > 0)
             {
-                Mana = Constants.MaxShort;
+                Vril = Constants.MaxShort;
             }
-            int newFractionalMana = (newMana & 0xFFFF) + FractionalMana;
-            if (newFractionalMana >= 0x10000L)
+            int newFractionalVril = (newVril & 0xFFFF) + FractionalVril;
+            if (newFractionalVril >= 0x10000L)
             {
-                FractionalMana = newFractionalMana - 0x10000;
-                Mana++;
+                FractionalVril = newFractionalVril - 0x10000;
+                Vril++;
             }
             else
             {
-                FractionalMana = newFractionalMana;
+                FractionalVril = newFractionalVril;
             }
-            if (Mana >= MaxMana)
+            if (Vril >= MaxVril)
             {
-                Mana = MaxMana;
-                FractionalMana = 0;
+                Vril = MaxVril;
+                FractionalVril = 0;
             }
-            if (oldMana != Mana)
+            if (oldVril != Vril)
             {
-                RedrawNeeded.Set(RedrawFlag.PrMana);
+                RedrawNeeded.Set(RedrawFlag.PrVril);
             }
         }
 

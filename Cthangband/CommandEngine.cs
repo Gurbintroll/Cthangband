@@ -1038,7 +1038,7 @@ namespace Cthangband
                 Level.GridPassable(Player.MapY, Player.MapX + 1) && Level.GridPassable(Player.MapY + 1, Player.MapX - 1) &&
                 Level.GridPassable(Player.MapY + 1, Player.MapX) && Level.GridPassable(Player.MapY + 1, Player.MapX + 1))
             {
-                // Fire area effect shards, mana, and nukes in all directions
+                // Fire area effect shards, vril, and nukes in all directions
                 int i;
                 for (i = 1; i < 10; i++)
                 {
@@ -1051,7 +1051,7 @@ namespace Cthangband
                 {
                     if (i - 5 != 0)
                     {
-                        _saveGame.SpellEffects.FireBall(new ProjectMana(SaveGame.Instance.SpellEffects), i, 175, 3);
+                        _saveGame.SpellEffects.FireBall(new ProjectVril(SaveGame.Instance.SpellEffects), i, 175, 3);
                     }
                 }
                 for (i = 1; i < 10; i++)
@@ -1079,14 +1079,14 @@ namespace Cthangband
         /// Check to see if a racial power works
         /// </summary>
         /// <param name="minLevel"> The minimum level for the power </param>
-        /// <param name="cost"> The cost in mana to use the power </param>
+        /// <param name="cost"> The cost in vril to use the power </param>
         /// <param name="useStat"> The ability score used for the power </param>
         /// <param name="difficulty"> The difficulty of the power to use </param>
         /// <returns> True if the power worked, false if it didn't </returns>
         public bool CheckIfRacialPowerWorks(int minLevel, int cost, int useStat, int difficulty)
         {
-            // If we don't have enough mana we'll use health instead
-            bool useHealth = Player.Mana < cost;
+            // If we don't have enough vril we'll use health instead
+            bool useHealth = Player.Vril < cost;
             // Can't use it if we're too low level
             if (Player.Level < minLevel)
             {
@@ -1132,18 +1132,18 @@ namespace Cthangband
             }
             // Using a power takes a turn
             _saveGame.EnergyUse = 100;
-            // Reduce our health or mana
+            // Reduce our health or vril
             if (useHealth)
             {
                 Player.TakeHit((cost / 2) + Program.Rng.DieRoll(cost / 2), "concentrating too hard");
             }
             else
             {
-                Player.Mana -= (cost / 2) + Program.Rng.DieRoll(cost / 2);
+                Player.Vril -= (cost / 2) + Program.Rng.DieRoll(cost / 2);
             }
             // We'll need to redraw
             Player.RedrawNeeded.Set(RedrawFlag.PrHp);
-            Player.RedrawNeeded.Set(RedrawFlag.PrMana);
+            Player.RedrawNeeded.Set(RedrawFlag.PrVril);
             // Check to see if we were successful
             if (Program.Rng.DieRoll(Player.AbilityScores[useStat].Innate) >=
                 (difficulty / 2) + Program.Rng.DieRoll(difficulty / 2))
@@ -1399,7 +1399,7 @@ namespace Cthangband
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                Player.UpdatesNeeded.Set(UpdateFlags.UpdateMana);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
             }
             return true;
         }
@@ -1442,7 +1442,7 @@ namespace Cthangband
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                Player.UpdatesNeeded.Set(UpdateFlags.UpdateMana);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
             }
             return true;
         }
@@ -1568,7 +1568,7 @@ namespace Cthangband
         }
 
         /// <summary>
-        /// Channel mana to power an item instead
+        /// Channel vril to power an item instead
         /// </summary>
         /// <param name="item"> The item that we wish to power </param>
         /// <returns> True if we successfully channeled it, false if not </returns>
@@ -1608,23 +1608,23 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("Tried to channel an unknown object type!");
                     return false;
             }
-            // Always cost at least 1 mana
+            // Always cost at least 1 vril
             if (cost < 1)
             {
                 cost = 1;
             }
-            // Spend the mana if we can
-            if (cost <= Player.Mana)
+            // Spend the vril if we can
+            if (cost <= Player.Vril)
             {
-                Profile.Instance.MsgPrint("You channel mana to power the effect.");
-                Player.Mana -= cost;
-                Player.RedrawNeeded.Set(RedrawFlag.PrMana);
+                Profile.Instance.MsgPrint("You channel vril to power the effect.");
+                Player.Vril -= cost;
+                Player.RedrawNeeded.Set(RedrawFlag.PrVril);
                 return true;
             }
-            // Use some mana in the attempt, even if we failed
-            Profile.Instance.MsgPrint("You mana is insufficient to power the effect.");
-            Player.Mana -= Program.Rng.RandomLessThan(Player.Mana / 2);
-            Player.RedrawNeeded.Set(RedrawFlag.PrMana);
+            // Use some vril in the attempt, even if we failed
+            Profile.Instance.MsgPrint("You vril is insufficient to power the effect.");
+            Player.Vril -= Program.Rng.RandomLessThan(Player.Vril / 2);
+            Player.RedrawNeeded.Set(RedrawFlag.PrVril);
             return false;
         }
 
@@ -3251,15 +3251,15 @@ namespace Cthangband
                         identified = true;
                         break;
                     }
-                // Restore mana restores your to maximum mana
-                case PotionType.RestoreMana:
+                // Restore vril restores your to maximum vril
+                case PotionType.RestoreVril:
                     {
-                        if (Player.Mana < Player.MaxMana)
+                        if (Player.Vril < Player.MaxVril)
                         {
-                            Player.Mana = Player.MaxMana;
-                            Player.FractionalMana = 0;
+                            Player.Vril = Player.MaxVril;
+                            Player.FractionalVril = 0;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
-                            Player.RedrawNeeded.Set(RedrawFlag.PrMana);
+                            Player.RedrawNeeded.Set(RedrawFlag.PrVril);
                             identified = true;
                         }
                         break;
@@ -3647,7 +3647,7 @@ namespace Cthangband
                     break;
 
                 case 25:
-                    itemSubCategory = PotionType.RestoreMana;
+                    itemSubCategory = PotionType.RestoreVril;
                     break;
 
                 case 26:
@@ -3777,8 +3777,8 @@ namespace Cthangband
                 case 5:
                 case 6:
                     {
-                        // Do a 300 damage mana ball
-                        _saveGame.SpellEffects.FireBall(new ProjectMana(SaveGame.Instance.SpellEffects), direction, 300, 3);
+                        // Do a 300 damage vril ball
+                        _saveGame.SpellEffects.FireBall(new ProjectVril(SaveGame.Instance.SpellEffects), direction, 300, 3);
                         break;
                     }
                 case 7:
@@ -3786,8 +3786,8 @@ namespace Cthangband
                 case 9:
                 case 10:
                     {
-                        // Do a 250 damage mana bolt
-                        _saveGame.SpellEffects.FireBolt(new ProjectMana(SaveGame.Instance.SpellEffects), direction, 250);
+                        // Do a 250 damage vril bolt
+                        _saveGame.SpellEffects.FireBolt(new ProjectVril(SaveGame.Instance.SpellEffects), direction, 250);
                         break;
                     }
             }
@@ -4434,8 +4434,8 @@ namespace Cthangband
                             case CharacterClass.Channeler:
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
-                                    projectile = new ProjectMana(SaveGame.Instance.SpellEffects);
-                                    projectileDescription = "mana";
+                                    projectile = new ProjectVril(SaveGame.Instance.SpellEffects);
+                                    projectileDescription = "vril";
                                 }
                                 else
                                 {
@@ -4645,7 +4645,7 @@ namespace Cthangband
                     _saveGame.EnergyUse = 0;
                     break;
             }
-            Player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrMana);
+            Player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrVril);
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace Cthangband.Talents
         {
             Name = "Major Displacement";
             Level = 7;
-            ManaCost = 6;
+            VrilCost = 6;
             BaseFailure = 35;
         }
 

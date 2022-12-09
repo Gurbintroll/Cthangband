@@ -19,7 +19,7 @@ namespace Cthangband.Talents.Base
             get; protected set;
         }
 
-        public int ManaCost { get; set; }
+        public int VrilCost { get; set; }
 
         public string Name { get; set; }
 
@@ -28,9 +28,9 @@ namespace Cthangband.Talents.Base
             int chance = BaseFailure;
             chance -= 3 * (player.Level - Level);
             chance -= 3 * (player.AbilityScores[player.Spellcasting.SpellStat].SpellFailureReduction - 1);
-            if (ManaCost > player.Mana)
+            if (VrilCost > player.Vril)
             {
-                chance += 5 * (ManaCost - player.Mana);
+                chance += 5 * (VrilCost - player.Vril);
             }
             int minfail = player.AbilityScores[player.Spellcasting.SpellStat].SpellMinFailChance;
             if (chance < minfail)
@@ -56,12 +56,12 @@ namespace Cthangband.Talents.Base
 
         public string SummaryLine(Player player)
         {
-            return $"{Name,-30}{Level,2} {ManaCost,4} {FailureChance(player),3}% {Comment(player)}";
+            return $"{Name,-30}{Level,2} {VrilCost,4} {FailureChance(player),3}% {Comment(player)}";
         }
 
         public override string ToString()
         {
-            return $"{Name} ({Level}, {ManaCost}, {BaseFailure})";
+            return $"{Name} ({Level}, {VrilCost}, {BaseFailure})";
         }
 
         public abstract void Use(Player player, Level level, SaveGame saveGame);

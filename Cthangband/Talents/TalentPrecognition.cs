@@ -17,7 +17,7 @@ namespace Cthangband.Talents
         {
             Name = "Precognition";
             Level = 1;
-            ManaCost = 1;
+            VrilCost = 1;
             BaseFailure = 15;
         }
 

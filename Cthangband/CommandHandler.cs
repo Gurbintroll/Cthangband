@@ -850,7 +850,7 @@ namespace Cthangband
             }
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
-            Player.UpdatesNeeded.Set(UpdateFlags.UpdateMana);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
             Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 
@@ -2215,7 +2215,7 @@ namespace Cthangband
         }
 
         /// <summary>
-        /// Rest for either a fixed amount of time or until back to max health and mana
+        /// Rest for either a fixed amount of time or until back to max health and vril
         /// </summary>
         private void DoCmdRest()
         {

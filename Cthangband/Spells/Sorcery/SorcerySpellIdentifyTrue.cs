@@ -26,14 +26,14 @@ namespace Cthangband.Spells.Sorcery
             {
                 case CharacterClass.Mage:
                     Level = 33;
-                    ManaCost = 30;
+                    VrilCost = 30;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 40;
-                    ManaCost = 35;
+                    VrilCost = 35;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
@@ -41,21 +41,21 @@ namespace Cthangband.Spells.Sorcery
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 40;
-                    ManaCost = 40;
+                    VrilCost = 40;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 28;
-                    ManaCost = 20;
+                    VrilCost = 20;
                     BaseFailure = 65;
                     FirstCastExperience = 20;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

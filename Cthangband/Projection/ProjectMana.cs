@@ -13,9 +13,9 @@ using Cthangband.UI;
 
 namespace Cthangband.Projection
 {
-    internal class ProjectMana : BaseProjection
+    internal class ProjectVril : BaseProjection
     {
-        public ProjectMana(SpellEffectsHandler spellEffectsHandler) : base(spellEffectsHandler)
+        public ProjectVril(SpellEffectsHandler spellEffectsHandler) : base(spellEffectsHandler)
         {
             BoltGraphic = "BrightTurquoiseBolt";
             ImpactGraphic = "BrightTurquoiseSplat";

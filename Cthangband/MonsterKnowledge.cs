@@ -530,9 +530,9 @@ namespace Cthangband
             {
                 vp[vn++] = "force";
             }
-            if ((flags4 & MonsterFlag4.BreatheMana) != 0)
+            if ((flags4 & MonsterFlag4.BreatheVril) != 0)
             {
-                vp[vn++] = "mana";
+                vp[vn++] = "vril";
             }
             if ((flags4 & MonsterFlag4.BreatheRadiation) != 0)
             {
@@ -597,9 +597,9 @@ namespace Cthangband
             {
                 vp[vn++] = "produce balls of radiation";
             }
-            if ((flags5 & MonsterFlag5.ManaBall) != 0)
+            if ((flags5 & MonsterFlag5.VrilBall) != 0)
             {
-                vp[vn++] = "invoke mana storms";
+                vp[vn++] = "invoke vril storms";
             }
             if ((flags5 & MonsterFlag5.DarkBall) != 0)
             {
@@ -613,9 +613,9 @@ namespace Cthangband
             {
                 vp[vn++] = "invoke the Dread Curse of Azathoth";
             }
-            if ((flags5 & MonsterFlag5.DrainMana) != 0)
+            if ((flags5 & MonsterFlag5.DrainVril) != 0)
             {
-                vp[vn++] = "drain mana";
+                vp[vn++] = "drain vril";
             }
             if ((flags5 & MonsterFlag5.MindBlast) != 0)
             {
@@ -669,9 +669,9 @@ namespace Cthangband
             {
                 vp[vn++] = "produce water bolts";
             }
-            if ((flags5 & MonsterFlag5.ManaBolt) != 0)
+            if ((flags5 & MonsterFlag5.VrilBolt) != 0)
             {
-                vp[vn++] = "produce mana bolts";
+                vp[vn++] = "produce vril bolts";
             }
             if ((flags5 & MonsterFlag5.PlasmaBolt) != 0)
             {

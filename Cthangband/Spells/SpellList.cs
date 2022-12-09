@@ -36,7 +36,7 @@ namespace Cthangband.Spells
                     Add(new ChaosSpellTrapAndDoorDestruction());
                     Add(new ChaosSpellFlashOfLight());
                     Add(new ChaosSpellTouchOfConfusion());
-                    Add(new ChaosSpellManaBurst());
+                    Add(new ChaosSpellVrilBurst());
                     Add(new ChaosSpellFireBolt());
                     Add(new ChaosSpellFistOfForce());
                     Add(new ChaosSpellTeleportSelf());
@@ -64,7 +64,7 @@ namespace Cthangband.Spells
                     Add(new ChaosSpellFlameStrike());
                     Add(new ChaosSpellCallChaos());
                     Add(new ChaosSpellShardBall());
-                    Add(new ChaosSpellManaStorm());
+                    Add(new ChaosSpellVrilStorm());
                     Add(new ChaosSpellBreatheChaos());
                     Add(new ChaosSpellCallTheVoid());
                     break;

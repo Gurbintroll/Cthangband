@@ -80,7 +80,7 @@ namespace Cthangband
             new[]
             {
                 new ItemIdentifier(ItemCategory.Sword, SwordType.SvSmallSword),
-                new ItemIdentifier(ItemCategory.Potion, PotionType.RestoreMana),
+                new ItemIdentifier(ItemCategory.Potion, PotionType.RestoreVril),
                 new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SvSoftLeatherArmor)
             },
             new[]
@@ -316,7 +316,7 @@ namespace Cthangband
 
                 case CharacterClass.Channeler:
                     Gui.Print(Colour.Purple, "Similar to a spell caster, but rather than casting spells", 30, 20);
-                    Gui.Print(Colour.Purple, "from a book, they can use their CHA to channel mana into", 31, 20);
+                    Gui.Print(Colour.Purple, "from a book, they can use their CHA to channel vril into", 31, 20);
                     Gui.Print(Colour.Purple, "most types of item, powering the effects of the items", 32, 20);
                     Gui.Print(Colour.Purple, "without depleting them.", 33, 20);
                     break;
@@ -332,7 +332,7 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "INT based spell casters who specialise in a single realm", 30, 20);
                     Gui.Print(Colour.Purple, "of magic. They may choose any realm, and are better at", 31, 20);
                     Gui.Print(Colour.Purple, "casting spells from that realm than a normal mage. High", 32, 20);
-                    Gui.Print(Colour.Purple, "mages also get more mana than other spell casters do.", 33, 20);
+                    Gui.Print(Colour.Purple, "mages also get more vril than other spell casters do.", 33, 20);
                     Gui.Print(Colour.Purple, "Wearing too much armour disrupts their casting.", 34, 20);
                     break;
 
@@ -1940,7 +1940,7 @@ namespace Cthangband
                         SaveGame.Instance.UpdateStuff();
                         SaveGame.Instance.Player = null;
                         _player.Health = _player.MaxHealth;
-                        _player.Mana = _player.MaxMana;
+                        _player.Vril = _player.MaxVril;
                         _player.Energy = 150;
                         CharacterViewer characterViewer = new CharacterViewer(_player);
                         while (true)

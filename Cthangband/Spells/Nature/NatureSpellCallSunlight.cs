@@ -34,21 +34,21 @@ namespace Cthangband.Spells.Nature
             {
                 case CharacterClass.Mage:
                     Level = 37;
-                    ManaCost = 35;
+                    VrilCost = 35;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 39;
-                    ManaCost = 38;
+                    VrilCost = 38;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 40;
-                    ManaCost = 35;
+                    VrilCost = 35;
                     BaseFailure = 75;
                     FirstCastExperience = 100;
                     break;
@@ -56,7 +56,7 @@ namespace Cthangband.Spells.Nature
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 41;
-                    ManaCost = 41;
+                    VrilCost = 41;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
@@ -64,14 +64,14 @@ namespace Cthangband.Spells.Nature
                 case CharacterClass.HighMage:
                 case CharacterClass.Druid:
                     Level = 34;
-                    ManaCost = 30;
+                    VrilCost = 30;
                     BaseFailure = 80;
                     FirstCastExperience = 100;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

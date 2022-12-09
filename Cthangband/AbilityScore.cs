@@ -151,9 +151,9 @@ namespace Cthangband
         };
 
         /// <summary>
-        /// Bonus to mana per level, (stored as double actual bonus)
+        /// Bonus to vril per level, (stored as double actual bonus)
         /// </summary>
-        private static readonly int[] _adjManaBonus =
+        private static readonly int[] _adjVrilBonus =
                 {
             0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
             16, 17, 17, 18
@@ -300,9 +300,9 @@ namespace Cthangband
         public int IntUseDeviceBonus => _adjIntUseDeviceBonus[TableIndex];
 
         /// <summary>
-        /// Bonus to mana per level, (stored as double actual bonus)
+        /// Bonus to vril per level, (stored as double actual bonus)
         /// </summary>
-        public int ManaBonus => _adjManaBonus[TableIndex];
+        public int VrilBonus => _adjVrilBonus[TableIndex];
 
         /// <summary>
         /// Spell failure reduction

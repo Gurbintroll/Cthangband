@@ -44,21 +44,21 @@ namespace Cthangband.Spells.Corporeal
             {
                 case CharacterClass.Mage:
                     Level = 12;
-                    ManaCost = 12;
+                    VrilCost = 12;
                     BaseFailure = 80;
                     FirstCastExperience = 40;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 15;
-                    ManaCost = 15;
+                    VrilCost = 15;
                     BaseFailure = 80;
                     FirstCastExperience = 40;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 18;
-                    ManaCost = 18;
+                    VrilCost = 18;
                     BaseFailure = 80;
                     FirstCastExperience = 25;
                     break;
@@ -67,21 +67,21 @@ namespace Cthangband.Spells.Corporeal
                 case CharacterClass.Monk:
                 case CharacterClass.Cultist:
                     Level = 15;
-                    ManaCost = 12;
+                    VrilCost = 12;
                     BaseFailure = 70;
                     FirstCastExperience = 30;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 9;
-                    ManaCost = 9;
+                    VrilCost = 9;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

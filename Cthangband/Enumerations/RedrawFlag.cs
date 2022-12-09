@@ -25,7 +25,7 @@ namespace Cthangband.Enumerations
         public const uint PrHp = 0x00000040;
         public const uint PrHunger = 0x00004000;
         public const uint PrLev = 0x00000004;
-        public const uint PrMana = 0x00000080;
+        public const uint PrVril = 0x00000080;
         public const uint PrMap = 0x04000000;
         public const uint PrMisc = 0x00000001;
         public const uint PrPoisoned = 0x00080000;

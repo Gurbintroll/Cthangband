@@ -54,7 +54,7 @@ namespace Cthangband.Enumerations
         public const int ResistHeat = 30;
         public const int ResStr = 42;
         public const int RestoreExp = 41;
-        public const int RestoreMana = 40;
+        public const int RestoreVril = 40;
         public const int ResWis = 44;
         public const int Ruination = 15;
         public const int SaltWater = 5;

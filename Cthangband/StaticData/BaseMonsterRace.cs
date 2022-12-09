@@ -439,7 +439,7 @@ namespace Cthangband.StaticData
         }
 
         [DefaultValue(false)]
-        public bool BreatheMana
+        public bool BreatheVril
         {
             get;
             set;
@@ -648,7 +648,7 @@ namespace Cthangband.StaticData
         }
 
         [DefaultValue(false)]
-        public bool DrainMana
+        public bool DrainVril
         {
             get;
             set;
@@ -1145,9 +1145,9 @@ namespace Cthangband.StaticData
 
         [Browsable(true)]
         [Category("Spells")]
-        [Description("The monster can cast mana balls")]
+        [Description("The monster can cast vril balls")]
         [DefaultValue(false)]
-        public bool ManaBall
+        public bool VrilBall
         {
             get;
             set;
@@ -1155,9 +1155,9 @@ namespace Cthangband.StaticData
 
         [Browsable(true)]
         [Category("Spells")]
-        [Description("The monster can cast mana bolts")]
+        [Description("The monster can cast vril bolts")]
         [DefaultValue(false)]
-        public bool ManaBolt
+        public bool VrilBolt
         {
             get;
             set;

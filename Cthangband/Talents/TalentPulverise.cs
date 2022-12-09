@@ -18,7 +18,7 @@ namespace Cthangband.Talents
         {
             Name = "Pulverise";
             Level = 11;
-            ManaCost = 7;
+            VrilCost = 7;
             BaseFailure = 30;
         }
 

@@ -18,7 +18,7 @@ namespace Cthangband.Talents
         {
             Name = "Psychic Drain";
             Level = 25;
-            ManaCost = 10;
+            VrilCost = 10;
             BaseFailure = 40;
         }
 

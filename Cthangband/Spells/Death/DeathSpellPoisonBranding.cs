@@ -26,35 +26,35 @@ namespace Cthangband.Spells.Death
             {
                 case CharacterClass.Mage:
                     Level = 30;
-                    ManaCost = 75;
+                    VrilCost = 75;
                     BaseFailure = 50;
                     FirstCastExperience = 30;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 33;
-                    ManaCost = 75;
+                    VrilCost = 75;
                     BaseFailure = 90;
                     FirstCastExperience = 30;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 35;
-                    ManaCost = 35;
+                    VrilCost = 35;
                     BaseFailure = 75;
                     FirstCastExperience = 5;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 40;
-                    ManaCost = 80;
+                    VrilCost = 80;
                     BaseFailure = 95;
                     FirstCastExperience = 20;
                     break;
 
                 case CharacterClass.Paladin:
                     Level = 35;
-                    ManaCost = 75;
+                    VrilCost = 75;
                     BaseFailure = 90;
                     FirstCastExperience = 30;
                     break;
@@ -62,21 +62,21 @@ namespace Cthangband.Spells.Death
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 35;
-                    ManaCost = 75;
+                    VrilCost = 75;
                     BaseFailure = 50;
                     FirstCastExperience = 30;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 26;
-                    ManaCost = 65;
+                    VrilCost = 65;
                     BaseFailure = 40;
                     FirstCastExperience = 30;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

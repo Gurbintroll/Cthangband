@@ -13,7 +13,7 @@ using System;
 namespace Cthangband.Spells.Chaos
 {
     [Serializable]
-    internal class ChaosSpellManaBurst : BaseSpell
+    internal class ChaosSpellVrilBurst : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
@@ -30,26 +30,26 @@ namespace Cthangband.Spells.Chaos
 
         public override void Initialise(int characterClass)
         {
-            Name = "Mana Burst";
+            Name = "Vril Burst";
             switch (characterClass)
             {
                 case CharacterClass.Mage:
                     Level = 9;
-                    ManaCost = 6;
+                    VrilCost = 6;
                     BaseFailure = 50;
                     FirstCastExperience = 1;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 10;
-                    ManaCost = 6;
+                    VrilCost = 6;
                     BaseFailure = 30;
                     FirstCastExperience = 5;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 14;
-                    ManaCost = 12;
+                    VrilCost = 12;
                     BaseFailure = 40;
                     FirstCastExperience = 2;
                     break;
@@ -57,14 +57,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 8;
-                    ManaCost = 8;
+                    VrilCost = 8;
                     BaseFailure = 30;
                     FirstCastExperience = 1;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 7;
-                    ManaCost = 7;
+                    VrilCost = 7;
                     BaseFailure = 30;
                     FirstCastExperience = 1;
                     break;
@@ -72,14 +72,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 6;
-                    ManaCost = 4;
+                    VrilCost = 4;
                     BaseFailure = 40;
                     FirstCastExperience = 1;
                     break;
 
                 default:
                     Level = 99;
-                    ManaCost = 0;
+                    VrilCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

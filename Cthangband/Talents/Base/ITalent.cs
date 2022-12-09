@@ -16,7 +16,7 @@ namespace Cthangband.Talents.Base
     internal interface ITalent
     {
         int Level { get; }
-        int ManaCost { get; }
+        int VrilCost { get; }
         string Name { get; }
 
         int FailureChance(Player player);

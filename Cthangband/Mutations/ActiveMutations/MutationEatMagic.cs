@@ -36,7 +36,7 @@ namespace Cthangband.Mutations.ActiveMutations
                 }
                 else
                 {
-                    player.Mana += 2 * lev;
+                    player.Vril += 2 * lev;
                     oPtr.TypeSpecificValue = 500;
                 }
             }
@@ -44,7 +44,7 @@ namespace Cthangband.Mutations.ActiveMutations
             {
                 if (oPtr.TypeSpecificValue > 0)
                 {
-                    player.Mana += oPtr.TypeSpecificValue * lev;
+                    player.Vril += oPtr.TypeSpecificValue * lev;
                     oPtr.TypeSpecificValue = 0;
                 }
                 else
@@ -53,9 +53,9 @@ namespace Cthangband.Mutations.ActiveMutations
                 }
                 oPtr.IdentifyFlags.Set(Constants.IdentEmpty);
             }
-            if (player.Mana > player.MaxMana)
+            if (player.Vril > player.MaxVril)
             {
-                player.Mana = player.MaxMana;
+                player.Vril = player.MaxVril;
             }
             player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
         }
