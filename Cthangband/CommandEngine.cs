@@ -3548,7 +3548,7 @@ namespace Cthangband
         public int RandomPotion()
         {
             var itemSubCategory = 0;
-            switch (Program.Rng.DieRoll(48))
+            switch (Program.Rng.DieRoll(47))
             {
                 case 1:
                     itemSubCategory = PotionType.Water;
@@ -3694,47 +3694,47 @@ namespace Cthangband
                     itemSubCategory = PotionType.IncDex;
                     break;
 
-                case 38:
+                case 37:
                     itemSubCategory = PotionType.IncCon;
                     break;
 
-                case 39:
+                case 38:
                     itemSubCategory = PotionType.IncCha;
                     break;
 
-                case 40:
+                case 39:
                     itemSubCategory = PotionType.Augmentation;
                     break;
 
-                case 41:
+                case 40:
                     itemSubCategory = PotionType.Enlightenment;
                     break;
 
-                case 42:
+                case 41:
                     itemSubCategory = PotionType.StarEnlightenment;
                     break;
 
-                case 43:
+                case 42:
                     itemSubCategory = PotionType.SelfKnowledge;
                     break;
 
-                case 44:
+                case 43:
                     itemSubCategory = PotionType.Experience;
                     break;
 
-                case 45:
+                case 44:
                     itemSubCategory = PotionType.Resistance;
                     break;
 
-                case 46:
+                case 45:
                     itemSubCategory = PotionType.Curing;
                     break;
 
-                case 47:
+                case 46:
                     itemSubCategory = PotionType.Invulnerability;
                     break;
 
-                case 48:
+                case 47:
                     itemSubCategory = PotionType.NewLife;
                     break;
             }
