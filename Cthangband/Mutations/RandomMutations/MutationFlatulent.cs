@@ -29,7 +29,7 @@ namespace Cthangband.Mutations.RandomMutations
                 saveGame.Disturb(false);
                 Profile.Instance.MsgPrint("BRRAAAP! Oops.");
                 Profile.Instance.MsgPrint(null);
-                saveGame.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), 0, player.Level, 3);
+                saveGame.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), 0, player.Level, 3);
             }
         }
     }

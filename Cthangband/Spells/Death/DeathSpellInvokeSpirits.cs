@@ -75,7 +75,7 @@ namespace Cthangband.Spells.Death
             }
             if (die < 46)
             {
-                saveGame.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), dir, 20 + (player.Level / 2), 3);
+                saveGame.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), dir, 20 + (player.Level / 2), 3);
             }
             if (die < 51)
             {
@@ -83,7 +83,7 @@ namespace Cthangband.Spells.Death
             }
             if (die < 56)
             {
-                saveGame.SpellEffects.FireBoltOrBeam(beam - 10, new ProjectElec(SaveGame.Instance.SpellEffects), dir,
+                saveGame.SpellEffects.FireBoltOrBeam(beam - 10, new ProjectElectricity(SaveGame.Instance.SpellEffects), dir,
                     Program.Rng.DiceRoll(3 + ((player.Level - 5) / 4), 8));
             }
             if (die < 61)
@@ -107,7 +107,7 @@ namespace Cthangband.Spells.Death
             }
             if (die < 81)
             {
-                saveGame.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 30 + (player.Level / 2), 2);
+                saveGame.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, 30 + (player.Level / 2), 2);
             }
             if (die < 86)
             {

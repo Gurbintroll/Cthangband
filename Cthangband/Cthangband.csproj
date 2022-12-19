@@ -262,7 +262,7 @@
     <Compile Include="Projection\ProjectDispLiving.cs" />
     <Compile Include="Projection\ProjectDispUndead.cs" />
     <Compile Include="Projection\ProjectDomination.cs" />
-    <Compile Include="Projection\ProjectElec.cs" />
+    <Compile Include="Projection\ProjectElectricity.cs" />
     <Compile Include="Projection\ProjectExplode.cs" />
     <Compile Include="Projection\ProjectFire.cs" />
     <Compile Include="Projection\ProjectForce.cs" />
@@ -296,7 +296,7 @@
     <Compile Include="Projection\ProjectOldSlow.cs" />
     <Compile Include="Projection\ProjectOldSpeed.cs" />
     <Compile Include="Projection\ProjectPlasma.cs" />
-    <Compile Include="Projection\ProjectPois.cs" />
+    <Compile Include="Projection\ProjectPoison.cs" />
     <Compile Include="Projection\ProjectPsi.cs" />
     <Compile Include="Projection\ProjectPsiDrain.cs" />
     <Compile Include="Projection\ProjectShard.cs" />

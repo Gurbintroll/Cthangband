@@ -578,7 +578,7 @@ namespace Cthangband.Spells
             bool lineChaos = false;
             IProjection[] hurtTypes =
             {
-                new ProjectElec(this), new ProjectPois(this), new ProjectAcid(this), new ProjectCold(this),
+                new ProjectElectricity(this), new ProjectPoison(this), new ProjectAcid(this), new ProjectCold(this),
                 new ProjectFire(this), new ProjectMissile(this), new ProjectArrow(this), new ProjectPlasma(this),
                 new ProjectHolyFire(this), new ProjectWater(this), new ProjectLight(this), new ProjectDark(this),
                 new ProjectForce(this), new ProjectInertia(this), new ProjectVis(this), new ProjectMeteor(this),
@@ -2161,7 +2161,7 @@ namespace Cthangband.Spells
                     break;
 
                 case PotionType.Poison:
-                    dt = new ProjectPois(this);
+                    dt = new ProjectPoison(this);
                     dam = 3;
                     angry = true;
                     break;

@@ -93,7 +93,7 @@ namespace Cthangband
                         {
                             return;
                         }
-                        _saveGame.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), direction, 12, 3);
+                        _saveGame.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), direction, 12, 3);
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(4) + 4;
                         break;
                     }
@@ -105,7 +105,7 @@ namespace Cthangband
                         {
                             return;
                         }
-                        _saveGame.SpellEffects.FireBolt(new ProjectElec(SaveGame.Instance.SpellEffects), direction,
+                        _saveGame.SpellEffects.FireBolt(new ProjectElectricity(SaveGame.Instance.SpellEffects), direction,
                             Program.Rng.DiceRoll(4, 8));
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(6) + 6;
                         break;
@@ -207,7 +207,7 @@ namespace Cthangband
                         {
                             return;
                         }
-                        _saveGame.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), direction, 100, 3);
+                        _saveGame.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), direction, 100, 3);
                         item.RechargeTimeLeft = 500;
                         break;
                     }
@@ -284,7 +284,7 @@ namespace Cthangband
                         {
                             return;
                         }
-                        _saveGame.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), direction, 250, 3);
+                        _saveGame.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), direction, 250, 3);
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(425) + 425;
                         break;
                     }
@@ -4379,7 +4379,7 @@ namespace Cthangband
                             break;
                         }
                         Profile.Instance.MsgPrint("You throw a dart of poison.");
-                        _saveGame.SpellEffects.FireBolt(new ProjectPois(SaveGame.Instance.SpellEffects), direction, playerLevel);
+                        _saveGame.SpellEffects.FireBolt(new ProjectPoison(SaveGame.Instance.SpellEffects), direction, playerLevel);
                     }
                     break;
                 // Nibelungen can detect traps, doors, and stairs
@@ -4507,7 +4507,7 @@ namespace Cthangband
                                 }
                                 else
                                 {
-                                    projectile = new ProjectPois(SaveGame.Instance.SpellEffects);
+                                    projectile = new ProjectPoison(SaveGame.Instance.SpellEffects);
                                     projectileDescription = "poison";
                                 }
                                 break;
@@ -4832,7 +4832,7 @@ namespace Cthangband
 
                     case MutationAttackType.Poison:
                         _saveGame.SpellEffects.Project(0, 0, monster.MapY, monster.MapX, damage,
-                            new ProjectPois(SaveGame.Instance.SpellEffects), ProjectionFlag.ProjectKill);
+                            new ProjectPoison(SaveGame.Instance.SpellEffects), ProjectionFlag.ProjectKill);
                         break;
 
                     case MutationAttackType.Hellfire:

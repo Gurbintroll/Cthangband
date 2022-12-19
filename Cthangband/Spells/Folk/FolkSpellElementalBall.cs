@@ -31,7 +31,7 @@ namespace Cthangband.Spells.Folk
                     break;
 
                 case 2:
-                    dummy = new ProjectElec(SaveGame.Instance.SpellEffects);
+                    dummy = new ProjectElectricity(SaveGame.Instance.SpellEffects);
                     break;
 
                 case 3:

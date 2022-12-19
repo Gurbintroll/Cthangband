@@ -19,7 +19,7 @@ namespace Cthangband.Spells.Chaos
         {
             for (int dir = 0; dir <= 9; dir++)
             {
-                saveGame.SpellEffects.FireBeam(new ProjectElec(SaveGame.Instance.SpellEffects), dir,
+                saveGame.SpellEffects.FireBeam(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir,
                     Program.Rng.DiceRoll(5 + (player.Level / 10), 8));
             }
         }

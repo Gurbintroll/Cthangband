@@ -223,7 +223,7 @@ namespace Cthangband
                             {
                                 return;
                             }
-                            SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 250, 3);
+                            SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, 250, 3);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(425) + 425;
                             break;
                         }
@@ -245,7 +245,7 @@ namespace Cthangband
                             Profile.Instance.MsgPrint("Your armor is surrounded by lightning...");
                             for (int i = 0; i < 8; i++)
                             {
-                                SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), _level.OrderedDirection[i], 150, 3);
+                                SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), _level.OrderedDirection[i], 150, 3);
                             }
                             item.RechargeTimeLeft = 1000;
                             break;
@@ -428,7 +428,7 @@ namespace Cthangband
                             {
                                 return;
                             }
-                            SaveGame.Instance.SpellEffects.FireBolt(new ProjectElec(SaveGame.Instance.SpellEffects), dir, Program.Rng.DiceRoll(4, 8));
+                            SaveGame.Instance.SpellEffects.FireBolt(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, Program.Rng.DiceRoll(4, 8));
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(6) + 6;
                             break;
                         }
@@ -512,7 +512,7 @@ namespace Cthangband
                             {
                                 return;
                             }
-                            SaveGame.Instance.SpellEffects.FireBolt(new ProjectElec(SaveGame.Instance.SpellEffects), dir, Program.Rng.DiceRoll(4, 8));
+                            SaveGame.Instance.SpellEffects.FireBolt(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, Program.Rng.DiceRoll(4, 8));
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(6) + 6;
                             break;
                         }
@@ -524,7 +524,7 @@ namespace Cthangband
                             {
                                 return;
                             }
-                            SaveGame.Instance.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), dir, 12, 3);
+                            SaveGame.Instance.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), dir, 12, 3);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(4) + 4;
                             break;
                         }
@@ -635,7 +635,7 @@ namespace Cthangband
                             {
                                 return;
                             }
-                            SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 100, 3);
+                            SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, 100, 3);
                             item.RechargeTimeLeft = 500;
                             break;
                         }
@@ -791,7 +791,7 @@ namespace Cthangband
                     case DragonArmour.Blue:
                         {
                             Profile.Instance.MsgPrint("You breathe lightning.");
-                            SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 100, -2);
+                            SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, 100, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
@@ -812,7 +812,7 @@ namespace Cthangband
                     case DragonArmour.Green:
                         {
                             Profile.Instance.MsgPrint("You breathe poison gas.");
-                            SaveGame.Instance.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), dir, 150, -2);
+                            SaveGame.Instance.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), dir, 150, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
@@ -838,7 +838,7 @@ namespace Cthangband
                                     break;
 
                                 case 1:
-                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects),
+                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects),
                                         dir, 250, -2);
                                     break;
 
@@ -853,7 +853,7 @@ namespace Cthangband
                                     break;
 
                                 case 4:
-                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects),
+                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects),
                                         dir, 250, -2);
                                     break;
                             }
@@ -1159,7 +1159,7 @@ namespace Cthangband
                     }
                 case WandType.StinkingCloud:
                     {
-                        SaveGame.Instance.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), dir, 12, 2);
+                        SaveGame.Instance.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), dir, 12, 2);
                         ident = true;
                         break;
                     }
@@ -1207,7 +1207,7 @@ namespace Cthangband
                     }
                 case WandType.ElecBall:
                     {
-                        SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 32, 2);
+                        SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, 32, 2);
                         ident = true;
                         break;
                     }
@@ -1251,7 +1251,7 @@ namespace Cthangband
                                 }
                             case 2:
                                 {
-                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 80, -3);
+                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, 80, -3);
                                     break;
                                 }
                             case 3:
@@ -1266,7 +1266,7 @@ namespace Cthangband
                                 }
                             default:
                                 {
-                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), dir, 60, -3);
+                                    SaveGame.Instance.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), dir, 60, -3);
                                     break;
                                 }
                         }
@@ -3485,7 +3485,7 @@ namespace Cthangband
                     }
                 case RodType.ElecBolt:
                     {
-                        SaveGame.Instance.SpellEffects.FireBoltOrBeam(10, new ProjectElec(SaveGame.Instance.SpellEffects), dir,
+                        SaveGame.Instance.SpellEffects.FireBoltOrBeam(10, new ProjectElectricity(SaveGame.Instance.SpellEffects), dir,
                             Program.Rng.DiceRoll(3, 8));
                         identified = true;
                         item.TypeSpecificValue = 11;
@@ -3516,7 +3516,7 @@ namespace Cthangband
                     }
                 case RodType.ElecBall:
                     {
-                        SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 32, 2);
+                        SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), dir, 32, 2);
                         identified = true;
                         item.TypeSpecificValue = 23;
                         break;
