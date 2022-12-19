@@ -128,7 +128,7 @@ namespace Cthangband.Projection
                 noteDies = " evaporates!";
                 dam *= 2;
             }
-            if ((rPtr.Flags3 & MonsterFlag1.Unique) != 0)
+            if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 if (Program.Rng.RandomLessThan(rPtr.Level + 10) > Program.Rng.RandomLessThan(Player.Level))
                 {
