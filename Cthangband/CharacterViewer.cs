@@ -296,7 +296,7 @@ namespace Cthangband
                         if (item.TypeSpecificValue < 0)
                         {
                             a = Colour.Red;
-                            if (item.TypeSpecificValue < 10)
+                            if (item.TypeSpecificValue > -10)
                             {
                                 c = (char)('0' - (char)item.TypeSpecificValue);
                             }
