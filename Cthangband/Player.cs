@@ -205,7 +205,7 @@ namespace Cthangband
                 Artifact aPtr = pair.Value;
                 aPtr.CurNum = 0;
             }
-            for (int i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 ItemType kPtr = Profile.Instance.ItemTypes[i];
                 kPtr.Tried = false;

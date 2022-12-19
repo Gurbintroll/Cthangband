@@ -71,7 +71,7 @@ namespace Cthangband
                 int kIdx;
                 ItemCategory tv = master[k].Category;
                 int sv = master[k].SubCategory;
-                for (kIdx = 1; kIdx < Profile.Instance.ItemTypes.Count; kIdx++)
+                for (kIdx = 0; kIdx < Profile.Instance.ItemTypes.Count; kIdx++)
                 {
                     ItemType kPtr = Profile.Instance.ItemTypes[kIdx];
                     if (kPtr.Category == tv && kPtr.SubCategory == sv)

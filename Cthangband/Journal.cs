@@ -1057,7 +1057,7 @@ namespace Cthangband
         private void WorthlessItemTypeSelection(ItemCategory tval)
         {
             _menuLength = 0;
-            for (int i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 ItemType kPtr = Profile.Instance.ItemTypes[i];
                 if (kPtr.Category == tval)
@@ -1104,7 +1104,7 @@ namespace Cthangband
                         {
                             WorthlessItemQualitySelection(kPtr);
                             _menuLength = 0;
-                            for (int i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+                            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
                             {
                                 kPtr = Profile.Instance.ItemTypes[i];
                                 if (kPtr.Category == tval)
@@ -1131,7 +1131,7 @@ namespace Cthangband
                         {
                             WorthlessItemChestSelection(kPtr);
                             _menuLength = 0;
-                            for (int i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+                            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
                             {
                                 kPtr = Profile.Instance.ItemTypes[i];
                                 if (kPtr.Category == tval)

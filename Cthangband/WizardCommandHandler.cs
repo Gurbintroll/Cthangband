@@ -439,7 +439,7 @@ namespace Cthangband
 
         private void DoCmdWizLearn()
         {
-            for (int i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 ItemType kPtr = Profile.Instance.ItemTypes[i];
                 if (kPtr.Level <= Gui.CommandArgument)

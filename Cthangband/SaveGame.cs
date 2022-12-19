@@ -1637,7 +1637,7 @@ namespace Cthangband
                 }
             }
             Program.Rng.UseFixed = false;
-            for (i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+            for (i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 ItemType kPtr = Profile.Instance.ItemTypes[i];
                 if (string.IsNullOrEmpty(kPtr.Name))
@@ -1661,7 +1661,7 @@ namespace Cthangband
             int[] num = new int[Constants.MaxDepth];
             int[] aux = new int[Constants.MaxDepth];
             AllocKindSize = 0;
-            for (i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+            for (i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 kPtr = Profile.Instance.ItemTypes[i];
                 for (j = 0; j < 4; j++)
@@ -1683,7 +1683,7 @@ namespace Cthangband
                 AllocKindTable[k] = new AllocationEntry();
             }
             AllocationEntry[] table = AllocKindTable;
-            for (i = 1; i < Profile.Instance.ItemTypes.Count; i++)
+            for (i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 kPtr = Profile.Instance.ItemTypes[i];
                 for (j = 0; j < 4; j++)
