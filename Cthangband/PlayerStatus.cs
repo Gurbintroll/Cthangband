@@ -1440,106 +1440,6 @@ namespace Cthangband
             }
         }
 
-        public void CalcVril()
-        {
-            int levels;
-            switch (_player.Spellcasting.Type)
-            {
-                case CastingType.None:
-                    return;
-
-                case CastingType.Arcane:
-                case CastingType.Divine:
-                    levels = _player.Level - _player.Spellcasting.SpellFirst + 1;
-                    break;
-
-                case CastingType.Mentalism:
-                case CastingType.Channeling:
-                    levels = _player.Level;
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            if (levels < 0)
-            {
-                levels = 0;
-            }
-            int msp = _player.AbilityScores[_player.Spellcasting.SpellStat].VrilBonus * levels / 2;
-            if (msp != 0)
-            {
-                msp++;
-            }
-            if (msp != 0 && _player.ProfessionIndex == CharacterClass.HighMage)
-            {
-                msp += msp / 4;
-            }
-            if (_player.Spellcasting.Type == CastingType.Arcane)
-            {
-                FlagSet f1 = new FlagSet();
-                FlagSet f2 = new FlagSet();
-                FlagSet f3 = new FlagSet();
-                _player.HasRestrictingGloves = false;
-                Item oPtr = _player.Inventory[InventorySlot.Hands];
-                oPtr.GetMergedFlags(f1, f2, f3);
-                if (oPtr.ItemType != null && f2.IsClear(ItemFlag2.FreeAct) && f1.IsClear(ItemFlag1.Dex) &&
-                    oPtr.TypeSpecificValue > 0)
-                {
-                    _player.HasRestrictingGloves = true;
-                    msp = 3 * msp / 4;
-                }
-                _player.HasRestrictingArmour = false;
-                int curWgt = 0;
-                curWgt += _player.Inventory[InventorySlot.Body].Weight;
-                curWgt += _player.Inventory[InventorySlot.Head].Weight;
-                curWgt += _player.Inventory[InventorySlot.Arm].Weight;
-                curWgt += _player.Inventory[InventorySlot.Cloak].Weight;
-                curWgt += _player.Inventory[InventorySlot.Hands].Weight;
-                curWgt += _player.Inventory[InventorySlot.Feet].Weight;
-                int maxWgt = _player.Spellcasting.SpellWeight;
-                if ((curWgt - maxWgt) / 10 > 0)
-                {
-                    _player.HasRestrictingArmour = true;
-                    msp -= (curWgt - maxWgt) / 10;
-                }
-            }
-            if (msp < 0)
-            {
-                msp = 0;
-            }
-            var mult = _player.Religion.GetNamedDeity(Pantheon.GodName.Tamash).AdjustedFavour + 10;
-            msp *= mult;
-            msp /= 10;
-            if (_player.MaxVril != msp)
-            {
-                if (_player.Vis >= msp)
-                {
-                    _player.Vis = msp;
-                    _player.FractionalVril = 0;
-                }
-                _player.MaxVril = msp;
-                _player.RedrawNeeded.Set(RedrawFlag.PrVril);
-            }
-            if (SaveGame.Instance.CharacterXtra)
-            {
-                return;
-            }
-            if (_player.OldRestrictingGloves != _player.HasRestrictingGloves)
-            {
-                Profile.Instance.MsgPrint(_player.HasRestrictingGloves
-                    ? "Your covered hands feel unsuitable for spellcasting."
-                    : "Your hands feel more suitable for spellcasting.");
-                _player.OldRestrictingGloves = _player.HasRestrictingGloves;
-            }
-            if (_player.OldRestrictingArmour != _player.HasRestrictingArmour)
-            {
-                Profile.Instance.MsgPrint(_player.HasRestrictingArmour
-                    ? "The weight of your armour encumbers your movement."
-                    : "You feel able to move more freely.");
-                _player.OldRestrictingArmour = _player.HasRestrictingArmour;
-            }
-        }
-
         public void CalcSpells()
         {
             int i, j;
@@ -1778,6 +1678,106 @@ namespace Cthangband
             }
         }
 
+        public void CalcVril()
+        {
+            int levels;
+            switch (_player.Spellcasting.Type)
+            {
+                case CastingType.None:
+                    return;
+
+                case CastingType.Arcane:
+                case CastingType.Divine:
+                    levels = _player.Level - _player.Spellcasting.SpellFirst + 1;
+                    break;
+
+                case CastingType.Mentalism:
+                case CastingType.Channeling:
+                    levels = _player.Level;
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            if (levels < 0)
+            {
+                levels = 0;
+            }
+            int msp = _player.AbilityScores[_player.Spellcasting.SpellStat].VrilBonus * levels / 2;
+            if (msp != 0)
+            {
+                msp++;
+            }
+            if (msp != 0 && _player.ProfessionIndex == CharacterClass.HighMage)
+            {
+                msp += msp / 4;
+            }
+            if (_player.Spellcasting.Type == CastingType.Arcane)
+            {
+                FlagSet f1 = new FlagSet();
+                FlagSet f2 = new FlagSet();
+                FlagSet f3 = new FlagSet();
+                _player.HasRestrictingGloves = false;
+                Item oPtr = _player.Inventory[InventorySlot.Hands];
+                oPtr.GetMergedFlags(f1, f2, f3);
+                if (oPtr.ItemType != null && f2.IsClear(ItemFlag2.FreeAct) && f1.IsClear(ItemFlag1.Dex) &&
+                    oPtr.TypeSpecificValue > 0)
+                {
+                    _player.HasRestrictingGloves = true;
+                    msp = 3 * msp / 4;
+                }
+                _player.HasRestrictingArmour = false;
+                int curWgt = 0;
+                curWgt += _player.Inventory[InventorySlot.Body].Weight;
+                curWgt += _player.Inventory[InventorySlot.Head].Weight;
+                curWgt += _player.Inventory[InventorySlot.Arm].Weight;
+                curWgt += _player.Inventory[InventorySlot.Cloak].Weight;
+                curWgt += _player.Inventory[InventorySlot.Hands].Weight;
+                curWgt += _player.Inventory[InventorySlot.Feet].Weight;
+                int maxWgt = _player.Spellcasting.SpellWeight;
+                if ((curWgt - maxWgt) / 10 > 0)
+                {
+                    _player.HasRestrictingArmour = true;
+                    msp -= (curWgt - maxWgt) / 10;
+                }
+            }
+            if (msp < 0)
+            {
+                msp = 0;
+            }
+            var mult = _player.Religion.GetNamedDeity(Pantheon.GodName.Tamash).AdjustedFavour + 10;
+            msp *= mult;
+            msp /= 10;
+            if (_player.MaxVril != msp)
+            {
+                if (_player.Vis >= msp)
+                {
+                    _player.Vis = msp;
+                    _player.FractionalVril = 0;
+                }
+                _player.MaxVril = msp;
+                _player.RedrawNeeded.Set(RedrawFlag.PrVril);
+            }
+            if (SaveGame.Instance.CharacterXtra)
+            {
+                return;
+            }
+            if (_player.OldRestrictingGloves != _player.HasRestrictingGloves)
+            {
+                Profile.Instance.MsgPrint(_player.HasRestrictingGloves
+                    ? "Your covered hands feel unsuitable for spellcasting."
+                    : "Your hands feel more suitable for spellcasting.");
+                _player.OldRestrictingGloves = _player.HasRestrictingGloves;
+            }
+            if (_player.OldRestrictingArmour != _player.HasRestrictingArmour)
+            {
+                Profile.Instance.MsgPrint(_player.HasRestrictingArmour
+                    ? "The weight of your armour encumbers your movement."
+                    : "You feel able to move more freely.");
+                _player.OldRestrictingArmour = _player.HasRestrictingArmour;
+            }
+        }
+
         public void HealthRedraw()
         {
             if (SaveGame.Instance.TrackedMonsterIndex == 0)
@@ -1868,6 +1868,37 @@ namespace Cthangband
             martialArtistArmWgt += _player.Inventory[InventorySlot.Hands].Weight;
             martialArtistArmWgt += _player.Inventory[InventorySlot.Feet].Weight;
             return martialArtistArmWgt > 100 + (_player.Level * 4);
+        }
+
+        public void PrintVisPoints()
+        {
+            if (_player.Spellcasting.Type == CastingType.None)
+            {
+                return;
+            }
+            Gui.Print("Max VP ", ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp);
+            string tmp = _player.MaxVril.ToString().PadLeft(5);
+            Colour colour = Colour.BrightGreen;
+            Gui.Print(colour, tmp, ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp + 7);
+            Gui.Print("Cur VP ", ScreenLocation.RowCursp, ScreenLocation.ColCursp);
+            tmp = _player.Vis.ToString().PadLeft(5);
+            if (_player.Vis >= _player.MaxVril)
+            {
+                colour = Colour.BrightGreen;
+            }
+            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 5)
+            {
+                colour = Colour.BrightYellow;
+            }
+            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 10)
+            {
+                colour = Colour.Orange;
+            }
+            else
+            {
+                colour = Colour.BrightRed;
+            }
+            Gui.Print(colour, tmp, ScreenLocation.RowCursp, ScreenLocation.ColCursp + 7);
         }
 
         public void PrtAc()
@@ -2052,7 +2083,7 @@ namespace Cthangband
             }
             PrtAc();
             PrtHp();
-            PrtSp();
+            PrintVisPoints();
             PrtGold();
             PrtDepth();
             HealthRedraw();
@@ -2160,37 +2191,6 @@ namespace Cthangband
             {
                 Gui.Print("        ", ScreenLocation.RowPoisoned, ScreenLocation.ColPoisoned);
             }
-        }
-
-        public void PrtSp()
-        {
-            if (_player.Spellcasting.Type == CastingType.None)
-            {
-                return;
-            }
-            Gui.Print("Max SP ", ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp);
-            string tmp = _player.MaxVril.ToString().PadLeft(5);
-            Colour colour = Colour.BrightGreen;
-            Gui.Print(colour, tmp, ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp + 7);
-            Gui.Print("Cur SP ", ScreenLocation.RowCursp, ScreenLocation.ColCursp);
-            tmp = _player.Vis.ToString().PadLeft(5);
-            if (_player.Vis >= _player.MaxVril)
-            {
-                colour = Colour.BrightGreen;
-            }
-            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 5)
-            {
-                colour = Colour.BrightYellow;
-            }
-            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 10)
-            {
-                colour = Colour.Orange;
-            }
-            else
-            {
-                colour = Colour.BrightRed;
-            }
-            Gui.Print(colour, tmp, ScreenLocation.RowCursp, ScreenLocation.ColCursp + 7);
         }
 
         public void PrtSpeed()

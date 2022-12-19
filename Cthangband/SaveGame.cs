@@ -2659,7 +2659,7 @@ namespace Cthangband
             if (Player.RedrawNeeded.IsSet(RedrawFlag.PrVril))
             {
                 Player.RedrawNeeded.Clear(RedrawFlag.PrVril);
-                playerStatus.PrtSp();
+                playerStatus.PrintVisPoints();
             }
             if (Player.RedrawNeeded.IsSet(RedrawFlag.PrGold))
             {

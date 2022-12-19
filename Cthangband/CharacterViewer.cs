@@ -149,7 +149,7 @@ namespace Cthangband
             {
                 int vis = ability.VrilBonus;
                 // Casting abilities only have one or two inherent bonuses, so it's safe to start at three
-                bonus3 = vis % 2 == 0 ? $", {vis / 2} SP/lvl" : $", {vis / 2}.5 SP/lvl";
+                bonus3 = vis % 2 == 0 ? $", {vis / 2} VP/lvl" : $", {vis / 2}.5 VP/lvl";
                 // Not all casting classes have actual spells
                 if (_player.ProfessionIndex != CharacterClass.Mindcrafter && _player.ProfessionIndex != CharacterClass.Mystic
                     && _player.ProfessionIndex != CharacterClass.Channeler)
@@ -429,18 +429,18 @@ namespace Cthangband
             {
                 PrintShortScore("Cur Hit Points ", _player.Health, 31, 52, Colour.BrightRed);
             }
-            PrintShortScore("Max SP (Vis)  ", _player.MaxVril, 32, 52, Colour.Green);
+            PrintShortScore("Max Vis Points ", _player.MaxVril, 32, 52, Colour.Green);
             if (_player.Vis >= _player.MaxVril)
             {
-                PrintShortScore("Cur SP (Vis)  ", _player.Vis, 33, 52, Colour.Green);
+                PrintShortScore("Cur Vis Points ", _player.Vis, 33, 52, Colour.Green);
             }
             else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 10)
             {
-                PrintShortScore("Cur SP (Vis)  ", _player.Vis, 33, 52, Colour.BrightYellow);
+                PrintShortScore("Cur Vis Points ", _player.Vis, 33, 52, Colour.BrightYellow);
             }
             else
             {
-                PrintShortScore("Cur SP (Vis)  ", _player.Vis, 33, 52, Colour.BrightRed);
+                PrintShortScore("Cur Vis Points ", _player.Vis, 33, 52, Colour.BrightRed);
             }
             PrintLongScore("Gold           ", _player.Gold, 34, 52, Colour.Green);
         }

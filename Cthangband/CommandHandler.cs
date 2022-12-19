@@ -2221,7 +2221,7 @@ namespace Cthangband
         {
             if (Gui.CommandArgument <= 0)
             {
-                const string prompt = "Rest (0-9999, '*' for HP/SP, '&' as needed): ";
+                const string prompt = "Rest (0-9999, '*' for HP/VP, '&' as needed): ";
                 if (!Gui.GetString(prompt, out string choice, "&", 4))
                 {
                     return;
