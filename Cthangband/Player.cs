@@ -114,7 +114,6 @@ namespace Cthangband
         public bool IsWizard;
         public int Level;
         public int LightLevel;
-        public int Vis;
         public int MapX;
         public int MapY;
         public int MaxExperienceGained;
@@ -182,6 +181,7 @@ namespace Cthangband
         public int TimedTelepathy;
         public int TownWithHouse;
         public FlagSet UpdatesNeeded = new FlagSet();
+        public int Vis;
         public int Weight;
         public int WeightCarried;
         public int WildernessX;
@@ -804,9 +804,6 @@ namespace Cthangband
             if (RaceIndex == RaceId.HighElf)
             {
                 f2.Set(ItemFlag2.ResLight);
-            }
-            if (RaceIndex == RaceId.HighElf)
-            {
                 f3.Set(ItemFlag3.SeeInvis);
             }
             if (RaceIndex == RaceId.TchoTcho)

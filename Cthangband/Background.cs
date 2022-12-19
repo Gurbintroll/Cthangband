@@ -249,7 +249,7 @@ namespace Cthangband
             new PlayerHistory("Nath-Horthath. ", 98, 68, 50, 90),
             new PlayerHistory("Tamash. ", 99, 68, 50, 105),
             new PlayerHistory("Zo-Kalar. ", 100, 68, 50, 80),
-            // Group 69: Dark-Elf start 68->70->71->72->73->End
+            // Group 69: Dark-Elf start 69->70->71->72->73->End
             new PlayerHistory("You are one of several children of a Dark Elven ", 85, 69, 70, 45),
             new PlayerHistory("You are the only child of a Dark Elven ", 100, 69, 70, 55),
             // Group 70: Dark-Elf parent 70->71->72->73->End
@@ -962,7 +962,7 @@ namespace Cthangband
                     }
                 case RaceId.DarkElf:
                     {
-                        // Dark-Elf 68->70->71->72->73->End
+                        // Dark-Elf 69->70->71->72->73->End
                         chart = 69;
                         break;
                     }

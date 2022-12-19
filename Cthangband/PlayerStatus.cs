@@ -321,11 +321,8 @@ namespace Cthangband
             }
             if (_player.RaceIndex == RaceId.HighElf)
             {
-                _player.HasLightResistance = true;
-            }
-            if (_player.RaceIndex == RaceId.HighElf)
-            {
                 _player.HasSeeInvisibility = true;
+                _player.HasLightResistance = true;
             }
             if (_player.RaceIndex == RaceId.TchoTcho)
             {
