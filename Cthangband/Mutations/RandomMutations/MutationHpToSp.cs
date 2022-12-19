@@ -27,7 +27,7 @@ namespace Cthangband.Mutations.RandomMutations
             {
                 return;
             }
-            int wounds = player.MaxVril - player.Vril;
+            int wounds = player.MaxVril - player.Vis;
             if (wounds <= 0)
             {
                 return;
@@ -37,7 +37,7 @@ namespace Cthangband.Mutations.RandomMutations
             {
                 healing = wounds;
             }
-            player.Vril += healing;
+            player.Vis += healing;
             player.TakeHit(healing, "blood rushing to the head");
         }
     }

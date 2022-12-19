@@ -1145,7 +1145,7 @@ namespace Cthangband.StaticData
 
         [Browsable(true)]
         [Category("Spells")]
-        [Description("The monster can cast vril balls")]
+        [Description("The monster can cast vis balls")]
         [DefaultValue(false)]
         public bool VrilBall
         {
@@ -1155,7 +1155,7 @@ namespace Cthangband.StaticData
 
         [Browsable(true)]
         [Category("Spells")]
-        [Description("The monster can cast vril bolts")]
+        [Description("The monster can cast vis bolts")]
         [DefaultValue(false)]
         public bool VrilBolt
         {

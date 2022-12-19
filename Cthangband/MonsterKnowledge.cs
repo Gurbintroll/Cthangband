@@ -532,7 +532,7 @@ namespace Cthangband
             }
             if ((flags4 & MonsterFlag4.BreatheVril) != 0)
             {
-                vp[vn++] = "vril";
+                vp[vn++] = "vis";
             }
             if ((flags4 & MonsterFlag4.BreatheRadiation) != 0)
             {
@@ -599,7 +599,7 @@ namespace Cthangband
             }
             if ((flags5 & MonsterFlag5.VrilBall) != 0)
             {
-                vp[vn++] = "invoke vril storms";
+                vp[vn++] = "invoke vis storms";
             }
             if ((flags5 & MonsterFlag5.DarkBall) != 0)
             {
@@ -615,7 +615,7 @@ namespace Cthangband
             }
             if ((flags5 & MonsterFlag5.DrainVril) != 0)
             {
-                vp[vn++] = "drain vril";
+                vp[vn++] = "drain vis";
             }
             if ((flags5 & MonsterFlag5.MindBlast) != 0)
             {
@@ -671,7 +671,7 @@ namespace Cthangband
             }
             if ((flags5 & MonsterFlag5.VrilBolt) != 0)
             {
-                vp[vn++] = "produce vril bolts";
+                vp[vn++] = "produce vis bolts";
             }
             if ((flags5 & MonsterFlag5.PlasmaBolt) != 0)
             {

@@ -9,19 +9,19 @@ namespace Cthangband.Enumerations
 {
     internal static class HardArmourType
     {
-        public const int SvAdamantitePlateMail = 30;
-        public const int SvAugmentedChainMail = 6;
-        public const int SvBarChainMail = 8;
-        public const int SvChainMail = 4;
-        public const int SvDoubleChainMail = 7;
-        public const int SvFullPlateArmor = 15;
-        public const int SvMetalBrigandineArmor = 9;
-        public const int SvMetalLamellarArmor = 13;
-        public const int SvMetalScaleMail = 3;
-        public const int SvMithrilChainMail = 20;
-        public const int SvMithrilPlateMail = 25;
-        public const int SvPartialPlateArmor = 12;
-        public const int SvRibbedPlateArmor = 18;
-        public const int SvRustyChainMail = 1;
+        public const int AdamantitePlateMail = 30;
+        public const int AugmentedChainMail = 6;
+        public const int BarChainMail = 8;
+        public const int ChainMail = 4;
+        public const int DoubleChainMail = 7;
+        public const int FullPlate = 15;
+        public const int MetalBrigandine = 9;
+        public const int MetalLamellar = 13;
+        public const int MetalScaleMail = 3;
+        public const int MithrilChainMail = 20;
+        public const int MithrilPlateMail = 25;
+        public const int PartialPlate = 12;
+        public const int RibbedPlate = 18;
+        public const int RustyChainMail = 1;
     }
 }

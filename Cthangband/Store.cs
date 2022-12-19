@@ -985,7 +985,7 @@ namespace Cthangband
             _player.TimedColdResistance = 0;
             _player.TimedPoisonResistance = 0;
             _player.Health = _player.MaxHealth;
-            _player.Vril = _player.MaxVril;
+            _player.Vis = _player.MaxVril;
             _player.SetTimedBlindness(0);
             _player.SetTimedConfusion(0);
             _player.TimedStun = 0;

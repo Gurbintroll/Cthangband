@@ -13,19 +13,20 @@ namespace Cthangband.Enumerations
         public const int Acid = 17;
         public const int Aggravation = 1;
         public const int Attacks = 49;
-        public const int Barahir = 32;
+        public const int Bast = 33;
         public const int Con = 27;
         public const int Damage = 29;
         public const int Dex = 26;
+        public const int ElementalFire = 34;
+        public const int ElementalIce = 35;
+        public const int ElementalStorm = 36;
         public const int FeatherFall = 7;
         public const int Flames = 18;
         public const int FreeAction = 21;
         public const int Ice = 19;
         public const int Int = 25;
         public const int Lordly = 48;
-        public const int Narya = 34;
-        public const int Nenya = 35;
-        public const int Power = 37;
+        public const int Magic = 32;
         public const int Protection = 16;
         public const int ResBlindness = 47;
         public const int ResChaos = 46;
@@ -42,6 +43,7 @@ namespace Cthangband.Enumerations
         public const int ResSound = 42;
         public const int Searching = 23;
         public const int SeeInvis = 22;
+        public const int Set = 37;
         public const int Slaying = 30;
         public const int SlowDigestion = 6;
         public const int Speed = 31;
@@ -54,8 +56,6 @@ namespace Cthangband.Enumerations
         public const int SustainStr = 10;
         public const int SustainWis = 12;
         public const int Teleportation = 4;
-        public const int Tulkas = 33;
-        public const int Vilya = 36;
         public const int Weakness = 2;
         public const int Woe = 0;
     }

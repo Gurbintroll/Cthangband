@@ -18,7 +18,7 @@ namespace Cthangband.Spells.Death
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            player.Vril -= 100;
+            player.Vis -= 100;
             for (int i = 1; i < level.MMax; i++)
             {
                 Monster mPtr = level.Monsters[i];
@@ -37,14 +37,14 @@ namespace Cthangband.Spells.Death
                 }
                 level.Monsters.DeleteMonsterByIndex(i, true);
                 player.TakeHit(Program.Rng.DieRoll(4), "the strain of casting Annihilation");
-                player.Vril++;
+                player.Vis++;
                 level.MoveCursorRelative(player.MapY, player.MapX);
                 player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrVril);
                 SaveGame.Instance.HandleStuff();
                 Gui.Refresh();
                 Gui.Pause(GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor);
             }
-            player.Vril += 100;
+            player.Vis += 100;
         }
 
         public override void Initialise(int characterClass)

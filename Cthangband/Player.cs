@@ -114,7 +114,7 @@ namespace Cthangband
         public bool IsWizard;
         public int Level;
         public int LightLevel;
-        public int Vril;
+        public int Vis;
         public int MapX;
         public int MapY;
         public int MaxExperienceGained;
@@ -1208,7 +1208,7 @@ namespace Cthangband
             int set = realm == Realm1 ? 0 : 1;
             Gui.PrintLine("", y, x);
             Gui.Print("Name", y, x + 5);
-            Gui.Print("Lv Vril Fail Info", y, x + 35);
+            Gui.Print("Lv Vis Fail Info", y, x + 35);
             for (i = 0; i < num; i++)
             {
                 int spell = spells[i];
@@ -1250,29 +1250,29 @@ namespace Cthangband
 
         public void RegenerateVril(int percent)
         {
-            int oldVril = Vril;
+            int oldVril = Vis;
             int newVril = (MaxVril * percent) + Constants.PyRegenMnbase;
-            Vril += newVril >> 16;
-            if (Vril < 0 && oldVril > 0)
+            Vis += newVril >> 16;
+            if (Vis < 0 && oldVril > 0)
             {
-                Vril = Constants.MaxShort;
+                Vis = Constants.MaxShort;
             }
             int newFractionalVril = (newVril & 0xFFFF) + FractionalVril;
             if (newFractionalVril >= 0x10000L)
             {
                 FractionalVril = newFractionalVril - 0x10000;
-                Vril++;
+                Vis++;
             }
             else
             {
                 FractionalVril = newFractionalVril;
             }
-            if (Vril >= MaxVril)
+            if (Vis >= MaxVril)
             {
-                Vril = MaxVril;
+                Vis = MaxVril;
                 FractionalVril = 0;
             }
-            if (oldVril != Vril)
+            if (oldVril != Vis)
             {
                 RedrawNeeded.Set(RedrawFlag.PrVril);
             }

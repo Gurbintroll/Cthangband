@@ -27,7 +27,7 @@ namespace Cthangband.Spells.Chaos
 
         public override void Initialise(int characterClass)
         {
-            Name = "Vril Storm";
+            Name = "Vis Storm";
             switch (characterClass)
             {
                 case CharacterClass.Mage:

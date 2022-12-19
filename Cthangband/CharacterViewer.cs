@@ -147,9 +147,9 @@ namespace Cthangband
             // Add the bonus text for spell casting abilities
             if (_player.Spellcasting.SpellStat == abilityIndex && abilityIndex != Ability.Strength)
             {
-                int vril = ability.VrilBonus;
+                int vis = ability.VrilBonus;
                 // Casting abilities only have one or two inherent bonuses, so it's safe to start at three
-                bonus3 = vril % 2 == 0 ? $", {vril / 2} SP/lvl" : $", {vril / 2}.5 SP/lvl";
+                bonus3 = vis % 2 == 0 ? $", {vis / 2} SP/lvl" : $", {vis / 2}.5 SP/lvl";
                 // Not all casting classes have actual spells
                 if (_player.ProfessionIndex != CharacterClass.Mindcrafter && _player.ProfessionIndex != CharacterClass.Mystic
                     && _player.ProfessionIndex != CharacterClass.Channeler)
@@ -379,7 +379,7 @@ namespace Cthangband
         }
 
         /// <summary>
-        /// Display essential player information such as level, experience, gold, health, vril
+        /// Display essential player information such as level, experience, gold, health, vis
         /// </summary>
         private void DisplayPlayerEssentials()
         {
@@ -429,18 +429,18 @@ namespace Cthangband
             {
                 PrintShortScore("Cur Hit Points ", _player.Health, 31, 52, Colour.BrightRed);
             }
-            PrintShortScore("Max SP (Vril)  ", _player.MaxVril, 32, 52, Colour.Green);
-            if (_player.Vril >= _player.MaxVril)
+            PrintShortScore("Max SP (Vis)  ", _player.MaxVril, 32, 52, Colour.Green);
+            if (_player.Vis >= _player.MaxVril)
             {
-                PrintShortScore("Cur SP (Vril)  ", _player.Vril, 33, 52, Colour.Green);
+                PrintShortScore("Cur SP (Vis)  ", _player.Vis, 33, 52, Colour.Green);
             }
-            else if (_player.Vril > _player.MaxVril * GlobalData.HitpointWarn / 10)
+            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 10)
             {
-                PrintShortScore("Cur SP (Vril)  ", _player.Vril, 33, 52, Colour.BrightYellow);
+                PrintShortScore("Cur SP (Vis)  ", _player.Vis, 33, 52, Colour.BrightYellow);
             }
             else
             {
-                PrintShortScore("Cur SP (Vril)  ", _player.Vril, 33, 52, Colour.BrightRed);
+                PrintShortScore("Cur SP (Vis)  ", _player.Vis, 33, 52, Colour.BrightRed);
             }
             PrintLongScore("Gold           ", _player.Gold, 34, 52, Colour.Green);
         }

@@ -9,14 +9,16 @@ namespace Cthangband.Enumerations
 {
     internal static class AmuletType
     {
+        public const int AbdulAlhazred = 11;
         public const int Adornment = 2;
-        public const int Carlammas = 10;
+        public const int AntiMagic = 13;
+        public const int AntiTeleportation = 14;
+        public const int AntiTheft = 16;
+        public const int Brilliance = 6;
         public const int Charisma = 7;
         public const int Doom = 0;
         public const int Dwarves = 12;
-        public const int Ingwe = 11;
-        public const int NoMagic = 13;
-        public const int NoTele = 14;
+        public const int Lobon = 10;
         public const int Reflection = 9;
         public const int ResistAcid = 4;
         public const int Resistance = 15;
@@ -24,6 +26,5 @@ namespace Cthangband.Enumerations
         public const int SlowDigest = 3;
         public const int Teleport = 1;
         public const int TheMagi = 8;
-        public const int Wisdom = 6;
     }
 }

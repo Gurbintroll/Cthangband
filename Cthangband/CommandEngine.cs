@@ -1038,7 +1038,7 @@ namespace Cthangband
                 Level.GridPassable(Player.MapY, Player.MapX + 1) && Level.GridPassable(Player.MapY + 1, Player.MapX - 1) &&
                 Level.GridPassable(Player.MapY + 1, Player.MapX) && Level.GridPassable(Player.MapY + 1, Player.MapX + 1))
             {
-                // Fire area effect shards, vril, and nukes in all directions
+                // Fire area effect shards, vis, and nukes in all directions
                 int i;
                 for (i = 1; i < 10; i++)
                 {
@@ -1079,14 +1079,14 @@ namespace Cthangband
         /// Check to see if a racial power works
         /// </summary>
         /// <param name="minLevel"> The minimum level for the power </param>
-        /// <param name="cost"> The cost in vril to use the power </param>
+        /// <param name="cost"> The cost in vis to use the power </param>
         /// <param name="useStat"> The ability score used for the power </param>
         /// <param name="difficulty"> The difficulty of the power to use </param>
         /// <returns> True if the power worked, false if it didn't </returns>
         public bool CheckIfRacialPowerWorks(int minLevel, int cost, int useStat, int difficulty)
         {
-            // If we don't have enough vril we'll use health instead
-            bool useHealth = Player.Vril < cost;
+            // If we don't have enough vis we'll use health instead
+            bool useHealth = Player.Vis < cost;
             // Can't use it if we're too low level
             if (Player.Level < minLevel)
             {
@@ -1132,14 +1132,14 @@ namespace Cthangband
             }
             // Using a power takes a turn
             _saveGame.EnergyUse = 100;
-            // Reduce our health or vril
+            // Reduce our health or vis
             if (useHealth)
             {
                 Player.TakeHit((cost / 2) + Program.Rng.DieRoll(cost / 2), "concentrating too hard");
             }
             else
             {
-                Player.Vril -= (cost / 2) + Program.Rng.DieRoll(cost / 2);
+                Player.Vis -= (cost / 2) + Program.Rng.DieRoll(cost / 2);
             }
             // We'll need to redraw
             Player.RedrawNeeded.Set(RedrawFlag.PrHp);
@@ -1568,7 +1568,7 @@ namespace Cthangband
         }
 
         /// <summary>
-        /// Channel vril to power an item instead
+        /// Channel vis to power an item instead
         /// </summary>
         /// <param name="item"> The item that we wish to power </param>
         /// <returns> True if we successfully channeled it, false if not </returns>
@@ -1608,22 +1608,22 @@ namespace Cthangband
                     Profile.Instance.MsgPrint("Tried to channel an unknown object type!");
                     return false;
             }
-            // Always cost at least 1 vril
+            // Always cost at least 1 vis
             if (cost < 1)
             {
                 cost = 1;
             }
-            // Spend the vril if we can
-            if (cost <= Player.Vril)
+            // Spend the vis if we can
+            if (cost <= Player.Vis)
             {
-                Profile.Instance.MsgPrint("You channel vril to power the effect.");
-                Player.Vril -= cost;
+                Profile.Instance.MsgPrint("You channel vis to power the effect.");
+                Player.Vis -= cost;
                 Player.RedrawNeeded.Set(RedrawFlag.PrVril);
                 return true;
             }
-            // Use some vril in the attempt, even if we failed
-            Profile.Instance.MsgPrint("You vril is insufficient to power the effect.");
-            Player.Vril -= Program.Rng.RandomLessThan(Player.Vril / 2);
+            // Use some vis in the attempt, even if we failed
+            Profile.Instance.MsgPrint("You vis is insufficient to power the effect.");
+            Player.Vis -= Program.Rng.RandomLessThan(Player.Vis / 2);
             Player.RedrawNeeded.Set(RedrawFlag.PrVril);
             return false;
         }
@@ -3251,12 +3251,12 @@ namespace Cthangband
                         identified = true;
                         break;
                     }
-                // Restore vril restores your to maximum vril
+                // Restore vis restores your to maximum vis
                 case PotionType.RestoreVril:
                     {
-                        if (Player.Vril < Player.MaxVril)
+                        if (Player.Vis < Player.MaxVril)
                         {
-                            Player.Vril = Player.MaxVril;
+                            Player.Vis = Player.MaxVril;
                             Player.FractionalVril = 0;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
                             Player.RedrawNeeded.Set(RedrawFlag.PrVril);
@@ -3777,7 +3777,7 @@ namespace Cthangband
                 case 5:
                 case 6:
                     {
-                        // Do a 300 damage vril ball
+                        // Do a 300 damage vis ball
                         _saveGame.SpellEffects.FireBall(new ProjectVril(SaveGame.Instance.SpellEffects), direction, 300, 3);
                         break;
                     }
@@ -3786,7 +3786,7 @@ namespace Cthangband
                 case 9:
                 case 10:
                     {
-                        // Do a 250 damage vril bolt
+                        // Do a 250 damage vis bolt
                         _saveGame.SpellEffects.FireBolt(new ProjectVril(SaveGame.Instance.SpellEffects), direction, 250);
                         break;
                     }
@@ -4435,7 +4435,7 @@ namespace Cthangband
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
                                     projectile = new ProjectVril(SaveGame.Instance.SpellEffects);
-                                    projectileDescription = "vril";
+                                    projectileDescription = "vis";
                                 }
                                 else
                                 {

@@ -339,7 +339,7 @@ namespace Cthangband
             _player.RestoreLevel();
             _player.Health = _player.MaxHealth;
             _player.FractionalHealth = 0;
-            _player.Vril = _player.MaxVril;
+            _player.Vis = _player.MaxVril;
             _player.FractionalVril = 0;
             _player.SetTimedBlindness(0);
             _player.SetTimedConfusion(0);

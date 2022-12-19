@@ -20,7 +20,6 @@ namespace Cthangband.Enumerations
         public const int Disease = 11;
         public const int Dwarfbread = 41;
         public const int Hallucination = 4;
-        public const int Jerky = 33;
         public const int MinFood = 32;
         public const int Naivety = 9;
         public const int Paralysis = 5;
@@ -36,6 +35,7 @@ namespace Cthangband.Enumerations
         public const int SlimeMold = 36;
         public const int Stupidity = 8;
         public const int Unhealth = 10;
+        public const int Venison = 33;
         public const int Warpstone = 40;
         public const int Waybread = 37;
         public const int Weakness = 6;

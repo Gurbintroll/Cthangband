@@ -34,63 +34,63 @@ namespace Cthangband
         {
             new[]
             {
-                new ItemIdentifier(ItemCategory.Ring, RingType.ResFear), new ItemIdentifier(ItemCategory.Sword, SwordType.SvBroadSword),
-                new ItemIdentifier(ItemCategory.HardArmor, HardArmourType.SvChainMail)
+                new ItemIdentifier(ItemCategory.Ring, RingType.ResFear), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
+                new ItemIdentifier(ItemCategory.HardArmor, HardArmourType.ChainMail)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.SvDagger),
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
                 new ItemIdentifier(ItemCategory.DeathBook, 0)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Hafted, HaftedType.SvMace),
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Hafted, HaftedType.Mace),
                 new ItemIdentifier(ItemCategory.DeathBook, 0)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.SvDagger),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SvSoftLeatherArmor)
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
+                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.NatureBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.SvBroadSword),
+                new ItemIdentifier(ItemCategory.NatureBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
                 new ItemIdentifier(ItemCategory.DeathBook, 0)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.SvBroadSword),
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
                 new ItemIdentifier(ItemCategory.Scroll, ScrollType.ProtectionFromEvil)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.SvShortSword),
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.ShortSword),
                 new ItemIdentifier(ItemCategory.DeathBook, 0)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.SvBroadSword),
-                new ItemIdentifier(ItemCategory.HardArmor, HardArmourType.SvMetalScaleMail)
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
+                new ItemIdentifier(ItemCategory.HardArmor, HardArmourType.MetalScaleMail)
             },
             new[]
             {
                 new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Potion, PotionType.Healing),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SvSoftLeatherArmor)
+                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.Sword, SwordType.SvSmallSword),
+                new ItemIdentifier(ItemCategory.Sword, SwordType.SmallSword),
                 new ItemIdentifier(ItemCategory.Potion, PotionType.RestoreVril),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SvSoftLeatherArmor)
+                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.SvDagger),
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
                 new ItemIdentifier(ItemCategory.Ring, RingType.SustainInt)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Hafted, HaftedType.SvQuarterstaff),
+                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Hafted, HaftedType.Quarterstaff),
                 new ItemIdentifier(ItemCategory.Ring, RingType.SustainWis)
             },
             new[]
@@ -100,20 +100,20 @@ namespace Cthangband
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.Wand, WandType.MagicMissile), new ItemIdentifier(ItemCategory.Sword, SwordType.SvDagger),
+                new ItemIdentifier(ItemCategory.Wand, WandType.MagicMissile), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
                 new ItemIdentifier(ItemCategory.Ring, RingType.SustainCha)
             },
             new[]
             {
-                new ItemIdentifier(ItemCategory.Sword, SwordType.SvSmallSword),
+                new ItemIdentifier(ItemCategory.Sword, SwordType.SmallSword),
                 new ItemIdentifier(ItemCategory.Potion, PotionType.Healing),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SvSoftLeatherArmor)
+                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
             },
             new[]
             {
                 new ItemIdentifier(ItemCategory.Ring, RingType.SustainWis),
                 new ItemIdentifier(ItemCategory.Potion, PotionType.Healing),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SvSoftLeatherArmor)
+                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
             }
         };
 
@@ -316,7 +316,7 @@ namespace Cthangband
 
                 case CharacterClass.Channeler:
                     Gui.Print(Colour.Purple, "Similar to a spell caster, but rather than casting spells", 30, 20);
-                    Gui.Print(Colour.Purple, "from a book, they can use their CHA to channel vril into", 31, 20);
+                    Gui.Print(Colour.Purple, "from a book, they can use their CHA to channel vis into", 31, 20);
                     Gui.Print(Colour.Purple, "most types of item, powering the effects of the items", 32, 20);
                     Gui.Print(Colour.Purple, "without depleting them.", 33, 20);
                     break;
@@ -332,7 +332,7 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "INT based spell casters who specialise in a single realm", 30, 20);
                     Gui.Print(Colour.Purple, "of magic. They may choose any realm, and are better at", 31, 20);
                     Gui.Print(Colour.Purple, "casting spells from that realm than a normal mage. High", 32, 20);
-                    Gui.Print(Colour.Purple, "mages also get more vril than other spell casters do.", 33, 20);
+                    Gui.Print(Colour.Purple, "mages also get more vis than other spell casters do.", 33, 20);
                     Gui.Print(Colour.Purple, "Wearing too much armour disrupts their casting.", 34, 20);
                     break;
 
@@ -1940,7 +1940,7 @@ namespace Cthangband
                         SaveGame.Instance.UpdateStuff();
                         SaveGame.Instance.Player = null;
                         _player.Health = _player.MaxHealth;
-                        _player.Vril = _player.MaxVril;
+                        _player.Vis = _player.MaxVril;
                         _player.Energy = 150;
                         CharacterViewer characterViewer = new CharacterViewer(_player);
                         while (true)

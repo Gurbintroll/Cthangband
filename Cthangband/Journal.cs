@@ -318,7 +318,7 @@ namespace Cthangband
                             break;
 
                         case GodName.Tamash:
-                            text += $" (+{adjusted * 10}% max vril)";
+                            text += $" (+{adjusted * 10}% max vis)";
                             break;
 
                         case GodName.Zo_Kalar:

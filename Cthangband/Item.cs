@@ -718,10 +718,6 @@ namespace Cthangband
                         appendName = true;
                     }
                     basenm = IdentifyFlags.IsSet(Constants.IdentStoreb) ? "& Ring~" : "& # Ring~";
-                    if (!aware && ItemSubCategory == Enumerations.RingType.Power)
-                    {
-                        modstr = "Plain Gold";
-                    }
                     break;
 
                 case ItemCategory.Staff:
@@ -3810,55 +3806,55 @@ namespace Cthangband
             }
             switch (ItemSubCategory)
             {
-                case Enumerations.DragonArmour.SvDragonBlue:
+                case Enumerations.DragonArmour.Blue:
                     {
                         return "breathe lightning (100) every 450+d450 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonWhite:
+                case Enumerations.DragonArmour.White:
                     {
                         return "breathe frost (110) every 450+d450 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonBlack:
+                case Enumerations.DragonArmour.Black:
                     {
                         return "breathe acid (130) every 450+d450 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonGreen:
+                case Enumerations.DragonArmour.Green:
                     {
                         return "breathe poison gas (150) every 450+d450 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonRed:
+                case Enumerations.DragonArmour.Red:
                     {
                         return "breathe fire (200) every 450+d450 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonMultihued:
+                case Enumerations.DragonArmour.MultiHued:
                     {
                         return "breathe multi-hued (250) every 225+d225 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonBronze:
+                case Enumerations.DragonArmour.Bronze:
                     {
                         return "breathe confusion (120) every 450+d450 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonGold:
+                case Enumerations.DragonArmour.Gold:
                     {
                         return "breathe sound (130) every 450+d450 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonChaos:
+                case Enumerations.DragonArmour.Chaos:
                     {
                         return "breathe chaos/disenchant (220) every 300+d300 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonLaw:
+                case Enumerations.DragonArmour.Law:
                     {
                         return "breathe sound/shards (230) every 300+d300 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonBalance:
+                case Enumerations.DragonArmour.Balance:
                     {
                         return "You breathe balance (250) every 300+d300 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonShining:
+                case Enumerations.DragonArmour.Pseudo:
                     {
                         return "breathe light/darkness (200) every 300+d300 turns";
                     }
-                case Enumerations.DragonArmour.SvDragonPower:
+                case Enumerations.DragonArmour.Power:
                     {
                         return "breathe the elements (300) every 300+d300 turns";
                     }

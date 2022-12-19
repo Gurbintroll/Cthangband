@@ -9,8 +9,8 @@ namespace Cthangband.Enumerations
 {
     internal static class GlovesType
     {
-        public const int SvSetOfCesti = 5;
-        public const int SvSetOfGauntlets = 2;
-        public const int SvSetOfLeatherGloves = 1;
+        public const int Cesti = 5;
+        public const int Gauntlets = 2;
+        public const int LeatherGloves = 1;
     }
 }

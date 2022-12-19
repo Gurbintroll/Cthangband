@@ -788,42 +788,42 @@ namespace Cthangband
                 }
                 switch (item.ItemSubCategory)
                 {
-                    case DragonArmour.SvDragonBlue:
+                    case DragonArmour.Blue:
                         {
                             Profile.Instance.MsgPrint("You breathe lightning.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectElec(SaveGame.Instance.SpellEffects), dir, 100, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
-                    case DragonArmour.SvDragonWhite:
+                    case DragonArmour.White:
                         {
                             Profile.Instance.MsgPrint("You breathe frost.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectCold(SaveGame.Instance.SpellEffects), dir, 110, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
-                    case DragonArmour.SvDragonBlack:
+                    case DragonArmour.Black:
                         {
                             Profile.Instance.MsgPrint("You breathe acid.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectAcid(SaveGame.Instance.SpellEffects), dir, 130, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
-                    case DragonArmour.SvDragonGreen:
+                    case DragonArmour.Green:
                         {
                             Profile.Instance.MsgPrint("You breathe poison gas.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectPois(SaveGame.Instance.SpellEffects), dir, 150, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
-                    case DragonArmour.SvDragonRed:
+                    case DragonArmour.Red:
                         {
                             Profile.Instance.MsgPrint("You breathe fire.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectFire(SaveGame.Instance.SpellEffects), dir, 200, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
-                    case DragonArmour.SvDragonMultihued:
+                    case DragonArmour.MultiHued:
                         {
                             chance = Program.Rng.RandomLessThan(5);
                             string element = chance == 1
@@ -860,21 +860,21 @@ namespace Cthangband
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(225) + 225;
                             break;
                         }
-                    case DragonArmour.SvDragonBronze:
+                    case DragonArmour.Bronze:
                         {
                             Profile.Instance.MsgPrint("You breathe confusion.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectConfusion(SaveGame.Instance.SpellEffects), dir, 120, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
-                    case DragonArmour.SvDragonGold:
+                    case DragonArmour.Gold:
                         {
                             Profile.Instance.MsgPrint("You breathe sound.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectSound(SaveGame.Instance.SpellEffects), dir, 130, -2);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(450) + 450;
                             break;
                         }
-                    case DragonArmour.SvDragonChaos:
+                    case DragonArmour.Chaos:
                         {
                             chance = Program.Rng.RandomLessThan(2);
                             string element = chance == 1 ? "chaos" : "disenchantment";
@@ -884,7 +884,7 @@ namespace Cthangband
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }
-                    case DragonArmour.SvDragonLaw:
+                    case DragonArmour.Law:
                         {
                             chance = Program.Rng.RandomLessThan(2);
                             string element = chance == 1 ? "sound" : "shards";
@@ -894,7 +894,7 @@ namespace Cthangband
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }
-                    case DragonArmour.SvDragonBalance:
+                    case DragonArmour.Balance:
                         {
                             chance = Program.Rng.RandomLessThan(4);
                             string element = chance == 1
@@ -910,7 +910,7 @@ namespace Cthangband
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }
-                    case DragonArmour.SvDragonShining:
+                    case DragonArmour.Pseudo:
                         {
                             chance = Program.Rng.RandomLessThan(2);
                             string element = chance == 0 ? "light" : "darkness";
@@ -920,7 +920,7 @@ namespace Cthangband
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(300) + 300;
                             break;
                         }
-                    case DragonArmour.SvDragonPower:
+                    case DragonArmour.Power:
                         {
                             Profile.Instance.MsgPrint("You breathe the elements.");
                             SaveGame.Instance.SpellEffects.FireBall(new ProjectMissile(SaveGame.Instance.SpellEffects), dir, 300, -3);
@@ -1298,13 +1298,13 @@ namespace Cthangband
                 item.BecomeFlavourAware();
                 _player.GainExperience((itemLevel + (_player.Level >> 1)) / _player.Level);
             }
-            // If we're a channeler then we should be using vril instead of charges
+            // If we're a channeler then we should be using vis instead of charges
             bool channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
             }
-            // We didn't use vril, so decrease the wand's charges
+            // We didn't use vis, so decrease the wand's charges
             if (!channeled)
             {
                 item.TypeSpecificValue--;
@@ -1569,7 +1569,7 @@ namespace Cthangband
                     }
                 case FoodType.Ration:
                 case FoodType.Biscuit:
-                case FoodType.Jerky:
+                case FoodType.Venison:
                     {
                         Profile.Instance.MsgPrint("That tastes good.");
                         ident = true;
@@ -1745,27 +1745,27 @@ namespace Cthangband
             int damageMultiplier = 1;
             switch (missileWeapon.ItemSubCategory)
             {
-                case BowType.SvSling:
+                case BowType.Sling:
                     {
                         damageMultiplier = 2;
                         break;
                     }
-                case BowType.SvShortBow:
+                case BowType.Shortbow:
                     {
                         damageMultiplier = 2;
                         break;
                     }
-                case BowType.SvLongBow:
+                case BowType.Longbow:
                     {
                         damageMultiplier = 3;
                         break;
                     }
-                case BowType.SvLightXbow:
+                case BowType.LightCrossbow:
                     {
                         damageMultiplier = 3;
                         break;
                     }
-                case BowType.SvHeavyXbow:
+                case BowType.HeavyCrossbow:
                     {
                         damageMultiplier = 4;
                         break;
@@ -1948,7 +1948,7 @@ namespace Cthangband
             // Most potions give us a bit of food too
             _player.SetFood(_player.Food + item.TypeSpecificValue);
             bool channeled = false;
-            // If we're a channeler, we might be able to spend vril instead of using it up
+            // If we're a channeler, we might be able to spend vis instead of using it up
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
@@ -2429,7 +2429,7 @@ namespace Cthangband
                 _player.GainExperience((itemLevel + (_player.Level >> 1)) / _player.Level);
             }
             bool channeled = false;
-            // Channelers can use vril instead of the scroll being used up
+            // Channelers can use vis instead of the scroll being used up
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
@@ -3010,9 +3010,9 @@ namespace Cthangband
                         {
                             identified = true;
                         }
-                        if (_player.Vril < _player.MaxVril)
+                        if (_player.Vis < _player.MaxVril)
                         {
-                            _player.Vril = _player.MaxVril;
+                            _player.Vis = _player.MaxVril;
                             _player.FractionalVril = 0;
                             identified = true;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
@@ -3138,7 +3138,7 @@ namespace Cthangband
             {
                 return;
             }
-            // Channelers can use vril instead of a charge
+            // Channelers can use vis instead of a charge
             bool channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {
@@ -3557,7 +3557,7 @@ namespace Cthangband
                 item.TypeSpecificValue = 0;
                 return;
             }
-            // Channelers can spend vril instead of a charge
+            // Channelers can spend vis instead of a charge
             bool channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channeling)
             {

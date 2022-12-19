@@ -1842,14 +1842,14 @@ namespace Cthangband
             {
                 if (Resting == -1)
                 {
-                    if (Player.Health == Player.MaxHealth && Player.Vril >= Player.MaxVril)
+                    if (Player.Health == Player.MaxHealth && Player.Vis >= Player.MaxVril)
                     {
                         Disturb(false);
                     }
                 }
                 else if (Resting == -2)
                 {
-                    if (Player.Health == Player.MaxHealth && Player.Vril == Player.MaxVril && Player.TimedBlindness == 0 &&
+                    if (Player.Health == Player.MaxHealth && Player.Vis == Player.MaxVril && Player.TimedBlindness == 0 &&
                         Player.TimedConfusion == 0 && Player.TimedPoison == 0 && Player.TimedFear == 0 && Player.TimedStun == 0 &&
                         Player.TimedBleeding == 0 && Player.TimedSlow == 0 && Player.TimedParalysis == 0 && Player.TimedHallucinations == 0 &&
                         Player.WordOfRecallDelay == 0)
@@ -2121,8 +2121,8 @@ namespace Cthangband
                     }
                 }
                 if (Player.Inventory[InventorySlot.Lightsource].Category != 0 &&
-                    Player.Inventory[InventorySlot.Lightsource].ItemSubCategory >= LightType.Galadriel &&
-                    Player.Inventory[InventorySlot.Lightsource].ItemSubCategory < LightType.Thrain &&
+                    Player.Inventory[InventorySlot.Lightsource].ItemSubCategory >= LightType.Polaris &&
+                    Player.Inventory[InventorySlot.Lightsource].ItemSubCategory < LightType.Trapezohedron &&
                     !Player.HasLightResistance)
                 {
                     oPtr = Player.Inventory[InventorySlot.Lightsource];
@@ -2264,7 +2264,7 @@ namespace Cthangband
                     }
                 }
             }
-            if (Player.Vril < Player.MaxVril)
+            if (Player.Vis < Player.MaxVril)
             {
                 if (upkeepFactor != 0)
                 {
@@ -2441,7 +2441,7 @@ namespace Cthangband
             if (Program.Rng.DieRoll(999) == 1 && !Player.HasAntiMagic)
             {
                 if (Player.Inventory[InventorySlot.Lightsource].Category != 0 && Player.TimedInvulnerability == 0 &&
-                    Player.Inventory[InventorySlot.Lightsource].ItemSubCategory == LightType.Thrain)
+                    Player.Inventory[InventorySlot.Lightsource].ItemSubCategory == LightType.Trapezohedron)
                 {
                     Profile.Instance.MsgPrint("The Jewel of Judgement drains life from you!");
                     Player.TakeHit(Math.Min(Player.Level, 50), "the Jewel of Judgement");

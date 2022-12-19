@@ -9,11 +9,11 @@ namespace Cthangband.Enumerations
 {
     internal static class DiggerType
     {
-        public const int SvDwarvenPick = 6;
-        public const int SvDwarvenShovel = 3;
-        public const int SvGnomishShovel = 2;
-        public const int SvOrcishPick = 5;
-        public const int SvPick = 4;
-        public const int SvShovel = 1;
+        public const int DwarvenPick = 6;
+        public const int DwarvenShovel = 3;
+        public const int GnomishShovel = 2;
+        public const int OrcishPick = 5;
+        public const int Pick = 4;
+        public const int Shovel = 1;
     }
 }

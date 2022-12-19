@@ -135,83 +135,83 @@ namespace Cthangband.Patrons.Base
                         case 1:
                         case 2:
                         case 0:
-                            dummy2 = SwordType.SvDagger;
+                            dummy2 = SwordType.Dagger;
                             break;
 
                         case 3:
                         case 4:
-                            dummy2 = SwordType.SvMainGauche;
+                            dummy2 = SwordType.MainGauche;
                             break;
 
                         case 5:
                         case 6:
-                            dummy2 = SwordType.SvRapier;
+                            dummy2 = SwordType.Rapier;
                             break;
 
                         case 7:
                         case 8:
-                            dummy2 = SwordType.SvSmallSword;
+                            dummy2 = SwordType.SmallSword;
                             break;
 
                         case 9:
                         case 10:
-                            dummy2 = SwordType.SvShortSword;
+                            dummy2 = SwordType.ShortSword;
                             break;
 
                         case 11:
                         case 12:
                         case 13:
-                            dummy2 = SwordType.SvSabre;
+                            dummy2 = SwordType.Sabre;
                             break;
 
                         case 14:
                         case 15:
                         case 16:
-                            dummy2 = SwordType.SvCutlass;
+                            dummy2 = SwordType.Cutlass;
                             break;
 
                         case 17:
-                            dummy2 = SwordType.SvTulwar;
+                            dummy2 = SwordType.Tulwar;
                             break;
 
                         case 18:
                         case 19:
                         case 20:
-                            dummy2 = SwordType.SvBroadSword;
+                            dummy2 = SwordType.BroadSword;
                             break;
 
                         case 21:
                         case 22:
                         case 23:
-                            dummy2 = SwordType.SvLongSword;
+                            dummy2 = SwordType.LongSword;
                             break;
 
                         case 24:
                         case 25:
                         case 26:
-                            dummy2 = SwordType.SvScimitar;
+                            dummy2 = SwordType.Scimitar;
                             break;
 
                         case 27:
-                            dummy2 = SwordType.SvKatana;
+                            dummy2 = SwordType.Katana;
                             break;
 
                         case 28:
                         case 29:
-                            dummy2 = SwordType.SvBastardSword;
+                            dummy2 = SwordType.BastardSword;
                             break;
 
                         case 30:
                         case 31:
-                            dummy2 = SwordType.SvTwoHandedSword;
+                            dummy2 = SwordType.TwoHandedSword;
                             break;
 
                         case 32:
-                            dummy2 = SwordType.SvExecutionersSword;
+                            dummy2 = SwordType.ExecutionersSword;
                             break;
 
                         default:
-                            dummy2 = SwordType.SvBladeOfChaos;
+                            dummy2 = SwordType.BladeOfChaos;
                             break;
                     }
                     qPtr.AssignItemType(Profile.Instance.ItemTypes.LookupKind(ItemCategory.Sword, dummy2));

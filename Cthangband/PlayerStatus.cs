@@ -1083,19 +1083,19 @@ namespace Cthangband
             {
                 switch (oPtr.ItemSubCategory)
                 {
-                    case BowType.SvSling:
+                    case BowType.Sling:
                         {
                             _player.AmmunitionItemCategory = ItemCategory.Shot;
                             break;
                         }
-                    case BowType.SvShortBow:
-                    case BowType.SvLongBow:
+                    case BowType.Shortbow:
+                    case BowType.Longbow:
                         {
                             _player.AmmunitionItemCategory = ItemCategory.Arrow;
                             break;
                         }
-                    case BowType.SvLightXbow:
-                    case BowType.SvHeavyXbow:
+                    case BowType.LightCrossbow:
+                    case BowType.HeavyCrossbow:
                         {
                             _player.AmmunitionItemCategory = ItemCategory.Bolt;
                             break;
@@ -1296,7 +1296,7 @@ namespace Cthangband
             }
             if (_player.ProfessionIndex == CharacterClass.Cultist &&
                 _player.Inventory[InventorySlot.MeleeWeapon].ItemType != null &&
-                (oPtr.Category != ItemCategory.Sword || oPtr.ItemSubCategory != SwordType.SvBladeOfChaos))
+                (oPtr.Category != ItemCategory.Sword || oPtr.ItemSubCategory != SwordType.BladeOfChaos))
             {
                 oPtr.GetMergedFlags(f1, f2, f3);
                 if (f1.IsClear(ItemFlag1.Chaotic))
@@ -1512,9 +1512,9 @@ namespace Cthangband
             msp /= 10;
             if (_player.MaxVril != msp)
             {
-                if (_player.Vril >= msp)
+                if (_player.Vis >= msp)
                 {
-                    _player.Vril = msp;
+                    _player.Vis = msp;
                     _player.FractionalVril = 0;
                 }
                 _player.MaxVril = msp;
@@ -2173,16 +2173,16 @@ namespace Cthangband
             Colour colour = Colour.BrightGreen;
             Gui.Print(colour, tmp, ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp + 7);
             Gui.Print("Cur SP ", ScreenLocation.RowCursp, ScreenLocation.ColCursp);
-            tmp = _player.Vril.ToString().PadLeft(5);
-            if (_player.Vril >= _player.MaxVril)
+            tmp = _player.Vis.ToString().PadLeft(5);
+            if (_player.Vis >= _player.MaxVril)
             {
                 colour = Colour.BrightGreen;
             }
-            else if (_player.Vril > _player.MaxVril * GlobalData.HitpointWarn / 5)
+            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 5)
             {
                 colour = Colour.BrightYellow;
             }
-            else if (_player.Vril > _player.MaxVril * GlobalData.HitpointWarn / 10)
+            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 10)
             {
                 colour = Colour.Orange;
             }

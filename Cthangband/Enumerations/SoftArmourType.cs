@@ -9,12 +9,12 @@ namespace Cthangband.Enumerations
 {
     internal static class SoftArmourType
     {
-        public const int SvFilthyRag = 1;
-        public const int SvHardLeatherArmor = 6;
-        public const int SvHardStuddedLeather = 7;
-        public const int SvLeatherScaleMail = 11;
-        public const int SvRobe = 2;
-        public const int SvSoftLeatherArmor = 4;
-        public const int SvSoftStuddedLeather = 5;
+        public const int FilthyRag = 1;
+        public const int HardLeather = 6;
+        public const int HardStuddedLeather = 7;
+        public const int LeatherScale = 11;
+        public const int Robe = 2;
+        public const int SoftLeather = 4;
+        public const int SoftStuddedLeather = 5;
     }
 }

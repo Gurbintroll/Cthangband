@@ -151,7 +151,7 @@ namespace Cthangband
         };
 
         /// <summary>
-        /// Bonus to vril per level, (stored as double actual bonus)
+        /// Bonus to vis per level, (stored as double actual bonus)
         /// </summary>
         private static readonly int[] _adjVrilBonus =
                 {
@@ -300,7 +300,7 @@ namespace Cthangband
         public int IntUseDeviceBonus => _adjIntUseDeviceBonus[TableIndex];
 
         /// <summary>
-        /// Bonus to vril per level, (stored as double actual bonus)
+        /// Bonus to vis per level, (stored as double actual bonus)
         /// </summary>
         public int VrilBonus => _adjVrilBonus[TableIndex];
 

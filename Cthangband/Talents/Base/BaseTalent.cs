@@ -28,9 +28,9 @@ namespace Cthangband.Talents.Base
             int chance = BaseFailure;
             chance -= 3 * (player.Level - Level);
             chance -= 3 * (player.AbilityScores[player.Spellcasting.SpellStat].SpellFailureReduction - 1);
-            if (VrilCost > player.Vril)
+            if (VrilCost > player.Vis)
             {
-                chance += 5 * (VrilCost - player.Vril);
+                chance += 5 * (VrilCost - player.Vis);
             }
             int minfail = player.AbilityScores[player.Spellcasting.SpellStat].SpellMinFailChance;
             if (chance < minfail)

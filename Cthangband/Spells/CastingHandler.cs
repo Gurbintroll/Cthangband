@@ -124,7 +124,7 @@ namespace Cthangband.Spells
                 if (ask)
                 {
                     ISpell sPtr = _player.Spellcasting.Spells[realm2 ? 1 : 0][spell % 32];
-                    string tmpVal = $"{prompt} {sPtr.Name} ({sPtr.VrilCost} vril, {sPtr.FailureChance(_player)}% fail)? ";
+                    string tmpVal = $"{prompt} {sPtr.Name} ({sPtr.VrilCost} vis, {sPtr.FailureChance(_player)}% fail)? ";
                     if (!Gui.GetCheck(tmpVal))
                     {
                         continue;
@@ -187,10 +187,10 @@ namespace Cthangband.Spells
                 return;
             }
             ISpell sPtr = useSetTwo ? _player.Spellcasting.Spells[1][spell] : _player.Spellcasting.Spells[0][spell];
-            if (sPtr.VrilCost > _player.Vril)
+            if (sPtr.VrilCost > _player.Vis)
             {
                 string cast = _player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast";
-                Profile.Instance.MsgPrint($"You do not have enough vril to {cast} this {prayer}.");
+                Profile.Instance.MsgPrint($"You do not have enough vis to {cast} this {prayer}.");
                 if (!Gui.GetCheck("Attempt it anyway? "))
                 {
                     return;
@@ -233,14 +233,14 @@ namespace Cthangband.Spells
                 }
             }
             SaveGame.Instance.EnergyUse = 100;
-            if (sPtr.VrilCost <= _player.Vril)
+            if (sPtr.VrilCost <= _player.Vis)
             {
-                _player.Vril -= sPtr.VrilCost;
+                _player.Vis -= sPtr.VrilCost;
             }
             else
             {
-                int oops = sPtr.VrilCost - _player.Vril;
-                _player.Vril = 0;
+                int oops = sPtr.VrilCost - _player.Vis;
+                _player.Vis = 0;
                 _player.FractionalVril = 0;
                 Profile.Instance.MsgPrint("You faint from the effort!");
                 _player.SetTimedParalysis(_player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
@@ -267,9 +267,9 @@ namespace Cthangband.Spells
                 return;
             }
             ITalent talent = _player.Spellcasting.Talents[n];
-            if (talent.VrilCost > _player.Vril)
+            if (talent.VrilCost > _player.Vis)
             {
-                Profile.Instance.MsgPrint("You do not have enough vril to use this talent.");
+                Profile.Instance.MsgPrint("You do not have enough vis to use this talent.");
                 if (!Gui.GetCheck("Attempt it anyway? "))
                 {
                     return;
@@ -308,7 +308,7 @@ namespace Cthangband.Spells
                             new ProjectVril(SaveGame.Instance.SpellEffects),
                             ProjectionFlag.ProjectJump | ProjectionFlag.ProjectKill | ProjectionFlag.ProjectGrid |
                             ProjectionFlag.ProjectItem);
-                        _player.Vril = Math.Max(0, _player.Vril - (plev * Math.Max(1, plev / 10)));
+                        _player.Vis = Math.Max(0, _player.Vis - (plev * Math.Max(1, plev / 10)));
                     }
                 }
             }
@@ -317,14 +317,14 @@ namespace Cthangband.Spells
                 talent.Use(_player, _level, SaveGame.Instance);
             }
             SaveGame.Instance.EnergyUse = 100;
-            if (talent.VrilCost <= _player.Vril)
+            if (talent.VrilCost <= _player.Vis)
             {
-                _player.Vril -= talent.VrilCost;
+                _player.Vis -= talent.VrilCost;
             }
             else
             {
-                int oops = talent.VrilCost - _player.Vril;
-                _player.Vril = 0;
+                int oops = talent.VrilCost - _player.Vis;
+                _player.Vis = 0;
                 _player.FractionalVril = 0;
                 Profile.Instance.MsgPrint("You faint from the effort!");
                 _player.SetTimedParalysis(_player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
@@ -368,7 +368,7 @@ namespace Cthangband.Spells
                         Gui.Save();
                         Gui.PrintLine("", y, x);
                         Gui.Print("Name", y, x + 5);
-                        Gui.Print("Lv Vril Fail Info", y, x + 35);
+                        Gui.Print("Lv Vis Fail Info", y, x + 35);
                         for (i = 0; i < talents.Count; i++)
                         {
                             ITalent talent = talents[i];

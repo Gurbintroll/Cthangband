@@ -2759,7 +2759,7 @@ namespace Cthangband
                     flags5 &= ~MonsterFlag5.Slow;
                 }
             }
-            // If we know the player has no vril, don't do vril drain
+            // If we know the player has no vis, don't do vis drain
             if ((mindFlags & Constants.SmImmVril) != 0)
             {
                 if (RealiseSpellIsUseless(race, 100))
@@ -3628,7 +3628,7 @@ namespace Cthangband
                         _saveGame.Disturb(true);
                         Profile.Instance.MsgPrint(!seeEither
                             ? "You hear someone mumble powerfully."
-                            : $"{monsterName} invokes a vril storm upon {targetName}");
+                            : $"{monsterName} invokes a vis storm upon {targetName}");
                         BreatheAtMonster(monsterIndex, y, x, new ProjectVril(SaveGame.Instance.SpellEffects), (rlev * 5) + Program.Rng.DiceRoll(10, 10), 4);
                         break;
 
@@ -3936,7 +3936,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            Profile.Instance.MsgPrint($"{monsterName} casts a vril bolt at {targetName}");
+                            Profile.Instance.MsgPrint($"{monsterName} casts a vis bolt at {targetName}");
                         }
                         FireBoltAtMonster(monsterIndex, y, x, new ProjectVril(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(rlev * 7 / 2) + 50);
                         break;
@@ -5408,7 +5408,7 @@ namespace Cthangband
                     _saveGame.Disturb(true);
                     Profile.Instance.MsgPrint(playerIsBlind
                         ? $"{monsterName} mumbles powerfully."
-                        : $"{monsterName} invokes a vril storm.");
+                        : $"{monsterName} invokes a vis storm.");
                     FireBallAtPlayer(monsterIndex, new ProjectVril(SaveGame.Instance.SpellEffects), (monsterLevel * 5) + Program.Rng.DiceRoll(10, 10), 4);
                     break;
 
@@ -5424,20 +5424,20 @@ namespace Cthangband
 
                 // MonsterFlag5.DrainVril
                 case 128 + 9:
-                    if (_player.Vril != 0)
+                    if (_player.Vis != 0)
                     {
                         _saveGame.Disturb(true);
                         Profile.Instance.MsgPrint($"{monsterName} draws psychic energy from you!");
                         int r1 = (Program.Rng.DieRoll(monsterLevel) / 2) + 1;
-                        if (r1 >= _player.Vril)
+                        if (r1 >= _player.Vis)
                         {
-                            r1 = _player.Vril;
-                            _player.Vril = 0;
+                            r1 = _player.Vis;
+                            _player.Vis = 0;
                             _player.FractionalVril = 0;
                         }
                         else
                         {
-                            _player.Vril -= r1;
+                            _player.Vis -= r1;
                         }
                         _player.RedrawNeeded.Set(RedrawFlag.PrVril);
                         if (monster.Health < monster.MaxHealth)
@@ -5653,7 +5653,7 @@ namespace Cthangband
                 // MonsterFlag5.VrilBolt
                 case 128 + 23:
                     _saveGame.Disturb(true);
-                    Profile.Instance.MsgPrint(playerIsBlind ? $"{monsterName} mumbles." : $"{monsterName} casts a vril bolt.");
+                    Profile.Instance.MsgPrint(playerIsBlind ? $"{monsterName} mumbles." : $"{monsterName} casts a vis bolt.");
                     FireBoltAtPlayer(monsterIndex, new ProjectVril(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(monsterLevel * 7 / 2) + 50);
                     _level.Monsters.UpdateSmartLearn(monsterIndex, Constants.DrsReflect);
                     break;

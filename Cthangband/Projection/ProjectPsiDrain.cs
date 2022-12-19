@@ -88,7 +88,7 @@ namespace Cthangband.Projection
                     {
                         string killer = mPtr.MonsterDesc(0x88);
                         Profile.Instance.MsgPrint("Your psychic energy is drained!");
-                        Player.Vril = Math.Max(0, Player.Vril - (Program.Rng.DiceRoll(5, dam) / 2));
+                        Player.Vis = Math.Max(0, Player.Vis - (Program.Rng.DiceRoll(5, dam) / 2));
                         Player.RedrawNeeded.Set(RedrawFlag.PrVril);
                         Player.TakeHit(dam, killer);
                     }
@@ -100,8 +100,8 @@ namespace Cthangband.Projection
                 int b = Program.Rng.DiceRoll(5, dam) / 4;
                 string s = seen ? "'s" : "s";
                 Profile.Instance.MsgPrint($"You convert {mName}{s} pain into psychic energy!");
-                b = Math.Min(Player.MaxVril, Player.Vril + b);
-                Player.Vril = b;
+                b = Math.Min(Player.MaxVril, Player.Vis + b);
+                Player.Vis = b;
                 Player.RedrawNeeded.Set(RedrawFlag.PrVril);
             }
             string noteDies = " collapses, a mindless husk.";

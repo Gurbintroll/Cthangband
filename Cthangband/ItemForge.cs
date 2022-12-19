@@ -136,9 +136,9 @@ namespace Cthangband
                 case ItemCategory.Boots:
                     {
                         if (power != 0 ||
-                            (_item.Category == ItemCategory.Helm && _item.ItemSubCategory == HelmType.SvDragonHelm) ||
-                            (_item.Category == ItemCategory.Shield && _item.ItemSubCategory == ShieldType.SvDragonShield) ||
-                            (_item.Category == ItemCategory.Cloak && _item.ItemSubCategory == CloakType.SvElvenCloak))
+                            (_item.Category == ItemCategory.Helm && _item.ItemSubCategory == HelmType.DragonHelm) ||
+                            (_item.Category == ItemCategory.Shield && _item.ItemSubCategory == ShieldType.DragonShield) ||
+                            (_item.Category == ItemCategory.Cloak && _item.ItemSubCategory == CloakType.ElvenCloak))
                         {
                             ApplyMagicToArmour(lev, power);
                         }
@@ -1143,7 +1143,7 @@ namespace Cthangband
                         if (power > 1)
                         {
                             if (_item.Category == ItemCategory.SoftArmor &&
-                                _item.ItemSubCategory == SoftArmourType.SvRobe && Program.Rng.RandomLessThan(100) < 10)
+                                _item.ItemSubCategory == SoftArmourType.Robe && Program.Rng.RandomLessThan(100) < 10)
                             {
                                 _item.RareItemTypeIndex = Enumerations.RareItemType.ArmourOfPermanence;
                                 break;
@@ -1210,7 +1210,7 @@ namespace Cthangband
                     }
                 case ItemCategory.Shield:
                     {
-                        if (_item.ItemSubCategory == ShieldType.SvDragonShield)
+                        if (_item.ItemSubCategory == ShieldType.DragonShield)
                         {
                             if (SaveGame.Instance.Level != null)
                             {
@@ -1507,7 +1507,7 @@ namespace Cthangband
                     }
                 case ItemCategory.Helm:
                     {
-                        if (_item.ItemSubCategory == HelmType.SvDragonHelm)
+                        if (_item.ItemSubCategory == HelmType.DragonHelm)
                         {
                             if (SaveGame.Instance.Level != null)
                             {
@@ -1607,7 +1607,7 @@ namespace Cthangband
                     }
                 case ItemCategory.Cloak:
                     {
-                        if (_item.ItemSubCategory == CloakType.SvElvenCloak)
+                        if (_item.ItemSubCategory == CloakType.ElvenCloak)
                         {
                             _item.TypeSpecificValue = Program.Rng.DieRoll(4);
                         }
@@ -1848,7 +1848,7 @@ namespace Cthangband
                     {
                         switch (_item.ItemSubCategory)
                         {
-                            case AmuletType.Wisdom:
+                            case AmuletType.Brilliance:
                             case AmuletType.Charisma:
                                 {
                                     _item.TypeSpecificValue = 1 + GetBonusValue(5, level);
@@ -1860,8 +1860,8 @@ namespace Cthangband
                                     }
                                     break;
                                 }
-                            case AmuletType.NoMagic:
-                            case AmuletType.NoTele:
+                            case AmuletType.AntiMagic:
+                            case AmuletType.AntiTeleportation:
                                 {
                                     if (power < 0)
                                     {

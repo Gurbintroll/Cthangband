@@ -32,13 +32,13 @@ namespace Cthangband.Mutations.RandomMutations
             {
                 return;
             }
-            int healing = player.Vril;
+            int healing = player.Vis;
             if (healing > wounds)
             {
                 healing = wounds;
             }
             player.RestoreHealth(healing);
-            player.Vril -= healing;
+            player.Vis -= healing;
         }
     }
 }
