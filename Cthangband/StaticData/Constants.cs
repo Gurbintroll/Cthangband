@@ -24,7 +24,7 @@ namespace Cthangband.StaticData
         public const int DrsFire = 3;
         public const int DrsFree = 30;
         public const int DrsLight = 7;
-        public const int DrsVril = 31;
+        public const int DrsVis = 31;
         public const int DrsNeth = 6;
         public const int DrsNexus = 14;
         public const int DrsPois = 5;
@@ -133,7 +133,7 @@ namespace Cthangband.StaticData
         public const uint SmImmElec = 0x02000000;
         public const uint SmImmFire = 0x04000000;
         public const uint SmImmFree = 0x40000000;
-        public const uint SmImmVril = 0x80000000;
+        public const uint SmImmVis = 0x80000000;
         public const uint SmImmReflect = 0x20000000;
         public const uint SmImmXxx5 = 0x10000000;
         public const uint SmOppAcid = 0x00010000;

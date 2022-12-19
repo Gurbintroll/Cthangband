@@ -43,7 +43,7 @@ namespace Cthangband.Spells.Tarot
             {
                 case CharacterClass.Mage:
                     Level = 30;
-                    VrilCost = 25;
+                    VisCost = 25;
                     BaseFailure = 70;
                     FirstCastExperience = 9;
                     break;
@@ -51,21 +51,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.Priest:
                 case CharacterClass.Monk:
                     Level = 32;
-                    VrilCost = 30;
+                    VisCost = 30;
                     BaseFailure = 70;
                     FirstCastExperience = 9;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 35;
-                    VrilCost = 32;
+                    VisCost = 32;
                     BaseFailure = 70;
                     FirstCastExperience = 9;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 36;
-                    VrilCost = 32;
+                    VisCost = 32;
                     BaseFailure = 70;
                     FirstCastExperience = 9;
                     break;
@@ -73,21 +73,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 33;
-                    VrilCost = 30;
+                    VisCost = 30;
                     BaseFailure = 70;
                     FirstCastExperience = 9;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 28;
-                    VrilCost = 24;
+                    VisCost = 24;
                     BaseFailure = 60;
                     FirstCastExperience = 9;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

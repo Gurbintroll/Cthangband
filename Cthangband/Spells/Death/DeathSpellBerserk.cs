@@ -28,35 +28,35 @@ namespace Cthangband.Spells.Death
             {
                 case CharacterClass.Mage:
                     Level = 10;
-                    VrilCost = 20;
+                    VisCost = 20;
                     BaseFailure = 80;
                     FirstCastExperience = 180;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 13;
-                    VrilCost = 20;
+                    VisCost = 20;
                     BaseFailure = 80;
                     FirstCastExperience = 180;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 20;
-                    VrilCost = 25;
+                    VisCost = 25;
                     BaseFailure = 80;
                     FirstCastExperience = 100;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 25;
-                    VrilCost = 30;
+                    VisCost = 30;
                     BaseFailure = 80;
                     FirstCastExperience = 125;
                     break;
 
                 case CharacterClass.Paladin:
                     Level = 15;
-                    VrilCost = 20;
+                    VisCost = 20;
                     BaseFailure = 80;
                     FirstCastExperience = 180;
                     break;
@@ -64,21 +64,21 @@ namespace Cthangband.Spells.Death
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 10;
-                    VrilCost = 22;
+                    VisCost = 22;
                     BaseFailure = 80;
                     FirstCastExperience = 120;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 8;
-                    VrilCost = 15;
+                    VisCost = 15;
                     BaseFailure = 70;
                     FirstCastExperience = 180;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

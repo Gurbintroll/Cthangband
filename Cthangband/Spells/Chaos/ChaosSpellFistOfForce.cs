@@ -33,21 +33,21 @@ namespace Cthangband.Spells.Chaos
             {
                 case CharacterClass.Mage:
                     Level = 14;
-                    VrilCost = 9;
+                    VisCost = 9;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 16;
-                    VrilCost = 11;
+                    VisCost = 11;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 25;
-                    VrilCost = 21;
+                    VisCost = 21;
                     BaseFailure = 60;
                     FirstCastExperience = 3;
                     break;
@@ -55,14 +55,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 17;
-                    VrilCost = 15;
+                    VisCost = 15;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 15;
-                    VrilCost = 9;
+                    VisCost = 9;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
@@ -70,14 +70,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 12;
-                    VrilCost = 6;
+                    VisCost = 6;
                     BaseFailure = 35;
                     FirstCastExperience = 6;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Base
         bool Learned { get; set; }
         int Level { get; set; }
         string Name { get; set; }
-        int VrilCost { get; set; }
+        int VisCost { get; set; }
         bool Worked { get; set; }
 
         void Cast(SaveGame saveGame, Player player, Level level);

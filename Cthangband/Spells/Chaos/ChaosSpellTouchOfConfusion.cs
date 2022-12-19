@@ -30,21 +30,21 @@ namespace Cthangband.Spells.Chaos
             {
                 case CharacterClass.Mage:
                     Level = 5;
-                    VrilCost = 5;
+                    VisCost = 5;
                     BaseFailure = 50;
                     FirstCastExperience = 1;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 5;
-                    VrilCost = 4;
+                    VisCost = 4;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 7;
-                    VrilCost = 5;
+                    VisCost = 5;
                     BaseFailure = 45;
                     FirstCastExperience = 2;
                     break;
@@ -52,14 +52,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 5;
-                    VrilCost = 5;
+                    VisCost = 5;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 5;
-                    VrilCost = 4;
+                    VisCost = 4;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
@@ -67,14 +67,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 4;
-                    VrilCost = 2;
+                    VisCost = 2;
                     BaseFailure = 20;
                     FirstCastExperience = 1;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

@@ -1994,7 +1994,7 @@ namespace Cthangband
                             if (newY == _player.MapY && newX == _player.MapX)
                             {
                                 Profile.Instance.MsgPrint("The rune explodes!");
-                                _saveGame.SpellEffects.FireBall(new ProjectVril(SaveGame.Instance.SpellEffects), 0,
+                                _saveGame.SpellEffects.FireBall(new ProjectVis(SaveGame.Instance.SpellEffects), 0,
                                     2 * ((_player.Level / 2) + Program.Rng.DiceRoll(7, 7)), 2);
                             }
                             else
@@ -2716,7 +2716,7 @@ namespace Cthangband
                 }
                 if (RealiseSpellIsUseless(race, 100))
                 {
-                    flags5 &= ~MonsterFlag5.VrilBolt;
+                    flags5 &= ~MonsterFlag5.VisBolt;
                 }
                 if (RealiseSpellIsUseless(race, 100))
                 {
@@ -2760,11 +2760,11 @@ namespace Cthangband
                 }
             }
             // If we know the player has no vis, don't do vis drain
-            if ((mindFlags & Constants.SmImmVril) != 0)
+            if ((mindFlags & Constants.SmImmVis) != 0)
             {
                 if (RealiseSpellIsUseless(race, 100))
                 {
-                    flags5 &= ~MonsterFlag5.DrainVril;
+                    flags5 &= ~MonsterFlag5.DrainVis;
                 }
             }
             modifiedFlags4 = flags4;
@@ -2784,7 +2784,7 @@ namespace Cthangband
             {
                 return true;
             }
-            // MonsterFlag5.DrainVril MonsterFlag5.MindBlast MonsterFlag5.BrainSmash
+            // MonsterFlag5.DrainVis MonsterFlag5.MindBlast MonsterFlag5.BrainSmash
             // MonsterFlag5.CauseLightWounds MonsterFlag5.CauseSeriousWounds MonsterFlag5.CauseCriticalWounds
             if (spell >= 128 + 9 && spell <= 128 + 14)
             {
@@ -2823,7 +2823,7 @@ namespace Cthangband
             // MonsterFlag4.BreatheChaos MonsterFlag4.BreatheDisenchant MonsterFlag4.BreatheNexus
             // MonsterFlag4.BreatheTime MonsterFlag4.BreatheInertia MonsterFlag4.BreatheGravity
             // MonsterFlag4.BreatheShards MonsterFlag4.BreathePlasma MonsterFlag4.BreatheForce
-            // MonsterFlag4.BreatheVril MonsterFlag4.RadiationBall MonsterFlag4.BreatheRadiation
+            // MonsterFlag4.BreatheVis MonsterFlag4.RadiationBall MonsterFlag4.BreatheRadiation
             // MonsterFlag4.ChaosBall MonsterFlag4.BreatheDisintegration
             if (spell < 128 && spell > 96)
             {
@@ -2831,7 +2831,7 @@ namespace Cthangband
             }
             // MonsterFlag5.AcidBall MonsterFlag5.LightningBall MonsterFlag5.FireBall
             // MonsterFlag5.ColdBall MonsterFlag5.PoisonBall MonsterFlag5.NetherBall
-            // MonsterFlag5.WaterBall MonsterFlag5.VrilBall MonsterFlag5.DarkBall
+            // MonsterFlag5.WaterBall MonsterFlag5.VisBall MonsterFlag5.DarkBall
             if (spell >= 128 && spell <= 128 + 8)
             {
                 return true;
@@ -2840,7 +2840,7 @@ namespace Cthangband
             // MonsterFlag5.CauseCriticalWounds MonsterFlag5.CauseMortalWounds MonsterFlag5.AcidBolt
             // MonsterFlag5.LightningBolt MonsterFlag5.FireBolt MonsterFlag5.ColdBolt
             // MonsterFlag5.PoisonBolt MonsterFlag5.NetherBolt MonsterFlag5.WaterBolt
-            // MonsterFlag5.VrilBolt MonsterFlag5.PlasmaBolt MonsterFlag5.IceBolt
+            // MonsterFlag5.VisBolt MonsterFlag5.PlasmaBolt MonsterFlag5.IceBolt
             // MonsterFlag5.MagicMissile MonsterFlag5.Scare
             if (spell >= 128 + 12 && spell <= 128 + 27)
             {
@@ -3511,13 +3511,13 @@ namespace Cthangband
                         BreatheAtMonster(monsterIndex, y, x, new ProjectForce(SaveGame.Instance.SpellEffects), monster.Health / 6 > 200 ? 200 : monster.Health / 6, 0);
                         break;
 
-                    // MonsterFlag4.BreatheVril
+                    // MonsterFlag4.BreatheVis
                     case 96 + 27:
                         _saveGame.Disturb(true);
                         Profile.Instance.MsgPrint(!seeEither
                             ? "You hear breathing noise."
                             : $"{monsterName} breathes magical energy at {targetName}");
-                        BreatheAtMonster(monsterIndex, y, x, new ProjectVril(SaveGame.Instance.SpellEffects), monster.Health / 3 > 250 ? 250 : monster.Health / 3, 0);
+                        BreatheAtMonster(monsterIndex, y, x, new ProjectVis(SaveGame.Instance.SpellEffects), monster.Health / 3 > 250 ? 250 : monster.Health / 3, 0);
                         break;
 
                     // MonsterFlag4.RadiationBall
@@ -3623,13 +3623,13 @@ namespace Cthangband
                         BreatheAtMonster(monsterIndex, y, x, new ProjectWater(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(rlev * 5 / 2) + 50, 4);
                         break;
 
-                    // MonsterFlag5.VrilBall
+                    // MonsterFlag5.VisBall
                     case 128 + 7:
                         _saveGame.Disturb(true);
                         Profile.Instance.MsgPrint(!seeEither
                             ? "You hear someone mumble powerfully."
                             : $"{monsterName} invokes a vis storm upon {targetName}");
-                        BreatheAtMonster(monsterIndex, y, x, new ProjectVril(SaveGame.Instance.SpellEffects), (rlev * 5) + Program.Rng.DiceRoll(10, 10), 4);
+                        BreatheAtMonster(monsterIndex, y, x, new ProjectVis(SaveGame.Instance.SpellEffects), (rlev * 5) + Program.Rng.DiceRoll(10, 10), 4);
                         break;
 
                     // MonsterFlag5.DarkBall
@@ -3641,7 +3641,7 @@ namespace Cthangband
                         BreatheAtMonster(monsterIndex, y, x, new ProjectDark(SaveGame.Instance.SpellEffects), (rlev * 5) + Program.Rng.DiceRoll(10, 10), 4);
                         break;
 
-                    // MonsterFlag5.DrainVril
+                    // MonsterFlag5.DrainVis
                     case 128 + 9:
                         int r1 = (Program.Rng.DieRoll(rlev) / 2) + 1;
                         if (seeMonster)
@@ -3927,7 +3927,7 @@ namespace Cthangband
                         FireBoltAtMonster(monsterIndex, y, x, new ProjectWater(SaveGame.Instance.SpellEffects), Program.Rng.DiceRoll(10, 10) + rlev);
                         break;
 
-                    // MonsterFlag5.VrilBolt
+                    // MonsterFlag5.VisBolt
                     case 128 + 23:
                         _saveGame.Disturb(true);
                         if (blind || !seeMonster)
@@ -3938,7 +3938,7 @@ namespace Cthangband
                         {
                             Profile.Instance.MsgPrint($"{monsterName} casts a vis bolt at {targetName}");
                         }
-                        FireBoltAtMonster(monsterIndex, y, x, new ProjectVril(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(rlev * 7 / 2) + 50);
+                        FireBoltAtMonster(monsterIndex, y, x, new ProjectVis(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(rlev * 7 / 2) + 50);
                         break;
 
                     // MonsterFlag5.PlasmaBolt
@@ -5307,11 +5307,11 @@ namespace Cthangband
                     BreatheAtPlayer(monsterIndex, new ProjectForce(SaveGame.Instance.SpellEffects), monster.Health / 6 > 200 ? 200 : monster.Health / 6, 0);
                     break;
 
-                // MonsterFlag4.BreatheVril
+                // MonsterFlag4.BreatheVis
                 case 96 + 27:
                     _saveGame.Disturb(true);
                     Profile.Instance.MsgPrint(playerIsBlind ? $"{monsterName} breathes." : $"{monsterName} breathes magical energy.");
-                    BreatheAtPlayer(monsterIndex, new ProjectVril(SaveGame.Instance.SpellEffects), monster.Health / 3 > 250 ? 250 : monster.Health / 3, 0);
+                    BreatheAtPlayer(monsterIndex, new ProjectVis(SaveGame.Instance.SpellEffects), monster.Health / 3 > 250 ? 250 : monster.Health / 3, 0);
                     break;
 
                 // MonsterFlag4.RadiationBall
@@ -5403,13 +5403,13 @@ namespace Cthangband
                     FireBallAtPlayer(monsterIndex, new ProjectWater(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(monsterLevel * 5 / 2) + 50, 4);
                     break;
 
-                // MonsterFlag5.VrilBall
+                // MonsterFlag5.VisBall
                 case 128 + 7:
                     _saveGame.Disturb(true);
                     Profile.Instance.MsgPrint(playerIsBlind
                         ? $"{monsterName} mumbles powerfully."
                         : $"{monsterName} invokes a vis storm.");
-                    FireBallAtPlayer(monsterIndex, new ProjectVril(SaveGame.Instance.SpellEffects), (monsterLevel * 5) + Program.Rng.DiceRoll(10, 10), 4);
+                    FireBallAtPlayer(monsterIndex, new ProjectVis(SaveGame.Instance.SpellEffects), (monsterLevel * 5) + Program.Rng.DiceRoll(10, 10), 4);
                     break;
 
                 // MonsterFlag5.DarkBall
@@ -5422,7 +5422,7 @@ namespace Cthangband
                     _level.Monsters.UpdateSmartLearn(monsterIndex, Constants.DrsDark);
                     break;
 
-                // MonsterFlag5.DrainVril
+                // MonsterFlag5.DrainVis
                 case 128 + 9:
                     if (_player.Vis != 0)
                     {
@@ -5433,13 +5433,13 @@ namespace Cthangband
                         {
                             r1 = _player.Vis;
                             _player.Vis = 0;
-                            _player.FractionalVril = 0;
+                            _player.FractionalVis = 0;
                         }
                         else
                         {
                             _player.Vis -= r1;
                         }
-                        _player.RedrawNeeded.Set(RedrawFlag.PrVril);
+                        _player.RedrawNeeded.Set(RedrawFlag.PrVis);
                         if (monster.Health < monster.MaxHealth)
                         {
                             monster.Health += 6 * r1;
@@ -5457,7 +5457,7 @@ namespace Cthangband
                             }
                         }
                     }
-                    _level.Monsters.UpdateSmartLearn(monsterIndex, Constants.DrsVril);
+                    _level.Monsters.UpdateSmartLearn(monsterIndex, Constants.DrsVis);
                     break;
 
                 // MonsterFlag5.MindBlast
@@ -5650,11 +5650,11 @@ namespace Cthangband
                     _level.Monsters.UpdateSmartLearn(monsterIndex, Constants.DrsReflect);
                     break;
 
-                // MonsterFlag5.VrilBolt
+                // MonsterFlag5.VisBolt
                 case 128 + 23:
                     _saveGame.Disturb(true);
                     Profile.Instance.MsgPrint(playerIsBlind ? $"{monsterName} mumbles." : $"{monsterName} casts a vis bolt.");
-                    FireBoltAtPlayer(monsterIndex, new ProjectVril(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(monsterLevel * 7 / 2) + 50);
+                    FireBoltAtPlayer(monsterIndex, new ProjectVis(SaveGame.Instance.SpellEffects), Program.Rng.DieRoll(monsterLevel * 7 / 2) + 50);
                     _level.Monsters.UpdateSmartLearn(monsterIndex, Constants.DrsReflect);
                     break;
 

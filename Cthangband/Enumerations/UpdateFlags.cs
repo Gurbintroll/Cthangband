@@ -19,7 +19,7 @@ namespace Cthangband.Enumerations
         public const uint UpdateDistances = 0x02000000;
         public const uint UpdateHealth = 0x00000010;
         public const uint UpdateLight = 0x00200000;
-        public const uint UpdateVril = 0x00000020;
+        public const uint UpdateVis = 0x00000020;
         public const uint UpdateMonsters = 0x01000000;
         public const uint UpdateRemoveLight = 0x00020000;
         public const uint UpdateRemoveView = 0x00010000;

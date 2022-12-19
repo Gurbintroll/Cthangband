@@ -33,21 +33,21 @@ namespace Cthangband.Spells.Chaos
             {
                 case CharacterClass.Mage:
                     Level = 20;
-                    VrilCost = 20;
+                    VisCost = 20;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 25;
-                    VrilCost = 25;
+                    VisCost = 25;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 33;
-                    VrilCost = 33;
+                    VisCost = 33;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
@@ -55,14 +55,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 24;
-                    VrilCost = 20;
+                    VisCost = 20;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 23;
-                    VrilCost = 23;
+                    VisCost = 23;
                     BaseFailure = 66;
                     FirstCastExperience = 10;
                     break;
@@ -70,14 +70,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 16;
-                    VrilCost = 16;
+                    VisCost = 16;
                     BaseFailure = 55;
                     FirstCastExperience = 8;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

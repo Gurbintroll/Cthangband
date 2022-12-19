@@ -42,7 +42,7 @@ namespace Cthangband
         public int Food;
         public int FractionalExperiencePoints;
         public int FractionalHealth;
-        public int FractionalVril;
+        public int FractionalVis;
         public GameTime GameTime;
         public Gender Gender = new Gender();
         public int GenderIndex;
@@ -120,7 +120,7 @@ namespace Cthangband
         public int MaxExperienceGained;
         public int MaxHealth;
         public int MaxLevelGained;
-        public int MaxVril;
+        public int MaxVis;
         public int MeleeAttacksPerRound;
         public int MissileAttacksPerRound;
         public string Name;
@@ -295,7 +295,7 @@ namespace Cthangband
             {
                 Level--;
                 SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
-                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
                 RedrawNeeded.Set(RedrawFlag.PrLev | RedrawFlag.PrTitle);
                 SaveGame.Instance.HandleStuff();
             }
@@ -324,7 +324,7 @@ namespace Cthangband
                 }
                 Gui.PlaySound(SoundEffect.LevelGain);
                 Profile.Instance.MsgPrint($"Welcome to level {Level}.");
-                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+                UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
                 RedrawNeeded.Set(RedrawFlag.PrExp | RedrawFlag.PrLev | RedrawFlag.PrTitle);
                 SaveGame.Instance.HandleStuff();
                 if (levelReward)
@@ -1248,33 +1248,33 @@ namespace Cthangband
             }
         }
 
-        public void RegenerateVril(int percent)
+        public void RegenerateVis(int percent)
         {
-            int oldVril = Vis;
-            int newVril = (MaxVril * percent) + Constants.PyRegenMnbase;
-            Vis += newVril >> 16;
-            if (Vis < 0 && oldVril > 0)
+            int oldVis = Vis;
+            int newVis = (MaxVis * percent) + Constants.PyRegenMnbase;
+            Vis += newVis >> 16;
+            if (Vis < 0 && oldVis > 0)
             {
                 Vis = Constants.MaxShort;
             }
-            int newFractionalVril = (newVril & 0xFFFF) + FractionalVril;
-            if (newFractionalVril >= 0x10000L)
+            int newFractionalVis = (newVis & 0xFFFF) + FractionalVis;
+            if (newFractionalVis >= 0x10000L)
             {
-                FractionalVril = newFractionalVril - 0x10000;
+                FractionalVis = newFractionalVis - 0x10000;
                 Vis++;
             }
             else
             {
-                FractionalVril = newFractionalVril;
+                FractionalVis = newFractionalVis;
             }
-            if (Vis >= MaxVril)
+            if (Vis >= MaxVis)
             {
-                Vis = MaxVril;
-                FractionalVril = 0;
+                Vis = MaxVis;
+                FractionalVis = 0;
             }
-            if (oldVril != Vis)
+            if (oldVis != Vis)
             {
-                RedrawNeeded.Set(RedrawFlag.PrVril);
+                RedrawNeeded.Set(RedrawFlag.PrVis);
             }
         }
 

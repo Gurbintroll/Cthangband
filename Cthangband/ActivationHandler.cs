@@ -3010,13 +3010,13 @@ namespace Cthangband
                         {
                             identified = true;
                         }
-                        if (_player.Vis < _player.MaxVril)
+                        if (_player.Vis < _player.MaxVis)
                         {
-                            _player.Vis = _player.MaxVril;
-                            _player.FractionalVril = 0;
+                            _player.Vis = _player.MaxVis;
+                            _player.FractionalVis = 0;
                             identified = true;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
-                            _player.RedrawNeeded.Set(RedrawFlag.PrVril);
+                            _player.RedrawNeeded.Set(RedrawFlag.PrVis);
                         }
                         break;
                     }

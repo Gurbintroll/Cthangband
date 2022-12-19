@@ -17,7 +17,7 @@ namespace Cthangband.Talents
         {
             Name = "Character Armour";
             Level = 13;
-            VrilCost = 12;
+            VisCost = 12;
             BaseFailure = 50;
         }
 

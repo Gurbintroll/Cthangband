@@ -39,7 +39,7 @@ namespace Cthangband.Spells.Death
                 player.TakeHit(Program.Rng.DieRoll(4), "the strain of casting Annihilation");
                 player.Vis++;
                 level.MoveCursorRelative(player.MapY, player.MapX);
-                player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrVril);
+                player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrVis);
                 SaveGame.Instance.HandleStuff();
                 Gui.Refresh();
                 Gui.Pause(GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor);
@@ -54,35 +54,35 @@ namespace Cthangband.Spells.Death
             {
                 case CharacterClass.Mage:
                     Level = 45;
-                    VrilCost = 100;
+                    VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 49;
-                    VrilCost = 100;
+                    VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
                 case CharacterClass.Paladin:
                     Level = 50;
-                    VrilCost = 100;
+                    VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
@@ -90,21 +90,21 @@ namespace Cthangband.Spells.Death
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 50;
-                    VrilCost = 100;
+                    VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 250;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 41;
-                    VrilCost = 85;
+                    VisCost = 85;
                     BaseFailure = 80;
                     FirstCastExperience = 250;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

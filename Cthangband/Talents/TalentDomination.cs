@@ -18,7 +18,7 @@ namespace Cthangband.Talents
         {
             Name = "Domination";
             Level = 9;
-            VrilCost = 7;
+            VisCost = 7;
             BaseFailure = 50;
         }
 

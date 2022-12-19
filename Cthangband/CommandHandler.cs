@@ -850,7 +850,7 @@ namespace Cthangband
             }
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
-            Player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateVis);
             Player.RedrawNeeded.Set(RedrawFlag.PrEquippy);
         }
 

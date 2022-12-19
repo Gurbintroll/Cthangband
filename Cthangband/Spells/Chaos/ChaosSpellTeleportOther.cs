@@ -32,21 +32,21 @@ namespace Cthangband.Spells.Chaos
             {
                 case CharacterClass.Mage:
                     Level = 25;
-                    VrilCost = 18;
+                    VisCost = 18;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 29;
-                    VrilCost = 22;
+                    VisCost = 22;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 39;
-                    VrilCost = 29;
+                    VisCost = 29;
                     BaseFailure = 65;
                     FirstCastExperience = 5;
                     break;
@@ -54,14 +54,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 37;
-                    VrilCost = 35;
+                    VisCost = 35;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 33;
-                    VrilCost = 24;
+                    VisCost = 24;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
@@ -69,14 +69,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 23;
-                    VrilCost = 15;
+                    VisCost = 15;
                     BaseFailure = 50;
                     FirstCastExperience = 8;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

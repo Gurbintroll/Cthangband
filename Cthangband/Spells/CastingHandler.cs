@@ -124,7 +124,7 @@ namespace Cthangband.Spells
                 if (ask)
                 {
                     ISpell sPtr = _player.Spellcasting.Spells[realm2 ? 1 : 0][spell % 32];
-                    string tmpVal = $"{prompt} {sPtr.Name} ({sPtr.VrilCost} vis, {sPtr.FailureChance(_player)}% fail)? ";
+                    string tmpVal = $"{prompt} {sPtr.Name} ({sPtr.VisCost} vis, {sPtr.FailureChance(_player)}% fail)? ";
                     if (!Gui.GetCheck(tmpVal))
                     {
                         continue;
@@ -187,7 +187,7 @@ namespace Cthangband.Spells
                 return;
             }
             ISpell sPtr = useSetTwo ? _player.Spellcasting.Spells[1][spell] : _player.Spellcasting.Spells[0][spell];
-            if (sPtr.VrilCost > _player.Vis)
+            if (sPtr.VisCost > _player.Vis)
             {
                 string cast = _player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast";
                 Profile.Instance.MsgPrint($"You do not have enough vis to {cast} this {prayer}.");
@@ -233,15 +233,15 @@ namespace Cthangband.Spells
                 }
             }
             SaveGame.Instance.EnergyUse = 100;
-            if (sPtr.VrilCost <= _player.Vis)
+            if (sPtr.VisCost <= _player.Vis)
             {
-                _player.Vis -= sPtr.VrilCost;
+                _player.Vis -= sPtr.VisCost;
             }
             else
             {
-                int oops = sPtr.VrilCost - _player.Vis;
+                int oops = sPtr.VisCost - _player.Vis;
                 _player.Vis = 0;
-                _player.FractionalVril = 0;
+                _player.FractionalVis = 0;
                 Profile.Instance.MsgPrint("You faint from the effort!");
                 _player.SetTimedParalysis(_player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
                 if (Program.Rng.RandomLessThan(100) < 50)
@@ -251,7 +251,7 @@ namespace Cthangband.Spells
                     _player.DecreaseAbilityScore(Ability.Constitution, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
-            _player.RedrawNeeded.Set(RedrawFlag.PrVril);
+            _player.RedrawNeeded.Set(RedrawFlag.PrVis);
         }
 
         private void DoCmdMentalism()
@@ -267,7 +267,7 @@ namespace Cthangband.Spells
                 return;
             }
             ITalent talent = _player.Spellcasting.Talents[n];
-            if (talent.VrilCost > _player.Vis)
+            if (talent.VisCost > _player.Vis)
             {
                 Profile.Instance.MsgPrint("You do not have enough vis to use this talent.");
                 if (!Gui.GetCheck("Attempt it anyway? "))
@@ -305,7 +305,7 @@ namespace Cthangband.Spells
                     {
                         Profile.Instance.MsgPrint("Your mind unleashes its power in an uncontrollable storm!");
                         SaveGame.Instance.SpellEffects.Project(1, 2 + (plev / 10), _player.MapY, _player.MapX, plev * 2,
-                            new ProjectVril(SaveGame.Instance.SpellEffects),
+                            new ProjectVis(SaveGame.Instance.SpellEffects),
                             ProjectionFlag.ProjectJump | ProjectionFlag.ProjectKill | ProjectionFlag.ProjectGrid |
                             ProjectionFlag.ProjectItem);
                         _player.Vis = Math.Max(0, _player.Vis - (plev * Math.Max(1, plev / 10)));
@@ -317,15 +317,15 @@ namespace Cthangband.Spells
                 talent.Use(_player, _level, SaveGame.Instance);
             }
             SaveGame.Instance.EnergyUse = 100;
-            if (talent.VrilCost <= _player.Vis)
+            if (talent.VisCost <= _player.Vis)
             {
-                _player.Vis -= talent.VrilCost;
+                _player.Vis -= talent.VisCost;
             }
             else
             {
-                int oops = talent.VrilCost - _player.Vis;
+                int oops = talent.VisCost - _player.Vis;
                 _player.Vis = 0;
-                _player.FractionalVril = 0;
+                _player.FractionalVis = 0;
                 Profile.Instance.MsgPrint("You faint from the effort!");
                 _player.SetTimedParalysis(_player.TimedParalysis + Program.Rng.DieRoll((5 * oops) + 1));
                 if (Program.Rng.RandomLessThan(100) < 50)
@@ -335,7 +335,7 @@ namespace Cthangband.Spells
                     _player.DecreaseAbilityScore(Ability.Wisdom, 15 + Program.Rng.DieRoll(10), perm);
                 }
             }
-            _player.RedrawNeeded.Set(RedrawFlag.PrVril);
+            _player.RedrawNeeded.Set(RedrawFlag.PrVis);
         }
 
         private bool GetMentalismTalent(out int sn)

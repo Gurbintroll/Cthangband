@@ -53,9 +53,9 @@ namespace Cthangband.Mutations.ActiveMutations
                 }
                 oPtr.IdentifyFlags.Set(Constants.IdentEmpty);
             }
-            if (player.Vis > player.MaxVril)
+            if (player.Vis > player.MaxVis)
             {
-                player.Vis = player.MaxVril;
+                player.Vis = player.MaxVis;
             }
             player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
         }

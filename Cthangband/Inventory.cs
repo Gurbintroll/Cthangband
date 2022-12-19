@@ -391,7 +391,7 @@ namespace Cthangband
                 oPtr.Count += num;
                 _player.WeightCarried += num * oPtr.Weight;
                 _player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                _player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
+                _player.UpdatesNeeded.Set(UpdateFlags.UpdateVis);
                 _player.NoticeFlags |= Constants.PnCombine;
             }
         }
@@ -422,7 +422,7 @@ namespace Cthangband
                 _items[item] = new Item();
                 _player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
                 _player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
-                _player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
+                _player.UpdatesNeeded.Set(UpdateFlags.UpdateVis);
             }
         }
 

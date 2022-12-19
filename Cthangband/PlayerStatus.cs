@@ -931,21 +931,21 @@ namespace Cthangband
                     {
                         if (_player.Spellcasting.SpellStat == Ability.Intelligence)
                         {
-                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
                         }
                     }
                     else if (i == Ability.Wisdom)
                     {
                         if (_player.Spellcasting.SpellStat == Ability.Wisdom)
                         {
-                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
                         }
                     }
                     else if (i == Ability.Charisma)
                     {
                         if (_player.Spellcasting.SpellStat == Ability.Charisma)
                         {
-                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+                            _player.UpdatesNeeded.Set(UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
                         }
                     }
                 }
@@ -1678,7 +1678,7 @@ namespace Cthangband
             }
         }
 
-        public void CalcVril()
+        public void CalcVis()
         {
             int levels;
             switch (_player.Spellcasting.Type)
@@ -1703,7 +1703,7 @@ namespace Cthangband
             {
                 levels = 0;
             }
-            int msp = _player.AbilityScores[_player.Spellcasting.SpellStat].VrilBonus * levels / 2;
+            int msp = _player.AbilityScores[_player.Spellcasting.SpellStat].VisBonus * levels / 2;
             if (msp != 0)
             {
                 msp++;
@@ -1748,15 +1748,15 @@ namespace Cthangband
             var mult = _player.Religion.GetNamedDeity(Pantheon.GodName.Tamash).AdjustedFavour + 10;
             msp *= mult;
             msp /= 10;
-            if (_player.MaxVril != msp)
+            if (_player.MaxVis != msp)
             {
                 if (_player.Vis >= msp)
                 {
                     _player.Vis = msp;
-                    _player.FractionalVril = 0;
+                    _player.FractionalVis = 0;
                 }
-                _player.MaxVril = msp;
-                _player.RedrawNeeded.Set(RedrawFlag.PrVril);
+                _player.MaxVis = msp;
+                _player.RedrawNeeded.Set(RedrawFlag.PrVis);
             }
             if (SaveGame.Instance.CharacterXtra)
             {
@@ -1877,20 +1877,20 @@ namespace Cthangband
                 return;
             }
             Gui.Print("Max VP ", ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp);
-            string tmp = _player.MaxVril.ToString().PadLeft(5);
+            string tmp = _player.MaxVis.ToString().PadLeft(5);
             Colour colour = Colour.BrightGreen;
             Gui.Print(colour, tmp, ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp + 7);
             Gui.Print("Cur VP ", ScreenLocation.RowCursp, ScreenLocation.ColCursp);
             tmp = _player.Vis.ToString().PadLeft(5);
-            if (_player.Vis >= _player.MaxVril)
+            if (_player.Vis >= _player.MaxVis)
             {
                 colour = Colour.BrightGreen;
             }
-            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 5)
+            else if (_player.Vis > _player.MaxVis * GlobalData.HitpointWarn / 5)
             {
                 colour = Colour.BrightYellow;
             }
-            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 10)
+            else if (_player.Vis > _player.MaxVis * GlobalData.HitpointWarn / 10)
             {
                 colour = Colour.Orange;
             }

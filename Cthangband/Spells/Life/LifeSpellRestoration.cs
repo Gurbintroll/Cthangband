@@ -32,21 +32,21 @@ namespace Cthangband.Spells.Life
             {
                 case CharacterClass.Mage:
                     Level = 42;
-                    VrilCost = 100;
+                    VisCost = 100;
                     BaseFailure = 82;
                     FirstCastExperience = 225;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 35;
-                    VrilCost = 70;
+                    VisCost = 70;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
                 case CharacterClass.Paladin:
                     Level = 40;
-                    VrilCost = 80;
+                    VisCost = 80;
                     BaseFailure = 80;
                     FirstCastExperience = 225;
                     break;
@@ -54,21 +54,21 @@ namespace Cthangband.Spells.Life
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 45;
-                    VrilCost = 90;
+                    VisCost = 90;
                     BaseFailure = 80;
                     FirstCastExperience = 225;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 40;
-                    VrilCost = 80;
+                    VisCost = 80;
                     BaseFailure = 60;
                     FirstCastExperience = 225;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

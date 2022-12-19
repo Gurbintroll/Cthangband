@@ -54,21 +54,21 @@ namespace Cthangband.Spells.Chaos
             {
                 case CharacterClass.Mage:
                     Level = 35;
-                    VrilCost = 32;
+                    VisCost = 32;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 37;
-                    VrilCost = 37;
+                    VisCost = 37;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 40;
-                    VrilCost = 45;
+                    VisCost = 45;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
@@ -76,14 +76,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 40;
-                    VrilCost = 35;
+                    VisCost = 35;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 35;
-                    VrilCost = 35;
+                    VisCost = 35;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
@@ -91,14 +91,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 32;
-                    VrilCost = 30;
+                    VisCost = 30;
                     BaseFailure = 75;
                     FirstCastExperience = 35;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

@@ -136,7 +136,7 @@ namespace Cthangband.Mutations
             _notPossessed.Add(new MutationNausea());
             _notPossessed.Add(new MutationNormality());
             _notPossessed.Add(new MutationPolyWound());
-            _notPossessed.Add(new MutationProdVril());
+            _notPossessed.Add(new MutationProdVis());
             _notPossessed.Add(new MutationRawChaos());
             _notPossessed.Add(new MutationRteleport());
             _notPossessed.Add(new MutationScorTail());

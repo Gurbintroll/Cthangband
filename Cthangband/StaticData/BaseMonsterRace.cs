@@ -439,13 +439,6 @@ namespace Cthangband.StaticData
         }
 
         [DefaultValue(false)]
-        public bool BreatheVril
-        {
-            get;
-            set;
-        }
-
-        [DefaultValue(false)]
         public bool BreatheNether
         {
             get;
@@ -496,6 +489,13 @@ namespace Cthangband.StaticData
 
         [DefaultValue(false)]
         public bool BreatheTime
+        {
+            get;
+            set;
+        }
+
+        [DefaultValue(false)]
+        public bool BreatheVis
         {
             get;
             set;
@@ -648,7 +648,7 @@ namespace Cthangband.StaticData
         }
 
         [DefaultValue(false)]
-        public bool DrainVril
+        public bool DrainVis
         {
             get;
             set;
@@ -1138,26 +1138,6 @@ namespace Cthangband.StaticData
 
         [DefaultValue(false)]
         public bool Male
-        {
-            get;
-            set;
-        }
-
-        [Browsable(true)]
-        [Category("Spells")]
-        [Description("The monster can cast vis balls")]
-        [DefaultValue(false)]
-        public bool VrilBall
-        {
-            get;
-            set;
-        }
-
-        [Browsable(true)]
-        [Category("Spells")]
-        [Description("The monster can cast vis bolts")]
-        [DefaultValue(false)]
-        public bool VrilBolt
         {
             get;
             set;
@@ -1664,6 +1644,26 @@ namespace Cthangband.StaticData
 
         [DefaultValue(false)]
         public bool Unique
+        {
+            get;
+            set;
+        }
+
+        [Browsable(true)]
+        [Category("Spells")]
+        [Description("The monster can cast vis balls")]
+        [DefaultValue(false)]
+        public bool VisBall
+        {
+            get;
+            set;
+        }
+
+        [Browsable(true)]
+        [Category("Spells")]
+        [Description("The monster can cast vis bolts")]
+        [DefaultValue(false)]
+        public bool VisBolt
         {
             get;
             set;

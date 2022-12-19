@@ -13,7 +13,7 @@ using System;
 namespace Cthangband.Spells.Chaos
 {
     [Serializable]
-    internal class ChaosSpellVrilStorm : BaseSpell
+    internal class ChaosSpellVisStorm : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
@@ -22,7 +22,7 @@ namespace Cthangband.Spells.Chaos
             {
                 return;
             }
-            saveGame.SpellEffects.FireBall(new ProjectVril(SaveGame.Instance.SpellEffects), dir, 300 + (player.Level * 2), 4);
+            saveGame.SpellEffects.FireBall(new ProjectVis(SaveGame.Instance.SpellEffects), dir, 300 + (player.Level * 2), 4);
         }
 
         public override void Initialise(int characterClass)
@@ -32,21 +32,21 @@ namespace Cthangband.Spells.Chaos
             {
                 case CharacterClass.Mage:
                     Level = 45;
-                    VrilCost = 48;
+                    VisCost = 48;
                     BaseFailure = 85;
                     FirstCastExperience = 200;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 47;
-                    VrilCost = 50;
+                    VisCost = 50;
                     BaseFailure = 95;
                     FirstCastExperience = 200;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
@@ -54,14 +54,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 49;
-                    VrilCost = 50;
+                    VisCost = 50;
                     BaseFailure = 85;
                     FirstCastExperience = 200;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 45;
-                    VrilCost = 48;
+                    VisCost = 48;
                     BaseFailure = 85;
                     FirstCastExperience = 200;
                     break;
@@ -69,14 +69,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 40;
-                    VrilCost = 45;
+                    VisCost = 45;
                     BaseFailure = 75;
                     FirstCastExperience = 200;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

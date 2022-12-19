@@ -80,7 +80,7 @@ namespace Cthangband
             new[]
             {
                 new ItemIdentifier(ItemCategory.Sword, SwordType.SmallSword),
-                new ItemIdentifier(ItemCategory.Potion, PotionType.RestoreVril),
+                new ItemIdentifier(ItemCategory.Potion, PotionType.RestoreVis),
                 new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
             },
             new[]
@@ -1940,7 +1940,7 @@ namespace Cthangband
                         SaveGame.Instance.UpdateStuff();
                         SaveGame.Instance.Player = null;
                         _player.Health = _player.MaxHealth;
-                        _player.Vis = _player.MaxVril;
+                        _player.Vis = _player.MaxVis;
                         _player.Energy = 150;
                         CharacterViewer characterViewer = new CharacterViewer(_player);
                         while (true)

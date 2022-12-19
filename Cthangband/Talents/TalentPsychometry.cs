@@ -18,7 +18,7 @@ namespace Cthangband.Talents
         {
             Name = "Psychometry";
             Level = 15;
-            VrilCost = 12;
+            VisCost = 12;
             BaseFailure = 60;
         }
 

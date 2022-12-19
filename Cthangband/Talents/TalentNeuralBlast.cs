@@ -18,7 +18,7 @@ namespace Cthangband.Talents
         {
             Name = "Neural Blast";
             Level = 2;
-            VrilCost = 1;
+            VisCost = 1;
             BaseFailure = 20;
         }
 

@@ -14,7 +14,7 @@ namespace Cthangband.Enumerations
         public const uint Blindness = 0x10000000;
 
         public const uint BoltMask = AcidBolt | LightningBolt | FireBolt | ColdBolt | PoisonBolt | NetherBolt |
-                                        WaterBolt | VrilBolt | PlasmaBolt | IceBolt | MagicMissile;
+                                        WaterBolt | VisBolt | PlasmaBolt | IceBolt | MagicMissile;
 
         public const uint BrainSmash = 0x00000800;
         public const uint CauseCriticalWounds = 0x00004000;
@@ -25,7 +25,7 @@ namespace Cthangband.Enumerations
         public const uint ColdBolt = 0x00080000;
         public const uint Confuse = 0x20000000;
         public const uint DarkBall = 0x00000100;
-        public const uint DrainVril = 0x00000200;
+        public const uint DrainVis = 0x00000200;
         public const uint FireBall = 0x00000004;
         public const uint FireBolt = 0x00040000;
         public const uint Hold = 0x80000000;
@@ -34,8 +34,8 @@ namespace Cthangband.Enumerations
         public const uint LightningBall = 0x00000002;
         public const uint LightningBolt = 0x00020000;
         public const uint MagicMissile = 0x04000000;
-        public const uint VrilBall = 0x00000080;
-        public const uint VrilBolt = 0x00800000;
+        public const uint VisBall = 0x00000080;
+        public const uint VisBolt = 0x00800000;
         public const uint MindBlast = 0x00000400;
         public const uint NetherBall = 0x00000020;
         public const uint NetherBolt = 0x00200000;

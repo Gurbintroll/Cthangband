@@ -26,7 +26,7 @@ namespace Cthangband.Spells.Tarot
             {
                 case CharacterClass.Mage:
                     Level = 42;
-                    VrilCost = 40;
+                    VisCost = 40;
                     BaseFailure = 70;
                     FirstCastExperience = 12;
                     break;
@@ -34,21 +34,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.Priest:
                 case CharacterClass.Monk:
                     Level = 45;
-                    VrilCost = 45;
+                    VisCost = 45;
                     BaseFailure = 70;
                     FirstCastExperience = 12;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 49;
-                    VrilCost = 50;
+                    VisCost = 50;
                     BaseFailure = 70;
                     FirstCastExperience = 12;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
@@ -56,21 +56,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 48;
-                    VrilCost = 46;
+                    VisCost = 46;
                     BaseFailure = 70;
                     FirstCastExperience = 12;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 39;
-                    VrilCost = 36;
+                    VisCost = 36;
                     BaseFailure = 60;
                     FirstCastExperience = 12;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

@@ -27,7 +27,7 @@ namespace Cthangband.Mutations.RandomMutations
             {
                 return;
             }
-            int wounds = player.MaxVril - player.Vis;
+            int wounds = player.MaxVis - player.Vis;
             if (wounds <= 0)
             {
                 return;

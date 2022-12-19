@@ -180,7 +180,7 @@ namespace Cthangband
             Flags4 |= original.BreatheGravity ? MonsterFlag4.BreatheGravity : 0;
             Flags4 |= original.BreatheInertia ? MonsterFlag4.BreatheInertia : 0;
             Flags4 |= original.BreatheLight ? MonsterFlag4.BreatheLight : 0;
-            Flags4 |= original.BreatheVril ? MonsterFlag4.BreatheVril : 0;
+            Flags4 |= original.BreatheVis ? MonsterFlag4.BreatheVis : 0;
             Flags4 |= original.BreatheNether ? MonsterFlag4.BreatheNether : 0;
             Flags4 |= original.BreatheNexus ? MonsterFlag4.BreatheNexus : 0;
             Flags4 |= original.BreatheRadiation ? MonsterFlag4.BreatheRadiation : 0;
@@ -197,7 +197,7 @@ namespace Cthangband
             Flags5 |= original.DarkBall ? MonsterFlag5.DarkBall : 0;
             Flags5 |= original.LightningBall ? MonsterFlag5.LightningBall : 0;
             Flags5 |= original.FireBall ? MonsterFlag5.FireBall : 0;
-            Flags5 |= original.VrilBall ? MonsterFlag5.VrilBall : 0;
+            Flags5 |= original.VisBall ? MonsterFlag5.VisBall : 0;
             Flags5 |= original.NetherBall ? MonsterFlag5.NetherBall : 0;
             Flags5 |= original.PoisonBall ? MonsterFlag5.PoisonBall : 0;
             Flags5 |= original.WaterBall ? MonsterFlag5.WaterBall : 0;
@@ -207,7 +207,7 @@ namespace Cthangband
             Flags5 |= original.LightningBolt ? MonsterFlag5.LightningBolt : 0;
             Flags5 |= original.FireBolt ? MonsterFlag5.FireBolt : 0;
             Flags5 |= original.IceBolt ? MonsterFlag5.IceBolt : 0;
-            Flags5 |= original.VrilBolt ? MonsterFlag5.VrilBolt : 0;
+            Flags5 |= original.VisBolt ? MonsterFlag5.VisBolt : 0;
             Flags5 |= original.NetherBolt ? MonsterFlag5.NetherBolt : 0;
             Flags5 |= original.PlasmaBolt ? MonsterFlag5.PlasmaBolt : 0;
             Flags5 |= original.PoisonBolt ? MonsterFlag5.PoisonBolt : 0;
@@ -218,7 +218,7 @@ namespace Cthangband
             Flags5 |= original.CauseCriticalWounds ? MonsterFlag5.CauseCriticalWounds : 0;
             Flags5 |= original.CauseMortalWounds ? MonsterFlag5.CauseMortalWounds : 0;
             Flags5 |= original.Confuse ? MonsterFlag5.Confuse : 0;
-            Flags5 |= original.DrainVril ? MonsterFlag5.DrainVril : 0;
+            Flags5 |= original.DrainVis ? MonsterFlag5.DrainVis : 0;
             Flags5 |= original.Hold ? MonsterFlag5.Hold : 0;
             Flags5 |= original.MindBlast ? MonsterFlag5.MindBlast : 0;
             Flags5 |= original.MagicMissile ? MonsterFlag5.MagicMissile : 0;

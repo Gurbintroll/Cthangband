@@ -929,7 +929,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("You eat a hearty breakfast.");
             }
             _player.Religion.DecayFavour();
-            _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril);
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis);
             _player.SetFood(Constants.PyFoodMax - 1);
             foreach (Town town in SaveGame.Instance.Towns)
             {
@@ -985,7 +985,7 @@ namespace Cthangband
             _player.TimedColdResistance = 0;
             _player.TimedPoisonResistance = 0;
             _player.Health = _player.MaxHealth;
-            _player.Vis = _player.MaxVril;
+            _player.Vis = _player.MaxVis;
             _player.SetTimedBlindness(0);
             _player.SetTimedConfusion(0);
             _player.TimedStun = 0;
@@ -1068,7 +1068,7 @@ namespace Cthangband
             {
                 Profile.Instance.MsgPrint($"{deityName} is delighted by your sacrifice!");
             }
-            _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril);
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis);
         }
 
         private void SayComment_1()

@@ -210,7 +210,7 @@ namespace Cthangband
         {
             _player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
-            _player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+            _player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateRemoveView | UpdateFlags.UpdateRemoveLight);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight);
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
@@ -339,8 +339,8 @@ namespace Cthangband
             _player.RestoreLevel();
             _player.Health = _player.MaxHealth;
             _player.FractionalHealth = 0;
-            _player.Vis = _player.MaxVril;
-            _player.FractionalVril = 0;
+            _player.Vis = _player.MaxVis;
+            _player.FractionalVis = 0;
             _player.SetTimedBlindness(0);
             _player.SetTimedConfusion(0);
             _player.SetTimedPoison(0);

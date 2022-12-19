@@ -1016,10 +1016,10 @@ namespace Cthangband
                 Player.UpdatesNeeded.Clear(UpdateFlags.UpdateHealth);
                 playerStatus.CalcHitpoints();
             }
-            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateVril))
+            if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateVis))
             {
-                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateVril);
-                playerStatus.CalcVril();
+                Player.UpdatesNeeded.Clear(UpdateFlags.UpdateVis);
+                playerStatus.CalcVis();
             }
             if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateSpells))
             {
@@ -1342,7 +1342,7 @@ namespace Cthangband
             CharacterXtra = true;
             Player.RedrawNeeded.Set(RedrawFlag.PrWipe | RedrawFlag.PrBasic | RedrawFlag.PrExtra | RedrawFlag.PrEquippy);
             Player.RedrawNeeded.Set(RedrawFlag.PrMap);
-            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateTorchRadius);
             UpdateStuff();
             RedrawStuff();
@@ -1350,7 +1350,7 @@ namespace Cthangband
             UpdateStuff();
             RedrawStuff();
             CharacterXtra = false;
-            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril | UpdateFlags.UpdateSpells);
+            Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis | UpdateFlags.UpdateSpells);
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             NoticeStuff();
             UpdateStuff();
@@ -1842,14 +1842,14 @@ namespace Cthangband
             {
                 if (Resting == -1)
                 {
-                    if (Player.Health == Player.MaxHealth && Player.Vis >= Player.MaxVril)
+                    if (Player.Health == Player.MaxHealth && Player.Vis >= Player.MaxVis)
                     {
                         Disturb(false);
                     }
                 }
                 else if (Resting == -2)
                 {
-                    if (Player.Health == Player.MaxHealth && Player.Vis == Player.MaxVril && Player.TimedBlindness == 0 &&
+                    if (Player.Health == Player.MaxHealth && Player.Vis == Player.MaxVis && Player.TimedBlindness == 0 &&
                         Player.TimedConfusion == 0 && Player.TimedPoison == 0 && Player.TimedFear == 0 && Player.TimedStun == 0 &&
                         Player.TimedBleeding == 0 && Player.TimedSlow == 0 && Player.TimedParalysis == 0 && Player.TimedHallucinations == 0 &&
                         Player.WordOfRecallDelay == 0)
@@ -2075,7 +2075,7 @@ namespace Cthangband
             if (Player.GameTime.IsMidnight)
             {
                 Player.Religion.DecayFavour();
-                Player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVril);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis);
                 foreach (Town town in Towns)
                 {
                     foreach (Store store in town.Stores)
@@ -2264,16 +2264,16 @@ namespace Cthangband
                     }
                 }
             }
-            if (Player.Vis < Player.MaxVril)
+            if (Player.Vis < Player.MaxVis)
             {
                 if (upkeepFactor != 0)
                 {
                     int upkeepRegen = (100 - upkeepFactor) * regenAmount / 100;
-                    Player.RegenerateVril(upkeepRegen);
+                    Player.RegenerateVis(upkeepRegen);
                 }
                 else
                 {
-                    Player.RegenerateVril(regenAmount);
+                    Player.RegenerateVis(regenAmount);
                 }
             }
             if (Player.TimedPoison != 0)
@@ -2605,7 +2605,7 @@ namespace Cthangband
                 Player.RedrawNeeded.Clear(RedrawFlag.PrBasic);
                 Player.RedrawNeeded.Clear(RedrawFlag.PrMisc | RedrawFlag.PrTitle | RedrawFlag.PrStats);
                 Player.RedrawNeeded.Clear(RedrawFlag.PrLev | RedrawFlag.PrExp | RedrawFlag.PrGold);
-                Player.RedrawNeeded.Clear(RedrawFlag.PrArmor | RedrawFlag.PrHp | RedrawFlag.PrVril);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrArmor | RedrawFlag.PrHp | RedrawFlag.PrVis);
                 Player.RedrawNeeded.Clear(RedrawFlag.PrDepth | RedrawFlag.PrHealth);
                 playerStatus.PrtFrameBasic();
             }
@@ -2656,9 +2656,9 @@ namespace Cthangband
                 Player.RedrawNeeded.Clear(RedrawFlag.PrHp);
                 playerStatus.PrtHp();
             }
-            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrVril))
+            if (Player.RedrawNeeded.IsSet(RedrawFlag.PrVis))
             {
-                Player.RedrawNeeded.Clear(RedrawFlag.PrVril);
+                Player.RedrawNeeded.Clear(RedrawFlag.PrVis);
                 playerStatus.PrintVisPoints();
             }
             if (Player.RedrawNeeded.IsSet(RedrawFlag.PrGold))

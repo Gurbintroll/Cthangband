@@ -21,7 +21,7 @@ namespace Cthangband.Spells
         {
             Name = "(illegible)";
             Level = 99;
-            VrilCost = 0;
+            VisCost = 0;
             BaseFailure = 0;
             FirstCastExperience = 0;
         }

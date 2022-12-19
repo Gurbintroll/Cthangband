@@ -530,7 +530,7 @@ namespace Cthangband
             {
                 vp[vn++] = "force";
             }
-            if ((flags4 & MonsterFlag4.BreatheVril) != 0)
+            if ((flags4 & MonsterFlag4.BreatheVis) != 0)
             {
                 vp[vn++] = "vis";
             }
@@ -597,7 +597,7 @@ namespace Cthangband
             {
                 vp[vn++] = "produce balls of radiation";
             }
-            if ((flags5 & MonsterFlag5.VrilBall) != 0)
+            if ((flags5 & MonsterFlag5.VisBall) != 0)
             {
                 vp[vn++] = "invoke vis storms";
             }
@@ -613,7 +613,7 @@ namespace Cthangband
             {
                 vp[vn++] = "invoke the Dread Curse of Azathoth";
             }
-            if ((flags5 & MonsterFlag5.DrainVril) != 0)
+            if ((flags5 & MonsterFlag5.DrainVis) != 0)
             {
                 vp[vn++] = "drain vis";
             }
@@ -669,7 +669,7 @@ namespace Cthangband
             {
                 vp[vn++] = "produce water bolts";
             }
-            if ((flags5 & MonsterFlag5.VrilBolt) != 0)
+            if ((flags5 & MonsterFlag5.VisBolt) != 0)
             {
                 vp[vn++] = "produce vis bolts";
             }

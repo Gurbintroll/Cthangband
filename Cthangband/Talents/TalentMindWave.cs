@@ -19,7 +19,7 @@ namespace Cthangband.Talents
         {
             Name = "Mind Wave";
             Level = 18;
-            VrilCost = 10;
+            VisCost = 10;
             BaseFailure = 45;
         }
 

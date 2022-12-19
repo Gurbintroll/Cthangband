@@ -1051,7 +1051,7 @@ namespace Cthangband
                 {
                     if (i - 5 != 0)
                     {
-                        _saveGame.SpellEffects.FireBall(new ProjectVril(SaveGame.Instance.SpellEffects), i, 175, 3);
+                        _saveGame.SpellEffects.FireBall(new ProjectVis(SaveGame.Instance.SpellEffects), i, 175, 3);
                     }
                 }
                 for (i = 1; i < 10; i++)
@@ -1143,7 +1143,7 @@ namespace Cthangband
             }
             // We'll need to redraw
             Player.RedrawNeeded.Set(RedrawFlag.PrHp);
-            Player.RedrawNeeded.Set(RedrawFlag.PrVril);
+            Player.RedrawNeeded.Set(RedrawFlag.PrVis);
             // Check to see if we were successful
             if (Program.Rng.DieRoll(Player.AbilityScores[useStat].Innate) >=
                 (difficulty / 2) + Program.Rng.DieRoll(difficulty / 2))
@@ -1399,7 +1399,7 @@ namespace Cthangband
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                Player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateVis);
             }
             return true;
         }
@@ -1442,7 +1442,7 @@ namespace Cthangband
                 item.IdentifyFlags.Set(Constants.IdentCursed);
                 item.IdentifyFlags.Set(Constants.IdentBroken);
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-                Player.UpdatesNeeded.Set(UpdateFlags.UpdateVril);
+                Player.UpdatesNeeded.Set(UpdateFlags.UpdateVis);
             }
             return true;
         }
@@ -1618,13 +1618,13 @@ namespace Cthangband
             {
                 Profile.Instance.MsgPrint("You channel vis to power the effect.");
                 Player.Vis -= cost;
-                Player.RedrawNeeded.Set(RedrawFlag.PrVril);
+                Player.RedrawNeeded.Set(RedrawFlag.PrVis);
                 return true;
             }
             // Use some vis in the attempt, even if we failed
             Profile.Instance.MsgPrint("You vis is insufficient to power the effect.");
             Player.Vis -= Program.Rng.RandomLessThan(Player.Vis / 2);
-            Player.RedrawNeeded.Set(RedrawFlag.PrVril);
+            Player.RedrawNeeded.Set(RedrawFlag.PrVis);
             return false;
         }
 
@@ -3252,14 +3252,14 @@ namespace Cthangband
                         break;
                     }
                 // Restore vis restores your to maximum vis
-                case PotionType.RestoreVril:
+                case PotionType.RestoreVis:
                     {
-                        if (Player.Vis < Player.MaxVril)
+                        if (Player.Vis < Player.MaxVis)
                         {
-                            Player.Vis = Player.MaxVril;
-                            Player.FractionalVril = 0;
+                            Player.Vis = Player.MaxVis;
+                            Player.FractionalVis = 0;
                             Profile.Instance.MsgPrint("Your feel your head clear.");
-                            Player.RedrawNeeded.Set(RedrawFlag.PrVril);
+                            Player.RedrawNeeded.Set(RedrawFlag.PrVis);
                             identified = true;
                         }
                         break;
@@ -3647,7 +3647,7 @@ namespace Cthangband
                     break;
 
                 case 25:
-                    itemSubCategory = PotionType.RestoreVril;
+                    itemSubCategory = PotionType.RestoreVis;
                     break;
 
                 case 26:
@@ -3778,7 +3778,7 @@ namespace Cthangband
                 case 6:
                     {
                         // Do a 300 damage vis ball
-                        _saveGame.SpellEffects.FireBall(new ProjectVril(SaveGame.Instance.SpellEffects), direction, 300, 3);
+                        _saveGame.SpellEffects.FireBall(new ProjectVis(SaveGame.Instance.SpellEffects), direction, 300, 3);
                         break;
                     }
                 case 7:
@@ -3787,7 +3787,7 @@ namespace Cthangband
                 case 10:
                     {
                         // Do a 250 damage vis bolt
-                        _saveGame.SpellEffects.FireBolt(new ProjectVril(SaveGame.Instance.SpellEffects), direction, 250);
+                        _saveGame.SpellEffects.FireBolt(new ProjectVis(SaveGame.Instance.SpellEffects), direction, 250);
                         break;
                     }
             }
@@ -4434,7 +4434,7 @@ namespace Cthangband
                             case CharacterClass.Channeler:
                                 if (Program.Rng.DieRoll(3) == 1)
                                 {
-                                    projectile = new ProjectVril(SaveGame.Instance.SpellEffects);
+                                    projectile = new ProjectVis(SaveGame.Instance.SpellEffects);
                                     projectileDescription = "vis";
                                 }
                                 else
@@ -4645,7 +4645,7 @@ namespace Cthangband
                     _saveGame.EnergyUse = 0;
                     break;
             }
-            Player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrVril);
+            Player.RedrawNeeded.Set(RedrawFlag.PrHp | RedrawFlag.PrVis);
         }
 
         /// <summary>

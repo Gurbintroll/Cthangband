@@ -281,7 +281,7 @@
     <Compile Include="Projection\ProjectMakeDoor.cs" />
     <Compile Include="Projection\ProjectMakeElderSign.cs" />
     <Compile Include="Projection\ProjectMakeTrap.cs" />
-    <Compile Include="Projection\ProjectMana.cs" />
+    <Compile Include="Projection\ProjectVis.cs" />
     <Compile Include="Projection\ProjectMeteor.cs" />
     <Compile Include="Projection\ProjectMissile.cs" />
     <Compile Include="Projection\ProjectNether.cs" />

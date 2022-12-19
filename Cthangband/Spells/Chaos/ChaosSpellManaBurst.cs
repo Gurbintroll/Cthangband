@@ -13,7 +13,7 @@ using System;
 namespace Cthangband.Spells.Chaos
 {
     [Serializable]
-    internal class ChaosSpellVrilBurst : BaseSpell
+    internal class ChaosSpellVisBurst : BaseSpell
     {
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
@@ -35,21 +35,21 @@ namespace Cthangband.Spells.Chaos
             {
                 case CharacterClass.Mage:
                     Level = 9;
-                    VrilCost = 6;
+                    VisCost = 6;
                     BaseFailure = 50;
                     FirstCastExperience = 1;
                     break;
 
                 case CharacterClass.Priest:
                     Level = 10;
-                    VrilCost = 6;
+                    VisCost = 6;
                     BaseFailure = 30;
                     FirstCastExperience = 5;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 14;
-                    VrilCost = 12;
+                    VisCost = 12;
                     BaseFailure = 40;
                     FirstCastExperience = 2;
                     break;
@@ -57,14 +57,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Monk:
                     Level = 8;
-                    VrilCost = 8;
+                    VisCost = 8;
                     BaseFailure = 30;
                     FirstCastExperience = 1;
                     break;
 
                 case CharacterClass.Fanatic:
                     Level = 7;
-                    VrilCost = 7;
+                    VisCost = 7;
                     BaseFailure = 30;
                     FirstCastExperience = 1;
                     break;
@@ -72,14 +72,14 @@ namespace Cthangband.Spells.Chaos
                 case CharacterClass.HighMage:
                 case CharacterClass.Cultist:
                     Level = 6;
-                    VrilCost = 4;
+                    VisCost = 4;
                     BaseFailure = 40;
                     FirstCastExperience = 1;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;

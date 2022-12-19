@@ -581,7 +581,7 @@ namespace Cthangband.Spells
                 new ProjectElec(this), new ProjectPois(this), new ProjectAcid(this), new ProjectCold(this),
                 new ProjectFire(this), new ProjectMissile(this), new ProjectArrow(this), new ProjectPlasma(this),
                 new ProjectHolyFire(this), new ProjectWater(this), new ProjectLight(this), new ProjectDark(this),
-                new ProjectForce(this), new ProjectInertia(this), new ProjectVril(this), new ProjectMeteor(this),
+                new ProjectForce(this), new ProjectInertia(this), new ProjectVis(this), new ProjectMeteor(this),
                 new ProjectIce(this), new ProjectChaos(this), new ProjectNether(this), new ProjectDisenchant(this),
                 new ProjectExplode(this), new ProjectSound(this), new ProjectNexus(this), new ProjectConfusion(this),
                 new ProjectTime(this), new ProjectGravity(this), new ProjectShard(this), new ProjectNuke(this),
@@ -2226,8 +2226,8 @@ namespace Cthangband.Spells
                     radius = 1;
                     break;
 
-                case PotionType.RestoreVril:
-                    dt = new ProjectVril(this);
+                case PotionType.RestoreVis:
+                    dt = new ProjectVis(this);
                     dam = Program.Rng.DiceRoll(10, 10);
                     radius = 1;
                     break;

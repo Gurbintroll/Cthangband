@@ -147,7 +147,7 @@ namespace Cthangband
             // Add the bonus text for spell casting abilities
             if (_player.Spellcasting.SpellStat == abilityIndex && abilityIndex != Ability.Strength)
             {
-                int vis = ability.VrilBonus;
+                int vis = ability.VisBonus;
                 // Casting abilities only have one or two inherent bonuses, so it's safe to start at three
                 bonus3 = vis % 2 == 0 ? $", {vis / 2} VP/lvl" : $", {vis / 2}.5 VP/lvl";
                 // Not all casting classes have actual spells
@@ -429,12 +429,12 @@ namespace Cthangband
             {
                 PrintShortScore("Cur Hit Points ", _player.Health, 31, 52, Colour.BrightRed);
             }
-            PrintShortScore("Max Vis Points ", _player.MaxVril, 32, 52, Colour.Green);
-            if (_player.Vis >= _player.MaxVril)
+            PrintShortScore("Max Vis Points ", _player.MaxVis, 32, 52, Colour.Green);
+            if (_player.Vis >= _player.MaxVis)
             {
                 PrintShortScore("Cur Vis Points ", _player.Vis, 33, 52, Colour.Green);
             }
-            else if (_player.Vis > _player.MaxVril * GlobalData.HitpointWarn / 10)
+            else if (_player.Vis > _player.MaxVis * GlobalData.HitpointWarn / 10)
             {
                 PrintShortScore("Cur Vis Points ", _player.Vis, 33, 52, Colour.BrightYellow);
             }

@@ -23,7 +23,7 @@ namespace Cthangband.Spells.Base
             get; set;
         }
 
-        public int VrilCost { get; set; }
+        public int VisCost { get; set; }
 
         public string Name { get; set; }
         public bool Worked { get; set; }
@@ -41,9 +41,9 @@ namespace Cthangband.Spells.Base
             int chance = BaseFailure;
             chance -= 3 * (player.Level - Level);
             chance -= 3 * (player.AbilityScores[player.Spellcasting.SpellStat].SpellFailureReduction - 1);
-            if (VrilCost > player.Vis)
+            if (VisCost > player.Vis)
             {
-                chance += 5 * (VrilCost - player.Vis);
+                chance += 5 * (VisCost - player.Vis);
             }
             int minfail = player.AbilityScores[player.Spellcasting.SpellStat].SpellMinFailChance;
             if (player.ProfessionIndex != CharacterClass.Priest && player.ProfessionIndex != CharacterClass.Druid &&
@@ -101,12 +101,12 @@ namespace Cthangband.Spells.Base
         {
             return Level >= 99
                 ? "(illegible)"
-                : $"{Name,-30} {Level,3} {VrilCost,4} {FailureChance(player),3}% {GetComment(player)}";
+                : $"{Name,-30} {Level,3} {VisCost,4} {FailureChance(player),3}% {GetComment(player)}";
         }
 
         public override string ToString()
         {
-            return $"{Name} ({Level}, {VrilCost}, {BaseFailure}, {FirstCastExperience})";
+            return $"{Name} ({Level}, {VisCost}, {BaseFailure}, {FirstCastExperience})";
         }
 
         protected abstract string Comment(Player player);

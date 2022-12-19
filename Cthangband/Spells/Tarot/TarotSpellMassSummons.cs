@@ -48,7 +48,7 @@ namespace Cthangband.Spells.Tarot
             {
                 case CharacterClass.Mage:
                     Level = 42;
-                    VrilCost = 100;
+                    VisCost = 100;
                     BaseFailure = 80;
                     FirstCastExperience = 200;
                     break;
@@ -56,21 +56,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.Priest:
                 case CharacterClass.Monk:
                     Level = 46;
-                    VrilCost = 110;
+                    VisCost = 110;
                     BaseFailure = 80;
                     FirstCastExperience = 200;
                     break;
 
                 case CharacterClass.Rogue:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
                 case CharacterClass.Ranger:
                     Level = 50;
-                    VrilCost = 120;
+                    VisCost = 120;
                     BaseFailure = 80;
                     FirstCastExperience = 200;
                     break;
@@ -78,21 +78,21 @@ namespace Cthangband.Spells.Tarot
                 case CharacterClass.WarriorMage:
                 case CharacterClass.Cultist:
                     Level = 46;
-                    VrilCost = 120;
+                    VisCost = 120;
                     BaseFailure = 80;
                     FirstCastExperience = 200;
                     break;
 
                 case CharacterClass.HighMage:
                     Level = 38;
-                    VrilCost = 90;
+                    VisCost = 90;
                     BaseFailure = 70;
                     FirstCastExperience = 200;
                     break;
 
                 default:
                     Level = 99;
-                    VrilCost = 0;
+                    VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
