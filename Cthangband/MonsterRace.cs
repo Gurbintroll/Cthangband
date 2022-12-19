@@ -113,7 +113,7 @@ namespace Cthangband
             Flags2 |= original.FireAura ? MonsterFlag2.FireAura : 0;
             Flags2 |= original.BashDoor ? MonsterFlag2.BashDoor : 0;
             Flags2 |= original.ColdBlood ? MonsterFlag2.ColdBlood : 0;
-            Flags2 |= original.ColdBlood ? MonsterFlag2.ColdBlood : 0;
+            Flags2 |= original.EldritchHorror ? MonsterFlag2.EldritchHorror : 0;
             Flags2 |= original.EmptyMind ? MonsterFlag2.EmptyMind : 0;
             Flags2 |= original.Invisible ? MonsterFlag2.Invisible : 0;
             Flags2 |= original.KillBody ? MonsterFlag2.KillBody : 0;
