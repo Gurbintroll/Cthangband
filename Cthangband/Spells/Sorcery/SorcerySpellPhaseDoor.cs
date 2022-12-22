@@ -24,29 +24,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Phase Door";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 1;
                     VisCost = 2;
                     BaseFailure = 24;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 7;
                     VisCost = 2;
                     BaseFailure = 55;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 24;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 15;

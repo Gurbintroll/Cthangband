@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Wraithform";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 75;
                     FirstCastExperience = 70;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 24;
                     VisCost = 24;
                     BaseFailure = 75;
                     FirstCastExperience = 70;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 27;
                     VisCost = 27;
                     BaseFailure = 70;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 75;
                     FirstCastExperience = 70;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 65;

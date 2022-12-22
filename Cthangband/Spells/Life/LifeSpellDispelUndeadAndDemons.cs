@@ -25,36 +25,36 @@ namespace Cthangband.Spells.Life
             Name = "Dispel Undead & Demons";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 33;
                     VisCost = 33;
                     BaseFailure = 60;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 17;
                     VisCost = 14;
                     BaseFailure = 55;
                     FirstCastExperience = 70;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 30;
                     VisCost = 25;
                     BaseFailure = 60;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 34;
                     VisCost = 34;
                     BaseFailure = 60;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 30;
                     VisCost = 30;
                     BaseFailure = 50;

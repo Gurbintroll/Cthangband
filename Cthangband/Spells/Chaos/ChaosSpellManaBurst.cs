@@ -24,7 +24,7 @@ namespace Cthangband.Spells.Chaos
             }
             SaveGame.Instance.SpellEffects.FireBall(new ProjectMissile(SaveGame.Instance.SpellEffects), dir,
                 Program.Rng.DiceRoll(3, 5) + player.Level + (player.Level /
-                (player.ProfessionIndex == CharacterClass.Mage || player.ProfessionIndex == CharacterClass.HighMage ? 2 : 4)),
+                (player.CharacterClassIndex == CharacterClassId.Mage || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4)),
                 player.Level < 30 ? 2 : 3);
         }
 
@@ -33,44 +33,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Vis Burst";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 9;
                     VisCost = 6;
                     BaseFailure = 50;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 10;
                     VisCost = 6;
                     BaseFailure = 30;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 14;
                     VisCost = 12;
                     BaseFailure = 40;
                     FirstCastExperience = 2;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 8;
                     VisCost = 8;
                     BaseFailure = 30;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 30;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 6;
                     VisCost = 4;
                     BaseFailure = 40;
@@ -89,7 +89,7 @@ namespace Cthangband.Spells.Chaos
         protected override string Comment(Player player)
         {
             int i = player.Level + (player.Level /
-                    (player.ProfessionIndex == CharacterClass.Mage || player.ProfessionIndex == CharacterClass.HighMage ? 2 : 4));
+                    (player.CharacterClassIndex == CharacterClassId.Mage || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4));
             return $"dam 3d5+{i}";
         }
     }

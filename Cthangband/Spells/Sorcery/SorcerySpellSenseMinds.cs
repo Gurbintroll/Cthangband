@@ -24,29 +24,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Sense Minds";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 14;
                     VisCost = 10;
                     BaseFailure = 60;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 16;
                     VisCost = 10;
                     BaseFailure = 60;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 16;
                     VisCost = 14;
                     BaseFailure = 60;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 12;
                     VisCost = 9;
                     BaseFailure = 50;

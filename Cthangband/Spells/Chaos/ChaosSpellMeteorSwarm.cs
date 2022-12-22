@@ -52,44 +52,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Meteor Swarm";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 32;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 37;
                     VisCost = 37;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 40;
                     VisCost = 45;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 40;
                     VisCost = 35;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 35;
                     VisCost = 35;
                     BaseFailure = 85;
                     FirstCastExperience = 35;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 32;
                     VisCost = 30;
                     BaseFailure = 75;

@@ -28,37 +28,37 @@ namespace Cthangband.Spells.Nature
             Name = "Nature Awareness";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 7;
                     VisCost = 6;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 9;
                     VisCost = 10;
                     BaseFailure = 40;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 11;
                     VisCost = 9;
                     BaseFailure = 40;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 35;

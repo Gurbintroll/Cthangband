@@ -24,29 +24,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Mass Sleep";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 13;
                     VisCost = 7;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 30;
                     VisCost = 20;
                     BaseFailure = 80;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 13;
                     VisCost = 12;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 9;
                     VisCost = 5;
                     BaseFailure = 40;

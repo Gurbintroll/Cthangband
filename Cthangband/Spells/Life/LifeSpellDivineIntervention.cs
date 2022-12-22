@@ -45,36 +45,36 @@ namespace Cthangband.Spells.Life
             Name = "Divine Intervention";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 48;
                     VisCost = 50;
                     BaseFailure = 80;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 40;
                     VisCost = 40;
                     BaseFailure = 80;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 45;
                     VisCost = 45;
                     BaseFailure = 80;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 48;
                     VisCost = 50;
                     BaseFailure = 80;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 45;
                     VisCost = 60;
                     BaseFailure = 60;

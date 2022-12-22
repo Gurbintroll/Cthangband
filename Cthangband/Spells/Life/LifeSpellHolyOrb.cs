@@ -24,7 +24,7 @@ namespace Cthangband.Spells.Life
             }
             SaveGame.Instance.SpellEffects.FireBall(new ProjectHolyFire(SaveGame.Instance.SpellEffects), dir,
                 Program.Rng.DiceRoll(3, 6) + player.Level + (player.Level /
-                (player.ProfessionIndex == CharacterClass.Priest || player.ProfessionIndex == CharacterClass.HighMage ? 2 : 4)),
+                (player.CharacterClassIndex == CharacterClassId.Priest || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4)),
                 player.Level < 30 ? 2 : 3);
         }
 
@@ -33,36 +33,36 @@ namespace Cthangband.Spells.Life
             Name = "Holy Orb";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 10;
                     VisCost = 8;
                     BaseFailure = 40;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 18;
                     VisCost = 15;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 26;
                     VisCost = 26;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 19;
                     VisCost = 17;
                     BaseFailure = 40;
@@ -80,7 +80,7 @@ namespace Cthangband.Spells.Life
 
         protected override string Comment(Player player)
         {
-            int orb = player.Level / (player.ProfessionIndex == CharacterClass.Priest || player.ProfessionIndex == CharacterClass.HighMage
+            int orb = player.Level / (player.CharacterClassIndex == CharacterClassId.Priest || player.CharacterClassIndex == CharacterClassId.HighMage
                           ? 2
                           : 4);
             return $" dam 3d6+{player.Level + orb}";

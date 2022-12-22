@@ -30,29 +30,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Teleport Away";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 18;
                     VisCost = 12;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 31;
                     VisCost = 23;
                     BaseFailure = 80;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 20;
                     VisCost = 15;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 13;
                     VisCost = 8;
                     BaseFailure = 50;

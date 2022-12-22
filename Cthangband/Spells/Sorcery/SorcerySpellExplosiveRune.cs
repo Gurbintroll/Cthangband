@@ -24,29 +24,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Yellow Sign";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 39;
                     BaseFailure = 95;
                     FirstCastExperience = 160;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 35;
                     VisCost = 40;
                     BaseFailure = 95;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 30;
                     VisCost = 35;
                     BaseFailure = 95;
                     FirstCastExperience = 160;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 20;
                     VisCost = 25;
                     BaseFailure = 85;

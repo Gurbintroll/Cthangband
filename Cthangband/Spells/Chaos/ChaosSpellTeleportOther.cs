@@ -30,44 +30,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Teleport Other";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 18;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 29;
                     VisCost = 22;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 39;
                     VisCost = 29;
                     BaseFailure = 65;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 37;
                     VisCost = 35;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 33;
                     VisCost = 24;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 23;
                     VisCost = 15;
                     BaseFailure = 50;

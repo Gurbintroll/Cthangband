@@ -42,29 +42,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Dimension Door";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 80;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 15;
                     VisCost = 10;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 15;
                     VisCost = 12;
                     BaseFailure = 70;
                     FirstCastExperience = 30;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 9;
                     VisCost = 9;
                     BaseFailure = 70;

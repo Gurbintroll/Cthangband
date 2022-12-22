@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Teleport Level";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 20;
                     VisCost = 18;
                     BaseFailure = 60;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 22;
                     VisCost = 22;
                     BaseFailure = 60;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 27;
                     VisCost = 27;
                     BaseFailure = 60;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 24;
                     VisCost = 22;
                     BaseFailure = 60;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 17;
                     VisCost = 12;
                     BaseFailure = 50;

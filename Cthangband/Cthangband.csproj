@@ -356,7 +356,7 @@
     <Compile Include="Enumerations\BirthStage.cs" />
     <Compile Include="Enumerations\CastingType.cs" />
     <Compile Include="Enumerations\InventorySlot.cs" />
-    <Compile Include="Enumerations\CharacterClass.cs" />
+    <Compile Include="Enumerations\CharacterClassId.cs" />
     <Compile Include="Enumerations\ChestTrap.cs" />
     <Compile Include="Enumerations\Colour.cs" />
     <Compile Include="Enumerations\ArtifactId.cs" />
@@ -709,7 +709,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="PlayerFactory.cs" />
     <Compile Include="PlayerHistory.cs" />
-    <Compile Include="Profession.cs" />
+    <Compile Include="CharacterClass.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

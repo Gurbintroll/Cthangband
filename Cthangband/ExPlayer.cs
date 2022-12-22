@@ -71,7 +71,7 @@ namespace Cthangband
             GenderIndex = player.GenderIndex;
             CurrentRace = player.CurrentRace;
             BirthRace = player.BirthRace;
-            ProfessionIndex = player.ProfessionIndex;
+            ProfessionIndex = player.CharacterClassIndex;
             Realm1 = player.Realm1;
             Realm2 = player.Realm2;
             Name = player.Name;

@@ -25,36 +25,36 @@ namespace Cthangband.Spells.Life
             Name = "Satisfy Hunger";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 15;
                     VisCost = 14;
                     BaseFailure = 45;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 7;
                     VisCost = 5;
                     BaseFailure = 38;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 13;
                     VisCost = 10;
                     BaseFailure = 45;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 16;
                     VisCost = 16;
                     BaseFailure = 45;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 12;
                     VisCost = 10;
                     BaseFailure = 35;

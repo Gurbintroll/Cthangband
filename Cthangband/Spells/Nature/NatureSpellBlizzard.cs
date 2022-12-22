@@ -30,37 +30,37 @@ namespace Cthangband.Spells.Nature
             Name = "Blizzard";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 75;
                     FirstCastExperience = 29;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 27;
                     VisCost = 27;
                     BaseFailure = 75;
                     FirstCastExperience = 29;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 30;
                     VisCost = 35;
                     BaseFailure = 75;
                     FirstCastExperience = 125;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 28;
                     VisCost = 28;
                     BaseFailure = 75;
                     FirstCastExperience = 29;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 22;
                     VisCost = 22;
                     BaseFailure = 65;

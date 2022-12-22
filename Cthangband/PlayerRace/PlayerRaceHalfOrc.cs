@@ -120,7 +120,7 @@ namespace Cthangband.PlayerRace
 
         public override void UseRacialPower(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(3, 5, Ability.Wisdom, player.ProfessionIndex == CharacterClass.Warrior ? 5 : 10))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(3, 5, Ability.Wisdom, player.CharacterClassIndex == CharacterClassId.Warrior ? 5 : 10))
             {
                 Profile.Instance.MsgPrint("You play tough.");
                 player.SetTimedFear(0);

@@ -34,37 +34,37 @@ namespace Cthangband.Spells.Nature
             Name = "Whirlwind Attack";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 23;
                     VisCost = 23;
                     BaseFailure = 80;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 60;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 26;
                     VisCost = 26;
                     BaseFailure = 60;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 27;
                     VisCost = 27;
                     BaseFailure = 60;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 70;

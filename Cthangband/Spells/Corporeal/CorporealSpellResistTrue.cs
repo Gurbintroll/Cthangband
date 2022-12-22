@@ -28,37 +28,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Resist True";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 36;
                     VisCost = 33;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 42;
                     VisCost = 40;
                     BaseFailure = 90;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 40;
                     VisCost = 40;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 28;
                     VisCost = 20;
                     BaseFailure = 65;

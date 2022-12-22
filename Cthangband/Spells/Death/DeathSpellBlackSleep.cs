@@ -29,50 +29,50 @@ namespace Cthangband.Spells.Death
             Name = "Black Sleep";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 30;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 30;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 15;
                     VisCost = 7;
                     BaseFailure = 80;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 11;
                     VisCost = 8;
                     BaseFailure = 40;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 8;
                     VisCost = 8;
                     BaseFailure = 30;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 30;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 3;
                     VisCost = 3;
                     BaseFailure = 20;

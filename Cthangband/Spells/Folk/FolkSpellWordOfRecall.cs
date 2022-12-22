@@ -24,43 +24,43 @@ namespace Cthangband.Spells.Folk
             Name = "Word of Recall";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 45;
                     VisCost = 50;
                     BaseFailure = 70;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 47;
                     VisCost = 55;
                     BaseFailure = 70;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 49;
                     VisCost = 65;
                     BaseFailure = 70;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 49;
                     VisCost = 65;
                     BaseFailure = 70;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 48;
                     VisCost = 65;
                     BaseFailure = 70;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 43;
                     VisCost = 40;
                     BaseFailure = 60;

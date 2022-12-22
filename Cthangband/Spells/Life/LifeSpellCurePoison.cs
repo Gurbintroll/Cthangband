@@ -24,36 +24,36 @@ namespace Cthangband.Spells.Life
             Name = "Cure Poison";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 17;
                     VisCost = 17;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 9;
                     VisCost = 6;
                     BaseFailure = 38;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 15;
                     VisCost = 15;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 15;
                     VisCost = 14;
                     BaseFailure = 40;

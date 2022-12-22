@@ -31,44 +31,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Fist of Force";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 14;
                     VisCost = 9;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 16;
                     VisCost = 11;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 25;
                     VisCost = 21;
                     BaseFailure = 60;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 17;
                     VisCost = 15;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 15;
                     VisCost = 9;
                     BaseFailure = 45;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 12;
                     VisCost = 6;
                     BaseFailure = 35;

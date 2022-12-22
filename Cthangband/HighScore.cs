@@ -36,7 +36,7 @@ namespace Cthangband
             }
             Pts = player.GetScore(saveGame);
             Prace = player.CurrentRace;
-            Pclass = player.ProfessionIndex;
+            Pclass = player.CharacterClassIndex;
             if (player.IsDead)
             {
                 When = DateTime.Now.ToString("dd-MMM-yyyy");
@@ -49,7 +49,7 @@ namespace Cthangband
                 How = "nobody (yet!)";
             }
             Who =
-                $"{player.Name.Trim()}{player.Generation.ToRoman(true)} the level {player.Level} {PlayerRaces.Instance[player.CurrentRace].Title} {Profession.ClassSubName(player.ProfessionIndex, player.Realm1)}";
+                $"{player.Name.Trim()}{player.Generation.ToRoman(true)} the level {player.Level} {PlayerRaces.Instance[player.CurrentRace].Title} {CharacterClass.ClassSubName(player.CharacterClassIndex, player.Realm1)}";
             if (saveGame.CurrentDepth > 0)
             {
                 Where = $"on level {saveGame.CurrentDepth} of {saveGame.CurDungeon.Name}";

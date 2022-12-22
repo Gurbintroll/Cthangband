@@ -24,43 +24,43 @@ namespace Cthangband.Spells.Folk
             Name = "See Invisible";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 20;
                     BaseFailure = 60;
                     FirstCastExperience = 13;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 29;
                     VisCost = 26;
                     BaseFailure = 60;
                     FirstCastExperience = 13;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 60;
                     FirstCastExperience = 13;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 60;
                     FirstCastExperience = 13;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 30;
                     VisCost = 27;
                     BaseFailure = 60;
                     FirstCastExperience = 13;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 22;
                     VisCost = 18;
                     BaseFailure = 50;

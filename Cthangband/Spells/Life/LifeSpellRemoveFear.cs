@@ -24,36 +24,36 @@ namespace Cthangband.Spells.Life
             Name = "Remove Fear";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 3;
                     VisCost = 2;
                     BaseFailure = 25;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 4;
                     VisCost = 3;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 6;
                     VisCost = 6;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 25;

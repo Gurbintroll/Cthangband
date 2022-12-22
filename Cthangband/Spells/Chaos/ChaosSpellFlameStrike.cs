@@ -25,44 +25,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Flame Strike";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 37;
                     VisCost = 34;
                     BaseFailure = 75;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 39;
                     VisCost = 37;
                     BaseFailure = 75;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 42;
                     VisCost = 42;
                     BaseFailure = 75;
                     FirstCastExperience = 42;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 42;
                     VisCost = 40;
                     BaseFailure = 75;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 37;
                     VisCost = 37;
                     BaseFailure = 75;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 34;
                     VisCost = 32;
                     BaseFailure = 65;

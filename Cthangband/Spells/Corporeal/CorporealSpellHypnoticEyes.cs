@@ -29,37 +29,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Hypnotic Eyes";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 40;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 42;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 45;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 45;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 35;
                     VisCost = 80;
                     BaseFailure = 85;

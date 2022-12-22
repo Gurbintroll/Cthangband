@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Nature
             Name = "Stair Building";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 9;
                     VisCost = 12;
                     BaseFailure = 40;
                     FirstCastExperience = 44;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 11;
                     VisCost = 12;
                     BaseFailure = 40;
                     FirstCastExperience = 44;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 50;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 40;
                     FirstCastExperience = 44;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 20;

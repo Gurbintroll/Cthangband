@@ -29,37 +29,37 @@ namespace Cthangband.Spells.Nature
             Name = "Summon Animal";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 90;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 30;
                     VisCost = 30;
                     BaseFailure = 55;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 23;
                     VisCost = 23;
                     BaseFailure = 65;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 31;
                     VisCost = 31;
                     BaseFailure = 65;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 80;

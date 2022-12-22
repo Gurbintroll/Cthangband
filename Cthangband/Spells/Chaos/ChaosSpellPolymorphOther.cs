@@ -29,44 +29,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Polymorph Other";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 11;
                     VisCost = 7;
                     BaseFailure = 45;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 14;
                     VisCost = 11;
                     BaseFailure = 45;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 22;
                     VisCost = 20;
                     BaseFailure = 60;
                     FirstCastExperience = 30;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 45;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 11;
                     VisCost = 11;
                     BaseFailure = 45;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 9;
                     VisCost = 5;
                     BaseFailure = 35;

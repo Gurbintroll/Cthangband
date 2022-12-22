@@ -28,29 +28,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Clairvoyance";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 30;
                     VisCost = 40;
                     BaseFailure = 80;
                     FirstCastExperience = 120;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 37;
                     VisCost = 40;
                     BaseFailure = 80;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 35;
                     VisCost = 45;
                     BaseFailure = 80;
                     FirstCastExperience = 120;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 25;
                     VisCost = 30;
                     BaseFailure = 70;

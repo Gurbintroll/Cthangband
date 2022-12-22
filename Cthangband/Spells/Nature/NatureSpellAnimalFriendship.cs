@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Nature
             Name = "Animal Friendship";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 30;
                     VisCost = 30;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 35;
                     VisCost = 35;
                     BaseFailure = 80;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 80;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 38;
                     VisCost = 38;
                     BaseFailure = 85;
                     FirstCastExperience = 80;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 80;

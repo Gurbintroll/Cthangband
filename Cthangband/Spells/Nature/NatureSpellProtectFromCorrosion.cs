@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Nature
             Name = "Protection from Corrosion";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 40;
                     VisCost = 90;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 42;
                     VisCost = 90;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 42;
                     VisCost = 80;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 49;
                     VisCost = 95;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 37;
                     VisCost = 65;
                     BaseFailure = 80;

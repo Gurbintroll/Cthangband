@@ -29,44 +29,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Phantasmal Servant";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 28;
                     VisCost = 24;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 30;
                     VisCost = 25;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 33;
                     VisCost = 26;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 33;
                     VisCost = 26;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 31;
                     VisCost = 26;
                     BaseFailure = 60;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 25;
                     VisCost = 22;
                     BaseFailure = 50;

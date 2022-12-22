@@ -24,50 +24,50 @@ namespace Cthangband.Spells.Death
             Name = "Word of Death";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 33;
                     VisCost = 35;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 40;
                     VisCost = 40;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 99;
                     VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 48;
                     VisCost = 50;
                     BaseFailure = 30;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 45;
                     VisCost = 45;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 42;
                     VisCost = 50;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 29;
                     VisCost = 30;
                     BaseFailure = 60;

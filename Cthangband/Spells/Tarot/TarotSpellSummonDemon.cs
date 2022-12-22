@@ -41,44 +41,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Summon Demon";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 47;
                     VisCost = 100;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 48;
                     VisCost = 115;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 49;
                     VisCost = 125;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 99;
                     VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 48;
                     VisCost = 125;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 42;
                     VisCost = 90;
                     BaseFailure = 70;

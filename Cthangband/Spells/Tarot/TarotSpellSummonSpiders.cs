@@ -41,44 +41,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Summon Spiders";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 24;
                     VisCost = 24;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 27;
                     VisCost = 25;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 30;
                     VisCost = 30;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 28;
                     VisCost = 26;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 29;
                     VisCost = 27;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 21;
                     VisCost = 21;
                     BaseFailure = 60;

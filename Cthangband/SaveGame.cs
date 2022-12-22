@@ -1813,7 +1813,7 @@ namespace Cthangband
                     buf += " the Magnificent";
                 }
                 Gui.Print(buf, 39, 1);
-                buf = $"Level {corpse.Level} {Profession.ClassSubName(corpse.ProfessionIndex, corpse.Realm1)}";
+                buf = $"Level {corpse.Level} {CharacterClass.ClassSubName(corpse.CharacterClassIndex, corpse.Realm1)}";
                 Gui.Print(buf, 40, 1);
                 string tmp = $"Killed on Level {CurrentDepth}".PadLeft(45);
                 Gui.Print(tmp, 39, 34);
@@ -2243,11 +2243,11 @@ namespace Cthangband
             if (TotalFriends != 0)
             {
                 int upkeepDivider = 20;
-                if (Player.ProfessionIndex == CharacterClass.Mage)
+                if (Player.CharacterClassIndex == CharacterClassId.Mage)
                 {
                     upkeepDivider = 15;
                 }
-                else if (Player.ProfessionIndex == CharacterClass.HighMage)
+                else if (Player.CharacterClassIndex == CharacterClassId.HighMage)
                 {
                     upkeepDivider = 12;
                 }
@@ -2618,7 +2618,7 @@ namespace Cthangband
             {
                 Player.RedrawNeeded.Clear(RedrawFlag.PrMisc);
                 playerStatus.PrtField(Player.Race.Title, ScreenLocation.RowRace, ScreenLocation.ColRace);
-                playerStatus.PrtField(Profession.ClassSubName(Player.ProfessionIndex, Player.Realm1), ScreenLocation.RowClass,
+                playerStatus.PrtField(CharacterClass.ClassSubName(Player.CharacterClassIndex, Player.Realm1), ScreenLocation.RowClass,
                     ScreenLocation.ColClass);
             }
             if (Player.RedrawNeeded.IsSet(RedrawFlag.PrTitle))

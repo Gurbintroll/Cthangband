@@ -25,36 +25,36 @@ namespace Cthangband.Spells.Life
             Name = "Warding True";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 46;
                     VisCost = 70;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 44;
                     VisCost = 44;
                     BaseFailure = 80;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 46;
                     VisCost = 60;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 50;
                     VisCost = 70;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 40;
                     VisCost = 70;
                     BaseFailure = 70;

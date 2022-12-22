@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Teleport Level";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 70;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 38;
                     VisCost = 35;
                     BaseFailure = 70;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 42;
                     VisCost = 38;
                     BaseFailure = 70;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 42;
                     VisCost = 38;
                     BaseFailure = 70;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 40;
                     VisCost = 38;
                     BaseFailure = 70;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 30;
                     VisCost = 28;
                     BaseFailure = 60;

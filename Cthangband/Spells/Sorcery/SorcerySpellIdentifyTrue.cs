@@ -24,29 +24,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Identify True";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 40;
                     VisCost = 35;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 40;
                     VisCost = 40;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 28;
                     VisCost = 20;
                     BaseFailure = 65;

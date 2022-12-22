@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Call Chaos";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 41;
                     VisCost = 42;
                     BaseFailure = 85;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 43;
                     VisCost = 45;
                     BaseFailure = 85;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 48;
                     VisCost = 48;
                     BaseFailure = 85;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 46;
                     VisCost = 44;
                     BaseFailure = 85;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 41;
                     VisCost = 42;
                     BaseFailure = 85;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 36;
                     VisCost = 36;
                     BaseFailure = 75;

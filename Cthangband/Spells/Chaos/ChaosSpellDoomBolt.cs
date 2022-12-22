@@ -31,44 +31,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Doom Bolt";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 23;
                     VisCost = 15;
                     BaseFailure = 50;
                     FirstCastExperience = 11;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 25;
                     VisCost = 18;
                     BaseFailure = 50;
                     FirstCastExperience = 11;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 35;
                     VisCost = 31;
                     BaseFailure = 70;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 29;
                     VisCost = 30;
                     BaseFailure = 50;
                     FirstCastExperience = 11;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 28;
                     VisCost = 18;
                     BaseFailure = 50;
                     FirstCastExperience = 11;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 21;
                     VisCost = 12;
                     BaseFailure = 40;

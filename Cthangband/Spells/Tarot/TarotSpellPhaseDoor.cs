@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Phase Door";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 50;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 50;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 5;
                     VisCost = 2;
                     BaseFailure = 50;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 3;
                     VisCost = 1;
                     BaseFailure = 50;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 50;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 50;

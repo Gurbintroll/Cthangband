@@ -24,29 +24,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Enchant Armour";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 40;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 44;
                     VisCost = 100;
                     BaseFailure = 80;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 45;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 35;
                     VisCost = 80;
                     BaseFailure = 85;

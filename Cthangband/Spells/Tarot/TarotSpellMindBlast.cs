@@ -18,13 +18,13 @@ namespace Cthangband.Spells.Tarot
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             int beam;
-            switch (player.ProfessionIndex)
+            switch (player.CharacterClassIndex)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     beam = player.Level;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     beam = player.Level + 10;
                     break;
 
@@ -46,44 +46,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Mind Blast";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 3;
                     VisCost = 3;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 7;
                     VisCost = 5;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 6;
                     VisCost = 6;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 40;

@@ -29,43 +29,43 @@ namespace Cthangband.Spells.Folk
             Name = "Stone to Mud";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 20;
                     VisCost = 16;
                     BaseFailure = 60;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 22;
                     VisCost = 20;
                     BaseFailure = 60;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 25;
                     VisCost = 23;
                     BaseFailure = 60;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 25;
                     VisCost = 23;
                     BaseFailure = 60;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 23;
                     VisCost = 22;
                     BaseFailure = 60;
                     FirstCastExperience = 9;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 17;
                     VisCost = 15;
                     BaseFailure = 50;

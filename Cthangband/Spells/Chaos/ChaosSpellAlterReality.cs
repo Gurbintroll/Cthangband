@@ -31,44 +31,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Alter Reality";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 30;
                     VisCost = 25;
                     BaseFailure = 85;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 85;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 38;
                     VisCost = 35;
                     BaseFailure = 85;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 85;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 30;
                     VisCost = 30;
                     BaseFailure = 85;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 26;
                     VisCost = 22;
                     BaseFailure = 75;

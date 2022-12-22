@@ -27,36 +27,36 @@ namespace Cthangband.Spells.Life
             Name = "Banish";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 55;
                     BaseFailure = 80;
                     FirstCastExperience = 115;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 80;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 35;
                     VisCost = 55;
                     BaseFailure = 80;
                     FirstCastExperience = 115;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 42;
                     VisCost = 55;
                     BaseFailure = 80;
                     FirstCastExperience = 115;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 33;
                     VisCost = 44;
                     BaseFailure = 60;

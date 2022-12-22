@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Nature
             Name = "Wall of Stone";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 38;
                     VisCost = 45;
                     BaseFailure = 75;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 40;
                     VisCost = 50;
                     BaseFailure = 85;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 40;
                     VisCost = 55;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 45;
                     VisCost = 48;
                     BaseFailure = 75;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 35;
                     VisCost = 44;
                     BaseFailure = 65;

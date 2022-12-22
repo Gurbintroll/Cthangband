@@ -42,37 +42,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Move Body";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 80;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 15;
                     VisCost = 15;
                     BaseFailure = 80;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 18;
                     VisCost = 18;
                     BaseFailure = 80;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 15;
                     VisCost = 12;
                     BaseFailure = 70;
                     FirstCastExperience = 30;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 9;
                     VisCost = 9;
                     BaseFailure = 70;

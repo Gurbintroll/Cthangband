@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Astral Lore";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 50;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 38;
                     VisCost = 55;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 42;
                     VisCost = 65;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 40;
                     VisCost = 65;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 40;
                     VisCost = 60;
                     BaseFailure = 90;
                     FirstCastExperience = 100;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 32;
                     VisCost = 45;
                     BaseFailure = 80;

@@ -25,44 +25,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Extradimensional Being";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 40;
                     VisCost = 100;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 41;
                     VisCost = 110;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 45;
                     VisCost = 150;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 44;
                     VisCost = 120;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 42;
                     VisCost = 120;
                     BaseFailure = 90;
                     FirstCastExperience = 250;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 36;
                     VisCost = 90;
                     BaseFailure = 80;

@@ -30,37 +30,37 @@ namespace Cthangband.Spells.Nature
             Name = "Whirlpool";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 85;
                     FirstCastExperience = 65;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 37;
                     VisCost = 32;
                     BaseFailure = 85;
                     FirstCastExperience = 65;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 36;
                     VisCost = 33;
                     BaseFailure = 75;
                     FirstCastExperience = 45;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 38;
                     VisCost = 38;
                     BaseFailure = 85;
                     FirstCastExperience = 65;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 32;
                     VisCost = 28;
                     BaseFailure = 75;

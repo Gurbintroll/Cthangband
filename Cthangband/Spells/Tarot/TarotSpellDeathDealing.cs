@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Death Dealing";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 42;
                     VisCost = 50;
                     BaseFailure = 50;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 45;
                     VisCost = 55;
                     BaseFailure = 50;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 48;
                     VisCost = 75;
                     BaseFailure = 50;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 99;
                     VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 46;
                     VisCost = 55;
                     BaseFailure = 50;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 39;
                     VisCost = 45;
                     BaseFailure = 40;

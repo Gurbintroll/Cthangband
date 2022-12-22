@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Restore Soul";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 42;
                     VisCost = 50;
                     BaseFailure = 90;
                     FirstCastExperience = 175;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 45;
                     VisCost = 50;
                     BaseFailure = 90;
                     FirstCastExperience = 175;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 49;
                     VisCost = 50;
                     BaseFailure = 90;
                     FirstCastExperience = 175;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 46;
                     VisCost = 55;
                     BaseFailure = 90;
                     FirstCastExperience = 175;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 40;
                     VisCost = 40;
                     BaseFailure = 80;

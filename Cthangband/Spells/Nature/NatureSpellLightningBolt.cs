@@ -18,13 +18,13 @@ namespace Cthangband.Spells.Nature
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             int beam;
-            switch (player.ProfessionIndex)
+            switch (player.CharacterClassIndex)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     beam = player.Level;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     beam = player.Level + 10;
                     break;
 
@@ -46,37 +46,37 @@ namespace Cthangband.Spells.Nature
             Name = "Lightning Bolt";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 8;
                     VisCost = 7;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 10;
                     VisCost = 7;
                     BaseFailure = 40;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 11;
                     VisCost = 11;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 5;
                     VisCost = 4;
                     BaseFailure = 20;

@@ -24,36 +24,36 @@ namespace Cthangband.Spells.Life
             Name = "Bless Weapon";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 85;
                     BaseFailure = 80;
                     FirstCastExperience = 115;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 30;
                     VisCost = 50;
                     BaseFailure = 80;
                     FirstCastExperience = 130;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 35;
                     VisCost = 65;
                     BaseFailure = 80;
                     FirstCastExperience = 115;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 38;
                     VisCost = 85;
                     BaseFailure = 80;
                     FirstCastExperience = 115;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 30;
                     VisCost = 70;
                     BaseFailure = 60;

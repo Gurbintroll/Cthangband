@@ -30,44 +30,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Shard Ball";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 43;
                     VisCost = 44;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 45;
                     VisCost = 47;
                     BaseFailure = 90;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 50;
                     VisCost = 50;
                     BaseFailure = 90;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 48;
                     VisCost = 48;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 43;
                     VisCost = 44;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 38;
                     VisCost = 38;
                     BaseFailure = 70;

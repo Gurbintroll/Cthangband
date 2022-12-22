@@ -34,6 +34,8 @@ namespace Cthangband
         public int AttackBonus;
         public int BaseArmourClass;
         public string BirthRace;
+        public CharacterClass CharacterClass = new CharacterClass();
+        public int CharacterClassIndex;
         public string CurrentRace;
         public int DamageBonus;
         public int DisplayedArmourClassBonus;
@@ -135,8 +137,6 @@ namespace Cthangband
         public bool OldRestrictingGloves;
         public int OldSpareSpellSlots;
         public bool OldUnpriestlyWeapon;
-        public Profession Profession = new Profession();
-        public int ProfessionIndex;
         public IPlayerRace Race = null;
         public Realm Realm1;
         public Realm Realm2;
@@ -236,7 +236,7 @@ namespace Cthangband
         {
             CurrentRace = newRace;
             Race = PlayerRaces.Instance[CurrentRace];
-            ExperienceMultiplier = Race.ExperienceFactor + Profession.ExperienceFactor;
+            ExperienceMultiplier = Race.ExperienceFactor + CharacterClass.ExperienceFactor;
             if (GenderIndex == Constants.SexMale)
             {
                 Height = Program.Rng.RandomNormal(Race.MaleBaseHeight, Race.MaleHeightRange);
@@ -308,7 +308,7 @@ namespace Cthangband
                 if (Level > MaxLevelGained)
                 {
                     MaxLevelGained = Level;
-                    if (ProfessionIndex == CharacterClass.Fanatic || ProfessionIndex == CharacterClass.Cultist)
+                    if (CharacterClassIndex == CharacterClassId.Fanatic || CharacterClassIndex == CharacterClassId.Cultist)
                     {
                         levelReward = true;
                     }
@@ -599,31 +599,31 @@ namespace Cthangband
             f1.Clear();
             f2.Clear();
             f3.Clear();
-            if ((ProfessionIndex == CharacterClass.Warrior && Level > 29) ||
-                (ProfessionIndex == CharacterClass.Paladin && Level > 39) ||
-                (ProfessionIndex == CharacterClass.Fanatic && Level > 39))
+            if ((CharacterClassIndex == CharacterClassId.Warrior && Level > 29) ||
+                (CharacterClassIndex == CharacterClassId.Paladin && Level > 39) ||
+                (CharacterClassIndex == CharacterClassId.Fanatic && Level > 39))
             {
                 f2.Set(ItemFlag2.ResFear);
             }
-            if (ProfessionIndex == CharacterClass.Fanatic && Level > 29)
+            if (CharacterClassIndex == CharacterClassId.Fanatic && Level > 29)
             {
                 f2.Set(ItemFlag2.ResChaos);
             }
-            if (ProfessionIndex == CharacterClass.Cultist && Level > 19)
+            if (CharacterClassIndex == CharacterClassId.Cultist && Level > 19)
             {
                 f2.Set(ItemFlag2.ResChaos);
             }
-            if (ProfessionIndex == CharacterClass.Monk && Level > 9 &&
+            if (CharacterClassIndex == CharacterClassId.Monk && Level > 9 &&
                 !playerStatus.MartialArtistHeavyArmour())
             {
                 f1.Set(ItemFlag1.Speed);
             }
-            if (ProfessionIndex == CharacterClass.Monk && Level > 24 &&
+            if (CharacterClassIndex == CharacterClassId.Monk && Level > 24 &&
                 !playerStatus.MartialArtistHeavyArmour())
             {
                 f2.Set(ItemFlag2.FreeAct);
             }
-            if (ProfessionIndex == CharacterClass.Mindcrafter)
+            if (CharacterClassIndex == CharacterClassId.Mindcrafter)
             {
                 if (Level > 9)
                 {
@@ -642,7 +642,7 @@ namespace Cthangband
                     f3.Set(ItemFlag3.Telepathy);
                 }
             }
-            if (ProfessionIndex == CharacterClass.Mystic)
+            if (CharacterClassIndex == CharacterClassId.Mystic)
             {
                 if (Level > 9)
                 {
@@ -665,7 +665,7 @@ namespace Cthangband
                     f3.Set(ItemFlag3.Telepathy);
                 }
             }
-            if (ProfessionIndex == CharacterClass.ChosenOne)
+            if (CharacterClassIndex == CharacterClassId.ChosenOne)
             {
                 f3.Set(ItemFlag3.Lightsource);
                 if (Level >= 2)
@@ -1158,11 +1158,11 @@ namespace Cthangband
             {
                 return;
             }
-            switch (ProfessionIndex)
+            switch (CharacterClassIndex)
             {
-                case CharacterClass.Warrior:
-                case CharacterClass.ChosenOne:
-                case CharacterClass.Channeler:
+                case CharacterClassId.Warrior:
+                case CharacterClassId.ChosenOne:
+                case CharacterClassId.Channeler:
                     {
                         if (0 != Program.Rng.RandomLessThan(9000 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1171,9 +1171,9 @@ namespace Cthangband
                         detailed = true;
                         break;
                     }
-                case CharacterClass.Mage:
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.Mage:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     {
                         if (0 != Program.Rng.RandomLessThan(240000 / (playerLevel + 5)))
                         {
@@ -1181,8 +1181,8 @@ namespace Cthangband
                         }
                         break;
                     }
-                case CharacterClass.Priest:
-                case CharacterClass.Druid:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Druid:
                     {
                         if (0 != Program.Rng.RandomLessThan(10000 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1190,7 +1190,7 @@ namespace Cthangband
                         }
                         break;
                     }
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     {
                         if (0 != Program.Rng.RandomLessThan(20000 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1199,7 +1199,7 @@ namespace Cthangband
                         detailed = true;
                         break;
                     }
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     {
                         if (0 != Program.Rng.RandomLessThan(95000 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1208,7 +1208,7 @@ namespace Cthangband
                         detailed = true;
                         break;
                     }
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     {
                         if (0 != Program.Rng.RandomLessThan(77777 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1217,7 +1217,7 @@ namespace Cthangband
                         detailed = true;
                         break;
                     }
-                case CharacterClass.WarriorMage:
+                case CharacterClassId.WarriorMage:
                     {
                         if (0 != Program.Rng.RandomLessThan(75000 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1225,8 +1225,8 @@ namespace Cthangband
                         }
                         break;
                     }
-                case CharacterClass.Mindcrafter:
-                case CharacterClass.Mystic:
+                case CharacterClassId.Mindcrafter:
+                case CharacterClassId.Mystic:
                     {
                         if (0 != Program.Rng.RandomLessThan(55000 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1234,7 +1234,7 @@ namespace Cthangband
                         }
                         break;
                     }
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     {
                         if (0 != Program.Rng.RandomLessThan(80000 / ((playerLevel * playerLevel) + 40)))
                         {
@@ -1243,7 +1243,7 @@ namespace Cthangband
                         detailed = true;
                         break;
                     }
-                case CharacterClass.Monk:
+                case CharacterClassId.Monk:
                     {
                         if (0 != Program.Rng.RandomLessThan(20000 / ((playerLevel * playerLevel) + 40)))
                         {

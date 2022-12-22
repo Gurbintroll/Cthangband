@@ -24,36 +24,36 @@ namespace Cthangband.Spells.Life
             Name = "Detect Evil";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 30;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 10;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 30;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 30;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 1;
                     VisCost = 1;
                     BaseFailure = 20;

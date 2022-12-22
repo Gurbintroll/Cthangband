@@ -34,50 +34,50 @@ namespace Cthangband.Spells.Death
             Name = "Battle Frenzy";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 30;
                     VisCost = 25;
                     BaseFailure = 75;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 33;
                     VisCost = 33;
                     BaseFailure = 70;
                     FirstCastExperience = 33;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 32;
                     VisCost = 32;
                     BaseFailure = 80;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 39;
                     VisCost = 39;
                     BaseFailure = 76;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 38;
                     VisCost = 38;
                     BaseFailure = 70;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 30;
                     VisCost = 30;
                     BaseFailure = 75;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 25;
                     VisCost = 20;
                     BaseFailure = 65;

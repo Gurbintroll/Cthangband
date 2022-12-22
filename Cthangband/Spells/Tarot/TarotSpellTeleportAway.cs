@@ -30,44 +30,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Teleport Away";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 17;
                     VisCost = 15;
                     BaseFailure = 60;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 19;
                     VisCost = 17;
                     BaseFailure = 60;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 21;
                     VisCost = 20;
                     BaseFailure = 60;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 22;
                     VisCost = 20;
                     BaseFailure = 60;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 20;
                     VisCost = 18;
                     BaseFailure = 60;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 14;
                     VisCost = 12;
                     BaseFailure = 50;

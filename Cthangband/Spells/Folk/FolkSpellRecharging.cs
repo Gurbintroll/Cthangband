@@ -24,43 +24,43 @@ namespace Cthangband.Spells.Folk
             Name = "Recharging";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 28;
                     VisCost = 25;
                     BaseFailure = 70;
                     FirstCastExperience = 30;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 80;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 38;
                     VisCost = 36;
                     BaseFailure = 80;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 38;
                     VisCost = 36;
                     BaseFailure = 80;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 80;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 24;
                     VisCost = 22;
                     BaseFailure = 60;

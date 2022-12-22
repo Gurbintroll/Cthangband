@@ -177,12 +177,12 @@ namespace Cthangband.PlayerRace
             // Chance of replacing the default fire/cold element with a special one
             if (Program.Rng.DieRoll(100) < player.Level)
             {
-                switch (player.ProfessionIndex)
+                switch (player.CharacterClassIndex)
                 {
-                    case CharacterClass.Warrior:
-                    case CharacterClass.Ranger:
-                    case CharacterClass.Druid:
-                    case CharacterClass.ChosenOne:
+                    case CharacterClassId.Warrior:
+                    case CharacterClassId.Ranger:
+                    case CharacterClassId.Druid:
+                    case CharacterClassId.ChosenOne:
                         if (Program.Rng.DieRoll(3) == 1)
                         {
                             projectile = new ProjectMissile(SaveGame.Instance.SpellEffects);
@@ -195,10 +195,10 @@ namespace Cthangband.PlayerRace
                         }
                         break;
 
-                    case CharacterClass.Mage:
-                    case CharacterClass.WarriorMage:
-                    case CharacterClass.HighMage:
-                    case CharacterClass.Channeler:
+                    case CharacterClassId.Mage:
+                    case CharacterClassId.WarriorMage:
+                    case CharacterClassId.HighMage:
+                    case CharacterClassId.Channeler:
                         if (Program.Rng.DieRoll(3) == 1)
                         {
                             projectile = new ProjectVis(SaveGame.Instance.SpellEffects);
@@ -211,8 +211,8 @@ namespace Cthangband.PlayerRace
                         }
                         break;
 
-                    case CharacterClass.Fanatic:
-                    case CharacterClass.Cultist:
+                    case CharacterClassId.Fanatic:
+                    case CharacterClassId.Cultist:
                         if (Program.Rng.DieRoll(3) != 1)
                         {
                             projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
@@ -225,7 +225,7 @@ namespace Cthangband.PlayerRace
                         }
                         break;
 
-                    case CharacterClass.Monk:
+                    case CharacterClassId.Monk:
                         if (Program.Rng.DieRoll(3) != 1)
                         {
                             projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
@@ -238,8 +238,8 @@ namespace Cthangband.PlayerRace
                         }
                         break;
 
-                    case CharacterClass.Mindcrafter:
-                    case CharacterClass.Mystic:
+                    case CharacterClassId.Mindcrafter:
+                    case CharacterClassId.Mystic:
                         if (Program.Rng.DieRoll(3) != 1)
                         {
                             projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
@@ -252,8 +252,8 @@ namespace Cthangband.PlayerRace
                         }
                         break;
 
-                    case CharacterClass.Priest:
-                    case CharacterClass.Paladin:
+                    case CharacterClassId.Priest:
+                    case CharacterClassId.Paladin:
                         if (Program.Rng.DieRoll(3) == 1)
                         {
                             projectile = new ProjectHellFire(SaveGame.Instance.SpellEffects);
@@ -266,7 +266,7 @@ namespace Cthangband.PlayerRace
                         }
                         break;
 
-                    case CharacterClass.Rogue:
+                    case CharacterClassId.Rogue:
                         if (Program.Rng.DieRoll(3) == 1)
                         {
                             projectile = new ProjectDark(SaveGame.Instance.SpellEffects);

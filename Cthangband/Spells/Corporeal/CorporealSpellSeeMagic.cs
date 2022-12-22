@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "See Magic";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 10;
                     VisCost = 10;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 15;
                     VisCost = 20;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 70;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 60;

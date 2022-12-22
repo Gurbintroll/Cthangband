@@ -30,37 +30,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Horrific Visage";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 3;
                     VisCost = 3;
                     BaseFailure = 25;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 25;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 15;
                     VisCost = 7;
                     BaseFailure = 75;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 25;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 20;

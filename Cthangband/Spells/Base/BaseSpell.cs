@@ -46,20 +46,20 @@ namespace Cthangband.Spells.Base
                 chance += 5 * (VisCost - player.Vis);
             }
             int minfail = player.AbilityScores[player.Spellcasting.SpellStat].SpellMinFailChance;
-            if (player.ProfessionIndex != CharacterClass.Priest && player.ProfessionIndex != CharacterClass.Druid &&
-                player.ProfessionIndex != CharacterClass.Mage && player.ProfessionIndex != CharacterClass.HighMage &&
-                player.ProfessionIndex != CharacterClass.Cultist)
+            if (player.CharacterClassIndex != CharacterClassId.Priest && player.CharacterClassIndex != CharacterClassId.Druid &&
+                player.CharacterClassIndex != CharacterClassId.Mage && player.CharacterClassIndex != CharacterClassId.HighMage &&
+                player.CharacterClassIndex != CharacterClassId.Cultist)
             {
                 if (minfail < 5)
                 {
                     minfail = 5;
                 }
             }
-            if ((player.ProfessionIndex == CharacterClass.Priest || player.ProfessionIndex == CharacterClass.Druid) && player.HasUnpriestlyWeapon)
+            if ((player.CharacterClassIndex == CharacterClassId.Priest || player.CharacterClassIndex == CharacterClassId.Druid) && player.HasUnpriestlyWeapon)
             {
                 chance += 25;
             }
-            if (player.ProfessionIndex == CharacterClass.Cultist && player.HasUnpriestlyWeapon)
+            if (player.CharacterClassIndex == CharacterClassId.Cultist && player.HasUnpriestlyWeapon)
             {
                 chance += 25;
             }

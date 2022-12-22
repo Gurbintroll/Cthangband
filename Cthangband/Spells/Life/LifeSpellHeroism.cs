@@ -26,36 +26,36 @@ namespace Cthangband.Spells.Life
             Name = "Heroism";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 9;
                     VisCost = 9;
                     BaseFailure = 50;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 80;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 9;
                     VisCost = 9;
                     BaseFailure = 50;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 10;
                     VisCost = 10;
                     BaseFailure = 50;
                     FirstCastExperience = 40;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 50;

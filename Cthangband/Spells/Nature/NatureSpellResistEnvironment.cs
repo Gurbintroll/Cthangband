@@ -26,37 +26,37 @@ namespace Cthangband.Spells.Nature
             Name = "Resist Environment";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 8;
                     VisCost = 7;
                     BaseFailure = 50;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 8;
                     VisCost = 8;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 40;

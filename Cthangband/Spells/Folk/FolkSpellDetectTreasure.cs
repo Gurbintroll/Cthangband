@@ -25,43 +25,43 @@ namespace Cthangband.Spells.Folk
             Name = "Detect Treasure";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 9;
                     VisCost = 8;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 10;
                     VisCost = 9;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 11;
                     VisCost = 11;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 11;
                     VisCost = 11;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 11;
                     VisCost = 10;
                     BaseFailure = 50;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 8;
                     VisCost = 7;
                     BaseFailure = 40;

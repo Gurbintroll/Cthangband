@@ -122,7 +122,7 @@ namespace Cthangband.PlayerRace
 
         public override void UseRacialPower(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(8, 10, Ability.Wisdom, player.ProfessionIndex == CharacterClass.Warrior ? 6 : 12))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(8, 10, Ability.Wisdom, player.CharacterClassIndex == CharacterClassId.Warrior ? 6 : 12))
             {
                 Profile.Instance.MsgPrint("Raaagh!");
                 player.SetTimedFear(0);

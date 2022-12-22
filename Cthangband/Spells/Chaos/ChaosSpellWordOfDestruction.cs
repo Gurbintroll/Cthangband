@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Word of Destruction";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 30;
                     VisCost = 20;
                     BaseFailure = 80;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 33;
                     VisCost = 23;
                     BaseFailure = 80;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 43;
                     VisCost = 30;
                     BaseFailure = 95;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 41;
                     VisCost = 40;
                     BaseFailure = 80;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 36;
                     VisCost = 26;
                     BaseFailure = 80;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 27;
                     VisCost = 17;
                     BaseFailure = 70;

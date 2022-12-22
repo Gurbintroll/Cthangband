@@ -24,36 +24,36 @@ namespace Cthangband.Spells.Life
             Name = "Elder Sign";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 70;
                     BaseFailure = 75;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 33;
                     VisCost = 55;
                     BaseFailure = 90;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 35;
                     VisCost = 70;
                     BaseFailure = 75;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 40;
                     VisCost = 70;
                     BaseFailure = 75;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 30;
                     VisCost = 50;
                     BaseFailure = 55;

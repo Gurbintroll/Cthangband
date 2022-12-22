@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Flash of Light";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 25;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 4;
                     VisCost = 3;
                     BaseFailure = 26;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 5;
                     VisCost = 3;
                     BaseFailure = 35;
                     FirstCastExperience = 2;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 25;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 4;
                     VisCost = 3;
                     BaseFailure = 25;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 2;
                     VisCost = 1;
                     BaseFailure = 15;

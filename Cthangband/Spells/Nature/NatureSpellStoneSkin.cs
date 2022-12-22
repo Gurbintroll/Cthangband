@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Nature
             Name = "Stone Skin";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 10;
                     VisCost = 12;
                     BaseFailure = 75;
                     FirstCastExperience = 120;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 12;
                     VisCost = 13;
                     BaseFailure = 75;
                     FirstCastExperience = 120;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 14;
                     VisCost = 15;
                     BaseFailure = 70;
                     FirstCastExperience = 60;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 15;
                     VisCost = 15;
                     BaseFailure = 75;
                     FirstCastExperience = 120;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 8;
                     VisCost = 8;
                     BaseFailure = 65;

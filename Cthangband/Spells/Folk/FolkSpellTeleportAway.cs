@@ -30,43 +30,43 @@ namespace Cthangband.Spells.Folk
             Name = "Teleport Away";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 40;
                     VisCost = 30;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 42;
                     VisCost = 38;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 46;
                     VisCost = 40;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 46;
                     VisCost = 40;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 43;
                     VisCost = 42;
                     BaseFailure = 70;
                     FirstCastExperience = 25;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 38;
                     VisCost = 28;
                     BaseFailure = 60;

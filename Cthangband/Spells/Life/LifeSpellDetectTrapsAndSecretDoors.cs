@@ -26,36 +26,36 @@ namespace Cthangband.Spells.Life
             Name = "Detect Traps and Secret Doors";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 9;
                     VisCost = 8;
                     BaseFailure = 40;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 28;
                     FirstCastExperience = 2;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 8;
                     VisCost = 5;
                     BaseFailure = 40;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 9;
                     VisCost = 9;
                     BaseFailure = 40;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 6;
                     VisCost = 5;
                     BaseFailure = 30;

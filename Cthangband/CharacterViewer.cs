@@ -151,8 +151,8 @@ namespace Cthangband
                 // Casting abilities only have one or two inherent bonuses, so it's safe to start at three
                 bonus3 = vis % 2 == 0 ? $", {vis / 2} VP/lvl" : $", {vis / 2}.5 VP/lvl";
                 // Not all casting classes have actual spells
-                if (_player.ProfessionIndex != CharacterClass.Mindcrafter && _player.ProfessionIndex != CharacterClass.Mystic
-                    && _player.ProfessionIndex != CharacterClass.Channeler)
+                if (_player.CharacterClassIndex != CharacterClassId.Mindcrafter && _player.CharacterClassIndex != CharacterClassId.Mystic
+                    && _player.CharacterClassIndex != CharacterClassId.Channeler)
                 {
                     int spells = ability.HalfSpellsPerLevel;
                     if (spells == 2)
@@ -169,7 +169,7 @@ namespace Cthangband
                     }
                 }
                 // Almost all casting classes have a failure chance
-                if (_player.ProfessionIndex != CharacterClass.Channeler)
+                if (_player.CharacterClassIndex != CharacterClassId.Channeler)
                 {
                     int fail = ability.SpellMinFailChance;
                     bonus5 = $", {fail}% min fail";
@@ -250,14 +250,14 @@ namespace Cthangband
                 }
                 // Take out the bonuses we got for our our race and profession
                 equipmentBonuses -= _player.Race.AbilityBonus[i];
-                equipmentBonuses -= _player.Profession.AbilityBonus[i];
+                equipmentBonuses -= _player.CharacterClass.AbilityBonus[i];
                 // Print each of the scores and bonuses
                 Gui.Print(Colour.Blue, GlobalData.StatNames[i], row + i, statCol);
                 string buf = _player.AbilityScores[i].InnateMax.StatToString();
                 Gui.Print(Colour.Purple, buf, row + i, statCol + 4);
                 buf = _player.Race.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
                 Gui.Print(Colour.Brown, buf, row + i, statCol + 13);
-                buf = _player.Profession.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
+                buf = _player.CharacterClass.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
                 Gui.Print(Colour.Brown, buf, row + i, statCol + 19);
                 buf = equipmentBonuses.ToString("+0;-0;+0").PadLeft(3);
                 Gui.Print(Colour.Brown, buf, row + i, statCol + 24);
@@ -538,7 +538,7 @@ namespace Cthangband
             Gui.Print(Colour.Brown, _player.Name, 2, 15);
             Gui.Print(Colour.Brown, _player.Gender.Title, 3, 15);
             Gui.Print(Colour.Brown, _player.Race.Title, 4, 15);
-            Gui.Print(Colour.Brown, Profession.ClassSubName(_player.ProfessionIndex, _player.Realm1), 5, 15);
+            Gui.Print(Colour.Brown, CharacterClass.ClassSubName(_player.CharacterClassIndex, _player.Realm1), 5, 15);
             // Only print realms if we have them
             if (_player.Realm1 != 0)
             {
@@ -556,7 +556,7 @@ namespace Cthangband
                 Gui.Print(Colour.Brown, realmBuff, 6, 15);
             }
             // Fanatics and Cultists get a patron
-            if (_player.ProfessionIndex == CharacterClass.Fanatic || _player.ProfessionIndex == CharacterClass.Cultist)
+            if (_player.CharacterClassIndex == CharacterClassId.Fanatic || _player.CharacterClassIndex == CharacterClassId.Cultist)
             {
                 Gui.Print(Colour.Blue, "Patron      :", 7, 1);
                 Gui.Print(Colour.Brown, _player.GooPatron.LongName, 7, 15);

@@ -25,37 +25,37 @@ namespace Cthangband.Spells.Nature
             Name = "Foraging";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 6;
                     VisCost = 5;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 5;
                     VisCost = 7;
                     BaseFailure = 55;
                     FirstCastExperience = 2;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 3;
                     VisCost = 2;
                     BaseFailure = 25;

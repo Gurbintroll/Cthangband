@@ -31,44 +31,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Gravity Beam";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 33;
                     VisCost = 33;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 24;
                     VisCost = 20;
                     BaseFailure = 66;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 23;
                     VisCost = 23;
                     BaseFailure = 66;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 16;
                     VisCost = 16;
                     BaseFailure = 55;

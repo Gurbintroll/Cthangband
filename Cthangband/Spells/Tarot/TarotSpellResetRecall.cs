@@ -43,44 +43,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Reset Recall";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 6;
                     VisCost = 6;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 11;
                     VisCost = 9;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 10;
                     VisCost = 8;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 8;
                     VisCost = 7;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 80;

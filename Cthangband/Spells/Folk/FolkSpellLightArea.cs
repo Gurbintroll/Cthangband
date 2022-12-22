@@ -24,43 +24,43 @@ namespace Cthangband.Spells.Folk
             Name = "Light Area";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 40;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 40;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 7;
                     VisCost = 6;
                     BaseFailure = 40;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 6;
                     VisCost = 6;
                     BaseFailure = 40;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 40;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 3;
                     VisCost = 2;
                     BaseFailure = 33;

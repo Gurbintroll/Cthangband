@@ -24,34 +24,34 @@ namespace Cthangband.Spells
 
         public Spellcasting(Player player)
         {
-            Spells[0] = new SpellList(player.Realm1, player.ProfessionIndex);
-            Spells[1] = new SpellList(player.Realm2, player.ProfessionIndex);
-            Talents = new TalentList(player.ProfessionIndex);
-            switch (player.ProfessionIndex)
+            Spells[0] = new SpellList(player.Realm1, player.CharacterClassIndex);
+            Spells[1] = new SpellList(player.Realm2, player.CharacterClassIndex);
+            Talents = new TalentList(player.CharacterClassIndex);
+            switch (player.CharacterClassIndex)
             {
-                case CharacterClass.Mage:
-                case CharacterClass.HighMage:
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Rogue:
-                case CharacterClass.Cultist:
+                case CharacterClassId.Mage:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Rogue:
+                case CharacterClassId.Cultist:
                     Type = CastingType.Arcane;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Paladin:
-                case CharacterClass.Ranger:
-                case CharacterClass.Druid:
-                case CharacterClass.Fanatic:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Paladin:
+                case CharacterClassId.Ranger:
+                case CharacterClassId.Druid:
+                case CharacterClassId.Fanatic:
+                case CharacterClassId.Monk:
                     Type = CastingType.Divine;
                     break;
 
-                case CharacterClass.Mindcrafter:
-                case CharacterClass.Mystic:
+                case CharacterClassId.Mindcrafter:
+                case CharacterClassId.Mystic:
                     Type = CastingType.Mentalism;
                     break;
 
-                case CharacterClass.Channeler:
+                case CharacterClassId.Channeler:
                     Type = CastingType.Channeling;
                     break;
 
@@ -59,28 +59,28 @@ namespace Cthangband.Spells
                     Type = CastingType.None;
                     break;
             }
-            switch (player.ProfessionIndex)
+            switch (player.CharacterClassIndex)
             {
-                case CharacterClass.Mage:
-                case CharacterClass.HighMage:
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Rogue:
-                case CharacterClass.Ranger:
-                case CharacterClass.Cultist:
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Mage:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Rogue:
+                case CharacterClassId.Ranger:
+                case CharacterClassId.Cultist:
+                case CharacterClassId.Fanatic:
                     SpellStat = Ability.Intelligence;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Paladin:
-                case CharacterClass.Druid:
-                case CharacterClass.Monk:
-                case CharacterClass.Mindcrafter:
-                case CharacterClass.Mystic:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Paladin:
+                case CharacterClassId.Druid:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Mindcrafter:
+                case CharacterClassId.Mystic:
                     SpellStat = Ability.Wisdom;
                     break;
 
-                case CharacterClass.Channeler:
+                case CharacterClassId.Channeler:
                     SpellStat = Ability.Charisma;
                     break;
 
@@ -88,28 +88,28 @@ namespace Cthangband.Spells
                     SpellStat = Ability.Strength;
                     break;
             }
-            switch (player.ProfessionIndex)
+            switch (player.CharacterClassIndex)
             {
-                case CharacterClass.Mage:
-                case CharacterClass.Monk:
-                case CharacterClass.Mindcrafter:
-                case CharacterClass.Mystic:
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.Mage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Mindcrafter:
+                case CharacterClassId.Mystic:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     SpellWeight = 300;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Rogue:
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Rogue:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Druid:
                     SpellWeight = 350;
                     break;
 
-                case CharacterClass.Ranger:
-                case CharacterClass.Paladin:
-                case CharacterClass.Fanatic:
-                case CharacterClass.Channeler:
+                case CharacterClassId.Ranger:
+                case CharacterClassId.Paladin:
+                case CharacterClassId.Fanatic:
+                case CharacterClassId.Channeler:
                     SpellWeight = 400;
                     break;
 

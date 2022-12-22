@@ -1554,7 +1554,7 @@ namespace Cthangband
                     if (StoreType == StoreType.StoreHall)
                     {
                         Gui.Save();
-                        Program.HiScores.ClassFilter = _player.ProfessionIndex;
+                        Program.HiScores.ClassFilter = _player.CharacterClassIndex;
                         Program.HiScores.DisplayScores(new HighScore(_player));
                         Program.HiScores.ClassFilter = -1;
                         Gui.Load();

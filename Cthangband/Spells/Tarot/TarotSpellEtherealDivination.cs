@@ -24,44 +24,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Ethereal Divination";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 30;
                     VisCost = 30;
                     BaseFailure = 60;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 32;
                     VisCost = 30;
                     BaseFailure = 60;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 60;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 35;
                     VisCost = 33;
                     BaseFailure = 60;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 60;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 50;

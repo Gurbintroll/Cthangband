@@ -24,43 +24,43 @@ namespace Cthangband.Spells.Folk
             Name = "Resist Lightning";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 14;
                     VisCost = 12;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 16;
                     VisCost = 15;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 18;
                     VisCost = 17;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 18;
                     VisCost = 17;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 17;
                     VisCost = 16;
                     BaseFailure = 50;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 12;
                     VisCost = 10;
                     BaseFailure = 40;

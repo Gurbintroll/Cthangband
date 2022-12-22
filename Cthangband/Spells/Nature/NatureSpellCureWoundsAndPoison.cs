@@ -25,37 +25,37 @@ namespace Cthangband.Spells.Nature
             Name = "Cure Wounds and Poison";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 7;
                     VisCost = 7;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 9;
                     VisCost = 7;
                     BaseFailure = 45;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 9;
                     VisCost = 9;
                     BaseFailure = 35;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 25;

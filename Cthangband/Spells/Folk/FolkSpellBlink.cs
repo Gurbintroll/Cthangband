@@ -24,43 +24,43 @@ namespace Cthangband.Spells.Folk
             Name = "Blink";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 3;
                     VisCost = 3;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 6;
                     VisCost = 4;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 5;
                     VisCost = 4;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 33;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 2;
                     VisCost = 1;
                     BaseFailure = 23;

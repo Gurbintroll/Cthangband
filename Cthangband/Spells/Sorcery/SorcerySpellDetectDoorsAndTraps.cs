@@ -26,29 +26,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Detect Doors and Traps";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 3;
                     VisCost = 3;
                     BaseFailure = 25;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 8;
                     VisCost = 3;
                     BaseFailure = 65;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 3;
                     VisCost = 3;
                     BaseFailure = 25;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 15;

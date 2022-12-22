@@ -24,7 +24,7 @@ namespace Cthangband.Spells.Death
             }
             saveGame.SpellEffects.FireBall(new ProjectOldDrain(SaveGame.Instance.SpellEffects), dir,
                 Program.Rng.DiceRoll(3, 6) + player.Level + (player.Level /
-                (player.ProfessionIndex == CharacterClass.Mage || player.ProfessionIndex == CharacterClass.HighMage ? 2 : 4)),
+                (player.CharacterClassIndex == CharacterClassId.Mage || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4)),
                 player.Level < 30 ? 2 : 3);
         }
 
@@ -33,50 +33,50 @@ namespace Cthangband.Spells.Death
             Name = "Orb of Entropy";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 40;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 14;
                     VisCost = 14;
                     BaseFailure = 40;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 21;
                     VisCost = 21;
                     BaseFailure = 60;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 24;
                     VisCost = 24;
                     BaseFailure = 55;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 17;
                     VisCost = 17;
                     BaseFailure = 40;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 14;
                     VisCost = 14;
                     BaseFailure = 40;
                     FirstCastExperience = 5;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 10;
                     VisCost = 10;
                     BaseFailure = 30;
@@ -95,7 +95,7 @@ namespace Cthangband.Spells.Death
         protected override string Comment(Player player)
         {
             int s = player.Level + (player.Level /
-                    (player.ProfessionIndex == CharacterClass.Mage || player.ProfessionIndex == CharacterClass.HighMage ? 2 : 4));
+                    (player.CharacterClassIndex == CharacterClassId.Mage || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4));
             return $"dam 3d6+{s}";
         }
     }

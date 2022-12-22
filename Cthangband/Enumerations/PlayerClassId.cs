@@ -10,7 +10,7 @@ namespace Cthangband.Enumerations
     /// <summary>
     /// The different classes a character can have
     /// </summary>
-    internal static class CharacterClass
+    internal static class PlayerClassId
     {
         public const int Channeler = 13;
         public const int ChosenOne = 14;

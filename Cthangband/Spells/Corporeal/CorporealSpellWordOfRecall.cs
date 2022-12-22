@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Word of Recall";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 75;
                     FirstCastExperience = 19;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 27;
                     VisCost = 27;
                     BaseFailure = 75;
                     FirstCastExperience = 19;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 35;
                     VisCost = 35;
                     BaseFailure = 75;
                     FirstCastExperience = 13;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 28;
                     VisCost = 28;
                     BaseFailure = 75;
                     FirstCastExperience = 19;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 65;

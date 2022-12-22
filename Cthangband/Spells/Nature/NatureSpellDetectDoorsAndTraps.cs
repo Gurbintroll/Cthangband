@@ -26,37 +26,37 @@ namespace Cthangband.Spells.Nature
             Name = "Detect Doors and Traps";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 3;
                     VisCost = 3;
                     BaseFailure = 25;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 5;
                     VisCost = 4;
                     BaseFailure = 25;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 40;
                     FirstCastExperience = 3;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 4;
                     VisCost = 4;
                     BaseFailure = 25;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 2;
                     VisCost = 2;
                     BaseFailure = 15;

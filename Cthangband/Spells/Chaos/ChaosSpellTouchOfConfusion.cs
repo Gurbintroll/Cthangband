@@ -28,44 +28,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Touch of Confusion";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 50;
                     FirstCastExperience = 1;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 5;
                     VisCost = 4;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 7;
                     VisCost = 5;
                     BaseFailure = 45;
                     FirstCastExperience = 2;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 5;
                     VisCost = 5;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 5;
                     VisCost = 4;
                     BaseFailure = 30;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 4;
                     VisCost = 2;
                     BaseFailure = 20;

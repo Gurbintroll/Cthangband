@@ -26,44 +26,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Sonic Boom";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 21;
                     VisCost = 13;
                     BaseFailure = 45;
                     FirstCastExperience = 10;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 23;
                     VisCost = 18;
                     BaseFailure = 80;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 70;
                     FirstCastExperience = 13;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 27;
                     VisCost = 25;
                     BaseFailure = 50;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 25;
                     VisCost = 17;
                     BaseFailure = 50;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 19;
                     VisCost = 11;
                     BaseFailure = 35;

@@ -57,44 +57,44 @@ namespace Cthangband.Spells.Tarot
             Name = "The Fool";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 15;
                     VisCost = 15;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 17;
                     VisCost = 17;
                     BaseFailure = 80;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 20;
                     VisCost = 15;
                     BaseFailure = 80;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 80;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 19;
                     VisCost = 18;
                     BaseFailure = 80;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 11;
                     VisCost = 11;
                     BaseFailure = 70;

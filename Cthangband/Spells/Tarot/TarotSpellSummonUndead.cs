@@ -41,44 +41,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Summon Undead";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 36;
                     VisCost = 80;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 40;
                     VisCost = 85;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 44;
                     VisCost = 100;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 99;
                     VisCost = 0;
                     BaseFailure = 0;
                     FirstCastExperience = 0;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 42;
                     VisCost = 95;
                     BaseFailure = 80;
                     FirstCastExperience = 150;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 34;
                     VisCost = 75;
                     BaseFailure = 70;

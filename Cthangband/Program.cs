@@ -602,7 +602,7 @@ namespace Cthangband
                 }
                 tempLev = tempProfile.Game.Player.Level;
                 tempRace = tempProfile.Game.Player.CurrentRace;
-                tempClass = tempProfile.Game.Player.ProfessionIndex;
+                tempClass = tempProfile.Game.Player.CharacterClassIndex;
                 tempRealm = tempProfile.Game.Player.Realm1;
                 tempName = tempProfile.Game.Player.Name.Trim() + tempProfile.Game.Player.Generation.ToRoman(true);
             }
@@ -611,7 +611,7 @@ namespace Cthangband
             Gui.Print(color, tempchar, displayRow + 1, displayCol + 14 - (tempchar.Length / 2));
             tempchar = PlayerRaces.Instance[tempRace].Title;
             Gui.Print(color, tempchar, displayRow + 2, displayCol + 14 - (tempchar.Length / 2));
-            tempchar = Profession.ClassSubName(tempClass, tempRealm);
+            tempchar = CharacterClass.ClassSubName(tempClass, tempRealm);
             Gui.Print(color, tempchar, displayRow + 3, displayCol + 14 - (tempchar.Length / 2));
             if (tempDeath)
             {

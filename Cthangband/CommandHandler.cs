@@ -164,11 +164,11 @@ namespace Cthangband
             if (SaveGame.Instance.CommandEngine.ItemFilterHighLevelBook(item))
             {
                 bool gainExpr = false;
-                if (Player.ProfessionIndex == CharacterClass.Warrior)
+                if (Player.CharacterClassIndex == CharacterClassId.Warrior)
                 {
                     gainExpr = true;
                 }
-                else if (Player.ProfessionIndex == CharacterClass.Paladin)
+                else if (Player.CharacterClassIndex == CharacterClassId.Paladin)
                 {
                     if (Player.Realm1 == Realm.Life)
                     {

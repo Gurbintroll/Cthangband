@@ -24,36 +24,36 @@ namespace Cthangband.Spells.Life
             Name = "Day of the Dove";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 35;
                     VisCost = 35;
                     BaseFailure = 60;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 24;
                     VisCost = 20;
                     BaseFailure = 55;
                     FirstCastExperience = 70;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 33;
                     VisCost = 30;
                     BaseFailure = 60;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 36;
                     VisCost = 36;
                     BaseFailure = 60;
                     FirstCastExperience = 75;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 31;
                     VisCost = 30;
                     BaseFailure = 50;

@@ -27,37 +27,37 @@ namespace Cthangband.Spells.Nature
             Name = "Herbal Healing";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 40;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 42;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 40;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 45;
                     VisCost = 100;
                     BaseFailure = 95;
                     FirstCastExperience = 50;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 35;
                     VisCost = 80;
                     BaseFailure = 85;

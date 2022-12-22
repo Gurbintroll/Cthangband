@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Nature
             Name = "Entangle";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 19;
                     VisCost = 12;
                     BaseFailure = 55;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 67;
                     FirstCastExperience = 7;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 18;
                     VisCost = 20;
                     BaseFailure = 65;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 19;
                     VisCost = 15;
                     BaseFailure = 65;
                     FirstCastExperience = 7;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 14;
                     VisCost = 10;
                     BaseFailure = 65;

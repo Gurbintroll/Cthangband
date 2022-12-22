@@ -40,44 +40,44 @@ namespace Cthangband.Spells.Tarot
             Name = "Conjure Elemental";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 33;
                     VisCost = 28;
                     BaseFailure = 80;
                     FirstCastExperience = 12;
                     break;
 
-                case CharacterClass.Priest:
-                case CharacterClass.Monk:
+                case CharacterClassId.Priest:
+                case CharacterClassId.Monk:
                     Level = 35;
                     VisCost = 30;
                     BaseFailure = 80;
                     FirstCastExperience = 12;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 40;
                     VisCost = 35;
                     BaseFailure = 80;
                     FirstCastExperience = 12;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 38;
                     VisCost = 33;
                     BaseFailure = 80;
                     FirstCastExperience = 12;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 38;
                     VisCost = 32;
                     BaseFailure = 80;
                     FirstCastExperience = 12;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 28;
                     VisCost = 26;
                     BaseFailure = 70;

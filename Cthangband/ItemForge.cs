@@ -721,56 +721,56 @@ namespace Cthangband
             _legendaryItemBias = 0;
             if (fromScroll && Program.Rng.DieRoll(4) == 1)
             {
-                switch (SaveGame.Instance.Player.ProfessionIndex)
+                switch (SaveGame.Instance.Player.CharacterClassIndex)
                 {
-                    case CharacterClass.Warrior:
-                    case CharacterClass.ChosenOne:
+                    case CharacterClassId.Warrior:
+                    case CharacterClassId.ChosenOne:
                         _legendaryItemBias = LegendaryItemBias.Warrior;
                         break;
 
-                    case CharacterClass.Mage:
-                    case CharacterClass.HighMage:
-                    case CharacterClass.Cultist:
-                    case CharacterClass.Channeler:
+                    case CharacterClassId.Mage:
+                    case CharacterClassId.HighMage:
+                    case CharacterClassId.Cultist:
+                    case CharacterClassId.Channeler:
                         _legendaryItemBias = LegendaryItemBias.Mage;
                         break;
 
-                    case CharacterClass.Priest:
-                    case CharacterClass.Druid:
+                    case CharacterClassId.Priest:
+                    case CharacterClassId.Druid:
                         _legendaryItemBias = LegendaryItemBias.Priestly;
                         break;
 
-                    case CharacterClass.Rogue:
+                    case CharacterClassId.Rogue:
                         _legendaryItemBias = LegendaryItemBias.Rogue;
                         warriorArtifactBias = 25;
                         break;
 
-                    case CharacterClass.Ranger:
+                    case CharacterClassId.Ranger:
                         _legendaryItemBias = LegendaryItemBias.Ranger;
                         warriorArtifactBias = 30;
                         break;
 
-                    case CharacterClass.Paladin:
+                    case CharacterClassId.Paladin:
                         _legendaryItemBias = LegendaryItemBias.Priestly;
                         warriorArtifactBias = 40;
                         break;
 
-                    case CharacterClass.WarriorMage:
+                    case CharacterClassId.WarriorMage:
                         _legendaryItemBias = LegendaryItemBias.Mage;
                         warriorArtifactBias = 40;
                         break;
 
-                    case CharacterClass.Fanatic:
+                    case CharacterClassId.Fanatic:
                         _legendaryItemBias = LegendaryItemBias.Chaos;
                         warriorArtifactBias = 40;
                         break;
 
-                    case CharacterClass.Monk:
-                    case CharacterClass.Mystic:
+                    case CharacterClassId.Monk:
+                    case CharacterClassId.Mystic:
                         _legendaryItemBias = LegendaryItemBias.Priestly;
                         break;
 
-                    case CharacterClass.Mindcrafter:
+                    case CharacterClassId.Mindcrafter:
                         if (Program.Rng.DieRoll(5) > 2)
                         {
                             _legendaryItemBias = LegendaryItemBias.Priestly;
@@ -901,7 +901,7 @@ namespace Cthangband
             bool giveResistance = false, givePower = false;
             if (_item.ArtifactIndex == ArtifactId.HelmTerrorMask)
             {
-                if (SaveGame.Instance.Player.ProfessionIndex == CharacterClass.Warrior)
+                if (SaveGame.Instance.Player.CharacterClassIndex == CharacterClassId.Warrior)
                 {
                     givePower = true;
                     giveResistance = true;
@@ -3897,7 +3897,7 @@ namespace Cthangband
             {
                 _item.LegendaryFlags3.Set(ItemFlag3.NoTele);
             }
-            if (SaveGame.Instance.Player.ProfessionIndex != CharacterClass.Warrior && Program.Rng.DieRoll(3) == 1)
+            if (SaveGame.Instance.Player.CharacterClassIndex != CharacterClassId.Warrior && Program.Rng.DieRoll(3) == 1)
             {
                 _item.LegendaryFlags3.Set(ItemFlag3.NoMagic);
             }

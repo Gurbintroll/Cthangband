@@ -24,37 +24,37 @@ namespace Cthangband.Spells.Nature
             Name = "Stone Tell";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 37;
                     VisCost = 40;
                     BaseFailure = 90;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 39;
                     VisCost = 40;
                     BaseFailure = 90;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 38;
                     VisCost = 40;
                     BaseFailure = 90;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 40;
                     VisCost = 42;
                     BaseFailure = 90;
                     FirstCastExperience = 200;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Druid:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Druid:
                     Level = 33;
                     VisCost = 35;
                     BaseFailure = 80;

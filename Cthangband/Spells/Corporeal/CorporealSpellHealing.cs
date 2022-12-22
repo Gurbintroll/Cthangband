@@ -26,37 +26,37 @@ namespace Cthangband.Spells.Corporeal
             Name = "Healing";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 28;
                     VisCost = 20;
                     BaseFailure = 70;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 30;
                     VisCost = 22;
                     BaseFailure = 70;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 38;
                     VisCost = 37;
                     BaseFailure = 70;
                     FirstCastExperience = 8;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
+                case CharacterClassId.Cultist:
                     Level = 33;
                     VisCost = 25;
                     BaseFailure = 70;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 24;
                     VisCost = 15;
                     BaseFailure = 60;

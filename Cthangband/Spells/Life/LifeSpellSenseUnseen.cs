@@ -24,36 +24,36 @@ namespace Cthangband.Spells.Life
             Name = "Sense Unseen";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 19;
                     VisCost = 19;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 10;
                     VisCost = 8;
                     BaseFailure = 38;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Level = 18;
                     VisCost = 15;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 24;
                     VisCost = 24;
                     BaseFailure = 50;
                     FirstCastExperience = 4;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 17;
                     VisCost = 15;
                     BaseFailure = 40;

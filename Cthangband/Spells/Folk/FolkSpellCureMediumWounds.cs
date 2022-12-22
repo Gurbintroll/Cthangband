@@ -25,43 +25,43 @@ namespace Cthangband.Spells.Folk
             Name = "Cure Medium Wounds";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 16;
                     VisCost = 14;
                     BaseFailure = 33;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 18;
                     VisCost = 17;
                     BaseFailure = 33;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 20;
                     VisCost = 19;
                     BaseFailure = 33;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 20;
                     VisCost = 19;
                     BaseFailure = 33;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 19;
                     VisCost = 18;
                     BaseFailure = 33;
                     FirstCastExperience = 6;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 14;
                     VisCost = 11;
                     BaseFailure = 22;

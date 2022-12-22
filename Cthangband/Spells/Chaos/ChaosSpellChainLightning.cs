@@ -29,44 +29,44 @@ namespace Cthangband.Spells.Chaos
             Name = "Chain Lightning";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 15;
                     VisCost = 15;
                     BaseFailure = 80;
                     FirstCastExperience = 35;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Level = 17;
                     VisCost = 17;
                     BaseFailure = 70;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 70;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Monk:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Monk:
                     Level = 17;
                     VisCost = 16;
                     BaseFailure = 60;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Level = 14;
                     VisCost = 14;
                     BaseFailure = 60;
                     FirstCastExperience = 20;
                     break;
 
-                case CharacterClass.HighMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.HighMage:
+                case CharacterClassId.Cultist:
                     Level = 12;
                     VisCost = 12;
                     BaseFailure = 70;

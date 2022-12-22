@@ -24,29 +24,29 @@ namespace Cthangband.Spells.Sorcery
             Name = "Word of Recall";
             switch (characterClass)
             {
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Level = 25;
                     VisCost = 25;
                     BaseFailure = 75;
                     FirstCastExperience = 19;
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Level = 30;
                     VisCost = 35;
                     BaseFailure = 75;
                     FirstCastExperience = 15;
                     break;
 
-                case CharacterClass.WarriorMage:
-                case CharacterClass.Cultist:
+                case CharacterClassId.WarriorMage:
+                case CharacterClassId.Cultist:
                     Level = 28;
                     VisCost = 28;
                     BaseFailure = 75;
                     FirstCastExperience = 19;
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Level = 20;
                     VisCost = 20;
                     BaseFailure = 65;

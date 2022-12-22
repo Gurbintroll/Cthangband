@@ -20,14 +20,14 @@ namespace Cthangband
     {
         private readonly MenuItem[] _classMenu =
         {
-            new MenuItem("Channeler", CharacterClass.Channeler), new MenuItem("Chosen One", CharacterClass.ChosenOne),
-            new MenuItem("Cultist", CharacterClass.Cultist), new MenuItem("Druid", CharacterClass.Druid),
-            new MenuItem("Fanatic", CharacterClass.Fanatic), new MenuItem("High Mage", CharacterClass.HighMage),
-            new MenuItem("Mage", CharacterClass.Mage), new MenuItem("Monk", CharacterClass.Monk),
-            new MenuItem("Mindcrafter", CharacterClass.Mindcrafter), new MenuItem("Mystic", CharacterClass.Mystic),
-            new MenuItem("Paladin", CharacterClass.Paladin), new MenuItem("Priest", CharacterClass.Priest),
-            new MenuItem("Ranger", CharacterClass.Ranger), new MenuItem("Rogue", CharacterClass.Rogue),
-            new MenuItem("Warrior", CharacterClass.Warrior), new MenuItem("Warrior Mage", CharacterClass.WarriorMage)
+            new MenuItem("Channeler", CharacterClassId.Channeler), new MenuItem("Chosen One", CharacterClassId.ChosenOne),
+            new MenuItem("Cultist", CharacterClassId.Cultist), new MenuItem("Druid", CharacterClassId.Druid),
+            new MenuItem("Fanatic", CharacterClassId.Fanatic), new MenuItem("High Mage", CharacterClassId.HighMage),
+            new MenuItem("Mage", CharacterClassId.Mage), new MenuItem("Monk", CharacterClassId.Monk),
+            new MenuItem("Mindcrafter", CharacterClassId.Mindcrafter), new MenuItem("Mystic", CharacterClassId.Mystic),
+            new MenuItem("Paladin", CharacterClassId.Paladin), new MenuItem("Priest", CharacterClassId.Priest),
+            new MenuItem("Ranger", CharacterClassId.Ranger), new MenuItem("Rogue", CharacterClassId.Rogue),
+            new MenuItem("Warrior", CharacterClassId.Warrior), new MenuItem("Warrior Mage", CharacterClassId.WarriorMage)
         };
 
         private readonly string[] _menuItem = new string[32];
@@ -268,7 +268,7 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "CHA:", 41, 21);
             for (int i = 0; i < 6; i++)
             {
-                int bonus = Profession.ClassInfo[pclass].AbilityBonus[i];
+                int bonus = CharacterClass.ClassInfo[pclass].AbilityBonus[i];
                 DisplayStatBonus(26, 36 + i, bonus);
             }
             Gui.Print(Colour.Purple, "Disarming   :", 36, 53);
@@ -282,24 +282,24 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "Infravision :", 38, 31);
             Gui.Print(Colour.Purple, "Searching   :", 39, 31);
             Gui.Print(Colour.Purple, "Perception  :", 40, 31);
-            DisplayAPlusB(67, 36, Profession.ClassInfo[pclass].BaseDisarmBonus, Profession.ClassInfo[pclass].DisarmBonusPerLevel);
-            DisplayAPlusB(67, 37, Profession.ClassInfo[pclass].BaseDeviceBonus, Profession.ClassInfo[pclass].DeviceBonusPerLevel);
-            DisplayAPlusB(67, 38, Profession.ClassInfo[pclass].BaseSaveBonus, Profession.ClassInfo[pclass].SaveBonusPerLevel);
-            DisplayAPlusB(67, 39, Profession.ClassInfo[pclass].BaseStealthBonus * 4, Profession.ClassInfo[pclass].StealthBonusPerLevel * 4);
-            DisplayAPlusB(67, 40, Profession.ClassInfo[pclass].BaseMeleeAttackBonus, Profession.ClassInfo[pclass].MeleeAttackBonusPerLevel);
-            DisplayAPlusB(67, 41, Profession.ClassInfo[pclass].BaseRangedAttackBonus, Profession.ClassInfo[pclass].RangedAttackBonusPerLevel);
-            string buf = "+" + Profession.ClassInfo[pclass].ExperienceFactor + "%";
+            DisplayAPlusB(67, 36, CharacterClass.ClassInfo[pclass].BaseDisarmBonus, CharacterClass.ClassInfo[pclass].DisarmBonusPerLevel);
+            DisplayAPlusB(67, 37, CharacterClass.ClassInfo[pclass].BaseDeviceBonus, CharacterClass.ClassInfo[pclass].DeviceBonusPerLevel);
+            DisplayAPlusB(67, 38, CharacterClass.ClassInfo[pclass].BaseSaveBonus, CharacterClass.ClassInfo[pclass].SaveBonusPerLevel);
+            DisplayAPlusB(67, 39, CharacterClass.ClassInfo[pclass].BaseStealthBonus * 4, CharacterClass.ClassInfo[pclass].StealthBonusPerLevel * 4);
+            DisplayAPlusB(67, 40, CharacterClass.ClassInfo[pclass].BaseMeleeAttackBonus, CharacterClass.ClassInfo[pclass].MeleeAttackBonusPerLevel);
+            DisplayAPlusB(67, 41, CharacterClass.ClassInfo[pclass].BaseRangedAttackBonus, CharacterClass.ClassInfo[pclass].RangedAttackBonusPerLevel);
+            string buf = "+" + CharacterClass.ClassInfo[pclass].ExperienceFactor + "%";
             Gui.Print(Colour.Black, buf, 36, 45);
-            buf = "1d" + Profession.ClassInfo[pclass].HitDieBonus;
+            buf = "1d" + CharacterClass.ClassInfo[pclass].HitDieBonus;
             Gui.Print(Colour.Black, buf, 37, 45);
             Gui.Print(Colour.Black, "-", 38, 45);
-            buf = $"{Profession.ClassInfo[pclass].BaseSearchBonus:00}%";
+            buf = $"{CharacterClass.ClassInfo[pclass].BaseSearchBonus:00}%";
             Gui.Print(Colour.Black, buf, 39, 45);
-            buf = $"{Profession.ClassInfo[pclass].BaseSearchFrequency:00}%";
+            buf = $"{CharacterClass.ClassInfo[pclass].BaseSearchFrequency:00}%";
             Gui.Print(Colour.Black, buf, 40, 45);
             switch (pclass)
             {
-                case CharacterClass.Cultist:
+                case CharacterClassId.Cultist:
                     Gui.Print(Colour.Purple, "INT based spell casters, who use Chaos and another realm", 30, 20);
                     Gui.Print(Colour.Purple, "of their choice. Can't wield weapons except for powerful", 31, 20);
                     Gui.Print(Colour.Purple, "chaos blades. Learn to resist chaos (at lvl 20). Have a", 32, 20);
@@ -307,34 +307,34 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "punishments as they increase in level.", 34, 20);
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     Gui.Print(Colour.Purple, "Warriors who dabble in INT based Chaos magic. Have a cult", 30, 20);
                     Gui.Print(Colour.Purple, "patron who will randomly give them rewards or punishments", 31, 20);
                     Gui.Print(Colour.Purple, "as they increase in level. Learn to resist chaos", 32, 20);
                     Gui.Print(Colour.Purple, "(at lvl 30) and fear (at lvl 40).", 33, 20);
                     break;
 
-                case CharacterClass.ChosenOne:
+                case CharacterClassId.ChosenOne:
                     Gui.Print(Colour.Purple, "Warriors of fate, who have no spell casting abilities but", 30, 20);
                     Gui.Print(Colour.Purple, "gain a large number of passive magical abilities (too long", 31, 20);
                     Gui.Print(Colour.Purple, "to list here) as they increase in level.", 32, 20);
                     break;
 
-                case CharacterClass.Channeler:
+                case CharacterClassId.Channeler:
                     Gui.Print(Colour.Purple, "Similar to a spell caster, but rather than casting spells", 30, 20);
                     Gui.Print(Colour.Purple, "from a book, they can use their CHA to channel vis into", 31, 20);
                     Gui.Print(Colour.Purple, "most types of item, powering the effects of the items", 32, 20);
                     Gui.Print(Colour.Purple, "without depleting them.", 33, 20);
                     break;
 
-                case CharacterClass.Druid:
+                case CharacterClassId.Druid:
                     Gui.Print(Colour.Purple, "Nature priests who use WIS based spell casting and who are", 30, 20);
                     Gui.Print(Colour.Purple, "limited to the Nature realm. As priests, they can't use", 31, 20);
                     Gui.Print(Colour.Purple, "edged weapons unless those weapons are holy; but they can", 32, 20);
                     Gui.Print(Colour.Purple, "wear heavy armour without it disrupting their casting.", 33, 20);
                     break;
 
-                case CharacterClass.HighMage:
+                case CharacterClassId.HighMage:
                     Gui.Print(Colour.Purple, "INT based spell casters who specialise in a single realm", 30, 20);
                     Gui.Print(Colour.Purple, "of magic. They may choose any realm, and are better at", 31, 20);
                     Gui.Print(Colour.Purple, "casting spells from that realm than a normal mage. High", 32, 20);
@@ -342,13 +342,13 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "Wearing too much armour disrupts their casting.", 34, 20);
                     break;
 
-                case CharacterClass.Mage:
+                case CharacterClassId.Mage:
                     Gui.Print(Colour.Purple, "Flexible INT based spell casters who can cast magic from", 30, 20);
                     Gui.Print(Colour.Purple, "any two realms of their choice. However, they can't wear", 31, 20);
                     Gui.Print(Colour.Purple, "much armour before it starts disrupting their casting.", 32, 20);
                     break;
 
-                case CharacterClass.Monk:
+                case CharacterClassId.Monk:
                     Gui.Print(Colour.Purple, "Masters of unarmed combat. While wearing only light armour", 30, 20);
                     Gui.Print(Colour.Purple, "they can move faster and dodge blows and can learn to", 31, 20);
                     Gui.Print(Colour.Purple, "resist paralysis (at lvl 25). While not wielding a weapon", 32, 20);
@@ -356,7 +356,7 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "WIS based casters using Chaos, Tarot or Corporeal magic.", 34, 20);
                     break;
 
-                case CharacterClass.Mindcrafter:
+                case CharacterClassId.Mindcrafter:
                     Gui.Print(Colour.Purple, "Disciples of the psionic arts, Mindcrafters learn a range", 30, 20);
                     Gui.Print(Colour.Purple, "of mental abilities; which they power using WIS. As well", 31, 20);
                     Gui.Print(Colour.Purple, "as their powers, they learn to resist fear (at lvl 10),", 32, 20);
@@ -364,7 +364,7 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "(at lvl 30), and gain telepathy (at lvl 40).", 34, 20);
                     break;
 
-                case CharacterClass.Mystic:
+                case CharacterClassId.Mystic:
                     Gui.Print(Colour.Purple, "Mystics master both martial and psionic arts, which they", 30, 20);
                     Gui.Print(Colour.Purple, "power using WIS. Can resist confusion (at lvl 10), fear", 31, 20);
                     Gui.Print(Colour.Purple, "(lvl 25), paralysis (lvl 30). Telepathy (lvl 40). While", 32, 20);
@@ -372,7 +372,7 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "and while not wielding a weapon they do increased damage.", 34, 20);
                     break;
 
-                case CharacterClass.Paladin:
+                case CharacterClassId.Paladin:
                     Gui.Print(Colour.Purple, "Holy warriors who use WIS based spell casting to supplement", 30, 20);
                     Gui.Print(Colour.Purple, "their fighting skills. Paladins can specialise in either", 31, 20);
                     Gui.Print(Colour.Purple, "Life or Death magic, but their spell casting is weak in", 32, 20);
@@ -380,21 +380,21 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "(at lvl 40).", 34, 20);
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     Gui.Print(Colour.Purple, "Devout followers of the Great Ones, Priests use WIS based", 30, 20);
                     Gui.Print(Colour.Purple, "spell casting. They may choose either Life or Death magic,", 31, 20);
                     Gui.Print(Colour.Purple, "and another realm of their choice. Priests can't use edged", 32, 20);
                     Gui.Print(Colour.Purple, "weapons unless they are blessed, but can use any armour.", 33, 20);
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     Gui.Print(Colour.Purple, "Masters of ranged combat, especiallly using bows. Rangers", 30, 20);
                     Gui.Print(Colour.Purple, "supplement their shooting and stealth with INT based spell", 31, 20);
                     Gui.Print(Colour.Purple, "casting from the Nature realm plus another realm of their", 32, 20);
                     Gui.Print(Colour.Purple, "choice from Death, Corporeal, Tarot, Chaos, and Folk.", 33, 20);
                     break;
 
-                case CharacterClass.Rogue:
+                case CharacterClassId.Rogue:
                     Gui.Print(Colour.Purple, "Stealth based characters who are adept at picking locks,", 30, 20);
                     Gui.Print(Colour.Purple, "searching, and disarming traps. Rogues can use stealth to", 31, 20);
                     Gui.Print(Colour.Purple, "their advantage in order to backstab sleeping or fleeing", 32, 20);
@@ -402,14 +402,14 @@ namespace Cthangband
                     Gui.Print(Colour.Purple, "from the Tarot, Sorcery, Death, or Folk realms.", 34, 20);
                     break;
 
-                case CharacterClass.Warrior:
+                case CharacterClassId.Warrior:
                     Gui.Print(Colour.Purple, "Straightforward, no-nonsense fighters. They are the best", 30, 20);
                     Gui.Print(Colour.Purple, "characters at melee combat, and require the least amount", 31, 20);
                     Gui.Print(Colour.Purple, "of experience to increase in level. They can learn to", 32, 20);
                     Gui.Print(Colour.Purple, "resist fear (at lvl 30). The ideal class for novices.", 33, 20);
                     break;
 
-                case CharacterClass.WarriorMage:
+                case CharacterClassId.WarriorMage:
                     Gui.Print(Colour.Purple, "A blend of both warrior and mage, getting the abilities of", 30, 20);
                     Gui.Print(Colour.Purple, "both but not being the best at either. They use INT based", 31, 20);
                     Gui.Print(Colour.Purple, "spell casting, getting access to the Folk realm plus a", 32, 20);
@@ -462,8 +462,8 @@ namespace Cthangband
             Gui.Print(Colour.Blue, "Class       :", 5, 1);
             if (stage == 0)
             {
-                _player.Profession = Profession.ClassInfo[_prevClass];
-                str = _player.Profession.Title;
+                _player.CharacterClass = CharacterClass.ClassInfo[_prevClass];
+                str = _player.CharacterClass.Title;
             }
             else if (stage < 2)
             {
@@ -471,8 +471,8 @@ namespace Cthangband
             }
             else
             {
-                _player.Profession = Profession.ClassInfo[_player.ProfessionIndex];
-                str = _player.Profession.Title;
+                _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
+                str = _player.CharacterClass.Title;
             }
             Gui.Print(Colour.Brown, str, 5, 15);
             string buf = string.Empty;
@@ -574,7 +574,7 @@ namespace Cthangband
             {
                 for (i = 0; i < 6; i++)
                 {
-                    buf = _player.Profession.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
+                    buf = _player.CharacterClass.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
                     Gui.Print(Colour.Brown, buf, 22 + i, 20);
                 }
             }
@@ -605,7 +605,7 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "CHA:", 41, 21);
             for (int i = 0; i < 6; i++)
             {
-                int bonus = PlayerRaces.Instance[race].AbilityBonus[i] + Profession.ClassInfo[_player.ProfessionIndex].AbilityBonus[i];
+                int bonus = PlayerRaces.Instance[race].AbilityBonus[i] + CharacterClass.ClassInfo[_player.CharacterClassIndex].AbilityBonus[i];
                 DisplayStatBonus(26, 36 + i, bonus);
             }
             Gui.Print(Colour.Purple, "Disarming   :", 36, 53);
@@ -619,21 +619,21 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "Infravision :", 38, 31);
             Gui.Print(Colour.Purple, "Searching   :", 39, 31);
             Gui.Print(Colour.Purple, "Perception  :", 40, 31);
-            DisplayAPlusB(67, 36, Profession.ClassInfo[_player.ProfessionIndex].BaseDisarmBonus + PlayerRaces.Instance[race].BaseDisarmBonus,
-                Profession.ClassInfo[_player.ProfessionIndex].DisarmBonusPerLevel);
-            DisplayAPlusB(67, 37, Profession.ClassInfo[_player.ProfessionIndex].BaseDeviceBonus + PlayerRaces.Instance[race].BaseDeviceBonus,
-                Profession.ClassInfo[_player.ProfessionIndex].DeviceBonusPerLevel);
-            DisplayAPlusB(67, 38, Profession.ClassInfo[_player.ProfessionIndex].BaseSaveBonus + PlayerRaces.Instance[race].BaseSaveBonus,
-                Profession.ClassInfo[_player.ProfessionIndex].SaveBonusPerLevel);
-            DisplayAPlusB(67, 39, (Profession.ClassInfo[_player.ProfessionIndex].BaseStealthBonus * 4) + (PlayerRaces.Instance[race].BaseStealthBonus * 4),
-                Profession.ClassInfo[_player.ProfessionIndex].StealthBonusPerLevel * 4);
-            DisplayAPlusB(67, 40, Profession.ClassInfo[_player.ProfessionIndex].BaseMeleeAttackBonus + PlayerRaces.Instance[race].BaseMeleeAttackBonus,
-                Profession.ClassInfo[_player.ProfessionIndex].MeleeAttackBonusPerLevel);
-            DisplayAPlusB(67, 41, Profession.ClassInfo[_player.ProfessionIndex].BaseRangedAttackBonus + PlayerRaces.Instance[race].BaseRangedAttackBonus,
-                Profession.ClassInfo[_player.ProfessionIndex].RangedAttackBonusPerLevel);
-            string buf = PlayerRaces.Instance[race].ExperienceFactor + Profession.ClassInfo[_player.ProfessionIndex].ExperienceFactor + "%";
+            DisplayAPlusB(67, 36, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseDisarmBonus + PlayerRaces.Instance[race].BaseDisarmBonus,
+                CharacterClass.ClassInfo[_player.CharacterClassIndex].DisarmBonusPerLevel);
+            DisplayAPlusB(67, 37, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseDeviceBonus + PlayerRaces.Instance[race].BaseDeviceBonus,
+                CharacterClass.ClassInfo[_player.CharacterClassIndex].DeviceBonusPerLevel);
+            DisplayAPlusB(67, 38, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseSaveBonus + PlayerRaces.Instance[race].BaseSaveBonus,
+                CharacterClass.ClassInfo[_player.CharacterClassIndex].SaveBonusPerLevel);
+            DisplayAPlusB(67, 39, (CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseStealthBonus * 4) + (PlayerRaces.Instance[race].BaseStealthBonus * 4),
+                CharacterClass.ClassInfo[_player.CharacterClassIndex].StealthBonusPerLevel * 4);
+            DisplayAPlusB(67, 40, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseMeleeAttackBonus + PlayerRaces.Instance[race].BaseMeleeAttackBonus,
+                CharacterClass.ClassInfo[_player.CharacterClassIndex].MeleeAttackBonusPerLevel);
+            DisplayAPlusB(67, 41, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseRangedAttackBonus + PlayerRaces.Instance[race].BaseRangedAttackBonus,
+                CharacterClass.ClassInfo[_player.CharacterClassIndex].RangedAttackBonusPerLevel);
+            string buf = PlayerRaces.Instance[race].ExperienceFactor + CharacterClass.ClassInfo[_player.CharacterClassIndex].ExperienceFactor + "%";
             Gui.Print(Colour.Black, buf, 36, 45);
-            buf = "1d" + (PlayerRaces.Instance[race].HitDieBonus + Profession.ClassInfo[_player.ProfessionIndex].HitDieBonus);
+            buf = "1d" + (PlayerRaces.Instance[race].HitDieBonus + CharacterClass.ClassInfo[_player.CharacterClassIndex].HitDieBonus);
             Gui.Print(Colour.Black, buf, 37, 45);
             if (PlayerRaces.Instance[race].Infravision == 0)
             {
@@ -644,9 +644,9 @@ namespace Cthangband
                 buf = PlayerRaces.Instance[race].Infravision + "0 feet";
                 Gui.Print(Colour.Green, buf, 38, 45);
             }
-            buf = $"{PlayerRaces.Instance[race].BaseSearchBonus + Profession.ClassInfo[_player.ProfessionIndex].BaseSearchBonus:00}%";
+            buf = $"{PlayerRaces.Instance[race].BaseSearchBonus + CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseSearchBonus:00}%";
             Gui.Print(Colour.Black, buf, 39, 45);
-            buf = $"{PlayerRaces.Instance[race].BaseSearchFrequency + Profession.ClassInfo[_player.ProfessionIndex].BaseSearchFrequency:00}%";
+            buf = $"{PlayerRaces.Instance[race].BaseSearchFrequency + CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseSearchFrequency:00}%";
             Gui.Print(Colour.Black, buf, 40, 45);
             Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description1, 29, 20);
             Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description2, 30, 20);
@@ -767,8 +767,8 @@ namespace Cthangband
             int i;
             _player.MaxLevelGained = 1;
             _player.Level = 1;
-            _player.ExperienceMultiplier = _player.Race.ExperienceFactor + _player.Profession.ExperienceFactor;
-            _player.HitDie = _player.Race.HitDieBonus + _player.Profession.HitDieBonus;
+            _player.ExperienceMultiplier = _player.Race.ExperienceFactor + _player.CharacterClass.ExperienceFactor;
+            _player.HitDie = _player.Race.HitDieBonus + _player.CharacterClass.HitDieBonus;
             _player.MaxHealth = _player.HitDie;
             _player.PlayerHp[0] = _player.HitDie;
             int lastroll = _player.HitDie;
@@ -825,7 +825,7 @@ namespace Cthangband
 
         private void GetRealmsRandomly()
         {
-            int pclas = _player.ProfessionIndex;
+            int pclas = _player.CharacterClassIndex;
             _player.Realm1 = Realm.None;
             _player.Realm2 = Realm.None;
             if (_realmChoices[pclas] == RealmChoice.None)
@@ -834,27 +834,27 @@ namespace Cthangband
             }
             switch (pclas)
             {
-                case CharacterClass.WarriorMage:
+                case CharacterClassId.WarriorMage:
                     _player.Realm1 = Realm.Folk;
                     break;
 
-                case CharacterClass.Fanatic:
+                case CharacterClassId.Fanatic:
                     _player.Realm1 = Realm.Chaos;
                     break;
 
-                case CharacterClass.Priest:
+                case CharacterClassId.Priest:
                     _player.Realm1 = ChooseRealmRandomly(RealmChoice.Life | RealmChoice.Death);
                     break;
 
-                case CharacterClass.Ranger:
+                case CharacterClassId.Ranger:
                     _player.Realm1 = Realm.Nature;
                     break;
 
-                case CharacterClass.Druid:
+                case CharacterClassId.Druid:
                     _player.Realm1 = Realm.Nature;
                     break;
 
-                case CharacterClass.Cultist:
+                case CharacterClassId.Cultist:
                     _player.Realm1 = Realm.Chaos;
                     break;
 
@@ -862,14 +862,14 @@ namespace Cthangband
                     _player.Realm1 = ChooseRealmRandomly(_realmChoices[pclas]);
                     break;
             }
-            if (pclas == CharacterClass.Paladin || pclas == CharacterClass.Rogue || pclas == CharacterClass.Fanatic ||
-                pclas == CharacterClass.Monk || pclas == CharacterClass.HighMage ||
-                pclas == CharacterClass.Druid)
+            if (pclas == CharacterClassId.Paladin || pclas == CharacterClassId.Rogue || pclas == CharacterClassId.Fanatic ||
+                pclas == CharacterClassId.Monk || pclas == CharacterClassId.HighMage ||
+                pclas == CharacterClassId.Druid)
             {
                 return;
             }
             _player.Realm2 = ChooseRealmRandomly(_realmChoices[pclas]);
-            if (_player.ProfessionIndex == CharacterClass.Priest)
+            if (_player.CharacterClassIndex == CharacterClassId.Priest)
             {
                 switch (_player.Realm2)
                 {
@@ -916,12 +916,12 @@ namespace Cthangband
                     j = dice[index];
                     dice.RemoveAt(index);
                     _player.AbilityScores[i].InnateMax = j;
-                    int bonus = _player.Race.AbilityBonus[i] + _player.Profession.AbilityBonus[i];
+                    int bonus = _player.Race.AbilityBonus[i] + _player.CharacterClass.AbilityBonus[i];
                     _player.AbilityScores[i].Innate = _player.AbilityScores[i].InnateMax;
                     _player.AbilityScores[i].Adjusted = _player.AbilityScores[i]
                         .ModifyStatValue(_player.AbilityScores[i].InnateMax, bonus);
                 }
-                if (_player.AbilityScores[Profession.PrimeStat(_player.ProfessionIndex)].InnateMax > 13)
+                if (_player.AbilityScores[CharacterClass.PrimeStat(_player.CharacterClassIndex)].InnateMax > 13)
                 {
                     break;
                 }
@@ -953,7 +953,7 @@ namespace Cthangband
             {
                 _prevSex = Constants.SexFemale;
                 _prevRace = "Human";
-                _prevClass = CharacterClass.Warrior;
+                _prevClass = CharacterClassId.Warrior;
                 _prevRealm1 = Realm.None;
                 _prevRealm2 = Realm.None;
                 _prevName = "Xena";
@@ -1081,16 +1081,16 @@ namespace Cthangband
                         if (menu[0] == Constants.GenerateReplay)
                         {
                             autoChose[stage] = true;
-                            _player.ProfessionIndex = _prevClass;
-                            _player.Profession = Profession.ClassInfo[_player.ProfessionIndex];
+                            _player.CharacterClassIndex = _prevClass;
+                            _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
                             stage++;
                             break;
                         }
                         if (menu[0] == Constants.GenerateRandom)
                         {
                             autoChose[stage] = true;
-                            _player.ProfessionIndex = Program.Rng.RandomLessThan(Constants.MaxClass);
-                            _player.Profession = Profession.ClassInfo[_player.ProfessionIndex];
+                            _player.CharacterClassIndex = Program.Rng.RandomLessThan(Constants.MaxClass);
+                            _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
                             stage++;
                             break;
                         }
@@ -1149,8 +1149,8 @@ namespace Cthangband
                         }
                         if (stage > BirthStage.ClassSelection)
                         {
-                            _player.ProfessionIndex = _classMenu[menu[BirthStage.ClassSelection]].Index;
-                            _player.Profession = Profession.ClassInfo[_player.ProfessionIndex];
+                            _player.CharacterClassIndex = _classMenu[menu[BirthStage.ClassSelection]].Index;
+                            _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
                         }
                         break;
 
@@ -1174,7 +1174,7 @@ namespace Cthangband
                                 _player.Race = PlayerRaces.Instance[_player.CurrentRace];
                                 _player.GetFirstLevelMutation = _player.Race.Mutates;
                             }
-                            while ((_player.Race.Choice & (1L << _player.ProfessionIndex)) == 0);
+                            while ((_player.Race.Choice & (1L << _player.CharacterClassIndex)) == 0);
                             stage++;
                             break;
                         }
@@ -1254,36 +1254,36 @@ namespace Cthangband
                             stage++;
                             break;
                         }
-                        switch (_player.ProfessionIndex)
+                        switch (_player.CharacterClassIndex)
                         {
-                            case CharacterClass.Cultist:
-                            case CharacterClass.Fanatic:
+                            case CharacterClassId.Cultist:
+                            case CharacterClassId.Fanatic:
                                 autoChose[stage] = true;
                                 _player.Realm1 = Realm.Chaos;
                                 stage++;
                                 break;
 
-                            case CharacterClass.WarriorMage:
+                            case CharacterClassId.WarriorMage:
                                 autoChose[stage] = true;
                                 _player.Realm1 = Realm.Folk;
                                 stage++;
                                 break;
 
-                            case CharacterClass.Druid:
-                            case CharacterClass.Ranger:
+                            case CharacterClassId.Druid:
+                            case CharacterClassId.Ranger:
                                 autoChose[stage] = true;
                                 _player.Realm1 = Realm.Nature;
                                 stage++;
                                 break;
 
-                            case CharacterClass.Paladin:
-                            case CharacterClass.Priest:
+                            case CharacterClassId.Paladin:
+                            case CharacterClassId.Priest:
                                 realmChoice[0] = Realm.Life;
                                 realmChoice[1] = Realm.Death;
                                 _menuLength = 2;
                                 break;
 
-                            case CharacterClass.Rogue:
+                            case CharacterClassId.Rogue:
                                 realmChoice[0] = Realm.Death;
                                 realmChoice[1] = Realm.Sorcery;
                                 realmChoice[2] = Realm.Tarot;
@@ -1291,8 +1291,8 @@ namespace Cthangband
                                 _menuLength = 4;
                                 break;
 
-                            case CharacterClass.HighMage:
-                            case CharacterClass.Mage:
+                            case CharacterClassId.HighMage:
+                            case CharacterClassId.Mage:
                                 realmChoice[0] = Realm.Life;
                                 realmChoice[1] = Realm.Death;
                                 realmChoice[2] = Realm.Nature;
@@ -1304,18 +1304,18 @@ namespace Cthangband
                                 _menuLength = 8;
                                 break;
 
-                            case CharacterClass.Monk:
+                            case CharacterClassId.Monk:
                                 realmChoice[0] = Realm.Corporeal;
                                 realmChoice[1] = Realm.Tarot;
                                 realmChoice[2] = Realm.Chaos;
                                 _menuLength = 3;
                                 break;
 
-                            case CharacterClass.ChosenOne:
-                            case CharacterClass.Channeler:
-                            case CharacterClass.Mindcrafter:
-                            case CharacterClass.Mystic:
-                            case CharacterClass.Warrior:
+                            case CharacterClassId.ChosenOne:
+                            case CharacterClassId.Channeler:
+                            case CharacterClassId.Mindcrafter:
+                            case CharacterClassId.Mystic:
+                            case CharacterClassId.Warrior:
                                 autoChose[stage] = true;
                                 _player.Realm1 = Realm.None;
                                 stage++;
@@ -1388,7 +1388,7 @@ namespace Cthangband
                         {
                             autoChose[stage] = true;
                             _player.Realm2 = _prevRealm2;
-                            if (_player.ProfessionIndex == CharacterClass.Priest)
+                            if (_player.CharacterClassIndex == CharacterClassId.Priest)
                             {
                                 switch (_player.Realm2)
                                 {
@@ -1431,31 +1431,31 @@ namespace Cthangband
                             break;
                         }
                         _player.Realm2 = Realm.None;
-                        switch (_player.ProfessionIndex)
+                        switch (_player.CharacterClassIndex)
                         {
-                            case CharacterClass.ChosenOne:
-                            case CharacterClass.Channeler:
-                            case CharacterClass.Mindcrafter:
-                            case CharacterClass.Warrior:
-                            case CharacterClass.Fanatic:
-                            case CharacterClass.HighMage:
-                            case CharacterClass.Paladin:
-                            case CharacterClass.Rogue:
-                            case CharacterClass.Monk:
-                            case CharacterClass.Mystic:
-                            case CharacterClass.Druid:
+                            case CharacterClassId.ChosenOne:
+                            case CharacterClassId.Channeler:
+                            case CharacterClassId.Mindcrafter:
+                            case CharacterClassId.Warrior:
+                            case CharacterClassId.Fanatic:
+                            case CharacterClassId.HighMage:
+                            case CharacterClassId.Paladin:
+                            case CharacterClassId.Rogue:
+                            case CharacterClassId.Monk:
+                            case CharacterClassId.Mystic:
+                            case CharacterClassId.Druid:
                                 autoChose[stage] = true;
                                 _player.Realm2 = Realm.None;
                                 stage++;
                                 break;
 
-                            case CharacterClass.Cultist:
-                            case CharacterClass.WarriorMage:
-                            case CharacterClass.Ranger:
-                            case CharacterClass.Priest:
-                            case CharacterClass.Mage:
+                            case CharacterClassId.Cultist:
+                            case CharacterClassId.WarriorMage:
+                            case CharacterClassId.Ranger:
+                            case CharacterClassId.Priest:
+                            case CharacterClassId.Mage:
                                 _menuLength = 0;
-                                int realmFilter = _realmChoices[_player.ProfessionIndex];
+                                int realmFilter = _realmChoices[_player.CharacterClassIndex];
                                 if ((realmFilter & RealmChoice.Life) != 0 && _player.Realm1 != Realm.Life)
                                 {
                                     realmChoice[_menuLength] = Realm.Life;
@@ -1557,7 +1557,7 @@ namespace Cthangband
                         if (stage > BirthStage.RealmSelection2)
                         {
                             _player.Realm2 = realmChoice[menu[BirthStage.RealmSelection2]];
-                            if (_player.ProfessionIndex == CharacterClass.Priest)
+                            if (_player.CharacterClassIndex == CharacterClassId.Priest)
                             {
                                 switch (_player.Realm2)
                                 {
@@ -1772,7 +1772,7 @@ namespace Cthangband
                 _player.Inventory.InvenCarry(item, false);
                 item = new Item();
             }
-            if (_player.Race.Glows || _player.ProfessionIndex == CharacterClass.ChosenOne)
+            if (_player.Race.Glows || _player.CharacterClassIndex == CharacterClassId.ChosenOne)
             {
                 item.AssignItemType(
                     Profile.Instance.ItemTypes.LookupKind(ItemCategory.Scroll, ScrollType.Light));
@@ -1796,8 +1796,8 @@ namespace Cthangband
             }
             for (int i = 0; i < 3; i++)
             {
-                ItemCategory tv = _playerInit[_player.ProfessionIndex][i].Category;
-                int sv = _playerInit[_player.ProfessionIndex][i].SubCategory;
+                ItemCategory tv = _playerInit[_player.CharacterClassIndex][i].Category;
+                int sv = _playerInit[_player.CharacterClassIndex][i].SubCategory;
                 if (tv == ItemCategory.SorceryBook)
                 {
                     tv = _player.Realm1.ToSpellBookItemCategory();
@@ -1808,7 +1808,7 @@ namespace Cthangband
                 }
                 item = new Item();
                 item.AssignItemType(Profile.Instance.ItemTypes.LookupKind(tv, sv));
-                if (tv == ItemCategory.Sword && _player.ProfessionIndex == CharacterClass.Rogue && _player.Realm1 == Realm.Death)
+                if (tv == ItemCategory.Sword && _player.CharacterClassIndex == CharacterClassId.Rogue && _player.Realm1 == Realm.Death)
                 {
                     item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfPoisoning;
                 }
