@@ -313,15 +313,16 @@ namespace Cthangband
                 Profile.Instance.MsgPrint(
                     $"You behold the {_horrorDesc[Program.Rng.DieRoll(Constants.MaxHorror) - 1]} visage of {mName}!");
                 Race.Knowledge.RFlags2 |= MonsterFlag2.EldritchHorror;
-                if (player.RaceIndex == RaceId.Imp || player.RaceIndex == RaceId.MindFlayer)
+                if (player.Race.SanityImmune)
                 {
+                    Profile.Instance.MsgPrint("You've seen worse.");
                     return;
                 }
-                if (player.RaceIndex == RaceId.Skeleton || player.RaceIndex == RaceId.Zombie ||
-                    player.RaceIndex == RaceId.Vampire || player.RaceIndex == RaceId.Spectre)
+                if (player.Race.SanityResistant)
                 {
                     if (Program.Rng.DieRoll(100) < 25 + player.Level)
                     {
+                        Profile.Instance.MsgPrint("You've seen worse.");
                         return;
                     }
                 }
@@ -392,10 +393,16 @@ namespace Cthangband
                 }
                 return;
             }
-            Profile.Instance.MsgPrint("The exposure to eldritch forces warps you.");
-            player.Dna.GainMutation();
-            player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
-            SaveGame.Instance.HandleStuff();
+            if (Program.Rng.DieRoll(power) < player.SkillSavingThrow)
+            {
+                if (!player.HasChaosResistance)
+                {
+                    Profile.Instance.MsgPrint("The exposure to eldritch forces warps you.");
+                    player.Dna.GainMutation();
+                    player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
+                    SaveGame.Instance.HandleStuff();
+                }
+            }
         }
     }
 }

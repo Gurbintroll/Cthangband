@@ -2108,7 +2108,7 @@ namespace Cthangband
             }
             Item oPtr;
             bool caveNoRegen = false;
-            if (Player.RaceIndex == RaceId.Vampire)
+            if (Player.Race.IsSunlightSensitive)
             {
                 if (CurrentDepth <= 0 && !Player.HasLightResistance && Player.TimedInvulnerability == 0 &&
                     Player.GameTime.IsLight)
@@ -2141,10 +2141,10 @@ namespace Cthangband
             {
                 caveNoRegen = true;
                 if (Player.TimedInvulnerability == 0 && Player.TimedEtherealness == 0 &&
-                    (Player.Health > Player.Level / 5 || Player.RaceIndex != RaceId.Spectre))
+                    (Player.Health > Player.Level / 5 || !Player.Race.IsIncorporeal))
                 {
                     string damDesc;
-                    if (Player.RaceIndex == RaceId.Spectre)
+                    if (Player.Race.IsIncorporeal)
                     {
                         Profile.Instance.MsgPrint("Your body feels disrupted!");
                         damDesc = "density";

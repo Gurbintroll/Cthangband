@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerRace.Base;
 using Cthangband.StaticData;
 using Cthangband.Terminal;
 using Cthangband.UI;
@@ -579,7 +580,7 @@ namespace Cthangband
             bool tempDeath = tempProfile.Game.Player == null;
             Colour color;
             int tempLev;
-            int tempRace;
+            string tempRace;
             int tempClass;
             Realm tempRealm;
             string tempName;
@@ -587,7 +588,7 @@ namespace Cthangband
             {
                 color = Colour.Grey;
                 tempLev = tempProfile.ExPlayer.Level;
-                tempRace = tempProfile.ExPlayer.RaceIndex;
+                tempRace = tempProfile.ExPlayer.CurrentRace;
                 tempClass = tempProfile.ExPlayer.ProfessionIndex;
                 tempRealm = tempProfile.ExPlayer.Realm1;
                 tempName = tempProfile.ExPlayer.Name.Trim() + tempProfile.ExPlayer.Generation.ToRoman(true);
@@ -600,7 +601,7 @@ namespace Cthangband
                     color = Colour.Yellow;
                 }
                 tempLev = tempProfile.Game.Player.Level;
-                tempRace = tempProfile.Game.Player.RaceIndex;
+                tempRace = tempProfile.Game.Player.CurrentRace;
                 tempClass = tempProfile.Game.Player.ProfessionIndex;
                 tempRealm = tempProfile.Game.Player.Realm1;
                 tempName = tempProfile.Game.Player.Name.Trim() + tempProfile.Game.Player.Generation.ToRoman(true);
@@ -608,7 +609,7 @@ namespace Cthangband
             Gui.Print(color, tempName, displayRow, displayCol + 14 - (tempName.Length / 2));
             string tempchar = $"the level {tempLev}";
             Gui.Print(color, tempchar, displayRow + 1, displayCol + 14 - (tempchar.Length / 2));
-            tempchar = Race.RaceInfo[tempRace].Title;
+            tempchar = PlayerRaces.Instance[tempRace].Title;
             Gui.Print(color, tempchar, displayRow + 2, displayCol + 14 - (tempchar.Length / 2));
             tempchar = Profession.ClassSubName(tempClass, tempRealm);
             Gui.Print(color, tempchar, displayRow + 3, displayCol + 14 - (tempchar.Length / 2));

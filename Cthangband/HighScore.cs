@@ -5,6 +5,7 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using Cthangband.PlayerRace.Base;
 using System;
 
 namespace Cthangband
@@ -14,7 +15,7 @@ namespace Cthangband
     {
         public readonly string How;
         public readonly int Pclass;
-        public readonly int Prace;
+        public readonly string Prace;
         public readonly int Pts;
         public readonly string When;
         public readonly string Where;
@@ -34,7 +35,7 @@ namespace Cthangband
                 saveGame = SaveGame.Instance;
             }
             Pts = player.GetScore(saveGame);
-            Prace = player.RaceIndex;
+            Prace = player.CurrentRace;
             Pclass = player.ProfessionIndex;
             if (player.IsDead)
             {
@@ -48,7 +49,7 @@ namespace Cthangband
                 How = "nobody (yet!)";
             }
             Who =
-                $"{player.Name.Trim()}{player.Generation.ToRoman(true)} the level {player.Level} {Race.RaceInfo[player.RaceIndex].Title} {Profession.ClassSubName(player.ProfessionIndex, player.Realm1)}";
+                $"{player.Name.Trim()}{player.Generation.ToRoman(true)} the level {player.Level} {PlayerRaces.Instance[player.CurrentRace].Title} {Profession.ClassSubName(player.ProfessionIndex, player.Realm1)}";
             if (saveGame.CurrentDepth > 0)
             {
                 Where = $"on level {saveGame.CurrentDepth} of {saveGame.CurDungeon.Name}";

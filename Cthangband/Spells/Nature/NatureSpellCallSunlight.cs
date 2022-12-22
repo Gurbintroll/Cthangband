@@ -19,7 +19,7 @@ namespace Cthangband.Spells.Nature
         {
             saveGame.SpellEffects.FireBall(new ProjectLight(SaveGame.Instance.SpellEffects), 0, 150, 8);
             level.WizLight();
-            if (player.RaceIndex != RaceId.Vampire || player.HasLightResistance)
+            if (!player.Race.IsSunlightSensitive || player.HasLightResistance)
             {
                 return;
             }

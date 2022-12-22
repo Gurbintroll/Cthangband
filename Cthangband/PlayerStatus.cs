@@ -285,215 +285,9 @@ namespace Cthangband
                     _player.HasNetherResistance = true;
                 }
             }
-            if (_player.RaceIndex == RaceId.Elf)
-            {
-                _player.HasLightResistance = true;
-            }
-            if (_player.RaceIndex == RaceId.Hobbit)
-            {
-                _player.HasSustainDexterity = true;
-            }
-            if (_player.RaceIndex == RaceId.Gnome)
-            {
-                _player.HasFreeAction = true;
-            }
-            if (_player.RaceIndex == RaceId.Dwarf)
-            {
-                _player.HasBlindnessResistance = true;
-            }
-            if (_player.RaceIndex == RaceId.HalfOrc)
-            {
-                _player.HasDarkResistance = true;
-            }
-            if (_player.RaceIndex == RaceId.HalfTroll)
-            {
-                _player.HasSustainStrength = true;
-                if (_player.Level > 14)
-                {
-                    _player.HasRegeneration = true;
-                    _player.HasSlowDigestion = true;
-                }
-            }
-            if (_player.RaceIndex == RaceId.Great)
-            {
-                _player.HasSustainConstitution = true;
-                _player.HasRegeneration = true;
-            }
-            if (_player.RaceIndex == RaceId.HighElf)
-            {
-                _player.HasSeeInvisibility = true;
-                _player.HasLightResistance = true;
-            }
-            if (_player.RaceIndex == RaceId.TchoTcho)
-            {
-                _player.HasFearResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.HalfOgre)
-            {
-                _player.HasDarkResistance = true;
-                _player.HasSustainStrength = true;
-            }
-            else if (_player.RaceIndex == RaceId.HalfGiant)
-            {
-                _player.HasSustainStrength = true;
-                _player.HasShardResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.HalfTitan)
-            {
-                _player.HasChaosResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.Cyclops)
-            {
-                _player.HasSoundResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.Yeek)
-            {
-                _player.HasAcidResistance = true;
-                if (_player.Level > 19)
-                {
-                    _player.HasAcidImmunity = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.Klackon)
-            {
-                _player.HasConfusionResistance = true;
-                _player.HasAcidResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.Kobold)
-            {
-                _player.HasPoisonResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.Nibelung)
-            {
-                _player.HasDisenchantResistance = true;
-                _player.HasDarkResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.DarkElf)
-            {
-                _player.HasDarkResistance = true;
-                if (_player.Level > 19)
-                {
-                    _player.HasSeeInvisibility = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.Draconian)
-            {
-                _player.HasFeatherFall = true;
-                if (_player.Level > 4)
-                {
-                    _player.HasFireResistance = true;
-                }
-                if (_player.Level > 9)
-                {
-                    _player.HasColdResistance = true;
-                }
-                if (_player.Level > 14)
-                {
-                    _player.HasAcidResistance = true;
-                }
-                if (_player.Level > 19)
-                {
-                    _player.HasLightningResistance = true;
-                }
-                if (_player.Level > 34)
-                {
-                    _player.HasPoisonResistance = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.MindFlayer)
-            {
-                _player.HasSustainIntelligence = true;
-                _player.HasSustainWisdom = true;
-                if (_player.Level > 14)
-                {
-                    _player.HasSeeInvisibility = true;
-                }
-                if (_player.Level > 29)
-                {
-                    _player.HasTelepathy = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.Imp)
-            {
-                _player.HasFireResistance = true;
-                if (_player.Level > 9)
-                {
-                    _player.HasSeeInvisibility = true;
-                }
-                if (_player.Level > 19)
-                {
-                    _player.HasFireImmunity = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.Golem)
-            {
-                if (_player.Level > 34)
-                {
-                    _player.HasHoldLife = true;
-                }
-                _player.HasSlowDigestion = true;
-                _player.HasFreeAction = true;
-                _player.HasSeeInvisibility = true;
-                _player.HasPoisonResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.Skeleton)
-            {
-                _player.HasShardResistance = true;
-                _player.HasHoldLife = true;
-                _player.HasSeeInvisibility = true;
-                _player.HasPoisonResistance = true;
-                if (_player.Level > 9)
-                {
-                    _player.HasColdResistance = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.Zombie)
-            {
-                _player.HasNetherResistance = true;
-                _player.HasHoldLife = true;
-                _player.HasSeeInvisibility = true;
-                _player.HasPoisonResistance = true;
-                _player.HasSlowDigestion = true;
-                if (_player.Level > 4)
-                {
-                    _player.HasColdResistance = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.Vampire)
-            {
-                _player.HasDarkResistance = true;
-                _player.HasHoldLife = true;
-                _player.HasNetherResistance = true;
-                _player.HasColdResistance = true;
-                _player.HasPoisonResistance = true;
-                _player.HasGlow = true;
-            }
-            else if (_player.RaceIndex == RaceId.Spectre)
-            {
-                _player.HasFeatherFall = true;
-                _player.HasNetherResistance = true;
-                _player.HasHoldLife = true;
-                _player.HasSeeInvisibility = true;
-                _player.HasPoisonResistance = true;
-                _player.HasSlowDigestion = true;
-                _player.HasColdResistance = true;
-                _player.HasGlow = true;
-                if (_player.Level > 34)
-                {
-                    _player.HasTelepathy = true;
-                }
-            }
-            else if (_player.RaceIndex == RaceId.Sprite)
-            {
-                _player.HasFeatherFall = true;
-                _player.HasGlow = true;
-                _player.HasLightResistance = true;
-            }
-            else if (_player.RaceIndex == RaceId.MiriNigri)
-            {
-                _player.HasConfusionResistance = true;
-                _player.HasSoundResistance = true;
-            }
+
+            _player.Race.ApplyRacialStatus(_player);
+
             _player.Speed = 110;
             _player.MeleeAttacksPerRound = 1;
             _player.MissileAttacksPerRound = 1;
@@ -876,11 +670,9 @@ namespace Cthangband
             {
                 _player.HasGlow = true;
             }
-            if (_player.RaceIndex == RaceId.Golem)
-            {
-                _player.ArmourClassBonus += 20 + (_player.Level / 5);
-                _player.DisplayedArmourClassBonus += 20 + (_player.Level / 5);
-            }
+
+            _player.Race.ApplyArmourBonus(_player);
+
             for (i = 0; i < 6; i++)
             {
                 int ind;
@@ -1004,7 +796,7 @@ namespace Cthangband
             {
                 _player.Speed -= 10;
             }
-            if (_player.RaceIndex == RaceId.Klackon || _player.RaceIndex == RaceId.Sprite ||
+            if (_player.Race.HasSpeedBonus ||
                 ((_player.ProfessionIndex == CharacterClass.Monk || _player.ProfessionIndex == CharacterClass.Mystic) && !MartialArtistHeavyArmour()))
             {
                 _player.Speed += _player.Level / 10;

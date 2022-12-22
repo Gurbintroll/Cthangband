@@ -7,6 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Pantheon;
+using Cthangband.PlayerRace;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -454,7 +455,7 @@ namespace Cthangband
             {
                 string storeName = StaticResources.Instance.FloorTileTypes[FeatureType].Description;
                 string ownerName = _owner.OwnerName;
-                string raceName = Race.RaceInfo[_owner.OwnerRace].Title;
+                string raceName = _owner.OwnerRace;
                 string buf = $"{ownerName} ({raceName})";
                 Gui.Print(buf, 3, 10);
                 buf = $"{storeName} ({_owner.MaxCost})";
@@ -1568,9 +1569,9 @@ namespace Cthangband
                     if (StoreType == StoreType.StoreHall)
                     {
                         Gui.Save();
-                        Program.HiScores.RaceFilter = _player.RaceIndex;
+                        Program.HiScores.RaceFilter = _player.CurrentRace;
                         Program.HiScores.DisplayScores(new HighScore(_player));
-                        Program.HiScores.RaceFilter = -1;
+                        Program.HiScores.RaceFilter = string.Empty;
                         Gui.Load();
                     }
                     else if (StoreType == StoreType.StoreTemple)
@@ -1749,8 +1750,7 @@ namespace Cthangband
                             }
                             else
                             {
-                                if (_player.RaceIndex == RaceId.Spectre || _player.RaceIndex == RaceId.Zombie ||
-                                    _player.RaceIndex == RaceId.Skeleton || _player.RaceIndex == RaceId.Vampire)
+                                if (_player.Race.IsNocturnal)
                                 {
                                     RoomRest(true);
                                 }
@@ -1785,15 +1785,7 @@ namespace Cthangband
                                         SayComment_1();
                                         Gui.PlaySound(SoundEffect.StoreTransaction);
                                         StorePrtGold();
-                                        if (_player.RaceIndex == RaceId.Spectre || _player.RaceIndex == RaceId.Zombie ||
-                                            _player.RaceIndex == RaceId.Skeleton || _player.RaceIndex == RaceId.Vampire)
-                                        {
-                                            RoomRest(true);
-                                        }
-                                        else
-                                        {
-                                            RoomRest(false);
-                                        }
+                                        RoomRest(_player.Race.IsNocturnal);
                                     }
                                 }
                             }

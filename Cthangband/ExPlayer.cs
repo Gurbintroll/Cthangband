@@ -18,6 +18,16 @@ namespace Cthangband
     internal class ExPlayer
     {
         /// <summary>
+        /// The race the character was born with (they might have been polymorphed or mutated)
+        /// </summary>
+        public readonly string BirthRace;
+
+        /// <summary>
+        /// The race of the character
+        /// </summary>
+        public readonly string CurrentRace;
+
+        /// <summary>
         /// The index of the character's gender
         /// </summary>
         public readonly int GenderIndex;
@@ -43,16 +53,6 @@ namespace Cthangband
         public readonly int ProfessionIndex;
 
         /// <summary>
-        /// The race of the character
-        /// </summary>
-        public readonly int RaceIndex;
-
-        /// <summary>
-        /// The race the character was born with (they might have been polymorphed or mutated)
-        /// </summary>
-        public readonly int RaceIndexAtBirth;
-
-        /// <summary>
         /// The character's first realm of magic (if any)
         /// </summary>
         public readonly Realm Realm1;
@@ -69,8 +69,8 @@ namespace Cthangband
         public ExPlayer(Player player)
         {
             GenderIndex = player.GenderIndex;
-            RaceIndex = player.RaceIndex;
-            RaceIndexAtBirth = player.RaceIndexAtBirth;
+            CurrentRace = player.CurrentRace;
+            BirthRace = player.BirthRace;
             ProfessionIndex = player.ProfessionIndex;
             Realm1 = player.Realm1;
             Realm2 = player.Realm2;

@@ -1811,173 +1811,12 @@ namespace Cthangband
                 SaveGame.Instance.EnergyUse = 0;
                 return;
             }
-            switch (Player.RaceIndex)
+            racialPower = Player.Race.GetRacialPowerText(Player);
+            if (!string.IsNullOrEmpty(racialPower))
             {
-                case RaceId.Dwarf:
-                    racialPower = lvl < 5
-                        ? "detect doors+traps (racial, unusable until level 5)"
-                        : "detect doors+traps (racial, cost 5, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Nibelung:
-                    racialPower = lvl < 5
-                        ? "detect doors+traps (racial, WIS based, unusable until level 5)"
-                        : "detect doors+traps (racial, cost 5, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Hobbit:
-                    racialPower = lvl < 15
-                        ? "create food        (racial, unusable until level 15)"
-                        : "create food        (racial, cost 10, INT based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Gnome:
-                    racialPower = lvl < 5
-                        ? "teleport           (racial, unusable until level 5)"
-                        : "teleport           (racial, cost 5 + lvl/5, INT based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.HalfOrc:
-                    racialPower = lvl < 3
-                        ? "remove fear        (racial, unusable until level 3)"
-                        : "remove fear        (racial, cost 5, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.HalfTroll:
-                    racialPower = lvl < 10
-                        ? "berserk            (racial, unusable until level 10)"
-                        : "berserk            (racial, cost 12, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.TchoTcho:
-                    racialPower = lvl < 8
-                        ? "berserk            (racial, unusable until level 8)"
-                        : "berserk            (racial, cost 10, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Great:
-                    racialPower = "dream powers    (unusable until level 30/40)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.HalfOgre:
-                    racialPower = lvl < 25
-                        ? "Yellow Sign     (racial, unusable until level 25)"
-                        : "Yellow Sign     (racial, cost 35, INT based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.HalfGiant:
-                    racialPower = lvl < 20
-                        ? "stone to mud       (racial, unusable until level 20)"
-                        : "stone to mud       (racial, cost 10, STR based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.HalfTitan:
-                    racialPower = lvl < 35
-                        ? "probing            (racial, unusable until level 35)"
-                        : "probing            (racial, cost 20, INT based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Cyclops:
-                    racialPower = lvl < 20
-                        ? "throw boulder      (racial, unusable until level 20)"
-                        : "throw boulder      (racial, cost 15, dam 3*lvl, STR based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Yeek:
-                    racialPower = lvl < 15
-                        ? "scare monster      (racial, unusable until level 15)"
-                        : "scare monster      (racial, cost 15, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Spectre:
-                    racialPower = lvl < 4
-                        ? "scare monster      (racial, unusable until level 4)"
-                        : "scare monster      (racial, cost 3, INT based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Klackon:
-                    racialPower = lvl < 9
-                        ? "spit acid          (racial, unusable until level 9)"
-                        : "spit acid          (racial, cost 9, dam lvl, DEX based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Kobold:
-                    racialPower = lvl < 12
-                        ? "poison dart        (racial, unusable until level 12)"
-                        : "poison dart        (racial, cost 8, dam lvl, DEX based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.DarkElf:
-                    racialPower = lvl < 2
-                        ? "magic missile      (racial, unusable until level 2)"
-                        : "magic missile      (racial, cost 2, INT based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Draconian:
-                    racialPower = "breath weapon      (racial, cost lvl, dam 2*lvl, CON based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.MindFlayer:
-                    racialPower = lvl < 15
-                        ? "mind blast         (racial, unusable until level 15)"
-                        : "mind blast         (racial, cost 12, dam lvl, INT based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Imp:
-                    racialPower = lvl < 9
-                        ? "fire bolt/ball     (racial, unusable until level 9/30)"
-                        : "fire bolt/ball(30) (racial, cost 15, dam lvl, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Golem:
-                    racialPower = lvl < 20
-                        ? "stone skin         (racial, unusable until level 20)"
-                        : "stone skin         (racial, cost 15, dur 30+d20, CON based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Skeleton:
-                case RaceId.Zombie:
-                    racialPower = lvl < 30
-                        ? "restore life       (racial, unusable until level 30)"
-                        : "restore life       (racial, cost 30, WIS based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Vampire:
-                    racialPower = lvl < 2
-                        ? "drain life         (racial, unusable until level 2)"
-                        : "drain life         (racial, cost 1 + lvl/3, based)";
-                    hasRacial = true;
-                    break;
-
-                case RaceId.Sprite:
-                    racialPower = lvl < 12
-                        ? "sleeping dust      (racial, unusable until level 12)"
-                        : "sleeping dust      (racial, cost 12, INT based)";
-                    hasRacial = true;
-                    break;
+                hasRacial = true;
             }
+
             for (petCtr = Level.MMax - 1; petCtr >= 1; petCtr--)
             {
                 monster = Level.Monsters[petCtr];
@@ -2074,7 +1913,7 @@ namespace Cthangband
             }
             if (powers[i] == int.MaxValue)
             {
-                SaveGame.Instance.CommandEngine.UseRacialPower();
+                Player.Race.UseRacialPower(SaveGame.Instance, Player, Level);
             }
             else if (powers[i] == 3)
             {

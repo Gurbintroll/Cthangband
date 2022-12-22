@@ -229,7 +229,7 @@ namespace Cthangband.Projection
             }
             if (Player.HasNetherResistance)
             {
-                if (Player.RaceIndex != RaceId.Spectre)
+                if (!Player.Race.FeedsOnNether)
                 {
                     dam *= 6;
                 }
@@ -256,7 +256,7 @@ namespace Cthangband.Projection
                     Player.LoseExperience(200 + (Player.ExperiencePoints / 100 * Constants.MonDrainLife));
                 }
             }
-            if (Player.RaceIndex == RaceId.Spectre)
+            if (Player.Race.FeedsOnNether)
             {
                 Profile.Instance.MsgPrint("You feel invigorated!");
                 Player.RestoreHealth(dam / 4);

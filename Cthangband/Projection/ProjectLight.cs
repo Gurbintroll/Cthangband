@@ -235,7 +235,7 @@ namespace Cthangband.Projection
             {
                 Player.SetTimedBlindness(Player.TimedBlindness + Program.Rng.DieRoll(5) + 2);
             }
-            if (Player.RaceIndex == RaceId.Vampire)
+            if (Player.Race.IsSunlightSensitive)
             {
                 Profile.Instance.MsgPrint("The light scorches your flesh!");
                 dam *= 2;

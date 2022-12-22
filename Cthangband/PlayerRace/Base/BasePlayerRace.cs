@@ -6,35 +6,41 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.StaticData;
+using Cthangband.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Navigation;
 
-namespace Cthangband
+namespace Cthangband.PlayerRace.Base
 {
-    /// <summary>
-    /// A static class with functions to create a character's background
-    /// </summary>
-    internal static class Background
+    [Serializable]
+    internal abstract class BasePlayerRace : IPlayerRace
     {
         /// <summary>
         /// Beginnings for 'angelic' names used by imps
         /// </summary>
-        private static readonly string[] _angelSyllable1 =
+        protected readonly string[] _angelSyllable1 =
             {"Sa", "A", "U", "Mi", "Ra", "Ana", "Pa", "Lu", "She", "Ga", "Da", "O", "Pe", "Lau", "Za", "Ze", "E"};
 
         /// <summary>
         /// Middles for 'angelic' names used by imps
         /// </summary>
-        private static readonly string[] _angelSyllable2 =
+        protected readonly string[] _angelSyllable2 =
             {"br", "m", "l", "z", "zr", "mm", "mr", "r", "ral", "ch", "zaz", "tr", "n", "lar"};
 
         /// <summary>
         /// Endings for 'angelic' names used by imps
         /// </summary>
-        private static readonly string[] _angelSyllable3 = { "iel", "ial", "ael", "ubim", "aphon", "iel", "ael" };
+        protected readonly string[] _angelSyllable3 = { "iel", "ial", "ael", "ubim", "aphon", "iel", "ael" };
 
         /// <summary>
         /// List of backstory fragments joined together on character generation
         /// </summary>
-        private static readonly PlayerHistory[] _backgroundTable =
+        protected readonly PlayerHistory[] _backgroundTable =
         {
             // Group 1: Human start /Half-Elf legitimacy 1->2->3->50->51->52->53->End
             new PlayerHistory("You are the illegitimate and unacknowledged child ", 10, 1, 2, 25),
@@ -585,36 +591,36 @@ namespace Cthangband
         /// <summary>
         /// Beginnings of 'Cthulhoid' names used by mind flayers, miri nigri, and tcho tchos
         /// </summary>
-        private static readonly string[] _cthuloidSyllable1 =
+        protected readonly string[] _cthuloidSyllable1 =
             {"Cth", "Az", "Fth", "Ts", "Xo", "Q'N", "R'L", "Ghata", "L", "Zz", "Fl", "Cl", "S", "Y"};
 
         /// <summary>
         /// Middles of 'Cthulhoid' names used by mind flayers, miri nigri, and tcho tchos
         /// </summary>
-        private static readonly string[] _cthuloidSyllable2 =
+        protected readonly string[] _cthuloidSyllable2 =
             {"nar", "loi", "ul", "lu", "noth", "thon", "ath", "'N", "rhy", "oth", "aza", "agn", "oa", "og"};
 
         /// <summary>
         /// Endings of 'Cthulhoid' names used by mind flayers, miri nigri, and tcho tchos
         /// </summary>
-        private static readonly string[] _cthuloidSyllable3 =
+        protected readonly string[] _cthuloidSyllable3 =
             {"l", "a", "u", "oa", "oggua", "oth", "ath", "aggua", "lu", "lo", "loth", "lotha", "agn", "axl"};
 
         /// <summary>
         /// Beginnings of 'Dwarven' names used by dwarves, cyclopes, half giants, golems, and nibelungen
         /// </summary>
-        private static readonly string[] _dwarfSyllable1 =
+        protected readonly string[] _dwarfSyllable1 =
             {"B", "D", "F", "G", "Gl", "H", "K", "L", "M", "N", "R", "S", "T", "Th", "V"};
 
         /// <summary>
         /// Middles of 'Dwarven' names used by dwarves, cyclopes, half giants, golems, and nibelungen
         /// </summary>
-        private static readonly string[] _dwarfSyllable2 = { "a", "e", "i", "o", "oi", "u" };
+        protected readonly string[] _dwarfSyllable2 = { "a", "e", "i", "o", "oi", "u" };
 
         /// <summary>
         /// Endings of 'Dwarven' names used by dwarves, cyclopes, half giants, golems, and nibelungen
         /// </summary>
-        private static readonly string[] _dwarfSyllable3 =
+        protected readonly string[] _dwarfSyllable3 =
         {
             "bur", "fur", "gan", "gnus", "gnar", "li", "lin", "lir", "mli", "nar", "nus", "rin", "ran", "sin", "sil",
             "sur"
@@ -623,7 +629,7 @@ namespace Cthangband
         /// <summary>
         /// Beginnings of 'Elvish' names used by elves, dark elves, high elves, half-elves, and sprites
         /// </summary>
-        private static readonly string[] _elfSyllable1 =
+        protected readonly string[] _elfSyllable1 =
         {
             "Al", "An", "Bal", "Bel", "Cal", "Cel", "El", "Elr", "Elv", "Eow", "Ear", "F", "Fal", "Fel", "Fin", "G",
             "Gal", "Gel", "Gl", "Is", "Lan", "Leg", "Lom", "N", "Nal", "Nel", "S", "Sal", "Sel", "T", "Tal", "Tel",
@@ -633,7 +639,7 @@ namespace Cthangband
         /// <summary>
         /// Middles of 'Elvish' names used by elves, dark elves, high elves, half-elves, and sprites
         /// </summary>
-        private static readonly string[] _elfSyllable2 =
+        protected readonly string[] _elfSyllable2 =
         {
             "a", "adrie", "ara", "e", "ebri", "ele", "ere", "i", "io", "ithra", "ilma", "il-Ga", "ili", "o", "orfi",
             "u", "y"
@@ -642,7 +648,7 @@ namespace Cthangband
         /// <summary>
         /// Endings of 'Elvish' names used by elves, dark elves, high elves, half-elves, and sprites
         /// </summary>
-        private static readonly string[] _elfSyllable3 =
+        protected readonly string[] _elfSyllable3 =
         {
             "l", "las", "lad", "ldor", "ldur", "linde", "lith", "mir", "n", "nd", "ndel", "ndil", "ndir", "nduil", "ng",
             "mbor", "r", "rith", "ril", "riand", "rion", "s", "thien", "viel", "wen", "wyn"
@@ -651,7 +657,7 @@ namespace Cthangband
         /// <summary>
         /// Beginnings of 'Gnomish' names used by gnomes and draconians
         /// </summary>
-        private static readonly string[] _gnomeSyllable1 =
+        protected readonly string[] _gnomeSyllable1 =
         {
             "Aar", "An", "Ar", "As", "C", "H", "Han", "Har", "Hel", "Iir", "J", "Jan", "Jar", "K", "L", "M", "Mar", "N",
             "Nik", "Os", "Ol", "P", "R", "S", "Sam", "San", "T", "Ter", "Tom", "Ul", "V", "W", "Y"
@@ -660,12 +666,12 @@ namespace Cthangband
         /// <summary>
         /// Middles of 'Gnomish' names used by gnomes and draconians
         /// </summary>
-        private static readonly string[] _gnomeSyllable2 = { "a", "aa", "ai", "e", "ei", "i", "o", "uo", "u", "uu" };
+        protected readonly string[] _gnomeSyllable2 = { "a", "aa", "ai", "e", "ei", "i", "o", "uo", "u", "uu" };
 
         /// <summary>
         /// Endings of 'Gnomish' names used by gnomes and draconians
         /// </summary>
-        private static readonly string[] _gnomeSyllable3 =
+        protected readonly string[] _gnomeSyllable3 =
         {
             "ron", "re", "la", "ki", "kseli", "ksi", "ku", "ja", "ta", "na", "namari", "neli", "nika", "nikki", "nu",
             "nukka", "ka", "ko", "li", "kki", "rik", "po", "to", "pekka", "rjaana", "rjatta", "rjukka", "la", "lla",
@@ -675,7 +681,7 @@ namespace Cthangband
         /// <summary>
         /// Beginnings of 'Hobbit' names used by hobbits and kobolds
         /// </summary>
-        private static readonly string[] _hobbitSyllable1 =
+        protected readonly string[] _hobbitSyllable1 =
         {
             "B", "Ber", "Br", "D", "Der", "Dr", "F", "Fr", "G", "H", "L", "Ler", "M", "Mer", "N", "P", "Pr", "Per", "R",
             "S", "T", "W"
@@ -684,12 +690,12 @@ namespace Cthangband
         /// <summary>
         /// Middles of 'Hobbit' names used by hobbits and kobolds
         /// </summary>
-        private static readonly string[] _hobbitSyllable2 = { "a", "e", "i", "ia", "o", "oi", "u" };
+        protected readonly string[] _hobbitSyllable2 = { "a", "e", "i", "ia", "o", "oi", "u" };
 
         /// <summary>
         /// Endings of 'Hobbit' names used by hobbits and kobolds
         /// </summary>
-        private static readonly string[] _hobbitSyllable3 =
+        protected readonly string[] _hobbitSyllable3 =
         {
             "bo", "ck", "decan", "degar", "do", "doc", "go", "grin", "lba", "lbo", "lda", "ldo", "lla", "ll", "lo", "m",
             "mwise", "nac", "noc", "nwise", "p", "ppin", "pper", "tho", "to"
@@ -699,7 +705,7 @@ namespace Cthangband
         /// Beginnings of 'Human' names used by humans, great ones, skeletons, spectres, vampires,
         /// zombies, and half titans
         /// </summary>
-        private static readonly string[] _humanSyllable1 =
+        protected readonly string[] _humanSyllable1 =
         {
             "Ab", "Ac", "Ad", "Af", "Agr", "Ast", "As", "Al", "Adw", "Adr", "Ar", "B", "Br", "C", "Cr", "Ch", "Cad",
             "D", "Dr", "Dw", "Ed", "Eth", "Et", "Er", "El", "Eow", "F", "Fr", "G", "Gr", "Gw", "Gal", "Gl", "H", "Ha",
@@ -711,7 +717,7 @@ namespace Cthangband
         /// Middles of 'Human' names used by humans, great ones, skeletons, spectres, vampires,
         /// zombies, and half titans
         /// </summary>
-        private static readonly string[] _humanSyllable2 =
+        protected readonly string[] _humanSyllable2 =
         {
             "a", "ae", "au", "ao", "are", "ale", "ali", "ay", "ardo", "e", "ei", "ea", "eri", "era", "ela", "eli",
             "enda", "erra", "i", "ia", "ie", "ire", "ira", "ila", "ili", "ira", "igo", "o", "oa", "oi", "oe", "ore",
@@ -722,7 +728,7 @@ namespace Cthangband
         /// Endings of 'Human' names used by humans, great ones, skeletons, spectres, vampires,
         /// zombies, and half titans
         /// </summary>
-        private static readonly string[] _humanSyllable3 =
+        protected readonly string[] _humanSyllable3 =
         {
             "a", "and", "b", "bwyn", "baen", "bard", "c", "ctred", "cred", "ch", "can", "d", "dan", "don", "der",
             "dric", "dfrid", "dus", "f", "g", "gord", "gan", "l", "li", "lgrin", "lin", "lith", "lath", "loth", "ld",
@@ -734,36 +740,36 @@ namespace Cthangband
         /// <summary>
         /// Beginnings of 'Klackon' names used by klackons
         /// </summary>
-        private static readonly string[] _klackonSyllable1 =
+        protected readonly string[] _klackonSyllable1 =
             {"K'", "K", "Kri", "Kir", "Kiri", "Iriki", "Irik", "Karik", "Iri", "Akri"};
 
         /// <summary>
         /// Middles of 'Klackon' names used by klackons
         /// </summary>
-        private static readonly string[] _klackonSyllable2 =
+        protected readonly string[] _klackonSyllable2 =
             {"arak", "i", "iri", "ikki", "ki", "kiri", "ikir", "irak", "arik", "k'", "r"};
 
         /// <summary>
         /// Endings of 'Klackon' names used by klackons
         /// </summary>
-        private static readonly string[] _klackonSyllable3 =
+        protected readonly string[] _klackonSyllable3 =
             {"akkak", "ak", "ik", "ikkik", "irik", "arik", "kidik", "kii", "k", "ki", "riki", "irk"};
 
         /// <summary>
         /// Beginnings of 'Orcish' names used by half orcs, half ogres, and half trolls
         /// </summary>
-        private static readonly string[] _orcSyllable1 =
+        protected readonly string[] _orcSyllable1 =
             {"B", "Er", "G", "Gr", "H", "P", "Pr", "R", "V", "Vr", "T", "Tr", "M", "Dr"};
 
         /// <summary>
         /// Middles of 'Orcish' names used by half orcs, half ogres, and half trolls
         /// </summary>
-        private static readonly string[] _orcSyllable2 = { "a", "i", "o", "oo", "u", "ui" };
+        protected readonly string[] _orcSyllable2 = { "a", "i", "o", "oo", "u", "ui" };
 
         /// <summary>
         /// Endings of 'Orcish' names used by half orcs, half ogres, and half trolls
         /// </summary>
-        private static readonly string[] _orcSyllable3 =
+        protected readonly string[] _orcSyllable3 =
         {
             "dash", "dish", "dush", "gar", "gor", "gdush", "lo", "gdish", "k", "lg", "nak", "rag", "rbag", "rg", "rk",
             "ng", "nk", "rt", "ol", "urk", "shnak", "mog", "mak", "rak"
@@ -772,113 +778,93 @@ namespace Cthangband
         /// <summary>
         /// Beginnings of 'Yeekish' names used by yeeks
         /// </summary>
-        private static readonly string[] _yeekSyllable1 = { "Y", "Ye", "Yee", "Y" };
+        protected readonly string[] _yeekSyllable1 = { "Y", "Ye", "Yee", "Y" };
 
         /// <summary>
         /// Middles of 'Yeekish' names used by yeeks
         /// </summary>
-        private static readonly string[] _yeekSyllable2 =
+        protected readonly string[] _yeekSyllable2 =
             {"ee", "eee", "ee", "ee-ee", "ee'ee", "'ee", "eee", "ee", "ee"};
 
         /// <summary>
         /// Endings of 'Yeekish' names used by yeeks
         /// </summary>
-        private static readonly string[] _yeekSyllable3 = { "k", "k", "k", "ek", "eek", "ek" };
+        protected readonly string[] _yeekSyllable3 = { "k", "k", "k", "ek", "eek", "ek" };
 
-        /// <summary>
-        /// Create a random name for a character based on their race.
-        /// </summary>
-        /// <param name="raceIndex"> The race for which to generate a name </param>
-        /// <returns> The random name </returns>
-        public static string CreateRandomName(int raceIndex)
+        public abstract int[] AbilityBonus { get; }
+
+        public abstract int AgeRange { get; }
+
+        public virtual string Article => "a";
+        public abstract int BaseAge { get; }
+        public abstract int BaseDeviceBonus { get; }
+        public abstract int BaseDisarmBonus { get; }
+        public abstract int BaseMeleeAttackBonus { get; }
+        public abstract int BaseRangedAttackBonus { get; }
+        public abstract int BaseSaveBonus { get; }
+        public abstract int BaseSearchBonus { get; }
+        public abstract int BaseSearchFrequency { get; }
+        public abstract int BaseStealthBonus { get; }
+        public abstract uint Choice { get; }
+        public virtual string Description1 => string.Empty;
+        public virtual string Description2 => string.Empty;
+        public virtual string Description3 => string.Empty;
+        public virtual string Description4 => string.Empty;
+        public virtual string Description5 => string.Empty;
+        public virtual string Description6 => string.Empty;
+        public virtual bool DoesntEat => false;
+        public abstract int ExperienceFactor { get; }
+        public virtual bool FeedsOnNether => false;
+        public abstract int FemaleBaseHeight { get; }
+        public abstract int FemaleBaseWeight { get; }
+        public abstract int FemaleHeightRange { get; }
+        public abstract int FemaleWeightRange { get; }
+        public virtual bool Glows => false;
+        public virtual bool HasSpeedBonus => false;
+        public abstract int HitDieBonus { get; }
+        public abstract int Infravision { get; }
+        public virtual bool IsIncorporeal => false;
+        public virtual bool IsNocturnal => false;
+        public virtual bool IsSunlightSensitive => false;
+        public abstract int MaleBaseHeight { get; }
+        public abstract int MaleBaseWeight { get; }
+        public abstract int MaleHeightRange { get; }
+        public abstract int MaleWeightRange { get; }
+        public virtual bool Mutates => false;
+        public virtual bool ResistsFear => false;
+        public virtual bool SanityImmune => false;
+        public virtual bool SanityResistant => false;
+        public virtual bool SpillsPotions => false;
+        public abstract string Title { get; }
+        protected abstract int BackgroundStartingChart { get; }
+
+        public virtual void ApplyArmourBonus(Player player)
         {
-            string name = "";
-            do
-            {
-                switch (raceIndex)
-                {
-                    case RaceId.Cyclops:
-                    case RaceId.Dwarf:
-                    case RaceId.HalfGiant:
-                    case RaceId.Golem:
-                    case RaceId.Nibelung:
-                        name = _dwarfSyllable1[Program.Rng.RandomLessThan(_dwarfSyllable1.Length)];
-                        name += _dwarfSyllable2[Program.Rng.RandomLessThan(_dwarfSyllable2.Length)];
-                        name += _dwarfSyllable3[Program.Rng.RandomLessThan(_dwarfSyllable3.Length)];
-                        break;
+        }
 
-                    case RaceId.DarkElf:
-                    case RaceId.Elf:
-                    case RaceId.HalfElf:
-                    case RaceId.HighElf:
-                    case RaceId.Sprite:
-                        name = _elfSyllable1[Program.Rng.RandomLessThan(_elfSyllable1.Length)];
-                        name += _elfSyllable2[Program.Rng.RandomLessThan(_elfSyllable2.Length)];
-                        name += _elfSyllable3[Program.Rng.RandomLessThan(_elfSyllable3.Length)];
-                        break;
+        public virtual void ApplyRacialStatus(Player player)
+        {
+        }
 
-                    case RaceId.Draconian:
-                    case RaceId.Gnome:
-                        name = _gnomeSyllable1[Program.Rng.RandomLessThan(_gnomeSyllable1.Length)];
-                        name += _gnomeSyllable2[Program.Rng.RandomLessThan(_gnomeSyllable2.Length)];
-                        name += _gnomeSyllable3[Program.Rng.RandomLessThan(_gnomeSyllable3.Length)];
-                        break;
+        public virtual void ConsumeFood(Player player, Item item)
+        {
+            player.SetFood(player.Food + item.TypeSpecificValue);
+        }
 
-                    case RaceId.Hobbit:
-                    case RaceId.Kobold:
-                        name = _hobbitSyllable1[Program.Rng.RandomLessThan(_hobbitSyllable1.Length)];
-                        name += _hobbitSyllable2[Program.Rng.RandomLessThan(_hobbitSyllable2.Length)];
-                        name += _hobbitSyllable3[Program.Rng.RandomLessThan(_hobbitSyllable3.Length)];
-                        break;
+        public abstract string CreateRandomName();
 
-                    case RaceId.Yeek:
-                        name = _yeekSyllable1[Program.Rng.RandomLessThan(_yeekSyllable1.Length)];
-                        name += _yeekSyllable2[Program.Rng.RandomLessThan(_yeekSyllable2.Length)];
-                        name += _yeekSyllable3[Program.Rng.RandomLessThan(_yeekSyllable3.Length)];
-                        break;
+        public virtual bool DoesntBleed(Player player)
+        {
+            return false;
+        }
 
-                    case RaceId.Great:
-                    case RaceId.HalfTitan:
-                    case RaceId.Human:
-                    case RaceId.Skeleton:
-                    case RaceId.Spectre:
-                    case RaceId.Vampire:
-                    case RaceId.Zombie:
-                        name = _humanSyllable1[Program.Rng.RandomLessThan(_humanSyllable1.Length)];
-                        name += _humanSyllable2[Program.Rng.RandomLessThan(_humanSyllable2.Length)];
-                        name += _humanSyllable3[Program.Rng.RandomLessThan(_humanSyllable3.Length)];
-                        break;
+        public virtual bool DoesntStun(Player player)
+        {
+            return false;
+        }
 
-                    case RaceId.HalfOgre:
-                    case RaceId.HalfOrc:
-                    case RaceId.HalfTroll:
-                        name = _orcSyllable1[Program.Rng.RandomLessThan(_orcSyllable1.Length)];
-                        name += _orcSyllable2[Program.Rng.RandomLessThan(_orcSyllable2.Length)];
-                        name += _orcSyllable3[Program.Rng.RandomLessThan(_orcSyllable3.Length)];
-                        break;
-
-                    case RaceId.Klackon:
-                        name = _klackonSyllable1[Program.Rng.RandomLessThan(_klackonSyllable1.Length)];
-                        name += _klackonSyllable2[Program.Rng.RandomLessThan(_klackonSyllable2.Length)];
-                        name += _klackonSyllable3[Program.Rng.RandomLessThan(_klackonSyllable3.Length)];
-                        break;
-
-                    case RaceId.MiriNigri:
-                    case RaceId.MindFlayer:
-                    case RaceId.TchoTcho:
-                        name = _cthuloidSyllable1[Program.Rng.RandomLessThan(_cthuloidSyllable1.Length)];
-                        name += _cthuloidSyllable2[Program.Rng.RandomLessThan(_cthuloidSyllable2.Length)];
-                        name += _cthuloidSyllable3[Program.Rng.RandomLessThan(_cthuloidSyllable3.Length)];
-                        break;
-
-                    case RaceId.Imp:
-                        name = _angelSyllable1[Program.Rng.RandomLessThan(_angelSyllable1.Length)];
-                        name += _angelSyllable2[Program.Rng.RandomLessThan(_angelSyllable2.Length)];
-                        name += _angelSyllable3[Program.Rng.RandomLessThan(_angelSyllable3.Length)];
-                        break;
-                }
-            } while (name.Length > 12);
-            return name;
+        public virtual void GetAbilitiesAsItemFlags(Player player, FlagSet f1, FlagSet f2, FlagSet f3)
+        {
         }
 
         /// <summary>
@@ -886,10 +872,9 @@ namespace Cthangband
         /// based on their race
         /// </summary>
         /// <param name="player"> The player that needs a background </param>
-        public static void GetHistory(Player player)
+        public void GetHistory(Player player)
         {
             int i;
-            int chart;
             for (i = 0; i < 4; i++)
             {
                 player.History[i] = string.Empty;
@@ -897,190 +882,7 @@ namespace Cthangband
             string fullHistory = string.Empty;
             int socialClass = Program.Rng.DieRoll(4);
             // Start on a chart based on the character's race
-            switch (player.RaceIndex)
-            {
-                case RaceId.Great:
-                    {
-                        // Great One 67->68->50->51->52->53->End
-                        chart = 67;
-                        break;
-                    }
-                case RaceId.Human:
-                    {
-                        // Human 1->2->3->50->51->52->53->End
-                        chart = 1;
-                        break;
-                    }
-                case RaceId.TchoTcho:
-                    {
-                        // Tcho-Tcho 138->139->140->141->142->End
-                        chart = 138;
-                        break;
-                    }
-                case RaceId.HalfElf:
-                    {
-                        // Half-Elf 4->1->2->3->50->51->52->53->End
-                        chart = 4;
-                        break;
-                    }
-                case RaceId.Elf:
-                case RaceId.HighElf:
-                    {
-                        // Elf/High-Elf 7->8->9->54->55->56->End
-                        chart = 7;
-                        break;
-                    }
-                case RaceId.Hobbit:
-                    {
-                        // Hobbit 10->11->3->50->51->52->53->End
-                        chart = 10;
-                        break;
-                    }
-                case RaceId.Gnome:
-                    {
-                        // Gnome 13->14->3->50->51->52->53->End
-                        chart = 13;
-                        break;
-                    }
-                case RaceId.Dwarf:
-                    {
-                        // Dwarf 16->17->18->57->58->59->60->61->End
-                        chart = 16;
-                        break;
-                    }
-                case RaceId.HalfOrc:
-                    {
-                        // Half-Orc 19->20->2->3->50->51->52->53->End
-                        chart = 19;
-                        break;
-                    }
-                case RaceId.HalfTroll:
-                    {
-                        // Half-Troll 22->23->62->63->64->65->66->End
-                        chart = 22;
-                        break;
-                    }
-                case RaceId.DarkElf:
-                    {
-                        // Dark-Elf 69->70->71->72->73->End
-                        chart = 69;
-                        break;
-                    }
-                case RaceId.HalfOgre:
-                    {
-                        // Half-Ogre 74->20->2->3->50->51->52->53->End
-                        chart = 74;
-                        break;
-                    }
-                case RaceId.HalfGiant:
-                    {
-                        // Half-Giant 75->20->2->3->50->51->52->53->End
-                        chart = 75;
-                        break;
-                    }
-                case RaceId.HalfTitan:
-                    {
-                        // Half-Titan 75->20->2->3->50->51->52->53->End
-                        chart = 76;
-                        break;
-                    }
-                case RaceId.Cyclops:
-                    {
-                        // Cyclops 77->109->110->111->112->End
-                        chart = 77;
-                        break;
-                    }
-                case RaceId.Yeek:
-                    {
-                        // Yeek 78->79->80->81->135->136->137->End
-                        chart = 78;
-                        break;
-                    }
-                case RaceId.Kobold:
-                    {
-                        // Kobold 82->83->24->25->26->End
-                        chart = 82;
-                        break;
-                    }
-                case RaceId.Klackon:
-                    {
-                        // Klackon 84->85->86->End
-                        chart = 84;
-                        break;
-                    }
-                case RaceId.Nibelung:
-                    {
-                        // Nibelung 87->88->18->57->58->59->60->61->End
-                        chart = 87;
-                        break;
-                    }
-                case RaceId.Draconian:
-                    {
-                        // Draconian 89->90->91->End
-                        chart = 89;
-                        break;
-                    }
-                case RaceId.MindFlayer:
-                    {
-                        // Mind-Flayer 93->93->End
-                        chart = 92;
-                        break;
-                    }
-                case RaceId.Imp:
-                    {
-                        // Imp 94->95->96->97->End
-                        chart = 94;
-                        break;
-                    }
-                case RaceId.Golem:
-                    {
-                        // Golem 98->99->100->101->End
-                        chart = 98;
-                        break;
-                    }
-                case RaceId.Skeleton:
-                    {
-                        // Skeleton 102->103->104->105->106->End
-                        chart = 102;
-                        break;
-                    }
-                case RaceId.Zombie:
-                    {
-                        // Zombie 107->108->62->63->64->65->66->End
-                        chart = 107;
-                        break;
-                    }
-                case RaceId.Vampire:
-                    {
-                        // Vampire 113->114->115->116->117->End
-                        chart = 113;
-                        break;
-                    }
-                case RaceId.Spectre:
-                    {
-                        // Spectre 118->119->134->120->121->122->123->End
-                        chart = 118;
-                        break;
-                    }
-                case RaceId.Sprite:
-                    {
-                        // Sprite 124->125->126->127->128->End
-                        chart = 124;
-                        break;
-                    }
-                case RaceId.MiriNigri:
-                    {
-                        // Miri-Nigri 129->130->131->132->133->End
-                        chart = 129;
-                        break;
-                    }
-                default:
-                    {
-                        // Unrecognised race gets no history
-                        chart = 0;
-                        break;
-                    }
-            }
+            int chart = BackgroundStartingChart;
             // Keep going till we get to an end
             while (chart != 0)
             {
@@ -1125,6 +927,20 @@ namespace Cthangband
                 player.History[i++] = s.Substring(0, n).Trim();
                 s = s.Substring(n).Trim();
             }
+        }
+
+        public virtual string GetRacialPowerText(Player player)
+        {
+            return string.Empty;
+        }
+
+        public virtual List<string> SelfKnowledge(Player player)
+        {
+            return new List<string>();
+        }
+
+        public virtual void UseRacialPower(SaveGame saveGame, Player player, Level level)
+        {
         }
     }
 }

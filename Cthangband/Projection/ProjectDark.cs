@@ -224,7 +224,7 @@ namespace Cthangband.Projection
             {
                 dam *= 4;
                 dam /= Program.Rng.DieRoll(6) + 6;
-                if (Player.RaceIndex == RaceId.Vampire)
+                if (Player.Race.IsSunlightSensitive)
                 {
                     dam = 0;
                 }

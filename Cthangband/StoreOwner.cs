@@ -15,9 +15,9 @@ namespace Cthangband
         public readonly int MaxCost;
         public readonly int MinInflate;
         public readonly string OwnerName;
-        public readonly int OwnerRace;
+        public readonly string OwnerRace;
 
-        public StoreOwner(string ownerName, int maxCost, int minInflate, int ownerRace)
+        public StoreOwner(string ownerName, int maxCost, int minInflate, string ownerRace)
         {
             OwnerName = ownerName;
             MaxCost = maxCost;

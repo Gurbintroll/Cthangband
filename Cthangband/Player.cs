@@ -14,6 +14,8 @@ using Cthangband.Pantheon;
 using System;
 using Cthangband.Patrons.Base;
 using Cthangband.Spells.Base;
+using Cthangband.PlayerRace.Base;
+using System.Linq;
 
 namespace Cthangband
 {
@@ -31,6 +33,8 @@ namespace Cthangband
         public int ArmourClassBonus;
         public int AttackBonus;
         public int BaseArmourClass;
+        public string BirthRace;
+        public string CurrentRace;
         public int DamageBonus;
         public int DisplayedArmourClassBonus;
         public int DisplayedAttackBonus;
@@ -133,9 +137,7 @@ namespace Cthangband
         public bool OldUnpriestlyWeapon;
         public Profession Profession = new Profession();
         public int ProfessionIndex;
-        public Race Race = new Race();
-        public int RaceIndex;
-        public int RaceIndexAtBirth;
+        public IPlayerRace Race = null;
         public Realm Realm1;
         public Realm Realm2;
         public FlagSet RedrawNeeded = new FlagSet();
@@ -230,10 +232,10 @@ namespace Cthangband
             Generation = 1;
         }
 
-        public void ChangeRace(int newRace)
+        public void ChangeRace(string newRace)
         {
-            RaceIndex = newRace;
-            Race = Race.RaceInfo[RaceIndex];
+            CurrentRace = newRace;
+            Race = PlayerRaces.Instance[CurrentRace];
             ExperienceMultiplier = Race.ExperienceFactor + Profession.ExperienceFactor;
             if (GenderIndex == Constants.SexMale)
             {
@@ -314,7 +316,7 @@ namespace Cthangband
                     {
                         levelReward = true;
                     }
-                    if (RaceIndex == RaceId.MiriNigri)
+                    if (Race.Mutates)
                     {
                         if (Program.Rng.DieRoll(5) == 1)
                         {
@@ -767,221 +769,9 @@ namespace Cthangband
                     f2.Set(ItemFlag2.ResNether);
                 }
             }
-            if (RaceIndex == RaceId.Elf)
-            {
-                f2.Set(ItemFlag2.ResLight);
-            }
-            if (RaceIndex == RaceId.Hobbit)
-            {
-                f2.Set(ItemFlag2.SustDex);
-            }
-            if (RaceIndex == RaceId.Gnome)
-            {
-                f2.Set(ItemFlag2.FreeAct);
-            }
-            if (RaceIndex == RaceId.Dwarf)
-            {
-                f2.Set(ItemFlag2.ResBlind);
-            }
-            if (RaceIndex == RaceId.HalfOrc)
-            {
-                f2.Set(ItemFlag2.ResDark);
-            }
-            if (RaceIndex == RaceId.HalfTroll)
-            {
-                f2.Set(ItemFlag2.SustStr);
-                if (Level > 14)
-                {
-                    f3.Set(ItemFlag3.Regen);
-                    f3.Set(ItemFlag3.SlowDigest);
-                }
-            }
-            if (RaceIndex == RaceId.Great)
-            {
-                f2.Set(ItemFlag2.SustCon);
-                f3.Set(ItemFlag3.Regen);
-            }
-            if (RaceIndex == RaceId.HighElf)
-            {
-                f2.Set(ItemFlag2.ResLight);
-                f3.Set(ItemFlag3.SeeInvis);
-            }
-            if (RaceIndex == RaceId.TchoTcho)
-            {
-                f2.Set(ItemFlag2.ResFear);
-            }
-            else if (RaceIndex == RaceId.HalfOgre)
-            {
-                f2.Set(ItemFlag2.SustStr);
-                f2.Set(ItemFlag2.ResDark);
-            }
-            else if (RaceIndex == RaceId.HalfGiant)
-            {
-                f2.Set(ItemFlag2.ResShards);
-                f2.Set(ItemFlag2.SustStr);
-            }
-            else if (RaceIndex == RaceId.HalfTitan)
-            {
-                f2.Set(ItemFlag2.ResChaos);
-            }
-            else if (RaceIndex == RaceId.Cyclops)
-            {
-                f2.Set(ItemFlag2.ResSound);
-            }
-            else if (RaceIndex == RaceId.Yeek)
-            {
-                f2.Set(ItemFlag2.ResAcid);
-                if (Level > 19)
-                {
-                    f2.Set(ItemFlag2.ImAcid);
-                }
-            }
-            else if (RaceIndex == RaceId.Klackon)
-            {
-                if (Level > 9)
-                {
-                    f1.Set(ItemFlag1.Speed);
-                }
-                f2.Set(ItemFlag2.ResConf);
-                f2.Set(ItemFlag2.ResAcid);
-            }
-            else if (RaceIndex == RaceId.Kobold)
-            {
-                f2.Set(ItemFlag2.ResPois);
-            }
-            else if (RaceIndex == RaceId.Nibelung)
-            {
-                f2.Set(ItemFlag2.ResDisen);
-                f2.Set(ItemFlag2.ResDark);
-            }
-            else if (RaceIndex == RaceId.DarkElf)
-            {
-                f2.Set(ItemFlag2.ResDark);
-                if (Level > 19)
-                {
-                    f3.Set(ItemFlag3.SeeInvis);
-                }
-            }
-            else if (RaceIndex == RaceId.Draconian)
-            {
-                f3.Set(ItemFlag3.Feather);
-                if (Level > 4)
-                {
-                    f2.Set(ItemFlag2.ResFire);
-                }
-                if (Level > 9)
-                {
-                    f2.Set(ItemFlag2.ResCold);
-                }
-                if (Level > 14)
-                {
-                    f2.Set(ItemFlag2.ResAcid);
-                }
-                if (Level > 19)
-                {
-                    f2.Set(ItemFlag2.ResElec);
-                }
-                if (Level > 34)
-                {
-                    f2.Set(ItemFlag2.ResPois);
-                }
-            }
-            else if (RaceIndex == RaceId.MindFlayer)
-            {
-                f2.Set(ItemFlag2.SustInt);
-                f2.Set(ItemFlag2.SustWis);
-                if (Level > 14)
-                {
-                    f3.Set(ItemFlag3.SeeInvis);
-                }
-                if (Level > 29)
-                {
-                    f3.Set(ItemFlag3.Telepathy);
-                }
-            }
-            else if (RaceIndex == RaceId.Imp)
-            {
-                f2.Set(ItemFlag2.ResFire);
-                if (Level > 9)
-                {
-                    f3.Set(ItemFlag3.SeeInvis);
-                }
-                if (Level > 19)
-                {
-                    f2.Set(ItemFlag2.ImFire);
-                }
-            }
-            else if (RaceIndex == RaceId.Golem)
-            {
-                f3.Set(ItemFlag3.SeeInvis);
-                f2.Set(ItemFlag2.FreeAct);
-                f2.Set(ItemFlag2.ResPois);
-                f3.Set(ItemFlag3.SlowDigest);
-                if (Level > 34)
-                {
-                    f2.Set(ItemFlag2.HoldLife);
-                }
-            }
-            else if (RaceIndex == RaceId.Skeleton)
-            {
-                f3.Set(ItemFlag3.SeeInvis);
-                f2.Set(ItemFlag2.ResShards);
-                f2.Set(ItemFlag2.HoldLife);
-                f2.Set(ItemFlag2.ResPois);
-                if (Level > 9)
-                {
-                    f2.Set(ItemFlag2.ResCold);
-                }
-            }
-            else if (RaceIndex == RaceId.Zombie)
-            {
-                f3.Set(ItemFlag3.SeeInvis);
-                f2.Set(ItemFlag2.HoldLife);
-                f2.Set(ItemFlag2.ResNether);
-                f2.Set(ItemFlag2.ResPois);
-                f3.Set(ItemFlag3.SlowDigest);
-                if (Level > 4)
-                {
-                    f2.Set(ItemFlag2.ResCold);
-                }
-            }
-            else if (RaceIndex == RaceId.Vampire)
-            {
-                f2.Set(ItemFlag2.HoldLife);
-                f2.Set(ItemFlag2.ResDark);
-                f2.Set(ItemFlag2.ResNether);
-                f3.Set(ItemFlag3.Lightsource);
-                f2.Set(ItemFlag2.ResPois);
-                f2.Set(ItemFlag2.ResCold);
-            }
-            else if (RaceIndex == RaceId.Spectre)
-            {
-                f2.Set(ItemFlag2.ResCold);
-                f3.Set(ItemFlag3.SeeInvis);
-                f2.Set(ItemFlag2.HoldLife);
-                f2.Set(ItemFlag2.ResNether);
-                f2.Set(ItemFlag2.ResPois);
-                f3.Set(ItemFlag3.SlowDigest);
-                f3.Set(ItemFlag3.Lightsource);
-                if (Level > 34)
-                {
-                    f3.Set(ItemFlag3.Telepathy);
-                }
-            }
-            else if (RaceIndex == RaceId.Sprite)
-            {
-                f2.Set(ItemFlag2.ResLight);
-                f3.Set(ItemFlag3.Feather);
-                if (Level > 9)
-                {
-                    f1.Set(ItemFlag1.Speed);
-                }
-            }
-            else if (RaceIndex == RaceId.MiriNigri)
-            {
-                f2.Set(ItemFlag2.ResSound);
-                f2.Set(ItemFlag2.ResConf);
-            }
+
+            Race.GetAbilitiesAsItemFlags(this, f1, f2, f3);
+
             if (Dna.Regen)
             {
                 f3.Set(ItemFlag3.Regen);
@@ -1140,13 +930,13 @@ namespace Cthangband
 
                     case 7:
                         {
-                            int newRace;
+                            string newRace;
                             do
                             {
-                                newRace = Program.Rng.DieRoll(Constants.MaxRaces) - 1;
-                            } while (newRace == RaceIndex);
-                            string n = newRace == RaceId.Elf || newRace == RaceId.Imp ? "n" : "";
-                            Profile.Instance.MsgPrint($"You turn into a{n} {Race.RaceInfo[newRace].Title}!");
+                                newRace = PlayerRaces.Instance.RandomRaceName();
+                            } while (newRace == CurrentRace);
+                            string an = PlayerRaces.Instance[newRace].Article;
+                            Profile.Instance.MsgPrint($"You turn into {an} {PlayerRaces.Instance[newRace].Title}!");
                             ChangeRace(newRace);
                         }
                         SaveGame.Instance.Level.RedrawSingleLocation(MapY, MapX);
@@ -1696,11 +1486,7 @@ namespace Cthangband
             int oldAux, newAux;
             bool notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
-            if (RaceIndex == RaceId.Golem || RaceIndex == RaceId.Skeleton || RaceIndex == RaceId.Spectre)
-            {
-                v = 0;
-            }
-            else if (RaceIndex == RaceId.Zombie && Level > 11)
+            if (Race.DoesntBleed(this))
             {
                 v = 0;
             }
@@ -2472,7 +2258,7 @@ namespace Cthangband
             int oldAux, newAux;
             bool notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
-            if (RaceIndex == RaceId.Golem)
+            if (Race.DoesntStun(this))
             {
                 v = 0;
             }

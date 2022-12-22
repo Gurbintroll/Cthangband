@@ -1,3 +1,10 @@
+// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
+//
+// This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
+// Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
+// and not for profit purposes provided that this copyright and statement are included in all such
+// copies. Other copyrights may also apply.”
 using System;
 using System.Reflection;
 
@@ -24,13 +31,13 @@ namespace Cthangband.StaticData
         public const int DrsFire = 3;
         public const int DrsFree = 30;
         public const int DrsLight = 7;
-        public const int DrsVis = 31;
         public const int DrsNeth = 6;
         public const int DrsNexus = 14;
         public const int DrsPois = 5;
         public const int DrsReflect = 32;
         public const int DrsShard = 16;
         public const int DrsSound = 15;
+        public const int DrsVis = 31;
         public const int EnchToac = 0x04;
         public const int EnchTodam = 0x02;
         public const int EnchTohit = 0x01;
@@ -74,7 +81,6 @@ namespace Cthangband.StaticData
         public const int MaxOIdx = 256;
         public const int MaxOwners = 4;
         public const int MaxPatron = 16;
-        public const int MaxRaces = 30;
         public const int MaxRange = 18;
         public const int MaxRealm = 8;
         public const int MaxRepro = 100;
@@ -133,8 +139,8 @@ namespace Cthangband.StaticData
         public const uint SmImmElec = 0x02000000;
         public const uint SmImmFire = 0x04000000;
         public const uint SmImmFree = 0x40000000;
-        public const uint SmImmVis = 0x80000000;
         public const uint SmImmReflect = 0x20000000;
+        public const uint SmImmVis = 0x80000000;
         public const uint SmImmXxx5 = 0x10000000;
         public const uint SmOppAcid = 0x00010000;
         public const uint SmOppCold = 0x00080000;

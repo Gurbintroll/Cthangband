@@ -1633,46 +1633,7 @@ namespace Cthangband
                 _player.SetFood(_player.Food + item.TypeSpecificValue);
                 return;
             }
-            // Vampires only get 1/10th of the food value
-            if (_player.RaceIndex == RaceId.Vampire)
-            {
-                _ = _player.SetFood(_player.Food + (item.TypeSpecificValue / 10));
-                Profile.Instance.MsgPrint("Mere victuals hold scant sustenance for a being such as yourself.");
-                if (_player.Food < Constants.PyFoodAlert)
-                {
-                    Profile.Instance.MsgPrint("Your hunger can only be satisfied with fresh blood!");
-                }
-            }
-            // Skeletons get no food sustenance
-            else if (_player.RaceIndex == RaceId.Skeleton)
-            {
-                if (!(item.ItemSubCategory == FoodType.Waybread || item.ItemSubCategory == FoodType.Warpstone ||
-                      item.ItemSubCategory < FoodType.Biscuit))
-                {
-                    // Spawn a new food item on the floor to make up for the one that will be destroyed
-                    Item floorItem = new Item();
-                    Profile.Instance.MsgPrint("The food falls through your jaws!");
-                    floorItem.AssignItemType(
-                        Profile.Instance.ItemTypes.LookupKind(item.Category, item.ItemSubCategory));
-                    SaveGame.Instance.Level.DropNear(floorItem, -1, _player.MapY, _player.MapX);
-                }
-                else
-                {
-                    // But some magical types work anyway and then vanish
-                    Profile.Instance.MsgPrint("The food falls through your jaws and vanishes!");
-                }
-            }
-            // Golems, zombies, and spectres get only 1/20th of the food value
-            else if (_player.RaceIndex == RaceId.Golem || _player.RaceIndex == RaceId.Zombie || _player.RaceIndex == RaceId.Spectre)
-            {
-                Profile.Instance.MsgPrint("The food of mortals is poor sustenance for you.");
-                _player.SetFood(_player.Food + (item.TypeSpecificValue / 20));
-            }
-            // Everyone else gets the full value
-            else
-            {
-                _player.SetFood(_player.Food + item.TypeSpecificValue);
-            }
+            _player.Race.ConsumeFood(_player, item);
             // Use up the item (if it fell to the floor this will have already been dealt with)
             if (itemIndex >= 0)
             {
@@ -1932,7 +1893,7 @@ namespace Cthangband
             // Do the actual potion effect
             bool identified = SaveGame.Instance.CommandEngine.PotionEffect(item.ItemSubCategory);
             // Skeletons are messy drinkers
-            if (_player.RaceIndex == RaceId.Skeleton && Program.Rng.DieRoll(12) == 1)
+            if (_player.Race.SpillsPotions && Program.Rng.DieRoll(12) == 1)
             {
                 Profile.Instance.MsgPrint("Some of the fluid falls through your jaws!");
                 SaveGame.Instance.SpellEffects.PotionSmashEffect(0, _player.MapY, _player.MapX, item.ItemSubCategory);
