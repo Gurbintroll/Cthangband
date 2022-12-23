@@ -1806,6 +1806,10 @@ namespace Cthangband
                 {
                     tv = _player.Realm2.ToSpellBookItemCategory();
                 }
+                if (tv == ItemCategory.Ring && sv == RingType.ResFear && _player.Race.ResistsFear)
+                {
+                    sv = RingType.SustainStr;
+                }
                 item = new Item();
                 item.AssignItemType(Profile.Instance.ItemTypes.LookupKind(tv, sv));
                 if (tv == ItemCategory.Sword && _player.CharacterClassIndex == CharacterClassId.Rogue && _player.Realm1 == Realm.Death)
@@ -1815,10 +1819,6 @@ namespace Cthangband
                 if (tv == ItemCategory.Wand)
                 {
                     item.TypeSpecificValue = 1;
-                }
-                if (tv == ItemCategory.Ring && sv == RingType.ResFear && _player.Race.ResistsFear)
-                {
-                    sv = RingType.SustainStr;
                 }
                 item.IdentifyFlags.Set(Constants.IdentStoreb);
                 item.BecomeFlavourAware();
