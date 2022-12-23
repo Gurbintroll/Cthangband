@@ -6,25 +6,25 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
-    internal class PatronIod : BasePatron
+    internal class PatronNyogtha : BasePatron
     {
-        protected override void Initialise()
+        public PatronNyogtha()
         {
-            ShortName = "Iod";
-            LongName = "Iod, the Shining Hunter";
-            PreferredAbility = Ability.Charisma;
+            ShortName = "Nyogtha";
+            LongName = "Nyogtha, the Thing Which Should Not Be";
+            PreferredAbility = Ability.Constitution;
             Rewards = new[]
             {
-                Reward.Wrath, Reward.CurseAr, Reward.CurseWp, Reward.CurseWp, Reward.CurseAr, Reward.Ignore,
-                Reward.Ignore, Reward.Ignore, Reward.PolySlf, Reward.PolySlf, Reward.PolyWnd, Reward.HealFul,
-                Reward.HealFul, Reward.GainExp, Reward.AugmAbl, Reward.GoodObj, Reward.GoodObj, Reward.ChaosWp,
-                Reward.GreaObj, Reward.GreaObs
+                Reward.Wrath, Reward.DreadCurse, Reward.PissOff, Reward.CurseWp, Reward.RuinAbl, Reward.Ignore,
+                Reward.Ignore, Reward.PolySlf, Reward.PolySlf, Reward.PolyWnd, Reward.GoodObj, Reward.GoodObj,
+                Reward.SerMons, Reward.HealFul, Reward.GainExp, Reward.GainAbl, Reward.ChaosWp, Reward.GoodObs,
+                Reward.GreaObj, Reward.AugmAbl
             };
         }
     }

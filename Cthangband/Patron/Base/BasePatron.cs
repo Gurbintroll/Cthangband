@@ -10,7 +10,7 @@ using Cthangband.Projection;
 using Cthangband.StaticData;
 using System;
 
-namespace Cthangband.Patrons.Base
+namespace Cthangband.Patron.Base
 {
     [Serializable]
     internal abstract class BasePatron : IPatron
@@ -20,22 +20,6 @@ namespace Cthangband.Patrons.Base
         protected string ShortName;
         public string LongName { get; set; }
         public bool MultiRew { get; set; }
-
-        public static IPatron[] NewPatronList()
-        {
-            BasePatron[] list = new BasePatron[]
-            {
-                new PatronEihort(), new PatronGlaaki(), new PatronYogSothoth(), new PatronYig(),
-                new PatronAzathoth(), new PatronRhanTegoth(), new PatronNyarlathotep(), new PatronTsathoggua(),
-                new PatronNyogtha(), new PatronIod(), new PatronHastur(), new PatronAbhoth(), new PatronUbboSathla(),
-                new PatronCthulhu(), new PatronShubNiggurath(), new PatronCyaegha()
-            };
-            foreach (BasePatron patron in list)
-            {
-                patron.Initialise();
-            }
-            return list;
-        }
 
         public void GetReward(Player player, Level level, SaveGame saveGame)
         {
@@ -466,6 +450,5 @@ namespace Cthangband.Patrons.Base
             return ShortName;
         }
 
-        protected abstract void Initialise();
     }
 }

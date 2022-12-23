@@ -6,15 +6,15 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
     internal class PatronAzathoth : BasePatron
     {
-        protected override void Initialise()
+        public PatronAzathoth()
         {
             ShortName = "Azathoth";
             LongName = "Azathoth, the Daemon Sultan";

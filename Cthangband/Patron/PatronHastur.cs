@@ -6,25 +6,25 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
-    internal class PatronShubNiggurath : BasePatron
+    internal class PatronHastur : BasePatron
     {
-        protected override void Initialise()
+        public PatronHastur()
         {
-            ShortName = "Shub Niggurath";
-            LongName = "Shub Niggurath, Black Goat of the Woods";
-            PreferredAbility = Ability.Intelligence;
+            ShortName = "Hastur";
+            LongName = "Hastur, the Unspeakable";
+            PreferredAbility = -1;
             Rewards = new[]
             {
-                Reward.Wrath, Reward.CurseWp, Reward.CurseAr, Reward.RuinAbl, Reward.LoseAbl, Reward.LoseExp,
-                Reward.Ignore, Reward.PolySlf, Reward.PolySlf, Reward.PolySlf, Reward.PolySlf, Reward.PolyWnd,
-                Reward.HealFul, Reward.ChaosWp, Reward.GreaObj, Reward.GainAbl, Reward.GainAbl, Reward.GainExp,
-                Reward.GainExp, Reward.AugmAbl
+                Reward.Wrath, Reward.SerDemo, Reward.CurseWp, Reward.CurseAr, Reward.LoseExp, Reward.GainAbl,
+                Reward.LoseAbl, Reward.PolyWnd, Reward.PolySlf, Reward.Ignore, Reward.Destruct, Reward.MassGen,
+                Reward.ChaosWp, Reward.GreaObj, Reward.HurtLot, Reward.AugmAbl, Reward.RuinAbl, Reward.HSummon,
+                Reward.GreaObs, Reward.AugmAbl
             };
         }
     }

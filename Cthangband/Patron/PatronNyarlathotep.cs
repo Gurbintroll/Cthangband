@@ -6,25 +6,25 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
-    internal class PatronGlaaki : BasePatron
+    internal class PatronNyarlathotep : BasePatron
     {
-        protected override void Initialise()
+        public PatronNyarlathotep()
         {
-            ShortName = "Glaaki";
-            LongName = "Glaaki, Lord of Dead Dreams";
-            PreferredAbility = Ability.Constitution;
+            ShortName = "Nyarlathotep";
+            LongName = "Nyarlathotep, the Crawling Chaos";
+            PreferredAbility = Ability.Strength;
             Rewards = new[]
             {
-                Reward.Wrath, Reward.CurseWp, Reward.CurseAr, Reward.HSummon, Reward.SummonM, Reward.SummonM,
-                Reward.Ignore, Reward.Ignore, Reward.PolyWnd, Reward.PolyWnd, Reward.PolySlf, Reward.HealFul,
-                Reward.HealFul, Reward.GainAbl, Reward.SerUnde, Reward.ChaosWp, Reward.GoodObj, Reward.GoodObj,
-                Reward.GoodObs, Reward.GoodObs
+                Reward.DreadCurse, Reward.HurtLot, Reward.CurseWp, Reward.CurseAr, Reward.RuinAbl, Reward.SummonM,
+                Reward.LoseExp, Reward.PolySlf, Reward.PolySlf, Reward.PolyWnd, Reward.SerUnde, Reward.HealFul,
+                Reward.HealFul, Reward.GainExp, Reward.GainExp, Reward.ChaosWp, Reward.GoodObj, Reward.GoodObs,
+                Reward.GreaObs, Reward.AugmAbl
             };
         }
     }

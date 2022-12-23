@@ -7,7 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Debug;
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
@@ -23,7 +23,6 @@ namespace Cthangband
         public readonly CommandHandler Command = new CommandHandler();
         public readonly CommandEngine CommandEngine;
         public readonly Dungeon[] Dungeons;
-        public readonly IPatron[] PatronList;
         public readonly QuestArray Quests = new QuestArray();
         public readonly SpellEffectsHandler SpellEffects;
         public readonly Town[] Towns;
@@ -83,7 +82,6 @@ namespace Cthangband
             SpellEffects = new SpellEffectsHandler(this);
             Towns = Town.NewTownList();
             Dungeons = Dungeon.NewDungeonList();
-            PatronList = BasePatron.NewPatronList();
         }
 
         internal delegate bool ItemFilterDelegate(Item item);

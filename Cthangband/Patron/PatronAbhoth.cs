@@ -6,25 +6,25 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
-    internal class PatronCyaegha : BasePatron
+    internal class PatronAbhoth : BasePatron
     {
-        protected override void Initialise()
+        public PatronAbhoth()
         {
-            ShortName = "Cyaegha";
-            LongName = "Cyaegha, the Destroying Eye";
+            ShortName = "Abhoth";
+            LongName = "Abhoth, the Unclean";
             PreferredAbility = Ability.Strength;
             Rewards = new[]
             {
-                Reward.Wrath, Reward.HurtLot, Reward.PissOff, Reward.LoseAbl, Reward.LoseExp, Reward.Ignore,
-                Reward.Ignore, Reward.DispelC, Reward.DoHavoc, Reward.DoHavoc, Reward.PolySlf, Reward.PolySlf,
-                Reward.GainExp, Reward.GainAbl, Reward.GainAbl, Reward.SerMons, Reward.GoodObj, Reward.ChaosWp,
-                Reward.GreaObj, Reward.GoodObs
+                Reward.Wrath, Reward.HurtLot, Reward.HurtLot, Reward.HSummon, Reward.HSummon, Reward.Ignore,
+                Reward.Ignore, Reward.Ignore, Reward.SerMons, Reward.SerDemo, Reward.PolySlf, Reward.PolyWnd,
+                Reward.HealFul, Reward.GoodObj, Reward.GoodObj, Reward.ChaosWp, Reward.GoodObs, Reward.GoodObs,
+                Reward.GreaObj, Reward.GreaObs
             };
         }
     }

@@ -12,10 +12,10 @@ using Cthangband.StaticData;
 using Cthangband.UI;
 using Cthangband.Pantheon;
 using System;
-using Cthangband.Patrons.Base;
 using Cthangband.Spells.Base;
 using Cthangband.PlayerRace.Base;
 using System.Linq;
+using Cthangband.Patron.Base;
 
 namespace Cthangband
 {

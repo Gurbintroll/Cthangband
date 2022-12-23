@@ -6,25 +6,25 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
-    internal class PatronNyarlathotep : BasePatron
+    internal class PatronYogSothoth : BasePatron
     {
-        protected override void Initialise()
+        public PatronYogSothoth()
         {
-            ShortName = "Nyarlathotep";
-            LongName = "Nyarlathotep, the Crawling Chaos";
+            ShortName = "Yog Sothoth";
+            LongName = "Yog Sothoth, the Gate and the Key";
             PreferredAbility = Ability.Strength;
             Rewards = new[]
             {
-                Reward.DreadCurse, Reward.HurtLot, Reward.CurseWp, Reward.CurseAr, Reward.RuinAbl, Reward.SummonM,
-                Reward.LoseExp, Reward.PolySlf, Reward.PolySlf, Reward.PolyWnd, Reward.SerUnde, Reward.HealFul,
-                Reward.HealFul, Reward.GainExp, Reward.GainExp, Reward.ChaosWp, Reward.GoodObj, Reward.GoodObs,
-                Reward.GreaObs, Reward.AugmAbl
+                Reward.Wrath, Reward.Wrath, Reward.HurtLot, Reward.PissOff, Reward.HSummon, Reward.SummonM,
+                Reward.Ignore, Reward.Ignore, Reward.Destruct, Reward.SerUnde, Reward.Carnage, Reward.MassGen,
+                Reward.MassGen, Reward.DispelC, Reward.GoodObj, Reward.ChaosWp, Reward.GoodObs, Reward.GoodObs,
+                Reward.AugmAbl, Reward.AugmAbl
             };
         }
     }

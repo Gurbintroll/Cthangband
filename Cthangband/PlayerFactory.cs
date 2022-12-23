@@ -7,6 +7,7 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Pantheon;
+using Cthangband.Patron.Base;
 using Cthangband.PlayerRace.Base;
 using Cthangband.Spells;
 using Cthangband.StaticData;
@@ -1689,8 +1690,7 @@ namespace Cthangband
                         _player.Race.GetHistory(_player);
                         GetMoney();
                         _player.Spellcasting = new Spellcasting(_player);
-                        _player.GooPatron =
-                            SaveGame.Instance.PatronList[Program.Rng.DieRoll(SaveGame.Instance.PatronList.Length) - 1];
+                        _player.GooPatron = Patrons.Instance[Patrons.Instance.RandomPatronName()];
                         _player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses | UpdateFlags.UpdateHealth);
                         SaveGame.Instance.Player = _player;
                         SaveGame.Instance.UpdateStuff();

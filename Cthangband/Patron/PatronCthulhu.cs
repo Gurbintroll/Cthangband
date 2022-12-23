@@ -6,24 +6,24 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
-    internal class PatronUbboSathla : BasePatron
+    internal class PatronCthulhu : BasePatron
     {
-        protected override void Initialise()
+        public PatronCthulhu()
         {
-            ShortName = "Ubbo-Sathla";
-            LongName = "Ubbo-Sathla, the Unbegotten Source";
-            PreferredAbility = Ability.Charisma;
+            ShortName = "Cthulhu";
+            LongName = "Cthulhu, who Lies Dreaming";
+            PreferredAbility = Ability.Constitution;
             Rewards = new[]
             {
-                Reward.Wrath, Reward.PissOff, Reward.PissOff, Reward.RuinAbl, Reward.LoseAbl, Reward.LoseExp,
-                Reward.Ignore, Reward.Ignore, Reward.PolyWnd, Reward.SerDemo, Reward.PolySlf, Reward.HealFul,
-                Reward.HealFul, Reward.GoodObj, Reward.GainExp, Reward.GainExp, Reward.ChaosWp, Reward.GainAbl,
+                Reward.Wrath, Reward.PissOff, Reward.HurtLot, Reward.RuinAbl, Reward.LoseAbl, Reward.LoseExp,
+                Reward.Ignore, Reward.Ignore, Reward.Ignore, Reward.PolySlf, Reward.PolySlf, Reward.PolyWnd,
+                Reward.HealFul, Reward.GoodObj, Reward.GainAbl, Reward.GainAbl, Reward.SerUnde, Reward.ChaosWp,
                 Reward.GreaObj, Reward.AugmAbl
             };
         }

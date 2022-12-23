@@ -6,24 +6,24 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Patrons.Base;
+using Cthangband.Patron.Base;
 using System;
 
-namespace Cthangband.Patrons
+namespace Cthangband.Patron
 {
     [Serializable]
-    internal class PatronYig : BasePatron
+    internal class PatronEihort : BasePatron
     {
-        protected override void Initialise()
+        public PatronEihort()
         {
-            ShortName = "Yig";
-            LongName = "Yig, Father of Serpents";
-            PreferredAbility = Ability.Strength;
-            Rewards = new[] // Yig
+            ShortName = "Eihort";
+            LongName = "Eihort, God of the Labyrinth";
+            PreferredAbility = Ability.Constitution;
+            Rewards = new[]
             {
-                Reward.Wrath, Reward.Wrath, Reward.CurseWp, Reward.CurseAr, Reward.RuinAbl, Reward.Ignore,
-                Reward.Ignore, Reward.SerUnde, Reward.Destruct, Reward.Carnage, Reward.MassGen, Reward.MassGen,
-                Reward.HealFul, Reward.GainAbl, Reward.GainAbl, Reward.ChaosWp, Reward.GoodObs, Reward.GoodObs,
+                Reward.Wrath, Reward.CurseWp, Reward.CurseAr, Reward.RuinAbl, Reward.LoseAbl, Reward.Ignore,
+                Reward.Ignore, Reward.Ignore, Reward.PolyWnd, Reward.PolySlf, Reward.PolySlf, Reward.PolySlf,
+                Reward.GainAbl, Reward.GainAbl, Reward.GainExp, Reward.GoodObj, Reward.ChaosWp, Reward.GreaObj,
                 Reward.AugmAbl, Reward.AugmAbl
             };
         }

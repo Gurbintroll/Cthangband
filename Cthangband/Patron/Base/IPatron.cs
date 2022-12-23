@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cthangband.Patrons.Base
+namespace Cthangband.Patron.Base
 {
     internal interface IPatron
     {

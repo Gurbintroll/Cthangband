@@ -10,6 +10,7 @@ using Cthangband.Projection;
 using Cthangband.Projection.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
+using Cthangband.Patron.Base;
 using System;
 
 namespace Cthangband
@@ -2368,7 +2369,7 @@ namespace Cthangband
                     }
                 case ScrollType.Invocation:
                     {
-                        var patron = SaveGame.Instance.PatronList[Program.Rng.DieRoll(SaveGame.Instance.PatronList.Length) - 1];
+                        var patron = Patrons.Instance[Patrons.Instance.RandomPatronName()];
                         Profile.Instance.MsgPrint($"You invoke the secret name of {patron.LongName}.");
                         patron.GetReward(_player, SaveGame.Instance.Level, SaveGame.Instance);
                         identified = true;
