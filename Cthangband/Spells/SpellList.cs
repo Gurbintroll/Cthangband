@@ -25,7 +25,7 @@ namespace Cthangband.Spells
     /// A set of four spell books from a single realm, containing a total of thirty two spells
     /// </summary>
     [Serializable]
-    internal class SpellList : List<BaseSpell>
+    internal class SpellList : List<ISpell>
     {
         public SpellList(Realm realm, IPlayerClass playerClass)
         {
@@ -350,9 +350,9 @@ namespace Cthangband.Spells
                     }
                     break;
             }
-            foreach (BaseSpell spell in this)
+            foreach (ISpell spell in this)
             {
-                spell.Initialise(playerClass);
+                spell.Initialise(playerClass, realm);
             }
         }
     }

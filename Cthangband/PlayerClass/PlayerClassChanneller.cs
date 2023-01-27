@@ -7,9 +7,11 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.PlayerClass.Base;
+using System;
 
 namespace Cthangband.PlayerClass
 {
+    [Serializable]
     internal class PlayerClassChanneller : BasePlayerClass
     {
         private int[] _abilityBonus = { -1, 0, 2, -1, -1, 3 };

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace Cthangband.PlayerClass
 {
+    [Serializable]
     internal class PlayerClassWarriorMage : BasePlayerClass
     {
         private int[] _abilityBonus = { 2, 2, 0, 1, 0, 1 };

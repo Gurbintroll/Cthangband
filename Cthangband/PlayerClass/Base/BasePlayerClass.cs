@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace Cthangband.PlayerClass.Base
 {
+    [Serializable]
     internal abstract class BasePlayerClass : IPlayerClass
     {
         public abstract int[] AbilityBonus { get; }

@@ -96,11 +96,11 @@ namespace Cthangband.Spells.Base
             return !Worked ? "untried" : Comment(player);
         }
 
-        public void Initialise(IPlayerClass playerClass)
+        public void Initialise(IPlayerClass playerClass, Realm realm)
         {
-            Level = (int)Math.Round(20 * playerClass.SpellLevelMultiplier(Realm.Corporeal), MidpointRounding.AwayFromZero);
-            VisCost = (int)Math.Round(18 * playerClass.SpellVisCostMultiplier(Realm.Corporeal), MidpointRounding.AwayFromZero);
-            BaseFailure = (int)Math.Round(85 * playerClass.SpellBaseFailureMultiplier(Realm.Corporeal), MidpointRounding.AwayFromZero);
+            Level = (int)Math.Round(DefaultLevel * playerClass.SpellLevelMultiplier(realm), MidpointRounding.AwayFromZero);
+            VisCost = (int)Math.Round(DefaultVisCost * playerClass.SpellVisCostMultiplier(realm), MidpointRounding.AwayFromZero);
+            BaseFailure = (int)Math.Round(DefaultBaseFailure * playerClass.SpellBaseFailureMultiplier(realm), MidpointRounding.AwayFromZero);
             if (Level < 1)
             {
                 Level = 1;

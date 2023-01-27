@@ -6,6 +6,9 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 
+using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
+
 namespace Cthangband.Spells.Base
 {
     internal interface ISpell
@@ -21,7 +24,7 @@ namespace Cthangband.Spells.Base
         void Cast(SaveGame saveGame, Player player, Level level);
 
         int FailureChance(Player player);
-
+        void Initialise(IPlayerClass playerClass, Realm realm);
         string SummaryLine(Player player);
     }
 }
