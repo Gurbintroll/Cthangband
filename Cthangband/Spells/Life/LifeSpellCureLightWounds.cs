@@ -14,60 +14,20 @@ namespace Cthangband.Spells.Life
     [Serializable]
     internal class LifeSpellCureLightWounds : BaseSpell
     {
+        public override int DefaultBaseFailure => 35;
+
+        public override int DefaultLevel => 3;
+
+        public override int DefaultVisCost => 2;
+
+        public override int FirstCastExperience => 1;
+
+        public override string Name => "Cure Light Wounds";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.RestoreHealth(Program.Rng.DiceRoll(2, 10));
             player.SetTimedBleeding(player.TimedBleeding - 10);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Cure Light Wounds";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 3;
-                    VisCost = 2;
-                    BaseFailure = 35;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 1;
-                    VisCost = 2;
-                    BaseFailure = 15;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 2;
-                    VisCost = 2;
-                    BaseFailure = 35;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 4;
-                    VisCost = 4;
-                    BaseFailure = 35;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 2;
-                    VisCost = 2;
-                    BaseFailure = 25;
-                    FirstCastExperience = 4;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

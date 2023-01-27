@@ -15,63 +15,22 @@ namespace Cthangband.Spells.Nature
     [Serializable]
     internal class NatureSpellNaturesWrath : BaseSpell
     {
+        public override int DefaultBaseFailure => 95;
+
+        public override int DefaultLevel => 40;
+
+        public override int DefaultVisCost => 90;
+
+        public override int FirstCastExperience => 200;
+
+        public override string Name => "Nature’s Wrath";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.DispelMonsters(player.Level * 4);
             saveGame.SpellEffects.Earthquake(player.MapY, player.MapX, 20 + (player.Level / 2));
             saveGame.SpellEffects.Project(0, 1 + (player.Level / 12), player.MapY, player.MapX, 100 + player.Level,
                 new ProjectDisintegrate(SaveGame.Instance.SpellEffects), ProjectionFlag.ProjectKill | ProjectionFlag.ProjectItem);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Nature's Wrath";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 40;
-                    VisCost = 90;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 42;
-                    VisCost = 90;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 41;
-                    VisCost = 80;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 45;
-                    VisCost = 95;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Druid:
-                    Level = 36;
-                    VisCost = 80;
-                    BaseFailure = 85;
-                    FirstCastExperience = 250;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

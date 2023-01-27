@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.Spells.Base;
 using System;
 
@@ -14,67 +15,19 @@ namespace Cthangband.Spells.Chaos
     [Serializable]
     internal class ChaosSpellCallTheVoid : BaseSpell
     {
+        public override int DefaultBaseFailure => 85;
+
+        public override int DefaultLevel => 49;
+
+        public override int DefaultVisCost => 100;
+
+        public override int FirstCastExperience => 250;
+
+        public override string Name => "Call the Void";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.CommandEngine.CallTheVoid();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Call the Void";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 49;
-                    VisCost = 100;
-                    BaseFailure = 85;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 50;
-                    VisCost = 100;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                    Level = 50;
-                    VisCost = 100;
-                    BaseFailure = 85;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Fanatic:
-                    Level = 49;
-                    VisCost = 100;
-                    BaseFailure = 85;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Cultist:
-                    Level = 46;
-                    VisCost = 90;
-                    BaseFailure = 75;
-                    FirstCastExperience = 250;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

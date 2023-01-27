@@ -14,60 +14,20 @@ namespace Cthangband.Spells.Life
     [Serializable]
     internal class LifeSpellWardingTrue : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 46;
+
+        public override int DefaultVisCost => 70;
+
+        public override int FirstCastExperience => 150;
+
+        public override string Name => "Warding True";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.ElderSign();
             saveGame.SpellEffects.ElderSignCreation();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Warding True";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 46;
-                    VisCost = 70;
-                    BaseFailure = 80;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 44;
-                    VisCost = 44;
-                    BaseFailure = 80;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 46;
-                    VisCost = 60;
-                    BaseFailure = 80;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 50;
-                    VisCost = 70;
-                    BaseFailure = 80;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 40;
-                    VisCost = 70;
-                    BaseFailure = 70;
-                    FirstCastExperience = 150;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

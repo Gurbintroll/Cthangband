@@ -16,6 +16,16 @@ namespace Cthangband.Spells.Folk
     [Serializable]
     internal class FolkSpellElementalBall : BaseSpell
     {
+        public override int DefaultBaseFailure => 66;
+
+        public override int DefaultLevel => 41;
+
+        public override int DefaultVisCost => 30;
+
+        public override int FirstCastExperience => 30;
+
+        public override string Name => "Elemental Ball";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -43,63 +53,6 @@ namespace Cthangband.Spells.Folk
                     break;
             }
             saveGame.SpellEffects.FireBall(dummy, dir, 75 + player.Level, 2);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Teleport Away";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 41;
-                    VisCost = 30;
-                    BaseFailure = 66;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 44;
-                    VisCost = 39;
-                    BaseFailure = 66;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 47;
-                    VisCost = 42;
-                    BaseFailure = 66;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 47;
-                    VisCost = 42;
-                    BaseFailure = 66;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 45;
-                    VisCost = 44;
-                    BaseFailure = 66;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 40;
-                    VisCost = 28;
-                    BaseFailure = 55;
-                    FirstCastExperience = 30;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

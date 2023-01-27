@@ -5,15 +5,8 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
-using Cthangband.Enumerations;
-using Cthangband.StaticData;
-using Cthangband.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace Cthangband.PlayerRace.Base
 {
@@ -805,7 +798,6 @@ namespace Cthangband.PlayerRace.Base
         public abstract int BaseSearchBonus { get; }
         public abstract int BaseSearchFrequency { get; }
         public abstract int BaseStealthBonus { get; }
-        public abstract uint Choice { get; }
         public virtual string Description1 => string.Empty;
         public virtual string Description2 => string.Empty;
         public virtual string Description3 => string.Empty;
@@ -865,6 +857,7 @@ namespace Cthangband.PlayerRace.Base
 
         public virtual void GetAbilitiesAsItemFlags(Player player, FlagSet f1, FlagSet f2, FlagSet f3)
         {
+            // By default do nothing
         }
 
         /// <summary>

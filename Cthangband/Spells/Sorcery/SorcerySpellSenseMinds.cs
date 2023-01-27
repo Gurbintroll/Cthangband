@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellSenseMinds : BaseSpell
     {
+        public override int DefaultBaseFailure => 60;
+
+        public override int DefaultLevel => 14;
+
+        public override int DefaultVisCost => 10;
+
+        public override int FirstCastExperience => 25;
+
+        public override string Name => "Sense Minds";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.SetTimedTelepathy(player.TimedTelepathy + Program.Rng.DieRoll(30) + 25);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Sense Minds";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 14;
-                    VisCost = 10;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 16;
-                    VisCost = 10;
-                    BaseFailure = 60;
-                    FirstCastExperience = 10;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 16;
-                    VisCost = 14;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 12;
-                    VisCost = 9;
-                    BaseFailure = 50;
-                    FirstCastExperience = 25;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

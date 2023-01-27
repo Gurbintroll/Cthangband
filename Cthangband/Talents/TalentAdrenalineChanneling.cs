@@ -5,17 +5,18 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using Cthangband.PlayerClass.Base;
 using Cthangband.Talents.Base;
 using System;
 
 namespace Cthangband.Talents
 {
     [Serializable]
-    internal class TalentAdrenalineChanneling : BaseTalent
+    internal class TalentAdrenalineChannelling : BaseTalent
     {
-        public override void Initialise(int characterClass)
+        public override void Initialise(IPlayerClass playerClass)
         {
-            Name = "Adrenaline Channeling";
+            Name = "Adrenaline Channelling";
             Level = 23;
             VisCost = 15;
             BaseFailure = 50;

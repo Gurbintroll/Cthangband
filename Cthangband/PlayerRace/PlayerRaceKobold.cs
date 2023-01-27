@@ -41,8 +41,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -1;
 
-        public override uint Choice => 0xC009;
-
         public override string Description2 => "Kobolds are small reptillian creatures whose claims to be";
 
         public override string Description3 => "related to dragons are generally not taken seriously. They";

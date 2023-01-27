@@ -13,6 +13,6 @@ namespace Cthangband.Enumerations
         Arcane = 1,
         Divine = 2,
         Mentalism = 3,
-        Channeling = 4
+        Channelling = 4
     }
 }

@@ -43,8 +43,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -1;
 
-        public override uint Choice => 0x4805;
-
         public override string Description1 => "Dwarves are short and stocky, and although not noted for";
 
         public override string Description2 => "their intelligence or subtlety they are generally very";

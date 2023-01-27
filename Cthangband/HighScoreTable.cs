@@ -14,7 +14,7 @@ namespace Cthangband
 {
     internal class HighScoreTable
     {
-        public int ClassFilter = -1;
+        public string ClassFilter = string.Empty;
         public string RaceFilter = string.Empty;
 
         private readonly List<HighScore> _scores;
@@ -288,7 +288,7 @@ namespace Cthangband
         private void StripUnwanted(List<HighScore> list)
         {
             int index = 0;
-            if (string.IsNullOrEmpty(RaceFilter) && ClassFilter < 0)
+            if (string.IsNullOrEmpty(RaceFilter) && string.IsNullOrEmpty(ClassFilter))
             {
                 return;
             }
@@ -300,7 +300,7 @@ namespace Cthangband
             {
                 if (!string.IsNullOrEmpty(RaceFilter))
                 {
-                    if (list[index].Prace != RaceFilter)
+                    if (list[index].CurrentRace != RaceFilter)
                     {
                         list.RemoveAt(index);
                     }
@@ -309,9 +309,9 @@ namespace Cthangband
                         index++;
                     }
                 }
-                else if (ClassFilter >= 0)
+                else if (!string.IsNullOrEmpty(ClassFilter))
                 {
-                    if (list[index].Pclass != ClassFilter)
+                    if (list[index].CurrentClass != ClassFilter)
                     {
                         list.RemoveAt(index);
                     }

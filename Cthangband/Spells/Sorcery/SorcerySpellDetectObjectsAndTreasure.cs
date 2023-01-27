@@ -14,54 +14,21 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellDetectObjectsAndTreasure : BaseSpell
     {
+        public override int DefaultBaseFailure => 25;
+
+        public override int DefaultLevel => 3;
+
+        public override int DefaultVisCost => 3;
+
+        public override int FirstCastExperience => 15;
+
+        public override string Name => "Detect Objects and Treasure";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.DetectObjectsNormal();
             saveGame.SpellEffects.DetectTreasure();
             saveGame.SpellEffects.DetectObjectsGold();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Detect Objects and Treasure";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 3;
-                    VisCost = 3;
-                    BaseFailure = 25;
-                    FirstCastExperience = 15;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 9;
-                    VisCost = 3;
-                    BaseFailure = 65;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 4;
-                    VisCost = 4;
-                    BaseFailure = 25;
-                    FirstCastExperience = 15;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 2;
-                    VisCost = 2;
-                    BaseFailure = 20;
-                    FirstCastExperience = 15;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -24,99 +24,12 @@ namespace Cthangband.Spells
 
         public Spellcasting(Player player)
         {
-            Spells[0] = new SpellList(player.Realm1, player.CharacterClassIndex);
-            Spells[1] = new SpellList(player.Realm2, player.CharacterClassIndex);
-            Talents = new TalentList(player.CharacterClassIndex);
-            switch (player.CharacterClassIndex)
-            {
-                case CharacterClassId.Mage:
-                case CharacterClassId.HighMage:
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Rogue:
-                case CharacterClassId.Cultist:
-                    Type = CastingType.Arcane;
-                    break;
-
-                case CharacterClassId.Priest:
-                case CharacterClassId.Paladin:
-                case CharacterClassId.Ranger:
-                case CharacterClassId.Druid:
-                case CharacterClassId.Fanatic:
-                case CharacterClassId.Monk:
-                    Type = CastingType.Divine;
-                    break;
-
-                case CharacterClassId.Mindcrafter:
-                case CharacterClassId.Mystic:
-                    Type = CastingType.Mentalism;
-                    break;
-
-                case CharacterClassId.Channeler:
-                    Type = CastingType.Channeling;
-                    break;
-
-                default:
-                    Type = CastingType.None;
-                    break;
-            }
-            switch (player.CharacterClassIndex)
-            {
-                case CharacterClassId.Mage:
-                case CharacterClassId.HighMage:
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Rogue:
-                case CharacterClassId.Ranger:
-                case CharacterClassId.Cultist:
-                case CharacterClassId.Fanatic:
-                    SpellStat = Ability.Intelligence;
-                    break;
-
-                case CharacterClassId.Priest:
-                case CharacterClassId.Paladin:
-                case CharacterClassId.Druid:
-                case CharacterClassId.Monk:
-                case CharacterClassId.Mindcrafter:
-                case CharacterClassId.Mystic:
-                    SpellStat = Ability.Wisdom;
-                    break;
-
-                case CharacterClassId.Channeler:
-                    SpellStat = Ability.Charisma;
-                    break;
-
-                default:
-                    SpellStat = Ability.Strength;
-                    break;
-            }
-            switch (player.CharacterClassIndex)
-            {
-                case CharacterClassId.Mage:
-                case CharacterClassId.Monk:
-                case CharacterClassId.Mindcrafter:
-                case CharacterClassId.Mystic:
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Cultist:
-                    SpellWeight = 300;
-                    break;
-
-                case CharacterClassId.Priest:
-                case CharacterClassId.Rogue:
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Druid:
-                    SpellWeight = 350;
-                    break;
-
-                case CharacterClassId.Ranger:
-                case CharacterClassId.Paladin:
-                case CharacterClassId.Fanatic:
-                case CharacterClassId.Channeler:
-                    SpellWeight = 400;
-                    break;
-
-                default:
-                    SpellWeight = 0;
-                    break;
-            }
+            Spells[0] = new SpellList(player.Realm1, player.PlayerClass);
+            Spells[1] = new SpellList(player.Realm2, player.PlayerClass);
+            Talents = new TalentList(player.PlayerClass);
+            Type = player.PlayerClass.CastingType;
+            SpellStat = player.PlayerClass.PrimeAbilityScore;
+            SpellWeight = player.PlayerClass.SpellWeightLimit;
             SpellFirst = 100;
             foreach (SpellList bookset in Spells)
             {

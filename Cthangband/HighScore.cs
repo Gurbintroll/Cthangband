@@ -13,9 +13,9 @@ namespace Cthangband
     [Serializable]
     internal class HighScore
     {
+        public readonly string CurrentClass;
+        public readonly string CurrentRace;
         public readonly string How;
-        public readonly int Pclass;
-        public readonly string Prace;
         public readonly int Pts;
         public readonly string When;
         public readonly string Where;
@@ -35,8 +35,8 @@ namespace Cthangband
                 saveGame = SaveGame.Instance;
             }
             Pts = player.GetScore(saveGame);
-            Prace = player.CurrentRace;
-            Pclass = player.CharacterClassIndex;
+            CurrentRace = player.CurrentRace;
+            CurrentClass = player.CurrentClass;
             if (player.IsDead)
             {
                 When = DateTime.Now.ToString("dd-MMM-yyyy");
@@ -49,7 +49,7 @@ namespace Cthangband
                 How = "nobody (yet!)";
             }
             Who =
-                $"{player.Name.Trim()}{player.Generation.ToRoman(true)} the level {player.Level} {PlayerRaces.Instance[player.CurrentRace].Title} {CharacterClass.ClassSubName(player.CharacterClassIndex, player.Realm1)}";
+                $"{player.Name.Trim()}{player.Generation.ToRoman(true)} the level {player.Level} {PlayerRaces.Instance[player.CurrentRace].Title} {player.PlayerClass.ClassSubName(player.Realm1)}";
             if (saveGame.CurrentDepth > 0)
             {
                 Where = $"on level {saveGame.CurrentDepth} of {saveGame.CurDungeon.Name}";

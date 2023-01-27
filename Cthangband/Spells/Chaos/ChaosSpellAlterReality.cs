@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.Spells.Base;
 using System;
 
@@ -14,6 +15,16 @@ namespace Cthangband.Spells.Chaos
     [Serializable]
     internal class ChaosSpellAlterReality : BaseSpell
     {
+        public override int DefaultBaseFailure => 85;
+
+        public override int DefaultLevel => 30;
+
+        public override int DefaultVisCost => 25;
+
+        public override int FirstCastExperience => 150;
+
+        public override string Name => "Alter Reality";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             Profile.Instance.MsgPrint("The world changes!");
@@ -24,64 +35,6 @@ namespace Cthangband.Spells.Chaos
             }
             saveGame.NewLevelFlag = true;
             saveGame.CameFrom = LevelStart.StartRandom;
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Alter Reality";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 30;
-                    VisCost = 25;
-                    BaseFailure = 85;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 35;
-                    VisCost = 30;
-                    BaseFailure = 85;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 38;
-                    VisCost = 35;
-                    BaseFailure = 85;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                    Level = 35;
-                    VisCost = 30;
-                    BaseFailure = 85;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.Fanatic:
-                    Level = 30;
-                    VisCost = 30;
-                    BaseFailure = 85;
-                    FirstCastExperience = 150;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Cultist:
-                    Level = 26;
-                    VisCost = 22;
-                    BaseFailure = 75;
-                    FirstCastExperience = 150;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellTeleport : BaseSpell
     {
+        public override int DefaultBaseFailure => 35;
+
+        public override int DefaultLevel => 5;
+
+        public override int DefaultVisCost => 5;
+
+        public override int FirstCastExperience => 5;
+
+        public override string Name => "Teleport";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.TeleportPlayer(player.Level * 5);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Teleport";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 5;
-                    VisCost = 5;
-                    BaseFailure = 35;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 15;
-                    VisCost = 7;
-                    BaseFailure = 75;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 6;
-                    VisCost = 6;
-                    BaseFailure = 35;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 4;
-                    VisCost = 3;
-                    BaseFailure = 25;
-                    FirstCastExperience = 5;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

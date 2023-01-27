@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.Spells.Base;
 using System;
 
@@ -14,70 +15,22 @@ namespace Cthangband.Spells.Chaos
     [Serializable]
     internal class ChaosSpellTouchOfConfusion : BaseSpell
     {
+        public override int DefaultBaseFailure => 50;
+
+        public override int DefaultLevel => 5;
+
+        public override int DefaultVisCost => 5;
+
+        public override int FirstCastExperience => 1;
+
+        public override string Name => "Touch of Confusion";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             if (!player.HasConfusingTouch)
             {
                 Profile.Instance.MsgPrint("Your hands start glowing.");
                 player.HasConfusingTouch = true;
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Touch of Confusion";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 5;
-                    VisCost = 5;
-                    BaseFailure = 50;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 5;
-                    VisCost = 4;
-                    BaseFailure = 30;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 7;
-                    VisCost = 5;
-                    BaseFailure = 45;
-                    FirstCastExperience = 2;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                    Level = 5;
-                    VisCost = 5;
-                    BaseFailure = 30;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Fanatic:
-                    Level = 5;
-                    VisCost = 4;
-                    BaseFailure = 30;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Cultist:
-                    Level = 4;
-                    VisCost = 2;
-                    BaseFailure = 20;
-                    FirstCastExperience = 1;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

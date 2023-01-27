@@ -32,7 +32,6 @@ namespace Cthangband.PlayerRace
         public override int BaseSearchBonus => 0;
         public override int BaseSearchFrequency => 10;
         public override int BaseStealthBonus => 0;
-        public override uint Choice => 0xFFFF;
         public override string Description2 => "Hopefully you know all about humans already because you";
         public override string Description3 => "are one! In game terms, humans are the average around which";
         public override string Description4 => "the other races are measured. As such, humans get no";

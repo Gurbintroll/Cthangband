@@ -15,6 +15,16 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellTeleportAway : BaseSpell
     {
+        public override int DefaultBaseFailure => 60;
+
+        public override int DefaultLevel => 18;
+
+        public override int DefaultVisCost => 12;
+
+        public override int FirstCastExperience => 8;
+
+        public override string Name => "Teleport Away";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -23,49 +33,6 @@ namespace Cthangband.Spells.Sorcery
                 return;
             }
             saveGame.SpellEffects.FireBeam(new ProjectAwayAll(SaveGame.Instance.SpellEffects), dir, player.Level);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Teleport Away";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 18;
-                    VisCost = 12;
-                    BaseFailure = 60;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 31;
-                    VisCost = 23;
-                    BaseFailure = 80;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 20;
-                    VisCost = 15;
-                    BaseFailure = 60;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 13;
-                    VisCost = 8;
-                    BaseFailure = 50;
-                    FirstCastExperience = 8;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

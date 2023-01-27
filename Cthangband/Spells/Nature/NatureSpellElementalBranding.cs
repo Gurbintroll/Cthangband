@@ -14,60 +14,19 @@ namespace Cthangband.Spells.Nature
     [Serializable]
     internal class NatureSpellElementalBranding : BaseSpell
     {
+        public override int DefaultBaseFailure => 60;
+
+        public override int DefaultLevel => 20;
+
+        public override int DefaultVisCost => 18;
+
+        public override int FirstCastExperience => 25;
+
+        public override string Name => "Earthquake";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.CommandEngine.BrandWeapon(0);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Elemental Branding";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 40;
-                    VisCost = 90;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 42;
-                    VisCost = 90;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 41;
-                    VisCost = 80;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 45;
-                    VisCost = 95;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Druid:
-                    Level = 36;
-                    VisCost = 80;
-                    BaseFailure = 85;
-                    FirstCastExperience = 250;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

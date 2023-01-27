@@ -1301,7 +1301,7 @@ namespace Cthangband
             }
             // If we're a channeler then we should be using vis instead of charges
             bool channeled = false;
-            if (_player.Spellcasting.Type == CastingType.Channeling)
+            if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
             }
@@ -1911,7 +1911,7 @@ namespace Cthangband
             _player.SetFood(_player.Food + item.TypeSpecificValue);
             bool channeled = false;
             // If we're a channeler, we might be able to spend vis instead of using it up
-            if (_player.Spellcasting.Type == CastingType.Channeling)
+            if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
             }
@@ -2391,8 +2391,8 @@ namespace Cthangband
                 _player.GainExperience((itemLevel + (_player.Level >> 1)) / _player.Level);
             }
             bool channeled = false;
-            // Channelers can use vis instead of the scroll being used up
-            if (_player.Spellcasting.Type == CastingType.Channeling)
+            // Channellers can use vis instead of the scroll being used up
+            if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
             }
@@ -3100,9 +3100,9 @@ namespace Cthangband
             {
                 return;
             }
-            // Channelers can use vis instead of a charge
+            // Channellers can use vis instead of a charge
             bool channeled = false;
-            if (_player.Spellcasting.Type == CastingType.Channeling)
+            if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
             }
@@ -3519,9 +3519,9 @@ namespace Cthangband
                 item.TypeSpecificValue = 0;
                 return;
             }
-            // Channelers can spend vis instead of a charge
+            // Channellers can spend vis instead of a charge
             bool channeled = false;
-            if (_player.Spellcasting.Type == CastingType.Channeling)
+            if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
                 if (channeled)

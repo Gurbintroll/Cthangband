@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.Spells.Base;
 using System;
 
@@ -14,62 +15,21 @@ namespace Cthangband.Spells.Corporeal
     [Serializable]
     internal class CorporealSpellHealingTrue : BaseSpell
     {
+        public override int DefaultBaseFailure => 95;
+
+        public override int DefaultLevel => 40;
+
+        public override int DefaultVisCost => 80;
+
+        public override int FirstCastExperience => 200;
+
+        public override string Name => "Healing True";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.RestoreHealth(2000);
             player.SetTimedStun(0);
             player.SetTimedBleeding(0);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Healing True";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 40;
-                    VisCost = 80;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 42;
-                    VisCost = 80;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 45;
-                    VisCost = 80;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                case CharacterClassId.Cultist:
-                    Level = 42;
-                    VisCost = 85;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 30;
-                    VisCost = 65;
-                    BaseFailure = 85;
-                    FirstCastExperience = 200;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

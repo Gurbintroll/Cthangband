@@ -14,60 +14,20 @@ namespace Cthangband.Spells.Life
     [Serializable]
     internal class LifeSpellDispelUndeadAndDemons : BaseSpell
     {
+        public override int DefaultBaseFailure => 60;
+
+        public override int DefaultLevel => 33;
+
+        public override int DefaultVisCost => 33;
+
+        public override int FirstCastExperience => 75;
+
+        public override string Name => "Dispel Undead and Demons";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.DispelUndead(player.Level * 3);
             saveGame.SpellEffects.DispelDemons(player.Level * 3);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Dispel Undead & Demons";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 33;
-                    VisCost = 33;
-                    BaseFailure = 60;
-                    FirstCastExperience = 75;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 17;
-                    VisCost = 14;
-                    BaseFailure = 55;
-                    FirstCastExperience = 70;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 30;
-                    VisCost = 25;
-                    BaseFailure = 60;
-                    FirstCastExperience = 75;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 34;
-                    VisCost = 34;
-                    BaseFailure = 60;
-                    FirstCastExperience = 75;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 30;
-                    VisCost = 30;
-                    BaseFailure = 50;
-                    FirstCastExperience = 75;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

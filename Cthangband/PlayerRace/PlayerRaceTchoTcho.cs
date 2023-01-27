@@ -40,8 +40,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -1;
 
-        public override uint Choice => 0xC89D;
-
         public override string Description2 => "Tcho-Tchos are hairless cannibalistic near-humans who dwell";
 
         public override string Description3 => "in isolated parts of the world away from more civilised";

@@ -43,8 +43,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 4;
 
-        public override uint Choice => 0xFFFF;
-
         public override string Description2 => "Vampires are powerful undead. They resist darkness, nether,";
 
         public override string Description3 => "cold, poison, and having their life force drained. Vampires";

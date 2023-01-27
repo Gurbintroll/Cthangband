@@ -30,7 +30,6 @@ namespace Cthangband.PlayerRace
         public override int BaseSearchBonus => 5;
         public override int BaseSearchFrequency => 14;
         public override int BaseStealthBonus => 5;
-        public override uint Choice => 0x5F4E;
         public override string Description1 => "Spectres are ethereal and they can pass through walls and";
         public override string Description2 => "other obstacles. They resist nether, attacks, poison, and";
         public override string Description3 => "cold; and they need little food. They also resist having";

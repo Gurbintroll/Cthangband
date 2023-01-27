@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Corporeal
     [Serializable]
     internal class CorporealSpellMoveBody : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 12;
+
+        public override int DefaultVisCost => 12;
+
+        public override int FirstCastExperience => 40;
+
+        public override string Name => "Move Body";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -34,57 +44,6 @@ namespace Cthangband.Spells.Corporeal
             else
             {
                 saveGame.SpellEffects.TeleportPlayerTo(ij, ii);
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Move Body";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 12;
-                    VisCost = 12;
-                    BaseFailure = 80;
-                    FirstCastExperience = 40;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 15;
-                    VisCost = 15;
-                    BaseFailure = 80;
-                    FirstCastExperience = 40;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 18;
-                    VisCost = 18;
-                    BaseFailure = 80;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                case CharacterClassId.Cultist:
-                    Level = 15;
-                    VisCost = 12;
-                    BaseFailure = 70;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 9;
-                    VisCost = 9;
-                    BaseFailure = 70;
-                    FirstCastExperience = 40;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

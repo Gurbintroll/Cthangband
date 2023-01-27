@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -2;
 
-        public override uint Choice => 0x0805;
-
         public override string Description1 => "Half-Trolls make up for their stupidity by being almost";
 
         public override string Description2 => "pure muscle, as strong as creatures much larger than they.";
@@ -132,7 +130,7 @@ namespace Cthangband.PlayerRace
 
         public override void UseRacialPower(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(10, 12, Ability.Wisdom, player.CharacterClassIndex == CharacterClassId.Warrior ? 6 : 12))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(10, 12, Ability.Wisdom, player.PlayerClass.PrimeAbilityScore == Ability.Strength ? 6 : 12))
             {
                 Profile.Instance.MsgPrint("RAAAGH!");
                 player.SetTimedFear(0);

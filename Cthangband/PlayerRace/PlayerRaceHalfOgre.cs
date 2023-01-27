@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -2;
 
-        public override uint Choice => 0x0C07;
-
         public override string Description2 => "Half-Ogres are both strong and naturally magical, although";
 
         public override string Description3 => "they don't usually have the intelligence to make the most";
@@ -122,7 +120,7 @@ namespace Cthangband.PlayerRace
 
         public override void UseRacialPower(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(8, 10, Ability.Wisdom, player.CharacterClassIndex == CharacterClassId.Warrior ? 6 : 12))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(8, 10, Ability.Wisdom, player.PlayerClass.PrimeAbilityScore == Ability.Strength ? 6 : 12))
             {
                 Profile.Instance.MsgPrint("Raaagh!");
                 player.SetTimedFear(0);

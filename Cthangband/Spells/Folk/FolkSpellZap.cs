@@ -15,23 +15,19 @@ namespace Cthangband.Spells.Folk
     [Serializable]
     internal class FolkSpellZap : BaseSpell
     {
+        public override int DefaultBaseFailure => 20;
+
+        public override int DefaultLevel => 1;
+
+        public override int DefaultVisCost => 1;
+
+        public override int FirstCastExperience => 4;
+
+        public override string Name => "Zap";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            int beam;
-            switch (player.CharacterClassIndex)
-            {
-                case CharacterClassId.Mage:
-                    beam = player.Level;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    beam = player.Level + 10;
-                    break;
-
-                default:
-                    beam = player.Level / 2;
-                    break;
-            }
+            int beam = player.PlayerClass.SpellBeamChance(player.Level);
             TargetEngine targetEngine = new TargetEngine(player, level);
             if (!targetEngine.GetDirectionWithAim(out int dir))
             {
@@ -39,63 +35,6 @@ namespace Cthangband.Spells.Folk
             }
             saveGame.SpellEffects.FireBoltOrBeam(beam - 10, new ProjectElectricity(SaveGame.Instance.SpellEffects), dir,
                 Program.Rng.DiceRoll(3 + ((player.Level - 1) / 5), 3));
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Zap";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 20;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 20;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 5;
-                    VisCost = 2;
-                    BaseFailure = 20;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 3;
-                    VisCost = 2;
-                    BaseFailure = 20;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 20;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 15;
-                    FirstCastExperience = 4;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

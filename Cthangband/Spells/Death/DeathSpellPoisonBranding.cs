@@ -14,73 +14,19 @@ namespace Cthangband.Spells.Death
     [Serializable]
     internal class DeathSpellPoisonBranding : BaseSpell
     {
+        public override int DefaultBaseFailure => 50;
+
+        public override int DefaultLevel => 30;
+
+        public override int DefaultVisCost => 75;
+
+        public override int FirstCastExperience => 30;
+
+        public override string Name => "Poison Branding";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.CommandEngine.BrandWeapon(2);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Poison Branding";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 30;
-                    VisCost = 75;
-                    BaseFailure = 50;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 33;
-                    VisCost = 75;
-                    BaseFailure = 90;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 35;
-                    VisCost = 35;
-                    BaseFailure = 75;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 40;
-                    VisCost = 80;
-                    BaseFailure = 95;
-                    FirstCastExperience = 20;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 35;
-                    VisCost = 75;
-                    BaseFailure = 90;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 35;
-                    VisCost = 75;
-                    BaseFailure = 50;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 26;
-                    VisCost = 65;
-                    BaseFailure = 40;
-                    FirstCastExperience = 30;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

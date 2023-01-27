@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using System;
 
 namespace Cthangband.Spells.Base
@@ -13,7 +14,10 @@ namespace Cthangband.Spells.Base
     [Serializable]
     internal abstract class BaseSpell : ISpell
     {
-        public int FirstCastExperience { get; set; }
+        public abstract int DefaultBaseFailure { get; }
+        public abstract int DefaultLevel { get; }
+        public abstract int DefaultVisCost { get; }
+        public abstract int FirstCastExperience { get; }
 
         public bool Forgotten { get; set; }
         public bool Learned { get; set; }
@@ -23,9 +27,8 @@ namespace Cthangband.Spells.Base
             get; set;
         }
 
+        public abstract string Name { get; }
         public int VisCost { get; set; }
-
-        public string Name { get; set; }
         public bool Worked { get; set; }
 
         protected int BaseFailure { get; set; }
@@ -46,20 +49,18 @@ namespace Cthangband.Spells.Base
                 chance += 5 * (VisCost - player.Vis);
             }
             int minfail = player.AbilityScores[player.Spellcasting.SpellStat].SpellMinFailChance;
-            if (player.CharacterClassIndex != CharacterClassId.Priest && player.CharacterClassIndex != CharacterClassId.Druid &&
-                player.CharacterClassIndex != CharacterClassId.Mage && player.CharacterClassIndex != CharacterClassId.HighMage &&
-                player.CharacterClassIndex != CharacterClassId.Cultist)
+            if (player.PlayerClass.HasMinimumSpellFailure)
             {
                 if (minfail < 5)
                 {
                     minfail = 5;
                 }
             }
-            if ((player.CharacterClassIndex == CharacterClassId.Priest || player.CharacterClassIndex == CharacterClassId.Druid) && player.HasUnpriestlyWeapon)
+            if ((player.PlayerClass.BluntWeaponsOnly) && player.HasUnpriestlyWeapon)
             {
                 chance += 25;
             }
-            if (player.CharacterClassIndex == CharacterClassId.Cultist && player.HasUnpriestlyWeapon)
+            if (player.PlayerClass.ChaosWeaponsOnly && player.HasUnpriestlyWeapon)
             {
                 chance += 25;
             }
@@ -95,7 +96,26 @@ namespace Cthangband.Spells.Base
             return !Worked ? "untried" : Comment(player);
         }
 
-        public abstract void Initialise(int characterClass);
+        public void Initialise(IPlayerClass playerClass)
+        {
+            Level = (int)Math.Round(20 * playerClass.SpellLevelMultiplier(Realm.Corporeal), MidpointRounding.AwayFromZero);
+            VisCost = (int)Math.Round(18 * playerClass.SpellVisCostMultiplier(Realm.Corporeal), MidpointRounding.AwayFromZero);
+            BaseFailure = (int)Math.Round(85 * playerClass.SpellBaseFailureMultiplier(Realm.Corporeal), MidpointRounding.AwayFromZero);
+            if (Level < 1)
+            {
+                Level = 1;
+            }
+            if (VisCost < 1)
+            {
+                VisCost = 1;
+            }
+            if (Level > 50)
+            {
+                Level = 99;
+                VisCost = 0;
+                BaseFailure = 0;
+            }
+        }
 
         public string SummaryLine(Player player)
         {

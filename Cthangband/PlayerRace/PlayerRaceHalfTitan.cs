@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -2;
 
-        public override uint Choice => 0x1F27;
-
         public override string Description2 => "Half-Titans are massively strong, being descended from the";
 
         public override string Description3 => "predecessors of the gods that grew from primal chaos. This";

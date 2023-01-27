@@ -43,8 +43,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 1;
 
-        public override uint Choice => 0x97CB;
-
         public override string Description2 => "Imps are minor demons that have escaped their binding and";
 
         public override string Description3 => "are able to run free in the world. Imps naturally resist";

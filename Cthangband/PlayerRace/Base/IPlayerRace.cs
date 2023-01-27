@@ -5,11 +5,7 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cthangband.PlayerRace.Base
 {
@@ -28,7 +24,6 @@ namespace Cthangband.PlayerRace.Base
         int BaseSearchBonus { get; }
         int BaseSearchFrequency { get; }
         int BaseStealthBonus { get; }
-        uint Choice { get; }
         string Description1 { get; }
         string Description2 { get; }
         string Description3 { get; }
@@ -58,13 +53,15 @@ namespace Cthangband.PlayerRace.Base
         bool SanityImmune { get; }
 
         bool SanityResistant { get; }
-        string Title { get; }
         bool SpillsPotions { get; }
+        string Title { get; }
 
         void ApplyArmourBonus(Player player);
 
         void ApplyRacialStatus(Player player);
+
         void ConsumeFood(Player player, Item item);
+
         string CreateRandomName();
 
         bool DoesntBleed(Player player);

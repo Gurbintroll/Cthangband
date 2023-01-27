@@ -15,6 +15,16 @@ namespace Cthangband.Spells.Death
     [Serializable]
     internal class DeathSpellStinkingCloud : BaseSpell
     {
+        public override int DefaultBaseFailure => 27;
+
+        public override int DefaultLevel => 3;
+
+        public override int DefaultVisCost => 3;
+
+        public override int FirstCastExperience => 3;
+
+        public override string Name => "Stinking Cloud";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -23,70 +33,6 @@ namespace Cthangband.Spells.Death
                 return;
             }
             saveGame.SpellEffects.FireBall(new ProjectPoison(SaveGame.Instance.SpellEffects), dir, 10 + (player.Level / 2), 2);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Stinking Cloud";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 3;
-                    VisCost = 3;
-                    BaseFailure = 27;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 5;
-                    VisCost = 4;
-                    BaseFailure = 27;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 13;
-                    VisCost = 7;
-                    BaseFailure = 60;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 9;
-                    VisCost = 5;
-                    BaseFailure = 40;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 6;
-                    VisCost = 5;
-                    BaseFailure = 27;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 4;
-                    VisCost = 4;
-                    BaseFailure = 27;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 2;
-                    VisCost = 2;
-                    BaseFailure = 20;
-                    FirstCastExperience = 3;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Nature
     [Serializable]
     internal class NatureSpellRayOfSunlight : BaseSpell
     {
+        public override int DefaultBaseFailure => 30;
+
+        public override int DefaultLevel => 9;
+
+        public override int DefaultVisCost => 6;
+
+        public override int FirstCastExperience => 6;
+
+        public override string Name => "Ray of Sunlight";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -23,57 +33,6 @@ namespace Cthangband.Spells.Nature
             }
             Profile.Instance.MsgPrint("A line of sunlight appears.");
             saveGame.SpellEffects.LightLine(dir);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Ray of Sunlight";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 9;
-                    VisCost = 6;
-                    BaseFailure = 30;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 11;
-                    VisCost = 11;
-                    BaseFailure = 30;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 14;
-                    VisCost = 9;
-                    BaseFailure = 55;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 14;
-                    VisCost = 14;
-                    BaseFailure = 30;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Druid:
-                    Level = 7;
-                    VisCost = 5;
-                    BaseFailure = 30;
-                    FirstCastExperience = 5;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

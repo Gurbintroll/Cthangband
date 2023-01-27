@@ -14,69 +14,22 @@ namespace Cthangband.Spells.Folk
     [Serializable]
     internal class FolkSpellClairvoyance : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 49;
+
+        public override int DefaultVisCost => 100;
+
+        public override int FirstCastExperience => 200;
+
+        public override string Name => "Clairvoyance";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             level.WizLight();
             if (!player.HasTelepathy)
             {
                 player.SetTimedTelepathy(player.TimedTelepathy + Program.Rng.DieRoll(30) + 25);
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Clairvoyance";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 49;
-                    VisCost = 100;
-                    BaseFailure = 80;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 50;
-                    VisCost = 120;
-                    BaseFailure = 80;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 50;
-                    VisCost = 140;
-                    BaseFailure = 80;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 46;
-                    VisCost = 80;
-                    BaseFailure = 70;
-                    FirstCastExperience = 200;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

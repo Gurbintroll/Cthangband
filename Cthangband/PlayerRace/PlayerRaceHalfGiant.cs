@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -2;
 
-        public override uint Choice => 0x0011;
-
         public override string Description2 => "Half-Giants are immensely strong and tough, and their skin";
 
         public override string Description3 => "is stony. They can't have their strength reduced, and they";

@@ -5,6 +5,7 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using Cthangband.PlayerClass.Base;
 using Cthangband.Talents;
 using Cthangband.Talents.Base;
 using System;
@@ -15,7 +16,7 @@ namespace Cthangband.Spells
     [Serializable]
     internal class TalentList : List<ITalent>
     {
-        public TalentList(int characterClass)
+        public TalentList(IPlayerClass playerClass)
         {
             Add(new TalentPrecognition());
             Add(new TalentNeuralBlast());
@@ -26,12 +27,12 @@ namespace Cthangband.Spells
             Add(new TalentCharacterArmour());
             Add(new TalentPsychometry());
             Add(new TalentMindWave());
-            Add(new TalentAdrenalineChanneling());
+            Add(new TalentAdrenalineChannelling());
             Add(new TalentPsychicDrain());
             Add(new TalentTelekineticWave());
             foreach (ITalent talent in this)
             {
-                talent.Initialise(characterClass);
+                talent.Initialise(playerClass);
             }
         }
     }

@@ -40,8 +40,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -2;
 
-        public override uint Choice => 0x0005;
-
         public override string Description2 => "Cyclopes are one eyed giants, often seen as freaks by the";
 
         public override string Description3 => "other races. They can learn to throw boulders (at lvl 20)";

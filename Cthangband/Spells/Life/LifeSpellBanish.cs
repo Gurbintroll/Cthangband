@@ -14,61 +14,21 @@ namespace Cthangband.Spells.Life
     [Serializable]
     internal class LifeSpellBanish : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 35;
+
+        public override int DefaultVisCost => 55;
+
+        public override int FirstCastExperience => 115;
+
+        public override string Name => "Banish";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             if (saveGame.SpellEffects.BanishEvil(100))
             {
                 Profile.Instance.MsgPrint("The power of your god banishes evil!");
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Banish";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 35;
-                    VisCost = 55;
-                    BaseFailure = 80;
-                    FirstCastExperience = 115;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 25;
-                    VisCost = 25;
-                    BaseFailure = 80;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 35;
-                    VisCost = 55;
-                    BaseFailure = 80;
-                    FirstCastExperience = 115;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 42;
-                    VisCost = 55;
-                    BaseFailure = 80;
-                    FirstCastExperience = 115;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 33;
-                    VisCost = 44;
-                    BaseFailure = 60;
-                    FirstCastExperience = 115;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

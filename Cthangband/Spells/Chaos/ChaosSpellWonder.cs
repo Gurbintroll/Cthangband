@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.Projection;
 using Cthangband.Spells.Base;
 using System;
@@ -15,23 +16,19 @@ namespace Cthangband.Spells.Chaos
     [Serializable]
     internal class ChaosSpellWonder : BaseSpell
     {
+        public override int DefaultBaseFailure => 25;
+
+        public override int DefaultLevel => 17;
+
+        public override int DefaultVisCost => 10;
+
+        public override int FirstCastExperience => 5;
+
+        public override string Name => "Wonder";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            int beam;
-            switch (player.CharacterClassIndex)
-            {
-                case CharacterClassId.Mage:
-                    beam = player.Level;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    beam = player.Level + 10;
-                    break;
-
-                default:
-                    beam = player.Level / 2;
-                    break;
-            }
+            int beam = player.PlayerClass.SpellBeamChance(player.Level);
             TargetEngine targetEngine = new TargetEngine(player, level);
             int die = Program.Rng.DieRoll(100) + (player.Level / 5);
             if (!targetEngine.GetDirectionWithAim(out int dir))
@@ -141,64 +138,6 @@ namespace Cthangband.Spells.Chaos
                 saveGame.SpellEffects.SlowMonsters();
                 saveGame.SpellEffects.SleepMonsters();
                 player.RestoreHealth(300);
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Wonder";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 17;
-                    VisCost = 10;
-                    BaseFailure = 25;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 19;
-                    VisCost = 15;
-                    BaseFailure = 50;
-                    FirstCastExperience = 7;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 27;
-                    VisCost = 23;
-                    BaseFailure = 60;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                    Level = 21;
-                    VisCost = 21;
-                    BaseFailure = 45;
-                    FirstCastExperience = 7;
-                    break;
-
-                case CharacterClassId.Fanatic:
-                    Level = 19;
-                    VisCost = 12;
-                    BaseFailure = 45;
-                    FirstCastExperience = 7;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Cultist:
-                    Level = 15;
-                    VisCost = 9;
-                    BaseFailure = 20;
-                    FirstCastExperience = 5;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

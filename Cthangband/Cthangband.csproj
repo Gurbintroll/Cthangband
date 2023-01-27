@@ -238,6 +238,25 @@
     <Compile Include="Patron\PatronUbboSathla.cs" />
     <Compile Include="Patron\PatronYogSothoth.cs" />
     <Compile Include="PerlinNoise.cs" />
+    <Compile Include="PlayerClass\Base\BasePlayerClass.cs" />
+    <Compile Include="PlayerClass\Base\IPlayerClass.cs" />
+    <Compile Include="PlayerClass\Base\PlayerClasses.cs" />
+    <Compile Include="PlayerClass\PlayerClassChanneller.cs" />
+    <Compile Include="PlayerClass\PlayerClassChosenOne.cs" />
+    <Compile Include="PlayerClass\PlayerClassCultist.cs" />
+    <Compile Include="PlayerClass\PlayerClassDruid.cs" />
+    <Compile Include="PlayerClass\PlayerClassFanatic.cs" />
+    <Compile Include="PlayerClass\PlayerClassHighMage.cs" />
+    <Compile Include="PlayerClass\PlayerClassMage.cs" />
+    <Compile Include="PlayerClass\PlayerClassMindcrafter.cs" />
+    <Compile Include="PlayerClass\PlayerClassMonk.cs" />
+    <Compile Include="PlayerClass\PlayerClassMystic.cs" />
+    <Compile Include="PlayerClass\PlayerClassPaladin.cs" />
+    <Compile Include="PlayerClass\PlayerClassPriest.cs" />
+    <Compile Include="PlayerClass\PlayerClassRanger.cs" />
+    <Compile Include="PlayerClass\PlayerClassRogue.cs" />
+    <Compile Include="PlayerClass\PlayerClassWarrior.cs" />
+    <Compile Include="PlayerClass\PlayerClassWarriorMage.cs" />
     <Compile Include="PlayerRace\PlayerRaceDraconian.cs" />
     <Compile Include="PlayerRace\PlayerRaceDwarf.cs" />
     <Compile Include="PlayerRace\PlayerRaceElf.cs" />
@@ -357,7 +376,6 @@
     <Compile Include="Enumerations\BirthStage.cs" />
     <Compile Include="Enumerations\CastingType.cs" />
     <Compile Include="Enumerations\InventorySlot.cs" />
-    <Compile Include="Enumerations\CharacterClassId.cs" />
     <Compile Include="Enumerations\ChestTrap.cs" />
     <Compile Include="Enumerations\Colour.cs" />
     <Compile Include="Enumerations\ArtifactId.cs" />
@@ -372,7 +390,6 @@
     <Compile Include="Enumerations\LegendaryPower.cs" />
     <Compile Include="Enumerations\RareItemType.cs" />
     <Compile Include="Enumerations\Realm.cs" />
-    <Compile Include="Enumerations\RealmChoice.cs" />
     <Compile Include="Enumerations\RedrawFlag.cs" />
     <Compile Include="Enumerations\Reward.cs" />
     <Compile Include="Enumerations\ScreenLocation.cs" />
@@ -498,8 +515,8 @@
     <Compile Include="Spells\Chaos\ChaosSpellGravityBeam.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellInvokeChaos.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellMagicMissile.cs" />
-    <Compile Include="Spells\Chaos\ChaosSpellManaBurst.cs" />
-    <Compile Include="Spells\Chaos\ChaosSpellManaStorm.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellVisBurst.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellVisStorm.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellMeteorSwarm.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellPolymorphOther.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellPolymorphSelf.cs" />
@@ -589,7 +606,7 @@
     <Compile Include="Spells\Sorcery\SorcerySpellDimensionDoor.cs" />
     <Compile Include="Spells\Sorcery\SorcerySpellEnchantArmour.cs" />
     <Compile Include="Spells\Sorcery\SorcerySpellEnchantWeapon.cs" />
-    <Compile Include="Spells\Sorcery\SorcerySpellExplosiveRune.cs" />
+    <Compile Include="Spells\Sorcery\SorcerySpellYellowSign.cs" />
     <Compile Include="Spells\Sorcery\SorcerySpellGlobeOfInvulnerability.cs" />
     <Compile Include="Spells\Sorcery\SorcerySpellHasteSelf.cs" />
     <Compile Include="Spells\Sorcery\SorcerySpellIdentify.cs" />
@@ -710,7 +727,6 @@
     <Compile Include="Player.cs" />
     <Compile Include="PlayerFactory.cs" />
     <Compile Include="PlayerHistory.cs" />
-    <Compile Include="CharacterClass.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -818,7 +834,7 @@
     <Content Include="Manual\Ability Scores.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Manual\Channeler.html">
+    <Content Include="Manual\Channeller.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Manual\Chaos Spells.html">

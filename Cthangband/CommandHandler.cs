@@ -164,26 +164,9 @@ namespace Cthangband
             if (SaveGame.Instance.CommandEngine.ItemFilterHighLevelBook(item))
             {
                 bool gainExpr = false;
-                if (Player.CharacterClassIndex == CharacterClassId.Warrior)
+                if (Player.PlayerClass.ExperienceForDestroying(Player, item.Category))
                 {
                     gainExpr = true;
-                }
-                else if (Player.CharacterClassIndex == CharacterClassId.Paladin)
-                {
-                    if (Player.Realm1 == Realm.Life)
-                    {
-                        if (item.Category == ItemCategory.DeathBook)
-                        {
-                            gainExpr = true;
-                        }
-                    }
-                    else
-                    {
-                        if (item.Category == ItemCategory.LifeBook)
-                        {
-                            gainExpr = true;
-                        }
-                    }
                 }
                 if (gainExpr && Player.ExperiencePoints < Constants.PyMaxExp)
                 {

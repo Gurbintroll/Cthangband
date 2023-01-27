@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Nature
     [Serializable]
     internal class NatureSpellWhirlwindAttack : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 23;
+
+        public override int DefaultVisCost => 23;
+
+        public override int FirstCastExperience => 50;
+
+        public override string Name => "Whirlwind Attack";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             for (int dir = 0; dir <= 9; dir++)
@@ -26,57 +36,6 @@ namespace Cthangband.Spells.Nature
                 {
                     SaveGame.Instance.CommandEngine.PlayerAttackMonster(y, x);
                 }
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Whirlwind Attack";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 23;
-                    VisCost = 23;
-                    BaseFailure = 80;
-                    FirstCastExperience = 50;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 25;
-                    VisCost = 25;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 26;
-                    VisCost = 26;
-                    BaseFailure = 60;
-                    FirstCastExperience = 100;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 27;
-                    VisCost = 27;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Druid:
-                    Level = 20;
-                    VisCost = 20;
-                    BaseFailure = 70;
-                    FirstCastExperience = 50;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

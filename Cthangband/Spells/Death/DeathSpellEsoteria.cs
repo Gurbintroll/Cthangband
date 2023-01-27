@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Death
     [Serializable]
     internal class DeathSpellEsoteria : BaseSpell
     {
+        public override int DefaultBaseFailure => 95;
+
+        public override int DefaultLevel => 30;
+
+        public override int DefaultVisCost => 40;
+
+        public override int FirstCastExperience => 250;
+
+        public override string Name => "Esoteria";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             if (Program.Rng.DieRoll(50) > player.Level)
@@ -23,70 +33,6 @@ namespace Cthangband.Spells.Death
             else
             {
                 saveGame.SpellEffects.IdentifyFully();
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Esoteria";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 30;
-                    VisCost = 40;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 35;
-                    VisCost = 45;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 32;
-                    VisCost = 40;
-                    BaseFailure = 90;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 40;
-                    VisCost = 45;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 38;
-                    VisCost = 45;
-                    BaseFailure = 95;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 35;
-                    VisCost = 45;
-                    BaseFailure = 90;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 26;
-                    VisCost = 35;
-                    BaseFailure = 80;
-                    FirstCastExperience = 250;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

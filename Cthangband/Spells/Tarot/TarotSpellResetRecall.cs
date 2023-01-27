@@ -15,6 +15,16 @@ namespace Cthangband.Spells.Tarot
     [Serializable]
     internal class TarotSpellResetRecall : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 6;
+
+        public override int DefaultVisCost => 6;
+
+        public override int FirstCastExperience => 8;
+
+        public override string Name => "Reset Recall";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             string ppp = $"Reset to which level (1-{player.MaxDlv[SaveGame.Instance.CurDungeon.Index]}): ";
@@ -36,64 +46,6 @@ namespace Cthangband.Spells.Tarot
                 dummy = player.MaxDlv[SaveGame.Instance.CurDungeon.Index];
             }
             Profile.Instance.MsgPrint($"Recall depth set to level {dummy}.");
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Reset Recall";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 6;
-                    VisCost = 6;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.Priest:
-                case CharacterClassId.Monk:
-                    Level = 7;
-                    VisCost = 7;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 11;
-                    VisCost = 9;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 10;
-                    VisCost = 8;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 8;
-                    VisCost = 7;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 7;
-                    VisCost = 7;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 3;
 
-        public override uint Choice => 0xDE0F;
-
         public override string Description2 => "Yeeks are long-eared furry creatures that look vaguely";
 
         public override string Description3 => "like humanoid rabbits. Although physically weak, they make";

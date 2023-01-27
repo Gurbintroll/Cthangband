@@ -14,60 +14,19 @@ namespace Cthangband.Spells.Nature
     [Serializable]
     internal class NatureSpellWallOfStone : BaseSpell
     {
+        public override int DefaultBaseFailure => 75;
+
+        public override int DefaultLevel => 38;
+
+        public override int DefaultVisCost => 45;
+
+        public override int FirstCastExperience => 200;
+
+        public override string Name => "Wall of Stone";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.WallStone();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Wall of Stone";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 38;
-                    VisCost = 45;
-                    BaseFailure = 75;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 40;
-                    VisCost = 50;
-                    BaseFailure = 85;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 40;
-                    VisCost = 55;
-                    BaseFailure = 90;
-                    FirstCastExperience = 250;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 45;
-                    VisCost = 48;
-                    BaseFailure = 75;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Druid:
-                    Level = 35;
-                    VisCost = 44;
-                    BaseFailure = 65;
-                    FirstCastExperience = 200;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

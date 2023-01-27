@@ -15,6 +15,16 @@ namespace Cthangband.Spells.Tarot
     [Serializable]
     internal class TarotSpellSummonSpiders : BaseSpell
     {
+        public override int DefaultBaseFailure => 70;
+
+        public override int DefaultLevel => 24;
+
+        public override int DefaultVisCost => 24;
+
+        public override int FirstCastExperience => 25;
+
+        public override string Name => "Summon Spiders";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             Profile.Instance.MsgPrint("You concentrate on the image of a spider...");
@@ -33,64 +43,6 @@ namespace Cthangband.Spells.Tarot
             else
             {
                 Profile.Instance.MsgPrint("No-one ever turns up.");
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Summon Spiders";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 24;
-                    VisCost = 24;
-                    BaseFailure = 70;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Priest:
-                case CharacterClassId.Monk:
-                    Level = 27;
-                    VisCost = 25;
-                    BaseFailure = 70;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 30;
-                    VisCost = 30;
-                    BaseFailure = 70;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 28;
-                    VisCost = 26;
-                    BaseFailure = 70;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 29;
-                    VisCost = 27;
-                    BaseFailure = 70;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 21;
-                    VisCost = 21;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

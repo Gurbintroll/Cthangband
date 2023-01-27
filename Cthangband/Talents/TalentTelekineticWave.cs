@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.Projection;
 using Cthangband.Talents.Base;
 using System;
@@ -15,7 +16,7 @@ namespace Cthangband.Talents
     [Serializable]
     internal class TalentTelekineticWave : BaseTalent
     {
-        public override void Initialise(int characterClass)
+        public override void Initialise(IPlayerClass playerClass)
         {
             Name = "Telekinetic Wave";
             Level = 28;

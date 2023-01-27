@@ -17,6 +17,7 @@ using Cthangband.Spells.Sorcery;
 using Cthangband.Spells.Tarot;
 using System;
 using System.Collections.Generic;
+using Cthangband.PlayerClass.Base;
 
 namespace Cthangband.Spells
 {
@@ -26,7 +27,7 @@ namespace Cthangband.Spells
     [Serializable]
     internal class SpellList : List<BaseSpell>
     {
-        public SpellList(Realm realm, int characterClass)
+        public SpellList(Realm realm, IPlayerClass playerClass)
         {
             switch (realm)
             {
@@ -351,7 +352,7 @@ namespace Cthangband.Spells
             }
             foreach (BaseSpell spell in this)
             {
-                spell.Initialise(characterClass);
+                spell.Initialise(playerClass);
             }
         }
     }

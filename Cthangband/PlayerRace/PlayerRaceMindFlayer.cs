@@ -42,8 +42,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 2;
 
-        public override uint Choice => 0xD746;
-
         public override string Description2 => "Mind-Flayers are slimy humanoids with squid-like tentacles";
 
         public override string Description3 => "around their mouths. They are all psychic, and neither";

@@ -41,8 +41,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 0;
 
-        public override uint Choice => 0xC011;
-
         public override string Description1 => "Klackons are humanoid insects. Although most stay safe in";
 
         public override string Description2 => "their hive cities, a small number venture forth in search";

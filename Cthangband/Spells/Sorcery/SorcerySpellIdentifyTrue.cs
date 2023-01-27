@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellIdentifyTrue : BaseSpell
     {
+        public override int DefaultBaseFailure => 75;
+
+        public override int DefaultLevel => 33;
+
+        public override int DefaultVisCost => 30;
+
+        public override int FirstCastExperience => 20;
+
+        public override string Name => "Identify True";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.IdentifyFully();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Identify True";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 33;
-                    VisCost = 30;
-                    BaseFailure = 75;
-                    FirstCastExperience = 20;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 40;
-                    VisCost = 35;
-                    BaseFailure = 75;
-                    FirstCastExperience = 20;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 40;
-                    VisCost = 40;
-                    BaseFailure = 75;
-                    FirstCastExperience = 20;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 28;
-                    VisCost = 20;
-                    BaseFailure = 65;
-                    FirstCastExperience = 20;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

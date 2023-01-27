@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellTelekinesis : BaseSpell
     {
+        public override int DefaultBaseFailure => 75;
+
+        public override int DefaultLevel => 25;
+
+        public override int DefaultVisCost => 25;
+
+        public override int FirstCastExperience => 70;
+
+        public override string Name => "Telekinesis";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -22,49 +32,6 @@ namespace Cthangband.Spells.Sorcery
                 return;
             }
             saveGame.CommandEngine.SummonItem(dir, player.Level * 15, false);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Telekinesis";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 25;
-                    VisCost = 25;
-                    BaseFailure = 75;
-                    FirstCastExperience = 70;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 20;
-                    VisCost = 20;
-                    BaseFailure = 70;
-                    FirstCastExperience = 50;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 19;
-                    VisCost = 19;
-                    BaseFailure = 75;
-                    FirstCastExperience = 70;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 20;
-                    VisCost = 20;
-                    BaseFailure = 65;
-                    FirstCastExperience = 70;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

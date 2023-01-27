@@ -15,6 +15,16 @@ namespace Cthangband.Spells.Life
     [Serializable]
     internal class LifeSpellHolyOrb : BaseSpell
     {
+        public override int DefaultBaseFailure => 50;
+
+        public override int DefaultLevel => 20;
+
+        public override int DefaultVisCost => 20;
+
+        public override int FirstCastExperience => 4;
+
+        public override string Name => "Holy Orb";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -23,66 +33,13 @@ namespace Cthangband.Spells.Life
                 return;
             }
             SaveGame.Instance.SpellEffects.FireBall(new ProjectHolyFire(SaveGame.Instance.SpellEffects), dir,
-                Program.Rng.DiceRoll(3, 6) + player.Level + (player.Level /
-                (player.CharacterClassIndex == CharacterClassId.Priest || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4)),
+                Program.Rng.DiceRoll(3, 6) + player.Level + (player.Level / player.PlayerClass.SpellBallSizeFactor),
                 player.Level < 30 ? 2 : 3);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Holy Orb";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 20;
-                    VisCost = 20;
-                    BaseFailure = 50;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 10;
-                    VisCost = 8;
-                    BaseFailure = 40;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 18;
-                    VisCost = 15;
-                    BaseFailure = 50;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 26;
-                    VisCost = 26;
-                    BaseFailure = 50;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 19;
-                    VisCost = 17;
-                    BaseFailure = 40;
-                    FirstCastExperience = 4;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)
         {
-            int orb = player.Level / (player.CharacterClassIndex == CharacterClassId.Priest || player.CharacterClassIndex == CharacterClassId.HighMage
-                          ? 2
-                          : 4);
+            int orb = player.Level / player.PlayerClass.SpellBallSizeFactor;
             return $" dam 3d6+{player.Level + orb}";
         }
     }

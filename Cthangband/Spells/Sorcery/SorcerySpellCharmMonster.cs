@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellCharmMonster : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 10;
+
+        public override int DefaultVisCost => 10;
+
+        public override int FirstCastExperience => 40;
+
+        public override string Name => "Charm Monster";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -22,49 +32,6 @@ namespace Cthangband.Spells.Sorcery
                 return;
             }
             saveGame.SpellEffects.CharmMonster(dir, player.Level);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Charm Monster";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 10;
-                    VisCost = 10;
-                    BaseFailure = 80;
-                    FirstCastExperience = 40;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 14;
-                    VisCost = 10;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 14;
-                    VisCost = 12;
-                    BaseFailure = 80;
-                    FirstCastExperience = 10;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 8;
-                    VisCost = 8;
-                    BaseFailure = 70;
-                    FirstCastExperience = 40;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

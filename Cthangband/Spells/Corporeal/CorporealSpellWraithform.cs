@@ -14,60 +14,19 @@ namespace Cthangband.Spells.Corporeal
     [Serializable]
     internal class CorporealSpellWraithform : BaseSpell
     {
+        public override int DefaultBaseFailure => 75;
+
+        public override int DefaultLevel => 25;
+
+        public override int DefaultVisCost => 25;
+
+        public override int FirstCastExperience => 70;
+
+        public override string Name => "Wraithform";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.SetTimedEtherealness(player.TimedEtherealness + Program.Rng.DieRoll(player.Level / 2) + (player.Level / 2));
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Wraithform";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 25;
-                    VisCost = 25;
-                    BaseFailure = 75;
-                    FirstCastExperience = 70;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 24;
-                    VisCost = 24;
-                    BaseFailure = 75;
-                    FirstCastExperience = 70;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 27;
-                    VisCost = 27;
-                    BaseFailure = 70;
-                    FirstCastExperience = 50;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                case CharacterClassId.Cultist:
-                    Level = 25;
-                    VisCost = 25;
-                    BaseFailure = 75;
-                    FirstCastExperience = 70;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 20;
-                    VisCost = 20;
-                    BaseFailure = 65;
-                    FirstCastExperience = 70;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

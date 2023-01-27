@@ -43,8 +43,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 5;
 
-        public override uint Choice => 0xBC0B;
-
         public override string Description2 => "Hobbits are small and surprisingly dextrous given their";
 
         public override string Description3 => "propensity for plumpness. They make excellent burglars";

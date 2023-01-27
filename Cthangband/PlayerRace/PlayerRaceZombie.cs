@@ -38,8 +38,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -1;
 
-        public override uint Choice => 0x0001;
-
         public override string Description2 => "Zombies are undead creatures. Their decayed flesh resists";
 
         public override string Description3 => "nether and poison, and having their life force drained.";

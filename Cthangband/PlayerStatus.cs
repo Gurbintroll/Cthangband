@@ -115,177 +115,18 @@ namespace Cthangband
             _player.HasFireImmunity = false;
             _player.HasColdImmunity = false;
             _player.InfravisionRange = _player.Race.Infravision;
-            _player.SkillDisarmTraps = _player.Race.BaseDisarmBonus + _player.CharacterClass.BaseDisarmBonus;
-            _player.SkillUseDevice = _player.Race.BaseDeviceBonus + _player.CharacterClass.BaseDeviceBonus;
-            _player.SkillSavingThrow = _player.Race.BaseSaveBonus + _player.CharacterClass.BaseSaveBonus;
-            _player.SkillStealth = _player.Race.BaseStealthBonus + _player.CharacterClass.BaseStealthBonus;
-            _player.SkillSearching = _player.Race.BaseSearchBonus + _player.CharacterClass.BaseSearchBonus;
-            _player.SkillSearchFrequency = _player.Race.BaseSearchFrequency + _player.CharacterClass.BaseSearchFrequency;
-            _player.SkillMelee = _player.Race.BaseMeleeAttackBonus + _player.CharacterClass.BaseMeleeAttackBonus;
-            _player.SkillRanged = _player.Race.BaseRangedAttackBonus + _player.CharacterClass.BaseRangedAttackBonus;
-            _player.SkillThrowing = _player.Race.BaseRangedAttackBonus + _player.CharacterClass.BaseRangedAttackBonus;
+            _player.SkillDisarmTraps = _player.Race.BaseDisarmBonus + _player.PlayerClass.BaseDisarmBonus;
+            _player.SkillUseDevice = _player.Race.BaseDeviceBonus + _player.PlayerClass.BaseDeviceBonus;
+            _player.SkillSavingThrow = _player.Race.BaseSaveBonus + _player.PlayerClass.BaseSaveBonus;
+            _player.SkillStealth = _player.Race.BaseStealthBonus + _player.PlayerClass.BaseStealthBonus;
+            _player.SkillSearching = _player.Race.BaseSearchBonus + _player.PlayerClass.BaseSearchBonus;
+            _player.SkillSearchFrequency = _player.Race.BaseSearchFrequency + _player.PlayerClass.BaseSearchFrequency;
+            _player.SkillMelee = _player.Race.BaseMeleeAttackBonus + _player.PlayerClass.BaseMeleeAttackBonus;
+            _player.SkillRanged = _player.Race.BaseRangedAttackBonus + _player.PlayerClass.BaseRangedAttackBonus;
+            _player.SkillThrowing = _player.Race.BaseRangedAttackBonus + _player.PlayerClass.BaseRangedAttackBonus;
             _player.SkillDigging = 0;
-            if ((_player.CharacterClassIndex == CharacterClassId.Warrior && _player.Level > 29) ||
-                (_player.CharacterClassIndex == CharacterClassId.Paladin && _player.Level > 39) ||
-                (_player.CharacterClassIndex == CharacterClassId.Fanatic && _player.Level > 39))
-            {
-                _player.HasFearResistance = true;
-            }
-            if (_player.CharacterClassIndex == CharacterClassId.Fanatic && _player.Level > 29)
-            {
-                _player.HasChaosResistance = true;
-            }
-            if (_player.CharacterClassIndex == CharacterClassId.Cultist && _player.Level > 19)
-            {
-                _player.HasChaosResistance = true;
-            }
-            if (_player.CharacterClassIndex == CharacterClassId.Mindcrafter)
-            {
-                if (_player.Level > 9)
-                {
-                    _player.HasFearResistance = true;
-                }
-                if (_player.Level > 19)
-                {
-                    _player.HasSustainWisdom = true;
-                }
-                if (_player.Level > 29)
-                {
-                    _player.HasConfusionResistance = true;
-                }
-                if (_player.Level > 39)
-                {
-                    _player.HasTelepathy = true;
-                }
-            }
-            if (_player.CharacterClassIndex == CharacterClassId.Monk && _player.Level > 24 && !MartialArtistHeavyArmour())
-            {
-                _player.HasFreeAction = true;
-            }
-            if (_player.CharacterClassIndex == CharacterClassId.Mystic)
-            {
-                if (_player.Level > 9)
-                {
-                    _player.HasConfusionResistance = true;
-                }
-                if (_player.Level > 24)
-                {
-                    _player.HasFearResistance = true;
-                }
-                if (_player.Level > 29 && !MartialArtistHeavyArmour())
-                {
-                    _player.HasFreeAction = true;
-                }
-                if (_player.Level > 39)
-                {
-                    _player.HasTelepathy = true;
-                }
-            }
-            if (_player.CharacterClassIndex == CharacterClassId.ChosenOne)
-            {
-                _player.HasGlow = true;
-                if (_player.Level >= 2)
-                {
-                    _player.HasConfusionResistance = true;
-                }
-                if (_player.Level >= 4)
-                {
-                    _player.HasFearResistance = true;
-                }
-                if (_player.Level >= 6)
-                {
-                    _player.HasBlindnessResistance = true;
-                }
-                if (_player.Level >= 8)
-                {
-                    _player.HasFeatherFall = true;
-                }
-                if (_player.Level >= 10)
-                {
-                    _player.HasSeeInvisibility = true;
-                }
-                if (_player.Level >= 12)
-                {
-                    _player.HasSlowDigestion = true;
-                }
-                if (_player.Level >= 14)
-                {
-                    _player.HasSustainConstitution = true;
-                }
-                if (_player.Level >= 16)
-                {
-                    _player.HasPoisonResistance = true;
-                }
-                if (_player.Level >= 18)
-                {
-                    _player.HasSustainDexterity = true;
-                }
-                if (_player.Level >= 20)
-                {
-                    _player.HasSustainStrength = true;
-                }
-                if (_player.Level >= 22)
-                {
-                    _player.HasHoldLife = true;
-                }
-                if (_player.Level >= 24)
-                {
-                    _player.HasFreeAction = true;
-                }
-                if (_player.Level >= 26)
-                {
-                    _player.HasTelepathy = true;
-                }
-                if (_player.Level >= 28)
-                {
-                    _player.HasDarkResistance = true;
-                }
-                if (_player.Level >= 30)
-                {
-                    _player.HasLightResistance = true;
-                }
-                if (_player.Level >= 32)
-                {
-                    _player.HasSustainCharisma = true;
-                }
-                if (_player.Level >= 34)
-                {
-                    _player.HasSoundResistance = true;
-                }
-                if (_player.Level >= 36)
-                {
-                    _player.HasDisenchantResistance = true;
-                }
-                if (_player.Level >= 38)
-                {
-                    _player.HasRegeneration = true;
-                }
-                if (_player.Level >= 40)
-                {
-                    _player.HasSustainIntelligence = true;
-                }
-                if (_player.Level >= 42)
-                {
-                    _player.HasChaosResistance = true;
-                }
-                if (_player.Level >= 44)
-                {
-                    _player.HasSustainWisdom = true;
-                }
-                if (_player.Level >= 46)
-                {
-                    _player.HasNexusResistance = true;
-                }
-                if (_player.Level >= 48)
-                {
-                    _player.HasShardResistance = true;
-                }
-                if (_player.Level >= 50)
-                {
-                    _player.HasNetherResistance = true;
-                }
-            }
 
+            _player.PlayerClass.ApplyClassStatus(_player);
             _player.Race.ApplyRacialStatus(_player);
 
             _player.Speed = 110;
@@ -294,7 +135,7 @@ namespace Cthangband
             _player.AmmunitionItemCategory = 0;
             for (i = 0; i < 6; i++)
             {
-                _player.AbilityScores[i].Bonus += _player.Race.AbilityBonus[i] + _player.CharacterClass.AbilityBonus[i];
+                _player.AbilityScores[i].Bonus += _player.Race.AbilityBonus[i] + _player.PlayerClass.AbilityBonus[i];
             }
             _player.AbilityScores[Ability.Strength].Bonus += _player.Dna.StrengthBonus;
             _player.AbilityScores[Ability.Intelligence].Bonus += _player.Dna.IntelligenceBonus;
@@ -633,39 +474,7 @@ namespace Cthangband
                     _player.DisplayedDamageBonus += oPtr.BonusDamage;
                 }
             }
-            if ((_player.CharacterClassIndex == CharacterClassId.Monk || _player.CharacterClassIndex == CharacterClassId.Mystic) && !MartialArtistHeavyArmour())
-            {
-                if (_player.Inventory[InventorySlot.Body].ItemType == null)
-                {
-                    _player.ArmourClassBonus += _player.Level * 3 / 2;
-                    _player.DisplayedArmourClassBonus += _player.Level * 3 / 2;
-                }
-                if (_player.Inventory[InventorySlot.Cloak].ItemType == null && _player.Level > 15)
-                {
-                    _player.ArmourClassBonus += (_player.Level - 13) / 3;
-                    _player.DisplayedArmourClassBonus += (_player.Level - 13) / 3;
-                }
-                if (_player.Inventory[InventorySlot.Arm].ItemType == null && _player.Level > 10)
-                {
-                    _player.ArmourClassBonus += (_player.Level - 8) / 3;
-                    _player.DisplayedArmourClassBonus += (_player.Level - 8) / 3;
-                }
-                if (_player.Inventory[InventorySlot.Head].ItemType == null && _player.Level > 4)
-                {
-                    _player.ArmourClassBonus += (_player.Level - 2) / 3;
-                    _player.DisplayedArmourClassBonus += (_player.Level - 2) / 3;
-                }
-                if (_player.Inventory[InventorySlot.Hands].ItemType == null)
-                {
-                    _player.ArmourClassBonus += _player.Level / 2;
-                    _player.DisplayedArmourClassBonus += _player.Level / 2;
-                }
-                if (_player.Inventory[InventorySlot.Feet].ItemType == null)
-                {
-                    _player.ArmourClassBonus += _player.Level / 3;
-                    _player.DisplayedArmourClassBonus += _player.Level / 3;
-                }
-            }
+            _player.PlayerClass.ApplyMartialArtistArmourClass(_player);
             if (_player.HasFireShield)
             {
                 _player.HasGlow = true;
@@ -796,8 +605,7 @@ namespace Cthangband
             {
                 _player.Speed -= 10;
             }
-            if (_player.Race.HasSpeedBonus ||
-                ((_player.CharacterClassIndex == CharacterClassId.Monk || _player.CharacterClassIndex == CharacterClassId.Mystic) && !MartialArtistHeavyArmour()))
+            if (_player.Race.HasSpeedBonus || _player.PlayerClass.HasSpeedBonus(_player))
             {
                 _player.Speed += _player.Level / 10;
             }
@@ -890,29 +698,7 @@ namespace Cthangband
                             break;
                         }
                 }
-                if (_player.CharacterClassIndex == CharacterClassId.Ranger && _player.AmmunitionItemCategory == ItemCategory.Arrow)
-                {
-                    if (_player.Level >= 20)
-                    {
-                        _player.MissileAttacksPerRound++;
-                    }
-                    if (_player.Level >= 40)
-                    {
-                        _player.MissileAttacksPerRound++;
-                    }
-                }
-                if (_player.CharacterClassIndex == CharacterClassId.Warrior && _player.AmmunitionItemCategory <= ItemCategory.Bolt &&
-                    _player.AmmunitionItemCategory >= ItemCategory.Shot)
-                {
-                    if (_player.Level >= 25)
-                    {
-                        _player.MissileAttacksPerRound++;
-                    }
-                    if (_player.Level >= 50)
-                    {
-                        _player.MissileAttacksPerRound++;
-                    }
-                }
+                _player.PlayerClass.ApplyBonusMissileAttacks(_player);
                 _player.MissileAttacksPerRound += extraShots;
                 if (_player.MissileAttacksPerRound < 1)
                 {
@@ -929,70 +715,9 @@ namespace Cthangband
             }
             if (oPtr.ItemType != null && !_player.HasHeavyWeapon)
             {
-                int num = 0, wgt = 0, mul = 0;
-                switch (_player.CharacterClassIndex)
-                {
-                    case CharacterClassId.Warrior:
-                        num = 6;
-                        wgt = 30;
-                        mul = 5;
-                        break;
-
-                    case CharacterClassId.Mage:
-                    case CharacterClassId.HighMage:
-                    case CharacterClassId.Cultist:
-                    case CharacterClassId.Channeler:
-                        num = 4;
-                        wgt = 40;
-                        mul = 2;
-                        break;
-
-                    case CharacterClassId.Priest:
-                    case CharacterClassId.Mindcrafter:
-                    case CharacterClassId.Druid:
-                    case CharacterClassId.ChosenOne:
-                        num = 5;
-                        wgt = 35;
-                        mul = 3;
-                        break;
-
-                    case CharacterClassId.Rogue:
-                        num = 5;
-                        wgt = 30;
-                        mul = 3;
-                        break;
-
-                    case CharacterClassId.Ranger:
-                        num = 5;
-                        wgt = 35;
-                        mul = 4;
-                        break;
-
-                    case CharacterClassId.Paladin:
-                        num = 5;
-                        wgt = 30;
-                        mul = 4;
-                        break;
-
-                    case CharacterClassId.WarriorMage:
-                        num = 5;
-                        wgt = 35;
-                        mul = 3;
-                        break;
-
-                    case CharacterClassId.Fanatic:
-                        num = 5;
-                        wgt = 30;
-                        mul = 4;
-                        break;
-
-                    case CharacterClassId.Monk:
-                    case CharacterClassId.Mystic:
-                        num = _player.Level < 40 ? 3 : 4;
-                        wgt = 40;
-                        mul = 4;
-                        break;
-                }
+                int num = _player.PlayerClass.AttacksPerTurnMax;
+                int wgt = _player.PlayerClass.AttacksPerTurnMinWeaponWeight;
+                int mul = _player.PlayerClass.AttacksPerTurnWeightMultiplier;
                 int div = oPtr.Weight < wgt ? wgt : oPtr.Weight;
                 int strIndex = _player.AbilityScores[Ability.Strength].StrAttackSpeedComponent * mul / div;
                 if (strIndex > 11)
@@ -1010,17 +735,14 @@ namespace Cthangband
                     _player.MeleeAttacksPerRound = num;
                 }
                 _player.MeleeAttacksPerRound += extraBlows;
-                if (_player.CharacterClassIndex == CharacterClassId.Warrior)
-                {
-                    _player.MeleeAttacksPerRound += _player.Level / 15;
-                }
+                _player.PlayerClass.ApplyBonusMeleeAttacks(_player);
                 if (_player.MeleeAttacksPerRound < 1)
                 {
                     _player.MeleeAttacksPerRound = 1;
                 }
                 _player.SkillDigging += oPtr.Weight / 10;
             }
-            else if ((_player.CharacterClassIndex == CharacterClassId.Monk || _player.CharacterClassIndex == CharacterClassId.Mystic) && MartialArtistEmptyHands())
+            else if ((_player.PlayerClass.IsMartialArtist) && MartialArtistEmptyHands())
             {
                 _player.MeleeAttacksPerRound = 0;
                 if (_player.Level > 9)
@@ -1051,12 +773,12 @@ namespace Cthangband
                 {
                     _player.MeleeAttacksPerRound++;
                 }
-                if (MartialArtistHeavyArmour())
+                if (_player.PlayerClass.MartialArtistHeavyArmour(_player))
                 {
                     _player.MeleeAttacksPerRound /= 2;
                 }
                 _player.MeleeAttacksPerRound += 1 + extraBlows;
-                if (!MartialArtistHeavyArmour())
+                if (!_player.PlayerClass.MartialArtistHeavyArmour(_player))
                 {
                     _player.AttackBonus += _player.Level / 3;
                     _player.DamageBonus += _player.Level / 3;
@@ -1066,14 +788,8 @@ namespace Cthangband
             }
             _player.HasUnpriestlyWeapon = false;
             SaveGame.Instance.MartialArtistArmourAux = false;
-            if (_player.CharacterClassIndex == CharacterClassId.Warrior)
-            {
-                _player.AttackBonus += _player.Level / 5;
-                _player.DamageBonus += _player.Level / 5;
-                _player.DisplayedAttackBonus += _player.Level / 5;
-                _player.DisplayedDamageBonus += _player.Level / 5;
-            }
-            if ((_player.CharacterClassIndex == CharacterClassId.Priest || _player.CharacterClassIndex == CharacterClassId.Druid) &&
+            _player.PlayerClass.ApplyAttackAndDamageBonus(_player);
+            if ((_player.PlayerClass.BluntWeaponsOnly) &&
                 !_player.HasBlessedBlade && (oPtr.Category == ItemCategory.Sword ||
                                         oPtr.Category == ItemCategory.Polearm))
             {
@@ -1083,7 +799,7 @@ namespace Cthangband
                 _player.DisplayedDamageBonus -= 2;
                 _player.HasUnpriestlyWeapon = true;
             }
-            if (_player.CharacterClassIndex == CharacterClassId.Cultist &&
+            if (_player.PlayerClass.ChaosWeaponsOnly &&
                 _player.Inventory[InventorySlot.MeleeWeapon].ItemType != null &&
                 (oPtr.Category != ItemCategory.Sword || oPtr.ItemSubCategory != SwordType.BladeOfChaos))
             {
@@ -1097,7 +813,7 @@ namespace Cthangband
                     _player.HasUnpriestlyWeapon = true;
                 }
             }
-            if (MartialArtistHeavyArmour())
+            if (_player.PlayerClass.MartialArtistHeavyArmour(_player))
             {
                 SaveGame.Instance.MartialArtistArmourAux = true;
             }
@@ -1107,15 +823,15 @@ namespace Cthangband
             _player.SkillUseDevice += _player.AbilityScores[Ability.Intelligence].IntUseDeviceBonus;
             _player.SkillSavingThrow += _player.AbilityScores[Ability.Wisdom].WisSavingThrowBonus;
             _player.SkillDigging += _player.AbilityScores[Ability.Strength].StrDiggingBonus;
-            _player.SkillDisarmTraps += (_player.CharacterClass.DisarmBonusPerLevel * _player.Level) / 10;
-            _player.SkillUseDevice += (_player.CharacterClass.DeviceBonusPerLevel * _player.Level) / 10;
-            _player.SkillSavingThrow += (_player.CharacterClass.SaveBonusPerLevel * _player.Level) / 10;
-            _player.SkillStealth += (_player.CharacterClass.StealthBonusPerLevel * _player.Level) / 10;
-            _player.SkillSearching += (_player.CharacterClass.SearchBonusPerLevel * _player.Level) / 10;
-            _player.SkillSearchFrequency += (_player.CharacterClass.SearchFrequencyPerLevel * _player.Level) / 10;
-            _player.SkillMelee += (_player.CharacterClass.MeleeAttackBonusPerLevel * _player.Level) / 10;
-            _player.SkillRanged += (_player.CharacterClass.RangedAttackBonusPerLevel * _player.Level) / 10;
-            _player.SkillThrowing += (_player.CharacterClass.RangedAttackBonusPerLevel * _player.Level) / 10;
+            _player.SkillDisarmTraps += (_player.PlayerClass.DisarmBonusPerLevel * _player.Level) / 10;
+            _player.SkillUseDevice += (_player.PlayerClass.DeviceBonusPerLevel * _player.Level) / 10;
+            _player.SkillSavingThrow += (_player.PlayerClass.SaveBonusPerLevel * _player.Level) / 10;
+            _player.SkillStealth += (_player.PlayerClass.StealthBonusPerLevel * _player.Level) / 10;
+            _player.SkillSearching += (_player.PlayerClass.SearchBonusPerLevel * _player.Level) / 10;
+            _player.SkillSearchFrequency += (_player.PlayerClass.SearchFrequencyPerLevel * _player.Level) / 10;
+            _player.SkillMelee += (_player.PlayerClass.MeleeAttackBonusPerLevel * _player.Level) / 10;
+            _player.SkillRanged += (_player.PlayerClass.RangedAttackBonusPerLevel * _player.Level) / 10;
+            _player.SkillThrowing += (_player.PlayerClass.RangedAttackBonusPerLevel * _player.Level) / 10;
             if (_player.SkillStealth > 30)
             {
                 _player.SkillStealth = 30;
@@ -1172,7 +888,7 @@ namespace Cthangband
             {
                 if (_player.HasUnpriestlyWeapon)
                 {
-                    Profile.Instance.MsgPrint(_player.CharacterClassIndex == CharacterClassId.Cultist
+                    Profile.Instance.MsgPrint(_player.PlayerClass.ChaosWeaponsOnly
                         ? "Your weapon restricts the flow of chaos through you."
                         : "You do not feel comfortable with your weapon.");
                 }
@@ -1182,16 +898,16 @@ namespace Cthangband
                 }
                 else
                 {
-                    Profile.Instance.MsgPrint(_player.CharacterClassIndex == CharacterClassId.Cultist
+                    Profile.Instance.MsgPrint(_player.PlayerClass.ChaosWeaponsOnly
                         ? "Chaos flows freely through you again."
                         : "You feel more comfortable after removing your weapon.");
                 }
                 _player.OldUnpriestlyWeapon = _player.HasUnpriestlyWeapon;
             }
-            if ((_player.CharacterClassIndex == CharacterClassId.Monk || _player.CharacterClassIndex == CharacterClassId.Mystic) && SaveGame.Instance.MartialArtistArmourAux !=
+            if ((_player.PlayerClass.IsMartialArtist) && SaveGame.Instance.MartialArtistArmourAux !=
                 SaveGame.Instance.MartialArtistNotifyAux)
             {
-                Profile.Instance.MsgPrint(MartialArtistHeavyArmour()
+                Profile.Instance.MsgPrint(_player.PlayerClass.MartialArtistHeavyArmour(_player)
                     ? "The weight of your armour disrupts your balance."
                     : "You regain your balance.");
                 SaveGame.Instance.MartialArtistNotifyAux = SaveGame.Instance.MartialArtistArmourAux;
@@ -1481,7 +1197,7 @@ namespace Cthangband
                     break;
 
                 case CastingType.Mentalism:
-                case CastingType.Channeling:
+                case CastingType.Channelling:
                     levels = _player.Level;
                     break;
 
@@ -1497,10 +1213,7 @@ namespace Cthangband
             {
                 msp++;
             }
-            if (msp != 0 && _player.CharacterClassIndex == CharacterClassId.HighMage)
-            {
-                msp += msp / 4;
-            }
+            msp = _player.PlayerClass.ApplyVisBonus(msp);
             if (_player.Spellcasting.Type == CastingType.Arcane)
             {
                 FlagSet f1 = new FlagSet();
@@ -1636,27 +1349,11 @@ namespace Cthangband
 
         public bool MartialArtistEmptyHands()
         {
-            if (_player.CharacterClassIndex != CharacterClassId.Monk && _player.CharacterClassIndex != CharacterClassId.Mystic)
+            if (!_player.PlayerClass.IsMartialArtist)
             {
                 return false;
             }
             return _player.Inventory[InventorySlot.MeleeWeapon].ItemType == null;
-        }
-
-        public bool MartialArtistHeavyArmour()
-        {
-            int martialArtistArmWgt = 0;
-            if (_player.CharacterClassIndex != CharacterClassId.Monk && _player.CharacterClassIndex != CharacterClassId.Mystic)
-            {
-                return false;
-            }
-            martialArtistArmWgt += _player.Inventory[InventorySlot.Body].Weight;
-            martialArtistArmWgt += _player.Inventory[InventorySlot.Head].Weight;
-            martialArtistArmWgt += _player.Inventory[InventorySlot.Arm].Weight;
-            martialArtistArmWgt += _player.Inventory[InventorySlot.Cloak].Weight;
-            martialArtistArmWgt += _player.Inventory[InventorySlot.Hands].Weight;
-            martialArtistArmWgt += _player.Inventory[InventorySlot.Feet].Weight;
-            return martialArtistArmWgt > 100 + (_player.Level * 4);
         }
 
         public void PrintVisPoints()
@@ -1861,8 +1558,7 @@ namespace Cthangband
         {
             PrtField(_player.Name, ScreenLocation.RowName, ScreenLocation.ColName);
             PrtField(_player.Race.Title, ScreenLocation.RowRace, ScreenLocation.ColRace);
-            PrtField(CharacterClass.ClassSubName(_player.CharacterClassIndex, _player.Realm1), ScreenLocation.RowClass,
-                ScreenLocation.ColClass);
+            PrtField(_player.PlayerClass.ClassSubName(_player.Realm1), ScreenLocation.RowClass, ScreenLocation.ColClass);
             PrtTitle();
             PrtLevel();
             PrtExp();

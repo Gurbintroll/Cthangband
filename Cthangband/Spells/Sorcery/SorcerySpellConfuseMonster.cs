@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellConfuseMonster : BaseSpell
     {
+        public override int DefaultBaseFailure => 30;
+
+        public override int DefaultLevel => 4;
+
+        public override int DefaultVisCost => 4;
+
+        public override int FirstCastExperience => 1;
+
+        public override string Name => "Confuse Monster";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -22,49 +32,6 @@ namespace Cthangband.Spells.Sorcery
                 return;
             }
             SaveGame.Instance.SpellEffects.ConfuseMonster(dir, player.Level * 3 / 2);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Confuse Monster";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 4;
-                    VisCost = 4;
-                    BaseFailure = 30;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 13;
-                    VisCost = 6;
-                    BaseFailure = 75;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 5;
-                    VisCost = 5;
-                    BaseFailure = 30;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 3;
-                    VisCost = 3;
-                    BaseFailure = 20;
-                    FirstCastExperience = 1;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

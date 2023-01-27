@@ -41,8 +41,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 1;
 
-        public override uint Choice => 0xDC0F;
-
         public override string Description2 => "Nibelungen are also known as dark dwarves and are famous";
 
         public override string Description3 => "as the makers of (often cursed) magical items. They can";

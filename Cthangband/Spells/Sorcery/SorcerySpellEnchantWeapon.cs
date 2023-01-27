@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellEnchantWeapon : BaseSpell
     {
+        public override int DefaultBaseFailure => 65;
+
+        public override int DefaultLevel => 40;
+
+        public override int DefaultVisCost => 80;
+
+        public override int FirstCastExperience => 200;
+
+        public override string Name => "Enchant Weapon";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.EnchantSpell(Program.Rng.RandomLessThan(4) + 1, Program.Rng.RandomLessThan(4) + 1, 0);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Enchant Weapon";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 40;
-                    VisCost = 80;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 43;
-                    VisCost = 80;
-                    BaseFailure = 80;
-                    FirstCastExperience = 100;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 42;
-                    VisCost = 85;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 30;
-                    VisCost = 65;
-                    BaseFailure = 85;
-                    FirstCastExperience = 200;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

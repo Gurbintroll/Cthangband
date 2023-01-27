@@ -40,8 +40,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 1;
 
-        public override uint Choice => 0xFFFF;
-
         public override string Description2 => "Half-Elves inherit better ability scores and skills from";
         public override string Description3 => "their elven parent, but none of that parent's special";
         public override string Description4 => "abilities. However, a half elf will advance in level more";

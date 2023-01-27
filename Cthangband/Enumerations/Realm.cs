@@ -5,18 +5,21 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using System;
+
 namespace Cthangband.Enumerations
 {
+    [Flags]
     internal enum Realm
     {
         None = 0,
         Life = 1,
         Sorcery = 2,
-        Nature = 3,
-        Chaos = 4,
-        Death = 5,
-        Tarot = 6,
-        Folk = 7,
-        Corporeal = 8,
+        Nature = 4,
+        Chaos = 8,
+        Death = 16,
+        Tarot = 32,
+        Folk = 64,
+        Corporeal = 128,
     }
 }

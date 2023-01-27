@@ -5,6 +5,7 @@
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
+using Cthangband.PlayerClass.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,12 @@ namespace Cthangband.Talents.Base
     internal interface ITalent
     {
         int Level { get; }
-        int VisCost { get; }
         string Name { get; }
+        int VisCost { get; }
 
         int FailureChance(Player player);
 
-        void Initialise(int characterClass);
+        void Initialise(IPlayerClass playerClass);
 
         string SummaryLine(Player player);
 

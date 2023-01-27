@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellRecharging : BaseSpell
     {
+        public override int DefaultBaseFailure => 75;
+
+        public override int DefaultLevel => 7;
+
+        public override int DefaultVisCost => 7;
+
+        public override int FirstCastExperience => 8;
+
+        public override string Name => "Recharging";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.Recharge(player.Level * 2);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Recharging";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 7;
-                    VisCost = 7;
-                    BaseFailure = 75;
-                    FirstCastExperience = 9;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 21;
-                    VisCost = 12;
-                    BaseFailure = 80;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 8;
-                    VisCost = 8;
-                    BaseFailure = 75;
-                    FirstCastExperience = 9;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 5;
-                    VisCost = 5;
-                    BaseFailure = 65;
-                    FirstCastExperience = 9;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -40,8 +40,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -1;
 
-        public override uint Choice => 0x4001;
-
         public override string Description1 => "Golems are animated statues. Their inorganic bodies make it";
 
         public override string Description2 => "hard for them to digest food properly, but they have innate";

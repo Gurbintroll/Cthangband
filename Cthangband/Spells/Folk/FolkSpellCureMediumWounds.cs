@@ -14,67 +14,20 @@ namespace Cthangband.Spells.Folk
     [Serializable]
     internal class FolkSpellCureMediumWounds : BaseSpell
     {
+        public override int DefaultBaseFailure => 33;
+
+        public override int DefaultLevel => 16;
+
+        public override int DefaultVisCost => 14;
+
+        public override int FirstCastExperience => 6;
+
+        public override string Name => "Cure Medium Wounds";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.RestoreHealth(Program.Rng.DiceRoll(4, 8));
             player.SetTimedBleeding((player.TimedBleeding / 2) - 50);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Cure Medium Wounds";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 16;
-                    VisCost = 14;
-                    BaseFailure = 33;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 18;
-                    VisCost = 17;
-                    BaseFailure = 33;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 20;
-                    VisCost = 19;
-                    BaseFailure = 33;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 20;
-                    VisCost = 19;
-                    BaseFailure = 33;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 19;
-                    VisCost = 18;
-                    BaseFailure = 33;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 14;
-                    VisCost = 11;
-                    BaseFailure = 22;
-                    FirstCastExperience = 6;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

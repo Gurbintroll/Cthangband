@@ -14,59 +14,19 @@ namespace Cthangband.Spells.Life
     [Serializable]
     internal class LifeSpellRemoveCurse : BaseSpell
     {
+        public override int DefaultBaseFailure => 45;
+
+        public override int DefaultLevel => 16;
+
+        public override int DefaultVisCost => 16;
+
+        public override int FirstCastExperience => 4;
+
+        public override string Name => "Remove Curse";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.RemoveCurse();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Remove Curse";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 16;
-                    VisCost = 16;
-                    BaseFailure = 45;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 7;
-                    VisCost = 6;
-                    BaseFailure = 38;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 14;
-                    VisCost = 11;
-                    BaseFailure = 45;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 18;
-                    VisCost = 18;
-                    BaseFailure = 45;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 14;
-                    VisCost = 12;
-                    BaseFailure = 35;
-                    FirstCastExperience = 4;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

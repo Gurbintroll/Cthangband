@@ -10,11 +10,11 @@ namespace Cthangband.Spells.Base
 {
     internal interface ISpell
     {
-        int FirstCastExperience { get; set; }
+        int FirstCastExperience { get; }
         bool Forgotten { get; set; }
         bool Learned { get; set; }
         int Level { get; set; }
-        string Name { get; set; }
+        string Name { get; }
         int VisCost { get; set; }
         bool Worked { get; set; }
 

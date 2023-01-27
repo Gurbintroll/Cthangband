@@ -43,8 +43,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 2;
 
-        public override uint Choice => 0xFF5F;
-
         public override string Description2 => "Elves are creatures of the woods, and cultivate a symbiotic";
 
         public override string Description3 => "relationship with trees. While not the sturdiest of races,";

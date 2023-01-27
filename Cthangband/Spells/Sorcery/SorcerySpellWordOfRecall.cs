@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellWordOfRecall : BaseSpell
     {
+        public override int DefaultBaseFailure => 75;
+
+        public override int DefaultLevel => 25;
+
+        public override int DefaultVisCost => 25;
+
+        public override int FirstCastExperience => 19;
+
+        public override string Name => "Word of Recall";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.ToggleRecall();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Word of Recall";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 25;
-                    VisCost = 25;
-                    BaseFailure = 75;
-                    FirstCastExperience = 19;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 30;
-                    VisCost = 35;
-                    BaseFailure = 75;
-                    FirstCastExperience = 15;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 28;
-                    VisCost = 28;
-                    BaseFailure = 75;
-                    FirstCastExperience = 19;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 20;
-                    VisCost = 20;
-                    BaseFailure = 65;
-                    FirstCastExperience = 19;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

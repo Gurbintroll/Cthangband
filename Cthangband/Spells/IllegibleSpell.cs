@@ -13,17 +13,18 @@ namespace Cthangband.Spells
     [Serializable]
     internal class IllegibleSpell : BaseSpell
     {
+        public override int DefaultBaseFailure => 0;
+
+        public override int DefaultLevel => 99;
+
+        public override int DefaultVisCost => 0;
+
+        public override int FirstCastExperience => 0;
+
+        public override string Name => "(illegible)";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "(illegible)";
-            Level = 99;
-            VisCost = 0;
-            BaseFailure = 0;
-            FirstCastExperience = 0;
         }
 
         protected override string Comment(Player player)

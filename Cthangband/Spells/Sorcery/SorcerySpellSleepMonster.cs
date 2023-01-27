@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellSleepMonster : BaseSpell
     {
+        public override int DefaultBaseFailure => 35;
+
+        public override int DefaultLevel => 6;
+
+        public override int DefaultVisCost => 5;
+
+        public override int FirstCastExperience => 4;
+
+        public override string Name => "Sleep Monster";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -22,49 +32,6 @@ namespace Cthangband.Spells.Sorcery
                 return;
             }
             saveGame.SpellEffects.SleepMonster(dir);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Sleep Monster";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 6;
-                    VisCost = 5;
-                    BaseFailure = 35;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 17;
-                    VisCost = 9;
-                    BaseFailure = 75;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 7;
-                    VisCost = 7;
-                    BaseFailure = 30;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 5;
-                    VisCost = 4;
-                    BaseFailure = 20;
-                    FirstCastExperience = 4;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

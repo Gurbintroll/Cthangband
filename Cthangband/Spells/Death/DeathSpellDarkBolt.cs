@@ -15,23 +15,19 @@ namespace Cthangband.Spells.Death
     [Serializable]
     internal class DeathSpellDarkBolt : BaseSpell
     {
+        public override int DefaultBaseFailure => 30;
+
+        public override int DefaultLevel => 11;
+
+        public override int DefaultVisCost => 11;
+
+        public override int FirstCastExperience => 15;
+
+        public override string Name => "Dark Bolt";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            int beam;
-            switch (player.CharacterClassIndex)
-            {
-                case CharacterClassId.Mage:
-                    beam = player.Level;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    beam = player.Level + 10;
-                    break;
-
-                default:
-                    beam = player.Level / 2;
-                    break;
-            }
+            int beam = player.PlayerClass.SpellBeamChance(player.Level);
             TargetEngine targetEngine = new TargetEngine(player, level);
             if (!targetEngine.GetDirectionWithAim(out int dir))
             {
@@ -39,70 +35,6 @@ namespace Cthangband.Spells.Death
             }
             saveGame.SpellEffects.FireBoltOrBeam(beam, new ProjectDark(SaveGame.Instance.SpellEffects), dir,
                 Program.Rng.DiceRoll(4 + ((player.Level - 5) / 4), 8));
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Dark Bolt";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 11;
-                    VisCost = 11;
-                    BaseFailure = 30;
-                    FirstCastExperience = 15;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 14;
-                    VisCost = 15;
-                    BaseFailure = 30;
-                    FirstCastExperience = 15;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 28;
-                    VisCost = 28;
-                    BaseFailure = 75;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 27;
-                    VisCost = 27;
-                    BaseFailure = 40;
-                    FirstCastExperience = 40;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 18;
-                    VisCost = 20;
-                    BaseFailure = 30;
-                    FirstCastExperience = 15;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 14;
-                    VisCost = 18;
-                    BaseFailure = 30;
-                    FirstCastExperience = 15;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 9;
-                    VisCost = 9;
-                    BaseFailure = 30;
-                    FirstCastExperience = 15;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

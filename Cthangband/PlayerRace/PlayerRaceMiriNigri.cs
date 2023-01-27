@@ -41,8 +41,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -1;
 
-        public override uint Choice => 0xDFCF;
-
         public override string Description1 => "Miri-Nigri are squat, toad-like chaos beasts. Their";
 
         public override string Description2 => "close ties to chaos render them resistant to sound and";

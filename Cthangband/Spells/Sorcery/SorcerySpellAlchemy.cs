@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellAlchemy : BaseSpell
     {
+        public override int DefaultBaseFailure => 90;
+
+        public override int DefaultLevel => 42;
+
+        public override int DefaultVisCost => 50;
+
+        public override int FirstCastExperience => 175;
+
+        public override string Name => "Alchemy";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.Alchemy();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Alchemy";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 42;
-                    VisCost = 50;
-                    BaseFailure = 90;
-                    FirstCastExperience = 175;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 45;
-                    VisCost = 50;
-                    BaseFailure = 70;
-                    FirstCastExperience = 100;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 46;
-                    VisCost = 55;
-                    BaseFailure = 90;
-                    FirstCastExperience = 175;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 40;
-                    VisCost = 40;
-                    BaseFailure = 80;
-                    FirstCastExperience = 175;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

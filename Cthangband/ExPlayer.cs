@@ -23,6 +23,11 @@ namespace Cthangband
         public readonly string BirthRace;
 
         /// <summary>
+        /// The profession of the character
+        /// </summary>
+        public readonly string CurrentClass;
+
+        /// <summary>
         /// The race of the character
         /// </summary>
         public readonly string CurrentRace;
@@ -48,11 +53,6 @@ namespace Cthangband
         public readonly string Name;
 
         /// <summary>
-        /// The profession of the character
-        /// </summary>
-        public readonly int ProfessionIndex;
-
-        /// <summary>
         /// The character's first realm of magic (if any)
         /// </summary>
         public readonly Realm Realm1;
@@ -71,7 +71,7 @@ namespace Cthangband
             GenderIndex = player.GenderIndex;
             CurrentRace = player.CurrentRace;
             BirthRace = player.BirthRace;
-            ProfessionIndex = player.CharacterClassIndex;
+            CurrentClass = player.CurrentClass;
             Realm1 = player.Realm1;
             Realm2 = player.Realm2;
             Name = player.Name;

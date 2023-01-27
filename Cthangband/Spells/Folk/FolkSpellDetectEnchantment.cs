@@ -14,66 +14,19 @@ namespace Cthangband.Spells.Folk
     [Serializable]
     internal class FolkSpellDetectEnchantment : BaseSpell
     {
+        public override int DefaultBaseFailure => 50;
+
+        public override int DefaultLevel => 9;
+
+        public override int DefaultVisCost => 9;
+
+        public override int FirstCastExperience => 6;
+
+        public override string Name => "Detect Enchantmant";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.DetectObjectsMagic();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Detect Enchantment";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 9;
-                    VisCost = 9;
-                    BaseFailure = 50;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 11;
-                    VisCost = 10;
-                    BaseFailure = 50;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 12;
-                    VisCost = 12;
-                    BaseFailure = 50;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 12;
-                    VisCost = 12;
-                    BaseFailure = 50;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 12;
-                    VisCost = 11;
-                    BaseFailure = 50;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 8;
-                    VisCost = 8;
-                    BaseFailure = 40;
-                    FirstCastExperience = 6;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

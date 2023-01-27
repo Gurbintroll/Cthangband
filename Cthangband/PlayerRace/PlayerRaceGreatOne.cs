@@ -40,8 +40,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 2;
 
-        public override uint Choice => 0xFFFF;
-
         public override string Description2 => "Great-Ones are the offspring of the petty gods that rule";
 
         public override string Description3 => "Dreamlands. As such they are somewhat more than human.";

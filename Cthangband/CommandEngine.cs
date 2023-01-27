@@ -2325,7 +2325,7 @@ namespace Cthangband
             bool noExtra = false;
             _saveGame.Disturb(false);
             // If we're a rogue then we can backstab monsters
-            if (Player.CharacterClassIndex == CharacterClassId.Rogue)
+            if (Player.PlayerClass.HasBackstab)
             {
                 if (monster.SleepLevel != 0 && monster.IsVisible)
                 {
@@ -2377,7 +2377,7 @@ namespace Cthangband
                     // Tell the player they hit it with the appropriate message
                     if (!(backstab || stabFleeing))
                     {
-                        if (!((Player.CharacterClassIndex == CharacterClassId.Monk || Player.CharacterClassIndex == CharacterClassId.Mystic) && playerStatus.MartialArtistEmptyHands()))
+                        if (!(Player.PlayerClass.IsMartialArtist && playerStatus.MartialArtistEmptyHands()))
                         {
                             Profile.Instance.MsgPrint($"You hit {monsterName}.");
                         }
@@ -2414,7 +2414,7 @@ namespace Cthangband
                     bool vorpalCut = f1.IsSet(ItemFlag1.Vorpal) &&
                         Program.Rng.DieRoll(item.ArtifactIndex == ArtifactId.SwordVorpalBlade ? 3 : 6) == 1;
                     // If we're a martial artist then we have special attacks
-                    if ((Player.CharacterClassIndex == CharacterClassId.Monk || Player.CharacterClassIndex == CharacterClassId.Mystic) && playerStatus.MartialArtistEmptyHands())
+                    if (Player.PlayerClass.IsMartialArtist && playerStatus.MartialArtistEmptyHands())
                     {
                         int specialEffect = 0;
                         int stunEffect = 0;

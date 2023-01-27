@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 4;
 
-        public override uint Choice => 0xBE5E;
-
         public override string Description1 => "Sprites are tiny fairies, distantly related to elves. They";
 
         public override string Description2 => "share their relatives' resistance to light based attacks,";

@@ -30,7 +30,6 @@ namespace Cthangband.PlayerRace
         public override int BaseSearchBonus => -1;
         public override int BaseSearchFrequency => 8;
         public override int BaseStealthBonus => -1;
-        public override uint Choice => 0x5F0F;
         public override string Description2 => "Skeletons are undead creatures. Being without eyes, they";
         public override string Description3 => "use magical sight which can see invisible creatures. Their";
         public override string Description4 => "lack of flesh means that they resist poison and shards, and";

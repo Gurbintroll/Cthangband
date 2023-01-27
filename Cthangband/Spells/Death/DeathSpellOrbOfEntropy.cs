@@ -15,6 +15,16 @@ namespace Cthangband.Spells.Death
     [Serializable]
     internal class DeathSpellOrbOfEntropy : BaseSpell
     {
+        public override int DefaultBaseFailure => 40;
+
+        public override int DefaultLevel => 12;
+
+        public override int DefaultVisCost => 12;
+
+        public override int FirstCastExperience => 5;
+
+        public override string Name => "Orb of Entropy";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -23,79 +33,12 @@ namespace Cthangband.Spells.Death
                 return;
             }
             saveGame.SpellEffects.FireBall(new ProjectOldDrain(SaveGame.Instance.SpellEffects), dir,
-                Program.Rng.DiceRoll(3, 6) + player.Level + (player.Level /
-                (player.CharacterClassIndex == CharacterClassId.Mage || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4)),
-                player.Level < 30 ? 2 : 3);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Orb of Entropy";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 12;
-                    VisCost = 12;
-                    BaseFailure = 40;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 14;
-                    VisCost = 14;
-                    BaseFailure = 40;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 21;
-                    VisCost = 21;
-                    BaseFailure = 60;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 24;
-                    VisCost = 24;
-                    BaseFailure = 55;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 17;
-                    VisCost = 17;
-                    BaseFailure = 40;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 14;
-                    VisCost = 14;
-                    BaseFailure = 40;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 10;
-                    VisCost = 10;
-                    BaseFailure = 30;
-                    FirstCastExperience = 5;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
+                Program.Rng.DiceRoll(3, 6) + player.Level + (player.Level / player.PlayerClass.SpellBallSizeFactor), player.Level < 30 ? 2 : 3);
         }
 
         protected override string Comment(Player player)
         {
-            int s = player.Level + (player.Level /
-                    (player.CharacterClassIndex == CharacterClassId.Mage || player.CharacterClassIndex == CharacterClassId.HighMage ? 2 : 4));
+            int s = player.Level + (player.Level / player.PlayerClass.SpellBallSizeFactor);
             return $"dam 3d6+{s}";
         }
     }

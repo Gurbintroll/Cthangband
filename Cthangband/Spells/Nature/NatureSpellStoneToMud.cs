@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Nature
     [Serializable]
     internal class NatureSpellStoneToMud : BaseSpell
     {
+        public override int DefaultBaseFailure => 40;
+
+        public override int DefaultLevel => 5;
+
+        public override int DefaultVisCost => 5;
+
+        public override int FirstCastExperience => 6;
+
+        public override string Name => "Stone to Mud";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -22,57 +32,6 @@ namespace Cthangband.Spells.Nature
                 return;
             }
             saveGame.SpellEffects.WallToMud(dir);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Stone to Mud";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 5;
-                    VisCost = 5;
-                    BaseFailure = 40;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 7;
-                    VisCost = 7;
-                    BaseFailure = 40;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 9;
-                    VisCost = 7;
-                    BaseFailure = 80;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 10;
-                    VisCost = 10;
-                    BaseFailure = 40;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.HighMage:
-                case CharacterClassId.Druid:
-                    Level = 5;
-                    VisCost = 4;
-                    BaseFailure = 30;
-                    FirstCastExperience = 6;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -41,8 +41,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 4;
 
-        public override uint Choice => 0xBF5F;
-
         public override string Description2 => "High-Elves are the leaders of the elven race. They are";
 
         public override string Description3 => "more magical than their lesser cousins, but retain their";

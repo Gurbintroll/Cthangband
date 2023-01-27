@@ -14,60 +14,19 @@ namespace Cthangband.Spells.Corporeal
     [Serializable]
     internal class CorporealSpellMutateBody : BaseSpell
     {
+        public override int DefaultBaseFailure => 60;
+
+        public override int DefaultLevel => 14;
+
+        public override int DefaultVisCost => 10;
+
+        public override int FirstCastExperience => 25;
+
+        public override string Name => "Mutate Body";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.Dna.GainMutation();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Mutate Body";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 14;
-                    VisCost = 10;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 18;
-                    VisCost = 18;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 19;
-                    VisCost = 25;
-                    BaseFailure = 65;
-                    FirstCastExperience = 20;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Monk:
-                case CharacterClassId.Cultist:
-                    Level = 16;
-                    VisCost = 14;
-                    BaseFailure = 60;
-                    FirstCastExperience = 25;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 12;
-                    VisCost = 9;
-                    BaseFailure = 50;
-                    FirstCastExperience = 25;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => -1;
 
-        public override uint Choice => 0x898D;
-
         public override string Description2 => "Half-Orcs are stronger than humans, and less dimwitted";
 
         public override string Description3 => "their orcish parentage would lead you to assume.";
@@ -120,7 +118,7 @@ namespace Cthangband.PlayerRace
 
         public override void UseRacialPower(SaveGame saveGame, Player player, Level level)
         {
-            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(3, 5, Ability.Wisdom, player.CharacterClassIndex == CharacterClassId.Warrior ? 5 : 10))
+            if (saveGame.CommandEngine.CheckIfRacialPowerWorks(3, 5, Ability.Wisdom, player.PlayerClass.PrimeAbilityScore == Ability.Strength ? 5 : 10))
             {
                 Profile.Instance.MsgPrint("You play tough.");
                 player.SetTimedFear(0);

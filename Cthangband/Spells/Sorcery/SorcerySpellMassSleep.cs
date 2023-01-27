@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellMassSleep : BaseSpell
     {
+        public override int DefaultBaseFailure => 50;
+
+        public override int DefaultLevel => 13;
+
+        public override int DefaultVisCost => 7;
+
+        public override int FirstCastExperience => 6;
+
+        public override string Name => "Mass Sleep";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.SleepMonsters();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Mass Sleep";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 13;
-                    VisCost = 7;
-                    BaseFailure = 50;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 30;
-                    VisCost = 20;
-                    BaseFailure = 80;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 13;
-                    VisCost = 12;
-                    BaseFailure = 50;
-                    FirstCastExperience = 6;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 9;
-                    VisCost = 5;
-                    BaseFailure = 40;
-                    FirstCastExperience = 6;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

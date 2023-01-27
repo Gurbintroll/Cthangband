@@ -8,6 +8,7 @@
 using Cthangband.Enumerations;
 using Cthangband.Pantheon;
 using Cthangband.Patron.Base;
+using Cthangband.PlayerClass.Base;
 using Cthangband.PlayerRace.Base;
 using Cthangband.Spells;
 using Cthangband.StaticData;
@@ -19,148 +20,11 @@ namespace Cthangband
 {
     internal class PlayerFactory
     {
-        private readonly MenuItem[] _classMenu =
-        {
-            new MenuItem("Channeler", CharacterClassId.Channeler), new MenuItem("Chosen One", CharacterClassId.ChosenOne),
-            new MenuItem("Cultist", CharacterClassId.Cultist), new MenuItem("Druid", CharacterClassId.Druid),
-            new MenuItem("Fanatic", CharacterClassId.Fanatic), new MenuItem("High Mage", CharacterClassId.HighMage),
-            new MenuItem("Mage", CharacterClassId.Mage), new MenuItem("Monk", CharacterClassId.Monk),
-            new MenuItem("Mindcrafter", CharacterClassId.Mindcrafter), new MenuItem("Mystic", CharacterClassId.Mystic),
-            new MenuItem("Paladin", CharacterClassId.Paladin), new MenuItem("Priest", CharacterClassId.Priest),
-            new MenuItem("Ranger", CharacterClassId.Ranger), new MenuItem("Rogue", CharacterClassId.Rogue),
-            new MenuItem("Warrior", CharacterClassId.Warrior), new MenuItem("Warrior Mage", CharacterClassId.WarriorMage)
-        };
+        private readonly MenuItem[] _classMenu;
 
         private readonly string[] _menuItem = new string[32];
 
-        private readonly ItemIdentifier[][] _playerInit =
-        {
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.Ring, RingType.ResFear), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
-                new ItemIdentifier(ItemCategory.HardArmor, HardArmourType.ChainMail)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
-                new ItemIdentifier(ItemCategory.DeathBook, 0)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Hafted, HaftedType.Mace),
-                new ItemIdentifier(ItemCategory.DeathBook, 0)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.NatureBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
-                new ItemIdentifier(ItemCategory.DeathBook, 0)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
-                new ItemIdentifier(ItemCategory.Scroll, ScrollType.ProtectionFromEvil)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.ShortSword),
-                new ItemIdentifier(ItemCategory.DeathBook, 0)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.BroadSword),
-                new ItemIdentifier(ItemCategory.HardArmor, HardArmourType.MetalScaleMail)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Potion, PotionType.Healing),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.Sword, SwordType.SmallSword),
-                new ItemIdentifier(ItemCategory.Potion, PotionType.RestoreVis),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
-                new ItemIdentifier(ItemCategory.Ring, RingType.SustainInt)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Hafted, HaftedType.Quarterstaff),
-                new ItemIdentifier(ItemCategory.Ring, RingType.SustainWis)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.SorceryBook, 0), new ItemIdentifier(ItemCategory.Ring, RingType.SustainInt),
-                new ItemIdentifier(ItemCategory.DeathBook, 0)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.Wand, WandType.MagicMissile), new ItemIdentifier(ItemCategory.Sword, SwordType.Dagger),
-                new ItemIdentifier(ItemCategory.Ring, RingType.SustainCha)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.Sword, SwordType.SmallSword),
-                new ItemIdentifier(ItemCategory.Potion, PotionType.Healing),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
-            },
-            new[]
-            {
-                new ItemIdentifier(ItemCategory.Ring, RingType.SustainWis),
-                new ItemIdentifier(ItemCategory.Potion, PotionType.Healing),
-                new ItemIdentifier(ItemCategory.SoftArmor, SoftArmourType.SoftLeather)
-            }
-        };
-
         private readonly MenuItem[] _raceMenu;
-
-        private readonly int[] _realmChoices =
-        {
-            // Warrior
-            RealmChoice.None,
-            // Mage
-            RealmChoice.Life | RealmChoice.Sorcery | RealmChoice.Nature | RealmChoice.Chaos | RealmChoice.Death |
-            RealmChoice.Tarot | RealmChoice.Folk | RealmChoice.Corporeal,
-            // Priest
-            RealmChoice.Nature | RealmChoice.Chaos | RealmChoice.Tarot | RealmChoice.Folk | RealmChoice.Corporeal,
-            // Rogue
-            RealmChoice.Sorcery | RealmChoice.Death | RealmChoice.Tarot | RealmChoice.Folk,
-            // Ranger
-            RealmChoice.Chaos | RealmChoice.Death | RealmChoice.Tarot | RealmChoice.Folk | RealmChoice.Corporeal,
-            // Paladin
-            RealmChoice.Life | RealmChoice.Death,
-            // Warrior Mage
-            RealmChoice.Life | RealmChoice.Nature | RealmChoice.Chaos | RealmChoice.Death | RealmChoice.Tarot |
-            RealmChoice.Folk | RealmChoice.Sorcery | RealmChoice.Corporeal,
-            // Fanatic
-            RealmChoice.Chaos,
-            // Monk
-            RealmChoice.Corporeal | RealmChoice.Tarot | RealmChoice.Chaos,
-            // Mindcrafter
-            RealmChoice.None,
-            // High Mage
-            RealmChoice.Life | RealmChoice.Sorcery | RealmChoice.Nature | RealmChoice.Chaos | RealmChoice.Death |
-            RealmChoice.Tarot | RealmChoice.Folk | RealmChoice.Corporeal,
-            // Druid
-            RealmChoice.Nature,
-            // Cultist
-            RealmChoice.Life | RealmChoice.Sorcery | RealmChoice.Nature | RealmChoice.Death | RealmChoice.Tarot |
-            RealmChoice.Folk | RealmChoice.Corporeal,
-            // Channeler
-            RealmChoice.None,
-            // Chosen One
-            RealmChoice.None,
-            // Mystic
-            RealmChoice.None
-        };
 
         private readonly Gender[] _sexInfo = { new Gender("Female", "Queen"), new Gender("Male", "King"), new Gender("Other", "Monarch") };
 
@@ -168,7 +32,7 @@ namespace Cthangband
 
         private Player _player;
 
-        private int _prevClass;
+        private string _prevClass;
 
         private int _prevGeneration;
 
@@ -191,6 +55,13 @@ namespace Cthangband
             {
                 _raceMenu[i] = new MenuItem(keys[i], i);
             }
+            keys = PlayerClasses.Instance.Keys.ToList();
+            keys.Sort();
+            _classMenu = new MenuItem[keys.Count];
+            for (int i = 0; i < keys.Count; i++)
+            {
+                _classMenu[i] = new MenuItem(keys[i], i);
+            }
         }
 
         public Player CharacterGeneration(ExPlayer ex)
@@ -205,62 +76,15 @@ namespace Cthangband
             return null;
         }
 
-        private Realm ChooseRealmRandomly(int choices)
-        {
-            Realm[] picks = new Realm[Constants.MaxRealm];
-            int n = 0;
-            if ((choices & RealmChoice.Chaos) != 0 && _player.Realm1 != Realm.Chaos)
-            {
-                picks[n] = Realm.Chaos;
-                n++;
-            }
-            if ((choices & RealmChoice.Corporeal) != 0 && _player.Realm1 != Realm.Corporeal)
-            {
-                picks[n] = Realm.Corporeal;
-                n++;
-            }
-            if ((choices & RealmChoice.Death) != 0 && _player.Realm1 != Realm.Death)
-            {
-                picks[n] = Realm.Death;
-                n++;
-            }
-            if ((choices & RealmChoice.Folk) != 0 && _player.Realm1 != Realm.Folk)
-            {
-                picks[n] = Realm.Folk;
-                n++;
-            }
-            if ((choices & RealmChoice.Life) != 0 && _player.Realm1 != Realm.Life)
-            {
-                picks[n] = Realm.Life;
-                n++;
-            }
-            if ((choices & RealmChoice.Nature) != 0 && _player.Realm1 != Realm.Nature)
-            {
-                picks[n] = Realm.Nature;
-                n++;
-            }
-            if ((choices & RealmChoice.Tarot) != 0 && _player.Realm1 != Realm.Tarot)
-            {
-                picks[n] = Realm.Tarot;
-                n++;
-            }
-            if ((choices & RealmChoice.Sorcery) != 0 && _player.Realm1 != Realm.Sorcery)
-            {
-                picks[n] = Realm.Sorcery;
-                n++;
-            }
-            int k = Program.Rng.RandomLessThan(n);
-            return picks[k];
-        }
-
         private void DisplayAPlusB(int x, int y, int initial, int bonus)
         {
             string buf = $"{initial:00}% + {bonus / 10}.{bonus % 10}%/lv";
             Gui.Print(Colour.Black, buf, y, x);
         }
 
-        private void DisplayClassInfo(int pclass)
+        private void DisplayClassInfo(string pclass)
         {
+            IPlayerClass playerClass = PlayerClasses.Instance[pclass];
             Gui.Print(Colour.Purple, "STR:", 36, 21);
             Gui.Print(Colour.Purple, "INT:", 37, 21);
             Gui.Print(Colour.Purple, "WIS:", 38, 21);
@@ -269,7 +93,7 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "CHA:", 41, 21);
             for (int i = 0; i < 6; i++)
             {
-                int bonus = CharacterClass.ClassInfo[pclass].AbilityBonus[i];
+                int bonus = playerClass.AbilityBonus[i];
                 DisplayStatBonus(26, 36 + i, bonus);
             }
             Gui.Print(Colour.Purple, "Disarming   :", 36, 53);
@@ -283,141 +107,27 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "Infravision :", 38, 31);
             Gui.Print(Colour.Purple, "Searching   :", 39, 31);
             Gui.Print(Colour.Purple, "Perception  :", 40, 31);
-            DisplayAPlusB(67, 36, CharacterClass.ClassInfo[pclass].BaseDisarmBonus, CharacterClass.ClassInfo[pclass].DisarmBonusPerLevel);
-            DisplayAPlusB(67, 37, CharacterClass.ClassInfo[pclass].BaseDeviceBonus, CharacterClass.ClassInfo[pclass].DeviceBonusPerLevel);
-            DisplayAPlusB(67, 38, CharacterClass.ClassInfo[pclass].BaseSaveBonus, CharacterClass.ClassInfo[pclass].SaveBonusPerLevel);
-            DisplayAPlusB(67, 39, CharacterClass.ClassInfo[pclass].BaseStealthBonus * 4, CharacterClass.ClassInfo[pclass].StealthBonusPerLevel * 4);
-            DisplayAPlusB(67, 40, CharacterClass.ClassInfo[pclass].BaseMeleeAttackBonus, CharacterClass.ClassInfo[pclass].MeleeAttackBonusPerLevel);
-            DisplayAPlusB(67, 41, CharacterClass.ClassInfo[pclass].BaseRangedAttackBonus, CharacterClass.ClassInfo[pclass].RangedAttackBonusPerLevel);
-            string buf = "+" + CharacterClass.ClassInfo[pclass].ExperienceFactor + "%";
+            DisplayAPlusB(67, 36, playerClass.BaseDisarmBonus, playerClass.DisarmBonusPerLevel);
+            DisplayAPlusB(67, 37, playerClass.BaseDeviceBonus, playerClass.DeviceBonusPerLevel);
+            DisplayAPlusB(67, 38, playerClass.BaseSaveBonus, playerClass.SaveBonusPerLevel);
+            DisplayAPlusB(67, 39, playerClass.BaseStealthBonus * 4, playerClass.StealthBonusPerLevel * 4);
+            DisplayAPlusB(67, 40, playerClass.BaseMeleeAttackBonus, playerClass.MeleeAttackBonusPerLevel);
+            DisplayAPlusB(67, 41, playerClass.BaseRangedAttackBonus, playerClass.RangedAttackBonusPerLevel);
+            string buf = "+" + playerClass.ExperienceFactor + "%";
             Gui.Print(Colour.Black, buf, 36, 45);
-            buf = "1d" + CharacterClass.ClassInfo[pclass].HitDieBonus;
+            buf = "1d" + playerClass.HitDieBonus;
             Gui.Print(Colour.Black, buf, 37, 45);
             Gui.Print(Colour.Black, "-", 38, 45);
-            buf = $"{CharacterClass.ClassInfo[pclass].BaseSearchBonus:00}%";
+            buf = $"{playerClass.BaseSearchBonus:00}%";
             Gui.Print(Colour.Black, buf, 39, 45);
-            buf = $"{CharacterClass.ClassInfo[pclass].BaseSearchFrequency:00}%";
+            buf = $"{playerClass.BaseSearchFrequency:00}%";
             Gui.Print(Colour.Black, buf, 40, 45);
-            switch (pclass)
-            {
-                case CharacterClassId.Cultist:
-                    Gui.Print(Colour.Purple, "INT based spell casters, who use Chaos and another realm", 30, 20);
-                    Gui.Print(Colour.Purple, "of their choice. Can't wield weapons except for powerful", 31, 20);
-                    Gui.Print(Colour.Purple, "chaos blades. Learn to resist chaos (at lvl 20). Have a", 32, 20);
-                    Gui.Print(Colour.Purple, "cult patron who will randomly give them rewards or", 33, 20);
-                    Gui.Print(Colour.Purple, "punishments as they increase in level.", 34, 20);
-                    break;
-
-                case CharacterClassId.Fanatic:
-                    Gui.Print(Colour.Purple, "Warriors who dabble in INT based Chaos magic. Have a cult", 30, 20);
-                    Gui.Print(Colour.Purple, "patron who will randomly give them rewards or punishments", 31, 20);
-                    Gui.Print(Colour.Purple, "as they increase in level. Learn to resist chaos", 32, 20);
-                    Gui.Print(Colour.Purple, "(at lvl 30) and fear (at lvl 40).", 33, 20);
-                    break;
-
-                case CharacterClassId.ChosenOne:
-                    Gui.Print(Colour.Purple, "Warriors of fate, who have no spell casting abilities but", 30, 20);
-                    Gui.Print(Colour.Purple, "gain a large number of passive magical abilities (too long", 31, 20);
-                    Gui.Print(Colour.Purple, "to list here) as they increase in level.", 32, 20);
-                    break;
-
-                case CharacterClassId.Channeler:
-                    Gui.Print(Colour.Purple, "Similar to a spell caster, but rather than casting spells", 30, 20);
-                    Gui.Print(Colour.Purple, "from a book, they can use their CHA to channel vis into", 31, 20);
-                    Gui.Print(Colour.Purple, "most types of item, powering the effects of the items", 32, 20);
-                    Gui.Print(Colour.Purple, "without depleting them.", 33, 20);
-                    break;
-
-                case CharacterClassId.Druid:
-                    Gui.Print(Colour.Purple, "Nature priests who use WIS based spell casting and who are", 30, 20);
-                    Gui.Print(Colour.Purple, "limited to the Nature realm. As priests, they can't use", 31, 20);
-                    Gui.Print(Colour.Purple, "edged weapons unless those weapons are holy; but they can", 32, 20);
-                    Gui.Print(Colour.Purple, "wear heavy armour without it disrupting their casting.", 33, 20);
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Gui.Print(Colour.Purple, "INT based spell casters who specialise in a single realm", 30, 20);
-                    Gui.Print(Colour.Purple, "of magic. They may choose any realm, and are better at", 31, 20);
-                    Gui.Print(Colour.Purple, "casting spells from that realm than a normal mage. High", 32, 20);
-                    Gui.Print(Colour.Purple, "mages also get more vis than other spell casters do.", 33, 20);
-                    Gui.Print(Colour.Purple, "Wearing too much armour disrupts their casting.", 34, 20);
-                    break;
-
-                case CharacterClassId.Mage:
-                    Gui.Print(Colour.Purple, "Flexible INT based spell casters who can cast magic from", 30, 20);
-                    Gui.Print(Colour.Purple, "any two realms of their choice. However, they can't wear", 31, 20);
-                    Gui.Print(Colour.Purple, "much armour before it starts disrupting their casting.", 32, 20);
-                    break;
-
-                case CharacterClassId.Monk:
-                    Gui.Print(Colour.Purple, "Masters of unarmed combat. While wearing only light armour", 30, 20);
-                    Gui.Print(Colour.Purple, "they can move faster and dodge blows and can learn to", 31, 20);
-                    Gui.Print(Colour.Purple, "resist paralysis (at lvl 25). While not wielding a weapon", 32, 20);
-                    Gui.Print(Colour.Purple, "they have extra attacks and do increased damage. They are", 33, 20);
-                    Gui.Print(Colour.Purple, "WIS based casters using Chaos, Tarot or Corporeal magic.", 34, 20);
-                    break;
-
-                case CharacterClassId.Mindcrafter:
-                    Gui.Print(Colour.Purple, "Disciples of the psionic arts, Mindcrafters learn a range", 30, 20);
-                    Gui.Print(Colour.Purple, "of mental abilities; which they power using WIS. As well", 31, 20);
-                    Gui.Print(Colour.Purple, "as their powers, they learn to resist fear (at lvl 10),", 32, 20);
-                    Gui.Print(Colour.Purple, "prevent wis drain (at lvl 20), resist confusion", 33, 20);
-                    Gui.Print(Colour.Purple, "(at lvl 30), and gain telepathy (at lvl 40).", 34, 20);
-                    break;
-
-                case CharacterClassId.Mystic:
-                    Gui.Print(Colour.Purple, "Mystics master both martial and psionic arts, which they", 30, 20);
-                    Gui.Print(Colour.Purple, "power using WIS. Can resist confusion (at lvl 10), fear", 31, 20);
-                    Gui.Print(Colour.Purple, "(lvl 25), paralysis (lvl 30). Telepathy (lvl 40). While", 32, 20);
-                    Gui.Print(Colour.Purple, "wearing only light armour they can move faster and dodge,", 33, 20);
-                    Gui.Print(Colour.Purple, "and while not wielding a weapon they do increased damage.", 34, 20);
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Gui.Print(Colour.Purple, "Holy warriors who use WIS based spell casting to supplement", 30, 20);
-                    Gui.Print(Colour.Purple, "their fighting skills. Paladins can specialise in either", 31, 20);
-                    Gui.Print(Colour.Purple, "Life or Death magic, but their spell casting is weak in", 32, 20);
-                    Gui.Print(Colour.Purple, "comparison to a full priest. Paladins learn to resist fear", 33, 20);
-                    Gui.Print(Colour.Purple, "(at lvl 40).", 34, 20);
-                    break;
-
-                case CharacterClassId.Priest:
-                    Gui.Print(Colour.Purple, "Devout followers of the Great Ones, Priests use WIS based", 30, 20);
-                    Gui.Print(Colour.Purple, "spell casting. They may choose either Life or Death magic,", 31, 20);
-                    Gui.Print(Colour.Purple, "and another realm of their choice. Priests can't use edged", 32, 20);
-                    Gui.Print(Colour.Purple, "weapons unless they are blessed, but can use any armour.", 33, 20);
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Gui.Print(Colour.Purple, "Masters of ranged combat, especiallly using bows. Rangers", 30, 20);
-                    Gui.Print(Colour.Purple, "supplement their shooting and stealth with INT based spell", 31, 20);
-                    Gui.Print(Colour.Purple, "casting from the Nature realm plus another realm of their", 32, 20);
-                    Gui.Print(Colour.Purple, "choice from Death, Corporeal, Tarot, Chaos, and Folk.", 33, 20);
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Gui.Print(Colour.Purple, "Stealth based characters who are adept at picking locks,", 30, 20);
-                    Gui.Print(Colour.Purple, "searching, and disarming traps. Rogues can use stealth to", 31, 20);
-                    Gui.Print(Colour.Purple, "their advantage in order to backstab sleeping or fleeing", 32, 20);
-                    Gui.Print(Colour.Purple, "foes. They also dabble in INT based magic, learning spells", 33, 20);
-                    Gui.Print(Colour.Purple, "from the Tarot, Sorcery, Death, or Folk realms.", 34, 20);
-                    break;
-
-                case CharacterClassId.Warrior:
-                    Gui.Print(Colour.Purple, "Straightforward, no-nonsense fighters. They are the best", 30, 20);
-                    Gui.Print(Colour.Purple, "characters at melee combat, and require the least amount", 31, 20);
-                    Gui.Print(Colour.Purple, "of experience to increase in level. They can learn to", 32, 20);
-                    Gui.Print(Colour.Purple, "resist fear (at lvl 30). The ideal class for novices.", 33, 20);
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                    Gui.Print(Colour.Purple, "A blend of both warrior and mage, getting the abilities of", 30, 20);
-                    Gui.Print(Colour.Purple, "both but not being the best at either. They use INT based", 31, 20);
-                    Gui.Print(Colour.Purple, "spell casting, getting access to the Folk realm plus a", 32, 20);
-                    Gui.Print(Colour.Purple, "second realm of their choice. They pay for their extreme", 33, 20);
-                    Gui.Print(Colour.Purple, "flexibility by increasing in level only slowly.", 34, 20);
-                    break;
-            }
+            Gui.Print(Colour.Purple, playerClass.DescriptionLine1, 29, 20);
+            Gui.Print(Colour.Purple, playerClass.DescriptionLine2, 30, 20);
+            Gui.Print(Colour.Purple, playerClass.DescriptionLine3, 31, 20);
+            Gui.Print(Colour.Purple, playerClass.DescriptionLine4, 32, 20);
+            Gui.Print(Colour.Purple, playerClass.DescriptionLine5, 33, 20);
+            Gui.Print(Colour.Purple, playerClass.DescriptionLine6, 34, 20);
         }
 
         private void DisplayPartialCharacter(int stage)
@@ -463,8 +173,8 @@ namespace Cthangband
             Gui.Print(Colour.Blue, "Class       :", 5, 1);
             if (stage == 0)
             {
-                _player.CharacterClass = CharacterClass.ClassInfo[_prevClass];
-                str = _player.CharacterClass.Title;
+                _player.PlayerClass = PlayerClasses.Instance[_prevClass];
+                str = _player.PlayerClass.Title;
             }
             else if (stage < 2)
             {
@@ -472,8 +182,8 @@ namespace Cthangband
             }
             else
             {
-                _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
-                str = _player.CharacterClass.Title;
+                _player.PlayerClass = PlayerClasses.Instance[_player.CurrentClass];
+                str = _player.PlayerClass.Title;
             }
             Gui.Print(Colour.Brown, str, 5, 15);
             string buf = string.Empty;
@@ -575,7 +285,7 @@ namespace Cthangband
             {
                 for (i = 0; i < 6; i++)
                 {
-                    buf = _player.CharacterClass.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
+                    buf = _player.PlayerClass.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
                     Gui.Print(Colour.Brown, buf, 22 + i, 20);
                 }
             }
@@ -598,6 +308,7 @@ namespace Cthangband
 
         private void DisplayRaceInfo(string race)
         {
+            IPlayerRace playerRace = PlayerRaces.Instance[race];
             Gui.Print(Colour.Purple, "STR:", 36, 21);
             Gui.Print(Colour.Purple, "INT:", 37, 21);
             Gui.Print(Colour.Purple, "WIS:", 38, 21);
@@ -606,7 +317,7 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "CHA:", 41, 21);
             for (int i = 0; i < 6; i++)
             {
-                int bonus = PlayerRaces.Instance[race].AbilityBonus[i] + CharacterClass.ClassInfo[_player.CharacterClassIndex].AbilityBonus[i];
+                int bonus = playerRace.AbilityBonus[i] + _player.PlayerClass.AbilityBonus[i];
                 DisplayStatBonus(26, 36 + i, bonus);
             }
             Gui.Print(Colour.Purple, "Disarming   :", 36, 53);
@@ -620,41 +331,41 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "Infravision :", 38, 31);
             Gui.Print(Colour.Purple, "Searching   :", 39, 31);
             Gui.Print(Colour.Purple, "Perception  :", 40, 31);
-            DisplayAPlusB(67, 36, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseDisarmBonus + PlayerRaces.Instance[race].BaseDisarmBonus,
-                CharacterClass.ClassInfo[_player.CharacterClassIndex].DisarmBonusPerLevel);
-            DisplayAPlusB(67, 37, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseDeviceBonus + PlayerRaces.Instance[race].BaseDeviceBonus,
-                CharacterClass.ClassInfo[_player.CharacterClassIndex].DeviceBonusPerLevel);
-            DisplayAPlusB(67, 38, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseSaveBonus + PlayerRaces.Instance[race].BaseSaveBonus,
-                CharacterClass.ClassInfo[_player.CharacterClassIndex].SaveBonusPerLevel);
-            DisplayAPlusB(67, 39, (CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseStealthBonus * 4) + (PlayerRaces.Instance[race].BaseStealthBonus * 4),
-                CharacterClass.ClassInfo[_player.CharacterClassIndex].StealthBonusPerLevel * 4);
-            DisplayAPlusB(67, 40, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseMeleeAttackBonus + PlayerRaces.Instance[race].BaseMeleeAttackBonus,
-                CharacterClass.ClassInfo[_player.CharacterClassIndex].MeleeAttackBonusPerLevel);
-            DisplayAPlusB(67, 41, CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseRangedAttackBonus + PlayerRaces.Instance[race].BaseRangedAttackBonus,
-                CharacterClass.ClassInfo[_player.CharacterClassIndex].RangedAttackBonusPerLevel);
-            string buf = PlayerRaces.Instance[race].ExperienceFactor + CharacterClass.ClassInfo[_player.CharacterClassIndex].ExperienceFactor + "%";
+            DisplayAPlusB(67, 36, _player.PlayerClass.BaseDisarmBonus + playerRace.BaseDisarmBonus,
+                _player.PlayerClass.DisarmBonusPerLevel);
+            DisplayAPlusB(67, 37, _player.PlayerClass.BaseDeviceBonus + playerRace.BaseDeviceBonus,
+                _player.PlayerClass.DeviceBonusPerLevel);
+            DisplayAPlusB(67, 38, _player.PlayerClass.BaseSaveBonus + playerRace.BaseSaveBonus,
+                _player.PlayerClass.SaveBonusPerLevel);
+            DisplayAPlusB(67, 39, (_player.PlayerClass.BaseStealthBonus * 4) + (playerRace.BaseStealthBonus * 4),
+                _player.PlayerClass.StealthBonusPerLevel * 4);
+            DisplayAPlusB(67, 40, _player.PlayerClass.BaseMeleeAttackBonus + playerRace.BaseMeleeAttackBonus,
+                _player.PlayerClass.MeleeAttackBonusPerLevel);
+            DisplayAPlusB(67, 41, _player.PlayerClass.BaseRangedAttackBonus + playerRace.BaseRangedAttackBonus,
+                _player.PlayerClass.RangedAttackBonusPerLevel);
+            string buf = playerRace.ExperienceFactor + _player.PlayerClass.ExperienceFactor + "%";
             Gui.Print(Colour.Black, buf, 36, 45);
-            buf = "1d" + (PlayerRaces.Instance[race].HitDieBonus + CharacterClass.ClassInfo[_player.CharacterClassIndex].HitDieBonus);
+            buf = "1d" + (playerRace.HitDieBonus + _player.PlayerClass.HitDieBonus);
             Gui.Print(Colour.Black, buf, 37, 45);
-            if (PlayerRaces.Instance[race].Infravision == 0)
+            if (playerRace.Infravision == 0)
             {
                 Gui.Print(Colour.Black, "nil", 38, 45);
             }
             else
             {
-                buf = PlayerRaces.Instance[race].Infravision + "0 feet";
+                buf = playerRace.Infravision + "0 feet";
                 Gui.Print(Colour.Green, buf, 38, 45);
             }
-            buf = $"{PlayerRaces.Instance[race].BaseSearchBonus + CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseSearchBonus:00}%";
+            buf = $"{playerRace.BaseSearchBonus + _player.PlayerClass.BaseSearchBonus:00}%";
             Gui.Print(Colour.Black, buf, 39, 45);
-            buf = $"{PlayerRaces.Instance[race].BaseSearchFrequency + CharacterClass.ClassInfo[_player.CharacterClassIndex].BaseSearchFrequency:00}%";
+            buf = $"{playerRace.BaseSearchFrequency + _player.PlayerClass.BaseSearchFrequency:00}%";
             Gui.Print(Colour.Black, buf, 40, 45);
-            Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description1, 29, 20);
-            Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description2, 30, 20);
-            Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description3, 31, 20);
-            Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description4, 32, 20);
-            Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description5, 33, 20);
-            Gui.Print(Colour.Purple, PlayerRaces.Instance[race].Description6, 34, 20);
+            Gui.Print(Colour.Purple, playerRace.Description1, 29, 20);
+            Gui.Print(Colour.Purple, playerRace.Description2, 30, 20);
+            Gui.Print(Colour.Purple, playerRace.Description3, 31, 20);
+            Gui.Print(Colour.Purple, playerRace.Description4, 32, 20);
+            Gui.Print(Colour.Purple, playerRace.Description5, 33, 20);
+            Gui.Print(Colour.Purple, playerRace.Description6, 34, 20);
         }
 
         private void DisplayRealmInfo(Realm prealm)
@@ -768,8 +479,8 @@ namespace Cthangband
             int i;
             _player.MaxLevelGained = 1;
             _player.Level = 1;
-            _player.ExperienceMultiplier = _player.Race.ExperienceFactor + _player.CharacterClass.ExperienceFactor;
-            _player.HitDie = _player.Race.HitDieBonus + _player.CharacterClass.HitDieBonus;
+            _player.ExperienceMultiplier = _player.Race.ExperienceFactor + _player.PlayerClass.ExperienceFactor;
+            _player.HitDie = _player.Race.HitDieBonus + _player.PlayerClass.HitDieBonus;
             _player.MaxHealth = _player.HitDie;
             _player.PlayerHp[0] = _player.HitDie;
             int lastroll = _player.HitDie;
@@ -824,53 +535,56 @@ namespace Cthangband
             _player.Gold = gold;
         }
 
+        private List<Realm> GetRealmList(Realm realm)
+        {
+            if (realm == Realm.None)
+            {
+                return new List<Realm> { Realm.None };
+            }
+            var list = new List<Realm>();
+            if ((realm & Realm.Chaos) != 0)
+            {
+                list.Add(Realm.Chaos);
+            }
+            if ((realm & Realm.Corporeal) != 0)
+            {
+                list.Add(Realm.Corporeal);
+            }
+            if ((realm & Realm.Death) != 0)
+            {
+                list.Add(Realm.Death);
+            }
+            if ((realm & Realm.Folk) != 0)
+            {
+                list.Add(Realm.Folk);
+            }
+            if ((realm & Realm.Life) != 0)
+            {
+                list.Add(Realm.Life);
+            }
+            if ((realm & Realm.Nature) != 0)
+            {
+                list.Add(Realm.Nature);
+            }
+            if ((realm & Realm.Sorcery) != 0)
+            {
+                list.Add(Realm.Sorcery);
+            }
+            if ((realm & Realm.Tarot) != 0)
+            {
+                list.Add(Realm.Tarot);
+            }
+            return list;
+        }
+
         private void GetRealmsRandomly()
         {
-            int pclas = _player.CharacterClassIndex;
+            IPlayerClass pclas = _player.PlayerClass;
             _player.Realm1 = Realm.None;
             _player.Realm2 = Realm.None;
-            if (_realmChoices[pclas] == RealmChoice.None)
-            {
-                return;
-            }
-            switch (pclas)
-            {
-                case CharacterClassId.WarriorMage:
-                    _player.Realm1 = Realm.Folk;
-                    break;
-
-                case CharacterClassId.Fanatic:
-                    _player.Realm1 = Realm.Chaos;
-                    break;
-
-                case CharacterClassId.Priest:
-                    _player.Realm1 = ChooseRealmRandomly(RealmChoice.Life | RealmChoice.Death);
-                    break;
-
-                case CharacterClassId.Ranger:
-                    _player.Realm1 = Realm.Nature;
-                    break;
-
-                case CharacterClassId.Druid:
-                    _player.Realm1 = Realm.Nature;
-                    break;
-
-                case CharacterClassId.Cultist:
-                    _player.Realm1 = Realm.Chaos;
-                    break;
-
-                default:
-                    _player.Realm1 = ChooseRealmRandomly(_realmChoices[pclas]);
-                    break;
-            }
-            if (pclas == CharacterClassId.Paladin || pclas == CharacterClassId.Rogue || pclas == CharacterClassId.Fanatic ||
-                pclas == CharacterClassId.Monk || pclas == CharacterClassId.HighMage ||
-                pclas == CharacterClassId.Druid)
-            {
-                return;
-            }
-            _player.Realm2 = ChooseRealmRandomly(_realmChoices[pclas]);
-            if (_player.CharacterClassIndex == CharacterClassId.Priest)
+            _player.Realm1 = pclas.ChooseRealmRandomly(pclas.FirstRealmChoice, _player);
+            _player.Realm2 = pclas.ChooseRealmRandomly(pclas.SecondRealmChoice, _player);
+            if (pclas.HasDeity)
             {
                 switch (_player.Realm2)
                 {
@@ -917,12 +631,12 @@ namespace Cthangband
                     j = dice[index];
                     dice.RemoveAt(index);
                     _player.AbilityScores[i].InnateMax = j;
-                    int bonus = _player.Race.AbilityBonus[i] + _player.CharacterClass.AbilityBonus[i];
+                    int bonus = _player.Race.AbilityBonus[i] + _player.PlayerClass.AbilityBonus[i];
                     _player.AbilityScores[i].Innate = _player.AbilityScores[i].InnateMax;
                     _player.AbilityScores[i].Adjusted = _player.AbilityScores[i]
                         .ModifyStatValue(_player.AbilityScores[i].InnateMax, bonus);
                 }
-                if (_player.AbilityScores[CharacterClass.PrimeStat(_player.CharacterClassIndex)].InnateMax > 13)
+                if (_player.AbilityScores[_player.PlayerClass.PrimeAbilityScore].InnateMax > 13)
                 {
                     break;
                 }
@@ -954,7 +668,7 @@ namespace Cthangband
             {
                 _prevSex = Constants.SexFemale;
                 _prevRace = "Human";
-                _prevClass = CharacterClassId.Warrior;
+                _prevClass = "Warrior";
                 _prevRealm1 = Realm.None;
                 _prevRealm2 = Realm.None;
                 _prevName = "Xena";
@@ -964,7 +678,7 @@ namespace Cthangband
             {
                 _prevSex = ex.GenderIndex;
                 _prevRace = ex.BirthRace;
-                _prevClass = ex.ProfessionIndex;
+                _prevClass = ex.CurrentClass;
                 _prevRealm1 = ex.Realm1;
                 _prevRealm2 = ex.Realm2;
                 _prevName = ex.Name;
@@ -992,7 +706,6 @@ namespace Cthangband
             int stage = 0;
             int[] menu = new int[9];
             bool[] autoChose = new bool[8];
-            Realm[] realmChoice = new Realm[8];
             for (i = 0; i < 8; i++)
             {
                 menu[i] = 0;
@@ -1082,16 +795,16 @@ namespace Cthangband
                         if (menu[0] == Constants.GenerateReplay)
                         {
                             autoChose[stage] = true;
-                            _player.CharacterClassIndex = _prevClass;
-                            _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
+                            _player.CurrentClass = _prevClass;
+                            _player.PlayerClass = PlayerClasses.Instance[_player.CurrentClass];
                             stage++;
                             break;
                         }
                         if (menu[0] == Constants.GenerateRandom)
                         {
                             autoChose[stage] = true;
-                            _player.CharacterClassIndex = Program.Rng.RandomLessThan(Constants.MaxClass);
-                            _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
+                            _player.CurrentClass = PlayerClasses.Instance.RandomClassName();
+                            _player.PlayerClass = PlayerClasses.Instance[_player.CurrentClass];
                             stage++;
                             break;
                         }
@@ -1107,7 +820,7 @@ namespace Cthangband
                             menu[stage] = 0;
                         }
                         MenuDisplay(menu[stage]);
-                        DisplayClassInfo(_classMenu[menu[stage]].Index);
+                        DisplayClassInfo(_classMenu[menu[stage]].Text);
                         Gui.Print(Colour.Orange,
                             "[Use up and down to select an option, right to confirm, or left to go back.]", 43, 1);
                         while (true)
@@ -1150,8 +863,8 @@ namespace Cthangband
                         }
                         if (stage > BirthStage.ClassSelection)
                         {
-                            _player.CharacterClassIndex = _classMenu[menu[BirthStage.ClassSelection]].Index;
-                            _player.CharacterClass = CharacterClass.ClassInfo[_player.CharacterClassIndex];
+                            _player.CurrentClass = _classMenu[menu[BirthStage.ClassSelection]].Text;
+                            _player.PlayerClass = PlayerClasses.Instance[_player.CurrentClass];
                         }
                         break;
 
@@ -1175,7 +888,7 @@ namespace Cthangband
                                 _player.Race = PlayerRaces.Instance[_player.CurrentRace];
                                 _player.GetFirstLevelMutation = _player.Race.Mutates;
                             }
-                            while ((_player.Race.Choice & (1L << _player.CharacterClassIndex)) == 0);
+                            while (_player.Race.AbilityBonus[_player.PlayerClass.PrimeAbilityScore] < 0);
                             stage++;
                             break;
                         }
@@ -1255,81 +968,19 @@ namespace Cthangband
                             stage++;
                             break;
                         }
-                        switch (_player.CharacterClassIndex)
+                        var realmList = GetRealmList(_player.PlayerClass.FirstRealmChoice);
+                        _menuLength = realmList.Count;
+                        if (_menuLength == 1)
                         {
-                            case CharacterClassId.Cultist:
-                            case CharacterClassId.Fanatic:
-                                autoChose[stage] = true;
-                                _player.Realm1 = Realm.Chaos;
-                                stage++;
-                                break;
-
-                            case CharacterClassId.WarriorMage:
-                                autoChose[stage] = true;
-                                _player.Realm1 = Realm.Folk;
-                                stage++;
-                                break;
-
-                            case CharacterClassId.Druid:
-                            case CharacterClassId.Ranger:
-                                autoChose[stage] = true;
-                                _player.Realm1 = Realm.Nature;
-                                stage++;
-                                break;
-
-                            case CharacterClassId.Paladin:
-                            case CharacterClassId.Priest:
-                                realmChoice[0] = Realm.Life;
-                                realmChoice[1] = Realm.Death;
-                                _menuLength = 2;
-                                break;
-
-                            case CharacterClassId.Rogue:
-                                realmChoice[0] = Realm.Death;
-                                realmChoice[1] = Realm.Sorcery;
-                                realmChoice[2] = Realm.Tarot;
-                                realmChoice[3] = Realm.Folk;
-                                _menuLength = 4;
-                                break;
-
-                            case CharacterClassId.HighMage:
-                            case CharacterClassId.Mage:
-                                realmChoice[0] = Realm.Life;
-                                realmChoice[1] = Realm.Death;
-                                realmChoice[2] = Realm.Nature;
-                                realmChoice[3] = Realm.Sorcery;
-                                realmChoice[4] = Realm.Corporeal;
-                                realmChoice[5] = Realm.Tarot;
-                                realmChoice[6] = Realm.Chaos;
-                                realmChoice[7] = Realm.Folk;
-                                _menuLength = 8;
-                                break;
-
-                            case CharacterClassId.Monk:
-                                realmChoice[0] = Realm.Corporeal;
-                                realmChoice[1] = Realm.Tarot;
-                                realmChoice[2] = Realm.Chaos;
-                                _menuLength = 3;
-                                break;
-
-                            case CharacterClassId.ChosenOne:
-                            case CharacterClassId.Channeler:
-                            case CharacterClassId.Mindcrafter:
-                            case CharacterClassId.Mystic:
-                            case CharacterClassId.Warrior:
-                                autoChose[stage] = true;
-                                _player.Realm1 = Realm.None;
-                                stage++;
-                                break;
-                        }
-                        if (stage > BirthStage.RealmSelection1)
-                        {
+                            autoChose[stage] = true;
+                            _player.Realm1 = realmList[0];
+                            stage++;
                             break;
                         }
                         autoChose[stage] = false;
                         for (i = 0; i < _menuLength; i++)
                         {
-                            _menuItem[i] = Spellcasting.RealmName(realmChoice[i]);
+                            _menuItem[i] = Spellcasting.RealmName(realmList[i]);
                         }
                         DisplayPartialCharacter(stage);
                         if (menu[stage] >= _menuLength)
@@ -1337,7 +988,7 @@ namespace Cthangband
                             menu[stage] = 0;
                         }
                         MenuDisplay(menu[stage]);
-                        DisplayRealmInfo(realmChoice[menu[stage]]);
+                        DisplayRealmInfo(realmList[menu[stage]]);
                         Gui.Print(Colour.Orange,
                             "[Use up and down to select an option, right to confirm, or left to go back.]", 43, 1);
                         while (true)
@@ -1380,7 +1031,7 @@ namespace Cthangband
                         }
                         if (stage > BirthStage.RealmSelection1)
                         {
-                            _player.Realm1 = realmChoice[menu[BirthStage.RealmSelection1]];
+                            _player.Realm1 = realmList[menu[BirthStage.RealmSelection1]];
                         }
                         break;
 
@@ -1389,7 +1040,7 @@ namespace Cthangband
                         {
                             autoChose[stage] = true;
                             _player.Realm2 = _prevRealm2;
-                            if (_player.CharacterClassIndex == CharacterClassId.Priest)
+                            if (_player.PlayerClass.HasDeity)
                             {
                                 switch (_player.Realm2)
                                 {
@@ -1432,81 +1083,19 @@ namespace Cthangband
                             break;
                         }
                         _player.Realm2 = Realm.None;
-                        switch (_player.CharacterClassIndex)
+                        realmList = GetRealmList(_player.PlayerClass.SecondRealmChoice);
+                        _menuLength = realmList.Count;
+                        if (_menuLength == 1)
                         {
-                            case CharacterClassId.ChosenOne:
-                            case CharacterClassId.Channeler:
-                            case CharacterClassId.Mindcrafter:
-                            case CharacterClassId.Warrior:
-                            case CharacterClassId.Fanatic:
-                            case CharacterClassId.HighMage:
-                            case CharacterClassId.Paladin:
-                            case CharacterClassId.Rogue:
-                            case CharacterClassId.Monk:
-                            case CharacterClassId.Mystic:
-                            case CharacterClassId.Druid:
-                                autoChose[stage] = true;
-                                _player.Realm2 = Realm.None;
-                                stage++;
-                                break;
-
-                            case CharacterClassId.Cultist:
-                            case CharacterClassId.WarriorMage:
-                            case CharacterClassId.Ranger:
-                            case CharacterClassId.Priest:
-                            case CharacterClassId.Mage:
-                                _menuLength = 0;
-                                int realmFilter = _realmChoices[_player.CharacterClassIndex];
-                                if ((realmFilter & RealmChoice.Life) != 0 && _player.Realm1 != Realm.Life)
-                                {
-                                    realmChoice[_menuLength] = Realm.Life;
-                                    _menuLength++;
-                                }
-                                if ((realmFilter & RealmChoice.Death) != 0 && _player.Realm1 != Realm.Death)
-                                {
-                                    realmChoice[_menuLength] = Realm.Death;
-                                    _menuLength++;
-                                }
-                                if ((realmFilter & RealmChoice.Nature) != 0 && _player.Realm1 != Realm.Nature)
-                                {
-                                    realmChoice[_menuLength] = Realm.Nature;
-                                    _menuLength++;
-                                }
-                                if ((realmFilter & RealmChoice.Sorcery) != 0 && _player.Realm1 != Realm.Sorcery)
-                                {
-                                    realmChoice[_menuLength] = Realm.Sorcery;
-                                    _menuLength++;
-                                }
-                                if ((realmFilter & RealmChoice.Corporeal) != 0 && _player.Realm1 != Realm.Corporeal)
-                                {
-                                    realmChoice[_menuLength] = Realm.Corporeal;
-                                    _menuLength++;
-                                }
-                                if ((realmFilter & RealmChoice.Tarot) != 0 && _player.Realm1 != Realm.Tarot)
-                                {
-                                    realmChoice[_menuLength] = Realm.Tarot;
-                                    _menuLength++;
-                                }
-                                if ((realmFilter & RealmChoice.Chaos) != 0 && _player.Realm1 != Realm.Chaos)
-                                {
-                                    realmChoice[_menuLength] = Realm.Chaos;
-                                    _menuLength++;
-                                }
-                                if ((realmFilter & RealmChoice.Folk) != 0 && _player.Realm1 != Realm.Folk)
-                                {
-                                    realmChoice[_menuLength] = Realm.Folk;
-                                    _menuLength++;
-                                }
-                                break;
-                        }
-                        if (stage > BirthStage.RealmSelection2)
-                        {
+                            autoChose[stage] = true;
+                            _player.Realm1 = realmList[0];
+                            stage++;
                             break;
                         }
                         autoChose[stage] = false;
                         for (i = 0; i < _menuLength; i++)
                         {
-                            _menuItem[i] = Spellcasting.RealmName(realmChoice[i]);
+                            _menuItem[i] = Spellcasting.RealmName(realmList[i]);
                         }
                         DisplayPartialCharacter(stage);
                         if (menu[stage] >= _menuLength)
@@ -1514,7 +1103,7 @@ namespace Cthangband
                             menu[stage] = 0;
                         }
                         MenuDisplay(menu[stage]);
-                        DisplayRealmInfo(realmChoice[menu[stage]]);
+                        DisplayRealmInfo(realmList[menu[stage]]);
                         Gui.Print(Colour.Orange,
                             "[Use up and down to select an option, right to confirm, or left to go back.]", 43, 1);
                         while (true)
@@ -1557,8 +1146,8 @@ namespace Cthangband
                         }
                         if (stage > BirthStage.RealmSelection2)
                         {
-                            _player.Realm2 = realmChoice[menu[BirthStage.RealmSelection2]];
-                            if (_player.CharacterClassIndex == CharacterClassId.Priest)
+                            _player.Realm2 = realmList[menu[BirthStage.RealmSelection2]];
+                            if (_player.PlayerClass.HasDeity)
                             {
                                 switch (_player.Realm2)
                                 {
@@ -1772,7 +1361,7 @@ namespace Cthangband
                 _player.Inventory.InvenCarry(item, false);
                 item = new Item();
             }
-            if (_player.Race.Glows || _player.CharacterClassIndex == CharacterClassId.ChosenOne)
+            if (_player.Race.Glows || _player.PlayerClass.Glows)
             {
                 item.AssignItemType(
                     Profile.Instance.ItemTypes.LookupKind(ItemCategory.Scroll, ScrollType.Light));
@@ -1794,10 +1383,12 @@ namespace Cthangband
                 _player.Inventory[InventorySlot.Lightsource] = carried;
                 _player.WeightCarried += carried.Weight;
             }
+            ItemIdentifier[] identifiers = _player.PlayerClass.StartingItems;
             for (int i = 0; i < 3; i++)
             {
-                ItemCategory tv = _playerInit[_player.CharacterClassIndex][i].Category;
-                int sv = _playerInit[_player.CharacterClassIndex][i].SubCategory;
+                ItemIdentifier identifier = identifiers[i];
+                ItemCategory tv = identifier.Category;
+                int sv = identifier.SubCategory;
                 if (tv == ItemCategory.SorceryBook)
                 {
                     tv = _player.Realm1.ToSpellBookItemCategory();
@@ -1812,10 +1403,6 @@ namespace Cthangband
                 }
                 item = new Item();
                 item.AssignItemType(Profile.Instance.ItemTypes.LookupKind(tv, sv));
-                if (tv == ItemCategory.Sword && _player.CharacterClassIndex == CharacterClassId.Rogue && _player.Realm1 == Realm.Death)
-                {
-                    item.RareItemTypeIndex = Enumerations.RareItemType.WeaponOfPoisoning;
-                }
                 if (tv == ItemCategory.Wand)
                 {
                     item.TypeSpecificValue = 1;

@@ -41,8 +41,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 0;
 
-        public override uint Choice => 0xDF57;
-
         public override string Description1 => "Draconians are related to dragons and this shows both in";
 
         public override string Description2 => "their physical superiority and their legendary arrogance.";
@@ -173,112 +171,6 @@ namespace Cthangband.PlayerRace
             {
                 projectile = new ProjectFire(SaveGame.Instance.SpellEffects);
                 projectileDescription = "fire";
-            }
-            // Chance of replacing the default fire/cold element with a special one
-            if (Program.Rng.DieRoll(100) < player.Level)
-            {
-                switch (player.CharacterClassIndex)
-                {
-                    case CharacterClassId.Warrior:
-                    case CharacterClassId.Ranger:
-                    case CharacterClassId.Druid:
-                    case CharacterClassId.ChosenOne:
-                        if (Program.Rng.DieRoll(3) == 1)
-                        {
-                            projectile = new ProjectMissile(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "the elements";
-                        }
-                        else
-                        {
-                            projectile = new ProjectExplode(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "shards";
-                        }
-                        break;
-
-                    case CharacterClassId.Mage:
-                    case CharacterClassId.WarriorMage:
-                    case CharacterClassId.HighMage:
-                    case CharacterClassId.Channeler:
-                        if (Program.Rng.DieRoll(3) == 1)
-                        {
-                            projectile = new ProjectVis(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "vis";
-                        }
-                        else
-                        {
-                            projectile = new ProjectDisenchant(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "disenchantment";
-                        }
-                        break;
-
-                    case CharacterClassId.Fanatic:
-                    case CharacterClassId.Cultist:
-                        if (Program.Rng.DieRoll(3) != 1)
-                        {
-                            projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "confusion";
-                        }
-                        else
-                        {
-                            projectile = new ProjectChaos(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "chaos";
-                        }
-                        break;
-
-                    case CharacterClassId.Monk:
-                        if (Program.Rng.DieRoll(3) != 1)
-                        {
-                            projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "confusion";
-                        }
-                        else
-                        {
-                            projectile = new ProjectSound(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "sound";
-                        }
-                        break;
-
-                    case CharacterClassId.Mindcrafter:
-                    case CharacterClassId.Mystic:
-                        if (Program.Rng.DieRoll(3) != 1)
-                        {
-                            projectile = new ProjectConfusion(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "confusion";
-                        }
-                        else
-                        {
-                            projectile = new ProjectPsi(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "mental energy";
-                        }
-                        break;
-
-                    case CharacterClassId.Priest:
-                    case CharacterClassId.Paladin:
-                        if (Program.Rng.DieRoll(3) == 1)
-                        {
-                            projectile = new ProjectHellFire(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "hellfire";
-                        }
-                        else
-                        {
-                            projectile = new ProjectHolyFire(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "holy fire";
-                        }
-                        break;
-
-                    case CharacterClassId.Rogue:
-                        if (Program.Rng.DieRoll(3) == 1)
-                        {
-                            projectile = new ProjectDark(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "darkness";
-                        }
-                        else
-                        {
-                            projectile = new ProjectPoison(SaveGame.Instance.SpellEffects);
-                            projectileDescription = "poison";
-                        }
-                        break;
-                }
             }
             if (saveGame.CommandEngine.CheckIfRacialPowerWorks(1, player.Level, Ability.Constitution, 12))
             {

@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellDimensionDoor : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 12;
+
+        public override int DefaultVisCost => 12;
+
+        public override int FirstCastExperience => 40;
+
+        public override string Name => "Dimension Door";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -34,49 +44,6 @@ namespace Cthangband.Spells.Sorcery
             else
             {
                 saveGame.SpellEffects.TeleportPlayerTo(ij, ii);
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Dimension Door";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 12;
-                    VisCost = 12;
-                    BaseFailure = 80;
-                    FirstCastExperience = 40;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 15;
-                    VisCost = 10;
-                    BaseFailure = 80;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 15;
-                    VisCost = 12;
-                    BaseFailure = 70;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 9;
-                    VisCost = 9;
-                    BaseFailure = 70;
-                    FirstCastExperience = 40;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

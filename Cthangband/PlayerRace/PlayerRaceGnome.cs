@@ -39,8 +39,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 3;
 
-        public override uint Choice => 0x1E0F;
-
         public override string Description1 => "Gnomes are small, playful, and talented at magic. However,";
 
         public override string Description2 => "they are almost chronically incapable of taking anything";

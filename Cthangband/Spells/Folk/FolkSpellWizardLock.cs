@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Folk
     [Serializable]
     internal class FolkSpellWizardLock : BaseSpell
     {
+        public override int DefaultBaseFailure => 33;
+
+        public override int DefaultLevel => 1;
+
+        public override int DefaultVisCost => 1;
+
+        public override int FirstCastExperience => 5;
+
+        public override string Name => "Wizard Lock";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             TargetEngine targetEngine = new TargetEngine(player, level);
@@ -22,63 +32,6 @@ namespace Cthangband.Spells.Folk
                 return;
             }
             saveGame.SpellEffects.WizardLock(dir);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Wizard Lock";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 33;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 33;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 5;
-                    VisCost = 2;
-                    BaseFailure = 33;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 3;
-                    VisCost = 2;
-                    BaseFailure = 33;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 2;
-                    VisCost = 1;
-                    BaseFailure = 33;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 23;
-                    FirstCastExperience = 5;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

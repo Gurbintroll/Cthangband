@@ -32,7 +32,7 @@ namespace Cthangband.Spells
             if (_player.HasAntiMagic)
             {
                 string whichMagicType = "magic";
-                if (_player.CharacterClassIndex == CharacterClassId.Mindcrafter || _player.CharacterClassIndex == CharacterClassId.Mystic)
+                if (_player.PlayerClass.CastingType == CastingType.Mentalism)
                 {
                     whichMagicType = "psychic talents";
                 }

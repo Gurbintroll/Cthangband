@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellPhaseDoor : BaseSpell
     {
+        public override int DefaultBaseFailure => 24;
+
+        public override int DefaultLevel => 1;
+
+        public override int DefaultVisCost => 2;
+
+        public override int FirstCastExperience => 4;
+
+        public override string Name => "Phase Door";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.TeleportPlayer(10);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Phase Door";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 1;
-                    VisCost = 2;
-                    BaseFailure = 24;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 7;
-                    VisCost = 2;
-                    BaseFailure = 55;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 2;
-                    VisCost = 2;
-                    BaseFailure = 24;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 1;
-                    VisCost = 1;
-                    BaseFailure = 15;
-                    FirstCastExperience = 4;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

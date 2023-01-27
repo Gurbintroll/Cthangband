@@ -40,8 +40,6 @@ namespace Cthangband.PlayerRace
 
         public override int BaseStealthBonus => 3;
 
-        public override uint Choice => 0xBFDF;
-
         public override string Description1 => "Dark elves are underground elves who have a kinship with";
 
         public override string Description2 => "fungi the way that surface elves have a kinship with trees.";

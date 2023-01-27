@@ -14,67 +14,19 @@ namespace Cthangband.Spells.Tarot
     [Serializable]
     internal class TarotSpellBanish : BaseSpell
     {
+        public override int DefaultBaseFailure => 70;
+
+        public override int DefaultLevel => 42;
+
+        public override int DefaultVisCost => 40;
+
+        public override int FirstCastExperience => 12;
+
+        public override string Name => "Banish";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.BanishMonsters(player.Level * 4);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Banish";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 42;
-                    VisCost = 40;
-                    BaseFailure = 70;
-                    FirstCastExperience = 12;
-                    break;
-
-                case CharacterClassId.Priest:
-                case CharacterClassId.Monk:
-                    Level = 45;
-                    VisCost = 45;
-                    BaseFailure = 70;
-                    FirstCastExperience = 12;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 49;
-                    VisCost = 50;
-                    BaseFailure = 70;
-                    FirstCastExperience = 12;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 48;
-                    VisCost = 46;
-                    BaseFailure = 70;
-                    FirstCastExperience = 12;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 39;
-                    VisCost = 36;
-                    BaseFailure = 60;
-                    FirstCastExperience = 12;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

@@ -16,23 +16,19 @@ namespace Cthangband.Spells.Death
     [Serializable]
     internal class DeathSpellInvokeSpirits : BaseSpell
     {
+        public override int DefaultBaseFailure => 80;
+
+        public override int DefaultLevel => 10;
+
+        public override int DefaultVisCost => 15;
+
+        public override int FirstCastExperience => 30;
+
+        public override string Name => "Invoke Spirits";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            int beam;
-            switch (player.CharacterClassIndex)
-            {
-                case CharacterClassId.Mage:
-                    beam = player.Level;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    beam = player.Level + 10;
-                    break;
-
-                default:
-                    beam = player.Level / 2;
-                    break;
-            }
+            int beam = player.PlayerClass.SpellBeamChance(player.Level);
             TargetEngine targetEngine = new TargetEngine(player, level);
             int die = Program.Rng.DieRoll(100) + (player.Level / 5);
             if (!targetEngine.GetDirectionWithAim(out int dir))
@@ -148,70 +144,6 @@ namespace Cthangband.Spells.Death
             if (die < 31)
             {
                 Profile.Instance.MsgPrint("Sepulchral voices chuckle. 'Soon you will join us, mortal.'");
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Invoke Spirits";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 10;
-                    VisCost = 15;
-                    BaseFailure = 80;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 13;
-                    VisCost = 15;
-                    BaseFailure = 80;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 23;
-                    VisCost = 20;
-                    BaseFailure = 40;
-                    FirstCastExperience = 20;
-                    break;
-
-                case CharacterClassId.Ranger:
-                    Level = 25;
-                    VisCost = 25;
-                    BaseFailure = 80;
-                    FirstCastExperience = 100;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 15;
-                    VisCost = 20;
-                    BaseFailure = 80;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 12;
-                    VisCost = 18;
-                    BaseFailure = 80;
-                    FirstCastExperience = 30;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 8;
-                    VisCost = 10;
-                    BaseFailure = 70;
-                    FirstCastExperience = 30;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

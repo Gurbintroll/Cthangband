@@ -14,52 +14,19 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellEnchantArmour : BaseSpell
     {
+        public override int DefaultBaseFailure => 95;
+
+        public override int DefaultLevel => 40;
+
+        public override int DefaultVisCost => 100;
+
+        public override int FirstCastExperience => 200;
+
+        public override string Name => "Enchant Armour";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.EnchantSpell(0, 0, Program.Rng.RandomLessThan(3) + 2);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Enchant Armour";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 40;
-                    VisCost = 100;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 44;
-                    VisCost = 100;
-                    BaseFailure = 80;
-                    FirstCastExperience = 100;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 45;
-                    VisCost = 100;
-                    BaseFailure = 95;
-                    FirstCastExperience = 200;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 35;
-                    VisCost = 80;
-                    BaseFailure = 85;
-                    FirstCastExperience = 200;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

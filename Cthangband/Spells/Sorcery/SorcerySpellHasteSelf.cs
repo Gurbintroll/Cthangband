@@ -14,6 +14,16 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellHasteSelf : BaseSpell
     {
+        public override int DefaultBaseFailure => 60;
+
+        public override int DefaultLevel => 10;
+
+        public override int DefaultVisCost => 12;
+
+        public override int FirstCastExperience => 8;
+
+        public override string Name => "Haste Self";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             if (player.TimedHaste == 0)
@@ -23,49 +33,6 @@ namespace Cthangband.Spells.Sorcery
             else
             {
                 player.SetTimedHaste(player.TimedHaste + Program.Rng.DieRoll(5));
-            }
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Haste Self";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 18;
-                    VisCost = 12;
-                    BaseFailure = 60;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 31;
-                    VisCost = 23;
-                    BaseFailure = 80;
-                    FirstCastExperience = 5;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 20;
-                    VisCost = 15;
-                    BaseFailure = 60;
-                    FirstCastExperience = 8;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 13;
-                    VisCost = 8;
-                    BaseFailure = 50;
-                    FirstCastExperience = 8;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
             }
         }
 

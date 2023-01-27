@@ -14,54 +14,21 @@ namespace Cthangband.Spells.Sorcery
     [Serializable]
     internal class SorcerySpellDetectDoorsAndTraps : BaseSpell
     {
+        public override int DefaultBaseFailure => 25;
+
+        public override int DefaultLevel => 3;
+
+        public override int DefaultVisCost => 3;
+
+        public override int FirstCastExperience => 1;
+
+        public override string Name => "Detect Doors and Traps";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             saveGame.SpellEffects.DetectTraps();
             saveGame.SpellEffects.DetectDoors();
             saveGame.SpellEffects.DetectStairs();
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Detect Doors and Traps";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 3;
-                    VisCost = 3;
-                    BaseFailure = 25;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.Rogue:
-                    Level = 8;
-                    VisCost = 3;
-                    BaseFailure = 65;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 3;
-                    VisCost = 3;
-                    BaseFailure = 25;
-                    FirstCastExperience = 1;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 2;
-                    VisCost = 2;
-                    BaseFailure = 15;
-                    FirstCastExperience = 1;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)

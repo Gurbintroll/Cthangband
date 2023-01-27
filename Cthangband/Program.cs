@@ -581,7 +581,7 @@ namespace Cthangband
             Colour color;
             int tempLev;
             string tempRace;
-            int tempClass;
+            string tempClass;
             Realm tempRealm;
             string tempName;
             if (tempDeath)
@@ -589,7 +589,7 @@ namespace Cthangband
                 color = Colour.Grey;
                 tempLev = tempProfile.ExPlayer.Level;
                 tempRace = tempProfile.ExPlayer.CurrentRace;
-                tempClass = tempProfile.ExPlayer.ProfessionIndex;
+                tempClass = tempProfile.ExPlayer.CurrentClass;
                 tempRealm = tempProfile.ExPlayer.Realm1;
                 tempName = tempProfile.ExPlayer.Name.Trim() + tempProfile.ExPlayer.Generation.ToRoman(true);
             }
@@ -602,7 +602,7 @@ namespace Cthangband
                 }
                 tempLev = tempProfile.Game.Player.Level;
                 tempRace = tempProfile.Game.Player.CurrentRace;
-                tempClass = tempProfile.Game.Player.CharacterClassIndex;
+                tempClass = tempProfile.Game.Player.CurrentClass;
                 tempRealm = tempProfile.Game.Player.Realm1;
                 tempName = tempProfile.Game.Player.Name.Trim() + tempProfile.Game.Player.Generation.ToRoman(true);
             }
@@ -611,7 +611,7 @@ namespace Cthangband
             Gui.Print(color, tempchar, displayRow + 1, displayCol + 14 - (tempchar.Length / 2));
             tempchar = PlayerRaces.Instance[tempRace].Title;
             Gui.Print(color, tempchar, displayRow + 2, displayCol + 14 - (tempchar.Length / 2));
-            tempchar = CharacterClass.ClassSubName(tempClass, tempRealm);
+            tempchar = tempProfile.Game.Player.PlayerClass.ClassSubName(tempRealm);
             Gui.Print(color, tempchar, displayRow + 3, displayCol + 14 - (tempchar.Length / 2));
             if (tempDeath)
             {

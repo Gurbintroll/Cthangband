@@ -15,59 +15,19 @@ namespace Cthangband.Spells.Life
     [Serializable]
     internal class LifeSpellSatisfyHunger : BaseSpell
     {
+        public override int DefaultBaseFailure => 45;
+
+        public override int DefaultLevel => 15;
+
+        public override int DefaultVisCost => 14;
+
+        public override int FirstCastExperience => 3;
+
+        public override string Name => "Satisfy Hunger";
+
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.SetFood(Constants.PyFoodMax - 1);
-        }
-
-        public override void Initialise(int characterClass)
-        {
-            Name = "Satisfy Hunger";
-            switch (characterClass)
-            {
-                case CharacterClassId.Mage:
-                    Level = 15;
-                    VisCost = 14;
-                    BaseFailure = 45;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.Priest:
-                    Level = 7;
-                    VisCost = 5;
-                    BaseFailure = 38;
-                    FirstCastExperience = 4;
-                    break;
-
-                case CharacterClassId.Paladin:
-                    Level = 13;
-                    VisCost = 10;
-                    BaseFailure = 45;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.WarriorMage:
-                case CharacterClassId.Cultist:
-                    Level = 16;
-                    VisCost = 16;
-                    BaseFailure = 45;
-                    FirstCastExperience = 3;
-                    break;
-
-                case CharacterClassId.HighMage:
-                    Level = 12;
-                    VisCost = 10;
-                    BaseFailure = 35;
-                    FirstCastExperience = 3;
-                    break;
-
-                default:
-                    Level = 99;
-                    VisCost = 0;
-                    BaseFailure = 0;
-                    FirstCastExperience = 0;
-                    break;
-            }
         }
 
         protected override string Comment(Player player)
