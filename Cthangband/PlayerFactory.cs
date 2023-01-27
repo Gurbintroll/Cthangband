@@ -1088,7 +1088,7 @@ namespace Cthangband
                         if (_menuLength == 1)
                         {
                             autoChose[stage] = true;
-                            _player.Realm1 = realmList[0];
+                            _player.Realm2 = realmList[0];
                             stage++;
                             break;
                         }
