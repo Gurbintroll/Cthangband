@@ -39,9 +39,10 @@ namespace Cthangband
 
         public void MakeIslandContours()
         {
-            bool reject = false;
+            bool reject;
             do
             {
+                reject = false;
                 PerlinNoise perlinNoise = new PerlinNoise(Program.Rng.RandomLessThan(int.MaxValue - 1));
                 const int mapWidth = (10 * (Constants.WildernessWidth - 1)) + 3;
                 const int mapHeight = (10 * (Constants.WildernessHeight - 1)) + 3;
