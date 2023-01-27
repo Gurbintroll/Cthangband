@@ -542,35 +542,35 @@ namespace Cthangband
                 return new List<Realm> { Realm.None };
             }
             var list = new List<Realm>();
-            if ((realm & Realm.Chaos) != 0)
+            if ((realm & Realm.Chaos) != 0 && _player.Realm1 != Realm.Chaos)
             {
                 list.Add(Realm.Chaos);
             }
-            if ((realm & Realm.Corporeal) != 0)
+            if ((realm & Realm.Corporeal) != 0 && _player.Realm1 != Realm.Corporeal)
             {
                 list.Add(Realm.Corporeal);
             }
-            if ((realm & Realm.Death) != 0)
+            if ((realm & Realm.Death) != 0 && _player.Realm1 != Realm.Death)
             {
                 list.Add(Realm.Death);
             }
-            if ((realm & Realm.Folk) != 0)
+            if ((realm & Realm.Folk) != 0 && _player.Realm1 != Realm.Folk)
             {
                 list.Add(Realm.Folk);
             }
-            if ((realm & Realm.Life) != 0)
+            if ((realm & Realm.Life) != 0 && _player.Realm1 != Realm.Life)
             {
                 list.Add(Realm.Life);
             }
-            if ((realm & Realm.Nature) != 0)
+            if ((realm & Realm.Nature) != 0 && _player.Realm1 != Realm.Nature)
             {
                 list.Add(Realm.Nature);
             }
-            if ((realm & Realm.Sorcery) != 0)
+            if ((realm & Realm.Sorcery) != 0 && _player.Realm1 != Realm.Sorcery)
             {
                 list.Add(Realm.Sorcery);
             }
-            if ((realm & Realm.Tarot) != 0)
+            if ((realm & Realm.Tarot) != 0 && _player.Realm1 != Realm.Tarot)
             {
                 list.Add(Realm.Tarot);
             }
