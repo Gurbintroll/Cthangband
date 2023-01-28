@@ -37,7 +37,7 @@ namespace Cthangband.Spells
                     Add(new ChaosSpellTrapAndDoorDestruction());
                     Add(new ChaosSpellFlashOfLight());
                     Add(new ChaosSpellTouchOfConfusion());
-                    Add(new ChaosSpellVisBurst());
+                    Add(new ChaosSpellPowerBurst());
                     Add(new ChaosSpellFireBolt());
                     Add(new ChaosSpellFistOfForce());
                     Add(new ChaosSpellTeleportSelf());
@@ -46,8 +46,8 @@ namespace Cthangband.Spells
                     Add(new ChaosSpellChaosBolt());
                     Add(new ChaosSpellSonicBoom());
                     Add(new ChaosSpellDoomBolt());
-                    Add(new ChaosSpellFireBall());
                     Add(new ChaosSpellTeleportOther());
+                    Add(new ChaosSpellFireBall());
                     Add(new ChaosSpellWordOfDestruction());
                     Add(new ChaosSpellInvokeChaos());
                     // G'harne Fragments
@@ -65,7 +65,7 @@ namespace Cthangband.Spells
                     Add(new ChaosSpellFlameStrike());
                     Add(new ChaosSpellCallChaos());
                     Add(new ChaosSpellShardBall());
-                    Add(new ChaosSpellVisStorm());
+                    Add(new ChaosSpellPowerStorm());
                     Add(new ChaosSpellBreatheChaos());
                     Add(new ChaosSpellCallTheVoid());
                     break;
@@ -91,17 +91,17 @@ namespace Cthangband.Spells
                     Add(new CorporealSpellResistTrue());
                     // De Vermis Mysteriis
                     Add(new CorporealSpellHorrificVisage());
+                    Add(new CorporealSpellMoveBody());
                     Add(new CorporealSpellSeeMagic());
                     Add(new CorporealSpellStoneSkin());
-                    Add(new CorporealSpellMoveBody());
                     Add(new CorporealSpellMutateBody());
                     Add(new CorporealSpellKnowSelf());
                     Add(new CorporealSpellTeleportLevel());
                     Add(new CorporealSpellWordOfRecall());
                     // Pnakotic Manuscript
                     Add(new CorporealSpellHeroism());
-                    Add(new CorporealSpellWraithform());
                     Add(new CorporealSpellAttunement());
+                    Add(new CorporealSpellWraithform());
                     Add(new CorporealSpellRestoreBody());
                     Add(new CorporealSpellHealingTrue());
                     Add(new CorporealSpellHypnoticEyes());
@@ -130,8 +130,8 @@ namespace Cthangband.Spells
                     Add(new DeathSpellRestoreLife());
                     // Cultes des Goules
                     Add(new DeathSpellBerserk());
-                    Add(new DeathSpellInvokeSpirits());
                     Add(new DeathSpellDarkBolt());
+                    Add(new DeathSpellInvokeSpirits());
                     Add(new DeathSpellBattleFrenzy());
                     Add(new DeathSpellVampirismTrue());
                     Add(new DeathSpellVampiricBranding());
@@ -221,34 +221,34 @@ namespace Cthangband.Spells
                     Add(new LifeSpellBlessWeapon());
                     Add(new LifeSpellRestoration());
                     Add(new LifeSpellHealingTrue());
-                    Add(new LifeSpellHolyVision());
                     Add(new LifeSpellDivineIntervention());
+                    Add(new LifeSpellHolyVision());
                     Add(new LifeSpellHolyInvulnerability());
                     break;
 
                 case Realm.Nature:
                     // Call of the Wild
                     Add(new NatureSpellDetectCreatures());
+                    Add(new NatureSpellDaylight());
                     Add(new NatureSpellFirstAid());
                     Add(new NatureSpellDetectDoorsAndTraps());
                     Add(new NatureSpellForaging());
-                    Add(new NatureSpellDaylight());
                     Add(new NatureSpellAnimalTaming());
-                    Add(new NatureSpellResistEnvironment());
-                    Add(new NatureSpellCureWoundsAndPoison());
-                    // Nature Mastery
-                    Add(new NatureSpellStoneToMud());
                     Add(new NatureSpellLightningBolt());
-                    Add(new NatureSpellNatureAwareness());
+                    Add(new NatureSpellResistEnvironment());
+                    // Nature Mastery
+                    Add(new NatureSpellCureWoundsAndPoison());
                     Add(new NatureSpellFrostBolt());
+                    Add(new NatureSpellNatureAwareness());
                     Add(new NatureSpellRayOfSunlight());
+                    Add(new NatureSpellStoneToMud());
                     Add(new NatureSpellEntangle());
                     Add(new NatureSpellSummonAnimal());
                     Add(new NatureSpellHerbalHealing());
                     // Revelations of Glaaki
                     Add(new NatureSpellDoorCreation());
-                    Add(new NatureSpellStairBuilding());
                     Add(new NatureSpellStoneSkin());
+                    Add(new NatureSpellStairBuilding());
                     Add(new NatureSpellResistanceTrue());
                     Add(new NatureSpellAnimalFriendship());
                     Add(new NatureSpellStoneTell());

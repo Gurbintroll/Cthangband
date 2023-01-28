@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Life
     {
         public override int DefaultBaseFailure => 80;
 
-        public override int DefaultLevel => 35;
+        public override int DefaultLevel => 36;
 
         public override int DefaultVisCost => 55;
 

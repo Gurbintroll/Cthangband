@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Nature
     {
         public override int DefaultBaseFailure => 75;
 
-        public override int DefaultLevel => 10;
+        public override int DefaultLevel => 12;
 
         public override int DefaultVisCost => 12;
 

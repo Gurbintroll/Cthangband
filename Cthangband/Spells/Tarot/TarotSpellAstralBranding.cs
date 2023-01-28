@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Tarot
     {
         public override int DefaultBaseFailure => 80;
 
-        public override int DefaultLevel => 35;
+        public override int DefaultLevel => 37;
 
         public override int DefaultVisCost => 70;
 

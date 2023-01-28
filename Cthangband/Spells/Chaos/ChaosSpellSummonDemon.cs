@@ -16,7 +16,7 @@ namespace Cthangband.Spells.Chaos
     {
         public override int DefaultBaseFailure => 90;
 
-        public override int DefaultLevel => 47;
+        public override int DefaultLevel => 46;
 
         public override int DefaultVisCost => 100;
 

@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Death
     {
         public override int DefaultBaseFailure => 95;
 
-        public override int DefaultLevel => 30;
+        public override int DefaultLevel => 28;
 
         public override int DefaultVisCost => 40;
 

@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Corporeal
     {
         public override int DefaultBaseFailure => 40;
 
-        public override int DefaultLevel => 10;
+        public override int DefaultLevel => 14;
 
         public override int DefaultVisCost => 10;
 

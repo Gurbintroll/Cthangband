@@ -15,13 +15,13 @@ namespace Cthangband.Spells.Life
     {
         public override int DefaultBaseFailure => 50;
 
-        public override int DefaultLevel => 9;
+        public override int DefaultLevel => 10;
 
         public override int DefaultVisCost => 9;
 
         public override int FirstCastExperience => 40;
 
-        public override string Name => "Heriosm";
+        public override string Name => "Heroism";
 
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

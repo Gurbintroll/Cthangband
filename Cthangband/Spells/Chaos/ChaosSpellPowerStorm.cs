@@ -12,7 +12,7 @@ using System;
 namespace Cthangband.Spells.Chaos
 {
     [Serializable]
-    internal class ChaosSpellVisStorm : BaseSpell
+    internal class ChaosSpellPowerStorm : BaseSpell
     {
         public override int DefaultBaseFailure => 85;
 
@@ -22,7 +22,7 @@ namespace Cthangband.Spells.Chaos
 
         public override int FirstCastExperience => 200;
 
-        public override string Name => "Vis Storm";
+        public override string Name => "Power Storm";
 
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {

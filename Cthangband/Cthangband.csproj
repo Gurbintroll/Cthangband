@@ -515,8 +515,8 @@
     <Compile Include="Spells\Chaos\ChaosSpellGravityBeam.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellInvokeChaos.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellMagicMissile.cs" />
-    <Compile Include="Spells\Chaos\ChaosSpellVisBurst.cs" />
-    <Compile Include="Spells\Chaos\ChaosSpellVisStorm.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellPowerBurst.cs" />
+    <Compile Include="Spells\Chaos\ChaosSpellPowerStorm.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellMeteorSwarm.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellPolymorphOther.cs" />
     <Compile Include="Spells\Chaos\ChaosSpellPolymorphSelf.cs" />

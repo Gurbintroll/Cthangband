@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Folk
     {
         public override int DefaultBaseFailure => 60;
 
-        public override int DefaultLevel => 25;
+        public override int DefaultLevel => 27;
 
         public override int DefaultVisCost => 20;
 

@@ -15,7 +15,7 @@ namespace Cthangband.Spells.Sorcery
     {
         public override int DefaultBaseFailure => 85;
 
-        public override int DefaultLevel => 20;
+        public override int DefaultLevel => 21;
 
         public override int DefaultVisCost => 18;
 

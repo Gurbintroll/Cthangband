@@ -13,15 +13,15 @@ namespace Cthangband.Spells.Nature
     [Serializable]
     internal class NatureSpellElementalBranding : BaseSpell
     {
-        public override int DefaultBaseFailure => 60;
+        public override int DefaultBaseFailure => 85;
 
-        public override int DefaultLevel => 20;
+        public override int DefaultLevel => 39;
 
-        public override int DefaultVisCost => 18;
+        public override int DefaultVisCost => 75;
 
         public override int FirstCastExperience => 25;
 
-        public override string Name => "Earthquake";
+        public override string Name => "Elemental Branding";
 
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
