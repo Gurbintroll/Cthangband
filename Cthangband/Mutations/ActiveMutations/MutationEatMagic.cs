@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -22,12 +22,12 @@ namespace Cthangband.Mutations.ActiveMutations
                 return;
             }
             saveGame.ItemFilter = saveGame.SpellEffects.ItemTesterHookRecharge;
-            if (!saveGame.GetItem(out int item, "Drain which item? ", false, true, true))
+            if (!saveGame.GetItem(out var item, "Drain which item? ", false, true, true))
             {
                 return;
             }
-            Item oPtr = item >= 0 ? player.Inventory[item] : level.Items[0 - item];
-            int lev = oPtr.ItemType.Level;
+            var oPtr = item >= 0 ? player.Inventory[item] : level.Items[0 - item];
+            var lev = oPtr.ItemType.Level;
             if (oPtr.Category == ItemCategory.Rod)
             {
                 if (oPtr.TypeSpecificValue > 0)

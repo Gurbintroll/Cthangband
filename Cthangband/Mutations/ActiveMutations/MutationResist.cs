@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -18,8 +18,8 @@ namespace Cthangband.Mutations.ActiveMutations
         {
             if (saveGame.CommandEngine.CheckIfRacialPowerWorks(10, 12, Ability.Constitution, 12))
             {
-                int num = player.Level / 10;
-                int dur = Program.Rng.DieRoll(20) + 20;
+                var num = player.Level / 10;
+                var dur = Program.Rng.DieRoll(20) + 20;
                 if (Program.Rng.RandomLessThan(5) < num)
                 {
                     player.SetTimedAcidResistance(player.TimedAcidResistance + dur);

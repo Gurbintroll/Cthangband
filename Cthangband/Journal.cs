@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -48,7 +48,7 @@ namespace Cthangband
                 Gui.Print(Colour.Blue, "(u) Uniques", 11, 0);
                 Gui.Print(Colour.Blue, "(w) Worthless Items", 12, 0);
                 Gui.Print(Colour.Orange, "[Select a journal section, or Escape to finish.]", 43, 1);
-                char k = Gui.Inkey();
+                var k = Gui.Inkey();
                 if (k == '\x1b')
                 {
                     break;
@@ -114,23 +114,23 @@ namespace Cthangband
         private void DisplayFlags(int mode)
         {
             int n;
-            int top = 20 * mode;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            FlagSet[][] b = new FlagSet[14][];
-            for (int i = 0; i < 14; i++)
+            var top = 20 * mode;
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
+            var b = new FlagSet[14][];
+            for (var i = 0; i < 14; i++)
             {
                 b[i] = new FlagSet[6];
-                for (int j = 0; j < 6; j++)
+                for (var j = 0; j < 6; j++)
                 {
                     b[i][j] = new FlagSet();
                 }
             }
-            for (int i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
+            for (var i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
             {
                 n = i - InventorySlot.MeleeWeapon;
-                Item oPtr = _player.Inventory[i];
+                var oPtr = _player.Inventory[i];
                 oPtr.ObjectFlagsKnown(f1, f2, f3);
                 b[n][0].Set(f1.LowOrder);
                 b[n][1].Set(f1.HighOrder);
@@ -147,13 +147,13 @@ namespace Cthangband
             b[n][3].Set(f2.HighOrder);
             b[n][4].Set(f3.LowOrder);
             b[n][5].Set(f3.HighOrder);
-            for (int x = 0; x < 3; x++)
+            for (var x = 0; x < 3; x++)
             {
                 CharacterViewer.DisplayPlayerEquippy(_player, top + 2, (x * 26) + 12);
                 Gui.Print(Colour.Blue, "abcdefghijklm@", top + 3, (x * 26) + 12);
-                for (int y = 0; y < 16; y++)
+                for (var y = 0; y < 16; y++)
                 {
-                    string name = GlobalData.ObjectFlagNames[(48 * mode) + (16 * x) + y];
+                    var name = GlobalData.ObjectFlagNames[(48 * mode) + (16 * x) + y];
                     if (string.IsNullOrEmpty(name))
                     {
                         continue;
@@ -170,8 +170,8 @@ namespace Cthangband
                     Gui.Print(baseColour, ':', top + y + 4, (x * 26) + 11);
                     for (n = 0; n < 14; n++)
                     {
-                        Colour a = Colour.Grey;
-                        char c = '.';
+                        var a = Colour.Grey;
+                        var c = '.';
                         if (b[n][(3 * mode) + x].IsSet(1u << y))
                         {
                             a = baseColour;
@@ -185,12 +185,12 @@ namespace Cthangband
 
         private void DisplayMonster(int rIdx, int num, int of)
         {
-            for (int i = 0; GlobalData.SymbolIdentification[i] != null; i++)
+            for (var i = 0; GlobalData.SymbolIdentification[i] != null; i++)
             {
                 if (GlobalData.SymbolIdentification[i][0] == Profile.Instance.MonsterRaces[rIdx].Character)
                 {
-                    string name = GlobalData.SymbolIdentification[i].Substring(2);
-                    string buf = $"Monster Type: {name} ({num + 1} of {of})";
+                    var name = GlobalData.SymbolIdentification[i].Substring(2);
+                    var buf = $"Monster Type: {name} ({num + 1} of {of})";
                     Gui.Print(Colour.Blue, buf, 3, 0);
                     break;
                 }
@@ -203,9 +203,9 @@ namespace Cthangband
 
         private void DisplayMonsterHeader(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
-            char c1 = rPtr.Character;
-            Colour a1 = rPtr.Colour;
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var c1 = rPtr.Character;
+            var a1 = rPtr.Colour;
             if ((rPtr.Flags1 & MonsterFlag1.Unique) == 0)
             {
                 Gui.Print(Colour.Brown, "The ", -1);
@@ -230,7 +230,7 @@ namespace Cthangband
             Gui.Clear();
             Gui.Print(Colour.Blue, "Standings with Deities", 0, 1);
             Gui.Print(Colour.Blue, "======================", 1, 1);
-            int row = 3;
+            var row = 3;
             God patron = null;
             foreach (var deity in _player.Religion.GetAllDeities())
             {
@@ -346,17 +346,17 @@ namespace Cthangband
 
         private void JournalKills()
         {
-            string[] names = new string[Profile.Instance.MonsterRaces.Count];
-            int[] counts = new int[Profile.Instance.MonsterRaces.Count];
-            bool[] unique = new bool[Profile.Instance.MonsterRaces.Count];
-            int maxCount = 0;
-            int total = 0;
-            for (int i = 0; i < Profile.Instance.MonsterRaces.Count - 1; i++)
+            var names = new string[Profile.Instance.MonsterRaces.Count];
+            var counts = new int[Profile.Instance.MonsterRaces.Count];
+            var unique = new bool[Profile.Instance.MonsterRaces.Count];
+            var maxCount = 0;
+            var total = 0;
+            for (var i = 0; i < Profile.Instance.MonsterRaces.Count - 1; i++)
             {
-                MonsterRace monster = Profile.Instance.MonsterRaces[i];
+                var monster = Profile.Instance.MonsterRaces[i];
                 if ((monster.Flags1 & MonsterFlag1.Unique) != 0)
                 {
-                    bool dead = monster.MaxNum == 0;
+                    var dead = monster.MaxNum == 0;
                     if (dead)
                     {
                         total++;
@@ -378,26 +378,26 @@ namespace Cthangband
                     }
                 }
             }
-            for (int i = 0; i < maxCount - 1; i++)
+            for (var i = 0; i < maxCount - 1; i++)
             {
-                for (int j = maxCount - 1; j > i; j--)
+                for (var j = maxCount - 1; j > i; j--)
                 {
                     if (counts[j] <= counts[j - 1])
                     {
                         continue;
                     }
-                    string tempName = names[j];
+                    var tempName = names[j];
                     names[j] = names[j - 1];
                     names[j - 1] = tempName;
-                    int tempCount = counts[j];
+                    var tempCount = counts[j];
                     counts[j] = counts[j - 1];
                     counts[j - 1] = tempCount;
-                    bool tempUnique = unique[j];
+                    var tempUnique = unique[j];
                     unique[j] = unique[j - 1];
                     unique[j - 1] = tempUnique;
                 }
             }
-            int first = 0;
+            var first = 0;
             while (true)
             {
                 string buf;
@@ -408,7 +408,7 @@ namespace Cthangband
                 {
                     Gui.Print(Colour.Blue, "You haven't killed anything yet!", 3, 0);
                 }
-                for (int i = first; i < first + 38; i++)
+                for (var i = first; i < first + 38; i++)
                 {
                     if (i < maxCount)
                     {
@@ -420,7 +420,7 @@ namespace Cthangband
                         {
                             if (counts[i] > 1)
                             {
-                                string plural = names[i].PluraliseMonsterName();
+                                var plural = names[i].PluraliseMonsterName();
                                 buf = $"You have killed {counts[i]} {plural}";
                             }
                             else
@@ -464,31 +464,31 @@ namespace Cthangband
 
         private void JournalMonsters()
         {
-            int[] seen = new int[Profile.Instance.MonsterRaces.Count];
-            int[] filtered = new int[Profile.Instance.MonsterRaces.Count];
-            int maxSeen = 0;
-            bool[] filterMask = new bool[256];
-            int[] filterLookup = new int[256];
-            char[] usedFilters = new char[256];
-            int maxUsedFilter = 0;
-            for (int i = 0; i < 256; i++)
+            var seen = new int[Profile.Instance.MonsterRaces.Count];
+            var filtered = new int[Profile.Instance.MonsterRaces.Count];
+            var maxSeen = 0;
+            var filterMask = new bool[256];
+            var filterLookup = new int[256];
+            var usedFilters = new char[256];
+            var maxUsedFilter = 0;
+            for (var i = 0; i < 256; i++)
             {
                 filterMask[i] = false;
             }
-            for (int i = 1; i < Profile.Instance.MonsterRaces.Count; i++)
+            for (var i = 1; i < Profile.Instance.MonsterRaces.Count; i++)
             {
                 if (Profile.Instance.MonsterRaces[i].Knowledge.RSights != 0 || _player.IsWizard)
                 {
                     seen[maxSeen] = i;
                     maxSeen++;
-                    char symbol = Profile.Instance.MonsterRaces[i].Character;
+                    var symbol = Profile.Instance.MonsterRaces[i].Character;
                     if (!filterMask[symbol])
                     {
                         filterMask[symbol] = true;
                     }
                 }
             }
-            for (char i = (char)0; i < 256; i++)
+            for (var i = (char)0; i < 256; i++)
             {
                 usedFilters[i] = (char)0;
                 if (!filterMask[i])
@@ -509,13 +509,13 @@ namespace Cthangband
                 Gui.Inkey();
                 return;
             }
-            int currentFilterIndex = 0;
-            char currentFilter = usedFilters[0];
-            bool useMax = false;
+            var currentFilterIndex = 0;
+            var currentFilter = usedFilters[0];
+            var useMax = false;
             while (true)
             {
-                int maxFiltered = 0;
-                for (int i = 0; i < maxSeen; i++)
+                var maxFiltered = 0;
+                for (var i = 0; i < maxSeen; i++)
                 {
                     if (Profile.Instance.MonsterRaces[seen[i]].Character == currentFilter)
                     {
@@ -523,7 +523,7 @@ namespace Cthangband
                         maxFiltered++;
                     }
                 }
-                int currentIndex = 0;
+                var currentIndex = 0;
                 if (useMax)
                 {
                     currentIndex = maxFiltered - 1;
@@ -611,9 +611,9 @@ namespace Cthangband
 
         private void JournalMutations()
         {
-            string[] features = _player.Dna.GetMutationList();
-            int maxFeature = features.Length;
-            int first = 0;
+            var features = _player.Dna.GetMutationList();
+            var maxFeature = features.Length;
+            var first = 0;
             while (true)
             {
                 Gui.Clear();
@@ -625,7 +625,7 @@ namespace Cthangband
                 }
                 else
                 {
-                    for (int i = first; i < first + 38; i++)
+                    for (var i = first; i < first + 38; i++)
                     {
                         if (i < maxFeature)
                         {
@@ -664,12 +664,12 @@ namespace Cthangband
 
         private void JournalPets()
         {
-            List<string> petNames = new List<string>();
-            int pets = 0;
-            Level level = SaveGame.Instance.Level;
-            for (int petCtr = level.MMax - 1; petCtr >= 1; petCtr--)
+            var petNames = new List<string>();
+            var pets = 0;
+            var level = SaveGame.Instance.Level;
+            for (var petCtr = level.MMax - 1; petCtr >= 1; petCtr--)
             {
-                Monster mPtr = level.Monsters[petCtr];
+                var mPtr = level.Monsters[petCtr];
                 if ((mPtr.Mind & Constants.SmFriendly) == 0)
                 {
                     continue;
@@ -677,7 +677,7 @@ namespace Cthangband
                 petNames.Add(mPtr.Race.Name);
                 pets++;
             }
-            int first = 0;
+            var first = 0;
             while (true)
             {
                 Gui.Clear();
@@ -689,7 +689,7 @@ namespace Cthangband
                 }
                 else
                 {
-                    for (int i = first; i < first + 38; i++)
+                    for (var i = first; i < first + 38; i++)
                     {
                         if (i < pets)
                         {
@@ -731,19 +731,19 @@ namespace Cthangband
             Gui.Clear();
             Gui.Print(Colour.Blue, "Outstanding Quests", 0, 1);
             Gui.Print(Colour.Blue, "==================", 1, 1);
-            int[] lev = new int[Constants.MaxCaves];
-            int[] first = new int[Constants.MaxCaves];
-            for (int i = 0; i < Constants.MaxCaves; i++)
+            var lev = new int[Constants.MaxCaves];
+            var first = new int[Constants.MaxCaves];
+            for (var i = 0; i < Constants.MaxCaves; i++)
             {
                 first[i] = -1;
                 lev[i] = -1;
             }
-            for (int i = 0; i < SaveGame.Instance.Quests.Count; i++)
+            for (var i = 0; i < SaveGame.Instance.Quests.Count; i++)
             {
-                Quest q = SaveGame.Instance.Quests[i];
+                var q = SaveGame.Instance.Quests[i];
                 if (q.Level > 0)
                 {
-                    int dungeon = q.Dungeon;
+                    var dungeon = q.Dungeon;
                     if (first[dungeon] == -1 || q.Level < lev[dungeon])
                     {
                         first[dungeon] = i;
@@ -751,12 +751,12 @@ namespace Cthangband
                     }
                 }
             }
-            int row = 3;
-            for (int i = 0; i < Constants.MaxCaves; i++)
+            var row = 3;
+            for (var i = 0; i < Constants.MaxCaves; i++)
             {
                 if (first[i] != -1)
                 {
-                    string line = SaveGame.Instance.Quests.DescribeQuest(first[i]);
+                    var line = SaveGame.Instance.Quests.DescribeQuest(first[i]);
                     Gui.Print(Colour.Blue, line, row, 0);
                     row++;
                 }
@@ -774,11 +774,11 @@ namespace Cthangband
             Gui.Clear();
             Gui.Print(Colour.Blue, "Word of Recall", 0, 1);
             Gui.Print(Colour.Blue, "==============", 1, 1);
-            string recallTown = _player.TownWithHouse > -1
+            var recallTown = _player.TownWithHouse > -1
                 ? SaveGame.Instance.Towns[_player.TownWithHouse].Name
                 : SaveGame.Instance.CurTown.Name;
-            string recallDungeon = SaveGame.Instance.Dungeons[SaveGame.Instance.RecallDungeon].Name;
-            int recallLev = _player.MaxDlv[SaveGame.Instance.RecallDungeon];
+            var recallDungeon = SaveGame.Instance.Dungeons[SaveGame.Instance.RecallDungeon].Name;
+            var recallLev = _player.MaxDlv[SaveGame.Instance.RecallDungeon];
             Gui.Print(Colour.Blue, $"Your Word of Recall position is level {recallLev} of {recallDungeon}.", 3, 0);
             Gui.Print(Colour.Blue, $"Your home town is {recallTown}.", 4, 0);
             if (_player.TownWithHouse > -1)
@@ -789,7 +789,7 @@ namespace Cthangband
                 SaveGame.Instance.CurrentDepth == 0
                     ? $"If you recall now, you will return to level {recallLev} of {recallDungeon}."
                     : $"If you recall now, you will return to {recallTown}.", 6, 0);
-            string description =
+            var description =
                 "(If you own a house, your home town is always considered to be the town containing that house ";
             description += "and you will be transported directly to your house. ";
             description += "If not, your home town is updated each time you visit a new town, and you will be transported to a random location in that town. ";
@@ -804,22 +804,22 @@ namespace Cthangband
 
         private void JournalUniques()
         {
-            string[] names = new string[Profile.Instance.MonsterRaces.Count];
-            bool[] alive = new bool[Profile.Instance.MonsterRaces.Count];
-            int maxCount = 0;
-            for (int i = 0; i < Profile.Instance.MonsterRaces.Count - 1; i++)
+            var names = new string[Profile.Instance.MonsterRaces.Count];
+            var alive = new bool[Profile.Instance.MonsterRaces.Count];
+            var maxCount = 0;
+            for (var i = 0; i < Profile.Instance.MonsterRaces.Count - 1; i++)
             {
-                MonsterRace monster = Profile.Instance.MonsterRaces[i];
+                var monster = Profile.Instance.MonsterRaces[i];
                 if ((monster.Flags1 & MonsterFlag1.Unique) != 0 &&
                     (monster.Knowledge.RSights > 0 || _player.IsWizard))
                 {
                     names[maxCount] = monster.Name;
-                    bool dead = monster.MaxNum == 0;
+                    var dead = monster.MaxNum == 0;
                     alive[maxCount] = !dead;
                     maxCount++;
                 }
             }
-            int first = 0;
+            var first = 0;
             while (true)
             {
                 Gui.Clear();
@@ -829,11 +829,11 @@ namespace Cthangband
                 {
                     Gui.Print(Colour.Blue, "You know of no unique foes!", 3, 0);
                 }
-                for (int i = first; i < first + 38; i++)
+                for (var i = first; i < first + 38; i++)
                 {
                     if (i < maxCount)
                     {
-                        string buf = alive[i] ? $"{names[i]} is alive." : $"{names[i]} is dead.";
+                        var buf = alive[i] ? $"{names[i]} is alive." : $"{names[i]} is dead.";
                         Gui.Print(Colour.Blue, buf, i - first + 3, 0);
                     }
                 }
@@ -872,27 +872,27 @@ namespace Cthangband
             Gui.Print(Colour.Blue, "Worthless Items", 0, 1);
             Gui.Print(Colour.Blue, "===============", 1, 1);
             Gui.Goto(3, 0);
-            string text = "Items marked in red ";
+            var text = "Items marked in red ";
             text += "will be considered 'worthless' and you will stomp on them (destroying them) rather than ";
             text += "picking them up. Destroying (using 'k' or 'K') a worthless object will be done automatically ";
             text += "without you being prompted. Items will only be destroyed if they are on the floor or in your ";
             text += "inventory. Items you are wielding will never be destroyed (giving you chance to improve their ";
             text += "quality to a non-worthless level).";
             Gui.PrintWrap(Colour.Blue, text);
-            for (int i = 0; i < TvalDescriptionPair.Tvals.Length - 1; i++)
+            for (var i = 0; i < TvalDescriptionPair.Tvals.Length - 1; i++)
             {
                 _menuItem[i] = TvalDescriptionPair.Tvals[i].Desc;
                 _menuColours[i] = Colour.Blue;
             }
             _menuLength = TvalDescriptionPair.Tvals.Length - 1;
-            int menu = _menuLength / 2;
+            var menu = _menuLength / 2;
             while (true)
             {
                 MenuDisplay(menu);
                 Gui.Print(Colour.Orange, "[Up/Down = select item type, Left/Right = forward/back.]", 43, 1);
                 while (true)
                 {
-                    char c = Gui.Inkey();
+                    var c = Gui.Inkey();
                     if (c == '8' && menu > 0)
                     {
                         menu--;
@@ -906,7 +906,7 @@ namespace Cthangband
                     if (c == '6')
                     {
                         WorthlessItemTypeSelection(TvalDescriptionPair.Tvals[menu].Tval);
-                        for (int i = 0; i < TvalDescriptionPair.Tvals.Length - 1; i++)
+                        for (var i = 0; i < TvalDescriptionPair.Tvals.Length - 1; i++)
                         {
                             _menuItem[i] = TvalDescriptionPair.Tvals[i].Desc;
                             _menuColours[i] = Colour.Blue;
@@ -926,16 +926,16 @@ namespace Cthangband
         {
             Gui.Clear(9);
             Gui.Print(Colour.Orange, "=>", 25, 0);
-            string desc = string.Empty;
-            Colour descColour = Colour.Brown;
-            for (int i = 0; i < _menuLength; i++)
+            var desc = string.Empty;
+            var descColour = Colour.Brown;
+            for (var i = 0; i < _menuLength; i++)
             {
-                int row = 25 + i - current;
+                var row = 25 + i - current;
                 if (row < 10 || row > 40)
                 {
                     continue;
                 }
-                Colour a = _menuColours[i];
+                var a = _menuColours[i];
                 if (i == current)
                 {
                     switch (a)
@@ -964,7 +964,7 @@ namespace Cthangband
 
         private string StripDownName(string name)
         {
-            string val = name.Replace("~", "");
+            var val = name.Replace("~", "");
             val = val.Replace("%", "");
             val = val.Replace("&", "");
             return val.Trim();
@@ -972,22 +972,22 @@ namespace Cthangband
 
         private void WorthlessItemChestSelection(ItemType kPtr)
         {
-            string[] qualityText = new[] { "Empty", "Unlocked", "Locked", "Trapped" };
+            var qualityText = new[] { "Empty", "Unlocked", "Locked", "Trapped" };
             _menuLength = 0;
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 _menuItem[i] = qualityText[i];
                 _menuColours[i] = kPtr.Stompable[i] ? Colour.Red : Colour.Green;
             }
             _menuLength = 4;
-            int menu = 1;
+            var menu = 1;
             while (true)
             {
                 MenuDisplay(menu);
                 Gui.Print(Colour.Orange, "[Up/Down = select item type, Left/Right = forward/back.]", 43, 1);
                 while (true)
                 {
-                    char c = Gui.Inkey();
+                    var c = Gui.Inkey();
                     if (c == '8' && menu > 0)
                     {
                         menu--;
@@ -1014,22 +1014,22 @@ namespace Cthangband
 
         private void WorthlessItemQualitySelection(ItemType kPtr)
         {
-            string[] qualityText = new[] { "Bad", "Average", "Good", "Excellent" };
+            var qualityText = new[] { "Bad", "Average", "Good", "Excellent" };
             _menuLength = 0;
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 _menuItem[i] = qualityText[i];
                 _menuColours[i] = kPtr.Stompable[i] ? Colour.Red : Colour.Green;
             }
             _menuLength = 4;
-            int menu = 1;
+            var menu = 1;
             while (true)
             {
                 MenuDisplay(menu);
                 Gui.Print(Colour.Orange, "[Up/Down = select item type, Left/Right = forward/back.]", 43, 1);
                 while (true)
                 {
-                    char c = Gui.Inkey();
+                    var c = Gui.Inkey();
                     if (c == '8' && menu > 0)
                     {
                         menu--;
@@ -1057,9 +1057,9 @@ namespace Cthangband
         private void WorthlessItemTypeSelection(ItemCategory tval)
         {
             _menuLength = 0;
-            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
+            for (var i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
-                ItemType kPtr = Profile.Instance.ItemTypes[i];
+                var kPtr = Profile.Instance.ItemTypes[i];
                 if (kPtr.Category == tval)
                 {
                     if (kPtr.Flags3.IsSet(ItemFlag3.InstaArt))
@@ -1079,14 +1079,14 @@ namespace Cthangband
                     _menuLength++;
                 }
             }
-            int menu = _menuLength / 2;
+            var menu = _menuLength / 2;
             while (true)
             {
                 MenuDisplay(menu);
                 Gui.Print(Colour.Orange, "[Up/Down = select item type, Left/Right = forward/back.]", 43, 1);
                 while (true)
                 {
-                    char c = Gui.Inkey();
+                    var c = Gui.Inkey();
                     if (c == '8' && menu > 0)
                     {
                         menu--;
@@ -1099,12 +1099,12 @@ namespace Cthangband
                     }
                     if (c == '6')
                     {
-                        ItemType kPtr = Profile.Instance.ItemTypes[_menuIndices[menu]];
+                        var kPtr = Profile.Instance.ItemTypes[_menuIndices[menu]];
                         if (kPtr.HasQuality())
                         {
                             WorthlessItemQualitySelection(kPtr);
                             _menuLength = 0;
-                            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
+                            for (var i = 0; i < Profile.Instance.ItemTypes.Count; i++)
                             {
                                 kPtr = Profile.Instance.ItemTypes[i];
                                 if (kPtr.Category == tval)
@@ -1131,7 +1131,7 @@ namespace Cthangband
                         {
                             WorthlessItemChestSelection(kPtr);
                             _menuLength = 0;
-                            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
+                            for (var i = 0; i < Profile.Instance.ItemTypes.Count; i++)
                             {
                                 kPtr = Profile.Instance.ItemTypes[i];
                                 if (kPtr.Category == tval)

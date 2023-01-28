@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -6,7 +6,6 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Spells.Base;
 using System;
 
 namespace Cthangband.Spells
@@ -31,9 +30,9 @@ namespace Cthangband.Spells
             SpellStat = player.PlayerClass.PrimeAbilityScore;
             SpellWeight = player.PlayerClass.SpellWeightLimit;
             SpellFirst = 100;
-            foreach (SpellList bookset in Spells)
+            foreach (var bookset in Spells)
             {
-                foreach (ISpell spell in bookset)
+                foreach (var spell in bookset)
                 {
                     if (spell.Level < SpellFirst)
                     {
@@ -41,7 +40,7 @@ namespace Cthangband.Spells
                     }
                 }
             }
-            for (int i = 0; i < 64; i++)
+            for (var i = 0; i < 64; i++)
             {
                 SpellOrder[i] = 99;
             }

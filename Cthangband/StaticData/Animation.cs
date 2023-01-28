@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -29,14 +29,14 @@ namespace Cthangband.StaticData
 
         public void Animate(Level level, int y, int x)
         {
-            int msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
-            bool drawn = false;
-            bool oddFrame = true;
-            foreach (char character in Sequence)
+            var msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
+            var drawn = false;
+            var oddFrame = true;
+            foreach (var character in Sequence)
             {
                 if (level.PlayerHasLosBold(y, x) && level.PanelContains(y, x))
                 {
-                    Colour colour = oddFrame ? Colour : AlternateColour;
+                    var colour = oddFrame ? Colour : AlternateColour;
                     level.PrintCharacterAtMapLocation(character, colour, y, x);
                     drawn = true;
                 }
@@ -59,17 +59,17 @@ namespace Cthangband.StaticData
 
         public void Animate(Level level, int[] y, int[] x)
         {
-            int msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
-            int grids = x.Length;
-            bool drawn = false;
-            bool oddFrame = true;
-            foreach (char character in Sequence)
+            var msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
+            var grids = x.Length;
+            var drawn = false;
+            var oddFrame = true;
+            foreach (var character in Sequence)
             {
-                for (int j = 0; j < grids; j++)
+                for (var j = 0; j < grids; j++)
                 {
                     if (level.PlayerHasLosBold(y[j], x[j]) && level.PanelContains(y[j], x[j]))
                     {
-                        Colour colour = oddFrame ? Colour : AlternateColour;
+                        var colour = oddFrame ? Colour : AlternateColour;
                         level.PrintCharacterAtMapLocation(character, colour, y[j], x[j]);
                         drawn = true;
                     }
@@ -83,7 +83,7 @@ namespace Cthangband.StaticData
             }
             if (drawn)
             {
-                for (int j = 0; j < grids; j++)
+                for (var j = 0; j < grids; j++)
                 {
                     if (level.PlayerHasLosBold(y[j], x[j]) && level.PanelContains(y[j], x[j]))
                     {

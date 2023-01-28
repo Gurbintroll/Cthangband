@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -26,10 +26,10 @@ namespace Cthangband
         public bool GetDirectionNoAim(out int dp)
         {
             dp = 0;
-            int dir = Gui.CommandDirection;
+            var dir = Gui.CommandDirection;
             while (dir == 0)
             {
-                if (!Gui.GetCom("Direction (Escape to cancel)? ", out char ch))
+                if (!Gui.GetCom("Direction (Escape to cancel)? ", out var ch))
                 {
                     break;
                 }
@@ -62,13 +62,13 @@ namespace Cthangband
         public void GetDirectionNoAutoAim(out int dp)
         {
             dp = 0;
-            int dir = 0;
+            var dir = 0;
             while (dir == 0)
             {
-                string p = !TargetOkay()
+                var p = !TargetOkay()
                     ? "Direction ('*' to choose a target, Escape to cancel)? "
                     : "Direction ('5' for target, '*' to re-target, Escape to cancel)? ";
-                if (!Gui.GetCom(p, out char command))
+                if (!Gui.GetCom(p, out var command))
                 {
                     break;
                 }
@@ -121,17 +121,17 @@ namespace Cthangband
         public bool GetDirectionWithAim(out int dp)
         {
             dp = 0;
-            int dir = Gui.CommandDirection;
+            var dir = Gui.CommandDirection;
             if (TargetOkay())
             {
                 dir = 5;
             }
             while (dir == 0)
             {
-                string p = !TargetOkay()
+                var p = !TargetOkay()
                     ? "Direction ('*' to choose a target, Escape to cancel)? "
                     : "Direction ('5' for target, '*' to re-target, Escape to cancel)? ";
-                if (!Gui.GetCom(p, out char command))
+                if (!Gui.GetCom(p, out var command))
                 {
                     break;
                 }
@@ -204,11 +204,11 @@ namespace Cthangband
 
         public void RecenterScreenAroundPlayer()
         {
-            int y = _player.MapY;
-            int x = _player.MapX;
-            int maxProwMin = _level.MaxPanelRows * (Constants.ScreenHgt / 2);
-            int maxPcolMin = _level.MaxPanelCols * (Constants.ScreenWid / 2);
-            int prowMin = y - (Constants.ScreenHgt / 2);
+            var y = _player.MapY;
+            var x = _player.MapX;
+            var maxProwMin = _level.MaxPanelRows * (Constants.ScreenHgt / 2);
+            var maxPcolMin = _level.MaxPanelCols * (Constants.ScreenWid / 2);
+            var prowMin = y - (Constants.ScreenHgt / 2);
             if (prowMin > maxProwMin)
             {
                 prowMin = maxProwMin;
@@ -217,7 +217,7 @@ namespace Cthangband
             {
                 prowMin = 0;
             }
-            int pcolMin = x - (Constants.ScreenWid / 2);
+            var pcolMin = x - (Constants.ScreenWid / 2);
             if (pcolMin > maxPcolMin)
             {
                 pcolMin = maxPcolMin;
@@ -251,7 +251,7 @@ namespace Cthangband
             {
                 return false;
             }
-            Monster mPtr = _level.Monsters[SaveGame.Instance.TargetWho];
+            var mPtr = _level.Monsters[SaveGame.Instance.TargetWho];
             SaveGame.Instance.TargetRow = mPtr.MapY;
             SaveGame.Instance.TargetCol = mPtr.MapX;
             return true;
@@ -259,12 +259,12 @@ namespace Cthangband
 
         public bool TargetSet(int mode)
         {
-            int y = _player.MapY;
-            int x = _player.MapX;
-            bool done = false;
+            var y = _player.MapY;
+            var x = _player.MapX;
+            var done = false;
             SaveGame.Instance.TargetWho = 0;
             TargetSetPrepare(mode);
-            int m = 0;
+            var m = 0;
             if (_level.TempN != 0)
             {
                 y = _level.TempY[m];
@@ -272,9 +272,9 @@ namespace Cthangband
             }
             while (!done)
             {
-                GridTile cPtr = _level.Grid[y][x];
-                string info = TargetAble(cPtr.MonsterIndex) ? "t,T,*" : "T,*";
-                char query = TargetSetAux(y, x, mode | Constants.TargetLook, info);
+                var cPtr = _level.Grid[y][x];
+                var info = TargetAble(cPtr.MonsterIndex) ? "t,T,*" : "T,*";
+                var query = TargetSetAux(y, x, mode | Constants.TargetLook, info);
                 switch (query)
                 {
                     case '\x1b':
@@ -325,7 +325,7 @@ namespace Cthangband
                         }
                     default:
                         {
-                            int d = Gui.GetKeymapDir(query);
+                            var d = Gui.GetKeymapDir(query);
                             if (d != 0)
                             {
                                 x += _level.KeypadDirectionXOffset[d];
@@ -358,11 +358,11 @@ namespace Cthangband
 
         public bool TgtPt(out int x, out int y)
         {
-            char ch = '\0';
-            bool success = false;
+            var ch = '\0';
+            var success = false;
             x = _player.MapX;
             y = _player.MapY;
-            bool cv = Gui.CursorVisible;
+            var cv = Gui.CursorVisible;
             Gui.CursorVisible = true;
             Profile.Instance.MsgPrint("Select a point and press space.");
             while (ch != 27 && ch != ' ')
@@ -380,7 +380,7 @@ namespace Cthangband
 
                     default:
                         {
-                            int d = Gui.GetKeymapDir(ch);
+                            var d = Gui.GetKeymapDir(ch);
                             if (d == 0)
                             {
                                 break;
@@ -414,9 +414,9 @@ namespace Cthangband
 
         private string LookMonDesc(int mIdx)
         {
-            Monster mPtr = _level.Monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
-            bool living = (rPtr.Flags3 & MonsterFlag3.Undead) == 0;
+            var mPtr = _level.Monsters[mIdx];
+            var rPtr = mPtr.Race;
+            var living = (rPtr.Flags3 & MonsterFlag3.Undead) == 0;
             if ((rPtr.Flags3 & MonsterFlag3.Demon) != 0)
             {
                 living = false;
@@ -437,7 +437,7 @@ namespace Cthangband
             {
                 return living ? "unhurt" : "undamaged";
             }
-            int perc = 100 * mPtr.Health / mPtr.MaxHealth;
+            var perc = 100 * mPtr.Health / mPtr.MaxHealth;
             if (perc >= 60)
             {
                 return living ? "somewhat wounded" : "somewhat damaged";
@@ -455,7 +455,7 @@ namespace Cthangband
 
         private bool TargetAble(int mIdx)
         {
-            Monster mPtr = _level.Monsters[mIdx];
+            var mPtr = _level.Monsters[mIdx];
             if (mPtr.Race == null)
             {
                 return false;
@@ -486,18 +486,18 @@ namespace Cthangband
             {
                 return false;
             }
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             if (cPtr.MonsterIndex != 0)
             {
-                Monster mPtr = _level.Monsters[cPtr.MonsterIndex];
+                var mPtr = _level.Monsters[cPtr.MonsterIndex];
                 if (mPtr.IsVisible)
                 {
                     return true;
                 }
             }
-            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = _level.Items[thisOIdx];
+                var oPtr = _level.Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 if (oPtr.Marked)
                 {
@@ -513,15 +513,15 @@ namespace Cthangband
 
         private char TargetSetAux(int y, int x, int mode, string info)
         {
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             char query;
             do
             {
                 query = ' ';
-                bool boring = true;
-                string s1 = "You see ";
-                string s2 = "";
-                string s3 = "";
+                var boring = true;
+                var s1 = "You see ";
+                var s2 = "";
+                var s3 = "";
                 if (y == _player.MapY && x == _player.MapX)
                 {
                     s1 = "You are ";
@@ -545,13 +545,13 @@ namespace Cthangband
                 int nextOIdx;
                 if (cPtr.MonsterIndex != 0)
                 {
-                    Monster mPtr = _level.Monsters[cPtr.MonsterIndex];
-                    MonsterRace rPtr = mPtr.Race;
+                    var mPtr = _level.Monsters[cPtr.MonsterIndex];
+                    var rPtr = mPtr.Race;
                     if (mPtr.IsVisible)
                     {
-                        bool recall = false;
+                        var recall = false;
                         boring = false;
-                        string mName = mPtr.MonsterDesc(0x08);
+                        var mName = mPtr.MonsterDesc(0x08);
                         SaveGame.Instance.HealthTrack(cPtr.MonsterIndex);
                         SaveGame.Instance.HandleStuff();
                         while (true)
@@ -566,8 +566,8 @@ namespace Cthangband
                             }
                             else
                             {
-                                string c = (mPtr.Mind & Constants.SmCloned) != 0 ? " (clone)" : "";
-                                string a = (mPtr.Mind & Constants.SmFriendly) != 0 ? " (allied) " : " ";
+                                var c = (mPtr.Mind & Constants.SmCloned) != 0 ? " (clone)" : "";
+                                var a = (mPtr.Mind & Constants.SmFriendly) != 0 ? " (allied) " : " ";
                                 outVal = $"{s1}{s2}{s3}{mName} ({LookMonDesc(cPtr.MonsterIndex)}){c}{a}[r,{info}]";
                                 Gui.PrintLine(outVal, 0, 0);
                                 _level.MoveCursorRelative(y, x);
@@ -599,9 +599,9 @@ namespace Cthangband
                         s2 = "carrying ";
                         for (thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                         {
-                            Item oPtr = _level.Items[thisOIdx];
+                            var oPtr = _level.Items[thisOIdx];
                             nextOIdx = oPtr.NextInStack;
-                            string oName = oPtr.Description(true, 3);
+                            var oName = oPtr.Description(true, 3);
                             outVal = $"{s1}{s2}{s3}{oName} [{info}]";
                             Gui.PrintLine(outVal, 0, 0);
                             _level.MoveCursorRelative(y, x);
@@ -625,12 +625,12 @@ namespace Cthangband
                 }
                 for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                 {
-                    Item oPtr = _level.Items[thisOIdx];
+                    var oPtr = _level.Items[thisOIdx];
                     nextOIdx = oPtr.NextInStack;
                     if (oPtr.Marked)
                     {
                         boring = false;
-                        string oName = oPtr.Description(true, 3);
+                        var oName = oPtr.Description(true, 3);
                         outVal = $"{s1}{s2}{s3}{oName} [{info}]";
                         Gui.PrintLine(outVal, 0, 0);
                         _level.MoveCursorRelative(y, x);
@@ -655,7 +655,7 @@ namespace Cthangband
                 {
                     break;
                 }
-                string feat = string.IsNullOrEmpty(cPtr.FeatureType.AppearAs)
+                var feat = string.IsNullOrEmpty(cPtr.FeatureType.AppearAs)
                     ? StaticResources.Instance.FloorTileTypes[cPtr.BackgroundFeature.AppearAs].Name
                     : StaticResources.Instance.FloorTileTypes[cPtr.FeatureType.AppearAs].Name;
                 if (cPtr.TileFlags.IsClear(GridTile.PlayerMemorised) && !_level.PlayerCanSeeBold(y, x))
@@ -664,7 +664,7 @@ namespace Cthangband
                 }
                 if (boring || (!cPtr.FeatureType.IsOpenFloor))
                 {
-                    string name = "unknown grid";
+                    var name = "unknown grid";
                     if (feat != string.Empty)
                     {
                         name = StaticResources.Instance.FloorTileTypes[feat].Description;
@@ -701,7 +701,7 @@ namespace Cthangband
                 int x;
                 for (x = _level.PanelColMin; x <= _level.PanelColMax; x++)
                 {
-                    GridTile cPtr = _level.Grid[y][x];
+                    var cPtr = _level.Grid[y][x];
                     if (!_level.PlayerHasLosBold(y, x))
                     {
                         continue;
@@ -719,14 +719,14 @@ namespace Cthangband
                     _level.TempN++;
                 }
             }
-            List<TargetLocation> list = new List<TargetLocation>();
-            for (int i = 0; i < _level.TempN; i++)
+            var list = new List<TargetLocation>();
+            for (var i = 0; i < _level.TempN; i++)
             {
                 list.Add(new TargetLocation(_level.TempY[i], _level.TempX[i],
                     _level.Distance(_level.TempY[i], _level.TempX[i], _player.MapY, _player.MapX)));
             }
             list.Sort();
-            for (int i = 0; i < _level.TempN; i++)
+            for (var i = 0; i < _level.TempN; i++)
             {
                 _level.TempX[i] = list[i].X;
                 _level.TempY[i] = list[i].Y;

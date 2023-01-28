@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -7,7 +7,6 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Pantheon;
-using Cthangband.PlayerRace;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -54,7 +53,7 @@ namespace Cthangband
             StoreType = storeType;
             _stockSize = Constants.StoreInvenMax;
             _stock = new Item[_stockSize];
-            for (int k = 0; k < _stockSize; k++)
+            for (var k = 0; k < _stockSize; k++)
             {
                 _stock[k] = new Item();
             }
@@ -66,15 +65,15 @@ namespace Cthangband
             }
             const int tableSize = Constants.StoreChoices;
             _table = new int[tableSize];
-            ItemIdentifier[] master = StoreFactory.GetStoreTable(StoreType);
-            for (int k = 0; k < Constants.StoreChoices; k++)
+            var master = StoreFactory.GetStoreTable(StoreType);
+            for (var k = 0; k < Constants.StoreChoices; k++)
             {
                 int kIdx;
-                ItemCategory tv = master[k].Category;
-                int sv = master[k].SubCategory;
+                var tv = master[k].Category;
+                var sv = master[k].SubCategory;
                 for (kIdx = 0; kIdx < Profile.Instance.ItemTypes.Count; kIdx++)
                 {
-                    ItemType kPtr = Profile.Instance.ItemTypes[kIdx];
+                    var kPtr = Profile.Instance.ItemTypes[kIdx];
                     if (kPtr.Category == tv && kPtr.SubCategory == sv)
                     {
                         break;
@@ -146,7 +145,7 @@ namespace Cthangband
             while (!_leaveStore)
             {
                 Gui.PrintLine("", 1, 0);
-                int tmpCha = _player.AbilityScores[Ability.Charisma].Adjusted;
+                var tmpCha = _player.AbilityScores[Ability.Charisma].Adjusted;
                 Gui.Clear(41);
                 Gui.PrintLine(" ESC) Exit from Building.", 42, 0);
                 if (StoreType == StoreType.StoreHome)
@@ -224,7 +223,7 @@ namespace Cthangband
                 if (_player.Inventory[InventorySlot.Pack].ItemType != null)
                 {
                     const int item = InventorySlot.Pack;
-                    Item oPtr = _player.Inventory[item];
+                    var oPtr = _player.Inventory[item];
                     if (StoreType != StoreType.StoreHome)
                     {
                         Profile.Instance.MsgPrint("Your pack is so full that you flee the Stores...");
@@ -238,14 +237,14 @@ namespace Cthangband
                     else
                     {
                         Profile.Instance.MsgPrint("Your pack overflows!");
-                        Item qPtr = new Item(oPtr);
-                        string oName = qPtr.Description(true, 3);
+                        var qPtr = new Item(oPtr);
+                        var oName = qPtr.Description(true, 3);
                         Profile.Instance.MsgPrint($"You drop {oName} ({item.IndexToLabel()}).");
                         _player.Inventory.InvenItemIncrease(item, -255);
                         _player.Inventory.InvenItemDescribe(item);
                         _player.Inventory.InvenItemOptimize(item);
                         SaveGame.Instance.HandleStuff();
-                        int itemPos = HomeCarry(qPtr);
+                        var itemPos = HomeCarry(qPtr);
                         if (itemPos >= 0)
                         {
                             _storeTop = itemPos / 26 * 26;
@@ -275,7 +274,7 @@ namespace Cthangband
         {
             _owner = StoreFactory.GetRandomOwner(StoreType);
             _stockNum = 0;
-            for (int k = 0; k < _stockSize; k++)
+            for (var k = 0; k < _stockSize; k++)
             {
                 _stock[k] = new Item();
             }
@@ -283,7 +282,7 @@ namespace Cthangband
 
         public void StoreMaint()
         {
-            int oldRating = 0;
+            var oldRating = 0;
             if (SaveGame.Instance.Level != null)
             {
                 oldRating = SaveGame.Instance.Level.TreasureRating;
@@ -293,7 +292,7 @@ namespace Cthangband
             {
                 return;
             }
-            int j = _stockNum;
+            var j = _stockNum;
             j -= Program.Rng.DieRoll(Constants.StoreTurnover);
             if (j > Constants.StoreMaxKeep)
             {
@@ -347,9 +346,9 @@ namespace Cthangband
                 return;
             }
             _owner = StoreFactory.GetRandomOwner(StoreType);
-            for (int i = 0; i < _stockNum; i++)
+            for (var i = 0; i < _stockNum; i++)
             {
-                Item oPtr = _stock[i];
+                var oPtr = _stock[i];
                 if (!oPtr.IsLegendary())
                 {
                     oPtr.Discount = 50;
@@ -363,12 +362,12 @@ namespace Cthangband
         {
             string oName;
             int maxwid;
-            Item oPtr = _stock[pos];
-            int i = pos % 26;
-            string outVal = $"{i.IndexToLetter()}) ";
+            var oPtr = _stock[pos];
+            var i = pos % 26;
+            var outVal = $"{i.IndexToLetter()}) ";
             Gui.PrintLine(outVal, i + 6, 0);
-            Colour a = oPtr.ItemType.Colour;
-            char c = oPtr.ItemType.Character;
+            var a = oPtr.ItemType.Colour;
+            var c = oPtr.ItemType.Character;
             Gui.Place(a, c, i + 6, 3);
             if (StoreType == StoreType.StoreHome)
             {
@@ -380,7 +379,7 @@ namespace Cthangband
                     oName = oName.Substring(0, maxwid);
                 }
                 Gui.Print(oPtr.Category.ToAttr(), oName, i + 6, 5);
-                int wgt = oPtr.Weight;
+                var wgt = oPtr.Weight;
                 outVal = $"{wgt / 10,3}.{wgt % 10} lb";
                 Gui.Print(outVal, i + 6, 68);
             }
@@ -394,7 +393,7 @@ namespace Cthangband
                     oName = oName.Substring(0, maxwid);
                 }
                 Gui.Print(oPtr.Category.ToAttr(), oName, i + 6, 5);
-                int wgt = oPtr.Weight;
+                var wgt = oPtr.Weight;
                 outVal = $"{wgt / 10,3}.{wgt % 10}";
                 Gui.Print(outVal, i + 6, 61);
                 int x;
@@ -425,7 +424,7 @@ namespace Cthangband
                 }
                 DisplayEntry(_storeTop + k);
             }
-            for (int i = k; i < 27; i++)
+            for (var i = k; i < 27; i++)
             {
                 Gui.PrintLine("", i + 6, 0);
             }
@@ -453,10 +452,10 @@ namespace Cthangband
             }
             if (StoreType != StoreType.StoreHome && StoreType != StoreType.StoreHall)
             {
-                string storeName = StaticResources.Instance.FloorTileTypes[FeatureType].Description;
-                string ownerName = _owner.OwnerName;
-                string raceName = _owner.OwnerRace;
-                string buf = $"{ownerName} ({raceName})";
+                var storeName = StaticResources.Instance.FloorTileTypes[FeatureType].Description;
+                var ownerName = _owner.OwnerName;
+                var raceName = _owner.OwnerRace;
+                var buf = $"{ownerName} ({raceName})";
                 Gui.Print(buf, 3, 10);
                 buf = $"{storeName} ({_owner.MaxCost})";
                 Gui.PrintLine(buf, 3, 50);
@@ -470,10 +469,10 @@ namespace Cthangband
 
         private void DoStoreBrowse(Item oPtr)
         {
-            int num = 0;
-            int[] spells = new int[64];
-            int sval = oPtr.ItemSubCategory;
-            for (int spell = 0; spell < 32; spell++)
+            var num = 0;
+            var spells = new int[64];
+            var sval = oPtr.ItemSubCategory;
+            for (var spell = 0; spell < 32; spell++)
             {
                 if ((GlobalData.BookSpellFlags[sval] & (1u << spell)) != 0)
                 {
@@ -493,13 +492,13 @@ namespace Cthangband
             Gui.Save();
             var keys = towns.Keys.ToList();
             keys.Sort();
-            string outVal = $"Destination town ({keys[0].ToString().ToLower()} to {keys[keys.Count - 1].ToString().ToLower()})? ";
-            for (int i = 0; i < keys.Count; i++)
+            var outVal = $"Destination town ({keys[0].ToString().ToLower()} to {keys[keys.Count - 1].ToString().ToLower()})? ";
+            for (var i = 0; i < keys.Count; i++)
             {
                 Gui.Print(Colour.White, $" {keys[i].ToString().ToLower()}) {towns[keys[i]].Name}".PadRight(60), i + 1, 20);
             }
             Gui.Print(Colour.White, "".PadRight(60), keys.Count + 1, 20);
-            while (Gui.GetCom(outVal, out char choice))
+            while (Gui.GetCom(outVal, out var choice))
             {
                 choice = choice.ToString().ToUpper()[0];
                 foreach (var c in keys)
@@ -528,13 +527,13 @@ namespace Cthangband
             }
             names.Sort();
             keys.Sort();
-            string outVal = $"Destination town ({keys[0].ToString().ToLower()} to {keys[keys.Count - 1].ToString().ToLower()})? ";
-            for (int i = 0; i < keys.Count; i++)
+            var outVal = $"Destination town ({keys[0].ToString().ToLower()} to {keys[keys.Count - 1].ToString().ToLower()})? ";
+            for (var i = 0; i < keys.Count; i++)
             {
                 Gui.Print(Colour.White, $" {keys[i].ToString().ToLower()}) {names[i]}".PadRight(60), i + 1, 20);
             }
             Gui.Print(Colour.White, "".PadRight(60), keys.Count + 1, 20);
-            while (Gui.GetCom(outVal, out char choice))
+            while (Gui.GetCom(outVal, out var choice))
             {
                 choice = choice.ToString().ToUpper()[0];
                 foreach (var c in keys)
@@ -562,10 +561,10 @@ namespace Cthangband
             char command;
             Profile.Instance.MsgPrint(null);
             comVal = -1;
-            string outVal = $"(Items {i.IndexToLetter()}-{j.IndexToLetter()}, ESC to exit) {pmt}";
+            var outVal = $"(Items {i.IndexToLetter()}-{j.IndexToLetter()}, ESC to exit) {pmt}";
             while (Gui.GetCom(outVal, out command))
             {
-                int k = char.IsLower(command) ? command.LetterToNumber() : -1;
+                var k = char.IsLower(command) ? command.LetterToNumber() : -1;
                 if (k >= i && k <= j)
                 {
                     comVal = k;
@@ -593,7 +592,7 @@ namespace Cthangband
             {
                 return -1;
             }
-            int value = oPtr.Value();
+            var value = oPtr.Value();
             for (slot = 0; slot < _stockNum; slot++)
             {
                 jPtr = _stock[slot];
@@ -640,7 +639,7 @@ namespace Cthangband
                         continue;
                     }
                 }
-                int jValue = jPtr.Value();
+                var jValue = jPtr.Value();
                 if (value > jValue)
                 {
                     break;
@@ -649,7 +648,7 @@ namespace Cthangband
                 {
                 }
             }
-            for (int i = _stockNum; i > slot; i--)
+            for (var i = _stockNum; i > slot; i--)
             {
                 _stock[i] = new Item(_stock[i - 1]);
             }
@@ -660,18 +659,18 @@ namespace Cthangband
 
         private bool IsBlessed(Item oPtr)
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             oPtr.GetMergedFlags(f1, f2, f3);
             return f3.IsSet(ItemFlag3.Blessed);
         }
 
         private void MassProduce(Item oPtr)
         {
-            int size = 1;
-            int discount = 0;
-            int cost = oPtr.Value();
+            var size = 1;
+            var discount = 0;
+            var cost = oPtr.Value();
             switch (oPtr.Category)
             {
                 case ItemCategory.Food:
@@ -798,8 +797,8 @@ namespace Cthangband
 
         private int MassRoll(int num, int max)
         {
-            int t = 0;
-            for (int i = 0; i < num; i++)
+            var t = 0;
+            for (var i = 0; i < num; i++)
             {
                 t += Program.Rng.RandomLessThan(max);
             }
@@ -808,8 +807,8 @@ namespace Cthangband
 
         private void MoveHouse(int oldTown, int newTown)
         {
-            Store newStore = Array.Find(SaveGame.Instance.Towns[newTown].Stores, store => store.StoreType == StoreType.StoreHome);
-            Store oldStore = Array.Find(SaveGame.Instance.Towns[oldTown].Stores, store => store.StoreType == StoreType.StoreHome);
+            var newStore = Array.Find(SaveGame.Instance.Towns[newTown].Stores, store => store.StoreType == StoreType.StoreHome);
+            var oldStore = Array.Find(SaveGame.Instance.Towns[oldTown].Stores, store => store.StoreType == StoreType.StoreHome);
             if (oldStore == null)
             {
                 return;
@@ -819,7 +818,7 @@ namespace Cthangband
                 return;
             }
             newStore._stockNum = oldStore._stockNum;
-            for (int i = 0; i < oldStore._stock.Length; i++)
+            for (var i = 0; i < oldStore._stock.Length; i++)
             {
                 newStore._stock[i] = new Item(oldStore._stock[i]);
                 oldStore._stock[i] = new Item();
@@ -830,12 +829,12 @@ namespace Cthangband
         private int PriceItem(Item oPtr, int greed, bool flip)
         {
             int adjust;
-            int price = oPtr.Value();
+            var price = oPtr.Value();
             if (price <= 0)
             {
                 return 0;
             }
-            int factor = 100;
+            var factor = 100;
             factor += _player.AbilityScores[Ability.Charisma].ChaPriceAdjustment;
             if (flip)
             {
@@ -903,14 +902,14 @@ namespace Cthangband
 
         private bool PurchaseHaggle(Item oPtr, out int price)
         {
-            int finalAsk = PriceItem(oPtr, _owner.MinInflate, false);
+            var finalAsk = PriceItem(oPtr, _owner.MinInflate, false);
             Profile.Instance.MsgPrint("You quickly agree upon the price.");
             Profile.Instance.MsgPrint(null);
             finalAsk += finalAsk / 10;
             const string pmt = "Final Offer";
             finalAsk *= oPtr.Count;
             price = finalAsk;
-            string outVal = $"{pmt} :  {finalAsk}";
+            var outVal = $"{pmt} :  {finalAsk}";
             Gui.Print(outVal, 1, 0);
             return !Gui.GetCheck("Accept deal? ");
         }
@@ -932,9 +931,9 @@ namespace Cthangband
             _player.Religion.DecayFavour();
             _player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis);
             _player.SetFood(Constants.PyFoodMax - 1);
-            foreach (Town town in SaveGame.Instance.Towns)
+            foreach (var town in SaveGame.Instance.Towns)
             {
-                foreach (Store store in town.Stores)
+                foreach (var store in town.Stores)
                 {
                     switch (store.StoreType)
                     {
@@ -1002,9 +1001,9 @@ namespace Cthangband
                 return;
             }
             var deity = _player.Religion.GetNamedDeity(godName);
-            string pmt = "Sacrifice which item? ";
+            var pmt = "Sacrifice which item? ";
             SaveGame.Instance.ItemFilter = null;
-            if (!SaveGame.Instance.GetItem(out int item, pmt, true, true, false))
+            if (!SaveGame.Instance.GetItem(out var item, pmt, true, true, false))
             {
                 if (item == -2)
                 {
@@ -1012,13 +1011,13 @@ namespace Cthangband
                     return;
                 }
             }
-            Item oPtr = item >= 0 ? _player.Inventory[item] : SaveGame.Instance.Level.Items[0 - item];
+            var oPtr = item >= 0 ? _player.Inventory[item] : SaveGame.Instance.Level.Items[0 - item];
             if (item >= InventorySlot.MeleeWeapon && oPtr.IsCursed())
             {
                 Profile.Instance.MsgPrint("Hmmm, it seems to be cursed.");
                 return;
             }
-            int amt = 1;
+            var amt = 1;
             if (oPtr.Count > 1)
             {
                 amt = Gui.GetQuantity(null, oPtr.Count, true);
@@ -1027,10 +1026,10 @@ namespace Cthangband
                     return;
                 }
             }
-            Item qPtr = new Item(oPtr) { Count = amt };
-            string oName = qPtr.Description(true, 3);
+            var qPtr = new Item(oPtr) { Count = amt };
+            var oName = qPtr.Description(true, 3);
             qPtr.Inscription = "";
-            int finalAsk = PriceItem(qPtr, _owner.MinInflate, true) * qPtr.Count;
+            var finalAsk = PriceItem(qPtr, _owner.MinInflate, true) * qPtr.Count;
             _player.Inventory.InvenItemIncrease(item, -amt);
             _player.Inventory.InvenItemDescribe(item);
             _player.Inventory.InvenItemOptimize(item);
@@ -1079,8 +1078,8 @@ namespace Cthangband
 
         private bool SellHaggle(Item oPtr, out int price)
         {
-            int finalAsk = PriceItem(oPtr, _owner.MinInflate, true);
-            int purse = _owner.MaxCost;
+            var finalAsk = PriceItem(oPtr, _owner.MinInflate, true);
+            var purse = _owner.MaxCost;
             if (finalAsk >= purse)
             {
                 Profile.Instance.MsgPrint("You instantly agree upon the price.");
@@ -1096,20 +1095,20 @@ namespace Cthangband
             const string pmt = "Final Offer";
             finalAsk *= oPtr.Count;
             price = finalAsk;
-            string outVal = $"{pmt} :  {finalAsk}";
+            var outVal = $"{pmt} :  {finalAsk}";
             Gui.Print(outVal, 1, 0);
             return !Gui.GetCheck("Accept deal? ");
         }
 
         private bool ServiceHaggle(int serviceCost, out int price)
         {
-            int finalAsk = serviceCost;
+            var finalAsk = serviceCost;
             Profile.Instance.MsgPrint("You quickly agree upon the price.");
             Profile.Instance.MsgPrint(null);
             finalAsk += finalAsk / 10;
             price = finalAsk;
             const string pmt = "Final Offer";
-            string outVal = $"{pmt} :  {finalAsk}";
+            var outVal = $"{pmt} :  {finalAsk}";
             Gui.Print(outVal, 1, 0);
             return !Gui.GetCheck("Accept deal? ");
         }
@@ -1118,7 +1117,7 @@ namespace Cthangband
         {
             int slot;
             Item jPtr;
-            int value = oPtr.Value();
+            var value = oPtr.Value();
             if (value <= 0)
             {
                 return -1;
@@ -1171,7 +1170,7 @@ namespace Cthangband
                         continue;
                     }
                 }
-                int jValue = jPtr.Value();
+                var jValue = jPtr.Value();
                 if (value > jValue)
                 {
                     break;
@@ -1180,7 +1179,7 @@ namespace Cthangband
                 {
                 }
             }
-            for (int i = _stockNum; i > slot; i--)
+            for (var i = _stockNum; i > slot; i--)
             {
                 _stock[i] = _stock[i - 1];
             }
@@ -1228,7 +1227,7 @@ namespace Cthangband
             {
                 return;
             }
-            for (int tries = 0; tries < 4; tries++)
+            for (var tries = 0; tries < 4; tries++)
             {
                 int i;
                 int level;
@@ -1248,7 +1247,7 @@ namespace Cthangband
                     level = Program.Rng.RandomBetween(1, Constants.StoreObjLevel);
                     itemType = Profile.Instance.ItemTypes[i];
                 }
-                Item qPtr = new Item();
+                var qPtr = new Item();
                 qPtr.AssignItemType(itemType);
                 qPtr.ApplyMagic(level, false, false, false);
                 if (qPtr.Category == ItemCategory.Light)
@@ -1290,8 +1289,8 @@ namespace Cthangband
 
         private void StoreDelete()
         {
-            int what = Program.Rng.RandomLessThan(_stockNum);
-            int num = _stock[what].Count;
+            var what = Program.Rng.RandomLessThan(_stockNum);
+            var num = _stock[what].Count;
             if (Program.Rng.RandomLessThan(100) < 50)
             {
                 num = (num + 1) / 2;
@@ -1313,18 +1312,18 @@ namespace Cthangband
                     : "I am currently out of stock.");
                 return;
             }
-            int i = _stockNum - _storeTop;
+            var i = _stockNum - _storeTop;
             if (i > 26)
             {
                 i = 26;
             }
             const string outVal = "Which item do you want to examine? ";
-            if (!GetStock(out int item, outVal, 0, i - 1))
+            if (!GetStock(out var item, outVal, 0, i - 1))
             {
                 return;
             }
             item += _storeTop;
-            Item oPtr = _stock[item];
+            var oPtr = _stock[item];
             if (oPtr.Category == ItemCategory.LifeBook || oPtr.Category == ItemCategory.SorceryBook ||
                 oPtr.Category == ItemCategory.NatureBook || oPtr.Category == ItemCategory.ChaosBook ||
                 oPtr.Category == ItemCategory.DeathBook ||
@@ -1405,7 +1404,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("You have no special knowledge about that item.");
                 return;
             }
-            string oName = oPtr.Description(true, 3);
+            var oName = oPtr.Description(true, 3);
             Profile.Instance.MsgPrint($"Examining {oName}...");
             if (!oPtr.IdentifyFully())
             {
@@ -1415,8 +1414,8 @@ namespace Cthangband
 
         private void StoreItemIncrease(int item, int num)
         {
-            Item oPtr = _stock[item];
-            int cnt = oPtr.Count + num;
+            var oPtr = _stock[item];
+            var cnt = oPtr.Count + num;
             if (cnt > 255)
             {
                 cnt = 255;
@@ -1432,7 +1431,7 @@ namespace Cthangband
         private void StoreItemOptimize(int item)
         {
             int j;
-            Item oPtr = _stock[item];
+            var oPtr = _stock[item];
             if (oPtr.ItemType == null)
             {
                 return;
@@ -1451,7 +1450,7 @@ namespace Cthangband
 
         private void StoreObjectAbsorb(Item oPtr, Item jPtr)
         {
-            int total = oPtr.Count + jPtr.Count;
+            var total = oPtr.Count + jPtr.Count;
             oPtr.Count = total > 99 ? 99 : total;
         }
 
@@ -1810,7 +1809,7 @@ namespace Cthangband
                                         SayComment_1();
                                         Gui.PlaySound(SoundEffect.StoreTransaction);
                                         StorePrtGold();
-                                        int oldHouse = _player.TownWithHouse;
+                                        var oldHouse = _player.TownWithHouse;
                                         _player.TownWithHouse = SaveGame.Instance.CurTown.Index;
                                         if (oldHouse == -1)
                                         {
@@ -1916,7 +1915,7 @@ namespace Cthangband
         private void StorePrtGold()
         {
             Gui.PrintLine("Gold Remaining: ", 39, 53);
-            string outVal = $"{_player.Gold,9}";
+            var outVal = $"{_player.Gold,9}";
             Gui.PrintLine(outVal, 39, 68);
         }
 
@@ -1931,35 +1930,35 @@ namespace Cthangband
                     : "I am currently out of stock.");
                 return;
             }
-            int i = _stockNum - _storeTop;
+            var i = _stockNum - _storeTop;
             if (i > 26)
             {
                 i = 26;
             }
-            string outVal = StoreType == StoreType.StoreHome
+            var outVal = StoreType == StoreType.StoreHome
                 ? "Which item do you want to take? "
                 : "Which item are you interested in? ";
-            if (!GetStock(out int item, outVal, 0, i - 1))
+            if (!GetStock(out var item, outVal, 0, i - 1))
             {
                 return;
             }
             item += _storeTop;
-            Item oPtr = _stock[item];
-            int amt = 1;
-            Item jPtr = new Item(oPtr) { Count = amt };
+            var oPtr = _stock[item];
+            var amt = 1;
+            var jPtr = new Item(oPtr) { Count = amt };
             if (!_player.Inventory.InvenCarryOkay(jPtr))
             {
                 Profile.Instance.MsgPrint("You cannot carry that many different items.");
                 return;
             }
-            int best = PriceItem(jPtr, _owner.MinInflate, false);
+            var best = PriceItem(jPtr, _owner.MinInflate, false);
             if (oPtr.Count > 1)
             {
                 if (StoreType != StoreType.StoreHome && oPtr.IdentifyFlags.IsSet(Constants.IdentFixed))
                 {
                     Profile.Instance.MsgPrint($"That costs {best} gold per item.");
                 }
-                int maxBuy = Math.Min(_player.Gold / best, oPtr.Count);
+                var maxBuy = Math.Min(_player.Gold / best, oPtr.Count);
                 if (maxBuy < 2)
                 {
                     amt = 1;
@@ -2098,13 +2097,13 @@ namespace Cthangband
         private void StoreSell()
         {
             int itemPos;
-            string pmt = "Sell which item? ";
+            var pmt = "Sell which item? ";
             if (StoreType == StoreType.StoreHome)
             {
                 pmt = "Drop which item? ";
             }
             SaveGame.Instance.ItemFilter = StoreWillBuy;
-            if (!SaveGame.Instance.GetItem(out int item, pmt, true, true, false))
+            if (!SaveGame.Instance.GetItem(out var item, pmt, true, true, false))
             {
                 if (item == -2)
                 {
@@ -2112,13 +2111,13 @@ namespace Cthangband
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? _player.Inventory[item] : SaveGame.Instance.Level.Items[0 - item];
+            var oPtr = item >= 0 ? _player.Inventory[item] : SaveGame.Instance.Level.Items[0 - item];
             if (item >= InventorySlot.MeleeWeapon && oPtr.IsCursed())
             {
                 Profile.Instance.MsgPrint("Hmmm, it seems to be cursed.");
                 return;
             }
-            int amt = 1;
+            var amt = 1;
             if (oPtr.Count > 1)
             {
                 amt = Gui.GetQuantity(null, oPtr.Count, true);
@@ -2127,8 +2126,8 @@ namespace Cthangband
                     return;
                 }
             }
-            Item qPtr = new Item(oPtr) { Count = amt };
-            string oName = qPtr.Description(true, 3);
+            var qPtr = new Item(oPtr) { Count = amt };
+            var oName = qPtr.Description(true, 3);
             if (StoreType != StoreType.StoreHome)
             {
                 qPtr.Inscription = "";
@@ -2144,14 +2143,14 @@ namespace Cthangband
             {
                 Profile.Instance.MsgPrint($"Selling {oName} ({item.IndexToLabel()}).");
                 Profile.Instance.MsgPrint(null);
-                bool choice = SellHaggle(qPtr, out int price);
+                var choice = SellHaggle(qPtr, out var price);
                 if (!choice)
                 {
                     SayComment_1();
                     Gui.PlaySound(SoundEffect.StoreTransaction);
                     _player.Gold += price;
                     StorePrtGold();
-                    int dummy = qPtr.Value() * qPtr.Count;
+                    var dummy = qPtr.Value() * qPtr.Count;
                     if (StoreType != StoreType.StorePawn)
                     {
                         oPtr.BecomeFlavourAware();

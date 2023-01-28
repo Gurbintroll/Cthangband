@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -32,11 +32,11 @@ namespace Cthangband
         /// <param name="screenCol"> The column in which to start printing the characters </param>
         public static void DisplayPlayerEquippy(Player player, int screenRow, int screenCol)
         {
-            for (int i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
+            for (var i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
             {
-                Item item = player.Inventory[i];
-                Colour colour = Colour.Background;
-                char character = ' ';
+                var item = player.Inventory[i];
+                var colour = Colour.Background;
+                var character = ' ';
                 // Only print items that exist
                 if (item.ItemType != null)
                 {
@@ -79,38 +79,38 @@ namespace Cthangband
         private string AbilitySummary(int abilityIndex)
         {
             // The summary will have up to five sections
-            string bonus1 = string.Empty;
-            string bonus2 = string.Empty;
-            string bonus3 = string.Empty;
-            string bonus4 = string.Empty;
-            string bonus5 = string.Empty;
+            var bonus1 = string.Empty;
+            var bonus2 = string.Empty;
+            var bonus3 = string.Empty;
+            var bonus4 = string.Empty;
+            var bonus5 = string.Empty;
             // Get the score
-            AbilityScore ability = _player.AbilityScores[abilityIndex];
+            var ability = _player.AbilityScores[abilityIndex];
             // Fill in up to five pieces of bonus text
             switch (abilityIndex)
             {
                 case Ability.Strength:
-                    int toHit = ability.StrAttackBonus;
+                    var toHit = ability.StrAttackBonus;
                     bonus1 = $"{toHit:+0;-0;+0} to hit";
-                    int toDam = ability.StrDamageBonus;
+                    var toDam = ability.StrDamageBonus;
                     bonus2 = $", {toDam:+0;-0;+0} damage";
-                    int carry = ability.StrCarryingCapacity * 5;
+                    var carry = ability.StrCarryingCapacity * 5;
                     bonus3 = $", carry {carry}lb";
-                    int weap = ability.StrMaxWeaponWeight;
+                    var weap = ability.StrMaxWeaponWeight;
                     bonus4 = $", wield {weap}lb";
-                    int dig = ability.StrDiggingBonus;
+                    var dig = ability.StrDiggingBonus;
                     bonus5 = $", {dig}% digging";
                     break;
 
                 case Ability.Intelligence:
-                    int device = ability.IntUseDeviceBonus;
+                    var device = ability.IntUseDeviceBonus;
                     bonus1 = $"{device:+0;-0;+0} device";
-                    int disarm = ability.IntDisarmBonus;
+                    var disarm = ability.IntDisarmBonus;
                     bonus2 = $", {disarm:+0;-0;+0}% disarm";
                     break;
 
                 case Ability.Wisdom:
-                    int save = ability.WisSavingThrowBonus;
+                    var save = ability.WisSavingThrowBonus;
                     bonus1 = $"{save:+0;-0;+0} save";
                     break;
 
@@ -119,14 +119,14 @@ namespace Cthangband
                     bonus1 = $"{toHit:+0;-0;+0} to hit";
                     disarm = ability.DexDisarmBonus;
                     bonus2 = $", {disarm:+0;-0;+0}% disarm";
-                    int ac = ability.DexArmourClassBonus;
+                    var ac = ability.DexArmourClassBonus;
                     bonus3 = $", {ac:+0;-0;+0} AC";
-                    int theft = ability.DexTheftAvoidance;
+                    var theft = ability.DexTheftAvoidance;
                     bonus4 = $", {theft}% anti-theft";
                     break;
 
                 case Ability.Constitution:
-                    int hits = ability.ConHealthBonus;
+                    var hits = ability.ConHealthBonus;
                     if (hits == -1)
                     {
                         bonus1 = "-0.5 HP/lvl";
@@ -135,25 +135,25 @@ namespace Cthangband
                     {
                         bonus1 = hits % 2 == 0 ? $"{hits / 2:+0;-0;+0} HP/lvl" : $"{hits / 2:+0;-0;+0}.5 HP/lvl";
                     }
-                    int regen = ability.ConRecoverySpeed;
+                    var regen = ability.ConRecoverySpeed;
                     bonus2 = $", x{regen + 1} recovery";
                     break;
 
                 case Ability.Charisma:
-                    int haggle = ability.ChaPriceAdjustment;
+                    var haggle = ability.ChaPriceAdjustment;
                     bonus1 = $"{haggle}% prices";
                     break;
             }
             // Add the bonus text for spell casting abilities
             if (_player.Spellcasting.SpellStat == abilityIndex && abilityIndex != Ability.Strength)
             {
-                int vis = ability.VisBonus;
+                var vis = ability.VisBonus;
                 // Casting abilities only have one or two inherent bonuses, so it's safe to start at three
                 bonus3 = vis % 2 == 0 ? $", {vis / 2} VP/lvl" : $", {vis / 2}.5 VP/lvl";
                 // Not all casting classes have actual spells
                 if (_player.PlayerClass.HasSpells)
                 {
-                    int spells = ability.HalfSpellsPerLevel;
+                    var spells = ability.HalfSpellsPerLevel;
                     if (spells == 2)
                     {
                         bonus4 = ", 1 spell/lvl";
@@ -170,7 +170,7 @@ namespace Cthangband
                 // Almost all casting classes have a failure chance
                 if (!_player.PlayerClass.HasSpellFailureChance)
                 {
-                    int fail = ability.SpellMinFailChance;
+                    var fail = ability.SpellMinFailChance;
                     bonus5 = $", {fail}% min fail";
                 }
             }
@@ -184,14 +184,14 @@ namespace Cthangband
         private void DisplayPlayerAbilityScoresWithEffects()
         {
             // Loop through the scores
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
                 string buf;
                 // If they've been drained, make them visually distinct
                 if (_player.AbilityScores[i].Innate < _player.AbilityScores[i].InnateMax)
                 {
                     Gui.Print(Colour.Blue, GlobalData.StatNamesReduced[i], 14 + i, 1);
-                    int value = _player.AbilityScores[i].Adjusted;
+                    var value = _player.AbilityScores[i].Adjusted;
                     buf = value.StatToString();
                     Gui.Print(Colour.Grey, buf, 14 + i, 6);
                     buf = AbilitySummary(i);
@@ -215,9 +215,9 @@ namespace Cthangband
         {
             int i;
             int stat;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             Colour a;
             char c;
             const int statCol = 1;
@@ -230,7 +230,7 @@ namespace Cthangband
             for (i = 0; i < 6; i++)
             {
                 // Reverse engineer our equipment bonuses from our score
-                int equipmentBonuses = 0;
+                var equipmentBonuses = 0;
                 if (_player.AbilityScores[i].InnateMax > 18 && _player.AbilityScores[i].AdjustedMax > 18)
                 {
                     equipmentBonuses = (_player.AbilityScores[i].AdjustedMax - _player.AbilityScores[i].InnateMax) / 10;
@@ -252,7 +252,7 @@ namespace Cthangband
                 equipmentBonuses -= _player.PlayerClass.AbilityBonus[i];
                 // Print each of the scores and bonuses
                 Gui.Print(Colour.Blue, GlobalData.StatNames[i], row + i, statCol);
-                string buf = _player.AbilityScores[i].InnateMax.StatToString();
+                var buf = _player.AbilityScores[i].InnateMax.StatToString();
                 Gui.Print(Colour.Purple, buf, row + i, statCol + 4);
                 buf = _player.Race.AbilityBonus[i].ToString("+0;-0;+0").PadLeft(3);
                 Gui.Print(Colour.Brown, buf, row + i, statCol + 13);
@@ -269,12 +269,12 @@ namespace Cthangband
                 }
             }
             // Printe the bonuses for each score and each item we have
-            int col = statCol + 44;
+            var col = statCol + 44;
             Gui.Print(Colour.Blue, "abcdefghijklm@", row - 1, col);
             Gui.Print(Colour.Blue, "Modifications", row + 6, col);
             for (i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
             {
-                Item item = _player.Inventory[i];
+                var item = _player.Inventory[i];
                 // Only extract known bonuses, not full bonuses
                 item.ObjectFlagsKnown(f1, f2, f3);
                 for (stat = 0; stat < 6; stat++)
@@ -316,7 +316,7 @@ namespace Cthangband
             {
                 a = Colour.Grey;
                 c = '.';
-                int extraModifier = 0;
+                var extraModifier = 0;
                 // We may have extra bonuses or penalties from mutations
                 switch (stat)
                 {
@@ -382,9 +382,9 @@ namespace Cthangband
         /// </summary>
         private void DisplayPlayerEssentials()
         {
-            int showTohit = _player.DisplayedAttackBonus;
-            int showTodam = _player.DisplayedDamageBonus;
-            Item item = _player.Inventory[InventorySlot.MeleeWeapon];
+            var showTohit = _player.DisplayedAttackBonus;
+            var showTodam = _player.DisplayedDamageBonus;
+            var item = _player.Inventory[InventorySlot.MeleeWeapon];
             // Only show bonuses if we know them
             if (item.IsKnown())
             {
@@ -449,7 +449,7 @@ namespace Cthangband
         /// </summary>
         private void DisplayPlayerHistory()
         {
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 Gui.Print(Colour.Brown, _player.History[i], i + 9, 10);
             }
@@ -460,28 +460,28 @@ namespace Cthangband
         /// </summary>
         private void DisplayPlayerSkills()
         {
-            Item item = _player.Inventory[InventorySlot.MeleeWeapon];
-            int tmp = _player.AttackBonus + item.BonusToHit;
-            int fighting = _player.SkillMelee + (tmp * Constants.BthPlusAdj);
+            var item = _player.Inventory[InventorySlot.MeleeWeapon];
+            var tmp = _player.AttackBonus + item.BonusToHit;
+            var fighting = _player.SkillMelee + (tmp * Constants.BthPlusAdj);
             item = _player.Inventory[InventorySlot.RangedWeapon];
             tmp = _player.AttackBonus + item.BonusToHit;
-            int shooting = _player.SkillRanged + (tmp * Constants.BthPlusAdj);
+            var shooting = _player.SkillRanged + (tmp * Constants.BthPlusAdj);
             item = _player.Inventory[InventorySlot.MeleeWeapon];
-            int dambonus = _player.DisplayedDamageBonus;
+            var dambonus = _player.DisplayedDamageBonus;
             // Only include weapon damage if the player knows what it is
             if (item.IsKnown())
             {
                 dambonus += item.BonusDamage;
             }
-            int damdice = item.DamageDice;
-            int damsides = item.DamageDiceSides;
-            int attacksPerRound = _player.MeleeAttacksPerRound;
-            int disarmTraps = _player.SkillDisarmTraps;
-            int useDevice = _player.SkillUseDevice;
-            int savingThrow = _player.SkillSavingThrow;
-            int stealth = _player.SkillStealth;
-            int searching = _player.SkillSearching;
-            int searchFrequency = _player.SkillSearchFrequency;
+            var damdice = item.DamageDice;
+            var damsides = item.DamageDiceSides;
+            var attacksPerRound = _player.MeleeAttacksPerRound;
+            var disarmTraps = _player.SkillDisarmTraps;
+            var useDevice = _player.SkillUseDevice;
+            var savingThrow = _player.SkillSavingThrow;
+            var stealth = _player.SkillStealth;
+            var searching = _player.SkillSearching;
+            var searchFrequency = _player.SkillSearchFrequency;
             Gui.Print(Colour.Blue, "Fighting    :", 36, 1);
             PrintCategorisedNumber(fighting, 12, 36, 15);
             Gui.Print(Colour.Blue, "Shooting    :", 37, 1);
@@ -525,7 +525,7 @@ namespace Cthangband
         /// </summary>
         private void DisplayPlayerTop()
         {
-            string realmBuff = "";
+            var realmBuff = "";
             Gui.Print(Colour.Blue, "Name        :", 2, 1);
             Gui.Print(Colour.Blue, "Gender      :", 3, 1);
             Gui.Print(Colour.Blue, "Race        :", 4, 1);
@@ -567,7 +567,7 @@ namespace Cthangband
                 Gui.Print(Colour.Brown, _player.Religion.GetPatronDeity().LongName, 7, 15);
             }
             Gui.Print(Colour.Blue, "Birthday", 2, 32);
-            string dateBuff = _player.GameTime.BirthdayText.PadLeft(8);
+            var dateBuff = _player.GameTime.BirthdayText.PadLeft(8);
             Gui.Print(Colour.Brown, dateBuff, 2, 46);
             PrintShortScore("Age          ", _player.Age, 3, 32, Colour.Brown);
             PrintShortScore("Height       ", _player.Height, 4, 32, Colour.Brown);
@@ -581,7 +581,7 @@ namespace Cthangband
                 if (_player.AbilityScores[i].Innate < _player.AbilityScores[i].InnateMax)
                 {
                     Gui.Print(Colour.Blue, GlobalData.StatNamesReduced[i], 2 + i, 61);
-                    int value = _player.AbilityScores[i].Adjusted;
+                    var value = _player.AbilityScores[i].Adjusted;
                     buf = value.StatToString();
                     Gui.Print(Colour.Red, buf, 2 + i, 66);
                     value = _player.AbilityScores[i].AdjustedMax;
@@ -607,10 +607,10 @@ namespace Cthangband
         /// <param name="colour"> The colour in which to print the number </param>
         private void PrintBonus(string header, int num, int row, int col, Colour colour)
         {
-            int len = header.Length;
+            var len = header.Length;
             Gui.Print(Colour.Blue, header, row, col);
             Gui.Print(Colour.Blue, "   ", row, col + len);
-            string outVal = num.ToString("+0;-0;0").PadLeft(6);
+            var outVal = num.ToString("+0;-0;0").PadLeft(6);
             Gui.Print(colour, outVal, row, col + len + 3);
         }
 
@@ -718,9 +718,9 @@ namespace Cthangband
         /// <param name="colour"> The colour in which to print the number </param>
         private void PrintLongScore(string title, int number, int row, int col, Colour colour)
         {
-            int len = title.Length;
+            var len = title.Length;
             Gui.Print(Colour.Blue, title, row, col);
-            string outVal = number.ToString().PadLeft(9);
+            var outVal = number.ToString().PadLeft(9);
             Gui.Print(colour, outVal, row, col + len);
         }
 
@@ -734,10 +734,10 @@ namespace Cthangband
         /// <param name="colour"> The colour in which to print the number </param>
         private void PrintShortScore(string header, int num, int row, int col, Colour colour)
         {
-            int len = header.Length;
+            var len = header.Length;
             Gui.Print(Colour.Blue, header, row, col);
             Gui.Print(Colour.Blue, "   ", row, col + len);
-            string outVal = num.ToString().PadLeft(6);
+            var outVal = num.ToString().PadLeft(6);
             Gui.Print(colour, outVal, row, col + len + 3);
         }
     }

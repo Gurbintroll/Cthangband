@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -40,16 +40,16 @@ namespace Cthangband
 
         public static T DeserializeFromSaveFolder<T>(string filename)
         {
-            string path = Path.Combine(SaveFolder, filename);
-            FileInfo info = new FileInfo(path);
+            var path = Path.Combine(SaveFolder, filename);
+            var info = new FileInfo(path);
             T o;
             if (!info.Exists)
             {
                 return default;
             }
-            using (FileStream stream = info.OpenRead())
+            using (var stream = info.OpenRead())
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                var formatter = new BinaryFormatter();
                 o = (T)formatter.Deserialize(stream);
                 stream.Close();
             }
@@ -63,7 +63,7 @@ namespace Cthangband
             {
                 return true;
             }
-            DirectoryInfo intended = new DirectoryInfo(path);
+            var intended = new DirectoryInfo(path);
             // If it already exists, then we're fine
             if (intended.Exists)
             {
@@ -75,12 +75,12 @@ namespace Cthangband
 
         public static void GetDefaultFolder()
         {
-            string savePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var savePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             savePath = Path.Combine(savePath, "My Games");
             savePath = Path.Combine(savePath, Constants.VersionName);
             SaveFolder = savePath;
             _saveSlot = new string[4];
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 _saveSlot[i] = Path.Combine(savePath, $"slot{i + 1}.v_{Constants.VersionMajor}_{Constants.VersionMinor}_savefile");
             }
@@ -88,11 +88,11 @@ namespace Cthangband
 
         public static void SerializeToSaveFolder<T>(T o, string filename)
         {
-            string path = Path.Combine(SaveFolder, filename);
-            FileInfo info = new FileInfo(path);
-            using (FileStream stream = info.OpenWrite())
+            var path = Path.Combine(SaveFolder, filename);
+            var info = new FileInfo(path);
+            using (var stream = info.OpenWrite())
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                var formatter = new BinaryFormatter();
                 formatter.Serialize(stream, o);
             }
         }
@@ -101,7 +101,7 @@ namespace Cthangband
         {
             var fonts = Gui.Terminal.EnumerateFonts();
             var font = 0;
-            for (int i = 0; i < fonts.Count; i++)
+            for (var i = 0; i < fonts.Count; i++)
             {
                 if (fonts[i] == _settings.Font)
                 {
@@ -117,7 +117,7 @@ namespace Cthangband
             {
                 resolution = 5;
             }
-            int textStyle = 0;
+            var textStyle = 0;
             if (_settings.Bold)
             {
                 textStyle += 1;
@@ -134,7 +134,7 @@ namespace Cthangband
             var blank = new string(' ', 34);
             while (true)
             {
-                for (int i = 4; i < 10; i++)
+                for (var i = 4; i < 10; i++)
                 {
                     Gui.Print(Colour.White, blank, i, 16);
                 }
@@ -297,7 +297,7 @@ namespace Cthangband
         internal static Dictionary<string, HighScore> GetHighScoreFromSaves()
         {
             var saves = new Dictionary<string, HighScore>();
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 var score = GetHighScoreFromSave(_saveSlot[i]);
                 if (score != null)
@@ -312,7 +312,7 @@ namespace Cthangband
         {
             Gui.SetBackground(BackgroundImage.Normal);
             Gui.Clear();
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 PeekSavefile(_saveSlot[i], i, false);
             }
@@ -323,8 +323,8 @@ namespace Cthangband
             Gui.Print(Colour.BrightTurquoise, $"Select a savegame to {action}.".PadCenter(80), 23, 0);
             Gui.Refresh();
             Gui.Save();
-            int displayRow = 0;
-            int displayCol = 0;
+            var displayRow = 0;
+            var displayCol = 0;
             while (true)
             {
                 Gui.Load();
@@ -352,7 +352,7 @@ namespace Cthangband
                 }
                 Gui.Print(Colour.BrightPurple, "+----------------+", displayRow - 2, displayCol + 5);
                 Gui.Print(Colour.BrightPurple, "+----------------+", displayRow + 5, displayCol + 5);
-                for (int i = -1; i < 5; i++)
+                for (var i = -1; i < 5; i++)
                 {
                     Gui.Print(Colour.BrightPurple, "|", displayRow + i, displayCol + 5);
                     Gui.Print(Colour.BrightPurple, "|", displayRow + i, displayCol + 22);
@@ -414,7 +414,7 @@ namespace Cthangband
 
         private static HighScore GetHighScoreFromSave(string save)
         {
-            FileInfo file = new FileInfo(save);
+            var file = new FileInfo(save);
             if (!file.Exists)
             {
                 return null;
@@ -441,7 +441,7 @@ namespace Cthangband
 
         private static int LoadGame(int saveIndex)
         {
-            int choice = ChooseProfile(saveIndex, "load");
+            var choice = ChooseProfile(saveIndex, "load");
             if (choice >= 0)
             {
                 if (PeekSavefile(_saveSlot[choice], 0, true))
@@ -485,7 +485,7 @@ namespace Cthangband
 
         private static int NewGame(int saveIndex)
         {
-            int choice = ChooseProfile(saveIndex, "overwrite");
+            var choice = ChooseProfile(saveIndex, "overwrite");
             if (choice >= 0)
             {
                 if (PeekSavefile(_saveSlot[choice], 0, true))
@@ -512,7 +512,7 @@ namespace Cthangband
                             return -1;
 
                         case 0:
-                            FileInfo fileInfo = new FileInfo(_saveSlot[choice]);
+                            var fileInfo = new FileInfo(_saveSlot[choice]);
                             if (fileInfo.Exists)
                             {
                                 fileInfo.Delete();
@@ -527,8 +527,8 @@ namespace Cthangband
 
         private static bool PeekSavefile(string save, int index, bool silently)
         {
-            int displayRow = 0;
-            int displayCol = 0;
+            var displayRow = 0;
+            var displayCol = 0;
             switch (index)
             {
                 case 0:
@@ -551,7 +551,7 @@ namespace Cthangband
                     displayCol = 46;
                     break;
             }
-            FileInfo file = new FileInfo(save);
+            var file = new FileInfo(save);
             if (!file.Exists)
             {
                 if (!silently)
@@ -577,7 +577,7 @@ namespace Cthangband
             {
                 return true;
             }
-            bool tempDeath = tempProfile.Game.Player == null;
+            var tempDeath = tempProfile.Game.Player == null;
             Colour color;
             int tempLev;
             string tempRace;
@@ -607,7 +607,7 @@ namespace Cthangband
                 tempName = tempProfile.Game.Player.Name.Trim() + tempProfile.Game.Player.Generation.ToRoman(true);
             }
             Gui.Print(color, tempName, displayRow, displayCol + 14 - (tempName.Length / 2));
-            string tempchar = $"the level {tempLev}";
+            var tempchar = $"the level {tempLev}";
             Gui.Print(color, tempchar, displayRow + 1, displayCol + 14 - (tempchar.Length / 2));
             tempchar = PlayerRaces.Instance[tempRace].Title;
             Gui.Print(color, tempchar, displayRow + 2, displayCol + 14 - (tempchar.Length / 2));

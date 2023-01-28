@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.Spells.Base;
 using Cthangband.Spells.Chaos;
 using Cthangband.Spells.Corporeal;
@@ -17,7 +18,6 @@ using Cthangband.Spells.Sorcery;
 using Cthangband.Spells.Tarot;
 using System;
 using System.Collections.Generic;
-using Cthangband.PlayerClass.Base;
 
 namespace Cthangband.Spells
 {
@@ -344,13 +344,13 @@ namespace Cthangband.Spells
                     break;
 
                 default:
-                    for (int i = 0; i < 32; i++)
+                    for (var i = 0; i < 32; i++)
                     {
                         Add(new IllegibleSpell());
                     }
                     break;
             }
-            foreach (ISpell spell in this)
+            foreach (var spell in this)
             {
                 spell.Initialise(playerClass, realm);
             }

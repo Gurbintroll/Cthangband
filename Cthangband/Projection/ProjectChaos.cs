@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -29,19 +29,19 @@ namespace Cthangband.Projection
 
         protected override bool AffectItem(int who, int y, int x)
         {
-            GridTile cPtr = Level.Grid[y][x];
+            var cPtr = Level.Grid[y][x];
             int nextOIdx;
-            bool obvious = false;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            string oName = "";
-            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            var obvious = false;
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
+            var oName = "";
+            for (var thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                bool isArt = false;
-                bool ignore = false;
-                bool plural = false;
-                Item oPtr = Level.Items[thisOIdx];
+                var isArt = false;
+                var ignore = false;
+                var plural = false;
+                var oPtr = Level.Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 oPtr.GetMergedFlags(f1, f2, f3);
                 if (oPtr.Count > 1)
@@ -52,7 +52,7 @@ namespace Cthangband.Projection
                 {
                     isArt = true;
                 }
-                string noteKill = plural ? " are destroyed!" : " is destroyed!";
+                var noteKill = plural ? " are destroyed!" : " is destroyed!";
                 if (f2.IsSet(ItemFlag2.ResChaos))
                 {
                     ignore = true;
@@ -66,7 +66,7 @@ namespace Cthangband.Projection
                 {
                     if (oPtr.Marked)
                     {
-                        string s = plural ? "are" : "is";
+                        var s = plural ? "are" : "is";
                         Profile.Instance.MsgPrint($"The {oName} {s} unaffected!");
                     }
                 }
@@ -76,8 +76,8 @@ namespace Cthangband.Projection
                     {
                         Profile.Instance.MsgPrint($"The {oName}{noteKill}");
                     }
-                    int oSval = oPtr.ItemSubCategory;
-                    bool isPotion = oPtr.ItemType.Category == ItemCategory.Potion;
+                    var oSval = oPtr.ItemSubCategory;
+                    var isPotion = oPtr.ItemType.Category == ItemCategory.Potion;
                     Level.DeleteObjectIdx(thisOIdx);
                     if (isPotion)
                     {
@@ -92,13 +92,13 @@ namespace Cthangband.Projection
         protected override bool AffectMonster(int who, int r, int y, int x, int dam)
         {
             int tmp;
-            GridTile cPtr = Level.Grid[y][x];
-            Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
-            MonsterRace rPtr = mPtr.Race;
-            bool seen = mPtr.IsVisible;
-            bool obvious = false;
+            var cPtr = Level.Grid[y][x];
+            var mPtr = Level.Monsters[cPtr.MonsterIndex];
+            var rPtr = mPtr.Race;
+            var seen = mPtr.IsVisible;
+            var obvious = false;
             string note = null;
-            string noteDies = " dies.";
+            var noteDies = " dies.";
             if (cPtr.MonsterIndex == 0)
             {
                 return false;
@@ -108,7 +108,7 @@ namespace Cthangband.Projection
                 return false;
             }
             dam = (dam + r) / (r + 1);
-            string mName = mPtr.MonsterDesc(0);
+            var mName = mPtr.MonsterDesc(0);
             if ((rPtr.Flags3 & MonsterFlag3.Demon) != 0 || (rPtr.Flags3 & MonsterFlag3.Undead) != 0 ||
                 (rPtr.Flags3 & MonsterFlag3.Cthuloid) != 0 || (rPtr.Flags2 & MonsterFlag2.Stupid) != 0 ||
                 (rPtr.Flags3 & MonsterFlag3.Nonliving) != 0 || "Evg".Contains(rPtr.Character.ToString()))
@@ -124,8 +124,8 @@ namespace Cthangband.Projection
             {
                 obvious = true;
             }
-            bool doPoly = true;
-            int doConf = (5 + Program.Rng.DieRoll(11) + r) / (r + 1);
+            var doPoly = true;
+            var doConf = (5 + Program.Rng.DieRoll(11) + r) / (r + 1);
             if ((rPtr.Flags4 & MonsterFlag4.BreatheChaos) != 0 ||
                 ((rPtr.Flags3 & MonsterFlag3.Demon) != 0 && Program.Rng.DieRoll(3) == 1))
             {
@@ -163,14 +163,14 @@ namespace Cthangband.Projection
             else if (doPoly && Program.Rng.DieRoll(90) > rPtr.Level)
             {
                 note = " is unaffected!";
-                bool charm = (mPtr.Mind & Constants.SmFriendly) != 0;
+                var charm = (mPtr.Mind & Constants.SmFriendly) != 0;
                 tmp = SpellEffects.PolymorphMonster(mPtr.Race);
                 if (tmp != mPtr.Race.Index)
                 {
                     note = " changes!";
                     dam = 0;
                     Level.Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);
-                    MonsterRace race = Profile.Instance.MonsterRaces[tmp];
+                    var race = Profile.Instance.MonsterRaces[tmp];
                     Level.Monsters.PlaceMonsterAux(y, x, race, false, false, charm);
                     mPtr = Level.Monsters[cPtr.MonsterIndex];
                 }
@@ -200,7 +200,7 @@ namespace Cthangband.Projection
                 mPtr.Health -= dam;
                 if (mPtr.Health < 0)
                 {
-                    bool sad = (mPtr.Mind & Constants.SmFriendly) != 0 && !mPtr.IsVisible;
+                    var sad = (mPtr.Mind & Constants.SmFriendly) != 0 && !mPtr.IsVisible;
                     SaveGame.MonsterDeath(cPtr.MonsterIndex);
                     Level.Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);
                     if (string.IsNullOrEmpty(note) == false)
@@ -226,7 +226,7 @@ namespace Cthangband.Projection
             }
             else
             {
-                if (Level.Monsters.DamageMonster(cPtr.MonsterIndex, dam, out bool fear, noteDies))
+                if (Level.Monsters.DamageMonster(cPtr.MonsterIndex, dam, out var fear, noteDies))
                 {
                 }
                 else
@@ -256,8 +256,8 @@ namespace Cthangband.Projection
 
         protected override bool AffectPlayer(int who, int r, int y, int x, int dam, int aRad)
         {
-            bool blind = Player.TimedBlindness != 0;
-            bool fuzzy = false;
+            var blind = Player.TimedBlindness != 0;
+            var fuzzy = false;
             if (x != Player.MapX || y != Player.MapY)
             {
                 return false;
@@ -270,7 +270,7 @@ namespace Cthangband.Projection
             {
                 int tY;
                 int tX;
-                int maxAttempts = 10;
+                var maxAttempts = 10;
                 Profile.Instance.MsgPrint(blind ? "Something bounces!" : "The attack bounces!");
                 do
                 {
@@ -296,8 +296,8 @@ namespace Cthangband.Projection
             {
                 fuzzy = true;
             }
-            Monster mPtr = Level.Monsters[who];
-            string killer = mPtr.MonsterDesc(0x88);
+            var mPtr = Level.Monsters[who];
+            var killer = mPtr.MonsterDesc(0x88);
             if (fuzzy)
             {
                 Profile.Instance.MsgPrint("You are hit by a wave of anarchy!");

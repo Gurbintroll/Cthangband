@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -39,32 +39,32 @@ namespace Cthangband
 
         public double Noise(double x, double y, double z)
         {
-            int ix = (int)Math.Floor(x);
-            double fx0 = x - ix;
-            double fx1 = fx0 - 1;
-            double wx = Smooth(fx0);
-            int iy = (int)Math.Floor(y);
-            double fy0 = y - iy;
-            double fy1 = fy0 - 1;
-            double wy = Smooth(fy0);
-            int iz = (int)Math.Floor(z);
-            double fz0 = z - iz;
-            double fz1 = fz0 - 1;
-            double wz = Smooth(fz0);
-            double vx0 = Lattice(ix, iy, iz, fx0, fy0, fz0);
-            double vx1 = Lattice(ix + 1, iy, iz, fx1, fy0, fz0);
-            double vy0 = Lerp(wx, vx0, vx1);
+            var ix = (int)Math.Floor(x);
+            var fx0 = x - ix;
+            var fx1 = fx0 - 1;
+            var wx = Smooth(fx0);
+            var iy = (int)Math.Floor(y);
+            var fy0 = y - iy;
+            var fy1 = fy0 - 1;
+            var wy = Smooth(fy0);
+            var iz = (int)Math.Floor(z);
+            var fz0 = z - iz;
+            var fz1 = fz0 - 1;
+            var wz = Smooth(fz0);
+            var vx0 = Lattice(ix, iy, iz, fx0, fy0, fz0);
+            var vx1 = Lattice(ix + 1, iy, iz, fx1, fy0, fz0);
+            var vy0 = Lerp(wx, vx0, vx1);
             vx0 = Lattice(ix, iy + 1, iz, fx0, fy1, fz0);
             vx1 = Lattice(ix + 1, iy + 1, iz, fx1, fy1, fz0);
-            double vy1 = Lerp(wx, vx0, vx1);
-            double vz0 = Lerp(wy, vy0, vy1);
+            var vy1 = Lerp(wx, vx0, vx1);
+            var vz0 = Lerp(wy, vy0, vy1);
             vx0 = Lattice(ix, iy, iz + 1, fx0, fy0, fz1);
             vx1 = Lattice(ix + 1, iy, iz + 1, fx1, fy0, fz1);
             vy0 = Lerp(wx, vx0, vx1);
             vx0 = Lattice(ix, iy + 1, iz + 1, fx0, fy1, fz1);
             vx1 = Lattice(ix + 1, iy + 1, iz + 1, fx1, fy1, fz1);
             vy1 = Lerp(wx, vx0, vx1);
-            double vz1 = Lerp(wy, vy0, vy1);
+            var vz1 = Lerp(wy, vy0, vy1);
             return Lerp(wz, vz0, vz1);
         }
 
@@ -75,11 +75,11 @@ namespace Cthangband
 
         private void InitGradients()
         {
-            for (int i = 0; i < _gradientSizeTable; i++)
+            for (var i = 0; i < _gradientSizeTable; i++)
             {
-                double z = 1f - (2f * _random.NextDouble());
-                double r = Math.Sqrt(1f - (z * z));
-                double theta = 2 * Math.PI * _random.NextDouble();
+                var z = 1f - (2f * _random.NextDouble());
+                var r = Math.Sqrt(1f - (z * z));
+                var theta = 2 * Math.PI * _random.NextDouble();
                 _gradients[i * 3] = r * Math.Cos(theta);
                 _gradients[(i * 3) + 1] = r * Math.Sin(theta);
                 _gradients[(i * 3) + 2] = z;
@@ -88,8 +88,8 @@ namespace Cthangband
 
         private double Lattice(int ix, int iy, int iz, double fx, double fy, double fz)
         {
-            int index = Index(ix, iy, iz);
-            int g = index * 3;
+            var index = Index(ix, iy, iz);
+            var g = index * 3;
             return (_gradients[g] * fx) + (_gradients[g + 1] * fy) + (_gradients[g + 2] * fz);
         }
 

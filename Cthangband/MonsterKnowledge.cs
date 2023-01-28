@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -56,9 +56,9 @@ namespace Cthangband
         public void DisplayBody(Colour bodyColour)
         {
             int m;
-            int msex = 0;
-            string[] vp = new string[64];
-            MonsterKnowledge knowledge = this;
+            var msex = 0;
+            var vp = new string[64];
+            var knowledge = this;
             _description = new StringBuilder();
             if (SaveGame.Instance.Player.IsWizard)
             {
@@ -105,12 +105,12 @@ namespace Cthangband
             {
                 msex = 1;
             }
-            uint flags1 = _monsterType.Flags1 & knowledge.RFlags1;
-            uint flags2 = _monsterType.Flags2 & knowledge.RFlags2;
-            uint flags3 = _monsterType.Flags3 & knowledge.RFlags3;
-            uint flags4 = _monsterType.Flags4 & knowledge.RFlags4;
-            uint flags5 = _monsterType.Flags5 & knowledge.RFlags5;
-            uint flags6 = _monsterType.Flags6 & knowledge.RFlags6;
+            var flags1 = _monsterType.Flags1 & knowledge.RFlags1;
+            var flags2 = _monsterType.Flags2 & knowledge.RFlags2;
+            var flags3 = _monsterType.Flags3 & knowledge.RFlags3;
+            var flags4 = _monsterType.Flags4 & knowledge.RFlags4;
+            var flags5 = _monsterType.Flags5 & knowledge.RFlags5;
+            var flags6 = _monsterType.Flags6 & knowledge.RFlags6;
             if ((_monsterType.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 flags1 |= MonsterFlag1.Unique;
@@ -190,10 +190,10 @@ namespace Cthangband
                     flags1 |= MonsterFlag1.ForceMaxHp;
                 }
             }
-            string buf = _monsterType.Description;
+            var buf = _monsterType.Description;
             _description.Append(buf);
             _description.Append(" ");
-            bool old = false;
+            var old = false;
             if (_monsterType.Level == 0)
             {
                 _description.Append(_wdHeCap[msex]).Append(" lives in the town");
@@ -334,8 +334,8 @@ namespace Cthangband
                 {
                     _description.Append(" creature");
                 }
-                int i = _monsterType.Mexp * _monsterType.Level / SaveGame.Instance.Player.Level;
-                int j = ((_monsterType.Mexp * _monsterType.Level % SaveGame.Instance.Player.Level * 1000 /
+                var i = _monsterType.Mexp * _monsterType.Level / SaveGame.Instance.Player.Level;
+                var j = ((_monsterType.Mexp * _monsterType.Level % SaveGame.Instance.Player.Level * 1000 /
                          SaveGame.Instance.Player.Level) + 5) / 10;
                 if (i > 0)
                 {
@@ -398,7 +398,7 @@ namespace Cthangband
             {
                 _description.Append(_wdHeCap[msex]).Append(" usually appears in groups. ");
             }
-            int vn = 0;
+            var vn = 0;
             if ((flags4 & MonsterFlag4.Shriek) != 0)
             {
                 vp[vn++] = "shriek for help";
@@ -542,7 +542,7 @@ namespace Cthangband
             {
                 vp[vn++] = "disintegration";
             }
-            bool breath = false;
+            var breath = false;
             if (vn != 0)
             {
                 breath = true;
@@ -829,7 +829,7 @@ namespace Cthangband
             {
                 vp[vn++] = "summon Unique Monsters";
             }
-            bool magic = false;
+            var magic = false;
             if (vn != 0)
             {
                 magic = true;
@@ -1180,7 +1180,7 @@ namespace Cthangband
             }
             if (knowledge.RDropGold != 0 || knowledge.RDropItem != 0)
             {
-                bool sin = false;
+                var sin = false;
                 _description.Append(_wdHeCap[msex]).Append(" may carry");
                 n = Math.Max(knowledge.RDropGold, knowledge.RDropItem);
                 if (n == 1)
@@ -1271,10 +1271,10 @@ namespace Cthangband
                 {
                     continue;
                 }
-                AttackType method = _monsterType.Attack[m].Method;
-                AttackEffect effect = _monsterType.Attack[m].Effect;
-                int d1 = _monsterType.Attack[m].DDice;
-                int d2 = _monsterType.Attack[m].DSide;
+                var method = _monsterType.Attack[m].Method;
+                var effect = _monsterType.Attack[m].Effect;
+                var d1 = _monsterType.Attack[m].DDice;
+                var d2 = _monsterType.Attack[m].DSide;
                 p = null;
                 switch (method)
                 {
@@ -1523,7 +1523,7 @@ namespace Cthangband
             }
             if ((flags1 & MonsterFlag1.Unique) != 0)
             {
-                bool dead = _monsterType.MaxNum == 0;
+                var dead = _monsterType.MaxNum == 0;
                 if (knowledge.RDeaths != 0)
                 {
                     _description.Append(_wdHe[msex]).Append(" has slain ").AppendFormat("{0:n0}", knowledge.RDeaths).Append(" of your ancestors");
@@ -1533,7 +1533,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        string remain = knowledge.RDeaths == 1 ? "remains" : "remain";
+                        var remain = knowledge.RDeaths == 1 ? "remains" : "remain";
                         _description.Append(", who ").Append(remain).Append(" unavenged. ");
                     }
                 }
@@ -1544,7 +1544,7 @@ namespace Cthangband
             }
             else if (knowledge.RDeaths != 0)
             {
-                string has = knowledge.RDeaths == 1 ? "has" : "have";
+                var has = knowledge.RDeaths == 1 ? "has" : "have";
                 _description.AppendFormat("{0:n0}", knowledge.RDeaths).Append(" of your ancestors ").Append(has).Append(" been killed by this creature, ");
                 if (knowledge.RPkills != 0)
                 {
@@ -1586,8 +1586,8 @@ namespace Cthangband
 
         private void DisplayHeader()
         {
-            char c1 = _monsterType.Character;
-            Colour a1 = _monsterType.Colour;
+            var c1 = _monsterType.Character;
+            var a1 = _monsterType.Colour;
             Gui.Erase(0, 0, 255);
             Gui.Goto(0, 0);
             if ((_monsterType.Flags1 & MonsterFlag1.Unique) == 0)
@@ -1602,7 +1602,7 @@ namespace Cthangband
 
         private bool KnowArmour(MonsterRace monsterType, MonsterKnowledge knowledge)
         {
-            int kills = knowledge.RTkills;
+            var kills = knowledge.RTkills;
             if ((kills > 304 / (4 + monsterType.Level)) || knowledge.RProbed)
             {
                 return true;
@@ -1616,10 +1616,10 @@ namespace Cthangband
 
         private bool KnowDamage(MonsterRace monsterType, MonsterKnowledge knowledge, int i)
         {
-            int a = knowledge.RBlows[i];
-            int d1 = monsterType.Attack[i].DDice;
-            int d2 = monsterType.Attack[i].DSide;
-            int d = d1 * d2;
+            var a = knowledge.RBlows[i];
+            var d1 = monsterType.Attack[i].DDice;
+            var d2 = monsterType.Attack[i].DSide;
+            var d = d1 * d2;
             if ((4 + monsterType.Level) * a > 80 * d)
             {
                 return true;

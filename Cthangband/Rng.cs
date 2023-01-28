@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -66,8 +66,8 @@ namespace Cthangband
         /// <returns> </returns>
         public int DiceRoll(int num, int sides)
         {
-            int sum = 0;
-            for (int i = 0; i < num; i++)
+            var sum = 0;
+            for (var i = 0; i < num; i++)
             {
                 sum += DieRoll(sides);
             }
@@ -134,8 +134,8 @@ namespace Cthangband
         /// <returns> A random value </returns>
         public int RandomNormal(int mean, int stand)
         {
-            int low = 0;
-            int high = _randnorNum;
+            var low = 0;
+            var high = _randnorNum;
             if (stand < 1)
             {
                 return mean;
@@ -143,7 +143,7 @@ namespace Cthangband
             int tmp = (short)Next(32768);
             while (low < high)
             {
-                int mid = (low + high) >> 1;
+                var mid = (low + high) >> 1;
                 if (_randnorTable[mid] < tmp)
                 {
                     low = mid + 1;
@@ -153,7 +153,7 @@ namespace Cthangband
                     high = mid;
                 }
             }
-            int offset = stand * low / _randnorStd;
+            var offset = stand * low / _randnorStd;
             if (RandomLessThan(100) < 50)
             {
                 return mean - offset;
@@ -183,7 +183,7 @@ namespace Cthangband
             {
                 return 0;
             }
-            Random use = UseFixed ? _fixed : _mainSequence;
+            var use = UseFixed ? _fixed : _mainSequence;
             return use.Next(max);
         }
     }

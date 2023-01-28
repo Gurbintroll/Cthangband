@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -86,7 +86,7 @@ namespace Cthangband
 
         public void Absorb(Item other)
         {
-            int total = Count + other.Count;
+            var total = Count + other.Count;
             Count = total < Constants.MaxStackSize ? total : Constants.MaxStackSize - 1;
             if (other.IsKnown())
             {
@@ -120,11 +120,11 @@ namespace Cthangband
 
         public int AdjustDamageForMonsterType(int tdam, Monster mPtr)
         {
-            int mult = 1;
-            MonsterRace rPtr = mPtr.Race;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var mult = 1;
+            var rPtr = mPtr.Race;
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             GetMergedFlags(f1, f2, f3);
             switch (Category)
             {
@@ -332,19 +332,19 @@ namespace Cthangband
 
         public void ApplyMagic(int lev, bool okay, bool good, bool great)
         {
-            ItemForge forge = new ItemForge(this);
+            var forge = new ItemForge(this);
             forge.ApplyMagic(lev, okay, good, great);
         }
 
         public void ApplyRandomResistance(int specific)
         {
-            ItemForge forge = new ItemForge(this);
+            var forge = new ItemForge(this);
             forge.ApplyRandomResistance(specific);
         }
 
         public void AssignItemType(ItemType kIdx)
         {
-            ItemType kPtr = kIdx;
+            var kPtr = kIdx;
             ItemType = kIdx;
             Category = kPtr.Category;
             ItemSubCategory = kPtr.SubCategory;
@@ -376,7 +376,7 @@ namespace Cthangband
         {
             if (!string.IsNullOrEmpty(Inscription) && IdentifyFlags.IsSet(Constants.IdentSense))
             {
-                string q = Inscription;
+                var q = Inscription;
                 if (q == "cursed" || q == "broken" || q == "good" || q == "average" || q == "excellent" ||
                     q == "worthless" || q == "special" || q == "terrible")
                 {
@@ -418,7 +418,7 @@ namespace Cthangband
 
         public bool CanAbsorb(Item other)
         {
-            int total = Count + other.Count;
+            var total = Count + other.Count;
             if (ItemType != other.ItemType)
             {
                 return false;
@@ -618,17 +618,17 @@ namespace Cthangband
 
         public bool CreateLegendary(bool fromScroll)
         {
-            ItemForge forge = new ItemForge(this);
+            var forge = new ItemForge(this);
             return forge.CreateLegendary(fromScroll);
         }
 
         public string Description(bool pref, int mode)
         {
-            bool aware = false;
-            bool known = false;
-            bool appendName = false;
-            bool showWeapon = false;
-            bool showArmour = false;
+            var aware = false;
+            var known = false;
+            var appendName = false;
+            var showWeapon = false;
+            var showArmour = false;
             string s;
             const char p1 = '(';
             const char p2 = ')';
@@ -637,11 +637,11 @@ namespace Cthangband
             const char c1 = '{';
             const char c2 = '}';
             const string tmpVal = "";
-            string tmpVal2 = "";
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            ItemType kPtr = ItemType;
+            var tmpVal2 = "";
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
+            var kPtr = ItemType;
             if (kPtr == null)
             {
                 return "(nothing)";
@@ -655,9 +655,9 @@ namespace Cthangband
             {
                 known = true;
             }
-            int indexx = ItemSubCategory;
-            string basenm = kPtr.Name;
-            string modstr = "";
+            var indexx = ItemSubCategory;
+            var basenm = kPtr.Name;
+            var modstr = "";
             switch (Category)
             {
                 case ItemCategory.Skeleton:
@@ -840,7 +840,7 @@ namespace Cthangband
                 default:
                     return "(nothing)";
             }
-            string t = tmpVal;
+            var t = tmpVal;
             if (basenm[0] == '&')
             {
                 s = basenm.Substring(2);
@@ -893,13 +893,13 @@ namespace Cthangband
                     t += "The ";
                 }
             }
-            foreach (char ch in s)
+            foreach (var ch in s)
             {
                 if (ch == '~')
                 {
                     if (Count != 1)
                     {
-                        char k = t[t.Length - 1];
+                        var k = t[t.Length - 1];
                         if (k == 's' || k == 'h')
                         {
                             t += 'e';
@@ -931,13 +931,13 @@ namespace Cthangband
                 }
                 else if (ArtifactIndex != 0)
                 {
-                    Artifact aPtr = Profile.Instance.Artifacts[ArtifactIndex];
+                    var aPtr = Profile.Instance.Artifacts[ArtifactIndex];
                     t += ' ';
                     t += aPtr.Name;
                 }
                 else if (RareItemTypeIndex != Enumerations.RareItemType.None)
                 {
-                    RareItemType ePtr = Profile.Instance.RareItemTypes[RareItemTypeIndex];
+                    var ePtr = Profile.Instance.RareItemTypes[RareItemTypeIndex];
                     t += ' ';
                     t += ePtr.Name;
                 }
@@ -1043,7 +1043,7 @@ namespace Cthangband
                     break;
 
                 case ItemCategory.Bow:
-                    int power = ItemSubCategory % 10;
+                    var power = ItemSubCategory % 10;
                     if (f3.IsSet(ItemFlag3.XtraMight))
                     {
                         power++;
@@ -1255,10 +1255,10 @@ namespace Cthangband
 
         public int FlagBasedCost(int plusses)
         {
-            int total = 0;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var total = 0;
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             GetMergedFlags(f1, f2, f3);
             if (f1.IsSet(ItemFlag1.Str))
             {
@@ -1653,7 +1653,7 @@ namespace Cthangband
             }
             if (IsLegendary() && LegendaryFlags3.IsSet(ItemFlag3.Activate))
             {
-                int type = BonusPowerSubType;
+                var type = BonusPowerSubType;
                 if (type == LegendaryPower.ActSunlight)
                 {
                     total += 250;
@@ -1960,7 +1960,7 @@ namespace Cthangband
 
         public void GetArtifactResistances()
         {
-            ItemForge forge = new ItemForge(this);
+            var forge = new ItemForge(this);
             forge.GetArtifactResistances();
         }
 
@@ -2015,14 +2015,14 @@ namespace Cthangband
             f3.Set(ItemType.Flags3);
             if (ArtifactIndex != 0)
             {
-                Artifact aPtr = Profile.Instance.Artifacts[ArtifactIndex];
+                var aPtr = Profile.Instance.Artifacts[ArtifactIndex];
                 f1.Set(aPtr.Flags1);
                 f2.Set(aPtr.Flags2);
                 f3.Set(aPtr.Flags3);
             }
             if (RareItemTypeIndex != Enumerations.RareItemType.None)
             {
-                RareItemType ePtr = Profile.Instance.RareItemTypes[RareItemTypeIndex];
+                var ePtr = Profile.Instance.RareItemTypes[RareItemTypeIndex];
                 f1.Set(ePtr.Flags1);
                 f2.Set(ePtr.Flags2);
                 f3.Set(ePtr.Flags3);
@@ -2299,10 +2299,10 @@ namespace Cthangband
         public bool IdentifyFully()
         {
             int i = 0, j, k;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            string[] info = new string[128];
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
+            var info = new string[128];
             GetMergedFlags(f1, f2, f3);
             if (f3.IsSet(ItemFlag3.Activate))
             {
@@ -2750,7 +2750,7 @@ namespace Cthangband
 
         public bool MakeGold()
         {
-            int i = ((Program.Rng.DieRoll(SaveGame.Instance.Level.ObjectLevel + 2) + 2) / 2) - 1;
+            var i = ((Program.Rng.DieRoll(SaveGame.Instance.Level.ObjectLevel + 2) + 2) / 2) - 1;
             if (Program.Rng.RandomLessThan(Constants.GreatObj) == 0)
             {
                 i += Program.Rng.DieRoll(SaveGame.Instance.Level.ObjectLevel + 1);
@@ -2843,14 +2843,14 @@ namespace Cthangband
                 return false;
             }
             AssignItemType(kPtr);
-            int bbase = kPtr.Cost;
+            var bbase = kPtr.Cost;
             TypeSpecificValue = bbase + (8 * Program.Rng.DieRoll(bbase)) + Program.Rng.DieRoll(8);
             return true;
         }
 
         public bool MakeObject(bool good, bool great)
         {
-            ItemForge forge = new ItemForge(this);
+            var forge = new ItemForge(this);
             return forge.MakeObject(good, great);
         }
 
@@ -2873,15 +2873,15 @@ namespace Cthangband
 
         public int RealValue()
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            ItemType kPtr = ItemType;
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
+            var kPtr = ItemType;
             if (kPtr.Cost == 0)
             {
                 return 0;
             }
-            int value = kPtr.Cost;
+            var value = kPtr.Cost;
             GetMergedFlags(f1, f2, f3);
             if (LegendaryFlags1.IsSet() || LegendaryFlags2.IsSet() || LegendaryFlags3.IsSet())
             {
@@ -2889,7 +2889,7 @@ namespace Cthangband
             }
             else if (ArtifactIndex != 0)
             {
-                Artifact aPtr = Profile.Instance.Artifacts[ArtifactIndex];
+                var aPtr = Profile.Instance.Artifacts[ArtifactIndex];
                 if (aPtr.Cost == 0)
                 {
                     return 0;
@@ -2898,7 +2898,7 @@ namespace Cthangband
             }
             else if (RareItemTypeIndex != Enumerations.RareItemType.None)
             {
-                RareItemType ePtr = Profile.Instance.RareItemTypes[RareItemTypeIndex];
+                var ePtr = Profile.Instance.RareItemTypes[RareItemTypeIndex];
                 if (ePtr.Cost == 0)
                 {
                     return 0;
@@ -3069,7 +3069,7 @@ namespace Cthangband
         public bool Stompable()
         {
             var t = this;
-            ItemType kPtr = ItemType;
+            var kPtr = ItemType;
             if (!IsKnown())
             {
                 if (Inventory.ObjectHasFlavor(ItemType))
@@ -3151,11 +3151,11 @@ namespace Cthangband
 
         public string StoreDescription(bool pref, int mode)
         {
-            bool hackAware = ItemType.FlavourAware;
-            bool hackKnown = IdentifyFlags.IsSet(Constants.IdentKnown);
+            var hackAware = ItemType.FlavourAware;
+            var hackKnown = IdentifyFlags.IsSet(Constants.IdentKnown);
             IdentifyFlags.Set(Constants.IdentKnown);
             ItemType.FlavourAware = true;
-            string buf = Description(pref, mode);
+            var buf = Description(pref, mode);
             ItemType.FlavourAware = hackAware;
             if (!hackKnown)
             {
@@ -3205,7 +3205,7 @@ namespace Cthangband
 
         private int BaseValue()
         {
-            ItemType kPtr = ItemType;
+            var kPtr = ItemType;
             if (IsFlavourAware())
             {
                 return kPtr.Cost;
@@ -3241,9 +3241,9 @@ namespace Cthangband
 
         private string DescribeActivationEffect()
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             GetMergedFlags(f1, f2, f3);
             if (f3.IsClear(ItemFlag3.Activate))
             {

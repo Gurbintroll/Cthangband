@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -42,7 +42,7 @@ namespace Cthangband.Talents
 
         private void Psychometry(Player player, Level level)
         {
-            if (!SaveGame.Instance.GetItem(out int item, "Meditate on which item? ", true, true, true))
+            if (!SaveGame.Instance.GetItem(out var item, "Meditate on which item? ", true, true, true))
             {
                 if (item == -2)
                 {
@@ -50,20 +50,20 @@ namespace Cthangband.Talents
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? player.Inventory[item] : level.Items[0 - item];
+            var oPtr = item >= 0 ? player.Inventory[item] : level.Items[0 - item];
             if (oPtr.IsKnown() || oPtr.IdentifyFlags.IsSet(Constants.IdentSense))
             {
                 Profile.Instance.MsgPrint("You cannot find out anything more about that.");
                 return;
             }
-            string feel = oPtr.GetDetailedFeeling();
-            string oName = oPtr.Description(false, 0);
+            var feel = oPtr.GetDetailedFeeling();
+            var oName = oPtr.Description(false, 0);
             if (string.IsNullOrEmpty(feel))
             {
                 Profile.Instance.MsgPrint($"You do not perceive anything unusual about the {oName}.");
                 return;
             }
-            string s = oPtr.Count == 1 ? "is" : "are";
+            var s = oPtr.Count == 1 ? "is" : "are";
             Profile.Instance.MsgPrint($"You feel that the {oName} {s} {feel}...");
             oPtr.IdentifyFlags.Set(Constants.IdentSense);
             if (string.IsNullOrEmpty(oPtr.Inscription))

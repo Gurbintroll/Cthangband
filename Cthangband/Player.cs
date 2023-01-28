@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -7,16 +7,14 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Mutations;
+using Cthangband.Pantheon;
+using Cthangband.Patron.Base;
+using Cthangband.PlayerClass.Base;
+using Cthangband.PlayerRace.Base;
 using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
-using Cthangband.Pantheon;
 using System;
-using Cthangband.Spells.Base;
-using Cthangband.PlayerRace.Base;
-using System.Linq;
-using Cthangband.Patron.Base;
-using Cthangband.PlayerClass.Base;
 
 namespace Cthangband
 {
@@ -193,30 +191,30 @@ namespace Cthangband
 
         public Player()
         {
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 History[i] = "";
             }
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
                 AbilityScores[i] = new AbilityScore();
             }
             WeightCarried = 0;
             Inventory = new Inventory(this);
-            foreach (System.Collections.Generic.KeyValuePair<ArtifactId, Artifact> pair in Profile.Instance.Artifacts)
+            foreach (var pair in Profile.Instance.Artifacts)
             {
-                Artifact aPtr = pair.Value;
+                var aPtr = pair.Value;
                 aPtr.CurNum = 0;
             }
-            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
+            for (var i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
-                ItemType kPtr = Profile.Instance.ItemTypes[i];
+                var kPtr = Profile.Instance.ItemTypes[i];
                 kPtr.Tried = false;
                 kPtr.FlavourAware = false;
             }
-            for (int i = 1; i < Profile.Instance.MonsterRaces.Count; i++)
+            for (var i = 1; i < Profile.Instance.MonsterRaces.Count; i++)
             {
-                MonsterRace rPtr = Profile.Instance.MonsterRaces[i];
+                var rPtr = Profile.Instance.MonsterRaces[i];
                 rPtr.CurNum = 0;
                 rPtr.MaxNum = 100;
                 if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
@@ -270,8 +268,8 @@ namespace Cthangband
 
         public void CheckExperience()
         {
-            bool levelReward = false;
-            bool levelMutation = false;
+            var levelReward = false;
+            var levelMutation = false;
             if (ExperiencePoints < 0)
             {
                 ExperiencePoints = 0;
@@ -346,11 +344,11 @@ namespace Cthangband
 
         public void CurseEquipment(int chance, int heavyChance)
         {
-            bool changed = false;
-            FlagSet o1 = new FlagSet();
-            FlagSet o2 = new FlagSet();
-            FlagSet o3 = new FlagSet();
-            Item oPtr = Inventory[InventorySlot.MeleeWeapon - 1 + Program.Rng.DieRoll(12)];
+            var changed = false;
+            var o1 = new FlagSet();
+            var o2 = new FlagSet();
+            var o3 = new FlagSet();
+            var oPtr = Inventory[InventorySlot.MeleeWeapon - 1 + Program.Rng.DieRoll(12)];
             if (Program.Rng.DieRoll(100) > chance)
             {
                 return;
@@ -362,8 +360,8 @@ namespace Cthangband
             oPtr.GetMergedFlags(o1, o2, o3);
             if (o3.IsSet(ItemFlag3.Blessed) && Program.Rng.DieRoll(888) > chance)
             {
-                string oName = oPtr.Description(false, 0);
-                string s = oPtr.Count > 1 ? "" : "s";
+                var oName = oPtr.Description(false, 0);
+                var s = oPtr.Count > 1 ? "" : "s";
                 Profile.Instance.MsgPrint($"Your {oName} resist{s} cursing!");
                 return;
             }
@@ -404,10 +402,10 @@ namespace Cthangband
         public bool DecreaseAbilityScore(int stat, int amount, bool permanent)
         {
             int loss;
-            bool res = false;
-            int cur = AbilityScores[stat].Innate;
-            int max = AbilityScores[stat].InnateMax;
-            bool same = cur == max;
+            var res = false;
+            var cur = AbilityScores[stat].Innate;
+            var max = AbilityScores[stat].InnateMax;
+            var same = cur == max;
             if (cur > 3)
             {
                 if (cur <= 18)
@@ -562,7 +560,7 @@ namespace Cthangband
             }
             if (index == InventorySlot.MeleeWeapon)
             {
-                Item oPtr = Inventory[index];
+                var oPtr = Inventory[index];
                 if (AbilityScores[Ability.Strength].StrMaxWeaponWeight < oPtr.Weight / 10)
                 {
                     p = "just lifting";
@@ -570,7 +568,7 @@ namespace Cthangband
             }
             if (index == InventorySlot.RangedWeapon)
             {
-                Item oPtr = Inventory[index];
+                var oPtr = Inventory[index];
                 if (AbilityScores[Ability.Strength].StrMaxWeaponWeight < oPtr.Weight / 10)
                 {
                     p = "just holding";
@@ -596,7 +594,7 @@ namespace Cthangband
 
         public void GetAbilitiesAsItemFlags(FlagSet f1, FlagSet f2, FlagSet f3)
         {
-            PlayerStatus playerStatus = new PlayerStatus(this, SaveGame.Instance.Level);
+            var playerStatus = new PlayerStatus(this, SaveGame.Instance.Level);
             f1.Clear();
             f2.Clear();
             f3.Clear();
@@ -668,15 +666,15 @@ namespace Cthangband
 
         public int GetScore(SaveGame saveGame)
         {
-            int score = (MaxLevelGained - 1) * 100;
-            for (int i = 0; i < Constants.MaxCaves; i++)
+            var score = (MaxLevelGained - 1) * 100;
+            for (var i = 0; i < Constants.MaxCaves; i++)
             {
                 if (MaxDlv[i] > 0)
                 {
                     score += ((MaxDlv[i] + saveGame.Dungeons[i].Offset) * 10);
                 }
             }
-            for (int i = 0; i < saveGame.Quests.Count; i++)
+            for (var i = 0; i < saveGame.Quests.Count; i++)
             {
                 if (saveGame.Quests[i].Level == 0)
                 {
@@ -689,15 +687,15 @@ namespace Cthangband
             }
             if (MaxLevelGained < 50)
             {
-                int prev = 0;
+                var prev = 0;
                 if (MaxLevelGained > 1)
                 {
                     prev = GlobalData.PlayerExp[MaxLevelGained - 2] * ExperienceMultiplier / 100;
                 }
-                int next = GlobalData.PlayerExp[MaxLevelGained - 1] * ExperienceMultiplier / 100;
-                int numerator = MaxExperienceGained - prev;
-                int denominator = next - prev;
-                int fraction = 100 * numerator / denominator;
+                var next = GlobalData.PlayerExp[MaxLevelGained - 1] * ExperienceMultiplier / 100;
+                var numerator = MaxExperienceGained - prev;
+                var denominator = next - prev;
+                var fraction = 100 * numerator / denominator;
                 score += fraction;
             }
             return score;
@@ -711,7 +709,7 @@ namespace Cthangband
             while (true)
             {
                 Gui.Goto(2, col);
-                string tmp = Name;
+                var tmp = Name;
                 if (!Gui.AskforAux(out Name, tmp, 12))
                 {
                     Name = tmp;
@@ -739,9 +737,9 @@ namespace Cthangband
 
         public void PolymorphSelf()
         {
-            int effects = Program.Rng.DieRoll(2);
-            int tmp = 0;
-            bool moreEffects = true;
+            var effects = Program.Rng.DieRoll(2);
+            var tmp = 0;
+            var moreEffects = true;
             Profile.Instance.MsgPrint("You feel a change coming over you...");
             while (effects-- != 0 && moreEffects)
             {
@@ -766,7 +764,7 @@ namespace Cthangband
                             {
                                 newRace = PlayerRaces.Instance.RandomRaceName();
                             } while (newRace == CurrentRace);
-                            string an = PlayerRaces.Instance[newRace].Article;
+                            var an = PlayerRaces.Instance[newRace].Article;
                             Profile.Instance.MsgPrint($"You turn into {an} {PlayerRaces.Instance[newRace].Title}!");
                             ChangeRace(newRace);
                         }
@@ -798,10 +796,10 @@ namespace Cthangband
 
         public void PolymorphWounds()
         {
-            int wounds = TimedBleeding;
-            int hitP = MaxHealth - Health;
-            int change = Program.Rng.DiceRoll(Level, 5);
-            bool nastyEffect = Program.Rng.DieRoll(5) == 1;
+            var wounds = TimedBleeding;
+            var hitP = MaxHealth - Health;
+            var change = Program.Rng.DiceRoll(Level, 5);
+            var nastyEffect = Program.Rng.DieRoll(5) == 1;
             if (!(wounds != 0 || hitP != 0 || nastyEffect))
             {
                 return;
@@ -823,14 +821,14 @@ namespace Cthangband
         public void PrintSpells(int[] spells, int num, int y, int x, Realm realm)
         {
             int i;
-            int set = realm == Realm1 ? 0 : 1;
+            var set = realm == Realm1 ? 0 : 1;
             Gui.PrintLine("", y, x);
             Gui.Print("Name", y, x + 5);
             Gui.Print("Lv Vis Fail Info", y, x + 35);
             for (i = 0; i < num; i++)
             {
-                int spell = spells[i];
-                ISpell sPtr = Spellcasting.Spells[set][spell];
+                var spell = spells[i];
+                var sPtr = Spellcasting.Spells[set][spell];
                 Gui.PrintLine($"{i.IndexToLetter()}) {sPtr.SummaryLine(this)}", y + i + 1, x);
             }
             Gui.PrintLine("", y + i + 1, x);
@@ -838,14 +836,14 @@ namespace Cthangband
 
         public void RegenerateHealth(int percent)
         {
-            int oldHealth = Health;
-            int newHealth = (MaxHealth * percent) + Constants.PyRegenHpbase;
+            var oldHealth = Health;
+            var newHealth = (MaxHealth * percent) + Constants.PyRegenHpbase;
             Health += newHealth >> 16;
             if (Health < 0 && oldHealth > 0)
             {
                 Health = Constants.MaxShort;
             }
-            int newFractionalHealth = (newHealth & 0xFFFF) + FractionalHealth;
+            var newFractionalHealth = (newHealth & 0xFFFF) + FractionalHealth;
             if (newFractionalHealth >= 0x10000)
             {
                 FractionalHealth = newFractionalHealth - 0x10000;
@@ -868,14 +866,14 @@ namespace Cthangband
 
         public void RegenerateVis(int percent)
         {
-            int oldVis = Vis;
-            int newVis = (MaxVis * percent) + Constants.PyRegenMnbase;
+            var oldVis = Vis;
+            var newVis = (MaxVis * percent) + Constants.PyRegenMnbase;
             Vis += newVis >> 16;
             if (Vis < 0 && oldVis > 0)
             {
                 Vis = Constants.MaxShort;
             }
-            int newFractionalVis = (newVis & 0xFFFF) + FractionalVis;
+            var newFractionalVis = (newVis & 0xFFFF) + FractionalVis;
             if (newFractionalVis >= 0x10000L)
             {
                 FractionalVis = newFractionalVis - 0x10000;
@@ -900,7 +898,7 @@ namespace Cthangband
         {
             int i;
             PlayerHp[0] = HitDie;
-            int lastroll = HitDie;
+            var lastroll = HitDie;
             for (i = 1; i < Constants.PyMaxLevel; i++)
             {
                 PlayerHp[i] = lastroll;
@@ -912,7 +910,7 @@ namespace Cthangband
             }
             for (i = 1; i < Constants.PyMaxLevel; i++)
             {
-                int j = Program.Rng.DieRoll(Constants.PyMaxLevel - 1);
+                var j = Program.Rng.DieRoll(Constants.PyMaxLevel - 1);
                 lastroll = PlayerHp[i];
                 PlayerHp[i] = PlayerHp[j];
                 PlayerHp[j] = lastroll;
@@ -983,7 +981,7 @@ namespace Cthangband
 
         public void SenseInventory()
         {
-            int playerLevel = Level;
+            var playerLevel = Level;
             if (TimedConfusion != 0)
             {
                 return;
@@ -992,11 +990,11 @@ namespace Cthangband
             {
                 return;
             }
-            bool detailed = PlayerClass.HasDetailedSenseInventory;
-            for (int i = 0; i < InventorySlot.Total; i++)
+            var detailed = PlayerClass.HasDetailedSenseInventory;
+            for (var i = 0; i < InventorySlot.Total; i++)
             {
-                bool okay = false;
-                Item item = Inventory[i];
+                var okay = false;
+                var item = Inventory[i];
                 if (item.ItemType == null)
                 {
                     continue;
@@ -1049,21 +1047,21 @@ namespace Cthangband
                 {
                     continue;
                 }
-                string feel = detailed ? item.GetDetailedFeeling() : item.GetVagueFeeling();
+                var feel = detailed ? item.GetDetailedFeeling() : item.GetVagueFeeling();
                 if (string.IsNullOrEmpty(feel))
                 {
                     continue;
                 }
-                string oName = item.Description(false, 0);
+                var oName = item.Description(false, 0);
                 if (i >= InventorySlot.MeleeWeapon)
                 {
-                    string isare = item.Count == 1 ? "is" : "are";
+                    var isare = item.Count == 1 ? "is" : "are";
                     Profile.Instance.MsgPrint(
                         $"You feel the {oName} ({i.IndexToLabel()}) you are {DescribeWieldLocation(i)} {isare} {feel}...");
                 }
                 else
                 {
-                    string isare = item.Count == 1 ? "is" : "are";
+                    var isare = item.Count == 1 ? "is" : "are";
                     Profile.Instance.MsgPrint(
                         $"You feel the {oName} ({i.IndexToLabel()}) in your pack {isare} {feel}...");
                 }
@@ -1079,7 +1077,7 @@ namespace Cthangband
         public bool SetFood(int v)
         {
             int oldAux, newAux;
-            bool notice = false;
+            var notice = false;
             v = v > 20000 ? 20000 : v < 0 ? 0 : v;
             if (Food < Constants.PyFoodFaint)
             {
@@ -1195,7 +1193,7 @@ namespace Cthangband
 
         public void SetTimedAcidResistance(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1225,7 +1223,7 @@ namespace Cthangband
         public bool SetTimedBleeding(int v)
         {
             int oldAux, newAux;
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (Race.DoesntBleed(this))
             {
@@ -1362,7 +1360,7 @@ namespace Cthangband
 
         public bool SetTimedBlessing(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1393,7 +1391,7 @@ namespace Cthangband
 
         public bool SetTimedBlindness(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1428,7 +1426,7 @@ namespace Cthangband
 
         public bool SetTimedColdResistance(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1458,7 +1456,7 @@ namespace Cthangband
 
         public bool SetTimedConfusion(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1489,7 +1487,7 @@ namespace Cthangband
 
         public void SetTimedEtherealness(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1527,7 +1525,7 @@ namespace Cthangband
 
         public bool SetTimedFear(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1558,7 +1556,7 @@ namespace Cthangband
 
         public bool SetTimedFireResistance(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1588,7 +1586,7 @@ namespace Cthangband
 
         public bool SetTimedHallucinations(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1620,7 +1618,7 @@ namespace Cthangband
 
         public bool SetTimedHaste(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1651,7 +1649,7 @@ namespace Cthangband
 
         public bool SetTimedHeroism(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1683,7 +1681,7 @@ namespace Cthangband
 
         public bool SetTimedInfravision(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1715,7 +1713,7 @@ namespace Cthangband
 
         public void SetTimedInvulnerability(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1753,7 +1751,7 @@ namespace Cthangband
 
         public void SetTimedLightningResistance(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1782,7 +1780,7 @@ namespace Cthangband
 
         public bool SetTimedParalysis(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1813,7 +1811,7 @@ namespace Cthangband
 
         public bool SetTimedPoison(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1844,7 +1842,7 @@ namespace Cthangband
 
         public void SetTimedPoisonResistance(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1873,7 +1871,7 @@ namespace Cthangband
 
         public bool SetTimedProtectionFromEvil(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1903,7 +1901,7 @@ namespace Cthangband
 
         public bool SetTimedSeeInvisibility(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1935,7 +1933,7 @@ namespace Cthangband
 
         public bool SetTimedSlow(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1966,7 +1964,7 @@ namespace Cthangband
 
         public void SetTimedStoneskin(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -1997,7 +1995,7 @@ namespace Cthangband
         public bool SetTimedStun(int v)
         {
             int oldAux, newAux;
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (Race.DoesntStun(this))
             {
@@ -2107,7 +2105,7 @@ namespace Cthangband
 
         public bool SetTimedSuperheroism(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -2139,7 +2137,7 @@ namespace Cthangband
 
         public void SetTimedTelepathy(int v)
         {
-            bool notice = false;
+            var notice = false;
             v = v > 10000 ? 10000 : v < 0 ? 0 : v;
             if (v != 0)
             {
@@ -2171,14 +2169,14 @@ namespace Cthangband
         public void ShuffleAbilityScores()
         {
             int jj;
-            int ii = Program.Rng.RandomLessThan(6);
+            var ii = Program.Rng.RandomLessThan(6);
             for (jj = ii; jj != ii; jj = Program.Rng.RandomLessThan(6))
             {
             }
-            int max1 = AbilityScores[ii].InnateMax;
-            int cur1 = AbilityScores[ii].Innate;
-            int max2 = AbilityScores[jj].InnateMax;
-            int cur2 = AbilityScores[jj].Innate;
+            var max1 = AbilityScores[ii].InnateMax;
+            var cur1 = AbilityScores[ii].Innate;
+            var max2 = AbilityScores[jj].InnateMax;
+            var cur2 = AbilityScores[jj].Innate;
             AbilityScores[ii].InnateMax = max2;
             AbilityScores[ii].Innate = cur2;
             AbilityScores[jj].InnateMax = max1;
@@ -2188,8 +2186,8 @@ namespace Cthangband
 
         public bool SpellOkay(int spell, bool known, bool realm2)
         {
-            int set = realm2 ? 1 : 0;
-            ISpell sPtr = Spellcasting.Spells[set][spell % 32];
+            var set = realm2 ? 1 : 0;
+            var sPtr = Spellcasting.Spells[set][spell % 32];
             if (sPtr.Level > Level)
             {
                 return false;
@@ -2207,8 +2205,8 @@ namespace Cthangband
 
         public void TakeHit(int damage, string hitFrom)
         {
-            bool penInvuln = false;
-            int warning = MaxHealth * GlobalData.HitpointWarn / 10;
+            var penInvuln = false;
+            var warning = MaxHealth * GlobalData.HitpointWarn / 10;
             if (IsDead)
             {
                 return;
@@ -2292,7 +2290,7 @@ namespace Cthangband
 
         public bool TryDecreasingAbilityScore(int stat)
         {
-            bool sust = false;
+            var sust = false;
             switch (stat)
             {
                 case Ability.Strength:
@@ -2358,7 +2356,7 @@ namespace Cthangband
 
         public bool TryIncreasingAbilityScore(int stat)
         {
-            bool res = RestoreAbilityScore(stat);
+            var res = RestoreAbilityScore(stat);
             if (IncreaseAbilityScore(stat))
             {
                 Profile.Instance.MsgPrint($"Wow!  You feel very {GlobalData.DescStatPos[stat]}!");
@@ -2384,7 +2382,7 @@ namespace Cthangband
 
         private bool IncreaseAbilityScore(int which)
         {
-            int value = AbilityScores[which].Innate;
+            var value = AbilityScores[which].Innate;
             if (value < 18 + 100)
             {
                 int gain;

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -87,10 +87,10 @@ namespace Cthangband.UI
         public static bool AskforAux(out string buf, string initial, int len)
         {
             buf = initial;
-            char i = '\0';
-            int k = 0;
-            bool done = false;
-            Locate(out int y, out int x);
+            var i = '\0';
+            var k = 0;
+            var done = false;
+            Locate(out var y, out var x);
             if (len < 1)
             {
                 len = 1;
@@ -150,7 +150,7 @@ namespace Cthangband.UI
         /// <param name="row"> The first row to clear </param>
         public static void Clear(int row)
         {
-            for (int y = row; y < _display.Height; y++)
+            for (var y = row; y < _display.Height; y++)
             {
                 Erase(y, 0, 255);
             }
@@ -161,18 +161,18 @@ namespace Cthangband.UI
         /// </summary>
         public static void Clear()
         {
-            int w = _display.Width;
-            int h = _display.Height;
-            Colour na = _display.AttrBlank;
-            char nc = _display.CharBlank;
+            var w = _display.Width;
+            var h = _display.Height;
+            var na = _display.AttrBlank;
+            var nc = _display.CharBlank;
             _display.Scr.Cu = false;
             _display.Scr.Cx = 0;
             _display.Scr.Cy = 0;
-            for (int y = 0; y < h; y++)
+            for (var y = 0; y < h; y++)
             {
-                int scrAa = _display.Scr.A[y];
-                int scrCc = _display.Scr.C[y];
-                for (int x = 0; x < w; x++)
+                var scrAa = _display.Scr.A[y];
+                var scrCc = _display.Scr.C[y];
+                for (var x = 0; x < w; x++)
                 {
                     _display.Scr.Va[scrAa + x] = na;
                     _display.Scr.Vc[scrCc + x] = nc;
@@ -193,21 +193,21 @@ namespace Cthangband.UI
         /// <param name="length"> The number of characters to erase </param>
         public static void Erase(int row, int col, int length)
         {
-            int w = _display.Width;
-            int x1 = -1;
-            int x2 = -1;
-            Colour na = _display.AttrBlank;
-            char nc = _display.CharBlank;
+            var w = _display.Width;
+            var x1 = -1;
+            var x2 = -1;
+            var na = _display.AttrBlank;
+            var nc = _display.CharBlank;
             Goto(row, col);
             if (col + length > w)
             {
                 length = w - col;
             }
-            int scrAa = _display.Scr.A[row];
-            int scrCc = _display.Scr.C[row];
-            for (int i = 0; i < length; i++, col++)
+            var scrAa = _display.Scr.A[row];
+            var scrCc = _display.Scr.C[row];
+            for (var i = 0; i < length; i++, col++)
             {
-                Colour oa = _display.Scr.Va[scrAa + col];
+                var oa = _display.Scr.Va[scrAa + col];
                 int oc = _display.Scr.Vc[scrCc + col];
                 if (oa == na && oc == nc)
                 {
@@ -246,7 +246,7 @@ namespace Cthangband.UI
         {
             int i;
             Profile.Instance.MsgPrint(null);
-            string buf = $"{prompt}[Y/n]";
+            var buf = $"{prompt}[Y/n]";
             PrintLine(buf, 0, 0);
             while (true)
             {
@@ -285,8 +285,8 @@ namespace Cthangband.UI
 
         public static int GetKeymapDir(char ch)
         {
-            int d = 0;
-            string act = _keymapAct[Constants.KeymapModeOrig][ch];
+            var d = 0;
+            var act = _keymapAct[Constants.KeymapModeOrig][ch];
             while (true)
             {
                 if (act.Length == 0)
@@ -324,7 +324,7 @@ namespace Cthangband.UI
             }
             if (string.IsNullOrEmpty(prompt))
             {
-                string tmp = $"Quantity (1-{max}): ";
+                var tmp = $"Quantity (1-{max}): ";
                 prompt = tmp;
             }
             amt = 1;
@@ -332,12 +332,12 @@ namespace Cthangband.UI
             {
                 amt = max;
             }
-            string def = amt.ToString();
-            if (!GetString(prompt, out string buf, def, 6))
+            var def = amt.ToString();
+            if (!GetString(prompt, out var buf, def, 6))
             {
                 return 0;
             }
-            if (int.TryParse(buf, out int test))
+            if (int.TryParse(buf, out var test))
             {
                 amt = test;
             }
@@ -364,7 +364,7 @@ namespace Cthangband.UI
         {
             Profile.Instance.MsgPrint(null);
             PrintLine(prompt, 0, 0);
-            bool res = AskforAux(out buf, initial, len);
+            var res = AskforAux(out buf, initial, len);
             PrintLine("", 0, 0);
             return res;
         }
@@ -376,8 +376,8 @@ namespace Cthangband.UI
         /// <param name="col"> The column at which to print </param>
         public static void Goto(int row, int col)
         {
-            int w = _display.Width;
-            int h = _display.Height;
+            var w = _display.Width;
+            var h = _display.Height;
             if (col < 0 || col >= w)
             {
                 return;
@@ -397,7 +397,7 @@ namespace Cthangband.UI
         public static void Initialise(Settings settings)
         {
             Mixer.Initialise(settings.MusicVolume / 100.0f, settings.SoundVolume / 100.0f);
-            TerminalParameters startupParameters = settings.Parameters();
+            var startupParameters = settings.Parameters();
             _terminal = new Terminal.Terminal(startupParameters);
             _terminal.Refresh();
             _terminal.CursorColour = Color.SkyBlue;
@@ -443,8 +443,8 @@ namespace Cthangband.UI
         /// <returns> The next key pressed </returns>
         public static char Inkey()
         {
-            char ch = '\0';
-            bool done = false;
+            var ch = '\0';
+            var done = false;
             if (!string.IsNullOrEmpty(_keyBuffer))
             {
                 ch = _keyBuffer[0];
@@ -454,7 +454,7 @@ namespace Cthangband.UI
                 return ch;
             }
             _keyBuffer = null;
-            bool v = CursorVisible;
+            var v = CursorVisible;
             if (!DoNotWaitOnInkey && (!HideCursorOnFullScreenInkey || FullScreenOverlay))
             {
                 CursorVisible = true;
@@ -465,7 +465,7 @@ namespace Cthangband.UI
             }
             while (ch == 0)
             {
-                if (DoNotWaitOnInkey && GetKeypress(out char kk, false, false))
+                if (DoNotWaitOnInkey && GetKeypress(out var kk, false, false))
                 {
                     ch = kk;
                     break;
@@ -505,14 +505,14 @@ namespace Cthangband.UI
         /// </summary>
         public static void Load()
         {
-            int w = _display.Width;
-            int h = _display.Height;
+            var w = _display.Width;
+            var h = _display.Height;
             if (_display.Mem == null)
             {
                 _display.Mem = new Screen(w, h);
             }
             _display.Scr.Copy(_display.Mem, w, h);
-            for (int y = 0; y < h; y++)
+            for (var y = 0; y < h; y++)
             {
                 _display.X1[y] = 0;
                 _display.X2[y] = w - 1;
@@ -539,8 +539,8 @@ namespace Cthangband.UI
         /// <param name="col"> The column at which to place the character </param>
         public static void Place(Colour attr, char ch, int row, int col)
         {
-            int w = _display.Width;
-            int h = _display.Height;
+            var w = _display.Width;
+            var h = _display.Height;
             if (col < 0 || col >= w)
             {
                 return;
@@ -575,7 +575,7 @@ namespace Cthangband.UI
         /// <param name="ch"> The character to print </param>
         public static void Print(Colour attr, char ch)
         {
-            int w = _display.Width;
+            var w = _display.Width;
             if (_display.Scr.Cu)
             {
                 return;
@@ -618,14 +618,14 @@ namespace Cthangband.UI
             {
                 return;
             }
-            int w = _display.Width;
-            int res = 0;
-            int len = str.Length;
+            var w = _display.Width;
+            var res = 0;
+            var len = str.Length;
             if (_display.Scr.Cu)
             {
                 return;
             }
-            int k = length < 0 ? w + 1 : length;
+            var k = length < 0 ? w + 1 : length;
             for (length = 0; length < k && length < len; length++)
             {
             }
@@ -712,12 +712,12 @@ namespace Cthangband.UI
         /// <param name="str"> The string to print </param>
         public static void PrintWrap(Colour a, string str)
         {
-            GetSize(out int w, out _);
-            Locate(out int y, out int x);
-            string[] split = str.Split(' ');
-            for (int i = 0; i < split.Length; i++)
+            GetSize(out var w, out _);
+            Locate(out var y, out var x);
+            var split = str.Split(' ');
+            for (var i = 0; i < split.Length; i++)
             {
-                string s = split[i];
+                var s = split[i];
                 if (i > 0)
                 {
                     s = " " + s;
@@ -732,7 +732,7 @@ namespace Cthangband.UI
                     }
                     Erase(y, x, 255);
                 }
-                foreach (char c in s)
+                foreach (var c in s)
                 {
                     if (c == ' ' && x == 0)
                     {
@@ -772,12 +772,12 @@ namespace Cthangband.UI
         public static void Refresh()
         {
             int y;
-            int w = _display.Width;
-            int h = _display.Height;
-            int y1 = _display.Y1;
-            int y2 = _display.Y2;
-            Screen old = _display.Old;
-            Screen scr = _display.Scr;
+            var w = _display.Width;
+            var h = _display.Height;
+            var y1 = _display.Y1;
+            var y2 = _display.Y2;
+            var old = _display.Old;
+            var scr = _display.Scr;
             if (y1 > y2 && scr.Cu == old.Cu && scr.Cv == old.Cv && scr.Cx == old.Cx && scr.Cy == old.Cy &&
                 !_display.TotalErase)
             {
@@ -785,8 +785,8 @@ namespace Cthangband.UI
             }
             if (_display.TotalErase)
             {
-                Colour na = _display.AttrBlank;
-                char nc = _display.CharBlank;
+                var na = _display.AttrBlank;
+                var nc = _display.CharBlank;
                 _terminal.Clear();
                 old.Cv = false;
                 old.Cu = false;
@@ -794,9 +794,9 @@ namespace Cthangband.UI
                 old.Cy = 0;
                 for (y = 0; y < h; y++)
                 {
-                    int aa = old.A[y];
-                    int cc = old.C[y];
-                    for (int x = 0; x < w; x++)
+                    var aa = old.A[y];
+                    var cc = old.C[y];
+                    for (var x = 0; x < w; x++)
                     {
                         old.Va[aa++] = na;
                         old.Vc[cc++] = nc;
@@ -819,8 +819,8 @@ namespace Cthangband.UI
             {
                 for (y = y1; y <= y2; ++y)
                 {
-                    int x1 = _display.X1[y];
-                    int x2 = _display.X2[y];
+                    var x1 = _display.X1[y];
+                    var x2 = _display.X2[y];
                     if (x1 <= x2)
                     {
                         RefreshTextRow(y, x1, x2);
@@ -879,7 +879,7 @@ namespace Cthangband.UI
                 PrintLine("", 0, 0);
                 if (cmd == '0')
                 {
-                    int oldArg = CommandArgument;
+                    var oldArg = CommandArgument;
                     CommandArgument = 0;
                     PrintLine("Count: ", 0, 0);
                     while (true)
@@ -934,7 +934,7 @@ namespace Cthangband.UI
                         _keyBuffer = "";
                     }
                 }
-                string act = _keymapAct[mode][cmd];
+                var act = _keymapAct[mode][cmd];
                 if (!string.IsNullOrEmpty(act) && _keyBuffer == null)
                 {
                     _requestCommandBuffer = act;
@@ -980,8 +980,8 @@ namespace Cthangband.UI
         /// </summary>
         public static void Save()
         {
-            int w = _display.Width;
-            int h = _display.Height;
+            var w = _display.Width;
+            var h = _display.Height;
             (_display.Mem ?? (_display.Mem = new Screen(w, h))).Copy(_display.Scr, w, h);
         }
 
@@ -1076,10 +1076,10 @@ namespace Cthangband.UI
         private static void MapMovementKeys()
         {
             _keymapAct = new string[Constants.KeymapModes][];
-            for (int i = 0; i < Constants.KeymapModes; i++)
+            for (var i = 0; i < Constants.KeymapModes; i++)
             {
                 _keymapAct[i] = new string[256];
-                for (int j = 0; j < 256; j++)
+                for (var j = 0; j < 256; j++)
                 {
                     _keymapAct[i][j] = string.Empty;
                 }
@@ -1104,9 +1104,9 @@ namespace Cthangband.UI
         /// <param name="c"> The character to display </param>
         private static void QueueCharacter(int x, int y, Colour a, char c)
         {
-            int scrAa = _display.Scr.A[y];
-            int scrCc = _display.Scr.C[y];
-            Colour oa = _display.Scr.Va[scrAa + x];
+            var scrAa = _display.Scr.A[y];
+            var scrCc = _display.Scr.C[y];
+            var oa = _display.Scr.Va[scrAa + x];
             int oc = _display.Scr.Vc[scrCc + x];
             if (oa == a && oc == c)
             {
@@ -1142,14 +1142,14 @@ namespace Cthangband.UI
         /// <param name="s"> The string to print </param>
         private static void QueueCharacters(int x, int y, int n, Colour a, string s)
         {
-            int x1 = -1;
-            int x2 = -1;
-            int scrAa = _display.Scr.A[y];
-            int scrCc = _display.Scr.C[y];
-            int index = 0;
+            var x1 = -1;
+            var x2 = -1;
+            var scrAa = _display.Scr.A[y];
+            var scrCc = _display.Scr.C[y];
+            var index = 0;
             for (; n != 0 && index < s.Length; n--)
             {
-                Colour oa = _display.Scr.Va[scrAa + x];
+                var oa = _display.Scr.Va[scrAa + x];
                 int oc = _display.Scr.Vc[scrCc + x];
                 if (oa == a && oc == s[index])
                 {
@@ -1196,19 +1196,19 @@ namespace Cthangband.UI
         /// <param name="x2"> The last character to refresh </param>
         private static void RefreshTextRow(int y, int x1, int x2)
         {
-            int oldAa = _display.Old.A[y];
-            int oldCc = _display.Old.C[y];
-            int scrAa = _display.Scr.A[y];
-            int scrCc = _display.Scr.C[y];
-            int fn = 0;
-            int fx = 0;
-            Colour fa = _display.AttrBlank;
-            for (int x = x1; x <= x2; x++)
+            var oldAa = _display.Old.A[y];
+            var oldCc = _display.Old.C[y];
+            var scrAa = _display.Scr.A[y];
+            var scrCc = _display.Scr.C[y];
+            var fn = 0;
+            var fx = 0;
+            var fa = _display.AttrBlank;
+            for (var x = x1; x <= x2; x++)
             {
-                Colour oa = _display.Old.Va[oldAa + x];
-                char oc = _display.Old.Vc[oldCc + x];
-                Colour na = _display.Scr.Va[scrAa + x];
-                char nc = _display.Scr.Vc[scrCc + x];
+                var oa = _display.Old.Va[oldAa + x];
+                var oc = _display.Old.Vc[oldCc + x];
+                var na = _display.Scr.Va[scrAa + x];
+                var nc = _display.Scr.Vc[scrCc + x];
                 if (na == oa && nc == oc)
                 {
                     if (fn != 0)

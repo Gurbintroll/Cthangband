@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -25,7 +25,7 @@ namespace Cthangband.Patron.Base
         {
             int type;
             int dummy;
-            int nastyChance = 6;
+            var nastyChance = 6;
             if (MultiRew)
             {
                 return;
@@ -60,8 +60,8 @@ namespace Cthangband.Patron.Base
                 type = 20;
             }
             type--;
-            string wrathReason = $"the Wrath of {ShortName}";
-            Reward effect = Rewards[type];
+            var wrathReason = $"the Wrath of {ShortName}";
+            var effect = Rewards[type];
             if (Program.Rng.DieRoll(6) == 1)
             {
                 Profile.Instance.MsgPrint($"{ShortName} rewards you with a mutation!");
@@ -81,7 +81,7 @@ namespace Cthangband.Patron.Base
                     Profile.Instance.MsgPrint("'Well done, mortal! Lead on!'");
                     if (player.ExperiencePoints < Constants.PyMaxExp)
                     {
-                        int ee = player.ExperiencePoints / 2 + 10;
+                        var ee = player.ExperiencePoints / 2 + 10;
                         if (ee > 100000)
                         {
                             ee = 100000;
@@ -112,7 +112,7 @@ namespace Cthangband.Patron.Base
                 case Reward.ChaosWp:
                     Profile.Instance.MsgPrint($"The voice of {ShortName} booms out:");
                     Profile.Instance.MsgPrint("'Thy deed hath earned thee a worthy blade.'");
-                    Item qPtr = new Item();
+                    var qPtr = new Item();
                     int dummy2;
                     switch (Program.Rng.DieRoll(player.Level))
                     {

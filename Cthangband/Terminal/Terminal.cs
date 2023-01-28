@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -160,9 +160,9 @@ namespace Cthangband.Terminal
         /// </summary>
         public void Clear()
         {
-            foreach (System.Windows.Controls.TextBlock[] line in _window.Cells)
+            foreach (var line in _window.Cells)
             {
-                foreach (System.Windows.Controls.TextBlock textBlock in line)
+                foreach (var textBlock in line)
                 {
                     textBlock.Text = " ";
                 }
@@ -175,8 +175,8 @@ namespace Cthangband.Terminal
         /// <param name="row"> The row to clear </param>
         public void Clear(int row)
         {
-            System.Windows.Controls.TextBlock[] line = _window.Cells[row];
-            foreach (System.Windows.Controls.TextBlock textBlock in line)
+            var line = _window.Cells[row];
+            foreach (var textBlock in line)
             {
                 textBlock.Text = " ";
             }
@@ -189,10 +189,10 @@ namespace Cthangband.Terminal
         /// <param name="endRow"> The last row to clear </param>
         public void Clear(int startRow, int endRow)
         {
-            for (int i = startRow; i <= endRow; i++)
+            for (var i = startRow; i <= endRow; i++)
             {
-                System.Windows.Controls.TextBlock[] line = _window.Cells[i];
-                foreach (System.Windows.Controls.TextBlock textBlock in line)
+                var line = _window.Cells[i];
+                foreach (var textBlock in line)
                 {
                     textBlock.Text = " ";
                 }
@@ -213,44 +213,44 @@ namespace Cthangband.Terminal
         /// <returns> A list of font names </returns>
         public List<string> EnumerateFonts()
         {
-            List<string> names = new List<string>();
-            ICollection<FontFamily> fonts = Fonts.SystemFontFamilies;
-            foreach (FontFamily font in fonts)
+            var names = new List<string>();
+            var fonts = Fonts.SystemFontFamilies;
+            foreach (var font in fonts)
             {
-                Typeface typeface = new Typeface(font.ToString());
-                double iWidth = new FormattedText("iiii", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                var typeface = new Typeface(font.ToString());
+                var iWidth = new FormattedText("iiii", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
                     12, Brushes.Black).Width;
-                double wWidth = new FormattedText("WWWW", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                var wWidth = new FormattedText("WWWW", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
                     12, Brushes.Black).Width;
                 if (Math.Abs(wWidth - iWidth) > 0.0001)
                 {
                     continue;
                 }
-                double percentWidth = new FormattedText("%%%%", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight,
+                var percentWidth = new FormattedText("%%%%", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight,
                     typeface, 12, Brushes.Black).Width;
                 if (Math.Abs(percentWidth - iWidth) > 0.0001)
                 {
                     continue;
                 }
-                double zWidth = new FormattedText("zzzz", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                var zWidth = new FormattedText("zzzz", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
                     12, Brushes.Black).Width;
                 if (Math.Abs(zWidth - iWidth) > 0.0001)
                 {
                     continue;
                 }
-                double lWidth = new FormattedText("llll", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                var lWidth = new FormattedText("llll", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
                     12, Brushes.Black).Width;
                 if (Math.Abs(lWidth - iWidth) > 0.0001)
                 {
                     continue;
                 }
-                double dotWidth = new FormattedText("....", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                var dotWidth = new FormattedText("....", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
                     12, Brushes.Black).Width;
                 if (Math.Abs(dotWidth - iWidth) > 0.0001)
                 {
                     continue;
                 }
-                double underscoreWidth = new FormattedText("____", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
+                var underscoreWidth = new FormattedText("____", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, typeface,
                     12, Brushes.Black).Width;
                 if (Math.Abs(underscoreWidth - iWidth) > 0.0001)
                 {
@@ -265,7 +265,7 @@ namespace Cthangband.Terminal
         public List<Resolution> EnumerateResolutions()
         {
             var list = new List<Resolution>();
-            for (int i = 0; i < 11; i++)
+            for (var i = 0; i < 11; i++)
             {
                 list.Add(new Resolution(i));
             }
@@ -289,16 +289,16 @@ namespace Cthangband.Terminal
         /// <param name="text"> The text to print </param>
         public void Print(string text)
         {
-            foreach (char c in text)
+            foreach (var c in text)
             {
                 if (CursorRow >= 0 && CursorRow < Constants.ConsoleHeight && CursorCol >= 0 && CursorCol < 80)
                 {
-                    char printable = c;
+                    var printable = c;
                     if (printable < 32)
                     {
                         printable = '?';
                     }
-                    System.Windows.Controls.TextBlock t = _window.Cells[CursorRow][CursorCol];
+                    var t = _window.Cells[CursorRow][CursorCol];
                     t.Foreground = _inkBrush;
                     t.Text = printable.ToString();
                     CursorCol++;
@@ -395,12 +395,12 @@ namespace Cthangband.Terminal
         /// <param name="fontItalic"> Whether the font should be italic </param>
         public void SetNewFont(string fontName, bool fontBold, bool fontItalic)
         {
-            FontFamily family = new FontFamily(fontName);
-            FontWeight weight = fontBold ? FontWeights.Bold : FontWeights.Normal;
-            FontStyle style = fontItalic ? FontStyles.Italic : FontStyles.Normal;
-            foreach (System.Windows.Controls.TextBlock[] line in _window.Cells)
+            var family = new FontFamily(fontName);
+            var weight = fontBold ? FontWeights.Bold : FontWeights.Normal;
+            var style = fontItalic ? FontStyles.Italic : FontStyles.Normal;
+            foreach (var line in _window.Cells)
             {
-                foreach (System.Windows.Controls.TextBlock textBlock in line)
+                foreach (var textBlock in line)
                 {
                     textBlock.FontFamily = family;
                     textBlock.FontStyle = style;

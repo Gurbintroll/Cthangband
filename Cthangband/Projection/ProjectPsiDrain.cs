@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -35,11 +35,11 @@ namespace Cthangband.Projection
 
         protected override bool AffectMonster(int who, int r, int y, int x, int dam)
         {
-            GridTile cPtr = Level.Grid[y][x];
-            Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
-            MonsterRace rPtr = mPtr.Race;
-            bool seen = mPtr.IsVisible;
-            bool obvious = false;
+            var cPtr = Level.Grid[y][x];
+            var mPtr = Level.Monsters[cPtr.MonsterIndex];
+            var rPtr = mPtr.Race;
+            var seen = mPtr.IsVisible;
+            var obvious = false;
             string note = null;
             if (cPtr.MonsterIndex == 0)
             {
@@ -50,10 +50,10 @@ namespace Cthangband.Projection
                 return false;
             }
             dam = (dam + r) / (r + 1);
-            string mName = mPtr.MonsterDesc(0);
+            var mName = mPtr.MonsterDesc(0);
             if (who == 0 && (mPtr.Mind & Constants.SmFriendly) != 0)
             {
-                bool getAngry = (rPtr.Flags2 & MonsterFlag2.EmptyMind) == 0;
+                var getAngry = (rPtr.Flags2 & MonsterFlag2.EmptyMind) == 0;
                 if (getAngry && who == 0)
                 {
                     Profile.Instance.MsgPrint($"{mName} gets angry!");
@@ -78,7 +78,7 @@ namespace Cthangband.Projection
                     rPtr.Level > Player.Level / 2 && Program.Rng.DieRoll(2) == 1)
                 {
                     note = null;
-                    string s = seen ? "'s" : "s";
+                    var s = seen ? "'s" : "s";
                     Profile.Instance.MsgPrint($"{mName}{s} corrupted mind backlashes your attack!");
                     if (Program.Rng.RandomLessThan(100) < Player.SkillSavingThrow)
                     {
@@ -86,7 +86,7 @@ namespace Cthangband.Projection
                     }
                     else
                     {
-                        string killer = mPtr.MonsterDesc(0x88);
+                        var killer = mPtr.MonsterDesc(0x88);
                         Profile.Instance.MsgPrint("Your psychic energy is drained!");
                         Player.Vis = Math.Max(0, Player.Vis - (Program.Rng.DiceRoll(5, dam) / 2));
                         Player.RedrawNeeded.Set(RedrawFlag.PrVis);
@@ -97,14 +97,14 @@ namespace Cthangband.Projection
             }
             else if (dam > 0)
             {
-                int b = Program.Rng.DiceRoll(5, dam) / 4;
-                string s = seen ? "'s" : "s";
+                var b = Program.Rng.DiceRoll(5, dam) / 4;
+                var s = seen ? "'s" : "s";
                 Profile.Instance.MsgPrint($"You convert {mName}{s} pain into psychic energy!");
                 b = Math.Min(Player.MaxVis, Player.Vis + b);
                 Player.Vis = b;
                 Player.RedrawNeeded.Set(RedrawFlag.PrVis);
             }
-            string noteDies = " collapses, a mindless husk.";
+            var noteDies = " collapses, a mindless husk.";
             if ((rPtr.Flags1 & MonsterFlag1.Guardian) != 0)
             {
                 if (who != 0 && dam > mPtr.Health)
@@ -133,7 +133,7 @@ namespace Cthangband.Projection
                 mPtr.Health -= dam;
                 if (mPtr.Health < 0)
                 {
-                    bool sad = (mPtr.Mind & Constants.SmFriendly) != 0 && !mPtr.IsVisible;
+                    var sad = (mPtr.Mind & Constants.SmFriendly) != 0 && !mPtr.IsVisible;
                     SaveGame.MonsterDeath(cPtr.MonsterIndex);
                     Level.Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);
                     if (string.IsNullOrEmpty(note) == false)
@@ -159,7 +159,7 @@ namespace Cthangband.Projection
             }
             else
             {
-                if (Level.Monsters.DamageMonster(cPtr.MonsterIndex, dam, out bool fear, noteDies))
+                if (Level.Monsters.DamageMonster(cPtr.MonsterIndex, dam, out var fear, noteDies))
                 {
                 }
                 else
@@ -189,7 +189,7 @@ namespace Cthangband.Projection
 
         protected override bool AffectPlayer(int who, int r, int y, int x, int dam, int aRad)
         {
-            bool blind = Player.TimedBlindness != 0;
+            var blind = Player.TimedBlindness != 0;
             if (x != Player.MapX || y != Player.MapY)
             {
                 return false;
@@ -202,7 +202,7 @@ namespace Cthangband.Projection
             {
                 int tY;
                 int tX;
-                int maxAttempts = 10;
+                var maxAttempts = 10;
                 Profile.Instance.MsgPrint(blind ? "Something bounces!" : "The attack bounces!");
                 do
                 {

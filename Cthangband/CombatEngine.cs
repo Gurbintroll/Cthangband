@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -31,14 +31,14 @@ namespace Cthangband
         /// <param name="monsterIndex"> The index of the monster making the attack </param>
         public void MonsterAttackPlayer(int monsterIndex)
         {
-            Player player = _saveGame.Player;
-            Level level = _saveGame.Level;
-            Monster monster = level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var player = _saveGame.Player;
+            var level = _saveGame.Level;
+            var monster = level.Monsters[monsterIndex];
+            var race = monster.Race;
             int attackNumber;
-            bool touched = false;
-            bool fear = false;
-            bool alive = true;
+            var touched = false;
+            var fear = false;
+            var alive = true;
             // If the monster never attacks, then it shouldn't be attacking us now
             if ((race.Flags1 & MonsterFlag1.NeverAttack) != 0)
             {
@@ -50,23 +50,23 @@ namespace Cthangband
                 return;
             }
 
-            int armourClass = player.BaseArmourClass + player.ArmourClassBonus;
-            int monsterLevel = race.Level >= 1 ? race.Level : 1;
-            string monsterName = monster.MonsterDesc(0);
-            string monsterDescription = monster.MonsterDesc(0x88);
-            bool blinked = false;
+            var armourClass = player.BaseArmourClass + player.ArmourClassBonus;
+            var monsterLevel = race.Level >= 1 ? race.Level : 1;
+            var monsterName = monster.MonsterDesc(0);
+            var monsterDescription = monster.MonsterDesc(0x88);
+            var blinked = false;
             // Monsters get up to four attacks
             for (attackNumber = 0; attackNumber < 4; attackNumber++)
             {
-                bool visible = false;
-                bool obvious = false;
-                int power = 0;
-                int damage = 0;
+                var visible = false;
+                var obvious = false;
+                var power = 0;
+                var damage = 0;
                 string act = null;
-                AttackEffect effect = race.Attack[attackNumber].Effect;
-                AttackType method = race.Attack[attackNumber].Method;
-                int damageDice = race.Attack[attackNumber].DDice;
-                int damageSides = race.Attack[attackNumber].DSide;
+                var effect = race.Attack[attackNumber].Effect;
+                var method = race.Attack[attackNumber].Method;
+                var damageDice = race.Attack[attackNumber].DDice;
+                var damageSides = race.Attack[attackNumber].DSide;
                 // If the monster doesn't have an attack in this slot, stop looping
                 if (method == AttackType.Nothing)
                 {
@@ -212,8 +212,8 @@ namespace Cthangband
                         Profile.Instance.MsgPrint($"{monsterName} is repelled.");
                         continue;
                     }
-                    bool doCut = false;
-                    bool doStun = false;
+                    var doCut = false;
+                    var doStun = false;
                     // Give a description and remember the possible extras based on the attack method
                     switch (method)
                     {
@@ -432,7 +432,7 @@ namespace Cthangband
                                     {
                                         Profile.Instance.MsgPrint("Energy drains from your pack!");
                                         obvious = true;
-                                        int j = monsterLevel;
+                                        var j = monsterLevel;
                                         monster.Health += j * item.TypeSpecificValue * item.Count;
                                         if (monster.Health > monster.MaxHealth)
                                         {
@@ -466,7 +466,7 @@ namespace Cthangband
                                 else
                                 {
                                     // The amount of gold taken depends on how much you're carrying
-                                    int gold = (player.Gold / 10) + Program.Rng.DieRoll(25);
+                                    var gold = (player.Gold / 10) + Program.Rng.DieRoll(25);
                                     if (gold < 2)
                                     {
                                         gold = 2;
@@ -529,13 +529,13 @@ namespace Cthangband
                                         continue;
                                     }
                                     itemName = item.Description(false, 3);
-                                    string y = item.Count > 1 ? "One of y" : "Y";
+                                    var y = item.Count > 1 ? "One of y" : "Y";
                                     Profile.Instance.MsgPrint($"{y}our {itemName} ({i.IndexToLabel()}) was stolen!");
-                                    int nextObjectIndex = _saveGame.Level.OPop();
+                                    var nextObjectIndex = _saveGame.Level.OPop();
                                     if (nextObjectIndex != 0)
                                     {
                                         // Give the item to the thief so it can later drop it
-                                        Item stolenItem = new Item(item);
+                                        var stolenItem = new Item(item);
                                         level.Items[nextObjectIndex] = stolenItem;
                                         stolenItem.Count = 1;
                                         stolenItem.Marked = false;
@@ -570,7 +570,7 @@ namespace Cthangband
                                     // Note that the monster doesn't actually get the food item -
                                     // it's gone
                                     itemName = item.Description(false, 0);
-                                    string y = item.Count > 1 ? "One of y" : "Y";
+                                    var y = item.Count > 1 ? "One of y" : "Y";
                                     Profile.Instance.MsgPrint($"{y}our {itemName} ({i.IndexToLabel()}) was eaten!");
                                     player.Inventory.InvenItemIncrease(i, -1);
                                     player.Inventory.InvenItemOptimize(i);
@@ -818,7 +818,7 @@ namespace Cthangband
                                 }
                                 else
                                 {
-                                    int d = Program.Rng.DiceRoll(10, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
+                                    var d = Program.Rng.DiceRoll(10, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
                                     if (player.HasHoldLife)
                                     {
                                         Profile.Instance.MsgPrint("You feel your life slipping away!");
@@ -847,7 +847,7 @@ namespace Cthangband
                                 }
                                 else
                                 {
-                                    int d = Program.Rng.DiceRoll(20, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
+                                    var d = Program.Rng.DiceRoll(20, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
                                     if (player.HasHoldLife)
                                     {
                                         Profile.Instance.MsgPrint("You feel your life slipping away!");
@@ -876,7 +876,7 @@ namespace Cthangband
                                 }
                                 else
                                 {
-                                    int d = Program.Rng.DiceRoll(40, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
+                                    var d = Program.Rng.DiceRoll(40, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
                                     if (player.HasHoldLife)
                                     {
                                         Profile.Instance.MsgPrint("You feel your life slipping away!");
@@ -905,7 +905,7 @@ namespace Cthangband
                                 }
                                 else
                                 {
-                                    int d = Program.Rng.DiceRoll(80, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
+                                    var d = Program.Rng.DiceRoll(80, 6) + (player.ExperiencePoints / 100 * Constants.MonDrainLife);
                                     if (player.HasHoldLife)
                                     {
                                         Profile.Instance.MsgPrint("You feel your life slipping away!");
@@ -1131,14 +1131,14 @@ namespace Cthangband
         private bool MonsterCheckHitOnPlayer(int attackPower, int monsterLevel)
         {
             // Straight five percent chance of hit or miss
-            int k = Program.Rng.RandomLessThan(100);
+            var k = Program.Rng.RandomLessThan(100);
             if (k < 10)
             {
                 return k < 5;
             }
             // Otherwise, compare the power and level to the player's armour class
-            int i = attackPower + (monsterLevel * 3);
-            int ac = _saveGame.Player.BaseArmourClass + _saveGame.Player.ArmourClassBonus;
+            var i = attackPower + (monsterLevel * 3);
+            var ac = _saveGame.Player.BaseArmourClass + _saveGame.Player.ArmourClassBonus;
             return i > 0 && Program.Rng.DieRoll(i) > ac * 3 / 4;
         }
 
@@ -1151,8 +1151,8 @@ namespace Cthangband
         /// <returns> </returns>
         private int MonsterCritical(int dice, int sides, int damage)
         {
-            int additionalSeverity = 0;
-            int maxDamage = dice * sides;
+            var additionalSeverity = 0;
+            var maxDamage = dice * sides;
             // If we did less than 95% of maximum damage, definitely no cuts or stun
             if (damage < maxDamage * 19 / 20)
             {

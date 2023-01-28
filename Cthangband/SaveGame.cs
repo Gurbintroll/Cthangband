@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -7,7 +7,6 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Debug;
 using Cthangband.Enumerations;
-using Cthangband.Patron.Base;
 using Cthangband.Spells;
 using Cthangband.StaticData;
 using Cthangband.UI;
@@ -95,7 +94,7 @@ namespace Cthangband
 
         public void ActivateDreadCurse()
         {
-            int i = 0;
+            var i = 0;
             do
             {
                 switch (Program.Rng.DieRoll(27))
@@ -178,12 +177,12 @@ namespace Cthangband
 
         public void ChestTrap(int y, int x, int oIdx)
         {
-            Item oPtr = Level.Items[oIdx];
+            var oPtr = Level.Items[oIdx];
             if (oPtr.TypeSpecificValue <= 0)
             {
                 return;
             }
-            int trap = GlobalData.ChestTraps[oPtr.TypeSpecificValue];
+            var trap = GlobalData.ChestTraps[oPtr.TypeSpecificValue];
             if ((trap & Enumerations.ChestTrap.ChestLoseStr) != 0)
             {
                 Profile.Instance.MsgPrint("A small needle has pricked you!");
@@ -221,9 +220,9 @@ namespace Cthangband
             }
             if ((trap & Enumerations.ChestTrap.ChestSummon) != 0)
             {
-                int num = 2 + Program.Rng.DieRoll(3);
+                var num = 2 + Program.Rng.DieRoll(3);
                 Profile.Instance.MsgPrint("You are enveloped in a cloud of smoke!");
-                for (int i = 0; i < num; i++)
+                for (var i = 0; i < num; i++)
                 {
                     if (Program.Rng.DieRoll(100) < Difficulty)
                     {
@@ -246,7 +245,7 @@ namespace Cthangband
 
         public void DisplayWildMap()
         {
-            int[] dungeonGuardians = new int[Constants.MaxCaves];
+            var dungeonGuardians = new int[Constants.MaxCaves];
             int y, i;
             for (i = 0; i < Constants.MaxCaves; i++)
             {
@@ -261,13 +260,13 @@ namespace Cthangband
             }
             for (y = 0; y < 12; y++)
             {
-                for (int x = 0; x < 12; x++)
+                for (var x = 0; x < 12; x++)
                 {
-                    string wildMapSymbol = "^";
-                    Colour wildMapAttr = Colour.Green;
+                    var wildMapSymbol = "^";
+                    var wildMapAttr = Colour.Green;
                     if (Wilderness[y][x].Dungeon != null)
                     {
-                        Dungeon dungeon = Wilderness[y][x].Dungeon;
+                        var dungeon = Wilderness[y][x].Dungeon;
                         wildMapSymbol = dungeon.Visited ? dungeon.MapSymbol : "?";
                         wildMapAttr = Wilderness[y][x].Town != null ? Colour.Grey : Colour.Brown;
                         if (dungeonGuardians[Wilderness[y][x].Dungeon.Index] != 0)
@@ -292,8 +291,8 @@ namespace Cthangband
             Gui.Print(Colour.Purple, "+------------+", 14, 1);
             for (y = 0; y < Constants.MaxCaves; y++)
             {
-                string depth = Dungeons[y].KnownDepth ? $"{Dungeons[y].MaxLevel}" : "?";
-                string difficulty = Dungeons[y].KnownOffset ? $"{Dungeons[y].Offset}" : "?";
+                var depth = Dungeons[y].KnownDepth ? $"{Dungeons[y].MaxLevel}" : "?";
+                var difficulty = Dungeons[y].KnownOffset ? $"{Dungeons[y].Offset}" : "?";
                 string buffer;
                 if (Dungeons[y].Visited)
                 {
@@ -305,7 +304,7 @@ namespace Cthangband
                 {
                     buffer = $"? = {Dungeons[y].Name} (L:{depth}, D:{difficulty}, Q:{dungeonGuardians[y]})";
                 }
-                Colour keyAttr = Colour.Brown;
+                var keyAttr = Colour.Brown;
                 if (y < Instance.Towns.Length)
                 {
                     keyAttr = Colour.Grey;
@@ -364,17 +363,17 @@ namespace Cthangband
 
         public bool GetItem(out int itemIndex, string prompt, bool canChooseFromEquipment, bool canChooseFromInventory, bool canChooseFromFloor)
         {
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
-            Inventory inventory = Player.Inventory;
+            var tile = Level.Grid[Player.MapY][Player.MapX];
+            var inventory = Player.Inventory;
             int currentItemIndex;
             int nextItemIndex;
-            bool allowFloor = false;
+            var allowFloor = false;
             Profile.Instance.MsgPrint(null);
-            bool done = false;
-            bool item = false;
+            var done = false;
+            var item = false;
             itemIndex = -1;
-            int i1 = 0;
-            int i2 = InventorySlot.Pack - 1;
+            var i1 = 0;
+            var i2 = InventorySlot.Pack - 1;
             if (!canChooseFromInventory)
             {
                 i2 = -1;
@@ -387,8 +386,8 @@ namespace Cthangband
             {
                 i2--;
             }
-            int e1 = InventorySlot.MeleeWeapon;
-            int e2 = InventorySlot.Total - 1;
+            var e1 = InventorySlot.MeleeWeapon;
+            var e2 = InventorySlot.Total - 1;
             if (!canChooseFromEquipment)
             {
                 e2 = -1;
@@ -405,7 +404,7 @@ namespace Cthangband
             {
                 for (currentItemIndex = tile.ItemIndex; currentItemIndex != 0; currentItemIndex = nextItemIndex)
                 {
-                    Item oPtr = Level.Items[currentItemIndex];
+                    var oPtr = Level.Items[currentItemIndex];
                     nextItemIndex = oPtr.NextInStack;
                     if (inventory.ItemMatchesFilter(oPtr))
                     {
@@ -509,7 +508,7 @@ namespace Cthangband
                 outVal += " ESC";
                 tmpVal = $"({outVal}) {prompt}";
                 Gui.PrintLine(tmpVal, 0, 0);
-                char which = Gui.Inkey();
+                var which = Gui.Inkey();
                 int k;
                 switch (which)
                 {
@@ -555,7 +554,7 @@ namespace Cthangband
                             {
                                 for (currentItemIndex = tile.ItemIndex; currentItemIndex != 0; currentItemIndex = nextItemIndex)
                                 {
-                                    Item oPtr = Level.Items[currentItemIndex];
+                                    var oPtr = Level.Items[currentItemIndex];
                                     nextItemIndex = oPtr.NextInStack;
                                     if (!inventory.ItemMatchesFilter(oPtr))
                                     {
@@ -594,7 +593,7 @@ namespace Cthangband
                         }
                     default:
                         {
-                            bool ver = char.IsUpper(which);
+                            var ver = char.IsUpper(which);
                             if (ver)
                             {
                                 which = char.ToLower(which);
@@ -629,7 +628,7 @@ namespace Cthangband
 
         public Store GetWhichStore()
         {
-            foreach (Store store in CurTown.Stores)
+            foreach (var store in CurTown.Stores)
             {
                 if (Player.MapX == store.X && Player.MapY == store.Y)
                 {
@@ -669,35 +668,35 @@ namespace Cthangband
 
         public void MonsterDeath(int mIdx)
         {
-            int dumpItem = 0;
-            int dumpGold = 0;
-            int number = 0;
-            int qIdx = 0;
-            bool quest = false;
+            var dumpItem = 0;
+            var dumpGold = 0;
+            var number = 0;
+            var qIdx = 0;
+            var quest = false;
             int nextOIdx;
-            Monster mPtr = Level.Monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
+            var mPtr = Level.Monsters[mIdx];
+            var rPtr = mPtr.Race;
             if (rPtr == null)
             {
                 return;
             }
-            bool visible = mPtr.IsVisible || (rPtr.Flags1 & MonsterFlag1.Unique) != 0;
-            bool good = (rPtr.Flags1 & MonsterFlag1.DropGood) != 0;
-            bool great = (rPtr.Flags1 & MonsterFlag1.DropGreat) != 0;
-            bool doGold = (rPtr.Flags1 & MonsterFlag1.OnlyDropItem) == 0;
-            bool doItem = (rPtr.Flags1 & MonsterFlag1.OnlyDropGold) == 0;
-            bool cloned = false;
-            int forceCoin = rPtr.GetCoinType();
+            var visible = mPtr.IsVisible || (rPtr.Flags1 & MonsterFlag1.Unique) != 0;
+            var good = (rPtr.Flags1 & MonsterFlag1.DropGood) != 0;
+            var great = (rPtr.Flags1 & MonsterFlag1.DropGreat) != 0;
+            var doGold = (rPtr.Flags1 & MonsterFlag1.OnlyDropItem) == 0;
+            var doItem = (rPtr.Flags1 & MonsterFlag1.OnlyDropGold) == 0;
+            var cloned = false;
+            var forceCoin = rPtr.GetCoinType();
             Item qPtr;
-            int y = mPtr.MapY;
-            int x = mPtr.MapX;
+            var y = mPtr.MapY;
+            var x = mPtr.MapX;
             if ((mPtr.Mind & Constants.SmCloned) != 0)
             {
                 cloned = true;
             }
-            for (int thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = Level.Items[thisOIdx];
+                var oPtr = Level.Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 oPtr.HoldingMonsterIndex = 0;
                 qPtr = new Item(Level.Items[thisOIdx]);
@@ -706,7 +705,7 @@ namespace Cthangband
             }
             if (mPtr.StolenGold > 0)
             {
-                Item oPtr = new Item();
+                var oPtr = new Item();
                 Item.CoinType = 10;
                 oPtr.MakeGold();
                 Item.CoinType = 0;
@@ -758,7 +757,7 @@ namespace Cthangband
             }
             Item.CoinType = forceCoin;
             Level.ObjectLevel = (Difficulty + rPtr.Level) / 2;
-            for (int j = 0; j < number; j++)
+            for (var j = 0; j < number; j++)
             {
                 qPtr = new Item();
                 if (doGold && (!doItem || Program.Rng.RandomLessThan(100) < 50))
@@ -819,7 +818,7 @@ namespace Cthangband
                     while (!Level.CaveValidBold(y, x))
                     {
                         const int d = 1;
-                        Level.Scatter(out int ny, out int nx, y, x, d);
+                        Level.Scatter(out var ny, out var nx, y, x, d);
                         y = ny;
                         x = nx;
                     }
@@ -851,9 +850,9 @@ namespace Cthangband
 
         public void OpenChest(int y, int x, int oIdx)
         {
-            Item oPtr = Level.Items[oIdx];
-            bool small = oPtr.ItemSubCategory < ItemSubCategory.SvChestMinLarge;
-            int number = oPtr.ItemSubCategory % ItemSubCategory.SvChestMinLarge * 2;
+            var oPtr = Level.Items[oIdx];
+            var small = oPtr.ItemSubCategory < ItemSubCategory.SvChestMinLarge;
+            var number = oPtr.ItemSubCategory % ItemSubCategory.SvChestMinLarge * 2;
             if (oPtr.TypeSpecificValue == 0)
             {
                 number = 0;
@@ -862,7 +861,7 @@ namespace Cthangband
             Level.ObjectLevel = Math.Abs(oPtr.TypeSpecificValue) + 10;
             for (; number > 0; --number)
             {
-                Item qPtr = new Item();
+                var qPtr = new Item();
                 if (small && Program.Rng.RandomLessThan(100) < 75)
                 {
                     if (!qPtr.MakeGold())
@@ -896,16 +895,16 @@ namespace Cthangband
             }
             if (Player == null)
             {
-                PlayerFactory factory = new PlayerFactory();
-                Player newPlayer = factory.CharacterGeneration(Profile.Instance.ExPlayer);
+                var factory = new PlayerFactory();
+                var newPlayer = factory.CharacterGeneration(Profile.Instance.ExPlayer);
                 if (newPlayer == null)
                 {
                     return;
                 }
                 Player = newPlayer;
-                foreach (Town town in Towns)
+                foreach (var town in Towns)
                 {
-                    foreach (Store store in town.Stores)
+                    foreach (var store in town.Stores)
                     {
                         store.StoreInit();
                         store.StoreMaint();
@@ -941,7 +940,7 @@ namespace Cthangband
             if (Level == null)
             {
                 Level = new Level();
-                LevelFactory factory = new LevelFactory(Level);
+                var factory = new LevelFactory(Level);
                 factory.GenerateNewLevel();
             }
             Gui.FullScreenOverlay = false;
@@ -985,7 +984,7 @@ namespace Cthangband
                     break;
                 }
                 Level = new Level();
-                LevelFactory factory = new LevelFactory(Level);
+                var factory = new LevelFactory(Level);
                 factory.GenerateNewLevel();
                 Level.ReplacePets(Player.MapY, Player.MapX, _petList);
             }
@@ -998,7 +997,7 @@ namespace Cthangband
             {
                 return;
             }
-            PlayerStatus playerStatus = new PlayerStatus(Player, Level);
+            var playerStatus = new PlayerStatus(Player, Level);
             if (Player.UpdatesNeeded.IsSet(UpdateFlags.UpdateBonuses))
             {
                 Player.UpdatesNeeded.Clear(UpdateFlags.UpdateBonuses);
@@ -1075,8 +1074,8 @@ namespace Cthangband
             int i;
             for (i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
-                ItemType kPtr = Profile.Instance.ItemTypes[i];
-                EntityType visual = ObjectFlavourEntity(i);
+                var kPtr = Profile.Instance.ItemTypes[i];
+                var visual = ObjectFlavourEntity(i);
                 if (visual != null)
                 {
                     kPtr.Character = visual.Character;
@@ -1096,8 +1095,8 @@ namespace Cthangband
                 {
                     Kingly();
                 }
-                Player corpse = Player;
-                HighScore score = new HighScore(Player);
+                var corpse = Player;
+                var score = new HighScore(Player);
                 Player = null;
                 SavePlayer();
                 PrintTomb(corpse);
@@ -1124,8 +1123,8 @@ namespace Cthangband
         {
             int i;
             int j;
-            int x = 0;
-            int y = 0;
+            var x = 0;
+            var y = 0;
             Wilderness.MakeIslandContours();
             for (i = 0; i < 12; i++)
             {
@@ -1199,15 +1198,15 @@ namespace Cthangband
             }
             for (i = 0; i < Towns.Length - 1; i++)
             {
-                int curX = Towns[i].X;
-                int curY = Towns[i].Y;
-                int destX = Towns[i + 1].X;
-                int destY = Towns[i + 1].Y;
-                bool fin = false;
+                var curX = Towns[i].X;
+                var curY = Towns[i].Y;
+                var destX = Towns[i + 1].X;
+                var destY = Towns[i + 1].Y;
+                var fin = false;
                 while (!fin)
                 {
-                    int xDisp = destX - curX;
-                    int xSgn = 0;
+                    var xDisp = destX - curX;
+                    var xSgn = 0;
                     if (xDisp > 0)
                     {
                         xSgn = 1;
@@ -1217,8 +1216,8 @@ namespace Cthangband
                         xSgn = -1;
                         xDisp = -xDisp;
                     }
-                    int yDisp = destY - curY;
-                    int ySgn = 0;
+                    var yDisp = destY - curY;
+                    var ySgn = 0;
                     if (yDisp > 0)
                     {
                         ySgn = 1;
@@ -1286,7 +1285,7 @@ namespace Cthangband
 
         private void DungeonLoop()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             NewLevelFlag = false;
             HackMind = false;
             Gui.CurrentCommand = (char)0;
@@ -1431,7 +1430,7 @@ namespace Cthangband
                 }
                 TotalFriends = 0;
                 TotalFriendLevels = 0;
-                ArtificialIntelligence ai = new ArtificialIntelligence(Player, Level);
+                var ai = new ArtificialIntelligence(Player, Level);
                 ai.ProcessAllMonsters();
                 if (Player.NoticeFlags != 0)
                 {
@@ -1486,11 +1485,11 @@ namespace Cthangband
             Program.Rng.UseFixed = true;
             Program.Rng.FixedSeed = _seedFlavor;
             PotionFlavours = new List<PotionFlavour>();
-            List<PotionFlavour> tempPotions = new List<PotionFlavour>();
+            var tempPotions = new List<PotionFlavour>();
             PotionFlavours.Add(StaticResources.Instance.PotionFlavours["Clear"]);
             PotionFlavours.Add(StaticResources.Instance.PotionFlavours["Light Brown"]);
             PotionFlavours.Add(StaticResources.Instance.PotionFlavours["Icky Green"]);
-            foreach (KeyValuePair<string, PotionFlavour> pair in StaticResources.Instance.PotionFlavours)
+            foreach (var pair in StaticResources.Instance.PotionFlavours)
             {
                 if (pair.Key == "Clear")
                 {
@@ -1508,103 +1507,103 @@ namespace Cthangband
             }
             do
             {
-                int index = Program.Rng.RandomLessThan(tempPotions.Count);
+                var index = Program.Rng.RandomLessThan(tempPotions.Count);
                 PotionFlavours.Add(tempPotions[index]);
                 tempPotions.RemoveAt(index);
             } while (tempPotions.Count > 0);
             MushroomFlavours = new List<MushroomFlavour>();
-            List<MushroomFlavour> tempMushrooms = new List<MushroomFlavour>();
-            foreach (KeyValuePair<string, MushroomFlavour> pair in StaticResources.Instance.MushroomFlavours)
+            var tempMushrooms = new List<MushroomFlavour>();
+            foreach (var pair in StaticResources.Instance.MushroomFlavours)
             {
                 tempMushrooms.Add(pair.Value);
             }
             do
             {
-                int index = Program.Rng.RandomLessThan(tempMushrooms.Count);
+                var index = Program.Rng.RandomLessThan(tempMushrooms.Count);
                 MushroomFlavours.Add(tempMushrooms[index]);
                 tempMushrooms.RemoveAt(index);
             } while (tempMushrooms.Count > 0);
             AmuletFlavours = new List<AmuletFlavour>();
-            List<AmuletFlavour> tempAmulets = new List<AmuletFlavour>();
-            foreach (KeyValuePair<string, AmuletFlavour> pair in StaticResources.Instance.AmuletFlavours)
+            var tempAmulets = new List<AmuletFlavour>();
+            foreach (var pair in StaticResources.Instance.AmuletFlavours)
             {
                 tempAmulets.Add(pair.Value);
             }
             do
             {
-                int index = Program.Rng.RandomLessThan(tempAmulets.Count);
+                var index = Program.Rng.RandomLessThan(tempAmulets.Count);
                 AmuletFlavours.Add(tempAmulets[index]);
                 tempAmulets.RemoveAt(index);
             } while (tempAmulets.Count > 0);
             WandFlavours = new List<WandFlavour>();
-            List<WandFlavour> tempWands = new List<WandFlavour>();
-            foreach (KeyValuePair<string, WandFlavour> pair in StaticResources.Instance.WandFlavours)
+            var tempWands = new List<WandFlavour>();
+            foreach (var pair in StaticResources.Instance.WandFlavours)
             {
                 tempWands.Add(pair.Value);
             }
             do
             {
-                int index = Program.Rng.RandomLessThan(tempWands.Count);
+                var index = Program.Rng.RandomLessThan(tempWands.Count);
                 WandFlavours.Add(tempWands[index]);
                 tempWands.RemoveAt(index);
             } while (tempWands.Count > 0);
             RingFlavours = new List<RingFlavour>();
-            List<RingFlavour> tempRings = new List<RingFlavour>();
-            foreach (KeyValuePair<string, RingFlavour> pair in StaticResources.Instance.RingFlavours)
+            var tempRings = new List<RingFlavour>();
+            foreach (var pair in StaticResources.Instance.RingFlavours)
             {
                 tempRings.Add(pair.Value);
             }
             do
             {
-                int index = Program.Rng.RandomLessThan(tempRings.Count);
+                var index = Program.Rng.RandomLessThan(tempRings.Count);
                 RingFlavours.Add(tempRings[index]);
                 tempRings.RemoveAt(index);
             } while (tempRings.Count > 0);
             RodFlavours = new List<RodFlavour>();
-            List<RodFlavour> tempRods = new List<RodFlavour>();
-            foreach (KeyValuePair<string, RodFlavour> pair in StaticResources.Instance.RodFlavours)
+            var tempRods = new List<RodFlavour>();
+            foreach (var pair in StaticResources.Instance.RodFlavours)
             {
                 tempRods.Add(pair.Value);
             }
             do
             {
-                int index = Program.Rng.RandomLessThan(tempRods.Count);
+                var index = Program.Rng.RandomLessThan(tempRods.Count);
                 RodFlavours.Add(tempRods[index]);
                 tempRods.RemoveAt(index);
             } while (tempRods.Count > 0);
             StaffFlavours = new List<StaffFlavour>();
-            List<StaffFlavour> tempStaffs = new List<StaffFlavour>();
-            foreach (KeyValuePair<string, StaffFlavour> pair in StaticResources.Instance.StaffFlavours)
+            var tempStaffs = new List<StaffFlavour>();
+            foreach (var pair in StaticResources.Instance.StaffFlavours)
             {
                 tempStaffs.Add(pair.Value);
             }
             do
             {
-                int index = Program.Rng.RandomLessThan(tempStaffs.Count);
+                var index = Program.Rng.RandomLessThan(tempStaffs.Count);
                 StaffFlavours.Add(tempStaffs[index]);
                 tempStaffs.RemoveAt(index);
             } while (tempStaffs.Count > 0);
             ScrollFlavours = new List<ScrollFlavour>();
-            List<ScrollFlavour> tempScrolls = new List<ScrollFlavour>();
-            foreach (KeyValuePair<string, ScrollFlavour> pair in StaticResources.Instance.ScrollFlavours)
+            var tempScrolls = new List<ScrollFlavour>();
+            foreach (var pair in StaticResources.Instance.ScrollFlavours)
             {
                 tempScrolls.Add(pair.Value);
             }
             for (i = 0; i < Constants.MaxTitles; i++)
             {
-                ScrollFlavour flavour = new ScrollFlavour();
+                var flavour = new ScrollFlavour();
                 ScrollFlavours.Add(flavour);
-                int index = Program.Rng.RandomLessThan(tempScrolls.Count);
+                var index = Program.Rng.RandomLessThan(tempScrolls.Count);
                 flavour.Character = tempScrolls[index].Character;
                 flavour.Colour = tempScrolls[index].Colour;
                 while (true)
                 {
-                    string buf = "";
+                    var buf = "";
                     while (true)
                     {
-                        string tmp = "";
-                        int s = Program.Rng.RandomLessThan(100) < 30 ? 1 : 2;
-                        for (int q = 0; q < s; q++)
+                        var tmp = "";
+                        var s = Program.Rng.RandomLessThan(100) < 30 ? 1 : 2;
+                        for (var q = 0; q < s; q++)
                         {
                             tmp += ScrollFlavour.Syllables[Program.Rng.RandomLessThan(ScrollFlavour.Syllables.Length)];
                         }
@@ -1616,11 +1615,11 @@ namespace Cthangband
                         buf += tmp;
                     }
                     flavour.Name = buf.Substring(1);
-                    bool okay = true;
+                    var okay = true;
                     for (j = 0; j < i; j++)
                     {
-                        string hack1 = ScrollFlavours[j].Name;
-                        string hack2 = ScrollFlavours[i].Name;
+                        var hack1 = ScrollFlavours[j].Name;
+                        var hack2 = ScrollFlavours[i].Name;
                         if (hack1.Substring(0, 4) != hack2.Substring(0, 4))
                         {
                             continue;
@@ -1637,7 +1636,7 @@ namespace Cthangband
             Program.Rng.UseFixed = false;
             for (i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
-                ItemType kPtr = Profile.Instance.ItemTypes[i];
+                var kPtr = Profile.Instance.ItemTypes[i];
                 if (string.IsNullOrEmpty(kPtr.Name))
                 {
                     continue;
@@ -1656,8 +1655,8 @@ namespace Cthangband
             int i, j;
             ItemType kPtr;
             MonsterRace rPtr;
-            int[] num = new int[Constants.MaxDepth];
-            int[] aux = new int[Constants.MaxDepth];
+            var num = new int[Constants.MaxDepth];
+            var aux = new int[Constants.MaxDepth];
             AllocKindSize = 0;
             for (i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
@@ -1676,11 +1675,11 @@ namespace Cthangband
                 num[i] += num[i - 1];
             }
             AllocKindTable = new AllocationEntry[AllocKindSize];
-            for (int k = 0; k < AllocKindSize; k++)
+            for (var k = 0; k < AllocKindSize; k++)
             {
                 AllocKindTable[k] = new AllocationEntry();
             }
-            AllocationEntry[] table = AllocKindTable;
+            var table = AllocKindTable;
             for (i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
                 kPtr = Profile.Instance.ItemTypes[i];
@@ -1688,10 +1687,10 @@ namespace Cthangband
                 {
                     if (kPtr.Chance[j] != 0)
                     {
-                        int x = kPtr.Locale[j];
-                        int p = 100 / kPtr.Chance[j];
-                        int y = x > 0 ? num[x - 1] : 0;
-                        int z = y + aux[x];
+                        var x = kPtr.Locale[j];
+                        var p = 100 / kPtr.Chance[j];
+                        var y = x > 0 ? num[x - 1] : 0;
+                        var z = y + aux[x];
                         table[z].Index = i;
                         table[z].Level = x;
                         table[z].BaseProbability = p;
@@ -1718,7 +1717,7 @@ namespace Cthangband
                 num[i] += num[i - 1];
             }
             AllocRaceTable = new AllocationEntry[AllocRaceSize];
-            for (int k = 0; k < AllocRaceSize; k++)
+            for (var k = 0; k < AllocRaceSize; k++)
             {
                 AllocRaceTable[k] = new AllocationEntry();
             }
@@ -1728,10 +1727,10 @@ namespace Cthangband
                 rPtr = Profile.Instance.MonsterRaces[i];
                 if (rPtr.Rarity != 0)
                 {
-                    int x = rPtr.Level;
-                    int p = 100 / rPtr.Rarity;
-                    int y = x > 0 ? num[x - 1] : 0;
-                    int z = y + aux[x];
+                    var x = rPtr.Level;
+                    var p = 100 / rPtr.Rarity;
+                    var y = x > 0 ? num[x - 1] : 0;
+                    var z = y + aux[x];
                     table[z].Index = i;
                     table[z].Level = x;
                     table[z].BaseProbability = p;
@@ -1756,10 +1755,10 @@ namespace Cthangband
 
         private EntityType ObjectFlavourEntity(int i)
         {
-            ItemType kPtr = Profile.Instance.ItemTypes[i];
+            var kPtr = Profile.Instance.ItemTypes[i];
             if (kPtr.HasFlavor)
             {
-                int indexx = kPtr.SubCategory;
+                var indexx = kPtr.SubCategory;
                 switch (kPtr.Category)
                 {
                     case ItemCategory.Food:
@@ -1793,7 +1792,7 @@ namespace Cthangband
         private void PrintTomb(Player corpse)
         {
             {
-                DateTime ct = DateTime.Now;
+                var ct = DateTime.Now;
                 if (corpse.IsWinner)
                 {
                     Gui.SetBackground(Terminal.BackgroundImage.Sunset);
@@ -1805,7 +1804,7 @@ namespace Cthangband
                     Gui.Mixer.Play(MusicTrack.Death);
                 }
                 Gui.Clear();
-                string buf = corpse.Name.Trim() + corpse.Generation.ToRoman(true);
+                var buf = corpse.Name.Trim() + corpse.Generation.ToRoman(true);
                 if (corpse.IsWinner || corpse.Level > Constants.PyMaxLevel)
                 {
                     buf += " the Magnificent";
@@ -1813,7 +1812,7 @@ namespace Cthangband
                 Gui.Print(buf, 39, 1);
                 buf = $"Level {corpse.Level} {corpse.PlayerClass.ClassSubName(corpse.Realm1)}";
                 Gui.Print(buf, 40, 1);
-                string tmp = $"Killed on Level {CurrentDepth}".PadLeft(45);
+                var tmp = $"Killed on Level {CurrentDepth}".PadLeft(45);
                 Gui.Print(tmp, 39, 34);
                 tmp = $"by {DiedFrom}".PadLeft(45);
                 Gui.Print(tmp, 40, 34);
@@ -1885,10 +1884,10 @@ namespace Cthangband
                 if (Player.Inventory[InventorySlot.Pack].ItemType != null)
                 {
                     const int item = InventorySlot.Pack;
-                    Item oPtr = Player.Inventory[item];
+                    var oPtr = Player.Inventory[item];
                     Disturb(false);
                     Profile.Instance.MsgPrint("Your pack overflows!");
-                    string oName = oPtr.Description(true, 3);
+                    var oName = oPtr.Description(true, 3);
                     Profile.Instance.MsgPrint($"You drop {oName} ({item.IndexToLabel()}).");
                     Level.DropNear(oPtr, 0, Player.MapY, Player.MapX);
                     Player.Inventory.InvenItemIncrease(item, -255);
@@ -1955,12 +1954,12 @@ namespace Cthangband
                         Level.Monsters.ShimmerMonsters = false;
                         for (i = 1; i < Level.MMax; i++)
                         {
-                            Monster mPtr = Level.Monsters[i];
+                            var mPtr = Level.Monsters[i];
                             if (mPtr.Race == null)
                             {
                                 continue;
                             }
-                            MonsterRace rPtr = mPtr.Race;
+                            var rPtr = mPtr.Race;
                             if ((rPtr.Flags1 & MonsterFlag1.AttrMulti) == 0)
                             {
                                 continue;
@@ -1974,7 +1973,7 @@ namespace Cthangband
                         Level.Monsters.RepairMonsters = false;
                         for (i = 1; i < Level.MMax; i++)
                         {
-                            Monster mPtr = Level.Monsters[i];
+                            var mPtr = Level.Monsters[i];
                             if (mPtr.Race == null)
                             {
                                 continue;
@@ -2010,9 +2009,9 @@ namespace Cthangband
 
         private void ProcessWorld()
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             if (Player.GameTime.IsBirthday)
             {
                 Profile.Instance.MsgPrint("Happy Birthday!");
@@ -2074,17 +2073,17 @@ namespace Cthangband
             {
                 Player.Religion.DecayFavour();
                 Player.UpdatesNeeded.Set(UpdateFlags.UpdateHealth | UpdateFlags.UpdateVis);
-                foreach (Town town in Towns)
+                foreach (var town in Towns)
                 {
-                    foreach (Store store in town.Stores)
+                    foreach (var store in town.Stores)
                     {
                         store.StoreMaint();
                     }
                 }
                 if (Program.Rng.RandomLessThan(Constants.StoreShuffle) == 0)
                 {
-                    int town = Program.Rng.RandomLessThan(Towns.Length);
-                    int store = Program.Rng.RandomLessThan(12);
+                    var town = Program.Rng.RandomLessThan(Towns.Length);
+                    var store = Program.Rng.RandomLessThan(12);
                     Towns[town].Stores[store].StoreShuffle();
                 }
             }
@@ -2105,7 +2104,7 @@ namespace Cthangband
                 Player.TakeHit(1, "poison");
             }
             Item oPtr;
-            bool caveNoRegen = false;
+            var caveNoRegen = false;
             if (Player.Race.IsSunlightSensitive)
             {
                 if (CurrentDepth <= 0 && !Player.HasLightResistance && Player.TimedInvulnerability == 0 &&
@@ -2124,11 +2123,11 @@ namespace Cthangband
                     !Player.HasLightResistance)
                 {
                     oPtr = Player.Inventory[InventorySlot.Lightsource];
-                    string oName = oPtr.Description(false, 0);
+                    var oName = oPtr.Description(false, 0);
                     Profile.Instance.MsgPrint($"The {oName} scorches your undead flesh!");
                     caveNoRegen = true;
                     oName = oPtr.Description(true, 0);
-                    string ouch = $"wielding {oName}";
+                    var ouch = $"wielding {oName}";
                     if (Player.TimedInvulnerability == 0)
                     {
                         Player.TakeHit(1, ouch);
@@ -2204,7 +2203,7 @@ namespace Cthangband
                     Player.TakeHit(i, "starvation");
                 }
             }
-            int regenAmount = Constants.PyRegenNormal;
+            var regenAmount = Constants.PyRegenNormal;
             if (Player.Food < Constants.PyFoodWeak)
             {
                 if (Player.Food < Constants.PyFoodStarve)
@@ -2237,10 +2236,10 @@ namespace Cthangband
             {
                 regenAmount *= 2;
             }
-            int upkeepFactor = 0;
+            var upkeepFactor = 0;
             if (TotalFriends != 0)
             {
-                int upkeepDivider = Player.PlayerClass.PetUpkeepDivider;
+                var upkeepDivider = Player.PlayerClass.PetUpkeepDivider;
                 if (TotalFriends > 1 + (Player.Level / upkeepDivider))
                 {
                     upkeepFactor = TotalFriendLevels;
@@ -2258,7 +2257,7 @@ namespace Cthangband
             {
                 if (upkeepFactor != 0)
                 {
-                    int upkeepRegen = (100 - upkeepFactor) * regenAmount / 100;
+                    var upkeepRegen = (100 - upkeepFactor) * regenAmount / 100;
                     Player.RegenerateVis(upkeepRegen);
                 }
                 else
@@ -2376,17 +2375,17 @@ namespace Cthangband
             }
             if (Player.TimedPoison != 0)
             {
-                int adjust = Player.AbilityScores[Ability.Constitution].ConRecoverySpeed + 1;
+                var adjust = Player.AbilityScores[Ability.Constitution].ConRecoverySpeed + 1;
                 Player.SetTimedPoison(Player.TimedPoison - adjust);
             }
             if (Player.TimedStun != 0)
             {
-                int adjust = Player.AbilityScores[Ability.Constitution].ConRecoverySpeed + 1;
+                var adjust = Player.AbilityScores[Ability.Constitution].ConRecoverySpeed + 1;
                 Player.SetTimedStun(Player.TimedStun - adjust);
             }
             if (Player.TimedBleeding != 0)
             {
-                int adjust = Player.AbilityScores[Ability.Constitution].ConRecoverySpeed + 1;
+                var adjust = Player.AbilityScores[Ability.Constitution].ConRecoverySpeed + 1;
                 if (Player.TimedBleeding > 1000)
                 {
                     adjust = 0;
@@ -2578,7 +2577,7 @@ namespace Cthangband
             {
                 return;
             }
-            PlayerStatus playerStatus = new PlayerStatus(Player, Level);
+            var playerStatus = new PlayerStatus(Player, Level);
             if (Player.RedrawNeeded.IsSet(RedrawFlag.PrWipe))
             {
                 Player.RedrawNeeded.Clear(RedrawFlag.PrWipe);
@@ -2736,17 +2735,17 @@ namespace Cthangband
 
         private void RegenMonsters()
         {
-            for (int i = 1; i < Level.MMax; i++)
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
                 }
                 if (mPtr.Health < mPtr.MaxHealth)
                 {
-                    int frac = mPtr.MaxHealth / 100;
+                    var frac = mPtr.MaxHealth / 100;
                     if (frac == 0)
                     {
                         frac = 1;
@@ -2781,9 +2780,9 @@ namespace Cthangband
 
         private bool Verify(string prompt, int item)
         {
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            string oName = oPtr.Description(true, 3);
-            string outVal = $"{prompt} {oName}? ";
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var oName = oPtr.Description(true, 3);
+            var outVal = $"{prompt} {oName}? ";
             return Gui.GetCheck(outVal);
         }
     }

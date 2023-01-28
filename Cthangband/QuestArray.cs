@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -29,7 +29,7 @@ namespace Cthangband
 
         public QuestArray()
         {
-            for (int i = 0; i < _maxQuests; i++)
+            for (var i = 0; i < _maxQuests; i++)
             {
                 Add(new Quest());
             }
@@ -40,11 +40,11 @@ namespace Cthangband
         public string DescribeQuest(int qIdx)
         {
             string buf;
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[this[qIdx].RIdx];
-            string name = rPtr.Name;
-            int qNum = this[qIdx].ToKill;
-            string dunName = SaveGame.Instance.Dungeons[this[qIdx].Dungeon].Name;
-            int lev = this[qIdx].Level;
+            var rPtr = Profile.Instance.MonsterRaces[this[qIdx].RIdx];
+            var name = rPtr.Name;
+            var qNum = this[qIdx].ToKill;
+            var dunName = SaveGame.Instance.Dungeons[this[qIdx].Dungeon].Name;
+            var lev = this[qIdx].Level;
             if (this[qIdx].Level == 0)
             {
                 if (qNum == 1)
@@ -53,7 +53,7 @@ namespace Cthangband
                 }
                 else
                 {
-                    string plural = name.PluraliseMonsterName();
+                    var plural = name.PluraliseMonsterName();
                     buf = $"You have defeated {qNum} {plural} in {dunName}";
                 }
             }
@@ -69,7 +69,7 @@ namespace Cthangband
                     {
                         if (this[qIdx].ToKill - this[qIdx].Killed > 1)
                         {
-                            string plural = name.PluraliseMonsterName();
+                            var plural = name.PluraliseMonsterName();
                             buf = $"You must defeat {qNum} {plural} at lvl {lev} of {dunName}";
                         }
                         else
@@ -88,7 +88,7 @@ namespace Cthangband
 
         public int GetQuestMonster()
         {
-            for (int i = 0; i < Count; i++)
+            for (var i = 0; i < Count; i++)
             {
                 if (this[i].Level == SaveGame.Instance.CurrentDepth &&
                     this[i].Dungeon == SaveGame.Instance.CurDungeon.Index)
@@ -101,7 +101,7 @@ namespace Cthangband
 
         public int GetQuestNumber()
         {
-            for (int i = 0; i < Count; i++)
+            for (var i = 0; i < Count; i++)
             {
                 if (this[i].Level == SaveGame.Instance.CurrentDepth &&
                     this[i].Dungeon == SaveGame.Instance.CurDungeon.Index)
@@ -118,7 +118,7 @@ namespace Cthangband
             {
                 return false;
             }
-            for (int i = 0; i < Count; i++)
+            for (var i = 0; i < Count; i++)
             {
                 if (this[i].Level == level && this[i].Dungeon == SaveGame.Instance.CurDungeon.Index)
                 {
@@ -131,13 +131,13 @@ namespace Cthangband
         public void PlayerBirthQuests()
         {
             Profile.Instance.MonsterRaces.ResetUniqueOnlyGuardianStatus();
-            int index = 0;
+            var index = 0;
             Clear();
-            for (int i = 0; i < _maxQuests; i++)
+            for (var i = 0; i < _maxQuests; i++)
             {
                 Add(new Quest());
             }
-            for (int i = 0; i < Constants.MaxCaves; i++)
+            for (var i = 0; i < Constants.MaxCaves; i++)
             {
                 if (SaveGame.Instance.Dungeons[i].FirstGuardian != "")
                 {
@@ -161,7 +161,7 @@ namespace Cthangband
                     index++;
                 }
             }
-            for (int i = 0; i < 26; i++)
+            for (var i = 0; i < 26; i++)
             {
                 int j;
                 bool sameLevel;
@@ -207,17 +207,17 @@ namespace Cthangband
 
         public void PrintQuestMessage()
         {
-            int qIdx = GetQuestNumber();
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[this[qIdx].RIdx];
-            string name = rPtr.Name;
-            int qNum = this[qIdx].ToKill - this[qIdx].Killed;
+            var qIdx = GetQuestNumber();
+            var rPtr = Profile.Instance.MonsterRaces[this[qIdx].RIdx];
+            var name = rPtr.Name;
+            var qNum = this[qIdx].ToKill - this[qIdx].Killed;
             if (this[qIdx].ToKill == 1)
             {
                 Profile.Instance.MsgPrint($"You still have to kill {name}.");
             }
             else if (qNum > 1)
             {
-                string plural = name.PluraliseMonsterName();
+                var plural = name.PluraliseMonsterName();
                 Profile.Instance.MsgPrint($"You still have to kill {qNum} {plural}.");
             }
             else
@@ -228,10 +228,10 @@ namespace Cthangband
 
         public void QuestDiscovery()
         {
-            int qIdx = GetQuestNumber();
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[this[qIdx].RIdx];
-            string name = rPtr.Name;
-            int qNum = this[qIdx].ToKill;
+            var qIdx = GetQuestNumber();
+            var rPtr = Profile.Instance.MonsterRaces[this[qIdx].RIdx];
+            var name = rPtr.Name;
+            var qNum = this[qIdx].ToKill;
             Profile.Instance.MsgPrint(_findQuest[Program.Rng.RandomBetween(0, 4)]);
             Profile.Instance.MsgPrint(null);
             if (qNum == 1)
@@ -240,7 +240,7 @@ namespace Cthangband
             }
             else
             {
-                string plural = name.PluraliseMonsterName();
+                var plural = name.PluraliseMonsterName();
                 Profile.Instance.MsgPrint($"Be warned, this level is guarded by {qNum} {plural}!");
             }
             this[qIdx].Discovered = true;
@@ -253,7 +253,7 @@ namespace Cthangband
             {
                 return 1;
             }
-            int num = (Profile.Instance.MonsterRaces[this[i].RIdx].Flags1 & MonsterFlag1.Friends) != 0 ? 10 : 5;
+            var num = (Profile.Instance.MonsterRaces[this[i].RIdx].Flags1 & MonsterFlag1.Friends) != 0 ? 10 : 5;
             num += Program.Rng.RandomBetween(1, (this[i].Level / 3) + 5);
             return num;
         }
@@ -261,7 +261,7 @@ namespace Cthangband
         private int GetRndQMonster(int qIdx)
         {
             int rIdx;
-            int tmp = Program.Rng.RandomBetween(1, 10);
+            var tmp = Program.Rng.RandomBetween(1, 10);
             switch (tmp)
             {
                 case 1:
@@ -312,7 +312,7 @@ namespace Cthangband
             {
                 return 0;
             }
-            for (int j = 2; j < qIdx; j++)
+            for (var j = 2; j < qIdx; j++)
             {
                 if (this[j].RIdx == rIdx)
                 {

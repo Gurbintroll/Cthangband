@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -30,17 +30,17 @@ namespace Cthangband
             {
                 lev = Constants.MaxDepth - 1;
             }
-            int f1 = lev + 10;
+            var f1 = lev + 10;
             if (f1 > 75)
             {
                 f1 = 75;
             }
-            int f2 = f1 / 2;
+            var f2 = f1 / 2;
             if (f2 > 20)
             {
                 f2 = 20;
             }
-            int power = 0;
+            var power = 0;
             if (good || Program.Rng.PercentileRoll(f1))
             {
                 power = 1;
@@ -57,7 +57,7 @@ namespace Cthangband
                     power = -2;
                 }
             }
-            int rolls = 0;
+            var rolls = 0;
             if (power >= 2)
             {
                 rolls = 1;
@@ -70,7 +70,7 @@ namespace Cthangband
             {
                 rolls = 0;
             }
-            for (int i = 0; i < rolls; i++)
+            for (var i = 0; i < rolls; i++)
             {
                 if (ApplyArtifact())
                 {
@@ -79,7 +79,7 @@ namespace Cthangband
             }
             if (_item.ArtifactIndex != 0)
             {
-                Artifact aPtr = Profile.Instance.Artifacts[_item.ArtifactIndex];
+                var aPtr = Profile.Instance.Artifacts[_item.ArtifactIndex];
                 aPtr.CurNum = 1;
                 _item.TypeSpecificValue = aPtr.Pval;
                 _item.BaseArmourClass = aPtr.Ac;
@@ -174,7 +174,7 @@ namespace Cthangband
             }
             else if (_item.RareItemTypeIndex != Enumerations.RareItemType.None)
             {
-                RareItemType ePtr = Profile.Instance.RareItemTypes[_item.RareItemTypeIndex];
+                var ePtr = Profile.Instance.RareItemTypes[_item.RareItemTypeIndex];
                 switch (_item.RareItemTypeIndex)
                 {
                     case Enumerations.RareItemType.WeaponElderSign:
@@ -279,7 +279,7 @@ namespace Cthangband
             }
             if (_item.ItemType != null)
             {
-                ItemType kPtr = _item.ItemType;
+                var kPtr = _item.ItemType;
                 if (kPtr.Cost == 0)
                 {
                     _item.IdentifyFlags.Set(Constants.IdentBroken);
@@ -713,11 +713,11 @@ namespace Cthangband
 
         public bool CreateLegendary(bool fromScroll)
         {
-            bool hasPval = false;
-            int powers = Program.Rng.DieRoll(5) + 1;
-            int maxType = _item.Category < ItemCategory.Boots ? 7 : 5;
-            bool aCursed = false;
-            int warriorArtifactBias = 0;
+            var hasPval = false;
+            var powers = Program.Rng.DieRoll(5) + 1;
+            var maxType = _item.Category < ItemCategory.Boots ? 7 : 5;
+            var aCursed = false;
+            var warriorArtifactBias = 0;
             _legendaryItemBias = 0;
             if (fromScroll && Program.Rng.DieRoll(4) == 1)
             {
@@ -805,7 +805,7 @@ namespace Cthangband
             }
             _item.LegendaryFlags3.Set(ItemFlag3.IgnoreAcid | ItemFlag3.IgnoreElec | ItemFlag3.IgnoreFire |
                                     ItemFlag3.IgnoreCold);
-            int totalFlags = _item.FlagBasedCost(_item.TypeSpecificValue);
+            var totalFlags = _item.FlagBasedCost(_item.TypeSpecificValue);
             if (aCursed)
             {
                 CurseLegendary();
@@ -821,7 +821,7 @@ namespace Cthangband
             {
                 _item.IdentifyFully();
                 _item.IdentifyFlags.Set(Constants.IdentStoreb);
-                if (!Gui.GetString("What do you want to call the legendary item? ", out string dummyName, "(an item of legend)",
+                if (!Gui.GetString("What do you want to call the legendary item? ", out var dummyName, "(an item of legend)",
                     80))
                 {
                     newName = "(a DIY artifact)";
@@ -943,8 +943,8 @@ namespace Cthangband
 
         public bool MakeObject(bool good, bool great)
         {
-            int prob = good ? 10 : 1000;
-            int baselevel = good ? SaveGame.Instance.Level.ObjectLevel + 10 : SaveGame.Instance.Level.ObjectLevel;
+            var prob = good ? 10 : 1000;
+            var baselevel = good ? SaveGame.Instance.Level.ObjectLevel + 10 : SaveGame.Instance.Level.ObjectLevel;
             if (Program.Rng.RandomLessThan(prob) != 0 || !MakeArtifact())
             {
                 if (good)
@@ -952,7 +952,7 @@ namespace Cthangband
                     _getObjNumHook = ItemType.KindIsGood;
                     PrepareAllocationTable();
                 }
-                ItemType kIdx = ItemType.RandomItemType(baselevel);
+                var kIdx = ItemType.RandomItemType(baselevel);
                 if (good)
                 {
                     _getObjNumHook = null;
@@ -994,9 +994,9 @@ namespace Cthangband
             {
                 return false;
             }
-            foreach (System.Collections.Generic.KeyValuePair<ArtifactId, Artifact> pair in Profile.Instance.Artifacts)
+            foreach (var pair in Profile.Instance.Artifacts)
             {
-                Artifact aPtr = pair.Value;
+                var aPtr = pair.Value;
                 if (aPtr.HasOwnType)
                 {
                     continue;
@@ -1015,7 +1015,7 @@ namespace Cthangband
                 }
                 if (aPtr.Level > SaveGame.Instance.Difficulty)
                 {
-                    int d = (aPtr.Level - SaveGame.Instance.Difficulty) * 2;
+                    var d = (aPtr.Level - SaveGame.Instance.Difficulty) * 2;
                     if (Program.Rng.RandomLessThan(d) != 0)
                     {
                         continue;
@@ -1050,8 +1050,8 @@ namespace Cthangband
 
         private void ApplyMagicToArmour(int level, int power)
         {
-            int toac1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
-            int toac2 = GetBonusValue(10, level);
+            var toac1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
+            var toac2 = GetBonusValue(10, level);
             _legendaryItemBias = 0;
             if (power > 0)
             {
@@ -2064,7 +2064,7 @@ namespace Cthangband
             else if (power == 2) // Great
             {
                 _item.RareItemTypeIndex = Enumerations.RareItemType.OrbOfPower;
-                for (int i = 0; i < 3; i++)
+                for (var i = 0; i < 3; i++)
                 {
                     switch (Program.Rng.DieRoll(30))
                     {
@@ -2252,10 +2252,10 @@ namespace Cthangband
 
         private void ApplyMagicToWeapon(int level, int power)
         {
-            int tohit1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
-            int todam1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
-            int tohit2 = GetBonusValue(10, level);
-            int todam2 = GetBonusValue(10, level);
+            var tohit1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
+            var todam1 = Program.Rng.DieRoll(5) + GetBonusValue(5, level);
+            var tohit2 = GetBonusValue(10, level);
+            var todam2 = GetBonusValue(10, level);
             _legendaryItemBias = 0;
             if (power > 0)
             {
@@ -2698,7 +2698,7 @@ namespace Cthangband
 
         private void ApplyRandomBonuses()
         {
-            int thisType = _item.Category < ItemCategory.Boots ? 23 : 19;
+            var thisType = _item.Category < ItemCategory.Boots ? 23 : 19;
             if (_legendaryItemBias == LegendaryItemBias.Warrior)
             {
                 if (_item.LegendaryFlags1.IsClear(ItemFlag1.Str))
@@ -3856,19 +3856,19 @@ namespace Cthangband
             {
                 level = Constants.MaxDepth - 1;
             }
-            int bonus = max * level / Constants.MaxDepth;
-            int extra = max * level % Constants.MaxDepth;
+            var bonus = max * level / Constants.MaxDepth;
+            var extra = max * level % Constants.MaxDepth;
             if (Program.Rng.RandomLessThan(Constants.MaxDepth) < extra)
             {
                 bonus++;
             }
-            int stand = max / 4;
+            var stand = max / 4;
             extra = max % 4;
             if (Program.Rng.RandomLessThan(4) < extra)
             {
                 stand++;
             }
-            int value = Program.Rng.RandomNormal(bonus, stand);
+            var value = Program.Rng.RandomNormal(bonus, stand);
             if (value < 0)
             {
                 return 0;
@@ -3892,8 +3892,8 @@ namespace Cthangband
 
         private void GiveActivationPower()
         {
-            int type = 0;
-            int chance = 0;
+            var type = 0;
+            var chance = 0;
             if (_legendaryItemBias != 0)
             {
                 if (_legendaryItemBias == LegendaryItemBias.Electricity)
@@ -4251,9 +4251,9 @@ namespace Cthangband
 
         private bool MakeArtifact()
         {
-            foreach (System.Collections.Generic.KeyValuePair<ArtifactId, Artifact> pair in Profile.Instance.Artifacts)
+            foreach (var pair in Profile.Instance.Artifacts)
             {
-                Artifact aPtr = pair.Value;
+                var aPtr = pair.Value;
                 if (!aPtr.HasOwnType)
                 {
                     continue;
@@ -4264,7 +4264,7 @@ namespace Cthangband
                 }
                 if (aPtr.Level > SaveGame.Instance.Difficulty)
                 {
-                    int d = (aPtr.Level - SaveGame.Instance.Difficulty) * 2;
+                    var d = (aPtr.Level - SaveGame.Instance.Difficulty) * 2;
                     if (Program.Rng.RandomLessThan(d) != 0)
                     {
                         continue;
@@ -4274,10 +4274,10 @@ namespace Cthangband
                 {
                     return false;
                 }
-                ItemType kIdx = Profile.Instance.ItemTypes.LookupKind(aPtr.Tval, aPtr.Sval);
+                var kIdx = Profile.Instance.ItemTypes.LookupKind(aPtr.Tval, aPtr.Sval);
                 if (kIdx.Level > SaveGame.Instance.Level.ObjectLevel)
                 {
-                    int d = (kIdx.Level - SaveGame.Instance.Level.ObjectLevel) * 5;
+                    var d = (kIdx.Level - SaveGame.Instance.Level.ObjectLevel) * 5;
                     if (Program.Rng.RandomLessThan(d) != 0)
                     {
                         continue;
@@ -4292,8 +4292,8 @@ namespace Cthangband
 
         private void PrepareAllocationTable()
         {
-            AllocationEntry[] table = SaveGame.Instance.AllocKindTable;
-            for (int i = 0; i < SaveGame.Instance.AllocKindSize; i++)
+            var table = SaveGame.Instance.AllocKindTable;
+            for (var i = 0; i < SaveGame.Instance.AllocKindSize; i++)
             {
                 if (_getObjNumHook == null || _getObjNumHook(table[i].Index))
                 {

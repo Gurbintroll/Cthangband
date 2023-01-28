@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -51,7 +51,7 @@ namespace Cthangband
             Ac = original.Ac;
             FlavourAware = original.FlavourAware;
             Chance = new int[4];
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 Chance[i] = original.Chance[i];
             }
@@ -65,7 +65,7 @@ namespace Cthangband
             HasFlavor = original.HasFlavor;
             Level = original.Level;
             Locale = new int[4];
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 Locale[i] = original.Locale[i];
             }
@@ -200,7 +200,7 @@ namespace Cthangband
 
         public static bool KindIsGood(int kIdx)
         {
-            ItemType kPtr = Profile.Instance.ItemTypes[kIdx];
+            var kPtr = Profile.Instance.ItemTypes[kIdx];
             switch (kPtr.Category)
             {
                 case ItemCategory.HardArmor:
@@ -263,7 +263,7 @@ namespace Cthangband
         {
             int i;
             int j;
-            AllocationEntry[] table = SaveGame.Instance.AllocKindTable;
+            var table = SaveGame.Instance.AllocKindTable;
             if (level > 0)
             {
                 if (Program.Rng.RandomLessThan(Constants.GreatObj) == 0)
@@ -271,7 +271,7 @@ namespace Cthangband
                     level = 1 + (level * Constants.MaxDepth / Program.Rng.DieRoll(Constants.MaxDepth));
                 }
             }
-            int total = 0;
+            var total = 0;
             for (i = 0; i < SaveGame.Instance.AllocKindSize; i++)
             {
                 if (table[i].Level > level)
@@ -279,8 +279,8 @@ namespace Cthangband
                     break;
                 }
                 table[i].FinalProbability = 0;
-                int kIdx = table[i].Index;
-                ItemType kPtr = Profile.Instance.ItemTypes[kIdx];
+                var kIdx = table[i].Index;
+                var kPtr = Profile.Instance.ItemTypes[kIdx];
                 if (SaveGame.Instance.Level?.OpeningChest == true &&
                     kPtr.Category == ItemCategory.Chest)
                 {
@@ -302,7 +302,7 @@ namespace Cthangband
                 }
                 value -= table[i].FinalProbability;
             }
-            int p = Program.Rng.RandomLessThan(100);
+            var p = Program.Rng.RandomLessThan(100);
             if (p < 60)
             {
                 j = i;

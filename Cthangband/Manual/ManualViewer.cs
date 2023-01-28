@@ -31,14 +31,14 @@ namespace Cthangband.Manual
 
         private void FillList()
         {
-            string curDir = Application.ExecutablePath;
+            var curDir = Application.ExecutablePath;
             curDir = Path.GetDirectoryName(curDir);
             curDir = Path.Combine(curDir, "Manual");
-            DirectoryInfo dir = new DirectoryInfo(curDir);
-            FileInfo[] files = dir.GetFiles("*.html");
-            foreach (FileInfo file in files)
+            var dir = new DirectoryInfo(curDir);
+            var files = dir.GetFiles("*.html");
+            foreach (var file in files)
             {
-                string name = file.Name;
+                var name = file.Name;
                 name = Path.GetFileNameWithoutExtension(name);
 
                 listBox1.Items.Add(name);
@@ -56,10 +56,10 @@ namespace Cthangband.Manual
             {
                 return;
             }
-            string curDir = Application.ExecutablePath;
+            var curDir = Application.ExecutablePath;
             curDir = Path.GetDirectoryName(curDir);
             curDir = Path.Combine(curDir, "Manual");
-            string name = listBox1.SelectedItem.ToString().Replace(" ", "%20");
+            var name = listBox1.SelectedItem.ToString().Replace(" ", "%20");
             curDir = Path.Combine(curDir, $"{name}.html");
             webBrowser1.Navigate(new Uri(string.Format("file:///{0}", curDir)));
         }
@@ -82,7 +82,7 @@ namespace Cthangband.Manual
             webBrowser1.Navigated += WebBrowser1_Navigated;
             webBrowser1.IsWebBrowserContextMenuEnabled = false;
             webBrowser1.AllowWebBrowserDrop = false;
-            string curDir = Application.ExecutablePath;
+            var curDir = Application.ExecutablePath;
             curDir = Path.GetDirectoryName(curDir);
             curDir = Path.Combine(curDir, "Manual");
             curDir = Path.Combine(curDir, "Introduction.html");
@@ -103,7 +103,7 @@ namespace Cthangband.Manual
 
         private void WebBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
-            string fileName = Path.GetFileNameWithoutExtension(e.Url.LocalPath);
+            var fileName = Path.GetFileNameWithoutExtension(e.Url.LocalPath);
             fileName = fileName.Replace("%20", " ");
             _suppressList = true;
             listBox1.Text = fileName;

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -6,7 +6,6 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.PlayerClass.Base;
 using Cthangband.Projection;
 using Cthangband.Spells.Base;
 using System;
@@ -28,11 +27,11 @@ namespace Cthangband.Spells.Chaos
 
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            int x = player.MapX;
-            int y = player.MapY;
-            int count = 0;
-            int b = 10 + Program.Rng.DieRoll(10);
-            for (int i = 0; i < b; i++)
+            var x = player.MapX;
+            var y = player.MapY;
+            var count = 0;
+            var b = 10 + Program.Rng.DieRoll(10);
+            for (var i = 0; i < b; i++)
             {
                 int d;
                 do
@@ -44,8 +43,8 @@ namespace Cthangband.Spells.Chaos
                     }
                     x = player.MapX - 5 + Program.Rng.DieRoll(10);
                     y = player.MapY - 5 + Program.Rng.DieRoll(10);
-                    int dx = player.MapX > x ? player.MapX - x : x - player.MapX;
-                    int dy = player.MapY > y ? player.MapY - y : y - player.MapY;
+                    var dx = player.MapX > x ? player.MapX - x : x - player.MapX;
+                    var dy = player.MapY > y ? player.MapY - y : y - player.MapY;
                     d = dy > dx ? dy + (dx >> 1) : dx + (dy >> 1);
                 } while (d > 5 || !level.PlayerHasLosBold(y, x));
                 if (count > 1000)

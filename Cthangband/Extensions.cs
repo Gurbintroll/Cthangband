@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -95,8 +95,8 @@ namespace Cthangband
         /// <returns> The padded string </returns>
         public static string PadCenter(this string source, int totalWidth, char paddingChar = ' ')
         {
-            int spaces = totalWidth - source.Length;
-            int padLeft = spaces / 2 + source.Length;
+            var spaces = totalWidth - source.Length;
+            var padLeft = spaces / 2 + source.Length;
             return source.PadLeft(padLeft, paddingChar).PadRight(totalWidth, paddingChar);
         }
 
@@ -111,7 +111,7 @@ namespace Cthangband
             // "X of Y" -> "Xs of Y"
             if (name.Contains(" of "))
             {
-                int i = name.IndexOf(" of ", StringComparison.Ordinal);
+                var i = name.IndexOf(" of ", StringComparison.Ordinal);
                 plural = name.Substring(0, i);
                 // "XS of Y -> XSes of Y"
                 if (plural.EndsWith("s"))
@@ -240,7 +240,7 @@ namespace Cthangband
             // Above 18, scores are measured in tenths of a point
             if (val > 18)
             {
-                int bonus = val - 18;
+                var bonus = val - 18;
                 if (bonus > 220)
                 {
                     return "   40+";
@@ -406,7 +406,7 @@ namespace Cthangband
         /// <returns> The int value of the string, or 0 if it couldn't be parsed </returns>
         public static int ToIntSafely(this string s)
         {
-            if (!int.TryParse(s.Trim(), out int i))
+            if (!int.TryParse(s.Trim(), out var i))
             {
                 i = 0;
             }
@@ -421,7 +421,7 @@ namespace Cthangband
         /// <returns> The number as a Roman numeral </returns>
         public static string ToRoman(this int number, bool forGeneration)
         {
-            StringBuilder roman = new StringBuilder();
+            var roman = new StringBuilder();
             // If we're for a generation, we want to skip 'I' (you're simply "John", not "John I")
             // and prefix with a space if not 'I')
             if (forGeneration)
@@ -437,7 +437,7 @@ namespace Cthangband
             }
             // Roman numerals are not positional, so simply start with the highest number and keep
             // appending and subtracting until we can't
-            foreach (System.Collections.Generic.KeyValuePair<int, string> item in GlobalData.NumberRomanDictionary)
+            foreach (var item in GlobalData.NumberRomanDictionary)
             {
                 while (number >= item.Key)
                 {

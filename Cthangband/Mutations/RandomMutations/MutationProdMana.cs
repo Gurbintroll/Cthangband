@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -28,11 +28,11 @@ namespace Cthangband.Mutations.RandomMutations
             {
                 return;
             }
-            TargetEngine targetEngine = new TargetEngine(player, level);
+            var targetEngine = new TargetEngine(player, level);
             saveGame.Disturb(false);
             Profile.Instance.MsgPrint("Magical energy flows through you! You must release it!");
             Profile.Instance.MsgPrint(null);
-            targetEngine.GetDirectionNoAutoAim(out int dire);
+            targetEngine.GetDirectionNoAutoAim(out var dire);
             saveGame.SpellEffects.FireBall(new ProjectVis(SaveGame.Instance.SpellEffects), dire, player.Level * 2, 3);
         }
     }

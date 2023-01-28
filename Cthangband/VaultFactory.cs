@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -24,11 +24,11 @@ namespace Cthangband
         {
             int y, x;
             GridTile cPtr;
-            bool light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
-            int y1 = yval - Program.Rng.DieRoll(4);
-            int y2 = yval + Program.Rng.DieRoll(3);
-            int x1 = xval - Program.Rng.DieRoll(11);
-            int x2 = xval + Program.Rng.DieRoll(11);
+            var light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
+            var y1 = yval - Program.Rng.DieRoll(4);
+            var y2 = yval + Program.Rng.DieRoll(3);
+            var x1 = xval - Program.Rng.DieRoll(11);
+            var x2 = xval + Program.Rng.DieRoll(11);
             for (y = y1 - 1; y <= y2 + 1; y++)
             {
                 for (x = x1 - 1; x <= x2 + 1; x++)
@@ -90,15 +90,15 @@ namespace Cthangband
         {
             int y, x;
             GridTile cPtr;
-            bool light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
-            int y1A = yval - Program.Rng.DieRoll(4);
-            int y2A = yval + Program.Rng.DieRoll(3);
-            int x1A = xval - Program.Rng.DieRoll(11);
-            int x2A = xval + Program.Rng.DieRoll(10);
-            int y1B = yval - Program.Rng.DieRoll(3);
-            int y2B = yval + Program.Rng.DieRoll(4);
-            int x1B = xval - Program.Rng.DieRoll(10);
-            int x2B = xval + Program.Rng.DieRoll(11);
+            var light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
+            var y1A = yval - Program.Rng.DieRoll(4);
+            var y2A = yval + Program.Rng.DieRoll(3);
+            var x1A = xval - Program.Rng.DieRoll(11);
+            var x2A = xval + Program.Rng.DieRoll(10);
+            var y1B = yval - Program.Rng.DieRoll(3);
+            var y2B = yval + Program.Rng.DieRoll(4);
+            var x1B = xval - Program.Rng.DieRoll(10);
+            var x2B = xval + Program.Rng.DieRoll(11);
             for (y = y1A - 1; y <= y2A + 1; y++)
             {
                 for (x = x1A - 1; x <= x2A + 1; x++)
@@ -175,18 +175,18 @@ namespace Cthangband
         {
             int y, x, wy;
             GridTile cPtr;
-            bool light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
-            int wx = wy = 1;
-            int dy = Program.Rng.RandomBetween(3, 4);
-            int dx = Program.Rng.RandomBetween(3, 11);
-            int y1A = yval - dy;
-            int y2A = yval + dy;
-            int x1A = xval - wx;
-            int x2A = xval + wx;
-            int y1B = yval - wy;
-            int y2B = yval + wy;
-            int x1B = xval - dx;
-            int x2B = xval + dx;
+            var light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
+            var wx = wy = 1;
+            var dy = Program.Rng.RandomBetween(3, 4);
+            var dx = Program.Rng.RandomBetween(3, 11);
+            var y1A = yval - dy;
+            var y2A = yval + dy;
+            var x1A = xval - wx;
+            var x2A = xval + wx;
+            var y1B = yval - wy;
+            var y2B = yval + wy;
+            var x1B = xval - dx;
+            var x2B = xval + dx;
             for (y = y1A - 1; y <= y2A + 1; y++)
             {
                 for (x = x1A - 1; x <= x2A + 1; x++)
@@ -371,11 +371,11 @@ namespace Cthangband
         {
             int y, x;
             GridTile cPtr;
-            bool light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
-            int y1 = yval - 4;
-            int y2 = yval + 4;
-            int x1 = xval - 11;
-            int x2 = xval + 11;
+            var light = SaveGame.Instance.Difficulty <= Program.Rng.DieRoll(25);
+            var y1 = yval - 4;
+            var y2 = yval + 4;
+            var x1 = xval - 11;
+            var x2 = xval + 11;
             for (y = y1 - 1; y <= y2 + 1; y++)
             {
                 for (x = x1 - 1; x <= x2 + 1; x++)
@@ -535,7 +535,7 @@ namespace Cthangband
                     }
                     if (Program.Rng.RandomLessThan(2) == 0)
                     {
-                        int tmp = Program.Rng.DieRoll(2);
+                        var tmp = Program.Rng.DieRoll(2);
                         for (y = yval - 1; y <= yval + 1; y++)
                         {
                             for (x = xval - 5 - tmp; x <= xval - 3 - tmp; x++)
@@ -628,7 +628,7 @@ namespace Cthangband
                     }
                     if (Program.Rng.RandomLessThan(100) < 50)
                     {
-                        int i = Program.Rng.DieRoll(10);
+                        var i = Program.Rng.DieRoll(10);
                         PlaceSecretDoor(y1 - 1, xval - i);
                         PlaceSecretDoor(y1 - 1, xval + i);
                         PlaceSecretDoor(y2 + 1, xval - i);
@@ -636,7 +636,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        int i = Program.Rng.DieRoll(3);
+                        var i = Program.Rng.DieRoll(3);
                         PlaceSecretDoor(yval + i, x1 - 1);
                         PlaceSecretDoor(yval - i, x1 - 1);
                         PlaceSecretDoor(yval + i, x2 + 1);
@@ -654,13 +654,13 @@ namespace Cthangband
         public void BuildType5(int yval, int xval)
         {
             int y, x;
-            int[] what = new int[64];
+            var what = new int[64];
             GridTile cPtr;
-            bool empty = false;
-            int y1 = yval - 4;
-            int y2 = yval + 4;
-            int x1 = xval - 11;
-            int x2 = xval + 11;
+            var empty = false;
+            var y1 = yval - 4;
+            var y2 = yval + 4;
+            var x1 = xval - 11;
+            var x2 = xval + 11;
             for (y = y1 - 1; y <= y2 + 1; y++)
             {
                 for (x = x1 - 1; x <= x2 + 1; x++)
@@ -720,7 +720,7 @@ namespace Cthangband
                     PlaceSecretDoor(yval, x2 + 1);
                     break;
             }
-            int tmp = Program.Rng.DieRoll(SaveGame.Instance.Difficulty);
+            var tmp = Program.Rng.DieRoll(SaveGame.Instance.Difficulty);
             if (tmp < 25 && Program.Rng.DieRoll(2) != 1)
             {
                 do
@@ -769,7 +769,7 @@ namespace Cthangband
                 }
             }
             _level.Monsters.GetMonNumPrep();
-            for (int i = 0; i < 64; i++)
+            for (var i = 0; i < 64; i++)
             {
                 what[i] = _level.Monsters.GetMonNum(SaveGame.Instance.Difficulty + 10);
                 if (what[i] == 0)
@@ -793,8 +793,8 @@ namespace Cthangband
             {
                 for (x = xval - 9; x <= xval + 9; x++)
                 {
-                    int rIdx = what[Program.Rng.RandomLessThan(64)];
-                    MonsterRace race = Profile.Instance.MonsterRaces[rIdx];
+                    var rIdx = what[Program.Rng.RandomLessThan(64)];
+                    var race = Profile.Instance.MonsterRaces[rIdx];
                     _level.Monsters.PlaceMonsterAux(y, x, race, false, false, false);
                 }
             }
@@ -802,14 +802,14 @@ namespace Cthangband
 
         public void BuildType6(int yval, int xval)
         {
-            int[] what = new int[16];
+            var what = new int[16];
             int i, y, x;
-            bool empty = false;
+            var empty = false;
             GridTile cPtr;
-            int y1 = yval - 4;
-            int y2 = yval + 4;
-            int x1 = xval - 11;
-            int x2 = xval + 11;
+            var y1 = yval - 4;
+            var y2 = yval + 4;
+            var x1 = xval - 11;
+            var x2 = xval + 11;
             for (y = y1 - 1; y <= y2 + 1; y++)
             {
                 for (x = x1 - 1; x <= x2 + 1; x++)
@@ -869,7 +869,7 @@ namespace Cthangband
                     PlaceSecretDoor(yval, x2 + 1);
                     break;
             }
-            int tmp = Program.Rng.DieRoll(SaveGame.Instance.Difficulty);
+            var tmp = Program.Rng.DieRoll(SaveGame.Instance.Difficulty);
             if (tmp < 20)
             {
                 _level.Monsters.GetMonNumHook = VaultAuxOrc;
@@ -965,12 +965,12 @@ namespace Cthangband
             }
             for (i = 0; i < 16 - 1; i++)
             {
-                for (int j = 0; j < 16 - 1; j++)
+                for (var j = 0; j < 16 - 1; j++)
                 {
-                    int i1 = j;
-                    int i2 = j + 1;
-                    int p1 = Profile.Instance.MonsterRaces[what[i1]].Level;
-                    int p2 = Profile.Instance.MonsterRaces[what[i2]].Level;
+                    var i1 = j;
+                    var i2 = j + 1;
+                    var p1 = Profile.Instance.MonsterRaces[what[i1]].Level;
+                    var p2 = Profile.Instance.MonsterRaces[what[i2]].Level;
                     if (p1 > p2)
                     {
                         tmp = what[i1];
@@ -1025,8 +1025,8 @@ namespace Cthangband
 
         public void BuildType7(int yval, int xval)
         {
-            VaultType vPtr = Profile.Instance.VaultTypes[0];
-            int dummy = 0;
+            var vPtr = Profile.Instance.VaultTypes[0];
+            var dummy = 0;
             while (dummy < LevelFactory.SafeMaxAttempts)
             {
                 dummy++;
@@ -1059,8 +1059,8 @@ namespace Cthangband
 
         public void BuildType8(int yval, int xval)
         {
-            VaultType vPtr = Profile.Instance.VaultTypes[0];
-            int dummy = 0;
+            var vPtr = Profile.Instance.VaultTypes[0];
+            var dummy = 0;
             while (dummy < LevelFactory.SafeMaxAttempts)
             {
                 dummy++;
@@ -1095,7 +1095,7 @@ namespace Cthangband
         {
             int dx, dy, x, y;
             char t;
-            int index = 0;
+            var index = 0;
             for (dy = 0; dy < ymax; dy++)
             {
                 for (dx = 0; dx < xmax; dx++)
@@ -1108,7 +1108,7 @@ namespace Cthangband
                     {
                         continue;
                     }
-                    GridTile cPtr = _level.Grid[y][x];
+                    var cPtr = _level.Grid[y][x];
                     cPtr.RevertToBackground();
                     cPtr.TileFlags.Set(GridTile.InRoom | GridTile.InVault);
                     switch (t)
@@ -1225,13 +1225,13 @@ namespace Cthangband
 
         private void PlaceDownStairs(int y, int x)
         {
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             cPtr.SetFeature("DownStair");
         }
 
         private void PlaceLockedDoor(int y, int x)
         {
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             cPtr.SetFeature($"LockedDoor{Program.Rng.DieRoll(7)}");
         }
 
@@ -1268,19 +1268,19 @@ namespace Cthangband
 
         private void PlaceSecretDoor(int y, int x)
         {
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             cPtr.SetFeature("SecretDoor");
         }
 
         private void PlaceUpStairs(int y, int x)
         {
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             cPtr.SetFeature("UpStair");
         }
 
         private bool VaultAuxAnimal(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1294,7 +1294,7 @@ namespace Cthangband
 
         private bool VaultAuxChapel(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1313,7 +1313,7 @@ namespace Cthangband
 
         private bool VaultAuxCult(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1327,7 +1327,7 @@ namespace Cthangband
 
         private bool VaultAuxDemon(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1341,7 +1341,7 @@ namespace Cthangband
 
         private bool VaultAuxDragon(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1359,7 +1359,7 @@ namespace Cthangband
 
         private bool VaultAuxGiant(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1373,7 +1373,7 @@ namespace Cthangband
 
         private bool VaultAuxJelly(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1391,7 +1391,7 @@ namespace Cthangband
 
         private bool VaultAuxKennel(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1401,7 +1401,7 @@ namespace Cthangband
 
         private bool VaultAuxOrc(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1421,7 +1421,7 @@ namespace Cthangband
 
         private bool VaultAuxTreasure(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1436,7 +1436,7 @@ namespace Cthangband
 
         private bool VaultAuxTroll(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1450,7 +1450,7 @@ namespace Cthangband
 
         private bool VaultAuxUndead(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
             {
                 return false;
@@ -1464,12 +1464,12 @@ namespace Cthangband
 
         private void VaultMonsters(int y1, int x1, int num)
         {
-            for (int k = 0; k < num; k++)
+            for (var k = 0; k < num; k++)
             {
-                for (int i = 0; i < 9; i++)
+                for (var i = 0; i < 9; i++)
                 {
                     const int d = 1;
-                    _level.Scatter(out int y, out int x, y1, x1, d);
+                    _level.Scatter(out var y, out var x, y1, x1, d);
                     if (!_level.GridPassableNoCreature(y, x))
                     {
                         continue;
@@ -1483,7 +1483,7 @@ namespace Cthangband
 
         private void VaultObjects(int y, int x, int num)
         {
-            int dummy = 0;
+            var dummy = 0;
             int j = y, k = x;
             for (; num > 0; --num)
             {
@@ -1521,7 +1521,7 @@ namespace Cthangband
         private void VaultTrapAux(int y, int x, int yd, int xd)
         {
             int count, y1 = y, x1 = x;
-            int dummy = 0;
+            var dummy = 0;
             for (count = 0; count <= 5; count++)
             {
                 while (dummy < LevelFactory.SafeMaxAttempts)
@@ -1546,7 +1546,7 @@ namespace Cthangband
 
         private void VaultTraps(int y, int x, int yd, int xd, int num)
         {
-            for (int i = 0; i < num; i++)
+            for (var i = 0; i < num; i++)
             {
                 VaultTrapAux(y, x, yd, xd);
             }

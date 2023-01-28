@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -29,10 +29,10 @@ namespace Cthangband.Spells.Death
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
             player.Vis -= 100;
-            for (int i = 1; i < level.MMax; i++)
+            for (var i = 1; i < level.MMax; i++)
             {
-                Monster mPtr = level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;

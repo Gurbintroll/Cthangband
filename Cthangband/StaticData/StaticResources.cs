@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -187,24 +187,24 @@ namespace Cthangband.StaticData
 
         private static Dictionary<string, T> ReadEntitiesFromCsv<T>(T sample) where T : EntityType, new()
         {
-            Dictionary<string, T> dictionary = new Dictionary<string, T>();
-            PropertyInfo[] properties = sample.GetType().GetProperties();
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string[] names = assembly.GetManifestResourceNames();
-            string name = sample.GetType().Name;
-            string resourceName = $"Cthangband.Data.{name}s.csv";
-            foreach (string match in names)
+            var dictionary = new Dictionary<string, T>();
+            var properties = sample.GetType().GetProperties();
+            var assembly = Assembly.GetExecutingAssembly();
+            var names = assembly.GetManifestResourceNames();
+            var name = sample.GetType().Name;
+            var resourceName = $"Cthangband.Data.{name}s.csv";
+            foreach (var match in names)
             {
                 if (match == resourceName)
                 {
                     {
-                        using (Stream ms = assembly.GetManifestResourceStream(resourceName))
+                        using (var ms = assembly.GetManifestResourceStream(resourceName))
                         {
-                            using (StreamReader reader = new StreamReader(ms))
+                            using (var reader = new StreamReader(ms))
                             {
-                                string[] header = reader.ReadLine().Split(',');
-                                Dictionary<string, int> headerNames = new Dictionary<string, int>();
-                                for (int i = 0; i < header.Length; i++)
+                                var header = reader.ReadLine().Split(',');
+                                var headerNames = new Dictionary<string, int>();
+                                for (var i = 0; i < header.Length; i++)
                                 {
                                     headerNames.Add(header[i], i);
                                 }
@@ -212,14 +212,14 @@ namespace Cthangband.StaticData
                                 {
                                     do
                                     {
-                                        string line = reader.ReadLine();
+                                        var line = reader.ReadLine();
                                         if (string.IsNullOrEmpty(line))
                                         {
                                             continue;
                                         }
-                                        string[] values = line.Split(',');
-                                        T entity = new T();
-                                        foreach (PropertyInfo p in properties)
+                                        var values = line.Split(',');
+                                        var entity = new T();
+                                        foreach (var p in properties)
                                         {
                                             if (headerNames.ContainsKey(p.Name))
                                             {
@@ -227,7 +227,7 @@ namespace Cthangband.StaticData
                                                 {
                                                     continue;
                                                 }
-                                                string stringValue = values[headerNames[p.Name]].FromCsvFriendly();
+                                                var stringValue = values[headerNames[p.Name]].FromCsvFriendly();
                                                 switch (p.PropertyType.Name)
                                                 {
                                                     case "Colour":
@@ -302,10 +302,10 @@ namespace Cthangband.StaticData
         private static void WriteEntitiesToCsv<T>(Dictionary<string, T> dictionary, T sample)
             where T : EntityType, new()
         {
-            string name = sample.GetType().Name;
-            PropertyInfo[] properties = sample.GetType().GetProperties();
-            string path = Path.GetDirectoryName(Application.ExecutablePath);
-            DirectoryInfo saveDir = new DirectoryInfo(path);
+            var name = sample.GetType().Name;
+            var properties = sample.GetType().GetProperties();
+            var path = Path.GetDirectoryName(Application.ExecutablePath);
+            var saveDir = new DirectoryInfo(path);
             if (saveDir.Parent != null)
             {
                 saveDir = saveDir.Parent;
@@ -333,16 +333,16 @@ namespace Cthangband.StaticData
                     try
                     {
                         //Save a new file - if we get an error at this point then we've not trashed anything
-                        FileStream fs = new FileStream(Path.Combine(saveDir.FullName, $"{name}s.new"), FileMode.Create,
+                        var fs = new FileStream(Path.Combine(saveDir.FullName, $"{name}s.new"), FileMode.Create,
                             FileAccess.Write);
-                        StreamWriter writer = new StreamWriter(fs);
-                        bool header = false;
-                        foreach (T entry in dictionary.Values)
+                        var writer = new StreamWriter(fs);
+                        var header = false;
+                        foreach (var entry in dictionary.Values)
                         {
                             if (header == false)
                             {
-                                string headerLine = "Name";
-                                foreach (PropertyInfo property in properties)
+                                var headerLine = "Name";
+                                foreach (var property in properties)
                                 {
                                     if (property.Name != "Name")
                                     {
@@ -356,8 +356,8 @@ namespace Cthangband.StaticData
                                 header = true;
                                 writer.WriteLine(headerLine);
                             }
-                            string dataLine = $"{entry.Name.ToCsvFriendly()}";
-                            foreach (PropertyInfo property in properties)
+                            var dataLine = $"{entry.Name.ToCsvFriendly()}";
+                            foreach (var property in properties)
                             {
                                 if (property.Name != "Name")
                                 {
@@ -371,7 +371,7 @@ namespace Cthangband.StaticData
                         fs.Close();
                         fs.Dispose();
                         // Rename the existing file to get it out of the way
-                        FileInfo file = new FileInfo(Path.Combine(saveDir.FullName, $"{name}s.csv"));
+                        var file = new FileInfo(Path.Combine(saveDir.FullName, $"{name}s.csv"));
                         if (file.Exists)
                         {
                             file.MoveTo(Path.Combine(saveDir.FullName, $"{name}s.old"));

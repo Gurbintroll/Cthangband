@@ -1,11 +1,10 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
 // Wilson, Robert A. Koeneke This software may be copied and distributed for educational, research,
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
-using Cthangband.Enumerations;
 using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using System;
@@ -27,9 +26,9 @@ namespace Cthangband.Spells.Tarot
 
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            bool noneCame = true;
+            var noneCame = true;
             Profile.Instance.MsgPrint("You concentrate on several images at once...");
-            for (int dummy = 0; dummy < 3 + (player.Level / 10); dummy++)
+            for (var dummy = 0; dummy < 3 + (player.Level / 10); dummy++)
             {
                 if (Program.Rng.DieRoll(10) > 3)
                 {

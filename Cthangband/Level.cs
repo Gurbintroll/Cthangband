@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -76,15 +76,15 @@ namespace Cthangband
         {
             // Get a local reference to the player for efficiency
             _player = SaveGame.Instance.Player;
-            for (int i = 0; i < MaxHgt; i++)
+            for (var i = 0; i < MaxHgt; i++)
             {
                 Grid[i] = new GridTile[MaxWid];
-                for (int j = 0; j < MaxWid; j++)
+                for (var j = 0; j < MaxWid; j++)
                 {
                     Grid[i][j] = new GridTile();
                 }
             }
-            for (int j = 0; j < Constants.MaxOIdx; j++)
+            for (var j = 0; j < Constants.MaxOIdx; j++)
             {
                 Items[j] = new Item();
             }
@@ -95,7 +95,7 @@ namespace Cthangband
         {
             while (num-- != 0)
             {
-                Item qPtr = new Item();
+                var qPtr = new Item();
                 if (!qPtr.MakeObject(true, great))
                 {
                     continue;
@@ -106,13 +106,13 @@ namespace Cthangband
 
         public void CaveSetBackground(int y, int x, string feat)
         {
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             cPtr.BackgroundFeature = StaticResources.Instance.FloorTileTypes[feat];
         }
 
         public void CaveSetFeat(int y, int x, string feat)
         {
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             cPtr.FeatureType = StaticResources.Instance.FloorTileTypes[feat];
             NoteSpot(y, x);
             RedrawSingleLocation(y, x);
@@ -120,15 +120,15 @@ namespace Cthangband
 
         public bool CaveValidBold(int y, int x)
         {
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             int nextOIdx;
             if (cPtr.FeatureType.IsPermanent)
             {
                 return false;
             }
-            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = Items[thisOIdx];
+                var oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 if (oPtr.IsLegendary() || oPtr.IsArtifact())
                 {
@@ -140,11 +140,11 @@ namespace Cthangband
 
         public int ChestCheck(int y, int x)
         {
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             int nextOIdx;
-            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = Items[thisOIdx];
+                var oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 if (oPtr.Category == ItemCategory.Chest)
                 {
@@ -165,12 +165,12 @@ namespace Cthangband
             }
             for (num = 0, cnt = 1; num < size; cnt++)
             {
-                int curLev = 5 * cnt;
-                int curDis = 5 * (20 - cnt);
+                var curLev = 5 * cnt;
+                var curDis = 5 * (20 - cnt);
                 for (i = 1; i < OMax; i++)
                 {
-                    Item oPtr = Items[i];
-                    ItemType kPtr = oPtr.ItemType;
+                    var oPtr = Items[i];
+                    var kPtr = oPtr.ItemType;
                     if (oPtr.ItemType == null)
                     {
                         continue;
@@ -183,7 +183,7 @@ namespace Cthangband
                     int x;
                     if (oPtr.HoldingMonsterIndex != 0)
                     {
-                        Monster mPtr = Monsters[oPtr.HoldingMonsterIndex];
+                        var mPtr = Monsters[oPtr.HoldingMonsterIndex];
                         y = mPtr.MapY;
                         x = mPtr.MapX;
                         if (Program.Rng.RandomLessThan(100) < 90)
@@ -200,7 +200,7 @@ namespace Cthangband
                     {
                         continue;
                     }
-                    int chance = 90;
+                    var chance = 90;
                     if ((oPtr.IsArtifact() || oPtr.IsLegendary()) && cnt < 1000)
                     {
                         chance = 100;
@@ -215,7 +215,7 @@ namespace Cthangband
             }
             for (i = OMax - 1; i >= 1; i--)
             {
-                Item oPtr = Items[i];
+                var oPtr = Items[i];
                 if (oPtr.ItemType != null)
                 {
                     continue;
@@ -228,8 +228,8 @@ namespace Cthangband
         public int CoordsToDir(int y, int x)
         {
             int[][] d = { new[] { 7, 4, 1 }, new[] { 8, 5, 2 }, new[] { 9, 6, 3 } };
-            int dy = y - _player.MapY;
-            int dx = x - _player.MapX;
+            var dy = y - _player.MapY;
+            var dx = x - _player.MapX;
             if (Math.Abs(dx) > 1 || Math.Abs(dy) > 1)
             {
                 return 0;
@@ -243,7 +243,7 @@ namespace Cthangband
             {
                 return;
             }
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             if (cPtr.MonsterIndex != 0)
             {
                 Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);
@@ -257,10 +257,10 @@ namespace Cthangband
             {
                 return;
             }
-            GridTile cPtr = Grid[y][x];
-            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            var cPtr = Grid[y][x];
+            for (var thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = Items[thisOIdx];
+                var oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 Items[thisOIdx] = new Item();
                 OCnt--;
@@ -272,11 +272,11 @@ namespace Cthangband
         public void DeleteObjectIdx(int oIdx)
         {
             ExciseObjectIdx(oIdx);
-            Item jPtr = Items[oIdx];
+            var jPtr = Items[oIdx];
             if (jPtr.HoldingMonsterIndex == 0)
             {
-                int y = jPtr.Y;
-                int x = jPtr.X;
+                var y = jPtr.Y;
+                var x = jPtr.X;
                 RedrawSingleLocation(y, x);
             }
             Items[oIdx] = new Item();
@@ -288,18 +288,18 @@ namespace Cthangband
             int x, y, maxy;
             Colour ta;
             char tc;
-            Colour[][] ma = new Colour[_mapHgt + 2][];
-            for (int i = 0; i < _mapHgt + 2; i++)
+            var ma = new Colour[_mapHgt + 2][];
+            for (var i = 0; i < _mapHgt + 2; i++)
             {
                 ma[i] = new Colour[_mapWid + 2];
             }
-            char[][] mc = new char[_mapHgt + 2][];
-            for (int i = 0; i < _mapHgt + 2; i++)
+            var mc = new char[_mapHgt + 2][];
+            for (var i = 0; i < _mapHgt + 2; i++)
             {
                 mc[i] = new char[_mapWid + 2];
             }
-            int[][] mp = new int[_mapHgt + 2][];
-            for (int i = 0; i < _mapHgt + 2; i++)
+            var mp = new int[_mapHgt + 2][];
+            for (var i = 0; i < _mapHgt + 2; i++)
             {
                 mp[i] = new int[_mapWid + 2];
             }
@@ -312,10 +312,10 @@ namespace Cthangband
                     mp[y][x] = 0;
                 }
             }
-            int maxx = maxy = 0;
-            for (int i = 0; i < CurWid; ++i)
+            var maxx = maxy = 0;
+            for (var i = 0; i < CurWid; ++i)
             {
-                for (int j = 0; j < CurHgt; ++j)
+                for (var j = 0; j < CurHgt; ++j)
                 {
                     x = (i / _ratio) + 1;
                     y = (j / _ratio) + 1;
@@ -328,7 +328,7 @@ namespace Cthangband
                         maxy = y;
                     }
                     MapInfo(j, i, out ta, out tc);
-                    int tp = Grid[j][i].FeatureType.MapPriority;
+                    var tp = Grid[j][i].FeatureType.MapPriority;
                     if (ta == Colour.Background)
                     {
                         tp = 0;
@@ -343,8 +343,8 @@ namespace Cthangband
             }
             x = maxx + 1;
             y = maxy + 1;
-            int xOffset = (80 - x) / 2;
-            int yOffset = (44 - y) / 2;
+            var xOffset = (80 - x) / 2;
+            var yOffset = (44 - y) / 2;
             mc[0][0] = '+';
             ma[0][0] = Colour.Purple;
             mc[0][x] = '+';
@@ -391,9 +391,9 @@ namespace Cthangband
 
         public int Distance(int y1, int x1, int y2, int x2)
         {
-            int dy = y1 > y2 ? y1 - y2 : y2 - y1;
-            int dx = x1 > x2 ? x1 - x2 : x2 - x1;
-            int d = dy > dx ? dy + (dx >> 1) : dx + (dy >> 1);
+            var dy = y1 > y2 ? y1 - y2 : y2 - y1;
+            var dx = x1 > x2 ? x1 - x2 : x2 - x1;
+            var d = dy > dx ? dy + (dx >> 1) : dx + (dy >> 1);
             return d;
         }
 
@@ -402,27 +402,27 @@ namespace Cthangband
             int ty, tx;
             int thisOIdx, nextOIdx;
             GridTile cPtr;
-            bool flag = false;
-            bool done = false;
-            bool plural = jPtr.Count != 1;
-            string oName = jPtr.Description(false, 0);
+            var flag = false;
+            var done = false;
+            var plural = jPtr.Count != 1;
+            var oName = jPtr.Description(false, 0);
             if (!(jPtr.IsLegendary() || jPtr.IsArtifact()) &&
                 Program.Rng.RandomLessThan(100) < chance)
             {
-                string p = plural ? "" : "s";
+                var p = plural ? "" : "s";
                 Profile.Instance.MsgPrint($"The {oName} disappear{p}.");
                 return;
             }
-            int bs = -1;
-            int bn = 0;
-            int by = y;
-            int bx = x;
-            for (int dy = -3; dy <= 3; dy++)
+            var bs = -1;
+            var bn = 0;
+            var by = y;
+            var bx = x;
+            for (var dy = -3; dy <= 3; dy++)
             {
-                for (int dx = -3; dx <= 3; dx++)
+                for (var dx = -3; dx <= 3; dx++)
                 {
-                    bool comb = false;
-                    int d = (dy * dy) + (dx * dx);
+                    var comb = false;
+                    var d = (dy * dy) + (dx * dx);
                     if (d > 10)
                     {
                         continue;
@@ -442,10 +442,10 @@ namespace Cthangband
                     {
                         continue;
                     }
-                    int k = 0;
+                    var k = 0;
                     for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                     {
-                        Item oPtr = Items[thisOIdx];
+                        var oPtr = Items[thisOIdx];
                         nextOIdx = oPtr.NextInStack;
                         if (oPtr.CanAbsorb(jPtr))
                         {
@@ -461,7 +461,7 @@ namespace Cthangband
                     {
                         continue;
                     }
-                    int s = 1000 - (d + (k * 5));
+                    var s = 1000 - (d + (k * 5));
                     if (s < bs)
                     {
                         continue;
@@ -482,11 +482,11 @@ namespace Cthangband
             }
             if (!flag && !(jPtr.IsArtifact() || jPtr.IsLegendary()))
             {
-                string p = plural ? "" : "s";
+                var p = plural ? "" : "s";
                 Profile.Instance.MsgPrint($"The {oName} disappear{p}.");
                 return;
             }
-            for (int i = 0; !flag; i++)
+            for (var i = 0; !flag; i++)
             {
                 if (i < 1000)
                 {
@@ -514,7 +514,7 @@ namespace Cthangband
             cPtr = Grid[by][bx];
             for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = Items[thisOIdx];
+                var oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 if (oPtr.CanAbsorb(jPtr))
                 {
@@ -523,10 +523,10 @@ namespace Cthangband
                     break;
                 }
             }
-            int oIdx = OPop();
+            var oIdx = OPop();
             if (!done && oIdx == 0)
             {
-                string p = plural ? "" : "s";
+                var p = plural ? "" : "s";
                 Profile.Instance.MsgPrint($"The {oName} disappear{p}.");
                 if (jPtr.ArtifactIndex != 0)
                 {
@@ -556,14 +556,14 @@ namespace Cthangband
         public void ExciseObjectIdx(int oIdx)
         {
             int thisOIdx, nextOIdx;
-            int prevOIdx = 0;
-            Item jPtr = Items[oIdx];
+            var prevOIdx = 0;
+            var jPtr = Items[oIdx];
             if (jPtr.HoldingMonsterIndex != 0)
             {
-                Monster mPtr = Monsters[jPtr.HoldingMonsterIndex];
+                var mPtr = Monsters[jPtr.HoldingMonsterIndex];
                 for (thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                 {
-                    Item oPtr = Items[thisOIdx];
+                    var oPtr = Items[thisOIdx];
                     nextOIdx = oPtr.NextInStack;
                     if (thisOIdx == oIdx)
                     {
@@ -573,7 +573,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            Item kPtr = Items[prevOIdx];
+                            var kPtr = Items[prevOIdx];
                             kPtr.NextInStack = nextOIdx;
                         }
                         oPtr.NextInStack = 0;
@@ -584,12 +584,12 @@ namespace Cthangband
             }
             else
             {
-                int y = jPtr.Y;
-                int x = jPtr.X;
-                GridTile cPtr = Grid[y][x];
+                var y = jPtr.Y;
+                var x = jPtr.X;
+                var cPtr = Grid[y][x];
                 for (thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
                 {
-                    Item oPtr = Items[thisOIdx];
+                    var oPtr = Items[thisOIdx];
                     nextOIdx = oPtr.NextInStack;
                     if (thisOIdx == oIdx)
                     {
@@ -599,7 +599,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            Item kPtr = Items[prevOIdx];
+                            var kPtr = Items[prevOIdx];
                             kPtr.NextInStack = nextOIdx;
                         }
                         oPtr.NextInStack = 0;
@@ -612,14 +612,14 @@ namespace Cthangband
 
         public void FloorItemDescribe(int item)
         {
-            Item oPtr = Items[item];
-            string oName = oPtr.Description(true, 3);
+            var oPtr = Items[item];
+            var oName = oPtr.Description(true, 3);
             Profile.Instance.MsgPrint($"You see {oName}.");
         }
 
         public void FloorItemIncrease(int item, int num)
         {
-            Item oPtr = Items[item];
+            var oPtr = Items[item];
             num += oPtr.Count;
             if (num > 255)
             {
@@ -635,7 +635,7 @@ namespace Cthangband
 
         public void FloorItemOptimize(int item)
         {
-            Item oPtr = Items[item];
+            var oPtr = Items[item];
             if (oPtr.ItemType == null)
             {
                 return;
@@ -653,10 +653,10 @@ namespace Cthangband
             {
                 return;
             }
-            for (int i = 0; i < _lightN; i++)
+            for (var i = 0; i < _lightN; i++)
             {
-                int y = _lightY[i];
-                int x = _lightX[i];
+                var y = _lightY[i];
+                var x = _lightX[i];
                 Grid[y][x].TileFlags.Clear(GridTile.PlayerLit);
                 RedrawSingleLocation(y, x);
             }
@@ -669,11 +669,11 @@ namespace Cthangband
             {
                 return;
             }
-            for (int i = 0; i < _viewN; i++)
+            for (var i = 0; i < _viewN; i++)
             {
-                int y = _viewY[i];
-                int x = _viewX[i];
-                GridTile cPtr = Grid[y][x];
+                var y = _viewY[i];
+                var x = _viewX[i];
+                var cPtr = Grid[y][x];
                 cPtr.TileFlags.Clear(GridTile.IsVisible);
                 RedrawSingleLocation(y, x);
             }
@@ -715,10 +715,10 @@ namespace Cthangband
         {
             int tx, ty;
             int m;
-            int dy = y2 - y1;
-            int dx = x2 - x1;
-            int ay = Math.Abs(dy);
-            int ax = Math.Abs(dx);
+            var dy = y2 - y1;
+            var dx = x2 - x1;
+            var ay = Math.Abs(dy);
+            var ax = Math.Abs(dx);
             if (ax < 2 && ay < 2)
             {
                 return true;
@@ -771,8 +771,8 @@ namespace Cthangband
                 }
                 return true;
             }
-            int sx = dx < 0 ? -1 : 1;
-            int sy = dy < 0 ? -1 : 1;
+            var sx = dx < 0 ? -1 : 1;
+            var sy = dy < 0 ? -1 : 1;
             if (ax == 1)
             {
                 if (ay == 2)
@@ -793,11 +793,11 @@ namespace Cthangband
                     }
                 }
             }
-            int f2 = ax * ay;
-            int f1 = f2 << 1;
+            var f2 = ax * ay;
+            var f1 = f2 << 1;
             if (ax >= ay)
             {
-                int qy = ay * ay;
+                var qy = ay * ay;
                 m = qy << 1;
                 tx = x1 + sx;
                 if (qy == f2)
@@ -840,7 +840,7 @@ namespace Cthangband
             }
             else
             {
-                int qx = ax * ax;
+                var qx = ax * ax;
                 m = qx << 1;
                 ty = y1 + sy;
                 if (qx == f2)
@@ -886,10 +886,10 @@ namespace Cthangband
 
         public void MapArea()
         {
-            int y1 = PanelRowMin - Program.Rng.DieRoll(10);
-            int y2 = PanelRowMax + Program.Rng.DieRoll(10);
-            int x1 = PanelColMin - Program.Rng.DieRoll(20);
-            int x2 = PanelColMax + Program.Rng.DieRoll(20);
+            var y1 = PanelRowMin - Program.Rng.DieRoll(10);
+            var y2 = PanelRowMax + Program.Rng.DieRoll(10);
+            var x1 = PanelColMin - Program.Rng.DieRoll(20);
+            var x2 = PanelColMax + Program.Rng.DieRoll(20);
             if (y1 < 1)
             {
                 y1 = 1;
@@ -906,18 +906,18 @@ namespace Cthangband
             {
                 x2 = CurWid - 2;
             }
-            for (int y = y1; y <= y2; y++)
+            for (var y = y1; y <= y2; y++)
             {
-                for (int x = x1; x <= x2; x++)
+                for (var x = x1; x <= x2; x++)
                 {
-                    GridTile cPtr = Grid[y][x];
+                    var cPtr = Grid[y][x];
                     if (!cPtr.FeatureType.IsWall)
                     {
                         if (!cPtr.FeatureType.IsOpenFloor)
                         {
                             cPtr.TileFlags.Set(GridTile.PlayerMemorised);
                         }
-                        for (int i = 0; i < 8; i++)
+                        for (var i = 0; i < 8; i++)
                         {
                             cPtr = Grid[y + OrderedDirectionYOffset[i]][x + OrderedDirectionXOffset[i]];
                             if (cPtr.FeatureType.IsWall)
@@ -943,9 +943,9 @@ namespace Cthangband
             newY = currentY;
             newX = currentX;
             int shift;
-            int dY = newY < startY ? startY - newY : newY - startY;
-            int dX = newX < startX ? startX - newX : newX - startX;
-            int distance = dY > dX ? dY : dX;
+            var dY = newY < startY ? startY - newY : newY - startY;
+            var dX = newX < startX ? startX - newX : newX - startX;
+            var distance = dY > dX ? dY : dX;
             distance++;
             dY = targetY < startY ? startY - targetY : targetY - startY;
             dX = targetX < startX ? startX - targetX : targetX - startX;
@@ -974,7 +974,7 @@ namespace Cthangband
 
         public void NoteSpot(int y, int x)
         {
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             int nextOIdx;
             if (_player.TimedBlindness != 0)
             {
@@ -991,9 +991,9 @@ namespace Cthangband
                     return;
                 }
             }
-            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = Items[thisOIdx];
+                var oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 oPtr.Marked = true;
             }
@@ -1013,8 +1013,8 @@ namespace Cthangband
                 }
                 else
                 {
-                    int yy = y < _player.MapY ? y + 1 : y > _player.MapY ? y - 1 : y;
-                    int xx = x < _player.MapX ? x + 1 : x > _player.MapX ? x - 1 : x;
+                    var yy = y < _player.MapY ? y + 1 : y > _player.MapY ? y - 1 : y;
+                    var xx = x < _player.MapX ? x + 1 : x > _player.MapX ? x - 1 : x;
                     if (Grid[yy][xx].TileFlags.IsSet(GridTile.SelfLit))
                     {
                         cPtr.TileFlags.Set(GridTile.PlayerMemorised);
@@ -1035,7 +1035,7 @@ namespace Cthangband
             }
             for (i = 1; i < OMax; i++)
             {
-                Item oPtr = Items[i];
+                var oPtr = Items[i];
                 if (oPtr.ItemType != null)
                 {
                     continue;
@@ -1054,12 +1054,12 @@ namespace Cthangband
         public void PickTrap(int y, int x)
         {
             string feat;
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             if (cPtr.FeatureType.Name != "Invis")
             {
                 return;
             }
-            int trapType = Program.Rng.DieRoll(16);
+            var trapType = Program.Rng.DieRoll(16);
             if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
             {
                 trapType = Program.Rng.DieRoll(15);
@@ -1147,19 +1147,19 @@ namespace Cthangband
             {
                 return;
             }
-            Item qPtr = new Item();
+            var qPtr = new Item();
             if (!qPtr.MakeGold())
             {
                 return;
             }
-            int oIdx = OPop();
+            var oIdx = OPop();
             if (oIdx != 0)
             {
                 Items[oIdx] = new Item(qPtr);
-                Item oPtr = Items[oIdx];
+                var oPtr = Items[oIdx];
                 oPtr.Y = y;
                 oPtr.X = x;
-                GridTile cPtr = Grid[y][x];
+                var cPtr = Grid[y][x];
                 oPtr.NextInStack = cPtr.ItemIndex;
                 cPtr.ItemIndex = oIdx;
                 NoteSpot(y, x);
@@ -1177,19 +1177,19 @@ namespace Cthangband
             {
                 return;
             }
-            Item qPtr = new Item();
+            var qPtr = new Item();
             if (!qPtr.MakeObject(good, great))
             {
                 return;
             }
-            int oIdx = OPop();
+            var oIdx = OPop();
             if (oIdx != 0)
             {
                 Items[oIdx] = new Item(qPtr);
-                Item oPtr = Items[oIdx];
+                var oPtr = Items[oIdx];
                 oPtr.Y = y;
                 oPtr.X = x;
-                GridTile cPtr = Grid[y][x];
+                var cPtr = Grid[y][x];
                 oPtr.NextInStack = cPtr.ItemIndex;
                 cPtr.ItemIndex = oIdx;
                 NoteSpot(y, x);
@@ -1223,7 +1223,7 @@ namespace Cthangband
             {
                 return false;
             }
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             if (cPtr.TileFlags.IsSet(GridTile.PlayerLit))
             {
                 return true;
@@ -1240,8 +1240,8 @@ namespace Cthangband
             {
                 return true;
             }
-            int yy = y < _player.MapY ? y + 1 : y > _player.MapY ? y - 1 : y;
-            int xx = x < _player.MapX ? x + 1 : x > _player.MapX ? x - 1 : x;
+            var yy = y < _player.MapY ? y + 1 : y > _player.MapY ? y - 1 : y;
+            var xx = x < _player.MapX ? x + 1 : x > _player.MapX ? x - 1 : x;
             return Grid[yy][xx].TileFlags.IsSet(GridTile.SelfLit);
         }
 
@@ -1268,9 +1268,9 @@ namespace Cthangband
 
         public bool Projectable(int y1, int x1, int y2, int x2)
         {
-            int y = y1;
-            int x = x1;
-            for (int dist = 0; dist <= Constants.MaxRange; dist++)
+            var y = y1;
+            var x = x1;
+            for (var dist = 0; dist <= Constants.MaxRange; dist++)
             {
                 if (x == x2 && y == y2)
                 {
@@ -1287,13 +1287,13 @@ namespace Cthangband
 
         public void PrtMap()
         {
-            bool v = Gui.CursorVisible;
+            var v = Gui.CursorVisible;
             Gui.CursorVisible = false;
-            for (int y = PanelRowMin; y <= PanelRowMax; y++)
+            for (var y = PanelRowMin; y <= PanelRowMax; y++)
             {
-                for (int x = PanelColMin; x <= PanelColMax; x++)
+                for (var x = PanelColMin; x <= PanelColMax; x++)
                 {
-                    MapInfo(y, x, out Colour a, out char c);
+                    MapInfo(y, x, out var a, out var c);
                     if (_player.TimedInvulnerability != 0)
                     {
                         a = Colour.White;
@@ -1360,7 +1360,7 @@ namespace Cthangband
 
         public void ReplacePets(int y, int x, List<Monster> petList)
         {
-            foreach (Monster monster in petList)
+            foreach (var monster in petList)
             {
                 Monsters.ReplacePet(y, x, monster);
             }
@@ -1368,7 +1368,7 @@ namespace Cthangband
 
         public void ReplaceSecretDoor(int y, int x)
         {
-            int tmp = Program.Rng.RandomLessThan(400);
+            var tmp = Program.Rng.RandomLessThan(400);
             if (tmp < 300)
             {
                 CaveSetFeat(y, x, "LockedDoor0");
@@ -1385,7 +1385,7 @@ namespace Cthangband
 
         public void ReportChargeUsageFromFloor(int item)
         {
-            Item oPtr = Items[item];
+            var oPtr = Items[item];
             if (oPtr.Category != ItemCategory.Staff && oPtr.Category != ItemCategory.Wand)
             {
                 return;
@@ -1401,7 +1401,7 @@ namespace Cthangband
 
         public void RevertTileToBackground(int y, int x)
         {
-            GridTile cPtr = Grid[y][x];
+            var cPtr = Grid[y][x];
             cPtr.RevertToBackground();
             NoteSpot(y, x);
             RedrawSingleLocation(y, x);
@@ -1409,11 +1409,11 @@ namespace Cthangband
 
         public void Scatter(out int yp, out int xp, int y, int x, int d)
         {
-            int nx = 0;
-            int ny = 0;
+            var nx = 0;
+            var ny = 0;
             yp = y;
             xp = x;
-            int attemptsLeft = 5000;
+            var attemptsLeft = 5000;
             while (--attemptsLeft != 0)
             {
                 ny = Program.Rng.RandomSpread(y, d);
@@ -1451,7 +1451,7 @@ namespace Cthangband
                 {
                     for (x = 0; x < CurWid; x++)
                     {
-                        int w = Grid[y][x].ScentAge;
+                        var w = Grid[y][x].ScentAge;
                         Grid[y][x].ScentAge = w > 128 ? w - 128 : 0;
                     }
                 }
@@ -1469,7 +1469,7 @@ namespace Cthangband
                 {
                     _flowTail = 0;
                 }
-                for (int d = 0; d < 8; d++)
+                for (var d = 0; d < 8; d++)
                 {
                     UpdateFlowAux(y + OrderedDirectionYOffset[d], x + OrderedDirectionXOffset[d], Grid[y][x].ScentStrength + 1);
                 }
@@ -1539,7 +1539,7 @@ namespace Cthangband
             }
             if (_player.LightLevel >= 3)
             {
-                int p = _player.LightLevel;
+                var p = _player.LightLevel;
                 if (p > 5)
                 {
                     p = 5;
@@ -1560,22 +1560,22 @@ namespace Cthangband
                 {
                     CaveLightHack(_player.MapY - 2, _player.MapX - 2);
                 }
-                int minY = _player.MapY - p;
+                var minY = _player.MapY - p;
                 if (minY < 0)
                 {
                     minY = 0;
                 }
-                int maxY = _player.MapY + p;
+                var maxY = _player.MapY + p;
                 if (maxY > CurHgt - 1)
                 {
                     maxY = CurHgt - 1;
                 }
-                int minX = _player.MapX - p;
+                var minX = _player.MapX - p;
                 if (minX < 0)
                 {
                     minX = 0;
                 }
-                int maxX = _player.MapX + p;
+                var maxX = _player.MapX + p;
                 if (maxX > CurWid - 1)
                 {
                     maxX = CurWid - 1;
@@ -1584,13 +1584,13 @@ namespace Cthangband
                 {
                     for (x = minX; x <= maxX; x++)
                     {
-                        int dy = _player.MapY > y ? _player.MapY - y : y - _player.MapY;
-                        int dx = _player.MapX > x ? _player.MapX - x : x - _player.MapX;
+                        var dy = _player.MapY > y ? _player.MapY - y : y - _player.MapY;
+                        var dx = _player.MapX > x ? _player.MapX - x : x - _player.MapX;
                         if (dy <= 2 && dx <= 2)
                         {
                             continue;
                         }
-                        int d = dy > dx ? dy + (dx >> 1) : dx + (dy >> 1);
+                        var d = dy > dx ? dy + (dx >> 1) : dx + (dy >> 1);
                         if (d > p)
                         {
                             continue;
@@ -1629,9 +1629,9 @@ namespace Cthangband
 
         public void UpdateMonsters(bool full)
         {
-            for (int i = 1; i < MMax; i++)
+            for (var i = 1; i < MMax; i++)
             {
-                Monster mPtr = Monsters[i];
+                var mPtr = Monsters[i];
                 if (mPtr.Race == null)
                 {
                     continue;
@@ -1645,8 +1645,8 @@ namespace Cthangband
             int n;
             int d;
             int y, x;
-            int yMax = CurHgt - 1;
-            int xMax = CurWid - 1;
+            var yMax = CurHgt - 1;
+            var xMax = CurWid - 1;
             GridTile cPtr;
             const int full = Constants.MaxSight;
             const int over = Constants.MaxSight * 3 / 2;
@@ -1667,7 +1667,7 @@ namespace Cthangband
             cPtr = Grid[y][x];
             cPtr.TileFlags.Set(GridTile.EasyVisibility);
             CaveViewHack(cPtr, y, x);
-            int z = full * 2 / 3;
+            var z = full * 2 / 3;
             for (d = 1; d <= z; d++)
             {
                 cPtr = Grid[y + d][x + d];
@@ -1738,8 +1738,8 @@ namespace Cthangband
                     break;
                 }
             }
-            int se = d;
-            int sw = d;
+            var se = d;
+            var sw = d;
             for (d = 1; d <= full; d++)
             {
                 cPtr = Grid[y - d][x];
@@ -1754,8 +1754,8 @@ namespace Cthangband
                     break;
                 }
             }
-            int ne = d;
-            int nw = d;
+            var ne = d;
+            var nw = d;
             for (d = 1; d <= full; d++)
             {
                 cPtr = Grid[y][x + d];
@@ -1770,8 +1770,8 @@ namespace Cthangband
                     break;
                 }
             }
-            int es = d;
-            int en = d;
+            var es = d;
+            var en = d;
             for (d = 1; d <= full; d++)
             {
                 cPtr = Grid[y][x - d];
@@ -1786,8 +1786,8 @@ namespace Cthangband
                     break;
                 }
             }
-            int ws = d;
-            int wn = d;
+            var ws = d;
+            var wn = d;
             for (n = 1; n <= over / 2; n++)
             {
                 z = over - n - n;
@@ -1799,10 +1799,10 @@ namespace Cthangband
                 {
                     z--;
                 }
-                int ypn = y + n;
-                int ymn = y - n;
-                int xpn = x + n;
-                int xmn = x - n;
+                var ypn = y + n;
+                var ymn = y - n;
+                var xpn = x + n;
+                var xmn = x - n;
                 int m;
                 int k;
                 if (ypn < yMax)
@@ -1996,23 +1996,23 @@ namespace Cthangband
 
         public void WipeOList()
         {
-            for (int i = 1; i < OMax; i++)
+            for (var i = 1; i < OMax; i++)
             {
-                Item oPtr = Items[i];
+                var oPtr = Items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
                 }
                 if (oPtr.HoldingMonsterIndex != 0)
                 {
-                    Monster mPtr = Monsters[oPtr.HoldingMonsterIndex];
+                    var mPtr = Monsters[oPtr.HoldingMonsterIndex];
                     mPtr.FirstHeldItemIndex = 0;
                 }
                 else
                 {
-                    int y = oPtr.Y;
-                    int x = oPtr.X;
-                    GridTile cPtr = Grid[y][x];
+                    var y = oPtr.Y;
+                    var x = oPtr.X;
+                    var cPtr = Grid[y][x];
                     cPtr.ItemIndex = 0;
                 }
                 Items[i] = new Item();
@@ -2023,17 +2023,17 @@ namespace Cthangband
 
         public void WizDark()
         {
-            for (int y = 0; y < CurHgt; y++)
+            for (var y = 0; y < CurHgt; y++)
             {
-                for (int x = 0; x < CurWid; x++)
+                for (var x = 0; x < CurWid; x++)
                 {
-                    GridTile cPtr = Grid[y][x];
+                    var cPtr = Grid[y][x];
                     cPtr.TileFlags.Clear(GridTile.PlayerMemorised);
                 }
             }
-            for (int i = 1; i < OMax; i++)
+            for (var i = 1; i < OMax; i++)
             {
-                Item oPtr = Items[i];
+                var oPtr = Items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -2055,7 +2055,7 @@ namespace Cthangband
             int i;
             for (i = 1; i < OMax; i++)
             {
-                Item oPtr = Items[i];
+                var oPtr = Items[i];
                 if (oPtr.ItemType != null)
                 {
                     continue;
@@ -2066,17 +2066,17 @@ namespace Cthangband
                 }
                 oPtr.Marked = true;
             }
-            for (int y = 1; y < CurHgt - 1; y++)
+            for (var y = 1; y < CurHgt - 1; y++)
             {
-                for (int x = 1; x < CurWid - 1; x++)
+                for (var x = 1; x < CurWid - 1; x++)
                 {
-                    GridTile cPtr = Grid[y][x];
+                    var cPtr = Grid[y][x];
                     if (!cPtr.FeatureType.IsWall)
                     {
                         for (i = 0; i < 9; i++)
                         {
-                            int yy = y + OrderedDirectionYOffset[i];
-                            int xx = x + OrderedDirectionXOffset[i];
+                            var yy = y + OrderedDirectionYOffset[i];
+                            var xx = x + OrderedDirectionXOffset[i];
                             cPtr = Grid[yy][xx];
                             cPtr.TileFlags.Set(GridTile.SelfLit);
                             if (!cPtr.FeatureType.IsOpenFloor)
@@ -2115,7 +2115,7 @@ namespace Cthangband
             {
                 return;
             }
-            for (int i = 1; i < OMax; i++)
+            for (var i = 1; i < OMax; i++)
             {
                 oPtr = Items[i];
                 if (oPtr.ItemType == null)
@@ -2130,7 +2130,7 @@ namespace Cthangband
             oPtr = Items[i1];
             if (oPtr.HoldingMonsterIndex != 0)
             {
-                Monster mPtr = Monsters[oPtr.HoldingMonsterIndex];
+                var mPtr = Monsters[oPtr.HoldingMonsterIndex];
                 if (mPtr.FirstHeldItemIndex == i1)
                 {
                     mPtr.FirstHeldItemIndex = i2;
@@ -2138,9 +2138,9 @@ namespace Cthangband
             }
             else
             {
-                int y = oPtr.Y;
-                int x = oPtr.X;
-                GridTile cPtr = Grid[y][x];
+                var y = oPtr.Y;
+                var x = oPtr.X;
+                var cPtr = Grid[y][x];
                 if (cPtr.ItemIndex == i1)
                 {
                     cPtr.ItemIndex = i2;
@@ -2238,8 +2238,8 @@ namespace Cthangband
             int nextOIdx;
             Colour a;
             char c;
-            GridTile cPtr = Grid[y][x];
-            FloorTileType feat = cPtr.FeatureType;
+            var cPtr = Grid[y][x];
+            var feat = cPtr.FeatureType;
             if (feat.IsOpenFloor)
             {
                 if (cPtr.TileFlags.IsSet(GridTile.PlayerMemorised) ||
@@ -2271,7 +2271,7 @@ namespace Cthangband
                         }
                         if (cPtr.TileFlags.IsSet(GridTile.TrapsDetected))
                         {
-                            int count = 0;
+                            var count = 0;
                             if (Grid[y - 1][x].TileFlags.IsSet(GridTile.TrapsDetected))
                             {
                                 count++;
@@ -2335,8 +2335,8 @@ namespace Cthangband
                             }
                             else
                             {
-                                int yy = y < _player.MapY ? y + 1 : y > _player.MapY ? y - 1 : y;
-                                int xx = x < _player.MapX ? x + 1 : x > _player.MapX ? x - 1 : x;
+                                var yy = y < _player.MapY ? y + 1 : y > _player.MapY ? y - 1 : y;
+                                var xx = x < _player.MapX ? x + 1 : x > _player.MapX ? x - 1 : x;
                                 if (Grid[yy][xx].TileFlags.IsClear(GridTile.SelfLit))
                                 {
                                     a = DimColour(a);
@@ -2360,9 +2360,9 @@ namespace Cthangband
                 ap = a;
                 cp = c;
             }
-            for (int thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = cPtr.ItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = Items[thisOIdx];
+                var oPtr = Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 if (oPtr.Marked)
                 {
@@ -2377,10 +2377,10 @@ namespace Cthangband
             }
             if (cPtr.MonsterIndex != 0)
             {
-                Monster mPtr = Monsters[cPtr.MonsterIndex];
+                var mPtr = Monsters[cPtr.MonsterIndex];
                 if (mPtr.IsVisible)
                 {
-                    MonsterRace rPtr = mPtr.Race;
+                    var rPtr = mPtr.Race;
                     a = rPtr.Colour;
                     c = rPtr.Character;
                     if ((rPtr.Flags1 & MonsterFlag1.AttrMulti) != 0)
@@ -2457,7 +2457,7 @@ namespace Cthangband
             }
             if (y == _player.MapY && x == _player.MapX)
             {
-                MonsterRace rPtr = Profile.Instance.MonsterRaces[0];
+                var rPtr = Profile.Instance.MonsterRaces[0];
                 a = rPtr.Colour;
                 c = rPtr.Character;
                 ap = a;
@@ -2467,8 +2467,8 @@ namespace Cthangband
 
         private void UpdateFlowAux(int y, int x, int n)
         {
-            int oldHead = _flowHead;
-            GridTile cPtr = Grid[y][x];
+            var oldHead = _flowHead;
+            var cPtr = Grid[y][x];
             if (cPtr.ScentAge == _flowN)
             {
                 return;
@@ -2497,24 +2497,24 @@ namespace Cthangband
 
         private bool UpdateViewAux(int y, int x, int y1, int x1, int y2, int x2)
         {
-            GridTile g1CPtr = Grid[y1][x1];
-            GridTile g2CPtr = Grid[y2][x2];
-            bool f1 = !g1CPtr.FeatureType.BlocksLos;
-            bool f2 = !g2CPtr.FeatureType.BlocksLos;
+            var g1CPtr = Grid[y1][x1];
+            var g2CPtr = Grid[y2][x2];
+            var f1 = !g1CPtr.FeatureType.BlocksLos;
+            var f2 = !g2CPtr.FeatureType.BlocksLos;
             if (!f1 && !f2)
             {
                 return true;
             }
-            bool v1 = f1 && g1CPtr.TileFlags.IsSet(GridTile.IsVisible);
-            bool v2 = f2 && g2CPtr.TileFlags.IsSet(GridTile.IsVisible);
+            var v1 = f1 && g1CPtr.TileFlags.IsSet(GridTile.IsVisible);
+            var v2 = f2 && g2CPtr.TileFlags.IsSet(GridTile.IsVisible);
             if (!v1 && !v2)
             {
                 return true;
             }
-            GridTile cPtr = Grid[y][x];
-            bool wall = cPtr.FeatureType.BlocksLos;
-            bool z1 = v1 && g1CPtr.TileFlags.IsSet(GridTile.EasyVisibility);
-            bool z2 = v2 && g2CPtr.TileFlags.IsSet(GridTile.EasyVisibility);
+            var cPtr = Grid[y][x];
+            var wall = cPtr.FeatureType.BlocksLos;
+            var z1 = v1 && g1CPtr.TileFlags.IsSet(GridTile.EasyVisibility);
+            var z2 = v2 && g2CPtr.TileFlags.IsSet(GridTile.EasyVisibility);
             if (z1 && z2)
             {
                 cPtr.TileFlags.Set(GridTile.EasyVisibility);

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -26,7 +26,7 @@ namespace Cthangband.UI
             C = new int[h];
             Va = new Colour[h * w];
             Vc = new char[h * w];
-            for (int y = 0; y < h; y++)
+            for (var y = 0; y < h; y++)
             {
                 A[y] = w * y;
                 C[y] = w * y;
@@ -35,13 +35,13 @@ namespace Cthangband.UI
 
         public void Copy(Screen f, int w, int h)
         {
-            for (int y = 0; y < h; y++)
+            for (var y = 0; y < h; y++)
             {
-                int fAa = f.A[y];
-                int fCc = f.C[y];
-                int sAa = A[y];
-                int sCc = C[y];
-                for (int x = 0; x < w; x++)
+                var fAa = f.A[y];
+                var fCc = f.C[y];
+                var sAa = A[y];
+                var sCc = C[y];
+                for (var x = 0; x < w; x++)
                 {
                     Va[sAa++] = f.Va[fAa++];
                     Vc[sCc++] = f.Vc[fCc++];

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -28,14 +28,14 @@ namespace Cthangband.Spells.Tarot
 
         public override void Cast(SaveGame saveGame, Player player, Level level)
         {
-            TargetEngine targetEngine = new TargetEngine(player, level);
-            bool noneCame = false;
-            int die = Program.Rng.DieRoll(110) + (player.Level / 5);
+            var targetEngine = new TargetEngine(player, level);
+            var noneCame = false;
+            var die = Program.Rng.DieRoll(110) + (player.Level / 5);
             Profile.Instance.MsgPrint("You shuffle your Tarot deck and draw a card...");
             if (die < 7)
             {
                 Profile.Instance.MsgPrint("Oh no! It's the Blasted Tower!");
-                for (int dummy = 0; dummy < Program.Rng.DieRoll(3); dummy++)
+                for (var dummy = 0; dummy < Program.Rng.DieRoll(3); dummy++)
                 {
                     SaveGame.Instance.SpellEffects.ActivateHiSummon();
                 }
@@ -155,7 +155,7 @@ namespace Cthangband.Spells.Tarot
             else if (die < 96)
             {
                 Profile.Instance.MsgPrint("It's the Lovers.");
-                if (!targetEngine.GetDirectionWithAim(out int dir))
+                if (!targetEngine.GetDirectionWithAim(out var dir))
                 {
                     return;
                 }
@@ -188,7 +188,7 @@ namespace Cthangband.Spells.Tarot
                 Profile.Instance.MsgPrint("It's the World.");
                 if (player.ExperiencePoints < Constants.PyMaxExp)
                 {
-                    int ee = (player.ExperiencePoints / 25) + 1;
+                    var ee = (player.ExperiencePoints / 25) + 1;
                     if (ee > 5000)
                     {
                         ee = 5000;
@@ -210,8 +210,8 @@ namespace Cthangband.Spells.Tarot
 
         private void WildMagic(int spell, Player player, Level level)
         {
-            int counter = 0;
-            int type = Constants.SummonBizarre1 - 1 + Program.Rng.DieRoll(6);
+            var counter = 0;
+            var type = Constants.SummonBizarre1 - 1 + Program.Rng.DieRoll(6);
             if (type < Constants.SummonBizarre1)
             {
                 type = Constants.SummonBizarre1;

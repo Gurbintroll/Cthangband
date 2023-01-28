@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -64,16 +64,16 @@ namespace Cthangband
             _findOpenarea = true;
             _findBreakright = false;
             _findBreakleft = false;
-            bool wallDoubleAheadLeft = false;
-            bool wallDoubleAheadRight = false;
-            bool wallAheadRight = false;
-            bool wallAheadLeft = false;
+            var wallDoubleAheadLeft = false;
+            var wallDoubleAheadRight = false;
+            var wallAheadRight = false;
+            var wallAheadLeft = false;
             var player = SaveGame.Instance.Player;
             // Get the row and column of the first step in the run
-            int row = player.MapY + SaveGame.Instance.Level.KeypadDirectionYOffset[direction];
-            int col = player.MapX + SaveGame.Instance.Level.KeypadDirectionXOffset[direction];
+            var row = player.MapY + SaveGame.Instance.Level.KeypadDirectionYOffset[direction];
+            var col = player.MapX + SaveGame.Instance.Level.KeypadDirectionXOffset[direction];
             // Get the index of our run direction in the cycle
-            int cycleIndex = _cycleEntryPoint[direction];
+            var cycleIndex = _cycleEntryPoint[direction];
             // If there's a wall ahead-left of us, remember that
             if (SeeWall(_directionCycle[cycleIndex + 1], player.MapY, player.MapX))
             {
@@ -140,18 +140,18 @@ namespace Cthangband
         public bool NavigateNextStep()
         {
             int newDirection;
-            int checkDir = 0;
+            var checkDir = 0;
             int row;
             int col;
             int i;
             GridTile tile;
-            int option = 0;
-            int option2 = 0;
-            int previousDirection = _previousRunDirection;
+            var option = 0;
+            var option2 = 0;
+            var previousDirection = _previousRunDirection;
             var level = SaveGame.Instance.Level;
             var player = SaveGame.Instance.Player;
             // Set our search width to 1 if we're moving diagonally, or two if we're moving orthogonally
-            int searchWidth = (previousDirection & 0x01) + 1;
+            var searchWidth = (previousDirection & 0x01) + 1;
             // Search to either side from right to left with a width equal to the search width
             for (i = -searchWidth; i <= searchWidth; i++)
             {
@@ -164,27 +164,27 @@ namespace Cthangband
                 // If there's a monster there we must stop moving
                 if (tile.MonsterIndex != 0)
                 {
-                    Monster monster = level.Monsters[tile.MonsterIndex];
+                    var monster = level.Monsters[tile.MonsterIndex];
                     if (monster.IsVisible)
                     {
                         return true;
                     }
                 }
                 // If there's an item there we weren't previously aware of then we must stop moving
-                for (int itemIndex = tile.ItemIndex; itemIndex != 0; itemIndex = nextItemIndex)
+                for (var itemIndex = tile.ItemIndex; itemIndex != 0; itemIndex = nextItemIndex)
                 {
-                    Item item = level.Items[itemIndex];
+                    var item = level.Items[itemIndex];
                     nextItemIndex = item.NextInStack;
                     if (item.Marked)
                     {
                         return true;
                     }
                 }
-                bool tileUnseen = true;
+                var tileUnseen = true;
                 // If the tile is something we should not run past then we must stop moving
                 if (tile.TileFlags.IsSet(GridTile.PlayerMemorised))
                 {
-                    bool notice = !tile.FeatureType.RunPast;
+                    var notice = !tile.FeatureType.RunPast;
                     if (notice)
                     {
                         return true;

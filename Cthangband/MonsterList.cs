@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -34,7 +34,7 @@ namespace Cthangband
         {
             _level = level;
             _monsters = new Monster[Constants.MaxMIdx];
-            for (int j = 0; j < Constants.MaxMIdx; j++)
+            for (var j = 0; j < Constants.MaxMIdx; j++)
             {
                 _monsters[j] = new Monster();
             }
@@ -47,10 +47,10 @@ namespace Cthangband
         public bool AllocHorde(int y, int x)
         {
             MonsterRace rPtr = null;
-            int attempts = 1000;
+            var attempts = 1000;
             while (--attempts != 0)
             {
-                int rIdx = GetMonNum(_level.MonsterLevel);
+                var rIdx = GetMonNum(_level.MonsterLevel);
                 if (rIdx == 0)
                 {
                     return false;
@@ -77,7 +77,7 @@ namespace Cthangband
             {
                 return false;
             }
-            Monster mPtr = _monsters[_hackMIdxIi];
+            var mPtr = _monsters[_hackMIdxIi];
             SummonKinType = rPtr.Character;
             for (attempts = Program.Rng.DieRoll(10) + 5; attempts != 0; attempts--)
             {
@@ -88,9 +88,9 @@ namespace Cthangband
 
         public void AllocMonster(int dis, bool slp)
         {
-            int y = 0;
-            int x = 0;
-            int attemptsLeft = 10000;
+            var y = 0;
+            var x = 0;
+            var attemptsLeft = 10000;
             while (attemptsLeft != 0)
             {
                 y = Program.Rng.RandomLessThan(_level.CurHgt);
@@ -141,12 +141,12 @@ namespace Cthangband
             }
             for (num = 0, cnt = 1; num < size; cnt++)
             {
-                int curLev = 5 * cnt;
-                int curDis = 5 * (20 - cnt);
+                var curLev = 5 * cnt;
+                var curDis = 5 * (20 - cnt);
                 for (i = 1; i < _level.MMax; i++)
                 {
-                    Monster mPtr = _monsters[i];
-                    MonsterRace rPtr = mPtr.Race;
+                    var mPtr = _monsters[i];
+                    var rPtr = mPtr.Race;
                     if (mPtr.Race == null)
                     {
                         continue;
@@ -159,7 +159,7 @@ namespace Cthangband
                     {
                         continue;
                     }
-                    int chance = 90;
+                    var chance = 90;
                     if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0)
                     {
                         chance = 99;
@@ -178,7 +178,7 @@ namespace Cthangband
             }
             for (i = _level.MMax - 1; i >= 1; i--)
             {
-                Monster mPtr = _monsters[i];
+                var mPtr = _monsters[i];
                 if (mPtr.Race != null)
                 {
                     continue;
@@ -191,8 +191,8 @@ namespace Cthangband
         public bool DamageMonster(int mIdx, int dam, out bool fear, string note)
         {
             fear = false;
-            Monster mPtr = _monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
+            var mPtr = _monsters[mIdx];
+            var rPtr = mPtr.Race;
             if (SaveGame.Instance.TrackedMonsterIndex == mIdx)
             {
                 SaveGame.Instance.Player.RedrawNeeded.Set(RedrawFlag.PrHealth);
@@ -201,13 +201,13 @@ namespace Cthangband
             mPtr.Health -= dam;
             if (mPtr.Health < 0)
             {
-                string mName = mPtr.MonsterDesc(0);
+                var mName = mPtr.MonsterDesc(0);
                 if ((rPtr.Flags3 & MonsterFlag3.GreatOldOne) != 0 && Program.Rng.DieRoll(2) == 1)
                 {
                     Profile.Instance.MsgPrint($"{mName} retreats into another dimension!");
                     if (Program.Rng.DieRoll(5) == 1)
                     {
-                        int curses = 1 + Program.Rng.DieRoll(3);
+                        var curses = 1 + Program.Rng.DieRoll(3);
                         Profile.Instance.MsgPrint("Nyarlathotep puts a terrible curse on you!");
                         SaveGame.Instance.Player.CurseEquipment(100, 50);
                         do
@@ -235,7 +235,7 @@ namespace Cthangband
                 {
                     Profile.Instance.MsgPrint($"You have slain {mName}.");
                 }
-                int div = 10 * SaveGame.Instance.Player.MaxLevelGained;
+                var div = 10 * SaveGame.Instance.Player.MaxLevelGained;
                 if (rPtr.Knowledge.RPkills >= 19)
                 {
                     div *= 2;
@@ -256,8 +256,8 @@ namespace Cthangband
                 {
                     div = 1;
                 }
-                int newExp = rPtr.Mexp * rPtr.Level * 10 / div;
-                int newExpFrac = (rPtr.Mexp * rPtr.Level % div * 0x10000 / div) + SaveGame.Instance.Player.FractionalExperiencePoints;
+                var newExp = rPtr.Mexp * rPtr.Level * 10 / div;
+                var newExpFrac = (rPtr.Mexp * rPtr.Level % div * 0x10000 / div) + SaveGame.Instance.Player.FractionalExperiencePoints;
                 if (newExpFrac >= 0x10000)
                 {
                     newExp++;
@@ -290,7 +290,7 @@ namespace Cthangband
             }
             if (mPtr.FearLevel != 0 && dam > 0)
             {
-                int tmp = Program.Rng.DieRoll(dam);
+                var tmp = Program.Rng.DieRoll(dam);
                 if (tmp < mPtr.FearLevel)
                 {
                     mPtr.FearLevel -= tmp;
@@ -303,7 +303,7 @@ namespace Cthangband
             }
             if (mPtr.FearLevel == 0 && (rPtr.Flags3 & MonsterFlag3.ImmuneFear) == 0)
             {
-                int percentage = 100 * mPtr.Health / mPtr.MaxHealth;
+                var percentage = 100 * mPtr.Health / mPtr.MaxHealth;
                 if ((percentage <= 10 && Program.Rng.RandomLessThan(10) < percentage) ||
                     (dam >= mPtr.Health && Program.Rng.RandomLessThan(100) < 80))
                 {
@@ -317,15 +317,15 @@ namespace Cthangband
 
         public void DeleteMonsterByIndex(int i, bool visibly)
         {
-            Monster mPtr = _monsters[i];
-            MonsterRace rPtr = mPtr.Race;
+            var mPtr = _monsters[i];
+            var rPtr = mPtr.Race;
             if (rPtr == null)
             {
                 return;
             }
             int nextOIdx;
-            int y = mPtr.MapY;
-            int x = mPtr.MapX;
+            var y = mPtr.MapY;
+            var x = mPtr.MapX;
             rPtr.CurNum--;
             if ((rPtr.Flags2 & MonsterFlag2.Multiply) != 0)
             {
@@ -340,9 +340,9 @@ namespace Cthangband
                 SaveGame.Instance.HealthTrack(0);
             }
             _level.Grid[y][x].MonsterIndex = 0;
-            for (int thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = _level.Items[thisOIdx];
+                var oPtr = _level.Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 oPtr.HoldingMonsterIndex = 0;
                 _level.DeleteObjectIdx(thisOIdx);
@@ -358,21 +358,21 @@ namespace Cthangband
         public int GetMonNum(int level)
         {
             int i, j;
-            AllocationEntry[] table = SaveGame.Instance.AllocRaceTable;
+            var table = SaveGame.Instance.AllocRaceTable;
             if (level > 0)
             {
                 if (Program.Rng.RandomLessThan(Constants.NastyMon) == 0)
                 {
-                    int d = (level / 4) + 2;
+                    var d = (level / 4) + 2;
                     level += d < 5 ? d : 5;
                 }
                 if (Program.Rng.RandomLessThan(Constants.NastyMon) == 0)
                 {
-                    int d = (level / 4) + 2;
+                    var d = (level / 4) + 2;
                     level += d < 5 ? d : 5;
                 }
             }
-            int total = 0;
+            var total = 0;
             for (i = 0; i < SaveGame.Instance.AllocRaceSize; i++)
             {
                 if (table[i].Level > level)
@@ -384,8 +384,8 @@ namespace Cthangband
                 {
                     continue;
                 }
-                int rIdx = table[i].Index;
-                MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
+                var rIdx = table[i].Index;
+                var rPtr = Profile.Instance.MonsterRaces[rIdx];
                 if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0 && rPtr.CurNum >= rPtr.MaxNum)
                 {
                     continue;
@@ -406,7 +406,7 @@ namespace Cthangband
                 }
                 value -= table[i].FinalProbability;
             }
-            int p = Program.Rng.RandomLessThan(100);
+            var p = Program.Rng.RandomLessThan(100);
             if (p < 60)
             {
                 j = i;
@@ -446,9 +446,9 @@ namespace Cthangband
 
         public void GetMonNumPrep()
         {
-            for (int i = 0; i < SaveGame.Instance.AllocRaceSize; i++)
+            for (var i = 0; i < SaveGame.Instance.AllocRaceSize; i++)
             {
-                AllocationEntry entry = SaveGame.Instance.AllocRaceTable[i];
+                var entry = SaveGame.Instance.AllocRaceTable[i];
                 if (GetMonNumHook == null || GetMonNumHook(entry.Index))
                 {
                     entry.FilteredProbabiity = entry.BaseProbability;
@@ -462,8 +462,8 @@ namespace Cthangband
 
         public List<Monster> GetPets()
         {
-            List<Monster> list = new List<Monster>();
-            foreach (Monster monster in _monsters)
+            var list = new List<Monster>();
+            foreach (var monster in _monsters)
             {
                 if ((monster.Mind & Constants.SmFriendly) != 0)
                 {
@@ -475,8 +475,8 @@ namespace Cthangband
 
         public void LoreDoProbe(int mIdx)
         {
-            Monster mPtr = _monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
+            var mPtr = _monsters[mIdx];
+            var rPtr = mPtr.Race;
             var knowledge = rPtr.Knowledge;
             for (var m = 0; m < 4; m++)
             {
@@ -515,8 +515,8 @@ namespace Cthangband
 
         public void LoreTreasure(int mIdx, int numItem, int numGold)
         {
-            Monster mPtr = _monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
+            var mPtr = _monsters[mIdx];
+            var rPtr = mPtr.Race;
             if (numItem > rPtr.Knowledge.RDropItem)
             {
                 rPtr.Knowledge.RDropItem = numItem;
@@ -537,18 +537,18 @@ namespace Cthangband
 
         public void MessagePain(int mIdx, int dam)
         {
-            Monster mPtr = _monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
-            string mName = mPtr.MonsterDesc(0);
+            var mPtr = _monsters[mIdx];
+            var rPtr = mPtr.Race;
+            var mName = mPtr.MonsterDesc(0);
             if (dam == 0)
             {
                 Profile.Instance.MsgPrint($"{mName} is unharmed.");
                 return;
             }
             long newhp = mPtr.Health;
-            long oldhp = newhp + dam;
-            long tmp = newhp * 100L / oldhp;
-            int percentage = (int)tmp;
+            var oldhp = newhp + dam;
+            var tmp = newhp * 100L / oldhp;
+            var percentage = (int)tmp;
             if ("jmvQ".Contains(rPtr.Character.ToString()))
             {
                 if (percentage > 95)
@@ -677,12 +677,12 @@ namespace Cthangband
 
         public bool MultiplyMonster(int mIdx, bool charm, bool clone)
         {
-            Monster mPtr = _monsters[mIdx];
-            bool result = false;
-            for (int i = 0; i < 18; i++)
+            var mPtr = _monsters[mIdx];
+            var result = false;
+            for (var i = 0; i < 18; i++)
             {
-                int d = 1;
-                _level.Scatter(out int y, out int x, mPtr.MapY, mPtr.MapX, d);
+                var d = 1;
+                _level.Scatter(out var y, out var x, mPtr.MapY, mPtr.MapX, d);
                 if (!_level.GridPassableNoCreature(y, x))
                 {
                     continue;
@@ -701,7 +701,7 @@ namespace Cthangband
 
         public bool PlaceMonster(int y, int x, bool slp, bool grp)
         {
-            int rIdx = GetMonNum(_level.MonsterLevel);
+            var rIdx = GetMonNum(_level.MonsterLevel);
             if (rIdx == 0)
             {
                 return false;
@@ -721,10 +721,10 @@ namespace Cthangband
             }
             if ((rPtr.Flags1 & MonsterFlag1.Escorted) != 0)
             {
-                for (int i = 0; i < 50; i++)
+                for (var i = 0; i < 50; i++)
                 {
-                    int d = 3;
-                    _level.Scatter(out int ny, out int nx, y, x, d);
+                    var d = 3;
+                    _level.Scatter(out var ny, out var nx, y, x, d);
                     if (!_level.GridPassableNoCreature(ny, nx))
                     {
                         continue;
@@ -732,14 +732,14 @@ namespace Cthangband
                     _placeMonsterIdx = rPtr.Index;
                     GetMonNumHook = PlaceMonsterOkay;
                     GetMonNumPrep();
-                    int z = GetMonNum(rPtr.Level);
+                    var z = GetMonNum(rPtr.Level);
                     GetMonNumHook = null;
                     GetMonNumPrep();
                     if (z == 0)
                     {
                         break;
                     }
-                    MonsterRace race = Profile.Instance.MonsterRaces[z];
+                    var race = Profile.Instance.MonsterRaces[z];
                     PlaceMonsterOne(ny, nx, race, slp, charm);
                     if ((race.Flags1 & MonsterFlag1.Friends) != 0 ||
                         (rPtr.Flags1 & MonsterFlag1.EscortsGroup) != 0)
@@ -767,11 +767,11 @@ namespace Cthangband
         public void ReplacePet(int y1, int x1, Monster monster)
         {
             int i;
-            int x = x1;
-            int y = y1;
+            var x = x1;
+            var y = y1;
             for (i = 0; i < 20; ++i)
             {
-                int d = (i / 15) + 1;
+                var d = (i / 15) + 1;
                 _level.Scatter(out y, out x, y1, x1, d);
                 if (!_level.GridPassableNoCreature(y, x))
                 {
@@ -788,7 +788,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint($"You lose sight of {monster.MonsterDesc(0)}.");
                 return;
             }
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             cPtr.MonsterIndex = MPop();
             if (cPtr.MonsterIndex == 0)
             {
@@ -798,7 +798,7 @@ namespace Cthangband
             _monsters[cPtr.MonsterIndex] = monster;
             monster.MapY = y;
             monster.MapX = x;
-            MonsterRace rPtr = monster.Race;
+            var rPtr = monster.Race;
             if ((rPtr.Flags2 & MonsterFlag2.Multiply) != 0)
             {
                 NumRepro++;
@@ -812,12 +812,12 @@ namespace Cthangband
         public bool SummonSpecific(int y1, int x1, int lev, int type)
         {
             int i;
-            int x = x1;
-            int y = y1;
-            bool groupOk = true;
+            var x = x1;
+            var y = y1;
+            var groupOk = true;
             for (i = 0; i < 20; ++i)
             {
-                int d = (i / 15) + 1;
+                var d = (i / 15) + 1;
                 _level.Scatter(out y, out x, y1, x1, d);
                 if (!_level.GridPassableNoCreature(y, x))
                 {
@@ -836,14 +836,14 @@ namespace Cthangband
             _summonSpecificType = type;
             GetMonNumHook = SummonSpecificOkay;
             GetMonNumPrep();
-            int rIdx = GetMonNum(((SaveGame.Instance.Difficulty + lev) / 2) + 5);
+            var rIdx = GetMonNum(((SaveGame.Instance.Difficulty + lev) / 2) + 5);
             GetMonNumHook = null;
             GetMonNumPrep();
             if (rIdx == 0)
             {
                 return false;
             }
-            MonsterRace race = Profile.Instance.MonsterRaces[rIdx];
+            var race = Profile.Instance.MonsterRaces[rIdx];
             if (type == Constants.SummonAvatar)
             {
                 groupOk = false;
@@ -858,11 +858,11 @@ namespace Cthangband
         public bool SummonSpecificFriendly(int y1, int x1, int lev, int type, bool groupOk)
         {
             int i;
-            int x = 0;
-            int y = 0;
+            var x = 0;
+            var y = 0;
             for (i = 0; i < 20; ++i)
             {
-                int d = (i / 15) + 1;
+                var d = (i / 15) + 1;
                 _level.Scatter(out y, out x, y1, x1, d);
                 if (!_level.GridPassableNoCreature(y, x))
                 {
@@ -885,14 +885,14 @@ namespace Cthangband
             _summonSpecificType = type;
             GetMonNumHook = SummonSpecificOkay;
             GetMonNumPrep();
-            int rIdx = GetMonNum(((SaveGame.Instance.Difficulty + lev) / 2) + 5);
+            var rIdx = GetMonNum(((SaveGame.Instance.Difficulty + lev) / 2) + 5);
             GetMonNumHook = null;
             GetMonNumPrep();
             if (rIdx == 0)
             {
                 return false;
             }
-            MonsterRace race = Profile.Instance.MonsterRaces[rIdx];
+            var race = Profile.Instance.MonsterRaces[rIdx];
             if (!PlaceMonsterAux(y, x, race, false, groupOk, true))
             {
                 return false;
@@ -902,33 +902,33 @@ namespace Cthangband
 
         public void UpdateMonsterVisibility(int mIdx, bool full)
         {
-            Monster mPtr = _monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
+            var mPtr = _monsters[mIdx];
+            var rPtr = mPtr.Race;
             if (rPtr == null)
             {
                 return;
             }
-            int fy = mPtr.MapY;
-            int fx = mPtr.MapX;
+            var fy = mPtr.MapY;
+            var fx = mPtr.MapX;
             if (full)
             {
-                int dy = SaveGame.Instance.Player.MapY > fy
+                var dy = SaveGame.Instance.Player.MapY > fy
                     ? SaveGame.Instance.Player.MapY - fy
                     : fy - SaveGame.Instance.Player.MapY;
-                int dx = SaveGame.Instance.Player.MapX > fx
+                var dx = SaveGame.Instance.Player.MapX > fx
                     ? SaveGame.Instance.Player.MapX - fx
                     : fx - SaveGame.Instance.Player.MapX;
-                int d = dy > dx ? dy + (dx >> 1) : dx + (dy >> 1);
+                var d = dy > dx ? dy + (dx >> 1) : dx + (dy >> 1);
                 mPtr.DistanceFromPlayer = d < 255 ? d : 255;
             }
-            bool flag = false;
-            bool easy = false;
-            bool hard = false;
-            bool doEmptyMind = false;
-            bool doWeirdMind = false;
-            bool doInvisible = false;
-            bool doColdBlood = false;
-            bool oldMl = mPtr.IsVisible;
+            var flag = false;
+            var easy = false;
+            var hard = false;
+            var doEmptyMind = false;
+            var doWeirdMind = false;
+            var doInvisible = false;
+            var doColdBlood = false;
+            var oldMl = mPtr.IsVisible;
             if (mPtr.DistanceFromPlayer > Constants.MaxSight)
             {
                 if (!mPtr.IsVisible)
@@ -942,7 +942,7 @@ namespace Cthangband
             }
             else if (_level.PanelContains(fy, fx))
             {
-                GridTile cPtr = _level.Grid[fy][fx];
+                var cPtr = _level.Grid[fy][fx];
                 if (cPtr.TileFlags.IsSet(GridTile.IsVisible) && SaveGame.Instance.Player.TimedBlindness == 0)
                 {
                     if (mPtr.DistanceFromPlayer <= SaveGame.Instance.Player.InfravisionRange)
@@ -1088,9 +1088,9 @@ namespace Cthangband
 
         public void UpdateSmartLearn(int mIdx, int what)
         {
-            Player player = SaveGame.Instance.Player;
-            Monster mPtr = _monsters[mIdx];
-            MonsterRace rPtr = mPtr.Race;
+            var player = SaveGame.Instance.Player;
+            var mPtr = _monsters[mIdx];
+            var rPtr = mPtr.Race;
             if (rPtr == null)
             {
                 return;
@@ -1278,10 +1278,10 @@ namespace Cthangband
 
         public void WipeMList()
         {
-            for (int i = _level.MMax - 1; i >= 1; i--)
+            for (var i = _level.MMax - 1; i >= 1; i--)
             {
-                Monster mPtr = _monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = _monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
@@ -1304,14 +1304,14 @@ namespace Cthangband
             {
                 return;
             }
-            Monster mPtr = _monsters[i1];
-            int y = mPtr.MapY;
-            int x = mPtr.MapX;
-            GridTile cPtr = _level.Grid[y][x];
+            var mPtr = _monsters[i1];
+            var y = mPtr.MapY;
+            var x = mPtr.MapX;
+            var cPtr = _level.Grid[y][x];
             cPtr.MonsterIndex = i2;
-            for (int thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
+            for (var thisOIdx = mPtr.FirstHeldItemIndex; thisOIdx != 0; thisOIdx = nextOIdx)
             {
-                Item oPtr = _level.Items[thisOIdx];
+                var oPtr = _level.Items[thisOIdx];
                 nextOIdx = oPtr.NextInStack;
                 oPtr.HoldingMonsterIndex = i2;
             }
@@ -1339,7 +1339,7 @@ namespace Cthangband
             }
             for (i = 1; i < _level.MMax; i++)
             {
-                Monster mPtr = _monsters[i];
+                var mPtr = _monsters[i];
                 if (mPtr.Race != null)
                 {
                     continue;
@@ -1356,11 +1356,11 @@ namespace Cthangband
 
         private void PlaceMonsterGroup(int y, int x, int rIdx, bool slp, bool charm)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
-            int extra = 0;
-            int[] hackY = new int[Constants.GroupMax];
-            int[] hackX = new int[Constants.GroupMax];
-            int total = Program.Rng.DieRoll(13);
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var extra = 0;
+            var hackY = new int[Constants.GroupMax];
+            var hackX = new int[Constants.GroupMax];
+            var total = Program.Rng.DieRoll(13);
             if (rPtr.Level > SaveGame.Instance.Difficulty)
             {
                 extra = rPtr.Level - SaveGame.Instance.Difficulty;
@@ -1384,18 +1384,18 @@ namespace Cthangband
             {
                 total = Constants.GroupMax;
             }
-            int old = _level.DangerRating;
-            int hackN = 1;
+            var old = _level.DangerRating;
+            var hackN = 1;
             hackX[0] = x;
             hackY[0] = y;
-            for (int n = 0; n < hackN && hackN < total; n++)
+            for (var n = 0; n < hackN && hackN < total; n++)
             {
-                int hx = hackX[n];
-                int hy = hackY[n];
-                for (int i = 0; i < 8 && hackN < total; i++)
+                var hx = hackX[n];
+                var hy = hackY[n];
+                for (var i = 0; i < 8 && hackN < total; i++)
                 {
-                    int mx = hx + _level.OrderedDirectionXOffset[i];
-                    int my = hy + _level.OrderedDirectionYOffset[i];
+                    var mx = hx + _level.OrderedDirectionXOffset[i];
+                    var my = hy + _level.OrderedDirectionYOffset[i];
                     if (!_level.GridPassableNoCreature(my, mx))
                     {
                         continue;
@@ -1413,8 +1413,8 @@ namespace Cthangband
 
         private bool PlaceMonsterOkay(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[_placeMonsterIdx];
-            MonsterRace zPtr = Profile.Instance.MonsterRaces[rIdx];
+            var rPtr = Profile.Instance.MonsterRaces[_placeMonsterIdx];
+            var zPtr = Profile.Instance.MonsterRaces[rIdx];
             if (zPtr.Character != rPtr.Character)
             {
                 return false;
@@ -1444,7 +1444,7 @@ namespace Cthangband
             {
                 return false;
             }
-            string name = rPtr.Name;
+            var name = rPtr.Name;
             if (!_level.InBounds(y, x))
             {
                 return false;
@@ -1467,7 +1467,7 @@ namespace Cthangband
             }
             if ((rPtr.Flags1 & MonsterFlag1.OnlyGuardian) != 0 || (rPtr.Flags1 & MonsterFlag1.Guardian) != 0)
             {
-                int qIdx = SaveGame.Instance.Quests.GetQuestNumber();
+                var qIdx = SaveGame.Instance.Quests.GetQuestNumber();
                 if (qIdx < 0)
                 {
                     return false;
@@ -1492,14 +1492,14 @@ namespace Cthangband
                     _level.DangerRating += rPtr.Level - SaveGame.Instance.Difficulty;
                 }
             }
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             cPtr.MonsterIndex = MPop();
             _hackMIdxIi = cPtr.MonsterIndex;
             if (cPtr.MonsterIndex == 0)
             {
                 return false;
             }
-            Monster mPtr = _monsters[cPtr.MonsterIndex];
+            var mPtr = _monsters[cPtr.MonsterIndex];
             mPtr.Race = rPtr;
             mPtr.MapY = y;
             mPtr.MapX = x;
@@ -1514,7 +1514,7 @@ namespace Cthangband
             mPtr.SleepLevel = 0;
             if (slp && rPtr.Sleep != 0)
             {
-                int val = rPtr.Sleep;
+                var val = rPtr.Sleep;
                 mPtr.SleepLevel = (val * 2) + Program.Rng.DieRoll(val * 10);
             }
             mPtr.DistanceFromPlayer = 0;
@@ -1527,7 +1527,7 @@ namespace Cthangband
             mPtr.Speed = rPtr.Speed;
             if ((rPtr.Flags1 & MonsterFlag1.Unique) == 0)
             {
-                int i = GlobalData.ExtractEnergy[rPtr.Speed] / 10;
+                var i = GlobalData.ExtractEnergy[rPtr.Speed] / 10;
                 if (i != 0)
                 {
                     mPtr.Speed += Program.Rng.RandomSpread(0, i);
@@ -1558,8 +1558,8 @@ namespace Cthangband
 
         private bool SummonSpecificOkay(int rIdx)
         {
-            MonsterRace rPtr = Profile.Instance.MonsterRaces[rIdx];
-            bool okay = false;
+            var rPtr = Profile.Instance.MonsterRaces[rIdx];
+            var okay = false;
             if (_summonSpecificType == 0)
             {
                 return true;

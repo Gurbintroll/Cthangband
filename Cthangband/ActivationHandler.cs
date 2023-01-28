@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -6,11 +6,11 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.Patron.Base;
 using Cthangband.Projection;
 using Cthangband.Projection.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
-using Cthangband.Patron.Base;
 using System;
 
 namespace Cthangband
@@ -39,7 +39,7 @@ namespace Cthangband
         public void DoCmdActivate(int itemIndex)
         {
             int dir;
-            TargetEngine targetEngine = new TargetEngine(_player, _level);
+            var targetEngine = new TargetEngine(_player, _level);
             if (itemIndex == -999)
             {
                 // No item passed in, so get one; filtering to activatable items only
@@ -54,7 +54,7 @@ namespace Cthangband
                 }
             }
             // Get the item from the index
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Check if the item is activatable
             SaveGame.Instance.ItemFilter = SaveGame.Instance.CommandEngine.ItemFilterActivatable;
             if (!_player.Inventory.ItemMatchesFilter(item))
@@ -67,14 +67,14 @@ namespace Cthangband
             // Activating an item uses 100 energy
             SaveGame.Instance.EnergyUse = 100;
             // Get the level of the item
-            int itemLevel = item.ItemType.Level;
+            var itemLevel = item.ItemType.Level;
             if (item.IsArtifact())
             {
                 itemLevel = Profile.Instance.Artifacts[item.ArtifactIndex].Level;
             }
             // Work out the chance of using the item successfully based on its level and the
             // player's skill
-            int chance = _player.SkillUseDevice;
+            var chance = _player.SkillUseDevice;
             if (_player.TimedConfusion != 0)
             {
                 chance /= 2;
@@ -150,7 +150,7 @@ namespace Cthangband
                     case ArtifactId.AmuletOfLobon:
                         {
                             Profile.Instance.MsgPrint("The amulet lets out a shrill wail...");
-                            int k = 3 * _player.Level;
+                            var k = 3 * _player.Level;
                             _player.SetTimedProtectionFromEvil(_player.TimedProtectionFromEvil + Program.Rng.DieRoll(25) + k);
                             item.RechargeTimeLeft = Program.Rng.RandomLessThan(225) + 225;
                             break;
@@ -244,7 +244,7 @@ namespace Cthangband
                     case ArtifactId.DragonScaleRazorback:
                         {
                             Profile.Instance.MsgPrint("Your armor is surrounded by lightning...");
-                            for (int i = 0; i < 8; i++)
+                            for (var i = 0; i < 8; i++)
                             {
                                 SaveGame.Instance.SpellEffects.FireBall(new ProjectElectricity(SaveGame.Instance.SpellEffects), _level.OrderedDirection[i], 150, 3);
                             }
@@ -827,7 +827,7 @@ namespace Cthangband
                     case DragonArmour.MultiHued:
                         {
                             chance = Program.Rng.RandomLessThan(5);
-                            string element = chance == 1
+                            var element = chance == 1
                                 ? "lightning"
                                 : (chance == 2 ? "frost" : (chance == 3 ? "acid" : (chance == 4 ? "poison gas" : "fire")));
                             Profile.Instance.MsgPrint($"You breathe {element}.");
@@ -878,7 +878,7 @@ namespace Cthangband
                     case DragonArmour.Chaos:
                         {
                             chance = Program.Rng.RandomLessThan(2);
-                            string element = chance == 1 ? "chaos" : "disenchantment";
+                            var element = chance == 1 ? "chaos" : "disenchantment";
                             Profile.Instance.MsgPrint($"You breathe {element}.");
                             SaveGame.Instance.SpellEffects.FireBall(
                                 projectile: chance == 1 ? (IProjection)new ProjectChaos(SaveGame.Instance.SpellEffects) : new ProjectDisenchant(SaveGame.Instance.SpellEffects), dir: dir, dam: 220, rad: -2);
@@ -888,7 +888,7 @@ namespace Cthangband
                     case DragonArmour.Law:
                         {
                             chance = Program.Rng.RandomLessThan(2);
-                            string element = chance == 1 ? "sound" : "shards";
+                            var element = chance == 1 ? "sound" : "shards";
                             Profile.Instance.MsgPrint($"You breathe {element}.");
                             SaveGame.Instance.SpellEffects.FireBall(
                                 chance == 1 ? (IProjection)new ProjectSound(SaveGame.Instance.SpellEffects) : new ProjectExplode(SaveGame.Instance.SpellEffects), dir, 230, -2);
@@ -898,7 +898,7 @@ namespace Cthangband
                     case DragonArmour.Balance:
                         {
                             chance = Program.Rng.RandomLessThan(4);
-                            string element = chance == 1
+                            var element = chance == 1
                                 ? "chaos"
                                 : (chance == 2 ? "disenchantment" : (chance == 3 ? "sound" : "shards"));
                             Profile.Instance.MsgPrint($"You breathe {element}.");
@@ -914,7 +914,7 @@ namespace Cthangband
                     case DragonArmour.Pseudo:
                         {
                             chance = Program.Rng.RandomLessThan(2);
-                            string element = chance == 0 ? "light" : "darkness";
+                            var element = chance == 0 ? "light" : "darkness";
                             Profile.Instance.MsgPrint($"You breathe {element}.");
                             SaveGame.Instance.SpellEffects.FireBall(
                                 chance == 0 ? (IProjection)new ProjectLight(SaveGame.Instance.SpellEffects) : new ProjectDark(SaveGame.Instance.SpellEffects), dir, 200, -2);
@@ -988,7 +988,7 @@ namespace Cthangband
                 }
             }
             // Get the item and check if it is really a wand
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             Inventory.ItemFilterCategory = ItemCategory.Wand;
             if (!_player.Inventory.ItemMatchesFilter(item))
             {
@@ -1004,18 +1004,18 @@ namespace Cthangband
                 return;
             }
             // Aim the wand
-            TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (!targetEngine.GetDirectionWithAim(out int dir))
+            var targetEngine = new TargetEngine(_player, _level);
+            if (!targetEngine.GetDirectionWithAim(out var dir))
             {
                 return;
             }
             // Using a wand takes 100 energy
             SaveGame.Instance.EnergyUse = 100;
-            bool ident = false;
-            int itemLevel = item.ItemType.Level;
+            var ident = false;
+            var itemLevel = item.ItemType.Level;
             // Chance of success is your skill - item level, with item level capped at 50 and your
             // skill halved if you're confused
-            int chance = _player.SkillUseDevice;
+            var chance = _player.SkillUseDevice;
             if (_player.TimedConfusion != 0)
             {
                 chance /= 2;
@@ -1039,7 +1039,7 @@ namespace Cthangband
                 return;
             }
             Gui.PlaySound(SoundEffect.ZapRod);
-            int subCategory = item.ItemSubCategory;
+            var subCategory = item.ItemSubCategory;
             // Wand of wonder just chooses another type of wand less than its own index
             if (subCategory == WandType.Wonder)
             {
@@ -1300,7 +1300,7 @@ namespace Cthangband
                 _player.GainExperience((itemLevel + (_player.Level >> 1)) / _player.Level);
             }
             // If we're a channeler then we should be using vis instead of charges
-            bool channeled = false;
+            var channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
@@ -1312,7 +1312,7 @@ namespace Cthangband
                 // If the wand is part of a stack, split it off from the others
                 if (itemIndex >= 0 && item.Count > 1)
                 {
-                    Item splitItem = new Item(item) { Count = 1 };
+                    var splitItem = new Item(item) { Count = 1 };
                     item.TypeSpecificValue++;
                     item.Count--;
                     _player.WeightCarried -= splitItem.Weight;
@@ -1350,7 +1350,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Make sure the item is edible
             Inventory.ItemFilterCategory = ItemCategory.Food;
             if (!_player.Inventory.ItemMatchesFilter(item))
@@ -1367,8 +1367,8 @@ namespace Cthangband
             }
             // Eating costs 100 energy
             SaveGame.Instance.EnergyUse = 100;
-            bool ident = false;
-            int itemLevel = item.ItemType.Level;
+            var ident = false;
+            var itemLevel = item.ItemType.Level;
             switch (item.ItemSubCategory)
             {
                 case FoodType.Poison:
@@ -1656,7 +1656,7 @@ namespace Cthangband
         public void DoCmdFire()
         {
             // Check that we're actually wielding a ranged weapon
-            Item missileWeapon = _player.Inventory[InventorySlot.RangedWeapon];
+            var missileWeapon = _player.Inventory[InventorySlot.RangedWeapon];
             if (missileWeapon.Category == 0)
             {
                 Profile.Instance.MsgPrint("You have nothing to fire with.");
@@ -1664,7 +1664,7 @@ namespace Cthangband
             }
             // Get the ammunition to fire
             Inventory.ItemFilterCategory = _player.AmmunitionItemCategory;
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Fire which item? ", false, true, true))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Fire which item? ", false, true, true))
             {
                 if (itemIndex == -2)
                 {
@@ -1672,15 +1672,15 @@ namespace Cthangband
                 }
                 return;
             }
-            Item ammunitionStack = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
-            TargetEngine targetEngine = new TargetEngine(_player, _level);
+            var ammunitionStack = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var targetEngine = new TargetEngine(_player, _level);
             // Find out where we're aiming at
-            if (!targetEngine.GetDirectionWithAim(out int dir))
+            if (!targetEngine.GetDirectionWithAim(out var dir))
             {
                 return;
             }
             // Copy an ammunition piece from the stack...
-            Item individualAmmunition = new Item(ammunitionStack) { Count = 1 };
+            var individualAmmunition = new Item(ammunitionStack) { Count = 1 };
             // ...and reduced the amount in the stack
             if (itemIndex >= 0)
             {
@@ -1695,16 +1695,16 @@ namespace Cthangband
             }
             Gui.PlaySound(SoundEffect.Shoot);
             // Get the details of the shot
-            string missileName = individualAmmunition.Description(false, 3);
-            Colour missileColour = individualAmmunition.ItemType.Colour;
-            char missileCharacter = individualAmmunition.ItemType.Character;
-            int shotSpeed = _player.MissileAttacksPerRound;
-            int shotDamage = Program.Rng.DiceRoll(individualAmmunition.DamageDice, individualAmmunition.DamageDiceSides) + individualAmmunition.BonusDamage +
+            var missileName = individualAmmunition.Description(false, 3);
+            var missileColour = individualAmmunition.ItemType.Colour;
+            var missileCharacter = individualAmmunition.ItemType.Character;
+            var shotSpeed = _player.MissileAttacksPerRound;
+            var shotDamage = Program.Rng.DiceRoll(individualAmmunition.DamageDice, individualAmmunition.DamageDiceSides) + individualAmmunition.BonusDamage +
                        missileWeapon.BonusDamage;
-            int attackBonus = _player.AttackBonus + individualAmmunition.BonusToHit + missileWeapon.BonusToHit;
-            int chanceToHit = _player.SkillRanged + (attackBonus * Constants.BthPlusAdj);
+            var attackBonus = _player.AttackBonus + individualAmmunition.BonusToHit + missileWeapon.BonusToHit;
+            var chanceToHit = _player.SkillRanged + (attackBonus * Constants.BthPlusAdj);
             // Damage multiplier depends on weapon
-            int damageMultiplier = 1;
+            var damageMultiplier = 1;
             switch (missileWeapon.ItemSubCategory)
             {
                 case BowType.Sling:
@@ -1740,13 +1740,13 @@ namespace Cthangband
             }
             shotDamage *= damageMultiplier;
             // We're actually going to track the shot and draw it square by square
-            int shotDistance = 10 + (5 * damageMultiplier);
+            var shotDistance = 10 + (5 * damageMultiplier);
             // Divide by our shot speed to give the equivalent of x shots per turn
             SaveGame.Instance.EnergyUse = 100 / shotSpeed;
-            int y = _player.MapY;
-            int x = _player.MapX;
-            int targetX = _player.MapX + (99 * _level.KeypadDirectionXOffset[dir]);
-            int targetY = _player.MapY + (99 * _level.KeypadDirectionYOffset[dir]);
+            var y = _player.MapY;
+            var x = _player.MapX;
+            var targetX = _player.MapX + (99 * _level.KeypadDirectionXOffset[dir]);
+            var targetY = _player.MapY + (99 * _level.KeypadDirectionYOffset[dir]);
             // Special case for if we're hitting our own square
             if (dir == 5 && targetEngine.TargetOkay())
             {
@@ -1754,16 +1754,16 @@ namespace Cthangband
                 targetY = SaveGame.Instance.TargetRow;
             }
             SaveGame.Instance.HandleStuff();
-            bool hitBody = false;
+            var hitBody = false;
             // Loop until we've reached our distance or hit something
-            for (int curDis = 0; curDis <= shotDistance;)
+            for (var curDis = 0; curDis <= shotDistance;)
             {
                 if (y == targetY && x == targetX)
                 {
                     break;
                 }
                 // Move a step towards the target
-                _level.MoveOneStepTowards(out int newY, out int newX, y, x, _player.MapY, _player.MapX, targetY, targetX);
+                _level.MoveOneStepTowards(out var newY, out var newX, y, x, _player.MapY, _player.MapX, targetY, targetX);
                 // If we were blocked by a wall or something then stop short
                 if (!_level.GridPassable(newY, newX))
                 {
@@ -1772,7 +1772,7 @@ namespace Cthangband
                 curDis++;
                 x = newX;
                 y = newY;
-                int msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
+                var msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
                 // If we can see the current projectile location, show it briefly
                 if (_level.PanelContains(y, x) && _level.PlayerCanSeeBold(y, x))
                 {
@@ -1792,15 +1792,15 @@ namespace Cthangband
                 // Check if we might hit a monster (not necessarily the one we were aiming at)
                 if (_level.Grid[y][x].MonsterIndex != 0)
                 {
-                    GridTile tile = _level.Grid[y][x];
-                    Monster monster = _level.Monsters[tile.MonsterIndex];
-                    MonsterRace race = monster.Race;
-                    bool visible = monster.IsVisible;
+                    var tile = _level.Grid[y][x];
+                    var monster = _level.Monsters[tile.MonsterIndex];
+                    var race = monster.Race;
+                    var visible = monster.IsVisible;
                     hitBody = true;
                     // Check if we actually hit it
                     if (SaveGame.Instance.CommandEngine.PlayerCheckRangedHitOnMonster(chanceToHit - curDis, race.ArmourClass, monster.IsVisible))
                     {
-                        string noteDies = " dies.";
+                        var noteDies = " dies.";
                         if ((race.Flags3 & MonsterFlag3.Demon) != 0 || (race.Flags3 & MonsterFlag3.Undead) != 0 ||
                             (race.Flags3 & MonsterFlag3.Cthuloid) != 0 || (race.Flags2 & MonsterFlag2.Stupid) != 0 ||
                             "Evg".Contains(race.Character.ToString()))
@@ -1813,7 +1813,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            string monsterName = monster.MonsterDesc(0);
+                            var monsterName = monster.MonsterDesc(0);
                             Profile.Instance.MsgPrint($"The {missileName} hits {monsterName}.");
                             if (monster.IsVisible)
                             {
@@ -1834,7 +1834,7 @@ namespace Cthangband
                         {
                             shotDamage = 0;
                         }
-                        if (_level.Monsters.DamageMonster(tile.MonsterIndex, shotDamage, out bool fear, noteDies))
+                        if (_level.Monsters.DamageMonster(tile.MonsterIndex, shotDamage, out var fear, noteDies))
                         {
                             // The monster is dead, so don't add further statuses or messages
                         }
@@ -1844,7 +1844,7 @@ namespace Cthangband
                             if (fear && monster.IsVisible)
                             {
                                 Gui.PlaySound(SoundEffect.MonsterFlees);
-                                string mName = monster.MonsterDesc(0);
+                                var mName = monster.MonsterDesc(0);
                                 Profile.Instance.MsgPrint($"{mName} flees in terror!");
                             }
                         }
@@ -1855,7 +1855,7 @@ namespace Cthangband
             }
             // If we hit something we have a chance to break the ammo, otherwise it just drops at
             // the end of its travel
-            int j = hitBody ? individualAmmunition.BreakageChance() : 0;
+            var j = hitBody ? individualAmmunition.BreakageChance() : 0;
             SaveGame.Instance.Level.DropNear(individualAmmunition, j, y, x);
         }
 
@@ -1878,7 +1878,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Make sure the item is a potion
             Inventory.ItemFilterCategory = ItemCategory.Potion;
             if (!_player.Inventory.ItemMatchesFilter(item))
@@ -1890,9 +1890,9 @@ namespace Cthangband
             Gui.PlaySound(SoundEffect.Quaff);
             // Drinking a potion costs a whole turn
             SaveGame.Instance.EnergyUse = 100;
-            int itemLevel = item.ItemType.Level;
+            var itemLevel = item.ItemType.Level;
             // Do the actual potion effect
-            bool identified = SaveGame.Instance.CommandEngine.PotionEffect(item.ItemSubCategory);
+            var identified = SaveGame.Instance.CommandEngine.PotionEffect(item.ItemSubCategory);
             // Skeletons are messy drinkers
             if (_player.Race.SpillsPotions && Program.Rng.DieRoll(12) == 1)
             {
@@ -1909,7 +1909,7 @@ namespace Cthangband
             }
             // Most potions give us a bit of food too
             _player.SetFood(_player.Food + item.TypeSpecificValue);
-            bool channeled = false;
+            var channeled = false;
             // If we're a channeler, we might be able to spend vis instead of using it up
             if (_player.Spellcasting.Type == CastingType.Channelling)
             {
@@ -1969,7 +1969,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Make sure the item is actually a scroll
             Inventory.ItemFilterCategory = ItemCategory.Scroll;
             if (!_player.Inventory.ItemMatchesFilter(item))
@@ -1981,9 +1981,9 @@ namespace Cthangband
             Inventory.ItemFilterCategory = 0;
             // Scrolls use a full turn
             SaveGame.Instance.EnergyUse = 100;
-            bool identified = false;
-            int itemLevel = item.ItemType.Level;
-            bool usedUp = true;
+            var identified = false;
+            var itemLevel = item.ItemType.Level;
+            var usedUp = true;
             // Most types of scroll are obvious
             switch (item.ItemSubCategory)
             {
@@ -2390,7 +2390,7 @@ namespace Cthangband
                 item.BecomeFlavourAware();
                 _player.GainExperience((itemLevel + (_player.Level >> 1)) / _player.Level);
             }
-            bool channeled = false;
+            var channeled = false;
             // Channellers can use vis instead of the scroll being used up
             if (_player.Spellcasting.Type == CastingType.Channelling)
             {
@@ -2425,7 +2425,7 @@ namespace Cthangband
         public void DoCmdRefill(int itemIndex)
         {
             // Make sure we actually have a light source to refuel
-            Item lightSource = _player.Inventory[InventorySlot.Lightsource];
+            var lightSource = _player.Inventory[InventorySlot.Lightsource];
             if (lightSource.Category != ItemCategory.Light)
             {
                 Profile.Instance.MsgPrint("You are not wielding a light.");
@@ -2450,12 +2450,12 @@ namespace Cthangband
         public void DoCmdSpike()
         {
             // Get the location to be spiked
-            TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            var targetEngine = new TargetEngine(_player, _level);
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
-                int y = _player.MapY + _level.KeypadDirectionYOffset[dir];
-                int x = _player.MapX + _level.KeypadDirectionXOffset[dir];
-                GridTile tile = _level.Grid[y][x];
+                var y = _player.MapY + _level.KeypadDirectionYOffset[dir];
+                var x = _player.MapX + _level.KeypadDirectionXOffset[dir];
+                var tile = _level.Grid[y][x];
                 // Make sure it can be spiked and we have spikes to do it with
                 if (!tile.FeatureType.IsClosedDoor)
                 {
@@ -2463,7 +2463,7 @@ namespace Cthangband
                 }
                 else
                 {
-                    if (!SaveGame.Instance.CommandEngine.GetSpike(out int itemIndex))
+                    if (!SaveGame.Instance.CommandEngine.GetSpike(out var itemIndex))
                     {
                         Profile.Instance.MsgPrint("You have no spikes!");
                     }
@@ -2488,7 +2488,7 @@ namespace Cthangband
                         // If it's already jammed, strengthen it
                         if (tile.FeatureType.Category == FloorTileTypeCategory.JammedDoor)
                         {
-                            int strength = int.Parse(tile.FeatureType.Name.Substring(10));
+                            var strength = int.Parse(tile.FeatureType.Name.Substring(10));
                             if (strength < 7)
                             {
                                 tile.SetFeature($"JammedDoor{strength + 1}");
@@ -2509,7 +2509,7 @@ namespace Cthangband
         public void DoCmdThrow(int damageMultiplier)
         {
             // Get an item to throw
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Throw which item? ", false, true, true))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Throw which item? ", false, true, true))
             {
                 if (itemIndex == -2)
                 {
@@ -2517,14 +2517,14 @@ namespace Cthangband
                 }
                 return;
             }
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
-            TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (!targetEngine.GetDirectionWithAim(out int dir))
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var targetEngine = new TargetEngine(_player, _level);
+            if (!targetEngine.GetDirectionWithAim(out var dir))
             {
                 return;
             }
             // Copy a single item from the item stack as the thrown item
-            Item missile = new Item(item) { Count = 1 };
+            var missile = new Item(item) { Count = 1 };
             if (itemIndex >= 0)
             {
                 _player.Inventory.InvenItemIncrease(itemIndex, -1);
@@ -2536,38 +2536,38 @@ namespace Cthangband
                 SaveGame.Instance.Level.FloorItemIncrease(0 - itemIndex, -1);
                 SaveGame.Instance.Level.FloorItemOptimize(0 - itemIndex);
             }
-            string missileName = missile.Description(false, 3);
-            Colour missileColour = missile.ItemType.Colour;
-            char missileCharacter = missile.ItemType.Character;
+            var missileName = missile.Description(false, 3);
+            var missileColour = missile.ItemType.Colour;
+            var missileCharacter = missile.ItemType.Character;
             // Thrown distance is based on the weight of the missile
-            int multiplier = 10 + (2 * (damageMultiplier - 1));
-            int divider = missile.Weight > 10 ? missile.Weight : 10;
-            int throwDistance = (_player.AbilityScores[Ability.Strength].StrAttackSpeedComponent + 20) * multiplier / divider;
+            var multiplier = 10 + (2 * (damageMultiplier - 1));
+            var divider = missile.Weight > 10 ? missile.Weight : 10;
+            var throwDistance = (_player.AbilityScores[Ability.Strength].StrAttackSpeedComponent + 20) * multiplier / divider;
             if (throwDistance > 10)
             {
                 throwDistance = 10;
             }
             // Work out the damage done
-            int damage = Program.Rng.DiceRoll(missile.DamageDice, missile.DamageDiceSides) + missile.BonusDamage;
+            var damage = Program.Rng.DiceRoll(missile.DamageDice, missile.DamageDiceSides) + missile.BonusDamage;
             damage *= damageMultiplier;
-            int chance = _player.SkillThrowing + (_player.AttackBonus * Constants.BthPlusAdj);
+            var chance = _player.SkillThrowing + (_player.AttackBonus * Constants.BthPlusAdj);
             // Throwing something always uses a full turn, even if you can make multiple missile attacks
             SaveGame.Instance.EnergyUse = 100;
-            int y = _player.MapY;
-            int x = _player.MapX;
-            int targetX = _player.MapX + (99 * _level.KeypadDirectionXOffset[dir]);
-            int targetY = _player.MapY + (99 * _level.KeypadDirectionYOffset[dir]);
+            var y = _player.MapY;
+            var x = _player.MapX;
+            var targetX = _player.MapX + (99 * _level.KeypadDirectionXOffset[dir]);
+            var targetY = _player.MapY + (99 * _level.KeypadDirectionYOffset[dir]);
             if (dir == 5 && targetEngine.TargetOkay())
             {
                 targetX = SaveGame.Instance.TargetCol;
                 targetY = SaveGame.Instance.TargetRow;
             }
             SaveGame.Instance.HandleStuff();
-            int newY = _player.MapY;
-            int newX = _player.MapX;
-            bool hitBody = false;
+            var newY = _player.MapY;
+            var newX = _player.MapX;
+            var hitBody = false;
             // Send the thrown object in the right direction one square at a time
-            for (int curDis = 0; curDis <= throwDistance;)
+            for (var curDis = 0; curDis <= throwDistance;)
             {
                 // If we reach our limit, stop the object moving
                 if (y == targetY && x == targetX)
@@ -2603,15 +2603,15 @@ namespace Cthangband
                 // is our intended target
                 if (_level.Grid[y][x].MonsterIndex != 0)
                 {
-                    GridTile tile = _level.Grid[y][x];
-                    Monster monster = _level.Monsters[tile.MonsterIndex];
-                    MonsterRace race = monster.Race;
-                    bool visible = monster.IsVisible;
+                    var tile = _level.Grid[y][x];
+                    var monster = _level.Monsters[tile.MonsterIndex];
+                    var race = monster.Race;
+                    var visible = monster.IsVisible;
                     hitBody = true;
                     // See if it actually hit the monster
                     if (SaveGame.Instance.CommandEngine.PlayerCheckRangedHitOnMonster(chance - curDis, race.ArmourClass, monster.IsVisible))
                     {
-                        string noteDies = " dies.";
+                        var noteDies = " dies.";
                         if ((race.Flags3 & MonsterFlag3.Demon) != 0 || (race.Flags3 & MonsterFlag3.Undead) != 0 ||
                             (race.Flags3 & MonsterFlag3.Cthuloid) != 0 || (race.Flags2 & MonsterFlag2.Stupid) != 0 ||
                             "Evg".Contains(race.Character.ToString()))
@@ -2625,7 +2625,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            string mName = monster.MonsterDesc(0);
+                            var mName = monster.MonsterDesc(0);
                             Profile.Instance.MsgPrint($"The {missileName} hits {mName}.");
                             if (monster.IsVisible)
                             {
@@ -2639,7 +2639,7 @@ namespace Cthangband
                         {
                             damage = 0;
                         }
-                        if (_level.Monsters.DamageMonster(tile.MonsterIndex, damage, out bool fear, noteDies))
+                        if (_level.Monsters.DamageMonster(tile.MonsterIndex, damage, out var fear, noteDies))
                         {
                             // The monster is dead, so don't add further statuses or messages
                         }
@@ -2650,14 +2650,14 @@ namespace Cthangband
                             if ((monster.Mind & Constants.SmFriendly) != 0 &&
                                 missile.ItemType.Category != ItemCategory.Potion)
                             {
-                                string mName = monster.MonsterDesc(0);
+                                var mName = monster.MonsterDesc(0);
                                 Profile.Instance.MsgPrint($"{mName} gets angry!");
                                 monster.Mind &= ~Constants.SmFriendly;
                             }
                             if (fear && monster.IsVisible)
                             {
                                 Gui.PlaySound(SoundEffect.MonsterFlees);
-                                string mName = monster.MonsterDesc(0);
+                                var mName = monster.MonsterDesc(0);
                                 Profile.Instance.MsgPrint($"{mName} flees in terror!");
                             }
                         }
@@ -2666,7 +2666,7 @@ namespace Cthangband
                 }
             }
             // There's a chance of breakage if we hit a creature
-            int chanceToBreak = hitBody ? missile.BreakageChance() : 0;
+            var chanceToBreak = hitBody ? missile.BreakageChance() : 0;
             // If we hit with a potion, the potion might affect the creature
             if (missile.ItemType.Category == ItemCategory.Potion)
             {
@@ -2678,7 +2678,7 @@ namespace Cthangband
                         if (_level.Grid[y][x].MonsterIndex != 0 &&
                             (_level.Monsters[_level.Grid[y][x].MonsterIndex].Mind & Constants.SmFriendly) != 0)
                         {
-                            string mName = _level.Monsters[_level.Grid[y][x].MonsterIndex].MonsterDesc(0);
+                            var mName = _level.Monsters[_level.Grid[y][x].MonsterIndex].MonsterDesc(0);
                             Profile.Instance.MsgPrint($"{mName} gets angry!");
                             _level.Monsters[_level.Grid[y][x].MonsterIndex].Mind &= ~Constants.SmFriendly;
                         }
@@ -2710,7 +2710,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Make sure the item is actually a staff
             Inventory.ItemFilterCategory = ItemCategory.Staff;
             if (!_player.Inventory.ItemMatchesFilter(item))
@@ -2728,11 +2728,11 @@ namespace Cthangband
             }
             // Using a staff costs a full turn
             SaveGame.Instance.EnergyUse = 100;
-            bool identified = false;
-            int itemLevel = item.ItemType.Level;
+            var identified = false;
+            var itemLevel = item.ItemType.Level;
             // We have a chance of the device working equal to skill (halved if confused) - item
             // level (capped at 50)
-            int chance = _player.SkillUseDevice;
+            var chance = _player.SkillUseDevice;
             if (_player.TimedConfusion != 0)
             {
                 chance /= 2;
@@ -2758,7 +2758,7 @@ namespace Cthangband
             }
             Gui.PlaySound(SoundEffect.UseStaff);
             int k;
-            bool useCharge = true;
+            var useCharge = true;
             // Do the specific effect for the type of staff
             switch (item.ItemSubCategory)
             {
@@ -3101,7 +3101,7 @@ namespace Cthangband
                 return;
             }
             // Channellers can use vis instead of a charge
-            bool channeled = false;
+            var channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
@@ -3113,7 +3113,7 @@ namespace Cthangband
                 // If the staff was part of a stack, separate it from the rest
                 if (itemIndex >= 0 && item.Count > 1)
                 {
-                    Item singleStaff = new Item(item) { Count = 1 };
+                    var singleStaff = new Item(item) { Count = 1 };
                     item.TypeSpecificValue++;
                     item.Count--;
                     _player.WeightCarried -= singleStaff.Weight;
@@ -3151,7 +3151,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Make sure the item is actually a rod
             Inventory.ItemFilterCategory = ItemCategory.Rod;
             if (!_player.Inventory.ItemMatchesFilter(item))
@@ -3168,11 +3168,11 @@ namespace Cthangband
                 return;
             }
             // We may need to aim the rod
-            int dir = 5;
+            var dir = 5;
             if ((item.ItemSubCategory >= RodType.MinimumAimed && item.ItemSubCategory != RodType.Havoc) ||
                 !item.IsFlavourAware())
             {
-                TargetEngine targetEngine = new TargetEngine(_player, _level);
+                var targetEngine = new TargetEngine(_player, _level);
                 if (!targetEngine.GetDirectionWithAim(out dir))
                 {
                     return;
@@ -3180,10 +3180,10 @@ namespace Cthangband
             }
             // Using a rod takes a whole turn
             SaveGame.Instance.EnergyUse = 100;
-            bool identified = false;
-            int itemLevel = item.ItemType.Level;
+            var identified = false;
+            var itemLevel = item.ItemType.Level;
             // Chance to successfully use it is skill (halved if confused) - rod level (capped at 50)
-            int chance = _player.SkillUseDevice;
+            var chance = _player.SkillUseDevice;
             if (_player.TimedConfusion != 0)
             {
                 chance /= 2;
@@ -3208,7 +3208,7 @@ namespace Cthangband
             }
             Gui.PlaySound(SoundEffect.ZapRod);
             // Do the rod-specific effect
-            bool useCharge = true;
+            var useCharge = true;
             switch (item.ItemSubCategory)
             {
                 case RodType.DetectTrap:
@@ -3520,7 +3520,7 @@ namespace Cthangband
                 return;
             }
             // Channellers can spend vis instead of a charge
-            bool channeled = false;
+            var channeled = false;
             if (_player.Spellcasting.Type == CastingType.Channelling)
             {
                 channeled = SaveGame.Instance.CommandEngine.DoCmdChannel(item);
@@ -3534,7 +3534,7 @@ namespace Cthangband
                 // If the rod was part of a stack, remove it
                 if (itemIndex >= 0 && item.Count > 1)
                 {
-                    Item singleRod = new Item(item) { Count = 1 };
+                    var singleRod = new Item(item) { Count = 1 };
                     item.TypeSpecificValue = 0;
                     item.Count--;
                     _player.WeightCarried -= singleRod.Weight;
@@ -3563,7 +3563,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item fuelSource = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var fuelSource = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Make sure our item is suitable fuel
             SaveGame.Instance.ItemFilter = SaveGame.Instance.CommandEngine.ItemFilterLanternFuel;
             if (!_player.Inventory.ItemMatchesFilter(fuelSource))
@@ -3575,7 +3575,7 @@ namespace Cthangband
             SaveGame.Instance.ItemFilter = null;
             // Refilling takes half a turn
             SaveGame.Instance.EnergyUse = 50;
-            Item lamp = _player.Inventory[InventorySlot.Lightsource];
+            var lamp = _player.Inventory[InventorySlot.Lightsource];
             // Add the fuel
             lamp.TypeSpecificValue += fuelSource.TypeSpecificValue;
             Profile.Instance.MsgPrint("You fuel your lamp.");
@@ -3620,7 +3620,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item fuelSource = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
+            var fuelSource = itemIndex >= 0 ? _player.Inventory[itemIndex] : _level.Items[0 - itemIndex];
             // Check that our fuel is suitable
             SaveGame.Instance.ItemFilter = SaveGame.Instance.CommandEngine.ItemFilterTorchFuel;
             if (!_player.Inventory.ItemMatchesFilter(fuelSource))
@@ -3632,7 +3632,7 @@ namespace Cthangband
             SaveGame.Instance.ItemFilter = null;
             // Refueling takes half a turn
             SaveGame.Instance.EnergyUse = 50;
-            Item torch = _player.Inventory[InventorySlot.Lightsource];
+            var torch = _player.Inventory[InventorySlot.Lightsource];
             // Add the fuel
             torch.TypeSpecificValue += fuelSource.TypeSpecificValue + 5;
             Profile.Instance.MsgPrint("You combine the torches.");

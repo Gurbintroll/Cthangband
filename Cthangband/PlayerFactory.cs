@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -51,14 +51,14 @@ namespace Cthangband
             var keys = PlayerRaces.Instance.Keys.ToList();
             keys.Sort();
             _raceMenu = new MenuItem[keys.Count];
-            for (int i = 0; i < keys.Count; i++)
+            for (var i = 0; i < keys.Count; i++)
             {
                 _raceMenu[i] = new MenuItem(keys[i], i);
             }
             keys = PlayerClasses.Instance.Keys.ToList();
             keys.Sort();
             _classMenu = new MenuItem[keys.Count];
-            for (int i = 0; i < keys.Count; i++)
+            for (var i = 0; i < keys.Count; i++)
             {
                 _classMenu[i] = new MenuItem(keys[i], i);
             }
@@ -78,22 +78,22 @@ namespace Cthangband
 
         private void DisplayAPlusB(int x, int y, int initial, int bonus)
         {
-            string buf = $"{initial:00}% + {bonus / 10}.{bonus % 10}%/lv";
+            var buf = $"{initial:00}% + {bonus / 10}.{bonus % 10}%/lv";
             Gui.Print(Colour.Black, buf, y, x);
         }
 
         private void DisplayClassInfo(string pclass)
         {
-            IPlayerClass playerClass = PlayerClasses.Instance[pclass];
+            var playerClass = PlayerClasses.Instance[pclass];
             Gui.Print(Colour.Purple, "STR:", 36, 21);
             Gui.Print(Colour.Purple, "INT:", 37, 21);
             Gui.Print(Colour.Purple, "WIS:", 38, 21);
             Gui.Print(Colour.Purple, "DEX:", 39, 21);
             Gui.Print(Colour.Purple, "CON:", 40, 21);
             Gui.Print(Colour.Purple, "CHA:", 41, 21);
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
-                int bonus = playerClass.AbilityBonus[i];
+                var bonus = playerClass.AbilityBonus[i];
                 DisplayStatBonus(26, 36 + i, bonus);
             }
             Gui.Print(Colour.Purple, "Disarming   :", 36, 53);
@@ -113,7 +113,7 @@ namespace Cthangband
             DisplayAPlusB(67, 39, playerClass.BaseStealthBonus * 4, playerClass.StealthBonusPerLevel * 4);
             DisplayAPlusB(67, 40, playerClass.BaseMeleeAttackBonus, playerClass.MeleeAttackBonusPerLevel);
             DisplayAPlusB(67, 41, playerClass.BaseRangedAttackBonus, playerClass.RangedAttackBonusPerLevel);
-            string buf = "+" + playerClass.ExperienceFactor + "%";
+            var buf = "+" + playerClass.ExperienceFactor + "%";
             Gui.Print(Colour.Black, buf, 36, 45);
             buf = "1d" + playerClass.HitDieBonus;
             Gui.Print(Colour.Black, buf, 37, 45);
@@ -186,7 +186,7 @@ namespace Cthangband
                 str = _player.PlayerClass.Title;
             }
             Gui.Print(Colour.Brown, str, 5, 15);
-            string buf = string.Empty;
+            var buf = string.Empty;
             if (stage == 0)
             {
                 if (_prevRealm1 != Realm.None)
@@ -308,16 +308,16 @@ namespace Cthangband
 
         private void DisplayRaceInfo(string race)
         {
-            IPlayerRace playerRace = PlayerRaces.Instance[race];
+            var playerRace = PlayerRaces.Instance[race];
             Gui.Print(Colour.Purple, "STR:", 36, 21);
             Gui.Print(Colour.Purple, "INT:", 37, 21);
             Gui.Print(Colour.Purple, "WIS:", 38, 21);
             Gui.Print(Colour.Purple, "DEX:", 39, 21);
             Gui.Print(Colour.Purple, "CON:", 40, 21);
             Gui.Print(Colour.Purple, "CHA:", 41, 21);
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
-                int bonus = playerRace.AbilityBonus[i] + _player.PlayerClass.AbilityBonus[i];
+                var bonus = playerRace.AbilityBonus[i] + _player.PlayerClass.AbilityBonus[i];
                 DisplayStatBonus(26, 36 + i, bonus);
             }
             Gui.Print(Colour.Purple, "Disarming   :", 36, 53);
@@ -343,7 +343,7 @@ namespace Cthangband
                 _player.PlayerClass.MeleeAttackBonusPerLevel);
             DisplayAPlusB(67, 41, _player.PlayerClass.BaseRangedAttackBonus + playerRace.BaseRangedAttackBonus,
                 _player.PlayerClass.RangedAttackBonusPerLevel);
-            string buf = playerRace.ExperienceFactor + _player.PlayerClass.ExperienceFactor + "%";
+            var buf = playerRace.ExperienceFactor + _player.PlayerClass.ExperienceFactor + "%";
             Gui.Print(Colour.Black, buf, 36, 45);
             buf = "1d" + (playerRace.HitDieBonus + _player.PlayerClass.HitDieBonus);
             Gui.Print(Colour.Black, buf, 37, 45);
@@ -483,7 +483,7 @@ namespace Cthangband
             _player.HitDie = _player.Race.HitDieBonus + _player.PlayerClass.HitDieBonus;
             _player.MaxHealth = _player.HitDie;
             _player.PlayerHp[0] = _player.HitDie;
-            int lastroll = _player.HitDie;
+            var lastroll = _player.HitDie;
             for (i = 1; i < Constants.PyMaxLevel; i++)
             {
                 _player.PlayerHp[i] = lastroll;
@@ -495,7 +495,7 @@ namespace Cthangband
             }
             for (i = 1; i < Constants.PyMaxLevel; i++)
             {
-                int j = Program.Rng.DieRoll(Constants.PyMaxLevel - 1);
+                var j = Program.Rng.DieRoll(Constants.PyMaxLevel - 1);
                 lastroll = _player.PlayerHp[i];
                 _player.PlayerHp[i] = _player.PlayerHp[j];
                 _player.PlayerHp[j] = lastroll;
@@ -508,8 +508,8 @@ namespace Cthangband
 
         private void GetMoney()
         {
-            int gold = (_player.SocialClass * 6) + Program.Rng.DieRoll(100) + 300;
-            for (int i = 0; i < 6; i++)
+            var gold = (_player.SocialClass * 6) + Program.Rng.DieRoll(100) + 300;
+            for (var i = 0; i < 6; i++)
             {
                 if (_player.AbilityScores[i].Adjusted >= 18 + 50)
                 {
@@ -579,7 +579,7 @@ namespace Cthangband
 
         private void GetRealmsRandomly()
         {
-            IPlayerClass pclas = _player.PlayerClass;
+            var pclas = _player.PlayerClass;
             _player.Realm1 = Realm.None;
             _player.Realm2 = Realm.None;
             _player.Realm1 = pclas.ChooseRealmRandomly(pclas.FirstRealmChoice, _player);
@@ -624,14 +624,14 @@ namespace Cthangband
             int i, j;
             while (true)
             {
-                List<int> dice = new List<int>() { 17, 16, 14, 12, 11, 10 };
+                var dice = new List<int>() { 17, 16, 14, 12, 11, 10 };
                 for (i = 0; i < 6; i++)
                 {
-                    int index = Program.Rng.DieRoll(dice.Count) - 1;
+                    var index = Program.Rng.DieRoll(dice.Count) - 1;
                     j = dice[index];
                     dice.RemoveAt(index);
                     _player.AbilityScores[i].InnateMax = j;
-                    int bonus = _player.Race.AbilityBonus[i] + _player.PlayerClass.AbilityBonus[i];
+                    var bonus = _player.Race.AbilityBonus[i] + _player.PlayerClass.AbilityBonus[i];
                     _player.AbilityScores[i].Innate = _player.AbilityScores[i].InnateMax;
                     _player.AbilityScores[i].Adjusted = _player.AbilityScores[i]
                         .ModifyStatValue(_player.AbilityScores[i].InnateMax, bonus);
@@ -647,12 +647,12 @@ namespace Cthangband
         {
             Gui.Clear(30);
             Gui.Print(Colour.Orange, "=>", 35, 0);
-            for (int i = 0; i < _menuLength; i++)
+            for (var i = 0; i < _menuLength; i++)
             {
-                int row = 35 + i - current;
+                var row = 35 + i - current;
                 if (row >= 30 && row <= 40)
                 {
-                    Colour a = Colour.Purple;
+                    var a = Colour.Purple;
                     if (i == current)
                     {
                         a = Colour.Pink;
@@ -703,9 +703,9 @@ namespace Cthangband
         private bool PlayerBirthAux()
         {
             int i;
-            int stage = 0;
-            int[] menu = new int[9];
-            bool[] autoChose = new bool[8];
+            var stage = 0;
+            var menu = new int[9];
+            var autoChose = new bool[8];
             for (i = 0; i < 8; i++)
             {
                 menu[i] = 0;
@@ -713,7 +713,7 @@ namespace Cthangband
             menu[BirthStage.ClassSelection] = 14;
             menu[BirthStage.RaceSelection] = 16;
             Gui.Clear();
-            int viewMode = 1;
+            var viewMode = 1;
             while (true)
             {
                 char c;
@@ -883,7 +883,7 @@ namespace Cthangband
                             autoChose[stage] = true;
                             do
                             {
-                                string k = PlayerRaces.Instance.RandomRaceName();
+                                var k = PlayerRaces.Instance.RandomRaceName();
                                 _player.CurrentRace = k;
                                 _player.Race = PlayerRaces.Instance[_player.CurrentRace];
                                 _player.GetFirstLevelMutation = _player.Race.Mutates;
@@ -1287,7 +1287,7 @@ namespace Cthangband
                         _player.Health = _player.MaxHealth;
                         _player.Vis = _player.MaxVis;
                         _player.Energy = 150;
-                        CharacterViewer characterViewer = new CharacterViewer(_player);
+                        var characterViewer = new CharacterViewer(_player);
                         while (true)
                         {
                             characterViewer.DisplayPlayer();
@@ -1340,7 +1340,7 @@ namespace Cthangband
 
         private void PlayerOutfit()
         {
-            Item item = new Item();
+            var item = new Item();
             if (_player.Race.DoesntEat)
             {
                 item.AssignItemType(
@@ -1379,16 +1379,16 @@ namespace Cthangband
                 item.BecomeFlavourAware();
                 item.BecomeKnown();
                 _player.Inventory.InvenCarry(item, false);
-                Item carried = new Item(item) { Count = 1 };
+                var carried = new Item(item) { Count = 1 };
                 _player.Inventory[InventorySlot.Lightsource] = carried;
                 _player.WeightCarried += carried.Weight;
             }
-            ItemIdentifier[] identifiers = _player.PlayerClass.StartingItems;
-            for (int i = 0; i < 3; i++)
+            var identifiers = _player.PlayerClass.StartingItems;
+            for (var i = 0; i < 3; i++)
             {
-                ItemIdentifier identifier = identifiers[i];
-                ItemCategory tv = identifier.Category;
-                int sv = identifier.SubCategory;
+                var identifier = identifiers[i];
+                var tv = identifier.Category;
+                var sv = identifier.SubCategory;
                 if (tv == ItemCategory.SorceryBook)
                 {
                     tv = _player.Realm1.ToSpellBookItemCategory();
@@ -1410,7 +1410,7 @@ namespace Cthangband
                 item.IdentifyFlags.Set(Constants.IdentStoreb);
                 item.BecomeFlavourAware();
                 item.BecomeKnown();
-                int slot = _player.Inventory.WieldSlot(item);
+                var slot = _player.Inventory.WieldSlot(item);
                 if (slot == -1)
                 {
                     _player.Inventory.InvenCarry(item, false);

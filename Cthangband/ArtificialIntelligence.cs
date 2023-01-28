@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -35,11 +35,11 @@ namespace Cthangband
         public void ProcessAllMonsters()
         {
             // The noise the player is making is based on their stealth score
-            uint noise = 1u << (30 - _player.SkillStealth);
+            var noise = 1u << (30 - _player.SkillStealth);
             // Go through all the monster slots on the level
-            for (int i = _level.MMax - 1; i >= 1; i--)
+            for (var i = _level.MMax - 1; i >= 1; i--)
             {
-                Monster monster = _level.Monsters[i];
+                var monster = _level.Monsters[i];
                 // If the monster slot is empty, skip it
                 if (monster.Race == null)
                 {
@@ -70,10 +70,10 @@ namespace Cthangband
                 {
                     continue;
                 }
-                MonsterRace race = monster.Race;
-                int monsterX = monster.MapX;
-                int monsterY = monster.MapY;
-                bool test = false;
+                var race = monster.Race;
+                var monsterX = monster.MapX;
+                var monsterY = monster.MapY;
+                var test = false;
                 // Check to see if the monster notices the player
                 // 1) We're in range
                 if (monster.DistanceFromPlayer <= race.NoticeRange)
@@ -117,41 +117,41 @@ namespace Cthangband
         /// <returns> True if the attack happened, false if not </returns>
         private bool AttackAnotherMonster(int monsterIndex, int targetIndex)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            Monster target = _level.Monsters[targetIndex];
-            MonsterRace race = monster.Race;
-            MonsterRace targetRace = target.Race;
-            bool touched = false;
-            int ySaver = target.MapY;
-            int xSaver = target.MapX;
+            var monster = _level.Monsters[monsterIndex];
+            var target = _level.Monsters[targetIndex];
+            var race = monster.Race;
+            var targetRace = target.Race;
+            var touched = false;
+            var ySaver = target.MapY;
+            var xSaver = target.MapX;
             // If we never attack then we shouldn't this time
             if ((race.Flags1 & MonsterFlag1.NeverAttack) != 0)
             {
                 return false;
             }
-            int armourClass = targetRace.ArmourClass;
-            int monsterLevel = race.Level >= 1 ? race.Level : 1;
-            string monsterName = monster.MonsterDesc(0);
-            string targetName = target.MonsterDesc(0);
+            var armourClass = targetRace.ArmourClass;
+            var monsterLevel = race.Level >= 1 ? race.Level : 1;
+            var monsterName = monster.MonsterDesc(0);
+            var targetName = target.MonsterDesc(0);
             monster.MonsterDesc(0x88);
-            bool blinked = false;
+            var blinked = false;
             // If the player can't see either monster, they just hear noise
             if (!(monster.IsVisible || target.IsVisible))
             {
                 Profile.Instance.MsgPrint("You hear noise.");
             }
             // We have up to four attacks
-            for (int attackNumber = 0; attackNumber < 4; attackNumber++)
+            for (var attackNumber = 0; attackNumber < 4; attackNumber++)
             {
-                bool visible = false;
-                bool obvious = false;
-                int power = 0;
-                int damage = 0;
+                var visible = false;
+                var obvious = false;
+                var power = 0;
+                var damage = 0;
                 string act = null;
-                AttackEffect effect = race.Attack[attackNumber].Effect;
-                AttackType method = race.Attack[attackNumber].Method;
-                int dDice = race.Attack[attackNumber].DDice;
-                int dSide = race.Attack[attackNumber].DSide;
+                var effect = race.Attack[attackNumber].Effect;
+                var method = race.Attack[attackNumber].Method;
+                var dDice = race.Attack[attackNumber].DDice;
+                var dSide = race.Attack[attackNumber].DSide;
                 // Can't attack ourselves
                 if (target == monster)
                 {
@@ -414,7 +414,7 @@ namespace Cthangband
                     // Display the attack description
                     if (!string.IsNullOrEmpty(act))
                     {
-                        string temp = string.Format(act, targetName);
+                        var temp = string.Format(act, targetName);
                         if (monster.IsVisible || target.IsVisible)
                         {
                             Profile.Instance.MsgPrint($"{monsterName} {temp}");
@@ -620,12 +620,12 @@ namespace Cthangband
         /// <param name="coord"> The location we're moving to </param>
         private void AvoidPlayersScent(int monsterIndex, MapCoordinate coord)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
-            int monsterY = monster.MapY;
-            int monsterX = monster.MapX;
-            int dY = monsterY - coord.Y;
-            int dX = monsterX - coord.X;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
+            var monsterY = monster.MapY;
+            var monsterX = monster.MapX;
+            var dY = monsterY - coord.Y;
+            var dX = monsterX - coord.X;
             // If the scent too strong, keep going where we were going
             if (_level.Grid[monsterY][monsterX].ScentAge < _level.Grid[_player.MapY][_player.MapX].ScentAge)
             {
@@ -639,15 +639,15 @@ namespace Cthangband
             {
                 return;
             }
-            int gy = 0;
-            int gx = 0;
-            int when = 0;
-            int score = -1;
+            var gy = 0;
+            var gx = 0;
+            var when = 0;
+            var score = -1;
             // Check each of the eight directions
-            for (int i = 7; i >= 0; i--)
+            for (var i = 7; i >= 0; i--)
             {
-                int y = monsterY + _level.OrderedDirectionYOffset[i];
-                int x = monsterX + _level.OrderedDirectionXOffset[i];
+                var y = monsterY + _level.OrderedDirectionYOffset[i];
+                var x = monsterX + _level.OrderedDirectionXOffset[i];
                 // If we have no scent there, or the scent is too recent, ignore it
                 if (_level.Grid[y][x].ScentAge == 0)
                 {
@@ -658,8 +658,8 @@ namespace Cthangband
                     continue;
                 }
                 // If the scent is weaker than in the other directions, go that way
-                int dis = _level.Distance(y, x, dY, dX);
-                int s = (5000 / (dis + 3)) - (500 / (_level.Grid[y][x].ScentStrength + 1));
+                var dis = _level.Distance(y, x, dY, dX);
+                var s = (5000 / (dis + 3)) - (500 / (_level.Grid[y][x].ScentStrength + 1));
                 if (s < 0)
                 {
                     s = 0;
@@ -695,8 +695,8 @@ namespace Cthangband
         private void BreatheAtMonster(int monsterIndex, int targetY, int targetX, IProjection projectile, int damage, int radius)
         {
             const ProjectionFlag projectionFlags = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectKill;
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             // Radius 0 means use the default radius
             if (radius < 1)
             {
@@ -719,8 +719,8 @@ namespace Cthangband
         private void BreatheAtPlayer(int monsterIndex, IProjection projectile, int damage, int radius)
         {
             const ProjectionFlag projectionFlags = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectKill;
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             // Radius 0 means use the default radius
             if (radius < 1)
             {
@@ -741,13 +741,13 @@ namespace Cthangband
         private bool CheckHitMonsterVersusMonster(int power, int level, int armourClass)
         {
             // Base 5% chance to hit and 5% chance to miss
-            int k = Program.Rng.RandomLessThan(100);
+            var k = Program.Rng.RandomLessThan(100);
             if (k < 10)
             {
                 return k < 5;
             }
             // If we didn't auto hit or miss, use the standard formula for attacking
-            int i = power + (level * 3);
+            var i = power + (level * 3);
             return i > 0 && Program.Rng.DieRoll(i) > armourClass * 3 / 4;
         }
 
@@ -762,29 +762,29 @@ namespace Cthangband
         /// <returns> The 'magic number' of the spell the monster will cast </returns>
         private int ChooseSpellAgainstPlayer(int monsterIndex, int[] spells, int listSize)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             // If the monster is stupid, cast a random spell
             if ((race.Flags2 & MonsterFlag2.Stupid) != 0)
             {
                 return spells[Program.Rng.RandomLessThan(listSize)];
             }
             // Deposit the spells into a number of buckets based on what they are used for
-            int[] escape = new int[96];
-            int escapeNum = 0;
-            int[] attack = new int[96];
-            int attackNum = 0;
-            int[] summon = new int[96];
-            int summonNum = 0;
-            int[] tactic = new int[96];
-            int tacticNum = 0;
-            int[] annoy = new int[96];
-            int annoyNum = 0;
-            int[] haste = new int[96];
-            int hasteNum = 0;
-            int[] heal = new int[96];
-            int healNum = 0;
-            for (int i = 0; i < listSize; i++)
+            var escape = new int[96];
+            var escapeNum = 0;
+            var attack = new int[96];
+            var attackNum = 0;
+            var summon = new int[96];
+            var summonNum = 0;
+            var tactic = new int[96];
+            var tacticNum = 0;
+            var annoy = new int[96];
+            var annoyNum = 0;
+            var haste = new int[96];
+            var hasteNum = 0;
+            var heal = new int[96];
+            var healNum = 0;
+            for (var i = 0; i < listSize; i++)
             {
                 if (SpellIsForEscape(spells[i]))
                 {
@@ -889,10 +889,10 @@ namespace Cthangband
         /// <returns> </returns>
         private bool CleanShot(int startY, int startX, int targetY, int targetX)
         {
-            int y = startY;
-            int x = startX;
+            var y = startY;
+            var x = startX;
             // Loop from the start to the maximumm range allowed
-            for (int distance = 0; distance <= Constants.MaxRange; distance++)
+            for (var distance = 0; distance <= Constants.MaxRange; distance++)
             {
                 // If our location is blocked, give up
                 if (distance != 0 && !_level.GridPassable(y, x))
@@ -929,15 +929,15 @@ namespace Cthangband
         /// <returns> True if a hiding spot was found, or false if it wasn't </returns>
         private bool FindAmbushSpot(int monsterIndex, MapCoordinate relativeTarget)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            int fy = monster.MapY;
-            int fx = monster.MapX;
-            int hidingSpotY = 0;
-            int hidingSpotX = 0;
-            int shortestDistance = 999;
-            int tooCloseToPlayer = (_level.Distance(_player.MapY, _player.MapX, fy, fx) * 3 / 4) + 2;
+            var monster = _level.Monsters[monsterIndex];
+            var fy = monster.MapY;
+            var fx = monster.MapX;
+            var hidingSpotY = 0;
+            var hidingSpotX = 0;
+            var shortestDistance = 999;
+            var tooCloseToPlayer = (_level.Distance(_player.MapY, _player.MapX, fy, fx) * 3 / 4) + 2;
             // Start with a short search radius and slowly increase
-            for (int d = 1; d < 10; d++)
+            for (var d = 1; d < 10; d++)
             {
                 int y;
                 for (y = fy - d; y <= fy + d; y++)
@@ -964,7 +964,7 @@ namespace Cthangband
                         {
                             // If the spot is closer to the player than any previously found spot
                             // (but not too close), remember it
-                            int dis = _level.Distance(y, x, _player.MapY, _player.MapX);
+                            var dis = _level.Distance(y, x, _player.MapY, _player.MapX);
                             if (dis < shortestDistance && dis >= tooCloseToPlayer)
                             {
                                 hidingSpotY = y;
@@ -996,14 +996,14 @@ namespace Cthangband
         /// <returns> True if a safe spot was found, or false if it wasn't </returns>
         private bool FindSafeSpot(int monsterIndex, MapCoordinate relativeTarget)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            int fy = monster.MapY;
-            int fx = monster.MapX;
-            int safeSpotY = 0;
-            int safeSpotX = 0;
-            int longestDistance = 0;
+            var monster = _level.Monsters[monsterIndex];
+            var fy = monster.MapY;
+            var fx = monster.MapX;
+            var safeSpotY = 0;
+            var safeSpotX = 0;
+            var longestDistance = 0;
             // Start with a short search radius and slowly increase
-            for (int d = 1; d < 10; d++)
+            for (var d = 1; d < 10; d++)
             {
                 int y;
                 for (y = fy - d; y <= fy + d; y++)
@@ -1039,7 +1039,7 @@ namespace Cthangband
                         {
                             // If the spot is further from the player than any previously found
                             // spot, remember it
-                            int dis = _level.Distance(y, x, _player.MapY, _player.MapX);
+                            var dis = _level.Distance(y, x, _player.MapY, _player.MapX);
                             if (dis > longestDistance)
                             {
                                 safeSpotY = y;
@@ -1071,8 +1071,8 @@ namespace Cthangband
         private void FireBallAtPlayer(int monsterIndex, IProjection projectile, int damage, int radius)
         {
             const ProjectionFlag projectionFlag = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectKill;
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             if (radius < 1)
             {
                 radius = (race.Flags2 & MonsterFlag2.Powerful) != 0 ? 3 : 2;
@@ -1129,17 +1129,17 @@ namespace Cthangband
                 new[] {4, -4}, new[] {4, 4}, new[] {-4, 4}
             };
             // Go through the possible places an enemy could be
-            for (int i = 0; i < 80; i++)
+            for (var i = 0; i < 80; i++)
             {
                 // Get the location of the place (these are ordered so they start close and spiral out)
-                int y = monster.MapY + spiralGridOffsets[i][0];
-                int x = monster.MapX + spiralGridOffsets[i][1];
+                var y = monster.MapY + spiralGridOffsets[i][0];
+                var x = monster.MapX + spiralGridOffsets[i][1];
                 // Check if we're in bounds and have a monster
                 if (_level.InBounds(y, x))
                 {
                     if (_level.Grid[y][x].MonsterIndex != 0)
                     {
-                        Monster enemy = _level.Monsters[_level.Grid[y][x].MonsterIndex];
+                        var enemy = _level.Monsters[_level.Grid[y][x].MonsterIndex];
                         // Only go for monsters who are awake and on the opposing side
                         if ((enemy.Mind & Constants.SmFriendly) != (monster.Mind & Constants.SmFriendly) &&
                             enemy.SleepLevel == 0)
@@ -1213,16 +1213,16 @@ namespace Cthangband
         /// <returns> True if we have potential moves or false if we don't </returns>
         private bool GetMovesTowardsPlayer(int monsterIndex, PotentialMovesList movesList)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
-            int moveVal = 0;
-            bool done = false;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
+            var moveVal = 0;
+            var done = false;
             // Default to moving towards the player's exact location
-            MapCoordinate targetLocation = new MapCoordinate(_player.MapX, _player.MapY);
+            var targetLocation = new MapCoordinate(_player.MapX, _player.MapY);
             // Adjust our target based on the player's scent if we can't move in a straight line to them
             TrackPlayerByScent(monsterIndex, targetLocation);
             // Get the relative move needed to reach our target location
-            MapCoordinate desiredRelativeMovement = new MapCoordinate();
+            var desiredRelativeMovement = new MapCoordinate();
             desiredRelativeMovement.Y = monster.MapY - targetLocation.Y;
             desiredRelativeMovement.X = monster.MapX - targetLocation.X;
             if ((monster.Mind & Constants.SmFriendly) == 0)
@@ -1231,9 +1231,9 @@ namespace Cthangband
                 if ((race.Flags1 & MonsterFlag1.Friends) != 0 && (race.Flags3 & MonsterFlag3.Animal) != 0 &&
                     (race.Flags2 & MonsterFlag2.PassWall) == 0 && (race.Flags2 & MonsterFlag2.KillWall) == 0)
                 {
-                    int room = 0;
+                    var room = 0;
                     // Check if the player is in a room by counting the room tiles around them
-                    for (int i = 0; i < 8; i++)
+                    for (var i = 0; i < 8; i++)
                     {
                         if (_level.Grid[_player.MapY + _level.OrderedDirectionYOffset[i]][_player.MapX + _level.OrderedDirectionXOffset[i]].TileFlags
                             .IsSet(GridTile.InRoom))
@@ -1255,7 +1255,7 @@ namespace Cthangband
                 // index so we spread out and don't block each other
                 if (!done && (race.Flags1 & MonsterFlag1.Friends) != 0)
                 {
-                    for (int i = 0; i < 8; i++)
+                    for (var i = 0; i < 8; i++)
                     {
                         targetLocation.Y = _player.MapY + _level.OrderedDirectionYOffset[(monsterIndex + i) & 7];
                         targetLocation.X = _player.MapX + _level.OrderedDirectionXOffset[(monsterIndex + i) & 7];
@@ -1315,8 +1315,8 @@ namespace Cthangband
                 return false;
             }
             // Convert the target location to an actual direction
-            int ax = Math.Abs(desiredRelativeMovement.X);
-            int ay = Math.Abs(desiredRelativeMovement.Y);
+            var ax = Math.Abs(desiredRelativeMovement.X);
+            var ay = Math.Abs(desiredRelativeMovement.Y);
             if (desiredRelativeMovement.Y < 0)
             {
                 moveVal += 8;
@@ -1497,8 +1497,8 @@ namespace Cthangband
         /// <returns> True if the monster should run away, false if not </returns>
         private bool MonsterShouldRetreat(int monsterIndex)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             // Don't move away if we're already too far away to see the player
             if (monster.DistanceFromPlayer > Constants.MaxSight + 5)
             {
@@ -1519,8 +1519,8 @@ namespace Cthangband
             {
                 return false;
             }
-            int playerLevel = _player.Level;
-            int monsterLevel = race.Level + (monsterIndex & 0x08) + 25;
+            var playerLevel = _player.Level;
+            var monsterLevel = race.Level + (monsterIndex & 0x08) + 25;
             // If we're tougher than the player, don't move away
             if (monsterLevel > playerLevel + 4)
             {
@@ -1532,12 +1532,12 @@ namespace Cthangband
                 return true;
             }
             // If we're significantly less healthy than the player, move away
-            int playerHealth = _player.Health;
-            int playerMaxHealth = _player.MaxHealth;
-            int monsterHealth = monster.Health;
-            int monsterMaxHealth = monster.MaxHealth;
-            int playerHealthFactor = (playerLevel * playerMaxHealth) + (playerHealth << 2);
-            int monsterHealthFactor = (monsterLevel * monsterMaxHealth) + (monsterHealth << 2);
+            var playerHealth = _player.Health;
+            var playerMaxHealth = _player.MaxHealth;
+            var monsterHealth = monster.Health;
+            var monsterMaxHealth = monster.MaxHealth;
+            var playerHealthFactor = (playerLevel * playerMaxHealth) + (playerHealth << 2);
+            var monsterHealthFactor = (monsterLevel * monsterMaxHealth) + (monsterHealth << 2);
             return playerHealthFactor * monsterMaxHealth > monsterHealthFactor * playerMaxHealth;
         }
 
@@ -1548,8 +1548,8 @@ namespace Cthangband
         /// <param name="noise"> The amount of noise the player is making </param>
         private void ProcessMonster(int monsterIndex, uint noise)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             // Is the monster asleep?
             if (monster.SleepLevel != 0)
             {
@@ -1562,7 +1562,7 @@ namespace Cthangband
                 // If the player makes too much noise (or aggravates)
                 if (notice * notice * notice <= noise)
                 {
-                    int wakeAmount = 1;
+                    var wakeAmount = 1;
                     if (monster.DistanceFromPlayer < 50)
                     {
                         wakeAmount = 100 / monster.DistanceFromPlayer;
@@ -1589,7 +1589,7 @@ namespace Cthangband
                         // If the player sees us wake up, let them know
                         if (monster.IsVisible)
                         {
-                            string monsterName = monster.MonsterDesc(0);
+                            var monsterName = monster.MonsterDesc(0);
                             Profile.Instance.MsgPrint($"{monsterName} wakes up.");
                             // And let the player notice how easily we wake
                             if (race.Knowledge.RWake < Constants.MaxUchar)
@@ -1608,7 +1608,7 @@ namespace Cthangband
             // If we're stunned, then reduce our stun level
             if (monster.StunLevel != 0)
             {
-                int stunRelief = 1;
+                var stunRelief = 1;
                 // We have a level-based chance of shaking off the stun completely
                 if (Program.Rng.RandomLessThan(5000) <= race.Level * race.Level)
                 {
@@ -1626,7 +1626,7 @@ namespace Cthangband
                     // If the player sees us, let them know we're no longer stunned
                     if (monster.IsVisible)
                     {
-                        string monsterName = monster.MonsterDesc(0);
+                        var monsterName = monster.MonsterDesc(0);
                         Profile.Instance.MsgPrint($"{monsterName} is no longer stunned.");
                     }
                 }
@@ -1640,7 +1640,7 @@ namespace Cthangband
             if (monster.ConfusionLevel != 0)
             {
                 // Reduce our confusion by an amount based on our level
-                int confusionRelief = Program.Rng.DieRoll((race.Level / 10) + 1);
+                var confusionRelief = Program.Rng.DieRoll((race.Level / 10) + 1);
                 if (monster.ConfusionLevel > confusionRelief)
                 {
                     monster.ConfusionLevel -= confusionRelief;
@@ -1651,13 +1651,13 @@ namespace Cthangband
                     monster.ConfusionLevel = 0;
                     if (monster.IsVisible)
                     {
-                        string monsterName = monster.MonsterDesc(0);
+                        var monsterName = monster.MonsterDesc(0);
                         Profile.Instance.MsgPrint($"{monsterName} is no longer confused.");
                     }
                 }
             }
             // If we're curently friendly and the player aggravates, then stop being friendly
-            bool getsAngry = false;
+            var getsAngry = false;
             if ((monster.Mind & Constants.SmFriendly) != 0 && _player.HasAggravation)
             {
                 getsAngry = true;
@@ -1670,7 +1670,7 @@ namespace Cthangband
             // If we got angry, let the player see that
             if (getsAngry)
             {
-                string monsterName = monster.MonsterDesc(0);
+                var monsterName = monster.MonsterDesc(0);
                 Profile.Instance.MsgPrint($"{monsterName} suddenly becomes hostile!");
                 monster.Mind &= ~Constants.SmFriendly;
             }
@@ -1678,7 +1678,7 @@ namespace Cthangband
             if (monster.FearLevel != 0)
             {
                 // Reduce our fear by an amount based on our level
-                int fearRelief = Program.Rng.DieRoll((race.Level / 10) + 1);
+                var fearRelief = Program.Rng.DieRoll((race.Level / 10) + 1);
                 if (monster.FearLevel > fearRelief)
                 {
                     monster.FearLevel -= fearRelief;
@@ -1689,14 +1689,14 @@ namespace Cthangband
                     // If the player can see us, they can see we're no longer afraid
                     if (monster.IsVisible)
                     {
-                        string monsterName = monster.MonsterDesc(0);
-                        string monsterPossessive = monster.MonsterDesc(0x22);
+                        var monsterName = monster.MonsterDesc(0);
+                        var monsterPossessive = monster.MonsterDesc(0x22);
                         Profile.Instance.MsgPrint($"{monsterName} recovers {monsterPossessive} courage.");
                     }
                 }
             }
-            int oldY = monster.MapY;
-            int oldX = monster.MapX;
+            var oldY = monster.MapY;
+            var oldX = monster.MapX;
             // If it's suitable for us to reproduce
             if ((race.Flags2 & MonsterFlag2.Multiply) != 0 && _level.Monsters.NumRepro < Constants.MaxRepro &&
                 monster.Generation < 10)
@@ -1706,7 +1706,7 @@ namespace Cthangband
                 int y;
                 for (k = 0, y = oldY - 1; y <= oldY + 1; y++)
                 {
-                    for (int x = oldX - 1; x <= oldX + 1; x++)
+                    for (var x = oldX - 1; x <= oldX + 1; x++)
                     {
                         if (_level.Grid[y][x].MonsterIndex != 0)
                         {
@@ -1715,7 +1715,7 @@ namespace Cthangband
                     }
                 }
                 // If we're friendly, then our babies are friendly too
-                bool isFriend = (monster.Mind & Constants.SmFriendly) != 0;
+                var isFriend = (monster.Mind & Constants.SmFriendly) != 0;
                 // If there's lots of space, then pop out a baby
                 if (k < 4 && (k == 0 || Program.Rng.RandomLessThan(k * Constants.MonMultAdj) == 0))
                 {
@@ -1742,7 +1742,7 @@ namespace Cthangband
                 return;
             }
             // Initialise our possible moves
-            PotentialMovesList potentialMoves = new PotentialMovesList();
+            var potentialMoves = new PotentialMovesList();
             potentialMoves[0] = 0;
             potentialMoves[1] = 0;
             potentialMoves[2] = 0;
@@ -1828,31 +1828,31 @@ namespace Cthangband
                     return;
                 }
             }
-            bool doTurn = false;
-            bool doMove = false;
-            bool doView = false;
-            bool didOpenDoor = false;
-            bool didBashDoor = false;
-            bool didTakeItem = false;
-            bool didKillItem = false;
-            bool didMoveBody = false;
-            bool didKillBody = false;
-            bool didPassWall = false;
-            bool didKillWall = false;
+            var doTurn = false;
+            var doMove = false;
+            var doView = false;
+            var didOpenDoor = false;
+            var didBashDoor = false;
+            var didTakeItem = false;
+            var didKillItem = false;
+            var didMoveBody = false;
+            var didKillBody = false;
+            var didPassWall = false;
+            var didKillWall = false;
             // Go through our possible moves until we come to the limit of the ones we've had suggested
-            for (int i = 0; potentialMoves[i] != 0; i++)
+            for (var i = 0; potentialMoves[i] != 0; i++)
             {
-                int d = potentialMoves[i];
+                var d = potentialMoves[i];
                 // Moves of '5' (i.e. 'stay still') are placeholders for random moves
                 if (d == 5)
                 {
                     d = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
                 }
                 // Work out where the move will take us
-                int newY = oldY + _level.KeypadDirectionYOffset[d];
-                int newX = oldX + _level.KeypadDirectionXOffset[d];
-                GridTile tile = _level.Grid[newY][newX];
-                Monster monsterInTargetTile = _level.Monsters[tile.MonsterIndex];
+                var newY = oldY + _level.KeypadDirectionYOffset[d];
+                var newX = oldX + _level.KeypadDirectionXOffset[d];
+                var tile = _level.Grid[newY][newX];
+                var monsterInTargetTile = _level.Monsters[tile.MonsterIndex];
                 // If we can simply move there, then we will do so
                 if (_level.GridPassable(newY, newX))
                 {
@@ -1906,7 +1906,7 @@ namespace Cthangband
                 // If we're trying to get through a door
                 else if (tile.FeatureType.IsClosedDoor)
                 {
-                    bool mayBash = true;
+                    var mayBash = true;
                     doTurn = true;
                     // If we can open the door then try to do so
                     if ((race.Flags2 & MonsterFlag2.OpenDoor) != 0)
@@ -1920,7 +1920,7 @@ namespace Cthangband
                         // We have a chance to unlock locked doors
                         else if (tile.FeatureType.Name.Contains("Locked"))
                         {
-                            int k = int.Parse(tile.FeatureType.Name.Substring(10));
+                            var k = int.Parse(tile.FeatureType.Name.Substring(10));
                             if (Program.Rng.RandomLessThan(monster.Health / 10) > k)
                             {
                                 _level.CaveSetFeat(newY, newX, "LockedDoor0");
@@ -1931,7 +1931,7 @@ namespace Cthangband
                     // If we can't open doors (or failed to unlock the door), then we can bash it down
                     if (mayBash && (race.Flags2 & MonsterFlag2.BashDoor) != 0)
                     {
-                        int k = int.Parse(tile.FeatureType.Name.Substring(10));
+                        var k = int.Parse(tile.FeatureType.Name.Substring(10));
                         // If we succeeded, let the player hear it
                         if (Program.Rng.RandomLessThan(monster.Health / 10) > k)
                         {
@@ -2023,7 +2023,7 @@ namespace Cthangband
                 // If we're trying to move onto another monster
                 if (doMove && tile.MonsterIndex != 0)
                 {
-                    MonsterRace targetMonsterRace = monsterInTargetTile.Race;
+                    var targetMonsterRace = monsterInTargetTile.Race;
                     // Assume for the moment we're not doing the move
                     doMove = false;
                     // If we can trample other monsters on our team and we're tougher than the one
@@ -2097,9 +2097,9 @@ namespace Cthangband
                         }
                     }
                     // Check through the items in the tile we just entered
-                    for (int thisItemIndex = tile.ItemIndex; thisItemIndex != 0; thisItemIndex = nextItemIndex)
+                    for (var thisItemIndex = tile.ItemIndex; thisItemIndex != 0; thisItemIndex = nextItemIndex)
                     {
-                        Item item = _level.Items[thisItemIndex];
+                        var item = _level.Items[thisItemIndex];
                         nextItemIndex = item.NextInStack;
                         // We ignore gold
                         if (item.Category == ItemCategory.Gold)
@@ -2110,13 +2110,13 @@ namespace Cthangband
                         if (((race.Flags2 & MonsterFlag2.TakeItem) != 0 ||
                              (race.Flags2 & MonsterFlag2.KillItem) != 0) && (monster.Mind & Constants.SmFriendly) == 0)
                         {
-                            FlagSet f1 = new FlagSet();
-                            FlagSet f2 = new FlagSet();
-                            FlagSet f3 = new FlagSet();
+                            var f1 = new FlagSet();
+                            var f2 = new FlagSet();
+                            var f3 = new FlagSet();
                             uint flg3 = 0;
                             item.GetMergedFlags(f1, f2, f3);
-                            string itemName = item.Description(true, 3);
-                            string monsterName = monster.MonsterDesc(0x04);
+                            var itemName = item.Description(true, 3);
+                            var monsterName = monster.MonsterDesc(0x04);
                             if (f1.IsSet(ItemFlag1.KillDragon))
                             {
                                 flg3 |= MonsterFlag3.Dragon;
@@ -2258,7 +2258,7 @@ namespace Cthangband
                 monster.FearLevel = 0;
                 if (monster.IsVisible)
                 {
-                    string monsterName = monster.MonsterDesc(0);
+                    var monsterName = monster.MonsterDesc(0);
                     Profile.Instance.MsgPrint($"{monsterName} turns to fight!");
                 }
             }
@@ -2293,11 +2293,11 @@ namespace Cthangband
         private void RemoveIneffectiveSpells(int monsterIndex, out uint modifiedFlags4, uint initialFlags4,
             out uint modifiedFlags5, uint initialFlags5, out uint modifiedFlags6, uint initialFlags6)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
-            uint flags4 = initialFlags4;
-            uint flags5 = initialFlags5;
-            uint flags6 = initialFlags6;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
+            var flags4 = initialFlags4;
+            var flags5 = initialFlags5;
+            var flags6 = initialFlags6;
             modifiedFlags4 = initialFlags4;
             modifiedFlags5 = initialFlags5;
             modifiedFlags6 = initialFlags6;
@@ -2312,7 +2312,7 @@ namespace Cthangband
             {
                 monster.Mind &= (Constants.SmFriendly | Constants.SmCloned);
             }
-            uint mindFlags = monster.Mind;
+            var mindFlags = monster.Mind;
             // If we're not aware of any of the player's resistances, don't bother going through them
             if (mindFlags == 0)
             {
@@ -2978,8 +2978,8 @@ namespace Cthangband
         private void TakeDamageFromAnotherMonster(int monsterIndex, int damage, out bool fear, string note)
         {
             fear = false;
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             // Track the monster that has just taken damage
             if (_saveGame.TrackedMonsterIndex == monsterIndex)
             {
@@ -2999,7 +2999,7 @@ namespace Cthangband
                 else
                 {
                     // Construct a message telling the player what happened
-                    string monsterName = monster.MonsterDesc(0);
+                    var monsterName = monster.MonsterDesc(0);
                     Gui.PlaySound(SoundEffect.MonsterDies);
                     // Append the note if there is one
                     if (!string.IsNullOrEmpty(note))
@@ -3033,7 +3033,7 @@ namespace Cthangband
             if (monster.FearLevel != 0 && damage > 0)
             {
                 // If we're already afraid, we might get desperate and overcome our fear
-                int tmp = Program.Rng.DieRoll(damage);
+                var tmp = Program.Rng.DieRoll(damage);
                 if (tmp < monster.FearLevel)
                 {
                     monster.FearLevel -= tmp;
@@ -3047,7 +3047,7 @@ namespace Cthangband
             // If we weren't already afraid, this attack might make us afraid
             if (monster.FearLevel == 0 && (race.Flags3 & MonsterFlag3.ImmuneFear) == 0)
             {
-                int percentage = 100 * monster.Health / monster.MaxHealth;
+                var percentage = 100 * monster.Health / monster.MaxHealth;
                 if ((percentage <= 10 && Program.Rng.RandomLessThan(10) < percentage) ||
                     (damage >= monster.Health && Program.Rng.RandomLessThan(100) < 80))
                 {
@@ -3065,8 +3065,8 @@ namespace Cthangband
         /// <param name="target"> The target location we're moving to </param>
         private void TrackPlayerByScent(int monsterIndex, MapCoordinate target)
         {
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
             // If we can move through walls then we don't need to adjust anything
             if ((race.Flags2 & MonsterFlag2.PassWall) != 0)
             {
@@ -3076,9 +3076,9 @@ namespace Cthangband
             {
                 return;
             }
-            int y1 = monster.MapY;
-            int x1 = monster.MapX;
-            GridTile cPtr = _level.Grid[y1][x1];
+            var y1 = monster.MapY;
+            var x1 = monster.MapX;
+            var cPtr = _level.Grid[y1][x1];
             // If we have no scent of the player then don't change where we were going
             if (cPtr.ScentAge < _level.Grid[_player.MapY][_player.MapX].ScentAge)
             {
@@ -3100,13 +3100,13 @@ namespace Cthangband
             {
                 return;
             }
-            int when = 0;
-            int cost = 999;
+            var when = 0;
+            var cost = 999;
             // Check the eight directions we can move to see which has the most recent or strongest scent
-            for (int i = 7; i >= 0; i--)
+            for (var i = 7; i >= 0; i--)
             {
-                int y = y1 + _level.OrderedDirectionYOffset[i];
-                int x = x1 + _level.OrderedDirectionXOffset[i];
+                var y = y1 + _level.OrderedDirectionYOffset[i];
+                var x = x1 + _level.OrderedDirectionXOffset[i];
                 if (_level.Grid[y][x].ScentAge == 0)
                 {
                     continue;
@@ -3134,22 +3134,22 @@ namespace Cthangband
         /// <returns> True if we cast a spell, false otherwise </returns>
         private bool TryCastingASpellAgainstAnotherMonster(int monsterIndex)
         {
-            int count = 0;
-            int[] spell = new int[96];
-            int num = 0;
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
-            bool wakeUp = false;
-            bool blind = _player.TimedBlindness != 0;
-            bool seen = !blind && monster.IsVisible;
-            bool friendly = (monster.Mind & Constants.SmFriendly) != 0;
+            var count = 0;
+            var spell = new int[96];
+            var num = 0;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
+            var wakeUp = false;
+            var blind = _player.TimedBlindness != 0;
+            var seen = !blind && monster.IsVisible;
+            var friendly = (monster.Mind & Constants.SmFriendly) != 0;
             // Can't cast a spell if we're confused
             if (monster.ConfusionLevel != 0)
             {
                 return false;
             }
             // We have a chance to cast a spell based on our race
-            int chance = (race.FreqInate + race.FreqSpell) / 2;
+            var chance = (race.FreqInate + race.FreqSpell) / 2;
             if (chance == 0)
             {
                 return false;
@@ -3159,11 +3159,11 @@ namespace Cthangband
                 return false;
             }
             // Look through the monster list to find a potential target
-            for (int i = 1; i < _level.MMax; i++)
+            for (var i = 1; i < _level.MMax; i++)
             {
-                int targetIndex = i;
-                Monster target = _level.Monsters[targetIndex];
-                MonsterRace targetRace = target.Race;
+                var targetIndex = i;
+                var target = _level.Monsters[targetIndex];
+                var targetRace = target.Race;
                 // Can't cast spells on ourself
                 if (target == monster)
                 {
@@ -3189,12 +3189,12 @@ namespace Cthangband
                 {
                     continue;
                 }
-                int y = target.MapY;
-                int x = target.MapX;
-                int rlev = race.Level >= 1 ? race.Level : 1;
-                uint f4 = race.Flags4;
-                uint f5 = race.Flags5;
-                uint f6 = race.Flags6;
+                var y = target.MapY;
+                var x = target.MapX;
+                var rlev = race.Level >= 1 ? race.Level : 1;
+                var f4 = race.Flags4;
+                var f5 = race.Flags5;
+                var f6 = race.Flags6;
                 // If we're smart and badly injured, we may want to prioritise spells that disable
                 // the target, summon help, or let us escape over spells that do direct damage
                 if ((race.Flags2 & MonsterFlag2.Smart) != 0 && monster.Health < monster.MaxHealth / 10 &&
@@ -3258,16 +3258,16 @@ namespace Cthangband
                 {
                     return false;
                 }
-                string monsterName = monster.MonsterDesc(0x00);
-                string monsterPossessive = monster.MonsterDesc(0x22);
-                string targetName = target.MonsterDesc(0x00);
+                var monsterName = monster.MonsterDesc(0x00);
+                var monsterPossessive = monster.MonsterDesc(0x22);
+                var targetName = target.MonsterDesc(0x00);
                 monster.MonsterDesc(0x88);
                 // Against other monsters we pick spells randomly
-                int thrownSpell = spell[Program.Rng.RandomLessThan(num)];
-                bool seeMonster = seen;
-                bool seeTarget = !blind && target.IsVisible;
-                bool seeEither = seeMonster || seeTarget;
-                bool seeBoth = seeMonster && seeTarget;
+                var thrownSpell = spell[Program.Rng.RandomLessThan(num)];
+                var seeMonster = seen;
+                var seeTarget = !blind && target.IsVisible;
+                var seeEither = seeMonster || seeTarget;
+                var seeBoth = seeMonster && seeTarget;
                 // If we decided not to cast, don't
                 switch (thrownSpell)
                 {
@@ -3643,7 +3643,7 @@ namespace Cthangband
 
                     // MonsterFlag5.DrainVis
                     case 128 + 9:
-                        int r1 = (Program.Rng.DieRoll(rlev) / 2) + 1;
+                        var r1 = (Program.Rng.DieRoll(rlev) / 2) + 1;
                         if (seeMonster)
                         {
                             Profile.Instance.MsgPrint($"{monsterName} draws psychic energy from {targetName}");
@@ -4028,7 +4028,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            string it = targetName != "it" ? "s" : "'s";
+                            var it = targetName != "it" ? "s" : "'s";
                             Profile.Instance.MsgPrint($"{monsterName} casts a spell, burning {targetName}{it} eyes.");
                         }
                         if ((targetRace.Flags3 & MonsterFlag3.ImmuneConfusion) != 0)
@@ -4097,7 +4097,7 @@ namespace Cthangband
                         _saveGame.Disturb(true);
                         if (!blind && seeEither)
                         {
-                            string it = targetName == "it" ? "s" : "'s";
+                            var it = targetName == "it" ? "s" : "'s";
                             Profile.Instance.MsgPrint($"{monsterName} drains power from {targetName}{it} muscles.");
                         }
                         if ((targetRace.Flags1 & MonsterFlag1.Unique) != 0)
@@ -4293,7 +4293,7 @@ namespace Cthangband
 
                     // MonsterFlag6.TeleportAway
                     case 160 + 9:
-                        bool resistsTele = false;
+                        var resistsTele = false;
                         _saveGame.Disturb(true);
                         Profile.Instance.MsgPrint($"{monsterName} teleports {targetName} away.");
                         if ((targetRace.Flags3 & MonsterFlag3.ResistTeleport) != 0)
@@ -4359,7 +4359,7 @@ namespace Cthangband
                         }
                         else
                         {
-                            string kin = (race.Flags1 & MonsterFlag1.Unique) != 0 ? "minions" : "kin";
+                            var kin = (race.Flags1 & MonsterFlag1.Unique) != 0 ? "minions" : "kin";
                             Profile.Instance.MsgPrint($"{monsterName} magically summons {monsterPossessive} {kin}.");
                         }
                         _level.Monsters.SummonKinType = race.Character;
@@ -4942,16 +4942,16 @@ namespace Cthangband
         private bool TryCastingASpellAgainstPlayer(int monsterIndex)
         {
             int k;
-            int[] spell = new int[96];
-            int num = 0;
-            Monster monster = _level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
-            bool noInnate = false;
-            int playerX = _player.MapX;
-            int playerY = _player.MapY;
-            int count = 0;
-            bool playerIsBlind = _player.TimedBlindness != 0;
-            bool seenByPlayer = !playerIsBlind && monster.IsVisible;
+            var spell = new int[96];
+            var num = 0;
+            var monster = _level.Monsters[monsterIndex];
+            var race = monster.Race;
+            var noInnate = false;
+            var playerX = _player.MapX;
+            var playerY = _player.MapY;
+            var count = 0;
+            var playerIsBlind = _player.TimedBlindness != 0;
+            var seenByPlayer = !playerIsBlind && monster.IsVisible;
             // No spells if we're confused
             if (monster.ConfusionLevel != 0)
             {
@@ -4968,7 +4968,7 @@ namespace Cthangband
                 return false;
             }
             // We aren't guaranteed to cast a spell even if we can
-            int chance = (race.FreqInate + race.FreqSpell) / 2;
+            var chance = (race.FreqInate + race.FreqSpell) / 2;
             if (chance == 0)
             {
                 return false;
@@ -4993,10 +4993,10 @@ namespace Cthangband
                 return false;
             }
             // Gather together the abilities we have
-            int monsterLevel = race.Level >= 1 ? race.Level : 1;
-            uint f4 = race.Flags4;
-            uint f5 = race.Flags5;
-            uint f6 = race.Flags6;
+            var monsterLevel = race.Level >= 1 ? race.Level : 1;
+            var f4 = race.Flags4;
+            var f5 = race.Flags5;
+            var f6 = race.Flags6;
             // If we're not allowed innate abilities, then things on Flags4 can't be used
             if (noInnate)
             {
@@ -5082,18 +5082,18 @@ namespace Cthangband
             {
                 return false;
             }
-            string monsterName = monster.MonsterDesc(0x00);
-            string monsterPossessive = monster.MonsterDesc(0x22);
-            string monsterDescription = monster.MonsterDesc(0x88);
+            var monsterName = monster.MonsterDesc(0x00);
+            var monsterPossessive = monster.MonsterDesc(0x22);
+            var monsterDescription = monster.MonsterDesc(0x88);
             // Pick one of our spells to cast, based on our priorities
-            int thrownSpell = ChooseSpellAgainstPlayer(monsterIndex, spell, num);
+            var thrownSpell = ChooseSpellAgainstPlayer(monsterIndex, spell, num);
             // If we decided not to cast, don't
             if (thrownSpell == 0)
             {
                 return false;
             }
             // Stupid monsters may fail spells
-            int failrate = 25 - ((monsterLevel + 3) / 4);
+            var failrate = 25 - ((monsterLevel + 3) / 4);
             if ((race.Flags2 & MonsterFlag2.Stupid) != 0)
             {
                 failrate = 0;
@@ -5428,7 +5428,7 @@ namespace Cthangband
                     {
                         _saveGame.Disturb(true);
                         Profile.Instance.MsgPrint($"{monsterName} draws psychic energy from you!");
-                        int r1 = (Program.Rng.DieRoll(monsterLevel) / 2) + 1;
+                        var r1 = (Program.Rng.DieRoll(monsterLevel) / 2) + 1;
                         if (r1 >= _player.Vis)
                         {
                             r1 = _player.Vis;
@@ -5814,7 +5814,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        int dummy = (65 + Program.Rng.DieRoll(25)) * _player.Health / 100;
+                        var dummy = (65 + Program.Rng.DieRoll(25)) * _player.Health / 100;
                         Profile.Instance.MsgPrint("Your feel your life fade away!");
                         _player.TakeHit(dummy, monsterName);
                         _player.CurseEquipment(100, 20);
@@ -5958,7 +5958,7 @@ namespace Cthangband
                     }
                     else
                     {
-                        string kin = (race.Flags1 & MonsterFlag1.Unique) != 0 ? "minions" : "kin";
+                        var kin = (race.Flags1 & MonsterFlag1.Unique) != 0 ? "minions" : "kin";
                         Profile.Instance.MsgPrint($"{monsterName} magically summons {monsterPossessive} {kin}.");
                     }
                     _level.Monsters.SummonKinType = race.Character;

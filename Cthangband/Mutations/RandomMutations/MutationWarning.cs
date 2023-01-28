@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -27,11 +27,11 @@ namespace Cthangband.Mutations.RandomMutations
             {
                 return;
             }
-            int dangerAmount = 0;
-            for (int monster = 0; monster < level.MMax; monster++)
+            var dangerAmount = 0;
+            for (var monster = 0; monster < level.MMax; monster++)
             {
-                Monster mPtr = level.Monsters[monster];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = level.Monsters[monster];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;

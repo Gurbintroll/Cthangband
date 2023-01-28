@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -17,7 +17,7 @@ namespace Cthangband
     {
         public ItemTypeArray()
         {
-            foreach (KeyValuePair<string, BaseItemType> baseType in StaticResources.Instance.BaseItemTypes)
+            foreach (var baseType in StaticResources.Instance.BaseItemTypes)
             {
                 Add(new ItemType(baseType.Value));
             }
@@ -25,9 +25,9 @@ namespace Cthangband
 
         public ItemType LookupKind(ItemCategory tval, int sval)
         {
-            for (int k = 1; k < Count; k++)
+            for (var k = 1; k < Count; k++)
             {
-                ItemType kPtr = this[k];
+                var kPtr = this[k];
                 if (kPtr.Category == tval && kPtr.SubCategory == sval)
                 {
                     return kPtr;
@@ -39,7 +39,7 @@ namespace Cthangband
 
         public void ResetStompability()
         {
-            foreach (ItemType itemType in this)
+            foreach (var itemType in this)
             {
                 if (itemType.HasQuality())
                 {

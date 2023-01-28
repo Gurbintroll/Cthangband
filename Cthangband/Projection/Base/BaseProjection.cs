@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -37,21 +37,21 @@ namespace Cthangband.Projection.Base
         {
             int i, dist;
             int y1, x1;
-            int msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
+            var msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
             GridTile cPtr;
-            bool notice = false;
-            bool visual = false;
-            bool drawn = false;
-            bool breath = false;
-            bool blind = Player.TimedBlindness != 0;
-            int grids = 0;
-            int[] gx = new int[256];
-            int[] gy = new int[256];
-            int[] gm = new int[32];
-            int gmRad = rad;
-            ProjectileGraphic projectileEntity = string.IsNullOrEmpty(BoltGraphic) ? null : StaticResources.Instance.ProjectileGraphics[BoltGraphic];
-            ProjectileGraphic impactEntity = string.IsNullOrEmpty(ImpactGraphic) ? null : StaticResources.Instance.ProjectileGraphics[ImpactGraphic];
-            Animation animationEntity = string.IsNullOrEmpty(EffectAnimation) ? null : StaticResources.Instance.Animations[EffectAnimation];
+            var notice = false;
+            var visual = false;
+            var drawn = false;
+            var breath = false;
+            var blind = Player.TimedBlindness != 0;
+            var grids = 0;
+            var gx = new int[256];
+            var gy = new int[256];
+            var gm = new int[32];
+            var gmRad = rad;
+            var projectileEntity = string.IsNullOrEmpty(BoltGraphic) ? null : StaticResources.Instance.ProjectileGraphics[BoltGraphic];
+            var impactEntity = string.IsNullOrEmpty(ImpactGraphic) ? null : StaticResources.Instance.ProjectileGraphics[ImpactGraphic];
+            var animationEntity = string.IsNullOrEmpty(EffectAnimation) ? null : StaticResources.Instance.Animations[EffectAnimation];
             if ((flg & ProjectionFlag.ProjectJump) != 0)
             {
                 x1 = x;
@@ -67,10 +67,10 @@ namespace Cthangband.Projection.Base
                 x1 = Level.Monsters[who].MapX;
                 y1 = Level.Monsters[who].MapY;
             }
-            int ySaver = y1;
-            int xSaver = x1;
-            int y2 = y;
-            int x2 = x;
+            var ySaver = y1;
+            var xSaver = x1;
+            var y2 = y;
+            var x2 = x;
             if ((flg & ProjectionFlag.ProjectThru) != 0)
             {
                 if (x1 == x2 && y1 == y2)
@@ -122,7 +122,7 @@ namespace Cthangband.Projection.Base
                 {
                     break;
                 }
-                Level.MoveOneStepTowards(out int y9, out int x9, y, x, y1, x1, y2, x2);
+                Level.MoveOneStepTowards(out var y9, out var x9, y, x, y1, x1, y2, x2);
                 if (!Level.GridPassable(y9, x9) && rad > 0)
                 {
                     break;
@@ -138,7 +138,7 @@ namespace Cthangband.Projection.Base
                     {
                         if (projectileEntity != null)
                         {
-                            char directionalCharacter = projectileEntity.Character;
+                            var directionalCharacter = projectileEntity.Character;
                             if (directionalCharacter == '|')
                             {
                                 directionalCharacter = BoltChar(y, x, y9, x9);
@@ -164,7 +164,7 @@ namespace Cthangband.Projection.Base
             x2 = x;
             gm[0] = 0;
             gm[1] = grids;
-            int distHack = dist;
+            var distHack = dist;
             if (dist <= Constants.MaxRange)
             {
                 if ((flg & ProjectionFlag.ProjectBeam) != 0 && grids > 0)
@@ -173,15 +173,15 @@ namespace Cthangband.Projection.Base
                 }
                 if (breath)
                 {
-                    int brad = 0;
-                    int bdis = 0;
-                    bool done = false;
+                    var brad = 0;
+                    var bdis = 0;
+                    var done = false;
                     flg &= ~ProjectionFlag.ProjectHide;
-                    int by = y1;
-                    int bx = x1;
+                    var by = y1;
+                    var bx = x1;
                     while (bdis <= dist + rad)
                     {
-                        for (int cdis = 0; cdis <= brad; cdis++)
+                        for (var cdis = 0; cdis <= brad; cdis++)
                         {
                             for (y = by - cdis; y <= by + cdis; y++)
                             {
@@ -272,7 +272,7 @@ namespace Cthangband.Projection.Base
             }
             if (!blind && (flg & ProjectionFlag.ProjectHide) == 0)
             {
-                for (int t = 0; t <= gmRad; t++)
+                for (var t = 0; t <= gmRad; t++)
                 {
                     for (i = gm[t]; i < gm[t + 1]; i++)
                     {
@@ -379,12 +379,12 @@ namespace Cthangband.Projection.Base
                         {
                             continue;
                         }
-                        MonsterRace refPtr = Level.Monsters[cPtr.MonsterIndex].Race;
+                        var refPtr = Level.Monsters[cPtr.MonsterIndex].Race;
                         if ((refPtr.Flags2 & MonsterFlag2.Reflecting) != 0 && Program.Rng.DieRoll(10) != 1 &&
                             distHack > 1 && GetType().Name != "ProjectWizardBolt")
                         {
                             int tY, tX;
-                            int maxAttempts = 10;
+                            var maxAttempts = 10;
                             do
                             {
                                 tY = ySaver - 1 + Program.Rng.DieRoll(3);
@@ -419,7 +419,7 @@ namespace Cthangband.Projection.Base
                     cPtr = Level.Grid[y][x];
                     if (cPtr.MonsterIndex != 0)
                     {
-                        Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
+                        var mPtr = Level.Monsters[cPtr.MonsterIndex];
                         if (mPtr.IsVisible)
                         {
                             SaveGame.HealthTrack(cPtr.MonsterIndex);

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -27,7 +27,7 @@ namespace Cthangband.Talents
             player.SetTimedFear(0);
             player.SetTimedStun(0);
             player.RestoreHealth(player.Level);
-            int i = 10 + Program.Rng.DieRoll(player.Level * 3 / 2);
+            var i = 10 + Program.Rng.DieRoll(player.Level * 3 / 2);
             if (player.Level < 35)
             {
                 player.SetTimedHeroism(player.TimedHeroism + i);

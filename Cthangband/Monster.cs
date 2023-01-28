@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -87,7 +87,7 @@ namespace Cthangband
                 return string.Empty;
             }
             string desc;
-            string name = Race.Name;
+            var name = Race.Name;
             if (SaveGame.Instance.Player.TimedHallucinations != 0)
             {
                 MonsterRace halluRace;
@@ -95,14 +95,14 @@ namespace Cthangband
                 {
                     halluRace = Profile.Instance.MonsterRaces[Program.Rng.DieRoll(Profile.Instance.MonsterRaces.Count - 2)];
                 } while ((halluRace.Flags1 & MonsterFlag1.Unique) != 0);
-                string sillyName = halluRace.Name;
+                var sillyName = halluRace.Name;
                 name = sillyName;
             }
-            bool seen = (mode & 0x80) != 0 || ((mode & 0x40) == 0 && IsVisible);
-            bool pron = (seen && (mode & 0x20) != 0) || (!seen && (mode & 0x10) != 0);
+            var seen = (mode & 0x80) != 0 || ((mode & 0x40) == 0 && IsVisible);
+            var pron = (seen && (mode & 0x20) != 0) || (!seen && (mode & 0x10) != 0);
             if (!seen || pron)
             {
-                int kind = 0x00;
+                var kind = 0x00;
                 if ((Race.Flags1 & MonsterFlag1.Female) != 0)
                 {
                     kind = 0x20;
@@ -115,7 +115,7 @@ namespace Cthangband
                 {
                     kind = 0x00;
                 }
-                string res = "it";
+                var res = "it";
                 switch (kind + (mode & 0x07))
                 {
                     case 0x00:
@@ -257,9 +257,9 @@ namespace Cthangband
 
         public void SanityBlast(bool necro)
         {
-            Player player = SaveGame.Instance.Player;
-            bool happened = false;
-            int power = 100;
+            var player = SaveGame.Instance.Player;
+            var happened = false;
+            var power = 100;
             if (necro)
             {
                 Profile.Instance.MsgPrint("Your sanity is shaken by reading the Necronomicon!");
@@ -267,7 +267,7 @@ namespace Cthangband
             else
             {
                 power = Race.Level + 10;
-                string mName = MonsterDesc(0);
+                var mName = MonsterDesc(0);
                 if ((Race.Flags1 & MonsterFlag1.Unique) != 0)
                 {
                     power *= 2;

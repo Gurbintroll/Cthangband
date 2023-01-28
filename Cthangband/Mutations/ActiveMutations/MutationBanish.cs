@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -20,21 +20,21 @@ namespace Cthangband.Mutations.ActiveMutations
             {
                 return;
             }
-            TargetEngine targetEngine = new TargetEngine(player, level);
-            if (!targetEngine.GetDirectionNoAim(out int dir))
+            var targetEngine = new TargetEngine(player, level);
+            if (!targetEngine.GetDirectionNoAim(out var dir))
             {
                 return;
             }
-            int y = player.MapY + level.KeypadDirectionYOffset[dir];
-            int x = player.MapX + level.KeypadDirectionXOffset[dir];
-            GridTile cPtr = level.Grid[y][x];
+            var y = player.MapY + level.KeypadDirectionYOffset[dir];
+            var x = player.MapX + level.KeypadDirectionXOffset[dir];
+            var cPtr = level.Grid[y][x];
             if (cPtr.MonsterIndex == 0)
             {
                 Profile.Instance.MsgPrint("You sense no evil there!");
                 return;
             }
-            Monster mPtr = level.Monsters[cPtr.MonsterIndex];
-            MonsterRace rPtr = mPtr.Race;
+            var mPtr = level.Monsters[cPtr.MonsterIndex];
+            var rPtr = mPtr.Race;
             if ((rPtr.Flags3 & MonsterFlag3.Evil) != 0)
             {
                 level.Monsters.DeleteMonsterByIndex(cPtr.MonsterIndex, true);

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -32,7 +32,7 @@ namespace Cthangband.Spells
 
         public void AcidDam(int dam, string kbStr)
         {
-            int inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
+            var inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
             if (Player.HasAcidImmunity || dam <= 0)
             {
                 return;
@@ -154,12 +154,12 @@ namespace Cthangband.Spells
 
         public void AggravateMonsters(int who)
         {
-            bool sleep = false;
-            bool speed = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var sleep = false;
+            var speed = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
@@ -204,9 +204,9 @@ namespace Cthangband.Spells
 
         public void Alchemy()
         {
-            int amt = 1;
-            bool force = Gui.CommandArgument > 0;
-            if (!_saveGame.GetItem(out int item, "Turn which item to gold? ", false, true, true))
+            var amt = 1;
+            var force = Gui.CommandArgument > 0;
+            if (!_saveGame.GetItem(out var item, "Turn which item to gold? ", false, true, true))
             {
                 if (item == -2)
                 {
@@ -214,7 +214,7 @@ namespace Cthangband.Spells
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
             if (oPtr.Count > 1)
             {
                 amt = Gui.GetQuantity(null, oPtr.Count, true);
@@ -223,15 +223,15 @@ namespace Cthangband.Spells
                     return;
                 }
             }
-            int oldNumber = oPtr.Count;
+            var oldNumber = oPtr.Count;
             oPtr.Count = amt;
-            string oName = oPtr.Description(true, 3);
+            var oName = oPtr.Description(true, 3);
             oPtr.Count = oldNumber;
             if (!force)
             {
                 if (!(oPtr.Value() < 1))
                 {
-                    string outVal = $"Really turn {oName} to gold? ";
+                    var outVal = $"Really turn {oName} to gold? ";
                     if (!Gui.GetCheck(outVal))
                     {
                         return;
@@ -240,7 +240,7 @@ namespace Cthangband.Spells
             }
             if (oPtr.IsArtifact() || oPtr.IsLegendary())
             {
-                string feel = "special";
+                var feel = "special";
                 Profile.Instance.MsgPrint($"You fail to turn {oName} to gold!");
                 if (oPtr.IsCursed() || oPtr.IsBroken())
                 {
@@ -251,7 +251,7 @@ namespace Cthangband.Spells
                 Player.NoticeFlags |= Constants.PnCombine;
                 return;
             }
-            int price = oPtr.RealValue();
+            var price = oPtr.RealValue();
             if (price <= 0)
             {
                 Profile.Instance.MsgPrint($"You turn {oName} to fool's gold.");
@@ -297,7 +297,7 @@ namespace Cthangband.Spells
 
         public bool ApplyDisenchant()
         {
-            int t = 0;
+            var t = 0;
             switch (Program.Rng.DieRoll(8))
             {
                 case 1:
@@ -332,7 +332,7 @@ namespace Cthangband.Spells
                     t = InventorySlot.Feet;
                     break;
             }
-            Item oPtr = Player.Inventory[t];
+            var oPtr = Player.Inventory[t];
             if (oPtr.ItemType == null)
             {
                 return false;
@@ -341,7 +341,7 @@ namespace Cthangband.Spells
             {
                 return false;
             }
-            string oName = oPtr.Description(false, 0);
+            var oName = oPtr.Description(false, 0);
             string s;
             if ((oPtr.IsArtifact() || oPtr.IsLegendary()) &&
                 Program.Rng.RandomLessThan(100) < 71)
@@ -425,7 +425,7 @@ namespace Cthangband.Spells
         {
             bool okay;
             _saveGame.ItemFilter = ItemTesterHookWeapon;
-            if (!_saveGame.GetItem(out int item, "Enchant which item? ", true, true, true))
+            if (!_saveGame.GetItem(out var item, "Enchant which item? ", true, true, true))
             {
                 if (item == -2)
                 {
@@ -433,21 +433,21 @@ namespace Cthangband.Spells
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            string oName = oPtr.Description(false, 0);
-            string your = item >= 0 ? "Your" : "The";
-            string s = oPtr.Count > 1 ? "" : "s";
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var oName = oPtr.Description(false, 0);
+            var your = item >= 0 ? "Your" : "The";
+            var s = oPtr.Count > 1 ? "" : "s";
             Profile.Instance.MsgPrint($"{your} {oName} radiate{s} a blinding light!");
             if (oPtr.ArtifactIndex != 0 || oPtr.IsLegendary())
             {
-                string are = oPtr.Count > 1 ? "are" : "is";
+                var are = oPtr.Count > 1 ? "are" : "is";
                 s = oPtr.Count > 1 ? "artifacts" : "an artifact";
                 Profile.Instance.MsgPrint($"The {oName} {are} already {s}!");
                 okay = false;
             }
             else if (oPtr.RareItemTypeIndex != 0)
             {
-                string are = oPtr.Count > 1 ? "are" : "is";
+                var are = oPtr.Count > 1 ? "are" : "is";
                 s = oPtr.Count > 1 ? "rare items" : "a rare item";
                 Profile.Instance.MsgPrint($"The {oName} {are} already {s}!");
                 okay = false;
@@ -481,11 +481,11 @@ namespace Cthangband.Spells
 
         public void BlessWeapon()
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             _saveGame.ItemFilter = ItemTesterHookWeapon;
-            if (!_saveGame.GetItem(out int item, "Bless which weapon? ", true, true, true))
+            if (!_saveGame.GetItem(out var item, "Bless which weapon? ", true, true, true))
             {
                 if (item == -2)
                 {
@@ -493,8 +493,8 @@ namespace Cthangband.Spells
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            string oName = oPtr.Description(false, 0);
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var oName = oPtr.Description(false, 0);
             oPtr.GetMergedFlags(f1, f2, f3);
             if (oPtr.IdentifyFlags.IsSet(Constants.IdentCursed))
             {
@@ -515,23 +515,23 @@ namespace Cthangband.Spells
             }
             if (f3.IsSet(ItemFlag3.Blessed))
             {
-                string your = item >= 0 ? "your" : "the";
-                string s = oPtr.Count > 1 ? "were" : "was";
+                var your = item >= 0 ? "your" : "the";
+                var s = oPtr.Count > 1 ? "were" : "was";
                 Profile.Instance.MsgPrint($"{your} {oName} {s} blessed already.");
                 return;
             }
             if (!(oPtr.IsLegendary() || oPtr.ArtifactIndex != 0) ||
                 Program.Rng.DieRoll(3) == 1)
             {
-                string your = item >= 0 ? "your" : "the";
-                string s = oPtr.Count > 1 ? "" : "s";
+                var your = item >= 0 ? "your" : "the";
+                var s = oPtr.Count > 1 ? "" : "s";
                 Profile.Instance.MsgPrint($"{your} {oName} shine{s}!");
                 oPtr.LegendaryFlags3.Set(ItemFlag3.Blessed);
             }
             else
             {
-                bool disHappened = false;
-                string rarity = oPtr.IsLegendary() ? "legendary item" : "artifact";
+                var disHappened = false;
+                var rarity = oPtr.IsLegendary() ? "legendary item" : "artifact";
                 Profile.Instance.MsgPrint($"The {rarity} resists your blessing!");
                 if (oPtr.BonusToHit > 0)
                 {
@@ -563,8 +563,8 @@ namespace Cthangband.Spells
                 if (disHappened)
                 {
                     Profile.Instance.MsgPrint("There is a  feeling in the air...");
-                    string your = item >= 0 ? "your" : "the";
-                    string s = oPtr.Count > 1 ? "were" : "was";
+                    var your = item >= 0 ? "your" : "the";
+                    var s = oPtr.Count > 1 ? "were" : "was";
                     Profile.Instance.MsgPrint($"{your} {oName} {s} disenchanted!");
                 }
             }
@@ -573,9 +573,9 @@ namespace Cthangband.Spells
 
         public void CallChaos()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            int plev = Player.Level;
-            bool lineChaos = false;
+            var targetEngine = new TargetEngine(Player, Level);
+            var plev = Player.Level;
+            var lineChaos = false;
             IProjection[] hurtTypes =
             {
                 new ProjectElectricity(this), new ProjectPoison(this), new ProjectAcid(this), new ProjectCold(this),
@@ -587,14 +587,14 @@ namespace Cthangband.Spells
                 new ProjectTime(this), new ProjectGravity(this), new ProjectShard(this), new ProjectNuke(this),
                 new ProjectHellFire(this), new ProjectDisintegrate(this)
             };
-            IProjection chaosType = hurtTypes[Program.Rng.DieRoll(30) - 1];
+            var chaosType = hurtTypes[Program.Rng.DieRoll(30) - 1];
             if (Program.Rng.DieRoll(4) == 1)
             {
                 lineChaos = true;
             }
             if (Program.Rng.DieRoll(6) == 1)
             {
-                for (int dummy = 1; dummy < 10; dummy++)
+                for (var dummy = 1; dummy < 10; dummy++)
                 {
                     if (dummy - 5 != 0)
                     {
@@ -615,7 +615,7 @@ namespace Cthangband.Spells
             }
             else
             {
-                if (!targetEngine.GetDirectionWithAim(out int dir))
+                if (!targetEngine.GetDirectionWithAim(out var dir))
                 {
                     return;
                 }
@@ -632,12 +632,12 @@ namespace Cthangband.Spells
 
         public void Carnage(bool playerCast)
         {
-            int msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
-            Gui.GetCom("Choose a monster race (by symbol) to carnage: ", out char typ);
-            for (int i = 1; i < Level.MMax; i++)
+            var msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
+            Gui.GetCom("Choose a monster race (by symbol) to carnage: ", out var typ);
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
@@ -669,7 +669,7 @@ namespace Cthangband.Spells
 
         public void CharmAnimal(int dir, int plev)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             TargetedProject(new ProjectControlAnimal(this), dir, plev, flg);
         }
 
@@ -680,7 +680,7 @@ namespace Cthangband.Spells
 
         public bool CharmMonster(int dir, int plev)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectCharm(this), dir, plev, flg);
         }
 
@@ -691,13 +691,13 @@ namespace Cthangband.Spells
 
         public bool CloneMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldClone(this), dir, 0, flg);
         }
 
         public void ColdDam(int dam, string kbStr)
         {
-            int inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
+            var inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
             if (Player.HasColdImmunity || dam <= 0)
             {
                 return;
@@ -727,7 +727,7 @@ namespace Cthangband.Spells
 
         public bool ConfuseMonster(int dir, int plev)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldConf(this), dir, plev, flg);
         }
 
@@ -738,20 +738,20 @@ namespace Cthangband.Spells
 
         public void ControlOneUndead(int dir, int plev)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             TargetedProject(new ProjectControlUndead(this), dir, plev, flg);
         }
 
         public void DeathRay(int dir, int plev)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             TargetedProject(new ProjectDeathRay(this), dir, plev, flg);
         }
 
         public void DestroyArea(int y1, int x1, int r)
         {
             int y, x;
-            bool flag = false;
+            var flag = false;
             for (y = y1 - r; y <= y1 + r; y++)
             {
                 for (x = x1 - r; x <= x1 + r; x++)
@@ -760,12 +760,12 @@ namespace Cthangband.Spells
                     {
                         continue;
                     }
-                    int k = Level.Distance(y1, x1, y, x);
+                    var k = Level.Distance(y1, x1, y, x);
                     if (k > r)
                     {
                         continue;
                     }
-                    GridTile cPtr = Level.Grid[y][x];
+                    var cPtr = Level.Grid[y][x];
                     cPtr.TileFlags.Clear(GridTile.InRoom | GridTile.InVault);
                     cPtr.TileFlags.Clear(GridTile.PlayerMemorised | GridTile.SelfLit);
                     if (x == Player.MapX && y == Player.MapY)
@@ -781,7 +781,7 @@ namespace Cthangband.Spells
                     if (Level.CaveValidBold(y, x))
                     {
                         Level.DeleteObject(y, x);
-                        int t = Program.Rng.RandomLessThan(200);
+                        var t = Program.Rng.RandomLessThan(200);
                         if (t < 20)
                         {
                             cPtr.SetFeature("WallBasic");
@@ -817,19 +817,19 @@ namespace Cthangband.Spells
 
         public bool DestroyDoor(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
+            var flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
             return TargetedProject(new ProjectKillDoor(this), dir, 0, flg);
         }
 
         public bool DestroyDoorsTouch()
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectHide;
+            var flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectHide;
             return Project(0, 1, Player.MapY, Player.MapX, 0, new ProjectKillDoor(this), flg);
         }
 
         public bool DetectAll()
         {
-            bool detect = DetectTraps();
+            var detect = DetectTraps();
             detect |= DetectDoors();
             detect |= DetectStairs();
             detect |= DetectTreasure();
@@ -842,12 +842,12 @@ namespace Cthangband.Spells
 
         public bool DetectDoors()
         {
-            bool detect = false;
-            for (int y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
+            var detect = false;
+            for (var y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
             {
-                for (int x = Level.PanelColMin; x <= Level.PanelColMax; x++)
+                for (var x = Level.PanelColMin; x <= Level.PanelColMax; x++)
                 {
-                    GridTile cPtr = Level.Grid[y][x];
+                    var cPtr = Level.Grid[y][x];
                     if (cPtr.FeatureType.Category == FloorTileTypeCategory.SecretDoor)
                     {
                         Level.ReplaceSecretDoor(y, x);
@@ -870,17 +870,17 @@ namespace Cthangband.Spells
 
         public bool DetectMonstersEvil()
         {
-            bool flag = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var flag = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
                 }
-                int y = mPtr.MapY;
-                int x = mPtr.MapX;
+                var y = mPtr.MapY;
+                var x = mPtr.MapX;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
@@ -904,17 +904,17 @@ namespace Cthangband.Spells
 
         public bool DetectMonstersInvis()
         {
-            bool flag = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var flag = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
                 }
-                int y = mPtr.MapY;
-                int x = mPtr.MapX;
+                var y = mPtr.MapY;
+                var x = mPtr.MapX;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
@@ -938,17 +938,17 @@ namespace Cthangband.Spells
 
         public void DetectMonstersNonliving()
         {
-            bool flag = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var flag = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
                 }
-                int y = mPtr.MapY;
-                int x = mPtr.MapX;
+                var y = mPtr.MapY;
+                var x = mPtr.MapX;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
@@ -971,17 +971,17 @@ namespace Cthangband.Spells
 
         public bool DetectMonstersNormal()
         {
-            bool flag = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var flag = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
                 }
-                int y = mPtr.MapY;
-                int x = mPtr.MapX;
+                var y = mPtr.MapY;
+                var x = mPtr.MapX;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
@@ -1004,10 +1004,10 @@ namespace Cthangband.Spells
 
         public bool DetectObjectsGold()
         {
-            bool detect = false;
-            for (int i = 1; i < Level.OMax; i++)
+            var detect = false;
+            for (var i = 1; i < Level.OMax; i++)
             {
-                Item oPtr = Level.Items[i];
+                var oPtr = Level.Items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -1016,8 +1016,8 @@ namespace Cthangband.Spells
                 {
                     continue;
                 }
-                int y = oPtr.Y;
-                int x = oPtr.X;
+                var y = oPtr.Y;
+                var x = oPtr.X;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
@@ -1042,10 +1042,10 @@ namespace Cthangband.Spells
 
         public void DetectObjectsMagic()
         {
-            bool detect = false;
-            for (int i = 1; i < Level.OMax; i++)
+            var detect = false;
+            for (var i = 1; i < Level.OMax; i++)
             {
-                Item oPtr = Level.Items[i];
+                var oPtr = Level.Items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -1054,13 +1054,13 @@ namespace Cthangband.Spells
                 {
                     continue;
                 }
-                int y = oPtr.Y;
-                int x = oPtr.X;
+                var y = oPtr.Y;
+                var x = oPtr.X;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
                 }
-                ItemCategory tv = oPtr.Category;
+                var tv = oPtr.Category;
                 if (oPtr.IsArtifact() || oPtr.IsRare() || oPtr.IsLegendary() ||
                     tv == ItemCategory.Amulet || tv == ItemCategory.Ring || tv == ItemCategory.Staff ||
                     tv == ItemCategory.Wand || tv == ItemCategory.Rod || tv == ItemCategory.Scroll ||
@@ -1082,10 +1082,10 @@ namespace Cthangband.Spells
 
         public bool DetectObjectsNormal()
         {
-            bool detect = false;
-            for (int i = 1; i < Level.OMax; i++)
+            var detect = false;
+            for (var i = 1; i < Level.OMax; i++)
             {
-                Item oPtr = Level.Items[i];
+                var oPtr = Level.Items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -1094,8 +1094,8 @@ namespace Cthangband.Spells
                 {
                     continue;
                 }
-                int y = oPtr.Y;
-                int x = oPtr.X;
+                var y = oPtr.Y;
+                var x = oPtr.X;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
@@ -1120,12 +1120,12 @@ namespace Cthangband.Spells
 
         public bool DetectStairs()
         {
-            bool detect = false;
-            for (int y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
+            var detect = false;
+            for (var y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
             {
-                for (int x = Level.PanelColMin; x <= Level.PanelColMax; x++)
+                for (var x = Level.PanelColMin; x <= Level.PanelColMax; x++)
                 {
-                    GridTile cPtr = Level.Grid[y][x];
+                    var cPtr = Level.Grid[y][x];
                     if (cPtr.FeatureType.Category == FloorTileTypeCategory.UpStair || cPtr.FeatureType.Category == FloorTileTypeCategory.DownStair)
                     {
                         cPtr.TileFlags.Set(GridTile.PlayerMemorised);
@@ -1143,12 +1143,12 @@ namespace Cthangband.Spells
 
         public bool DetectTraps()
         {
-            bool detect = false;
-            for (int y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
+            var detect = false;
+            for (var y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
             {
-                for (int x = Level.PanelColMin; x <= Level.PanelColMax; x++)
+                for (var x = Level.PanelColMin; x <= Level.PanelColMax; x++)
                 {
-                    GridTile cPtr = Level.Grid[y][x];
+                    var cPtr = Level.Grid[y][x];
                     cPtr.TileFlags.Set(GridTile.TrapsDetected);
                     Level.RedrawSingleLocation(y, x);
                     if (cPtr.FeatureType.Category == FloorTileTypeCategory.UnidentifiedTrap)
@@ -1173,12 +1173,12 @@ namespace Cthangband.Spells
 
         public bool DetectTreasure()
         {
-            bool detect = false;
-            for (int y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
+            var detect = false;
+            for (var y = Level.PanelRowMin; y <= Level.PanelRowMax; y++)
             {
-                for (int x = Level.PanelColMin; x <= Level.PanelColMax; x++)
+                for (var x = Level.PanelColMin; x <= Level.PanelColMax; x++)
                 {
-                    GridTile cPtr = Level.Grid[y][x];
+                    var cPtr = Level.Grid[y][x];
                     if (cPtr.FeatureType.Name.Contains("HidTreas"))
                     {
                         cPtr.SetFeature(cPtr.FeatureType.Name.Replace("Hid", "Vis"));
@@ -1200,7 +1200,7 @@ namespace Cthangband.Spells
 
         public bool DisarmTrap(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
+            var flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
             return TargetedProject(new ProjectKillTrap(this), dir, 0, flg);
         }
 
@@ -1236,26 +1236,26 @@ namespace Cthangband.Spells
 
         public void DoorCreation()
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectHide;
+            var flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectHide;
             Project(0, 1, Player.MapY, Player.MapX, 0, new ProjectMakeDoor(this), flg);
         }
 
         public bool DrainLife(int dir, int dam)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldDrain(this), dir, dam, flg);
         }
 
         public void Earthquake(int cy, int cx, int r)
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             int i, y, x, yy, xx, dy, dx;
-            int damage = 0;
+            var damage = 0;
             int sn = 0, sy = 0, sx = 0;
-            bool hurt = false;
+            var hurt = false;
             GridTile cPtr;
-            bool[][] map = new bool[32][];
-            for (int j = 0; j < 32; j++)
+            var map = new bool[32][];
+            for (var j = 0; j < 32; j++)
             {
                 map[j] = new bool[32];
             }
@@ -1372,8 +1372,8 @@ namespace Cthangband.Spells
                                 break;
                             }
                     }
-                    int oy = Player.MapY;
-                    int ox = Player.MapX;
+                    var oy = Player.MapY;
+                    var ox = Player.MapX;
                     Player.MapY = sy;
                     Player.MapX = sx;
                     Level.RedrawSingleLocation(oy, ox);
@@ -1399,8 +1399,8 @@ namespace Cthangband.Spells
                     cPtr = Level.Grid[yy][xx];
                     if (cPtr.MonsterIndex != 0)
                     {
-                        Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
-                        MonsterRace rPtr = mPtr.Race;
+                        var mPtr = Level.Monsters[cPtr.MonsterIndex];
+                        var rPtr = mPtr.Race;
                         if ((rPtr.Flags2 & MonsterFlag2.KillWall) == 0 && (rPtr.Flags2 & MonsterFlag2.PassWall) == 0)
                         {
                             sn = 0;
@@ -1435,7 +1435,7 @@ namespace Cthangband.Spells
                                     sx = x;
                                 }
                             }
-                            string mName = mPtr.MonsterDesc(0);
+                            var mName = mPtr.MonsterDesc(0);
                             Profile.Instance.MsgPrint($"{mName} wails out in pain!");
                             damage = sn != 0 ? Program.Rng.DiceRoll(4, 8) : 200;
                             mPtr.SleepLevel = 0;
@@ -1448,7 +1448,7 @@ namespace Cthangband.Spells
                             }
                             if (sn != 0)
                             {
-                                int mIdx = Level.Grid[yy][xx].MonsterIndex;
+                                var mIdx = Level.Grid[yy][xx].MonsterIndex;
                                 Level.Grid[sy][sx].MonsterIndex = mIdx;
                                 Level.Grid[yy][xx].MonsterIndex = 0;
                                 mPtr.MapY = sy;
@@ -1478,9 +1478,9 @@ namespace Cthangband.Spells
                     }
                     if (Level.CaveValidBold(yy, xx))
                     {
-                        bool floor = Level.GridPassable(yy, xx);
+                        var floor = Level.GridPassable(yy, xx);
                         Level.DeleteObject(yy, xx);
-                        int t = floor ? Program.Rng.RandomLessThan(100) : 200;
+                        var t = floor ? Program.Rng.RandomLessThan(100) : 200;
                         if (t < 20)
                         {
                             cPtr.SetFeature("WallBasic");
@@ -1519,13 +1519,13 @@ namespace Cthangband.Spells
 
         public void ElderSignCreation()
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
+            var flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
             Project(0, 1, Player.MapY, Player.MapX, 0, new ProjectMakeElderSign(this), flg);
         }
 
         public void ElecDam(int dam, string kbStr)
         {
-            int inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
+            var inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
             if (Player.HasLightningImmunity || dam <= 0)
             {
                 return;
@@ -1555,19 +1555,19 @@ namespace Cthangband.Spells
 
         public bool Enchant(Item oPtr, int n, int eflag)
         {
-            bool res = false;
-            bool a = oPtr.IsArtifact() || oPtr.IsLegendary();
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var res = false;
+            var a = oPtr.IsArtifact() || oPtr.IsLegendary();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             oPtr.GetMergedFlags(f1, f2, f3);
-            int prob = oPtr.Count * 100;
+            var prob = oPtr.Count * 100;
             if (oPtr.Category == ItemCategory.Bolt || oPtr.Category == ItemCategory.Arrow ||
                 oPtr.Category == ItemCategory.Shot)
             {
                 prob /= 20;
             }
-            for (int i = 0; i < n; i++)
+            for (var i = 0; i < n; i++)
             {
                 if (Program.Rng.RandomLessThan(prob) >= 100)
                 {
@@ -1694,13 +1694,13 @@ namespace Cthangband.Spells
 
         public bool EnchantSpell(int numHit, int numDam, int numAc)
         {
-            bool okay = false;
+            var okay = false;
             _saveGame.ItemFilter = ItemTesterHookWeapon;
             if (numAc != 0)
             {
                 _saveGame.ItemFilter = ItemTesterHookArmour;
             }
-            if (!_saveGame.GetItem(out int item, "Enchant which item? ", true, true, true))
+            if (!_saveGame.GetItem(out var item, "Enchant which item? ", true, true, true))
             {
                 if (item == -2)
                 {
@@ -1708,10 +1708,10 @@ namespace Cthangband.Spells
                 }
                 return false;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            string oName = oPtr.Description(false, 0);
-            string your = item >= 0 ? "Your" : "The";
-            string s = oPtr.Count > 1 ? "" : "s";
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var oName = oPtr.Description(false, 0);
+            var your = item >= 0 ? "Your" : "The";
+            var s = oPtr.Count > 1 ? "" : "s";
             Profile.Instance.MsgPrint($"{your} {oName} glow{s} brightly!");
             if (Enchant(oPtr, numHit, Constants.EnchTohit))
             {
@@ -1734,17 +1734,17 @@ namespace Cthangband.Spells
 
         public bool FearMonster(int dir, int plev)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectTurnAll(this), dir, plev, flg);
         }
 
         public bool FireBall(IProjection projectile, int dir, int dam, int rad)
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
+            var targetEngine = new TargetEngine(Player, Level);
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
                       ProjectionFlag.ProjectKill;
-            int tx = Player.MapX + (99 * Level.KeypadDirectionXOffset[dir]);
-            int ty = Player.MapY + (99 * Level.KeypadDirectionYOffset[dir]);
+            var tx = Player.MapX + (99 * Level.KeypadDirectionXOffset[dir]);
+            var ty = Player.MapY + (99 * Level.KeypadDirectionYOffset[dir]);
             if (dir == 5 && targetEngine.TargetOkay())
             {
                 flg &= ~ProjectionFlag.ProjectStop;
@@ -1756,13 +1756,13 @@ namespace Cthangband.Spells
 
         public void FireBeam(IProjection projectile, int dir, int dam)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectKill;
             TargetedProject(projectile, dir, dam, flg);
         }
 
         public void FireBolt(IProjection projectile, int dir, int dam)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             TargetedProject(projectile, dir, dam, flg);
         }
 
@@ -1780,7 +1780,7 @@ namespace Cthangband.Spells
 
         public void FireDam(int dam, string kbStr)
         {
-            int inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
+            var inv = dam < 30 ? 1 : dam < 60 ? 2 : 3;
             if (Player.HasFireImmunity || dam <= 0)
             {
                 return;
@@ -1815,13 +1815,13 @@ namespace Cthangband.Spells
 
         public bool HealMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldHeal(this), dir, Program.Rng.DiceRoll(4, 6), flg);
         }
 
         public bool IdentifyFully()
         {
-            if (!_saveGame.GetItem(out int item, "Identify which item? ", true, true, true))
+            if (!_saveGame.GetItem(out var item, "Identify which item? ", true, true, true))
             {
                 if (item == -2)
                 {
@@ -1829,22 +1829,22 @@ namespace Cthangband.Spells
                 }
                 return false;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
             oPtr.BecomeFlavourAware();
             oPtr.BecomeKnown();
             oPtr.IdentifyFlags.Set(Constants.IdentMental);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
             _saveGame.HandleStuff();
-            string oName = oPtr.Description(true, 3);
+            var oName = oPtr.Description(true, 3);
             if (item >= InventorySlot.MeleeWeapon)
             {
                 Profile.Instance.MsgPrint($"{Player.DescribeWieldLocation(item)}: {oName} ({item.IndexToLabel()}).");
                 if (oPtr.Stompable())
                 {
-                    string itemName = oPtr.Description(true, 3);
+                    var itemName = oPtr.Description(true, 3);
                     Profile.Instance.MsgPrint($"You destroy {oName}.");
-                    int amount = oPtr.Count;
+                    var amount = oPtr.Count;
                     Player.Inventory.InvenItemIncrease(item, -amount);
                     Player.Inventory.InvenItemOptimize(item);
                 }
@@ -1855,7 +1855,7 @@ namespace Cthangband.Spells
                 if (oPtr.Stompable())
                 {
                     Profile.Instance.MsgPrint($"You destroy {oName}.");
-                    int amount = oPtr.Count;
+                    var amount = oPtr.Count;
                     Player.Inventory.InvenItemIncrease(item, -amount);
                     Player.Inventory.InvenItemOptimize(item);
                 }
@@ -1870,7 +1870,7 @@ namespace Cthangband.Spells
 
         public bool IdentifyItem()
         {
-            if (!_saveGame.GetItem(out int item, "Identify which item? ", true, true, true))
+            if (!_saveGame.GetItem(out var item, "Identify which item? ", true, true, true))
             {
                 if (item == -2)
                 {
@@ -1878,19 +1878,19 @@ namespace Cthangband.Spells
                 }
                 return false;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
             oPtr.BecomeFlavourAware();
             oPtr.BecomeKnown();
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateBonuses);
             Player.NoticeFlags |= Constants.PnCombine | Constants.PnReorder;
-            string oName = oPtr.Description(true, 3);
+            var oName = oPtr.Description(true, 3);
             if (item >= InventorySlot.MeleeWeapon)
             {
                 Profile.Instance.MsgPrint($"{Player.DescribeWieldLocation(item)}: {oName} ({item.IndexToLabel()}).");
                 if (oPtr.Stompable())
                 {
                     Profile.Instance.MsgPrint($"You destroy {oName}.");
-                    int amount = oPtr.Count;
+                    var amount = oPtr.Count;
                     Player.Inventory.InvenItemIncrease(item, -amount);
                     Player.Inventory.InvenItemOptimize(item);
                 }
@@ -1901,7 +1901,7 @@ namespace Cthangband.Spells
                 if (oPtr.Stompable())
                 {
                     Profile.Instance.MsgPrint($"You destroy {oName}.");
-                    int amount = oPtr.Count;
+                    var amount = oPtr.Count;
                     Player.Inventory.InvenItemIncrease(item, -amount);
                     Player.Inventory.InvenItemOptimize(item);
                 }
@@ -1915,9 +1915,9 @@ namespace Cthangband.Spells
 
         public void IdentifyPack()
         {
-            for (int i = 0; i < InventorySlot.Total; i++)
+            for (var i = 0; i < InventorySlot.Total; i++)
             {
-                Item oPtr = Player.Inventory[i];
+                var oPtr = Player.Inventory[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -1926,9 +1926,9 @@ namespace Cthangband.Spells
                 oPtr.BecomeKnown();
                 if (oPtr.Stompable())
                 {
-                    string itemName = oPtr.Description(true, 3);
+                    var itemName = oPtr.Description(true, 3);
                     Profile.Instance.MsgPrint($"You destroy {itemName}.");
-                    int amount = oPtr.Count;
+                    var amount = oPtr.Count;
                     Player.Inventory.InvenItemIncrease(i, -amount);
                     Player.Inventory.InvenItemOptimize(i);
                     i--;
@@ -1975,7 +1975,7 @@ namespace Cthangband.Spells
 
         public bool LightArea(int dam, int rad)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectKill;
             if (Player.TimedBlindness == 0)
             {
                 Profile.Instance.MsgPrint("You are surrounded by a white light.");
@@ -1987,15 +1987,15 @@ namespace Cthangband.Spells
 
         public void LightLine(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectKill;
             TargetedProject(new ProjectLightWeak(this), dir, Program.Rng.DiceRoll(6, 8), flg);
         }
 
         public bool LoseAllInfo()
         {
-            for (int i = 0; i < InventorySlot.Total; i++)
+            for (var i = 0; i < InventorySlot.Total; i++)
             {
-                Item oPtr = Player.Inventory[i];
+                var oPtr = Player.Inventory[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -2006,7 +2006,7 @@ namespace Cthangband.Spells
                 }
                 if (string.IsNullOrEmpty(oPtr.Inscription) == false && oPtr.IdentifyFlags.IsSet(Constants.IdentSense))
                 {
-                    string q = oPtr.Inscription;
+                    var q = oPtr.Inscription;
                     if (q == "cursed" || q == "broken" || q == "good" || q == "average" || q == "excellent" ||
                         q == "worthless" || q == "special" || q == "terrible")
                     {
@@ -2025,11 +2025,11 @@ namespace Cthangband.Spells
 
         public void MassCarnage(bool playerCast)
         {
-            int msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
-            for (int i = 1; i < Level.MMax; i++)
+            var msec = GlobalData.DelayFactor * GlobalData.DelayFactor * GlobalData.DelayFactor;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
@@ -2066,22 +2066,22 @@ namespace Cthangband.Spells
 
         public bool PolyMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldPoly(this), dir, Player.Level, flg);
         }
 
         public int PolymorphMonster(MonsterRace rPtr)
         {
-            int index = rPtr.Index;
+            var index = rPtr.Index;
             if ((rPtr.Flags1 & MonsterFlag1.Unique) != 0 || (rPtr.Flags1 & MonsterFlag1.Guardian) != 0)
             {
                 return rPtr.Index;
             }
-            int lev1 = rPtr.Level - ((Program.Rng.DieRoll(20) / Program.Rng.DieRoll(9)) + 1);
-            int lev2 = rPtr.Level + (Program.Rng.DieRoll(20) / Program.Rng.DieRoll(9)) + 1;
-            for (int i = 0; i < 1000; i++)
+            var lev1 = rPtr.Level - ((Program.Rng.DieRoll(20) / Program.Rng.DieRoll(9)) + 1);
+            var lev2 = rPtr.Level + (Program.Rng.DieRoll(20) / Program.Rng.DieRoll(9)) + 1;
+            for (var i = 0; i < 1000; i++)
             {
-                int r = Level.Monsters.GetMonNum(((_saveGame.Difficulty + rPtr.Level) / 2) + 5);
+                var r = Level.Monsters.GetMonNum(((_saveGame.Difficulty + rPtr.Level) / 2) + 5);
                 if (r == 0)
                 {
                     break;
@@ -2103,10 +2103,10 @@ namespace Cthangband.Spells
 
         public bool PotionSmashEffect(int who, int y, int x, int oSval)
         {
-            int radius = 2;
+            var radius = 2;
             IProjection dt = null;
-            int dam = 0;
-            bool angry = false;
+            var dam = 0;
+            var angry = false;
             switch (oSval)
             {
                 case PotionType.SaltWater:
@@ -2239,10 +2239,10 @@ namespace Cthangband.Spells
 
         public void Probing()
         {
-            bool probe = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var probe = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
+                var mPtr = Level.Monsters[i];
                 if (mPtr.Race == null)
                 {
                     continue;
@@ -2257,7 +2257,7 @@ namespace Cthangband.Spells
                     {
                         Profile.Instance.MsgPrint("Probing...");
                     }
-                    string mName = mPtr.MonsterDesc(0x04);
+                    var mName = mPtr.MonsterDesc(0x04);
                     Profile.Instance.MsgPrint($"{mName} has {mPtr.Health} hit points.");
                     Level.Monsters.LoreDoProbe(i);
                     probe = true;
@@ -2278,7 +2278,7 @@ namespace Cthangband.Spells
         {
             int i, t;
             _saveGame.ItemFilter = ItemTesterHookRecharge;
-            if (!_saveGame.GetItem(out int item, "Recharge which item? ", false, true, true))
+            if (!_saveGame.GetItem(out var item, "Recharge which item? ", false, true, true))
             {
                 if (item == -2)
                 {
@@ -2286,8 +2286,8 @@ namespace Cthangband.Spells
                 }
                 return false;
             }
-            Item oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
-            int lev = oPtr.ItemType.Level;
+            var oPtr = item >= 0 ? Player.Inventory[item] : Level.Items[0 - item];
+            var lev = oPtr.ItemType.Level;
             if (oPtr.Category == ItemCategory.Rod)
             {
                 i = (100 - lev + num) / 5;
@@ -2367,8 +2367,8 @@ namespace Cthangband.Spells
         public void ReportMagics()
         {
             int i = 0, j, k;
-            string[] info = new string[128];
-            int[] info2 = new int[128];
+            var info = new string[128];
+            var info2 = new int[128];
             if (Player.TimedBlindness != 0)
             {
                 info2[i] = ReportMagicsAux(Player.TimedBlindness);
@@ -2472,7 +2472,7 @@ namespace Cthangband.Spells
             Gui.PrintLine("     Your Current Magic:", 1, 15);
             for (k = 2, j = 0; j < i; j++)
             {
-                string dummy = $"{info[j]} {GlobalData.ReportMagicDurations[info2[j]]}.";
+                var dummy = $"{info[j]} {GlobalData.ReportMagicDurations[info2[j]]}.";
                 Gui.PrintLine(dummy, k++, 15);
                 if (k == 22 && j + 1 < i)
                 {
@@ -2492,17 +2492,17 @@ namespace Cthangband.Spells
         public void SelfKnowledge()
         {
             int i = 0, j, k;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             Item oPtr;
-            string[] info = new string[128];
-            int plev = Player.Level;
+            var info = new string[128];
+            var plev = Player.Level;
             for (k = InventorySlot.MeleeWeapon; k < InventorySlot.Total; k++)
             {
-                FlagSet t1 = new FlagSet();
-                FlagSet t2 = new FlagSet();
-                FlagSet t3 = new FlagSet();
+                var t1 = new FlagSet();
+                var t2 = new FlagSet();
+                var t3 = new FlagSet();
                 oPtr = Player.Inventory[k];
                 if (oPtr.ItemType != null)
                 {
@@ -2520,10 +2520,10 @@ namespace Cthangband.Spells
                 info[i++] = item;
             }
 
-            string[] mutations = Player.Dna.GetMutationList();
+            var mutations = Player.Dna.GetMutationList();
             if (mutations.Length > 0)
             {
-                foreach (string m in mutations)
+                foreach (var m in mutations)
                 {
                     info[i++] = m;
                 }
@@ -2942,9 +2942,9 @@ namespace Cthangband.Spells
 
         public bool SetAcidDestroy(Item oPtr)
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             if (!oPtr.HatesAcid())
             {
                 return false;
@@ -2959,9 +2959,9 @@ namespace Cthangband.Spells
 
         public bool SetColdDestroy(Item oPtr)
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             if (!oPtr.HatesCold())
             {
                 return false;
@@ -2976,9 +2976,9 @@ namespace Cthangband.Spells
 
         public bool SetElecDestroy(Item oPtr)
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             if (!oPtr.HatesElec())
             {
                 return false;
@@ -2993,9 +2993,9 @@ namespace Cthangband.Spells
 
         public bool SetFireDestroy(Item oPtr)
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             if (!oPtr.HatesFire())
             {
                 return false;
@@ -3010,7 +3010,7 @@ namespace Cthangband.Spells
 
         public bool SleepMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldSleep(this), dir, Player.Level, flg);
         }
 
@@ -3021,13 +3021,13 @@ namespace Cthangband.Spells
 
         public void SleepMonstersTouch()
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectKill | ProjectionFlag.ProjectHide;
+            var flg = ProjectionFlag.ProjectKill | ProjectionFlag.ProjectHide;
             Project(0, 1, Player.MapY, Player.MapX, Player.Level, new ProjectOldSleep(this), flg);
         }
 
         public bool SlowMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldSlow(this), dir, Player.Level, flg);
         }
 
@@ -3038,7 +3038,7 @@ namespace Cthangband.Spells
 
         public bool SpeedMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectOldSpeed(this), dir, Player.Level, flg);
         }
 
@@ -3072,7 +3072,7 @@ namespace Cthangband.Spells
 
         public void StasisMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             TargetedProject(new ProjectStasis(this), dir, Player.Level, flg);
         }
 
@@ -3083,7 +3083,7 @@ namespace Cthangband.Spells
 
         public void StunMonster(int dir, int plev)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectKill;
             TargetedProject(new ProjectStun(this), dir, plev, flg);
         }
 
@@ -3095,7 +3095,7 @@ namespace Cthangband.Spells
         public void SummonReaver()
         {
             int i;
-            int maxReaver = (_saveGame.Difficulty / 50) + Program.Rng.DieRoll(6);
+            var maxReaver = (_saveGame.Difficulty / 50) + Program.Rng.DieRoll(6);
             for (i = 0; i < maxReaver; i++)
             {
                 Level.Monsters.SummonSpecific(Player.MapY, Player.MapX, 100, Constants.SummonReaver);
@@ -3104,30 +3104,30 @@ namespace Cthangband.Spells
 
         public void TeleportAway(int mIdx, int dis)
         {
-            int ny = 0;
-            int nx = 0;
-            bool look = true;
-            Monster mPtr = Level.Monsters[mIdx];
+            var ny = 0;
+            var nx = 0;
+            var look = true;
+            var mPtr = Level.Monsters[mIdx];
             if (mPtr.Race == null)
             {
                 return;
             }
-            int oy = mPtr.MapY;
-            int ox = mPtr.MapX;
-            int min = dis / 2;
+            var oy = mPtr.MapY;
+            var ox = mPtr.MapX;
+            var min = dis / 2;
             while (look)
             {
                 if (dis > 200)
                 {
                     dis = 200;
                 }
-                for (int i = 0; i < 500; i++)
+                for (var i = 0; i < 500; i++)
                 {
                     while (true)
                     {
                         ny = Program.Rng.RandomSpread(oy, dis);
                         nx = Program.Rng.RandomSpread(ox, dis);
-                        int d = Level.Distance(oy, ox, ny, nx);
+                        var d = Level.Distance(oy, ox, ny, nx);
                         if (d >= min && d <= dis)
                         {
                             break;
@@ -3167,15 +3167,15 @@ namespace Cthangband.Spells
 
         public bool TeleportMonster(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectAwayAll(this), dir, Constants.MaxSight * 5, flg);
         }
 
         public void TeleportPlayer(int dis)
         {
             int x = Player.MapY, y = Player.MapX;
-            int xx = -1;
-            bool look = true;
+            var xx = -1;
+            var look = true;
             if (Player.HasAntiTeleport)
             {
                 Profile.Instance.MsgPrint("A mysterious force prevents you from teleporting!");
@@ -3185,20 +3185,20 @@ namespace Cthangband.Spells
             {
                 dis = 200;
             }
-            int min = dis / 2;
+            var min = dis / 2;
             while (look)
             {
                 if (dis > 200)
                 {
                     dis = 200;
                 }
-                for (int i = 0; i < 500; i++)
+                for (var i = 0; i < 500; i++)
                 {
                     while (true)
                     {
                         y = Program.Rng.RandomSpread(Player.MapY, dis);
                         x = Program.Rng.RandomSpread(Player.MapX, dis);
-                        int d = Level.Distance(Player.MapY, Player.MapX, y, x);
+                        var d = Level.Distance(Player.MapY, Player.MapX, y, x);
                         if (d >= min && d <= dis)
                         {
                             break;
@@ -3223,14 +3223,14 @@ namespace Cthangband.Spells
                 min /= 2;
             }
             Gui.PlaySound(SoundEffect.Teleport);
-            int oy = Player.MapY;
-            int ox = Player.MapX;
+            var oy = Player.MapY;
+            var ox = Player.MapX;
             Player.MapY = y;
             Player.MapX = x;
             Level.RedrawSingleLocation(oy, ox);
             while (xx < 2)
             {
-                int yy = -1;
+                var yy = -1;
                 while (yy < 2)
                 {
                     if (xx == 0 && yy == 0)
@@ -3257,7 +3257,7 @@ namespace Cthangband.Spells
                 xx++;
             }
             Level.RedrawSingleLocation(Player.MapY, Player.MapX);
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             targetEngine.RecenterScreenAroundPlayer();
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateDistances);
@@ -3349,13 +3349,13 @@ namespace Cthangband.Spells
                 }
             }
             Gui.PlaySound(SoundEffect.Teleport);
-            int oy = Player.MapY;
-            int ox = Player.MapX;
+            var oy = Player.MapY;
+            var ox = Player.MapX;
             Player.MapY = y;
             Player.MapX = x;
             Level.RedrawSingleLocation(oy, ox);
             Level.RedrawSingleLocation(Player.MapY, Player.MapX);
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             targetEngine.RecenterScreenAroundPlayer();
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateDistances);
@@ -3364,7 +3364,7 @@ namespace Cthangband.Spells
 
         public void TeleportSwap(int dir)
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             int tx, ty;
             if (dir == 5 && targetEngine.TargetOkay())
             {
@@ -3376,15 +3376,15 @@ namespace Cthangband.Spells
                 tx = Player.MapX + Level.KeypadDirectionXOffset[dir];
                 ty = Player.MapY + Level.KeypadDirectionYOffset[dir];
             }
-            GridTile cPtr = Level.Grid[ty][tx];
+            var cPtr = Level.Grid[ty][tx];
             if (cPtr.MonsterIndex == 0)
             {
                 Profile.Instance.MsgPrint("You can't trade places with that!");
             }
             else
             {
-                Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[cPtr.MonsterIndex];
+                var rPtr = mPtr.Race;
                 if ((rPtr.Flags3 & MonsterFlag3.ResistTeleport) != 0)
                 {
                     Profile.Instance.MsgPrint("Your teleportation is blocked!");
@@ -3413,7 +3413,7 @@ namespace Cthangband.Spells
 
         public bool TrapCreation()
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectHide;
+            var flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem | ProjectionFlag.ProjectHide;
             return Project(0, 1, Player.MapY, Player.MapX, 0, new ProjectMakeTrap(this), flg);
         }
 
@@ -3429,7 +3429,7 @@ namespace Cthangband.Spells
 
         public bool UnlightArea(int dam, int rad)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectKill;
+            var flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectKill;
             if (Player.TimedBlindness == 0)
             {
                 Profile.Instance.MsgPrint("Darkness surrounds you.");
@@ -3442,10 +3442,10 @@ namespace Cthangband.Spells
         public void UnlightRoom(int y1, int x1)
         {
             CaveTempRoomAux(y1, x1);
-            for (int i = 0; i < Level.TempN; i++)
+            for (var i = 0; i < Level.TempN; i++)
             {
-                int x = Level.TempX[i];
-                int y = Level.TempY[i];
+                var x = Level.TempX[i];
+                var y = Level.TempY[i];
                 if (!Level.GridPassable(y, x))
                 {
                     continue;
@@ -3491,7 +3491,7 @@ namespace Cthangband.Spells
 
         public void WallStone()
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
+            var flg = ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem;
             _ = Project(0, 1, Player.MapY, Player.MapX, 0, new ProjectStoneWall(this), flg);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
@@ -3500,14 +3500,14 @@ namespace Cthangband.Spells
 
         public bool WallToMud(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
+            var flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
                       ProjectionFlag.ProjectKill;
             return TargetedProject(new ProjectKillWall(this), dir, 20 + Program.Rng.DieRoll(30), flg);
         }
 
         public void WizardLock(int dir)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
+            var flg = ProjectionFlag.ProjectBeam | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
                       ProjectionFlag.ProjectKill;
             TargetedProject(new ProjectJamDoor(this), dir, 20 + Program.Rng.DieRoll(30), flg);
         }
@@ -3524,7 +3524,7 @@ namespace Cthangband.Spells
 
         private void CaveTempRoomAux(int y, int x)
         {
-            GridTile cPtr = Level.Grid[y][x];
+            var cPtr = Level.Grid[y][x];
             if (cPtr.TileFlags.IsSet(GridTile.TempFlag))
             {
                 return;
@@ -3545,18 +3545,18 @@ namespace Cthangband.Spells
 
         private void CaveTempRoomLight()
         {
-            for (int i = 0; i < Level.TempN; i++)
+            for (var i = 0; i < Level.TempN; i++)
             {
-                int y = Level.TempY[i];
-                int x = Level.TempX[i];
-                GridTile cPtr = Level.Grid[y][x];
+                var y = Level.TempY[i];
+                var x = Level.TempX[i];
+                var cPtr = Level.Grid[y][x];
                 cPtr.TileFlags.Clear(GridTile.TempFlag);
                 cPtr.TileFlags.Set(GridTile.SelfLit);
                 if (cPtr.MonsterIndex != 0)
                 {
-                    int chance = 25;
-                    Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
-                    MonsterRace rPtr = mPtr.Race;
+                    var chance = 25;
+                    var mPtr = Level.Monsters[cPtr.MonsterIndex];
+                    var rPtr = mPtr.Race;
                     Level.Monsters.UpdateMonsterVisibility(cPtr.MonsterIndex, false);
                     if ((rPtr.Flags2 & MonsterFlag2.Stupid) != 0)
                     {
@@ -3571,7 +3571,7 @@ namespace Cthangband.Spells
                         mPtr.SleepLevel = 0;
                         if (mPtr.IsVisible)
                         {
-                            string mName = mPtr.MonsterDesc(0);
+                            var mName = mPtr.MonsterDesc(0);
                             Profile.Instance.MsgPrint($"{mName} wakes up.");
                         }
                     }
@@ -3584,11 +3584,11 @@ namespace Cthangband.Spells
 
         private void CaveTempRoomUnlight()
         {
-            for (int i = 0; i < Level.TempN; i++)
+            for (var i = 0; i < Level.TempN; i++)
             {
-                int y = Level.TempY[i];
-                int x = Level.TempX[i];
-                GridTile cPtr = Level.Grid[y][x];
+                var y = Level.TempY[i];
+                var x = Level.TempX[i];
+                var cPtr = Level.Grid[y][x];
                 cPtr.TileFlags.Clear(GridTile.TempFlag);
                 cPtr.TileFlags.Clear(GridTile.SelfLit);
                 if (cPtr.FeatureType.IsOpenFloor)
@@ -3607,17 +3607,17 @@ namespace Cthangband.Spells
 
         private bool DetectMonstersString(string match)
         {
-            bool flag = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var flag = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
-                MonsterRace rPtr = mPtr.Race;
+                var mPtr = Level.Monsters[i];
+                var rPtr = mPtr.Race;
                 if (mPtr.Race == null)
                 {
                     continue;
                 }
-                int y = mPtr.MapY;
-                int x = mPtr.MapX;
+                var y = mPtr.MapY;
+                var x = mPtr.MapX;
                 if (!Level.PanelContains(y, x))
                 {
                     continue;
@@ -3660,10 +3660,10 @@ namespace Cthangband.Spells
         private void LightRoom(int y1, int x1)
         {
             CaveTempRoomAux(y1, x1);
-            for (int i = 0; i < Level.TempN; i++)
+            for (var i = 0; i < Level.TempN; i++)
             {
-                int x = Level.TempX[i];
-                int y = Level.TempY[i];
+                var x = Level.TempX[i];
+                var y = Level.TempY[i];
                 if (!Level.GridPassable(y, x))
                 {
                     continue;
@@ -3683,9 +3683,9 @@ namespace Cthangband.Spells
         private bool MinusAc()
         {
             Item oPtr = null;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             switch (Program.Rng.DieRoll(6))
             {
                 case 1:
@@ -3724,7 +3724,7 @@ namespace Cthangband.Spells
             {
                 return false;
             }
-            string oName = oPtr.Description(false, 0);
+            var oName = oPtr.Description(false, 0);
             oPtr.GetMergedFlags(f1, f2, f3);
             if (f3.IsSet(ItemFlag3.IgnoreAcid))
             {
@@ -3739,17 +3739,17 @@ namespace Cthangband.Spells
 
         private bool ProjectAtAllInLos(IProjection projectile, int dam)
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectJump | ProjectionFlag.ProjectKill | ProjectionFlag.ProjectHide;
-            bool obvious = false;
-            for (int i = 1; i < Level.MMax; i++)
+            var flg = ProjectionFlag.ProjectJump | ProjectionFlag.ProjectKill | ProjectionFlag.ProjectHide;
+            var obvious = false;
+            for (var i = 1; i < Level.MMax; i++)
             {
-                Monster mPtr = Level.Monsters[i];
+                var mPtr = Level.Monsters[i];
                 if (mPtr.Race == null)
                 {
                     continue;
                 }
-                int y = mPtr.MapY;
-                int x = mPtr.MapX;
+                var y = mPtr.MapY;
+                var x = mPtr.MapX;
                 if (!Level.PlayerHasLosBold(y, x))
                 {
                     continue;
@@ -3764,13 +3764,13 @@ namespace Cthangband.Spells
 
         private bool RemoveCurseAux(bool all)
         {
-            int cnt = 0;
-            for (int i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
+            var cnt = 0;
+            for (var i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
             {
-                FlagSet f1 = new FlagSet();
-                FlagSet f2 = new FlagSet();
-                FlagSet f3 = new FlagSet();
-                Item oPtr = Player.Inventory[i];
+                var f1 = new FlagSet();
+                var f2 = new FlagSet();
+                var f3 = new FlagSet();
+                var oPtr = Player.Inventory[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -3836,10 +3836,10 @@ namespace Cthangband.Spells
 
         private bool TargetedProject(IProjection projectile, int dir, int dam, ProjectionFlag flg)
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             flg |= ProjectionFlag.ProjectThru;
-            int tx = Player.MapX + Level.KeypadDirectionXOffset[dir];
-            int ty = Player.MapY + Level.KeypadDirectionYOffset[dir];
+            var tx = Player.MapX + Level.KeypadDirectionXOffset[dir];
+            var ty = Player.MapY + Level.KeypadDirectionYOffset[dir];
             if (dir == 5 && targetEngine.TargetOkay())
             {
                 tx = _saveGame.TargetCol;
@@ -3850,12 +3850,12 @@ namespace Cthangband.Spells
 
         private void TeleportToPlayer(int mIdx)
         {
-            int ny = Player.MapY;
-            int nx = Player.MapX;
-            int dis = 2;
-            bool look = true;
-            Monster mPtr = Level.Monsters[mIdx];
-            int attempts = 500;
+            var ny = Player.MapY;
+            var nx = Player.MapX;
+            var dis = 2;
+            var look = true;
+            var mPtr = Level.Monsters[mIdx];
+            var attempts = 500;
             if (mPtr.Race == null)
             {
                 return;
@@ -3864,22 +3864,22 @@ namespace Cthangband.Spells
             {
                 return;
             }
-            int oy = mPtr.MapY;
-            int ox = mPtr.MapX;
-            int min = dis / 2;
+            var oy = mPtr.MapY;
+            var ox = mPtr.MapX;
+            var min = dis / 2;
             while (look && --attempts != 0)
             {
                 if (dis > 200)
                 {
                     dis = 200;
                 }
-                for (int i = 0; i < 500; i++)
+                for (var i = 0; i < 500; i++)
                 {
                     while (true)
                     {
                         ny = Program.Rng.RandomSpread(Player.MapY, dis);
                         nx = Program.Rng.RandomSpread(Player.MapX, dis);
-                        int d = Level.Distance(Player.MapY, Player.MapX, ny, nx);
+                        var d = Level.Distance(Player.MapY, Player.MapX, ny, nx);
                         if (d >= min && d <= dis)
                         {
                             break;

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -19,11 +19,11 @@ namespace Cthangband.PlayerClass.Base
         private PlayerClasses()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            foreach (Type type in assembly.GetTypes())
+            foreach (var type in assembly.GetTypes())
             {
                 if (typeof(IPlayerClass).IsAssignableFrom(type) && !type.IsAbstract)
                 {
-                    IPlayerClass playerClass = (IPlayerClass)Activator.CreateInstance(type);
+                    var playerClass = (IPlayerClass)Activator.CreateInstance(type);
                     Add(playerClass.Title, playerClass);
                 }
             }

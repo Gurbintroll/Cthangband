@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -17,11 +17,11 @@ namespace Cthangband
     {
         public MonsterRaceArray()
         {
-            Dictionary<string, BaseMonsterRace> baseRaces = StaticResources.Instance.BaseMonsterRaces;
-            int index = 0;
-            for (int level = -1; level < 128; level++)
+            var baseRaces = StaticResources.Instance.BaseMonsterRaces;
+            var index = 0;
+            for (var level = -1; level < 128; level++)
             {
-                foreach (KeyValuePair<string, BaseMonsterRace> baseMonsterRace in baseRaces)
+                foreach (var baseMonsterRace in baseRaces)
                 {
                     if (baseMonsterRace.Value.Level != level)
                     {
@@ -35,7 +35,7 @@ namespace Cthangband
 
         public void AddKnowledge()
         {
-            foreach (MonsterRace monsterType in this)
+            foreach (var monsterType in this)
             {
                 monsterType.Knowledge = new MonsterKnowledge(monsterType);
             }
@@ -43,7 +43,7 @@ namespace Cthangband
 
         public int IndexFromName(string name)
         {
-            foreach (MonsterRace race in this)
+            foreach (var race in this)
             {
                 if (race.Name == name)
                 {
@@ -55,7 +55,7 @@ namespace Cthangband
 
         public void ResetGuardians()
         {
-            foreach (MonsterRace race in this)
+            foreach (var race in this)
             {
                 race.Flags1 &= ~MonsterFlag1.Guardian;
             }
@@ -63,7 +63,7 @@ namespace Cthangband
 
         public void ResetUniqueOnlyGuardianStatus()
         {
-            foreach (MonsterRace race in this)
+            foreach (var race in this)
             {
                 race.Flags1 &= ~MonsterFlag1.OnlyGuardian;
             }

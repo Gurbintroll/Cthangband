@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -10,9 +10,6 @@ using Cthangband.PlayerRace.Base;
 using Cthangband.StaticData;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cthangband.PlayerRace
 {
@@ -115,7 +112,7 @@ namespace Cthangband.PlayerRace
         /// <returns> The random name </returns>
         public override string CreateRandomName()
         {
-            string name = "";
+            var name = "";
             do
             {
                 name = _humanSyllable1[Program.Rng.RandomLessThan(_humanSyllable1.Length)];
@@ -155,21 +152,21 @@ namespace Cthangband.PlayerRace
             if (saveGame.CommandEngine.CheckIfRacialPowerWorks(2, 1 + (player.Level / 3), Ability.Constitution, 9))
             {
                 int direction;
-                TargetEngine targetEngine = new TargetEngine(player, level);
+                var targetEngine = new TargetEngine(player, level);
                 if (!targetEngine.GetDirectionNoAim(out direction))
                 {
                     return;
                 }
-                int y = player.MapY + level.KeypadDirectionYOffset[direction];
-                int x = player.MapX + level.KeypadDirectionXOffset[direction];
-                GridTile tile = level.Grid[y][x];
+                var y = player.MapY + level.KeypadDirectionYOffset[direction];
+                var x = player.MapX + level.KeypadDirectionXOffset[direction];
+                var tile = level.Grid[y][x];
                 if (tile.MonsterIndex == 0)
                 {
                     Profile.Instance.MsgPrint("You bite into thin air!");
                     return;
                 }
                 Profile.Instance.MsgPrint("You grin and bare your fangs...");
-                int dummy = player.Level + (Program.Rng.DieRoll(player.Level) * Math.Max(1, player.Level / 10));
+                var dummy = player.Level + (Program.Rng.DieRoll(player.Level) * Math.Max(1, player.Level / 10));
                 if (saveGame.SpellEffects.DrainLife(direction, dummy))
                 {
                     if (player.Food < Constants.PyFoodFull)

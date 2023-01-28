@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -45,15 +45,15 @@ namespace Cthangband
             int i;
             int extraShots;
             Item oPtr;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            int oldSpeed = _player.Speed;
-            bool oldTelepathy = _player.HasTelepathy;
-            bool oldSeeInv = _player.HasSeeInvisibility;
-            int oldDisAc = _player.DisplayedBaseArmourClass;
-            int oldDisToA = _player.DisplayedArmourClassBonus;
-            int extraBlows = extraShots = 0;
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
+            var oldSpeed = _player.Speed;
+            var oldTelepathy = _player.HasTelepathy;
+            var oldSeeInv = _player.HasSeeInvisibility;
+            var oldDisAc = _player.DisplayedBaseArmourClass;
+            var oldDisToA = _player.DisplayedArmourClassBonus;
+            var extraBlows = extraShots = 0;
             for (i = 0; i < 6; i++)
             {
                 _player.AbilityScores[i].Bonus = 0;
@@ -485,14 +485,14 @@ namespace Cthangband
             for (i = 0; i < 6; i++)
             {
                 int ind;
-                int top = _player.AbilityScores[i]
+                var top = _player.AbilityScores[i]
                     .ModifyStatValue(_player.AbilityScores[i].InnateMax, _player.AbilityScores[i].Bonus);
                 if (_player.AbilityScores[i].AdjustedMax != top)
                 {
                     _player.AbilityScores[i].AdjustedMax = top;
                     _player.RedrawNeeded.Set(RedrawFlag.PrStats);
                 }
-                int use = _player.AbilityScores[i]
+                var use = _player.AbilityScores[i]
                     .ModifyStatValue(_player.AbilityScores[i].Innate, _player.AbilityScores[i].Bonus);
                 if (i == Ability.Charisma && _player.Dna.CharismaOverride)
                 {
@@ -637,7 +637,7 @@ namespace Cthangband
             {
                 _player.UpdatesNeeded.Set(UpdateFlags.UpdateMonsters);
             }
-            int j = _player.WeightCarried;
+            var j = _player.WeightCarried;
             i = WeightLimit();
             if (j > i / 2)
             {
@@ -667,7 +667,7 @@ namespace Cthangband
             {
                 _player.RedrawNeeded.Set(RedrawFlag.PrArmor);
             }
-            int hold = _player.AbilityScores[Ability.Strength].StrMaxWeaponWeight;
+            var hold = _player.AbilityScores[Ability.Strength].StrMaxWeaponWeight;
             oPtr = _player.Inventory[InventorySlot.RangedWeapon];
             _player.HasHeavyBow = false;
             if (hold < oPtr.Weight / 10)
@@ -715,16 +715,16 @@ namespace Cthangband
             }
             if (oPtr.ItemType != null && !_player.HasHeavyWeapon)
             {
-                int num = _player.PlayerClass.AttacksPerTurnMax;
-                int wgt = _player.PlayerClass.AttacksPerTurnMinWeaponWeight;
-                int mul = _player.PlayerClass.AttacksPerTurnWeightMultiplier;
-                int div = oPtr.Weight < wgt ? wgt : oPtr.Weight;
-                int strIndex = _player.AbilityScores[Ability.Strength].StrAttackSpeedComponent * mul / div;
+                var num = _player.PlayerClass.AttacksPerTurnMax;
+                var wgt = _player.PlayerClass.AttacksPerTurnMinWeaponWeight;
+                var mul = _player.PlayerClass.AttacksPerTurnWeightMultiplier;
+                var div = oPtr.Weight < wgt ? wgt : oPtr.Weight;
+                var strIndex = _player.AbilityScores[Ability.Strength].StrAttackSpeedComponent * mul / div;
                 if (strIndex > 11)
                 {
                     strIndex = 11;
                 }
-                int dexIndex = _player.AbilityScores[Ability.Dexterity].DexAttackSpeedComponent;
+                var dexIndex = _player.AbilityScores[Ability.Dexterity].DexAttackSpeedComponent;
                 if (dexIndex > 11)
                 {
                     dexIndex = 11;
@@ -916,8 +916,8 @@ namespace Cthangband
 
         public void CalcHitpoints()
         {
-            int bonus = _player.AbilityScores[Ability.Constitution].ConHealthBonus;
-            int mhp = _player.PlayerHp[_player.Level - 1] + (bonus * _player.Level / 2);
+            var bonus = _player.AbilityScores[Ability.Constitution].ConHealthBonus;
+            var mhp = _player.PlayerHp[_player.Level - 1] + (bonus * _player.Level / 2);
             if (mhp < _player.Level + 1)
             {
                 mhp = _player.Level + 1;
@@ -953,7 +953,7 @@ namespace Cthangband
             {
                 return;
             }
-            string p = _player.Spellcasting.Type == CastingType.Arcane ? "spell" : "prayer";
+            var p = _player.Spellcasting.Type == CastingType.Arcane ? "spell" : "prayer";
             if (_player.Spellcasting.Type == CastingType.None)
             {
                 return;
@@ -966,13 +966,13 @@ namespace Cthangband
             {
                 return;
             }
-            int levels = _player.Level - _player.Spellcasting.SpellFirst + 1;
+            var levels = _player.Level - _player.Spellcasting.SpellFirst + 1;
             if (levels < 0)
             {
                 levels = 0;
             }
-            int numAllowed = _player.AbilityScores[_player.Spellcasting.SpellStat].HalfSpellsPerLevel * levels / 2;
-            int numKnown = 0;
+            var numAllowed = _player.AbilityScores[_player.Spellcasting.SpellStat].HalfSpellsPerLevel * levels / 2;
+            var numKnown = 0;
             for (j = 0; j < 64; j++)
             {
                 if (_player.Spellcasting.Spells[j / 32][j % 32].Learned)
@@ -1033,8 +1033,8 @@ namespace Cthangband
                 Profile.Instance.MsgPrint($"You have forgotten the {p} of {sPtr.Name}.");
                 _player.SpareSpellSlots++;
             }
-            int forgottenTotal = 0;
-            for (int l = 0; l < 64; l++)
+            var forgottenTotal = 0;
+            for (var l = 0; l < 64; l++)
             {
                 if (_player.Spellcasting.Spells[l / 32][l % 32].Forgotten)
                 {
@@ -1074,8 +1074,8 @@ namespace Cthangband
                 }
                 _player.SpareSpellSlots--;
             }
-            int k = 0;
-            int limit = _player.Realm2 == Realm.None ? 32 : 64;
+            var k = 0;
+            var limit = _player.Realm2 == Realm.None ? 32 : 64;
             for (j = 0; j < limit; j++)
             {
                 sPtr = _player.Spellcasting.Spells[j / 32][j % 32];
@@ -1113,7 +1113,7 @@ namespace Cthangband
                 {
                     if (!Gui.FullScreenOverlay)
                     {
-                        string suffix = _player.SpareSpellSlots != 1 ? "s" : "";
+                        var suffix = _player.SpareSpellSlots != 1 ? "s" : "";
                         Profile.Instance.MsgPrint($"You can learn {_player.SpareSpellSlots} more {p}{suffix}.");
                     }
                 }
@@ -1124,13 +1124,13 @@ namespace Cthangband
 
         public void CalcTorch()
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             _player.LightLevel = 0;
-            for (int i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
+            for (var i = InventorySlot.MeleeWeapon; i < InventorySlot.Total; i++)
             {
-                Item oPtr = _player.Inventory[i];
+                var oPtr = _player.Inventory[i];
                 if (i == InventorySlot.Lightsource && oPtr.ItemType != null &&
                     oPtr.Category == ItemCategory.Light)
                 {
@@ -1208,7 +1208,7 @@ namespace Cthangband
             {
                 levels = 0;
             }
-            int msp = _player.AbilityScores[_player.Spellcasting.SpellStat].VisBonus * levels / 2;
+            var msp = _player.AbilityScores[_player.Spellcasting.SpellStat].VisBonus * levels / 2;
             if (msp != 0)
             {
                 msp++;
@@ -1216,11 +1216,11 @@ namespace Cthangband
             msp = _player.PlayerClass.ApplyVisBonus(msp);
             if (_player.Spellcasting.Type == CastingType.Arcane)
             {
-                FlagSet f1 = new FlagSet();
-                FlagSet f2 = new FlagSet();
-                FlagSet f3 = new FlagSet();
+                var f1 = new FlagSet();
+                var f2 = new FlagSet();
+                var f3 = new FlagSet();
                 _player.HasRestrictingGloves = false;
-                Item oPtr = _player.Inventory[InventorySlot.Hands];
+                var oPtr = _player.Inventory[InventorySlot.Hands];
                 oPtr.GetMergedFlags(f1, f2, f3);
                 if (oPtr.ItemType != null && f2.IsClear(ItemFlag2.FreeAct) && f1.IsClear(ItemFlag1.Dex) &&
                     oPtr.TypeSpecificValue > 0)
@@ -1229,14 +1229,14 @@ namespace Cthangband
                     msp = 3 * msp / 4;
                 }
                 _player.HasRestrictingArmour = false;
-                int curWgt = 0;
+                var curWgt = 0;
                 curWgt += _player.Inventory[InventorySlot.Body].Weight;
                 curWgt += _player.Inventory[InventorySlot.Head].Weight;
                 curWgt += _player.Inventory[InventorySlot.Arm].Weight;
                 curWgt += _player.Inventory[InventorySlot.Cloak].Weight;
                 curWgt += _player.Inventory[InventorySlot.Hands].Weight;
                 curWgt += _player.Inventory[InventorySlot.Feet].Weight;
-                int maxWgt = _player.Spellcasting.SpellWeight;
+                var maxWgt = _player.Spellcasting.SpellWeight;
                 if ((curWgt - maxWgt) / 10 > 0)
                 {
                     _player.HasRestrictingArmour = true;
@@ -1303,10 +1303,10 @@ namespace Cthangband
             }
             else
             {
-                Monster mPtr = _level.Monsters[SaveGame.Instance.TrackedMonsterIndex];
-                Colour attr = Colour.Red;
-                string smb = "**********";
-                int pct = 100 * mPtr.Health / mPtr.MaxHealth;
+                var mPtr = _level.Monsters[SaveGame.Instance.TrackedMonsterIndex];
+                var attr = Colour.Red;
+                var smb = "**********";
+                var pct = 100 * mPtr.Health / mPtr.MaxHealth;
                 if (pct >= 10)
                 {
                     attr = Colour.BrightRed;
@@ -1338,7 +1338,7 @@ namespace Cthangband
                     attr = Colour.BrightBrown;
                     smb = "FRIENDLY**";
                 }
-                int len = pct < 10 ? 1 : pct < 90 ? (pct / 10) + 1 : 10;
+                var len = pct < 10 ? 1 : pct < 90 ? (pct / 10) + 1 : 10;
                 Gui.Print(Colour.White, "[----------]", ScreenLocation.RowInfo, ScreenLocation.ColInfo);
                 Gui.Print(attr, smb, ScreenLocation.RowInfo, ScreenLocation.ColInfo + 1, len);
                 Gui.Print(Colour.White, mPtr.Race.SplitName1, ScreenLocation.RowInfo - 3, ScreenLocation.ColInfo, 12);
@@ -1363,8 +1363,8 @@ namespace Cthangband
                 return;
             }
             Gui.Print("Max VP ", ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp);
-            string tmp = _player.MaxVis.ToString().PadLeft(5);
-            Colour colour = Colour.BrightGreen;
+            var tmp = _player.MaxVis.ToString().PadLeft(5);
+            var colour = Colour.BrightGreen;
             Gui.Print(colour, tmp, ScreenLocation.RowMaxsp, ScreenLocation.ColMaxsp + 7);
             Gui.Print("Cur VP ", ScreenLocation.RowCursp, ScreenLocation.ColCursp);
             tmp = _player.Vis.ToString().PadLeft(5);
@@ -1390,7 +1390,7 @@ namespace Cthangband
         public void PrtAc()
         {
             Gui.Print("Cur AC ", ScreenLocation.RowAc, ScreenLocation.ColAc);
-            string tmp = (_player.DisplayedBaseArmourClass + _player.DisplayedArmourClassBonus).ToString().PadLeft(5);
+            var tmp = (_player.DisplayedBaseArmourClass + _player.DisplayedArmourClassBonus).ToString().PadLeft(5);
             Gui.Print(Colour.BrightGreen, tmp, ScreenLocation.RowAc, ScreenLocation.ColAc + 7);
         }
 
@@ -1432,7 +1432,7 @@ namespace Cthangband
 
         public void PrtCut()
         {
-            int c = _player.TimedBleeding;
+            var c = _player.TimedBleeding;
             if (c > 1000)
             {
                 Gui.Print(Colour.BrightRed, "Mortal wound", ScreenLocation.RowCut, ScreenLocation.ColCut);
@@ -1496,7 +1496,7 @@ namespace Cthangband
 
         public void PrtDtrap()
         {
-            int count = 0;
+            var count = 0;
             if (_level.Grid[_player.MapY][_player.MapX].TileFlags.IsClear(GridTile.TrapsDetected))
             {
                 Gui.Print(Colour.Green, "     ", ScreenLocation.RowDtrap, ScreenLocation.ColDtrap);
@@ -1530,7 +1530,7 @@ namespace Cthangband
 
         public void PrtExp()
         {
-            Colour colour = Colour.BrightGreen;
+            var colour = Colour.BrightGreen;
             if (_player.ExperiencePoints < _player.MaxExperienceGained)
             {
                 colour = Colour.Yellow;
@@ -1542,7 +1542,7 @@ namespace Cthangband
             }
             else
             {
-                string outVal = ((GlobalData.PlayerExp[_player.Level - 1] * _player.ExperienceMultiplier / 100) - _player.ExperiencePoints).ToString()
+                var outVal = ((GlobalData.PlayerExp[_player.Level - 1] * _player.ExperienceMultiplier / 100) - _player.ExperiencePoints).ToString()
                     .PadLeft(8);
                 Gui.Print(colour, outVal, ScreenLocation.RowExp, ScreenLocation.ColExp + 4);
             }
@@ -1562,7 +1562,7 @@ namespace Cthangband
             PrtTitle();
             PrtLevel();
             PrtExp();
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
                 PrtStat(i);
             }
@@ -1592,15 +1592,15 @@ namespace Cthangband
         public void PrtGold()
         {
             Gui.Print("GP ", ScreenLocation.RowGold, ScreenLocation.ColGold);
-            string tmp = _player.Gold.ToString().PadLeft(9);
+            var tmp = _player.Gold.ToString().PadLeft(9);
             Gui.Print(Colour.BrightGreen, tmp, ScreenLocation.RowGold, ScreenLocation.ColGold + 3);
         }
 
         public void PrtHp()
         {
             Gui.Print("Max HP ", ScreenLocation.RowMaxhp, ScreenLocation.ColMaxhp);
-            string tmp = _player.MaxHealth.ToString().PadLeft(5);
-            Colour colour = Colour.BrightGreen;
+            var tmp = _player.MaxHealth.ToString().PadLeft(5);
+            var colour = Colour.BrightGreen;
             Gui.Print(colour, tmp, ScreenLocation.RowMaxhp, ScreenLocation.ColMaxhp + 7);
             Gui.Print("Cur HP ", ScreenLocation.RowCurhp, ScreenLocation.ColCurhp);
             tmp = _player.Health.ToString().PadLeft(5);
@@ -1653,7 +1653,7 @@ namespace Cthangband
 
         public void PrtLevel()
         {
-            string tmp = _player.Level.ToString().PadLeft(6);
+            var tmp = _player.Level.ToString().PadLeft(6);
             if (_player.Level >= _player.MaxLevelGained)
             {
                 Gui.Print("LEVEL ", ScreenLocation.RowLevel, 0);
@@ -1680,14 +1680,14 @@ namespace Cthangband
 
         public void PrtSpeed()
         {
-            int i = _player.Speed;
-            Colour attr = Colour.White;
-            string buf = "";
+            var i = _player.Speed;
+            var attr = Colour.White;
+            var buf = "";
             if (_player.IsSearching)
             {
                 i += 10;
             }
-            int energy = GlobalData.ExtractEnergy[i];
+            var energy = GlobalData.ExtractEnergy[i];
             if (i > 110)
             {
                 attr = Colour.BrightGreen;
@@ -1724,7 +1724,7 @@ namespace Cthangband
 
         public void PrtState()
         {
-            Colour attr = Colour.White;
+            var attr = Colour.White;
             string text;
             if (_player.TimedParalysis > 0)
             {
@@ -1780,7 +1780,7 @@ namespace Cthangband
 
         public void PrtStun()
         {
-            int s = _player.TimedStun;
+            var s = _player.TimedStun;
             if (s > 100)
             {
                 Gui.Print(Colour.Red, "Knocked out ", ScreenLocation.RowStun, ScreenLocation.ColStun);
@@ -1824,7 +1824,7 @@ namespace Cthangband
 
         private int WeightLimit()
         {
-            int i = _player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100;
+            var i = _player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100;
             return i;
         }
     }

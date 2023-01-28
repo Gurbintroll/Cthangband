@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -27,12 +27,12 @@ namespace Cthangband.Mutations.RandomMutations
             {
                 return;
             }
-            int wounds = player.MaxHealth - player.Health;
+            var wounds = player.MaxHealth - player.Health;
             if (wounds <= 0)
             {
                 return;
             }
-            int healing = player.Vis;
+            var healing = player.Vis;
             if (healing > wounds)
             {
                 healing = wounds;

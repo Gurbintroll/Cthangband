@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -32,7 +32,7 @@ namespace Cthangband.Mutations.RandomMutations
             Profile.Instance.MsgPrint("You trip over your own feet!");
             player.TakeHit(Program.Rng.DieRoll(player.Weight / 6), "tripping");
             Profile.Instance.MsgPrint(null);
-            Item oPtr = player.Inventory[InventorySlot.MeleeWeapon];
+            var oPtr = player.Inventory[InventorySlot.MeleeWeapon];
             if (oPtr.ItemType == null)
             {
                 return;

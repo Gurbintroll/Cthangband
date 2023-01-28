@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -10,9 +10,6 @@ using Cthangband.PlayerRace.Base;
 using Cthangband.Projection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cthangband.PlayerRace
 {
@@ -93,7 +90,7 @@ namespace Cthangband.PlayerRace
         /// <returns> The random name </returns>
         public override string CreateRandomName()
         {
-            string name = "";
+            var name = "";
             do
             {
                 name = _elfSyllable1[Program.Rng.RandomLessThan(_elfSyllable1.Length)];
@@ -132,7 +129,7 @@ namespace Cthangband.PlayerRace
             if (saveGame.CommandEngine.CheckIfRacialPowerWorks(2, 2, Ability.Intelligence, 9))
             {
                 int direction;
-                TargetEngine targetEngine = new TargetEngine(player, level);
+                var targetEngine = new TargetEngine(player, level);
                 if (!targetEngine.GetDirectionWithAim(out direction))
                 {
                     return;

@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -6,9 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
-using Cthangband.Mutations.Base;
 using Cthangband.Spells;
-using Cthangband.Spells.Base;
 using Cthangband.StaticData;
 using Cthangband.Terminal;
 using Cthangband.UI;
@@ -36,8 +34,8 @@ namespace Cthangband
         public void DoCmdBrowse(int itemIndex)
         {
             int spell;
-            int spellIndex = 0;
-            int[] spells = new int[64];
+            var spellIndex = 0;
+            var spells = new int[64];
             // Make sure we can read
             if (Player.Realm1 == 0 && Player.Realm2 == 0)
             {
@@ -58,7 +56,7 @@ namespace Cthangband
                     return;
                 }
             }
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
             // Check that the book is useable by the player
             Inventory.ItemFilterUseableSpellBook = true;
             if (!Player.Inventory.ItemMatchesFilter(item))
@@ -68,7 +66,7 @@ namespace Cthangband
                 return;
             }
             Inventory.ItemFilterUseableSpellBook = false;
-            int bookSubCategory = item.ItemSubCategory;
+            var bookSubCategory = item.ItemSubCategory;
             SaveGame.Instance.HandleStuff();
             // Find all spells in the book and add them to the array
             for (spell = 0; spell < 32; spell++)
@@ -93,10 +91,10 @@ namespace Cthangband
         /// </summary>
         public void DoCmdDestroy()
         {
-            int amount = 1;
-            bool force = Gui.CommandArgument > 0;
+            var amount = 1;
+            var force = Gui.CommandArgument > 0;
             // Get an item to destroy
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Destroy which item? ", false, true, true))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Destroy which item? ", false, true, true))
             {
                 if (itemIndex == -2)
                 {
@@ -104,7 +102,7 @@ namespace Cthangband
                 }
                 return;
             }
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
             // If we have more than one we might not want to destroy all of them
             if (item.Count > 1)
             {
@@ -114,16 +112,16 @@ namespace Cthangband
                     return;
                 }
             }
-            int oldNumber = item.Count;
+            var oldNumber = item.Count;
             item.Count = amount;
-            string itemName = item.Description(true, 3);
+            var itemName = item.Description(true, 3);
             item.Count = oldNumber;
             //Only confirm if it's not a worthless item
             if (!force)
             {
                 if (!item.Stompable())
                 {
-                    string outVal = $"Really destroy {itemName}? ";
+                    var outVal = $"Really destroy {itemName}? ";
                     if (!Gui.GetCheck(outVal))
                     {
                         return;
@@ -146,7 +144,7 @@ namespace Cthangband
             // Can't destroy an artifact or legendary item
             if (item.IsArtifact() || item.IsLegendary())
             {
-                string feel = "special";
+                var feel = "special";
                 SaveGame.Instance.EnergyUse = 0;
                 Profile.Instance.MsgPrint($"You cannot destroy {itemName}.");
                 if (item.IsCursed() || item.IsBroken())
@@ -163,14 +161,14 @@ namespace Cthangband
             // Warriors and paladins get experience for destroying magic books
             if (SaveGame.Instance.CommandEngine.ItemFilterHighLevelBook(item))
             {
-                bool gainExpr = false;
+                var gainExpr = false;
                 if (Player.PlayerClass.ExperienceForDestroying(Player, item.Category))
                 {
                     gainExpr = true;
                 }
                 if (gainExpr && Player.ExperiencePoints < Constants.PyMaxExp)
                 {
-                    int testerExp = Player.MaxExperienceGained / 20;
+                    var testerExp = Player.MaxExperienceGained / 20;
                     if (testerExp > 10000)
                     {
                         testerExp = 10000;
@@ -207,11 +205,11 @@ namespace Cthangband
         /// </summary>
         public void DoCmdDestroyAll()
         {
-            int count = 0;
+            var count = 0;
             // Look for worthless items
-            for (int i = InventorySlot.Pack - 1; i >= 0; i--)
+            for (var i = InventorySlot.Pack - 1; i >= 0; i--)
             {
-                Item item = Player.Inventory[i];
+                var item = Player.Inventory[i];
                 if (item.ItemType == null)
                 {
                     continue;
@@ -221,10 +219,10 @@ namespace Cthangband
                 {
                     continue;
                 }
-                string itemName = item.Description(true, 3);
+                var itemName = item.Description(true, 3);
                 Profile.Instance.MsgPrint($"You destroy {itemName}.");
                 count++;
-                int amount = item.Count;
+                var amount = item.Count;
                 Player.Inventory.InvenItemIncrease(i, -amount);
                 Player.Inventory.InvenItemOptimize(i);
             }
@@ -253,7 +251,7 @@ namespace Cthangband
             Player.Inventory.ShowEquip();
             SaveGame.Instance.ItemFilterAll = false;
             // Get a command
-            string outVal =
+            var outVal =
                 $"Equipment: carrying {Player.WeightCarried / 10}.{Player.WeightCarried % 10} pounds ({Player.WeightCarried * 100 / (Player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100 / 2)}% of capacity). Command: ";
             Gui.PrintLine(outVal, 0, 0);
             Gui.QueuedCommand = Gui.Inkey();
@@ -276,7 +274,7 @@ namespace Cthangband
         public void DoCmdExamine()
         {
             // Get the item to examine
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Examine which item? ", true, true, true))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Examine which item? ", true, true, true))
             {
                 if (itemIndex == -2)
                 {
@@ -284,14 +282,14 @@ namespace Cthangband
                 }
                 return;
             }
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
             // Do we know anything about it?
             if (item.IdentifyFlags.IsClear(Constants.IdentMental))
             {
                 Profile.Instance.MsgPrint("You have no special knowledge about that item.");
                 return;
             }
-            string itemName = item.Description(true, 3);
+            var itemName = item.Description(true, 3);
             Profile.Instance.MsgPrint($"Examining {itemName}...");
             // We're not actually identifying it, because it's already itentified, but we want to
             // repeat the identification text
@@ -360,19 +358,19 @@ namespace Cthangband
             // Special feeling overrides the normal two-part feeling
             if (Level.DangerFeeling == 1 || Level.TreasureFeeling == 1)
             {
-                string message = GlobalData.DangerFeelingText[1];
+                var message = GlobalData.DangerFeelingText[1];
                 Profile.Instance.MsgPrint(Player.GameTime.LevelFeel
                     ? message : GlobalData.DangerFeelingText[0]);
             }
             else
             {
                 // Make the two-part feeling make a bit more sense by using the correct conjunction
-                string conjunction = ", and ";
+                var conjunction = ", and ";
                 if ((Level.DangerFeeling > 5 && Level.TreasureFeeling < 6) || (Level.DangerFeeling < 6 && Level.TreasureFeeling > 5))
                 {
                     conjunction = ", but ";
                 }
-                string message = GlobalData.DangerFeelingText[Level.DangerFeeling] + conjunction + GlobalData.TreasureFeelingText[Level.TreasureFeeling];
+                var message = GlobalData.DangerFeelingText[Level.DangerFeeling] + conjunction + GlobalData.TreasureFeelingText[Level.TreasureFeeling];
                 Profile.Instance.MsgPrint(Player.GameTime.LevelFeel
                     ? message : GlobalData.DangerFeelingText[0]);
             }
@@ -391,7 +389,7 @@ namespace Cthangband
             Player.Inventory.ShowInven();
             SaveGame.Instance.ItemFilterAll = false;
             // Get a new command
-            string outVal =
+            var outVal =
                 $"Inventory: carrying {Player.WeightCarried / 10}.{Player.WeightCarried % 10} pounds ({Player.WeightCarried * 100 / (Player.AbilityScores[Ability.Strength].StrCarryingCapacity * 100 / 2)}% of capacity). Command: ";
             Gui.PrintLine(outVal, 0, 0);
             Gui.QueuedCommand = Gui.Inkey();
@@ -414,7 +412,7 @@ namespace Cthangband
         public void DoCmdJournal()
         {
             // Let the journal itself handle it from here
-            Journal journal = new Journal(Player);
+            var journal = new Journal(Player);
             journal.ShowMenu();
         }
 
@@ -439,9 +437,9 @@ namespace Cthangband
         /// </summary>
         public void DoCmdMessages()
         {
-            int messageNumber = Profile.Instance.MessageNum();
-            int index = 0;
-            int horizontalOffset = 0;
+            var messageNumber = Profile.Instance.MessageNum();
+            var index = 0;
+            var horizontalOffset = 0;
             Gui.FullScreenOverlay = true;
             Gui.Save();
             Gui.SetBackground(Terminal.BackgroundImage.Normal);
@@ -454,7 +452,7 @@ namespace Cthangband
                 // Print the messages
                 for (row = 0; row < 40 && index + row < messageNumber; row++)
                 {
-                    string msg = Profile.Instance.MessageStr((short)(index + row));
+                    var msg = Profile.Instance.MessageStr((short)(index + row));
                     msg = msg.Length >= horizontalOffset ? msg.Substring(horizontalOffset) : "";
                     Gui.Print(Colour.White, msg, 41 - row, 0);
                 }
@@ -512,7 +510,7 @@ namespace Cthangband
         {
             int index;
             // Get the symbol
-            if (!Gui.GetCom("Enter character to be identified: ", out char symbol))
+            if (!Gui.GetCom("Enter character to be identified: ", out var symbol))
             {
                 return;
             }
@@ -525,7 +523,7 @@ namespace Cthangband
                 }
             }
             // Display the symbol and its idenfitication
-            string buf = GlobalData.SymbolIdentification[index] != null
+            var buf = GlobalData.SymbolIdentification[index] != null
                 ? $"{symbol} - {GlobalData.SymbolIdentification[index].Substring(2)}."
                 : $"{symbol} - Unknown Symbol";
             Profile.Instance.MsgPrint(buf);
@@ -536,14 +534,14 @@ namespace Cthangband
         /// </summary>
         public void DoCmdStore()
         {
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            var tile = Level.Grid[Player.MapY][Player.MapX];
             // Make sure we're actually on a shop tile
             if (!tile.FeatureType.IsShop)
             {
                 Profile.Instance.MsgPrint("You see no Stores here.");
                 return;
             }
-            Store which = SaveGame.Instance.GetWhichStore();
+            var which = SaveGame.Instance.GetWhichStore();
             // We can't enter a house unless we own it
             if (which.StoreType == StoreType.StoreHome && Player.TownWithHouse != SaveGame.Instance.CurTown.Index)
             {
@@ -565,7 +563,7 @@ namespace Cthangband
         /// </summary>
         public void DoCmdStudy()
         {
-            string spellType = Player.Spellcasting.Type == CastingType.Arcane ? "spell" : "prayer";
+            var spellType = Player.Spellcasting.Type == CastingType.Arcane ? "spell" : "prayer";
             // If we don't have a realm then we can't do anything
             if (Player.Realm1 == 0)
             {
@@ -589,12 +587,12 @@ namespace Cthangband
                 Profile.Instance.MsgPrint($"You cannot learn any new {spellType}s!");
                 return;
             }
-            string plural = Player.SpareSpellSlots == 1 ? "" : "s";
+            var plural = Player.SpareSpellSlots == 1 ? "" : "s";
             Profile.Instance.MsgPrint($"You can learn {Player.SpareSpellSlots} new {spellType}{plural}.");
             Profile.Instance.MsgPrint(null);
             // Get the spell books we have
             Inventory.ItemFilterUseableSpellBook = true;
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Study which book? ", false, true, true))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Study which book? ", false, true, true))
             {
                 if (itemIndex == -2)
                 {
@@ -605,15 +603,15 @@ namespace Cthangband
             }
             Inventory.ItemFilterUseableSpellBook = false;
             // Check each book
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
-            int itemSubCategory = item.ItemSubCategory;
-            bool useSetTwo = item.Category == Player.Realm2.ToSpellBookItemCategory();
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var itemSubCategory = item.ItemSubCategory;
+            var useSetTwo = item.Category == Player.Realm2.ToSpellBookItemCategory();
             SaveGame.Instance.HandleStuff();
             int spellIndex;
             // Arcane casters can choose their spell
             if (Player.Spellcasting.Type != CastingType.Divine)
             {
-                CastingHandler castingHandler = new CastingHandler(SaveGame.Instance.Player, SaveGame.Instance.Level);
+                var castingHandler = new CastingHandler(SaveGame.Instance.Player, SaveGame.Instance.Level);
                 if (!castingHandler.GetSpell(out spellIndex, "study", itemSubCategory, false, useSetTwo) && spellIndex == -1)
                 {
                     return;
@@ -622,8 +620,8 @@ namespace Cthangband
             else
             {
                 // We need to choose a spell at random
-                int k = 0;
-                int gift = -1;
+                var k = 0;
+                var gift = -1;
                 // Gather the potential spells from the book
                 for (spellIndex = 0; spellIndex < 32; spellIndex++)
                 {
@@ -651,7 +649,7 @@ namespace Cthangband
             // Learning a spell takes a turn (although that's not very relevant)
             SaveGame.Instance.EnergyUse = 100;
             // Mark the spell as learned
-            ISpell spell = useSetTwo ? Player.Spellcasting.Spells[1][spellIndex] : Player.Spellcasting.Spells[0][spellIndex];
+            var spell = useSetTwo ? Player.Spellcasting.Spells[1][spellIndex] : Player.Spellcasting.Spells[0][spellIndex];
             spell.Learned = true;
             int i;
             // Mark the spell as the last spell learned, in case we need to start forgetting them
@@ -682,7 +680,7 @@ namespace Cthangband
         public void DoCmdTakeoff()
         {
             // Get the item to take off
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Take off which item? ", true, false, false))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Take off which item? ", true, false, false))
             {
                 if (itemIndex == -2)
                 {
@@ -690,7 +688,7 @@ namespace Cthangband
                 }
                 return;
             }
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
             // Can't take of cursed items
             if (item.IsCursed())
             {
@@ -713,12 +711,12 @@ namespace Cthangband
             Gui.Save();
             Gui.SetBackground(Terminal.BackgroundImage.Paper);
             // Load the character viewer
-            CharacterViewer characterViewer = new CharacterViewer(Player);
+            var characterViewer = new CharacterViewer(Player);
             while (true)
             {
                 characterViewer.DisplayPlayer();
                 Gui.Print(Colour.Orange, "[Press 'c' to change name, or ESC]", 43, 23);
-                char keyPress = Gui.Inkey();
+                var keyPress = Gui.Inkey();
                 // Escape breaks us out of the loop
                 if (keyPress == '\x1b')
                 {
@@ -749,7 +747,7 @@ namespace Cthangband
             string itemName;
             // Only interested in wearable items
             SaveGame.Instance.ItemFilter = SaveGame.Instance.CommandEngine.ItemFilterWearable;
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Wear/Wield which item? ", false, true, true))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Wear/Wield which item? ", false, true, true))
             {
                 if (itemIndex == -2)
                 {
@@ -757,9 +755,9 @@ namespace Cthangband
                 }
                 return;
             }
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
             // Find the correct item slot
-            int slot = Player.Inventory.WieldSlot(item);
+            var slot = Player.Inventory.WieldSlot(item);
             // Can't replace a cursed item
             if (Player.Inventory[slot].IsCursed())
             {
@@ -771,7 +769,7 @@ namespace Cthangband
             if (item.IsCursed() && (item.IsKnown() || item.IdentifyFlags.IsSet(Constants.IdentSense)))
             {
                 itemName = item.Description(false, 0);
-                string dummy = $"Really use the {itemName} {{cursed}}? ";
+                var dummy = $"Really use the {itemName} {{cursed}}? ";
                 if (!Gui.GetCheck(dummy))
                 {
                     return;
@@ -780,7 +778,7 @@ namespace Cthangband
             // Use some energy
             SaveGame.Instance.EnergyUse = 100;
             // Pull one item out of the item stack
-            Item wornItem = new Item(item) { Count = 1 };
+            var wornItem = new Item(item) { Count = 1 };
             // Reduce the count of the item stack accordingly
             if (itemIndex >= 0)
             {
@@ -843,7 +841,7 @@ namespace Cthangband
         public void ProcessCommand()
         {
             // Get the current command
-            char c = Gui.CurrentCommand;
+            var c = Gui.CurrentCommand;
             // Big honking switch statement to call the correct function to handle the command
             switch (c)
             {
@@ -859,7 +857,7 @@ namespace Cthangband
                     }
                 case 'a':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdAimWand(-999);
                         break;
                     }
@@ -885,7 +883,7 @@ namespace Cthangband
                     }
                 case 'f':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdFire();
                         break;
                     }
@@ -906,7 +904,7 @@ namespace Cthangband
                     }
                 case 'j':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdSpike();
                         break;
                     }
@@ -922,7 +920,7 @@ namespace Cthangband
                     }
                 case 'm':
                     {
-                        CastingHandler handler = new CastingHandler(Player, Level);
+                        var handler = new CastingHandler(Player, Level);
                         handler.Cast();
                         break;
                     }
@@ -938,13 +936,13 @@ namespace Cthangband
                     }
                 case 'q':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdQuaffPotion(-999);
                         break;
                     }
                 case 'r':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdReadScroll(-999);
                         break;
                     }
@@ -960,13 +958,13 @@ namespace Cthangband
                     }
                 case 'u':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdUseStaff(-999);
                         break;
                     }
                 case 'v':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdThrow(1);
                         break;
                     }
@@ -982,13 +980,13 @@ namespace Cthangband
                     }
                 case 'z':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdZapRod(-999);
                         break;
                     }
                 case 'A':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdActivate(-999);
                         break;
                     }
@@ -1009,13 +1007,13 @@ namespace Cthangband
                     }
                 case 'E':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdEatFood(-999);
                         break;
                     }
                 case 'F':
                     {
-                        ActivationHandler handler = new ActivationHandler(Level, Player);
+                        var handler = new ActivationHandler(Level, Player);
                         handler.DoCmdRefill(-999);
                         break;
                     }
@@ -1082,12 +1080,12 @@ namespace Cthangband
                     {
                         if (Player.IsWizard)
                         {
-                            WizardCommandHandler wizard = new WizardCommandHandler(Player, Level);
+                            var wizard = new WizardCommandHandler(Player, Level);
                             wizard.DoCmdWizard();
                         }
                         else
                         {
-                            WizardCommandHandler wizard = new WizardCommandHandler(Player, Level);
+                            var wizard = new WizardCommandHandler(Player, Level);
                             wizard.DoCmdWizmode();
                         }
                         break;
@@ -1162,8 +1160,8 @@ namespace Cthangband
         private void DoCmdAlter()
         {
             // Assume we won't disturb the player
-            bool disturb = false;
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var disturb = false;
+            var targetEngine = new TargetEngine(Player, Level);
             // We might have a repeat command
             if (Gui.CommandArgument != 0)
             {
@@ -1172,11 +1170,11 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // Get the direction in which to alter something
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
-                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile tile = Level.Grid[y][x];
+                var y = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                var x = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                var tile = Level.Grid[y][x];
                 // Altering a tile will take a turn
                 SaveGame.Instance.EnergyUse = 100;
                 // We 'alter' a tile by attacking it
@@ -1230,8 +1228,8 @@ namespace Cthangband
         private void DoCmdBash()
         {
             // Assume it won't disturb us
-            bool disturb = false;
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var disturb = false;
+            var targetEngine = new TargetEngine(Player, Level);
             // We might have a repeat command
             if (Gui.CommandArgument != 0)
             {
@@ -1240,11 +1238,11 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // Get the direction to bash
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
-                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile tile = Level.Grid[y][x];
+                var y = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                var x = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                var tile = Level.Grid[y][x];
                 // Can only bash closed doors
                 if (!tile.FeatureType.IsClosedDoor)
                 {
@@ -1274,9 +1272,9 @@ namespace Cthangband
         /// </summary>
         private void DoCmdClose()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            MapCoordinate coord = new MapCoordinate();
-            bool disturb = false;
+            var targetEngine = new TargetEngine(Player, Level);
+            var coord = new MapCoordinate();
+            var disturb = false;
             // If there's only one door, assume we mean that one and don't ask for a direction
             if (SaveGame.Instance.CommandEngine.CountOpenDoors(coord) == 1)
             {
@@ -1289,11 +1287,11 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // Tet the location to close
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
-                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile tile = Level.Grid[y][x];
+                var y = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                var x = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                var tile = Level.Grid[y][x];
                 // Can only close actual open doors
                 if (tile.FeatureType.Category != FloorTileTypeCategory.OpenDoorway)
                 {
@@ -1405,16 +1403,16 @@ namespace Cthangband
         /// </summary>
         private void DoCmdDisarm()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            bool disturb = false;
-            MapCoordinate coord = new MapCoordinate();
-            int numTraps =
+            var targetEngine = new TargetEngine(Player, Level);
+            var disturb = false;
+            var coord = new MapCoordinate();
+            var numTraps =
                 SaveGame.Instance.CommandEngine.CountKnownTraps(coord);
-            int numChests = SaveGame.Instance.CommandEngine.CountChests(coord, true);
+            var numChests = SaveGame.Instance.CommandEngine.CountChests(coord, true);
             // Count the possible traps and chests we might want to disarm
             if (numTraps != 0 || numChests != 0)
             {
-                bool tooMany = (numTraps != 0 && numChests != 0) || numTraps > 1 || numChests > 1;
+                var tooMany = (numTraps != 0 && numChests != 0) || numTraps > 1 || numChests > 1;
                 // If only one then we have our target
                 if (!tooMany)
                 {
@@ -1429,13 +1427,13 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // Get a direction if we don't already have one
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
-                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile tile = Level.Grid[y][x];
+                var y = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                var x = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                var tile = Level.Grid[y][x];
                 // Check for a chest
-                int itemIndex = Level.ChestCheck(y, x);
+                var itemIndex = Level.ChestCheck(y, x);
                 if (!tile.FeatureType.IsTrap &&
                     itemIndex == 0)
                 {
@@ -1468,9 +1466,9 @@ namespace Cthangband
         /// </summary>
         private void DoCmdDrop()
         {
-            int amount = 1;
+            var amount = 1;
             // Get an item from the inventory/equipment
-            if (!SaveGame.Instance.GetItem(out int itemIndex, "Drop which item? ", true, true, false))
+            if (!SaveGame.Instance.GetItem(out var itemIndex, "Drop which item? ", true, true, false))
             {
                 if (itemIndex == -2)
                 {
@@ -1478,7 +1476,7 @@ namespace Cthangband
                 }
                 return;
             }
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
             // Can't drop a cursed item
             if (itemIndex >= InventorySlot.MeleeWeapon && item.IsCursed())
             {
@@ -1506,8 +1504,8 @@ namespace Cthangband
         /// </summary>
         private void DoCmdGoDown()
         {
-            bool isTrapDoor = false;
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            var isTrapDoor = false;
+            var tile = Level.Grid[Player.MapY][Player.MapX];
             if (tile.FeatureType.Category == FloorTileTypeCategory.TrapDoor)
             {
                 isTrapDoor = true;
@@ -1546,7 +1544,7 @@ namespace Cthangband
             // If we're in a tower, a down staircase reduces our level number
             if (SaveGame.Instance.CurDungeon.Tower)
             {
-                int stairLength = Program.Rng.DieRoll(5);
+                var stairLength = Program.Rng.DieRoll(5);
                 if (stairLength > SaveGame.Instance.CurrentDepth)
                 {
                     stairLength = 1;
@@ -1567,13 +1565,13 @@ namespace Cthangband
             else
             {
                 // We're not in a tower, so a down staircase increases our level number
-                int stairLength = Program.Rng.DieRoll(5);
+                var stairLength = Program.Rng.DieRoll(5);
                 if (stairLength > SaveGame.Instance.CurrentDepth)
                 {
                     stairLength = 1;
                 }
                 // Check if we're about to go past a quest level
-                for (int i = 0; i < stairLength; i++)
+                for (var i = 0; i < stairLength; i++)
                 {
                     SaveGame.Instance.CurrentDepth++;
                     if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
@@ -1606,7 +1604,7 @@ namespace Cthangband
         private void DoCmdGoUp()
         {
             // We need to actually be on an up staircase
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            var tile = Level.Grid[Player.MapY][Player.MapX];
             if (tile.FeatureType.Name != "UpStair")
             {
                 Profile.Instance.MsgPrint("I see no up staircase here.");
@@ -1632,13 +1630,13 @@ namespace Cthangband
             // In a tower, going up increases our level number
             if (SaveGame.Instance.CurDungeon.Tower)
             {
-                int stairLength = Program.Rng.DieRoll(5);
+                var stairLength = Program.Rng.DieRoll(5);
                 if (stairLength > SaveGame.Instance.CurrentDepth)
                 {
                     stairLength = 1;
                 }
                 // Make sure we don't go past a quest level
-                for (int i = 0; i < stairLength; i++)
+                for (var i = 0; i < stairLength; i++)
                 {
                     SaveGame.Instance.CurrentDepth++;
                     if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
@@ -1655,7 +1653,7 @@ namespace Cthangband
             else
             {
                 // We're not in a tower, so going up decreases our level number
-                int j = Program.Rng.DieRoll(5);
+                var j = Program.Rng.DieRoll(5);
                 if (j > SaveGame.Instance.CurrentDepth)
                 {
                     j = 1;
@@ -1681,11 +1679,11 @@ namespace Cthangband
         /// </summary>
         private void DoCmdLocate()
         {
-            int startRow = Level.PanelRow;
-            int startCol = Level.PanelCol;
-            int currentRow = startRow;
-            int currentCol = startCol;
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var startRow = Level.PanelRow;
+            var startCol = Level.PanelCol;
+            var currentRow = startRow;
+            var currentCol = startCol;
+            var targetEngine = new TargetEngine(Player, Level);
             // Enter a loop so the player can browse the level
             while (true)
             {
@@ -1697,16 +1695,16 @@ namespace Cthangband
                 }
                 else
                 {
-                    string northSouth = currentRow < startRow ? " North" : currentRow > startRow ? " South" : "";
-                    string eastWest = currentCol < startCol ? " West" : currentCol > startCol ? " East" : "";
+                    var northSouth = currentRow < startRow ? " North" : currentRow > startRow ? " South" : "";
+                    var eastWest = currentCol < startCol ? " West" : currentCol > startCol ? " East" : "";
                     offsetText = $"{northSouth}{eastWest} of";
                 }
-                string message = $"Map sector [{currentRow},{currentCol}], which is{offsetText} your sector. Direction?";
+                var message = $"Map sector [{currentRow},{currentCol}], which is{offsetText} your sector. Direction?";
                 // Get a direction command or escape
-                int dir = 0;
+                var dir = 0;
                 while (dir == 0)
                 {
-                    if (!Gui.GetCom(message, out char command))
+                    if (!Gui.GetCom(message, out var command))
                     {
                         break;
                     }
@@ -1759,7 +1757,7 @@ namespace Cthangband
         /// </summary>
         private void DoCmdLook()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             if (targetEngine.TargetSet(Constants.TargetLook))
             {
                 Profile.Instance.MsgPrint(SaveGame.Instance.TargetWho > 0 ? "Target Selected." : "Location Targeted.");
@@ -1771,17 +1769,17 @@ namespace Cthangband
         /// </summary>
         private void DoCmdMutantPower()
         {
-            int i = 0;
+            var i = 0;
             int num;
-            int[] powers = new int[36];
-            string[] powerDesc = new string[36];
-            int lvl = Player.Level;
-            int pets = 0;
+            var powers = new int[36];
+            var powerDesc = new string[36];
+            var lvl = Player.Level;
+            var pets = 0;
             int petCtr;
-            bool allPets = false;
+            var allPets = false;
             Monster monster;
-            bool hasRacial = false;
-            string racialPower = "(none)";
+            var hasRacial = false;
+            var racialPower = "(none)";
             for (num = 0; num < 36; num++)
             {
                 powers[num] = 0;
@@ -1808,7 +1806,7 @@ namespace Cthangband
                     pets++;
                 }
             }
-            System.Collections.Generic.List<IMutation> activeMutations = Player.Dna.ActivatableMutations(Player);
+            var activeMutations = Player.Dna.ActivatableMutations(Player);
             if (!hasRacial && activeMutations.Count == 0 && pets == 0)
             {
                 Profile.Instance.MsgPrint("You have no powers to activate.");
@@ -1821,7 +1819,7 @@ namespace Cthangband
                 powerDesc[0] = racialPower;
                 num++;
             }
-            for (int j = 0; j < activeMutations.Count; j++)
+            for (var j = 0; j < activeMutations.Count; j++)
             {
                 powers[num] = j + 100;
                 powerDesc[num] = activeMutations[j].ActivationSummary(Player.Level);
@@ -1832,23 +1830,23 @@ namespace Cthangband
                 powerDesc[num] = "dismiss pets";
                 powers[num++] = 3;
             }
-            bool flag = false;
-            bool redraw = false;
-            string outVal = $"(Powers {0.IndexToLetter()}-{(num - 1).IndexToLetter()}, *=List, ESC=exit) Use which power? ";
-            while (!flag && Gui.GetCom(outVal, out char choice))
+            var flag = false;
+            var redraw = false;
+            var outVal = $"(Powers {0.IndexToLetter()}-{(num - 1).IndexToLetter()}, *=List, ESC=exit) Use which power? ";
+            while (!flag && Gui.GetCom(outVal, out var choice))
             {
                 if (choice == ' ' || choice == '*' || choice == '?')
                 {
                     if (!redraw)
                     {
                         int y = 1, x = 13;
-                        int ctr = 0;
+                        var ctr = 0;
                         redraw = true;
                         Gui.Save();
                         Gui.PrintLine("", y++, x);
                         while (ctr < num)
                         {
-                            string dummy = $"{ctr.IndexToLetter()}) {powerDesc[ctr]}";
+                            var dummy = $"{ctr.IndexToLetter()}) {powerDesc[ctr]}";
                             Gui.PrintLine(dummy, y + ctr, x);
                             ctr++;
                         }
@@ -1865,7 +1863,7 @@ namespace Cthangband
                 {
                     choice = 'a';
                 }
-                bool ask = char.IsUpper(choice);
+                var ask = char.IsUpper(choice);
                 if (ask)
                 {
                     choice = char.ToLower(choice);
@@ -1877,7 +1875,7 @@ namespace Cthangband
                 }
                 if (ask)
                 {
-                    string tmpVal = $"Use {powerDesc[i]}? ";
+                    var tmpVal = $"Use {powerDesc[i]}? ";
                     if (!Gui.GetCheck(tmpVal))
                     {
                         continue;
@@ -1900,7 +1898,7 @@ namespace Cthangband
             }
             else if (powers[i] == 3)
             {
-                int dismissed = 0;
+                var dismissed = 0;
                 if (Gui.GetCheck("Dismiss all pets? "))
                 {
                     allPets = true;
@@ -1910,15 +1908,15 @@ namespace Cthangband
                     monster = Level.Monsters[petCtr];
                     if ((monster.Mind & Constants.SmFriendly) != 0)
                     {
-                        bool deleteThis = false;
+                        var deleteThis = false;
                         if (allPets)
                         {
                             deleteThis = true;
                         }
                         else
                         {
-                            string friendName = monster.MonsterDesc(0x80);
-                            string checkFriend = $"Dismiss {friendName}? ";
+                            var friendName = monster.MonsterDesc(0x80);
+                            var checkFriend = $"Dismiss {friendName}? ";
                             if (Gui.GetCheck(checkFriend))
                             {
                                 deleteThis = true;
@@ -1931,7 +1929,7 @@ namespace Cthangband
                         }
                     }
                 }
-                string s = dismissed == 1 ? "" : "s";
+                var s = dismissed == 1 ? "" : "s";
                 Profile.Instance.MsgPrint($"You have dismissed {dismissed} pet{s}.");
             }
             else
@@ -1946,15 +1944,15 @@ namespace Cthangband
         /// </summary>
         private void DoCmdOpen()
         {
-            bool disturb = false;
+            var disturb = false;
             // Check if there's only one thing we can open
-            MapCoordinate coord = new MapCoordinate();
-            int numDoors =
+            var coord = new MapCoordinate();
+            var numDoors =
                 SaveGame.Instance.CommandEngine.CountClosedDoors(coord);
-            int numChests = SaveGame.Instance.CommandEngine.CountChests(coord, false);
+            var numChests = SaveGame.Instance.CommandEngine.CountChests(coord, false);
             if (numDoors != 0 || numChests != 0)
             {
-                bool tooMany = (numDoors != 0 && numChests != 0) || numDoors > 1 || numChests > 1;
+                var tooMany = (numDoors != 0 && numChests != 0) || numDoors > 1 || numChests > 1;
                 if (!tooMany)
                 {
                     // There's only one thing we can open, so assume we mean that thing
@@ -1969,13 +1967,13 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // If we don't already have a direction, prompt for one
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            var targetEngine = new TargetEngine(Player, Level);
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
-                int y = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int x = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile tile = Level.Grid[y][x];
-                int itemIndex = Level.ChestCheck(y, x);
+                var y = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                var x = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                var tile = Level.Grid[y][x];
+                var itemIndex = Level.ChestCheck(y, x);
                 // Make sure there is something to open in the direction we chose
                 if (!tile.FeatureType.IsClosedDoor &&
                     itemIndex == 0)
@@ -2044,7 +2042,7 @@ namespace Cthangband
             if (Gui.CommandArgument <= 0)
             {
                 const string prompt = "Rest (0-9999, '*' for HP/VP, '&' as needed): ";
-                if (!Gui.GetString(prompt, out string choice, "&", 4))
+                if (!Gui.GetString(prompt, out var choice, "&", 4))
                 {
                     return;
                 }
@@ -2067,7 +2065,7 @@ namespace Cthangband
                 else
                 {
                     // A number means rest for that many turns
-                    if (int.TryParse(choice, out int i))
+                    if (int.TryParse(choice, out var i))
                     {
                         Gui.CommandArgument = i;
                     }
@@ -2138,7 +2136,7 @@ namespace Cthangband
         /// </summary>
         private void DoCmdRun()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             // Can't run if we're confused
             if (Player.TimedConfusion != 0)
             {
@@ -2146,7 +2144,7 @@ namespace Cthangband
                 return;
             }
             // Get a direction if we don't already have one
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
                 // If we don't have a distance, assume we'll run for 1,000 steps
                 SaveGame.Instance.Running = Gui.CommandArgument != 0 ? Gui.CommandArgument : 1000;
@@ -2198,7 +2196,7 @@ namespace Cthangband
             // Pick up items if we should
             SaveGame.Instance.CommandEngine.PickUpItems(pickup);
             // If we're in a shop doorway, enter the shop
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            var tile = Level.Grid[Player.MapY][Player.MapX];
             if (tile.FeatureType.IsShop)
             {
                 SaveGame.Instance.Disturb(false);
@@ -2211,7 +2209,7 @@ namespace Cthangband
         /// </summary>
         private void DoCmdTarget()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             if (targetEngine.TargetSet(Constants.TargetKill))
             {
                 Profile.Instance.MsgPrint(SaveGame.Instance.TargetWho > 0 ? "Target Selected." : "Location Targeted.");
@@ -2246,8 +2244,8 @@ namespace Cthangband
         /// </summary>
         private void DoCmdTunnel()
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            bool disturb = false;
+            var targetEngine = new TargetEngine(Player, Level);
+            var disturb = false;
             // We might be tunnelling for multiple turns
             if (Gui.CommandArgument != 0)
             {
@@ -2256,12 +2254,12 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // Get the direction in which we wish to tunnel
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
                 // Pick up the tile that the player wishes to tunnel through
-                int tileY = Player.MapY + Level.KeypadDirectionYOffset[dir];
-                int tileX = Player.MapX + Level.KeypadDirectionXOffset[dir];
-                GridTile tile = Level.Grid[tileY][tileX];
+                var tileY = Player.MapY + Level.KeypadDirectionYOffset[dir];
+                var tileX = Player.MapX + Level.KeypadDirectionXOffset[dir];
+                var tile = Level.Grid[tileY][tileX];
                 // Check if it can be tunneled through
                 if (tile.FeatureType.IsPassable || tile.FeatureType.Name == "YellowSign")
                 {
@@ -2296,8 +2294,8 @@ namespace Cthangband
         /// </summary>
         private void DoCmdVersion()
         {
-            AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
-            Version version = assembly.Version;
+            var assembly = Assembly.GetExecutingAssembly().GetName();
+            var version = assembly.Version;
             Profile.Instance.MsgPrint($"You are playing {Constants.VersionName} {version}.");
             Profile.Instance.MsgPrint($"(Build time: {Constants.CompileTime})");
         }
@@ -2307,8 +2305,8 @@ namespace Cthangband
         /// </summary>
         private void DoCmdViewMap()
         {
-            int cy = -1;
-            int cx = -1;
+            var cy = -1;
+            var cx = -1;
             Gui.FullScreenOverlay = true;
             Gui.Save();
             Gui.Clear();
@@ -2347,8 +2345,8 @@ namespace Cthangband
         /// <param name="pickup"> Whether or not we should pick up an object that we step on </param>
         private void DoCmdWalk(bool pickup)
         {
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
-            bool disturb = false;
+            var targetEngine = new TargetEngine(Player, Level);
+            var disturb = false;
             // We might be walking (or running!) more than one step
             if (Gui.CommandArgument > 0)
             {
@@ -2357,7 +2355,7 @@ namespace Cthangband
                 Gui.CommandArgument = 0;
             }
             // If we don't already have a direction, get one
-            if (targetEngine.GetDirectionNoAim(out int dir))
+            if (targetEngine.GetDirectionNoAim(out var dir))
             {
                 // Walking takes a full turn
                 SaveGame.Instance.EnergyUse = 100;

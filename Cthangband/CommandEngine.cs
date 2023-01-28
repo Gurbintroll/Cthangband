@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -9,7 +9,6 @@ using Cthangband.Enumerations;
 using Cthangband.Mutations.Base;
 using Cthangband.PlayerRace.Base;
 using Cthangband.Projection;
-using Cthangband.Projection.Base;
 using Cthangband.StaticData;
 using Cthangband.UI;
 using System;
@@ -49,8 +48,8 @@ namespace Cthangband
         /// <param name="item"> The legendary item being activated </param>
         public void ActivateLegendary(Item item)
         {
-            int playerLevel = Player.Level;
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var playerLevel = Player.Level;
+            var targetEngine = new TargetEngine(Player, Level);
             int direction;
             int i;
             // If we don't have a legendary item, abort
@@ -295,10 +294,10 @@ namespace Cthangband
                             // Make a physical attack against each adjacent monster
                             for (direction = 0; direction <= 9; direction++)
                             {
-                                int y = Player.MapY + Level.KeypadDirectionYOffset[direction];
-                                int x = Player.MapX + Level.KeypadDirectionXOffset[direction];
-                                GridTile cPtr = Level.Grid[y][x];
-                                Monster mPtr = Level.Monsters[cPtr.MonsterIndex];
+                                var y = Player.MapY + Level.KeypadDirectionYOffset[direction];
+                                var x = Player.MapX + Level.KeypadDirectionXOffset[direction];
+                                var cPtr = Level.Grid[y][x];
+                                var mPtr = Level.Monsters[cPtr.MonsterIndex];
                                 if (cPtr.MonsterIndex != 0 && (mPtr.IsVisible || Level.GridPassable(y, x)))
                                 {
                                     PlayerAttackMonster(y, x);
@@ -670,7 +669,7 @@ namespace Cthangband
                     {
                         // Give us protection from evil
                         Profile.Instance.MsgPrint("It lets out a shrill wail...");
-                        int k = 3 * Player.Level;
+                        var k = 3 * Player.Level;
                         Player.SetTimedProtectionFromEvil(Player.TimedProtectionFromEvil + Program.Rng.DieRoll(25) + k);
                         item.RechargeTimeLeft = Program.Rng.RandomLessThan(225) + 225;
                         break;
@@ -847,7 +846,7 @@ namespace Cthangband
                     {
                         // Short range teleport to a specific destination
                         Profile.Instance.MsgPrint("You open a dimensional gate. Choose a destination.");
-                        if (!targetEngine.TgtPt(out int ii, out int ij))
+                        if (!targetEngine.TgtPt(out var ii, out var ij))
                         {
                             return;
                         }
@@ -891,12 +890,12 @@ namespace Cthangband
 
         public bool BashClosedDoor(int y, int x, int dir)
         {
-            bool more = false;
+            var more = false;
             _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
+            var cPtr = Level.Grid[y][x];
             Profile.Instance.MsgPrint("You smash into the door!");
-            int bash = Player.AbilityScores[Ability.Strength].StrAttackSpeedComponent;
-            int temp = int.Parse(cPtr.FeatureType.Name.Substring(10));
+            var bash = Player.AbilityScores[Ability.Strength].StrAttackSpeedComponent;
+            var temp = int.Parse(cPtr.FeatureType.Name.Substring(10));
             temp = bash - (temp * 10);
             if (temp < 1)
             {
@@ -929,10 +928,10 @@ namespace Cthangband
         /// </summary>
         public void BrandBolts()
         {
-            for (int i = 0; i < InventorySlot.Pack; i++)
+            for (var i = 0; i < InventorySlot.Pack; i++)
             {
                 // Find a set of non-artifact bolts in our inventory
-                Item item = Player.Inventory[i];
+                var item = Player.Inventory[i];
                 if (item.Category != ItemCategory.Bolt)
                 {
                     continue;
@@ -969,13 +968,13 @@ namespace Cthangband
         /// <param name="brandType"> The type of brand to give the weapon </param>
         public void BrandWeapon(int brandType)
         {
-            Item item = Player.Inventory[InventorySlot.MeleeWeapon];
+            var item = Player.Inventory[InventorySlot.MeleeWeapon];
             // We must have a non-rare, non-artifact weapon that isn't cursed
             if (item.ItemType != null && !item.IsArtifact() && !item.IsRare() &&
                 !item.IsLegendary() && !item.IsCursed())
             {
                 string act;
-                string itemName = item.Description(false, 0);
+                var itemName = item.Description(false, 0);
                 switch (brandType)
                 {
                     case 4:
@@ -1066,8 +1065,8 @@ namespace Cthangband
             else
             {
                 // We were too close to a wall, so earthquake instead
-                string cast = Player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast";
-                string spell = Player.Spellcasting.Type == CastingType.Divine ? "prayer" : "spell";
+                var cast = Player.Spellcasting.Type == CastingType.Divine ? "recite" : "cast";
+                var spell = Player.Spellcasting.Type == CastingType.Divine ? "prayer" : "spell";
                 Profile.Instance.MsgPrint($"You {cast} the {spell} too close to a wall!");
                 Profile.Instance.MsgPrint("There is a loud explosion!");
                 _saveGame.SpellEffects.DestroyArea(Player.MapY, Player.MapX, 20 + Player.Level);
@@ -1087,7 +1086,7 @@ namespace Cthangband
         public bool CheckIfRacialPowerWorks(int minLevel, int cost, int useStat, int difficulty)
         {
             // If we don't have enough vis we'll use health instead
-            bool useHealth = Player.Vis < cost;
+            var useHealth = Player.Vis < cost;
             // Can't use it if we're too low level
             if (Player.Level < minLevel)
             {
@@ -1119,7 +1118,7 @@ namespace Cthangband
             // Easier to use powers if you're higher level than you need to be
             else if (Player.Level > minLevel)
             {
-                int levAdj = (Player.Level - minLevel) / 3;
+                var levAdj = (Player.Level - minLevel) / 3;
                 if (levAdj > 10)
                 {
                     levAdj = 10;
@@ -1165,7 +1164,7 @@ namespace Cthangband
         public bool CloseDoor(int y, int x)
         {
             _saveGame.EnergyUse = 100;
-            GridTile cPtr = Level.Grid[y][x];
+            var cPtr = Level.Grid[y][x];
             if (cPtr.FeatureType.Name == "BrokenDoor")
             {
                 Profile.Instance.MsgPrint("The door appears to be broken.");
@@ -1188,11 +1187,11 @@ namespace Cthangband
         /// <returns> The number of chests </returns>
         public int CountChests(MapCoordinate mapCoordinate, bool trappedOnly)
         {
-            int count = 0;
-            for (int orderedDirection = 0; orderedDirection < 9; orderedDirection++)
+            var count = 0;
+            for (var orderedDirection = 0; orderedDirection < 9; orderedDirection++)
             {
-                int yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
-                int xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
+                var yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
+                var xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
                 // Get the index of first item in the tile that is a chest
                 int itemIndex;
                 if ((itemIndex = Level.ChestCheck(yy, xx)) == 0)
@@ -1201,7 +1200,7 @@ namespace Cthangband
                     continue;
                 }
                 // Get the actual item from the index
-                Item item = Level.Items[itemIndex];
+                var item = Level.Items[itemIndex];
                 if (item.TypeSpecificValue == 0)
                 {
                     continue;
@@ -1227,11 +1226,11 @@ namespace Cthangband
         /// <returns> The number of closed doors </returns>
         public int CountClosedDoors(MapCoordinate mapCoordinate)
         {
-            int count = 0;
-            for (int orderedDirection = 0; orderedDirection < 9; orderedDirection++)
+            var count = 0;
+            for (var orderedDirection = 0; orderedDirection < 9; orderedDirection++)
             {
-                int yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
-                int xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
+                var yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
+                var xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
                 // We need to be aware of the door
                 if (Level.Grid[yy][xx].TileFlags.IsClear(GridTile.PlayerMemorised))
                 {
@@ -1265,11 +1264,11 @@ namespace Cthangband
         /// <returns> The number of traps found </returns>
         public int CountKnownTraps(MapCoordinate mapCoordinate)
         {
-            int count = 0;
-            for (int orderedDirection = 0; orderedDirection < 9; orderedDirection++)
+            var count = 0;
+            for (var orderedDirection = 0; orderedDirection < 9; orderedDirection++)
             {
-                int yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
-                int xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
+                var yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
+                var xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
                 // We need to be aware of the trap
                 if (Level.Grid[yy][xx].TileFlags.IsClear(GridTile.PlayerMemorised))
                 {
@@ -1298,11 +1297,11 @@ namespace Cthangband
         /// <returns> The number of open doors found </returns>
         public int CountOpenDoors(MapCoordinate mapCoordinate)
         {
-            int count = 0;
-            for (int orderedDirection = 0; orderedDirection < 9; orderedDirection++)
+            var count = 0;
+            for (var orderedDirection = 0; orderedDirection < 9; orderedDirection++)
             {
-                int yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
-                int xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
+                var yy = Player.MapY + Level.OrderedDirectionYOffset[orderedDirection];
+                var xx = Player.MapX + Level.OrderedDirectionXOffset[orderedDirection];
                 // We must be aware of the door
                 if (Level.Grid[yy][xx].TileFlags.IsClear(GridTile.PlayerMemorised))
                 {
@@ -1327,7 +1326,7 @@ namespace Cthangband
         public void CreatePhlogiston()
         {
             int maxPhlogiston;
-            Item item = Player.Inventory[InventorySlot.Lightsource];
+            var item = Player.Inventory[InventorySlot.Lightsource];
             // Maximum phlogiston is the capacity of the light source
             if (item.Category == ItemCategory.Light && item.ItemSubCategory == LightType.Lantern)
             {
@@ -1368,14 +1367,14 @@ namespace Cthangband
         /// <returns> true if there was armour to curse, false otherwise </returns>
         public bool CurseArmour()
         {
-            Item item = Player.Inventory[InventorySlot.Body];
+            var item = Player.Inventory[InventorySlot.Body];
             // If we're not wearing armour then nothing can happen
             if (item.ItemType == null)
             {
                 return false;
             }
             // Artifacts can't be cursed, and normal armour has a chance to save
-            string itemName = item.Description(false, 3);
+            var itemName = item.Description(false, 3);
             if ((item.IsLegendary() || item.IsArtifact()) &&
                 Program.Rng.RandomLessThan(100) < 50)
             {
@@ -1411,13 +1410,13 @@ namespace Cthangband
         /// <returns> True if the player was carrying a weapon, false if not </returns>
         public bool CurseWeapon()
         {
-            Item item = Player.Inventory[InventorySlot.MeleeWeapon];
+            var item = Player.Inventory[InventorySlot.MeleeWeapon];
             // If we don't have a weapon then nothing happens
             if (item.ItemType == null)
             {
                 return false;
             }
-            string itemName = item.Description(false, 3);
+            var itemName = item.Description(false, 3);
             // Artifacts can't be cursed, and other items have a chance to resist
             if ((item.IsArtifact() || item.IsLegendary()) &&
                 Program.Rng.RandomLessThan(100) < 50)
@@ -1457,11 +1456,11 @@ namespace Cthangband
         /// <returns> True if the player should be disturbed by the aciton </returns>
         public bool DisarmChest(int y, int x, int itemIndex)
         {
-            bool more = false;
-            Item item = Level.Items[itemIndex];
+            var more = false;
+            var item = Level.Items[itemIndex];
             // Disarming a chest takes a turn
             _saveGame.EnergyUse = 100;
-            int i = Player.SkillDisarmTraps;
+            var i = Player.SkillDisarmTraps;
             // Disarming is tricky when you can't see
             if (Player.TimedBlindness != 0 || Level.NoLight())
             {
@@ -1473,7 +1472,7 @@ namespace Cthangband
                 i /= 10;
             }
             // Penalty for difficulty of trap
-            int j = i - item.TypeSpecificValue;
+            var j = i - item.TypeSpecificValue;
             if (j < 2)
             {
                 j = 2;
@@ -1523,12 +1522,12 @@ namespace Cthangband
         /// <returns> </returns>
         public bool DisarmTrap(int y, int x, int dir)
         {
-            bool more = false;
+            var more = false;
             // Disarming a trap costs a turn
             _saveGame.EnergyUse = 100;
-            GridTile tile = Level.Grid[y][x];
-            string trapName = tile.FeatureType.Description;
-            int i = Player.SkillDisarmTraps;
+            var tile = Level.Grid[y][x];
+            var trapName = tile.FeatureType.Description;
+            var i = Player.SkillDisarmTraps;
             // Difficult, but possible, to disarm by feel
             if (Player.TimedBlindness != 0 || Level.NoLight())
             {
@@ -1540,7 +1539,7 @@ namespace Cthangband
                 i /= 10;
             }
             const int power = 5;
-            int j = i - power;
+            var j = i - power;
             if (j < 2)
             {
                 j = 2;
@@ -1576,7 +1575,7 @@ namespace Cthangband
         public bool DoCmdChannel(Item item)
         {
             int cost;
-            int price = item.ItemType.Cost;
+            var price = item.ItemType.Cost;
             // Never channel worthless items
             if (price <= 0)
             {
@@ -1636,11 +1635,11 @@ namespace Cthangband
         {
             string rumor;
             // Build an array of all the possible rumours we can get
-            char[] rumorType = new char[_saveGame.Quests.Count + Constants.MaxCaves + Constants.MaxCaves];
-            int[] rumorIndex = new int[_saveGame.Quests.Count + Constants.MaxCaves + Constants.MaxCaves];
-            int maxRumor = 0;
+            var rumorType = new char[_saveGame.Quests.Count + Constants.MaxCaves + Constants.MaxCaves];
+            var rumorIndex = new int[_saveGame.Quests.Count + Constants.MaxCaves + Constants.MaxCaves];
+            var maxRumor = 0;
             // Add a rumour for each undiscovered quest
-            for (int i = 0; i < _saveGame.Quests.Count; i++)
+            for (var i = 0; i < _saveGame.Quests.Count; i++)
             {
                 if (_saveGame.Quests[i].Level > 0 && !_saveGame.Quests[i].Discovered)
                 {
@@ -1649,7 +1648,7 @@ namespace Cthangband
                     maxRumor++;
                 }
             }
-            for (int i = 0; i < Constants.MaxCaves; i++)
+            for (var i = 0; i < Constants.MaxCaves; i++)
             {
                 // Add a rumour for each dungeon we don't know the depth of
                 if (!_saveGame.Dungeons[i].KnownDepth)
@@ -1671,7 +1670,7 @@ namespace Cthangband
             if (maxRumor == 0)
             {
                 maxRumor = 0;
-                for (int i = 0; i < _saveGame.Quests.Count; i++)
+                for (var i = 0; i < _saveGame.Quests.Count; i++)
                 {
                     rumorType[maxRumor] = 'q';
                     rumorIndex[maxRumor] = i;
@@ -1679,9 +1678,9 @@ namespace Cthangband
                 }
             }
             // Pick a random rumour from the list
-            int choice = Program.Rng.RandomLessThan(maxRumor);
-            char type = rumorType[choice];
-            int index = rumorIndex[choice];
+            var choice = Program.Rng.RandomLessThan(maxRumor);
+            var type = rumorType[choice];
+            var index = rumorIndex[choice];
             // Give us the appropriate information based on the rumour's type
             if (type == 'q')
             {
@@ -1692,7 +1691,7 @@ namespace Cthangband
             else if (type == 'd')
             {
                 // The rumour describes a dungeon depth
-                Dungeon d = _saveGame.Dungeons[index];
+                var d = _saveGame.Dungeons[index];
                 rumor = d.Tower
                     ? $"They say that {d.Name} has {d.MaxLevel} floors."
                     : $"They say that {d.Name} has {d.MaxLevel} levels.";
@@ -1701,7 +1700,7 @@ namespace Cthangband
             else
             {
                 // The rumour describes a dungeon difficulty
-                Dungeon d = _saveGame.Dungeons[index];
+                var d = _saveGame.Dungeons[index];
                 rumor = $"They say that {d.Name} has a relative difficulty of {d.Offset}.";
                 d.KnownOffset = true;
             }
@@ -1716,9 +1715,9 @@ namespace Cthangband
         public bool GetSpike(out int inventoryIndex)
         {
             // Loop through the inventory
-            for (int i = 0; i < InventorySlot.Pack; i++)
+            for (var i = 0; i < InventorySlot.Pack; i++)
             {
-                Item item = Player.Inventory[i];
+                var item = Player.Inventory[i];
                 if (item.ItemType == null)
                 {
                     continue;
@@ -1742,9 +1741,9 @@ namespace Cthangband
         /// <returns> True if the item can be activated </returns>
         public bool ItemFilterActivatable(Item item)
         {
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             if (!item.IsKnown())
             {
                 return false;
@@ -1814,11 +1813,11 @@ namespace Cthangband
         /// <param name="doPickup"> Whether or not to pick up any objects we step on </param>
         public void MovePlayer(int direction, bool doPickup)
         {
-            bool canPassWalls = false;
-            int newY = Player.MapY + Level.KeypadDirectionYOffset[direction];
-            int newX = Player.MapX + Level.KeypadDirectionXOffset[direction];
-            GridTile tile = Level.Grid[newY][newX];
-            Monster monster = Level.Monsters[tile.MonsterIndex];
+            var canPassWalls = false;
+            var newY = Player.MapY + Level.KeypadDirectionYOffset[direction];
+            var newX = Player.MapX + Level.KeypadDirectionXOffset[direction];
+            var tile = Level.Grid[newY][newX];
+            var monster = Level.Monsters[tile.MonsterIndex];
             // Check if we can pass through walls
             if (Player.TimedEtherealness != 0 || Player.Race.IsIncorporeal)
             {
@@ -1840,7 +1839,7 @@ namespace Cthangband
                 {
                     // Wake up the monster, and track it
                     monster.SleepLevel = 0;
-                    string monsterName = monster.MonsterDesc(0);
+                    var monsterName = monster.MonsterDesc(0);
                     // If we can see it, no need to mention it
                     if (monster.IsVisible)
                     {
@@ -2057,8 +2056,8 @@ namespace Cthangband
                 return;
             }
             // Assuming we didn't bump into anything, maybe we can actually move
-            bool oldTrapsDetected = Level.Grid[Player.MapY][Player.MapX].TileFlags.IsSet(GridTile.TrapsDetected);
-            bool newTrapsDetected = Level.Grid[newY][newX].TileFlags.IsSet(GridTile.TrapsDetected);
+            var oldTrapsDetected = Level.Grid[Player.MapY][Player.MapX].TileFlags.IsSet(GridTile.TrapsDetected);
+            var newTrapsDetected = Level.Grid[newY][newX].TileFlags.IsSet(GridTile.TrapsDetected);
             // If we're moving into or out of an area where we've detected traps, remember to redraw
             // the notification
             if (oldTrapsDetected != newTrapsDetected)
@@ -2076,15 +2075,15 @@ namespace Cthangband
                 return;
             }
             // We've run out of things that could prevent us moving, so do the move
-            int oldY = Player.MapY;
-            int oldX = Player.MapX;
+            var oldY = Player.MapY;
+            var oldX = Player.MapX;
             Player.MapY = newY;
             Player.MapX = newX;
             // Redraw our old and new locations
             Level.RedrawSingleLocation(Player.MapY, Player.MapX);
             Level.RedrawSingleLocation(oldY, oldX);
             // Recenter the screen if we have to
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             targetEngine.RecenterScreenAroundPlayer();
             // We'll need to update and redraw various things
             Player.UpdatesNeeded.Set(UpdateFlags.UpdateView | UpdateFlags.UpdateLight | UpdateFlags.UpdateScent);
@@ -2133,9 +2132,9 @@ namespace Cthangband
         /// <returns> Whether or not the player should be disturbed by the action </returns>
         public bool OpenChest(int y, int x, int itemIndex)
         {
-            bool openedSuccessfully = true;
-            bool more = false;
-            Item item = Level.Items[itemIndex];
+            var openedSuccessfully = true;
+            var more = false;
+            var item = Level.Items[itemIndex];
             // Opening a chest takes an action
             _saveGame.EnergyUse = 100;
             // If the chest is locked, we may need to pick it
@@ -2143,7 +2142,7 @@ namespace Cthangband
             {
                 openedSuccessfully = false;
                 // Our disable traps skill also doubles up as a lockpicking skill
-                int i = Player.SkillDisarmTraps;
+                var i = Player.SkillDisarmTraps;
                 // Hard to pick locks in the dark
                 if (Player.TimedBlindness != 0 || Level.NoLight())
                 {
@@ -2155,7 +2154,7 @@ namespace Cthangband
                     i /= 10;
                 }
                 // Some locks are harder to pick than others
-                int j = i - item.TypeSpecificValue;
+                var j = i - item.TypeSpecificValue;
                 if (j < 2)
                 {
                     j = 2;
@@ -2190,10 +2189,10 @@ namespace Cthangband
         /// <returns> True if opening the door should disturb the player </returns>
         public bool OpenDoor(int y, int x)
         {
-            bool more = false;
+            var more = false;
             // Opening a door takes an action
             _saveGame.EnergyUse = 100;
-            GridTile tile = Level.Grid[y][x];
+            var tile = Level.Grid[y][x];
             // Some doors are simply jammed
             if (tile.FeatureType.Name.Contains("Jammed"))
             {
@@ -2203,7 +2202,7 @@ namespace Cthangband
             else if (tile.FeatureType.Name != "LockedDoor0")
             {
                 // Our disarm traps skill doubles up as a lockpicking skill
-                int i = Player.SkillDisarmTraps;
+                var i = Player.SkillDisarmTraps;
                 // Hard to pick locks when you can't see
                 if (Player.TimedBlindness != 0 || Level.NoLight())
                 {
@@ -2215,7 +2214,7 @@ namespace Cthangband
                     i /= 10;
                 }
                 // Work out the difficulty from the feature name
-                int j = int.Parse(tile.FeatureType.Name.Substring(10));
+                var j = int.Parse(tile.FeatureType.Name.Substring(10));
                 j = i - (j * 4);
                 if (j < 2)
                 {
@@ -2255,12 +2254,12 @@ namespace Cthangband
         /// </param>
         public void PickUpItems(bool pickup)
         {
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            var tile = Level.Grid[Player.MapY][Player.MapX];
             int nextItemIndex;
-            for (int thisItemIndex = tile.ItemIndex; thisItemIndex != 0; thisItemIndex = nextItemIndex)
+            for (var thisItemIndex = tile.ItemIndex; thisItemIndex != 0; thisItemIndex = nextItemIndex)
             {
-                Item item = Level.Items[thisItemIndex];
-                string itemName = item.Description(true, 3);
+                var item = Level.Items[thisItemIndex];
+                var itemName = item.Description(true, 3);
                 nextItemIndex = item.NextInStack;
                 _saveGame.Disturb(false);
                 // We always pick up gold
@@ -2292,7 +2291,7 @@ namespace Cthangband
                     else
                     {
                         // Actually pick up the item
-                        int slot = Player.Inventory.InvenCarry(item, false);
+                        var slot = Player.Inventory.InvenCarry(item, false);
                         item = Player.Inventory[slot];
                         itemName = item.Description(true, 3);
                         Profile.Instance.MsgPrint($"You have {itemName} ({slot.IndexToLabel()}).");
@@ -2309,20 +2308,20 @@ namespace Cthangband
         /// <param name="x"> The x coordinate of the location being attacked </param>
         public void PlayerAttackMonster(int y, int x)
         {
-            GridTile tile = Level.Grid[y][x];
-            Monster monster = Level.Monsters[tile.MonsterIndex];
-            MonsterRace race = monster.Race;
-            bool fear = false;
-            bool backstab = false;
-            bool stabFleeing = false;
-            bool doQuake = false;
+            var tile = Level.Grid[y][x];
+            var monster = Level.Monsters[tile.MonsterIndex];
+            var race = monster.Race;
+            var fear = false;
+            var backstab = false;
+            var stabFleeing = false;
+            var doQuake = false;
             const bool drainMsg = true;
-            int drainResult = 0;
+            var drainResult = 0;
             const int drainLeft = _maxVampiricDrain;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
-            bool noExtra = false;
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
+            var noExtra = false;
             _saveGame.Disturb(false);
             // If we're a rogue then we can backstab monsters
             if (Player.PlayerClass.HasBackstab)
@@ -2339,7 +2338,7 @@ namespace Cthangband
             _saveGame.Disturb(true);
             // Being attacked always wakes a monster
             monster.SleepLevel = 0;
-            string monsterName = monster.MonsterDesc(0);
+            var monsterName = monster.MonsterDesc(0);
             // If we can see the monster, track its health
             if (monster.IsVisible)
             {
@@ -2360,19 +2359,19 @@ namespace Cthangband
                     : "There is something scary in your way!");
                 return;
             }
-            Item item = Player.Inventory[InventorySlot.MeleeWeapon];
-            int bonus = Player.AttackBonus + item.BonusToHit;
-            int chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
+            var item = Player.Inventory[InventorySlot.MeleeWeapon];
+            var bonus = Player.AttackBonus + item.BonusToHit;
+            var chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
             // Attacking uses a full turn
             _saveGame.EnergyUse = 100;
-            int num = 0;
+            var num = 0;
             // We have a number of attacks per round
             while (num++ < Player.MeleeAttacksPerRound)
             {
                 // Check if we hit
                 if (PlayerCheckHitOnMonster(chance, race.ArmourClass, monster.IsVisible))
                 {
-                    PlayerStatus playerStatus = new PlayerStatus(Player, Level);
+                    var playerStatus = new PlayerStatus(Player, Level);
                     Gui.PlaySound(SoundEffect.MeleeHit);
                     // Tell the player they hit it with the appropriate message
                     if (!(backstab || stabFleeing))
@@ -2393,10 +2392,10 @@ namespace Cthangband
                             $"You backstab the fleeing {monster.Race.Name}!");
                     }
                     // Default to 1 damage for an unarmed hit
-                    int totalDamage = 1;
+                    var totalDamage = 1;
                     // Get our weapon's flags to see if we need to do anything special
                     item.GetMergedFlags(f1, f2, f3);
-                    bool chaosEffect = f1.IsSet(ItemFlag1.Chaotic) && Program.Rng.DieRoll(2) == 1;
+                    var chaosEffect = f1.IsSet(ItemFlag1.Chaotic) && Program.Rng.DieRoll(2) == 1;
                     if (f1.IsSet(ItemFlag1.Vampiric) || (chaosEffect && Program.Rng.DieRoll(5) < 3))
                     {
                         // Vampiric overrides chaotic
@@ -2411,18 +2410,18 @@ namespace Cthangband
                         }
                     }
                     // Vorpal weapons have a chance of a deep cut
-                    bool vorpalCut = f1.IsSet(ItemFlag1.Vorpal) &&
+                    var vorpalCut = f1.IsSet(ItemFlag1.Vorpal) &&
                         Program.Rng.DieRoll(item.ArtifactIndex == ArtifactId.SwordVorpalBlade ? 3 : 6) == 1;
                     // If we're a martial artist then we have special attacks
                     if (Player.PlayerClass.IsMartialArtist && playerStatus.MartialArtistEmptyHands())
                     {
-                        int specialEffect = 0;
-                        int stunEffect = 0;
+                        var specialEffect = 0;
+                        var stunEffect = 0;
                         int times;
-                        MartialArtsAttack martialArtsAttack = GlobalData.MaBlows[0];
-                        MartialArtsAttack oldMartialArtsAttack = GlobalData.MaBlows[0];
+                        var martialArtsAttack = GlobalData.MaBlows[0];
+                        var oldMartialArtsAttack = GlobalData.MaBlows[0];
                         // Monsters of various types resist being stunned by martial arts
-                        int resistStun = 0;
+                        var resistStun = 0;
                         if ((race.Flags1 & MonsterFlag1.Unique) != 0)
                         {
                             resistStun += 88;
@@ -2556,7 +2555,7 @@ namespace Cthangband
                         // If we did a vorpal cut, do extra damage
                         if (vorpalCut)
                         {
-                            int stepK = totalDamage;
+                            var stepK = totalDamage;
                             Profile.Instance.MsgPrint(item.ArtifactIndex == ArtifactId.SwordVorpalBlade
                                 ? "Your Vorpal Blade goes snicker-snack!"
                                 : $"Your weapon cuts deep into {monsterName}!");
@@ -2601,7 +2600,7 @@ namespace Cthangband
                         if (drainResult > 0)
                         {
                             // Draining heals us
-                            int drainHeal = Program.Rng.DiceRoll(4, drainResult / 6);
+                            var drainHeal = Program.Rng.DiceRoll(4, drainResult / 6);
                             // We have a maximum drain per round to prevent it from getting out of
                             // hand if we have multiple attacks
                             if (drainLeft != 0)
@@ -2664,12 +2663,12 @@ namespace Cthangband
                         if (!((race.Flags1 & MonsterFlag1.Unique) != 0 || (race.Flags4 & MonsterFlag4.BreatheChaos) != 0 ||
                               (race.Flags1 & MonsterFlag1.Guardian) != 0))
                         {
-                            int newCurrentRace = _saveGame.SpellEffects.PolymorphMonster(monster.Race);
+                            var newCurrentRace = _saveGame.SpellEffects.PolymorphMonster(monster.Race);
                             if (newCurrentRace != monster.Race.Index)
                             {
                                 Profile.Instance.MsgPrint($"{monsterName} changes!");
                                 Level.Monsters.DeleteMonsterByIndex(tile.MonsterIndex, true);
-                                MonsterRace newRace = Profile.Instance.MonsterRaces[newCurrentRace];
+                                var newRace = Profile.Instance.MonsterRaces[newCurrentRace];
                                 Level.Monsters.PlaceMonsterAux(y, x, newRace, false, false, false);
                                 monster = Level.Monsters[tile.MonsterIndex];
                                 monsterName = monster.MonsterDesc(0);
@@ -2718,7 +2717,7 @@ namespace Cthangband
         /// <returns> True if the player hit the monster, false otherwise </returns>
         public bool PlayerCheckRangedHitOnMonster(int attackBonus, int armourClass, bool monsterIsVisible)
         {
-            int k = Program.Rng.RandomLessThan(100);
+            var k = Program.Rng.RandomLessThan(100);
             // Always a 5% chance to hit and a 5% chance to miss
             if (k < 10)
             {
@@ -2748,10 +2747,10 @@ namespace Cthangband
         public int PlayerCriticalRanged(int weight, int plus, int damage)
         {
             // Chance of a critical is based on weight, level, and plusses
-            int i = weight + ((Player.AttackBonus + plus) * 4) + (Player.Level * 2);
+            var i = weight + ((Player.AttackBonus + plus) * 4) + (Player.Level * 2);
             if (Program.Rng.DieRoll(5000) <= i)
             {
-                int k = weight + Program.Rng.DieRoll(500);
+                var k = weight + Program.Rng.DieRoll(500);
                 if (k < 500)
                 {
                     Profile.Instance.MsgPrint("It was a good hit!");
@@ -2778,7 +2777,7 @@ namespace Cthangband
         /// <returns> True if drinking the potion identified it </returns>
         public bool PotionEffect(int itemSubCategory)
         {
-            bool identified = false;
+            var identified = false;
             switch (itemSubCategory)
             {
                 // Water or apple juice has no effect
@@ -3454,7 +3453,7 @@ namespace Cthangband
                     {
                         if (Player.ExperiencePoints < Constants.PyMaxExp)
                         {
-                            int ee = (Player.ExperiencePoints / 2) + 10;
+                            var ee = (Player.ExperiencePoints / 2) + 10;
                             if (ee > 100000)
                             {
                                 ee = 100000;
@@ -3841,7 +3840,7 @@ namespace Cthangband
         {
             // Get a piece of armour
             _saveGame.ItemFilter = _saveGame.SpellEffects.ItemTesterHookArmour;
-            if (!_saveGame.GetItem(out int itemIndex, "Rustproof which piece of armour? ", true, true, true))
+            if (!_saveGame.GetItem(out var itemIndex, "Rustproof which piece of armour? ", true, true, true))
             {
                 if (itemIndex == -2)
                 {
@@ -3849,8 +3848,8 @@ namespace Cthangband
                 }
                 return;
             }
-            Item item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
-            string itenName = item.Description(false, 0);
+            var item = itemIndex >= 0 ? Player.Inventory[itemIndex] : Level.Items[0 - itemIndex];
+            var itenName = item.Description(false, 0);
             // Set the ignore acid flag
             item.LegendaryFlags3.Set(ItemFlag3.IgnoreAcid);
             // Make sure the grammar of the message is correct
@@ -3874,7 +3873,7 @@ namespace Cthangband
         public void Search()
         {
             // The basic chance is equal to our searching skill
-            int chance = Player.SkillSearching;
+            var chance = Player.SkillSearching;
             // If we can't see it's hard to search
             if (Player.TimedBlindness != 0 || Level.NoLight())
             {
@@ -3886,15 +3885,15 @@ namespace Cthangband
                 chance /= 10;
             }
             // Check the eight squares around us
-            for (int y = Player.MapY - 1; y <= Player.MapY + 1; y++)
+            for (var y = Player.MapY - 1; y <= Player.MapY + 1; y++)
             {
-                for (int x = Player.MapX - 1; x <= Player.MapX + 1; x++)
+                for (var x = Player.MapX - 1; x <= Player.MapX + 1; x++)
                 {
                     // Check if we succeed
                     if (Program.Rng.RandomLessThan(100) < chance)
                     {
                         // If there's a trap, then find it
-                        GridTile tile = Level.Grid[y][x];
+                        var tile = Level.Grid[y][x];
                         if (tile.FeatureType.Name == "Invis")
                         {
                             // Pick a random trap to replace the undetected one with
@@ -3912,9 +3911,9 @@ namespace Cthangband
                         }
                         int nextItemIndex;
                         // Check the items on the tile
-                        for (int itemIndex = tile.ItemIndex; itemIndex != 0; itemIndex = nextItemIndex)
+                        for (var itemIndex = tile.ItemIndex; itemIndex != 0; itemIndex = nextItemIndex)
                         {
-                            Item item = Level.Items[itemIndex];
+                            var item = Level.Items[itemIndex];
                             nextItemIndex = item.NextInStack;
                             // If one of them is a chest, determine if it is trapped
                             if (item.Category != ItemCategory.Chest)
@@ -3959,7 +3958,7 @@ namespace Cthangband
                 Profile.Instance.MsgPrint("You can't fetch when you're already standing on something.");
                 return;
             }
-            TargetEngine targetEngine = new TargetEngine(Player, Level);
+            var targetEngine = new TargetEngine(Player, Level);
             // If we didn't have a direction, we might have an existing target
             if (dir == 5 && targetEngine.TargetOkay())
             {
@@ -3997,7 +3996,7 @@ namespace Cthangband
                     }
                 } while (tile.ItemIndex == 0);
             }
-            Item item = Level.Items[tile.ItemIndex];
+            var item = Level.Items[tile.ItemIndex];
             // Check the weight of the item
             if (item.Weight > maxWeight)
             {
@@ -4005,7 +4004,7 @@ namespace Cthangband
                 return;
             }
             // Remove the entire item stack from the tile and move it to the player's tile
-            int itemIndex = tile.ItemIndex;
+            var itemIndex = tile.ItemIndex;
             tile.ItemIndex = 0;
             Level.Grid[Player.MapY][Player.MapX].ItemIndex = itemIndex;
             item.Y = Player.MapY;
@@ -4022,10 +4021,10 @@ namespace Cthangband
         /// <returns> Whether or not the command can be repeated </returns>
         public bool TunnelThroughTile(int y, int x)
         {
-            bool repeat = false;
+            var repeat = false;
             // Tunnelling uses an entire turn
             _saveGame.EnergyUse = 100;
-            GridTile tile = Level.Grid[y][x];
+            var tile = Level.Grid[y][x];
             // Trees are easy to chop down
             if (tile.FeatureType.Category == FloorTileTypeCategory.Tree)
             {
@@ -4079,8 +4078,8 @@ namespace Cthangband
             else if (tile.FeatureType.Name.Contains("Magma") || tile.FeatureType.Name.Contains("Quartz"))
             {
                 bool okay;
-                bool hasValue = false;
-                bool isMagma = false;
+                var hasValue = false;
+                var isMagma = false;
                 if (tile.FeatureType.Name.Contains("Treas"))
                 {
                     hasValue = true;
@@ -4172,7 +4171,7 @@ namespace Cthangband
         /// <returns> True if we opened it, false otherwise </returns>
         private bool EasyOpenDoor(int y, int x)
         {
-            GridTile tile = Level.Grid[y][x];
+            var tile = Level.Grid[y][x];
             // If it isn't closed, we can't open it
             if (!tile.FeatureType.IsClosedDoor)
             {
@@ -4186,7 +4185,7 @@ namespace Cthangband
             // Most doors are locked, so try to pick the lock
             else if (!tile.FeatureType.Name.Contains("0"))
             {
-                int skill = Player.SkillDisarmTraps;
+                var skill = Player.SkillDisarmTraps;
                 // Lockpicking is hard in the dark
                 if (Player.TimedBlindness != 0 || Level.NoLight())
                 {
@@ -4197,7 +4196,7 @@ namespace Cthangband
                 {
                     skill /= 10;
                 }
-                int chance = int.Parse(tile.FeatureType.Name.Substring(10));
+                var chance = int.Parse(tile.FeatureType.Name.Substring(10));
                 chance = skill - (chance * 4);
                 if (chance < 2)
                 {
@@ -4238,7 +4237,7 @@ namespace Cthangband
         private bool PlayerCheckHitOnMonster(int power, int armourClass, bool isVisible)
         {
             // Always have a 5% chance to hit or miss
-            int roll = Program.Rng.RandomLessThan(100);
+            var roll = Program.Rng.RandomLessThan(100);
             if (roll < 10)
             {
                 return roll < 5;
@@ -4265,10 +4264,10 @@ namespace Cthangband
         /// <returns> The damage total modified for a critical hit </returns>
         private int PlayerCriticalMelee(int weight, int plus, int damage)
         {
-            int i = weight + ((Player.AttackBonus + plus) * 5) + (Player.Level * 3);
+            var i = weight + ((Player.AttackBonus + plus) * 5) + (Player.Level * 3);
             if (Program.Rng.DieRoll(5000) <= i)
             {
-                int k = weight + Program.Rng.DieRoll(650);
+                var k = weight + Program.Rng.DieRoll(650);
                 if (k < 400)
                 {
                     Profile.Instance.MsgPrint("It was a good hit!");
@@ -4309,23 +4308,23 @@ namespace Cthangband
         {
             fear = false;
             monsterDies = false;
-            Monster monster = Level.Monsters[monsterIndex];
-            MonsterRace race = monster.Race;
-            int damageSides = mutation.DamageDiceSize;
-            int damageDice = mutation.DamageDiceNumber;
-            int effectiveWeight = mutation.EquivalentWeaponWeight;
-            string attackDescription = mutation.AttackDescription;
-            string monsterName = monster.MonsterDesc(0);
+            var monster = Level.Monsters[monsterIndex];
+            var race = monster.Race;
+            var damageSides = mutation.DamageDiceSize;
+            var damageDice = mutation.DamageDiceNumber;
+            var effectiveWeight = mutation.EquivalentWeaponWeight;
+            var attackDescription = mutation.AttackDescription;
+            var monsterName = monster.MonsterDesc(0);
             // See if the player hit the monster
-            int bonus = Player.AttackBonus;
-            int chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
+            var bonus = Player.AttackBonus;
+            var chance = Player.SkillMelee + (bonus * Constants.BthPlusAdj);
             if (PlayerCheckHitOnMonster(chance, race.ArmourClass, monster.IsVisible))
             {
                 // It was a hit, so let the player know
                 Gui.PlaySound(SoundEffect.MeleeHit);
                 Profile.Instance.MsgPrint($"You hit {monsterName} with your {attackDescription}.");
                 // Roll the damage, with possible critical damage
-                int damage = Program.Rng.DiceRoll(damageDice, damageSides);
+                var damage = Program.Rng.DiceRoll(damageDice, damageSides);
                 damage = PlayerCriticalMelee(effectiveWeight, Player.AttackBonus, damage);
                 damage += Player.DamageBonus;
                 // Can't have negative damage
@@ -4375,7 +4374,7 @@ namespace Cthangband
         /// <returns> True if the tunnel succeeded, false if not </returns>
         private bool RemoveTileViaTunnelling(int y, int x)
         {
-            GridTile tile = Level.Grid[y][x];
+            var tile = Level.Grid[y][x];
             // If we can already get through it, we can't tunnel through it
             if (Level.GridPassable(y, x))
             {
@@ -4394,9 +4393,9 @@ namespace Cthangband
         private void StepOnTrap()
         {
             int damage;
-            string name = "a trap";
+            var name = "a trap";
             _saveGame.Disturb(false);
-            GridTile tile = Level.Grid[Player.MapY][Player.MapX];
+            var tile = Level.Grid[Player.MapY][Player.MapX];
             // Check the type of trap
             switch (tile.FeatureType.Name)
             {
@@ -4523,8 +4522,8 @@ namespace Cthangband
                         tile.TileFlags.Clear(GridTile.PlayerMemorised);
                         Level.RevertTileToBackground(Player.MapY, Player.MapX);
                         // Summon 1d3+2 monsters
-                        int num = 2 + Program.Rng.DieRoll(3);
-                        for (int i = 0; i < num; i++)
+                        var num = 2 + Program.Rng.DieRoll(3);
+                        for (var i = 0; i < num; i++)
                         {
                             Level.Monsters.SummonSpecific(Player.MapY, Player.MapX, _saveGame.Difficulty, 0);
                         }
@@ -4687,14 +4686,14 @@ namespace Cthangband
         private void TouchZapPlayer(Monster monster)
         {
             int auraDamage;
-            MonsterRace race = monster.Race;
+            var race = monster.Race;
             // If we have a fire aura, apply it
             if ((race.Flags2 & MonsterFlag2.FireAura) != 0)
             {
                 if (!Player.HasFireImmunity)
                 {
                     auraDamage = Program.Rng.DiceRoll(1 + (race.Level / 26), 1 + (race.Level / 17));
-                    string auraDam = monster.MonsterDesc(0x88);
+                    var auraDam = monster.MonsterDesc(0x88);
                     Profile.Instance.MsgPrint("You are suddenly very hot!");
                     if (Player.TimedFireResistance != 0)
                     {
@@ -4713,7 +4712,7 @@ namespace Cthangband
             if ((race.Flags2 & MonsterFlag2.LightningAura) != 0 && !Player.HasLightningImmunity)
             {
                 auraDamage = Program.Rng.DiceRoll(1 + (race.Level / 26), 1 + (race.Level / 17));
-                string auraDam = monster.MonsterDesc(0x88);
+                var auraDam = monster.MonsterDesc(0x88);
                 if (Player.TimedLightningResistance != 0)
                 {
                     auraDamage = (auraDamage + 2) / 3;
@@ -4737,7 +4736,7 @@ namespace Cthangband
         private bool TrapCheckHitOnPlayer(int attackStrength)
         {
             // Always a 5% chance to hit and 5% chance to miss
-            int k = Program.Rng.RandomLessThan(100);
+            var k = Program.Rng.RandomLessThan(100);
             if (k < 10)
             {
                 return k < 5;
@@ -4748,7 +4747,7 @@ namespace Cthangband
                 return false;
             }
             // Roll for the attack
-            int armourClass = Player.BaseArmourClass + Player.ArmourClassBonus;
+            var armourClass = Player.BaseArmourClass + Player.ArmourClassBonus;
             return Program.Rng.DieRoll(attackStrength) > armourClass * 3 / 4;
         }
     }

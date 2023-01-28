@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -25,14 +25,14 @@ namespace Cthangband.Talents.Base
 
         public int FailureChance(Player player)
         {
-            int chance = BaseFailure;
+            var chance = BaseFailure;
             chance -= 3 * (player.Level - Level);
             chance -= 3 * (player.AbilityScores[player.Spellcasting.SpellStat].SpellFailureReduction - 1);
             if (VisCost > player.Vis)
             {
                 chance += 5 * (VisCost - player.Vis);
             }
-            int minfail = player.AbilityScores[player.Spellcasting.SpellStat].SpellMinFailChance;
+            var minfail = player.AbilityScores[player.Spellcasting.SpellStat].SpellMinFailChance;
             if (chance < minfail)
             {
                 chance = minfail;

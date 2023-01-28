@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -54,7 +54,7 @@ namespace Cthangband
 
         private void ClearScoreFlags()
         {
-            foreach (HighScore score in _scores)
+            foreach (var score in _scores)
             {
                 score.Living = false;
                 score.Hilight = false;
@@ -91,7 +91,7 @@ namespace Cthangband
 
             // collectedScores now holds all the scores we're interested in - probably only a single
             // page of them
-            int line = 0;
+            var line = 0;
             do
             {
                 if (line == 0)
@@ -114,11 +114,11 @@ namespace Cthangband
 
         private List<HighScore> FilterByHighScore(HighScore living)
         {
-            int index = 0;
+            var index = 0;
             var useScores = InsertFromSaves(Program.ActiveSaveSlot);
-            List<HighScore> list = new List<HighScore>();
+            var list = new List<HighScore>();
             // Gather all the scores above ours
-            for (int i = 0; i < useScores.Count; i++)
+            for (var i = 0; i < useScores.Count; i++)
             {
                 if (useScores[index].Pts >= living.Pts)
                 {
@@ -141,9 +141,9 @@ namespace Cthangband
             {
                 list.RemoveAt(0);
             }
-            int below = 10 - list.Count;
+            var below = 10 - list.Count;
             // Add some more below (shifting their index by one)
-            for (int i = 0; i < below; i++)
+            for (var i = 0; i < below; i++)
             {
                 if (index < useScores.Count)
                 {
@@ -158,11 +158,11 @@ namespace Cthangband
 
         private List<HighScore> FilterByScore(int centredScore)
         {
-            int index = 0;
+            var index = 0;
             var useScores = InsertFromSaves(null);
-            List<HighScore> list = new List<HighScore>();
+            var list = new List<HighScore>();
             // Gather all the scores above and including ours
-            for (int i = 0; i < useScores.Count; i++)
+            for (var i = 0; i < useScores.Count; i++)
             {
                 if (useScores[index].Pts >= centredScore)
                 {
@@ -184,9 +184,9 @@ namespace Cthangband
 
             // Hilight the chosen one
             list[list.Count - 1].Hilight = true;
-            int below = 10 - list.Count;
+            var below = 10 - list.Count;
             // Add some more below
-            for (int i = 0; i < below; i++)
+            for (var i = 0; i < below; i++)
             {
                 if (index < useScores.Count)
                 {
@@ -202,8 +202,8 @@ namespace Cthangband
         private List<HighScore> GetAllHighScores()
         {
             var useScores = InsertFromSaves(null);
-            List<HighScore> list = new List<HighScore>();
-            for (int i = 0; i < useScores.Count; i++)
+            var list = new List<HighScore>();
+            for (var i = 0; i < useScores.Count; i++)
             {
                 useScores[i].Index = i + 1;
                 list.Add(useScores[i]);
@@ -233,7 +233,7 @@ namespace Cthangband
 
         private void InsertScore(List<HighScore> list, HighScore score)
         {
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
                 if (list[i].Pts < score.Pts)
                 {
@@ -261,7 +261,7 @@ namespace Cthangband
 
         private void ShowScore(HighScore score, int line)
         {
-            Colour color = Colour.White;
+            var color = Colour.White;
             if (line % 2 == 1)
             {
                 color = Colour.Grey;
@@ -287,7 +287,7 @@ namespace Cthangband
 
         private void StripUnwanted(List<HighScore> list)
         {
-            int index = 0;
+            var index = 0;
             if (string.IsNullOrEmpty(RaceFilter) && string.IsNullOrEmpty(ClassFilter))
             {
                 return;

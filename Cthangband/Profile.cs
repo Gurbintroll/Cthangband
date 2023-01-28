@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -41,7 +41,7 @@ namespace Cthangband
 
         public static void LoadOrCreate(string fileName)
         {
-            FileInfo file = new FileInfo(fileName);
+            var file = new FileInfo(fileName);
             if (file.Exists)
             {
                 Instance = Program.DeserializeFromSaveFolder<Profile>(fileName);
@@ -97,8 +97,8 @@ namespace Cthangband
             {
                 return string.Empty;
             }
-            string message = _messageBuf[_messageBuf.Count - age - 1];
-            int count = _messageCounts[_messageCounts.Count - age - 1];
+            var message = _messageBuf[_messageBuf.Count - age - 1];
+            var count = _messageCounts[_messageCounts.Count - age - 1];
             if (count > 1)
             {
                 message += $" (x{count})";
@@ -112,7 +112,7 @@ namespace Cthangband
             {
                 _msgPrintP = 0;
             }
-            int n = string.IsNullOrEmpty(msg) ? 0 : msg.Length;
+            var n = string.IsNullOrEmpty(msg) ? 0 : msg.Length;
             if (_msgPrintP != 0 && (string.IsNullOrEmpty(msg) || _msgPrintP + n > 72))
             {
                 MsgFlush(_msgPrintP);
@@ -135,12 +135,12 @@ namespace Cthangband
             {
                 MessageAdd(msg);
             }
-            string buf = msg;
-            string t = buf;
+            var buf = msg;
+            var t = buf;
             while (n > 72)
             {
-                int split = 72;
-                for (int check = 40; check < 72; check++)
+                var split = 72;
+                for (var check = 40; check < 72; check++)
                 {
                     if (t[check] == ' ')
                     {
@@ -165,7 +165,7 @@ namespace Cthangband
             // Create a new game if necessary
             if (Game == null)
             {
-                SaveGame game = new SaveGame();
+                var game = new SaveGame();
                 game.Initialise();
                 Game = game;
             }

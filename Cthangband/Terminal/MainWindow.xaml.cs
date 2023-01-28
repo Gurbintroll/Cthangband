@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -44,7 +44,7 @@ namespace Cthangband.Terminal
                     return;
                 }
                 _backgroundImage = value;
-                BitmapImage bitmapImage = new BitmapImage();
+                var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
                 Uri uri;
                 switch (value)
@@ -114,7 +114,7 @@ namespace Cthangband.Terminal
         {
             BackgroundImage = BackgroundImage.Menu;
             Content = null;
-            UniformGrid grid = new UniformGrid();
+            var grid = new UniformGrid();
             AddChild(grid);
             grid.Rows = Constants.ConsoleHeight;
             grid.Columns = Constants.ConsoleWidth;
@@ -122,15 +122,15 @@ namespace Cthangband.Terminal
             grid.IsHitTestVisible = false;
             grid.IsEnabled = false;
             grid.Cursor = Cursors.None;
-            FontFamily family = new FontFamily(parameters.FontName);
+            var family = new FontFamily(parameters.FontName);
             Cells = new TextBlock[Constants.ConsoleHeight][];
-            for (int row = 0; row < Constants.ConsoleHeight; row++)
+            for (var row = 0; row < Constants.ConsoleHeight; row++)
             {
                 Cells[row] = new TextBlock[Constants.ConsoleWidth];
-                for (int col = 0; col < Constants.ConsoleWidth; col++)
+                for (var col = 0; col < Constants.ConsoleWidth; col++)
                 {
-                    Viewbox v = new Viewbox();
-                    TextBlock x = new TextBlock();
+                    var v = new Viewbox();
+                    var x = new TextBlock();
                     v.Stretch = Stretch.Fill;
                     x.FontFamily = family;
                     x.FontWeight = parameters.FontBold ? FontWeights.Bold : FontWeights.Regular;

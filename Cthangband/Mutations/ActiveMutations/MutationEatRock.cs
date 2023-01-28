@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -7,7 +7,6 @@
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
 using Cthangband.Mutations.Base;
-using Cthangband.StaticData;
 using System;
 
 namespace Cthangband.Mutations.ActiveMutations
@@ -21,14 +20,14 @@ namespace Cthangband.Mutations.ActiveMutations
             {
                 return;
             }
-            TargetEngine targetEngine = new TargetEngine(player, level);
-            if (!targetEngine.GetDirectionNoAim(out int dir))
+            var targetEngine = new TargetEngine(player, level);
+            if (!targetEngine.GetDirectionNoAim(out var dir))
             {
                 return;
             }
-            int y = player.MapY + level.KeypadDirectionYOffset[dir];
-            int x = player.MapX + level.KeypadDirectionXOffset[dir];
-            GridTile cPtr = level.Grid[y][x];
+            var y = player.MapY + level.KeypadDirectionYOffset[dir];
+            var x = player.MapX + level.KeypadDirectionXOffset[dir];
+            var cPtr = level.Grid[y][x];
             if (level.GridPassable(y, x))
             {
                 Profile.Instance.MsgPrint("You bite into thin air!");
@@ -63,8 +62,8 @@ namespace Cthangband.Mutations.ActiveMutations
                 player.SetFood(player.Food + 10000);
             }
             saveGame.SpellEffects.WallToMud(dir);
-            int oy = player.MapY;
-            int ox = player.MapX;
+            var oy = player.MapY;
+            var ox = player.MapX;
             player.MapY = y;
             player.MapX = x;
             level.RedrawSingleLocation(player.MapY, player.MapX);

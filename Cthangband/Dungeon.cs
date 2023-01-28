@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -148,7 +148,7 @@ namespace Cthangband
         /// <returns> </returns>
         public static Dungeon[] NewDungeonList()
         {
-            Dungeon[] array = new[]
+            var array = new[]
             {
                 // Note that the indices of the first eight dungeons match the towns that they are under
                 new Dungeon(false, 0, 3, 0, "", "", 0, 0, "the Sewers under Celephais", "Celephais", "C"),
@@ -179,7 +179,7 @@ namespace Cthangband
                 new Dungeon(false, 2, 8, Constants.SummonYeek, "Orfax, Son of Boldor", "Boldor, King of the Yeeks", 7, 8, "the Yeek King's Lair", "Yeek Lair", "y")
             };
             // Make sure each dungeon knows its index
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
                 array[i].Index = i;
             }
@@ -193,8 +193,8 @@ namespace Cthangband
         {
             // Maximum offset is the dungeon's base offset or 10, whichever is less (but since we're
             // using 'less than', we add one to both values here)
-            int range = Math.Min((BaseOffset + 1), 11);
-            int offsetChange = Program.Rng.RandomLessThan(range);
+            var range = Math.Min((BaseOffset + 1), 11);
+            var offsetChange = Program.Rng.RandomLessThan(range);
             // Dungeons are equally likely to be more or less difficult
             if (Program.Rng.DieRoll(6) >= 4)
             {

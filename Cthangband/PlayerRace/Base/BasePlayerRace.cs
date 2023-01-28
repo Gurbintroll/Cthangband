@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -872,16 +872,16 @@ namespace Cthangband.PlayerRace.Base
             {
                 player.History[i] = string.Empty;
             }
-            string fullHistory = string.Empty;
-            int socialClass = Program.Rng.DieRoll(4);
+            var fullHistory = string.Empty;
+            var socialClass = Program.Rng.DieRoll(4);
             // Start on a chart based on the character's race
-            int chart = BackgroundStartingChart;
+            var chart = BackgroundStartingChart;
             // Keep going till we get to an end
             while (chart != 0)
             {
                 i = 0;
                 // Roll percentile for which background to use within each chart
-                int roll = Program.Rng.DieRoll(100);
+                var roll = Program.Rng.DieRoll(100);
                 // Find the correct chart and background
                 while (chart != _backgroundTable[i].Chart || roll > _backgroundTable[i].Roll)
                 {
@@ -904,11 +904,11 @@ namespace Cthangband.PlayerRace.Base
             }
             player.SocialClass = socialClass;
             // Split the buffer into four strings to fit on four lines of the screen
-            string s = fullHistory.Trim();
+            var s = fullHistory.Trim();
             i = 0;
             while (true)
             {
-                int n = s.Length;
+                var n = s.Length;
                 if (n < 60)
                 {
                     player.History[i] = s;

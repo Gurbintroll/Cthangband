@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -26,7 +26,7 @@ namespace Cthangband
         {
             _items = new Item[InventorySlot.Total];
             _player = player;
-            for (int i = 0; i < InventorySlot.Total; i++)
+            for (var i = 0; i < InventorySlot.Total; i++)
             {
                 _items[i] = new Item();
             }
@@ -41,7 +41,7 @@ namespace Cthangband
 
         public static bool ObjectEasyKnow(int i)
         {
-            ItemType kPtr = Profile.Instance.ItemTypes[i];
+            var kPtr = Profile.Instance.ItemTypes[i];
             switch (kPtr.Category)
             {
                 case ItemCategory.LifeBook:
@@ -73,7 +73,7 @@ namespace Cthangband
 
         public static bool ObjectHasFlavor(ItemType i)
         {
-            ItemType kPtr = i;
+            var kPtr = i;
             switch (kPtr.Category)
             {
                 case ItemCategory.Amulet:
@@ -93,17 +93,17 @@ namespace Cthangband
 
         public void CombinePack()
         {
-            bool flag = false;
-            for (int i = InventorySlot.Pack; i > 0; i--)
+            var flag = false;
+            for (var i = InventorySlot.Pack; i > 0; i--)
             {
-                Item oPtr = _items[i];
+                var oPtr = _items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
                 }
-                for (int j = 0; j < i; j++)
+                for (var j = 0; j < i; j++)
                 {
-                    Item jPtr = _items[j];
+                    var jPtr = _items[j];
                     if (jPtr.ItemType == null)
                     {
                         continue;
@@ -141,7 +141,7 @@ namespace Cthangband
         public int InvenCarry(Item oPtr, bool final)
         {
             int j;
-            int n = -1;
+            var n = -1;
             Item jPtr;
             if (!final)
             {
@@ -174,10 +174,10 @@ namespace Cthangband
                     break;
                 }
             }
-            int i = j;
+            var i = j;
             if (!final && i < InventorySlot.Pack)
             {
-                int oValue = oPtr.Value();
+                var oValue = oPtr.Value();
                 for (j = 0; j < InventorySlot.Pack; j++)
                 {
                     jPtr = _items[j];
@@ -244,7 +244,7 @@ namespace Cthangband
                             continue;
                         }
                     }
-                    int jValue = jPtr.Value();
+                    var jValue = jPtr.Value();
                     if (oValue > jValue)
                     {
                         break;
@@ -254,7 +254,7 @@ namespace Cthangband
                     }
                 }
                 i = j;
-                for (int k = n; k >= i; k--)
+                for (var k = n; k >= i; k--)
                 {
                     _items[k + 1] = new Item(_items[k]);
                 }
@@ -279,9 +279,9 @@ namespace Cthangband
             {
                 return true;
             }
-            for (int j = 0; j < InventorySlot.Pack; j++)
+            for (var j = 0; j < InventorySlot.Pack; j++)
             {
-                Item jPtr = _items[j];
+                var jPtr = _items[j];
                 if (jPtr.ItemType == null)
                 {
                     continue;
@@ -296,10 +296,10 @@ namespace Cthangband
 
         public int InvenDamage(Func<Item, bool> testerFunc, int perc)
         {
-            int k = 0;
-            for (int i = 0; i < InventorySlot.Pack; i++)
+            var k = 0;
+            for (var i = 0; i < InventorySlot.Pack; i++)
             {
-                Item oPtr = _items[i];
+                var oPtr = _items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
@@ -321,11 +321,11 @@ namespace Cthangband
                     }
                     if (amt != 0)
                     {
-                        string oName = oPtr.Description(false, 3);
-                        string y = oPtr.Count > 1
+                        var oName = oPtr.Description(false, 3);
+                        var y = oPtr.Count > 1
                             ? (amt == oPtr.Count ? "All of y" : (amt > 1 ? "Some of y" : "One of y"))
                             : "Y";
-                        string w = amt > 1 ? "were" : "was";
+                        var w = amt > 1 ? "were" : "was";
                         Profile.Instance.MsgPrint($"{y}our {oName} ({i.IndexToLabel()}) {w} destroyed!");
                         if (oPtr.ItemType.Category == ItemCategory.Potion)
                         {
@@ -343,7 +343,7 @@ namespace Cthangband
 
         public void InvenDrop(int item, int amt)
         {
-            Item oPtr = _items[item];
+            var oPtr = _items[item];
             if (amt <= 0)
             {
                 return;
@@ -357,8 +357,8 @@ namespace Cthangband
                 item = InvenTakeoff(item, amt);
                 oPtr = _items[item];
             }
-            Item qPtr = new Item(oPtr) { Count = amt };
-            string oName = qPtr.Description(true, 3);
+            var qPtr = new Item(oPtr) { Count = amt };
+            var oName = qPtr.Description(true, 3);
             Profile.Instance.MsgPrint($"You drop {oName} ({item.IndexToLabel()}).");
             SaveGame.Instance.Level.DropNear(qPtr, 0, _player.MapY, _player.MapX);
             InvenItemIncrease(item, -amt);
@@ -368,14 +368,14 @@ namespace Cthangband
 
         public void InvenItemDescribe(int item)
         {
-            Item oPtr = _items[item];
-            string oName = oPtr.Description(true, 3);
+            var oPtr = _items[item];
+            var oName = oPtr.Description(true, 3);
             Profile.Instance.MsgPrint($"You have {oName}.");
         }
 
         public void InvenItemIncrease(int item, int num)
         {
-            Item oPtr = _items[item];
+            var oPtr = _items[item];
             num += oPtr.Count;
             if (num > 255)
             {
@@ -398,7 +398,7 @@ namespace Cthangband
 
         public void InvenItemOptimize(int item)
         {
-            Item oPtr = _items[item];
+            var oPtr = _items[item];
             if (oPtr.ItemType == null)
             {
                 return;
@@ -429,7 +429,7 @@ namespace Cthangband
         public int InvenTakeoff(int item, int amt)
         {
             string act;
-            Item oPtr = _items[item];
+            var oPtr = _items[item];
             if (amt <= 0)
             {
                 return -1;
@@ -438,8 +438,8 @@ namespace Cthangband
             {
                 amt = oPtr.Count;
             }
-            Item qPtr = new Item(oPtr) { Count = amt };
-            string oName = qPtr.Description(true, 3);
+            var qPtr = new Item(oPtr) { Count = amt };
+            var oName = qPtr.Description(true, 3);
             if (item == InventorySlot.MeleeWeapon)
             {
                 act = "You were wielding";
@@ -458,7 +458,7 @@ namespace Cthangband
             }
             InvenItemIncrease(item, -amt);
             InvenItemOptimize(item);
-            int slot = InvenCarry(qPtr, false);
+            var slot = InvenCarry(qPtr, false);
             Profile.Instance.MsgPrint($"{act} {oName} ({slot.IndexToLabel()}).");
             return slot;
         }
@@ -500,7 +500,7 @@ namespace Cthangband
 
         public int LabelToEquip(char c)
         {
-            int i = (char.IsLower(c) ? c.LetterToNumber() : -1) + InventorySlot.MeleeWeapon;
+            var i = (char.IsLower(c) ? c.LetterToNumber() : -1) + InventorySlot.MeleeWeapon;
             if (i < InventorySlot.MeleeWeapon || i >= InventorySlot.Total)
             {
                 return -1;
@@ -514,7 +514,7 @@ namespace Cthangband
 
         public int LabelToInven(char c)
         {
-            int i = char.IsLower(c) ? c.LetterToNumber() : -1;
+            var i = char.IsLower(c) ? c.LetterToNumber() : -1;
             if (i < 0 || i > InventorySlot.Pack)
             {
                 return -1;
@@ -528,23 +528,23 @@ namespace Cthangband
 
         public void ReorderPack()
         {
-            bool flag = false;
-            for (int i = 0; i < InventorySlot.Pack; i++)
+            var flag = false;
+            for (var i = 0; i < InventorySlot.Pack; i++)
             {
                 if (i == InventorySlot.Pack && _invenCnt == InventorySlot.Pack)
                 {
                     break;
                 }
-                Item oPtr = _items[i];
+                var oPtr = _items[i];
                 if (oPtr.ItemType == null)
                 {
                     continue;
                 }
-                int oValue = oPtr.Value();
+                var oValue = oPtr.Value();
                 int j;
                 for (j = 0; j < InventorySlot.Pack; j++)
                 {
-                    Item jPtr = _items[j];
+                    var jPtr = _items[j];
                     if (jPtr.ItemType == null)
                     {
                         break;
@@ -608,7 +608,7 @@ namespace Cthangband
                             continue;
                         }
                     }
-                    int jValue = jPtr.Value();
+                    var jValue = jPtr.Value();
                     if (oValue > jValue)
                     {
                         break;
@@ -622,8 +622,8 @@ namespace Cthangband
                     continue;
                 }
                 flag = true;
-                Item qPtr = new Item(_items[i]);
-                for (int k = i; k > j; k--)
+                var qPtr = new Item(_items[i]);
+                for (var k = i; k > j; k--)
                 {
                     _items[k] = new Item(_items[k - 1]);
                 }
@@ -637,7 +637,7 @@ namespace Cthangband
 
         public void ReportChargeUsageFromInventory(int item)
         {
-            Item oPtr = _items[item];
+            var oPtr = _items[item];
             if (oPtr.Category != ItemCategory.Staff && oPtr.Category != ItemCategory.Wand)
             {
                 return;
@@ -655,12 +655,12 @@ namespace Cthangband
         {
             int i, j, k;
             Item oPtr;
-            int[] outIndex = new int[23];
-            Colour[] outColour = new Colour[23];
-            string[] outDesc = new string[23];
-            int col = SaveGame.Instance.ItemDisplayColumn;
-            int len = 79 - col;
-            int lim = 79 - 3;
+            var outIndex = new int[23];
+            var outColour = new Colour[23];
+            var outDesc = new string[23];
+            var col = SaveGame.Instance.ItemDisplayColumn;
+            var len = 79 - col;
+            var lim = 79 - 3;
             lim -= 14 + 2;
             lim -= 9;
             lim -= 2;
@@ -671,7 +671,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                string oName = oPtr.Description(true, 3);
+                var oName = oPtr.Description(true, 3);
                 if (oName.Length > lim)
                 {
                     oName = oName.Substring(0, lim);
@@ -679,7 +679,7 @@ namespace Cthangband
                 outIndex[k] = i;
                 outColour[k] = oPtr.Category.ToAttr();
                 outDesc[k] = oName;
-                int l = outDesc[k].Length + 5;
+                var l = outDesc[k].Length + 5;
                 l += 16;
                 l += 9;
                 l += 2;
@@ -695,12 +695,12 @@ namespace Cthangband
                 i = outIndex[j];
                 oPtr = _items[i];
                 Gui.PrintLine("", j + 1, col != 0 ? col - 2 : col);
-                string tmpVal = $"{i.IndexToLabel()})";
+                var tmpVal = $"{i.IndexToLabel()})";
                 Gui.Print(tmpVal, j + 1, col);
                 if (oPtr.ItemType != null)
                 {
-                    Colour a = oPtr.ItemType.Colour;
-                    char c = oPtr.ItemType.Character;
+                    var a = oPtr.ItemType.Colour;
+                    var c = oPtr.ItemType.Character;
                     Gui.Place(a, c, j + 1, col + 3);
                 }
                 else
@@ -710,7 +710,7 @@ namespace Cthangband
                 tmpVal = $"{MentionUse(i)}: ";
                 Gui.Print(tmpVal, j + 1, col + 5);
                 Gui.Print(outColour[j], outDesc[j], j + 1, col + 21);
-                int wgt = oPtr.Weight * oPtr.Count;
+                var wgt = oPtr.Weight * oPtr.Count;
                 tmpVal = $"{wgt / 10}.{wgt % 10} lb";
                 Gui.Print(tmpVal, j + 1, 71);
             }
@@ -725,12 +725,12 @@ namespace Cthangband
         {
             int i, j, k, z = 0;
             Item oPtr;
-            int[] outIndex = new int[26];
-            Colour[] outColour = new Colour[26];
-            string[] outDesc = new string[26];
-            int col = SaveGame.Instance.ItemDisplayColumn;
-            int len = 79 - col;
-            int lim = 79 - 3;
+            var outIndex = new int[26];
+            var outColour = new Colour[26];
+            var outDesc = new string[26];
+            var col = SaveGame.Instance.ItemDisplayColumn;
+            var len = 79 - col;
+            var lim = 79 - 3;
             lim -= 9;
             lim -= 2;
             for (i = 0; i < InventorySlot.Pack; i++)
@@ -749,7 +749,7 @@ namespace Cthangband
                 {
                     continue;
                 }
-                string oName = oPtr.Description(true, 3);
+                var oName = oPtr.Description(true, 3);
                 if (oName.Length > lim)
                 {
                     oName = oName.Substring(0, lim);
@@ -757,7 +757,7 @@ namespace Cthangband
                 outIndex[k] = i;
                 outColour[k] = oPtr.Category.ToAttr();
                 outDesc[k] = oName;
-                int l = outDesc[k].Length + 5;
+                var l = outDesc[k].Length + 5;
                 l += 9;
                 l += 2;
                 if (l > len)
@@ -772,13 +772,13 @@ namespace Cthangband
                 i = outIndex[j];
                 oPtr = _items[i];
                 Gui.PrintLine("", j + 1, col != 0 ? col - 2 : col);
-                string tmpVal = $"{i.IndexToLabel()})";
+                var tmpVal = $"{i.IndexToLabel()})";
                 Gui.Print(tmpVal, j + 1, col);
-                Colour a = oPtr.ItemType.Colour;
-                char c = oPtr.ItemType.Character;
+                var a = oPtr.ItemType.Colour;
+                var c = oPtr.ItemType.Character;
                 Gui.Place(a, c, j + 1, col + 3);
                 Gui.Print(outColour[j], outDesc[j], j + 1, col + 5);
-                int wgt = oPtr.Weight * oPtr.Count;
+                var wgt = oPtr.Weight * oPtr.Count;
                 tmpVal = $"{wgt / 10,2}.{wgt % 10} lb";
                 Gui.Print(tmpVal, j + 1, 71);
             }
@@ -909,7 +909,7 @@ namespace Cthangband
             }
             if (i == InventorySlot.MeleeWeapon)
             {
-                Item oPtr = _items[i];
+                var oPtr = _items[i];
                 if (_player.AbilityScores[Ability.Strength].StrMaxWeaponWeight < oPtr.Weight / 10)
                 {
                     p = "Just lifting";
@@ -917,7 +917,7 @@ namespace Cthangband
             }
             if (i == InventorySlot.RangedWeapon)
             {
-                Item oPtr = _items[i];
+                var oPtr = _items[i];
                 if (_player.AbilityScores[Ability.Strength].StrMaxWeaponWeight < oPtr.Weight / 10)
                 {
                     p = "Just holding";

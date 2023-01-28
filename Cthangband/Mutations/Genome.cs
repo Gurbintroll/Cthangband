@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -149,7 +149,7 @@ namespace Cthangband.Mutations
             _notPossessed.Add(new MutationWasting());
             _notPossessed.Add(new MutationWeirdMind());
             _notPossessed.Add(new MutationWraith());
-            foreach (BaseMutation mutation in _notPossessed)
+            foreach (var mutation in _notPossessed)
             {
                 mutation.Initialise();
             }
@@ -159,7 +159,7 @@ namespace Cthangband.Mutations
 
         public List<IMutation> ActivatableMutations(Player player)
         {
-            List<IMutation> list = new List<IMutation>();
+            var list = new List<IMutation>();
             foreach (IMutation mutation in _possessed)
             {
                 if (string.IsNullOrEmpty(mutation.ActivationSummary(player.Level)))
@@ -178,29 +178,29 @@ namespace Cthangband.Mutations
                 return;
             }
             Profile.Instance.MsgPrint("You change...");
-            int total = 0;
-            foreach (BaseMutation mutation in _notPossessed)
+            var total = 0;
+            foreach (var mutation in _notPossessed)
             {
                 total += mutation.Frequency;
             }
-            int roll = Program.Rng.DieRoll(total);
-            for (int i = 0; i < _notPossessed.Count; i++)
+            var roll = Program.Rng.DieRoll(total);
+            for (var i = 0; i < _notPossessed.Count; i++)
             {
                 roll -= _notPossessed[i].Frequency;
                 if (roll > 0)
                 {
                     continue;
                 }
-                BaseMutation mutation = _notPossessed[i];
+                var mutation = _notPossessed[i];
                 _notPossessed.RemoveAt(i);
                 if (_possessed.Count > 0 && mutation.Group != MutationGroup.None)
                 {
-                    int j = 0;
+                    var j = 0;
                     do
                     {
                         if (_possessed[j].Group == mutation.Group)
                         {
-                            BaseMutation other = _possessed[j];
+                            var other = _possessed[j];
                             _possessed.RemoveAt(j);
                             other.OnLose(this);
                             Profile.Instance.MsgPrint(other.LoseMessage);
@@ -228,8 +228,8 @@ namespace Cthangband.Mutations
             {
                 return new string[0];
             }
-            string[] list = new string[_possessed.Count];
-            for (int i = 0; i < _possessed.Count; i++)
+            var list = new string[_possessed.Count];
+            for (var i = 0; i < _possessed.Count; i++)
             {
                 list[i] = _possessed[i].HaveMessage;
             }
@@ -245,7 +245,7 @@ namespace Cthangband.Mutations
             Profile.Instance.MsgPrint("You change...");
             do
             {
-                BaseMutation mutation = _possessed[0];
+                var mutation = _possessed[0];
                 _possessed.RemoveAt(0);
                 mutation.OnLose(this);
                 _notPossessed.Add(mutation);
@@ -262,20 +262,20 @@ namespace Cthangband.Mutations
                 return;
             }
             Profile.Instance.MsgPrint("You change...");
-            int total = 0;
-            foreach (BaseMutation mutation in _possessed)
+            var total = 0;
+            foreach (var mutation in _possessed)
             {
                 total += mutation.Frequency;
             }
-            int roll = Program.Rng.DieRoll(total);
-            for (int i = 0; i < _possessed.Count; i++)
+            var roll = Program.Rng.DieRoll(total);
+            for (var i = 0; i < _possessed.Count; i++)
             {
                 roll -= _possessed[i].Frequency;
                 if (roll > 0)
                 {
                     continue;
                 }
-                BaseMutation mutation = _possessed[i];
+                var mutation = _possessed[i];
                 _possessed.RemoveAt(i);
                 mutation.OnLose(this);
                 _notPossessed.Add(mutation);
@@ -289,7 +289,7 @@ namespace Cthangband.Mutations
 
         public void OnProcessWorld(SaveGame saveGame, Player player, Level level)
         {
-            foreach (BaseMutation mutation in _possessed)
+            foreach (var mutation in _possessed)
             {
                 mutation.OnProcessWorld(saveGame, player, level);
             }

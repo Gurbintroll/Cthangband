@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -8,10 +8,6 @@
 using Cthangband.Enumerations;
 using Cthangband.StaticData;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cthangband.PlayerClass.Base
 {
@@ -127,8 +123,8 @@ namespace Cthangband.PlayerClass.Base
                 return choices;
             }
 
-            Realm[] picks = new Realm[Constants.MaxRealm];
-            int n = 0;
+            var picks = new Realm[Constants.MaxRealm];
+            var n = 0;
             if ((choices & Realm.Chaos) != 0 && player.Realm1 != Realm.Chaos)
             {
                 picks[n] = Realm.Chaos;
@@ -169,7 +165,7 @@ namespace Cthangband.PlayerClass.Base
                 picks[n] = Realm.Sorcery;
                 n++;
             }
-            int k = Program.Rng.RandomLessThan(n);
+            var k = Program.Rng.RandomLessThan(n);
             return picks[k];
         }
 

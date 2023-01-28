@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -25,12 +25,12 @@ namespace Cthangband.Talents
 
         public override void Use(Player player, Level level, SaveGame saveGame)
         {
-            TargetEngine targetEngine = new TargetEngine(player, level);
-            if (!targetEngine.GetDirectionWithAim(out int dir))
+            var targetEngine = new TargetEngine(player, level);
+            if (!targetEngine.GetDirectionWithAim(out var dir))
             {
                 return;
             }
-            int i = Program.Rng.DiceRoll(player.Level / 2, 6);
+            var i = Program.Rng.DiceRoll(player.Level / 2, 6);
             if (SaveGame.Instance.SpellEffects.FireBall(new ProjectPsiDrain(SaveGame.Instance.SpellEffects), dir, i, 0 + ((player.Level - 25) / 10)))
             {
                 player.Energy -= Program.Rng.DieRoll(150);

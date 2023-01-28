@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -68,15 +68,15 @@ namespace Cthangband
 
         public void GenerateNewLevel()
         {
-            for (int num = 0; ; num++)
+            for (var num = 0; ; num++)
             {
-                bool okay = true;
+                var okay = true;
                 _level.OMax = 1;
                 int i;
                 for (i = 0; i < Level.MaxHgt; i++)
                 {
                     _level.Grid[i] = new GridTile[Level.MaxWid];
-                    for (int j = 0; j < Level.MaxWid; j++)
+                    for (var j = 0; j < Level.MaxWid; j++)
                     {
                         _level.Grid[i][j] = new GridTile();
                         if (SaveGame.Instance.CurrentDepth == 0)
@@ -178,8 +178,8 @@ namespace Cthangband
                     {
                         if (Program.Rng.DieRoll(_smallLevel) == 1)
                         {
-                            int tester1 = Program.Rng.DieRoll(Level.MaxHgt / Constants.ScreenHgt);
-                            int tester2 = Program.Rng.DieRoll(Level.MaxWid / Constants.ScreenWid);
+                            var tester1 = Program.Rng.DieRoll(Level.MaxHgt / Constants.ScreenHgt);
+                            var tester2 = Program.Rng.DieRoll(Level.MaxWid / Constants.ScreenWid);
                             _level.CurHgt = tester1 * Constants.ScreenHgt;
                             _level.CurWid = tester2 * Constants.ScreenWid;
                             _level.MaxPanelRows = (_level.CurHgt / Constants.ScreenHgt * 2) - 2;
@@ -297,7 +297,7 @@ namespace Cthangband
                 }
                 if (num < 100)
                 {
-                    int totalFeeling = _level.TreasureFeeling + _level.DangerFeeling;
+                    var totalFeeling = _level.TreasureFeeling + _level.DangerFeeling;
                     if (totalFeeling > 18 ||
                         (SaveGame.Instance.Difficulty >= 5 && totalFeeling > 16) ||
                         (SaveGame.Instance.Difficulty >= 10 && totalFeeling > 14) ||
@@ -319,10 +319,10 @@ namespace Cthangband
 
         private void AllocObject(int set, int typ, int num)
         {
-            int y = 0;
-            int x = 0;
-            int dummy = 0;
-            for (int k = 0; k < num; k++)
+            var y = 0;
+            var x = 0;
+            var dummy = 0;
+            for (var k = 0; k < num; k++)
             {
                 while (dummy < SafeMaxAttempts)
                 {
@@ -333,7 +333,7 @@ namespace Cthangband
                     {
                         continue;
                     }
-                    bool isRoom = _level.Grid[y][x].TileFlags.IsSet(GridTile.InRoom);
+                    var isRoom = _level.Grid[y][x].TileFlags.IsSet(GridTile.InRoom);
                     if (set == _allocSetCorr && isRoom)
                     {
                         continue;
@@ -376,14 +376,14 @@ namespace Cthangband
 
         private void AllocStairs(string feat, int num, int walls)
         {
-            for (int i = 0; i < num; i++)
+            for (var i = 0; i < num; i++)
             {
-                for (bool flag = false; !flag;)
+                for (var flag = false; !flag;)
                 {
-                    for (int j = 0; !flag && j <= 3000; j++)
+                    for (var j = 0; !flag && j <= 3000; j++)
                     {
-                        int y = Program.Rng.RandomLessThan(_level.CurHgt);
-                        int x = Program.Rng.RandomLessThan(_level.CurWid);
+                        var y = Program.Rng.RandomLessThan(_level.CurHgt);
+                        var x = Program.Rng.RandomLessThan(_level.CurWid);
                         if (!_level.GridOpenNoItemOrCreature(y, x))
                         {
                             continue;
@@ -392,7 +392,7 @@ namespace Cthangband
                         {
                             continue;
                         }
-                        GridTile cPtr = _level.Grid[y][x];
+                        var cPtr = _level.Grid[y][x];
                         if (SaveGame.Instance.CurrentDepth <= 0)
                         {
                             cPtr.SetFeature("DownStair");
@@ -418,16 +418,16 @@ namespace Cthangband
 
         private void BuildField(int yy, int xx)
         {
-            int y0 = (yy * 9) + 8;
-            int x0 = (xx * 15) + 10;
-            int y1 = y0 - Program.Rng.DieRoll(2) - 1;
-            int y2 = y0 + Program.Rng.DieRoll(2) + 1;
-            int x1 = x0 - Program.Rng.DieRoll(3) - 2;
-            int x2 = x0 + Program.Rng.DieRoll(3) + 2;
+            var y0 = (yy * 9) + 8;
+            var x0 = (xx * 15) + 10;
+            var y1 = y0 - Program.Rng.DieRoll(2) - 1;
+            var y2 = y0 + Program.Rng.DieRoll(2) + 1;
+            var x1 = x0 - Program.Rng.DieRoll(3) - 2;
+            var x2 = x0 + Program.Rng.DieRoll(3) + 2;
             const string feature = "Field";
-            for (int x = x1; x < x2; x++)
+            for (var x = x1; x < x2; x++)
             {
-                for (int y = y1; y < y2; y++)
+                for (var y = y1; y < y2; y++)
                 {
                     _level.Grid[y][x].SetFeature(feature);
                     _level.Grid[y][x].SetBackgroundFeature(feature);
@@ -435,24 +435,24 @@ namespace Cthangband
             }
             if (Program.Rng.DieRoll(5) == 4)
             {
-                int x = Program.Rng.RandomBetween(x1, x2);
-                int y = Program.Rng.RandomBetween(y1, y2);
+                var x = Program.Rng.RandomBetween(x1, x2);
+                var y = Program.Rng.RandomBetween(y1, y2);
                 _level.Grid[y][x].SetFeature("Scarecrow");
             }
         }
 
         private void BuildGraveyard(int yy, int xx)
         {
-            int y0 = (yy * 9) + 8;
-            int x0 = (xx * 15) + 10;
-            int y1 = y0 - Program.Rng.DieRoll(2) - 1;
-            int y2 = y0 + Program.Rng.DieRoll(2) + 1;
-            int x1 = x0 - Program.Rng.DieRoll(3) - 2;
-            int x2 = x0 + Program.Rng.DieRoll(3) + 2;
-            for (int i = 0; i < Program.Rng.RandomBetween(10, 20); i++)
+            var y0 = (yy * 9) + 8;
+            var x0 = (xx * 15) + 10;
+            var y1 = y0 - Program.Rng.DieRoll(2) - 1;
+            var y2 = y0 + Program.Rng.DieRoll(2) + 1;
+            var x1 = x0 - Program.Rng.DieRoll(3) - 2;
+            var x2 = x0 + Program.Rng.DieRoll(3) + 2;
+            for (var i = 0; i < Program.Rng.RandomBetween(10, 20); i++)
             {
-                int x = (Program.Rng.RandomBetween(x1, x2) / 2 * 2) + 1;
-                int y = (Program.Rng.RandomBetween(y1, y2) / 2 * 2) + 1;
+                var x = (Program.Rng.RandomBetween(x1, x2) / 2 * 2) + 1;
+                var y = (Program.Rng.RandomBetween(y1, y2) / 2 * 2) + 1;
                 _level.Grid[y][x].SetFeature("Grave");
             }
         }
@@ -483,12 +483,12 @@ namespace Cthangband
                     return;
                 }
             }
-            int y0 = (yy * 9) + 6;
-            int x0 = (xx * 15) + 10;
-            int y1 = y0 - Program.Rng.DieRoll(2);
-            int y2 = y0 + Program.Rng.DieRoll(2) + 1;
-            int x1 = x0 - Program.Rng.DieRoll(3) - 2;
-            int x2 = x0 + Program.Rng.DieRoll(3) + 2;
+            var y0 = (yy * 9) + 6;
+            var x0 = (xx * 15) + 10;
+            var y1 = y0 - Program.Rng.DieRoll(2);
+            var y2 = y0 + Program.Rng.DieRoll(2) + 1;
+            var x1 = x0 - Program.Rng.DieRoll(3) - 2;
+            var x2 = x0 + Program.Rng.DieRoll(3) + 2;
             if ((y2 - y1) % 2 == 0)
             {
                 y2++;
@@ -549,7 +549,7 @@ namespace Cthangband
                 cPtr.SetFeature("PathBase");
             }
             y--;
-            int dX = Math.Sign((_level.CurWid / 2) - x);
+            var dX = Math.Sign((_level.CurWid / 2) - x);
             for (x += dX; x != _level.CurWid / 2; x += dX)
             {
                 cPtr = _level.Grid[y][x];
@@ -559,14 +559,14 @@ namespace Cthangband
 
         private void BuildStreamer(string feat, int chance)
         {
-            int dummy = 0;
-            int y = Program.Rng.RandomSpread(_level.CurHgt / 2, 10);
-            int x = Program.Rng.RandomSpread(_level.CurWid / 2, 15);
-            int dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
+            var dummy = 0;
+            var y = Program.Rng.RandomSpread(_level.CurHgt / 2, 10);
+            var x = Program.Rng.RandomSpread(_level.CurWid / 2, 15);
+            var dir = _level.OrderedDirection[Program.Rng.RandomLessThan(8)];
             while (dummy < SafeMaxAttempts)
             {
                 dummy++;
-                for (int i = 0; i < _dunStrDen; i++)
+                for (var i = 0; i < _dunStrDen; i++)
                 {
                     const int d = _dunStrRng;
                     int tx;
@@ -581,7 +581,7 @@ namespace Cthangband
                         }
                         break;
                     }
-                    GridTile cPtr = _level.Grid[ty][tx];
+                    var cPtr = _level.Grid[ty][tx];
 
                     if (!cPtr.FeatureType.IsBasicWall)
                     {
@@ -609,14 +609,14 @@ namespace Cthangband
         private void BuildTunnel(int row1, int col1, int row2, int col2)
         {
             int i, y, x;
-            int mainLoopCount = 0;
-            bool doorFlag = false;
+            var mainLoopCount = 0;
+            var doorFlag = false;
             GridTile cPtr;
             _dun.TunnN = 0;
             _dun.WallN = 0;
-            int startRow = row1;
-            int startCol = col1;
-            CorrectDir(out int rowDir, out int colDir, row1, col1, row2, col2);
+            var startRow = row1;
+            var startCol = col1;
+            CorrectDir(out var rowDir, out var colDir, row1, col1, row2, col2);
             while (row1 != row2 || col1 != col2)
             {
                 if (mainLoopCount++ > 2000)
@@ -631,8 +631,8 @@ namespace Cthangband
                         RandDir(out rowDir, out colDir);
                     }
                 }
-                int tmpRow = row1 + rowDir;
-                int tmpCol = col1 + colDir;
+                var tmpRow = row1 + rowDir;
+                var tmpCol = col1 + colDir;
                 while (!_level.InBounds(tmpRow, tmpCol))
                 {
                     CorrectDir(out rowDir, out colDir, row1, col1, row2, col2);
@@ -784,10 +784,10 @@ namespace Cthangband
 
         private void DestroyLevel()
         {
-            for (int n = 0; n < Program.Rng.DieRoll(5); n++)
+            for (var n = 0; n < Program.Rng.DieRoll(5); n++)
             {
-                int x1 = Program.Rng.RandomBetween(5, _level.CurWid - 1 - 5);
-                int y1 = Program.Rng.RandomBetween(5, _level.CurHgt - 1 - 5);
+                var x1 = Program.Rng.RandomBetween(5, _level.CurWid - 1 - 5);
+                var y1 = Program.Rng.RandomBetween(5, _level.CurHgt - 1 - 5);
                 int y;
                 for (y = y1 - 15; y <= y1 + 15; y++)
                 {
@@ -798,7 +798,7 @@ namespace Cthangband
                         {
                             continue;
                         }
-                        int k = _level.Distance(y1, x1, y, x);
+                        var k = _level.Distance(y1, x1, y, x);
                         if (k >= 16)
                         {
                             continue;
@@ -807,8 +807,8 @@ namespace Cthangband
                         if (_level.CaveValidBold(y, x))
                         {
                             _level.DeleteObject(y, x);
-                            GridTile cPtr = _level.Grid[y][x];
-                            int t = Program.Rng.RandomLessThan(200);
+                            var cPtr = _level.Grid[y][x];
+                            var t = Program.Rng.RandomLessThan(200);
                             if (t < 20)
                             {
                                 cPtr.SetFeature("WallBasic");
@@ -835,25 +835,25 @@ namespace Cthangband
 
         private void MakeCavernLevel()
         {
-            PerlinNoise perlinNoise = new PerlinNoise(Program.Rng.RandomBetween(0, int.MaxValue - 1));
-            double widthDivisor = 1 / (double)_level.CurWid;
-            double heightDivisor = 1 / (double)_level.CurHgt;
-            for (int y = 0; y < _level.CurHgt; y++)
+            var perlinNoise = new PerlinNoise(Program.Rng.RandomBetween(0, int.MaxValue - 1));
+            var widthDivisor = 1 / (double)_level.CurWid;
+            var heightDivisor = 1 / (double)_level.CurHgt;
+            for (var y = 0; y < _level.CurHgt; y++)
             {
-                for (int x = 0; x < _level.CurWid; x++)
+                for (var x = 0; x < _level.CurWid; x++)
                 {
-                    GridTile cPtr = _level.Grid[y][x];
-                    double v = perlinNoise.Noise(10 * x * widthDivisor, 10 * y * heightDivisor, -0.5);
+                    var cPtr = _level.Grid[y][x];
+                    var v = perlinNoise.Noise(10 * x * widthDivisor, 10 * y * heightDivisor, -0.5);
                     v = (v + 1) / 2;
-                    double dX = Math.Abs(x - (_level.CurWid / 2)) * widthDivisor;
-                    double dY = Math.Abs(y - (_level.CurHgt / 2)) * heightDivisor;
-                    double d = Math.Max(dX, dY);
+                    var dX = Math.Abs(x - (_level.CurWid / 2)) * widthDivisor;
+                    var dY = Math.Abs(y - (_level.CurHgt / 2)) * heightDivisor;
+                    var d = Math.Max(dX, dY);
                     const double elevation = 0.05;
                     const double steepness = 6.0;
                     const double dropoff = 50.0;
                     v += elevation - (dropoff * Math.Pow(d, steepness));
                     v = Math.Min(1, Math.Max(0, v));
-                    int rounded = (int)(v * 10);
+                    var rounded = (int)(v * 10);
                     if (rounded < 2 || rounded > 5)
                     {
                         cPtr.SetFeature("WallBasic");
@@ -864,32 +864,32 @@ namespace Cthangband
                     }
                 }
             }
-            for (int i = 0; i < _dunStrMag; i++)
+            for (var i = 0; i < _dunStrMag; i++)
             {
                 BuildStreamer("Magma", _dunStrMc);
             }
-            for (int i = 0; i < _dunStrQua; i++)
+            for (var i = 0; i < _dunStrQua; i++)
             {
                 BuildStreamer("Quartz", _dunStrQc);
             }
-            for (int x = 0; x < _level.CurWid; x++)
+            for (var x = 0; x < _level.CurWid; x++)
             {
-                GridTile cPtr = _level.Grid[0][x];
+                var cPtr = _level.Grid[0][x];
                 cPtr.SetFeature("WallPermSolid");
             }
-            for (int x = 0; x < _level.CurWid; x++)
+            for (var x = 0; x < _level.CurWid; x++)
             {
-                GridTile cPtr = _level.Grid[_level.CurHgt - 1][x];
+                var cPtr = _level.Grid[_level.CurHgt - 1][x];
                 cPtr.SetFeature("WallPermSolid");
             }
-            for (int y = 0; y < _level.CurHgt; y++)
+            for (var y = 0; y < _level.CurHgt; y++)
             {
-                GridTile cPtr = _level.Grid[y][0];
+                var cPtr = _level.Grid[y][0];
                 cPtr.SetFeature("WallPermSolid");
             }
-            for (int y = 0; y < _level.CurHgt; y++)
+            for (var y = 0; y < _level.CurHgt; y++)
             {
-                GridTile cPtr = _level.Grid[y][_level.CurWid - 1];
+                var cPtr = _level.Grid[y][_level.CurWid - 1];
                 cPtr.SetFeature("WallPermSolid");
             }
             if (Program.Rng.DieRoll(_darkEmpty) != 1 || Program.Rng.DieRoll(100) > SaveGame.Instance.Difficulty)
@@ -900,9 +900,9 @@ namespace Cthangband
 
         private void MakeCornerTowers(int wildX, int wildY)
         {
-            Island wilderness = SaveGame.Instance.Wilderness;
-            int height = _level.CurHgt;
-            int width = _level.CurWid;
+            var wilderness = SaveGame.Instance.Wilderness;
+            var height = _level.CurHgt;
+            var width = _level.CurWid;
             if ((wilderness[wildY][wildX].Town != null) || (wilderness[wildY - 1][wildX].Town != null) ||
                 (wilderness[wildY][wildX - 1].Town != null) || (wilderness[wildY - 1][wildX - 1].Town != null))
             {
@@ -987,9 +987,9 @@ namespace Cthangband
 
         private void MakeDungeonEntrance(int left, int top, int width, int height, out int stairX, out int stairY)
         {
-            int dummy = 0;
-            int x = 1;
-            int y = 1;
+            var dummy = 0;
+            var x = 1;
+            var y = 1;
             while (dummy < SafeMaxAttempts)
             {
                 dummy++;
@@ -1023,9 +1023,9 @@ namespace Cthangband
             int k;
             int y;
             int x;
-            int maxVaultOk = 2;
-            bool destroyed = false;
-            bool emptyLevel = false;
+            var maxVaultOk = 2;
+            var destroyed = false;
+            var emptyLevel = false;
             _dun = new LevelBuildInfo();
             if (_level.MaxPanelRows == 0)
             {
@@ -1043,7 +1043,7 @@ namespace Cthangband
             {
                 for (x = 0; x < _level.CurWid; x++)
                 {
-                    GridTile cPtr = _level.Grid[y][x];
+                    var cPtr = _level.Grid[y][x];
                     if (emptyLevel)
                     {
                         cPtr.RevertToBackground();
@@ -1145,30 +1145,30 @@ namespace Cthangband
             }
             for (x = 0; x < _level.CurWid; x++)
             {
-                GridTile cPtr = _level.Grid[0][x];
+                var cPtr = _level.Grid[0][x];
                 cPtr.SetFeature("WallPermSolid");
             }
             for (x = 0; x < _level.CurWid; x++)
             {
-                GridTile cPtr = _level.Grid[_level.CurHgt - 1][x];
+                var cPtr = _level.Grid[_level.CurHgt - 1][x];
                 cPtr.SetFeature("WallPermSolid");
             }
             for (y = 0; y < _level.CurHgt; y++)
             {
-                GridTile cPtr = _level.Grid[y][0];
+                var cPtr = _level.Grid[y][0];
                 cPtr.SetFeature("WallPermSolid");
             }
             for (y = 0; y < _level.CurHgt; y++)
             {
-                GridTile cPtr = _level.Grid[y][_level.CurWid - 1];
+                var cPtr = _level.Grid[y][_level.CurWid - 1];
                 cPtr.SetFeature("WallPermSolid");
             }
             for (i = 0; i < _dun.CentN; i++)
             {
-                int pick1 = Program.Rng.RandomLessThan(_dun.CentN);
-                int pick2 = Program.Rng.RandomLessThan(_dun.CentN);
-                int y1 = _dun.Cent[pick1].Y;
-                int x1 = _dun.Cent[pick1].X;
+                var pick1 = Program.Rng.RandomLessThan(_dun.CentN);
+                var pick2 = Program.Rng.RandomLessThan(_dun.CentN);
+                var y1 = _dun.Cent[pick1].Y;
+                var x1 = _dun.Cent[pick1].X;
                 _dun.Cent[pick1].Y = _dun.Cent[pick2].Y;
                 _dun.Cent[pick1].X = _dun.Cent[pick2].X;
                 _dun.Cent[pick2].Y = y1;
@@ -1213,74 +1213,74 @@ namespace Cthangband
 
         private void MakeHenge(int left, int top, int width, int height)
         {
-            int midX = left + (width / 2);
-            int midY = top + (height / 2);
-            for (int y = midY - 3; y < midY + 3; y++)
+            var midX = left + (width / 2);
+            var midY = top + (height / 2);
+            for (var y = midY - 3; y < midY + 3; y++)
             {
                 _level.Grid[y][midX - 7].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX - 7].SetFeature("Grass");
             }
-            for (int y = midY - 5; y < midY + 5; y++)
+            for (var y = midY - 5; y < midY + 5; y++)
             {
                 _level.Grid[y][midX - 6].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX - 6].SetFeature("Grass");
             }
-            for (int y = midY - 6; y < midY + 6; y++)
+            for (var y = midY - 6; y < midY + 6; y++)
             {
                 _level.Grid[y][midX - 5].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX - 5].SetFeature("Grass");
             }
-            for (int y = midY - 6; y < midY + 6; y++)
+            for (var y = midY - 6; y < midY + 6; y++)
             {
                 _level.Grid[y][midX - 4].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX - 4].SetFeature("Grass");
             }
-            for (int y = midY - 7; y < midY + 6; y++)
+            for (var y = midY - 7; y < midY + 6; y++)
             {
                 _level.Grid[y][midX - 3].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX - 3].SetFeature("Grass");
             }
-            for (int y = midY - 7; y < midY + 6; y++)
+            for (var y = midY - 7; y < midY + 6; y++)
             {
                 _level.Grid[y][midX - 2].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX - 2].SetFeature("Grass");
             }
-            for (int y = midY - 6; y < midY + 6; y++)
+            for (var y = midY - 6; y < midY + 6; y++)
             {
                 _level.Grid[y][midX - 1].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX - 1].SetFeature("Grass");
             }
-            for (int y = midY - 7; y < midY + 6; y++)
+            for (var y = midY - 7; y < midY + 6; y++)
             {
                 _level.Grid[y][midX].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX].SetFeature("Grass");
             }
-            for (int y = midY - 7; y < midY + 6; y++)
+            for (var y = midY - 7; y < midY + 6; y++)
             {
                 _level.Grid[y][midX + 1].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX + 1].SetFeature("Grass");
             }
-            for (int y = midY - 6; y < midY + 6; y++)
+            for (var y = midY - 6; y < midY + 6; y++)
             {
                 _level.Grid[y][midX + 2].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX + 2].SetFeature("Grass");
             }
-            for (int y = midY - 7; y < midY + 6; y++)
+            for (var y = midY - 7; y < midY + 6; y++)
             {
                 _level.Grid[y][midX + 3].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX + 3].SetFeature("Grass");
             }
-            for (int y = midY - 6; y < midY + 6; y++)
+            for (var y = midY - 6; y < midY + 6; y++)
             {
                 _level.Grid[y][midX + 4].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX + 4].SetFeature("Grass");
             }
-            for (int y = midY - 5; y < midY + 5; y++)
+            for (var y = midY - 5; y < midY + 5; y++)
             {
                 _level.Grid[y][midX + 5].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX + 5].SetFeature("Grass");
             }
-            for (int y = midY - 3; y < midY + 3; y++)
+            for (var y = midY - 3; y < midY + 3; y++)
             {
                 _level.Grid[y][midX + 6].SetBackgroundFeature("Grass");
                 _level.Grid[y][midX + 6].SetFeature("Grass");
@@ -1305,25 +1305,25 @@ namespace Cthangband
 
         private void MakeLake(int minX, int minY, int width, int height)
         {
-            PerlinNoise perlinNoise = new PerlinNoise(Program.Rng.RandomBetween(0, int.MaxValue - 1));
-            double widthDivisor = 1 / (double)width;
-            double heightDivisor = 1 / (double)height;
-            for (int y = 0; y < height; y++)
+            var perlinNoise = new PerlinNoise(Program.Rng.RandomBetween(0, int.MaxValue - 1));
+            var widthDivisor = 1 / (double)width;
+            var heightDivisor = 1 / (double)height;
+            for (var y = 0; y < height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (var x = 0; x < width; x++)
                 {
-                    GridTile cPtr = _level.Grid[minY + y][minX + x];
-                    double v = perlinNoise.Noise(10 * x * widthDivisor, 10 * y * heightDivisor, -0.5);
+                    var cPtr = _level.Grid[minY + y][minX + x];
+                    var v = perlinNoise.Noise(10 * x * widthDivisor, 10 * y * heightDivisor, -0.5);
                     v = (v + 1) / 2;
-                    double dX = Math.Abs(x - (width / 2)) * widthDivisor;
-                    double dY = Math.Abs(y - (height / 2)) * heightDivisor;
-                    double d = Math.Max(dX, dY);
+                    var dX = Math.Abs(x - (width / 2)) * widthDivisor;
+                    var dY = Math.Abs(y - (height / 2)) * heightDivisor;
+                    var d = Math.Max(dX, dY);
                     const double elevation = 0.05;
                     const double steepness = 6.0;
                     const double dropoff = 50.0;
                     v += elevation - (dropoff * Math.Pow(d, steepness));
                     v = Math.Min(1, Math.Max(0, v));
-                    int rounded = (int)(v * 10);
+                    var rounded = (int)(v * 10);
                     if (rounded > 3)
                     {
                         cPtr.SetBackgroundFeature("Water");
@@ -1341,8 +1341,8 @@ namespace Cthangband
         private void MakeTower(int left, int top, int width, int height, out int stairX, out int stairY)
         {
             int i;
-            int y = top + height;
-            int x = left + (width / 2);
+            var y = top + height;
+            var x = left + (width / 2);
             stairX = x;
             stairY = y;
             for (i = -2; i < 3; i++)
@@ -1440,8 +1440,8 @@ namespace Cthangband
 
         private void MakeTownCentre()
         {
-            int xx = _level.CurWid / 2;
-            int yy = _level.CurHgt / 2;
+            var xx = _level.CurWid / 2;
+            var yy = _level.CurHgt / 2;
             switch (Program.Rng.DieRoll(12))
             {
                 case 1:
@@ -1475,12 +1475,12 @@ namespace Cthangband
                 case 8:
                 case 9:
                 case 12:
-                    int x = xx - 1;
+                    var x = xx - 1;
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         x = xx + 1;
                     }
-                    int y = yy - 1;
+                    var y = yy - 1;
                     if (Program.Rng.DieRoll(2) == 1)
                     {
                         y = yy + 1;
@@ -1496,16 +1496,16 @@ namespace Cthangband
         private void MakeTownContents()
         {
             int x, n;
-            int dummy = 0;
+            var dummy = 0;
             GridTile cPtr;
-            int[] rooms = new int[12];
+            var rooms = new int[12];
             Program.Rng.UseFixed = true;
             Program.Rng.FixedSeed = SaveGame.Instance.CurTown.Seed;
             for (n = 0; n < 12; n++)
             {
                 rooms[n] = n;
             }
-            int y = _level.CurHgt / 2;
+            var y = _level.CurHgt / 2;
             for (x = 1; x < _level.CurWid - 1; x++)
             {
                 _level.Grid[y][x].SetFeature("PathBase");
@@ -1521,7 +1521,7 @@ namespace Cthangband
                 {
                     if (x == 1 || x == 2 || y == 1 || y == 2)
                     {
-                        int k = Program.Rng.RandomLessThan(n);
+                        var k = Program.Rng.RandomLessThan(n);
                         BuildStore(SaveGame.Instance.CurTown.Stores[rooms[k]], y, x);
                         rooms[k] = rooms[--n];
                     }
@@ -1630,7 +1630,7 @@ namespace Cthangband
                     break;
 
                 case LevelStart.StartHouse:
-                    foreach (Store store in SaveGame.Instance.CurTown.Stores)
+                    foreach (var store in SaveGame.Instance.CurTown.Stores)
                     {
                         if (store.StoreType != StoreType.StoreHome)
                         {
@@ -1823,8 +1823,8 @@ namespace Cthangband
             {
                 return;
             }
-            int dungeonX = 0;
-            int dungeonY = 0;
+            var dungeonX = 0;
+            var dungeonY = 0;
             switch (Program.Rng.DieRoll(4))
             {
                 case 1:
@@ -1847,9 +1847,9 @@ namespace Cthangband
                     dungeonY = _level.CurHgt / 2;
                     break;
             }
-            for (int offsetX = 0; offsetX < _level.CurWid - 1; offsetX += _level.CurWid / 2)
+            for (var offsetX = 0; offsetX < _level.CurWid - 1; offsetX += _level.CurWid / 2)
             {
-                for (int offsetY = 0; offsetY < _level.CurHgt - 1; offsetY += _level.CurHgt / 2)
+                for (var offsetY = 0; offsetY < _level.CurHgt - 1; offsetY += _level.CurHgt / 2)
                 {
                     if (offsetX == dungeonX && offsetY == dungeonY)
                     {
@@ -1857,13 +1857,13 @@ namespace Cthangband
                         {
                             if (SaveGame.Instance.Wilderness[wildy][wildx].Dungeon.Tower)
                             {
-                                MakeTower(offsetX + 4, offsetY + 4, (_level.CurWid / 2) - 8, (_level.CurHgt / 2) - 8, out int x, out int y);
+                                MakeTower(offsetX + 4, offsetY + 4, (_level.CurWid / 2) - 8, (_level.CurHgt / 2) - 8, out var x, out var y);
                                 stairX = x;
                                 stairY = y;
                             }
                             else
                             {
-                                MakeDungeonEntrance(offsetX + 4, offsetY + 4, (_level.CurWid / 2) - 8, (_level.CurHgt / 2) - 8, out int x, out int y);
+                                MakeDungeonEntrance(offsetX + 4, offsetY + 4, (_level.CurWid / 2) - 8, (_level.CurHgt / 2) - 8, out var x, out var y);
                                 stairX = x;
                                 stairY = y;
                             }
@@ -1892,8 +1892,8 @@ namespace Cthangband
             int x;
             int y;
 
-            int midX = _level.CurWid / 2;
-            int midY = _level.CurHgt / 2;
+            var midX = _level.CurWid / 2;
+            var midY = _level.CurHgt / 2;
             if (SaveGame.Instance.Wilderness[wildy][wildx].RoadMap == 0)
             {
                 return;
@@ -2023,12 +2023,12 @@ namespace Cthangband
 
         private void MakeWildernessWalls(int wildX, int wildY)
         {
-            Island wilderness = SaveGame.Instance.Wilderness;
-            int height = _level.CurHgt;
-            int width = _level.CurWid;
+            var wilderness = SaveGame.Instance.Wilderness;
+            var height = _level.CurHgt;
+            var width = _level.CurWid;
             if (wilderness[wildY - 1][wildX].Town != null)
             {
-                for (int x = 0; x < width; x++)
+                for (var x = 0; x < width; x++)
                 {
                     _level.Grid[0][x].SetFeature("TownWall");
                     _level.Grid[0][x].TileFlags.Set(GridTile.SelfLit | GridTile.PlayerMemorised);
@@ -2072,7 +2072,7 @@ namespace Cthangband
             }
             if (wilderness[wildY + 1][wildX].Town != null)
             {
-                for (int x = 0; x < width; x++)
+                for (var x = 0; x < width; x++)
                 {
                     _level.Grid[height - 1][x].SetFeature("TownWall");
                     _level.Grid[height - 1][x].TileFlags.Set(GridTile.SelfLit | GridTile.PlayerMemorised);
@@ -2116,7 +2116,7 @@ namespace Cthangband
             }
             if (wilderness[wildY][wildX - 1].Town != null)
             {
-                for (int y = 0; y < height; y++)
+                for (var y = 0; y < height; y++)
                 {
                     _level.Grid[y][0].SetFeature("TownWall");
                     _level.Grid[y][0].TileFlags.Set(GridTile.SelfLit | GridTile.PlayerMemorised);
@@ -2160,7 +2160,7 @@ namespace Cthangband
             }
             if (wilderness[wildY][wildX + 1].Town != null)
             {
-                for (int y = 0; y < height; y++)
+                for (var y = 0; y < height; y++)
                 {
                     _level.Grid[y][width - 1].SetFeature("TownWall");
                     _level.Grid[y][width - 1].TileFlags.Set(GridTile.SelfLit | GridTile.PlayerMemorised);
@@ -2206,9 +2206,9 @@ namespace Cthangband
 
         private bool NewPlayerSpot()
         {
-            int y = 0;
-            int x = 0;
-            int maxAttempts = 5000;
+            var y = 0;
+            var x = 0;
+            var maxAttempts = 5000;
             while (maxAttempts-- != 0)
             {
                 y = Program.Rng.RandomBetween(1, _level.CurHgt - 2);
@@ -2234,16 +2234,16 @@ namespace Cthangband
 
         private int NextToCorr(int y1, int x1)
         {
-            int k = 0;
-            for (int i = 0; i < 4; i++)
+            var k = 0;
+            for (var i = 0; i < 4; i++)
             {
-                int y = y1 + _level.OrderedDirectionYOffset[i];
-                int x = x1 + _level.OrderedDirectionXOffset[i];
+                var y = y1 + _level.OrderedDirectionYOffset[i];
+                var x = x1 + _level.OrderedDirectionXOffset[i];
                 if (!_level.GridPassable(y, x))
                 {
                     continue;
                 }
-                GridTile cPtr = _level.Grid[y][x];
+                var cPtr = _level.Grid[y][x];
                 if (!cPtr.FeatureType.IsOpenFloor)
                 {
                     continue;
@@ -2259,7 +2259,7 @@ namespace Cthangband
 
         private int NextToWalls(int y, int x)
         {
-            int k = 0;
+            var k = 0;
             if (_level.Grid[y + 1][x].FeatureType.IsWall)
             {
                 k++;
@@ -2281,8 +2281,8 @@ namespace Cthangband
 
         private void PlaceRandomDoor(int y, int x)
         {
-            GridTile cPtr = _level.Grid[y][x];
-            int tmp = Program.Rng.RandomLessThan(1000);
+            var cPtr = _level.Grid[y][x];
+            var tmp = Program.Rng.RandomLessThan(1000);
             if (tmp < 300)
             {
                 cPtr.SetFeature("OpenDoor");
@@ -2311,7 +2311,7 @@ namespace Cthangband
 
         private void PlaceRubble(int y, int x)
         {
-            GridTile cPtr = _level.Grid[y][x];
+            var cPtr = _level.Grid[y][x];
             cPtr.SetFeature("Rubble");
         }
 
@@ -2335,22 +2335,22 @@ namespace Cthangband
 
         private void RandDir(out int rdir, out int cdir)
         {
-            int i = Program.Rng.RandomLessThan(4);
+            var i = Program.Rng.RandomLessThan(4);
             rdir = _level.OrderedDirectionYOffset[i];
             cdir = _level.OrderedDirectionXOffset[i];
         }
 
         private void ResolvePaths()
         {
-            for (int x = 1; x < _level.CurWid - 1; x++)
+            for (var x = 1; x < _level.CurWid - 1; x++)
             {
-                for (int y = 1; y < _level.CurHgt - 1; y++)
+                for (var y = 1; y < _level.CurHgt - 1; y++)
                 {
                     if (_level.Grid[y][x].FeatureType.Name != "PathBase")
                     {
                         continue;
                     }
-                    int map = 0;
+                    var map = 0;
                     if (_level.Grid[y - 1][x].FeatureType.Name.StartsWith("Path"))
                     {
                         map++;
@@ -2391,7 +2391,7 @@ namespace Cthangband
 
         private bool RoomBuild(int y0, int x0, int typ)
         {
-            VaultFactory vaultFactory = new VaultFactory(_level);
+            var vaultFactory = new VaultFactory(_level);
             if (SaveGame.Instance.Difficulty < _room[typ].Level)
             {
                 return false;
@@ -2400,10 +2400,10 @@ namespace Cthangband
             {
                 return false;
             }
-            int y1 = y0 + _room[typ].Dy1;
-            int y2 = y0 + _room[typ].Dy2;
-            int x1 = x0 + _room[typ].Dx1;
-            int x2 = x0 + _room[typ].Dx2;
+            var y1 = y0 + _room[typ].Dy1;
+            var y2 = y0 + _room[typ].Dy2;
+            var x1 = x0 + _room[typ].Dx1;
+            var x2 = x0 + _room[typ].Dx2;
             if (y1 < 0 || y2 >= _dun.RowRooms)
             {
                 return false;
@@ -2579,8 +2579,8 @@ namespace Cthangband
             }
             if (SaveGame.Instance.Quests.IsQuest(SaveGame.Instance.CurrentDepth))
             {
-                int rIdx = SaveGame.Instance.Quests.GetQuestMonster();
-                int qIdx = SaveGame.Instance.Quests.GetQuestNumber();
+                var rIdx = SaveGame.Instance.Quests.GetQuestMonster();
+                var qIdx = SaveGame.Instance.Quests.GetQuestNumber();
                 while (Profile.Instance.MonsterRaces[rIdx].CurNum < (SaveGame.Instance.Quests[qIdx].ToKill - SaveGame.Instance.Quests[qIdx].Killed))
                 {
                     _level.PutQuestMonster(SaveGame.Instance.Quests[qIdx].RIdx);
@@ -2589,7 +2589,7 @@ namespace Cthangband
             i = Constants.MinMAllocLevel;
             if (_level.CurHgt < Level.MaxHgt || _level.CurWid < Level.MaxWid)
             {
-                int smallTester = i;
+                var smallTester = i;
                 i = i * _level.CurHgt / Level.MaxHgt;
                 i = i * _level.CurWid / Level.MaxWid;
                 i++;
@@ -2616,17 +2616,17 @@ namespace Cthangband
             Program.Rng.UseFixed = true;
             Program.Rng.FixedSeed =
                 SaveGame.Instance.Wilderness[SaveGame.Instance.Player.WildernessY][SaveGame.Instance.Player.WildernessX].Seed;
-            Island island = SaveGame.Instance.Wilderness;
-            Player player = SaveGame.Instance.Player;
+            var island = SaveGame.Instance.Wilderness;
+            var player = SaveGame.Instance.Player;
             int x;
             int y;
             for (y = 0; y < _level.CurHgt; y++)
             {
                 for (x = 0; x < _level.CurWid; x++)
                 {
-                    byte elevation = island.Elevation(player.WildernessY, player.WildernessX, y, x);
-                    string floorName = "Water";
-                    string featureName = "Water";
+                    var elevation = island.Elevation(player.WildernessY, player.WildernessX, y, x);
+                    var floorName = "Water";
+                    var featureName = "Water";
                     if (elevation > 0)
                     {
                         floorName = "Grass";
@@ -2652,14 +2652,14 @@ namespace Cthangband
             }
             for (x = 0; x < _level.CurWid; x++)
             {
-                GridTile cPtr = _level.Grid[0][x];
+                var cPtr = _level.Grid[0][x];
                 cPtr.SetFeature(cPtr.BackgroundFeature.Name.StartsWith("Water") ? "WaterBorder" : "WildBorder");
                 cPtr = _level.Grid[_level.CurHgt - 1][x];
                 cPtr.SetFeature(cPtr.BackgroundFeature.Name.StartsWith("Water") ? "WaterBorder" : "WildBorder");
             }
             for (y = 0; y < _level.CurHgt; y++)
             {
-                GridTile cPtr = _level.Grid[y][0];
+                var cPtr = _level.Grid[y][0];
                 cPtr.SetFeature(cPtr.BackgroundFeature.Name.StartsWith("Water") ? "WaterBorder" : "WildBorder");
                 cPtr = _level.Grid[y][_level.CurWid - 1];
                 cPtr.SetFeature(cPtr.BackgroundFeature.Name.StartsWith("Water") ? "WaterBorder" : "WildBorder");
@@ -2667,9 +2667,9 @@ namespace Cthangband
             MakeWildernessWalls(SaveGame.Instance.Player.WildernessX, SaveGame.Instance.Player.WildernessY);
             MakeCornerTowers(SaveGame.Instance.Player.WildernessX, SaveGame.Instance.Player.WildernessY);
             MakeWildernessPaths(SaveGame.Instance.Player.WildernessX, SaveGame.Instance.Player.WildernessY);
-            MakeWildernessFeatures(SaveGame.Instance.Player.WildernessX, SaveGame.Instance.Player.WildernessY, out int stairX, out int stairY);
-            int rocks = Program.Rng.RandomBetween(1, 10);
-            for (int i = 0; i < rocks; i++)
+            MakeWildernessFeatures(SaveGame.Instance.Player.WildernessX, SaveGame.Instance.Player.WildernessY, out var stairX, out var stairY);
+            var rocks = Program.Rng.RandomBetween(1, 10);
+            for (var i = 0; i < rocks; i++)
             {
                 x = Program.Rng.DieRoll(_level.CurWid - 2);
                 y = Program.Rng.DieRoll(_level.CurHgt - 2);

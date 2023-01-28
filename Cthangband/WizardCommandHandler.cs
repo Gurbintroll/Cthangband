@@ -1,4 +1,4 @@
-// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -27,7 +27,7 @@ namespace Cthangband
 
         public void DoCmdWizard()
         {
-            Gui.GetCom("Wizard Command: ", out char cmd);
+            Gui.GetCom("Wizard Command: ", out var cmd);
             switch (cmd)
             {
                 case '\x1b':
@@ -193,7 +193,7 @@ namespace Cthangband
         public void DoCmdWizmode()
         {
             Gui.PrintLine("Enter Wizard Code: ", 0, 0);
-            if (!Gui.AskforAux(out string tmp, "", 31))
+            if (!Gui.AskforAux(out var tmp, "", 31))
             {
                 return;
             }
@@ -223,7 +223,7 @@ namespace Cthangband
         private void DoCmdSummonHorde()
         {
             int wy = _player.MapY, wx = _player.MapX;
-            int attempts = 1000;
+            var attempts = 1000;
             while (--attempts != 0)
             {
                 _level.Scatter(out wy, out wx, _player.MapY, _player.MapX, 3);
@@ -237,15 +237,15 @@ namespace Cthangband
 
         private void DoCmdWizardBolt()
         {
-            ProjectionFlag flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
+            var flg = ProjectionFlag.ProjectStop | ProjectionFlag.ProjectGrid | ProjectionFlag.ProjectItem |
                       ProjectionFlag.ProjectKill;
-            TargetEngine targetEngine = new TargetEngine(_player, _level);
-            if (!targetEngine.GetDirectionWithAim(out int dir))
+            var targetEngine = new TargetEngine(_player, _level);
+            if (!targetEngine.GetDirectionWithAim(out var dir))
             {
                 return;
             }
-            int tx = _player.MapX + (99 * _level.KeypadDirectionXOffset[dir]);
-            int ty = _player.MapY + (99 * _level.KeypadDirectionYOffset[dir]);
+            var tx = _player.MapX + (99 * _level.KeypadDirectionXOffset[dir]);
+            var ty = _player.MapY + (99 * _level.KeypadDirectionYOffset[dir]);
             if (dir == 5 && targetEngine.TargetOkay())
             {
                 flg &= ~ProjectionFlag.ProjectStop;
@@ -274,9 +274,9 @@ namespace Cthangband
         {
             string tmpVal;
             int tmpInt;
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
-                string ppp = $"{GlobalData.StatNames[i]} (3-118): ";
+                var ppp = $"{GlobalData.StatNames[i]} (3-118): ";
                 if (!Gui.GetString(ppp, out tmpVal, $"{_player.AbilityScores[i].InnateMax}", 3))
                 {
                     return;
@@ -296,7 +296,7 @@ namespace Cthangband
                 _player.AbilityScores[i].Innate = tmpInt;
                 _player.AbilityScores[i].InnateMax = tmpInt;
             }
-            string def = $"{_player.Gold}";
+            var def = $"{_player.Gold}";
             if (!Gui.GetString("Gold: ", out tmpVal, def, 9))
             {
                 return;
@@ -413,13 +413,13 @@ namespace Cthangband
         {
             if (Gui.CommandArgument <= 0)
             {
-                string ppp = $"Jump to level (0-{SaveGame.Instance.CurDungeon.MaxLevel}): ";
-                string def = $"{SaveGame.Instance.CurrentDepth}";
-                if (!Gui.GetString(ppp, out string tmpVal, def, 10))
+                var ppp = $"Jump to level (0-{SaveGame.Instance.CurDungeon.MaxLevel}): ";
+                var def = $"{SaveGame.Instance.CurrentDepth}";
+                if (!Gui.GetString(ppp, out var tmpVal, def, 10))
                 {
                     return;
                 }
-                Gui.CommandArgument = int.TryParse(tmpVal, out int i) ? i : 0;
+                Gui.CommandArgument = int.TryParse(tmpVal, out var i) ? i : 0;
             }
             if (Gui.CommandArgument < 1)
             {
@@ -439,9 +439,9 @@ namespace Cthangband
 
         private void DoCmdWizLearn()
         {
-            for (int i = 0; i < Profile.Instance.ItemTypes.Count; i++)
+            for (var i = 0; i < Profile.Instance.ItemTypes.Count; i++)
             {
-                ItemType kPtr = Profile.Instance.ItemTypes[i];
+                var kPtr = Profile.Instance.ItemTypes[i];
                 if (kPtr.Level <= Gui.CommandArgument)
                 {
                     kPtr.FlavourAware = true;
@@ -455,10 +455,10 @@ namespace Cthangband
             {
                 return;
             }
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 const int d = 1;
-                _level.Scatter(out int y, out int x, _player.MapY, _player.MapX, d);
+                _level.Scatter(out var y, out var x, _player.MapY, _player.MapX, d);
                 if (!_level.GridPassableNoCreature(y, x))
                 {
                     continue;
@@ -476,10 +476,10 @@ namespace Cthangband
             {
                 return;
             }
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 const int d = 1;
-                _level.Scatter(out int y, out int x, _player.MapY, _player.MapX, d);
+                _level.Scatter(out var y, out var x, _player.MapY, _player.MapX, d);
                 if (!_level.GridPassableNoCreature(y, x))
                 {
                     continue;
@@ -493,7 +493,7 @@ namespace Cthangband
 
         private void DoCmdWizPlay()
         {
-            if (!SaveGame.Instance.GetItem(out int item, "Play with which object? ", true, true, true))
+            if (!SaveGame.Instance.GetItem(out var item, "Play with which object? ", true, true, true))
             {
                 if (item == -2)
                 {
@@ -501,15 +501,15 @@ namespace Cthangband
                 }
                 return;
             }
-            Item oPtr = item >= 0 ? _player.Inventory[item] : _level.Items[0 - item];
+            var oPtr = item >= 0 ? _player.Inventory[item] : _level.Items[0 - item];
             bool changed;
             Gui.FullScreenOverlay = true;
             Gui.Save();
-            Item qPtr = new Item(oPtr);
+            var qPtr = new Item(oPtr);
             while (true)
             {
                 WizDisplayItem(qPtr);
-                if (!Gui.GetCom("[a]ccept [s]tatistics [r]eroll [t]weak [q]uantity? ", out char ch))
+                if (!Gui.GetCom("[a]ccept [s]tatistics [r]eroll [t]weak [q]uantity? ", out var ch))
                 {
                     changed = false;
                     break;
@@ -560,7 +560,7 @@ namespace Cthangband
 
         private void DoCmdWizSummon(int num)
         {
-            for (int i = 0; i < num; i++)
+            for (var i = 0; i < num; i++)
             {
                 _level.Monsters.SummonSpecific(_player.MapY, _player.MapX, SaveGame.Instance.Difficulty, 0);
             }
@@ -568,9 +568,9 @@ namespace Cthangband
 
         private void DoCmdWizZap()
         {
-            for (int i = 1; i < _level.MMax; i++)
+            for (var i = 1; i < _level.MMax; i++)
             {
-                Monster mPtr = _level.Monsters[i];
+                var mPtr = _level.Monsters[i];
                 if (mPtr.Race == null)
                 {
                     continue;
@@ -584,8 +584,8 @@ namespace Cthangband
 
         private void PrtBinary(FlagSet flags, int row, int col)
         {
-            uint bitmask = 1u;
-            for (int i = 1; i <= 32; i++)
+            var bitmask = 1u;
+            for (var i = 1; i <= 32; i++)
             {
                 if (flags.IsSet(bitmask))
                 {
@@ -601,7 +601,7 @@ namespace Cthangband
 
         private string StripName(int kIdx)
         {
-            ItemType kPtr = Profile.Instance.ItemTypes[kIdx];
+            var kPtr = Profile.Instance.ItemTypes[kIdx];
             return kPtr.Name.Trim().Replace("$", "").Replace("~", "");
         }
 
@@ -610,7 +610,7 @@ namespace Cthangband
             Gui.FullScreenOverlay = true;
             Gui.Save();
             Gui.SetBackground(Terminal.BackgroundImage.Normal);
-            int kIdx = WizCreateItemtype();
+            var kIdx = WizCreateItemtype();
             Gui.Load();
             Gui.FullScreenOverlay = false;
             Gui.SetBackground(Terminal.BackgroundImage.Overhead);
@@ -618,7 +618,7 @@ namespace Cthangband
             {
                 return;
             }
-            Item qPtr = new Item();
+            var qPtr = new Item();
             qPtr.AssignItemType(Profile.Instance.ItemTypes[kIdx]);
             qPtr.ApplyMagic(SaveGame.Instance.Difficulty, false, false, false);
             SaveGame.Instance.Level.DropNear(qPtr, -1, _player.MapY, _player.MapX);
@@ -630,7 +630,7 @@ namespace Cthangband
             int i, num;
             int col, row;
             char ch;
-            int[] choice = new int[60];
+            var choice = new int[60];
             Gui.Clear();
             for (num = 0; num < 60 && TvalDescriptionPair.Tvals[num].Tval != 0; num++)
             {
@@ -639,7 +639,7 @@ namespace Cthangband
                 ch = (char)(_head[num / 20] + (char)(num % 20));
                 Gui.PrintLine($"[{ch}] {TvalDescriptionPair.Tvals[num].Desc}", row, col);
             }
-            int maxNum = num;
+            var maxNum = num;
             if (!Gui.GetCom("Get what type of object? ", out ch))
             {
                 return 0;
@@ -661,12 +661,12 @@ namespace Cthangband
             {
                 return 0;
             }
-            ItemCategory tval = TvalDescriptionPair.Tvals[num].Tval;
-            string tvalDesc = TvalDescriptionPair.Tvals[num].Desc;
+            var tval = TvalDescriptionPair.Tvals[num].Tval;
+            var tvalDesc = TvalDescriptionPair.Tvals[num].Desc;
             Gui.Clear();
             for (num = 0, i = 1; num < 60 && i < Profile.Instance.ItemTypes.Count; i++)
             {
-                ItemType kPtr = Profile.Instance.ItemTypes[i];
+                var kPtr = Profile.Instance.ItemTypes[i];
                 if (kPtr.Category == tval)
                 {
                     if (kPtr.Flags3.IsSet(ItemFlag3.InstaArt))
@@ -676,7 +676,7 @@ namespace Cthangband
                     row = 2 + (num % 20);
                     col = 30 * (num / 20);
                     ch = (char)(_head[num / 20] + (char)(num % 20));
-                    string buf = StripName(i);
+                    var buf = StripName(i);
                     Gui.PrintLine($"[{ch}] {buf}", row, col);
                     choice[num++] = i;
                 }
@@ -712,13 +712,13 @@ namespace Cthangband
             {
                 return;
             }
-            Artifact aPtr = Profile.Instance.Artifacts[aIdx];
-            Item qPtr = new Item();
+            var aPtr = Profile.Instance.Artifacts[aIdx];
+            var qPtr = new Item();
             if (string.IsNullOrEmpty(aPtr.Name))
             {
                 return;
             }
-            ItemType i = Profile.Instance.ItemTypes.LookupKind(aPtr.Tval, aPtr.Sval);
+            var i = Profile.Instance.ItemTypes.LookupKind(aPtr.Tval, aPtr.Sval);
             if (i == null)
             {
                 return;
@@ -745,15 +745,15 @@ namespace Cthangband
         private void WizDisplayItem(Item oPtr)
         {
             const int j = 13;
-            FlagSet f1 = new FlagSet();
-            FlagSet f2 = new FlagSet();
-            FlagSet f3 = new FlagSet();
+            var f1 = new FlagSet();
+            var f2 = new FlagSet();
+            var f3 = new FlagSet();
             oPtr.GetMergedFlags(f1, f2, f3);
-            for (int i = 1; i <= 23; i++)
+            for (var i = 1; i <= 23; i++)
             {
                 Gui.PrintLine("", i, j - 2);
             }
-            string buf = oPtr.StoreDescription(true, 3);
+            var buf = oPtr.StoreDescription(true, 3);
             Gui.PrintLine(buf, 2, j);
             Gui.PrintLine(
                 $"kind = {oPtr.ItemType,5}  level = {oPtr.ItemType.Level,4}  ItemType = {oPtr.Category,5}  ItemSubType = {oPtr.ItemSubCategory,5}",
@@ -800,10 +800,10 @@ namespace Cthangband
             {
                 return;
             }
-            string def = $"{oPtr.Count}";
-            if (Gui.GetString("Quantity: ", out string tmpVal, def, 2))
+            var def = $"{oPtr.Count}";
+            if (Gui.GetString("Quantity: ", out var tmpVal, def, 2))
             {
-                if (!int.TryParse(tmpVal, out int tmpInt))
+                if (!int.TryParse(tmpVal, out var tmpInt))
                 {
                     tmpInt = 1;
                 }
@@ -826,11 +826,11 @@ namespace Cthangband
             {
                 return oPtr;
             }
-            Item qPtr = new Item(oPtr);
+            var qPtr = new Item(oPtr);
             while (true)
             {
                 WizDisplayItem(qPtr);
-                if (!Gui.GetCom("[a]ccept, [n]ormal, [g]ood, [e]xcellent? ", out char ch))
+                if (!Gui.GetCom("[a]ccept, [n]ormal, [g]ood, [e]xcellent? ", out var ch))
                 {
                     changed = false;
                     break;
@@ -876,7 +876,7 @@ namespace Cthangband
             {
                 const string pmt = "Roll for [n]ormal, [g]ood, or [e]xcellent treasure? ";
                 WizDisplayItem(oPtr);
-                if (!Gui.GetCom(pmt, out char ch))
+                if (!Gui.GetCom(pmt, out var ch))
                 {
                     break;
                 }
@@ -911,7 +911,7 @@ namespace Cthangband
                 long better;
                 long worse;
                 long other;
-                long matches = better = worse = other = 0;
+                var matches = better = worse = other = 0;
                 long i;
                 for (i = 0; i <= _testRoll; i++)
                 {
@@ -925,7 +925,7 @@ namespace Cthangband
                         Gui.PrintLine(string.Format(q, i, matches, better, worse, other), 0, 0);
                         Gui.Refresh();
                     }
-                    Item qPtr = new Item();
+                    var qPtr = new Item();
                     qPtr.MakeObject(good, great);
                     if (qPtr.IsArtifact())
                     {
@@ -977,9 +977,9 @@ namespace Cthangband
             {
                 return;
             }
-            string p = "Enter new 'TypeSpecificValue' setting: ";
-            string def = $"{oPtr.TypeSpecificValue}";
-            if (!Gui.GetString(p, out string tmpVal, def, 5))
+            var p = "Enter new 'TypeSpecificValue' setting: ";
+            var def = $"{oPtr.TypeSpecificValue}";
+            if (!Gui.GetString(p, out var tmpVal, def, 5))
             {
                 return;
             }

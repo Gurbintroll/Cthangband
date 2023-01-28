@@ -1,4 +1,4 @@
-﻿// Cthangband: © 1997 - 2022 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
+﻿// Cthangband: © 1997 - 2023 Dean Anderson; Based on Angband: © 1997 Ben Harrison, James E. Wilson,
 // Robert A. Koeneke; Based on Moria: © 1985 Robert Alan Koeneke and Umoria: © 1989 James E.Wilson
 //
 // This game is released under the “Angband License”, defined as: “© 1997 Ben Harrison, James E.
@@ -42,7 +42,7 @@ namespace Cthangband.Pantheon
                 _patron = value;
                 if (_patron == GodName.None)
                 {
-                    foreach (KeyValuePair<GodName, God> pair in _gods)
+                    foreach (var pair in _gods)
                     {
                         pair.Value.IsPatron = false;
                         pair.Value.RestingFavour = 0;
@@ -51,7 +51,7 @@ namespace Cthangband.Pantheon
                 }
                 else
                 {
-                    foreach (KeyValuePair<GodName, God> pair in _gods)
+                    foreach (var pair in _gods)
                     {
                         if (pair.Key == _patron)
                         {
@@ -72,7 +72,7 @@ namespace Cthangband.Pantheon
 
         public void AddFavour(GodName godName, int amount)
         {
-            foreach (KeyValuePair<GodName, God> pair in _gods)
+            foreach (var pair in _gods)
             {
                 if (pair.Key == godName)
                 {
@@ -89,7 +89,7 @@ namespace Cthangband.Pantheon
         {
             var max = 0;
             var isMax = GodName.None;
-            foreach (KeyValuePair<GodName, God> pair in _gods)
+            foreach (var pair in _gods)
             {
                 if (pair.Value.Favour - pair.Value.RestingFavour > max)
                 {
