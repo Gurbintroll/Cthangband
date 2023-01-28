@@ -6,6 +6,7 @@
 // and not for profit purposes provided that this copyright and statement are included in all such
 // copies. Other copyrights may also apply.”
 using Cthangband.Enumerations;
+using Cthangband.PlayerClass.Base;
 using Cthangband.PlayerRace.Base;
 using Cthangband.StaticData;
 using Cthangband.Terminal;
@@ -611,7 +612,7 @@ namespace Cthangband
             Gui.Print(color, tempchar, displayRow + 1, displayCol + 14 - (tempchar.Length / 2));
             tempchar = PlayerRaces.Instance[tempRace].Title;
             Gui.Print(color, tempchar, displayRow + 2, displayCol + 14 - (tempchar.Length / 2));
-            tempchar = tempProfile.Game.Player.PlayerClass.ClassSubName(tempRealm);
+            tempchar = PlayerClasses.Instance[tempClass].ClassSubName(tempRealm);
             Gui.Print(color, tempchar, displayRow + 3, displayCol + 14 - (tempchar.Length / 2));
             if (tempDeath)
             {
