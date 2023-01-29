@@ -968,6 +968,7 @@ namespace Cthangband
                             stage++;
                             break;
                         }
+                        _player.Realm1 = Realm.None;
                         var realmList = GetRealmList(_player.PlayerClass.FirstRealmChoice);
                         _menuLength = realmList.Count;
                         if (_menuLength == 1)
