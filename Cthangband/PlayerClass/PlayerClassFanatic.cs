@@ -14,7 +14,7 @@ namespace Cthangband.PlayerClass
     [Serializable]
     internal class PlayerClassFanatic : BasePlayerClass
     {
-        private int[] _abilityBonus = { 2, 1, 0, 1, 2, -2 };
+        private int[] _abilityBonus = { 2, -2, 0, 1, 2, 1 };
         public override int[] AbilityBonus => _abilityBonus;
         public override int AttacksPerTurnMax => 5;
         public override int AttacksPerTurnMinWeaponWeight => 30;
