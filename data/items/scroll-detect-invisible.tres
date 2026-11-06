@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2s68l"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_l0ux0"]
+
+[sub_resource type="Resource" id="Resource_aeocj"]
+script = ExtResource("1_2s68l")
+
+[sub_resource type="Resource" id="Resource_ge14k"]
+script = ExtResource("1_2s68l")
+
+[sub_resource type="Resource" id="Resource_73hrs"]
+script = ExtResource("1_2s68l")
+
+[resource]
+script = ExtResource("2_l0ux0")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 15
+easy_know = true
+flags_1 = SubResource("Resource_aeocj")
+flags_2 = SubResource("Resource_ge14k")
+flags_3 = SubResource("Resource_73hrs")
+has_flavour = true
+item_category = 70
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "Detect Invisible"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 30
+weight = 5
+filename = "Scroll:Detect Invisible"

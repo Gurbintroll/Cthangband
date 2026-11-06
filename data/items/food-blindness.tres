@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_leyfk"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_meoib"]
+
+[sub_resource type="Resource" id="Resource_y2ieh"]
+script = ExtResource("1_leyfk")
+
+[sub_resource type="Resource" id="Resource_s7yc4"]
+script = ExtResource("1_leyfk")
+
+[sub_resource type="Resource" id="Resource_ue620"]
+script = ExtResource("1_leyfk")
+
+[resource]
+script = ExtResource("2_meoib")
+chance = Array[int]([1, 0, 0, 0])
+character = ","
+colour = 3
+easy_know = true
+flags_1 = SubResource("Resource_y2ieh")
+flags_2 = SubResource("Resource_s7yc4")
+flags_3 = SubResource("Resource_ue620")
+has_flavour = true
+item_category = 80
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "Blindness"
+type_specific_value = 500
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+weight = 1
+filename = "Food:Blindness"

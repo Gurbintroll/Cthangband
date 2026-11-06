@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_dr4i1"]
+
+[resource]
+script = ExtResource("1_dr4i1")
+category = 7
+height = 14
+name = "Lesser vault (easter egg)"
+rating = 5
+text = "%%%%%%%%%%%%%%%%%%%%.................%%.###############.%%.#,^,^,^,^,^,^,#.%%.#+###########^#.%%.#,^,^,^,^,^,#,#.%%.###########,#^#.%%.#,^,^,^,^,#^#,#.%%.#+#######,#,#^#.%%.#,,,,,,,#^#^#,#.%%.#,,,,,,,#,+,#^+.%%.###############.%%.................%%%%%%%%%%%%%%%%%%%%"
+width = 19

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wh3yk"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_y8sll"]
+
+[sub_resource type="Resource" id="Resource_tk0u7"]
+script = ExtResource("1_wh3yk")
+
+[sub_resource type="Resource" id="Resource_m15te"]
+script = ExtResource("1_wh3yk")
+
+[sub_resource type="Resource" id="Resource_j3wsn"]
+script = ExtResource("1_wh3yk")
+
+[resource]
+script = ExtResource("2_y8sll")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 15
+easy_know = true
+flags_1 = SubResource("Resource_tk0u7")
+flags_2 = SubResource("Resource_m15te")
+flags_3 = SubResource("Resource_j3wsn")
+has_flavour = true
+item_category = 70
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "Phase Door"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 8
+weight = 5
+filename = "Scroll:Phase Door"

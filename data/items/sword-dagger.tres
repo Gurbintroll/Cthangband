@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6apoe"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_jqer5"]
+
+[sub_resource type="Resource" id="Resource_n6prp"]
+script = ExtResource("1_6apoe")
+
+[sub_resource type="Resource" id="Resource_fg2jk"]
+script = ExtResource("1_6apoe")
+
+[sub_resource type="Resource" id="Resource_0amc1"]
+script = ExtResource("1_6apoe")
+value = 1024
+
+[resource]
+script = ExtResource("2_jqer5")
+chance = Array[int]([1, 1, 1, 1])
+character = "|"
+colour = 15
+cost = 10
+damage_dice = 1
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_n6prp")
+flags_2 = SubResource("Resource_fg2jk")
+flags_3 = SubResource("Resource_0amc1")
+flavour_aware = true
+item_category = 23
+locale = Array[int]([0, 5, 10, 20])
+name = "& Dagger~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 4
+weight = 12
+filename = "Sword:Dagger"

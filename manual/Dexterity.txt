@@ -1,0 +1,55 @@
+﻿[center][font_size=48][color="brown"][b]Dexterity[/b][/color][/font_size][/center]
+[hr color="brown"]
+Dexterity is a measure of how quick and agile you are. A high dexterity is useful for characters of all classes, since it improves your armour class and makes you less likely to have your money or items stolen. It is also useful for fighting and disarming traps, although not all characters will engage in those activities.
+
+[center][table=5][cell][b]Dexterity[/b][/cell][cell][b]Disarm[/b][/cell][cell][b]Anti-Theft[/b][/cell][cell][b]Armour Class[/b][/cell][cell][b]To Hit[/b][/cell]
+[cell]3[/cell][cell]+0%[/cell][cell]0%[/cell][cell]-4[/cell][cell]-3[/cell]
+[cell]4[/cell][cell]+0%[/cell][cell]1%[/cell][cell]-3[/cell][cell]-2[/cell]
+[cell]5[/cell][cell]+0%[/cell][cell]2%[/cell][cell]-2[/cell][cell]-2[/cell]
+[cell]6[/cell][cell]+0%[/cell][cell]3%[/cell][cell]-1[/cell][cell]-1[/cell]
+[cell]7[/cell][cell]+0%[/cell][cell]4%[/cell][cell]+0[/cell][cell]-1[/cell]
+[cell]8[/cell][cell]+0%[/cell][cell]5%[/cell][cell]+0[/cell][cell]+0[/cell]
+[cell]9[/cell][cell]+0%[/cell][cell]5%[/cell][cell]+0[/cell][cell]+0[/cell]
+[cell]10[/cell][cell]+0%[/cell][cell]6%[/cell][cell]+0[/cell][cell]+0[/cell]
+[cell]11[/cell][cell]+0%[/cell][cell]6%[/cell][cell]+0[/cell][cell]+0[/cell]
+[cell]12[/cell][cell]+0%[/cell][cell]7%[/cell][cell]+0[/cell][cell]+0[/cell]
+[cell]13[/cell][cell]+1%[/cell][cell]7%[/cell][cell]+0[/cell][cell]+0[/cell]
+[cell]14[/cell][cell]+1%[/cell][cell]8%[/cell][cell]+0[/cell][cell]+0[/cell]
+[cell]15[/cell][cell]+1%[/cell][cell]8%[/cell][cell]+1[/cell][cell]+0[/cell]
+[cell]16[/cell][cell]+2%[/cell][cell]9%[/cell][cell]+1[/cell][cell]+1[/cell]
+[cell]17[/cell][cell]+2%[/cell][cell]9%[/cell][cell]+1[/cell][cell]+2[/cell]
+[cell]18[/cell][cell]+4%[/cell][cell]10%[/cell][cell]+2[/cell][cell]+3[/cell]
+[cell]19[/cell][cell]+4%[/cell][cell]10%[/cell][cell]+2[/cell][cell]+3[/cell]
+[cell]20[/cell][cell]+4%[/cell][cell]15%[/cell][cell]+2[/cell][cell]+3[/cell]
+[cell]21[/cell][cell]+4%[/cell][cell]15%[/cell][cell]+2[/cell][cell]+3[/cell]
+[cell]22[/cell][cell]+5%[/cell][cell]20%[/cell][cell]+2[/cell][cell]+3[/cell]
+[cell]23[/cell][cell]+5%[/cell][cell]25%[/cell][cell]+3[/cell][cell]+4[/cell]
+[cell]24[/cell][cell]+5%[/cell][cell]30%[/cell][cell]+3[/cell][cell]+4[/cell]
+[cell]25[/cell][cell]+6%[/cell][cell]35%[/cell][cell]+3[/cell][cell]+4[/cell]
+[cell]26[/cell][cell]+6%[/cell][cell]40%[/cell][cell]+4[/cell][cell]+4[/cell]
+[cell]27[/cell][cell]+7%[/cell][cell]45%[/cell][cell]+5[/cell][cell]+5[/cell]
+[cell]28[/cell][cell]+8%[/cell][cell]50%[/cell][cell]+6[/cell][cell]+6[/cell]
+[cell]29[/cell][cell]+8%[/cell][cell]60%[/cell][cell]+7[/cell][cell]+7[/cell]
+[cell]30[/cell][cell]+8%[/cell][cell]70%[/cell][cell]+8[/cell][cell]+8[/cell]
+[cell]31[/cell][cell]+8%[/cell][cell]80%[/cell][cell]+9[/cell][cell]+9[/cell]
+[cell]32[/cell][cell]+8%[/cell][cell]90%[/cell][cell]+9[/cell][cell]+9[/cell]
+[cell]33[/cell][cell]+9%[/cell][cell]100%[/cell][cell]+10[/cell][cell]+10[/cell]
+[cell]34[/cell][cell]+9%[/cell][cell]100%[/cell][cell]+11[/cell][cell]+11[/cell]
+[cell]35[/cell][cell]+9%[/cell][cell]100%[/cell][cell]+12[/cell][cell]+12[/cell]
+[cell]36[/cell][cell]+9%[/cell][cell]100%[/cell][cell]+13[/cell][cell]+13[/cell]
+[cell]37[/cell][cell]+9%[/cell][cell]100%[/cell][cell]+14[/cell][cell]+14[/cell]
+[cell]38[/cell][cell]+10%[/cell][cell]100%[/cell][cell]+15[/cell][cell]+15[/cell]
+[cell]39[/cell][cell]+10%[/cell][cell]100%[/cell][cell]+15[/cell][cell]+15[/cell]
+[cell]40+[/cell][cell]+10%[/cell][cell]100%[/cell][cell]+16[/cell][cell]+16[/cell][/table][/center]
+
+[b]Disarm[/b]
+This is the bonus to your Disarm Traps skill. Your base Disarm Traps skill is based on your profession and level, and it gets bonuses from your ancestry, your dexterity, and your intelligence.
+
+[b]Anti-Theft[/b]
+Some monsters in the dungeons (and some disreputable townsfolk) will try to steal from you. This is your chance to avoid such theft.
+
+[b]Armour Class[/b]
+Your Armour Class is a measure of how difficult it is to hit and damage you in combat, and is chiefly based on the armour you are wearing. A high dexterity will increase this difficulty; but a low dex may decrease it - actually making you easier to hit and damage.
+
+[b]To Hit[/b]
+When you make a melee or missile attack, a high dexterity can make it easier for you to hit your opponents, whereas a low dexterity may make it harder for you to hit your opponents.

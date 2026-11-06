@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_tgdxm"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_unjh4"]
+
+[sub_resource type="Resource" id="Resource_ks3se"]
+script = ExtResource("1_tgdxm")
+
+[sub_resource type="Resource" id="Resource_nr52a"]
+script = ExtResource("1_tgdxm")
+
+[sub_resource type="Resource" id="Resource_kw41f"]
+script = ExtResource("1_tgdxm")
+
+[resource]
+script = ExtResource("2_unjh4")
+chance = Array[int]([1, 0, 0, 0])
+character = ","
+colour = 15
+easy_know = true
+flags_1 = SubResource("Resource_ks3se")
+flags_2 = SubResource("Resource_nr52a")
+flags_3 = SubResource("Resource_kw41f")
+has_flavour = true
+item_category = 80
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "Stupidity"
+type_specific_value = 500
+stompable = Array[bool]([true, false, false, false])
+sub_category = 8
+weight = 1
+filename = "Food:Stupidity"

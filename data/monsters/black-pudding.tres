@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_bkusy"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_c02ei"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_u6e4j"]
+
+[sub_resource type="Resource" id="Resource_8c6ks"]
+script = ExtResource("1_bkusy")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_0644g"]
+script = ExtResource("1_bkusy")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_b4eqm"]
+script = ExtResource("1_bkusy")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_2mdbl"]
+script = ExtResource("1_bkusy")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_kc13y"]
+script = ExtResource("2_c02ei")
+value = 29368832
+
+[sub_resource type="Resource" id="Resource_qwikl"]
+script = ExtResource("2_c02ei")
+value = 4391009
+
+[sub_resource type="Resource" id="Resource_74vjx"]
+script = ExtResource("2_c02ei")
+value = 3491692544
+
+[sub_resource type="Resource" id="Resource_4ck85"]
+script = ExtResource("2_c02ei")
+
+[sub_resource type="Resource" id="Resource_uk8au"]
+script = ExtResource("2_c02ei")
+
+[sub_resource type="Resource" id="Resource_h0px3"]
+script = ExtResource("2_c02ei")
+
+[resource]
+script = ExtResource("3_u6e4j")
+ac = 18
+attack = Array[ExtResource("1_bkusy")]([SubResource("Resource_8c6ks"), SubResource("Resource_0644g"), SubResource("Resource_b4eqm"), SubResource("Resource_2mdbl")])
+character = "j"
+colour = 2
+description = "A lump of rotting black flesh that slurrrrrrrps across the dungeon floor."
+flags_1 = SubResource("Resource_kc13y")
+flags_2 = SubResource("Resource_qwikl")
+flags_3 = SubResource("Resource_74vjx")
+flags_4 = SubResource("Resource_4ck85")
+flags_5 = SubResource("Resource_uk8au")
+flags_6 = SubResource("Resource_h0px3")
+hit_dice = 40
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 36
+name = "Black pudding"
+notice_range = 12
+rarity = 5
+sleep = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "  pudding   "

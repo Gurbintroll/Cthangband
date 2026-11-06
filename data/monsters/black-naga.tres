@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7gjir"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_mvkec"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_7a6lj"]
+
+[sub_resource type="Resource" id="Resource_vbhna"]
+script = ExtResource("1_7gjir")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_m272h"]
+script = ExtResource("1_7gjir")
+
+[sub_resource type="Resource" id="Resource_3dpm5"]
+script = ExtResource("1_7gjir")
+
+[sub_resource type="Resource" id="Resource_r2uje"]
+script = ExtResource("1_7gjir")
+
+[sub_resource type="Resource" id="Resource_3a2lm"]
+script = ExtResource("2_mvkec")
+value = 4456456
+
+[sub_resource type="Resource" id="Resource_3ky6c"]
+script = ExtResource("2_mvkec")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_e0ryg"]
+script = ExtResource("2_mvkec")
+value = 64
+
+[sub_resource type="Resource" id="Resource_k5bwq"]
+script = ExtResource("2_mvkec")
+
+[sub_resource type="Resource" id="Resource_rnwas"]
+script = ExtResource("2_mvkec")
+
+[sub_resource type="Resource" id="Resource_414p6"]
+script = ExtResource("2_mvkec")
+
+[resource]
+script = ExtResource("3_7a6lj")
+ac = 40
+attack = Array[ExtResource("1_7gjir")]([SubResource("Resource_vbhna"), SubResource("Resource_m272h"), SubResource("Resource_3dpm5"), SubResource("Resource_r2uje")])
+character = "n"
+colour = 2
+description = "A large black serpent's body with a female torso."
+flags_1 = SubResource("Resource_3a2lm")
+flags_2 = SubResource("Resource_3ky6c")
+flags_3 = SubResource("Resource_e0ryg")
+flags_4 = SubResource("Resource_k5bwq")
+flags_5 = SubResource("Resource_rnwas")
+flags_6 = SubResource("Resource_414p6")
+hit_dice = 6
+hit_dice_sides = 8
+level = 3
+max_num = 100
+experience = 20
+name = "Black naga"
+notice_range = 16
+rarity = 1
+sleep = 120
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "    naga    "

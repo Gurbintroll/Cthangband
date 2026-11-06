@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_adhog"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_iq37q"]
+
+[sub_resource type="Resource" id="Resource_nrn02"]
+script = ExtResource("1_adhog")
+
+[sub_resource type="Resource" id="Resource_dx263"]
+script = ExtResource("1_adhog")
+
+[sub_resource type="Resource" id="Resource_3qp7n"]
+script = ExtResource("1_adhog")
+
+[resource]
+script = ExtResource("2_iq37q")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 8
+cost = 300
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_nrn02")
+flags_2 = SubResource("Resource_dx263")
+flags_3 = SubResource("Resource_3qp7n")
+has_flavour = true
+item_category = 75
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "Restore Constitution"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 46
+weight = 4
+filename = "Potion:Restore Constitution"

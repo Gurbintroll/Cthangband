@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_trpbf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1x6p2"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_yeyl3"]
+
+[sub_resource type="Resource" id="Resource_uirr6"]
+script = ExtResource("1_trpbf")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_kxty3"]
+script = ExtResource("1_trpbf")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_guu5w"]
+script = ExtResource("1_trpbf")
+
+[sub_resource type="Resource" id="Resource_f2qhx"]
+script = ExtResource("1_trpbf")
+
+[sub_resource type="Resource" id="Resource_wm3ao"]
+script = ExtResource("2_1x6p2")
+value = 4194308
+
+[sub_resource type="Resource" id="Resource_f6itr"]
+script = ExtResource("2_1x6p2")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_mfrmm"]
+script = ExtResource("2_1x6p2")
+value = 64
+
+[sub_resource type="Resource" id="Resource_bff5d"]
+script = ExtResource("2_1x6p2")
+
+[sub_resource type="Resource" id="Resource_ksil6"]
+script = ExtResource("2_1x6p2")
+
+[sub_resource type="Resource" id="Resource_8pgya"]
+script = ExtResource("2_1x6p2")
+
+[resource]
+script = ExtResource("3_yeyl3")
+ac = 8
+attack = Array[ExtResource("1_trpbf")]([SubResource("Resource_uirr6"), SubResource("Resource_kxty3"), SubResource("Resource_guu5w"), SubResource("Resource_f2qhx")])
+character = "h"
+colour = 10
+description = "A short little guy, in bedraggled clothes. He appears to be looking for a good tavern."
+flags_1 = SubResource("Resource_wm3ao")
+flags_2 = SubResource("Resource_f6itr")
+flags_3 = SubResource("Resource_mfrmm")
+flags_4 = SubResource("Resource_bff5d")
+flags_5 = SubResource("Resource_ksil6")
+flags_6 = SubResource("Resource_8pgya")
+hit_dice = 3
+hit_dice_sides = 5
+level = 3
+max_num = 100
+experience = 4
+name = "Scruffy looking hobbit"
+notice_range = 16
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "  Scruffy   "
+split_name_2 = "  looking   "
+split_name_3 = "   hobbit   "

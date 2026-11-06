@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bseywk2sjl2w8"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_ssmcw"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_j3hhh"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_tqyfc"]
+
+[sub_resource type="Resource" id="Resource_qx887"]
+script = ExtResource("1_ssmcw")
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_enh0w"]
+script = ExtResource("1_ssmcw")
+
+[sub_resource type="Resource" id="Resource_o84ak"]
+script = ExtResource("1_ssmcw")
+
+[sub_resource type="Resource" id="Resource_cid46"]
+script = ExtResource("1_ssmcw")
+
+[sub_resource type="Resource" id="Resource_4sqt4"]
+script = ExtResource("2_j3hhh")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_5hl2u"]
+script = ExtResource("2_j3hhh")
+
+[sub_resource type="Resource" id="Resource_wud3w"]
+script = ExtResource("2_j3hhh")
+value = 268439552
+
+[sub_resource type="Resource" id="Resource_ghjs6"]
+script = ExtResource("2_j3hhh")
+
+[sub_resource type="Resource" id="Resource_4c8po"]
+script = ExtResource("2_j3hhh")
+
+[sub_resource type="Resource" id="Resource_38ehu"]
+script = ExtResource("2_j3hhh")
+
+[resource]
+script = ExtResource("3_tqyfc")
+ac = 6
+attack = Array[ExtResource("1_ssmcw")]([SubResource("Resource_qx887"), SubResource("Resource_enh0w"), SubResource("Resource_o84ak"), SubResource("Resource_cid46")])
+character = "e"
+colour = 30
+description = "A disembodied eye, floating a few feet above the ground."
+flags_1 = SubResource("Resource_4sqt4")
+flags_2 = SubResource("Resource_5hl2u")
+flags_3 = SubResource("Resource_wud3w")
+flags_4 = SubResource("Resource_ghjs6")
+flags_5 = SubResource("Resource_4c8po")
+flags_6 = SubResource("Resource_38ehu")
+hit_dice = 3
+hit_dice_sides = 6
+level = 1
+max_num = 100
+experience = 1
+name = "Floating eye"
+notice_range = 2
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Floating  "
+split_name_3 = "    eye     "

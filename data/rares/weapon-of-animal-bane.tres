@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_7r42b"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_6iwud"]
+
+[sub_resource type="Resource" id="Resource_25l7d"]
+script = ExtResource("1_7r42b")
+value = 65538
+
+[sub_resource type="Resource" id="Resource_ioia7"]
+script = ExtResource("1_7r42b")
+
+[sub_resource type="Resource" id="Resource_ufpff"]
+script = ExtResource("1_7r42b")
+value = 131072
+
+[resource]
+script = ExtResource("2_6iwud")
+cost = 6000
+flags_1 = SubResource("Resource_25l7d")
+flags_2 = SubResource("Resource_ioia7")
+flags_3 = SubResource("Resource_ufpff")
+max_type_specifc_value = 2
+name = "of Animal Bane"
+rating = 20
+slot = 24
+id = 75

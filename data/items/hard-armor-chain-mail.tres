@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_hysbo"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_hdfkc"]
+
+[sub_resource type="Resource" id="Resource_hcmb7"]
+script = ExtResource("1_hysbo")
+
+[sub_resource type="Resource" id="Resource_s6jpy"]
+script = ExtResource("1_hysbo")
+
+[sub_resource type="Resource" id="Resource_qdhk7"]
+script = ExtResource("1_hysbo")
+
+[resource]
+script = ExtResource("2_hdfkc")
+ac = 14
+chance = Array[int]([1, 0, 0, 0])
+character = "["
+colour = 23
+cost = 750
+damage_dice = 1
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_hcmb7")
+flags_2 = SubResource("Resource_s6jpy")
+flags_3 = SubResource("Resource_qdhk7")
+flavour_aware = true
+item_category = 37
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "Chain Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 4
+to_hit = -2
+weight = 220
+filename = "HardArmor:Chain Mail"

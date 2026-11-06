@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0afb8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_oj6gg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_cjfkc"]
+
+[sub_resource type="Resource" id="Resource_uw5oh"]
+script = ExtResource("1_0afb8")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_i25he"]
+script = ExtResource("1_0afb8")
+
+[sub_resource type="Resource" id="Resource_bed4l"]
+script = ExtResource("1_0afb8")
+
+[sub_resource type="Resource" id="Resource_mxabq"]
+script = ExtResource("1_0afb8")
+
+[sub_resource type="Resource" id="Resource_8s6eb"]
+script = ExtResource("2_oj6gg")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_un35y"]
+script = ExtResource("2_oj6gg")
+value = 65
+
+[sub_resource type="Resource" id="Resource_yq8vs"]
+script = ExtResource("2_oj6gg")
+value = 3490713600
+
+[sub_resource type="Resource" id="Resource_q67ka"]
+script = ExtResource("2_oj6gg")
+
+[sub_resource type="Resource" id="Resource_hm8g0"]
+script = ExtResource("2_oj6gg")
+
+[sub_resource type="Resource" id="Resource_agvc0"]
+script = ExtResource("2_oj6gg")
+
+[resource]
+script = ExtResource("3_cjfkc")
+ac = 1
+attack = Array[ExtResource("1_0afb8")]([SubResource("Resource_uw5oh"), SubResource("Resource_i25he"), SubResource("Resource_bed4l"), SubResource("Resource_mxabq")])
+character = "j"
+colour = 15
+description = "Its a large pile of white flesh."
+flags_1 = SubResource("Resource_8s6eb")
+flags_2 = SubResource("Resource_un35y")
+flags_3 = SubResource("Resource_yq8vs")
+flags_4 = SubResource("Resource_q67ka")
+flags_5 = SubResource("Resource_hm8g0")
+flags_6 = SubResource("Resource_agvc0")
+hit_dice = 8
+hit_dice_sides = 8
+level = 2
+max_num = 100
+experience = 10
+name = "White jelly"
+notice_range = 2
+rarity = 1
+sleep = 99
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   White    "
+split_name_3 = "   jelly    "

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_a4rdx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rqpmo"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_iftwa"]
+
+[sub_resource type="Resource" id="Resource_87xtb"]
+script = ExtResource("1_a4rdx")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_1btdp"]
+script = ExtResource("1_a4rdx")
+
+[sub_resource type="Resource" id="Resource_5lklq"]
+script = ExtResource("1_a4rdx")
+
+[sub_resource type="Resource" id="Resource_w1hpb"]
+script = ExtResource("1_a4rdx")
+
+[sub_resource type="Resource" id="Resource_y2sw8"]
+script = ExtResource("2_rqpmo")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_yg76d"]
+script = ExtResource("2_rqpmo")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_qc1jg"]
+script = ExtResource("2_rqpmo")
+value = 128
+
+[sub_resource type="Resource" id="Resource_2xnre"]
+script = ExtResource("2_rqpmo")
+
+[sub_resource type="Resource" id="Resource_kbyxk"]
+script = ExtResource("2_rqpmo")
+
+[sub_resource type="Resource" id="Resource_u4cow"]
+script = ExtResource("2_rqpmo")
+
+[resource]
+script = ExtResource("3_iftwa")
+ac = 50
+attack = Array[ExtResource("1_a4rdx")]([SubResource("Resource_87xtb"), SubResource("Resource_1btdp"), SubResource("Resource_5lklq"), SubResource("Resource_w1hpb")])
+character = "K"
+colour = 13
+description = "A giant beetle with poisonous mandibles."
+flags_1 = SubResource("Resource_y2sw8")
+flags_2 = SubResource("Resource_yg76d")
+flags_3 = SubResource("Resource_qc1jg")
+flags_4 = SubResource("Resource_2xnre")
+flags_5 = SubResource("Resource_kbyxk")
+flags_6 = SubResource("Resource_u4cow")
+hit_dice = 20
+hit_dice_sides = 8
+level = 25
+max_num = 100
+experience = 85
+name = "Killer crimson beetle"
+notice_range = 14
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "   Killer   "
+split_name_2 = "  crimson   "
+split_name_3 = "   beetle   "

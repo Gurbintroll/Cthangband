@@ -1,0 +1,59 @@
+﻿[center][font_size=48][color="brown"][b]Strength[/b][/color][/font_size][/center]
+[hr color="brown"]
+Strength is a measure of your physical might. It is most useful for characters who will be doing a lot of fighting, since it not only affects your attack rolls and the amount of damage you do when you hit, but also how heavy a weapon you can carry without being encumbered. However, even the least physical spell caster needs
+to have at least some strength if they are to be able to carry treasure out of the dungeons without being slowed down by it.
+
+[center][table=6][cell][b]Strength[/b][/cell][cell][b]Digging[/b][/cell][cell][b]To Hit[/b][/cell][cell][b]Damage[/b][/cell][cell][b]Max Wield[/b][/cell][cell][b]Max Carry[/b][/cell]
+[cell]3[/cell][cell]0%[/cell][cell]-3[/cell][cell]-2[/cell][cell]4lb[/cell][cell]25lb[/cell]
+[cell]4[/cell][cell]0%[/cell][cell]-2[/cell][cell]-2[/cell][cell]5lb[/cell][cell]30lb[/cell]
+[cell]5[/cell][cell]1%[/cell][cell]-1[/cell][cell]-1[/cell][cell]6lb[/cell][cell]35lb[/cell]
+[cell]6[/cell][cell]2%[/cell][cell]-1[/cell][cell]-1[/cell][cell]7lb[/cell][cell]40lb[/cell]
+[cell]7[/cell][cell]3%[/cell][cell]+0[/cell][cell]+0[/cell][cell]8lb[/cell][cell]45lb[/cell]
+[cell]8[/cell][cell]4%[/cell][cell]+0[/cell][cell]+0[/cell][cell]10lb[/cell][cell]50lb[/cell]
+[cell]9[/cell][cell]4%[/cell][cell]+0[/cell][cell]+0[/cell][cell]12lb[/cell][cell]55lb[/cell]
+[cell]10[/cell][cell]5%[/cell][cell]+0[/cell][cell]+0[/cell][cell]14lb[/cell][cell]60lb[/cell]
+[cell]11[/cell][cell]5%[/cell][cell]+0[/cell][cell]+0[/cell][cell]16lb[/cell][cell]65lb[/cell]
+[cell]12[/cell][cell]6%[/cell][cell]+0[/cell][cell]+0[/cell][cell]18lb[/cell][cell]70lb[/cell]
+[cell]13[/cell][cell]6%[/cell][cell]+0[/cell][cell]+0[/cell][cell]20lb[/cell][cell]75lb[/cell]
+[cell]14[/cell][cell]7%[/cell][cell]+0[/cell][cell]+0[/cell][cell]22lb[/cell][cell]80lb[/cell]
+[cell]15[/cell][cell]7%[/cell][cell]+0[/cell][cell]+0[/cell][cell]24lb[/cell][cell]85lb[/cell]
+[cell]16[/cell][cell]8%[/cell][cell]+0[/cell][cell]+1[/cell][cell]26lb[/cell][cell]90lb[/cell]
+[cell]17[/cell][cell]8%[/cell][cell]+0[/cell][cell]+2[/cell][cell]28lb[/cell][cell]95lb[/cell]
+[cell]18[/cell][cell]9%[/cell][cell]+1[/cell][cell]+2[/cell][cell]30lb[/cell][cell]100lb[/cell]
+[cell]19[/cell][cell]10%[/cell][cell]+1[/cell][cell]+2[/cell][cell]30lb[/cell][cell]110lb[/cell]
+[cell]20[/cell][cell]12%[/cell][cell]+1[/cell][cell]+3[/cell][cell]35lb[/cell][cell]120lb[/cell]
+[cell]21[/cell][cell]15%[/cell][cell]+1[/cell][cell]+3[/cell][cell]40lb[/cell][cell]130lb[/cell]
+[cell]22[/cell][cell]20%[/cell][cell]+1[/cell][cell]+3[/cell][cell]45lb[/cell][cell]140lb[/cell]
+[cell]23[/cell][cell]25%[/cell][cell]+1[/cell][cell]+3[/cell][cell]50lb[/cell][cell]150lb[/cell]
+[cell]24[/cell][cell]30%[/cell][cell]+1[/cell][cell]+3[/cell][cell]55lb[/cell][cell]155lb[/cell]
+[cell]25[/cell][cell]35%[/cell][cell]+2[/cell][cell]+4[/cell][cell]60lb[/cell][cell]155lb[/cell]
+[cell]26[/cell][cell]40%[/cell][cell]+3[/cell][cell]+5[/cell][cell]65lb[/cell][cell]160lb[/cell]
+[cell]27[/cell][cell]45%[/cell][cell]+4[/cell][cell]+5[/cell][cell]70lb[/cell][cell]160lb[/cell]
+[cell]28[/cell][cell]50%[/cell][cell]+5[/cell][cell]+6[/cell][cell]80lb[/cell][cell]165lb[/cell]
+[cell]29[/cell][cell]55%[/cell][cell]+6[/cell][cell]+7[/cell][cell]80lb[/cell][cell]165lb[/cell]
+[cell]30[/cell][cell]60%[/cell][cell]+7[/cell][cell]+8[/cell][cell]80lb[/cell][cell]170lb[/cell]
+[cell]31[/cell][cell]65%[/cell][cell]+8[/cell][cell]+9[/cell][cell]80lb[/cell][cell]170lb[/cell]
+[cell]32[/cell][cell]70%[/cell][cell]+9[/cell][cell]+10[/cell][cell]80lb[/cell][cell]175lb[/cell]
+[cell]33[/cell][cell]75%[/cell][cell]+10[/cell][cell]+11[/cell][cell]90lb[/cell][cell]175lb[/cell]
+[cell]34[/cell][cell]80%[/cell][cell]+11[/cell][cell]+12[/cell][cell]90lb[/cell][cell]180lb[/cell]
+[cell]35[/cell][cell]85%[/cell][cell]+12[/cell][cell]+13[/cell][cell]90lb[/cell][cell]180lb[/cell]
+[cell]36[/cell][cell]90%[/cell][cell]+13[/cell][cell]+14[/cell][cell]90lb[/cell][cell]185lb[/cell]
+[cell]37[/cell][cell]95%[/cell][cell]+14[/cell][cell]+15[/cell][cell]90lb[/cell][cell]185lb[/cell]
+[cell]38[/cell][cell]100%[/cell][cell]+15[/cell][cell]+16[/cell][cell]100lb[/cell][cell]190lb[/cell]
+[cell]39[/cell][cell]100%[/cell][cell]+15[/cell][cell]+18[/cell][cell]100lb[/cell][cell]190lb[/cell]
+[cell]40+[/cell][cell]100%[/cell][cell]+16[/cell][cell]+20[/cell][cell]100lb[/cell][cell]195lb[/cell][/table][/center]
+
+[b]Digging[/b]
+This is the base chance of being able to dig through the rubble, mud, and rock that make up a typical dungeon wall. The chance is modified by the material that you are trying to dig through and the digging implement that you are wielding (or the weapon you are wielding if you have no digging implement).
+
+[b]To Hit[/b]
+When you make a melee or missile attack, a high strength can make it easier for you to hit your opponents, whereas a low strength may make it harder for you to hit your opponents.
+
+[b]Damage[/b]
+A high strength will let you cause more damage when hittin opponents, and a low strength will make you cause less.
+
+[b]Max Wield[/b]
+Your strength determines the maximum weight of weapon you can wield efficiently. If you wield a weapon heavier than this weight then you will take penalties to hit and damage.
+
+[b]Max Carry[/b]
+You can only carry so much stuff before being weighed down and slowed. The value shown in the table indicates the maximum total weight of equipment that you can wield and carry before it starts to slow you.

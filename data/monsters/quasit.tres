@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_wrsm4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1m40m"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_tld0j"]
+
+[sub_resource type="Resource" id="Resource_uhvsy"]
+script = ExtResource("1_wrsm4")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 20
+method = 6
+
+[sub_resource type="Resource" id="Resource_osejv"]
+script = ExtResource("1_wrsm4")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_iafu2"]
+script = ExtResource("1_wrsm4")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_ekajn"]
+script = ExtResource("1_wrsm4")
+
+[sub_resource type="Resource" id="Resource_edc1u"]
+script = ExtResource("2_1m40m")
+value = 19137536
+
+[sub_resource type="Resource" id="Resource_ibdy2"]
+script = ExtResource("2_1m40m")
+value = 131090
+
+[sub_resource type="Resource" id="Resource_5brg0"]
+script = ExtResource("2_1m40m")
+value = 264272
+
+[sub_resource type="Resource" id="Resource_0j2b6"]
+script = ExtResource("2_1m40m")
+
+[sub_resource type="Resource" id="Resource_tovj7"]
+script = ExtResource("2_1m40m")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_owy77"]
+script = ExtResource("2_1m40m")
+value = 1328
+
+[resource]
+script = ExtResource("3_tld0j")
+ac = 30
+attack = Array[ExtResource("1_wrsm4")]([SubResource("Resource_uhvsy"), SubResource("Resource_osejv"), SubResource("Resource_iafu2"), SubResource("Resource_ekajn")])
+character = "u"
+colour = 15
+description = "The chaotic evil master's favourite pet."
+flags_1 = SubResource("Resource_edc1u")
+flags_2 = SubResource("Resource_ibdy2")
+flags_3 = SubResource("Resource_5brg0")
+flags_4 = SubResource("Resource_0j2b6")
+flags_5 = SubResource("Resource_tovj7")
+flags_6 = SubResource("Resource_owy77")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 6
+hit_dice_sides = 8
+level = 16
+max_num = 100
+experience = 50
+name = "Quasit"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Quasit   "

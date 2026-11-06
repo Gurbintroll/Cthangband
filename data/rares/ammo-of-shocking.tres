@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wqpdx"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_sgu4x"]
+
+[sub_resource type="Resource" id="Resource_vlukt"]
+script = ExtResource("1_wqpdx")
+value = 536870912
+
+[sub_resource type="Resource" id="Resource_ryl6y"]
+script = ExtResource("1_wqpdx")
+
+[sub_resource type="Resource" id="Resource_8nwmx"]
+script = ExtResource("1_wqpdx")
+value = 2097152
+
+[resource]
+script = ExtResource("2_sgu4x")
+cost = 30
+flags_1 = SubResource("Resource_vlukt")
+flags_2 = SubResource("Resource_ryl6y")
+flags_3 = SubResource("Resource_8nwmx")
+name = "of Shocking"
+rating = 10
+slot = 23
+id = 92

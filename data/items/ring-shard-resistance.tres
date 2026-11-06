@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_q0jye"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_3hvcp"]
+
+[sub_resource type="Resource" id="Resource_niur4"]
+script = ExtResource("1_q0jye")
+
+[sub_resource type="Resource" id="Resource_c66qp"]
+script = ExtResource("1_q0jye")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_0nq13"]
+script = ExtResource("1_q0jye")
+value = 256
+
+[resource]
+script = ExtResource("2_3hvcp")
+chance = Array[int]([2, 0, 0, 0])
+character = "="
+colour = 23
+cost = 3000
+easy_know = true
+flags_1 = SubResource("Resource_niur4")
+flags_2 = SubResource("Resource_c66qp")
+flags_3 = SubResource("Resource_0nq13")
+has_flavour = true
+item_category = 45
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "Shard Resistance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 44
+weight = 2
+filename = "Ring:Shard Resistance"

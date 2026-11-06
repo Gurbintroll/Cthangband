@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7182q"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_78pyj"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_2d82e"]
+
+[sub_resource type="Resource" id="Resource_gyifh"]
+script = ExtResource("1_7182q")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6qj6f"]
+script = ExtResource("1_7182q")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tm54m"]
+script = ExtResource("1_7182q")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_u85gq"]
+script = ExtResource("1_7182q")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_57vxu"]
+script = ExtResource("2_78pyj")
+value = 8520224
+
+[sub_resource type="Resource" id="Resource_lmrir"]
+script = ExtResource("2_78pyj")
+value = 97
+
+[sub_resource type="Resource" id="Resource_q4ov1"]
+script = ExtResource("2_78pyj")
+value = 3491629120
+
+[sub_resource type="Resource" id="Resource_5nipm"]
+script = ExtResource("2_78pyj")
+
+[sub_resource type="Resource" id="Resource_ppbfr"]
+script = ExtResource("2_78pyj")
+
+[sub_resource type="Resource" id="Resource_2dqer"]
+script = ExtResource("2_78pyj")
+
+[resource]
+script = ExtResource("3_2d82e")
+ac = 40
+attack = Array[ExtResource("1_7182q")]([SubResource("Resource_gyifh"), SubResource("Resource_6qj6f"), SubResource("Resource_tm54m"), SubResource("Resource_u85gq")])
+character = "|"
+colour = 15
+description = "A bloodthirsty blade lurking for prey. Beware! "
+flags_1 = SubResource("Resource_57vxu")
+flags_2 = SubResource("Resource_lmrir")
+flags_3 = SubResource("Resource_q4ov1")
+flags_4 = SubResource("Resource_5nipm")
+flags_5 = SubResource("Resource_ppbfr")
+flags_6 = SubResource("Resource_2dqer")
+hit_dice = 6
+hit_dice_sides = 6
+level = 6
+max_num = 100
+experience = 30
+name = "Death sword"
+notice_range = 20
+rarity = 5
+speed = 130
+split_name_1 = "            "
+split_name_2 = "   Death    "
+split_name_3 = "   sword    "

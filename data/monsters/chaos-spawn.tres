@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0m6l4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_b70an"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_cukt2"]
+
+[sub_resource type="Resource" id="Resource_vfv5m"]
+script = ExtResource("1_0m6l4")
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_eawd0"]
+script = ExtResource("1_0m6l4")
+effect = 3
+method = 15
+
+[sub_resource type="Resource" id="Resource_gjqdb"]
+script = ExtResource("1_0m6l4")
+effect = 26
+method = 15
+
+[sub_resource type="Resource" id="Resource_iy0xt"]
+script = ExtResource("1_0m6l4")
+damage_dice = 10
+damage_dice_sides = 6
+effect = 1
+method = 15
+
+[sub_resource type="Resource" id="Resource_fqotp"]
+script = ExtResource("2_b70an")
+value = 512
+
+[sub_resource type="Resource" id="Resource_xs7to"]
+script = ExtResource("2_b70an")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_qt33o"]
+script = ExtResource("2_b70an")
+value = 64
+
+[sub_resource type="Resource" id="Resource_fngpn"]
+script = ExtResource("2_b70an")
+
+[sub_resource type="Resource" id="Resource_nmhbb"]
+script = ExtResource("2_b70an")
+
+[sub_resource type="Resource" id="Resource_fy1vm"]
+script = ExtResource("2_b70an")
+
+[resource]
+script = ExtResource("3_cukt2")
+ac = 50
+attack = Array[ExtResource("1_0m6l4")]([SubResource("Resource_vfv5m"), SubResource("Resource_eawd0"), SubResource("Resource_gjqdb"), SubResource("Resource_iy0xt")])
+character = "e"
+colour = 26
+description = "It has two eyestalks and a large central eye. Its gaze can kill."
+flags_1 = SubResource("Resource_fqotp")
+flags_2 = SubResource("Resource_xs7to")
+flags_3 = SubResource("Resource_qt33o")
+flags_4 = SubResource("Resource_fngpn")
+flags_5 = SubResource("Resource_nmhbb")
+flags_6 = SubResource("Resource_fy1vm")
+hit_dice = 20
+hit_dice_sides = 18
+level = 36
+max_num = 100
+experience = 600
+name = "Chaos spawn"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Chaos    "
+split_name_3 = "   spawn    "

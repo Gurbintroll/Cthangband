@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_65rtd"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_58kyn"]
+
+[sub_resource type="Resource" id="Resource_n2vdb"]
+script = ExtResource("1_65rtd")
+
+[sub_resource type="Resource" id="Resource_dvdgx"]
+script = ExtResource("1_65rtd")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_8a2ov"]
+script = ExtResource("1_65rtd")
+value = 20971520
+
+[resource]
+script = ExtResource("2_58kyn")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 2
+cost = 3000
+flags_1 = SubResource("Resource_n2vdb")
+flags_2 = SubResource("Resource_dvdgx")
+flags_3 = SubResource("Resource_8a2ov")
+has_flavour = true
+item_category = 45
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "Flames"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 18
+to_ac = 15
+weight = 2
+filename = "Ring:Flames"

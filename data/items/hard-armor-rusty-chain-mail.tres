@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cku4w"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_86xu0"]
+
+[sub_resource type="Resource" id="Resource_3bxjn"]
+script = ExtResource("1_cku4w")
+
+[sub_resource type="Resource" id="Resource_iocbv"]
+script = ExtResource("1_cku4w")
+
+[sub_resource type="Resource" id="Resource_nds3i"]
+script = ExtResource("1_cku4w")
+
+[resource]
+script = ExtResource("2_86xu0")
+ac = 14
+chance = Array[int]([1, 0, 0, 0])
+character = "["
+colour = 27
+cost = 550
+damage_dice = 1
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_3bxjn")
+flags_2 = SubResource("Resource_iocbv")
+flags_3 = SubResource("Resource_nds3i")
+flavour_aware = true
+item_category = 37
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "Rusty Chain Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+to_ac = -8
+to_hit = -5
+weight = 200
+filename = "HardArmor:Rusty Chain Mail"

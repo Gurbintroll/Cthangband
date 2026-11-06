@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_v2lpq"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_0yorq"]
+
+[sub_resource type="Resource" id="Resource_corym"]
+script = ExtResource("1_v2lpq")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_ce5ao"]
+script = ExtResource("1_v2lpq")
+
+[sub_resource type="Resource" id="Resource_jg3vb"]
+script = ExtResource("1_v2lpq")
+value = 4194304
+
+[resource]
+script = ExtResource("2_0yorq")
+cost = 30
+flags_1 = SubResource("Resource_corym")
+flags_2 = SubResource("Resource_ce5ao")
+flags_3 = SubResource("Resource_jg3vb")
+name = "of Flame"
+rating = 10
+slot = 23
+id = 93

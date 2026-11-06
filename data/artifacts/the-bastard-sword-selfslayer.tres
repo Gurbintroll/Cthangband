@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://bl32vh5bbabr3"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_16lsj"]
+[ext_resource type="Script" uid="uid://c8av6fyror3lk" path="res://scripts/data/artifact.gd" id="2_5ch5o"]
+
+[sub_resource type="Resource" id="Resource_5bnkw"]
+script = ExtResource("1_16lsj")
+value = 19529744
+
+[sub_resource type="Resource" id="Resource_il6x7"]
+script = ExtResource("1_16lsj")
+value = 2147483648
+
+[sub_resource type="Resource" id="Resource_rmama"]
+script = ExtResource("1_16lsj")
+value = 1626342912
+
+[resource]
+script = ExtResource("2_5ch5o")
+flags_1 = SubResource("Resource_5bnkw")
+flags_2 = SubResource("Resource_il6x7")
+flags_3 = SubResource("Resource_rmama")
+cost = 100000
+damage_dice = 5
+damage_dice_sides = 4
+item_category = 23
+item_sub_category = 21
+level = 30
+name = "*Selfslayer*"
+type_specific_value = 5
+rarity = 15
+to_hit = -20
+to_damage = 20
+weight = 140
+id = 71

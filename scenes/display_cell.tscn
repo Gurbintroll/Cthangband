@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cp7xudeaot28h"]
+
+[ext_resource type="Script" uid="uid://ddulew62cuo5x" path="res://scripts/user_interface/display_cell.gd" id="1_5p1m5"]
+[ext_resource type="FontFile" uid="uid://ql0bfdgbtqde" path="res://fonts/AtkinsonHyperlegibleMono-Bold.otf" id="1_flw8s"]
+
+[node name="DisplayCell" type="Label" unique_id=1140530177]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 35.0
+scale = Vector2(1.5, 1)
+theme_override_fonts/font = ExtResource("1_flw8s")
+theme_override_font_sizes/font_size = 24
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_5p1m5")

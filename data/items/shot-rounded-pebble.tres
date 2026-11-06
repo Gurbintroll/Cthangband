@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_o25cg"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_1elff"]
+
+[sub_resource type="Resource" id="Resource_cpmxq"]
+script = ExtResource("1_o25cg")
+
+[sub_resource type="Resource" id="Resource_0ml6v"]
+script = ExtResource("1_o25cg")
+
+[sub_resource type="Resource" id="Resource_6a0ar"]
+script = ExtResource("1_o25cg")
+value = 1024
+
+[resource]
+script = ExtResource("2_1elff")
+chance = Array[int]([1, 0, 0, 0])
+character = "{"
+colour = 23
+cost = 1
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_cpmxq")
+flags_2 = SubResource("Resource_0ml6v")
+flags_3 = SubResource("Resource_6a0ar")
+flavour_aware = true
+item_category = 16
+locale = Array[int]([0, 0, 0, 0])
+name = "& Rounded Pebble~"
+stompable = Array[bool]([true, false, false, false])
+weight = 4
+filename = "Shot:Rounded Pebble"

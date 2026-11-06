@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_28jow"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7ihl3"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_uyrka"]
+
+[sub_resource type="Resource" id="Resource_2uvkv"]
+script = ExtResource("1_28jow")
+method = 13
+
+[sub_resource type="Resource" id="Resource_wfy8f"]
+script = ExtResource("1_28jow")
+
+[sub_resource type="Resource" id="Resource_exjh2"]
+script = ExtResource("1_28jow")
+
+[sub_resource type="Resource" id="Resource_1gayi"]
+script = ExtResource("1_28jow")
+
+[sub_resource type="Resource" id="Resource_mklx0"]
+script = ExtResource("2_7ihl3")
+value = 262148
+
+[sub_resource type="Resource" id="Resource_77m4v"]
+script = ExtResource("2_7ihl3")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_2l4o1"]
+script = ExtResource("2_7ihl3")
+
+[sub_resource type="Resource" id="Resource_d4j5q"]
+script = ExtResource("2_7ihl3")
+
+[sub_resource type="Resource" id="Resource_8xg0f"]
+script = ExtResource("2_7ihl3")
+
+[sub_resource type="Resource" id="Resource_dlpj1"]
+script = ExtResource("2_7ihl3")
+
+[resource]
+script = ExtResource("3_uyrka")
+ac = 1
+attack = Array[ExtResource("1_28jow")]([SubResource("Resource_2uvkv"), SubResource("Resource_wfy8f"), SubResource("Resource_exjh2"), SubResource("Resource_1gayi")])
+character = "t"
+colour = 22
+description = "Ugly doesn't begin to describe him."
+flags_1 = SubResource("Resource_mklx0")
+flags_2 = SubResource("Resource_77m4v")
+flags_3 = SubResource("Resource_2l4o1")
+flags_4 = SubResource("Resource_d4j5q")
+flags_5 = SubResource("Resource_8xg0f")
+flags_6 = SubResource("Resource_dlpj1")
+hit_dice = 1
+hit_dice_sides = 2
+max_num = 100
+name = "Hobo"
+notice_range = 6
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Hobo    "

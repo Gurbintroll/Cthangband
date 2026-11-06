@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_bn60d"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_l3rgt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_i53ce"]
+
+[sub_resource type="Resource" id="Resource_xu4g4"]
+script = ExtResource("1_bn60d")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_dwrf4"]
+script = ExtResource("1_bn60d")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_n542m"]
+script = ExtResource("1_bn60d")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_t0m8o"]
+script = ExtResource("1_bn60d")
+
+[sub_resource type="Resource" id="Resource_c446j"]
+script = ExtResource("2_l3rgt")
+value = 29361664
+
+[sub_resource type="Resource" id="Resource_gwnd6"]
+script = ExtResource("2_l3rgt")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_qvffc"]
+script = ExtResource("2_l3rgt")
+value = 1048648
+
+[sub_resource type="Resource" id="Resource_8sbah"]
+script = ExtResource("2_l3rgt")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_qrprg"]
+script = ExtResource("2_l3rgt")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_dqqtp"]
+script = ExtResource("2_l3rgt")
+
+[resource]
+script = ExtResource("3_i53ce")
+ac = 60
+attack = Array[ExtResource("1_bn60d")]([SubResource("Resource_xu4g4"), SubResource("Resource_dwrf4"), SubResource("Resource_n542m"), SubResource("Resource_t0m8o")])
+character = "d"
+colour = 22
+description = "It has a form that legends are made of. Its still-tender scales are a deep green in hue. Foul gas seeps through its scales."
+flags_1 = SubResource("Resource_c446j")
+flags_2 = SubResource("Resource_gwnd6")
+flags_3 = SubResource("Resource_qvffc")
+flags_4 = SubResource("Resource_8sbah")
+flags_5 = SubResource("Resource_qrprg")
+flags_6 = SubResource("Resource_dqqtp")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 27
+hit_dice_sides = 10
+level = 29
+max_num = 100
+experience = 290
+name = "Young green dragon"
+notice_range = 20
+rarity = 1
+sleep = 70
+speed = 110
+split_name_1 = "   Young    "
+split_name_2 = "   green    "
+split_name_3 = "   dragon   "

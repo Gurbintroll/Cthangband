@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ak4kb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jhjtx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_546s6"]
+
+[sub_resource type="Resource" id="Resource_btpla"]
+script = ExtResource("1_ak4kb")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 9
+method = 1
+
+[sub_resource type="Resource" id="Resource_bgaf1"]
+script = ExtResource("1_ak4kb")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 9
+method = 1
+
+[sub_resource type="Resource" id="Resource_ieyya"]
+script = ExtResource("1_ak4kb")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_o3aw1"]
+script = ExtResource("1_ak4kb")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 9
+method = 6
+
+[sub_resource type="Resource" id="Resource_8wwty"]
+script = ExtResource("2_jhjtx")
+value = 10487296
+
+[sub_resource type="Resource" id="Resource_x3114"]
+script = ExtResource("2_jhjtx")
+value = 209408
+
+[sub_resource type="Resource" id="Resource_iqf4l"]
+script = ExtResource("2_jhjtx")
+value = 3358607424
+
+[sub_resource type="Resource" id="Resource_kvcsp"]
+script = ExtResource("2_jhjtx")
+
+[sub_resource type="Resource" id="Resource_4ouyf"]
+script = ExtResource("2_jhjtx")
+value = 328704
+
+[sub_resource type="Resource" id="Resource_u462e"]
+script = ExtResource("2_jhjtx")
+value = 16781312
+
+[resource]
+script = ExtResource("3_546s6")
+ac = 40
+attack = Array[ExtResource("1_ak4kb")]([SubResource("Resource_btpla"), SubResource("Resource_bgaf1"), SubResource("Resource_ieyya"), SubResource("Resource_o3aw1")])
+character = "A"
+colour = 23
+description = "A black, protean being of amorphous slime."
+flags_1 = SubResource("Resource_8wwty")
+flags_2 = SubResource("Resource_x3114")
+flags_3 = SubResource("Resource_iqf4l")
+flags_4 = SubResource("Resource_kvcsp")
+flags_5 = SubResource("Resource_4ouyf")
+flags_6 = SubResource("Resource_u462e")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 22
+hit_dice_sides = 20
+level = 41
+max_num = 100
+experience = 1850
+name = "Formless spawn of Tsathoggua"
+notice_range = 20
+rarity = 2
+sleep = 80
+speed = 110
+split_name_1 = "  Formless  "
+split_name_2 = "  spawn of  "
+split_name_3 = " Tsathoggua "

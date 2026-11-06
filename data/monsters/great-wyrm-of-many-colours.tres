@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_tqwaq"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kpf2p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_a6u4i"]
+
+[sub_resource type="Resource" id="Resource_ox7y0"]
+script = ExtResource("1_tqwaq")
+damage_dice = 6
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_3oidj"]
+script = ExtResource("1_tqwaq")
+damage_dice = 6
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_b0dbh"]
+script = ExtResource("1_tqwaq")
+damage_dice = 6
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_tu1u1"]
+script = ExtResource("1_tqwaq")
+damage_dice = 9
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_tu1gt"]
+script = ExtResource("2_kpf2p")
+value = 505415296
+
+[sub_resource type="Resource" id="Resource_l335a"]
+script = ExtResource("2_kpf2p")
+value = 1232896
+
+[sub_resource type="Resource" id="Resource_8wawh"]
+script = ExtResource("2_kpf2p")
+value = 3225354248
+
+[sub_resource type="Resource" id="Resource_73kdm"]
+script = ExtResource("2_kpf2p")
+value = 7936
+
+[sub_resource type="Resource" id="Resource_rv54p"]
+script = ExtResource("2_kpf2p")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_7xq4e"]
+script = ExtResource("2_kpf2p")
+
+[resource]
+script = ExtResource("3_a6u4i")
+ac = 170
+attack = Array[ExtResource("1_tqwaq")]([SubResource("Resource_ox7y0"), SubResource("Resource_3oidj"), SubResource("Resource_b0dbh"), SubResource("Resource_tu1u1")])
+character = "D"
+colour = 26
+description = "A huge dragon whose scales shimmer in myriad hues."
+flags_1 = SubResource("Resource_tu1gt")
+flags_2 = SubResource("Resource_l335a")
+flags_3 = SubResource("Resource_8wawh")
+flags_4 = SubResource("Resource_73kdm")
+flags_5 = SubResource("Resource_rv54p")
+flags_6 = SubResource("Resource_7xq4e")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 52
+hit_dice_sides = 100
+level = 68
+max_num = 100
+experience = 31000
+name = "Great Wyrm of Many Colours"
+notice_range = 40
+rarity = 4
+sleep = 255
+speed = 120
+split_name_1 = " Great Wyrm "
+split_name_2 = "  of Many   "
+split_name_3 = "  Colours   "

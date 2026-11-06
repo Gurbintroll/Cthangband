@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_7epug"]
+
+[resource]
+script = ExtResource("1_7epug")
+category = 7
+height = 22
+name = "Lesser vault (maze)"
+rating = 5
+text = "%%%%%%%%%%%%%%%%%%%%%%%.XXXXXXX............%%.XX,,.XXXXXXXXXXXXX.%%.XXXX*...&........X.%%.X.,,XXXXXXXXXXXX*X.%%.X.XXX.....*......X.%%.X..XX.XXXXXXXXXX.X.%%.XX.X.&.XX.X.....*X.%%.XX.XXX...*X,XXXX.^.%%.X.XX,XXXX.XXXX,XXX.%%.X.XX.....*..&.*X,X.%%.X.,XXXXXXXXXXX.X,X.%%.XXXX....*..X,X.X,X.%%.X....XXX.X.X.X.X.X.%%.X.XXXX,X.X.&.X.X.X.%%.X.X...*X.XXXXX.X.X.%%.X.X,XX&X....&..X.X.%%.X.XXXX.XXXXXXXXX.X.%%.X.....*...X*X*X..X.%%.XX^XXXXXX..X*X,XXX.%%........XXXXXXXXXXX.%%%%%%%%%%%%%%%%%%%%%%%"
+width = 22

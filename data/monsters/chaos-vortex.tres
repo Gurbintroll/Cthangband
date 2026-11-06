@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kf08l"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_r11gq"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ipswy"]
+
+[sub_resource type="Resource" id="Resource_gr7mn"]
+script = ExtResource("1_kf08l")
+
+[sub_resource type="Resource" id="Resource_sra2b"]
+script = ExtResource("1_kf08l")
+
+[sub_resource type="Resource" id="Resource_f6y3c"]
+script = ExtResource("1_kf08l")
+
+[sub_resource type="Resource" id="Resource_nbkud"]
+script = ExtResource("1_kf08l")
+
+[sub_resource type="Resource" id="Resource_l7v7s"]
+script = ExtResource("2_r11gq")
+value = 853120
+
+[sub_resource type="Resource" id="Resource_rgof7"]
+script = ExtResource("2_r11gq")
+value = 137280
+
+[sub_resource type="Resource" id="Resource_g8h1v"]
+script = ExtResource("2_r11gq")
+value = 3489662976
+
+[sub_resource type="Resource" id="Resource_tw7b0"]
+script = ExtResource("2_r11gq")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_scj7s"]
+script = ExtResource("2_r11gq")
+
+[sub_resource type="Resource" id="Resource_u0a8d"]
+script = ExtResource("2_r11gq")
+
+[resource]
+script = ExtResource("3_ipswy")
+ac = 80
+attack = Array[ExtResource("1_kf08l")]([SubResource("Resource_gr7mn"), SubResource("Resource_sra2b"), SubResource("Resource_f6y3c"), SubResource("Resource_nbkud")])
+character = "v"
+colour = 26
+description = "Void, nothingness, spinning destructively."
+flags_1 = SubResource("Resource_l7v7s")
+flags_2 = SubResource("Resource_rgof7")
+flags_3 = SubResource("Resource_g8h1v")
+flags_4 = SubResource("Resource_tw7b0")
+flags_5 = SubResource("Resource_scj7s")
+flags_6 = SubResource("Resource_u0a8d")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 32
+hit_dice_sides = 20
+level = 55
+max_num = 100
+experience = 4000
+name = "Chaos vortex"
+notice_range = 100
+rarity = 1
+speed = 140
+split_name_1 = "            "
+split_name_2 = "   Chaos    "
+split_name_3 = "   vortex   "

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_aqgyg"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_yklf8"]
+
+[sub_resource type="Resource" id="Resource_uy5yk"]
+script = ExtResource("1_aqgyg")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_utw6m"]
+script = ExtResource("1_aqgyg")
+value = 1048576
+
+[sub_resource type="Resource" id="Resource_ftdtw"]
+script = ExtResource("1_aqgyg")
+
+[resource]
+script = ExtResource("2_yklf8")
+cost = 4500
+flags_1 = SubResource("Resource_uy5yk")
+flags_2 = SubResource("Resource_utw6m")
+flags_3 = SubResource("Resource_ftdtw")
+name = "of Poisoning"
+rating = 20
+slot = 24
+id = 63

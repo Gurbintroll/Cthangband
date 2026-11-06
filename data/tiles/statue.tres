@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_8beu1"]
+
+[resource]
+script = ExtResource("1_8beu1")
+alter_action = 1
+appear_as = "Statue"
+blocks_los = true
+character = ":"
+colour = 30
+description = "statue"
+dims_outside_los = true
+name = "Statue"
+yellow_in_torch_light = true

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_a6gqt"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_7l17u"]
+
+[sub_resource type="Resource" id="Resource_vmone"]
+script = ExtResource("1_a6gqt")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_f5xi7"]
+script = ExtResource("1_a6gqt")
+
+[sub_resource type="Resource" id="Resource_as8vl"]
+script = ExtResource("1_a6gqt")
+
+[resource]
+script = ExtResource("2_7l17u")
+cost = 25
+flags_1 = SubResource("Resource_vmone")
+flags_2 = SubResource("Resource_f5xi7")
+flags_3 = SubResource("Resource_as8vl")
+name = "of Hurt Animal"
+rating = 10
+slot = 23
+id = 88

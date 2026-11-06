@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ujddy"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_v6laa"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3wpy7"]
+
+[sub_resource type="Resource" id="Resource_sqq7c"]
+script = ExtResource("1_ujddy")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_b58up"]
+script = ExtResource("1_ujddy")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_iipic"]
+script = ExtResource("1_ujddy")
+
+[sub_resource type="Resource" id="Resource_q0t1i"]
+script = ExtResource("1_ujddy")
+
+[sub_resource type="Resource" id="Resource_biof1"]
+script = ExtResource("2_v6laa")
+value = 4202496
+
+[sub_resource type="Resource" id="Resource_q4yn4"]
+script = ExtResource("2_v6laa")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_gra51"]
+script = ExtResource("2_v6laa")
+
+[sub_resource type="Resource" id="Resource_xcovo"]
+script = ExtResource("2_v6laa")
+value = 16
+
+[sub_resource type="Resource" id="Resource_luitw"]
+script = ExtResource("2_v6laa")
+
+[sub_resource type="Resource" id="Resource_0for3"]
+script = ExtResource("2_v6laa")
+
+[resource]
+script = ExtResource("3_3wpy7")
+ac = 10
+attack = Array[ExtResource("1_ujddy")]([SubResource("Resource_sqq7c"), SubResource("Resource_b58up"), SubResource("Resource_iipic"), SubResource("Resource_q0t1i")])
+character = "h"
+colour = 8
+description = "Is it a man or an ape? Either way it doesn't seem too friendly. "
+flags_1 = SubResource("Resource_biof1")
+flags_2 = SubResource("Resource_q4yn4")
+flags_3 = SubResource("Resource_gra51")
+flags_4 = SubResource("Resource_xcovo")
+flags_5 = SubResource("Resource_luitw")
+flags_6 = SubResource("Resource_0for3")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 3
+hit_dice_sides = 5
+level = 5
+max_num = 100
+experience = 20
+name = "Wild man"
+notice_range = 10
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Wild    "
+split_name_3 = "    man     "

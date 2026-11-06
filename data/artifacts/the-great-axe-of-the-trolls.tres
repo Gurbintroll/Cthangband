@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dyebv"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_8lj6s"]
+
+[sub_resource type="Resource" id="Resource_ycubb"]
+script = ExtResource("1_dyebv")
+value = 2148925503
+
+[sub_resource type="Resource" id="Resource_6f5fl"]
+script = ExtResource("1_dyebv")
+value = 18432
+
+[sub_resource type="Resource" id="Resource_oly7p"]
+script = ExtResource("1_dyebv")
+value = 300959232
+
+[resource]
+script = ExtResource("2_8lj6s")
+flags_1 = SubResource("Resource_ycubb")
+flags_2 = SubResource("Resource_6f5fl")
+flags_3 = SubResource("Resource_oly7p")
+cost = 200000
+damage_dice = 4
+damage_dice_sides = 4
+item_category = 22
+item_sub_category = 25
+level = 30
+name = "of the *Trolls*"
+type_specific_value = 2
+rarity = 120
+to_ac = 8
+to_hit = 15
+to_damage = 18
+weight = 230
+id = 102

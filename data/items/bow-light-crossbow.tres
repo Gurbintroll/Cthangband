@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_gciib"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_kgs4e"]
+
+[sub_resource type="Resource" id="Resource_njfvp"]
+script = ExtResource("1_gciib")
+
+[sub_resource type="Resource" id="Resource_nmic0"]
+script = ExtResource("1_gciib")
+
+[sub_resource type="Resource" id="Resource_dqgys"]
+script = ExtResource("1_gciib")
+value = 1024
+
+[resource]
+script = ExtResource("2_kgs4e")
+chance = Array[int]([1, 0, 0, 0])
+character = "}"
+colour = 23
+cost = 140
+flags_1 = SubResource("Resource_njfvp")
+flags_2 = SubResource("Resource_nmic0")
+flags_3 = SubResource("Resource_dqgys")
+flavour_aware = true
+item_category = 19
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "& Light Crossbow~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 23
+weight = 110
+filename = "Bow:Light Crossbow"

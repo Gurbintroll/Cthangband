@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_widu1"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_uf1ph"]
+
+[sub_resource type="Resource" id="Resource_qf17j"]
+script = ExtResource("1_widu1")
+value = 1216808961
+
+[sub_resource type="Resource" id="Resource_jb4yj"]
+script = ExtResource("1_widu1")
+value = 3229615104
+
+[sub_resource type="Resource" id="Resource_y32m0"]
+script = ExtResource("1_widu1")
+value = 15738384
+
+[resource]
+script = ExtResource("2_uf1ph")
+flags_1 = SubResource("Resource_qf17j")
+flags_2 = SubResource("Resource_jb4yj")
+flags_3 = SubResource("Resource_y32m0")
+cost = 444444
+damage_dice = 7
+damage_dice_sides = 8
+item_category = 21
+item_sub_category = 20
+level = 80
+name = "*Deathwreaker*"
+type_specific_value = 6
+rarity = 38
+to_hit = 18
+to_damage = 18
+weight = 400
+id = 121

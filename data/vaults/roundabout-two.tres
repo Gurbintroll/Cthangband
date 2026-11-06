@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_upqi6"]
+
+[resource]
+script = ExtResource("1_upqi6")
+category = 8
+height = 25
+name = "Roundabout Two"
+rating = 25
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%#^X.^^+X@XX.+X^^^^^+.X...X8#@&*X*****X%%X^X.^XX@XX.XX^^^^^^X.X.X^XXX@.&+9....X%%X^X.XX&XX.XX^^^^^^^X.X.X^X8#@&*X99...X%%X^X.X^^X&.XXXXXXXXXX.X.X^XXXXXXXXXX++X%%X^X.X.*X&.X.......&..X.X^X........X^^X%%X^X&X.*X^^X.XXXXXXXXXX.X&X#XXXXXX.X^.X%%X^X.X..X^^X...@........X.X......X.X^^X%%X^X.X..X^^XXXXXXXXXXXXXX.XXXXXX.X.X.^X%%X^X.X..X^^X..,.....,....&X8#,*X.X.X^^X%%X^X&X,,X^^X^XXXXXXXXXXXXXX##,,X.X.X^.X%%X^+&X..+^^X^^^^^^^^^^^^^^^9...#.X.#^^X%%X^X&X,,X^^X^XXXXXXXXXXXXXX##,*X.X.X.^X%%X^X.X..X^^X..,.....,....&X8#,,X.X.X^^X%%X^X.X..X^^XXXXXXXXXXXXXX.XXXXXX.X.X^.X%%X^X.X..X^^X...@........X.X......X.X^^X%%X^X&X.*X^^X.XXXXXXXXXX.X&X#XXXXXX.X.^X%%X^X.X.*X&.X.......&..X.X^X........X^^X%%X^X.X^^X&.XXXXXXXXXX.X.X^XXXXXXXXXX++X%%X^X.XX&XX.XX^^^^^^^X.X.X^X8#@&*X99...X%%X^X.^XX@XX.XX^^^^^^X.X.X^XXX@.&+9....X%%#^X.^^+X@XX.+X^^^^^+.X...X8#@&*X*****X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 40

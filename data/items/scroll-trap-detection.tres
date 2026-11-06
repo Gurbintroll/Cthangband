@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_vufec"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_38qkg"]
+
+[sub_resource type="Resource" id="Resource_tlvm7"]
+script = ExtResource("1_vufec")
+
+[sub_resource type="Resource" id="Resource_m3vdr"]
+script = ExtResource("1_vufec")
+
+[sub_resource type="Resource" id="Resource_dc44w"]
+script = ExtResource("1_vufec")
+
+[resource]
+script = ExtResource("2_38qkg")
+chance = Array[int]([1, 1, 0, 0])
+character = "?"
+colour = 1
+cost = 35
+easy_know = true
+flags_1 = SubResource("Resource_tlvm7")
+flags_2 = SubResource("Resource_m3vdr")
+flags_3 = SubResource("Resource_dc44w")
+has_flavour = true
+item_category = 70
+level = 5
+locale = Array[int]([5, 10, 0, 0])
+name = "Trap Detection"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 28
+weight = 5
+filename = "Scroll:Trap Detection"

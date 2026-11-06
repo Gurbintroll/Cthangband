@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_jvmsm"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_hybpm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_n3xwg"]
+
+[sub_resource type="Resource" id="Resource_kn54u"]
+script = ExtResource("1_jvmsm")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_fb5in"]
+script = ExtResource("1_jvmsm")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_km5bu"]
+script = ExtResource("1_jvmsm")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_cd4g4"]
+script = ExtResource("1_jvmsm")
+damage_dice = 9
+damage_dice_sides = 15
+effect = 10
+method = 6
+
+[sub_resource type="Resource" id="Resource_weuse"]
+script = ExtResource("2_hybpm")
+value = 505415168
+
+[sub_resource type="Resource" id="Resource_csosv"]
+script = ExtResource("2_hybpm")
+value = 1216512
+
+[sub_resource type="Resource" id="Resource_tnucw"]
+script = ExtResource("2_hybpm")
+value = 3223454216
+
+[sub_resource type="Resource" id="Resource_cf2ha"]
+script = ExtResource("2_hybpm")
+value = 8405504
+
+[sub_resource type="Resource" id="Resource_y6pb8"]
+script = ExtResource("2_hybpm")
+value = 402653184
+
+[sub_resource type="Resource" id="Resource_oqc42"]
+script = ExtResource("2_hybpm")
+value = 671088640
+
+[resource]
+script = ExtResource("3_n3xwg")
+ac = 200
+attack = Array[ExtResource("1_jvmsm")]([SubResource("Resource_kn54u"), SubResource("Resource_fb5in"), SubResource("Resource_km5bu"), SubResource("Resource_cd4g4")])
+character = "D"
+colour = 5
+description = "The mightiest elemental dragon of air, it can destroy you with ease."
+flags_1 = SubResource("Resource_weuse")
+flags_2 = SubResource("Resource_csosv")
+flags_3 = SubResource("Resource_tnucw")
+flags_4 = SubResource("Resource_cf2ha")
+flags_5 = SubResource("Resource_y6pb8")
+flags_6 = SubResource("Resource_oqc42")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 60
+hit_dice_sides = 100
+level = 69
+max_num = 100
+experience = 31000
+name = "Sky Drake"
+notice_range = 40
+rarity = 4
+sleep = 255
+speed = 130
+split_name_1 = "            "
+split_name_2 = "    Sky     "
+split_name_3 = "   Drake    "

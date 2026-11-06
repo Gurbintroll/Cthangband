@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://drvq25touwaul"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_accju"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_g87nb"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_luhvh"]
+
+[sub_resource type="Resource" id="Resource_4mikf"]
+script = ExtResource("1_accju")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_x8p3c"]
+script = ExtResource("1_accju")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4h028"]
+script = ExtResource("1_accju")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_g6682"]
+script = ExtResource("1_accju")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_i7ccp"]
+script = ExtResource("2_g87nb")
+value = 287326725
+
+[sub_resource type="Resource" id="Resource_xa06f"]
+script = ExtResource("2_g87nb")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_ncsku"]
+script = ExtResource("2_g87nb")
+value = 65
+
+[sub_resource type="Resource" id="Resource_cmoo5"]
+script = ExtResource("2_g87nb")
+
+[sub_resource type="Resource" id="Resource_p1rh2"]
+script = ExtResource("2_g87nb")
+
+[sub_resource type="Resource" id="Resource_2awxt"]
+script = ExtResource("2_g87nb")
+
+[resource]
+script = ExtResource("3_luhvh")
+ac = 32
+attack = Array[ExtResource("1_accju")]([SubResource("Resource_4mikf"), SubResource("Resource_x8p3c"), SubResource("Resource_4h028"), SubResource("Resource_g6682")])
+character = "o"
+colour = 12
+description = "A captain of a regiment of weaker orcs, Lagduf keeps his troop in order with displays of excessive violence."
+flags_1 = SubResource("Resource_i7ccp")
+flags_2 = SubResource("Resource_xa06f")
+flags_3 = SubResource("Resource_ncsku")
+flags_4 = SubResource("Resource_cmoo5")
+flags_5 = SubResource("Resource_p1rh2")
+flags_6 = SubResource("Resource_2awxt")
+hit_dice = 19
+hit_dice_sides = 10
+level = 8
+max_num = 1
+experience = 80
+name = "Lagduf, the Snaga"
+notice_range = 20
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Lagduf   "

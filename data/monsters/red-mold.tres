@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_wimlu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_lyt5e"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ya0r0"]
+
+[sub_resource type="Resource" id="Resource_xm1dh"]
+script = ExtResource("1_wimlu")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 11
+method = 2
+
+[sub_resource type="Resource" id="Resource_vts0r"]
+script = ExtResource("1_wimlu")
+
+[sub_resource type="Resource" id="Resource_a1340"]
+script = ExtResource("1_wimlu")
+
+[sub_resource type="Resource" id="Resource_13rnp"]
+script = ExtResource("1_wimlu")
+
+[sub_resource type="Resource" id="Resource_inl86"]
+script = ExtResource("2_lyt5e")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_5mfgc"]
+script = ExtResource("2_lyt5e")
+value = 65
+
+[sub_resource type="Resource" id="Resource_k7t2f"]
+script = ExtResource("2_lyt5e")
+value = 3490971648
+
+[sub_resource type="Resource" id="Resource_voaop"]
+script = ExtResource("2_lyt5e")
+
+[sub_resource type="Resource" id="Resource_ybik8"]
+script = ExtResource("2_lyt5e")
+
+[sub_resource type="Resource" id="Resource_g8fke"]
+script = ExtResource("2_lyt5e")
+
+[resource]
+script = ExtResource("3_ya0r0")
+ac = 16
+attack = Array[ExtResource("1_wimlu")]([SubResource("Resource_xm1dh"), SubResource("Resource_vts0r"), SubResource("Resource_a1340"), SubResource("Resource_13rnp")])
+character = "m"
+colour = 27
+description = "It is a strange red growth on the dungeon floor; it seems to burn with flame."
+flags_1 = SubResource("Resource_inl86")
+flags_2 = SubResource("Resource_5mfgc")
+flags_3 = SubResource("Resource_k7t2f")
+flags_4 = SubResource("Resource_voaop")
+flags_5 = SubResource("Resource_ybik8")
+flags_6 = SubResource("Resource_g8fke")
+hit_dice = 17
+hit_dice_sides = 8
+level = 19
+max_num = 100
+experience = 64
+name = "Red mold"
+notice_range = 2
+rarity = 1
+sleep = 70
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Red     "
+split_name_3 = "    mold    "

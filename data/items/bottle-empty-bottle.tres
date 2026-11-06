@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_svduk"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_01xw7"]
+
+[sub_resource type="Resource" id="Resource_uo64q"]
+script = ExtResource("1_svduk")
+
+[sub_resource type="Resource" id="Resource_orxmk"]
+script = ExtResource("1_svduk")
+
+[sub_resource type="Resource" id="Resource_mylap"]
+script = ExtResource("1_svduk")
+
+[resource]
+script = ExtResource("2_01xw7")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 30
+cost = 1
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_uo64q")
+flags_2 = SubResource("Resource_orxmk")
+flags_3 = SubResource("Resource_mylap")
+flavour_aware = true
+item_category = 2
+locale = Array[int]([0, 0, 0, 0])
+name = "& Empty Bottle~"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+weight = 2
+filename = "Bottle:Empty Bottle"

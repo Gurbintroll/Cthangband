@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_n4mie"]
+
+[resource]
+script = ExtResource("1_n4mie")
+category = 8
+height = 15
+name = "Greater vault (chambers)"
+rating = 25
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&+.^..^..^..^..^..^..^..^..^..^..^..+&%%+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX+%%.X.&.^,X&^&^X****+^*^@^X.*.&..X..*.,X.%%^X.,.&^+^&^@X^^^^X@^*^*X....*^+.^...X^%%.X*..,.XXX+XXXX+XXXX+XXX.&.^..X..&,.X.%%^X..^.*X*..^&&@@*X,,,,,XXXX+XXX,....X^%%.XX+XXXXXXXXXXXXXX,*8*,X,,,,,,XXX+XXX.%%^X*&X.&,*.X,*&^*^X,,,,,X,,,,,,X....,X^%%.X&,+....*+,*&^*^XXXXXXXXXX+XXX.,...+.%%^X.,X.*.&.X,*&^*^+.,.&.^*.&^&^X.....X^%%.X^*X.,..,X,*&^*^X*.^*.,..&&&^X,..,.X.%%+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX+%%&+..^..^..^..^..^..^..^..^..^..^..^.+&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 40

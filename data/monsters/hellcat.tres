@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fyvi2"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_f7iic"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_em3x1"]
+
+[sub_resource type="Resource" id="Resource_gdbb7"]
+script = ExtResource("1_fyvi2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_asa7e"]
+script = ExtResource("1_fyvi2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_vp8ls"]
+script = ExtResource("1_fyvi2")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_otsae"]
+script = ExtResource("1_fyvi2")
+
+[sub_resource type="Resource" id="Resource_7mw0u"]
+script = ExtResource("2_f7iic")
+value = 270336
+
+[sub_resource type="Resource" id="Resource_af8vp"]
+script = ExtResource("2_f7iic")
+value = 128
+
+[sub_resource type="Resource" id="Resource_u1c5l"]
+script = ExtResource("2_f7iic")
+value = 262336
+
+[sub_resource type="Resource" id="Resource_thvys"]
+script = ExtResource("2_f7iic")
+
+[sub_resource type="Resource" id="Resource_vxcdw"]
+script = ExtResource("2_f7iic")
+
+[sub_resource type="Resource" id="Resource_0cwau"]
+script = ExtResource("2_f7iic")
+
+[resource]
+script = ExtResource("3_em3x1")
+ac = 30
+attack = Array[ExtResource("1_fyvi2")]([SubResource("Resource_gdbb7"), SubResource("Resource_asa7e"), SubResource("Resource_vp8ls"), SubResource("Resource_otsae")])
+character = "f"
+colour = 27
+description = "It is as large as a tiger, its yellow eyes are pupilless."
+flags_1 = SubResource("Resource_7mw0u")
+flags_2 = SubResource("Resource_af8vp")
+flags_3 = SubResource("Resource_u1c5l")
+flags_4 = SubResource("Resource_thvys")
+flags_5 = SubResource("Resource_vxcdw")
+flags_6 = SubResource("Resource_0cwau")
+hit_dice = 9
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 40
+name = "Hellcat"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Hellcat   "

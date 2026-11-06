@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ronwr"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qleay"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_p31ga"]
+
+[sub_resource type="Resource" id="Resource_ielbt"]
+script = ExtResource("1_ronwr")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 11
+method = 10
+
+[sub_resource type="Resource" id="Resource_tra3k"]
+script = ExtResource("1_ronwr")
+
+[sub_resource type="Resource" id="Resource_8cw45"]
+script = ExtResource("1_ronwr")
+
+[sub_resource type="Resource" id="Resource_pm6m2"]
+script = ExtResource("1_ronwr")
+
+[sub_resource type="Resource" id="Resource_xh2a2"]
+script = ExtResource("2_qleay")
+value = 787456
+
+[sub_resource type="Resource" id="Resource_gn3om"]
+script = ExtResource("2_qleay")
+value = 184384
+
+[sub_resource type="Resource" id="Resource_5iraq"]
+script = ExtResource("2_qleay")
+value = 3506702336
+
+[sub_resource type="Resource" id="Resource_c5b00"]
+script = ExtResource("2_qleay")
+value = 33554432
+
+[sub_resource type="Resource" id="Resource_300f4"]
+script = ExtResource("2_qleay")
+
+[sub_resource type="Resource" id="Resource_h6rqa"]
+script = ExtResource("2_qleay")
+
+[resource]
+script = ExtResource("3_p31ga")
+ac = 40
+attack = Array[ExtResource("1_ronwr")]([SubResource("Resource_ielbt"), SubResource("Resource_tra3k"), SubResource("Resource_8cw45"), SubResource("Resource_pm6m2")])
+character = "v"
+colour = 13
+description = "A whirlpool of intense flame, charring the stones at your feet."
+flags_1 = SubResource("Resource_xh2a2")
+flags_2 = SubResource("Resource_gn3om")
+flags_3 = SubResource("Resource_5iraq")
+flags_4 = SubResource("Resource_c5b00")
+flags_5 = SubResource("Resource_300f4")
+flags_6 = SubResource("Resource_h6rqa")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 32
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 800
+name = "Plasma vortex"
+notice_range = 100
+rarity = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Plasma   "
+split_name_3 = "   vortex   "

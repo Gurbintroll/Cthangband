@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_4n51k"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_r0vsa"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_saku0"]
+
+[sub_resource type="Resource" id="Resource_0gejn"]
+script = ExtResource("1_4n51k")
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_dkmrb"]
+script = ExtResource("1_4n51k")
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_fei8p"]
+script = ExtResource("1_4n51k")
+effect = 17
+method = 15
+
+[sub_resource type="Resource" id="Resource_r8bfg"]
+script = ExtResource("1_4n51k")
+
+[sub_resource type="Resource" id="Resource_2tqp5"]
+script = ExtResource("2_r0vsa")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_v7n0v"]
+script = ExtResource("2_r0vsa")
+value = 131168
+
+[sub_resource type="Resource" id="Resource_4mhfv"]
+script = ExtResource("2_r0vsa")
+value = 3493738560
+
+[sub_resource type="Resource" id="Resource_jkrbj"]
+script = ExtResource("2_r0vsa")
+value = 1
+
+[sub_resource type="Resource" id="Resource_87e8g"]
+script = ExtResource("2_r0vsa")
+value = 2684356096
+
+[sub_resource type="Resource" id="Resource_ojmsf"]
+script = ExtResource("2_r0vsa")
+value = 786432
+
+[resource]
+script = ExtResource("3_saku0")
+ac = 80
+attack = Array[ExtResource("1_4n51k")]([SubResource("Resource_0gejn"), SubResource("Resource_dkmrb"), SubResource("Resource_fei8p"), SubResource("Resource_r8bfg")])
+character = "g"
+colour = 23
+description = "A figure carved from stone, with three vulture faces. Their eyes glow a malevolent light..."
+flags_1 = SubResource("Resource_2tqp5")
+flags_2 = SubResource("Resource_v7n0v")
+flags_3 = SubResource("Resource_4mhfv")
+flags_4 = SubResource("Resource_jkrbj")
+flags_5 = SubResource("Resource_87e8g")
+flags_6 = SubResource("Resource_ojmsf")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 80
+hit_dice_sides = 20
+level = 25
+max_num = 100
+experience = 590
+name = "Silent watcher"
+notice_range = 42
+rarity = 5
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Silent   "
+split_name_3 = "  watcher   "

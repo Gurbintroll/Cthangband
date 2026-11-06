@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_xv4as"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0v8ru"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ytjrj"]
+
+[sub_resource type="Resource" id="Resource_gy2wh"]
+script = ExtResource("1_xv4as")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_0lvp6"]
+script = ExtResource("1_xv4as")
+
+[sub_resource type="Resource" id="Resource_x6k2w"]
+script = ExtResource("1_xv4as")
+
+[sub_resource type="Resource" id="Resource_erj0e"]
+script = ExtResource("1_xv4as")
+
+[sub_resource type="Resource" id="Resource_spsu2"]
+script = ExtResource("2_0v8ru")
+value = 525312
+
+[sub_resource type="Resource" id="Resource_w6dct"]
+script = ExtResource("2_0v8ru")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_leyj8"]
+script = ExtResource("2_0v8ru")
+value = 262272
+
+[sub_resource type="Resource" id="Resource_m1ly6"]
+script = ExtResource("2_0v8ru")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_5vt3k"]
+script = ExtResource("2_0v8ru")
+
+[sub_resource type="Resource" id="Resource_u3rjm"]
+script = ExtResource("2_0v8ru")
+
+[resource]
+script = ExtResource("3_ytjrj")
+ac = 28
+attack = Array[ExtResource("1_xv4as")]([SubResource("Resource_gy2wh"), SubResource("Resource_0lvp6"), SubResource("Resource_x6k2w"), SubResource("Resource_erj0e")])
+character = "b"
+colour = 13
+description = "It is a sharp-tailed bat, wreathed in fire."
+flags_1 = SubResource("Resource_spsu2")
+flags_2 = SubResource("Resource_w6dct")
+flags_3 = SubResource("Resource_leyj8")
+flags_4 = SubResource("Resource_m1ly6")
+flags_5 = SubResource("Resource_5vt3k")
+flags_6 = SubResource("Resource_u3rjm")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 3
+hit_dice_sides = 8
+level = 23
+max_num = 100
+experience = 60
+name = "Red dragon bat"
+notice_range = 12
+rarity = 1
+sleep = 50
+speed = 130
+split_name_1 = "    Red     "
+split_name_2 = "   dragon   "
+split_name_3 = "    bat     "

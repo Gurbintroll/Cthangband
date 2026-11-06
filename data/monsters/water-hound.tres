@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_l503s"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xc018"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_oi8v3"]
+
+[sub_resource type="Resource" id="Resource_20mm8"]
+script = ExtResource("1_l503s")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 9
+method = 6
+
+[sub_resource type="Resource" id="Resource_uxdlh"]
+script = ExtResource("1_l503s")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 9
+method = 6
+
+[sub_resource type="Resource" id="Resource_kncqo"]
+script = ExtResource("1_l503s")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_oidbg"]
+script = ExtResource("1_l503s")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_hmy60"]
+script = ExtResource("2_xc018")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_1nf6p"]
+script = ExtResource("2_xc018")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_5js1k"]
+script = ExtResource("2_xc018")
+value = 65664
+
+[sub_resource type="Resource" id="Resource_54q2n"]
+script = ExtResource("2_xc018")
+value = 256
+
+[sub_resource type="Resource" id="Resource_djb5k"]
+script = ExtResource("2_xc018")
+
+[sub_resource type="Resource" id="Resource_dvva7"]
+script = ExtResource("2_xc018")
+
+[resource]
+script = ExtResource("3_oi8v3")
+ac = 30
+attack = Array[ExtResource("1_l503s")]([SubResource("Resource_20mm8"), SubResource("Resource_uxdlh"), SubResource("Resource_kncqo"), SubResource("Resource_oidbg")])
+character = "Z"
+colour = 3
+description = "Liquid footprints follow this hound as it pads around the dungeon. An acrid smell of acid rises from the dog's pelt."
+flags_1 = SubResource("Resource_hmy60")
+flags_2 = SubResource("Resource_1nf6p")
+flags_3 = SubResource("Resource_5js1k")
+flags_4 = SubResource("Resource_54q2n")
+flags_5 = SubResource("Resource_djb5k")
+flags_6 = SubResource("Resource_dvva7")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 15
+hit_dice_sides = 8
+level = 20
+max_num = 100
+experience = 200
+name = "Water hound"
+notice_range = 30
+rarity = 2
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Water    "
+split_name_3 = "   hound    "

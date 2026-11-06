@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://fjylacwqacqa"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_8vm4m"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_qv0tf"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_eolux"]
+
+[sub_resource type="Resource" id="Resource_75wer"]
+script = ExtResource("1_8vm4m")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_nhssv"]
+script = ExtResource("1_8vm4m")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_wv4pa"]
+script = ExtResource("1_8vm4m")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_1gxnk"]
+script = ExtResource("1_8vm4m")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_yaeqd"]
+script = ExtResource("2_qv0tf")
+value = 824182277
+
+[sub_resource type="Resource" id="Resource_at5h8"]
+script = ExtResource("2_qv0tf")
+value = 200722
+
+[sub_resource type="Resource" id="Resource_46lvx"]
+script = ExtResource("2_qv0tf")
+value = 3224240192
+
+[sub_resource type="Resource" id="Resource_d5cp4"]
+script = ExtResource("2_qv0tf")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_ykwwi"]
+script = ExtResource("2_qv0tf")
+value = 2164278244
+
+[sub_resource type="Resource" id="Resource_j68jj"]
+script = ExtResource("2_qv0tf")
+value = 268443906
+
+[resource]
+script = ExtResource("3_eolux")
+ac = 100
+attack = Array[ExtResource("1_8vm4m")]([SubResource("Resource_75wer"), SubResource("Resource_nhssv"), SubResource("Resource_wv4pa"), SubResource("Resource_1gxnk")])
+character = "p"
+colour = 12
+description = "Klingsor, whose hopeless effort to join the Knights of the Grail was thwarted, turned to black magic and became a deadly necromancer."
+flags_1 = SubResource("Resource_yaeqd")
+flags_2 = SubResource("Resource_at5h8")
+flags_3 = SubResource("Resource_46lvx")
+flags_4 = SubResource("Resource_d5cp4")
+flags_5 = SubResource("Resource_ykwwi")
+flags_6 = SubResource("Resource_j68jj")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 70
+hit_dice_sides = 100
+level = 78
+max_num = 1
+experience = 40000
+name = "Klingsor, Evil Master of Magic"
+notice_range = 60
+rarity = 3
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Klingsor  "

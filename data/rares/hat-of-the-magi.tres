@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0753p"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_p825u"]
+
+[sub_resource type="Resource" id="Resource_6ax8k"]
+script = ExtResource("1_0753p")
+value = 2
+
+[sub_resource type="Resource" id="Resource_3ffys"]
+script = ExtResource("1_0753p")
+value = 458752
+
+[sub_resource type="Resource" id="Resource_7skdx"]
+script = ExtResource("1_0753p")
+value = 15728640
+
+[resource]
+script = ExtResource("2_p825u")
+cost = 7500
+flags_1 = SubResource("Resource_6ax8k")
+flags_2 = SubResource("Resource_3ffys")
+flags_3 = SubResource("Resource_7skdx")
+max_type_specifc_value = 3
+name = "of the Magi"
+rating = 15
+slot = 33
+id = 20

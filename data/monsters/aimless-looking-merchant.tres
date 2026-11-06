@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_nk8x3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gkyse"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_8evqv"]
+
+[sub_resource type="Resource" id="Resource_3y7gy"]
+script = ExtResource("1_nk8x3")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fl7qw"]
+script = ExtResource("1_nk8x3")
+
+[sub_resource type="Resource" id="Resource_thun0"]
+script = ExtResource("1_nk8x3")
+
+[sub_resource type="Resource" id="Resource_20xiv"]
+script = ExtResource("1_nk8x3")
+
+[sub_resource type="Resource" id="Resource_uic65"]
+script = ExtResource("2_gkyse")
+value = 5767172
+
+[sub_resource type="Resource" id="Resource_6sa5h"]
+script = ExtResource("2_gkyse")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_nvgt3"]
+script = ExtResource("2_gkyse")
+
+[sub_resource type="Resource" id="Resource_0x0ej"]
+script = ExtResource("2_gkyse")
+
+[sub_resource type="Resource" id="Resource_i45i4"]
+script = ExtResource("2_gkyse")
+
+[sub_resource type="Resource" id="Resource_8c7bl"]
+script = ExtResource("2_gkyse")
+
+[resource]
+script = ExtResource("3_8evqv")
+ac = 1
+attack = Array[ExtResource("1_nk8x3")]([SubResource("Resource_3y7gy"), SubResource("Resource_fl7qw"), SubResource("Resource_thun0"), SubResource("Resource_20xiv")])
+character = "t"
+colour = 24
+description = "The typical ponce around town, with purse jingling, and looking for more amulets of adornment to buy."
+flags_1 = SubResource("Resource_uic65")
+flags_2 = SubResource("Resource_6sa5h")
+flags_3 = SubResource("Resource_nvgt3")
+flags_4 = SubResource("Resource_0x0ej")
+flags_5 = SubResource("Resource_i45i4")
+flags_6 = SubResource("Resource_8c7bl")
+hit_dice = 3
+hit_dice_sides = 3
+max_num = 100
+name = "Aimless looking merchant"
+notice_range = 10
+rarity = 1
+sleep = 255
+speed = 110
+split_name_1 = "  Aimless   "
+split_name_2 = "  looking   "
+split_name_3 = "  merchant  "

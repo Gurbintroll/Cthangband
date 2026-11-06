@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://8k2dehpdxp8c"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_kv5tl"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_7cvsu"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_2s08e"]
+
+[sub_resource type="Resource" id="Resource_a0ldj"]
+script = ExtResource("1_kv5tl")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_2f5bs"]
+script = ExtResource("1_kv5tl")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_tmp6k"]
+script = ExtResource("1_kv5tl")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_pjeet"]
+script = ExtResource("1_kv5tl")
+
+[sub_resource type="Resource" id="Resource_pu72g"]
+script = ExtResource("2_7cvsu")
+value = 29361664
+
+[sub_resource type="Resource" id="Resource_sq0hp"]
+script = ExtResource("2_7cvsu")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_eerff"]
+script = ExtResource("2_7cvsu")
+value = 131144
+
+[sub_resource type="Resource" id="Resource_ycrl5"]
+script = ExtResource("2_7cvsu")
+value = 512
+
+[sub_resource type="Resource" id="Resource_6ycb2"]
+script = ExtResource("2_7cvsu")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_ow785"]
+script = ExtResource("2_7cvsu")
+
+[resource]
+script = ExtResource("3_2s08e")
+ac = 50
+attack = Array[ExtResource("1_kv5tl")]([SubResource("Resource_a0ldj"), SubResource("Resource_2f5bs"), SubResource("Resource_tmp6k"), SubResource("Resource_pjeet")])
+character = "d"
+colour = 3
+description = "It has a form that legends are made of. Its still-tender scales are a deep blue in hue. Sparks crackle along its length."
+flags_1 = SubResource("Resource_pu72g")
+flags_2 = SubResource("Resource_sq0hp")
+flags_3 = SubResource("Resource_eerff")
+flags_4 = SubResource("Resource_ycrl5")
+flags_5 = SubResource("Resource_6ycb2")
+flags_6 = SubResource("Resource_ow785")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 27
+hit_dice_sides = 10
+level = 29
+max_num = 100
+experience = 300
+name = "Young blue dragon"
+notice_range = 20
+rarity = 1
+sleep = 70
+speed = 110
+split_name_1 = "   Young    "
+split_name_2 = "    blue    "
+split_name_3 = "   dragon   "

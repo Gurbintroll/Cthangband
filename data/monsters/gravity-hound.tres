@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_aj76d"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dv8xh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rsxhj"]
+
+[sub_resource type="Resource" id="Resource_5lqio"]
+script = ExtResource("1_aj76d")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_j2mu3"]
+script = ExtResource("1_aj76d")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_swv0x"]
+script = ExtResource("1_aj76d")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_eguoy"]
+script = ExtResource("1_aj76d")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_nvvur"]
+script = ExtResource("2_dv8xh")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_qd6nf"]
+script = ExtResource("2_dv8xh")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_5dq6l"]
+script = ExtResource("2_dv8xh")
+value = 3221225600
+
+[sub_resource type="Resource" id="Resource_4h8o0"]
+script = ExtResource("2_dv8xh")
+value = 8388608
+
+[sub_resource type="Resource" id="Resource_v6g2k"]
+script = ExtResource("2_dv8xh")
+
+[sub_resource type="Resource" id="Resource_fvlty"]
+script = ExtResource("2_dv8xh")
+
+[resource]
+script = ExtResource("3_rsxhj")
+ac = 30
+attack = Array[ExtResource("1_aj76d")]([SubResource("Resource_5lqio"), SubResource("Resource_j2mu3"), SubResource("Resource_swv0x"), SubResource("Resource_eguoy")])
+character = "Z"
+colour = 29
+description = "Unfettered by the usual constraints of gravity, these unnatural creatures are walking on the walls and even the ceiling! The earth suddenly feels rather less solid as you see gravity warp all round the monsters."
+flags_1 = SubResource("Resource_nvvur")
+flags_2 = SubResource("Resource_qd6nf")
+flags_3 = SubResource("Resource_5dq6l")
+flags_4 = SubResource("Resource_4h8o0")
+flags_5 = SubResource("Resource_v6g2k")
+flags_6 = SubResource("Resource_fvlty")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 35
+hit_dice_sides = 10
+level = 35
+max_num = 100
+experience = 500
+name = "Gravity hound"
+notice_range = 30
+rarity = 2
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Gravity   "
+split_name_3 = "   hound    "

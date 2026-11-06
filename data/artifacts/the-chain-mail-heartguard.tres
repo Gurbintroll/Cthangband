@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_aae1e"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_377or"]
+
+[sub_resource type="Resource" id="Resource_djn2e"]
+script = ExtResource("1_aae1e")
+value = 33
+
+[sub_resource type="Resource" id="Resource_dmc5t"]
+script = ExtResource("1_aae1e")
+value = 134676480
+
+[sub_resource type="Resource" id="Resource_cdmdh"]
+script = ExtResource("1_aae1e")
+value = 15729152
+
+[resource]
+script = ExtResource("2_377or")
+flags_1 = SubResource("Resource_djn2e")
+flags_2 = SubResource("Resource_dmc5t")
+flags_3 = SubResource("Resource_cdmdh")
+ac = 14
+cost = 32000
+damage_dice = 1
+damage_dice_sides = 4
+item_category = 37
+item_sub_category = 4
+level = 20
+name = "*Heartguard*"
+type_specific_value = 2
+rarity = 3
+to_ac = 15
+to_hit = -2
+weight = 220
+id = 24

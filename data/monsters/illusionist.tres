@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_l4sbk"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_5skkp"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_if364"]
+
+[sub_resource type="Resource" id="Resource_g3agr"]
+script = ExtResource("1_l4sbk")
+damage_dice = 2
+damage_dice_sides = 2
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4jqw7"]
+script = ExtResource("1_l4sbk")
+
+[sub_resource type="Resource" id="Resource_pfyc7"]
+script = ExtResource("1_l4sbk")
+
+[sub_resource type="Resource" id="Resource_d6f81"]
+script = ExtResource("1_l4sbk")
+
+[sub_resource type="Resource" id="Resource_a2iar"]
+script = ExtResource("2_5skkp")
+value = 16778244
+
+[sub_resource type="Resource" id="Resource_eivlq"]
+script = ExtResource("2_5skkp")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_ktrvc"]
+script = ExtResource("2_5skkp")
+value = 64
+
+[sub_resource type="Resource" id="Resource_rkc2l"]
+script = ExtResource("2_5skkp")
+
+[sub_resource type="Resource" id="Resource_1w0iq"]
+script = ExtResource("2_5skkp")
+value = 4026531840
+
+[sub_resource type="Resource" id="Resource_wy6gu"]
+script = ExtResource("2_5skkp")
+value = 4145
+
+[resource]
+script = ExtResource("3_if364")
+ac = 10
+attack = Array[ExtResource("1_l4sbk")]([SubResource("Resource_g3agr"), SubResource("Resource_4jqw7"), SubResource("Resource_pfyc7"), SubResource("Resource_d6f81")])
+character = "p"
+colour = 25
+description = "A deceptive spell caster."
+flags_1 = SubResource("Resource_a2iar")
+flags_2 = SubResource("Resource_eivlq")
+flags_3 = SubResource("Resource_ktrvc")
+flags_4 = SubResource("Resource_rkc2l")
+flags_5 = SubResource("Resource_1w0iq")
+flags_6 = SubResource("Resource_wy6gu")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 12
+hit_dice_sides = 8
+level = 13
+max_num = 100
+experience = 50
+name = "Illusionist"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Illusionist "

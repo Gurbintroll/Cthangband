@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_w0vra"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wm5vq"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_o3ys6"]
+
+[sub_resource type="Resource" id="Resource_8frnr"]
+script = ExtResource("1_w0vra")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 15
+method = 1
+
+[sub_resource type="Resource" id="Resource_wr7k5"]
+script = ExtResource("1_w0vra")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 15
+method = 1
+
+[sub_resource type="Resource" id="Resource_mjyo3"]
+script = ExtResource("1_w0vra")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_agt7t"]
+script = ExtResource("1_w0vra")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_cvi41"]
+script = ExtResource("2_wm5vq")
+value = 304087556
+
+[sub_resource type="Resource" id="Resource_y06it"]
+script = ExtResource("2_wm5vq")
+value = 1245218
+
+[sub_resource type="Resource" id="Resource_hislc"]
+script = ExtResource("2_wm5vq")
+value = 3229093984
+
+[sub_resource type="Resource" id="Resource_5bbqx"]
+script = ExtResource("2_wm5vq")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_v8kfo"]
+script = ExtResource("2_wm5vq")
+value = 2281701888
+
+[sub_resource type="Resource" id="Resource_e6g5d"]
+script = ExtResource("2_wm5vq")
+
+[resource]
+script = ExtResource("3_o3ys6")
+ac = 60
+attack = Array[ExtResource("1_w0vra")]([SubResource("Resource_8frnr"), SubResource("Resource_wr7k5"), SubResource("Resource_mjyo3"), SubResource("Resource_agt7t")])
+character = "W"
+colour = 2
+description = "A tall black cloaked Ringwraith, radiating an aura of fear."
+flags_1 = SubResource("Resource_cvi41")
+flags_2 = SubResource("Resource_y06it")
+flags_3 = SubResource("Resource_hislc")
+flags_4 = SubResource("Resource_5bbqx")
+flags_5 = SubResource("Resource_v8kfo")
+flags_6 = SubResource("Resource_e6g5d")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 50
+hit_dice_sides = 40
+level = 45
+max_num = 100
+experience = 9500
+name = "Nazgul"
+notice_range = 90
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Nazgul   "

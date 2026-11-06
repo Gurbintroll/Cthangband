@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vxvnv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kk28t"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_d15lh"]
+
+[sub_resource type="Resource" id="Resource_bqslp"]
+script = ExtResource("1_vxvnv")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_q6veu"]
+script = ExtResource("1_vxvnv")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_1hheg"]
+script = ExtResource("1_vxvnv")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 7
+
+[sub_resource type="Resource" id="Resource_fjnkw"]
+script = ExtResource("1_vxvnv")
+
+[sub_resource type="Resource" id="Resource_wudj7"]
+script = ExtResource("2_kk28t")
+
+[sub_resource type="Resource" id="Resource_ma3lh"]
+script = ExtResource("2_kk28t")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_tts0i"]
+script = ExtResource("2_kk28t")
+value = 128
+
+[sub_resource type="Resource" id="Resource_qpjki"]
+script = ExtResource("2_kk28t")
+
+[sub_resource type="Resource" id="Resource_w7ioa"]
+script = ExtResource("2_kk28t")
+
+[sub_resource type="Resource" id="Resource_5a3ox"]
+script = ExtResource("2_kk28t")
+
+[resource]
+script = ExtResource("3_d15lh")
+ac = 30
+attack = Array[ExtResource("1_vxvnv")]([SubResource("Resource_bqslp"), SubResource("Resource_q6veu"), SubResource("Resource_1hheg"), SubResource("Resource_fjnkw")])
+character = "c"
+colour = 10
+description = "It is a vast armoured centipede with massive mandibles and a spiked tail."
+flags_1 = SubResource("Resource_wudj7")
+flags_2 = SubResource("Resource_ma3lh")
+flags_3 = SubResource("Resource_tts0i")
+flags_4 = SubResource("Resource_qpjki")
+flags_5 = SubResource("Resource_w7ioa")
+flags_6 = SubResource("Resource_5a3ox")
+hit_dice = 13
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 40
+name = "Frumious bandersnatch"
+notice_range = 12
+rarity = 2
+sleep = 30
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Frumious  "
+split_name_3 = "bandersnatch"

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_t5e0l"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_nsoe1"]
+
+[sub_resource type="Resource" id="Resource_5my8s"]
+script = ExtResource("1_t5e0l")
+
+[sub_resource type="Resource" id="Resource_m87m7"]
+script = ExtResource("1_t5e0l")
+
+[sub_resource type="Resource" id="Resource_sfajt"]
+script = ExtResource("1_t5e0l")
+value = 15728640
+
+[resource]
+script = ExtResource("2_nsoe1")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 22
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_5my8s")
+flags_2 = SubResource("Resource_m87m7")
+flags_3 = SubResource("Resource_sfajt")
+flavour_aware = true
+item_category = 92
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "[Revelations of Glaaki]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 2
+weight = 30
+filename = "NatureBook:[Revelations of Glaaki]"

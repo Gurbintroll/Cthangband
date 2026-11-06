@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_eqnlv"]
+
+[resource]
+script = ExtResource("1_eqnlv")
+alter_action = 5
+appear_as = "LockedDoor0"
+blocks_los = true
+category = 5
+character = "+"
+colour = 6
+description = "jammed door"
+dims_outside_los = true
+is_closed_door = true
+map_priority = 17
+name = "JammedDoor1"

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_3pl1x"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_pvtri"]
+
+[sub_resource type="Resource" id="Resource_nju6w"]
+script = ExtResource("1_3pl1x")
+
+[sub_resource type="Resource" id="Resource_e8n3k"]
+script = ExtResource("1_3pl1x")
+
+[sub_resource type="Resource" id="Resource_rg8ab"]
+script = ExtResource("1_3pl1x")
+
+[resource]
+script = ExtResource("2_pvtri")
+chance = Array[int]([1, 0, 0, 0])
+character = "-"
+colour = 21
+cost = 1500
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_nju6w")
+flags_2 = SubResource("Resource_e8n3k")
+flags_3 = SubResource("Resource_rg8ab")
+has_flavour = true
+item_category = 66
+level = 30
+locale = Array[int]([30, 0, 0, 0])
+name = "Sleep Monster"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 16
+weight = 15
+filename = "Rod:Sleep Monster"

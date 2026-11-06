@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xtrug"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_npbeg"]
+
+[sub_resource type="Resource" id="Resource_oqur5"]
+script = ExtResource("1_xtrug")
+value = 512
+
+[sub_resource type="Resource" id="Resource_n85d2"]
+script = ExtResource("1_xtrug")
+value = 16777216
+
+[sub_resource type="Resource" id="Resource_7k3ks"]
+script = ExtResource("1_xtrug")
+value = 16384
+
+[resource]
+script = ExtResource("2_npbeg")
+cost = 1000
+flags_1 = SubResource("Resource_oqur5")
+flags_2 = SubResource("Resource_n85d2")
+flags_3 = SubResource("Resource_7k3ks")
+max_type_specifc_value = 5
+name = "of Seeing"
+rating = 8
+slot = 33
+id = 22

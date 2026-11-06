@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_pa35l"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ra5sv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rgo77"]
+
+[sub_resource type="Resource" id="Resource_fp0bu"]
+script = ExtResource("1_pa35l")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_v2bml"]
+script = ExtResource("1_pa35l")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_5jf7j"]
+script = ExtResource("1_pa35l")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_s7bwo"]
+script = ExtResource("1_pa35l")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_oh7rm"]
+script = ExtResource("2_ra5sv")
+value = 1536
+
+[sub_resource type="Resource" id="Resource_yuvvk"]
+script = ExtResource("2_ra5sv")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_xb6rw"]
+script = ExtResource("2_ra5sv")
+value = 64
+
+[sub_resource type="Resource" id="Resource_u0frd"]
+script = ExtResource("2_ra5sv")
+value = 128
+
+[sub_resource type="Resource" id="Resource_7c1r8"]
+script = ExtResource("2_ra5sv")
+
+[sub_resource type="Resource" id="Resource_rvfdp"]
+script = ExtResource("2_ra5sv")
+
+[resource]
+script = ExtResource("3_rgo77")
+ac = 15
+attack = Array[ExtResource("1_pa35l")]([SubResource("Resource_fp0bu"), SubResource("Resource_v2bml"), SubResource("Resource_5jf7j"), SubResource("Resource_s7bwo")])
+character = "H"
+colour = 24
+description = "It is a winged lion's body with a human torso and a tail covered in vicious spikes."
+flags_1 = SubResource("Resource_oh7rm")
+flags_2 = SubResource("Resource_yuvvk")
+flags_3 = SubResource("Resource_xb6rw")
+flags_4 = SubResource("Resource_u0frd")
+flags_5 = SubResource("Resource_7c1r8")
+flags_6 = SubResource("Resource_rvfdp")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 25
+hit_dice_sides = 10
+level = 30
+max_num = 100
+experience = 300
+name = "Manticore"
+notice_range = 12
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Manticore  "

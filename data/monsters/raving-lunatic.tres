@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0vx5r"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_taret"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_yue3f"]
+
+[sub_resource type="Resource" id="Resource_no5bs"]
+script = ExtResource("1_0vx5r")
+method = 13
+
+[sub_resource type="Resource" id="Resource_7pptx"]
+script = ExtResource("1_0vx5r")
+
+[sub_resource type="Resource" id="Resource_7owd2"]
+script = ExtResource("1_0vx5r")
+
+[sub_resource type="Resource" id="Resource_nd3ph"]
+script = ExtResource("1_0vx5r")
+
+[sub_resource type="Resource" id="Resource_g6o6a"]
+script = ExtResource("2_taret")
+value = 262148
+
+[sub_resource type="Resource" id="Resource_3bqj3"]
+script = ExtResource("2_taret")
+value = 4194304
+
+[sub_resource type="Resource" id="Resource_71w6n"]
+script = ExtResource("2_taret")
+
+[sub_resource type="Resource" id="Resource_q3u1o"]
+script = ExtResource("2_taret")
+
+[sub_resource type="Resource" id="Resource_wo5se"]
+script = ExtResource("2_taret")
+
+[sub_resource type="Resource" id="Resource_d4h6m"]
+script = ExtResource("2_taret")
+
+[resource]
+script = ExtResource("3_yue3f")
+ac = 1
+attack = Array[ExtResource("1_0vx5r")]([SubResource("Resource_no5bs"), SubResource("Resource_7pptx"), SubResource("Resource_7owd2"), SubResource("Resource_nd3ph")])
+character = "t"
+colour = 8
+description = "Drooling and comical, but then, what do you expect?"
+flags_1 = SubResource("Resource_g6o6a")
+flags_2 = SubResource("Resource_3bqj3")
+flags_3 = SubResource("Resource_71w6n")
+flags_4 = SubResource("Resource_q3u1o")
+flags_5 = SubResource("Resource_wo5se")
+flags_6 = SubResource("Resource_d4h6m")
+hit_dice = 4
+hit_dice_sides = 4
+max_num = 100
+name = "Raving lunatic"
+notice_range = 6
+rarity = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Raving   "
+split_name_3 = "  lunatic   "

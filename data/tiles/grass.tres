@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_ogb2w"]
+
+[resource]
+script = ExtResource("1_ogb2w")
+appear_as = "Grass"
+category = 1
+character = "·"
+colour = 8
+description = "open floor"
+dims_outside_los = true
+is_open_floor = true
+is_passable = true
+name = "Grass"
+run_past = true
+yellow_in_torch_light = true

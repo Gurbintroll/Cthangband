@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xch1u"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_hx7th"]
+
+[sub_resource type="Resource" id="Resource_ydby2"]
+script = ExtResource("1_xch1u")
+
+[sub_resource type="Resource" id="Resource_ig0u4"]
+script = ExtResource("1_xch1u")
+
+[sub_resource type="Resource" id="Resource_sva17"]
+script = ExtResource("1_xch1u")
+
+[resource]
+script = ExtResource("2_hx7th")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 8
+cost = 1000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_ydby2")
+flags_2 = SubResource("Resource_ig0u4")
+flags_3 = SubResource("Resource_sva17")
+flavour_aware = true
+item_category = 92
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "[Nature Mastery]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+weight = 30
+filename = "NatureBook:[Nature Mastery]"

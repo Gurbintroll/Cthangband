@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_sx2mk"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_thn0x"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3v357"]
+
+[sub_resource type="Resource" id="Resource_258nu"]
+script = ExtResource("1_sx2mk")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_gxclk"]
+script = ExtResource("1_sx2mk")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_2pktg"]
+script = ExtResource("1_sx2mk")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ikbsv"]
+script = ExtResource("1_sx2mk")
+
+[sub_resource type="Resource" id="Resource_ewq2j"]
+script = ExtResource("2_thn0x")
+value = 21233672
+
+[sub_resource type="Resource" id="Resource_yecov"]
+script = ExtResource("2_thn0x")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_kn3my"]
+script = ExtResource("2_thn0x")
+value = 64
+
+[sub_resource type="Resource" id="Resource_56ca6"]
+script = ExtResource("2_thn0x")
+
+[sub_resource type="Resource" id="Resource_a2t5t"]
+script = ExtResource("2_thn0x")
+
+[sub_resource type="Resource" id="Resource_de5ae"]
+script = ExtResource("2_thn0x")
+
+[resource]
+script = ExtResource("3_3v357")
+ac = 65
+attack = Array[ExtResource("1_sx2mk")]([SubResource("Resource_258nu"), SubResource("Resource_gxclk"), SubResource("Resource_2pktg"), SubResource("Resource_ikbsv")])
+character = "n"
+colour = 25
+description = "A giant snake-like figure with a woman's torso."
+flags_1 = SubResource("Resource_ewq2j")
+flags_2 = SubResource("Resource_yecov")
+flags_3 = SubResource("Resource_kn3my")
+flags_4 = SubResource("Resource_56ca6")
+flags_5 = SubResource("Resource_a2t5t")
+flags_6 = SubResource("Resource_de5ae")
+hit_dice = 24
+hit_dice_sides = 11
+level = 15
+max_num = 100
+experience = 80
+name = "Guardian naga"
+notice_range = 20
+rarity = 2
+sleep = 120
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Guardian  "
+split_name_3 = "    naga    "

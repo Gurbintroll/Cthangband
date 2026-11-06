@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_ptk0i"]
+
+[resource]
+script = ExtResource("1_ptk0i")
+category = 8
+height = 25
+name = "The I in the Storm"
+rating = 40
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXX#XXXXXXXXXXXXXXXXXXX%%X&&..^..#9X..^^^^^^^^^^^^^..X9#..^..&&X%%X&...#....X..XXXXXX^XXXXXX..X....#...&X%%X...&#..#.X9XX.@8XX^XX8@.XX9X.#..#&...X%%X..&9#....XXX...@X,,,X@...XXX....#9&..X%%X^####..#...XX..XX,.,XX..XX...#..####^X%%X........,#..XX^X,,.,,X^XX..#,........X%%X.......#.....^XX,...,XX^.....#.......X%%X........,#....X,,...,,X....#,........X%%X.......#.....XX.......XX.....#.......X%%X.#......,#..XX^.......^XX..#,......#.X%%X.9#....#....#^^...9...^^#....#....#9.X%%X.#......,#..XX^.......^XX..#,......#.X%%X.......#.....XX.......XX.....#.......X%%X........,#....X,,...,,X....#,........X%%X.......#.....^XX,...,XX^.....#.......X%%X........,#..XX^X,,.,,X^XX..#,........X%%X^####..#...XX..XX,.,XX..XX...#..####^X%%X..&9#....XXX...@X,,,X@...XXX....#9&..X%%X...&#..#.X9XX.@8XX^XX8@.XX9X.#..#&...X%%X&...#....X&&XXXXXX^XXXXXX&&X....#...&X%%X&&..^..#9X..^^^^^^^^^^^^^..X9#..^..&&X%%XXXXXXXXXXXXXXXXXXX#XXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 41

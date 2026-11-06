@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://ch8qf2cay4tgq"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_ynhao"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_26a0j"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_u1txq"]
+
+[sub_resource type="Resource" id="Resource_7jdmm"]
+script = ExtResource("1_ynhao")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 26
+method = 15
+
+[sub_resource type="Resource" id="Resource_hrsuf"]
+script = ExtResource("1_ynhao")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_v1jqr"]
+script = ExtResource("1_ynhao")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 4
+method = 15
+
+[sub_resource type="Resource" id="Resource_7hyhu"]
+script = ExtResource("1_ynhao")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 18
+method = 15
+
+[sub_resource type="Resource" id="Resource_2r1v6"]
+script = ExtResource("2_26a0j")
+value = 1541
+
+[sub_resource type="Resource" id="Resource_ppxox"]
+script = ExtResource("2_26a0j")
+value = 131074
+
+[sub_resource type="Resource" id="Resource_ykep3"]
+script = ExtResource("2_26a0j")
+value = 3224371264
+
+[sub_resource type="Resource" id="Resource_d011m"]
+script = ExtResource("2_26a0j")
+
+[sub_resource type="Resource" id="Resource_b1g15"]
+script = ExtResource("2_26a0j")
+value = 2014119680
+
+[sub_resource type="Resource" id="Resource_kxndy"]
+script = ExtResource("2_26a0j")
+value = 86016
+
+[resource]
+script = ExtResource("3_u1txq")
+ac = 80
+attack = Array[ExtResource("1_ynhao")]([SubResource("Resource_7jdmm"), SubResource("Resource_hrsuf"), SubResource("Resource_v1jqr"), SubResource("Resource_7hyhu")])
+character = "e"
+colour = 12
+description = "A disembodied eye, floating in the air. His gaze seems to shred your soul and his spells crush your will. He is ancient, his history steeped in forgotten evils, his atrocities numerous and sickening."
+flags_1 = SubResource("Resource_2r1v6")
+flags_2 = SubResource("Resource_ppxox")
+flags_3 = SubResource("Resource_ykep3")
+flags_4 = SubResource("Resource_d011m")
+flags_5 = SubResource("Resource_b1g15")
+flags_6 = SubResource("Resource_kxndy")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 65
+hit_dice_sides = 100
+level = 73
+max_num = 1
+experience = 16000
+name = "Omarax the Eye Tyrant"
+notice_range = 30
+rarity = 4
+sleep = 10
+speed = 130
+split_name_1 = "   Omarax   "
+split_name_2 = "  the Eye   "
+split_name_3 = "   Tyrant   "

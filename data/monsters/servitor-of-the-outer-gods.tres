@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_hrjl4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qh7fx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ev0ci"]
+
+[sub_resource type="Resource" id="Resource_osv7c"]
+script = ExtResource("1_hrjl4")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_47q8i"]
+script = ExtResource("1_hrjl4")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_f60lo"]
+script = ExtResource("1_hrjl4")
+
+[sub_resource type="Resource" id="Resource_dc3mk"]
+script = ExtResource("1_hrjl4")
+
+[sub_resource type="Resource" id="Resource_flae1"]
+script = ExtResource("2_qh7fx")
+value = 471860224
+
+[sub_resource type="Resource" id="Resource_jyhr0"]
+script = ExtResource("2_qh7fx")
+value = 5451786
+
+[sub_resource type="Resource" id="Resource_dw5du"]
+script = ExtResource("2_qh7fx")
+value = 406781952
+
+[sub_resource type="Resource" id="Resource_vjdid"]
+script = ExtResource("2_qh7fx")
+
+[sub_resource type="Resource" id="Resource_7h4vq"]
+script = ExtResource("2_qh7fx")
+value = 411082752
+
+[sub_resource type="Resource" id="Resource_e176m"]
+script = ExtResource("2_qh7fx")
+value = 83886336
+
+[resource]
+script = ExtResource("3_ev0ci")
+ac = 140
+attack = Array[ExtResource("1_hrjl4")]([SubResource("Resource_osv7c"), SubResource("Resource_47q8i"), SubResource("Resource_f60lo"), SubResource("Resource_dc3mk")])
+character = "A"
+colour = 8
+description = "'Toad - like creatures which seemed constantly to be changing shape and appearance, and from whom emanated, by some means I could not distinguish, a ghostly ululation, a piping.' August Derleth - 'The Lurker at The Threshold'."
+flags_1 = SubResource("Resource_flae1")
+flags_2 = SubResource("Resource_jyhr0")
+flags_3 = SubResource("Resource_dw5du")
+flags_4 = SubResource("Resource_vjdid")
+flags_5 = SubResource("Resource_7h4vq")
+flags_6 = SubResource("Resource_e176m")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 100
+hit_dice_sides = 35
+level = 41
+max_num = 100
+experience = 15000
+name = "Servitor of the outer gods"
+notice_range = 30
+rarity = 6
+sleep = 255
+speed = 130
+split_name_1 = "Servitor of "
+split_name_2 = " the outer  "
+split_name_3 = "    gods    "

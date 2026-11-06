@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_f7p5s"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_67e7k"]
+
+[sub_resource type="Resource" id="Resource_34vkh"]
+script = ExtResource("1_f7p5s")
+
+[sub_resource type="Resource" id="Resource_o5sb7"]
+script = ExtResource("1_f7p5s")
+
+[sub_resource type="Resource" id="Resource_36nwt"]
+script = ExtResource("1_f7p5s")
+
+[resource]
+script = ExtResource("2_67e7k")
+chance = Array[int]([16, 0, 0, 0])
+character = "-"
+colour = 6
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_34vkh")
+flags_2 = SubResource("Resource_o5sb7")
+flags_3 = SubResource("Resource_36nwt")
+has_flavour = true
+item_category = 66
+level = 80
+locale = Array[int]([80, 0, 0, 0])
+name = "Restoration"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 10
+weight = 15
+filename = "Rod:Restoration"

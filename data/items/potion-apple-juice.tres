@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_lon0i"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_8b4ty"]
+
+[sub_resource type="Resource" id="Resource_y7wn5"]
+script = ExtResource("1_lon0i")
+
+[sub_resource type="Resource" id="Resource_cta83"]
+script = ExtResource("1_lon0i")
+
+[sub_resource type="Resource" id="Resource_fjos4"]
+script = ExtResource("1_lon0i")
+
+[resource]
+script = ExtResource("2_8b4ty")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 6
+cost = 1
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_y7wn5")
+flags_2 = SubResource("Resource_cta83")
+flags_3 = SubResource("Resource_fjos4")
+has_flavour = true
+item_category = 75
+locale = Array[int]([0, 0, 0, 0])
+name = "Apple Juice"
+type_specific_value = 250
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+weight = 4
+filename = "Potion:Apple Juice"

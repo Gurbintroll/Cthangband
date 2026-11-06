@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_3sw2k"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_gugwn"]
+
+[sub_resource type="Resource" id="Resource_w3utn"]
+script = ExtResource("1_3sw2k")
+
+[sub_resource type="Resource" id="Resource_iqt0f"]
+script = ExtResource("1_3sw2k")
+
+[sub_resource type="Resource" id="Resource_o76xo"]
+script = ExtResource("1_3sw2k")
+value = 15728640
+
+[resource]
+script = ExtResource("2_gugwn")
+chance = Array[int]([3, 0, 0, 0])
+character = "?"
+colour = 25
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_w3utn")
+flags_2 = SubResource("Resource_iqt0f")
+flags_3 = SubResource("Resource_o76xo")
+flavour_aware = true
+item_category = 95
+level = 90
+locale = Array[int]([90, 0, 0, 0])
+name = "[Celeano Fragments]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 30
+filename = "TarotBook:[Celeano Fragments]"

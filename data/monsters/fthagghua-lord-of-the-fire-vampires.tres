@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dtgmuttn7a0o1"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_iubhs"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_qm0pu"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_qiuwu"]
+
+[sub_resource type="Resource" id="Resource_crkcb"]
+script = ExtResource("1_iubhs")
+damage_dice = 9
+damage_dice_sides = 12
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_hir71"]
+script = ExtResource("1_iubhs")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_vqx07"]
+script = ExtResource("1_iubhs")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 11
+method = 10
+
+[sub_resource type="Resource" id="Resource_eda4s"]
+script = ExtResource("1_iubhs")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 10
+
+[sub_resource type="Resource" id="Resource_bgrqj"]
+script = ExtResource("2_qm0pu")
+value = 471860737
+
+[sub_resource type="Resource" id="Resource_paqlr"]
+script = ExtResource("2_qm0pu")
+value = 5468170
+
+[sub_resource type="Resource" id="Resource_f8pta"]
+script = ExtResource("2_qm0pu")
+value = 272564480
+
+[sub_resource type="Resource" id="Resource_trynp"]
+script = ExtResource("2_qm0pu")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_q58uv"]
+script = ExtResource("2_qm0pu")
+value = 277086212
+
+[sub_resource type="Resource" id="Resource_jh001"]
+script = ExtResource("2_qm0pu")
+value = 256
+
+[resource]
+script = ExtResource("3_qiuwu")
+ac = 160
+attack = Array[ExtResource("1_iubhs")]([SubResource("Resource_crkcb"), SubResource("Resource_hir71"), SubResource("Resource_vqx07"), SubResource("Resource_eda4s")])
+character = "X"
+colour = 12
+description = "A fiery serpentine entity, streaking through the air like a comet. The heat emanating from this creature is almost unbearable."
+flags_1 = SubResource("Resource_bgrqj")
+flags_2 = SubResource("Resource_paqlr")
+flags_3 = SubResource("Resource_f8pta")
+flags_4 = SubResource("Resource_trynp")
+flags_5 = SubResource("Resource_q58uv")
+flags_6 = SubResource("Resource_jh001")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 55
+hit_dice_sides = 100
+level = 56
+max_num = 1
+experience = 25000
+name = "Fthagghua, Lord of the fire vampires"
+notice_range = 40
+rarity = 3
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Fthagghua  "

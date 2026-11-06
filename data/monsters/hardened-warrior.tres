@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_dyx3k"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_j7klr"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_s5s3e"]
+
+[sub_resource type="Resource" id="Resource_6q80i"]
+script = ExtResource("1_dyx3k")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_t88lx"]
+script = ExtResource("1_dyx3k")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_myx86"]
+script = ExtResource("1_dyx3k")
+
+[sub_resource type="Resource" id="Resource_65f17"]
+script = ExtResource("1_dyx3k")
+
+[sub_resource type="Resource" id="Resource_uqed5"]
+script = ExtResource("2_j7klr")
+value = 16777220
+
+[sub_resource type="Resource" id="Resource_3yg8d"]
+script = ExtResource("2_j7klr")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_6p18m"]
+script = ExtResource("2_j7klr")
+value = 64
+
+[sub_resource type="Resource" id="Resource_o3dkm"]
+script = ExtResource("2_j7klr")
+
+[sub_resource type="Resource" id="Resource_0epma"]
+script = ExtResource("2_j7klr")
+
+[sub_resource type="Resource" id="Resource_xslb4"]
+script = ExtResource("2_j7klr")
+
+[resource]
+script = ExtResource("3_s5s3e")
+ac = 40
+attack = Array[ExtResource("1_dyx3k")]([SubResource("Resource_6q80i"), SubResource("Resource_t88lx"), SubResource("Resource_myx86"), SubResource("Resource_65f17")])
+character = "p"
+colour = 17
+description = "A scarred warrior who moves with confidence."
+flags_1 = SubResource("Resource_uqed5")
+flags_2 = SubResource("Resource_3yg8d")
+flags_3 = SubResource("Resource_6p18m")
+flags_4 = SubResource("Resource_o3dkm")
+flags_5 = SubResource("Resource_0epma")
+flags_6 = SubResource("Resource_xslb4")
+hit_dice = 15
+hit_dice_sides = 11
+level = 23
+max_num = 100
+experience = 60
+name = "Hardened warrior"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Hardened  "
+split_name_3 = "  warrior   "

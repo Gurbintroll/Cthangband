@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_8gcr3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wjk5n"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rpi1l"]
+
+[sub_resource type="Resource" id="Resource_picn6"]
+script = ExtResource("1_8gcr3")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_u2bhg"]
+script = ExtResource("1_8gcr3")
+
+[sub_resource type="Resource" id="Resource_rnwxi"]
+script = ExtResource("1_8gcr3")
+
+[sub_resource type="Resource" id="Resource_x63sa"]
+script = ExtResource("1_8gcr3")
+
+[sub_resource type="Resource" id="Resource_dhlf0"]
+script = ExtResource("2_wjk5n")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_ks7yw"]
+script = ExtResource("2_wjk5n")
+value = 65
+
+[sub_resource type="Resource" id="Resource_hap0c"]
+script = ExtResource("2_wjk5n")
+value = 3490709504
+
+[sub_resource type="Resource" id="Resource_p0g7s"]
+script = ExtResource("2_wjk5n")
+
+[sub_resource type="Resource" id="Resource_sauxe"]
+script = ExtResource("2_wjk5n")
+
+[sub_resource type="Resource" id="Resource_taf4g"]
+script = ExtResource("2_wjk5n")
+
+[resource]
+script = ExtResource("3_rpi1l")
+ac = 12
+attack = Array[ExtResource("1_8gcr3")]([SubResource("Resource_picn6"), SubResource("Resource_u2bhg"), SubResource("Resource_rnwxi"), SubResource("Resource_x63sa")])
+character = "m"
+colour = 17
+description = "A strange brown growth on the dungeon floor."
+flags_1 = SubResource("Resource_dhlf0")
+flags_2 = SubResource("Resource_ks7yw")
+flags_3 = SubResource("Resource_hap0c")
+flags_4 = SubResource("Resource_p0g7s")
+flags_5 = SubResource("Resource_sauxe")
+flags_6 = SubResource("Resource_taf4g")
+hit_dice = 15
+hit_dice_sides = 8
+level = 6
+max_num = 100
+experience = 20
+name = "Brown mold"
+notice_range = 2
+rarity = 1
+sleep = 99
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Brown    "
+split_name_3 = "    mold    "

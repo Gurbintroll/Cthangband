@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_a1w2u"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_g2x4q"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_dvvqk"]
+
+[sub_resource type="Resource" id="Resource_dg5ep"]
+script = ExtResource("1_a1w2u")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vmet1"]
+script = ExtResource("1_a1w2u")
+
+[sub_resource type="Resource" id="Resource_jmrta"]
+script = ExtResource("1_a1w2u")
+
+[sub_resource type="Resource" id="Resource_6kh72"]
+script = ExtResource("1_a1w2u")
+
+[sub_resource type="Resource" id="Resource_1pjuh"]
+script = ExtResource("2_g2x4q")
+value = 4195328
+
+[sub_resource type="Resource" id="Resource_v12iw"]
+script = ExtResource("2_g2x4q")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_tdhwx"]
+script = ExtResource("2_g2x4q")
+value = 65728
+
+[sub_resource type="Resource" id="Resource_ly2n3"]
+script = ExtResource("2_g2x4q")
+
+[sub_resource type="Resource" id="Resource_1ihbn"]
+script = ExtResource("2_g2x4q")
+value = 1342177296
+
+[sub_resource type="Resource" id="Resource_nvwb1"]
+script = ExtResource("2_g2x4q")
+value = 262192
+
+[resource]
+script = ExtResource("3_dvvqk")
+ac = 24
+attack = Array[ExtResource("1_a1w2u")]([SubResource("Resource_dg5ep"), SubResource("Resource_vmet1"), SubResource("Resource_jmrta"), SubResource("Resource_6kh72")])
+character = "y"
+colour = 22
+description = "A small humanoid that radiates some power."
+flags_1 = SubResource("Resource_1pjuh")
+flags_2 = SubResource("Resource_v12iw")
+flags_3 = SubResource("Resource_tdhwx")
+flags_4 = SubResource("Resource_ly2n3")
+flags_5 = SubResource("Resource_1ihbn")
+flags_6 = SubResource("Resource_nvwb1")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 12
+hit_dice_sides = 9
+level = 12
+max_num = 100
+experience = 28
+name = "Master yeek"
+notice_range = 18
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Master   "
+split_name_3 = "    yeek    "

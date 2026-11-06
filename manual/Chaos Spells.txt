@@ -1,0 +1,107 @@
+﻿[center][font_size=48][color="brown"][b]Chaos Spells[/b][/color][/font_size][/center]
+[hr color="brown"]
+Spells are presented here ordered by book. This does not necessarily reflect how difficult each spell is to cast.
+
+Although within the first two books (Sign of Chaos and Chaos Mastery) the spells are ordered in increasing difficulty, each of the two rare books that can only be found in the dungeons (G'harne Fragments and The Book of Azathoth) contain both easy and difficult spells.
+
+The level at which each individual spell is unlocked and the power cost to cast each spell is not given here, since it will vary with each profession that has access to this realm.
+
+[font_size=24][color="brown"][b]Sign of Chaos[/b][/color][/font_size]
+[b]a) Magic Missile[/b]
+Creates a physical missile which strikes a nearby target.
+
+[b]b) Trap / Door Destruction[/b]
+Destroys any adjacent doors or traps.
+
+[b]c) Flash of Light[/b]
+Permanently lights the nearby area, possibly damaging creatures.
+
+[b]d) Touch of Confusion[/b]
+Creates an aura around your hands that will confuse the next creature you attack.
+
+[b]e) Power Burst[/b]
+Fires a ball of raw magical (not elemental) energy.
+
+[b]f) Fire Bolt[/b]
+Fires a bolt of flame that does fire damage.
+
+[b]g) Fist of Force[/b]
+Fires a bolt of pure force, that can disintegrate what it touches.
+
+[b]h) Teleport Self[/b]
+Teleports you to a random place on the level.
+
+[font_size=24][color="brown"][b]Chaos Mastery[/b][/color][/font_size]
+[b]a) Wonder[/b]
+Creates a random (but often useful) chaotic effect. The more powerful you are, the more useful the effect is likely to be.
+
+[b]b) Chaos Bolt[/b]
+Fires a bolt of raw chaos.
+
+[b]c) Sonic Boom[/b]
+Fires a ball of sound.
+
+[b]d) Doom Bolt[/b]
+Fires a stream of raw magic.
+
+[b]e) Fire Ball[/b]
+Fires a ball of flame, doing fire damage.
+
+[b]f) Teleport Other[/b]
+Teleports the targeted creature to somewhere random on the level.
+
+[b]g) Word of Destruction[/b]
+Causes the roof to collapse around you, much like the effects of an earthquake.
+
+[b]h) Invoke Chaos[/b]
+Fires a huge ball of raw chaos that polymorphs anything it doesn't kill.
+
+[font_size=24][color="brown"][b]G’harne Fragments[/b][/color][/font_size]
+[b]a) Polymorph Other[/b]
+Turns the target into a random creature.
+
+[b]b) Chain Lightning[/b]
+Fires bolts of lightning in eight directions, doing electricity damage.
+
+[b]c) Arcane Binding[/b]
+Recharges a wand, staff or rod.
+
+[b]d) Disintegrate[/b]
+Fires a powerful ball of disintegrating energy that destroys monsters, items, and walls alike.
+
+[b]e) Alter Reality[/b]
+Completely alters reality, placing you in a different (but similar difficulty) dungeon level.
+
+[b]f) Polymorph Self[/b]
+Invokes chaos into your own body, warping it in a random way.
+
+[b]g) Chaos Branding[/b]
+Invokes chaos into your weapon, changing it.
+
+[b]h) Summon Demon[/b]
+Summons a friendly demon to help you.
+
+[font_size=24][color="brown"][b]The Book of Azathoth[/b][/color][/font_size]
+[b]a) Beam of Gravity[/b]
+Fires a beam of elemental gravity.
+
+[b]b) Meteor Swarm[/b]
+Makes a number of meteors appear and explode in your vicinity.
+
+[b]c) Flame Strike[/b]
+Fires an intense ball of flame, doing massive amounts of fire damage.
+
+[b]d) Call Chaos[/b]
+Fires a random beam or ball of energy.
+
+[b]e) Shard Ball[/b]
+Fires a ball of sharp shards of metal and stone.
+
+[b]f) Power Storm[/b]
+Fires a ball of extreme magical energy.
+
+[b]g) Breathe Chaos[/b]
+Makes you breathe a huge gout of raw chaos.
+
+[b]h) Call the Void[/b]
+Invokes an extremely destructive series of explosions around yourself that might be very dangerous in an enclosed area.

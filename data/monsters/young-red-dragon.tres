@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_5lxa6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_86s2y"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_n5b5s"]
+
+[sub_resource type="Resource" id="Resource_3tkke"]
+script = ExtResource("1_5lxa6")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_o7jji"]
+script = ExtResource("1_5lxa6")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_25xmg"]
+script = ExtResource("1_5lxa6")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_1c50t"]
+script = ExtResource("1_5lxa6")
+
+[sub_resource type="Resource" id="Resource_chpbq"]
+script = ExtResource("2_86s2y")
+value = 29361664
+
+[sub_resource type="Resource" id="Resource_uxkql"]
+script = ExtResource("2_86s2y")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_2bqwl"]
+script = ExtResource("2_86s2y")
+value = 262216
+
+[sub_resource type="Resource" id="Resource_17atx"]
+script = ExtResource("2_86s2y")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_aps4h"]
+script = ExtResource("2_86s2y")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_p2gfb"]
+script = ExtResource("2_86s2y")
+
+[resource]
+script = ExtResource("3_n5b5s")
+ac = 63
+attack = Array[ExtResource("1_5lxa6")]([SubResource("Resource_3tkke"), SubResource("Resource_o7jji"), SubResource("Resource_25xmg"), SubResource("Resource_1c50t")])
+character = "d"
+colour = 27
+description = "It has a form that legends are made of. Its still-tender scales are a deepest red hue. Heat radiates from its form."
+flags_1 = SubResource("Resource_chpbq")
+flags_2 = SubResource("Resource_uxkql")
+flags_3 = SubResource("Resource_2bqwl")
+flags_4 = SubResource("Resource_17atx")
+flags_5 = SubResource("Resource_aps4h")
+flags_6 = SubResource("Resource_p2gfb")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 29
+hit_dice_sides = 10
+level = 36
+max_num = 100
+experience = 640
+name = "Young red dragon"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "   Young    "
+split_name_2 = "    red     "
+split_name_3 = "   dragon   "

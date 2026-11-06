@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_b441t"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_jm6xe"]
+
+[sub_resource type="Resource" id="Resource_4q8eq"]
+script = ExtResource("1_b441t")
+value = 4194304
+
+[sub_resource type="Resource" id="Resource_70jg2"]
+script = ExtResource("1_b441t")
+
+[sub_resource type="Resource" id="Resource_4brow"]
+script = ExtResource("1_b441t")
+
+[resource]
+script = ExtResource("2_jm6xe")
+cost = 2500
+flags_1 = SubResource("Resource_4q8eq")
+flags_2 = SubResource("Resource_70jg2")
+flags_3 = SubResource("Resource_4brow")
+name = "of Slay Giant"
+rating = 14
+slot = 24
+id = 73

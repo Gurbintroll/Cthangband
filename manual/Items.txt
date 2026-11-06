@@ -1,0 +1,248 @@
+﻿[center][font_size=48][color="brown"][b]Items[/b][/color][/font_size][/center]
+[hr color="brown"]
+While adventuring in Cthangband your character will find a large number of items, both mundane and magical. While some of these will be mere junk - or worse, actively cursed - others will be vital to your chances of winning the game. Most of these items, what they do, and how to use them, are described below.
+
+In the case of most magic items, the exact abilities of the item won't be apparent to you until you have identified it. There are various spells, scrolls, and staves that can identify items. However, you can use or wield unidentified items and you will get their full abilities and bonuses (or penalties!) even if you do not know what they are. Depending on the item, using it may be enough to partially or fully identify it. For example, if you use an unidentified wand and it shoots a magic missile then you will know that it is a wand of magic missiles, but you still won't know how many charges it contains.
+
+In the case of weapons and armour, merely carrying them around can give you a good idea of whether they are good or bad; particularly if you use them in combat. However, this can be dangerous because if the weapon or armour is cursed then you may be stuck and unable to take it off until you manage to remove the curse.
+
+[font_size=24][color="brown"][b]Weapons[/b][/color][/font_size]
+All weapons are described in a line that gives information about their combat capabilities. When an item has not yet been identified, you will only be shown the most basic information about it, for example:
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (2d5) [/color][/bgcolor][/font]
+
+This indicates that the weapon is a scimitar and that will do 2d5 damage (see [color="blue"][url="Combat"]Combat[/url][/color] for more details of how weapon damage works). It may or may not have other properties, but you won't know what they are.
+
+A missile weapon will have a multiplier instead of damage dice. This indicates by how much it multiplies the damage done by the ammunition that it uses:
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Long Bow (x2) [/color][/bgcolor][/font]
+
+Once you have identified the weapon, you will probably see something like the following:
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (2d5) (+0,+0) [/color][/bgcolor][/font]
+
+This is a normal non-magical weapon. The two numbers after the damage show that the weapon has a +0 bonus to attacks and a +0 bonus to damage. Again, the Combat page gives details of how these numbers work. The first number is the attack bonus and the second is the damage bonus.
+
+If the scimitar was magical, the most common form of magical weapon is simply one that has an attack bonus and/or a damage bonus.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+As well as these common magical weapons, there are rare weapons that have one or more additional abilities. Some examples are shown below.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Animal Bane (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of animal bane does double damage against animals, and also improves your intelligence and your rate of health recovery by the value shown after the to-hit and damage bonuses.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Burning (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of burning does triple damage against creatures that are not immune to fire, and also gives you fire resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Digging (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of digging improves the rate at which you can tunnel by the amount shown after the to-hit and damage bonuses, and does triple damage against creatures that are not immune to acid.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Dragon Bane (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of dragon bane does five times normal damage against dragons, and also improves your constitution by the amount shown after the to-hit and damage bonuses.It will also provide you with one or two random resistances
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Earthquakes (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of earthquakes has a small chance of causing an earthquake when it hits an opponent, and also improves the rate at which you can tunnel by the amount shown after to-hit and damage bonuses. Some weapons of earthquakes also give you extra attacks when you attack a monster
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Evil Bane (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+An evil bane weapon does double damage against evil creatures, increases your wisdom by the amount shown after the to-hit and damage bonuses, and may be used by priests without penalty even if it is an edged weapon.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Extra Attacks (2d5) (+3,+8) (+1 attack) [/color][/bgcolor][/font]
+
+A weapon of extra attacks gives you the stated number of extra attacks each time you attack a monster with it.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Freezing (2d5) (+3,+8) [/color][/bgcolor][/font]
+A weapon of freezing does triple damage against creatures that are not immune to cold, and also gives you cold resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Kadath (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of Kadath is very powerful. It does triple damage against orcs, trolls, and giants; increases your strength, dexterity, and constitution by the amount listed after its to-hit and damage bonuses; prevents you from being paralysed; and allows you to see invisible creatures. Some weapons of Kadath also prevent you from being frightened
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Leng (2d5) (+13,+18) [+4] [/color][/bgcolor][/font]
+
+A weapon of Leng allows you to see invisible creatures. It can have much higher to-hit and to-damage bonuses than most weapons, and can also provide you with a bonus to your armour profession. However, it is also heavily cursed and aggravates any nearby creatures. Some weapons of leng carry the Dread Curse of Azathoth.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Poisoning (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of poisoning does triple damage against creatures that are not immune to poison, and also gives you poison resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Sharpness (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of sharpness does 2-3x normal damage against any creature, and improves the rate at which you tunnel by the amount shown after the to-hit and damage bonuses.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Shocking (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of shocking does triple damage against creatures that are not immune to lightning, and also gives you lightning resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Animal (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay animal does double damage against animals.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Demon (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay demon does triple damage against demons.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Dragon (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay dragon does triple damage against dragons, and will give you a random resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Evil (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay evil does double damage against any evil creature.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Giant (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay giant does triple damage against giants.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Orc (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay orc does triple damage against orcs.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Troll (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay troll does triple damage against trolls.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slay Undead (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slay undead does triple damage against undead creatures.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Slaying (4d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of slaying does more damage than other weapons of its type, as will be reflected in its damage dice. Some weapons of slaying also do triple damage to creatures that are not immune to poison or do 2-3x damage against all creatures or even both.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Undead Bane (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of undead bane does five times normal damage against undead creatures, increases your wisdom by the amount shown after the to-hit and damage bonuses, gives you nether resistance, and allows you to see invisible creatures.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar of Vitriol (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A weapon of vitriol does triple damage against creatures that are not immune to acid, and also gives you acid resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (Blessed) (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A blessed weapon increases your wisdom by the amount shown after the to-hit and damage bonuses, and may be used by priests without penalty even if it is an edged weapon.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (Chaotic) (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A chaotic weapon gives you chaos resistance and another random resistance, and sometimes has a random effect when it strikes a target. It may be used by a cultist without penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (Defender) (2d5) (+3,+8) [+4] (+1 stealth) [/color][/bgcolor][/font]
+
+A defender provides you with acid resistance, cold resistance, fire resistance, and lightning resistance, one or more other random resistances, and increases your armour class by the amount shown after the to-hit and damage bonuses. It also protects you from paralysis and falling damage, lets you see invisible creatures, and provides a bonus to stealth.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (Elder Sign Inscribed) (2d5) (+3,+8) [+4] (+1) [/color][/bgcolor][/font]
+
+An elder sign inscribed weapon does triple damage against demons and undead, and double damage against other evil creatures. It enables you to see invisible creatures and prevents you from being frightened. It also increases your armour class by the amount shown after the to-hit and damage bonuses, and may be used by priests without penalty even if it is an edged weapon. Some elder sign inscribed weapons may also let you make extra attacks when you attack a monster.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (Planar Weapon) (2d5) (+3,+8) (+1 searching) [/color][/bgcolor][/font]
+
+A planar weapon does double damage against evil creatures, and provides you with a bonus to your searching. It also gives you nexus resistance and another random resistance, slows your digestion of food, speeds up your healt recovery, and prevents you from being paralysed. In addition it can be activiated to teleport you, and it will occasionally attempt to teleport you of its own volition - however, if you are paying attention you can choose not to be teleported by it. Some planar weapons also do triple damage against demons.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (Vampiric) (2d5) (+3,+8) [/color][/bgcolor][/font]
+
+A vampiric weapon can drain the life force of the creatures it hits, healing you in the process. It also makes you resist having your own life force drained.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Scimitar (Weapon of Law) (2d5) (+3,+8) (+1) [/color][/bgcolor][/font]
+
+A weapon of law does triple damage to demons and undead, and double damage to other evil creatures, increases your strength and constitution by the amount shown after the to-hit and damage bonuses, and allows you to see invisible creatures. Some weapons of law also increase your dexterity, and some prevent your life force from being drained or prevent you from being frightened
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Long Bow of Accuracy (x2) (+15,+5) [/color][/bgcolor][/font]
+
+A missile weapon of accuracy can have a much higher to-hit bonus than a normal magical weapon.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Long Bow of Extra Might (x4) (+15,+5) [/color][/bgcolor][/font]
+
+A missile weapon of extra might will have a higher damage multiplier than a normal magical weapon.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Long Bow of Extra Shots (x2) (+15,+5) (+1 attack) [/color][/bgcolor][/font]
+
+A missile weapon of extra shots gives you the stated number of extra attacks each time you attack a monster with it. Note that because this is a missile weapon, shots are still taken one at a time; they just take less time each.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] a Long Bow of Velocity (x2) (+15,+5) [/color][/bgcolor][/font]
+
+A missile weapon of velocity can have a much higher damage bonus than a normal magical weapon.
+
+In addition to the rare weapon types described above, you may occasionally find a legendary or artifact weapon. Legendary and artifact weapons are all one-of-a-kind and are individually named. Artifact weapons have fixed abilities, while legendary weapons have random abilities.
+
+Identifying an artifact or legendary weapon will give you its name, but in order to find out its exact powers and abilities you will need to either fully identify it or notice the effect that it has on your abilities.
+
+[font_size=24][color="brown"][b]Armour[/b][/color][/font_size]
+As with weapons, armour comes in five grades: normal, magical, rare, legendary, and artifact - and as with weapons, you are given limited information about the armour until you have identified it. When you first find a piece of armour, you are likely to see it described as follows:
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather [7] [/color][/bgcolor][/font]
+
+The number in square brackets shows the basic amount by which armour of this type increases your armour class. It may or may not have other properties but you will not know what they are.
+
+Once you have identified the armour, you will see something like:
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather (-1) [7,+0] [/color][/bgcolor][/font]
+
+The '+0' here after the 7 shows that this is mundane non-magical armour that doesn't provide any additional armour class bonus on top of its normal value, and the -1 in parentheses before the armour class code shows that this armour will give you a -1 to-hit penalty because of its bulk and weight.
+
+Simple magic armour will have a bonus to armour class, but will not change the to-hit penalty:
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather (-1) [7,+5] [/color][/bgcolor][/font]
+
+As with weapons, there are a large variety of different types of rare armour that have other bonuses or abilities besides a simple armour class bonus. Many of these are described below. Unlike weapons, which mostly share the same group of rare types, there are different types of rare armour for each armour slot.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather of Permanence (-1) [7,+5] [/color][/bgcolor][/font]
+
+Armour of permanence sustains all your ability scores so they cannot be reduced, and also protects you from having your life force drained. It also provides you with resistance to acid, cold, fire, and lightning.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather of Resist Acid (-1) [7,+5] [/color][/bgcolor][/font]
+
+Armour of resist acid provides you with acid resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather of Resist Cold (-1) [7,+5] [/color][/bgcolor][/font]
+
+Armour of resist cold provides you with cold resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather of Resist Fire (-1) [7,+5] [/color][/bgcolor][/font]
+
+Armour of resist fire provides you with fire resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather of Resist Lightning (-1) [7,+5] [/color][/bgcolor][/font]
+
+Armour of resist lightning provides you with lightning resistance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather of Resistance (-1) [7,+5] [/color][/bgcolor][/font]
+
+Armour of resistance provides you with acid resistance, cold resistance, fire resistance, and lightning resistance. 
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Hard Studded Leather of Yith (-1) [7,+5] (+1 stealth) [/color][/bgcolor][/font]
+
+Armour of Yith provides you with acid resistance, cold resistance, fire resistance, and lightning resistance. It also improves your stealth by the amount shown.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] A pair of Soft Leather Boots (Winged) [2,+5] [/color][/bgcolor][/font]
+
+Winged boots prevent you from taking falling damage when you fall through a trap door or down a pit.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] A pair of Soft Leather Boots of Annoyance [2,+5] (+6) [/color][/bgcolor][/font]
+
+Boots of annoyance increase your speed by the value listed after the armour class bonus, but they also aggravate nearby monsters.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] A pair of Soft Leather Boots of Free Action [2,+5] [/color][/bgcolor][/font]
+
+Boots of free action prevent you from being paralysed.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] A pair of Soft Leather Boots of Noise [2,+5] [/color][/bgcolor][/font]
+
+Boots of noise aggravate nearby monsters.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] A pair of Soft Leather Boots of Slowness [2,+5] (-4) [/color][/bgcolor][/font]
+
+Boots of slowness reduce your speed by the value listed after the armour class bonus.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] A pair of Soft Leather Boots of Speed [2,+5] (+6) [/color][/bgcolor][/font]
+
+Boots of speed increase your speed by the value listed after the armour class bonus.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] A pair of Soft Leather Boots of Stealth [2,+5] (+2 stealth) [/color][/bgcolor][/font]
+
+Boots of stealth increase your stealth by the amount listed.

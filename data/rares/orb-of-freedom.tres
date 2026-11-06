@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_y12of"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_esgdr"]
+
+[sub_resource type="Resource" id="Resource_i2my3"]
+script = ExtResource("1_y12of")
+
+[sub_resource type="Resource" id="Resource_42lp3"]
+script = ExtResource("1_y12of")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_7yopd"]
+script = ExtResource("1_y12of")
+value = 15728640
+
+[resource]
+script = ExtResource("2_esgdr")
+cost = 1000
+flags_1 = SubResource("Resource_i2my3")
+flags_2 = SubResource("Resource_42lp3")
+flags_3 = SubResource("Resource_7yopd")
+name = "of Freedom"
+id = 116

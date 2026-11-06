@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_82162"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_h0412"]
+
+[sub_resource type="Resource" id="Resource_5ik6v"]
+script = ExtResource("1_82162")
+
+[sub_resource type="Resource" id="Resource_nbi0u"]
+script = ExtResource("1_82162")
+
+[sub_resource type="Resource" id="Resource_omt6q"]
+script = ExtResource("1_82162")
+
+[resource]
+script = ExtResource("2_h0412")
+chance = Array[int]([1, 0, 0, 0])
+character = "-"
+colour = 30
+cost = 4500
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_5ik6v")
+flags_2 = SubResource("Resource_nbi0u")
+flags_3 = SubResource("Resource_omt6q")
+has_flavour = true
+item_category = 66
+level = 60
+locale = Array[int]([60, 0, 0, 0])
+name = "Cold Balls"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 27
+weight = 15
+filename = "Rod:Cold Balls"

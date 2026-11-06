@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_uaav5"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_d7bkj"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4pec0"]
+
+[sub_resource type="Resource" id="Resource_h3v2s"]
+script = ExtResource("1_uaav5")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_0sxp2"]
+script = ExtResource("1_uaav5")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ux5qj"]
+script = ExtResource("1_uaav5")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_26y0t"]
+script = ExtResource("1_uaav5")
+
+[sub_resource type="Resource" id="Resource_bjdtf"]
+script = ExtResource("2_d7bkj")
+
+[sub_resource type="Resource" id="Resource_cmpfa"]
+script = ExtResource("2_d7bkj")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_1wqpy"]
+script = ExtResource("2_d7bkj")
+value = 524416
+
+[sub_resource type="Resource" id="Resource_j1aae"]
+script = ExtResource("2_d7bkj")
+
+[sub_resource type="Resource" id="Resource_ch27u"]
+script = ExtResource("2_d7bkj")
+
+[sub_resource type="Resource" id="Resource_1k2lj"]
+script = ExtResource("2_d7bkj")
+
+[resource]
+script = ExtResource("3_4pec0")
+ac = 24
+attack = Array[ExtResource("1_uaav5")]([SubResource("Resource_h3v2s"), SubResource("Resource_0sxp2"), SubResource("Resource_ux5qj"), SubResource("Resource_26y0t")])
+character = "Y"
+colour = 30
+description = "A large white figure covered in shaggy fur."
+flags_1 = SubResource("Resource_bjdtf")
+flags_2 = SubResource("Resource_cmpfa")
+flags_3 = SubResource("Resource_1wqpy")
+flags_4 = SubResource("Resource_j1aae")
+flags_5 = SubResource("Resource_ch27u")
+flags_6 = SubResource("Resource_1k2lj")
+hit_dice = 11
+hit_dice_sides = 9
+level = 9
+max_num = 100
+experience = 30
+name = "Yeti"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Yeti    "

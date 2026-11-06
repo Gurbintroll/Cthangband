@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ih0l7"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xjrbh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_uadns"]
+
+[sub_resource type="Resource" id="Resource_8164j"]
+script = ExtResource("1_ih0l7")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_jafq8"]
+script = ExtResource("1_ih0l7")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tqsj1"]
+script = ExtResource("1_ih0l7")
+
+[sub_resource type="Resource" id="Resource_g4wa7"]
+script = ExtResource("1_ih0l7")
+
+[sub_resource type="Resource" id="Resource_mp0g2"]
+script = ExtResource("2_xjrbh")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_j5edl"]
+script = ExtResource("2_xjrbh")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_4sc6a"]
+script = ExtResource("2_xjrbh")
+value = 4161
+
+[sub_resource type="Resource" id="Resource_nnifp"]
+script = ExtResource("2_xjrbh")
+value = 16
+
+[sub_resource type="Resource" id="Resource_mxpp7"]
+script = ExtResource("2_xjrbh")
+
+[sub_resource type="Resource" id="Resource_6j8n6"]
+script = ExtResource("2_xjrbh")
+
+[resource]
+script = ExtResource("3_uadns")
+ac = 36
+attack = Array[ExtResource("1_ih0l7")]([SubResource("Resource_8164j"), SubResource("Resource_jafq8"), SubResource("Resource_tqsj1"), SubResource("Resource_g4wa7")])
+character = "o"
+colour = 2
+description = "He is a large orc with powerful arms and deep black skin."
+flags_1 = SubResource("Resource_mp0g2")
+flags_2 = SubResource("Resource_j5edl")
+flags_3 = SubResource("Resource_4sc6a")
+flags_4 = SubResource("Resource_nnifp")
+flags_5 = SubResource("Resource_mxpp7")
+flags_6 = SubResource("Resource_6j8n6")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 12
+hit_dice_sides = 10
+level = 13
+max_num = 100
+experience = 45
+name = "Black orc"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "    orc     "

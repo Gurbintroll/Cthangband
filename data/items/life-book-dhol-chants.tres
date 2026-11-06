@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_k5vib"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_c7up4"]
+
+[sub_resource type="Resource" id="Resource_xm6q6"]
+script = ExtResource("1_k5vib")
+
+[sub_resource type="Resource" id="Resource_hy1k5"]
+script = ExtResource("1_k5vib")
+
+[sub_resource type="Resource" id="Resource_yjw5f"]
+script = ExtResource("1_k5vib")
+value = 15728640
+
+[resource]
+script = ExtResource("2_c7up4")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 15
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_xm6q6")
+flags_2 = SubResource("Resource_hy1k5")
+flags_3 = SubResource("Resource_yjw5f")
+flavour_aware = true
+item_category = 90
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "[Dhol Chants]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 2
+weight = 30
+filename = "LifeBook:[Dhol Chants]"

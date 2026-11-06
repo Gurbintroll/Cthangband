@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_nq5rl"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_n5fgy"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_7s2w1"]
+
+[sub_resource type="Resource" id="Resource_cepyr"]
+script = ExtResource("1_nq5rl")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 11
+method = 10
+
+[sub_resource type="Resource" id="Resource_kgiwy"]
+script = ExtResource("1_nq5rl")
+
+[sub_resource type="Resource" id="Resource_lh356"]
+script = ExtResource("1_nq5rl")
+
+[sub_resource type="Resource" id="Resource_eipru"]
+script = ExtResource("1_nq5rl")
+
+[sub_resource type="Resource" id="Resource_rxgsy"]
+script = ExtResource("2_n5fgy")
+value = 525312
+
+[sub_resource type="Resource" id="Resource_2v2hr"]
+script = ExtResource("2_n5fgy")
+value = 151616
+
+[sub_resource type="Resource" id="Resource_wdoty"]
+script = ExtResource("2_n5fgy")
+value = 3489925120
+
+[sub_resource type="Resource" id="Resource_pib2w"]
+script = ExtResource("2_n5fgy")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_4e8j8"]
+script = ExtResource("2_n5fgy")
+
+[sub_resource type="Resource" id="Resource_us26y"]
+script = ExtResource("2_n5fgy")
+
+[resource]
+script = ExtResource("3_7s2w1")
+ac = 30
+attack = Array[ExtResource("1_nq5rl")]([SubResource("Resource_cepyr"), SubResource("Resource_kgiwy"), SubResource("Resource_lh356"), SubResource("Resource_eipru")])
+character = "v"
+colour = 27
+description = "A whirling maelstrom of fire."
+flags_1 = SubResource("Resource_rxgsy")
+flags_2 = SubResource("Resource_2v2hr")
+flags_3 = SubResource("Resource_wdoty")
+flags_4 = SubResource("Resource_pib2w")
+flags_5 = SubResource("Resource_4e8j8")
+flags_6 = SubResource("Resource_us26y")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 9
+hit_dice_sides = 9
+level = 21
+max_num = 100
+experience = 100
+name = "Fire vortex"
+notice_range = 100
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Fire    "
+split_name_3 = "   vortex   "

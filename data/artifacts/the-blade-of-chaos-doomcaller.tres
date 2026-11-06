@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mvmom"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_hsgvq"]
+
+[sub_resource type="Resource" id="Resource_nvlvc"]
+script = ExtResource("1_mvmom")
+value = 3409133568
+
+[sub_resource type="Resource" id="Resource_v7qno"]
+script = ExtResource("1_mvmom")
+value = 1074216960
+
+[sub_resource type="Resource" id="Resource_iq8dj"]
+script = ExtResource("1_mvmom")
+value = 15787008
+
+[resource]
+script = ExtResource("2_hsgvq")
+flags_1 = SubResource("Resource_nvlvc")
+flags_2 = SubResource("Resource_v7qno")
+flags_3 = SubResource("Resource_iq8dj")
+cost = 250000
+damage_dice = 6
+damage_dice_sides = 5
+item_category = 23
+item_sub_category = 30
+level = 70
+name = "*Doomcaller*"
+rarity = 25
+to_ac = -50
+to_hit = 18
+to_damage = 28
+weight = 180
+id = 91

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_e2rca"]
+
+[resource]
+script = ExtResource("1_e2rca")
+name = "BrownFlash"
+colour = 17
+alternate_colour = 6
+sequence = "********"

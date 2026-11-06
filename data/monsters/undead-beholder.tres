@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1sne3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gir3d"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_50uwi"]
+
+[sub_resource type="Resource" id="Resource_syhfn"]
+script = ExtResource("1_1sne3")
+effect = 26
+method = 15
+
+[sub_resource type="Resource" id="Resource_5wpmy"]
+script = ExtResource("1_1sne3")
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_h5v1c"]
+script = ExtResource("1_1sne3")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 18
+method = 15
+
+[sub_resource type="Resource" id="Resource_21o24"]
+script = ExtResource("1_1sne3")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 4
+method = 15
+
+[sub_resource type="Resource" id="Resource_3ecc5"]
+script = ExtResource("2_gir3d")
+value = 1536
+
+[sub_resource type="Resource" id="Resource_m2md4"]
+script = ExtResource("2_gir3d")
+value = 131104
+
+[sub_resource type="Resource" id="Resource_kuead"]
+script = ExtResource("2_gir3d")
+value = 3225354336
+
+[sub_resource type="Resource" id="Resource_b4tyx"]
+script = ExtResource("2_gir3d")
+
+[sub_resource type="Resource" id="Resource_d0g60"]
+script = ExtResource("2_gir3d")
+value = 1082166784
+
+[sub_resource type="Resource" id="Resource_hss8x"]
+script = ExtResource("2_gir3d")
+value = 67125248
+
+[resource]
+script = ExtResource("3_50uwi")
+ac = 100
+attack = Array[ExtResource("1_1sne3")]([SubResource("Resource_syhfn"), SubResource("Resource_5wpmy"), SubResource("Resource_h5v1c"), SubResource("Resource_21o24")])
+character = "e"
+colour = 23
+description = "A disembodied eye, floating in the air. Black nether storms rage around its bloodshot pupil and light seems to bend as it sucks its power from the very air around it. Your soul chills as it drains your vitality for its evil enchantments."
+flags_1 = SubResource("Resource_3ecc5")
+flags_2 = SubResource("Resource_m2md4")
+flags_3 = SubResource("Resource_kuead")
+flags_4 = SubResource("Resource_b4tyx")
+flags_5 = SubResource("Resource_d0g60")
+flags_6 = SubResource("Resource_hss8x")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 27
+hit_dice_sides = 100
+level = 42
+max_num = 100
+experience = 4000
+name = "Undead beholder"
+notice_range = 30
+rarity = 4
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Undead   "
+split_name_3 = "  beholder  "

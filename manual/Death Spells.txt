@@ -1,0 +1,107 @@
+﻿[center][font_size=48][color="brown"][b]Death Spells[/b][/color][/font_size][/center]
+[hr color="brown"]
+Spells are presented here ordered by book. This does not necessarily reflect how difficult each spell is to cast.
+
+Although within the first two books (Black Prayers and Black Mass) the spells are ordered in increasing difficulty, each of the two rare books that can only be found in the dungeons (Cultes Des Goules and The Necronomicon) contain both easy and difficult spells.
+
+The level at which each individual spell is unlocked and the power cost to cast each spell is not given here, since it will vary with each profession that has access to this realm.
+
+[font_size=24][color="brown"][b]Black Prayers[/b][/color][/font_size]
+[b]a) Detect Unlife[/b]
+Reveals the location of any nearby undead or demonic creatures.
+
+[b]b) Malediction[/b]
+Fires a bolt of hell fire that may also scare, confuse or stun creatures.
+
+[b]c) Detect Evil[/b]
+Reveals the location of any nearby evil creatures.
+
+[b]d) Stinking Cloud[/b]
+Fires a ball of poison gas.
+
+[b]e) Black Sleep[/b]
+Sends a nearby monster to sleep.
+
+[b]f) Resist Poison[/b]
+Gives you a temporary resistance to poison.
+
+[b]g) Horrify[/b]
+Scares and stuns a nearby monster.
+
+[b]h) Enslave Undead[/b]
+Makes an undead your friend.
+
+[font_size=24][color="brown"][b]Black Mass[/b][/color][/font_size]
+[b]a) Orb of Entropy[/b]
+Fires a life draining ball of energy.
+
+[b]b) Nether Bolt[/b]
+Fires a bolt of nether.
+
+[b]c) Terror[/b]
+Scares away all nearby monsters.
+
+[b]d) Vampiric Drain[/b]
+Drains the life from a nearby creature, both healing you and sating your hunger.
+
+[b]e) Poison Branding[/b]
+Permanently coats your weapon with poison.
+
+[b]f) Dispel Good[/b]
+Banishes good creatures.
+
+[b]g) Carnage[/b]
+Destroys all creatures of a chosen type on a level. Unique creatures are teleported off the level, rather than destroyed. You get no experience for monsters killed with Carnage.
+
+[b]h) Restore Life[/b]
+Restores any drained experience you have.
+
+[font_size=24][color="brown"][b]Cultes Des Goules[/b][/color][/font_size]
+[b]a) Berserk[/b]
+Sends you berserk giving you 30 extra hit points, +24 to hit and -10 to armour class.
+
+[b]b) Invoke Spirits[/b]
+Has a random (but usually beneficial) effect. The higher level you are, the more likely it is to be useful.
+
+[b]c) Dark Bolt[/b]
+Fires a bolt of darkness.
+
+[b]d) Battle Frenzy[/b]
+Sends you berserk and also hastes you for a short while.
+
+[b]e) Vampirism True[/b]
+Drains a large amount of life from a target and heals you by the amount drained.
+
+[b]f) Vampiric Branding[/b]
+Permanently turns your weapon into a life-draining vampiric blade.
+
+[b]g) Darkness Storm[/b]
+Fires a ball of darkness.
+
+[b]h) Mass Carnage[/b]
+Destroys all non-unique creatures on the level. You get no experience for monsters killed with Mass Carnage.
+
+[font_size=24][color="brown"][b]The Necronomicon[/b][/color][/font_size]
+[b]a) Death Ray[/b]
+Fires a ray that will kill almost any living creature.
+
+[b]b) Raise the Dead[/b]
+Creates undead servants to help you.
+
+[b]c) Esoteria[/b]
+Identifies (with varying accuracy) an item you are carrying.
+
+[b]d) Word of Death[/b]
+Kills or damages all nearby living creatures.
+
+[b]e) Evocation[/b]
+Banishes, teleports away, and scares all nearby living creatures.
+
+[b]f) Hellfire[/b]
+Fires a huge ball of hell fire.
+
+[b]g) Annihilation[/b]
+Destroys all non-unique creatures on the level, absorbing their essence as spell points. You get no experience for monsters killed with Annihilation.
+
+[b]h) Wraithform[/b]
+Temporarily makes you intangible so that you can walk through walls.

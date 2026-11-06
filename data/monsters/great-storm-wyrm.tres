@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kgy6c"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_pnnec"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_33vgf"]
+
+[sub_resource type="Resource" id="Resource_0f1dw"]
+script = ExtResource("1_kgy6c")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_pa0tu"]
+script = ExtResource("1_kgy6c")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_6v0df"]
+script = ExtResource("1_kgy6c")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_dm25j"]
+script = ExtResource("1_kgy6c")
+damage_dice = 5
+damage_dice_sides = 14
+effect = 10
+method = 6
+
+[sub_resource type="Resource" id="Resource_o8n2o"]
+script = ExtResource("2_pnnec")
+value = 471860736
+
+[sub_resource type="Resource" id="Resource_a7ths"]
+script = ExtResource("2_pnnec")
+value = 1216512
+
+[sub_resource type="Resource" id="Resource_hs63a"]
+script = ExtResource("2_pnnec")
+value = 3221356616
+
+[sub_resource type="Resource" id="Resource_1tbso"]
+script = ExtResource("2_pnnec")
+value = 512
+
+[sub_resource type="Resource" id="Resource_mhvse"]
+script = ExtResource("2_pnnec")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_mcdv6"]
+script = ExtResource("2_pnnec")
+
+[resource]
+script = ExtResource("3_33vgf")
+ac = 150
+attack = Array[ExtResource("1_kgy6c")]([SubResource("Resource_0f1dw"), SubResource("Resource_pa0tu"), SubResource("Resource_6v0df"), SubResource("Resource_dm25j")])
+character = "D"
+colour = 14
+description = "A vast dragon of power. Storms and lightning crash around its titanic form. Deep blue scales reflect the flashes and highlight the creature's great muscles. It regards you with contempt."
+flags_1 = SubResource("Resource_o8n2o")
+flags_2 = SubResource("Resource_a7ths")
+flags_3 = SubResource("Resource_hs63a")
+flags_4 = SubResource("Resource_1tbso")
+flags_5 = SubResource("Resource_mhvse")
+flags_6 = SubResource("Resource_mcdv6")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 30
+hit_dice_sides = 100
+level = 51
+max_num = 100
+experience = 17000
+name = "Great storm wyrm"
+notice_range = 30
+rarity = 2
+sleep = 80
+speed = 120
+split_name_1 = "   Great    "
+split_name_2 = "   storm    "
+split_name_3 = "    wyrm    "

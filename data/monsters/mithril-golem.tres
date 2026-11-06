@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_httrf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_5regq"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jh3ca"]
+
+[sub_resource type="Resource" id="Resource_ssgkl"]
+script = ExtResource("1_httrf")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fdf84"]
+script = ExtResource("1_httrf")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8x0en"]
+script = ExtResource("1_httrf")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8hbau"]
+script = ExtResource("1_httrf")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_21edt"]
+script = ExtResource("2_5regq")
+value = 34603008
+
+[sub_resource type="Resource" id="Resource_2x8as"]
+script = ExtResource("2_5regq")
+value = 131176
+
+[sub_resource type="Resource" id="Resource_n16xs"]
+script = ExtResource("2_5regq")
+value = 3491629056
+
+[sub_resource type="Resource" id="Resource_3j3hy"]
+script = ExtResource("2_5regq")
+
+[sub_resource type="Resource" id="Resource_i4y2c"]
+script = ExtResource("2_5regq")
+
+[sub_resource type="Resource" id="Resource_fdoq7"]
+script = ExtResource("2_5regq")
+
+[resource]
+script = ExtResource("3_jh3ca")
+ac = 100
+attack = Array[ExtResource("1_httrf")]([SubResource("Resource_ssgkl"), SubResource("Resource_fdf84"), SubResource("Resource_8x0en"), SubResource("Resource_8hbau")])
+character = "g"
+colour = 5
+description = "It is a massive statue of purest mithril. It looks expensive!"
+flags_1 = SubResource("Resource_21edt")
+flags_2 = SubResource("Resource_2x8as")
+flags_3 = SubResource("Resource_n16xs")
+flags_4 = SubResource("Resource_3j3hy")
+flags_5 = SubResource("Resource_i4y2c")
+flags_6 = SubResource("Resource_fdoq7")
+hit_dice = 80
+hit_dice_sides = 15
+level = 30
+max_num = 100
+experience = 500
+name = "Mithril golem"
+notice_range = 12
+rarity = 4
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Mithril   "
+split_name_3 = "   golem    "

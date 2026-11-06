@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_xxuys"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_6l2lx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_tj63l"]
+
+[sub_resource type="Resource" id="Resource_c86b6"]
+script = ExtResource("1_xxuys")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 17
+method = 5
+
+[sub_resource type="Resource" id="Resource_kupdp"]
+script = ExtResource("1_xxuys")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 25
+method = 6
+
+[sub_resource type="Resource" id="Resource_81igw"]
+script = ExtResource("1_xxuys")
+
+[sub_resource type="Resource" id="Resource_8q65k"]
+script = ExtResource("1_xxuys")
+
+[sub_resource type="Resource" id="Resource_cgwo7"]
+script = ExtResource("2_6l2lx")
+value = 35661312
+
+[sub_resource type="Resource" id="Resource_j8eqk"]
+script = ExtResource("2_6l2lx")
+value = 208896
+
+[sub_resource type="Resource" id="Resource_a041h"]
+script = ExtResource("2_6l2lx")
+value = 3221487696
+
+[sub_resource type="Resource" id="Resource_yxdcr"]
+script = ExtResource("2_6l2lx")
+
+[sub_resource type="Resource" id="Resource_8xd85"]
+script = ExtResource("2_6l2lx")
+value = 537133056
+
+[sub_resource type="Resource" id="Resource_l5kdf"]
+script = ExtResource("2_6l2lx")
+value = 33554432
+
+[resource]
+script = ExtResource("3_tj63l")
+ac = 40
+attack = Array[ExtResource("1_xxuys")]([SubResource("Resource_c86b6"), SubResource("Resource_kupdp"), SubResource("Resource_81igw"), SubResource("Resource_8q65k")])
+character = "B"
+colour = 2
+description = "Hybrid demon birds: 'not altogether crows, nor moles, nor buzzards, nor ants, nor decomposed human beings...'"
+flags_1 = SubResource("Resource_cgwo7")
+flags_2 = SubResource("Resource_j8eqk")
+flags_3 = SubResource("Resource_a041h")
+flags_4 = SubResource("Resource_yxdcr")
+flags_5 = SubResource("Resource_8xd85")
+flags_6 = SubResource("Resource_l5kdf")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 40
+hit_dice_sides = 10
+level = 41
+max_num = 100
+experience = 1500
+name = "Byakhee"
+notice_range = 20
+rarity = 3
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Byakhee   "

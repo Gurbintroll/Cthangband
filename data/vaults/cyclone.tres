@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_hx0uf"]
+
+[resource]
+script = ExtResource("1_hx0uf")
+category = 8
+height = 23
+name = "Cyclone"
+rating = 40
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%XXXX^^^^^^^^^XXX^^^^^^^^^XXX^^^#XXX8.X.&.X.&.X..*X+^.^.^.^.^.^..XX*^.^.^.^.^.^.^.^.^.^#8X%%XX***XXX...XXX...XXX...XXX...XXX^^X*.X^X^X^X^X^X.*XXXXXXXXXXXXX..XX^^XXXXXXXXXXXXXXXXXX#X%%X88XXX...XXX...XXX...XXX...XXX^^^,X*.X^X^X^X^X^X..*XX8@,,,,,,@XX,.XX^^..........@&.,**X.X%%XXXX@&@XXX@@@XXX&&&XXX&@&XXX^^^,..X*.X^X^X^X^X^X...@X@........@X,..X...........@&..,**X.X%%XX...XXX...XXX...XXX...XXX^^^,....X*.X^X^X^X^X^X...@X*..*9*..@XX^^XXXX*.......@&@..,**X.X%%X*.XXX...XXX...XXX...XXX^^^^....,,X*.&.X.&.X.&.X..*XX*.....,XXX.XXX@@XXX*....@&..@.,**X.X%%X*XX...XXX...XXX...XXX^^^,.^...XX+XXXXXXXXXXXXXX.*XX*....,,XXX.XXXXXX&&XXX*.@&....@8**X.X%%X^^^^XXX^^^^^^^^^XXX^^^,..*^.&XX.*X&^^*****^^#X.*XX*....,XXX&&XXX@@X#X*..XX@&.....8@**X.X%%XXXXXXXXXXXXXXXXXX^^^,...**^.&X8.*X@XXXXXXXXXX^.XX&....XXX&&XXX*****XXX*..XXXXXXXXXXXXX.X%%#^^^^^^^^^^^^^9#^^^.....*99^.@X8.*#^^^*****8XXXXX8@..XX#@@XX#@@@....8XXX*.+^.^.^.^.^.^+.X%%XXXXXXXXXXXXXXXXXX^^^,...**^.&X8.*X@XXXXXXXXXX^.XX&....XXX&&XXX*****XXX*..XXXXXXXXXXXXX.X%%X^^^^XXX^^^^^^^^^XXX^^^,..*^.&XX.*X&^^*****^^#X.*XX*....,XXX&&XXX@@X#X*..XX@&.....8@**X.X%%X*XX...XXX...XXX...XXX^^^,.^...XX+XXXXXXXXXXXXXX.*XX*....,,XXX.XXXXXX&&XXX*.@&....@8**X.X%%X*.XXX...XXX...XXX...XXX^^^^....,,X*.&.X.&.X.&.X..*XX*.....,XXX.XXX@@XXX*....@&..@.,**X.X%%XX...XXX...XXX...XXX...XXX^^^,....X*.X^X^X^X^X^X...@X*..*9*..@XX^^XXXX*.......@&@..,**X.X%%XXXX@&@XXX@@@XXX&&&XXX&@&XXX^^^,..X*.X^X^X^X^X^X...@X@........@X,..X...........@&..,**X.X%%X88XXX...XXX...XXX...XXX...XXX^^^,X*.X^X^X^X^X^X..*XX8@,,,,,,@XX,.XX^^..........@&.,**X.X%%XX***XXX...XXX...XXX...XXX...XXX^^X*.X^X^X^X^X^X.*XXXXXXXXXXXXX..XX^^XXXXXXXXXXXXXXXXXX#X%%XXXX^^^^^^^^^XXX^^^^^^^^^XXX^^^#XXX8.X.&.X.&.X..*X+^.^.^.^.^.^..XX*^.^.^.^.^.^.^.^.^.^#8X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 91

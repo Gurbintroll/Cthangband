@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_50t1a"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_35801"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vcx3m"]
+
+[sub_resource type="Resource" id="Resource_57kw2"]
+script = ExtResource("1_50t1a")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_akdy7"]
+script = ExtResource("1_50t1a")
+
+[sub_resource type="Resource" id="Resource_t1dmj"]
+script = ExtResource("1_50t1a")
+
+[sub_resource type="Resource" id="Resource_wkunl"]
+script = ExtResource("1_50t1a")
+
+[sub_resource type="Resource" id="Resource_drky2"]
+script = ExtResource("2_35801")
+
+[sub_resource type="Resource" id="Resource_f7qdo"]
+script = ExtResource("2_35801")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_4y4f4"]
+script = ExtResource("2_35801")
+value = 128
+
+[sub_resource type="Resource" id="Resource_5x0ia"]
+script = ExtResource("2_35801")
+
+[sub_resource type="Resource" id="Resource_653kq"]
+script = ExtResource("2_35801")
+
+[sub_resource type="Resource" id="Resource_unv0x"]
+script = ExtResource("2_35801")
+
+[resource]
+script = ExtResource("3_vcx3m")
+ac = 40
+attack = Array[ExtResource("1_50t1a")]([SubResource("Resource_57kw2"), SubResource("Resource_akdy7"), SubResource("Resource_t1dmj"), SubResource("Resource_wkunl")])
+character = "K"
+colour = 17
+description = "It is a vicious insect with a tough carapace."
+flags_1 = SubResource("Resource_drky2")
+flags_2 = SubResource("Resource_f7qdo")
+flags_3 = SubResource("Resource_4y4f4")
+flags_4 = SubResource("Resource_5x0ia")
+flags_5 = SubResource("Resource_653kq")
+flags_6 = SubResource("Resource_unv0x")
+hit_dice = 13
+hit_dice_sides = 8
+level = 13
+max_num = 100
+experience = 38
+name = "Killer brown beetle"
+notice_range = 10
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "   Killer   "
+split_name_2 = "   brown    "
+split_name_3 = "   beetle   "

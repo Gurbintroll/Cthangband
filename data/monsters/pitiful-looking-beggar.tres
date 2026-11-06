@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b4yapcdxnaawa"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_vrwxk"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_wc51a"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_a1b7s"]
+
+[sub_resource type="Resource" id="Resource_jkrvy"]
+script = ExtResource("1_vrwxk")
+method = 19
+
+[sub_resource type="Resource" id="Resource_nnydq"]
+script = ExtResource("1_vrwxk")
+
+[sub_resource type="Resource" id="Resource_bq0yi"]
+script = ExtResource("1_vrwxk")
+
+[sub_resource type="Resource" id="Resource_2tf4u"]
+script = ExtResource("1_vrwxk")
+
+[sub_resource type="Resource" id="Resource_0q8nq"]
+script = ExtResource("2_wc51a")
+value = 262148
+
+[sub_resource type="Resource" id="Resource_s2dsv"]
+script = ExtResource("2_wc51a")
+value = 4259840
+
+[sub_resource type="Resource" id="Resource_ucj52"]
+script = ExtResource("2_wc51a")
+
+[sub_resource type="Resource" id="Resource_e4fai"]
+script = ExtResource("2_wc51a")
+
+[sub_resource type="Resource" id="Resource_evhjd"]
+script = ExtResource("2_wc51a")
+
+[sub_resource type="Resource" id="Resource_8a483"]
+script = ExtResource("2_wc51a")
+
+[resource]
+script = ExtResource("3_a1b7s")
+ac = 1
+attack = Array[ExtResource("1_vrwxk")]([SubResource("Resource_jkrvy"), SubResource("Resource_nnydq"), SubResource("Resource_bq0yi"), SubResource("Resource_2tf4u")])
+character = "t"
+colour = 6
+description = "You just can't help feeling sorry for him."
+flags_1 = SubResource("Resource_0q8nq")
+flags_2 = SubResource("Resource_s2dsv")
+flags_3 = SubResource("Resource_ucj52")
+flags_4 = SubResource("Resource_e4fai")
+flags_5 = SubResource("Resource_evhjd")
+flags_6 = SubResource("Resource_8a483")
+hit_dice = 1
+hit_dice_sides = 4
+max_num = 100
+name = "Pitiful looking beggar"
+notice_range = 10
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "  Pitiful   "
+split_name_2 = "  looking   "
+split_name_3 = "   beggar   "

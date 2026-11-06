@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b80wtxla7a5ur"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_1dlfq"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_15rnb"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_04h25"]
+
+[sub_resource type="Resource" id="Resource_abuln"]
+script = ExtResource("1_1dlfq")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 12
+method = 5
+
+[sub_resource type="Resource" id="Resource_2c2xd"]
+script = ExtResource("1_1dlfq")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 12
+method = 5
+
+[sub_resource type="Resource" id="Resource_2rbt0"]
+script = ExtResource("1_1dlfq")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_5riih"]
+script = ExtResource("1_1dlfq")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_2bbol"]
+script = ExtResource("2_15rnb")
+value = 404768257
+
+[sub_resource type="Resource" id="Resource_v3uu6"]
+script = ExtResource("2_15rnb")
+value = 237584
+
+[sub_resource type="Resource" id="Resource_02gd8"]
+script = ExtResource("2_15rnb")
+value = 3225356624
+
+[sub_resource type="Resource" id="Resource_3h73g"]
+script = ExtResource("2_15rnb")
+value = 1073743872
+
+[sub_resource type="Resource" id="Resource_ho0wm"]
+script = ExtResource("2_15rnb")
+value = 142771266
+
+[sub_resource type="Resource" id="Resource_ran8f"]
+script = ExtResource("2_15rnb")
+value = 285278208
+
+[resource]
+script = ExtResource("3_04h25")
+ac = 125
+attack = Array[ExtResource("1_1dlfq")]([SubResource("Resource_abuln"), SubResource("Resource_2c2xd"), SubResource("Resource_2rbt0"), SubResource("Resource_5riih")])
+character = "X"
+colour = 12
+description = "The Wendigo, moving so fast that you can see little except two glowing eyes burning with hatred."
+flags_1 = SubResource("Resource_2bbol")
+flags_2 = SubResource("Resource_v3uu6")
+flags_3 = SubResource("Resource_02gd8")
+flags_4 = SubResource("Resource_3h73g")
+flags_5 = SubResource("Resource_ho0wm")
+flags_6 = SubResource("Resource_ran8f")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 55
+hit_dice_sides = 100
+level = 82
+max_num = 1
+experience = 32500
+name = "Ithaqua the Windwalker"
+notice_range = 40
+rarity = 2
+sleep = 10
+speed = 140
+split_name_1 = "  Ithaqua   "
+split_name_2 = "    the     "
+split_name_3 = " Windwalker "

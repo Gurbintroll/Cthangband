@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_056in"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vks36"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_2ytia"]
+
+[sub_resource type="Resource" id="Resource_fvnps"]
+script = ExtResource("1_056in")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_h0xuf"]
+script = ExtResource("1_056in")
+
+[sub_resource type="Resource" id="Resource_ackih"]
+script = ExtResource("1_056in")
+
+[sub_resource type="Resource" id="Resource_brkws"]
+script = ExtResource("1_056in")
+
+[sub_resource type="Resource" id="Resource_3wphg"]
+script = ExtResource("2_vks36")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_vuvw7"]
+script = ExtResource("2_vks36")
+value = 65
+
+[sub_resource type="Resource" id="Resource_5oqh8"]
+script = ExtResource("2_vks36")
+value = 3490709504
+
+[sub_resource type="Resource" id="Resource_f6jy4"]
+script = ExtResource("2_vks36")
+
+[sub_resource type="Resource" id="Resource_pq82j"]
+script = ExtResource("2_vks36")
+
+[sub_resource type="Resource" id="Resource_h60if"]
+script = ExtResource("2_vks36")
+
+[resource]
+script = ExtResource("3_2ytia")
+ac = 10
+attack = Array[ExtResource("1_056in")]([SubResource("Resource_fvnps"), SubResource("Resource_h0xuf"), SubResource("Resource_ackih"), SubResource("Resource_brkws")])
+character = "m"
+colour = 31
+description = "It is a strange growth on the dungeon floor."
+flags_1 = SubResource("Resource_3wphg")
+flags_2 = SubResource("Resource_vuvw7")
+flags_3 = SubResource("Resource_5oqh8")
+flags_4 = SubResource("Resource_f6jy4")
+flags_5 = SubResource("Resource_pq82j")
+flags_6 = SubResource("Resource_h60if")
+hit_dice = 8
+hit_dice_sides = 8
+level = 3
+max_num = 100
+experience = 9
+name = "Yellow mold"
+notice_range = 2
+rarity = 1
+sleep = 99
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Yellow   "
+split_name_3 = "    mold    "

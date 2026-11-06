@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6jmm2"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ttfov"]
+
+[sub_resource type="Resource" id="Resource_gayf1"]
+script = ExtResource("1_6jmm2")
+
+[sub_resource type="Resource" id="Resource_h55g1"]
+script = ExtResource("1_6jmm2")
+
+[sub_resource type="Resource" id="Resource_xhw33"]
+script = ExtResource("1_6jmm2")
+
+[resource]
+script = ExtResource("2_ttfov")
+chance = Array[int]([8, 4, 1, 0])
+character = ","
+colour = 17
+cost = 1000
+easy_know = true
+flags_1 = SubResource("Resource_gayf1")
+flags_2 = SubResource("Resource_h55g1")
+flags_3 = SubResource("Resource_xhw33")
+has_flavour = true
+item_category = 80
+level = 20
+locale = Array[int]([20, 30, 40, 0])
+name = "Restoring"
+type_specific_value = 500
+stompable = Array[bool]([false, false, false, false])
+sub_category = 19
+weight = 1
+filename = "Food:Restoring"

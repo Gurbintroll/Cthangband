@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7eg7l"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7eh6p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vv2ys"]
+
+[sub_resource type="Resource" id="Resource_yw5n0"]
+script = ExtResource("1_7eg7l")
+
+[sub_resource type="Resource" id="Resource_u7n60"]
+script = ExtResource("1_7eg7l")
+
+[sub_resource type="Resource" id="Resource_mqcri"]
+script = ExtResource("1_7eg7l")
+
+[sub_resource type="Resource" id="Resource_0we5o"]
+script = ExtResource("1_7eg7l")
+
+[sub_resource type="Resource" id="Resource_0y3nt"]
+script = ExtResource("2_7eh6p")
+value = 205824
+
+[sub_resource type="Resource" id="Resource_fkmqj"]
+script = ExtResource("2_7eh6p")
+value = 1
+
+[sub_resource type="Resource" id="Resource_1wudq"]
+script = ExtResource("2_7eh6p")
+value = 3491758080
+
+[sub_resource type="Resource" id="Resource_rfgw1"]
+script = ExtResource("2_7eh6p")
+
+[sub_resource type="Resource" id="Resource_j1tow"]
+script = ExtResource("2_7eh6p")
+value = 1207959552
+
+[sub_resource type="Resource" id="Resource_4tewf"]
+script = ExtResource("2_7eh6p")
+value = 4112
+
+[resource]
+script = ExtResource("3_vv2ys")
+ac = 10
+attack = Array[ExtResource("1_7eg7l")]([SubResource("Resource_yw5n0"), SubResource("Resource_u7n60"), SubResource("Resource_mqcri"), SubResource("Resource_0we5o")])
+character = ","
+colour = 5
+description = "Yum! It looks quite tasty. It seems to glow with an unusual light."
+flags_1 = SubResource("Resource_0y3nt")
+flags_2 = SubResource("Resource_fkmqj")
+flags_3 = SubResource("Resource_1wudq")
+flags_4 = SubResource("Resource_rfgw1")
+flags_5 = SubResource("Resource_j1tow")
+flags_6 = SubResource("Resource_4tewf")
+freq_innate = 1
+freq_spell = 1
+hit_dice = 1
+hit_dice_sides = 1
+level = 15
+max_num = 100
+experience = 10
+name = "Magic mushroom patch"
+notice_range = 40
+rarity = 2
+speed = 130
+split_name_1 = "   Magic    "
+split_name_2 = "  mushroom  "
+split_name_3 = "   patch    "

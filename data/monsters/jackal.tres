@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_t635a"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_du0xg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_p5n2x"]
+
+[sub_resource type="Resource" id="Resource_urwnj"]
+script = ExtResource("1_t635a")
+damage_dice = 1
+damage_dice_sides = 1
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ffi41"]
+script = ExtResource("1_t635a")
+
+[sub_resource type="Resource" id="Resource_qcowx"]
+script = ExtResource("1_t635a")
+
+[sub_resource type="Resource" id="Resource_cqsuj"]
+script = ExtResource("1_t635a")
+
+[sub_resource type="Resource" id="Resource_epp3w"]
+script = ExtResource("2_du0xg")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_kr2st"]
+script = ExtResource("2_du0xg")
+
+[sub_resource type="Resource" id="Resource_r6sra"]
+script = ExtResource("2_du0xg")
+value = 128
+
+[sub_resource type="Resource" id="Resource_a41el"]
+script = ExtResource("2_du0xg")
+
+[sub_resource type="Resource" id="Resource_a5mdq"]
+script = ExtResource("2_du0xg")
+
+[sub_resource type="Resource" id="Resource_28xg6"]
+script = ExtResource("2_du0xg")
+
+[resource]
+script = ExtResource("3_p5n2x")
+ac = 3
+attack = Array[ExtResource("1_t635a")]([SubResource("Resource_urwnj"), SubResource("Resource_ffi41"), SubResource("Resource_qcowx"), SubResource("Resource_cqsuj")])
+character = "C"
+colour = 6
+description = "It is a yapping snarling dog, dangerous when in a pack."
+flags_1 = SubResource("Resource_epp3w")
+flags_2 = SubResource("Resource_kr2st")
+flags_3 = SubResource("Resource_r6sra")
+flags_4 = SubResource("Resource_a41el")
+flags_5 = SubResource("Resource_a5mdq")
+flags_6 = SubResource("Resource_28xg6")
+hit_dice = 1
+hit_dice_sides = 4
+level = 1
+max_num = 100
+experience = 1
+name = "Jackal"
+notice_range = 10
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Jackal   "

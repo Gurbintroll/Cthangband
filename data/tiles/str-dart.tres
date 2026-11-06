@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_4hjrl"]
+
+[resource]
+script = ExtResource("1_4hjrl")
+alter_action = 2
+appear_as = "StrDart"
+character = "^"
+colour = 27
+description = "dart trap"
+is_interesting = true
+is_passable = true
+is_trap = true
+map_priority = 20
+name = "StrDart"

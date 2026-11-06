@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xrc6c"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_nf53w"]
+
+[sub_resource type="Resource" id="Resource_weibh"]
+script = ExtResource("1_xrc6c")
+
+[sub_resource type="Resource" id="Resource_2x7r3"]
+script = ExtResource("1_xrc6c")
+value = 1048576
+
+[sub_resource type="Resource" id="Resource_1odpq"]
+script = ExtResource("1_xrc6c")
+value = 15728640
+
+[resource]
+script = ExtResource("2_nf53w")
+cost = 1000
+flags_1 = SubResource("Resource_weibh")
+flags_2 = SubResource("Resource_2x7r3")
+flags_3 = SubResource("Resource_1odpq")
+name = "of Venom"
+id = 108

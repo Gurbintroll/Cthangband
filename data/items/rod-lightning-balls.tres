@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2fqqb"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_lsr1q"]
+
+[sub_resource type="Resource" id="Resource_64pc3"]
+script = ExtResource("1_2fqqb")
+
+[sub_resource type="Resource" id="Resource_di8fw"]
+script = ExtResource("1_2fqqb")
+
+[sub_resource type="Resource" id="Resource_njy0x"]
+script = ExtResource("1_2fqqb")
+
+[resource]
+script = ExtResource("2_lsr1q")
+chance = Array[int]([1, 0, 0, 0])
+character = "-"
+colour = 18
+cost = 4000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_64pc3")
+flags_2 = SubResource("Resource_di8fw")
+flags_3 = SubResource("Resource_njy0x")
+has_flavour = true
+item_category = 66
+level = 55
+locale = Array[int]([55, 0, 0, 0])
+name = "Lightning Balls"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 25
+weight = 15
+filename = "Rod:Lightning Balls"

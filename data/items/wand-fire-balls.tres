@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_vkyh2"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_mxquu"]
+
+[sub_resource type="Resource" id="Resource_sytej"]
+script = ExtResource("1_vkyh2")
+
+[sub_resource type="Resource" id="Resource_xeyws"]
+script = ExtResource("1_vkyh2")
+
+[sub_resource type="Resource" id="Resource_353xp"]
+script = ExtResource("1_vkyh2")
+value = 4194304
+
+[resource]
+script = ExtResource("2_mxquu")
+chance = Array[int]([1, 0, 0, 0])
+character = "-"
+colour = 6
+cost = 1800
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_sytej")
+flags_2 = SubResource("Resource_xeyws")
+flags_3 = SubResource("Resource_353xp")
+has_flavour = true
+item_category = 65
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "Fire Balls"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 22
+weight = 10
+filename = "Wand:Fire Balls"

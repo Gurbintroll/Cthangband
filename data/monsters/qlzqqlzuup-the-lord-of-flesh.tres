@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b8o47ibx6nde7"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_2elbk"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_u5yka"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_87qft"]
+
+[sub_resource type="Resource" id="Resource_xp4ie"]
+script = ExtResource("1_2elbk")
+
+[sub_resource type="Resource" id="Resource_ibapf"]
+script = ExtResource("1_2elbk")
+
+[sub_resource type="Resource" id="Resource_rbhu0"]
+script = ExtResource("1_2elbk")
+
+[sub_resource type="Resource" id="Resource_640qn"]
+script = ExtResource("1_2elbk")
+
+[sub_resource type="Resource" id="Resource_odgfh"]
+script = ExtResource("2_u5yka")
+value = 136513153
+
+[sub_resource type="Resource" id="Resource_2cuvw"]
+script = ExtResource("2_u5yka")
+value = 16
+
+[sub_resource type="Resource" id="Resource_3u0hf"]
+script = ExtResource("2_u5yka")
+value = 3491758272
+
+[sub_resource type="Resource" id="Resource_a8l30"]
+script = ExtResource("2_u5yka")
+
+[sub_resource type="Resource" id="Resource_8jutw"]
+script = ExtResource("2_u5yka")
+
+[sub_resource type="Resource" id="Resource_5lonl"]
+script = ExtResource("2_u5yka")
+value = 4294770688
+
+[resource]
+script = ExtResource("3_87qft")
+ac = 1
+attack = Array[ExtResource("1_2elbk")]([SubResource("Resource_xp4ie"), SubResource("Resource_ibapf"), SubResource("Resource_rbhu0"), SubResource("Resource_640qn")])
+character = "Q"
+colour = 12
+description = "This disgusting creature squeals and snorts as it writhes on the floor. It pulsates with evil. Its intent is to overwhelm you with monster after monster, until it can greedily dine on your remains."
+flags_1 = SubResource("Resource_odgfh")
+flags_2 = SubResource("Resource_2cuvw")
+flags_3 = SubResource("Resource_3u0hf")
+flags_4 = SubResource("Resource_a8l30")
+flags_5 = SubResource("Resource_8jutw")
+flags_6 = SubResource("Resource_5lonl")
+freq_innate = 1
+freq_spell = 1
+hit_dice = 50
+hit_dice_sides = 100
+level = 78
+max_num = 1
+experience = 20000
+name = "Qlzqqlzuup, the Lord of Flesh"
+notice_range = 30
+rarity = 3
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Qlzqqlzuup "

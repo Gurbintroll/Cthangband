@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wvaau"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_skwng"]
+
+[sub_resource type="Resource" id="Resource_8nw6q"]
+script = ExtResource("1_wvaau")
+
+[sub_resource type="Resource" id="Resource_jh0l2"]
+script = ExtResource("1_wvaau")
+
+[sub_resource type="Resource" id="Resource_b8alj"]
+script = ExtResource("1_wvaau")
+
+[resource]
+script = ExtResource("2_skwng")
+chance = Array[int]([4, 0, 0, 0])
+character = "_"
+colour = 17
+cost = 3500
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_8nw6q")
+flags_2 = SubResource("Resource_jh0l2")
+flags_3 = SubResource("Resource_b8alj")
+has_flavour = true
+item_category = 55
+level = 70
+locale = Array[int]([70, 0, 0, 0])
+name = "Carnage"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 27
+weight = 50
+filename = "Staff:Carnage"

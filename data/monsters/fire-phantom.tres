@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://c6j200mhpy8hm"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_8o54x"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_dnrqi"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_1yfqw"]
+
+[sub_resource type="Resource" id="Resource_84c2s"]
+script = ExtResource("1_8o54x")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vf24y"]
+script = ExtResource("1_8o54x")
+
+[sub_resource type="Resource" id="Resource_b6xrg"]
+script = ExtResource("1_8o54x")
+
+[sub_resource type="Resource" id="Resource_ipdul"]
+script = ExtResource("1_8o54x")
+
+[sub_resource type="Resource" id="Resource_gkqx7"]
+script = ExtResource("2_dnrqi")
+value = 304087813
+
+[sub_resource type="Resource" id="Resource_iyam1"]
+script = ExtResource("2_dnrqi")
+value = 4653568
+
+[sub_resource type="Resource" id="Resource_iyl5u"]
+script = ExtResource("2_dnrqi")
+value = 3221225504
+
+[sub_resource type="Resource" id="Resource_td6tv"]
+script = ExtResource("2_dnrqi")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_63kvi"]
+script = ExtResource("2_dnrqi")
+value = 2818573312
+
+[sub_resource type="Resource" id="Resource_yiwte"]
+script = ExtResource("2_dnrqi")
+
+[resource]
+script = ExtResource("3_1yfqw")
+ac = 90
+attack = Array[ExtResource("1_8o54x")]([SubResource("Resource_84c2s"), SubResource("Resource_vf24y"), SubResource("Resource_b6xrg"), SubResource("Resource_ipdul")])
+character = "G"
+colour = 12
+description = "He's back from the grave for vengeance on those who burnt him. He has no mercy for those in his way."
+flags_1 = SubResource("Resource_gkqx7")
+flags_2 = SubResource("Resource_iyam1")
+flags_3 = SubResource("Resource_iyl5u")
+flags_4 = SubResource("Resource_td6tv")
+flags_5 = SubResource("Resource_63kvi")
+flags_6 = SubResource("Resource_yiwte")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 10
+hit_dice_sides = 100
+level = 34
+max_num = 1
+experience = 1200
+name = "Fire Phantom"
+notice_range = 20
+rarity = 5
+sleep = 40
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Fire    "
+split_name_3 = "  Phantom   "

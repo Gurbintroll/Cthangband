@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_uva2v"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_86hyc"]
+
+[sub_resource type="Resource" id="Resource_vxv2j"]
+script = ExtResource("1_uva2v")
+
+[sub_resource type="Resource" id="Resource_l24qb"]
+script = ExtResource("1_uva2v")
+
+[sub_resource type="Resource" id="Resource_uybou"]
+script = ExtResource("1_uva2v")
+
+[resource]
+script = ExtResource("2_86hyc")
+flags_1 = SubResource("Resource_vxv2j")
+flags_2 = SubResource("Resource_l24qb")
+flags_3 = SubResource("Resource_uybou")
+max_to_damage = 50
+max_to_hit = 50
+name = "of Backbiting"
+slot = 23
+id = 96

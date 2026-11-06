@@ -1,0 +1,107 @@
+﻿[center][font_size=48][color="brown"][b]Corporeal Spells[/b][/color][/font_size][/center]
+[hr color="brown"]
+Spells are presented here ordered by book.  This does not necessarily reflect how difficult each spell is to cast.
+
+Although within the first two books (Basic Chi Flow and Yogic Mastery) the spells are ordered in increasing difficulty, each of the two rare books that can only be found in the dungeons (De Vermis Mysteriis and Pnakotic Manuscripts) contain both easy and difficult spells.
+
+The level at which each individual spell is unlocked and the power cost to cast each spell is not given here, since it will vary with each profession that has access to this realm.
+
+[font_size=24][color="brown"][b]Basic Chi Flow[/b][/color][/font_size]
+[b]a) Cure Light Wounds[/b]
+Heals 2d10 damage and reduces bleeding.
+
+[b]b) Blink[/b]
+Teleports you to a random nearby location.
+
+[b]c) Bravery[/b]
+Stops you being afraid.
+
+[b]d) Bat’s Sense[/b]
+Reveals the layout of your nearby surroundings.
+
+[b]e) Eagle’s Vision[/b]
+Detects secret doors, stairs, traps, treasure, objects and monsters (including invisible ones).
+
+[b]f) Mind Vision[/b]
+Gives you temporary ESP.
+
+[b]g) Cure Medium Wounds[/b]
+Cures 4d10 damage and severely reduces bleeding.
+
+[b]h) Satisfy Hunger[/b]
+Removes all hunger, leaving you comfortably full.
+
+[font_size=24][color="brown"][b]Yogic Mastery[/b][/color][/font_size]
+[b]a) Burn Resistance[/b]
+Gives you temporary resistance to fire, acid and electricity.
+
+[b]b) Detoxify[/b]
+Removes all poison from your system.
+
+[b]c) Cure Critical Wounds[/b]
+Heals 8d10 damage, and completely stops bleeding or stunning.
+
+[b]d) See Invisible[/b]
+Allows you to see invisible creatures for a short while.
+
+[b]e) Teleport[/b]
+Teleports you to a random location on the level.
+
+[b]f) Haste[/b]
+Temporarily speeds up your movement.
+
+[b]g) Healing[/b]
+Heals 300 damage and completely stops bleeding and stunning.
+
+[b]h) Resist True[/b]
+Gives you a temporary resistance to acid, cold, fire, electricity and poison.
+
+[font_size=24][color="brown"][b]De Vermis Mysteriis[/b][/color][/font_size]
+[b]a) Horrific Visage[/b]
+Scares and stuns a nearby monster.
+
+[b]b) See Magic[/b]
+Detects nearby magical items.
+
+[b]c) Stone Skin[/b]
+Adds 50 to your armour class for a short while.
+
+[b]d) Move Body[/b]
+Teleports you to a nearby location that you specify.
+
+[b]e) Corrupt Body[/b]
+Warps your body in a random manner, giving you a mutation.
+
+[b]f) Know Self[/b]
+Reveals knowledge about yourself and your abilities (including those given by items).
+
+[b]g) Teleport Level[/b]
+Teleports you off the level you are on, onto either the one above or the one below.
+
+[b]h) Word of Recall[/b]
+Teleports you back to the town, or - if you are in the town - back to the deepest level you have explored.
+
+[font_size=24][color="brown"][b]Pnakotic Manuscripts[/b][/color][/font_size]
+[b]a) Heroism[/b]
+Makes you feel heroic, giving you a +12 bonus to hit and 10 extra hit points. Also removes all fear.
+
+[b]b) Wraithform[/b]
+Temporarily makes you intangible so that you can walk through walls.
+
+[b]c) Attune to Magic[/b]
+Fully identifies an item.
+
+[b]d) Restore Body[/b]
+Heals damage to all six ability scores.
+
+[b]e) Healing True[/b]
+Heals 2000 damage, all bleeding and all stunning.
+
+[b]f) Hypnotic Eyes[/b]
+Makes a monster your friend.
+
+[b]g) Restore Soul[/b]
+Restores any drained experience.
+
+[b]h) Invulnerability[/b]
+Makes you almost completely immune to damage for a short while.

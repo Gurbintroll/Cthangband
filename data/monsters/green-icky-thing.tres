@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_u8wbp"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_m0ppl"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_bmu8w"]
+
+[sub_resource type="Resource" id="Resource_rfqjt"]
+script = ExtResource("1_u8wbp")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_om201"]
+script = ExtResource("1_u8wbp")
+
+[sub_resource type="Resource" id="Resource_d7nox"]
+script = ExtResource("1_u8wbp")
+
+[sub_resource type="Resource" id="Resource_jtu7q"]
+script = ExtResource("1_u8wbp")
+
+[sub_resource type="Resource" id="Resource_el2mk"]
+script = ExtResource("2_m0ppl")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_bjerg"]
+script = ExtResource("2_m0ppl")
+value = 64
+
+[sub_resource type="Resource" id="Resource_l6wjw"]
+script = ExtResource("2_m0ppl")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_r6mjh"]
+script = ExtResource("2_m0ppl")
+
+[sub_resource type="Resource" id="Resource_4kuom"]
+script = ExtResource("2_m0ppl")
+
+[sub_resource type="Resource" id="Resource_i5smi"]
+script = ExtResource("2_m0ppl")
+
+[resource]
+script = ExtResource("3_bmu8w")
+ac = 12
+attack = Array[ExtResource("1_u8wbp")]([SubResource("Resource_rfqjt"), SubResource("Resource_om201"), SubResource("Resource_d7nox"), SubResource("Resource_jtu7q")])
+character = "i"
+colour = 8
+description = "It is a smallish, slimy, icky, acidic creature."
+flags_1 = SubResource("Resource_el2mk")
+flags_2 = SubResource("Resource_bjerg")
+flags_3 = SubResource("Resource_l6wjw")
+flags_4 = SubResource("Resource_r6mjh")
+flags_5 = SubResource("Resource_4kuom")
+flags_6 = SubResource("Resource_i5smi")
+hit_dice = 5
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 18
+name = "Green icky thing"
+notice_range = 14
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "   Green    "
+split_name_2 = "    icky    "
+split_name_3 = "   thing    "

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_3w67l"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_33cnd"]
+
+[sub_resource type="Resource" id="Resource_adtdt"]
+script = ExtResource("1_3w67l")
+
+[sub_resource type="Resource" id="Resource_4ugix"]
+script = ExtResource("1_3w67l")
+
+[sub_resource type="Resource" id="Resource_yaic0"]
+script = ExtResource("1_3w67l")
+
+[resource]
+script = ExtResource("2_33cnd")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 200
+easy_know = true
+flags_1 = SubResource("Resource_adtdt")
+flags_2 = SubResource("Resource_4ugix")
+flags_3 = SubResource("Resource_yaic0")
+has_flavour = true
+item_category = 70
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Recharging"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 22
+weight = 5
+filename = "Scroll:Recharging"

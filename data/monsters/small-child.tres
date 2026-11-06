@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_p4obi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vknq7"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ixhc3"]
+
+[sub_resource type="Resource" id="Resource_sj2sx"]
+script = ExtResource("1_p4obi")
+method = 18
+
+[sub_resource type="Resource" id="Resource_cv7ut"]
+script = ExtResource("1_p4obi")
+
+[sub_resource type="Resource" id="Resource_imc0w"]
+script = ExtResource("1_p4obi")
+
+[sub_resource type="Resource" id="Resource_i3w4x"]
+script = ExtResource("1_p4obi")
+
+[sub_resource type="Resource" id="Resource_76k7p"]
+script = ExtResource("2_vknq7")
+value = 270340
+
+[sub_resource type="Resource" id="Resource_ov55p"]
+script = ExtResource("2_vknq7")
+
+[sub_resource type="Resource" id="Resource_wdniy"]
+script = ExtResource("2_vknq7")
+
+[sub_resource type="Resource" id="Resource_4pb4l"]
+script = ExtResource("2_vknq7")
+
+[sub_resource type="Resource" id="Resource_iwnx1"]
+script = ExtResource("2_vknq7")
+
+[sub_resource type="Resource" id="Resource_bojcp"]
+script = ExtResource("2_vknq7")
+
+[resource]
+script = ExtResource("3_ixhc3")
+ac = 1
+attack = Array[ExtResource("1_p4obi")]([SubResource("Resource_sj2sx"), SubResource("Resource_cv7ut"), SubResource("Resource_imc0w"), SubResource("Resource_i3w4x")])
+character = "t"
+colour = 15
+description = "A rather cute child with large trusting eyes."
+flags_1 = SubResource("Resource_76k7p")
+flags_2 = SubResource("Resource_ov55p")
+flags_3 = SubResource("Resource_wdniy")
+flags_4 = SubResource("Resource_4pb4l")
+flags_5 = SubResource("Resource_iwnx1")
+flags_6 = SubResource("Resource_bojcp")
+hit_dice = 1
+hit_dice_sides = 2
+max_num = 100
+name = "Small child"
+notice_range = 6
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Small    "
+split_name_3 = "   child    "

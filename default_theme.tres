@@ -1,0 +1,29 @@
+[gd_resource type="Theme" format=3 uid="uid://blqhida24a2ha"]
+
+[ext_resource type="Texture2D" uid="uid://nr7nqvsk1hiq" path="res://images/Default.png" id="1_e7bfs"]
+[ext_resource type="FontFile" uid="uid://dattdp0v7gxqv" path="res://fonts/AtkinsonHyperlegible-Regular.otf" id="2_3taad"]
+[ext_resource type="FontFile" uid="uid://cjpfl3dm13jh1" path="res://fonts/AtkinsonHyperlegible-Bold.otf" id="2_ed8xq"]
+[ext_resource type="FontFile" uid="uid://bd7ptfg08eiqb" path="res://fonts/AtkinsonHyperlegible-BoldItalic.otf" id="3_u7cj8"]
+[ext_resource type="FontFile" uid="uid://dqgdu4bro7hnp" path="res://fonts/AtkinsonHyperlegible-Italic.otf" id="4_uwdo0"]
+[ext_resource type="FontFile" uid="uid://ql0bfdgbtqde" path="res://fonts/AtkinsonHyperlegibleMono-Bold.otf" id="5_nh3dc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3taad"]
+texture = ExtResource("1_e7bfs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7bfs"]
+
+[resource]
+default_font = ExtResource("2_3taad")
+default_font_size = 16
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 4
+MarginContainer/constants/margin_right = 4
+MarginContainer/constants/margin_top = 4
+Panel/styles/panel = SubResource("StyleBoxTexture_3taad")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/fonts/bold_font = ExtResource("2_ed8xq")
+RichTextLabel/fonts/bold_italics_font = ExtResource("3_u7cj8")
+RichTextLabel/fonts/italics_font = ExtResource("4_uwdo0")
+RichTextLabel/fonts/mono_font = ExtResource("5_nh3dc")
+RichTextLabel/fonts/normal_font = ExtResource("2_3taad")
+RichTextLabel/styles/background = SubResource("StyleBoxFlat_e7bfs")

@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_g8rap"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_f50mv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_2k4ab"]
+
+[sub_resource type="Resource" id="Resource_p0tau"]
+script = ExtResource("1_g8rap")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_wsuux"]
+script = ExtResource("1_g8rap")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_crwrn"]
+script = ExtResource("1_g8rap")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_gcj3c"]
+script = ExtResource("1_g8rap")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_tg7po"]
+script = ExtResource("2_f50mv")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_84hw0"]
+script = ExtResource("2_f50mv")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_ge4hh"]
+script = ExtResource("2_f50mv")
+value = 3238264960
+
+[sub_resource type="Resource" id="Resource_xp5jj"]
+script = ExtResource("2_f50mv")
+value = 33554432
+
+[sub_resource type="Resource" id="Resource_10m6r"]
+script = ExtResource("2_f50mv")
+
+[sub_resource type="Resource" id="Resource_bytd4"]
+script = ExtResource("2_f50mv")
+
+[resource]
+script = ExtResource("3_2k4ab")
+ac = 100
+attack = Array[ExtResource("1_g8rap")]([SubResource("Resource_p0tau"), SubResource("Resource_wsuux"), SubResource("Resource_crwrn"), SubResource("Resource_gcj3c")])
+character = "Z"
+colour = 13
+description = "The very air warps as pure elemental energy stalks towards you in the shape of a giant hound. Your hair stands on end and your palms itch as you sense trouble."
+flags_1 = SubResource("Resource_tg7po")
+flags_2 = SubResource("Resource_84hw0")
+flags_3 = SubResource("Resource_ge4hh")
+flags_4 = SubResource("Resource_xp5jj")
+flags_5 = SubResource("Resource_10m6r")
+flags_6 = SubResource("Resource_bytd4")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 60
+hit_dice_sides = 10
+level = 51
+max_num = 100
+experience = 5000
+name = "Plasma hound"
+notice_range = 30
+rarity = 2
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Plasma   "
+split_name_3 = "   hound    "

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_fn2ii"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_gxecg"]
+
+[sub_resource type="Resource" id="Resource_2f51j"]
+script = ExtResource("1_fn2ii")
+
+[sub_resource type="Resource" id="Resource_pbd7a"]
+script = ExtResource("1_fn2ii")
+
+[sub_resource type="Resource" id="Resource_to5xk"]
+script = ExtResource("1_fn2ii")
+value = 1024
+
+[resource]
+script = ExtResource("2_gxecg")
+flags_1 = SubResource("Resource_2f51j")
+flags_2 = SubResource("Resource_pbd7a")
+flags_3 = SubResource("Resource_to5xk")
+max_to_damage = 10
+max_to_hit = 10
+name = "of Enveloping"
+slot = 31
+id = 36

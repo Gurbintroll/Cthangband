@@ -1,0 +1,56 @@
+[center][font_size=48][color="brown"][b]Level Feelings[/b][/color][/font_size][/center]
+[hr color="brown"]
+After you have been on a dungeon level for some time, you will get a feeling about how dangerous the level is. Once you have had this feeling, you can be reminded of it by using the 'h' command.
+
+The feeling for a level is based on its contents when it is generated, which includes the monsters and items that are placed during generation. Things that are added to the level after generation (e.g. wandering monsters, or treasure that is dropped by monsters) do not contribute to the feeling of a level. Similarly, if a level has a high feeling because of dangerous monsters and/or high level treasure then that feeling will not drop if the monsters are killed or the treasure is picked up. The feeling that the level is generated with stays constant while you are on it.
+
+The feeling of a level is two parts and each part is based on a score that is accumulated as the level is generated:
+
+[font_size=24][color="brown"][b]Monster Feelings[/b][/color][/font_size]
+[ul]+X for each non-unique monster whose level is X levels greater than the depth of the dungeon level
++2X for each unique monster whose level is X levels greater than the depth of the dungeon level
++10 for a monster pit (a monster pit also has a chance of making the level "special" based on the depth of the level)
++5 to +50 for a vault (a vault also has a chance of making the level "special" based on the depth of the level)[/ul]
+The total score for the level then determines how you "feel" about it - with a "special" level overriding the score and making the level feel special.
+
+[center][table=2][cell][b]Score[/b][/cell][cell][b]Feeling[/b][/cell]
+[cell]0[/cell][cell]What a boring place[/cell]
+[cell]1-10[/cell][cell]This level looks reasonably safe[/cell]
+[cell]11-20[/cell][cell]You don't like the look of this place[/cell]
+[cell]21-30[/cell][cell]You feel unsafe[/cell]
+[cell]31-40[/cell][cell]You feel nervous[/cell]
+[cell]41-60[/cell][cell]You have a bad feeling[/cell]
+[cell]61-80[/cell][cell]You have a very bad feeling[/cell]
+[cell]81-100[/cell][cell]This level looks very dangerous[/cell]
+[cell] >100[/cell][cell]You nearly faint as horrible visions of death fill your mind[/cell][/table][/center]
+
+[font_size=24][color="brown"][b]Treasure Feelings[/b][/color][/font_size]
+[ul]+40 for each legendary item
++30 for each set of dragon scale mail
++25 for each ring of speed
++25 for each amulet of the magi
++10-20 for each artifact (an artifact also always makes the level "special")
++5 for each dragon shield
++5 for each dragon helm
++5 for each ring of lordly might
++0 to +30 for each other rare magic item, depending on the rare item type
++X for each item whose level is X levels greater than the depth of the dungeon level[/ul]
+The total score for the level then determines how you "feel" about it - with a "special" level overriding the score and making the level feel special.
+
+[center][table=2][cell][b]Score[/b][/cell][cell][b]Feeling[/b][/cell]
+[cell]0[/cell][cell]what meagre pickings...[/cell]
+[cell]1-10[/cell][cell]nothing of worth.[/cell]
+[cell]11-20[/cell][cell]there's not much of value here.[/cell]
+[cell]21-30[/cell][cell]with significant treasure.[/cell]
+[cell]31-40[/cell][cell]there's wealth to be found.[/cell]
+[cell]41-60[/cell][cell]there's magic in the air.[/cell]
+[cell]61-80[/cell][cell]powerful magic can be found here.[/cell]
+[cell]81-100[/cell][cell]with a veritable hoard.[/cell]
+[cell] >100[/cell][cell]treasure galore![/cell][/table][/center]
+
+[font_size=24][color="brown"][b]Special Feelings[/b][/color][/font_size]
+[ul]An artifact has a 100% chance of making a level feel special, regardless of depth.
+A monster pit has a lesser chance of making a level feel special based on the current depth (if the depth is 15 or less it will always make it feel special, but beyond this depth the chance drops off sharply, so that at depth 23 there's around a 50% chance; at depth 34 there's around a 25% chance; at depth 54 there's around a 10% chance; and at depth 78 or greater there's less than a 5% chance).
+A vault has a greater chance of making a level feel special based on the current depth (if the depth is 58 or less it will always make it feel special, but beyond this depth the chance drops off sharply, so that at depth 67 there's around a 50% chance; at depth 80 there's around a 25% chance; at depth 103 there's around a 10% chance; and at depth 128 there's just over a 5% chance).[/ul]
+
+This means that the deeper the level, the more likely it is that a "special" feeling indicates the presence of an artifact rather than a vault or pit; but just because there [i]is[/i] a vault or pit doesn't mean that there isn't [i]also[/i] an artifact on the level, even on a shallow level. However, if you've fully explored a special level and there is no vault or pit on it, that means that there must be an artifact on it somewhere.

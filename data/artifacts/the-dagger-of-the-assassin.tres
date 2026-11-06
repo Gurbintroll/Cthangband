@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5ot1o"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_pxwp5"]
+
+[sub_resource type="Resource" id="Resource_1aqno"]
+script = ExtResource("1_5ot1o")
+value = 137495304
+
+[sub_resource type="Resource" id="Resource_sb1on"]
+script = ExtResource("1_5ot1o")
+value = 8405000
+
+[sub_resource type="Resource" id="Resource_uq0t0"]
+script = ExtResource("1_5ot1o")
+value = 15746560
+
+[resource]
+script = ExtResource("2_pxwp5")
+flags_1 = SubResource("Resource_1aqno")
+flags_2 = SubResource("Resource_sb1on")
+flags_3 = SubResource("Resource_uq0t0")
+cost = 125000
+damage_dice = 2
+damage_dice_sides = 4
+item_category = 23
+item_sub_category = 4
+level = 20
+name = "of the *Assassin*"
+type_specific_value = 4
+rarity = 80
+to_ac = 5
+to_hit = 10
+to_damage = 15
+weight = 12
+id = 65

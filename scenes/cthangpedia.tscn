@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://culidbpp341e5"]
+
+[ext_resource type="Script" uid="uid://67ndtlbec3ly" path="res://scripts/user_interface/cthangpedia.gd" id="1_1e8il"]
+[ext_resource type="Theme" uid="uid://blqhida24a2ha" path="res://default_theme.tres" id="2_diw7j"]
+[ext_resource type="PackedScene" uid="uid://com4dxksw0ftt" path="res://scenes/animated_button.tscn" id="3_8mybt"]
+[ext_resource type="Texture2D" uid="uid://cqcn4yw556cts" path="res://images/back.png" id="3_diw7j"]
+[ext_resource type="Texture2D" uid="uid://bg0t60op7vrv2" path="res://images/next.png" id="4_8mybt"]
+[ext_resource type="Texture2D" uid="uid://cj7hp5ple3cim" path="res://images/back_disabled.png" id="5_it2j7"]
+[ext_resource type="Texture2D" uid="uid://cttkph6m1uais" path="res://images/next_disabled.png" id="7_mdliv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diw7j"]
+bg_color = Color(1, 1, 0.8784314, 1)
+
+[node name="Cthangpedia" type="Window" unique_id=841823943]
+disable_3d = true
+oversampling_override = 1.0
+mode = 2
+title = "Cthangpedia"
+initial_position = 1
+size = Vector2i(640, 360)
+script = ExtResource("1_1e8il")
+
+[node name="Panel" type="Panel" parent="." unique_id=1449285868]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_diw7j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=534146117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer" unique_id=694401078]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/MarginContainer" unique_id=733785947]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1976137297]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=487993304]
+layout_mode = 2
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=482841469]
+layout_mode = 2
+
+[node name="HomeButton" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer/MarginContainer" unique_id=118777417 instance=ExtResource("3_8mybt")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1408007092]
+layout_mode = 2
+
+[node name="BackButton" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer/MarginContainer2" unique_id=1197606709 instance=ExtResource("3_8mybt")]
+layout_mode = 2
+texture_normal = ExtResource("3_diw7j")
+texture_disabled = ExtResource("5_it2j7")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1488734171]
+layout_mode = 2
+
+[node name="NextButton" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer/MarginContainer3" unique_id=1147901534 instance=ExtResource("3_8mybt")]
+layout_mode = 2
+texture_normal = ExtResource("4_8mybt")
+texture_disabled = ExtResource("7_mdliv")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1632921646]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FileList" type="ItemList" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=18870210]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/HBoxContainer" unique_id=1441090776]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/MarginContainer2" unique_id=611617652]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_diw7j")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer2" unique_id=1288733726]
+layout_mode = 2
+
+[node name="TextArea" type="RichTextLabel" parent="Panel/HBoxContainer/MarginContainer2/MarginContainer" unique_id=691236676]
+layout_mode = 2
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer/MarginContainer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer/MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer/MarginContainer3/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="item_activated" from="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer2/FileList" to="." method="_on_file_list_item_activated"]
+[connection signal="item_selected" from="Panel/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer2/FileList" to="." method="_on_file_list_item_selected"]
+[connection signal="meta_clicked" from="Panel/HBoxContainer/MarginContainer2/MarginContainer/TextArea" to="." method="_on_text_area_meta_clicked"]

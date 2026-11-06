@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_nxxub"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_5rr3f"]
+
+[sub_resource type="Resource" id="Resource_oaj4m"]
+script = ExtResource("1_nxxub")
+value = 4
+
+[sub_resource type="Resource" id="Resource_sr2aw"]
+script = ExtResource("1_nxxub")
+value = 4
+
+[sub_resource type="Resource" id="Resource_clajo"]
+script = ExtResource("1_nxxub")
+
+[resource]
+script = ExtResource("2_5rr3f")
+cost = 500
+flags_1 = SubResource("Resource_oaj4m")
+flags_2 = SubResource("Resource_sr2aw")
+flags_3 = SubResource("Resource_clajo")
+max_type_specifc_value = 2
+name = "of Wisdom"
+rating = 13
+slot = 33
+id = 18

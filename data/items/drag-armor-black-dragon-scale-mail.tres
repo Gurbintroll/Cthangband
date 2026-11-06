@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ghkkf"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_oikjq"]
+
+[sub_resource type="Resource" id="Resource_7c0n3"]
+script = ExtResource("1_ghkkf")
+
+[sub_resource type="Resource" id="Resource_46irp"]
+script = ExtResource("1_ghkkf")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_l7mbw"]
+script = ExtResource("1_ghkkf")
+value = 32505856
+
+[resource]
+script = ExtResource("2_oikjq")
+ac = 30
+chance = Array[int]([8, 0, 0, 0])
+character = "["
+colour = 2
+cost = 30000
+damage_dice = 2
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_7c0n3")
+flags_2 = SubResource("Resource_46irp")
+flags_3 = SubResource("Resource_l7mbw")
+flavour_aware = true
+item_category = 38
+level = 60
+locale = Array[int]([60, 0, 0, 0])
+name = "Black Dragon Scale Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+to_ac = 10
+to_hit = -2
+weight = 200
+filename = "DragArmor:Black Dragon Scale Mail"

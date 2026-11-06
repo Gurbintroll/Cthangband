@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_3e8lv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_55jqc"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_k2qxd"]
+
+[sub_resource type="Resource" id="Resource_rbjlf"]
+script = ExtResource("1_3e8lv")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_unycw"]
+script = ExtResource("1_3e8lv")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_dgi5n"]
+script = ExtResource("1_3e8lv")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_kg77r"]
+script = ExtResource("1_3e8lv")
+
+[sub_resource type="Resource" id="Resource_e8pp1"]
+script = ExtResource("2_55jqc")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_4j7gs"]
+script = ExtResource("2_55jqc")
+value = 128
+
+[sub_resource type="Resource" id="Resource_1njmm"]
+script = ExtResource("2_55jqc")
+value = 1704128
+
+[sub_resource type="Resource" id="Resource_e2eng"]
+script = ExtResource("2_55jqc")
+
+[sub_resource type="Resource" id="Resource_kmfnm"]
+script = ExtResource("2_55jqc")
+
+[sub_resource type="Resource" id="Resource_u4f5v"]
+script = ExtResource("2_55jqc")
+
+[resource]
+script = ExtResource("3_k2qxd")
+ac = 80
+attack = Array[ExtResource("1_3e8lv")]([SubResource("Resource_rbjlf"), SubResource("Resource_unycw"), SubResource("Resource_dgi5n"), SubResource("Resource_kg77r")])
+character = "b"
+colour = 27
+description = "Devil-bats, notoriously difficult to kill."
+flags_1 = SubResource("Resource_e8pp1")
+flags_2 = SubResource("Resource_4j7gs")
+flags_3 = SubResource("Resource_1njmm")
+flags_4 = SubResource("Resource_e2eng")
+flags_5 = SubResource("Resource_kmfnm")
+flags_6 = SubResource("Resource_u4f5v")
+hit_dice = 12
+hit_dice_sides = 12
+level = 13
+max_num = 100
+experience = 65
+name = "Hellbat"
+notice_range = 20
+rarity = 2
+sleep = 8
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Hellbat   "

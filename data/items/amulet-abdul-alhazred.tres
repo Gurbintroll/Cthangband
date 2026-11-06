@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://cv37k844cnkat"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_8l6x8"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_moedo"]
+
+[sub_resource type="Resource" id="Resource_n5hfh"]
+script = ExtResource("1_8l6x8")
+
+[sub_resource type="Resource" id="Resource_t6sei"]
+script = ExtResource("1_8l6x8")
+
+[sub_resource type="Resource" id="Resource_w3k7x"]
+script = ExtResource("1_8l6x8")
+value = 2048
+
+[resource]
+script = ExtResource("2_moedo")
+chance = Array[int]([0, 0, 0, 0])
+character = "\""
+colour = 4
+cost = 90000
+flags_1 = SubResource("Resource_n5hfh")
+flags_2 = SubResource("Resource_t6sei")
+flags_3 = SubResource("Resource_w3k7x")
+has_flavour = true
+item_category = 40
+level = 60
+locale = Array[int]([0, 0, 0, 0])
+name = "& Amulet~"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 11
+weight = 3

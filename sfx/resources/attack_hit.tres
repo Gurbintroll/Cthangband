@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://ct4ilmls6xh5g"]
+
+[ext_resource type="Script" uid="uid://bls4pxxp0hqvj" path="res://scripts/user_interface/sound.gd" id="1_unoa8"]
+[ext_resource type="AudioStream" uid="uid://1h45tsey4pow" path="res://sfx/sound_files/attack_hit.wav" id="2_7n2t8"]
+
+[resource]
+script = ExtResource("1_unoa8")
+stream = ExtResource("2_7n2t8")
+randomise = true
+metadata/_custom_type_script = "uid://bls4pxxp0hqvj"

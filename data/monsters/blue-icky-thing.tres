@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_yhj2e"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_p3jlo"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_u424s"]
+
+[sub_resource type="Resource" id="Resource_wgh6e"]
+script = ExtResource("1_yhj2e")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 12
+
+[sub_resource type="Resource" id="Resource_d1bds"]
+script = ExtResource("1_yhj2e")
+effect = 7
+method = 12
+
+[sub_resource type="Resource" id="Resource_42so6"]
+script = ExtResource("1_yhj2e")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8o13i"]
+script = ExtResource("1_yhj2e")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fetvc"]
+script = ExtResource("2_p3jlo")
+value = 525312
+
+[sub_resource type="Resource" id="Resource_wissw"]
+script = ExtResource("2_p3jlo")
+value = 196864
+
+[sub_resource type="Resource" id="Resource_f0pt1"]
+script = ExtResource("2_p3jlo")
+value = 1048640
+
+[sub_resource type="Resource" id="Resource_ac7l7"]
+script = ExtResource("2_p3jlo")
+
+[sub_resource type="Resource" id="Resource_e383e"]
+script = ExtResource("2_p3jlo")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_fbtlm"]
+script = ExtResource("2_p3jlo")
+
+[resource]
+script = ExtResource("3_u424s")
+ac = 20
+attack = Array[ExtResource("1_yhj2e")]([SubResource("Resource_wgh6e"), SubResource("Resource_d1bds"), SubResource("Resource_42so6"), SubResource("Resource_8o13i")])
+character = "i"
+colour = 3
+description = "It is a strange, slimy, icky creature, with rudimentary intelligence, but evil cunning. It hungers for food, and you look tasty."
+flags_1 = SubResource("Resource_fetvc")
+flags_2 = SubResource("Resource_wissw")
+flags_3 = SubResource("Resource_f0pt1")
+flags_4 = SubResource("Resource_ac7l7")
+flags_5 = SubResource("Resource_e383e")
+flags_6 = SubResource("Resource_fbtlm")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 10
+hit_dice_sides = 6
+level = 14
+max_num = 100
+experience = 20
+name = "Blue icky thing"
+notice_range = 15
+rarity = 4
+sleep = 20
+speed = 100
+split_name_1 = "    Blue    "
+split_name_2 = "    icky    "
+split_name_3 = "   thing    "

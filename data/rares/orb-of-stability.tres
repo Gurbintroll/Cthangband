@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mufkj"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_8i5w4"]
+
+[sub_resource type="Resource" id="Resource_u1pha"]
+script = ExtResource("1_mufkj")
+
+[sub_resource type="Resource" id="Resource_3acam"]
+script = ExtResource("1_mufkj")
+
+[sub_resource type="Resource" id="Resource_0xm88"]
+script = ExtResource("1_mufkj")
+value = 15728640
+
+[resource]
+script = ExtResource("2_8i5w4")
+cost = 1000
+flags_1 = SubResource("Resource_u1pha")
+flags_2 = SubResource("Resource_3acam")
+flags_3 = SubResource("Resource_0xm88")
+name = "of Stability"
+id = 114

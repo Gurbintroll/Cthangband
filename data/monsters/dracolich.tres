@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_jufd8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gqot6"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_l62bf"]
+
+[sub_resource type="Resource" id="Resource_x7xpk"]
+script = ExtResource("1_jufd8")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_cor1b"]
+script = ExtResource("1_jufd8")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_pkwn3"]
+script = ExtResource("1_jufd8")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_jv3wk"]
+script = ExtResource("1_jufd8")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_eiwuh"]
+script = ExtResource("2_gqot6")
+value = 404751872
+
+[sub_resource type="Resource" id="Resource_07vcv"]
+script = ExtResource("2_gqot6")
+value = 5443616
+
+[sub_resource type="Resource" id="Resource_6l0mr"]
+script = ExtResource("2_gqot6")
+value = 3224895592
+
+[sub_resource type="Resource" id="Resource_e3pmk"]
+script = ExtResource("2_gqot6")
+value = 10240
+
+[sub_resource type="Resource" id="Resource_dj7hi"]
+script = ExtResource("2_gqot6")
+value = 671088640
+
+[sub_resource type="Resource" id="Resource_vxaua"]
+script = ExtResource("2_gqot6")
+
+[resource]
+script = ExtResource("3_l62bf")
+ac = 120
+attack = Array[ExtResource("1_jufd8")]([SubResource("Resource_x7xpk"), SubResource("Resource_cor1b"), SubResource("Resource_pkwn3"), SubResource("Resource_jv3wk")])
+character = "D"
+colour = 4
+description = "The skeletal form of a once-great dragon, enchanted by magic most perilous. Its animated form strikes with speed and drains life from its prey to satisfy its hunger."
+flags_1 = SubResource("Resource_eiwuh")
+flags_2 = SubResource("Resource_07vcv")
+flags_3 = SubResource("Resource_6l0mr")
+flags_4 = SubResource("Resource_e3pmk")
+flags_5 = SubResource("Resource_dj7hi")
+flags_6 = SubResource("Resource_vxaua")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 35
+hit_dice_sides = 100
+level = 46
+max_num = 100
+experience = 18000
+name = "Dracolich"
+notice_range = 25
+rarity = 2
+sleep = 30
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Dracolich  "

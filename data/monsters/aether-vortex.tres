@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_mwe82"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jw4vt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jqv55"]
+
+[sub_resource type="Resource" id="Resource_d4sio"]
+script = ExtResource("1_mwe82")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 10
+method = 10
+
+[sub_resource type="Resource" id="Resource_1jtjw"]
+script = ExtResource("1_mwe82")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 11
+method = 10
+
+[sub_resource type="Resource" id="Resource_s5ook"]
+script = ExtResource("1_mwe82")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 9
+method = 10
+
+[sub_resource type="Resource" id="Resource_yj1po"]
+script = ExtResource("1_mwe82")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 12
+method = 10
+
+[sub_resource type="Resource" id="Resource_aehaf"]
+script = ExtResource("2_jw4vt")
+value = 787584
+
+[sub_resource type="Resource" id="Resource_yil43"]
+script = ExtResource("2_jw4vt")
+value = 186432
+
+[sub_resource type="Resource" id="Resource_8v1ef"]
+script = ExtResource("2_jw4vt")
+value = 3546220544
+
+[sub_resource type="Resource" id="Resource_vedv0"]
+script = ExtResource("2_jw4vt")
+value = 133693184
+
+[sub_resource type="Resource" id="Resource_rm2y7"]
+script = ExtResource("2_jw4vt")
+
+[sub_resource type="Resource" id="Resource_wik24"]
+script = ExtResource("2_jw4vt")
+
+[resource]
+script = ExtResource("3_jqv55")
+ac = 40
+attack = Array[ExtResource("1_mwe82")]([SubResource("Resource_d4sio"), SubResource("Resource_1jtjw"), SubResource("Resource_s5ook"), SubResource("Resource_yj1po")])
+character = "v"
+colour = 9
+description = "An awesome vortex of pure magic, power radiates from its frame."
+flags_1 = SubResource("Resource_aehaf")
+flags_2 = SubResource("Resource_yil43")
+flags_3 = SubResource("Resource_8v1ef")
+flags_4 = SubResource("Resource_vedv0")
+flags_5 = SubResource("Resource_rm2y7")
+flags_6 = SubResource("Resource_wik24")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 32
+hit_dice_sides = 20
+level = 55
+max_num = 100
+experience = 4500
+name = "Aether vortex"
+notice_range = 100
+rarity = 2
+speed = 130
+split_name_1 = "            "
+split_name_2 = "   Aether   "
+split_name_3 = "   vortex   "

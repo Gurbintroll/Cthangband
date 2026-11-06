@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vv8ay"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_joqlf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_p4pj2"]
+
+[sub_resource type="Resource" id="Resource_m7tej"]
+script = ExtResource("1_vv8ay")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_illfc"]
+script = ExtResource("1_vv8ay")
+
+[sub_resource type="Resource" id="Resource_48osr"]
+script = ExtResource("1_vv8ay")
+
+[sub_resource type="Resource" id="Resource_di4su"]
+script = ExtResource("1_vv8ay")
+
+[sub_resource type="Resource" id="Resource_ev4e5"]
+script = ExtResource("2_joqlf")
+value = 263168
+
+[sub_resource type="Resource" id="Resource_pmj6p"]
+script = ExtResource("2_joqlf")
+
+[sub_resource type="Resource" id="Resource_xjosw"]
+script = ExtResource("2_joqlf")
+value = 262272
+
+[sub_resource type="Resource" id="Resource_v3dqi"]
+script = ExtResource("2_joqlf")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_awx8d"]
+script = ExtResource("2_joqlf")
+
+[sub_resource type="Resource" id="Resource_qsslg"]
+script = ExtResource("2_joqlf")
+
+[resource]
+script = ExtResource("3_p4pj2")
+ac = 40
+attack = Array[ExtResource("1_vv8ay")]([SubResource("Resource_m7tej"), SubResource("Resource_illfc"), SubResource("Resource_48osr"), SubResource("Resource_di4su")])
+character = "R"
+colour = 27
+description = "A large black and yellow lizard. You'd better run away!"
+flags_1 = SubResource("Resource_ev4e5")
+flags_2 = SubResource("Resource_pmj6p")
+flags_3 = SubResource("Resource_xjosw")
+flags_4 = SubResource("Resource_v3dqi")
+flags_5 = SubResource("Resource_awx8d")
+flags_6 = SubResource("Resource_qsslg")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 6
+hit_dice_sides = 7
+level = 8
+max_num = 100
+experience = 50
+name = "Giant salamander"
+notice_range = 6
+rarity = 1
+sleep = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Giant    "
+split_name_3 = " salamander "

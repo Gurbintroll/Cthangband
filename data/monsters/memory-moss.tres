@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_b2lth"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rrexc"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mlbo3"]
+
+[sub_resource type="Resource" id="Resource_3pqim"]
+script = ExtResource("1_b2lth")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_681wi"]
+script = ExtResource("1_b2lth")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_jwfsn"]
+script = ExtResource("1_b2lth")
+
+[sub_resource type="Resource" id="Resource_2qkhn"]
+script = ExtResource("1_b2lth")
+
+[sub_resource type="Resource" id="Resource_f01k8"]
+script = ExtResource("2_rrexc")
+value = 132096
+
+[sub_resource type="Resource" id="Resource_2d8jw"]
+script = ExtResource("2_rrexc")
+value = 65
+
+[sub_resource type="Resource" id="Resource_ufhf5"]
+script = ExtResource("2_rrexc")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_y7nrk"]
+script = ExtResource("2_rrexc")
+
+[sub_resource type="Resource" id="Resource_0d7f6"]
+script = ExtResource("2_rrexc")
+
+[sub_resource type="Resource" id="Resource_nghky"]
+script = ExtResource("2_rrexc")
+value = 16384
+
+[resource]
+script = ExtResource("3_mlbo3")
+ac = 1
+attack = Array[ExtResource("1_b2lth")]([SubResource("Resource_3pqim"), SubResource("Resource_681wi"), SubResource("Resource_jwfsn"), SubResource("Resource_2qkhn")])
+character = ","
+colour = 3
+description = "A mass of green vegetation. You don't remember seeing anything like it before."
+flags_1 = SubResource("Resource_f01k8")
+flags_2 = SubResource("Resource_2d8jw")
+flags_3 = SubResource("Resource_ufhf5")
+flags_4 = SubResource("Resource_y7nrk")
+flags_5 = SubResource("Resource_0d7f6")
+flags_6 = SubResource("Resource_nghky")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 1
+hit_dice_sides = 2
+level = 32
+max_num = 100
+experience = 150
+name = "Memory moss"
+notice_range = 30
+rarity = 3
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Memory   "
+split_name_3 = "    moss    "

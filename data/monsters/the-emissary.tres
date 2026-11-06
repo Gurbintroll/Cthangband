@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dr8drvqdmbmys"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_pitae"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_a4kbf"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_g0gsn"]
+
+[sub_resource type="Resource" id="Resource_v5o1o"]
+script = ExtResource("1_pitae")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4n2n3"]
+script = ExtResource("1_pitae")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_djo8d"]
+script = ExtResource("1_pitae")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3rrxm"]
+script = ExtResource("1_pitae")
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_ob0wm"]
+script = ExtResource("2_a4kbf")
+value = 278921993
+
+[sub_resource type="Resource" id="Resource_j0ye7"]
+script = ExtResource("2_a4kbf")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_osxag"]
+script = ExtResource("2_a4kbf")
+value = 80
+
+[sub_resource type="Resource" id="Resource_s76fc"]
+script = ExtResource("2_a4kbf")
+
+[sub_resource type="Resource" id="Resource_17awr"]
+script = ExtResource("2_a4kbf")
+
+[sub_resource type="Resource" id="Resource_i111r"]
+script = ExtResource("2_a4kbf")
+
+[resource]
+script = ExtResource("3_g0gsn")
+ac = 40
+attack = Array[ExtResource("1_pitae")]([SubResource("Resource_v5o1o"), SubResource("Resource_4n2n3"), SubResource("Resource_djo8d"), SubResource("Resource_3rrxm")])
+character = "p"
+colour = 12
+description = "The Emmisary can pass for human and is used by her demonic overlords to infiltrate human society and gather information. Only her eyes give away her demonic nature."
+flags_1 = SubResource("Resource_ob0wm")
+flags_2 = SubResource("Resource_j0ye7")
+flags_3 = SubResource("Resource_osxag")
+flags_4 = SubResource("Resource_s76fc")
+flags_5 = SubResource("Resource_17awr")
+flags_6 = SubResource("Resource_i111r")
+hit_dice = 34
+hit_dice_sides = 10
+level = 16
+max_num = 1
+experience = 200
+name = "The Emissary"
+notice_range = 20
+rarity = 3
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    The     "
+split_name_3 = "  Emissary  "

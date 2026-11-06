@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_c8yd6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qj7sy"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_8sx6j"]
+
+[sub_resource type="Resource" id="Resource_bdnqq"]
+script = ExtResource("1_c8yd6")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_n3fdh"]
+script = ExtResource("1_c8yd6")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0pd4s"]
+script = ExtResource("1_c8yd6")
+
+[sub_resource type="Resource" id="Resource_jos1s"]
+script = ExtResource("1_c8yd6")
+
+[sub_resource type="Resource" id="Resource_4mwp4"]
+script = ExtResource("2_qj7sy")
+
+[sub_resource type="Resource" id="Resource_i2gsp"]
+script = ExtResource("2_qj7sy")
+value = 131136
+
+[sub_resource type="Resource" id="Resource_68j4f"]
+script = ExtResource("2_qj7sy")
+value = 3489794048
+
+[sub_resource type="Resource" id="Resource_gsti3"]
+script = ExtResource("2_qj7sy")
+
+[sub_resource type="Resource" id="Resource_gf4of"]
+script = ExtResource("2_qj7sy")
+
+[sub_resource type="Resource" id="Resource_eg5tp"]
+script = ExtResource("2_qj7sy")
+
+[resource]
+script = ExtResource("3_8sx6j")
+ac = 30
+attack = Array[ExtResource("1_c8yd6")]([SubResource("Resource_bdnqq"), SubResource("Resource_n3fdh"), SubResource("Resource_0pd4s"), SubResource("Resource_jos1s")])
+character = "g"
+colour = 24
+description = "A shambling humanoid monster with long scars."
+flags_1 = SubResource("Resource_4mwp4")
+flags_2 = SubResource("Resource_i2gsp")
+flags_3 = SubResource("Resource_68j4f")
+flags_4 = SubResource("Resource_gsti3")
+flags_5 = SubResource("Resource_gf4of")
+flags_6 = SubResource("Resource_eg5tp")
+hit_dice = 12
+hit_dice_sides = 8
+level = 14
+max_num = 100
+experience = 50
+name = "Flesh golem"
+notice_range = 12
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Flesh    "
+split_name_3 = "   golem    "

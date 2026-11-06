@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cn1k2jcg8nvlk"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_q3o5c"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_2sg8w"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_tbbku"]
+
+[sub_resource type="Resource" id="Resource_s2b4k"]
+script = ExtResource("1_q3o5c")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_5p67d"]
+script = ExtResource("1_q3o5c")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_a82f0"]
+script = ExtResource("1_q3o5c")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_i2mmp"]
+script = ExtResource("1_q3o5c")
+
+[sub_resource type="Resource" id="Resource_nl7xc"]
+script = ExtResource("2_2sg8w")
+value = 304104201
+
+[sub_resource type="Resource" id="Resource_owoip"]
+script = ExtResource("2_2sg8w")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_ehgi4"]
+script = ExtResource("2_2sg8w")
+value = 1048644
+
+[sub_resource type="Resource" id="Resource_7e2f1"]
+script = ExtResource("2_2sg8w")
+
+[sub_resource type="Resource" id="Resource_mmx61"]
+script = ExtResource("2_2sg8w")
+
+[sub_resource type="Resource" id="Resource_whqgm"]
+script = ExtResource("2_2sg8w")
+
+[resource]
+script = ExtResource("3_tbbku")
+ac = 100
+attack = Array[ExtResource("1_q3o5c")]([SubResource("Resource_s2b4k"), SubResource("Resource_5p67d"), SubResource("Resource_a82f0"), SubResource("Resource_i2mmp")])
+character = "O"
+colour = 12
+description = "She taught her son everything he knows."
+flags_1 = SubResource("Resource_nl7xc")
+flags_2 = SubResource("Resource_owoip")
+flags_3 = SubResource("Resource_ehgi4")
+flags_4 = SubResource("Resource_7e2f1")
+flags_5 = SubResource("Resource_mmx61")
+flags_6 = SubResource("Resource_whqgm")
+hit_dice = 25
+hit_dice_sides = 100
+level = 28
+max_num = 1
+experience = 1500
+name = "Grendel's mother"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = " Grendel's  "
+split_name_3 = "   mother   "

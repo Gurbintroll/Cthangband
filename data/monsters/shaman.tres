@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1n7bp"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_51hjf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_cnfkq"]
+
+[sub_resource type="Resource" id="Resource_4vqf6"]
+script = ExtResource("1_1n7bp")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0h5l7"]
+script = ExtResource("1_1n7bp")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vklqt"]
+script = ExtResource("1_1n7bp")
+
+[sub_resource type="Resource" id="Resource_j5w6a"]
+script = ExtResource("1_1n7bp")
+
+[sub_resource type="Resource" id="Resource_h5u03"]
+script = ExtResource("2_51hjf")
+value = 16778244
+
+[sub_resource type="Resource" id="Resource_qt5d8"]
+script = ExtResource("2_51hjf")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_qfgec"]
+script = ExtResource("2_51hjf")
+value = 268435456
+
+[sub_resource type="Resource" id="Resource_4p81y"]
+script = ExtResource("2_51hjf")
+
+[sub_resource type="Resource" id="Resource_82vqf"]
+script = ExtResource("2_51hjf")
+value = 3490054144
+
+[sub_resource type="Resource" id="Resource_paiq8"]
+script = ExtResource("2_51hjf")
+value = 17
+
+[resource]
+script = ExtResource("3_cnfkq")
+ac = 10
+attack = Array[ExtResource("1_1n7bp")]([SubResource("Resource_4vqf6"), SubResource("Resource_0h5l7"), SubResource("Resource_vklqt"), SubResource("Resource_j5w6a")])
+character = "p"
+colour = 3
+description = "A man with powerful spirit friends..."
+flags_1 = SubResource("Resource_h5u03")
+flags_2 = SubResource("Resource_qt5d8")
+flags_3 = SubResource("Resource_qfgec")
+flags_4 = SubResource("Resource_4p81y")
+flags_5 = SubResource("Resource_82vqf")
+flags_6 = SubResource("Resource_paiq8")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 12
+hit_dice_sides = 12
+level = 13
+max_num = 100
+experience = 50
+name = "Shaman"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Shaman   "

@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bmkt7cpqkuiyb"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_c88sq"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_xuswt"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_s7r1w"]
+
+[sub_resource type="Resource" id="Resource_88d0b"]
+script = ExtResource("1_c88sq")
+damage_dice = 2
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_mvsf4"]
+script = ExtResource("1_c88sq")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 2
+method = 7
+
+[sub_resource type="Resource" id="Resource_n2h8w"]
+script = ExtResource("1_c88sq")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 17
+method = 7
+
+[sub_resource type="Resource" id="Resource_3leva"]
+script = ExtResource("1_c88sq")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 2
+method = 7
+
+[sub_resource type="Resource" id="Resource_tr2ub"]
+script = ExtResource("2_xuswt")
+value = 320915209
+
+[sub_resource type="Resource" id="Resource_8kmyn"]
+script = ExtResource("2_xuswt")
+value = 131074
+
+[sub_resource type="Resource" id="Resource_75d6n"]
+script = ExtResource("2_xuswt")
+value = 3221229760
+
+[sub_resource type="Resource" id="Resource_6kstx"]
+script = ExtResource("2_xuswt")
+value = 32768
+
+[sub_resource type="Resource" id="Resource_o6aur"]
+script = ExtResource("2_xuswt")
+value = 2013315072
+
+[sub_resource type="Resource" id="Resource_uuwwp"]
+script = ExtResource("2_xuswt")
+value = 2105348
+
+[resource]
+script = ExtResource("3_s7r1w")
+ac = 80
+attack = Array[ExtResource("1_c88sq")]([SubResource("Resource_88d0b"), SubResource("Resource_mvsf4"), SubResource("Resource_n2h8w"), SubResource("Resource_3leva")])
+character = "S"
+colour = 12
+description = "Shelob is an enormous bloated spider, rumoured to have been one of the brood of Ungoliant the Unlight. Her poison is legendary, as is her ego, which may be her downfall. She used to guard the pass through Cirith Ungol, but has not been seen there for many eons."
+flags_1 = SubResource("Resource_tr2ub")
+flags_2 = SubResource("Resource_8kmyn")
+flags_3 = SubResource("Resource_75d6n")
+flags_4 = SubResource("Resource_6kstx")
+flags_5 = SubResource("Resource_o6aur")
+flags_6 = SubResource("Resource_uuwwp")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 12
+hit_dice_sides = 100
+level = 32
+max_num = 1
+experience = 1200
+name = "Shelob, Spider of Darkness"
+notice_range = 8
+rarity = 3
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Shelob   "

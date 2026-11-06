@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_x8grj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jx6ok"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_arxq4"]
+
+[sub_resource type="Resource" id="Resource_2oaoh"]
+script = ExtResource("1_x8grj")
+
+[sub_resource type="Resource" id="Resource_bmye4"]
+script = ExtResource("1_x8grj")
+
+[sub_resource type="Resource" id="Resource_u0sp2"]
+script = ExtResource("1_x8grj")
+
+[sub_resource type="Resource" id="Resource_lsnla"]
+script = ExtResource("1_x8grj")
+
+[sub_resource type="Resource" id="Resource_rwxrc"]
+script = ExtResource("2_jx6ok")
+value = 197632
+
+[sub_resource type="Resource" id="Resource_ahr0g"]
+script = ExtResource("2_jx6ok")
+value = 65
+
+[sub_resource type="Resource" id="Resource_dtauj"]
+script = ExtResource("2_jx6ok")
+value = 3490709504
+
+[sub_resource type="Resource" id="Resource_6yxlm"]
+script = ExtResource("2_jx6ok")
+value = 1
+
+[sub_resource type="Resource" id="Resource_215ue"]
+script = ExtResource("2_jx6ok")
+
+[sub_resource type="Resource" id="Resource_o2ucb"]
+script = ExtResource("2_jx6ok")
+
+[resource]
+script = ExtResource("3_arxq4")
+ac = 1
+attack = Array[ExtResource("1_x8grj")]([SubResource("Resource_2oaoh"), SubResource("Resource_bmye4"), SubResource("Resource_u0sp2"), SubResource("Resource_lsnla")])
+character = ","
+colour = 13
+description = "Yum! These look quite tasty."
+flags_1 = SubResource("Resource_rwxrc")
+flags_2 = SubResource("Resource_ahr0g")
+flags_3 = SubResource("Resource_dtauj")
+flags_4 = SubResource("Resource_6yxlm")
+flags_5 = SubResource("Resource_215ue")
+flags_6 = SubResource("Resource_o2ucb")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 1
+hit_dice_sides = 1
+level = 2
+max_num = 100
+experience = 1
+name = "Shrieker mushroom patch"
+notice_range = 4
+rarity = 1
+speed = 110
+split_name_1 = "  Shrieker  "
+split_name_2 = "  mushroom  "
+split_name_3 = "   patch    "

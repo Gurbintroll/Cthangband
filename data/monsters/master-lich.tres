@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_n2b7y"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dbnxy"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ivx61"]
+
+[sub_resource type="Resource" id="Resource_sxt2n"]
+script = ExtResource("1_n2b7y")
+effect = 27
+method = 2
+
+[sub_resource type="Resource" id="Resource_dxq7x"]
+script = ExtResource("1_n2b7y")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_3ifhp"]
+script = ExtResource("1_n2b7y")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_a7x4o"]
+script = ExtResource("1_n2b7y")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_o5tjg"]
+script = ExtResource("2_dbnxy")
+value = 169870848
+
+[sub_resource type="Resource" id="Resource_8qthu"]
+script = ExtResource("2_dbnxy")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_ltao1"]
+script = ExtResource("2_dbnxy")
+value = 3224895584
+
+[sub_resource type="Resource" id="Resource_jenqu"]
+script = ExtResource("2_dbnxy")
+
+[sub_resource type="Resource" id="Resource_lqhak"]
+script = ExtResource("2_dbnxy")
+value = 3087059456
+
+[sub_resource type="Resource" id="Resource_erqf3"]
+script = ExtResource("2_dbnxy")
+value = 67109136
+
+[resource]
+script = ExtResource("3_ivx61")
+ac = 80
+attack = Array[ExtResource("1_n2b7y")]([SubResource("Resource_sxt2n"), SubResource("Resource_dxq7x"), SubResource("Resource_3ifhp"), SubResource("Resource_a7x4o")])
+character = "L"
+colour = 15
+description = "A skeletal form wrapped in robes. Powerful magic crackles along its bony fingers."
+flags_1 = SubResource("Resource_o5tjg")
+flags_2 = SubResource("Resource_8qthu")
+flags_3 = SubResource("Resource_ltao1")
+flags_4 = SubResource("Resource_jenqu")
+flags_5 = SubResource("Resource_lqhak")
+flags_6 = SubResource("Resource_erqf3")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 18
+hit_dice_sides = 100
+level = 41
+max_num = 100
+experience = 10000
+name = "Master lich"
+notice_range = 20
+rarity = 2
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Master   "
+split_name_3 = "    lich    "

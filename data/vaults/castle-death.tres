@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_ew07v"]
+
+[resource]
+script = ExtResource("1_ew07v")
+category = 8
+height = 20
+name = "Castle Death"
+rating = 35
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,+XX....+XX...X****X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....XXX....@X****X%%X.........................................XXX....&.@X****X%%X+XXXXX+XXXXX+XXXXX+XXXXX+XXXXX+XXXXX+XXXXX....@.&.@X****X%%X999X..9..X&&&&&X,,,,,X@@@@@X..&..X@@@XXX....&.@.&.@X*99*X%%X@@@X.&.&.X&&&&&X,,,,,X@@@@@X99.99X9XXX.X..@.&.@.&.@X****X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...X..@.&.@.&.@XX##XX%%+^...&.&.&+...@.@.@+...@@@@@+.....99+...+..@.&.@.&.8+^^^^X%%+^...&.&.&+...@.@.@+...@@@@@+.....99+...+..@.&.@.&.8+^^^^X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...X..@.&.@.&.@XX##XX%%X@@@X.&.&.X&&&&&X,,,,,X@@@@@X99.99X9XXX.X..@.&.@.&.@X****X%%X999X..9..X&&&&&X,,,,,X@@@@@X..&..X@@@XXX....&.@.&.@X*99*X%%X+XXXXX+XXXXX+XXXXX+XXXXX+XXXXX+XXXXX+XXXXX....@.&.@X****X%%X.........................................XXX....&.@X****X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....XXX....@X****X%%X,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,+XX....+XX...X****X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 60

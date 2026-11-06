@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_37mx7"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_ixkjb"]
+
+[sub_resource type="Resource" id="Resource_ad6np"]
+script = ExtResource("1_37mx7")
+value = 25165840
+
+[sub_resource type="Resource" id="Resource_ttno7"]
+script = ExtResource("1_37mx7")
+
+[sub_resource type="Resource" id="Resource_litcg"]
+script = ExtResource("1_37mx7")
+
+[resource]
+script = ExtResource("2_ixkjb")
+cost = 6000
+flags_1 = SubResource("Resource_ad6np")
+flags_2 = SubResource("Resource_ttno7")
+flags_3 = SubResource("Resource_litcg")
+max_type_specifc_value = 1
+name = "of Dragon Bane"
+rating = 24
+slot = 24
+id = 78

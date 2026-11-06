@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dpt7e"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_mng1u"]
+
+[sub_resource type="Resource" id="Resource_yn0xb"]
+script = ExtResource("1_dpt7e")
+
+[sub_resource type="Resource" id="Resource_ucmdk"]
+script = ExtResource("1_dpt7e")
+
+[sub_resource type="Resource" id="Resource_xk2lw"]
+script = ExtResource("1_dpt7e")
+value = 15728640
+
+[resource]
+script = ExtResource("2_mng1u")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 25
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_yn0xb")
+flags_2 = SubResource("Resource_ucmdk")
+flags_3 = SubResource("Resource_xk2lw")
+flavour_aware = true
+item_category = 95
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "[Eltdown Shards]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 2
+weight = 30
+filename = "TarotBook:[Eltdown Shards]"

@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2st5w"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_i3f7p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_wod5c"]
+
+[sub_resource type="Resource" id="Resource_27jt3"]
+script = ExtResource("1_2st5w")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 25
+method = 1
+
+[sub_resource type="Resource" id="Resource_qfyq3"]
+script = ExtResource("1_2st5w")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 25
+method = 1
+
+[sub_resource type="Resource" id="Resource_j16x3"]
+script = ExtResource("1_2st5w")
+
+[sub_resource type="Resource" id="Resource_dc7vr"]
+script = ExtResource("1_2st5w")
+
+[sub_resource type="Resource" id="Resource_ommha"]
+script = ExtResource("2_i3f7p")
+value = 1568
+
+[sub_resource type="Resource" id="Resource_dctvy"]
+script = ExtResource("2_i3f7p")
+value = 131104
+
+[sub_resource type="Resource" id="Resource_xoqk5"]
+script = ExtResource("2_i3f7p")
+value = 3491235904
+
+[sub_resource type="Resource" id="Resource_keh7f"]
+script = ExtResource("2_i3f7p")
+
+[sub_resource type="Resource" id="Resource_wths5"]
+script = ExtResource("2_i3f7p")
+
+[sub_resource type="Resource" id="Resource_da3ur"]
+script = ExtResource("2_i3f7p")
+
+[resource]
+script = ExtResource("3_wod5c")
+ac = 40
+attack = Array[ExtResource("1_2st5w")]([SubResource("Resource_27jt3"), SubResource("Resource_qfyq3"), SubResource("Resource_j16x3"), SubResource("Resource_dc7vr")])
+character = "|"
+colour = 26
+description = "A deadly blade of chaos, moving of its own volition."
+flags_1 = SubResource("Resource_ommha")
+flags_2 = SubResource("Resource_dctvy")
+flags_3 = SubResource("Resource_xoqk5")
+flags_4 = SubResource("Resource_keh7f")
+flags_5 = SubResource("Resource_wths5")
+flags_6 = SubResource("Resource_da3ur")
+hit_dice = 13
+hit_dice_sides = 13
+level = 27
+max_num = 100
+experience = 130
+name = "Hellblade"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Hellblade  "

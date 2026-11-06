@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b8m14cpvk404b"]
+
+[ext_resource type="Script" uid="uid://dwltnras5lusk" path="res://scripts/user_interface/console.gd" id="1_gf67r"]
+[ext_resource type="Script" uid="uid://dsj0ejmdivm5p" path="res://scripts/user_interface/background_image.gd" id="2_t6k7n"]
+[ext_resource type="FontFile" uid="uid://bgkffl8gi3k5t" path="res://fonts/times_new_yorker.ttf" id="3_dw2pf"]
+[ext_resource type="Script" uid="uid://bxgviok0qhqu5" path="res://scripts/user_interface/main_title.gd" id="3_ohspa"]
+[ext_resource type="PackedScene" uid="uid://culidbpp341e5" path="res://scenes/cthangpedia.tscn" id="3_t6k7n"]
+[ext_resource type="AudioStream" uid="uid://c8d2wqihxmkb4" path="res://music/taureon-cinematic-horror-drone-01.mp3" id="4_0ctgx"]
+[ext_resource type="AudioStream" uid="uid://mnu36g34maew" path="res://music/taureon-the-sorrow-ii-dark-theme-01.mp3" id="5_wmj4f"]
+[ext_resource type="AudioStream" uid="uid://c6ls5wnw7mafu" path="res://music/taureon-the-sorrow-ii-dark-theme-02.mp3" id="6_ohspa"]
+[ext_resource type="AudioStream" uid="uid://blwmlts13vy45" path="res://music/taureon-the-sorrow-ii-dark-theme-03.mp3" id="7_dw2pf"]
+[ext_resource type="AudioStream" uid="uid://dfp1ns0xiaied" path="res://music/taureon-the-sorrow-ii-epic-theme.mp3" id="8_btven"]
+[ext_resource type="AudioStream" uid="uid://c1ol8axo76s4x" path="res://music/taureon-the-sorrow-ii-ethereal-theme.mp3" id="9_vc0ju"]
+[ext_resource type="AudioStream" uid="uid://vufpk5n1uyme" path="res://music/taureon-the-sorrow-ii-soft-theme.mp3" id="10_eo3c5"]
+[ext_resource type="AudioStream" uid="uid://cupc8mfobqsij" path="res://music/taureon-the-sorrow-ii-tribal-theme-01.mp3" id="11_ubnd6"]
+[ext_resource type="AudioStream" uid="uid://cloect5igt3c6" path="res://sfx/sound_files/menu_select.wav" id="14_dw2pf"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_c3n2s"]
+clip_count = 8
+clip_0/name = &"Menu"
+clip_0/stream = ExtResource("4_0ctgx")
+clip_0/auto_advance = 0
+clip_1/name = &"Town"
+clip_1/stream = ExtResource("5_wmj4f")
+clip_1/auto_advance = 0
+clip_2/name = &"Quest"
+clip_2/stream = ExtResource("6_ohspa")
+clip_2/auto_advance = 0
+clip_3/name = &"Dungeon"
+clip_3/stream = ExtResource("7_dw2pf")
+clip_3/auto_advance = 0
+clip_4/name = &"Chargen"
+clip_4/stream = ExtResource("8_btven")
+clip_4/auto_advance = 0
+clip_5/name = &"Victory"
+clip_5/stream = ExtResource("9_vc0ju")
+clip_5/auto_advance = 0
+clip_6/name = &"Wilderness"
+clip_6/stream = ExtResource("10_eo3c5")
+clip_6/auto_advance = 0
+clip_7/name = &"Death"
+clip_7/stream = ExtResource("11_ubnd6")
+clip_7/auto_advance = 0
+
+[node name="Console" type="Node2D" unique_id=2036650021]
+script = ExtResource("1_gf67r")
+
+[node name="BackgroundImage" type="TextureRect" parent="." unique_id=833440105]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_t6k7n")
+
+[node name="MainTitle" type="Label" parent="." unique_id=285389467]
+visible = false
+offset_top = 20.0
+offset_right = 1920.0
+offset_bottom = 343.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.49803922, 0.49803922, 0, 1)
+theme_override_fonts/font = ExtResource("3_dw2pf")
+theme_override_font_sizes/font_size = 288
+text = "Cthangband"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ohspa")
+
+[node name="Cursor" type="ColorRect" parent="." unique_id=1321130332]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.5294118, 0.80784315, 0.92156863, 1)
+
+[node name="Cthangpedia" parent="." unique_id=841823943 instance=ExtResource("3_t6k7n")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=278879242]
+stream = SubResource("AudioStreamInteractive_c3n2s")
+autoplay = true
+bus = &"Music"
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="." unique_id=416244387]
+stream = ExtResource("14_dw2pf")
+max_polyphony = 8
+bus = &"Sfx"
+
+[node name="AnimationTimer" type="Timer" parent="." unique_id=1626307263]
+wait_time = 0.064
+one_shot = true
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

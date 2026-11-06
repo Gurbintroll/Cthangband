@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_51rd0"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_wmj1k"]
+
+[sub_resource type="Resource" id="Resource_sqqry"]
+script = ExtResource("1_51rd0")
+
+[sub_resource type="Resource" id="Resource_a6fes"]
+script = ExtResource("1_51rd0")
+
+[sub_resource type="Resource" id="Resource_hf3u7"]
+script = ExtResource("1_51rd0")
+value = 15728640
+
+[resource]
+script = ExtResource("2_wmj1k")
+chance = Array[int]([2, 0, 0, 0])
+character = "?"
+colour = 22
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_sqqry")
+flags_2 = SubResource("Resource_a6fes")
+flags_3 = SubResource("Resource_hf3u7")
+flavour_aware = true
+item_category = 92
+level = 80
+locale = Array[int]([80, 0, 0, 0])
+name = "[Cthaat Aquadingen]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 30
+filename = "NatureBook:[Cthaat Aquadingen]"

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_n01l8"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_atcui"]
+
+[sub_resource type="Resource" id="Resource_hrm7n"]
+script = ExtResource("1_n01l8")
+value = 256
+
+[sub_resource type="Resource" id="Resource_g2vi5"]
+script = ExtResource("1_n01l8")
+
+[sub_resource type="Resource" id="Resource_8f0dd"]
+script = ExtResource("1_n01l8")
+value = 15728640
+
+[resource]
+script = ExtResource("2_atcui")
+cost = 4000
+flags_1 = SubResource("Resource_hrm7n")
+flags_2 = SubResource("Resource_g2vi5")
+flags_3 = SubResource("Resource_8f0dd")
+max_type_specifc_value = 3
+max_to_ac = 20
+name = "of Aman"
+rating = 20
+slot = 31
+id = 34

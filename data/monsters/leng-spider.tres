@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_k15t0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_r03s0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_7d76i"]
+
+[sub_resource type="Resource" id="Resource_a8bbh"]
+script = ExtResource("1_k15t0")
+damage_dice = 4
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_hepy5"]
+script = ExtResource("1_k15t0")
+damage_dice = 3
+damage_dice_sides = 10
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_dglpd"]
+script = ExtResource("1_k15t0")
+
+[sub_resource type="Resource" id="Resource_cp6or"]
+script = ExtResource("1_k15t0")
+
+[sub_resource type="Resource" id="Resource_intgn"]
+script = ExtResource("2_r03s0")
+value = 52430336
+
+[sub_resource type="Resource" id="Resource_v267b"]
+script = ExtResource("2_r03s0")
+value = 5451786
+
+[sub_resource type="Resource" id="Resource_yuqaa"]
+script = ExtResource("2_r03s0")
+value = 3623878656
+
+[sub_resource type="Resource" id="Resource_uouwf"]
+script = ExtResource("2_r03s0")
+
+[sub_resource type="Resource" id="Resource_448se"]
+script = ExtResource("2_r03s0")
+value = 1476396032
+
+[sub_resource type="Resource" id="Resource_xb8bi"]
+script = ExtResource("2_r03s0")
+value = 2097157
+
+[resource]
+script = ExtResource("3_7d76i")
+ac = 68
+attack = Array[ExtResource("1_k15t0")]([SubResource("Resource_a8bbh"), SubResource("Resource_hepy5"), SubResource("Resource_dglpd"), SubResource("Resource_cp6or")])
+character = "S"
+colour = 26
+description = "'There were scenes of old wars, wherein Leng's almost-humans fought with the bloated purple spiders of neighbouring vales.' H.P.Lovecraft - 'The Dream Quest of Unknown Kadath'"
+flags_1 = SubResource("Resource_intgn")
+flags_2 = SubResource("Resource_v267b")
+flags_3 = SubResource("Resource_yuqaa")
+flags_4 = SubResource("Resource_uouwf")
+flags_5 = SubResource("Resource_448se")
+flags_6 = SubResource("Resource_xb8bi")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 45
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 400
+name = "Leng spider"
+notice_range = 30
+rarity = 6
+sleep = 255
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Leng    "
+split_name_3 = "   spider   "

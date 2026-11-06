@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_34edx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_8lq4s"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_x563j"]
+
+[sub_resource type="Resource" id="Resource_w35hq"]
+script = ExtResource("1_34edx")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_erxbf"]
+script = ExtResource("1_34edx")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_b56f8"]
+script = ExtResource("1_34edx")
+
+[sub_resource type="Resource" id="Resource_gqpaw"]
+script = ExtResource("1_34edx")
+
+[sub_resource type="Resource" id="Resource_0cjii"]
+script = ExtResource("2_8lq4s")
+value = 18875400
+
+[sub_resource type="Resource" id="Resource_gdnog"]
+script = ExtResource("2_8lq4s")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_p4y0x"]
+script = ExtResource("2_8lq4s")
+value = 4160
+
+[sub_resource type="Resource" id="Resource_6hag1"]
+script = ExtResource("2_8lq4s")
+
+[sub_resource type="Resource" id="Resource_we2hw"]
+script = ExtResource("2_8lq4s")
+value = 872423424
+
+[sub_resource type="Resource" id="Resource_q4tv5"]
+script = ExtResource("2_8lq4s")
+value = 4100
+
+[resource]
+script = ExtResource("3_x563j")
+ac = 30
+attack = Array[ExtResource("1_34edx")]([SubResource("Resource_w35hq"), SubResource("Resource_erxbf"), SubResource("Resource_b56f8"), SubResource("Resource_gqpaw")])
+character = "h"
+colour = 27
+description = "A dark elven figure, dressed all in black, chanting curses and waiting to deliver your soul to hell."
+flags_1 = SubResource("Resource_0cjii")
+flags_2 = SubResource("Resource_gdnog")
+flags_3 = SubResource("Resource_p4y0x")
+flags_4 = SubResource("Resource_6hag1")
+flags_5 = SubResource("Resource_we2hw")
+flags_6 = SubResource("Resource_q4tv5")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 7
+hit_dice_sides = 10
+level = 12
+max_num = 100
+experience = 50
+name = "Dark elven demonologist"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 120
+split_name_1 = "    Dark    "
+split_name_2 = "   elven    "
+split_name_3 = "demonologist"

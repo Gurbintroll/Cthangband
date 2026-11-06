@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_g8c01"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_uclau"]
+
+[sub_resource type="Resource" id="Resource_i1rsr"]
+script = ExtResource("1_g8c01")
+
+[sub_resource type="Resource" id="Resource_om5xl"]
+script = ExtResource("1_g8c01")
+
+[sub_resource type="Resource" id="Resource_272k7"]
+script = ExtResource("1_g8c01")
+
+[resource]
+script = ExtResource("2_uclau")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 6
+cost = 350
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_i1rsr")
+flags_2 = SubResource("Resource_om5xl")
+flags_3 = SubResource("Resource_272k7")
+has_flavour = true
+item_category = 55
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Detect Evil"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 15
+weight = 50
+filename = "Staff:Detect Evil"

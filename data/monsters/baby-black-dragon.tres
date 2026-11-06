@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fbl1f"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_648ut"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rqefs"]
+
+[sub_resource type="Resource" id="Resource_rlrh0"]
+script = ExtResource("1_fbl1f")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_smcne"]
+script = ExtResource("1_fbl1f")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_oaaeb"]
+script = ExtResource("1_fbl1f")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_hvnbm"]
+script = ExtResource("1_fbl1f")
+
+[sub_resource type="Resource" id="Resource_pitn8"]
+script = ExtResource("2_648ut")
+value = 22021632
+
+[sub_resource type="Resource" id="Resource_wnwyl"]
+script = ExtResource("2_648ut")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_dl6s4"]
+script = ExtResource("2_648ut")
+value = 65608
+
+[sub_resource type="Resource" id="Resource_kkhcs"]
+script = ExtResource("2_648ut")
+value = 256
+
+[sub_resource type="Resource" id="Resource_5s4gv"]
+script = ExtResource("2_648ut")
+
+[sub_resource type="Resource" id="Resource_1nfuy"]
+script = ExtResource("2_648ut")
+
+[resource]
+script = ExtResource("3_rqefs")
+ac = 30
+attack = Array[ExtResource("1_fbl1f")]([SubResource("Resource_rlrh0"), SubResource("Resource_smcne"), SubResource("Resource_oaaeb"), SubResource("Resource_hvnbm")])
+character = "d"
+colour = 23
+description = "This hatchling dragon is still soft, its eyes unaccustomed to light and its scales a dull black."
+flags_1 = SubResource("Resource_pitn8")
+flags_2 = SubResource("Resource_wnwyl")
+flags_3 = SubResource("Resource_dl6s4")
+flags_4 = SubResource("Resource_kkhcs")
+flags_5 = SubResource("Resource_5s4gv")
+flags_6 = SubResource("Resource_1nfuy")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 10
+hit_dice_sides = 10
+level = 9
+max_num = 100
+experience = 35
+name = "Baby black dragon"
+notice_range = 20
+rarity = 2
+sleep = 70
+speed = 110
+split_name_1 = "    Baby    "
+split_name_2 = "   black    "
+split_name_3 = "   dragon   "

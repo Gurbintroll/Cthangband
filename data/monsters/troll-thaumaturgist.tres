@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://c5giho2agqk0b"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_uwftj"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_bg6gy"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_ffr51"]
+
+[sub_resource type="Resource" id="Resource_dsuy6"]
+script = ExtResource("1_uwftj")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_qsvo2"]
+script = ExtResource("1_uwftj")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7r4ml"]
+script = ExtResource("1_uwftj")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_hchrj"]
+script = ExtResource("1_uwftj")
+
+[sub_resource type="Resource" id="Resource_va5t5"]
+script = ExtResource("2_bg6gy")
+value = 8390148
+
+[sub_resource type="Resource" id="Resource_r22q5"]
+script = ExtResource("2_bg6gy")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_iw6bi"]
+script = ExtResource("2_bg6gy")
+value = 3221229634
+
+[sub_resource type="Resource" id="Resource_8gm2g"]
+script = ExtResource("2_bg6gy")
+
+[sub_resource type="Resource" id="Resource_bkdnv"]
+script = ExtResource("2_bg6gy")
+value = 201330688
+
+[sub_resource type="Resource" id="Resource_1sopm"]
+script = ExtResource("2_bg6gy")
+value = 4112
+
+[resource]
+script = ExtResource("3_ffr51")
+ac = 50
+attack = Array[ExtResource("1_uwftj")]([SubResource("Resource_dsuy6"), SubResource("Resource_qsvo2"), SubResource("Resource_7r4ml"), SubResource("Resource_hchrj")])
+character = "T"
+colour = 24
+description = "A troll who is so bright he knows how to read."
+flags_1 = SubResource("Resource_va5t5")
+flags_2 = SubResource("Resource_r22q5")
+flags_3 = SubResource("Resource_iw6bi")
+flags_4 = SubResource("Resource_8gm2g")
+flags_5 = SubResource("Resource_bkdnv")
+flags_6 = SubResource("Resource_1sopm")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 30
+hit_dice_sides = 10
+level = 25
+max_num = 100
+experience = 100
+name = "Troll thaumaturgist"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Troll    "
+split_name_3 = "thaumaturgis"

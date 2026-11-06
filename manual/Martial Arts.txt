@@ -1,0 +1,32 @@
+﻿[center][font_size=48][color="brown"][b]Martial Arts[/b][/color][/font_size][/center]
+[hr color="brown"]
+When attacking without a weapon, a [color="blue"][url="Monk"]monk[/url][/color] or [color="blue"][url="Mystic"]mystic[/url][/color] character gets special martial arts attacks. These start with just a single punch at level 1 and culminating in a Crushing Blow at level 48.
+
+[center][table=5][cell][b]Min Level[/b][/cell][cell][b]Attack[/b][/cell][cell][b]Damage[/b][/cell][cell][b]Difficulty[/b][/cell][cell][b]Special Effect[/b][/cell]
+[cell]1[/cell][cell]Punch[/cell][cell]1d4[/cell][cell]0[/cell][cell]-[/cell]
+[cell]2[/cell][cell]Kick[/cell][cell]1d6[/cell][cell]0[/cell][cell]-[/cell]
+[cell]3[/cell][cell]Strike[/cell][cell]1d7[/cell][cell]0[/cell][cell]-[/cell]
+[cell]5[/cell][cell]Knee Strike[/cell][cell]2d3[/cell][cell]5[/cell][cell]Very high chance to stun (male opponents only)[/cell]
+[cell]7[/cell][cell]Elbow Strike[/cell][cell]1d8[/cell][cell]5[/cell][cell]-[/cell]
+[cell]9[/cell][cell]Headbutt[/cell][cell]2d5[/cell][cell]10[/cell][cell]-[/cell]
+[cell]11[/cell][cell]Ankle Kick[/cell][cell]3d4[/cell][cell]10[/cell][cell]May slow opponents (except those without legs)[/cell]
+[cell]13[/cell][cell]Uppercut[/cell][cell]4d4[/cell][cell]12[/cell][cell]Small chance to stun[/cell]
+[cell]16[/cell][cell]Double Kick[/cell][cell]5d4[/cell][cell]15[/cell][cell]Small chance to stun[/cell]
+[cell]20[/cell][cell]Cat's Claw[/cell][cell]5d5[/cell][cell]20[/cell][cell]-[/cell]
+[cell]25[/cell][cell]Jump Kick[/cell][cell]5d6[/cell][cell]25[/cell][cell]Moderate chance to stun[/cell]
+[cell]29[/cell][cell]Eagle's Claw[/cell][cell]6d6[/cell][cell]25[/cell][cell]-[/cell]
+[cell]33[/cell][cell]Circle Kick[/cell][cell]6d8[/cell][cell]30[/cell][cell]Moderate chance to stun[/cell]
+[cell]37[/cell][cell]Iron Fist[/cell][cell]8d8[/cell][cell]35[/cell][cell]Moderate chance to stun[/cell]
+[cell]41[/cell][cell]Flying Kick[/cell][cell]8d10[/cell][cell]35[/cell][cell]High chance to stun[/cell]
+[cell]45[/cell][cell]Dragon Fist[/cell][cell]10d10[/cell][cell]35[/cell][cell]High chance to stun[/cell]
+[cell]48[/cell][cell]Crushing Blow[/cell][cell]10d12[/cell][cell]35[/cell][cell]High chance to stun[/cell][/table][/center]
+
+Each time you make a martial arts attack, the game chooses an attack at random from those of your level or below (with equal chance of each), and then rolls a die with the same number of sides as your level. If this die is [i]less than[/i] the difficulty of the attack then the attack is re-selected. This may result in the same attack being selected and rolled for again.
+
+For example, let's say that a 23rd level character is making a martial arts attack, and the game randomly selects the 'Double Kick' attack from the list of attacks of 23rd level and lower ('Punch' to 'Cat's Claw'). This has a difficulty of 15, so the game rolls a 23-sided die and if it gets a 14 or lower (i.e. less than the difficulty) on the roll then it re-selects the attack; otherwise it proceeds with the double kick.
+
+The game makes this selection once per seven levels your character has, taking the best of the chosen attacks as the one you will use.
+
+However, if you are stunned or confused you can only do basic 'Punch' attacks.
+
+Note that the 'Ankle Kick' attack may only slow opponents that have legs. Against opponents that do not have legs, this attack will be simply described as a 'kick' and will not do its slowing. However, the attack will still do the full 3d4 damage rather than the 1d6 damage done by a normal kick.

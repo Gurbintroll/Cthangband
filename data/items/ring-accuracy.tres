@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6m6co"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_7w1nt"]
+
+[sub_resource type="Resource" id="Resource_mqf2k"]
+script = ExtResource("1_6m6co")
+
+[sub_resource type="Resource" id="Resource_ngnql"]
+script = ExtResource("1_6m6co")
+
+[sub_resource type="Resource" id="Resource_ai1kg"]
+script = ExtResource("1_6m6co")
+
+[resource]
+script = ExtResource("2_7w1nt")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 13
+cost = 500
+flags_1 = SubResource("Resource_mqf2k")
+flags_2 = SubResource("Resource_ngnql")
+flags_3 = SubResource("Resource_ai1kg")
+has_flavour = true
+item_category = 45
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Accuracy"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 28
+weight = 2
+filename = "Ring:Accuracy"

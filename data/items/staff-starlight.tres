@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xxg7l"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_bfpq4"]
+
+[sub_resource type="Resource" id="Resource_t1dne"]
+script = ExtResource("1_xxg7l")
+
+[sub_resource type="Resource" id="Resource_3gh67"]
+script = ExtResource("1_xxg7l")
+
+[sub_resource type="Resource" id="Resource_5g3v3"]
+script = ExtResource("1_xxg7l")
+
+[resource]
+script = ExtResource("2_bfpq4")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 6
+cost = 800
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_t1dne")
+flags_2 = SubResource("Resource_3gh67")
+flags_3 = SubResource("Resource_5g3v3")
+has_flavour = true
+item_category = 55
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Starlight"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 7
+weight = 50
+filename = "Staff:Starlight"

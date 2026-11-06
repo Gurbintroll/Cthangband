@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ph7bf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qfa73"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_22b01"]
+
+[sub_resource type="Resource" id="Resource_abiai"]
+script = ExtResource("1_ph7bf")
+effect = 3
+method = 16
+
+[sub_resource type="Resource" id="Resource_8vjdf"]
+script = ExtResource("1_ph7bf")
+effect = 25
+method = 16
+
+[sub_resource type="Resource" id="Resource_a0ybi"]
+script = ExtResource("1_ph7bf")
+effect = 5
+method = 16
+
+[sub_resource type="Resource" id="Resource_bxuvi"]
+script = ExtResource("1_ph7bf")
+effect = 6
+method = 16
+
+[sub_resource type="Resource" id="Resource_26ftc"]
+script = ExtResource("2_qfa73")
+value = 131616
+
+[sub_resource type="Resource" id="Resource_uf1d3"]
+script = ExtResource("2_qfa73")
+value = 96
+
+[sub_resource type="Resource" id="Resource_yyoxb"]
+script = ExtResource("2_qfa73")
+value = 3491170400
+
+[sub_resource type="Resource" id="Resource_nd52g"]
+script = ExtResource("2_qfa73")
+value = 1
+
+[sub_resource type="Resource" id="Resource_yl5wj"]
+script = ExtResource("2_qfa73")
+
+[sub_resource type="Resource" id="Resource_peia8"]
+script = ExtResource("2_qfa73")
+value = 33554432
+
+[resource]
+script = ExtResource("3_22b01")
+ac = 40
+attack = Array[ExtResource("1_ph7bf")]([SubResource("Resource_abiai"), SubResource("Resource_8vjdf"), SubResource("Resource_a0ybi"), SubResource("Resource_bxuvi")])
+character = ">"
+colour = 27
+description = "Often found in graveyards."
+flags_1 = SubResource("Resource_26ftc")
+flags_2 = SubResource("Resource_uf1d3")
+flags_3 = SubResource("Resource_yyoxb")
+flags_4 = SubResource("Resource_nd52g")
+flags_5 = SubResource("Resource_yl5wj")
+flags_6 = SubResource("Resource_peia8")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 15
+hit_dice_sides = 8
+level = 28
+max_num = 100
+experience = 125
+name = "Stairway to hell"
+notice_range = 90
+rarity = 5
+sleep = 20
+speed = 120
+split_name_1 = "  Stairway  "
+split_name_2 = "     to     "
+split_name_3 = "    hell    "

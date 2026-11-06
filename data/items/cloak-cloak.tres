@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ii5wy"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_6t2iv"]
+
+[sub_resource type="Resource" id="Resource_t3ky3"]
+script = ExtResource("1_ii5wy")
+
+[sub_resource type="Resource" id="Resource_p51fg"]
+script = ExtResource("1_ii5wy")
+
+[sub_resource type="Resource" id="Resource_7jxeq"]
+script = ExtResource("1_ii5wy")
+
+[resource]
+script = ExtResource("2_6t2iv")
+ac = 1
+chance = Array[int]([1, 1, 0, 0])
+character = "("
+colour = 22
+cost = 3
+flags_1 = SubResource("Resource_t3ky3")
+flags_2 = SubResource("Resource_p51fg")
+flags_3 = SubResource("Resource_7jxeq")
+flavour_aware = true
+item_category = 35
+level = 1
+locale = Array[int]([1, 20, 0, 0])
+name = "& Cloak~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+weight = 10
+filename = "Cloak:Cloak"

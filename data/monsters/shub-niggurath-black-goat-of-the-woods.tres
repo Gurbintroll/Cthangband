@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cmlsxui2qtkbd"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_4vacs"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_8bihe"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_gt0k0"]
+
+[sub_resource type="Resource" id="Resource_0cf6e"]
+script = ExtResource("1_4vacs")
+damage_dice = 20
+damage_dice_sides = 5
+effect = 19
+method = 9
+
+[sub_resource type="Resource" id="Resource_g5ur5"]
+script = ExtResource("1_4vacs")
+damage_dice = 20
+damage_dice_sides = 5
+effect = 18
+method = 9
+
+[sub_resource type="Resource" id="Resource_b3ky0"]
+script = ExtResource("1_4vacs")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_vadvo"]
+script = ExtResource("1_4vacs")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 21
+method = 6
+
+[sub_resource type="Resource" id="Resource_0wgd3"]
+script = ExtResource("2_8bihe")
+value = 413140617
+
+[sub_resource type="Resource" id="Resource_de5fi"]
+script = ExtResource("2_8bihe")
+value = 502274
+
+[sub_resource type="Resource" id="Resource_4umxe"]
+script = ExtResource("2_8bihe")
+value = 3224963408
+
+[sub_resource type="Resource" id="Resource_fuco8"]
+script = ExtResource("2_8bihe")
+value = 1610944512
+
+[sub_resource type="Resource" id="Resource_2me2e"]
+script = ExtResource("2_8bihe")
+value = 8423680
+
+[sub_resource type="Resource" id="Resource_fuqs7"]
+script = ExtResource("2_8bihe")
+value = 2433220612
+
+[resource]
+script = ExtResource("3_gt0k0")
+ac = 100
+attack = Array[ExtResource("1_4vacs")]([SubResource("Resource_0cf6e"), SubResource("Resource_g5ur5"), SubResource("Resource_b3ky0"), SubResource("Resource_vadvo")])
+character = "X"
+colour = 12
+description = "This horrendous outer god looks like a writhing cloudy mass filled with mouths and tentacles."
+flags_1 = SubResource("Resource_0wgd3")
+flags_2 = SubResource("Resource_de5fi")
+flags_3 = SubResource("Resource_4umxe")
+flags_4 = SubResource("Resource_fuco8")
+flags_5 = SubResource("Resource_2me2e")
+flags_6 = SubResource("Resource_fuqs7")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 65
+hit_dice_sides = 99
+level = 91
+max_num = 1
+experience = 47500
+name = "Shub-Niggurath, Black Goat of the Woods"
+notice_range = 100
+rarity = 3
+sleep = 20
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Shub-Niggura"

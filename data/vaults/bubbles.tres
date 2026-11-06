@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_j3h0x"]
+
+[resource]
+script = ExtResource("1_j3h0x")
+category = 8
+height = 25
+name = "Bubbles"
+rating = 35
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXX#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X8X#X8XXX8XXX8XXX8XXX8XXX8XXX8XXX8XXX8X%%XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.#XX%%XX.9.#.9.X.9.#.9.X.9.#.9.X.9.#.9.#.9.XX%%XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX%%X8XXX8X#X8X#X8X#X8X#X8X#X8X#X8X#X8X#X8X%%XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.#XX%%XX.9.#.9.X.9.X.9.#.9.X.9.#.9.X.9.X.9..X%%XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX%%X8X#X8XXX8X#X8XXX8XXX8XXX8XXX8XXX8X#X8X%%XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.#XX%%XX.9.X.9.#.9.X.9.#.9.#.9.#.9.#.9.X.9.XX%%XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX%%X8X#X8X#X8X#X8XXX8XXX8XXX8XXX8X#X8XXX8X%%XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.#XX%%XX.9.#.9.X.9.#.9.#.9.#.9.#.9.#.9.X.9.XX%%XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX.XXX%%X8XXX8XXX8XXX8XXX8XXX8XXX8XXX8XXX8X#X8X%%XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.#XX%%##.9.#.9.#.9.#.9.#.9.#.9.#.9.#.9.X.9.XX%%XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.XX#.#XX%%X8XXX8XXX8XXX8XXX8XXX8XXX8XXX8XXX8XXX8X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 41

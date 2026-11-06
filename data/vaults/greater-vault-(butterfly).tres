@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_mqbes"]
+
+[resource]
+script = ExtResource("1_mqbes")
+category = 8
+height = 18
+name = "Greater vault (butterfly)"
+rating = 25
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X*9..&XX***++^^^^^^^^^^^^++***XX&..*9X%%X9..&XX,,,,,XX^^^^^^^^^^XX,,,,,#X&..*X%%X..&#X.....,.XX^^^^^^^^XX..&....XX&..X%%X.&XX..,.&....XX^^^^^^XX..,...&..XX&.X%%X&XX..*...&.^..XX^^^^XX..*....,..,XX&X%%XXXX+XXXXXXXXXXXXX++XXXXXXXXXXXXX+XXXX%%+....,.,.X&&&&***+99+***&&&&X,.,.,...+%%+...,.,.,X&&&&***+99+***&&&&X.,.,....+%%XXXX+XXXXXXXXXXXXX++XXXXXXXXXXXXX+XXXX%%X&XX..*....&...XX^^^^XX...*...&,..#X&X%%X.&XX..&.^....XX^^^^^^XX....&....XX&.X%%X..&XX....&..XX^^^^^^^^XX..,..*.XX&..X%%X*..&#X,,,,,XX^^^^^^^^^^XX,,,,,XX&..9X%%X9*..&XX***++^^^^^^^^^^^^++***XX&..*9X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 40

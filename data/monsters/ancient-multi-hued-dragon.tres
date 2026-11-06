@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_y3slq"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_f3sk1"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_c3cqe"]
+
+[sub_resource type="Resource" id="Resource_ev3jv"]
+script = ExtResource("1_y3slq")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_rf0xy"]
+script = ExtResource("1_y3slq")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_0lsys"]
+script = ExtResource("1_y3slq")
+damage_dice = 6
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_lxqpt"]
+script = ExtResource("1_y3slq")
+
+[sub_resource type="Resource" id="Resource_jy24r"]
+script = ExtResource("2_f3sk1")
+value = 236979840
+
+[sub_resource type="Resource" id="Resource_if30j"]
+script = ExtResource("2_f3sk1")
+value = 1249282
+
+[sub_resource type="Resource" id="Resource_0jwad"]
+script = ExtResource("2_f3sk1")
+value = 3223257160
+
+[sub_resource type="Resource" id="Resource_bjwsv"]
+script = ExtResource("2_f3sk1")
+value = 7936
+
+[sub_resource type="Resource" id="Resource_ecg6o"]
+script = ExtResource("2_f3sk1")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_kjn50"]
+script = ExtResource("2_f3sk1")
+
+[resource]
+script = ExtResource("3_c3cqe")
+ac = 100
+attack = Array[ExtResource("1_y3slq")]([SubResource("Resource_ev3jv"), SubResource("Resource_rf0xy"), SubResource("Resource_0lsys"), SubResource("Resource_lxqpt")])
+character = "D"
+colour = 26
+description = "A huge draconic form. Many colours ripple down its massive frame. Few live to see another."
+flags_1 = SubResource("Resource_jy24r")
+flags_2 = SubResource("Resource_if30j")
+flags_3 = SubResource("Resource_0jwad")
+flags_4 = SubResource("Resource_bjwsv")
+flags_5 = SubResource("Resource_ecg6o")
+flags_6 = SubResource("Resource_kjn50")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 21
+hit_dice_sides = 100
+level = 43
+max_num = 100
+experience = 13000
+name = "Ancient multi-hued dragon"
+notice_range = 20
+rarity = 1
+sleep = 70
+speed = 120
+split_name_1 = "  Ancient   "
+split_name_2 = " multi-hued "
+split_name_3 = "   dragon   "

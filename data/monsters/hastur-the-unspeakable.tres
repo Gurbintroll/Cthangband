@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://d6e6asabxw0a"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_f8e2n"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_63ksf"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_77iop"]
+
+[sub_resource type="Resource" id="Resource_tplay"]
+script = ExtResource("1_f8e2n")
+damage_dice = 14
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_pjt2h"]
+script = ExtResource("1_f8e2n")
+damage_dice = 14
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_3wkk3"]
+script = ExtResource("1_f8e2n")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_a7076"]
+script = ExtResource("1_f8e2n")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_1jubr"]
+script = ExtResource("2_63ksf")
+value = 505415169
+
+[sub_resource type="Resource" id="Resource_prfq5"]
+script = ExtResource("2_63ksf")
+value = 241698
+
+[sub_resource type="Resource" id="Resource_h8gn6"]
+script = ExtResource("2_63ksf")
+value = 3224901952
+
+[sub_resource type="Resource" id="Resource_0mo3s"]
+script = ExtResource("2_63ksf")
+value = 40960
+
+[sub_resource type="Resource" id="Resource_7w234"]
+script = ExtResource("2_63ksf")
+value = 2550172224
+
+[sub_resource type="Resource" id="Resource_t7swn"]
+script = ExtResource("2_63ksf")
+value = 16778021
+
+[resource]
+script = ExtResource("3_77iop")
+ac = 150
+attack = Array[ExtResource("1_f8e2n")]([SubResource("Resource_tplay"), SubResource("Resource_pjt2h"), SubResource("Resource_3wkk3"), SubResource("Resource_a7076")])
+character = "X"
+colour = 12
+description = "Its form is partially that of a reptile, partially that of a gigantic octopus. It will destroy you."
+flags_1 = SubResource("Resource_1jubr")
+flags_2 = SubResource("Resource_prfq5")
+flags_3 = SubResource("Resource_h8gn6")
+flags_4 = SubResource("Resource_0mo3s")
+flags_5 = SubResource("Resource_7w234")
+flags_6 = SubResource("Resource_t7swn")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 55
+hit_dice_sides = 95
+level = 55
+max_num = 1
+experience = 23000
+name = "Hastur the Unspeakable"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 120
+split_name_1 = "   Hastur   "
+split_name_2 = "    the     "
+split_name_3 = "Unspeakable "

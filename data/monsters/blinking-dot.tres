@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qmpo6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_s0tpt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_j6q75"]
+
+[sub_resource type="Resource" id="Resource_exeld"]
+script = ExtResource("1_qmpo6")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 17
+
+[sub_resource type="Resource" id="Resource_n5e34"]
+script = ExtResource("1_qmpo6")
+
+[sub_resource type="Resource" id="Resource_sbf5g"]
+script = ExtResource("1_qmpo6")
+
+[sub_resource type="Resource" id="Resource_stoy6"]
+script = ExtResource("1_qmpo6")
+
+[sub_resource type="Resource" id="Resource_bqeem"]
+script = ExtResource("2_s0tpt")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_83dgg"]
+script = ExtResource("2_s0tpt")
+value = 65
+
+[sub_resource type="Resource" id="Resource_nrypm"]
+script = ExtResource("2_s0tpt")
+value = 3490709504
+
+[sub_resource type="Resource" id="Resource_sy3xy"]
+script = ExtResource("2_s0tpt")
+
+[sub_resource type="Resource" id="Resource_aqnlc"]
+script = ExtResource("2_s0tpt")
+
+[sub_resource type="Resource" id="Resource_lojc3"]
+script = ExtResource("2_s0tpt")
+value = 16
+
+[resource]
+script = ExtResource("3_j6q75")
+ac = 1
+attack = Array[ExtResource("1_qmpo6")]([SubResource("Resource_exeld"), SubResource("Resource_n5e34"), SubResource("Resource_sbf5g"), SubResource("Resource_stoy6")])
+character = ","
+colour = 23
+description = "Is it there or is it not?"
+flags_1 = SubResource("Resource_bqeem")
+flags_2 = SubResource("Resource_83dgg")
+flags_3 = SubResource("Resource_nrypm")
+flags_4 = SubResource("Resource_sy3xy")
+flags_5 = SubResource("Resource_aqnlc")
+flags_6 = SubResource("Resource_lojc3")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 1
+hit_dice_sides = 2
+level = 1
+max_num = 100
+experience = 1
+name = "Blinking dot"
+notice_range = 2
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Blinking  "
+split_name_3 = "    dot     "

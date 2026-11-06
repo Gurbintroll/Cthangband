@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_utl2y"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_h3yrl"]
+
+[sub_resource type="Resource" id="Resource_b5m8r"]
+script = ExtResource("1_utl2y")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_ea4pg"]
+script = ExtResource("1_utl2y")
+
+[sub_resource type="Resource" id="Resource_d32rd"]
+script = ExtResource("1_utl2y")
+
+[resource]
+script = ExtResource("2_h3yrl")
+cost = 3500
+flags_1 = SubResource("Resource_b5m8r")
+flags_2 = SubResource("Resource_ea4pg")
+flags_3 = SubResource("Resource_d32rd")
+name = "of Slay Animal"
+rating = 18
+slot = 24
+id = 67

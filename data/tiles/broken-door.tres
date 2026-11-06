@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_6xej2"]
+
+[resource]
+script = ExtResource("1_6xej2")
+alter_action = 4
+appear_as = "BrokenDoor"
+category = 10
+character = "'"
+colour = 6
+description = "broken door"
+dims_outside_los = true
+is_passable = true
+map_priority = 17
+name = "BrokenDoor"

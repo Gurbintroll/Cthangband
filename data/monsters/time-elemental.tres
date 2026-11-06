@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_w44gn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7l1ck"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_cn38j"]
+
+[sub_resource type="Resource" id="Resource_7pooe"]
+script = ExtResource("1_w44gn")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 23
+method = 2
+
+[sub_resource type="Resource" id="Resource_8rmx3"]
+script = ExtResource("1_w44gn")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_5ho8i"]
+script = ExtResource("1_w44gn")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 23
+method = 2
+
+[sub_resource type="Resource" id="Resource_rtqhs"]
+script = ExtResource("1_w44gn")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_5vud8"]
+script = ExtResource("2_7l1ck")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_cv7wr"]
+script = ExtResource("2_7l1ck")
+value = 8650816
+
+[sub_resource type="Resource" id="Resource_2viyn"]
+script = ExtResource("2_7l1ck")
+value = 3222669376
+
+[sub_resource type="Resource" id="Resource_6xltg"]
+script = ExtResource("2_7l1ck")
+value = 2097152
+
+[sub_resource type="Resource" id="Resource_u5qp4"]
+script = ExtResource("2_7l1ck")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_hr535"]
+script = ExtResource("2_7l1ck")
+
+[resource]
+script = ExtResource("3_cn38j")
+ac = 70
+attack = Array[ExtResource("1_w44gn")]([SubResource("Resource_7pooe"), SubResource("Resource_8rmx3"), SubResource("Resource_5ho8i"), SubResource("Resource_rtqhs")])
+character = "E"
+colour = 8
+description = "You have not seen it yet."
+flags_1 = SubResource("Resource_5vud8")
+flags_2 = SubResource("Resource_cv7wr")
+flags_3 = SubResource("Resource_2viyn")
+flags_4 = SubResource("Resource_6xltg")
+flags_5 = SubResource("Resource_u5qp4")
+flags_6 = SubResource("Resource_hr535")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 35
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 1000
+name = "Time elemental"
+notice_range = 90
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Time    "
+split_name_3 = " elemental  "

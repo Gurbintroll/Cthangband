@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ut8kb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_s42ib"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_us8x8"]
+
+[sub_resource type="Resource" id="Resource_kn1mt"]
+script = ExtResource("1_ut8kb")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 12
+
+[sub_resource type="Resource" id="Resource_e1uvo"]
+script = ExtResource("1_ut8kb")
+
+[sub_resource type="Resource" id="Resource_78nab"]
+script = ExtResource("1_ut8kb")
+
+[sub_resource type="Resource" id="Resource_dupe6"]
+script = ExtResource("1_ut8kb")
+
+[sub_resource type="Resource" id="Resource_fsm7o"]
+script = ExtResource("2_s42ib")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_cicgj"]
+script = ExtResource("2_s42ib")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_gp37v"]
+script = ExtResource("2_s42ib")
+value = 128
+
+[sub_resource type="Resource" id="Resource_e1xv4"]
+script = ExtResource("2_s42ib")
+
+[sub_resource type="Resource" id="Resource_glb1w"]
+script = ExtResource("2_s42ib")
+
+[sub_resource type="Resource" id="Resource_2v8t8"]
+script = ExtResource("2_s42ib")
+
+[resource]
+script = ExtResource("3_us8x8")
+ac = 9
+attack = Array[ExtResource("1_ut8kb")]([SubResource("Resource_kn1mt"), SubResource("Resource_e1uvo"), SubResource("Resource_78nab"), SubResource("Resource_dupe6")])
+character = "c"
+colour = 13
+description = "It is about four feet long and carnivorous."
+flags_1 = SubResource("Resource_fsm7o")
+flags_2 = SubResource("Resource_cicgj")
+flags_3 = SubResource("Resource_gp37v")
+flags_4 = SubResource("Resource_e1xv4")
+flags_5 = SubResource("Resource_glb1w")
+flags_6 = SubResource("Resource_2v8t8")
+hit_dice = 4
+hit_dice_sides = 8
+level = 3
+max_num = 100
+experience = 12
+name = "Metallic red centipede"
+notice_range = 8
+rarity = 1
+sleep = 20
+speed = 120
+split_name_1 = "  Metallic  "
+split_name_2 = "    red     "
+split_name_3 = " centipede  "

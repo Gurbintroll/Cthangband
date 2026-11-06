@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_lc4iw"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_1vdrl"]
+
+[sub_resource type="Resource" id="Resource_wgtr4"]
+script = ExtResource("1_lc4iw")
+
+[sub_resource type="Resource" id="Resource_48uek"]
+script = ExtResource("1_lc4iw")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_8imys"]
+script = ExtResource("1_lc4iw")
+value = 1048576
+
+[resource]
+script = ExtResource("2_1vdrl")
+cost = 1000
+flags_1 = SubResource("Resource_wgtr4")
+flags_2 = SubResource("Resource_48uek")
+flags_3 = SubResource("Resource_8imys")
+name = "of Resist Acid"
+rating = 16
+slot = 30
+id = 4

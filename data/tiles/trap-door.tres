@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_phykc"]
+
+[resource]
+script = ExtResource("1_phykc")
+alter_action = 2
+appear_as = "TrapDoor"
+category = 6
+character = "^"
+colour = 30
+description = "trap door"
+is_interesting = true
+is_passable = true
+is_trap = true
+map_priority = 20
+name = "TrapDoor"

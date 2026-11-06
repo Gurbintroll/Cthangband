@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_7xina"]
+
+[resource]
+script = ExtResource("1_7xina")
+category = 7
+height = 5
+name = "Miniature Cell"
+rating = 5
+text = "%%%%%%#8#%%888%%#8#%%%%%%"
+width = 5

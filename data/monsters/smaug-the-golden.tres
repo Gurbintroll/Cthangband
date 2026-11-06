@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dlxg06qm31pyx"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_jydag"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_wj5e0"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_70gib"]
+
+[sub_resource type="Resource" id="Resource_tm3pi"]
+script = ExtResource("1_jydag")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_6fd8f"]
+script = ExtResource("1_jydag")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_xjq7p"]
+script = ExtResource("1_jydag")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_7ejen"]
+script = ExtResource("1_jydag")
+damage_dice = 6
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_tf3eh"]
+script = ExtResource("2_wj5e0")
+value = 471860741
+
+[sub_resource type="Resource" id="Resource_3g2jj"]
+script = ExtResource("2_wj5e0")
+value = 1183752
+
+[sub_resource type="Resource" id="Resource_75pk7"]
+script = ExtResource("2_wj5e0")
+value = 3221487688
+
+[sub_resource type="Resource" id="Resource_fircu"]
+script = ExtResource("2_wj5e0")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_b2s1p"]
+script = ExtResource("2_wj5e0")
+value = 536887296
+
+[sub_resource type="Resource" id="Resource_tjqhu"]
+script = ExtResource("2_wj5e0")
+
+[resource]
+script = ExtResource("3_70gib")
+ac = 100
+attack = Array[ExtResource("1_jydag")]([SubResource("Resource_tm3pi"), SubResource("Resource_6fd8f"), SubResource("Resource_xjq7p"), SubResource("Resource_7ejen")])
+character = "D"
+colour = 12
+description = "Smaug is one of the Uruloki that still survive, a fire-drake of immense cunning and intelligence. His speed through air is matched by few other dragons and his dragonfire is what legends are made of."
+flags_1 = SubResource("Resource_tf3eh")
+flags_2 = SubResource("Resource_3g2jj")
+flags_3 = SubResource("Resource_75pk7")
+flags_4 = SubResource("Resource_fircu")
+flags_5 = SubResource("Resource_b2s1p")
+flags_6 = SubResource("Resource_tjqhu")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 20
+hit_dice_sides = 100
+level = 45
+max_num = 1
+experience = 19000
+name = "Smaug the Golden"
+notice_range = 20
+rarity = 2
+sleep = 70
+speed = 120
+split_name_1 = "   Smaug    "
+split_name_2 = "    the     "
+split_name_3 = "   Golden   "

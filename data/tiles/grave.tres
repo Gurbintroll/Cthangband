@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_x4qeg"]
+
+[resource]
+script = ExtResource("1_x4qeg")
+alter_action = 1
+appear_as = "Grave"
+blocks_los = true
+character = "+"
+colour = 30
+description = "grave"
+dims_outside_los = true
+name = "Grave"
+run_past = true
+yellow_in_torch_light = true

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cs6g3"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_74dle"]
+
+[sub_resource type="Resource" id="Resource_7cy33"]
+script = ExtResource("1_cs6g3")
+
+[sub_resource type="Resource" id="Resource_ca4i7"]
+script = ExtResource("1_cs6g3")
+
+[sub_resource type="Resource" id="Resource_2itgt"]
+script = ExtResource("1_cs6g3")
+
+[resource]
+script = ExtResource("2_74dle")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 30
+cost = 1000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_7cy33")
+flags_2 = SubResource("Resource_ca4i7")
+flags_3 = SubResource("Resource_2itgt")
+flavour_aware = true
+item_category = 90
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "[High Mass]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+weight = 30
+filename = "LifeBook:[High Mass]"

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kfwbl"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_v86qv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_tvev6"]
+
+[sub_resource type="Resource" id="Resource_8tcnm"]
+script = ExtResource("1_kfwbl")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_y2p8j"]
+script = ExtResource("1_kfwbl")
+
+[sub_resource type="Resource" id="Resource_ims0x"]
+script = ExtResource("1_kfwbl")
+
+[sub_resource type="Resource" id="Resource_ap6cj"]
+script = ExtResource("1_kfwbl")
+
+[sub_resource type="Resource" id="Resource_new5o"]
+script = ExtResource("2_v86qv")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_86gh4"]
+script = ExtResource("2_v86qv")
+value = 131184
+
+[sub_resource type="Resource" id="Resource_ylrgp"]
+script = ExtResource("2_v86qv")
+value = 3490709568
+
+[sub_resource type="Resource" id="Resource_r8a3p"]
+script = ExtResource("2_v86qv")
+
+[sub_resource type="Resource" id="Resource_31yna"]
+script = ExtResource("2_v86qv")
+
+[sub_resource type="Resource" id="Resource_6cree"]
+script = ExtResource("2_v86qv")
+
+[resource]
+script = ExtResource("3_tvev6")
+ac = 40
+attack = Array[ExtResource("1_kfwbl")]([SubResource("Resource_8tcnm"), SubResource("Resource_y2p8j"), SubResource("Resource_ims0x"), SubResource("Resource_ap6cj")])
+character = "E"
+colour = 20
+description = "A whirlwind of sentient air."
+flags_1 = SubResource("Resource_new5o")
+flags_2 = SubResource("Resource_86gh4")
+flags_3 = SubResource("Resource_ylrgp")
+flags_4 = SubResource("Resource_r8a3p")
+flags_5 = SubResource("Resource_31yna")
+flags_6 = SubResource("Resource_6cree")
+hit_dice = 8
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 40
+name = "Air spirit"
+notice_range = 12
+rarity = 2
+sleep = 20
+speed = 130
+split_name_1 = "            "
+split_name_2 = "    Air     "
+split_name_3 = "   spirit   "

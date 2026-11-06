@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://m5f0klhxnlqy"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_s558h"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_pqyr1"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_k4tyc"]
+
+[sub_resource type="Resource" id="Resource_bt0yh"]
+script = ExtResource("1_s558h")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3b4ca"]
+script = ExtResource("1_s558h")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_cy20i"]
+script = ExtResource("1_s558h")
+damage_dice = 6
+damage_dice_sides = 1
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_hyqc5"]
+script = ExtResource("1_s558h")
+
+[sub_resource type="Resource" id="Resource_osld1"]
+script = ExtResource("2_pqyr1")
+value = 824181253
+
+[sub_resource type="Resource" id="Resource_vcocx"]
+script = ExtResource("2_pqyr1")
+value = 196736
+
+[sub_resource type="Resource" id="Resource_rq6rq"]
+script = ExtResource("2_pqyr1")
+value = 1572866
+
+[sub_resource type="Resource" id="Resource_exy4n"]
+script = ExtResource("2_pqyr1")
+
+[sub_resource type="Resource" id="Resource_4w3kk"]
+script = ExtResource("2_pqyr1")
+
+[sub_resource type="Resource" id="Resource_haty6"]
+script = ExtResource("2_pqyr1")
+
+[resource]
+script = ExtResource("3_k4tyc")
+ac = 70
+attack = Array[ExtResource("1_s558h")]([SubResource("Resource_bt0yh"), SubResource("Resource_3b4ca"), SubResource("Resource_cy20i"), SubResource("Resource_hyqc5")])
+character = "p"
+colour = 12
+description = "He who laughs at Groo's brains will find there is nothing to laugh about... erm, nobody laughs at Groo and lives."
+flags_1 = SubResource("Resource_osld1")
+flags_2 = SubResource("Resource_vcocx")
+flags_3 = SubResource("Resource_rq6rq")
+flags_4 = SubResource("Resource_exy4n")
+flags_5 = SubResource("Resource_4w3kk")
+flags_6 = SubResource("Resource_haty6")
+hit_dice = 11
+hit_dice_sides = 100
+level = 33
+max_num = 1
+experience = 2000
+name = "Groo the Wanderer"
+notice_range = 20
+rarity = 7
+sleep = 50
+speed = 110
+split_name_1 = "    Groo    "
+split_name_2 = "    the     "
+split_name_3 = "  Wanderer  "

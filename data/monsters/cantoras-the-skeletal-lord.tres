@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://ca6o2df5w7t8n"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_wts3p"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_i3xar"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_b64pu"]
+
+[sub_resource type="Resource" id="Resource_3sc04"]
+script = ExtResource("1_wts3p")
+effect = 27
+method = 15
+
+[sub_resource type="Resource" id="Resource_vdkp1"]
+script = ExtResource("1_wts3p")
+effect = 27
+method = 15
+
+[sub_resource type="Resource" id="Resource_yoh3v"]
+script = ExtResource("1_wts3p")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_nmri1"]
+script = ExtResource("1_wts3p")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_njm33"]
+script = ExtResource("2_i3xar")
+value = 1042286085
+
+[sub_resource type="Resource" id="Resource_1fm77"]
+script = ExtResource("2_i3xar")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_mwywc"]
+script = ExtResource("2_i3xar")
+value = 3493593184
+
+[sub_resource type="Resource" id="Resource_dhh6b"]
+script = ExtResource("2_i3xar")
+
+[sub_resource type="Resource" id="Resource_b47mw"]
+script = ExtResource("2_i3xar")
+value = 1249937504
+
+[sub_resource type="Resource" id="Resource_3r5rv"]
+script = ExtResource("2_i3xar")
+value = 268435712
+
+[resource]
+script = ExtResource("3_b64pu")
+ac = 120
+attack = Array[ExtResource("1_wts3p")]([SubResource("Resource_3sc04"), SubResource("Resource_vdkp1"), SubResource("Resource_yoh3v"), SubResource("Resource_nmri1")])
+character = "s"
+colour = 12
+description = "A legion of evil undead druj animating the skeleton of a once mighty sorcerer. His power is devastating and his speed unmatched in the underworld. Flee his wrath!"
+flags_1 = SubResource("Resource_njm33")
+flags_2 = SubResource("Resource_1fm77")
+flags_3 = SubResource("Resource_mwywc")
+flags_4 = SubResource("Resource_dhh6b")
+flags_5 = SubResource("Resource_b47mw")
+flags_6 = SubResource("Resource_3r5rv")
+freq_innate = 1
+freq_spell = 1
+hit_dice = 75
+hit_dice_sides = 100
+level = 84
+max_num = 1
+experience = 45000
+name = "Cantoras, the Skeletal Lord"
+notice_range = 20
+rarity = 2
+sleep = 80
+speed = 140
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Cantoras  "

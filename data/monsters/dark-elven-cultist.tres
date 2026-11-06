@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_a8pk6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_apck1"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mhcrc"]
+
+[sub_resource type="Resource" id="Resource_pwxgp"]
+script = ExtResource("1_a8pk6")
+damage_dice = 1
+damage_dice_sides = 7
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_oj78k"]
+script = ExtResource("1_a8pk6")
+damage_dice = 1
+damage_dice_sides = 7
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_5we62"]
+script = ExtResource("1_a8pk6")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_34ate"]
+script = ExtResource("1_a8pk6")
+
+[sub_resource type="Resource" id="Resource_lgw6h"]
+script = ExtResource("2_apck1")
+value = 18875400
+
+[sub_resource type="Resource" id="Resource_o64ls"]
+script = ExtResource("2_apck1")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_bc5em"]
+script = ExtResource("2_apck1")
+value = 3222278208
+
+[sub_resource type="Resource" id="Resource_qlb8o"]
+script = ExtResource("2_apck1")
+
+[sub_resource type="Resource" id="Resource_1y8y6"]
+script = ExtResource("2_apck1")
+value = 603979776
+
+[sub_resource type="Resource" id="Resource_sictk"]
+script = ExtResource("2_apck1")
+value = 2363396
+
+[resource]
+script = ExtResource("3_mhcrc")
+ac = 75
+attack = Array[ExtResource("1_a8pk6")]([SubResource("Resource_pwxgp"), SubResource("Resource_oj78k"), SubResource("Resource_5we62"), SubResource("Resource_34ate")])
+character = "h"
+colour = 29
+description = "A powerful dark elf, with mighty nature-controlling enchantments."
+flags_1 = SubResource("Resource_lgw6h")
+flags_2 = SubResource("Resource_o64ls")
+flags_3 = SubResource("Resource_bc5em")
+flags_4 = SubResource("Resource_qlb8o")
+flags_5 = SubResource("Resource_1y8y6")
+flags_6 = SubResource("Resource_sictk")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 20
+hit_dice_sides = 20
+level = 25
+max_num = 100
+experience = 500
+name = "Dark elven cultist"
+notice_range = 15
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "    Dark    "
+split_name_2 = "   elven    "
+split_name_3 = "  cultist   "

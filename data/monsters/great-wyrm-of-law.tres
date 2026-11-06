@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_jy7so"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_uekol"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_onv6p"]
+
+[sub_resource type="Resource" id="Resource_x65py"]
+script = ExtResource("1_jy7so")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_a5jnc"]
+script = ExtResource("1_jy7so")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_c3qdi"]
+script = ExtResource("1_jy7so")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_gb2m6"]
+script = ExtResource("1_jy7so")
+damage_dice = 8
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_hvhan"]
+script = ExtResource("2_uekol")
+value = 505415168
+
+[sub_resource type="Resource" id="Resource_nh0d1"]
+script = ExtResource("2_uekol")
+value = 1183744
+
+[sub_resource type="Resource" id="Resource_djqm5"]
+script = ExtResource("2_uekol")
+value = 3221225992
+
+[sub_resource type="Resource" id="Resource_x8c6x"]
+script = ExtResource("2_uekol")
+value = 16908288
+
+[sub_resource type="Resource" id="Resource_wnd1o"]
+script = ExtResource("2_uekol")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_ik1sf"]
+script = ExtResource("2_uekol")
+value = 134217728
+
+[resource]
+script = ExtResource("3_onv6p")
+ac = 170
+attack = Array[ExtResource("1_jy7so")]([SubResource("Resource_x65py"), SubResource("Resource_a5jnc"), SubResource("Resource_c3qdi"), SubResource("Resource_gb2m6")])
+character = "D"
+colour = 28
+description = "A massive dragon of powerful intellect. It seeks to dominate the universe and despises all other life. It sees all who do not obey it as mere insects to be crushed underfoot."
+flags_1 = SubResource("Resource_hvhan")
+flags_2 = SubResource("Resource_nh0d1")
+flags_3 = SubResource("Resource_djqm5")
+flags_4 = SubResource("Resource_x8c6x")
+flags_5 = SubResource("Resource_wnd1o")
+flags_6 = SubResource("Resource_ik1sf")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 45
+hit_dice_sides = 100
+level = 67
+max_num = 100
+experience = 29000
+name = "Great Wyrm of Law"
+notice_range = 40
+rarity = 2
+sleep = 255
+speed = 120
+split_name_1 = "   Great    "
+split_name_2 = "  Wyrm of   "
+split_name_3 = "    Law     "

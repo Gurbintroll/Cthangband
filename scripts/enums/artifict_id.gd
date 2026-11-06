@@ -1,0 +1,127 @@
+# Copyright © 1997-2026 Gurbintroll Games
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the
+# GNU General Public License as published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+class_name ArtifactId
+extends Object
+
+const NONE: int = 0
+const STAR_ESSENCE_OF_POLARIS: int = 1
+const STAR_ESSENCE_OF_XOTH: int = 2
+const SHINING_TRAPEZOHEDRON: int = 3
+const AMULET_OF_LOBON: int = 4
+const AMULET_OF_ABDUL_ALHAZRED: int = 5
+const NECKLACE_OF_THE_DWARVES: int = 6
+const RING_OF_MAGIC: int = 8
+const RING_OF_BAST: int = 9
+const RING_OF_ELEMENTAL_POWER_FIRE: int = 10
+const RING_OF_ELEMENTAL_POWER_ICE: int = 11
+const RING_OF_ELEMENTAL_POWER_STORM: int = 12
+const RING_OF_SET: int = 13
+const DRAGONSCALE_RAZORBACK: int = 16
+const DRAGONSCALE_BLADETURNER: int = 17
+const PLATE_MAIL_SOULKEEPER: int = 19
+const ARMOUR_OF_THE_GODS: int = 20
+const ARMOUR_OF_SERPENTS: int = 21
+const ARMOUR_OF_THE_VAMPIRE_HUNTER: int = 22
+const ARMOUR_OF_THE_ORCS: int = 23
+const CHAIN_MAIL_HEARTGUARD: int = 24
+const ARMOUR_OF_THE_OGRE_LORDS: int = 25
+const ARMOUR_OF_THE_KOBOLD_CHIEF: int = 27
+const SCALE_MAIL_WYVERNSCALE: int = 28
+const SHIELD_VITRIOL: int = 30
+const SHIELD_RAWHIDE: int = 31
+const SHIELD_OF_STABILITY: int = 32
+const CROWN_OF_THE_UNIVERSE: int = 34
+const CROWN_OF_MISERY: int = 35
+const CAP_OF_THE_MINDCRAFTER: int = 36
+const CAP_OF_HOLINESS: int = 37
+const HELM_OF_HAMMERHAND: int = 38
+const DRAGON_HELM_OF_POWER: int = 39
+const HELM_SKULLKEEPER: int = 40
+const HELM_TERROR_MASK: int = 41
+const CROWN_OF_THE_SUN: int = 42
+const CLOAK_OF_BARZAI: int = 44
+const CLOAK_DARKNESS: int = 45
+const CLOAK_OF_THE_SWASHBUCKLER: int = 46
+const CLOAK_SHADE: int = 47
+const CLOAK_SHIFTER: int = 48
+const SHADOW_CLOAK_OF_NYOGTHA: int = 49
+const SHADOW_CLOAK_OF_THE_SHOGGOTH: int = 50
+const GLOVES_CALFSKIN: int = 52
+const GLOVES_OF_LIGHT: int = 53
+const GAUNTLET_IRON_FIST: int = 54
+const GAUNTLETS_OF_GHOULS: int = 55
+const GAUNTLETS_WHITESPARK: int = 56
+const GAUNTLETS_OF_THE_DEAD: int = 57
+const GAUNTLET_OF_THANOS: int = 58
+const CESTI_OF_COMBAT: int = 59
+const BOOTS_OF_ITHAQUA: int = 60
+const BOOTS_OF_DANCING: int = 61
+const BOOTS_OF_THE_BLACK_REAVER: int = 62
+const MAIN_GAUCHE_OF_DEFENCE: int = 64
+const DAGGER_OF_THE_ASSASSIN: int = 65
+const DAGGER_OF_FAITH: int = 66
+const DAGGER_OF_HOPE: int = 67
+const DAGGER_OF_CHARITY: int = 68
+const DAGGER_OF_THOTH: int = 69
+const DAGGER_ICICLE: int = 70
+const SWORD_SELFSLAYER: int = 71
+const SWORD_OF_XURA: int = 72
+const SWORD_BRIGHTBLADE: int = 73
+const SWORD_LIGHTNING: int = 74
+const SWORD_BLACK_ICE: int = 75
+const SWORD_DRAGONSLAYER: int = 76
+const SWORD_FIRETONGUE: int = 77
+const SWORD_TWILIGHT: int = 78
+const CUTLASS_OF_BLACKBEARD: int = 79
+const SWORD_OF_NYARLATHOTEP: int = 80
+const KATANA_OF_GROO: int = 81
+const SWORD_EXCALIBUR: int = 82
+const SWORD_OF_EVERFLAME: int = 83
+const SWORD_OF_KARAKAL: int = 84
+const SWORD_DEMON_BLADE: int = 85
+const RAPIER_OF_MONTOYA: int = 86
+const SABRE_OF_BLUEBEARD: int = 87
+const SMALL_SWORD_STING: int = 88
+const SCIMITAR_SOULSWORD: int = 89
+const SHORTSWORD_OF_MERLIN: int = 90
+const BLADE_DOOMCALLER: int = 91
+const SWORD_VORPAL_BLADE: int = 92
+const AXE_OF_THEODEN: int = 93
+const GLAIVE_OF_PAIN: int = 94
+const HALBERD_ARMOURBANE: int = 95
+const PIKE_OF_TEPES: int = 96
+const SPEAR_GUNGNIR: int = 97
+const SPEAR_OF_DESTINY: int = 98
+const SPEAR_GAEBULG: int = 99
+const LANCE_SKEWER: int = 100
+const AXE_OF_THE_YEEKS: int = 101
+const AXE_OF_THE_TROLLS: int = 102
+const AXE_OF_NKAI: int = 103
+const AXE_SPLEENSLICER: int = 104
+const AXE_OF_THE_DWARVES: int = 105
+const AXE_OF_NODENS: int = 106
+const TRIDENT_OF_WRATH: int = 107
+const TRIDENT_OF_THE_GNORRI: int = 108
+const SCYTHE_OF_GHARNE: int = 109
+const SWORD_OF_THE_DAWN: int = 110
+const HAMMER_OF_WORLDS: int = 111
+const FLAIL_TOTILA: int = 112
+const FLAIL_THUNDERFIST: int = 113
+const MORNING_STAR_BLOODSPIKE: int = 114
+const MORNING_STAR_FIRESTARTER: int = 115
+const MACE_THUNDER: int = 116
+const HAMMER_MJOLNIR: int = 117
+const QUARTERSTAFF_FIRESTAFF: int = 118
+const QUARTERSTAFF_ERIRIL: int = 119
+const QUARTERSTAFF_OF_ATAL: int = 120
+const MACE_DEATHWREAKER: int = 121
+const HAMMER_JUSTICE: int = 122
+const BOW_SURESHOT: int = 124
+const BOW_OF_SERPENTS: int = 125
+const CROSSBOW_OF_DEATH: int = 126

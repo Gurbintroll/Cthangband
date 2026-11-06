@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5xujf"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_hy1eq"]
+
+[sub_resource type="Resource" id="Resource_7faiy"]
+script = ExtResource("1_5xujf")
+value = 256
+
+[sub_resource type="Resource" id="Resource_oucqa"]
+script = ExtResource("1_5xujf")
+value = 458752
+
+[sub_resource type="Resource" id="Resource_ypl4j"]
+script = ExtResource("1_5xujf")
+value = 15728640
+
+[resource]
+script = ExtResource("2_hy1eq")
+cost = 15000
+flags_1 = SubResource("Resource_7faiy")
+flags_2 = SubResource("Resource_oucqa")
+flags_3 = SubResource("Resource_ypl4j")
+max_type_specifc_value = 3
+max_to_ac = 10
+name = "of Yith"
+rating = 25
+slot = 30
+id = 9

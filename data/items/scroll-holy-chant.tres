@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_x6yge"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_33foc"]
+
+[sub_resource type="Resource" id="Resource_3jepf"]
+script = ExtResource("1_x6yge")
+
+[sub_resource type="Resource" id="Resource_ep6m1"]
+script = ExtResource("1_x6yge")
+
+[sub_resource type="Resource" id="Resource_moh6d"]
+script = ExtResource("1_x6yge")
+
+[resource]
+script = ExtResource("2_33foc")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 40
+easy_know = true
+flags_1 = SubResource("Resource_3jepf")
+flags_2 = SubResource("Resource_ep6m1")
+flags_3 = SubResource("Resource_moh6d")
+has_flavour = true
+item_category = 70
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Holy Chant"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 34
+weight = 5
+filename = "Scroll:Holy Chant"

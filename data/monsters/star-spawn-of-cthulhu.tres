@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_smats"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_o657b"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_t8uhj"]
+
+[sub_resource type="Resource" id="Resource_mrdu1"]
+script = ExtResource("1_smats")
+damage_dice = 1
+damage_dice_sides = 30
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_xe4nd"]
+script = ExtResource("1_smats")
+damage_dice = 1
+damage_dice_sides = 30
+effect = 9
+method = 5
+
+[sub_resource type="Resource" id="Resource_tg5ya"]
+script = ExtResource("1_smats")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_4mqdo"]
+script = ExtResource("1_smats")
+damage_dice = 2
+damage_dice_sides = 33
+effect = 3
+method = 9
+
+[sub_resource type="Resource" id="Resource_tg48y"]
+script = ExtResource("2_o657b")
+value = 61081088
+
+[sub_resource type="Resource" id="Resource_pac4a"]
+script = ExtResource("2_o657b")
+value = 8597504
+
+[sub_resource type="Resource" id="Resource_tq2q0"]
+script = ExtResource("2_o657b")
+value = 142542912
+
+[sub_resource type="Resource" id="Resource_r42hr"]
+script = ExtResource("2_o657b")
+value = 268444928
+
+[sub_resource type="Resource" id="Resource_ay5ff"]
+script = ExtResource("2_o657b")
+value = 671092224
+
+[sub_resource type="Resource" id="Resource_cqfxw"]
+script = ExtResource("2_o657b")
+value = 84410404
+
+[resource]
+script = ExtResource("3_t8uhj")
+ac = 90
+attack = Array[ExtResource("1_smats")]([SubResource("Resource_mrdu1"), SubResource("Resource_xe4nd"), SubResource("Resource_tg5ya"), SubResource("Resource_4mqdo")])
+character = "U"
+colour = 8
+description = "The last remnants of sanity threaten to leave your brain as you behold this titanic bat-winged, octopus-headed unholy abomination."
+flags_1 = SubResource("Resource_tg48y")
+flags_2 = SubResource("Resource_pac4a")
+flags_3 = SubResource("Resource_tq2q0")
+flags_4 = SubResource("Resource_r42hr")
+flags_5 = SubResource("Resource_ay5ff")
+flags_6 = SubResource("Resource_cqfxw")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 75
+hit_dice_sides = 100
+level = 86
+max_num = 100
+experience = 44000
+name = "Star-spawn of Cthulhu"
+notice_range = 90
+rarity = 2
+sleep = 90
+speed = 130
+split_name_1 = " Star-spawn "
+split_name_2 = "     of     "
+split_name_3 = "  Cthulhu   "

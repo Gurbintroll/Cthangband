@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_21pdm"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tvrjm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_n3btb"]
+
+[sub_resource type="Resource" id="Resource_b05vm"]
+script = ExtResource("1_21pdm")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 25
+method = 15
+
+[sub_resource type="Resource" id="Resource_1x5ur"]
+script = ExtResource("1_21pdm")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_gnvrd"]
+script = ExtResource("1_21pdm")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 18
+method = 15
+
+[sub_resource type="Resource" id="Resource_3ge08"]
+script = ExtResource("1_21pdm")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 4
+method = 15
+
+[sub_resource type="Resource" id="Resource_7tfwt"]
+script = ExtResource("2_tvrjm")
+value = 1536
+
+[sub_resource type="Resource" id="Resource_io83j"]
+script = ExtResource("2_tvrjm")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_mbygr"]
+script = ExtResource("2_tvrjm")
+value = 3224371264
+
+[sub_resource type="Resource" id="Resource_bd4j8"]
+script = ExtResource("2_tvrjm")
+
+[sub_resource type="Resource" id="Resource_j35nk"]
+script = ExtResource("2_tvrjm")
+value = 2014119424
+
+[sub_resource type="Resource" id="Resource_ksjge"]
+script = ExtResource("2_tvrjm")
+value = 20480
+
+[resource]
+script = ExtResource("3_n3btb")
+ac = 80
+attack = Array[ExtResource("1_21pdm")]([SubResource("Resource_b05vm"), SubResource("Resource_1x5ur"), SubResource("Resource_gnvrd"), SubResource("Resource_3ge08")])
+character = "e"
+colour = 22
+description = "A disembodied eye, surrounded by twelve smaller eyes on stalks."
+flags_1 = SubResource("Resource_7tfwt")
+flags_2 = SubResource("Resource_io83j")
+flags_3 = SubResource("Resource_mbygr")
+flags_4 = SubResource("Resource_bd4j8")
+flags_5 = SubResource("Resource_j35nk")
+flags_6 = SubResource("Resource_ksjge")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 16
+hit_dice_sides = 100
+level = 38
+max_num = 100
+experience = 6000
+name = "Beholder"
+notice_range = 30
+rarity = 4
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Beholder  "

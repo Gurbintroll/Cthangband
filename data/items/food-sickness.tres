@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_r3i1s"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_bhep5"]
+
+[sub_resource type="Resource" id="Resource_xvtf1"]
+script = ExtResource("1_r3i1s")
+
+[sub_resource type="Resource" id="Resource_odg8n"]
+script = ExtResource("1_r3i1s")
+
+[sub_resource type="Resource" id="Resource_rb1jm"]
+script = ExtResource("1_r3i1s")
+
+[resource]
+script = ExtResource("2_bhep5")
+chance = Array[int]([1, 0, 0, 0])
+character = ","
+colour = 22
+damage_dice = 4
+damage_dice_sides = 4
+easy_know = true
+flags_1 = SubResource("Resource_xvtf1")
+flags_2 = SubResource("Resource_odg8n")
+flags_3 = SubResource("Resource_rb1jm")
+has_flavour = true
+item_category = 80
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Sickness"
+type_specific_value = 500
+stompable = Array[bool]([true, false, false, false])
+sub_category = 7
+weight = 1
+filename = "Food:Sickness"

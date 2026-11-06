@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_8huds"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_bf0h5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_m2cap"]
+
+[sub_resource type="Resource" id="Resource_riro3"]
+script = ExtResource("1_8huds")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vut70"]
+script = ExtResource("1_8huds")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_48qdo"]
+script = ExtResource("1_8huds")
+
+[sub_resource type="Resource" id="Resource_lrsat"]
+script = ExtResource("1_8huds")
+
+[sub_resource type="Resource" id="Resource_k7y52"]
+script = ExtResource("2_bf0h5")
+value = 4195332
+
+[sub_resource type="Resource" id="Resource_wsfqf"]
+script = ExtResource("2_bf0h5")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_kwcw0"]
+script = ExtResource("2_bf0h5")
+
+[sub_resource type="Resource" id="Resource_01m7d"]
+script = ExtResource("2_bf0h5")
+
+[sub_resource type="Resource" id="Resource_vve7j"]
+script = ExtResource("2_bf0h5")
+
+[sub_resource type="Resource" id="Resource_qau25"]
+script = ExtResource("2_bf0h5")
+
+[resource]
+script = ExtResource("3_m2cap")
+ac = 6
+attack = Array[ExtResource("1_8huds")]([SubResource("Resource_riro3"), SubResource("Resource_vut70"), SubResource("Resource_48qdo"), SubResource("Resource_lrsat")])
+character = "p"
+colour = 22
+description = "An agile hunter, ready and relaxed."
+flags_1 = SubResource("Resource_k7y52")
+flags_2 = SubResource("Resource_wsfqf")
+flags_3 = SubResource("Resource_kwcw0")
+flags_4 = SubResource("Resource_01m7d")
+flags_5 = SubResource("Resource_vve7j")
+flags_6 = SubResource("Resource_qau25")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 6
+hit_dice_sides = 8
+level = 4
+max_num = 100
+experience = 18
+name = "Novice ranger"
+notice_range = 20
+rarity = 1
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Novice   "
+split_name_3 = "   ranger   "

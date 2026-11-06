@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_go21e"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1wrcg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kflrr"]
+
+[sub_resource type="Resource" id="Resource_7unsc"]
+script = ExtResource("1_go21e")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_r83rb"]
+script = ExtResource("1_go21e")
+
+[sub_resource type="Resource" id="Resource_ewguw"]
+script = ExtResource("1_go21e")
+
+[sub_resource type="Resource" id="Resource_hfvcv"]
+script = ExtResource("1_go21e")
+
+[sub_resource type="Resource" id="Resource_m20up"]
+script = ExtResource("2_1wrcg")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_inl6t"]
+script = ExtResource("2_1wrcg")
+value = 256
+
+[sub_resource type="Resource" id="Resource_4med0"]
+script = ExtResource("2_1wrcg")
+value = 128
+
+[sub_resource type="Resource" id="Resource_laek0"]
+script = ExtResource("2_1wrcg")
+
+[sub_resource type="Resource" id="Resource_k74gm"]
+script = ExtResource("2_1wrcg")
+
+[sub_resource type="Resource" id="Resource_uknwd"]
+script = ExtResource("2_1wrcg")
+
+[resource]
+script = ExtResource("3_kflrr")
+ac = 7
+attack = Array[ExtResource("1_go21e")]([SubResource("Resource_7unsc"), SubResource("Resource_r83rb"), SubResource("Resource_ewguw"), SubResource("Resource_hfvcv")])
+character = "r"
+colour = 6
+description = "It is a very vicious rodent."
+flags_1 = SubResource("Resource_m20up")
+flags_2 = SubResource("Resource_inl6t")
+flags_3 = SubResource("Resource_4med0")
+flags_4 = SubResource("Resource_laek0")
+flags_5 = SubResource("Resource_k74gm")
+flags_6 = SubResource("Resource_uknwd")
+hit_dice = 2
+hit_dice_sides = 2
+level = 4
+max_num = 100
+experience = 1
+name = "Giant brown rat"
+notice_range = 8
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "   Giant    "
+split_name_2 = "   brown    "
+split_name_3 = "    rat     "

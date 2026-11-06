@@ -1,0 +1,17 @@
+[center][font_size=48][color="brown"][b]Channeller[/b][/color][/font_size][/center]
+[hr color="brown"]
+[center][table=2] [cell][b]Hit Dice[/b][/cell][cell][b]Experience Factor[/b][/cell]
+[cell]+1[/cell][cell]+30%[/cell] [/table][/center]
+
+[center][table=6] [cell][b]Strength[/b][/cell][cell][b]Intelligence[/b][/cell][cell][b]Wisdom[/b][/cell][cell][b]Dexterity[/b][/cell][cell][b]Constitution[/b][/cell][cell][b]Charisma[/b][/cell]
+[cell]-1[/cell][cell]+0[/cell][cell]+2[/cell][cell]-1[/cell][cell]-1[/cell][cell]+3[/cell] [/table][/center]
+
+[center][table=8] [cell][b][/b][/cell][cell][b]Devices[/b][/cell][cell][b]Disarming[/b][/cell][cell][b]Melee[/b][/cell][cell][b]Ranged[/b][/cell][cell][b]Saves[/b][/cell][cell][b]Searching[/b][/cell][cell][b]Stealth[/b][/cell]
+[cell]Base Bonus[/cell][cell]40%[/cell][cell]40%[/cell][cell]40%[/cell][cell]30%[/cell][cell]30%[/cell][cell]16%[/cell][cell]2%[/cell]
+[cell]Bonus per Level[/cell][cell]+1.3%[/cell][cell]+1.2%[/cell][cell]+1.5%[/cell][cell]+1.5%[/cell][cell]+0.9%[/cell][cell]+0.0%[/cell][cell]+0.0%[/cell][/table][/center]
+
+Channellers are similar to spell casters. Although they are unable to cast spells themselves,  they are able to channel their power into items. This allows them to use items and expend power instead  of expending charges or usages of the item they are using. For example, a channeler could use a Wand of Magic Missiles  to shoot magic missiles and - providing they have power - the wand would never run out of charges.
+
+Channellers are not good fighters, relying on their item use in combat rather than physical attacks.
+
+Channellers derive their power from their [color="blue"][url="Charisma"]charisma[/url][/color].

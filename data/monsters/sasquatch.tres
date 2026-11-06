@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_apshf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_q88jf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ehq0w"]
+
+[sub_resource type="Resource" id="Resource_denml"]
+script = ExtResource("1_apshf")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_msmi3"]
+script = ExtResource("1_apshf")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_hblff"]
+script = ExtResource("1_apshf")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_0e3qt"]
+script = ExtResource("1_apshf")
+
+[sub_resource type="Resource" id="Resource_dbqrr"]
+script = ExtResource("2_q88jf")
+
+[sub_resource type="Resource" id="Resource_vxb5a"]
+script = ExtResource("2_q88jf")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_36ysp"]
+script = ExtResource("2_q88jf")
+value = 524416
+
+[sub_resource type="Resource" id="Resource_8swc5"]
+script = ExtResource("2_q88jf")
+
+[sub_resource type="Resource" id="Resource_i3v2j"]
+script = ExtResource("2_q88jf")
+
+[sub_resource type="Resource" id="Resource_8yrx6"]
+script = ExtResource("2_q88jf")
+
+[resource]
+script = ExtResource("3_ehq0w")
+ac = 40
+attack = Array[ExtResource("1_apshf")]([SubResource("Resource_denml"), SubResource("Resource_msmi3"), SubResource("Resource_hblff"), SubResource("Resource_0e3qt")])
+character = "Y"
+colour = 15
+description = "A tall shaggy, furry humanoid, it could call the yeti brother."
+flags_1 = SubResource("Resource_dbqrr")
+flags_2 = SubResource("Resource_vxb5a")
+flags_3 = SubResource("Resource_36ysp")
+flags_4 = SubResource("Resource_8swc5")
+flags_5 = SubResource("Resource_i3v2j")
+flags_6 = SubResource("Resource_8yrx6")
+hit_dice = 20
+hit_dice_sides = 19
+level = 20
+max_num = 100
+experience = 180
+name = "Sasquatch"
+notice_range = 15
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Sasquatch  "

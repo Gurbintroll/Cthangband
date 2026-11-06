@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ovc3q"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_o6m4k"]
+
+[sub_resource type="Resource" id="Resource_j8uei"]
+script = ExtResource("1_ovc3q")
+value = 1
+
+[sub_resource type="Resource" id="Resource_4y1u3"]
+script = ExtResource("1_ovc3q")
+
+[sub_resource type="Resource" id="Resource_e6l1r"]
+script = ExtResource("1_ovc3q")
+value = 512
+
+[resource]
+script = ExtResource("2_o6m4k")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 22
+cost = 500
+flags_1 = SubResource("Resource_j8uei")
+flags_2 = SubResource("Resource_4y1u3")
+flags_3 = SubResource("Resource_e6l1r")
+has_flavour = true
+item_category = 45
+level = 30
+locale = Array[int]([30, 0, 0, 0])
+name = "Strength"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 24
+weight = 2
+filename = "Ring:Strength"

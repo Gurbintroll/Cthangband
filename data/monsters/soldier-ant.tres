@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_42ebm"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_sjdia"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4qwkc"]
+
+[sub_resource type="Resource" id="Resource_1echv"]
+script = ExtResource("1_42ebm")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_iuut1"]
+script = ExtResource("1_42ebm")
+
+[sub_resource type="Resource" id="Resource_afxph"]
+script = ExtResource("1_42ebm")
+
+[sub_resource type="Resource" id="Resource_4eubv"]
+script = ExtResource("1_42ebm")
+
+[sub_resource type="Resource" id="Resource_mnf87"]
+script = ExtResource("2_sjdia")
+
+[sub_resource type="Resource" id="Resource_m7t44"]
+script = ExtResource("2_sjdia")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_cdkch"]
+script = ExtResource("2_sjdia")
+value = 128
+
+[sub_resource type="Resource" id="Resource_24m3n"]
+script = ExtResource("2_sjdia")
+
+[sub_resource type="Resource" id="Resource_j38qf"]
+script = ExtResource("2_sjdia")
+
+[sub_resource type="Resource" id="Resource_u6yus"]
+script = ExtResource("2_sjdia")
+
+[resource]
+script = ExtResource("3_4qwkc")
+ac = 3
+attack = Array[ExtResource("1_42ebm")]([SubResource("Resource_1echv"), SubResource("Resource_iuut1"), SubResource("Resource_afxph"), SubResource("Resource_4eubv")])
+character = "a"
+colour = 17
+description = "A large ant with powerful mandibles."
+flags_1 = SubResource("Resource_mnf87")
+flags_2 = SubResource("Resource_m7t44")
+flags_3 = SubResource("Resource_cdkch")
+flags_4 = SubResource("Resource_24m3n")
+flags_5 = SubResource("Resource_j38qf")
+flags_6 = SubResource("Resource_u6yus")
+hit_dice = 2
+hit_dice_sides = 5
+level = 1
+max_num = 100
+experience = 3
+name = "Soldier ant"
+notice_range = 10
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Soldier   "
+split_name_3 = "    ant     "

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_roova"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_ivw6u"]
+
+[sub_resource type="Resource" id="Resource_2ehb5"]
+script = ExtResource("1_roova")
+value = 7340057
+
+[sub_resource type="Resource" id="Resource_ca2h6"]
+script = ExtResource("1_roova")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_inqro"]
+script = ExtResource("1_roova")
+value = 16384
+
+[resource]
+script = ExtResource("2_ivw6u")
+cost = 20000
+flags_1 = SubResource("Resource_2ehb5")
+flags_2 = SubResource("Resource_ca2h6")
+flags_3 = SubResource("Resource_inqro")
+max_type_specifc_value = 2
+max_to_damage = 5
+max_to_hit = 5
+name = "of Kadath"
+rating = 20
+slot = 24
+id = 56

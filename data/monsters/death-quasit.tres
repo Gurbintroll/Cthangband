@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_wb3fv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_nf1wf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ak7na"]
+
+[sub_resource type="Resource" id="Resource_3nocb"]
+script = ExtResource("1_wb3fv")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 20
+method = 6
+
+[sub_resource type="Resource" id="Resource_i7tsk"]
+script = ExtResource("1_wb3fv")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_gwqxm"]
+script = ExtResource("1_wb3fv")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_w4nhb"]
+script = ExtResource("1_wb3fv")
+
+[sub_resource type="Resource" id="Resource_2jhr0"]
+script = ExtResource("2_nf1wf")
+value = 178259456
+
+[sub_resource type="Resource" id="Resource_7ene4"]
+script = ExtResource("2_nf1wf")
+value = 262162
+
+[sub_resource type="Resource" id="Resource_ddoux"]
+script = ExtResource("2_nf1wf")
+value = 3493070928
+
+[sub_resource type="Resource" id="Resource_l6rif"]
+script = ExtResource("2_nf1wf")
+
+[sub_resource type="Resource" id="Resource_gfywb"]
+script = ExtResource("2_nf1wf")
+value = 939540480
+
+[sub_resource type="Resource" id="Resource_ds62x"]
+script = ExtResource("2_nf1wf")
+value = 33570816
+
+[resource]
+script = ExtResource("3_ak7na")
+ac = 80
+attack = Array[ExtResource("1_wb3fv")]([SubResource("Resource_3nocb"), SubResource("Resource_i7tsk"), SubResource("Resource_gwqxm"), SubResource("Resource_w4nhb")])
+character = "u"
+colour = 30
+description = "It is a demon of small stature, but its armoured frame moves with lightning speed and its powers make it a tornado of death and destruction."
+flags_1 = SubResource("Resource_2jhr0")
+flags_2 = SubResource("Resource_7ene4")
+flags_3 = SubResource("Resource_ddoux")
+flags_4 = SubResource("Resource_l6rif")
+flags_5 = SubResource("Resource_gfywb")
+flags_6 = SubResource("Resource_ds62x")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 44
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 1000
+name = "Death quasit"
+notice_range = 20
+rarity = 3
+speed = 130
+split_name_1 = "            "
+split_name_2 = "   Death    "
+split_name_3 = "   quasit   "

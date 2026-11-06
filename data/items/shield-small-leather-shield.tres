@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_r71xq"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ejs5a"]
+
+[sub_resource type="Resource" id="Resource_3gdsa"]
+script = ExtResource("1_r71xq")
+
+[sub_resource type="Resource" id="Resource_m5kgt"]
+script = ExtResource("1_r71xq")
+
+[sub_resource type="Resource" id="Resource_r5wjv"]
+script = ExtResource("1_r71xq")
+
+[resource]
+script = ExtResource("2_ejs5a")
+ac = 2
+chance = Array[int]([1, 0, 0, 0])
+character = ")"
+colour = 6
+cost = 30
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_3gdsa")
+flags_2 = SubResource("Resource_m5kgt")
+flags_3 = SubResource("Resource_r5wjv")
+flavour_aware = true
+item_category = 34
+level = 3
+locale = Array[int]([3, 0, 0, 0])
+name = "& Small Leather Shield~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 2
+weight = 50
+filename = "Shield:Small Leather Shield"

@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_40ygj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_r1034"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_2rshj"]
+
+[sub_resource type="Resource" id="Resource_i774s"]
+script = ExtResource("1_40ygj")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 16
+method = 7
+
+[sub_resource type="Resource" id="Resource_1tem6"]
+script = ExtResource("1_40ygj")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 16
+method = 7
+
+[sub_resource type="Resource" id="Resource_ckhgw"]
+script = ExtResource("1_40ygj")
+
+[sub_resource type="Resource" id="Resource_p7pk8"]
+script = ExtResource("1_40ygj")
+
+[sub_resource type="Resource" id="Resource_ttlh5"]
+script = ExtResource("2_r1034")
+value = 270336
+
+[sub_resource type="Resource" id="Resource_r0hwo"]
+script = ExtResource("2_r1034")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_a6efi"]
+script = ExtResource("2_r1034")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_sh1da"]
+script = ExtResource("2_r1034")
+
+[sub_resource type="Resource" id="Resource_mgo8q"]
+script = ExtResource("2_r1034")
+
+[sub_resource type="Resource" id="Resource_yxkn4"]
+script = ExtResource("2_r1034")
+
+[resource]
+script = ExtResource("3_2rshj")
+ac = 40
+attack = Array[ExtResource("1_40ygj")]([SubResource("Resource_i774s"), SubResource("Resource_1tem6"), SubResource("Resource_ckhgw"), SubResource("Resource_p7pk8")])
+character = "c"
+colour = 22
+description = "A hideous centipede covered in slime and with glowing tentacles around its head."
+flags_1 = SubResource("Resource_ttlh5")
+flags_2 = SubResource("Resource_r0hwo")
+flags_3 = SubResource("Resource_a6efi")
+flags_4 = SubResource("Resource_sh1da")
+flags_5 = SubResource("Resource_mgo8q")
+flags_6 = SubResource("Resource_yxkn4")
+hit_dice = 20
+hit_dice_sides = 12
+level = 34
+max_num = 100
+experience = 100
+name = "Carrion crawler"
+notice_range = 15
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Carrion   "
+split_name_3 = "  crawler   "

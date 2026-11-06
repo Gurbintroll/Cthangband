@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2fdwm"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2paa3"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_18fxu"]
+
+[sub_resource type="Resource" id="Resource_c6fvd"]
+script = ExtResource("1_2fdwm")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_nv88u"]
+script = ExtResource("1_2fdwm")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_1t8mr"]
+script = ExtResource("1_2fdwm")
+
+[sub_resource type="Resource" id="Resource_x55mg"]
+script = ExtResource("1_2fdwm")
+
+[sub_resource type="Resource" id="Resource_ydnnm"]
+script = ExtResource("2_2paa3")
+value = 26214400
+
+[sub_resource type="Resource" id="Resource_3jm4y"]
+script = ExtResource("2_2paa3")
+value = 131104
+
+[sub_resource type="Resource" id="Resource_qs6cg"]
+script = ExtResource("2_2paa3")
+value = 3222274176
+
+[sub_resource type="Resource" id="Resource_mr4m7"]
+script = ExtResource("2_2paa3")
+
+[sub_resource type="Resource" id="Resource_157c5"]
+script = ExtResource("2_2paa3")
+
+[sub_resource type="Resource" id="Resource_t3kiq"]
+script = ExtResource("2_2paa3")
+
+[resource]
+script = ExtResource("3_18fxu")
+ac = 36
+attack = Array[ExtResource("1_2fdwm")]([SubResource("Resource_c6fvd"), SubResource("Resource_nv88u"), SubResource("Resource_1t8mr"), SubResource("Resource_x55mg")])
+character = "$"
+colour = 21
+description = "It is a pile of coins, crawling forward on thousands of tiny legs."
+flags_1 = SubResource("Resource_ydnnm")
+flags_2 = SubResource("Resource_3jm4y")
+flags_3 = SubResource("Resource_qs6cg")
+flags_4 = SubResource("Resource_mr4m7")
+flags_5 = SubResource("Resource_157c5")
+flags_6 = SubResource("Resource_t3kiq")
+hit_dice = 18
+hit_dice_sides = 8
+level = 10
+max_num = 100
+experience = 32
+name = "Creeping gold coins"
+notice_range = 5
+rarity = 3
+sleep = 10
+speed = 100
+split_name_1 = "  Creeping  "
+split_name_2 = "    gold    "
+split_name_3 = "   coins    "

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_glptu"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_27y5t"]
+
+[sub_resource type="Resource" id="Resource_cvw5u"]
+script = ExtResource("1_glptu")
+
+[sub_resource type="Resource" id="Resource_uixo4"]
+script = ExtResource("1_glptu")
+
+[sub_resource type="Resource" id="Resource_0008t"]
+script = ExtResource("1_glptu")
+
+[resource]
+script = ExtResource("2_27y5t")
+chance = Array[int]([1, 1, 0, 0])
+character = "_"
+colour = 17
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_cvw5u")
+flags_2 = SubResource("Resource_uixo4")
+flags_3 = SubResource("Resource_0008t")
+has_flavour = true
+item_category = 55
+level = 10
+locale = Array[int]([10, 50, 0, 0])
+name = "Summoning"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 3
+weight = 50
+filename = "Staff:Summoning"

@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vnua8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_who5s"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ymp3t"]
+
+[sub_resource type="Resource" id="Resource_kpjsl"]
+script = ExtResource("1_vnua8")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_c7fis"]
+script = ExtResource("1_vnua8")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1pdjb"]
+script = ExtResource("1_vnua8")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_sedi6"]
+script = ExtResource("1_vnua8")
+
+[sub_resource type="Resource" id="Resource_ltukk"]
+script = ExtResource("2_who5s")
+value = 144705028
+
+[sub_resource type="Resource" id="Resource_v8i5o"]
+script = ExtResource("2_who5s")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_e2lsp"]
+script = ExtResource("2_who5s")
+value = 3221225536
+
+[sub_resource type="Resource" id="Resource_d6cyj"]
+script = ExtResource("2_who5s")
+
+[sub_resource type="Resource" id="Resource_onxfe"]
+script = ExtResource("2_who5s")
+value = 805388300
+
+[sub_resource type="Resource" id="Resource_1pfa4"]
+script = ExtResource("2_who5s")
+value = 201597200
+
+[resource]
+script = ExtResource("3_ymp3t")
+ac = 60
+attack = Array[ExtResource("1_vnua8")]([SubResource("Resource_kpjsl"), SubResource("Resource_c7fis"), SubResource("Resource_1pdjb"), SubResource("Resource_sedi6")])
+character = "p"
+colour = 21
+description = "A human figure in robes, he moves with magically improved speed, and his hands are ablur with spell casting."
+flags_1 = SubResource("Resource_ltukk")
+flags_2 = SubResource("Resource_v8i5o")
+flags_3 = SubResource("Resource_e2lsp")
+flags_4 = SubResource("Resource_d6cyj")
+flags_5 = SubResource("Resource_onxfe")
+flags_6 = SubResource("Resource_1pfa4")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 52
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 2150
+name = "Sorcerer"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Sorcerer  "

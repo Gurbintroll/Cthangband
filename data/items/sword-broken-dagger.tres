@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_rh8cb"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_gpjel"]
+
+[sub_resource type="Resource" id="Resource_qtixo"]
+script = ExtResource("1_rh8cb")
+
+[sub_resource type="Resource" id="Resource_wguc4"]
+script = ExtResource("1_rh8cb")
+
+[sub_resource type="Resource" id="Resource_jw6o4"]
+script = ExtResource("1_rh8cb")
+value = 1024
+
+[resource]
+script = ExtResource("2_gpjel")
+chance = Array[int]([1, 0, 0, 0])
+character = "|"
+colour = 2
+cost = 1
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_qtixo")
+flags_2 = SubResource("Resource_wguc4")
+flags_3 = SubResource("Resource_jw6o4")
+flavour_aware = true
+item_category = 23
+locale = Array[int]([0, 0, 0, 0])
+name = "& Broken Dagger~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+to_damage = -4
+to_hit = -2
+weight = 5
+filename = "Sword:Broken Dagger"

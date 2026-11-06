@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_a73da"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_3e7rh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kxwq7"]
+
+[sub_resource type="Resource" id="Resource_150td"]
+script = ExtResource("1_a73da")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_trf4w"]
+script = ExtResource("1_a73da")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1u8m5"]
+script = ExtResource("1_a73da")
+
+[sub_resource type="Resource" id="Resource_px8kh"]
+script = ExtResource("1_a73da")
+
+[sub_resource type="Resource" id="Resource_bemrv"]
+script = ExtResource("2_3e7rh")
+value = 10485760
+
+[sub_resource type="Resource" id="Resource_p2mlj"]
+script = ExtResource("2_3e7rh")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_c1uwf"]
+script = ExtResource("2_3e7rh")
+value = 3491233888
+
+[sub_resource type="Resource" id="Resource_klffi"]
+script = ExtResource("2_3e7rh")
+
+[sub_resource type="Resource" id="Resource_dkp0h"]
+script = ExtResource("2_3e7rh")
+
+[sub_resource type="Resource" id="Resource_j11cf"]
+script = ExtResource("2_3e7rh")
+
+[resource]
+script = ExtResource("3_kxwq7")
+ac = 34
+attack = Array[ExtResource("1_a73da")]([SubResource("Resource_150td"), SubResource("Resource_trf4w"), SubResource("Resource_1u8m5"), SubResource("Resource_px8kh")])
+character = "z"
+colour = 1
+description = "It is a human form encased in mouldy wrappings."
+flags_1 = SubResource("Resource_bemrv")
+flags_2 = SubResource("Resource_p2mlj")
+flags_3 = SubResource("Resource_c1uwf")
+flags_4 = SubResource("Resource_klffi")
+flags_5 = SubResource("Resource_dkp0h")
+flags_6 = SubResource("Resource_j11cf")
+hit_dice = 17
+hit_dice_sides = 9
+level = 24
+max_num = 100
+experience = 70
+name = "Mummified human"
+notice_range = 20
+rarity = 1
+sleep = 60
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Mummified  "
+split_name_3 = "   human    "

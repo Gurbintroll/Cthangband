@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_68aqi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_e4utp"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_5kjtk"]
+
+[sub_resource type="Resource" id="Resource_ddqoc"]
+script = ExtResource("1_68aqi")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_vu0pr"]
+script = ExtResource("1_68aqi")
+damage_dice = 4
+damage_dice_sides = 5
+effect = 11
+method = 14
+
+[sub_resource type="Resource" id="Resource_2o36r"]
+script = ExtResource("1_68aqi")
+
+[sub_resource type="Resource" id="Resource_otcnw"]
+script = ExtResource("1_68aqi")
+
+[sub_resource type="Resource" id="Resource_a7jrh"]
+script = ExtResource("2_e4utp")
+
+[sub_resource type="Resource" id="Resource_iitkf"]
+script = ExtResource("2_e4utp")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_8ekmg"]
+script = ExtResource("2_e4utp")
+value = 262272
+
+[sub_resource type="Resource" id="Resource_k7f0i"]
+script = ExtResource("2_e4utp")
+
+[sub_resource type="Resource" id="Resource_xah6m"]
+script = ExtResource("2_e4utp")
+
+[sub_resource type="Resource" id="Resource_ldtdh"]
+script = ExtResource("2_e4utp")
+
+[resource]
+script = ExtResource("3_5kjtk")
+ac = 45
+attack = Array[ExtResource("1_68aqi")]([SubResource("Resource_ddqoc"), SubResource("Resource_vu0pr"), SubResource("Resource_2o36r"), SubResource("Resource_otcnw")])
+character = "K"
+colour = 27
+description = "It is a giant beetle wreathed in flames."
+flags_1 = SubResource("Resource_a7jrh")
+flags_2 = SubResource("Resource_iitkf")
+flags_3 = SubResource("Resource_8ekmg")
+flags_4 = SubResource("Resource_k7f0i")
+flags_5 = SubResource("Resource_xah6m")
+flags_6 = SubResource("Resource_ldtdh")
+hit_dice = 13
+hit_dice_sides = 8
+level = 27
+max_num = 100
+experience = 95
+name = "Killer red beetle"
+notice_range = 14
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "   Killer   "
+split_name_2 = "    red     "
+split_name_3 = "   beetle   "

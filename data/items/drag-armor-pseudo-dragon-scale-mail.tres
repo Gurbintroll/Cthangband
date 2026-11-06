@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cjqat"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_72lfy"]
+
+[sub_resource type="Resource" id="Resource_x8k8i"]
+script = ExtResource("1_cjqat")
+
+[sub_resource type="Resource" id="Resource_xyuew"]
+script = ExtResource("1_cjqat")
+value = 12582912
+
+[sub_resource type="Resource" id="Resource_fx78g"]
+script = ExtResource("1_cjqat")
+value = 32505856
+
+[resource]
+script = ExtResource("2_72lfy")
+ac = 30
+chance = Array[int]([16, 0, 0, 0])
+character = "["
+colour = 25
+cost = 60000
+damage_dice = 2
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_x8k8i")
+flags_2 = SubResource("Resource_xyuew")
+flags_3 = SubResource("Resource_fx78g")
+flavour_aware = true
+item_category = 38
+level = 65
+locale = Array[int]([65, 0, 0, 0])
+name = "Pseudo Dragon Scale Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 10
+to_ac = 10
+to_hit = -2
+weight = 200
+filename = "DragArmor:Pseudo Dragon Scale Mail"

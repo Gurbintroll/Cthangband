@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_85axf"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_3vrok"]
+
+[sub_resource type="Resource" id="Resource_pxo1o"]
+script = ExtResource("1_85axf")
+
+[sub_resource type="Resource" id="Resource_jrjdi"]
+script = ExtResource("1_85axf")
+
+[sub_resource type="Resource" id="Resource_tnk6t"]
+script = ExtResource("1_85axf")
+
+[resource]
+script = ExtResource("2_3vrok")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 13
+cost = 2000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_pxo1o")
+flags_2 = SubResource("Resource_jrjdi")
+flags_3 = SubResource("Resource_tnk6t")
+has_flavour = true
+item_category = 75
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Self Knowledge"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 58
+weight = 4
+filename = "Potion:Self Knowledge"

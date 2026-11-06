@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ow07u"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_phhag"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_t37ob"]
+
+[sub_resource type="Resource" id="Resource_clout"]
+script = ExtResource("1_ow07u")
+
+[sub_resource type="Resource" id="Resource_wk32i"]
+script = ExtResource("1_ow07u")
+
+[sub_resource type="Resource" id="Resource_m4ais"]
+script = ExtResource("1_ow07u")
+
+[sub_resource type="Resource" id="Resource_nk1fa"]
+script = ExtResource("1_ow07u")
+
+[sub_resource type="Resource" id="Resource_d16y8"]
+script = ExtResource("2_phhag")
+value = 198144
+
+[sub_resource type="Resource" id="Resource_2n78v"]
+script = ExtResource("2_phhag")
+value = 80
+
+[sub_resource type="Resource" id="Resource_vpap0"]
+script = ExtResource("2_phhag")
+value = 3491758272
+
+[sub_resource type="Resource" id="Resource_wdfdi"]
+script = ExtResource("2_phhag")
+
+[sub_resource type="Resource" id="Resource_owv0n"]
+script = ExtResource("2_phhag")
+
+[sub_resource type="Resource" id="Resource_8gktl"]
+script = ExtResource("2_phhag")
+value = 268435728
+
+[resource]
+script = ExtResource("3_t37ob")
+ac = 1
+attack = Array[ExtResource("1_ow07u")]([SubResource("Resource_clout"), SubResource("Resource_wk32i"), SubResource("Resource_m4ais"), SubResource("Resource_nk1fa")])
+character = "Q"
+colour = 17
+description = "A massive pile of rotting flesh. A disgusting stench fills the air as it throbs and writhes."
+flags_1 = SubResource("Resource_d16y8")
+flags_2 = SubResource("Resource_2n78v")
+flags_3 = SubResource("Resource_vpap0")
+flags_4 = SubResource("Resource_wdfdi")
+flags_5 = SubResource("Resource_owv0n")
+flags_6 = SubResource("Resource_8gktl")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 15
+hit_dice_sides = 100
+level = 71
+max_num = 100
+experience = 10500
+name = "Greater rotting quylthulg"
+notice_range = 20
+rarity = 3
+speed = 120
+split_name_1 = "  Greater   "
+split_name_2 = "  rotting   "
+split_name_3 = " quylthulg  "

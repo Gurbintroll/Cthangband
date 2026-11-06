@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ndal4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tmo3o"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qr257"]
+
+[sub_resource type="Resource" id="Resource_pqksu"]
+script = ExtResource("1_ndal4")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 15
+method = 2
+
+[sub_resource type="Resource" id="Resource_0qlhi"]
+script = ExtResource("1_ndal4")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 12
+
+[sub_resource type="Resource" id="Resource_fle56"]
+script = ExtResource("1_ndal4")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 10
+
+[sub_resource type="Resource" id="Resource_lb21o"]
+script = ExtResource("1_ndal4")
+
+[sub_resource type="Resource" id="Resource_0yo13"]
+script = ExtResource("2_tmo3o")
+value = 35659776
+
+[sub_resource type="Resource" id="Resource_1uhto"]
+script = ExtResource("2_tmo3o")
+value = 65698
+
+[sub_resource type="Resource" id="Resource_ht1ax"]
+script = ExtResource("2_tmo3o")
+value = 268968000
+
+[sub_resource type="Resource" id="Resource_ilop3"]
+script = ExtResource("2_tmo3o")
+
+[sub_resource type="Resource" id="Resource_cbtfw"]
+script = ExtResource("2_tmo3o")
+
+[sub_resource type="Resource" id="Resource_40dvf"]
+script = ExtResource("2_tmo3o")
+
+[resource]
+script = ExtResource("3_qr257")
+ac = 55
+attack = Array[ExtResource("1_ndal4")]([SubResource("Resource_pqksu"), SubResource("Resource_0qlhi"), SubResource("Resource_fle56"), SubResource("Resource_lb21o")])
+character = "A"
+colour = 17
+description = "An amorphous shape that looks like wet grey clay with two pale eyes. It is totally silent as it oozes towards you."
+flags_1 = SubResource("Resource_0yo13")
+flags_2 = SubResource("Resource_1uhto")
+flags_3 = SubResource("Resource_ht1ax")
+flags_4 = SubResource("Resource_ilop3")
+flags_5 = SubResource("Resource_cbtfw")
+flags_6 = SubResource("Resource_40dvf")
+hit_dice = 90
+hit_dice_sides = 10
+level = 43
+max_num = 100
+experience = 2100
+name = "Vermicious Knid"
+notice_range = 20
+rarity = 2
+sleep = 100
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Vermicious "
+split_name_3 = "    Knid    "

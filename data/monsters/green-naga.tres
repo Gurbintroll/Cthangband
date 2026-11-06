@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_dy3i2"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7md5w"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_dxwq4"]
+
+[sub_resource type="Resource" id="Resource_8vgrr"]
+script = ExtResource("1_dy3i2")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_6b6ro"]
+script = ExtResource("1_dy3i2")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 9
+method = 14
+
+[sub_resource type="Resource" id="Resource_pr8i3"]
+script = ExtResource("1_dy3i2")
+
+[sub_resource type="Resource" id="Resource_rna4q"]
+script = ExtResource("1_dy3i2")
+
+[sub_resource type="Resource" id="Resource_bap8l"]
+script = ExtResource("2_7md5w")
+value = 4456456
+
+[sub_resource type="Resource" id="Resource_4cbrs"]
+script = ExtResource("2_7md5w")
+value = 4325376
+
+[sub_resource type="Resource" id="Resource_mmvoj"]
+script = ExtResource("2_7md5w")
+value = 65600
+
+[sub_resource type="Resource" id="Resource_2fghu"]
+script = ExtResource("2_7md5w")
+
+[sub_resource type="Resource" id="Resource_v71qe"]
+script = ExtResource("2_7md5w")
+
+[sub_resource type="Resource" id="Resource_p68vx"]
+script = ExtResource("2_7md5w")
+
+[resource]
+script = ExtResource("3_dxwq4")
+ac = 40
+attack = Array[ExtResource("1_dy3i2")]([SubResource("Resource_8vgrr"), SubResource("Resource_6b6ro"), SubResource("Resource_pr8i3"), SubResource("Resource_rna4q")])
+character = "n"
+colour = 22
+description = "A large green serpent with a female's torso. Her green skin glistens with acid."
+flags_1 = SubResource("Resource_bap8l")
+flags_2 = SubResource("Resource_4cbrs")
+flags_3 = SubResource("Resource_mmvoj")
+flags_4 = SubResource("Resource_2fghu")
+flags_5 = SubResource("Resource_v71qe")
+flags_6 = SubResource("Resource_p68vx")
+hit_dice = 9
+hit_dice_sides = 8
+level = 5
+max_num = 100
+experience = 30
+name = "Green naga"
+notice_range = 18
+rarity = 1
+sleep = 120
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Green    "
+split_name_3 = "    naga    "

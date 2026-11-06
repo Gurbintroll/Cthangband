@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://es4ow5gdnak3"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_i6kwm"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_jv0wp"]
+
+[sub_resource type="Resource" id="Resource_sgjbi"]
+script = ExtResource("1_i6kwm")
+
+[sub_resource type="Resource" id="Resource_fr1nq"]
+script = ExtResource("1_i6kwm")
+
+[sub_resource type="Resource" id="Resource_fk40q"]
+script = ExtResource("1_i6kwm")
+
+[resource]
+script = ExtResource("2_jv0wp")
+chance = Array[int]([1, 0, 0, 0])
+character = "s"
+colour = 1
+damage_dice = 1
+damage_dice_sides = 2
+easy_know = true
+flags_1 = SubResource("Resource_sgjbi")
+flags_2 = SubResource("Resource_fr1nq")
+flags_3 = SubResource("Resource_fk40q")
+flavour_aware = true
+item_category = 1
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "& Elf Skeleton~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 6
+weight = 40

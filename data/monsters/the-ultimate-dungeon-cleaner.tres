@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://db8ynt8amlhhf"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_fnr3y"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_is6mi"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_kq5jo"]
+
+[sub_resource type="Resource" id="Resource_15v4u"]
+script = ExtResource("1_fnr3y")
+damage_dice = 2
+damage_dice_sides = 10
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_hfmhv"]
+script = ExtResource("1_fnr3y")
+damage_dice = 2
+damage_dice_sides = 10
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_erski"]
+script = ExtResource("1_fnr3y")
+damage_dice = 2
+damage_dice_sides = 10
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_nvd7e"]
+script = ExtResource("1_fnr3y")
+damage_dice = 2
+damage_dice_sides = 10
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_lfw1l"]
+script = ExtResource("2_is6mi")
+value = 1537
+
+[sub_resource type="Resource" id="Resource_j134l"]
+script = ExtResource("2_is6mi")
+value = 10616936
+
+[sub_resource type="Resource" id="Resource_jjvx1"]
+script = ExtResource("2_is6mi")
+value = 3493726208
+
+[sub_resource type="Resource" id="Resource_ugmxh"]
+script = ExtResource("2_is6mi")
+
+[sub_resource type="Resource" id="Resource_smhd8"]
+script = ExtResource("2_is6mi")
+
+[sub_resource type="Resource" id="Resource_urqw4"]
+script = ExtResource("2_is6mi")
+
+[resource]
+script = ExtResource("3_kq5jo")
+ac = 80
+attack = Array[ExtResource("1_fnr3y")]([SubResource("Resource_15v4u"), SubResource("Resource_hfmhv"), SubResource("Resource_erski"), SubResource("Resource_nvd7e")])
+character = "g"
+colour = 12
+description = "It looks like a huge spiked roller. It was designed to keep this dungeon clean, and you are the biggest spot of dirt in sight."
+flags_1 = SubResource("Resource_lfw1l")
+flags_2 = SubResource("Resource_j134l")
+flags_3 = SubResource("Resource_jjvx1")
+flags_4 = SubResource("Resource_ugmxh")
+flags_5 = SubResource("Resource_smhd8")
+flags_6 = SubResource("Resource_urqw4")
+hit_dice = 70
+hit_dice_sides = 12
+level = 28
+max_num = 1
+experience = 555
+name = "The Ultimate Dungeon Cleaner"
+notice_range = 10
+rarity = 2
+sleep = 12
+speed = 120
+split_name_1 = "The Ultimate"
+split_name_2 = "  Dungeon   "
+split_name_3 = "  Cleaner   "

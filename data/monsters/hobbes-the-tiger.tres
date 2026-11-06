@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bdqlfjf3ilpey"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_pe33e"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_3k8uy"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_y1d4r"]
+
+[sub_resource type="Resource" id="Resource_knkss"]
+script = ExtResource("1_pe33e")
+damage_dice = 1
+damage_dice_sides = 11
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_dtm8c"]
+script = ExtResource("1_pe33e")
+damage_dice = 1
+damage_dice_sides = 11
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_ylosl"]
+script = ExtResource("1_pe33e")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_8gvwx"]
+script = ExtResource("1_pe33e")
+
+[sub_resource type="Resource" id="Resource_618hr"]
+script = ExtResource("2_3k8uy")
+value = 773
+
+[sub_resource type="Resource" id="Resource_wff4a"]
+script = ExtResource("2_3k8uy")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_nahrr"]
+script = ExtResource("2_3k8uy")
+value = 3221225600
+
+[sub_resource type="Resource" id="Resource_4qsyn"]
+script = ExtResource("2_3k8uy")
+
+[sub_resource type="Resource" id="Resource_q1dpi"]
+script = ExtResource("2_3k8uy")
+
+[sub_resource type="Resource" id="Resource_mf4rs"]
+script = ExtResource("2_3k8uy")
+
+[resource]
+script = ExtResource("3_y1d4r")
+ac = 30
+attack = Array[ExtResource("1_pe33e")]([SubResource("Resource_knkss"), SubResource("Resource_dtm8c"), SubResource("Resource_ylosl"), SubResource("Resource_8gvwx")])
+character = "f"
+colour = 12
+description = "Fast-moving, with a taste for tuna sandwiches."
+flags_1 = SubResource("Resource_618hr")
+flags_2 = SubResource("Resource_wff4a")
+flags_3 = SubResource("Resource_nahrr")
+flags_4 = SubResource("Resource_4qsyn")
+flags_5 = SubResource("Resource_q1dpi")
+flags_6 = SubResource("Resource_mf4rs")
+hit_dice = 10
+hit_dice_sides = 10
+level = 10
+max_num = 1
+experience = 45
+name = "Hobbes the Tiger"
+notice_range = 40
+rarity = 2
+speed = 120
+split_name_1 = "   Hobbes   "
+split_name_2 = "    the     "
+split_name_3 = "   Tiger    "

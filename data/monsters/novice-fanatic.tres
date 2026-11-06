@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0i0xd"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_h6lam"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_q068m"]
+
+[sub_resource type="Resource" id="Resource_p6hw6"]
+script = ExtResource("1_0i0xd")
+damage_dice = 1
+damage_dice_sides = 7
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_aj823"]
+script = ExtResource("1_0i0xd")
+damage_dice = 1
+damage_dice_sides = 7
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_gt7mr"]
+script = ExtResource("1_0i0xd")
+
+[sub_resource type="Resource" id="Resource_n8u56"]
+script = ExtResource("1_0i0xd")
+
+[sub_resource type="Resource" id="Resource_ml2l5"]
+script = ExtResource("2_h6lam")
+value = 4203524
+
+[sub_resource type="Resource" id="Resource_ycidy"]
+script = ExtResource("2_h6lam")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_57tmv"]
+script = ExtResource("2_h6lam")
+value = 512
+
+[sub_resource type="Resource" id="Resource_dp0nh"]
+script = ExtResource("2_h6lam")
+
+[sub_resource type="Resource" id="Resource_srm50"]
+script = ExtResource("2_h6lam")
+value = 134221824
+
+[sub_resource type="Resource" id="Resource_m5aaa"]
+script = ExtResource("2_h6lam")
+
+[resource]
+script = ExtResource("3_q068m")
+ac = 16
+attack = Array[ExtResource("1_0i0xd")]([SubResource("Resource_p6hw6"), SubResource("Resource_aj823"), SubResource("Resource_gt7mr"), SubResource("Resource_n8u56")])
+character = "p"
+colour = 30
+description = "He thinks you are an agent of the devil. "
+flags_1 = SubResource("Resource_ml2l5")
+flags_2 = SubResource("Resource_ycidy")
+flags_3 = SubResource("Resource_57tmv")
+flags_4 = SubResource("Resource_dp0nh")
+flags_5 = SubResource("Resource_srm50")
+flags_6 = SubResource("Resource_m5aaa")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 6
+hit_dice_sides = 8
+level = 8
+max_num = 100
+experience = 20
+name = "Novice fanatic"
+notice_range = 20
+rarity = 2
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Novice   "
+split_name_3 = "  fanatic   "

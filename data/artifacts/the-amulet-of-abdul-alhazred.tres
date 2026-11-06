@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://cl5mv2pot47bt"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_m6am1"]
+[ext_resource type="Script" uid="uid://c8av6fyror3lk" path="res://scripts/data/artifact.gd" id="2_27rnq"]
+
+[sub_resource type="Resource" id="Resource_jhyvc"]
+script = ExtResource("1_m6am1")
+value = 1060
+
+[sub_resource type="Resource" id="Resource_tpveg"]
+script = ExtResource("1_m6am1")
+value = 212992
+
+[sub_resource type="Resource" id="Resource_yri2x"]
+script = ExtResource("1_m6am1")
+value = 32524800
+
+[resource]
+script = ExtResource("2_27rnq")
+flags_1 = SubResource("Resource_jhyvc")
+flags_2 = SubResource("Resource_tpveg")
+flags_3 = SubResource("Resource_yri2x")
+cost = 90000
+has_own_type = true
+item_category = 40
+item_sub_category = 11
+level = 65
+name = "of *Abdul Alhazred*"
+type_specific_value = 3
+rarity = 30
+weight = 3
+id = 5

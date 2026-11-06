@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_oe8xc"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_22bar"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_esgrh"]
+
+[sub_resource type="Resource" id="Resource_g1pe7"]
+script = ExtResource("1_oe8xc")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_s82il"]
+script = ExtResource("1_oe8xc")
+
+[sub_resource type="Resource" id="Resource_lhu7u"]
+script = ExtResource("1_oe8xc")
+
+[sub_resource type="Resource" id="Resource_sgrvb"]
+script = ExtResource("1_oe8xc")
+
+[sub_resource type="Resource" id="Resource_kkq8x"]
+script = ExtResource("2_22bar")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_6utes"]
+script = ExtResource("2_22bar")
+value = 131168
+
+[sub_resource type="Resource" id="Resource_hxsbt"]
+script = ExtResource("2_22bar")
+value = 3491629056
+
+[sub_resource type="Resource" id="Resource_mmeni"]
+script = ExtResource("2_22bar")
+
+[sub_resource type="Resource" id="Resource_2afhw"]
+script = ExtResource("2_22bar")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_2gcry"]
+script = ExtResource("2_22bar")
+
+[resource]
+script = ExtResource("3_esgrh")
+ac = 80
+attack = Array[ExtResource("1_oe8xc")]([SubResource("Resource_g1pe7"), SubResource("Resource_s82il"), SubResource("Resource_lhu7u"), SubResource("Resource_sgrvb")])
+character = "g"
+colour = 9
+description = "It is a massive metal statue that moves steadily towards you."
+flags_1 = SubResource("Resource_kkq8x")
+flags_2 = SubResource("Resource_6utes")
+flags_3 = SubResource("Resource_hxsbt")
+flags_4 = SubResource("Resource_mmeni")
+flags_5 = SubResource("Resource_2afhw")
+flags_6 = SubResource("Resource_2gcry")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 80
+hit_dice_sides = 12
+level = 22
+max_num = 100
+experience = 160
+name = "Iron golem"
+notice_range = 12
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Iron    "
+split_name_3 = "   golem    "

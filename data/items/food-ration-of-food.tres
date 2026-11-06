@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_r3bog"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_7jehu"]
+
+[sub_resource type="Resource" id="Resource_xd4sq"]
+script = ExtResource("1_r3bog")
+
+[sub_resource type="Resource" id="Resource_hm21v"]
+script = ExtResource("1_r3bog")
+
+[sub_resource type="Resource" id="Resource_t6r2v"]
+script = ExtResource("1_r3bog")
+
+[resource]
+script = ExtResource("2_7jehu")
+chance = Array[int]([1, 1, 1, 0])
+character = ","
+colour = 6
+cost = 3
+easy_know = true
+flags_1 = SubResource("Resource_xd4sq")
+flags_2 = SubResource("Resource_hm21v")
+flags_3 = SubResource("Resource_t6r2v")
+flavour_aware = true
+item_category = 80
+locale = Array[int]([0, 5, 10, 0])
+name = "& Ration~ of Food"
+type_specific_value = 5000
+stompable = Array[bool]([false, false, false, false])
+sub_category = 35
+weight = 10
+filename = "Food:Ration of Food"

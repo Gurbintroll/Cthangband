@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_km1c0"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_lbknw"]
+
+[sub_resource type="Resource" id="Resource_mtcld"]
+script = ExtResource("1_km1c0")
+
+[sub_resource type="Resource" id="Resource_2ns8w"]
+script = ExtResource("1_km1c0")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_wwlxp"]
+script = ExtResource("1_km1c0")
+value = 15728640
+
+[resource]
+script = ExtResource("2_lbknw")
+cost = 15000
+flags_1 = SubResource("Resource_mtcld")
+flags_2 = SubResource("Resource_2ns8w")
+flags_3 = SubResource("Resource_wwlxp")
+max_to_ac = 5
+name = "of Reflection"
+rating = 20
+slot = 32
+id = 16

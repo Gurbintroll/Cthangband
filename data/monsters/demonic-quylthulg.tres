@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rt7nd"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ov7bb"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6dmg4"]
+
+[sub_resource type="Resource" id="Resource_nyieu"]
+script = ExtResource("1_rt7nd")
+
+[sub_resource type="Resource" id="Resource_i42fm"]
+script = ExtResource("1_rt7nd")
+
+[sub_resource type="Resource" id="Resource_v6l3m"]
+script = ExtResource("1_rt7nd")
+
+[sub_resource type="Resource" id="Resource_i1j8v"]
+script = ExtResource("1_rt7nd")
+
+[sub_resource type="Resource" id="Resource_0h5hq"]
+script = ExtResource("2_ov7bb")
+value = 198144
+
+[sub_resource type="Resource" id="Resource_0pqsw"]
+script = ExtResource("2_ov7bb")
+value = 80
+
+[sub_resource type="Resource" id="Resource_b34rc"]
+script = ExtResource("2_ov7bb")
+value = 3489661120
+
+[sub_resource type="Resource" id="Resource_ly1c2"]
+script = ExtResource("2_ov7bb")
+
+[sub_resource type="Resource" id="Resource_cba57"]
+script = ExtResource("2_ov7bb")
+
+[sub_resource type="Resource" id="Resource_njtql"]
+script = ExtResource("2_ov7bb")
+value = 33554480
+
+[resource]
+script = ExtResource("3_6dmg4")
+ac = 1
+attack = Array[ExtResource("1_rt7nd")]([SubResource("Resource_nyieu"), SubResource("Resource_i42fm"), SubResource("Resource_v6l3m"), SubResource("Resource_i1j8v")])
+character = "Q"
+colour = 13
+description = "A pile of pulsing flesh that glows with an inner hellish fire. The world itself seems to cry out against it."
+flags_1 = SubResource("Resource_0h5hq")
+flags_2 = SubResource("Resource_0pqsw")
+flags_3 = SubResource("Resource_b34rc")
+flags_4 = SubResource("Resource_ly1c2")
+flags_5 = SubResource("Resource_cba57")
+flags_6 = SubResource("Resource_njtql")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 48
+hit_dice_sides = 10
+level = 51
+max_num = 100
+experience = 3000
+name = "Demonic quylthulg"
+notice_range = 20
+rarity = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Demonic   "
+split_name_3 = " quylthulg  "

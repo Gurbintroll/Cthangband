@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ilih5"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rmyfg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3oiks"]
+
+[sub_resource type="Resource" id="Resource_xmsl1"]
+script = ExtResource("1_ilih5")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_5vli8"]
+script = ExtResource("1_ilih5")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_w2p1b"]
+script = ExtResource("1_ilih5")
+
+[sub_resource type="Resource" id="Resource_u33jn"]
+script = ExtResource("1_ilih5")
+
+[sub_resource type="Resource" id="Resource_djrwy"]
+script = ExtResource("2_rmyfg")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_6ip8i"]
+script = ExtResource("2_rmyfg")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_1i8v8"]
+script = ExtResource("2_rmyfg")
+value = 528450
+
+[sub_resource type="Resource" id="Resource_sttps"]
+script = ExtResource("2_rmyfg")
+
+[sub_resource type="Resource" id="Resource_k2eur"]
+script = ExtResource("2_rmyfg")
+
+[sub_resource type="Resource" id="Resource_0vga4"]
+script = ExtResource("2_rmyfg")
+
+[resource]
+script = ExtResource("3_3oiks")
+ac = 56
+attack = Array[ExtResource("1_ilih5")]([SubResource("Resource_xmsl1"), SubResource("Resource_5vli8"), SubResource("Resource_w2p1b"), SubResource("Resource_u33jn")])
+character = "T"
+colour = 30
+description = "He is a white troll with powerfully clawed hands."
+flags_1 = SubResource("Resource_djrwy")
+flags_2 = SubResource("Resource_6ip8i")
+flags_3 = SubResource("Resource_1i8v8")
+flags_4 = SubResource("Resource_sttps")
+flags_5 = SubResource("Resource_k2eur")
+flags_6 = SubResource("Resource_0vga4")
+hit_dice = 24
+hit_dice_sides = 10
+level = 28
+max_num = 100
+experience = 160
+name = "Ice troll"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Ice     "
+split_name_3 = "   troll    "

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_amtwa"]
+
+[resource]
+script = ExtResource("1_amtwa")
+category = 8
+height = 18
+name = "Greater vault (large)"
+rating = 35
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X,#,#,#,#,#,#,#,#*@@*#,#,#,#,#,#,#,#,X%%X+XXXXXXXXXXXXXXXX##XXXXXXXXXXXXXXXX+X%%X.,..,.X&.&.,*XX******XX*,.&.&X.,...,#%%X..,.^^X....,XX***@@***XX,....X^^..,.#%%XXXXXX+X^&.&XX***@##@***XX&.&^X+XXXXXX%%X,.&.^^X+XXXX***@#XX#@***XXXX+X^^.,..X%%X..,&,.X^^^@X**@#X88X#@**#@^^^X.,..&,X%%X.,....X^^^@#**@#X88X#@**X@^^^X.&.,..X%%X...,^^X+XXXX***@#XX#@***XXXX+X^^..,.X%%XXXXXX+X^&.&XX***@##@***XX&.&^X+XXXXXX%%#.,..^^X.....XX***@@***XX,....X^^.,..X%%#...,..X&.&.,*XX******XX*,.&.&X..,..,X%%X+XXXXXXXXXXXXXXXX##XXXXXXXXXXXXXXXX+X%%X,#,#,#,#,#,#,#,#*@@*#,#,#,#,#,#,#,#,X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 40

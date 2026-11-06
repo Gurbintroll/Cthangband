@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2kyyy"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_efx2i"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_du8fl"]
+
+[sub_resource type="Resource" id="Resource_n2i50"]
+script = ExtResource("1_2kyyy")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 23
+method = 2
+
+[sub_resource type="Resource" id="Resource_mbbo3"]
+script = ExtResource("1_2kyyy")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 3
+method = 2
+
+[sub_resource type="Resource" id="Resource_6x3r2"]
+script = ExtResource("1_2kyyy")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_vtouw"]
+script = ExtResource("1_2kyyy")
+
+[sub_resource type="Resource" id="Resource_xckop"]
+script = ExtResource("2_efx2i")
+value = 273155712
+
+[sub_resource type="Resource" id="Resource_55hv2"]
+script = ExtResource("2_efx2i")
+value = 11197728
+
+[sub_resource type="Resource" id="Resource_ylojq"]
+script = ExtResource("2_efx2i")
+value = 387909632
+
+[sub_resource type="Resource" id="Resource_afr4t"]
+script = ExtResource("2_efx2i")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_1tsp0"]
+script = ExtResource("2_efx2i")
+
+[sub_resource type="Resource" id="Resource_m0tds"]
+script = ExtResource("2_efx2i")
+
+[resource]
+script = ExtResource("3_du8fl")
+ac = 50
+attack = Array[ExtResource("1_2kyyy")]([SubResource("Resource_n2i50"), SubResource("Resource_mbbo3"), SubResource("Resource_6x3r2"), SubResource("Resource_vtouw")])
+character = "E"
+colour = 26
+description = "Summoned from the planes of Chaos, it is a mass of semi-sentient chaos, spreading uncontrollably and destroying everything in its path."
+flags_1 = SubResource("Resource_xckop")
+flags_2 = SubResource("Resource_55hv2")
+flags_3 = SubResource("Resource_ylojq")
+flags_4 = SubResource("Resource_afr4t")
+flags_5 = SubResource("Resource_1tsp0")
+flags_6 = SubResource("Resource_m0tds")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 6
+hit_dice_sides = 66
+level = 77
+max_num = 100
+experience = 10000
+name = "Unmaker"
+notice_range = 60
+rarity = 4
+sleep = 60
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Unmaker   "

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_pyd5y"]
+
+[resource]
+script = ExtResource("1_pyd5y")
+alter_action = 1
+appear_as = "WallPermBuilding"
+blocks_los = true
+character = "#"
+colour = 30
+description = "building"
+dims_outside_los = true
+is_permanent = true
+is_wall = true
+name = "WallPermBuilding"
+run_past = true
+yellow_in_torch_light = true

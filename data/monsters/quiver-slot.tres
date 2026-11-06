@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_6nnas"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ve4bf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_lo7xn"]
+
+[sub_resource type="Resource" id="Resource_fqpls"]
+script = ExtResource("1_6nnas")
+damage_dice = 1
+damage_dice_sides = 1
+effect = 14
+method = 17
+
+[sub_resource type="Resource" id="Resource_rkn2i"]
+script = ExtResource("1_6nnas")
+
+[sub_resource type="Resource" id="Resource_q5wxr"]
+script = ExtResource("1_6nnas")
+
+[sub_resource type="Resource" id="Resource_gn0n3"]
+script = ExtResource("1_6nnas")
+
+[sub_resource type="Resource" id="Resource_rdmhm"]
+script = ExtResource("2_ve4bf")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_3ar5q"]
+script = ExtResource("2_ve4bf")
+value = 353
+
+[sub_resource type="Resource" id="Resource_d3qv1"]
+script = ExtResource("2_ve4bf")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_1nhvp"]
+script = ExtResource("2_ve4bf")
+value = 16
+
+[sub_resource type="Resource" id="Resource_y1wss"]
+script = ExtResource("2_ve4bf")
+
+[sub_resource type="Resource" id="Resource_4hsvd"]
+script = ExtResource("2_ve4bf")
+
+[resource]
+script = ExtResource("3_lo7xn")
+ac = 1
+attack = Array[ExtResource("1_6nnas")]([SubResource("Resource_fqpls"), SubResource("Resource_rkn2i"), SubResource("Resource_q5wxr"), SubResource("Resource_gn0n3")])
+character = ","
+colour = 6
+description = "An arrow hole in the floor, covered in fungal tendrils."
+flags_1 = SubResource("Resource_rdmhm")
+flags_2 = SubResource("Resource_3ar5q")
+flags_3 = SubResource("Resource_d3qv1")
+flags_4 = SubResource("Resource_1nhvp")
+flags_5 = SubResource("Resource_y1wss")
+flags_6 = SubResource("Resource_4hsvd")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 1
+hit_dice_sides = 1
+level = 10
+max_num = 100
+experience = 3
+name = "Quiver slot"
+notice_range = 4
+rarity = 2
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Quiver   "
+split_name_3 = "    slot    "

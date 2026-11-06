@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://2jxgbpjiqd57"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_3nxv1"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_827bp"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_8qfyf"]
+
+[sub_resource type="Resource" id="Resource_iw8gn"]
+script = ExtResource("1_3nxv1")
+damage_dice = 12
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_gdofy"]
+script = ExtResource("1_3nxv1")
+damage_dice = 12
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_iw4s6"]
+script = ExtResource("1_3nxv1")
+damage_dice = 9
+damage_dice_sides = 12
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_cwld6"]
+script = ExtResource("1_3nxv1")
+damage_dice = 9
+damage_dice_sides = 12
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_dopu2"]
+script = ExtResource("2_827bp")
+value = 304088577
+
+[sub_resource type="Resource" id="Resource_tnjb4"]
+script = ExtResource("2_827bp")
+value = 212992
+
+[sub_resource type="Resource" id="Resource_an3il"]
+script = ExtResource("2_827bp")
+value = 3239510656
+
+[sub_resource type="Resource" id="Resource_mfjba"]
+script = ExtResource("2_827bp")
+value = 33571840
+
+[sub_resource type="Resource" id="Resource_k8eiw"]
+script = ExtResource("2_827bp")
+value = 17039364
+
+[sub_resource type="Resource" id="Resource_rm6kx"]
+script = ExtResource("2_827bp")
+
+[resource]
+script = ExtResource("3_8qfyf")
+ac = 130
+attack = Array[ExtResource("1_3nxv1")]([SubResource("Resource_iw8gn"), SubResource("Resource_gdofy"), SubResource("Resource_iw4s6"), SubResource("Resource_cwld6")])
+character = "B"
+colour = 12
+description = "A massive glowing eagle bathed in flames. The searing heat chars your skin and melts your armour."
+flags_1 = SubResource("Resource_dopu2")
+flags_2 = SubResource("Resource_tnjb4")
+flags_3 = SubResource("Resource_an3il")
+flags_4 = SubResource("Resource_mfjba")
+flags_5 = SubResource("Resource_k8eiw")
+flags_6 = SubResource("Resource_rm6kx")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 36
+hit_dice_sides = 100
+level = 54
+max_num = 1
+experience = 40000
+name = "The Phoenix"
+notice_range = 60
+rarity = 3
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    The     "
+split_name_3 = "  Phoenix   "

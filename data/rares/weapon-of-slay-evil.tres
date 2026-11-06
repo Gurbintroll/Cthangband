@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_x1dpa"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_ohcil"]
+
+[sub_resource type="Resource" id="Resource_jsvnr"]
+script = ExtResource("1_x1dpa")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_w6h6w"]
+script = ExtResource("1_x1dpa")
+
+[sub_resource type="Resource" id="Resource_j0oa7"]
+script = ExtResource("1_x1dpa")
+
+[resource]
+script = ExtResource("2_ohcil")
+cost = 3500
+flags_1 = SubResource("Resource_jsvnr")
+flags_2 = SubResource("Resource_w6h6w")
+flags_3 = SubResource("Resource_j0oa7")
+name = "of Slay Evil"
+rating = 18
+slot = 24
+id = 68

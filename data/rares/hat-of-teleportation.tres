@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_adskn"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_87kap"]
+
+[sub_resource type="Resource" id="Resource_3yu2t"]
+script = ExtResource("1_adskn")
+
+[sub_resource type="Resource" id="Resource_j57kp"]
+script = ExtResource("1_adskn")
+
+[sub_resource type="Resource" id="Resource_8pqx0"]
+script = ExtResource("1_adskn")
+value = 67108864
+
+[resource]
+script = ExtResource("2_87kap")
+flags_1 = SubResource("Resource_3yu2t")
+flags_2 = SubResource("Resource_j57kp")
+flags_3 = SubResource("Resource_8pqx0")
+name = "of Teleportation"
+slot = 33
+id = 27

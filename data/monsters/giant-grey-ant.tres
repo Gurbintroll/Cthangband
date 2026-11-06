@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2qh0r"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ppd8y"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_dhkub"]
+
+[sub_resource type="Resource" id="Resource_g27xb"]
+script = ExtResource("1_2qh0r")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_md140"]
+script = ExtResource("1_2qh0r")
+
+[sub_resource type="Resource" id="Resource_ex72i"]
+script = ExtResource("1_2qh0r")
+
+[sub_resource type="Resource" id="Resource_oc0f0"]
+script = ExtResource("1_2qh0r")
+
+[sub_resource type="Resource" id="Resource_b8mxb"]
+script = ExtResource("2_ppd8y")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_nfi6l"]
+script = ExtResource("2_ppd8y")
+value = 2228352
+
+[sub_resource type="Resource" id="Resource_me61q"]
+script = ExtResource("2_ppd8y")
+value = 128
+
+[sub_resource type="Resource" id="Resource_0frk3"]
+script = ExtResource("2_ppd8y")
+
+[sub_resource type="Resource" id="Resource_fup2h"]
+script = ExtResource("2_ppd8y")
+
+[sub_resource type="Resource" id="Resource_d4vx8"]
+script = ExtResource("2_ppd8y")
+
+[resource]
+script = ExtResource("3_dhkub")
+ac = 40
+attack = Array[ExtResource("1_2qh0r")]([SubResource("Resource_g27xb"), SubResource("Resource_md140"), SubResource("Resource_ex72i"), SubResource("Resource_oc0f0")])
+character = "a"
+colour = 23
+description = "It is an ant encased in shaggy grey fur."
+flags_1 = SubResource("Resource_b8mxb")
+flags_2 = SubResource("Resource_nfi6l")
+flags_3 = SubResource("Resource_me61q")
+flags_4 = SubResource("Resource_0frk3")
+flags_5 = SubResource("Resource_fup2h")
+flags_6 = SubResource("Resource_d4vx8")
+hit_dice = 19
+hit_dice_sides = 8
+level = 26
+max_num = 100
+experience = 90
+name = "Giant grey ant"
+notice_range = 10
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "   Giant    "
+split_name_2 = "    grey    "
+split_name_3 = "    ant     "

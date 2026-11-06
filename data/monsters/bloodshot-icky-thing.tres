@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_gw6o0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_8kqgs"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4l0ab"]
+
+[sub_resource type="Resource" id="Resource_teq32"]
+script = ExtResource("1_gw6o0")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 2
+
+[sub_resource type="Resource" id="Resource_kfy5h"]
+script = ExtResource("1_gw6o0")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 9
+method = 12
+
+[sub_resource type="Resource" id="Resource_1a40y"]
+script = ExtResource("1_gw6o0")
+
+[sub_resource type="Resource" id="Resource_pmcly"]
+script = ExtResource("1_gw6o0")
+
+[sub_resource type="Resource" id="Resource_v0aq5"]
+script = ExtResource("2_8kqgs")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_p8eoj"]
+script = ExtResource("2_8kqgs")
+value = 64
+
+[sub_resource type="Resource" id="Resource_2lsxr"]
+script = ExtResource("2_8kqgs")
+value = 1048576
+
+[sub_resource type="Resource" id="Resource_wevsd"]
+script = ExtResource("2_8kqgs")
+
+[sub_resource type="Resource" id="Resource_fodho"]
+script = ExtResource("2_8kqgs")
+value = 512
+
+[sub_resource type="Resource" id="Resource_l4ybd"]
+script = ExtResource("2_8kqgs")
+
+[resource]
+script = ExtResource("3_4l0ab")
+ac = 18
+attack = Array[ExtResource("1_gw6o0")]([SubResource("Resource_teq32"), SubResource("Resource_kfy5h"), SubResource("Resource_1a40y"), SubResource("Resource_pmcly")])
+character = "i"
+colour = 27
+description = "It is a strange, slimy, icky creature."
+flags_1 = SubResource("Resource_v0aq5")
+flags_2 = SubResource("Resource_p8eoj")
+flags_3 = SubResource("Resource_2lsxr")
+flags_4 = SubResource("Resource_wevsd")
+flags_5 = SubResource("Resource_fodho")
+flags_6 = SubResource("Resource_l4ybd")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 7
+hit_dice_sides = 8
+level = 9
+max_num = 100
+experience = 24
+name = "Bloodshot icky thing"
+notice_range = 14
+rarity = 3
+sleep = 20
+speed = 110
+split_name_1 = " Bloodshot  "
+split_name_2 = "    icky    "
+split_name_3 = "   thing    "

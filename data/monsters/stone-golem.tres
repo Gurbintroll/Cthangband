@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_3edsn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_p4wvu"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vyo27"]
+
+[sub_resource type="Resource" id="Resource_detfl"]
+script = ExtResource("1_3edsn")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_uh8ly"]
+script = ExtResource("1_3edsn")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_qr30n"]
+script = ExtResource("1_3edsn")
+
+[sub_resource type="Resource" id="Resource_34og0"]
+script = ExtResource("1_3edsn")
+
+[sub_resource type="Resource" id="Resource_iwju1"]
+script = ExtResource("2_p4wvu")
+
+[sub_resource type="Resource" id="Resource_5lj1o"]
+script = ExtResource("2_p4wvu")
+value = 131168
+
+[sub_resource type="Resource" id="Resource_58gxk"]
+script = ExtResource("2_p4wvu")
+value = 3491637248
+
+[sub_resource type="Resource" id="Resource_ek240"]
+script = ExtResource("2_p4wvu")
+
+[sub_resource type="Resource" id="Resource_204ti"]
+script = ExtResource("2_p4wvu")
+
+[sub_resource type="Resource" id="Resource_443du"]
+script = ExtResource("2_p4wvu")
+
+[resource]
+script = ExtResource("3_vyo27")
+ac = 75
+attack = Array[ExtResource("1_3edsn")]([SubResource("Resource_detfl"), SubResource("Resource_uh8ly"), SubResource("Resource_qr30n"), SubResource("Resource_34og0")])
+character = "g"
+colour = 6
+description = "It is a massive animated statue."
+flags_1 = SubResource("Resource_iwju1")
+flags_2 = SubResource("Resource_5lj1o")
+flags_3 = SubResource("Resource_58gxk")
+flags_4 = SubResource("Resource_ek240")
+flags_5 = SubResource("Resource_204ti")
+flags_6 = SubResource("Resource_443du")
+hit_dice = 28
+hit_dice_sides = 8
+level = 19
+max_num = 100
+experience = 100
+name = "Stone golem"
+notice_range = 12
+rarity = 2
+sleep = 10
+speed = 100
+split_name_1 = "            "
+split_name_2 = "   Stone    "
+split_name_3 = "   golem    "

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_4yr16"]
+
+[resource]
+script = ExtResource("1_4yr16")
+category = 8
+height = 38
+name = "Greater vault (hypostyle of ramses III)"
+rating = 40
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.%%.X888888+*******X*******+88888X.%%.XXXXXXXXX+XXXXXXXXXXX+XXXXXXXX.%%.X99+***+^^^+^^^^^^^+^^^+**+99X.%%.XXXXXXXXXXXXXX+++XXXXXXXXXXXXX.%%.X**X,,X,,+^X^^^^^^^X^X,,,+***X.%%.X**X,,X,,X^X^X...X^X^X,,,XXXXX.%%.X+XX,,X,,X^X^..@..^X^X,,,X***X.%%.X,,X,,XXXX^X^X...X^X^X^^^X***X.%%.X,,X,,X,*X^X^^^^^^^X^XX+XXXX+X.%%.X+XXX+X+XX^XXX+++XXX^X^^X,,,,X.%%.X^^^^^X^^+^^^^^^^^^^^+^^X,**,X.%%.X+XXXXXXXX^X.X...X.X^XXXX,**,X.%%.X^^^^^X,,X^.........^X**X,**,X.%%.X^X,X^X,,X^X.X.@.X.X^X++X,,,,X.%%.X^^^^^X,,X^.........^+^^X^^^^X.%%.XXX+XXX++X^XXX...XXX^XXXX+XXXX.%%.X^^^^^^^^+^....&....^+****+^^X.%%.XXXXXXXXXX^X.X...X.X^XXXXXXX^X.%%.X^^^^^+^^X^.........^X^^^^^^^X.%%.X^#X#^X^^X^X.X.&.X.X^X^,*XXXXX.%%.X^X9X^X^^X^.........^X^,*X***X.%%.X^#X#^X^^X^X.X...X.X^X^,*XXX+X.%%.X^^^^^X^^X^^^^^^^^^^^X^^^X,,,X.%%.XXXXXXX++XXXXX+++XXXXXX+XX,,,X.%%.X*****+^^^^^^^^^^^^^^^^^+,,,,X.%%.XXXXXXX^.X.X.X...X.X.X.^XXXXXX.%%.X,,X,,X^...............^+,,,,X.%%.X,,X,,X^.X.X.X...X.X.X.^XXXXXX.%%.X++X++X^.....&.&.&.....^+,,,,X.%%.X^^^^^+^.X.X.X...X.X.X.^XXXXXX.%%.X++X++X^...............^+,,,,X.%%.X,,X,,X^.X.X.X...X.X.X.^XXXXXX.%%.X,,X,,X^^^^^^^^^^^^^^^^^+,,,,X.%%.XXXXXXXXXXXXXX+++XXXXXXXXXXXXX.%%................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 34

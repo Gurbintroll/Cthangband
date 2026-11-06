@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_tsptj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rtp0g"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_m4hov"]
+
+[sub_resource type="Resource" id="Resource_snxsi"]
+script = ExtResource("1_tsptj")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 12
+method = 8
+
+[sub_resource type="Resource" id="Resource_d7klw"]
+script = ExtResource("1_tsptj")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 11
+method = 8
+
+[sub_resource type="Resource" id="Resource_noqh0"]
+script = ExtResource("1_tsptj")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 10
+method = 8
+
+[sub_resource type="Resource" id="Resource_7u823"]
+script = ExtResource("1_tsptj")
+
+[sub_resource type="Resource" id="Resource_5mtjy"]
+script = ExtResource("2_rtp0g")
+value = 274728448
+
+[sub_resource type="Resource" id="Resource_l8e4n"]
+script = ExtResource("2_rtp0g")
+value = 135208
+
+[sub_resource type="Resource" id="Resource_nal4p"]
+script = ExtResource("2_rtp0g")
+value = 3225288800
+
+[sub_resource type="Resource" id="Resource_mjl8p"]
+script = ExtResource("2_rtp0g")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_svk1r"]
+script = ExtResource("2_rtp0g")
+value = 33589834
+
+[sub_resource type="Resource" id="Resource_guchv"]
+script = ExtResource("2_rtp0g")
+value = 67108864
+
+[resource]
+script = ExtResource("3_m4hov")
+ac = 100
+attack = Array[ExtResource("1_tsptj")]([SubResource("Resource_snxsi"), SubResource("Resource_d7klw"), SubResource("Resource_noqh0"), SubResource("Resource_7u823")])
+character = "L"
+colour = 23
+description = "It is a huge, twisted grey skull floating through the air. Its cold eyes burn with hatred towards all who live."
+flags_1 = SubResource("Resource_5mtjy")
+flags_2 = SubResource("Resource_l8e4n")
+flags_3 = SubResource("Resource_nal4p")
+flags_4 = SubResource("Resource_mjl8p")
+flags_5 = SubResource("Resource_svk1r")
+flags_6 = SubResource("Resource_guchv")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 28
+hit_dice_sides = 100
+level = 42
+max_num = 100
+experience = 4000
+name = "Iron lich"
+notice_range = 30
+rarity = 4
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Iron    "
+split_name_3 = "    lich    "

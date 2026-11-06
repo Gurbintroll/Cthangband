@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kmqoi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_e6b4o"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kk8f2"]
+
+[sub_resource type="Resource" id="Resource_dkqcw"]
+script = ExtResource("1_kmqoi")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_wv3jd"]
+script = ExtResource("1_kmqoi")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_mr8y5"]
+script = ExtResource("1_kmqoi")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_v4i3q"]
+script = ExtResource("1_kmqoi")
+damage_dice = 8
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_5fkp7"]
+script = ExtResource("2_e6b4o")
+value = 505415296
+
+[sub_resource type="Resource" id="Resource_7t7uk"]
+script = ExtResource("2_e6b4o")
+value = 1185792
+
+[sub_resource type="Resource" id="Resource_o430o"]
+script = ExtResource("2_e6b4o")
+value = 3288334344
+
+[sub_resource type="Resource" id="Resource_k5kp0"]
+script = ExtResource("2_e6b4o")
+value = 17694720
+
+[sub_resource type="Resource" id="Resource_2p2ro"]
+script = ExtResource("2_e6b4o")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_y51kw"]
+script = ExtResource("2_e6b4o")
+value = 671088640
+
+[resource]
+script = ExtResource("3_kk8f2")
+ac = 170
+attack = Array[ExtResource("1_kmqoi")]([SubResource("Resource_dkqcw"), SubResource("Resource_wv3jd"), SubResource("Resource_mr8y5"), SubResource("Resource_v4i3q")])
+character = "D"
+colour = 23
+description = "A massive dragon, it is thousands of years old and seeks to maintain the Cosmic Balance. It sees you as an upstart troublemaker without the wisdom to control your actions. "
+flags_1 = SubResource("Resource_5fkp7")
+flags_2 = SubResource("Resource_7t7uk")
+flags_3 = SubResource("Resource_o430o")
+flags_4 = SubResource("Resource_k5kp0")
+flags_5 = SubResource("Resource_2p2ro")
+flags_6 = SubResource("Resource_y51kw")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 49
+hit_dice_sides = 100
+level = 67
+max_num = 100
+experience = 31000
+name = "Great Wyrm of Balance"
+notice_range = 40
+rarity = 4
+sleep = 255
+speed = 120
+split_name_1 = "   Great    "
+split_name_2 = "  Wyrm of   "
+split_name_3 = "  Balance   "

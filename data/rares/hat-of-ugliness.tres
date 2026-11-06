@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mfigx"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_2mvnj"]
+
+[sub_resource type="Resource" id="Resource_sl30e"]
+script = ExtResource("1_mfigx")
+value = 32
+
+[sub_resource type="Resource" id="Resource_j1px5"]
+script = ExtResource("1_mfigx")
+
+[sub_resource type="Resource" id="Resource_84tig"]
+script = ExtResource("1_mfigx")
+
+[resource]
+script = ExtResource("2_2mvnj")
+flags_1 = SubResource("Resource_sl30e")
+flags_2 = SubResource("Resource_j1px5")
+flags_3 = SubResource("Resource_84tig")
+max_type_specifc_value = 5
+name = "of Ugliness"
+slot = 33
+id = 30

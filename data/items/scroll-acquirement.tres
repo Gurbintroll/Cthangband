@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_t3ohh"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_352i6"]
+
+[sub_resource type="Resource" id="Resource_eivo3"]
+script = ExtResource("1_t3ohh")
+
+[sub_resource type="Resource" id="Resource_nuuug"]
+script = ExtResource("1_t3ohh")
+
+[sub_resource type="Resource" id="Resource_vn4hb"]
+script = ExtResource("1_t3ohh")
+
+[resource]
+script = ExtResource("2_352i6")
+chance = Array[int]([16, 0, 0, 0])
+character = "?"
+colour = 1
+cost = 200000
+easy_know = true
+flags_1 = SubResource("Resource_eivo3")
+flags_2 = SubResource("Resource_nuuug")
+flags_3 = SubResource("Resource_vn4hb")
+has_flavour = true
+item_category = 70
+level = 60
+locale = Array[int]([60, 0, 0, 0])
+name = "*Acquirement*"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 47
+weight = 5
+filename = "Scroll:*Acquirement*"

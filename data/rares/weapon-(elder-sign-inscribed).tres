@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_v3twc"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_skkef"]
+
+[sub_resource type="Resource" id="Resource_fvona"]
+script = ExtResource("1_v3twc")
+value = 917508
+
+[sub_resource type="Resource" id="Resource_1cm1p"]
+script = ExtResource("1_v3twc")
+value = 2097152
+
+[sub_resource type="Resource" id="Resource_n8jut"]
+script = ExtResource("1_v3twc")
+value = 268451840
+
+[resource]
+script = ExtResource("2_skkef")
+cost = 20000
+flags_1 = SubResource("Resource_fvona")
+flags_2 = SubResource("Resource_1cm1p")
+flags_3 = SubResource("Resource_n8jut")
+max_type_specifc_value = 4
+max_to_ac = 4
+max_to_damage = 6
+max_to_hit = 6
+name = "(Elder Sign Inscribed)"
+rating = 30
+slot = 24
+id = 53

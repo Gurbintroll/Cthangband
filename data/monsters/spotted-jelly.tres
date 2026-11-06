@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qd0ff"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_efpil"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_aegeo"]
+
+[sub_resource type="Resource" id="Resource_3ikcm"]
+script = ExtResource("1_qd0ff")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_isiwd"]
+script = ExtResource("1_qd0ff")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_id5sr"]
+script = ExtResource("1_qd0ff")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_n04wd"]
+script = ExtResource("1_qd0ff")
+
+[sub_resource type="Resource" id="Resource_k1xaq"]
+script = ExtResource("2_efpil")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_l7yti"]
+script = ExtResource("2_efpil")
+value = 97
+
+[sub_resource type="Resource" id="Resource_n37qh"]
+script = ExtResource("2_efpil")
+value = 3490779136
+
+[sub_resource type="Resource" id="Resource_45a4q"]
+script = ExtResource("2_efpil")
+
+[sub_resource type="Resource" id="Resource_lhir5"]
+script = ExtResource("2_efpil")
+
+[sub_resource type="Resource" id="Resource_oglxl"]
+script = ExtResource("2_efpil")
+
+[resource]
+script = ExtResource("3_aegeo")
+ac = 18
+attack = Array[ExtResource("1_qd0ff")]([SubResource("Resource_3ikcm"), SubResource("Resource_isiwd"), SubResource("Resource_id5sr"), SubResource("Resource_n04wd")])
+character = "j"
+colour = 11
+description = "A jelly thing."
+flags_1 = SubResource("Resource_k1xaq")
+flags_2 = SubResource("Resource_l7yti")
+flags_3 = SubResource("Resource_n37qh")
+flags_4 = SubResource("Resource_45a4q")
+flags_5 = SubResource("Resource_lhir5")
+flags_6 = SubResource("Resource_oglxl")
+hit_dice = 13
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 33
+name = "Spotted jelly"
+notice_range = 12
+rarity = 3
+sleep = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Spotted   "
+split_name_3 = "   jelly    "

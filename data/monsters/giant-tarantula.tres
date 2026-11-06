@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qe4jf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ei2dr"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qqcr5"]
+
+[sub_resource type="Resource" id="Resource_ihfjs"]
+script = ExtResource("1_qe4jf")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_wagtu"]
+script = ExtResource("1_qe4jf")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_0y12d"]
+script = ExtResource("1_qe4jf")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_m6xlx"]
+script = ExtResource("1_qe4jf")
+
+[sub_resource type="Resource" id="Resource_pyxfl"]
+script = ExtResource("2_ei2dr")
+
+[sub_resource type="Resource" id="Resource_653a1"]
+script = ExtResource("2_ei2dr")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_pa63j"]
+script = ExtResource("2_ei2dr")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_od0hp"]
+script = ExtResource("2_ei2dr")
+
+[sub_resource type="Resource" id="Resource_10cx8"]
+script = ExtResource("2_ei2dr")
+
+[sub_resource type="Resource" id="Resource_efu3t"]
+script = ExtResource("2_ei2dr")
+
+[resource]
+script = ExtResource("3_qqcr5")
+ac = 32
+attack = Array[ExtResource("1_qe4jf")]([SubResource("Resource_ihfjs"), SubResource("Resource_wagtu"), SubResource("Resource_0y12d"), SubResource("Resource_m6xlx")])
+character = "S"
+colour = 8
+description = "A giant spider with hairy black and red legs."
+flags_1 = SubResource("Resource_pyxfl")
+flags_2 = SubResource("Resource_653a1")
+flags_3 = SubResource("Resource_pa63j")
+flags_4 = SubResource("Resource_od0hp")
+flags_5 = SubResource("Resource_10cx8")
+flags_6 = SubResource("Resource_efu3t")
+hit_dice = 10
+hit_dice_sides = 15
+level = 15
+max_num = 100
+experience = 70
+name = "Giant tarantula"
+notice_range = 8
+rarity = 3
+sleep = 80
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Giant    "
+split_name_3 = " tarantula  "

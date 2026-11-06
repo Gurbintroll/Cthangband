@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_o6mir"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gj8ok"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_378mp"]
+
+[sub_resource type="Resource" id="Resource_cxlcs"]
+script = ExtResource("1_o6mir")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_4v3uv"]
+script = ExtResource("1_o6mir")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 15
+
+[sub_resource type="Resource" id="Resource_jyf6f"]
+script = ExtResource("1_o6mir")
+effect = 3
+method = 15
+
+[sub_resource type="Resource" id="Resource_5oved"]
+script = ExtResource("1_o6mir")
+
+[sub_resource type="Resource" id="Resource_g4djv"]
+script = ExtResource("2_gj8ok")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_x0703"]
+script = ExtResource("2_gj8ok")
+value = 65
+
+[sub_resource type="Resource" id="Resource_afqy3"]
+script = ExtResource("2_gj8ok")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_qh6hc"]
+script = ExtResource("2_gj8ok")
+
+[sub_resource type="Resource" id="Resource_ifeip"]
+script = ExtResource("2_gj8ok")
+value = 3221233664
+
+[sub_resource type="Resource" id="Resource_p4vga"]
+script = ExtResource("2_gj8ok")
+value = 16384
+
+[resource]
+script = ExtResource("3_378mp")
+ac = 1
+attack = Array[ExtResource("1_o6mir")]([SubResource("Resource_cxlcs"), SubResource("Resource_4v3uv"), SubResource("Resource_jyf6f"), SubResource("Resource_5oved")])
+character = "e"
+colour = 8
+description = "It has three small eyestalks and a large central eye."
+flags_1 = SubResource("Resource_g4djv")
+flags_2 = SubResource("Resource_x0703")
+flags_3 = SubResource("Resource_afqy3")
+flags_4 = SubResource("Resource_qh6hc")
+flags_5 = SubResource("Resource_ifeip")
+flags_6 = SubResource("Resource_p4vga")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 10
+hit_dice_sides = 13
+level = 32
+max_num = 100
+experience = 150
+name = "Spectator"
+notice_range = 30
+rarity = 3
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Spectator  "

@@ -1,0 +1,107 @@
+﻿[center][font_size=48][color="brown"][b]Tarot Spells[/b][/color][/font_size][/center]
+[hr color="brown"]
+Spells are presented here ordered by book. This does not necessarily reflect how difficult each spell is to cast.
+
+Although within the first two books (Conjuring and Tricks and Card Mastery) the spells are ordered in increasing difficulty, each of the two rare books that can only be found in the dungeons (Eltdown Shards and Celeano Fragments) contain both easy and difficult spells.
+
+The level at which each individual spell is unlocked and the power cost to cast each spell is not given here, since it will vary with each profession that has access to this realm.
+
+[font_size=24][color="brown"][b]Conjuring and Tricks[/b][/color][/font_size]
+[b]a) Phase Door[/b]
+Teleports you to a random nearby location.
+
+[b]b) Mind Blast[/b]
+Fires a bolt of psychic energy.
+
+[b]c) Tarot Draw[/b]
+Invokes a random (but usually beneficial) effect from a Tarot card.
+
+[b]d) Reset Recall[/b]
+Resets the depth that you will go to via Word of Recall spells (and scrolls) to the current level.
+
+[b]e) Teleport[/b]
+Teleports you to a random location on the level.
+
+[b]f) Dimension Door[/b]
+Teleports you to a nearby location that you specify.
+
+[b]g) Planar Spying[/b]
+Gives you temporary ESP.
+
+[b]h) Teleport Away[/b]
+Teleports a creature to a random place on the level.
+
+[font_size=24][color="brown"][b]Card Mastery[/b][/color][/font_size]
+[b]a) Summon Object[/b]
+Teleports a nearby object to your hand.
+
+[b]b) Summon Animal[/b]
+Summons a friendly animal to help you.
+
+[b]c) Phantasmal Servant[/b]
+Creates a magical beast to serve you.
+
+[b]d) Summon Monster[/b]
+Summons a random monster to help you.
+
+[b]e) Conjure Elemental[/b]
+Summons an elemental to help you.
+
+[b]f) Teleport Level[/b]
+Teleports you off the level you are on, onto either the one above or the one below.
+
+[b]g) Word of Recall[/b]
+Teleports you back to the town, or - if you are in the town - down to the deepest dungeon level that you have yet visited.
+
+[b]h) Banish[/b]
+Teleports all nearby monsters to elsewhere on the level.
+
+[font_size=24][color="brown"][b]Eltdown Shards[/b][/color][/font_size]
+[b]a) The Fool[/b]
+Summons a bizarre creature to help you.
+
+[b]b) Summon Spiders[/b]
+Summons spiders to help you.
+
+[b]c) Summon Reptiles[/b]
+Summons reptiles to help you.
+
+[b]d) Summon Hounds[/b]
+Summons elemental hounds to help you.
+
+[b]e) Planar Branding[/b]
+Permanently makes your weapon a ‘Planar Weapon’, attuned to the cosmos.
+
+[b]f) Planar Being[/b]
+Attunes you with the planes, altering your body.
+
+[b]g) Death Dealing[/b]
+Banishes all nearby living creatures.
+
+[b]h) Summon Reaver[/b]
+Summons a Black Reaver to help you.
+
+[font_size=24][color="brown"][b]Celeano Fragments[/b][/color][/font_size]
+[b]a) Planar Divination[/b]
+Detects secret doors, stairs, traps, treasure, objects and monsters (including invisible ones).
+
+[b]b) Planar Lore[/b]
+Fully identifies an item.
+
+[b]c) Summon Undead[/b]
+Summons an undead creature to help you.
+
+[b]d) Summon Dragon[/b]
+Summons a dragon to help you.
+
+[b]e) Mass Summons[/b]
+Summons multiple monsters to help you.
+
+[b]f) Summon Demon[/b]
+Summons a demon to help you.
+
+[b]g) Summon Ancient Dragon[/b]
+Summons an ancient dragon to help you.
+
+[b]h) Summon Greater Undead[/b]
+Summons a greater undead to help you.

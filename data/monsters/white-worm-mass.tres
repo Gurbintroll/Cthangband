@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_jfcp5"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_caor1"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ro8cm"]
+
+[sub_resource type="Resource" id="Resource_u8epm"]
+script = ExtResource("1_jfcp5")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 2
+method = 12
+
+[sub_resource type="Resource" id="Resource_t8lmr"]
+script = ExtResource("1_jfcp5")
+
+[sub_resource type="Resource" id="Resource_8rcfl"]
+script = ExtResource("1_jfcp5")
+
+[sub_resource type="Resource" id="Resource_cjfvb"]
+script = ExtResource("1_jfcp5")
+
+[sub_resource type="Resource" id="Resource_airk5"]
+script = ExtResource("2_caor1")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_c4s7q"]
+script = ExtResource("2_caor1")
+value = 385
+
+[sub_resource type="Resource" id="Resource_fiab0"]
+script = ExtResource("2_caor1")
+value = 269488256
+
+[sub_resource type="Resource" id="Resource_qlxry"]
+script = ExtResource("2_caor1")
+
+[sub_resource type="Resource" id="Resource_rqfux"]
+script = ExtResource("2_caor1")
+
+[sub_resource type="Resource" id="Resource_iodb4"]
+script = ExtResource("2_caor1")
+
+[resource]
+script = ExtResource("3_ro8cm")
+ac = 1
+attack = Array[ExtResource("1_jfcp5")]([SubResource("Resource_u8epm"), SubResource("Resource_t8lmr"), SubResource("Resource_8rcfl"), SubResource("Resource_cjfvb")])
+character = "w"
+colour = 30
+description = "It is a large slimy mass of worms."
+flags_1 = SubResource("Resource_airk5")
+flags_2 = SubResource("Resource_c4s7q")
+flags_3 = SubResource("Resource_fiab0")
+flags_4 = SubResource("Resource_qlxry")
+flags_5 = SubResource("Resource_rqfux")
+flags_6 = SubResource("Resource_iodb4")
+hit_dice = 4
+hit_dice_sides = 4
+level = 1
+max_num = 100
+experience = 2
+name = "White worm mass"
+notice_range = 7
+rarity = 1
+sleep = 10
+speed = 100
+split_name_1 = "   White    "
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

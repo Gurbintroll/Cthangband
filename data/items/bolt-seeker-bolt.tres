@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_c264o"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_kch4y"]
+
+[sub_resource type="Resource" id="Resource_kgrnl"]
+script = ExtResource("1_c264o")
+
+[sub_resource type="Resource" id="Resource_v3thb"]
+script = ExtResource("1_c264o")
+
+[sub_resource type="Resource" id="Resource_otoad"]
+script = ExtResource("1_c264o")
+value = 1024
+
+[resource]
+script = ExtResource("2_kch4y")
+chance = Array[int]([4, 0, 0, 0])
+character = "{"
+colour = 5
+cost = 25
+damage_dice = 4
+damage_dice_sides = 5
+flags_1 = SubResource("Resource_kgrnl")
+flags_2 = SubResource("Resource_v3thb")
+flags_3 = SubResource("Resource_otoad")
+flavour_aware = true
+item_category = 18
+level = 65
+locale = Array[int]([65, 0, 0, 0])
+name = "& Seeker Bolt~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 2
+weight = 3
+filename = "Bolt:Seeker Bolt"

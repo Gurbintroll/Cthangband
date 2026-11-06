@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_05qxm"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jujq2"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ygevn"]
+
+[sub_resource type="Resource" id="Resource_q8uf8"]
+script = ExtResource("1_05qxm")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ypr4j"]
+script = ExtResource("1_05qxm")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_whnh2"]
+script = ExtResource("1_05qxm")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ethrk"]
+script = ExtResource("1_05qxm")
+
+[sub_resource type="Resource" id="Resource_xclk0"]
+script = ExtResource("2_jujq2")
+value = 10486784
+
+[sub_resource type="Resource" id="Resource_pwq6g"]
+script = ExtResource("2_jujq2")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_5f241"]
+script = ExtResource("2_jujq2")
+value = 68
+
+[sub_resource type="Resource" id="Resource_ogbe2"]
+script = ExtResource("2_jujq2")
+
+[sub_resource type="Resource" id="Resource_ryoqf"]
+script = ExtResource("2_jujq2")
+value = 2281971712
+
+[sub_resource type="Resource" id="Resource_obn2b"]
+script = ExtResource("2_jujq2")
+value = 270368
+
+[resource]
+script = ExtResource("3_ygevn")
+ac = 55
+attack = Array[ExtResource("1_05qxm")]([SubResource("Resource_q8uf8"), SubResource("Resource_ypr4j"), SubResource("Resource_whnh2"), SubResource("Resource_ethrk")])
+character = "O"
+colour = 3
+description = "It is an ogre wrapped in furs and covered in grotesque body paints."
+flags_1 = SubResource("Resource_xclk0")
+flags_2 = SubResource("Resource_pwq6g")
+flags_3 = SubResource("Resource_5f241")
+flags_4 = SubResource("Resource_ogbe2")
+flags_5 = SubResource("Resource_ryoqf")
+flags_6 = SubResource("Resource_obn2b")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 14
+hit_dice_sides = 10
+level = 32
+max_num = 100
+experience = 250
+name = "Ogre shaman"
+notice_range = 20
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Ogre    "
+split_name_3 = "   shaman   "

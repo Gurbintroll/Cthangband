@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_k2b1i"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_7x78x"]
+
+[sub_resource type="Resource" id="Resource_qaio5"]
+script = ExtResource("1_k2b1i")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_c5v4e"]
+script = ExtResource("1_k2b1i")
+
+[sub_resource type="Resource" id="Resource_ey25x"]
+script = ExtResource("1_k2b1i")
+value = 1024
+
+[resource]
+script = ExtResource("2_7x78x")
+chance = Array[int]([16, 0, 0, 0])
+character = "\\"
+colour = 23
+cost = 50
+damage_dice = 1
+damage_dice_sides = 3
+flags_1 = SubResource("Resource_qaio5")
+flags_2 = SubResource("Resource_c5v4e")
+flags_3 = SubResource("Resource_ey25x")
+flavour_aware = true
+item_category = 20
+level = 5
+locale = Array[int]([10, 0, 0, 0])
+name = "& Pick~"
+type_specific_value = 1
+stompable = Array[bool]([true, false, false, false])
+sub_category = 4
+weight = 150
+filename = "Digging:Pick"

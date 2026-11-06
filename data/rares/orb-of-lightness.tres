@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5i3a6"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_5nv4w"]
+
+[sub_resource type="Resource" id="Resource_wrren"]
+script = ExtResource("1_5i3a6")
+
+[sub_resource type="Resource" id="Resource_aqscf"]
+script = ExtResource("1_5i3a6")
+
+[sub_resource type="Resource" id="Resource_e1cfh"]
+script = ExtResource("1_5i3a6")
+value = 15732736
+
+[resource]
+script = ExtResource("2_5nv4w")
+cost = 1000
+flags_1 = SubResource("Resource_wrren")
+flags_2 = SubResource("Resource_aqscf")
+flags_3 = SubResource("Resource_e1cfh")
+name = "of Lightness"
+id = 123

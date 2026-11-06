@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cgn8cfkpkepmh"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_imt83"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_hkutw"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_hvf52"]
+
+[sub_resource type="Resource" id="Resource_3oih6"]
+script = ExtResource("1_imt83")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 22
+method = 1
+
+[sub_resource type="Resource" id="Resource_s87fj"]
+script = ExtResource("1_imt83")
+effect = 6
+method = 2
+
+[sub_resource type="Resource" id="Resource_3asex"]
+script = ExtResource("1_imt83")
+damage_dice = 10
+damage_dice_sides = 1
+effect = 23
+method = 2
+
+[sub_resource type="Resource" id="Resource_xs3go"]
+script = ExtResource("1_imt83")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_5cxxw"]
+script = ExtResource("2_hkutw")
+value = 975177477
+
+[sub_resource type="Resource" id="Resource_j7lbh"]
+script = ExtResource("2_hkutw")
+value = 42
+
+[sub_resource type="Resource" id="Resource_2k0mg"]
+script = ExtResource("2_hkutw")
+value = 3762159616
+
+[sub_resource type="Resource" id="Resource_wo2lv"]
+script = ExtResource("2_hkutw")
+
+[sub_resource type="Resource" id="Resource_7y25d"]
+script = ExtResource("2_hkutw")
+value = 2550172192
+
+[sub_resource type="Resource" id="Resource_b3gdp"]
+script = ExtResource("2_hkutw")
+value = 3019923968
+
+[resource]
+script = ExtResource("3_hvf52")
+ac = 100
+attack = Array[ExtResource("1_imt83")]([SubResource("Resource_3oih6"), SubResource("Resource_s87fj"), SubResource("Resource_3asex"), SubResource("Resource_xs3go")])
+character = "h"
+colour = 12
+description = "A strange little gnome, he's been collecting toys and friends and doesn't want to give them up."
+flags_1 = SubResource("Resource_5cxxw")
+flags_2 = SubResource("Resource_j7lbh")
+flags_3 = SubResource("Resource_2k0mg")
+flags_4 = SubResource("Resource_wo2lv")
+flags_5 = SubResource("Resource_7y25d")
+flags_6 = SubResource("Resource_b3gdp")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 25
+hit_dice_sides = 100
+level = 52
+max_num = 1
+experience = 45000
+name = "The Collector"
+notice_range = 90
+rarity = 3
+sleep = 10
+speed = 150
+split_name_1 = "            "
+split_name_2 = "    The     "
+split_name_3 = " Collector  "

@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dsc6qn8u3vcm"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_5upwk"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_u5gfd"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_amnpv"]
+
+[sub_resource type="Resource" id="Resource_lcpig"]
+script = ExtResource("1_5upwk")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_hx4op"]
+script = ExtResource("1_5upwk")
+damage_dice = 2
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_q4btu"]
+script = ExtResource("1_5upwk")
+damage_dice = 2
+damage_dice_sides = 2
+effect = 5
+method = 1
+
+[sub_resource type="Resource" id="Resource_am8tl"]
+script = ExtResource("1_5upwk")
+
+[sub_resource type="Resource" id="Resource_318xl"]
+script = ExtResource("2_u5gfd")
+value = 287326725
+
+[sub_resource type="Resource" id="Resource_sgsdc"]
+script = ExtResource("2_u5gfd")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_idv4s"]
+script = ExtResource("2_u5gfd")
+value = 1572932
+
+[sub_resource type="Resource" id="Resource_gejwu"]
+script = ExtResource("2_u5gfd")
+
+[sub_resource type="Resource" id="Resource_1f8fp"]
+script = ExtResource("2_u5gfd")
+
+[sub_resource type="Resource" id="Resource_4nn80"]
+script = ExtResource("2_u5gfd")
+
+[resource]
+script = ExtResource("3_amnpv")
+ac = 70
+attack = Array[ExtResource("1_5upwk")]([SubResource("Resource_lcpig"), SubResource("Resource_hx4op"), SubResource("Resource_q4btu"), SubResource("Resource_am8tl")])
+character = "P"
+colour = 12
+description = "Big, brawny, powerful and with a greed for gold."
+flags_1 = SubResource("Resource_318xl")
+flags_2 = SubResource("Resource_sgsdc")
+flags_3 = SubResource("Resource_idv4s")
+flags_4 = SubResource("Resource_gejwu")
+flags_5 = SubResource("Resource_1f8fp")
+flags_6 = SubResource("Resource_4nn80")
+hit_dice = 11
+hit_dice_sides = 100
+level = 33
+max_num = 1
+experience = 2000
+name = "Fasolt the Giant"
+notice_range = 20
+rarity = 7
+sleep = 50
+speed = 110
+split_name_1 = "   Fasolt   "
+split_name_2 = "    the     "
+split_name_3 = "   Giant    "

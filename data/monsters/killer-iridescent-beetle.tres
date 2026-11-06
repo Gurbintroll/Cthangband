@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rw1x3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ubrdl"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qfoci"]
+
+[sub_resource type="Resource" id="Resource_vu0qc"]
+script = ExtResource("1_rw1x3")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 10
+method = 5
+
+[sub_resource type="Resource" id="Resource_tsj53"]
+script = ExtResource("1_rw1x3")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 10
+method = 5
+
+[sub_resource type="Resource" id="Resource_y0i6r"]
+script = ExtResource("1_rw1x3")
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_gcryc"]
+script = ExtResource("1_rw1x3")
+
+[sub_resource type="Resource" id="Resource_y8iot"]
+script = ExtResource("2_ubrdl")
+value = 640
+
+[sub_resource type="Resource" id="Resource_8i0xw"]
+script = ExtResource("2_ubrdl")
+value = 163968
+
+[sub_resource type="Resource" id="Resource_qndxk"]
+script = ExtResource("2_ubrdl")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_mlar7"]
+script = ExtResource("2_ubrdl")
+
+[sub_resource type="Resource" id="Resource_1fq6k"]
+script = ExtResource("2_ubrdl")
+
+[sub_resource type="Resource" id="Resource_q7ol4"]
+script = ExtResource("2_ubrdl")
+
+[resource]
+script = ExtResource("3_qfoci")
+ac = 60
+attack = Array[ExtResource("1_rw1x3")]([SubResource("Resource_vu0qc"), SubResource("Resource_tsj53"), SubResource("Resource_y0i6r"), SubResource("Resource_gcryc")])
+character = "K"
+colour = 25
+description = "It is a giant beetle, whose carapace shimmers with vibrant energies."
+flags_1 = SubResource("Resource_y8iot")
+flags_2 = SubResource("Resource_8i0xw")
+flags_3 = SubResource("Resource_qndxk")
+flags_4 = SubResource("Resource_mlar7")
+flags_5 = SubResource("Resource_1fq6k")
+flags_6 = SubResource("Resource_q7ol4")
+hit_dice = 25
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 850
+name = "Killer iridescent beetle"
+notice_range = 16
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "   Killer   "
+split_name_2 = " iridescent "
+split_name_3 = "   beetle   "

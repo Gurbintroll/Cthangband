@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_7j4g7"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ulkhp"]
+
+[sub_resource type="Resource" id="Resource_71vey"]
+script = ExtResource("1_7j4g7")
+
+[sub_resource type="Resource" id="Resource_abtx7"]
+script = ExtResource("1_7j4g7")
+value = 2148581376
+
+[sub_resource type="Resource" id="Resource_gqfdd"]
+script = ExtResource("1_7j4g7")
+
+[resource]
+script = ExtResource("2_ulkhp")
+chance = Array[int]([5, 0, 0, 0])
+character = "="
+colour = 17
+cost = 100000
+flags_1 = SubResource("Resource_71vey")
+flags_2 = SubResource("Resource_abtx7")
+flags_3 = SubResource("Resource_gqfdd")
+has_flavour = true
+item_category = 45
+level = 100
+locale = Array[int]([100, 0, 0, 0])
+name = "Lordly Protection"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 48
+weight = 2
+filename = "Ring:Lordly Protection"

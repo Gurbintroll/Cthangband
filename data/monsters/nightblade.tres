@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_egbcl"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_3a0ov"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_c6bnv"]
+
+[sub_resource type="Resource" id="Resource_aiheo"]
+script = ExtResource("1_egbcl")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_jy43m"]
+script = ExtResource("1_egbcl")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_uc6d1"]
+script = ExtResource("1_egbcl")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 21
+method = 1
+
+[sub_resource type="Resource" id="Resource_r6q7r"]
+script = ExtResource("1_egbcl")
+
+[sub_resource type="Resource" id="Resource_vjqeq"]
+script = ExtResource("2_3a0ov")
+value = 16785412
+
+[sub_resource type="Resource" id="Resource_3fc6d"]
+script = ExtResource("2_3a0ov")
+value = 196624
+
+[sub_resource type="Resource" id="Resource_5hejw"]
+script = ExtResource("2_3a0ov")
+value = 3221229632
+
+[sub_resource type="Resource" id="Resource_gpn6d"]
+script = ExtResource("2_3a0ov")
+
+[sub_resource type="Resource" id="Resource_vaw2p"]
+script = ExtResource("2_3a0ov")
+
+[sub_resource type="Resource" id="Resource_tr8uk"]
+script = ExtResource("2_3a0ov")
+
+[resource]
+script = ExtResource("3_c6bnv")
+ac = 60
+attack = Array[ExtResource("1_egbcl")]([SubResource("Resource_aiheo"), SubResource("Resource_jy43m"), SubResource("Resource_uc6d1"), SubResource("Resource_r6q7r")])
+character = "h"
+colour = 2
+description = "A dark elf so stealthy that he is almost impossible to see."
+flags_1 = SubResource("Resource_vjqeq")
+flags_2 = SubResource("Resource_3fc6d")
+flags_3 = SubResource("Resource_5hejw")
+flags_4 = SubResource("Resource_gpn6d")
+flags_5 = SubResource("Resource_vaw2p")
+flags_6 = SubResource("Resource_tr8uk")
+hit_dice = 19
+hit_dice_sides = 13
+level = 36
+max_num = 100
+experience = 315
+name = "Nightblade"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Nightblade "

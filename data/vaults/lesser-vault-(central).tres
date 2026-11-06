@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_bvbh5"]
+
+[resource]
+script = ExtResource("1_bvbh5")
+category = 7
+height = 12
+name = "Lesser Vault (Central)"
+rating = 12
+text = "%%%%%%%%%%%%%%%############%%#,#^^^^^^#,#%%##+######+##%%#^#^^,,^^#^#%%#^#^&@9&^#^#%%#^#^&9@&^#^#%%#^#^^,,^^#^#%%##+######+##%%#,#^^^^^^#,#%%############%%%%%%%%%%%%%%%"
+width = 14

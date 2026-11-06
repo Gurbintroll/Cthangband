@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_x1rjh"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xgmfx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_gw70m"]
+
+[sub_resource type="Resource" id="Resource_ft3bv"]
+script = ExtResource("1_x1rjh")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fe3i1"]
+script = ExtResource("1_x1rjh")
+
+[sub_resource type="Resource" id="Resource_un7ws"]
+script = ExtResource("1_x1rjh")
+
+[sub_resource type="Resource" id="Resource_gn62o"]
+script = ExtResource("1_x1rjh")
+
+[sub_resource type="Resource" id="Resource_j526n"]
+script = ExtResource("2_xgmfx")
+value = 35653120
+
+[sub_resource type="Resource" id="Resource_hf7eb"]
+script = ExtResource("2_xgmfx")
+value = 4395010
+
+[sub_resource type="Resource" id="Resource_yo5u8"]
+script = ExtResource("2_xgmfx")
+value = 3627811328
+
+[sub_resource type="Resource" id="Resource_0penb"]
+script = ExtResource("2_xgmfx")
+
+[sub_resource type="Resource" id="Resource_slwnx"]
+script = ExtResource("2_xgmfx")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_rcjh0"]
+script = ExtResource("2_xgmfx")
+value = 53
+
+[resource]
+script = ExtResource("3_gw70m")
+ac = 68
+attack = Array[ExtResource("1_x1rjh")]([SubResource("Resource_ft3bv"), SubResource("Resource_fe3i1"), SubResource("Resource_un7ws"), SubResource("Resource_gn62o")])
+character = "A"
+colour = 5
+description = "A shabby humanoid with a wrinkled skin. It seems to shift in and out of existance as you watch."
+flags_1 = SubResource("Resource_j526n")
+flags_2 = SubResource("Resource_hf7eb")
+flags_3 = SubResource("Resource_yo5u8")
+flags_4 = SubResource("Resource_0penb")
+flags_5 = SubResource("Resource_slwnx")
+flags_6 = SubResource("Resource_rcjh0")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 40
+hit_dice_sides = 10
+level = 29
+max_num = 100
+experience = 400
+name = "Dimensional shambler"
+notice_range = 30
+rarity = 6
+sleep = 255
+speed = 110
+split_name_1 = "            "
+split_name_2 = "Dimensional "
+split_name_3 = "  shambler  "

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_41p8q"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7yqi6"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_hr8yk"]
+
+[sub_resource type="Resource" id="Resource_56lfj"]
+script = ExtResource("1_41p8q")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_d1tca"]
+script = ExtResource("1_41p8q")
+
+[sub_resource type="Resource" id="Resource_wyc2c"]
+script = ExtResource("1_41p8q")
+
+[sub_resource type="Resource" id="Resource_xgmyh"]
+script = ExtResource("1_41p8q")
+
+[sub_resource type="Resource" id="Resource_haxoy"]
+script = ExtResource("2_7yqi6")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_plokm"]
+script = ExtResource("2_7yqi6")
+value = 65
+
+[sub_resource type="Resource" id="Resource_px3nc"]
+script = ExtResource("2_7yqi6")
+value = 3490709504
+
+[sub_resource type="Resource" id="Resource_6j4l2"]
+script = ExtResource("2_7yqi6")
+
+[sub_resource type="Resource" id="Resource_iyrl4"]
+script = ExtResource("2_7yqi6")
+
+[sub_resource type="Resource" id="Resource_yrv8m"]
+script = ExtResource("2_7yqi6")
+
+[resource]
+script = ExtResource("3_hr8yk")
+ac = 15
+attack = Array[ExtResource("1_41p8q")]([SubResource("Resource_56lfj"), SubResource("Resource_d1tca"), SubResource("Resource_wyc2c"), SubResource("Resource_xgmyh")])
+character = "m"
+colour = 6
+description = "It is a strange hairy growth on the dungeon floor."
+flags_1 = SubResource("Resource_haxoy")
+flags_2 = SubResource("Resource_plokm")
+flags_3 = SubResource("Resource_px3nc")
+flags_4 = SubResource("Resource_6j4l2")
+flags_5 = SubResource("Resource_iyrl4")
+flags_6 = SubResource("Resource_yrv8m")
+hit_dice = 15
+hit_dice_sides = 8
+level = 10
+max_num = 100
+experience = 32
+name = "Hairy mold"
+notice_range = 2
+rarity = 2
+sleep = 70
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Hairy    "
+split_name_3 = "    mold    "

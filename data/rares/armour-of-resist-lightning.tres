@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_gn8bs"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_y6hbq"]
+
+[sub_resource type="Resource" id="Resource_jt4cv"]
+script = ExtResource("1_gn8bs")
+
+[sub_resource type="Resource" id="Resource_haja1"]
+script = ExtResource("1_gn8bs")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_4sh02"]
+script = ExtResource("1_gn8bs")
+value = 2097152
+
+[resource]
+script = ExtResource("2_y6hbq")
+cost = 400
+flags_1 = SubResource("Resource_jt4cv")
+flags_2 = SubResource("Resource_haja1")
+flags_3 = SubResource("Resource_4sh02")
+name = "of Resist Lightning"
+rating = 10
+slot = 30
+id = 5

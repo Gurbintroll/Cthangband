@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ipsql"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_56khw"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_fcj0n"]
+
+[sub_resource type="Resource" id="Resource_a4pe8"]
+script = ExtResource("1_ipsql")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 13
+method = 14
+
+[sub_resource type="Resource" id="Resource_0j6e1"]
+script = ExtResource("1_ipsql")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_uf0ln"]
+script = ExtResource("1_ipsql")
+
+[sub_resource type="Resource" id="Resource_kieov"]
+script = ExtResource("1_ipsql")
+
+[sub_resource type="Resource" id="Resource_ihs8b"]
+script = ExtResource("2_56khw")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_qmwr8"]
+script = ExtResource("2_56khw")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_wp3x5"]
+script = ExtResource("2_56khw")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_j7wpk"]
+script = ExtResource("2_56khw")
+
+[sub_resource type="Resource" id="Resource_qrcqr"]
+script = ExtResource("2_56khw")
+
+[sub_resource type="Resource" id="Resource_2byw0"]
+script = ExtResource("2_56khw")
+
+[resource]
+script = ExtResource("3_fcj0n")
+ac = 30
+attack = Array[ExtResource("1_ipsql")]([SubResource("Resource_a4pe8"), SubResource("Resource_0j6e1"), SubResource("Resource_uf0ln"), SubResource("Resource_kieov")])
+character = "J"
+colour = 31
+description = "It is a large snake with a hooded face."
+flags_1 = SubResource("Resource_ihs8b")
+flags_2 = SubResource("Resource_qmwr8")
+flags_3 = SubResource("Resource_wp3x5")
+flags_4 = SubResource("Resource_j7wpk")
+flags_5 = SubResource("Resource_qrcqr")
+flags_6 = SubResource("Resource_2byw0")
+hit_dice = 8
+hit_dice_sides = 10
+level = 9
+max_num = 100
+experience = 28
+name = "King cobra"
+notice_range = 8
+rarity = 2
+sleep = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    King    "
+split_name_3 = "   cobra    "

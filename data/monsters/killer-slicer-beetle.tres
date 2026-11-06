@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rtwgs"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xmca5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rt6sl"]
+
+[sub_resource type="Resource" id="Resource_agkkv"]
+script = ExtResource("1_rtwgs")
+damage_dice = 5
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_7u5bf"]
+script = ExtResource("1_rtwgs")
+damage_dice = 5
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_4820k"]
+script = ExtResource("1_rtwgs")
+
+[sub_resource type="Resource" id="Resource_06cwy"]
+script = ExtResource("1_rtwgs")
+
+[sub_resource type="Resource" id="Resource_vcl6n"]
+script = ExtResource("2_xmca5")
+
+[sub_resource type="Resource" id="Resource_c8l73"]
+script = ExtResource("2_xmca5")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_qp44v"]
+script = ExtResource("2_xmca5")
+value = 128
+
+[sub_resource type="Resource" id="Resource_7hk7s"]
+script = ExtResource("2_xmca5")
+
+[sub_resource type="Resource" id="Resource_o47pi"]
+script = ExtResource("2_xmca5")
+
+[sub_resource type="Resource" id="Resource_lt77h"]
+script = ExtResource("2_xmca5")
+
+[resource]
+script = ExtResource("3_rt6sl")
+ac = 60
+attack = Array[ExtResource("1_rtwgs")]([SubResource("Resource_agkkv"), SubResource("Resource_7u5bf"), SubResource("Resource_4820k"), SubResource("Resource_06cwy")])
+character = "K"
+colour = 24
+description = "It is a beetle with deadly sharp cutting mandibles and a rock-hard carapace."
+flags_1 = SubResource("Resource_vcl6n")
+flags_2 = SubResource("Resource_c8l73")
+flags_3 = SubResource("Resource_qp44v")
+flags_4 = SubResource("Resource_7hk7s")
+flags_5 = SubResource("Resource_o47pi")
+flags_6 = SubResource("Resource_lt77h")
+hit_dice = 22
+hit_dice_sides = 10
+level = 30
+max_num = 100
+experience = 200
+name = "Killer slicer beetle"
+notice_range = 14
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "   Killer   "
+split_name_2 = "   slicer   "
+split_name_3 = "   beetle   "

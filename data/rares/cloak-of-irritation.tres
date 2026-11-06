@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_1uqff"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_stlyg"]
+
+[sub_resource type="Resource" id="Resource_0txxj"]
+script = ExtResource("1_1uqff")
+
+[sub_resource type="Resource" id="Resource_dkons"]
+script = ExtResource("1_1uqff")
+
+[sub_resource type="Resource" id="Resource_0bq1o"]
+script = ExtResource("1_1uqff")
+value = 1024
+
+[resource]
+script = ExtResource("2_stlyg")
+flags_1 = SubResource("Resource_0txxj")
+flags_2 = SubResource("Resource_dkons")
+flags_3 = SubResource("Resource_0bq1o")
+max_to_damage = 15
+max_to_hit = 15
+name = "of Irritation"
+slot = 31
+id = 38

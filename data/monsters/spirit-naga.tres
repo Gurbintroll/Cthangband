@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_timpd"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dr7c8"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mfhwd"]
+
+[sub_resource type="Resource" id="Resource_1xtst"]
+script = ExtResource("1_timpd")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_qd5ko"]
+script = ExtResource("1_timpd")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_0lrbe"]
+script = ExtResource("1_timpd")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ee16a"]
+script = ExtResource("1_timpd")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_7dt5e"]
+script = ExtResource("2_dr7c8")
+value = 44041288
+
+[sub_resource type="Resource" id="Resource_ub0m7"]
+script = ExtResource("2_dr7c8")
+value = 196624
+
+[sub_resource type="Resource" id="Resource_dgxne"]
+script = ExtResource("2_dr7c8")
+value = 3221225536
+
+[sub_resource type="Resource" id="Resource_pxjs6"]
+script = ExtResource("2_dr7c8")
+
+[sub_resource type="Resource" id="Resource_nfud7"]
+script = ExtResource("2_dr7c8")
+value = 268436480
+
+[sub_resource type="Resource" id="Resource_0447t"]
+script = ExtResource("2_dr7c8")
+value = 4100
+
+[resource]
+script = ExtResource("3_mfhwd")
+ac = 75
+attack = Array[ExtResource("1_timpd")]([SubResource("Resource_1xtst"), SubResource("Resource_qd5ko"), SubResource("Resource_0lrbe"), SubResource("Resource_ee16a")])
+character = "n"
+colour = 29
+description = "A wraithly snake-like form with the torso of a beautiful woman, it is the most powerful of its kind."
+flags_1 = SubResource("Resource_7dt5e")
+flags_2 = SubResource("Resource_ub0m7")
+flags_3 = SubResource("Resource_dgxne")
+flags_4 = SubResource("Resource_pxjs6")
+flags_5 = SubResource("Resource_nfud7")
+flags_6 = SubResource("Resource_0447t")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 30
+hit_dice_sides = 15
+level = 28
+max_num = 100
+experience = 60
+name = "Spirit naga"
+notice_range = 20
+rarity = 2
+sleep = 120
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Spirit   "
+split_name_3 = "    naga    "

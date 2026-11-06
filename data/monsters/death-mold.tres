@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vdcnf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_c4l6j"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_gi4wr"]
+
+[sub_resource type="Resource" id="Resource_bfti6"]
+script = ExtResource("1_vdcnf")
+damage_dice = 7
+damage_dice_sides = 7
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_nwgkb"]
+script = ExtResource("1_vdcnf")
+damage_dice = 7
+damage_dice_sides = 7
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_8kuqi"]
+script = ExtResource("1_vdcnf")
+damage_dice = 7
+damage_dice_sides = 7
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_knfhs"]
+script = ExtResource("1_vdcnf")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_5vpuh"]
+script = ExtResource("2_c4l6j")
+value = 132096
+
+[sub_resource type="Resource" id="Resource_h8mgh"]
+script = ExtResource("2_c4l6j")
+
+[sub_resource type="Resource" id="Resource_r2vqk"]
+script = ExtResource("2_c4l6j")
+value = 3491692608
+
+[sub_resource type="Resource" id="Resource_iixia"]
+script = ExtResource("2_c4l6j")
+
+[sub_resource type="Resource" id="Resource_u541b"]
+script = ExtResource("2_c4l6j")
+
+[sub_resource type="Resource" id="Resource_2j7sl"]
+script = ExtResource("2_c4l6j")
+
+[resource]
+script = ExtResource("3_gi4wr")
+ac = 60
+attack = Array[ExtResource("1_vdcnf")]([SubResource("Resource_bfti6"), SubResource("Resource_nwgkb"), SubResource("Resource_8kuqi"), SubResource("Resource_knfhs")])
+character = "m"
+colour = 2
+description = "It is the epitome of all that is evil, in a mold. Its lifeless form draws power from sucking the souls of those that approach it, a nimbus of pure evil surrounds it. Luckily for you, it can't move."
+flags_1 = SubResource("Resource_5vpuh")
+flags_2 = SubResource("Resource_h8mgh")
+flags_3 = SubResource("Resource_r2vqk")
+flags_4 = SubResource("Resource_iixia")
+flags_5 = SubResource("Resource_u541b")
+flags_6 = SubResource("Resource_2j7sl")
+hit_dice = 100
+hit_dice_sides = 20
+level = 47
+max_num = 100
+experience = 1000
+name = "Death mold"
+notice_range = 200
+rarity = 1
+speed = 140
+split_name_1 = "            "
+split_name_2 = "   Death    "
+split_name_3 = "    mold    "

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_vg6yx"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_olkw4"]
+
+[sub_resource type="Resource" id="Resource_uwnmp"]
+script = ExtResource("1_vg6yx")
+
+[sub_resource type="Resource" id="Resource_tv23j"]
+script = ExtResource("1_vg6yx")
+
+[sub_resource type="Resource" id="Resource_cufnk"]
+script = ExtResource("1_vg6yx")
+value = 15728640
+
+[resource]
+script = ExtResource("2_olkw4")
+chance = Array[int]([4, 0, 0, 0])
+character = "-"
+colour = 19
+cost = 95000
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_uwnmp")
+flags_2 = SubResource("Resource_tv23j")
+flags_3 = SubResource("Resource_cufnk")
+has_flavour = true
+item_category = 65
+level = 75
+locale = Array[int]([75, 0, 0, 0])
+name = "Shard Balls"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 29
+weight = 10
+filename = "Wand:Shard Balls"

@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_6bxr7"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_oi8o0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_pf6oh"]
+
+[sub_resource type="Resource" id="Resource_c078i"]
+script = ExtResource("1_6bxr7")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_k07b6"]
+script = ExtResource("1_6bxr7")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_q2wd1"]
+script = ExtResource("1_6bxr7")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_rebyj"]
+script = ExtResource("1_6bxr7")
+
+[sub_resource type="Resource" id="Resource_3jcww"]
+script = ExtResource("2_oi8o0")
+value = 304088584
+
+[sub_resource type="Resource" id="Resource_1d5wx"]
+script = ExtResource("2_oi8o0")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_pvlg5"]
+script = ExtResource("2_oi8o0")
+value = 3221225536
+
+[sub_resource type="Resource" id="Resource_nffj8"]
+script = ExtResource("2_oi8o0")
+
+[sub_resource type="Resource" id="Resource_q8n5k"]
+script = ExtResource("2_oi8o0")
+value = 268435456
+
+[sub_resource type="Resource" id="Resource_jl66j"]
+script = ExtResource("2_oi8o0")
+value = 134217728
+
+[resource]
+script = ExtResource("3_pf6oh")
+ac = 60
+attack = Array[ExtResource("1_6bxr7")]([SubResource("Resource_c078i"), SubResource("Resource_k07b6"), SubResource("Resource_q2wd1"), SubResource("Resource_rebyj")])
+character = "p"
+colour = 31
+description = "This elusive female spellcaster has a special affinity for dragons, whom she rarely fights without."
+flags_1 = SubResource("Resource_3jcww")
+flags_2 = SubResource("Resource_1d5wx")
+flags_3 = SubResource("Resource_pvlg5")
+flags_4 = SubResource("Resource_nffj8")
+flags_5 = SubResource("Resource_q8n5k")
+flags_6 = SubResource("Resource_jl66j")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 52
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 2100
+name = "Enchantress"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Enchantress "

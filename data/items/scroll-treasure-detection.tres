@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_t747l"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_6tgo5"]
+
+[sub_resource type="Resource" id="Resource_c415t"]
+script = ExtResource("1_t747l")
+
+[sub_resource type="Resource" id="Resource_kiu5k"]
+script = ExtResource("1_t747l")
+
+[sub_resource type="Resource" id="Resource_orbcf"]
+script = ExtResource("1_t747l")
+
+[resource]
+script = ExtResource("2_6tgo5")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 1
+cost = 15
+easy_know = true
+flags_1 = SubResource("Resource_c415t")
+flags_2 = SubResource("Resource_kiu5k")
+flags_3 = SubResource("Resource_orbcf")
+has_flavour = true
+item_category = 70
+locale = Array[int]([0, 0, 0, 0])
+name = "Treasure Detection"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 26
+weight = 5
+filename = "Scroll:Treasure Detection"

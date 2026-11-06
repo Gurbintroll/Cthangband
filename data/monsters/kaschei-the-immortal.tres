@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cw208y3hnttvc"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_5omko"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_5ee12"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_n314w"]
+
+[sub_resource type="Resource" id="Resource_pa1a3"]
+script = ExtResource("1_5omko")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_filx4"]
+script = ExtResource("1_5omko")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_86gku"]
+script = ExtResource("1_5omko")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_cd0a7"]
+script = ExtResource("1_5omko")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_v16e3"]
+script = ExtResource("2_5ee12")
+value = 1042302469
+
+[sub_resource type="Resource" id="Resource_x8eho"]
+script = ExtResource("2_5ee12")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_rnax2"]
+script = ExtResource("2_5ee12")
+value = 3225288800
+
+[sub_resource type="Resource" id="Resource_qpxg2"]
+script = ExtResource("2_5ee12")
+
+[sub_resource type="Resource" id="Resource_pf8nh"]
+script = ExtResource("2_5ee12")
+value = 411076740
+
+[sub_resource type="Resource" id="Resource_wg57t"]
+script = ExtResource("2_5ee12")
+value = 302514210
+
+[resource]
+script = ExtResource("3_n314w")
+ac = 100
+attack = Array[ExtResource("1_5omko")]([SubResource("Resource_pa1a3"), SubResource("Resource_filx4"), SubResource("Resource_86gku"), SubResource("Resource_cd0a7")])
+character = "L"
+colour = 12
+description = "A stench of corruption and decay surrounds this sorcerer, who has clearly risen from the grave to continue his foul plots and schemes."
+flags_1 = SubResource("Resource_v16e3")
+flags_2 = SubResource("Resource_x8eho")
+flags_3 = SubResource("Resource_rnax2")
+flags_4 = SubResource("Resource_qpxg2")
+flags_5 = SubResource("Resource_pf8nh")
+flags_6 = SubResource("Resource_wg57t")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 60
+hit_dice_sides = 100
+level = 90
+max_num = 1
+experience = 45000
+name = "Kaschei the Immortal"
+notice_range = 100
+rarity = 3
+speed = 130
+split_name_1 = "  Kaschei   "
+split_name_2 = "    the     "
+split_name_3 = "  Immortal  "

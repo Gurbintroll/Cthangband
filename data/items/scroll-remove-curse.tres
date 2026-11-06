@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://r21xwyhj05y"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_qvgui"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_nylqj"]
+
+[sub_resource type="Resource" id="Resource_cqyql"]
+script = ExtResource("1_qvgui")
+
+[sub_resource type="Resource" id="Resource_j3lpp"]
+script = ExtResource("1_qvgui")
+
+[sub_resource type="Resource" id="Resource_jtkl7"]
+script = ExtResource("1_qvgui")
+
+[resource]
+script = ExtResource("2_nylqj")
+chance = Array[int]([1, 2, 2, 0])
+character = "?"
+colour = 4
+cost = 100
+easy_know = true
+flags_1 = SubResource("Resource_cqyql")
+flags_2 = SubResource("Resource_j3lpp")
+flags_3 = SubResource("Resource_jtkl7")
+has_flavour = true
+item_category = 70
+level = 10
+locale = Array[int]([10, 20, 40, 0])
+name = "Remove Curse"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 14
+weight = 5
+filename = "Scroll:Remove Curse"

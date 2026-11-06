@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ca0hr"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_l5sqb"]
+
+[sub_resource type="Resource" id="Resource_85nyc"]
+script = ExtResource("1_ca0hr")
+
+[sub_resource type="Resource" id="Resource_j01i2"]
+script = ExtResource("1_ca0hr")
+
+[sub_resource type="Resource" id="Resource_w4v1u"]
+script = ExtResource("1_ca0hr")
+
+[resource]
+script = ExtResource("2_l5sqb")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 23
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_85nyc")
+flags_2 = SubResource("Resource_j01i2")
+flags_3 = SubResource("Resource_w4v1u")
+has_flavour = true
+item_category = 75
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Lose Memories"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 13
+weight = 4
+filename = "Potion:Lose Memories"

@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_nhrdb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_d51yu"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_fjy4h"]
+
+[sub_resource type="Resource" id="Resource_q8vgu"]
+script = ExtResource("1_nhrdb")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_56acn"]
+script = ExtResource("1_nhrdb")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_5rbg8"]
+script = ExtResource("1_nhrdb")
+
+[sub_resource type="Resource" id="Resource_4vcqg"]
+script = ExtResource("1_nhrdb")
+
+[sub_resource type="Resource" id="Resource_lkaov"]
+script = ExtResource("2_d51yu")
+value = 42991616
+
+[sub_resource type="Resource" id="Resource_qsy4g"]
+script = ExtResource("2_d51yu")
+value = 131104
+
+[sub_resource type="Resource" id="Resource_qoivc"]
+script = ExtResource("2_d51yu")
+value = 3222274176
+
+[sub_resource type="Resource" id="Resource_fe02v"]
+script = ExtResource("2_d51yu")
+
+[sub_resource type="Resource" id="Resource_jnbv1"]
+script = ExtResource("2_d51yu")
+
+[sub_resource type="Resource" id="Resource_8uvmd"]
+script = ExtResource("2_d51yu")
+
+[resource]
+script = ExtResource("3_fjy4h")
+ac = 50
+attack = Array[ExtResource("1_nhrdb")]([SubResource("Resource_q8vgu"), SubResource("Resource_56acn"), SubResource("Resource_5rbg8"), SubResource("Resource_4vcqg")])
+character = "$"
+colour = 5
+description = "It is a pile of coins, shambling forward on thousands of tiny legs."
+flags_1 = SubResource("Resource_lkaov")
+flags_2 = SubResource("Resource_qsy4g")
+flags_3 = SubResource("Resource_qoivc")
+flags_4 = SubResource("Resource_fe02v")
+flags_5 = SubResource("Resource_jnbv1")
+flags_6 = SubResource("Resource_8uvmd")
+hit_dice = 20
+hit_dice_sides = 8
+level = 13
+max_num = 100
+experience = 45
+name = "Creeping mithril coins"
+notice_range = 5
+rarity = 4
+sleep = 10
+speed = 110
+split_name_1 = "  Creeping  "
+split_name_2 = "  mithril   "
+split_name_3 = "   coins    "

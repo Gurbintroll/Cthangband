@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b0qfwspjf8m3y"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_8ww2d"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_f72wq"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_wnp5w"]
+
+[sub_resource type="Resource" id="Resource_xmtcp"]
+script = ExtResource("1_8ww2d")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_qkssc"]
+script = ExtResource("1_8ww2d")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_xoy5o"]
+script = ExtResource("1_8ww2d")
+
+[sub_resource type="Resource" id="Resource_h2enq"]
+script = ExtResource("1_8ww2d")
+
+[sub_resource type="Resource" id="Resource_7u3fg"]
+script = ExtResource("2_f72wq")
+value = 49665
+
+[sub_resource type="Resource" id="Resource_g7k3s"]
+script = ExtResource("2_f72wq")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_w5lxr"]
+script = ExtResource("2_f72wq")
+value = 3221225600
+
+[sub_resource type="Resource" id="Resource_riopc"]
+script = ExtResource("2_f72wq")
+
+[sub_resource type="Resource" id="Resource_hkr56"]
+script = ExtResource("2_f72wq")
+
+[sub_resource type="Resource" id="Resource_lnc3b"]
+script = ExtResource("2_f72wq")
+
+[resource]
+script = ExtResource("3_wnp5w")
+ac = 30
+attack = Array[ExtResource("1_8ww2d")]([SubResource("Resource_xmtcp"), SubResource("Resource_qkssc"), SubResource("Resource_xoy5o"), SubResource("Resource_h2enq")])
+character = "r"
+colour = 12
+description = "A large brown rat. He's the leader of the pack."
+flags_1 = SubResource("Resource_7u3fg")
+flags_2 = SubResource("Resource_g7k3s")
+flags_3 = SubResource("Resource_w5lxr")
+flags_4 = SubResource("Resource_riopc")
+flags_5 = SubResource("Resource_hkr56")
+flags_6 = SubResource("Resource_lnc3b")
+hit_dice = 5
+hit_dice_sides = 5
+level = 2
+max_num = 1
+experience = 32
+name = "King Rat"
+notice_range = 30
+rarity = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    King    "
+split_name_3 = "    Rat     "

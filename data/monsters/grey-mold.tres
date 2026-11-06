@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_gqma4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_q15e5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_2hnqp"]
+
+[sub_resource type="Resource" id="Resource_rglcm"]
+script = ExtResource("1_gqma4")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3hb66"]
+script = ExtResource("1_gqma4")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_qngpm"]
+script = ExtResource("1_gqma4")
+
+[sub_resource type="Resource" id="Resource_dqhlk"]
+script = ExtResource("1_gqma4")
+
+[sub_resource type="Resource" id="Resource_tb1dn"]
+script = ExtResource("2_q15e5")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_ncttb"]
+script = ExtResource("2_q15e5")
+value = 65
+
+[sub_resource type="Resource" id="Resource_fitb3"]
+script = ExtResource("2_q15e5")
+value = 3490709504
+
+[sub_resource type="Resource" id="Resource_wv8m8"]
+script = ExtResource("2_q15e5")
+
+[sub_resource type="Resource" id="Resource_sn23a"]
+script = ExtResource("2_q15e5")
+
+[sub_resource type="Resource" id="Resource_vi222"]
+script = ExtResource("2_q15e5")
+
+[resource]
+script = ExtResource("3_2hnqp")
+ac = 1
+attack = Array[ExtResource("1_gqma4")]([SubResource("Resource_rglcm"), SubResource("Resource_3hb66"), SubResource("Resource_qngpm"), SubResource("Resource_dqhlk")])
+character = "m"
+colour = 23
+description = "A small strange growth."
+flags_1 = SubResource("Resource_tb1dn")
+flags_2 = SubResource("Resource_ncttb")
+flags_3 = SubResource("Resource_fitb3")
+flags_4 = SubResource("Resource_wv8m8")
+flags_5 = SubResource("Resource_sn23a")
+flags_6 = SubResource("Resource_vi222")
+hit_dice = 1
+hit_dice_sides = 2
+level = 1
+max_num = 100
+experience = 3
+name = "Grey mold"
+notice_range = 2
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Grey    "
+split_name_3 = "    mold    "

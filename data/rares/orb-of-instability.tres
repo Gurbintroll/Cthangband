@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_s7oen"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_b02e8"]
+
+[sub_resource type="Resource" id="Resource_msojx"]
+script = ExtResource("1_s7oen")
+
+[sub_resource type="Resource" id="Resource_l07cg"]
+script = ExtResource("1_s7oen")
+
+[sub_resource type="Resource" id="Resource_yg4ks"]
+script = ExtResource("1_s7oen")
+value = 82837504
+
+[resource]
+script = ExtResource("2_b02e8")
+flags_1 = SubResource("Resource_msojx")
+flags_2 = SubResource("Resource_l07cg")
+flags_3 = SubResource("Resource_yg4ks")
+name = "of Instability"
+id = 130

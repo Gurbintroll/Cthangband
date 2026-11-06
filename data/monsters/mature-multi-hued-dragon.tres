@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_c23o3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kp5lk"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_quw1i"]
+
+[sub_resource type="Resource" id="Resource_jchmd"]
+script = ExtResource("1_c23o3")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_d4e35"]
+script = ExtResource("1_c23o3")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_o2blp"]
+script = ExtResource("1_c23o3")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_fcilp"]
+script = ExtResource("1_c23o3")
+
+[sub_resource type="Resource" id="Resource_5rmid"]
+script = ExtResource("2_kp5lk")
+value = 201328256
+
+[sub_resource type="Resource" id="Resource_dbhwd"]
+script = ExtResource("2_kp5lk")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_n2ihk"]
+script = ExtResource("2_kp5lk")
+value = 3223257160
+
+[sub_resource type="Resource" id="Resource_5bx2i"]
+script = ExtResource("2_kp5lk")
+value = 7936
+
+[sub_resource type="Resource" id="Resource_4j3xc"]
+script = ExtResource("2_kp5lk")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_3dml6"]
+script = ExtResource("2_kp5lk")
+
+[resource]
+script = ExtResource("3_quw1i")
+ac = 65
+attack = Array[ExtResource("1_c23o3")]([SubResource("Resource_jchmd"), SubResource("Resource_d4e35"), SubResource("Resource_o2blp"), SubResource("Resource_fcilp")])
+character = "d"
+colour = 26
+description = "A large dragon, scales shimmering many colours."
+flags_1 = SubResource("Resource_5rmid")
+flags_2 = SubResource("Resource_dbhwd")
+flags_3 = SubResource("Resource_n2ihk")
+flags_4 = SubResource("Resource_5bx2i")
+flags_5 = SubResource("Resource_4j3xc")
+flags_6 = SubResource("Resource_3dml6")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 64
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 1700
+name = "Mature multi-hued dragon"
+notice_range = 20
+rarity = 2
+sleep = 50
+speed = 110
+split_name_1 = "   Mature   "
+split_name_2 = " multi-hued "
+split_name_3 = "   dragon   "

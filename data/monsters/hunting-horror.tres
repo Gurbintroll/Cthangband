@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b6u0ydv4u86y8"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_jk8ca"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_mpdfm"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_ne24h"]
+
+[sub_resource type="Resource" id="Resource_es4u1"]
+script = ExtResource("1_jk8ca")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 20
+method = 6
+
+[sub_resource type="Resource" id="Resource_6gyab"]
+script = ExtResource("1_jk8ca")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_e86ab"]
+script = ExtResource("1_jk8ca")
+damage_dice = 9
+damage_dice_sides = 4
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_h6gam"]
+script = ExtResource("1_jk8ca")
+
+[sub_resource type="Resource" id="Resource_gxdty"]
+script = ExtResource("2_mpdfm")
+value = 18875904
+
+[sub_resource type="Resource" id="Resource_b1wls"]
+script = ExtResource("2_mpdfm")
+value = 208896
+
+[sub_resource type="Resource" id="Resource_yraq7"]
+script = ExtResource("2_mpdfm")
+value = 3356758080
+
+[sub_resource type="Resource" id="Resource_dq08u"]
+script = ExtResource("2_mpdfm")
+value = 32768
+
+[sub_resource type="Resource" id="Resource_jixyi"]
+script = ExtResource("2_mpdfm")
+value = 805306368
+
+[sub_resource type="Resource" id="Resource_pypt2"]
+script = ExtResource("2_mpdfm")
+value = 16777216
+
+[resource]
+script = ExtResource("3_ne24h")
+ac = 90
+attack = Array[ExtResource("1_jk8ca")]([SubResource("Resource_es4u1"), SubResource("Resource_6gyab"), SubResource("Resource_e86ab"), SubResource("Resource_h6gam")])
+character = "U"
+colour = 23
+description = "It is a winged serpent with a distorted head."
+flags_1 = SubResource("Resource_gxdty")
+flags_2 = SubResource("Resource_b1wls")
+flags_3 = SubResource("Resource_yraq7")
+flags_4 = SubResource("Resource_dq08u")
+flags_5 = SubResource("Resource_jixyi")
+flags_6 = SubResource("Resource_pypt2")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 30
+hit_dice_sides = 17
+level = 42
+max_num = 100
+experience = 2300
+name = "Hunting horror"
+notice_range = 20
+rarity = 2
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Hunting   "
+split_name_3 = "   horror   "

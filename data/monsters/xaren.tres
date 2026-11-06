@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_hrjxi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0ff8u"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ngoue"]
+
+[sub_resource type="Resource" id="Resource_p42iq"]
+script = ExtResource("1_hrjxi")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_l3df0"]
+script = ExtResource("1_hrjxi")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3oal4"]
+script = ExtResource("1_hrjxi")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vtlkb"]
+script = ExtResource("1_hrjxi")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_douor"]
+script = ExtResource("2_0ff8u")
+value = 512
+
+[sub_resource type="Resource" id="Resource_3hdpa"]
+script = ExtResource("2_0ff8u")
+value = 8650848
+
+[sub_resource type="Resource" id="Resource_f3y6s"]
+script = ExtResource("2_0ff8u")
+value = 3223199744
+
+[sub_resource type="Resource" id="Resource_qrgy3"]
+script = ExtResource("2_0ff8u")
+
+[sub_resource type="Resource" id="Resource_sgc38"]
+script = ExtResource("2_0ff8u")
+
+[sub_resource type="Resource" id="Resource_eaira"]
+script = ExtResource("2_0ff8u")
+
+[resource]
+script = ExtResource("3_ngoue")
+ac = 80
+attack = Array[ExtResource("1_hrjxi")]([SubResource("Resource_p42iq"), SubResource("Resource_l3df0"), SubResource("Resource_3oal4"), SubResource("Resource_vtlkb")])
+character = "x"
+colour = 31
+description = "It is a tougher relative of the Xorn. Its hide glitters with metal ores."
+flags_1 = SubResource("Resource_douor")
+flags_2 = SubResource("Resource_3hdpa")
+flags_3 = SubResource("Resource_f3y6s")
+flags_4 = SubResource("Resource_qrgy3")
+flags_5 = SubResource("Resource_sgc38")
+flags_6 = SubResource("Resource_eaira")
+hit_dice = 32
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 1200
+name = "Xaren"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Xaren    "

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_kmowa"]
+
+[resource]
+script = ExtResource("1_kmowa")
+category = 7
+height = 13
+name = "Planet X"
+rating = 10
+text = "%%%%%%%%%%%%%%%%.............%%.XXXXX#XXXXX.%%.XXX,,,,,XXX.%%.X,XX,,,XX,X.%%.X,,XX9XX,,X.%%.#,,9###9,,#.%%.X,,XX9XX,,X.%%.X,XX,,,XX,X.%%.XXX,,,,,XXX.%%.XXXXX#XXXXX.%%.............%%%%%%%%%%%%%%%%"
+width = 15

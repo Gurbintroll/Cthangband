@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_un0nq"]
+
+[resource]
+script = ExtResource("1_un0nq")
+alter_action = 1
+appear_as = "TownWall"
+blocks_los = true
+category = 12
+character = "#"
+colour = 30
+description = "town wall"
+dims_outside_los = true
+is_permanent = true
+is_wall = true
+name = "TownWall"
+run_past = true
+yellow_in_torch_light = true

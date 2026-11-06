@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_rk4nm"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_jkky7"]
+
+[sub_resource type="Resource" id="Resource_upv72"]
+script = ExtResource("1_rk4nm")
+
+[sub_resource type="Resource" id="Resource_8okmi"]
+script = ExtResource("1_rk4nm")
+
+[sub_resource type="Resource" id="Resource_ugf4h"]
+script = ExtResource("1_rk4nm")
+value = 15728672
+
+[resource]
+script = ExtResource("2_jkky7")
+chance = Array[int]([4, 0, 0, 0])
+character = "\""
+colour = 9
+cost = 30000
+flags_1 = SubResource("Resource_upv72")
+flags_2 = SubResource("Resource_8okmi")
+flags_3 = SubResource("Resource_ugf4h")
+has_flavour = true
+item_category = 40
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Anti-Magic"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 13
+weight = 3
+filename = "Amulet:Anti-Magic"

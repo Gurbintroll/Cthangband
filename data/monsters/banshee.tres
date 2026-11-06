@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_p6otn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_i0v58"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_k8us7"]
+
+[sub_resource type="Resource" id="Resource_jk0ce"]
+script = ExtResource("1_p6otn")
+effect = 15
+method = 16
+
+[sub_resource type="Resource" id="Resource_u7cy1"]
+script = ExtResource("1_p6otn")
+effect = 25
+method = 2
+
+[sub_resource type="Resource" id="Resource_tgp6x"]
+script = ExtResource("1_p6otn")
+
+[sub_resource type="Resource" id="Resource_xyero"]
+script = ExtResource("1_p6otn")
+
+[sub_resource type="Resource" id="Resource_71sgb"]
+script = ExtResource("2_i0v58")
+value = 17301512
+
+[sub_resource type="Resource" id="Resource_x1ttp"]
+script = ExtResource("2_i0v58")
+value = 4456496
+
+[sub_resource type="Resource" id="Resource_2f477"]
+script = ExtResource("2_i0v58")
+value = 3222798432
+
+[sub_resource type="Resource" id="Resource_r6n6o"]
+script = ExtResource("2_i0v58")
+
+[sub_resource type="Resource" id="Resource_yogi8"]
+script = ExtResource("2_i0v58")
+value = 512
+
+[sub_resource type="Resource" id="Resource_qqntn"]
+script = ExtResource("2_i0v58")
+value = 32
+
+[resource]
+script = ExtResource("3_k8us7")
+ac = 24
+attack = Array[ExtResource("1_p6otn")]([SubResource("Resource_jk0ce"), SubResource("Resource_u7cy1"), SubResource("Resource_tgp6x"), SubResource("Resource_xyero")])
+character = "G"
+colour = 5
+description = "It is a ghostly woman's form that wails mournfully."
+flags_1 = SubResource("Resource_71sgb")
+flags_2 = SubResource("Resource_x1ttp")
+flags_3 = SubResource("Resource_2f477")
+flags_4 = SubResource("Resource_r6n6o")
+flags_5 = SubResource("Resource_yogi8")
+flags_6 = SubResource("Resource_qqntn")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 6
+hit_dice_sides = 8
+level = 24
+max_num = 100
+experience = 60
+name = "Banshee"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Banshee   "

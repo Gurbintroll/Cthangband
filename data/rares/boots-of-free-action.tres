@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_uuqjg"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_376f2"]
+
+[sub_resource type="Resource" id="Resource_f0yuh"]
+script = ExtResource("1_uuqjg")
+
+[sub_resource type="Resource" id="Resource_c60vj"]
+script = ExtResource("1_uuqjg")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_vgvhy"]
+script = ExtResource("1_uuqjg")
+
+[resource]
+script = ExtResource("2_376f2")
+cost = 1000
+flags_1 = SubResource("Resource_f0yuh")
+flags_2 = SubResource("Resource_c60vj")
+flags_3 = SubResource("Resource_vgvhy")
+name = "of Free Action"
+rating = 15
+slot = 35
+id = 48

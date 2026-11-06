@@ -1,0 +1,73 @@
+[center][font_size=48][color="brown"][b]Summoner[/b][/color][/font_size][/center]
+[hr color="brown"]
+[center][table=2][cell][b]Hit Dice[/b][/cell][cell][b]Experience Factor[/b][/cell]
+[cell]+6[/cell][cell]+35%[/cell][/table][/center]
+
+[center][table=6][cell][b]Strength[/b][/cell][cell][b]Intelligence[/b][/cell][cell][b]Wisdom[/b][/cell][cell][b]Dexterity[/b][/cell][cell][b]Constitution[/b][/cell][cell][b]Charisma[/b][/cell]
+[cell]+3[/cell][cell]+1[/cell][cell]-1[/cell][cell]+0[/cell][cell]+2[/cell][cell]-2[/cell][/table][/center]
+
+[center][table=8][cell][b][/b][/cell][cell][b]Devices[/b][/cell][cell][b]Disarming[/b][/cell][cell][b]Melee[/b][/cell][cell][b]Ranged[/b][/cell][cell][b]Saves[/b][/cell][cell][b]Searching[/b][/cell][cell][b]Stealth[/b][/cell]
+[cell]Base Bonus[/cell][cell]26%[/cell][cell]24%[/cell][cell]60%[/cell][cell]65%[/cell][cell]28%[/cell][cell]12%[/cell][cell]1%[/cell]
+[cell]Bonus per Level[/cell][cell]+1.1%[/cell][cell]+0.7%[/cell][cell]+4.0%[/cell][cell]+4.0%[/cell][cell]+1.1%[/cell][cell]+0.0%[/cell][cell]+0.0%[/cell][/table][/center]
+
+Summoners are fighters who supplement their own fighting skills with the ability to summon allies.
+
+In addition to their fighting abilities, summoners are able to cast spells from the [color="blue"][url="Tarot Spells"]Tarot[/url][/color] realm, and are able to have more summoned allies at once than any other profession.
+
+They cast these spells as an [color="blue"][url="Intelligence"]intelligence[/url][/color] based [color="blue"][url="Magic Basics"]arcane[/url][/color] spell caster, and as such they choose which spells to learn from their realm when they increase in level.
+
+(Spells in [i]italics[/i] are found only in rare books.)
+
+[center][table=2][cell][b]Level[/b][/cell][cell][b]Tarot[/b][/cell]
+[cell]1[/cell][cell]Phase Door[/cell]
+[cell]2[/cell][cell][/cell]
+[cell]3[/cell][cell]Mind Blast[/cell]
+[cell]4[/cell][cell][/cell]
+[cell]5[/cell][cell]Tarot Draw[/cell]
+[cell]6[/cell][cell]Reset Recall[/cell]
+[cell]7[/cell][cell]Teleport[/cell]
+[cell]8[/cell][cell][/cell]
+[cell]9[/cell][cell]Dimension Door[/cell]
+[cell]10[/cell][cell][/cell]
+[cell]11[/cell][cell][/cell]
+[cell]12[/cell][cell][/cell]
+[cell]13[/cell][cell][/cell]
+[cell]14[/cell][cell]Astral Spying[/cell]
+[cell]15[/cell][cell][/cell]
+[cell]16[/cell][cell][/cell]
+[cell]17[/cell][cell]Teleport Away[/cell]
+[cell]18[/cell][cell][/cell]
+[cell]19[/cell][cell][/cell]
+[cell]20[/cell][cell]Summon Object[/cell]
+[cell]21[/cell][cell][/cell]
+[cell]22[/cell][cell][/cell]
+[cell]23[/cell][cell][i]Summon Spiders[/i][/cell]
+[cell]24[/cell][cell]Summon Animal[/cell]
+[cell]25[/cell][cell][/cell]
+[cell]26[/cell][cell][i][/i][/cell]
+[cell]27[/cell][cell][/cell]
+[cell]28[/cell][cell]Phantasmal Servant[/cell]
+[cell]29[/cell][cell][i]Summon Hounds[/i][/cell]
+[cell]30[/cell][cell]Summon Monster[/cell]
+[cell]31[/cell][cell][i]Ethereal Divination[/i][/cell]
+[cell]32[/cell][cell][i]Astral Lore[/i][/cell]
+[cell]33[/cell][cell]Conjure Elemental
+[i]The Fool[/i][/cell]
+[cell]34[/cell][cell][/cell]
+[cell]35[/cell][cell]Teleport Level[/cell]
+[cell]36[/cell][cell][i]Summon Undead[/i][/cell]
+[cell]37[/cell][cell][i]Astral Branding[/i][/cell]
+[cell]38[/cell][cell][/cell]
+[cell]39[/cell][cell][i]Summon Dragon[/i][/cell]
+[cell]40[/cell][cell]Word of Recall[/cell]
+[cell]41[/cell][cell][i]Extradimensional Being[/i][/cell]
+[cell]42[/cell][cell]Banish
+[i]Death Dealing[/i][/cell]
+[cell]43[/cell][cell][i]Mass Summons[/i][/cell]
+[cell]44[/cell][cell][/cell]
+[cell]45[/cell][cell][i]Summon Reaver[/i][/cell]
+[cell]46[/cell][cell][/cell]
+[cell]47[/cell][cell][i]Summon Demon[/i][/cell]
+[cell]48[/cell][cell][i]Summon Ancient Dragon[/i][/cell]
+[cell]49[/cell][cell][i]Summon Greater Undead[/i][/cell]
+[cell]50[/cell][cell][/cell][/table][/center]

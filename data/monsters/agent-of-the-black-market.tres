@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_j1mmf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1ju8i"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1if52"]
+
+[sub_resource type="Resource" id="Resource_uk2mv"]
+script = ExtResource("1_j1mmf")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_2lbok"]
+script = ExtResource("1_j1mmf")
+effect = 6
+method = 2
+
+[sub_resource type="Resource" id="Resource_6l661"]
+script = ExtResource("1_j1mmf")
+
+[sub_resource type="Resource" id="Resource_0npr8"]
+script = ExtResource("1_j1mmf")
+
+[sub_resource type="Resource" id="Resource_n0dif"]
+script = ExtResource("2_1ju8i")
+value = 4194308
+
+[sub_resource type="Resource" id="Resource_8ay1x"]
+script = ExtResource("2_1ju8i")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_oo3j8"]
+script = ExtResource("2_1ju8i")
+value = 64
+
+[sub_resource type="Resource" id="Resource_gbile"]
+script = ExtResource("2_1ju8i")
+
+[sub_resource type="Resource" id="Resource_a24ba"]
+script = ExtResource("2_1ju8i")
+
+[sub_resource type="Resource" id="Resource_ymtti"]
+script = ExtResource("2_1ju8i")
+
+[resource]
+script = ExtResource("3_1if52")
+ac = 8
+attack = Array[ExtResource("1_j1mmf")]([SubResource("Resource_uk2mv"), SubResource("Resource_2lbok"), SubResource("Resource_6l661"), SubResource("Resource_0npr8")])
+character = "t"
+colour = 2
+description = "He 'finds' new wares for the Black Market. From unwary adventurers..."
+flags_1 = SubResource("Resource_n0dif")
+flags_2 = SubResource("Resource_8ay1x")
+flags_3 = SubResource("Resource_oo3j8")
+flags_4 = SubResource("Resource_gbile")
+flags_5 = SubResource("Resource_a24ba")
+flags_6 = SubResource("Resource_ymtti")
+hit_dice = 2
+hit_dice_sides = 8
+max_num = 100
+name = "Agent of the black market"
+notice_range = 10
+rarity = 1
+sleep = 99
+speed = 110
+split_name_1 = "  Agent of  "
+split_name_2 = " the black  "
+split_name_3 = "   market   "

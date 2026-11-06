@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_y81e6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4843s"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_tg7tn"]
+
+[sub_resource type="Resource" id="Resource_6floq"]
+script = ExtResource("1_y81e6")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_x6ryq"]
+script = ExtResource("1_y81e6")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tbo2e"]
+script = ExtResource("1_y81e6")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7xlsa"]
+script = ExtResource("1_y81e6")
+
+[sub_resource type="Resource" id="Resource_ch14p"]
+script = ExtResource("2_4843s")
+value = 18874372
+
+[sub_resource type="Resource" id="Resource_pyhi2"]
+script = ExtResource("2_4843s")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_s6lbk"]
+script = ExtResource("2_4843s")
+value = 3222798400
+
+[sub_resource type="Resource" id="Resource_x5w7m"]
+script = ExtResource("2_4843s")
+
+[sub_resource type="Resource" id="Resource_nvppq"]
+script = ExtResource("2_4843s")
+value = 2550153216
+
+[sub_resource type="Resource" id="Resource_ydvge"]
+script = ExtResource("2_4843s")
+value = 28673
+
+[resource]
+script = ExtResource("3_tg7tn")
+ac = 50
+attack = Array[ExtResource("1_y81e6")]([SubResource("Resource_6floq"), SubResource("Resource_x6ryq"), SubResource("Resource_tbo2e"), SubResource("Resource_7xlsa")])
+character = "p"
+colour = 23
+description = "An embodiment of all the cardinal vices, he beholds you scornfully."
+flags_1 = SubResource("Resource_ch14p")
+flags_2 = SubResource("Resource_pyhi2")
+flags_3 = SubResource("Resource_s6lbk")
+flags_4 = SubResource("Resource_x5w7m")
+flags_5 = SubResource("Resource_nvppq")
+flags_6 = SubResource("Resource_ydvge")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 30
+hit_dice_sides = 20
+level = 33
+max_num = 100
+experience = 450
+name = "Anti-paladin"
+notice_range = 30
+rarity = 2
+sleep = 30
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Anti-paladin"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_di5yn"]
+
+[resource]
+script = ExtResource("1_di5yn")
+alter_action = 1
+appear_as = "Magma"
+blocks_los = true
+category = 9
+character = "#"
+colour = 23
+description = "magma vein"
+dims_outside_los = true
+is_wall = true
+map_priority = 11
+name = "MagmaHidTreas"
+run_past = true
+yellow_in_torch_light = true

@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_xa34e"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wf2w1"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_38hi8"]
+
+[sub_resource type="Resource" id="Resource_pwbcs"]
+script = ExtResource("1_xa34e")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_0do5t"]
+script = ExtResource("1_xa34e")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_kccg8"]
+script = ExtResource("1_xa34e")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_7c8xl"]
+script = ExtResource("1_xa34e")
+
+[sub_resource type="Resource" id="Resource_y1ymh"]
+script = ExtResource("2_wf2w1")
+value = 150996480
+
+[sub_resource type="Resource" id="Resource_b7jmd"]
+script = ExtResource("2_wf2w1")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_cu0mv"]
+script = ExtResource("2_wf2w1")
+value = 3221225480
+
+[sub_resource type="Resource" id="Resource_hl73j"]
+script = ExtResource("2_wf2w1")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_jvfh2"]
+script = ExtResource("2_wf2w1")
+value = 671088640
+
+[sub_resource type="Resource" id="Resource_bl36r"]
+script = ExtResource("2_wf2w1")
+
+[resource]
+script = ExtResource("3_38hi8")
+ac = 80
+attack = Array[ExtResource("1_xa34e")]([SubResource("Resource_pwbcs"), SubResource("Resource_0do5t"), SubResource("Resource_kccg8"), SubResource("Resource_7c8xl")])
+character = "d"
+colour = 31
+description = "A large dragon with scales of gleaming gold."
+flags_1 = SubResource("Resource_y1ymh")
+flags_2 = SubResource("Resource_b7jmd")
+flags_3 = SubResource("Resource_cu0mv")
+flags_4 = SubResource("Resource_hl73j")
+flags_5 = SubResource("Resource_jvfh2")
+flags_6 = SubResource("Resource_bl36r")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 56
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 1500
+name = "Mature gold dragon"
+notice_range = 20
+rarity = 2
+sleep = 150
+speed = 110
+split_name_1 = "   Mature   "
+split_name_2 = "    gold    "
+split_name_3 = "   dragon   "

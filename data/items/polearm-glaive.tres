@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_gyrh4"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_1v7ct"]
+
+[sub_resource type="Resource" id="Resource_1e0wt"]
+script = ExtResource("1_gyrh4")
+
+[sub_resource type="Resource" id="Resource_hsj1s"]
+script = ExtResource("1_gyrh4")
+
+[sub_resource type="Resource" id="Resource_37gti"]
+script = ExtResource("1_gyrh4")
+value = 1024
+
+[resource]
+script = ExtResource("2_1v7ct")
+chance = Array[int]([1, 0, 0, 0])
+character = "/"
+colour = 23
+cost = 363
+damage_dice = 2
+damage_dice_sides = 6
+flags_1 = SubResource("Resource_1e0wt")
+flags_2 = SubResource("Resource_hsj1s")
+flags_3 = SubResource("Resource_37gti")
+flavour_aware = true
+item_category = 22
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "& Glaive~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 13
+weight = 190
+filename = "Polearm:Glaive"

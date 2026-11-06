@@ -1,0 +1,107 @@
+﻿[center][font_size=48][color="brown"][b]Folk Spells[/b][/color][/font_size][/center]
+[hr color="brown"]
+Spells are presented here ordered by book, reflecting how difficult each spell is to cast.
+
+Unlike the other realms of magic, which contain two common books of spells of increasing difficulty which can be bought in town and a further two rare books of assorted spells that can only be found in the dungeons, all four folk books are common and can be bought in town. Similarly, all four books contain spells of increasing difficulty.
+
+The level at which each individual spell is unlocked and the power cost to cast each spell is not given here, since it will vary with each profession that has access to this realm.
+
+[font_size=24][color="brown"][b]Cantrips For Beginners[/b][/color][/font_size]
+[b]a) Zap[/b]
+Fires a bolt of electricity.
+
+[b]b) Wizard Lock[/b]
+Locks a nearby door.
+
+[b]c) Detect Invisibility[/b]
+Reveals the location of nearby invisible creatures.
+
+[b]d) Detect Monsters[/b]
+Reveals the location of nearby creatures.
+
+[b]e) Blink[/b]
+Teleports you to a random nearby location.
+
+[b]f) Light Area[/b]
+Permanently lights the nearby area, possibly damaging creatures.
+
+[b]g) Trap & Door Destruction[/b]
+Destroys any adjacent doors or traps.
+
+[b]h) Cure Light Wounds[/b]
+Heals 2d8 damage and reduces bleeding.
+
+[font_size=24][color="brown"][b]Minor Magicks[/b][/color][/font_size]
+[b]a) Detect Doors & Traps[/b]
+Detects all nearby secret doors, traps and stairs.
+
+[b]b) Phlogiston[/b]
+Provides extra fuel for a light source.
+
+[b]c) Detect Treasure[/b]
+Detects nearby money and seams of treasure.
+
+[b]d) Detect Enchantment[/b]
+Detects nearby magical items.
+
+[b]e) Detect Objects[/b]
+Reveals the location of nearby objects.
+
+[b]f) Cure Poison[/b]
+Removes all poison from your system.
+
+[b]g) Resist Cold[/b]
+Provides a temporary resistance to cold.
+
+[b]h) Resist Fire[/b]
+Provides a temporary resistance to fire.
+
+[font_size=24][color="brown"][b]Major Magicks[/b][/color][/font_size]
+[b]a) Resist Lightning[/b]
+Provides a temporary resistance to electricity.
+
+[b]b) Resist Acid[/b]
+Provides a temporary resistance to acid.
+
+[b]c) Cure Medium Wounds[/b]
+Cures 4d8 damage and severely reduces bleeding.
+
+[b]d) Teleport[/b]
+Teleports you to a random location on the level.
+
+[b]e) Stone to Mud[/b]
+Turns a square of rock into loose mud, effectively removing it.
+
+[b]f) Ray of Light[/b]
+Creates a beam of permanent light, possibly damaging creatures.
+
+[b]g) Satisfy Hunger[/b]
+Removes all hunger, leaving you comfortably full.
+
+[b]h) See Invisible[/b]
+Allows you to see invisible creatures for a short while.
+
+[font_size=24][color="brown"][b]Magicks of Mastery[/b][/color][/font_size]
+[b]a) Recharging[/b]
+Recharges a wand, staff or rod.
+
+[b]b) Teleport Level[/b]
+Teleports you off the level you are on, onto either the one above or the one below.
+
+[b]c) Identify[/b]
+Identifies the basic abilities of an item.
+
+[b]d) Teleport Away[/b]
+Teleports a creature to a random place on the level.
+
+[b]e) Elemental Ball[/b]
+Fires a ball of a random element (fire, cold, acid or electricity).
+
+[b]f) Detection[/b]
+Detects secret doors, stairs, traps, treasure, objects and monsters (including invisible ones).
+
+[b]g) Word of Recall[/b]
+Teleports you back to the town, or - if you are in the town - back to the deepest level you have explored.
+
+[b]h) Clairvoyance[/b]
+Gives you temporary ESP.

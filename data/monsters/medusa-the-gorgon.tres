@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://8tpuo84sdbpp"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_76k88"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_to0y4"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_hr8o6"]
+
+[sub_resource type="Resource" id="Resource_rbxvo"]
+script = ExtResource("1_76k88")
+effect = 27
+method = 15
+
+[sub_resource type="Resource" id="Resource_rcx64"]
+script = ExtResource("1_76k88")
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_t127i"]
+script = ExtResource("1_76k88")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3mpci"]
+script = ExtResource("1_76k88")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_rbi0j"]
+script = ExtResource("2_to0y4")
+value = 320865801
+
+[sub_resource type="Resource" id="Resource_3bcks"]
+script = ExtResource("2_to0y4")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_o17om"]
+script = ExtResource("2_to0y4")
+value = 3222601792
+
+[sub_resource type="Resource" id="Resource_ef363"]
+script = ExtResource("2_to0y4")
+
+[sub_resource type="Resource" id="Resource_xhg36"]
+script = ExtResource("2_to0y4")
+value = 2298757136
+
+[sub_resource type="Resource" id="Resource_7tky1"]
+script = ExtResource("2_to0y4")
+value = 8388608
+
+[resource]
+script = ExtResource("3_hr8o6")
+ac = 100
+attack = Array[ExtResource("1_76k88")]([SubResource("Resource_rbxvo"), SubResource("Resource_rcx64"), SubResource("Resource_t127i"), SubResource("Resource_3mpci")])
+character = "n"
+colour = 12
+description = "Her face could sink a thousand ships."
+flags_1 = SubResource("Resource_rbi0j")
+flags_2 = SubResource("Resource_3bcks")
+flags_3 = SubResource("Resource_o17om")
+flags_4 = SubResource("Resource_ef363")
+flags_5 = SubResource("Resource_xhg36")
+flags_6 = SubResource("Resource_7tky1")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 24
+hit_dice_sides = 100
+level = 40
+max_num = 1
+experience = 9000
+name = "Medusa, the Gorgon"
+notice_range = 30
+rarity = 3
+sleep = 5
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Medusa   "

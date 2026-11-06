@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qpdsv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qdej6"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_omfmn"]
+
+[sub_resource type="Resource" id="Resource_c7mfx"]
+script = ExtResource("1_qpdsv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_jynnl"]
+script = ExtResource("1_qpdsv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_l3f4r"]
+script = ExtResource("1_qpdsv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_nhlf3"]
+script = ExtResource("1_qpdsv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_dkdmt"]
+script = ExtResource("2_qdej6")
+value = 150995456
+
+[sub_resource type="Resource" id="Resource_3pd2w"]
+script = ExtResource("2_qdej6")
+value = 4391009
+
+[sub_resource type="Resource" id="Resource_ll732"]
+script = ExtResource("2_qdej6")
+value = 3491692544
+
+[sub_resource type="Resource" id="Resource_awvej"]
+script = ExtResource("2_qdej6")
+
+[sub_resource type="Resource" id="Resource_rc1tx"]
+script = ExtResource("2_qdej6")
+
+[sub_resource type="Resource" id="Resource_ifycj"]
+script = ExtResource("2_qdej6")
+
+[resource]
+script = ExtResource("3_omfmn")
+ac = 18
+attack = Array[ExtResource("1_qpdsv")]([SubResource("Resource_c7mfx"), SubResource("Resource_jynnl"), SubResource("Resource_l3f4r"), SubResource("Resource_nhlf3")])
+character = "j"
+colour = 18
+description = "A disgusting animated blob of destruction. Flee its gruesome hunger!"
+flags_1 = SubResource("Resource_dkdmt")
+flags_2 = SubResource("Resource_3pd2w")
+flags_3 = SubResource("Resource_ll732")
+flags_4 = SubResource("Resource_awvej")
+flags_5 = SubResource("Resource_rc1tx")
+flags_6 = SubResource("Resource_ifycj")
+hit_dice = 40
+hit_dice_sides = 10
+level = 35
+max_num = 100
+experience = 36
+name = "Acidic cytoplasm"
+notice_range = 12
+rarity = 5
+sleep = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Acidic   "
+split_name_3 = " cytoplasm  "

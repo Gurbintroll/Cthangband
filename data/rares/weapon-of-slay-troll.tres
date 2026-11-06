@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ax0yc"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_g5vvy"]
+
+[sub_resource type="Resource" id="Resource_p5bdh"]
+script = ExtResource("1_ax0yc")
+value = 2097152
+
+[sub_resource type="Resource" id="Resource_1wnak"]
+script = ExtResource("1_ax0yc")
+
+[sub_resource type="Resource" id="Resource_puvi3"]
+script = ExtResource("1_ax0yc")
+
+[resource]
+script = ExtResource("2_g5vvy")
+cost = 2500
+flags_1 = SubResource("Resource_p5bdh")
+flags_2 = SubResource("Resource_1wnak")
+flags_3 = SubResource("Resource_puvi3")
+name = "of Slay Troll"
+rating = 10
+slot = 24
+id = 72

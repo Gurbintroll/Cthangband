@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_fmmgg"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_r1ttb"]
+
+[sub_resource type="Resource" id="Resource_atesr"]
+script = ExtResource("1_fmmgg")
+
+[sub_resource type="Resource" id="Resource_rjrdc"]
+script = ExtResource("1_fmmgg")
+
+[sub_resource type="Resource" id="Resource_lwei5"]
+script = ExtResource("1_fmmgg")
+value = 1024
+
+[resource]
+script = ExtResource("2_r1ttb")
+chance = Array[int]([1, 0, 0, 0])
+character = "\\"
+colour = 6
+cost = 200
+damage_dice = 1
+damage_dice_sides = 9
+flags_1 = SubResource("Resource_atesr")
+flags_2 = SubResource("Resource_rjrdc")
+flags_3 = SubResource("Resource_lwei5")
+flavour_aware = true
+item_category = 21
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "& Quarterstaff~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 3
+weight = 150
+filename = "Hafted:Quarterstaff"

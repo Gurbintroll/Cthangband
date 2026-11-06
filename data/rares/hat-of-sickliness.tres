@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_u4qay"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_3tykk"]
+
+[sub_resource type="Resource" id="Resource_fmkkc"]
+script = ExtResource("1_u4qay")
+value = 25
+
+[sub_resource type="Resource" id="Resource_jxfth"]
+script = ExtResource("1_u4qay")
+
+[sub_resource type="Resource" id="Resource_ahl0m"]
+script = ExtResource("1_u4qay")
+
+[resource]
+script = ExtResource("2_3tykk")
+flags_1 = SubResource("Resource_fmkkc")
+flags_2 = SubResource("Resource_jxfth")
+flags_3 = SubResource("Resource_ahl0m")
+max_type_specifc_value = 5
+name = "of Sickliness"
+slot = 33
+id = 31

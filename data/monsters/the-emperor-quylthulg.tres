@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bn1bbismfkitv"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_6ht57"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_b1s7j"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_xu6u8"]
+
+[sub_resource type="Resource" id="Resource_j2ekj"]
+script = ExtResource("1_6ht57")
+
+[sub_resource type="Resource" id="Resource_wryuk"]
+script = ExtResource("1_6ht57")
+
+[sub_resource type="Resource" id="Resource_knd0y"]
+script = ExtResource("1_6ht57")
+
+[sub_resource type="Resource" id="Resource_7d85q"]
+script = ExtResource("1_6ht57")
+
+[sub_resource type="Resource" id="Resource_1y32l"]
+script = ExtResource("2_b1s7j")
+value = 136513025
+
+[sub_resource type="Resource" id="Resource_csdtx"]
+script = ExtResource("2_b1s7j")
+value = 16
+
+[sub_resource type="Resource" id="Resource_yo57n"]
+script = ExtResource("2_b1s7j")
+value = 3491758272
+
+[sub_resource type="Resource" id="Resource_spsww"]
+script = ExtResource("2_b1s7j")
+
+[sub_resource type="Resource" id="Resource_3huf6"]
+script = ExtResource("2_b1s7j")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_w6h1i"]
+script = ExtResource("2_b1s7j")
+value = 805306368
+
+[resource]
+script = ExtResource("3_xu6u8")
+ac = 1
+attack = Array[ExtResource("1_6ht57")]([SubResource("Resource_j2ekj"), SubResource("Resource_wryuk"), SubResource("Resource_knd0y"), SubResource("Resource_7d85q")])
+character = "Q"
+colour = 12
+description = "A huge seething mass of flesh with a rudimentary intelligence, the Emperor Quylthulg changes colours in front of your eyes. Pulsating first one colour then the next, it knows only it must bring help to protect itself."
+flags_1 = SubResource("Resource_1y32l")
+flags_2 = SubResource("Resource_csdtx")
+flags_3 = SubResource("Resource_yo57n")
+flags_4 = SubResource("Resource_spsww")
+flags_5 = SubResource("Resource_3huf6")
+flags_6 = SubResource("Resource_w6h1i")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 50
+hit_dice_sides = 100
+level = 78
+max_num = 1
+experience = 20000
+name = "The Emperor Quylthulg"
+notice_range = 30
+rarity = 3
+speed = 130
+split_name_1 = "    The     "
+split_name_2 = "  Emperor   "
+split_name_3 = " Quylthulg  "

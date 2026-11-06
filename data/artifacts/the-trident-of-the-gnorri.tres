@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mtsfb"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_io011"]
+
+[sub_resource type="Resource" id="Resource_xuuga"]
+script = ExtResource("1_mtsfb")
+value = 8454152
+
+[sub_resource type="Resource" id="Resource_k2dwt"]
+script = ExtResource("1_mtsfb")
+value = 268484864
+
+[sub_resource type="Resource" id="Resource_vogqf"]
+script = ExtResource("1_mtsfb")
+value = 301155840
+
+[resource]
+script = ExtResource("2_io011")
+flags_1 = SubResource("Resource_xuuga")
+flags_2 = SubResource("Resource_k2dwt")
+flags_3 = SubResource("Resource_vogqf")
+cost = 120000
+damage_dice = 4
+damage_dice_sides = 8
+item_category = 22
+item_sub_category = 5
+level = 30
+name = "of the *Gnorri*"
+type_specific_value = 4
+rarity = 90
+to_hit = 15
+to_damage = 19
+weight = 70
+id = 108

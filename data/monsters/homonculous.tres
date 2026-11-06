@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_mprgo"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_t1bbr"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vqxcg"]
+
+[sub_resource type="Resource" id="Resource_55n60"]
+script = ExtResource("1_mprgo")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 16
+method = 1
+
+[sub_resource type="Resource" id="Resource_rjqu1"]
+script = ExtResource("1_mprgo")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_682hn"]
+script = ExtResource("1_mprgo")
+
+[sub_resource type="Resource" id="Resource_rcsls"]
+script = ExtResource("1_mprgo")
+
+[sub_resource type="Resource" id="Resource_ldijn"]
+script = ExtResource("2_t1bbr")
+
+[sub_resource type="Resource" id="Resource_e11ga"]
+script = ExtResource("2_t1bbr")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_spbiu"]
+script = ExtResource("2_t1bbr")
+value = 268699728
+
+[sub_resource type="Resource" id="Resource_x4a1e"]
+script = ExtResource("2_t1bbr")
+
+[sub_resource type="Resource" id="Resource_3jgo7"]
+script = ExtResource("2_t1bbr")
+
+[sub_resource type="Resource" id="Resource_lujat"]
+script = ExtResource("2_t1bbr")
+
+[resource]
+script = ExtResource("3_vqxcg")
+ac = 32
+attack = Array[ExtResource("1_mprgo")]([SubResource("Resource_55n60"), SubResource("Resource_rjqu1"), SubResource("Resource_682hn"), SubResource("Resource_rcsls")])
+character = "u"
+colour = 31
+description = "It is a small demonic spirit full of malevolence."
+flags_1 = SubResource("Resource_ldijn")
+flags_2 = SubResource("Resource_e11ga")
+flags_3 = SubResource("Resource_spbiu")
+flags_4 = SubResource("Resource_x4a1e")
+flags_5 = SubResource("Resource_3jgo7")
+flags_6 = SubResource("Resource_lujat")
+hit_dice = 8
+hit_dice_sides = 8
+level = 15
+max_num = 100
+experience = 40
+name = "Homonculous"
+notice_range = 20
+rarity = 3
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Homonculous "

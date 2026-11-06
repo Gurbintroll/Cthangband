@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_b6e68"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tudag"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jagx6"]
+
+[sub_resource type="Resource" id="Resource_ucfce"]
+script = ExtResource("1_b6e68")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 7
+
+[sub_resource type="Resource" id="Resource_q11ip"]
+script = ExtResource("1_b6e68")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 17
+method = 7
+
+[sub_resource type="Resource" id="Resource_414aw"]
+script = ExtResource("1_b6e68")
+
+[sub_resource type="Resource" id="Resource_e2gc7"]
+script = ExtResource("1_b6e68")
+
+[sub_resource type="Resource" id="Resource_si0ip"]
+script = ExtResource("2_tudag")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_epid6"]
+script = ExtResource("2_tudag")
+value = 128
+
+[sub_resource type="Resource" id="Resource_seip5"]
+script = ExtResource("2_tudag")
+value = 128
+
+[sub_resource type="Resource" id="Resource_pumey"]
+script = ExtResource("2_tudag")
+
+[sub_resource type="Resource" id="Resource_sqrob"]
+script = ExtResource("2_tudag")
+
+[sub_resource type="Resource" id="Resource_2t1bw"]
+script = ExtResource("2_tudag")
+
+[resource]
+script = ExtResource("3_jagx6")
+ac = 34
+attack = Array[ExtResource("1_b6e68")]([SubResource("Resource_ucfce"), SubResource("Resource_q11ip"), SubResource("Resource_414aw"), SubResource("Resource_e2gc7")])
+character = "I"
+colour = 16
+description = "It is poisonous and aggressive."
+flags_1 = SubResource("Resource_si0ip")
+flags_2 = SubResource("Resource_epid6")
+flags_3 = SubResource("Resource_seip5")
+flags_4 = SubResource("Resource_pumey")
+flags_5 = SubResource("Resource_sqrob")
+flags_6 = SubResource("Resource_2t1bw")
+hit_dice = 2
+hit_dice_sides = 4
+level = 9
+max_num = 100
+experience = 22
+name = "Killer bee"
+notice_range = 12
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Killer   "
+split_name_3 = "    bee     "

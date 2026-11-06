@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_yiig1"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4nw03"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_uubox"]
+
+[sub_resource type="Resource" id="Resource_2o3f5"]
+script = ExtResource("1_yiig1")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_ivr4v"]
+script = ExtResource("1_yiig1")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_d178j"]
+script = ExtResource("1_yiig1")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_a8mwn"]
+script = ExtResource("1_yiig1")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_6iove"]
+script = ExtResource("2_4nw03")
+value = 168821760
+
+[sub_resource type="Resource" id="Resource_16ylx"]
+script = ExtResource("2_4nw03")
+value = 1245184
+
+[sub_resource type="Resource" id="Resource_tn3w1"]
+script = ExtResource("2_4nw03")
+value = 262272
+
+[sub_resource type="Resource" id="Resource_uiva3"]
+script = ExtResource("2_4nw03")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_tnk18"]
+script = ExtResource("2_4nw03")
+value = 151257092
+
+[sub_resource type="Resource" id="Resource_wa20s"]
+script = ExtResource("2_4nw03")
+
+[resource]
+script = ExtResource("3_uubox")
+ac = 100
+attack = Array[ExtResource("1_yiig1")]([SubResource("Resource_2o3f5"), SubResource("Resource_ivr4v"), SubResource("Resource_d178j"), SubResource("Resource_a8mwn")])
+character = "M"
+colour = 22
+description = "A strange reptilian hybrid with eleven smouldering heads."
+flags_1 = SubResource("Resource_6iove")
+flags_2 = SubResource("Resource_16ylx")
+flags_3 = SubResource("Resource_tn3w1")
+flags_4 = SubResource("Resource_uiva3")
+flags_5 = SubResource("Resource_tnk18")
+flags_6 = SubResource("Resource_wa20s")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 100
+hit_dice_sides = 18
+level = 44
+max_num = 100
+experience = 6000
+name = "11-headed hydra"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = " 11-headed  "
+split_name_3 = "   hydra    "

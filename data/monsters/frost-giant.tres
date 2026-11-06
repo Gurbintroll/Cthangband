@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_08shh"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_smlsx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_f6yuc"]
+
+[sub_resource type="Resource" id="Resource_ir5g6"]
+script = ExtResource("1_08shh")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 12
+method = 1
+
+[sub_resource type="Resource" id="Resource_kinvy"]
+script = ExtResource("1_08shh")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_gs2wc"]
+script = ExtResource("1_08shh")
+
+[sub_resource type="Resource" id="Resource_v878s"]
+script = ExtResource("1_08shh")
+
+[sub_resource type="Resource" id="Resource_8be7y"]
+script = ExtResource("2_smlsx")
+value = 4194308
+
+[sub_resource type="Resource" id="Resource_2a63k"]
+script = ExtResource("2_smlsx")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_8xm4j"]
+script = ExtResource("2_smlsx")
+value = 524356
+
+[sub_resource type="Resource" id="Resource_1xvpw"]
+script = ExtResource("2_smlsx")
+
+[sub_resource type="Resource" id="Resource_0sf5x"]
+script = ExtResource("2_smlsx")
+
+[sub_resource type="Resource" id="Resource_af28e"]
+script = ExtResource("2_smlsx")
+
+[resource]
+script = ExtResource("3_f6yuc")
+ac = 50
+attack = Array[ExtResource("1_08shh")]([SubResource("Resource_ir5g6"), SubResource("Resource_kinvy"), SubResource("Resource_gs2wc"), SubResource("Resource_v878s")])
+character = "P"
+colour = 30
+description = "A twelve foot tall giant covered in furs."
+flags_1 = SubResource("Resource_8be7y")
+flags_2 = SubResource("Resource_2a63k")
+flags_3 = SubResource("Resource_8xm4j")
+flags_4 = SubResource("Resource_1xvpw")
+flags_5 = SubResource("Resource_0sf5x")
+flags_6 = SubResource("Resource_af28e")
+hit_dice = 17
+hit_dice_sides = 10
+level = 15
+max_num = 100
+experience = 75
+name = "Frost giant"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Frost    "
+split_name_3 = "   giant    "

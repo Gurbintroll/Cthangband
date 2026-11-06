@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2s6w4"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_vnhmf"]
+
+[sub_resource type="Resource" id="Resource_m8sbq"]
+script = ExtResource("1_2s6w4")
+
+[sub_resource type="Resource" id="Resource_1x460"]
+script = ExtResource("1_2s6w4")
+
+[sub_resource type="Resource" id="Resource_vqvpl"]
+script = ExtResource("1_2s6w4")
+
+[resource]
+script = ExtResource("2_vnhmf")
+chance = Array[int]([1, 0, 0, 0])
+character = ","
+colour = 17
+easy_know = true
+flags_1 = SubResource("Resource_m8sbq")
+flags_2 = SubResource("Resource_1x460")
+flags_3 = SubResource("Resource_vqvpl")
+has_flavour = true
+item_category = 80
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "Naivety"
+type_specific_value = 500
+stompable = Array[bool]([true, false, false, false])
+sub_category = 9
+weight = 1
+filename = "Food:Naivety"

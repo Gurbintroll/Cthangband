@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1ohwu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rv56w"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ljyst"]
+
+[sub_resource type="Resource" id="Resource_uu5wo"]
+script = ExtResource("1_1ohwu")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6k51e"]
+script = ExtResource("1_1ohwu")
+
+[sub_resource type="Resource" id="Resource_e84ps"]
+script = ExtResource("1_1ohwu")
+
+[sub_resource type="Resource" id="Resource_riv6d"]
+script = ExtResource("1_1ohwu")
+
+[sub_resource type="Resource" id="Resource_euys2"]
+script = ExtResource("2_rv56w")
+value = 10485764
+
+[sub_resource type="Resource" id="Resource_3bpsk"]
+script = ExtResource("2_rv56w")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_tv2n8"]
+script = ExtResource("2_rv56w")
+
+[sub_resource type="Resource" id="Resource_htmcu"]
+script = ExtResource("2_rv56w")
+
+[sub_resource type="Resource" id="Resource_fmwhe"]
+script = ExtResource("2_rv56w")
+
+[sub_resource type="Resource" id="Resource_uy28y"]
+script = ExtResource("2_rv56w")
+
+[resource]
+script = ExtResource("3_ljyst")
+ac = 15
+attack = Array[ExtResource("1_1ohwu")]([SubResource("Resource_uu5wo"), SubResource("Resource_6k51e"), SubResource("Resource_e84ps"), SubResource("Resource_riv6d")])
+character = "t"
+colour = 3
+description = "He wants to kill a hero to prove that he's hard."
+flags_1 = SubResource("Resource_euys2")
+flags_2 = SubResource("Resource_3bpsk")
+flags_3 = SubResource("Resource_tv2n8")
+flags_4 = SubResource("Resource_htmcu")
+flags_5 = SubResource("Resource_fmwhe")
+flags_6 = SubResource("Resource_uy28y")
+hit_dice = 3
+hit_dice_sides = 6
+max_num = 100
+name = "Foolhardy adolescent"
+notice_range = 50
+rarity = 4
+sleep = 4
+speed = 109
+split_name_1 = "            "
+split_name_2 = " Foolhardy  "
+split_name_3 = " adolescent "

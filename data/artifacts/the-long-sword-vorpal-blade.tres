@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dg480"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_nt6oy"]
+
+[sub_resource type="Resource" id="Resource_18ewt"]
+script = ExtResource("1_dg480")
+value = 33689609
+
+[sub_resource type="Resource" id="Resource_ghb8c"]
+script = ExtResource("1_dg480")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_he8vd"]
+script = ExtResource("1_dg480")
+value = 15949824
+
+[resource]
+script = ExtResource("2_nt6oy")
+flags_1 = SubResource("Resource_18ewt")
+flags_2 = SubResource("Resource_ghb8c")
+flags_3 = SubResource("Resource_he8vd")
+cost = 250000
+damage_dice = 5
+damage_dice_sides = 5
+item_category = 23
+item_sub_category = 17
+level = 50
+name = "*Vorpal Blade*"
+type_specific_value = 2
+rarity = 30
+to_hit = 32
+to_damage = 32
+weight = 150
+id = 92

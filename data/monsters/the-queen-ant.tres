@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://gtjlctixgwfg"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_a3wn1"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_nuogj"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_aonal"]
+
+[sub_resource type="Resource" id="Resource_jp4ta"]
+script = ExtResource("1_a3wn1")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_0tjty"]
+script = ExtResource("1_a3wn1")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_kdkhg"]
+script = ExtResource("1_a3wn1")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_jyybs"]
+script = ExtResource("1_a3wn1")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_xc363"]
+script = ExtResource("2_nuogj")
+value = 304137737
+
+[sub_resource type="Resource" id="Resource_vkuse"]
+script = ExtResource("2_nuogj")
+value = 196736
+
+[sub_resource type="Resource" id="Resource_1pdg7"]
+script = ExtResource("2_nuogj")
+value = 3221226112
+
+[sub_resource type="Resource" id="Resource_vhduu"]
+script = ExtResource("2_nuogj")
+
+[sub_resource type="Resource" id="Resource_63mju"]
+script = ExtResource("2_nuogj")
+
+[sub_resource type="Resource" id="Resource_22tho"]
+script = ExtResource("2_nuogj")
+value = 1048576
+
+[resource]
+script = ExtResource("3_aonal")
+ac = 100
+attack = Array[ExtResource("1_a3wn1")]([SubResource("Resource_jp4ta"), SubResource("Resource_0tjty"), SubResource("Resource_kdkhg"), SubResource("Resource_jyybs")])
+character = "a"
+colour = 12
+description = "She's upset because you hurt her children."
+flags_1 = SubResource("Resource_xc363")
+flags_2 = SubResource("Resource_vkuse")
+flags_3 = SubResource("Resource_1pdg7")
+flags_4 = SubResource("Resource_vhduu")
+flags_5 = SubResource("Resource_63mju")
+flags_6 = SubResource("Resource_22tho")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 15
+hit_dice_sides = 100
+level = 37
+max_num = 1
+experience = 1000
+name = "The Queen Ant"
+notice_range = 30
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "    The     "
+split_name_2 = "   Queen    "
+split_name_3 = "    Ant     "

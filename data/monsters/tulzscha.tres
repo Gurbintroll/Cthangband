@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cgn27y152ccio"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_f5pgi"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_4fqu8"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_461kh"]
+
+[sub_resource type="Resource" id="Resource_rldxc"]
+script = ExtResource("1_f5pgi")
+effect = 27
+method = 2
+
+[sub_resource type="Resource" id="Resource_srk5j"]
+script = ExtResource("1_f5pgi")
+damage_dice = 10
+damage_dice_sides = 5
+effect = 13
+method = 1
+
+[sub_resource type="Resource" id="Resource_dd6ry"]
+script = ExtResource("1_f5pgi")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_rljqf"]
+script = ExtResource("1_f5pgi")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 10
+
+[sub_resource type="Resource" id="Resource_iwyvf"]
+script = ExtResource("2_4fqu8")
+value = 471992065
+
+[sub_resource type="Resource" id="Resource_04uwc"]
+script = ExtResource("2_4fqu8")
+value = 5468170
+
+[sub_resource type="Resource" id="Resource_gianw"]
+script = ExtResource("2_4fqu8")
+value = 274663680
+
+[sub_resource type="Resource" id="Resource_6cd6n"]
+script = ExtResource("2_4fqu8")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_lf6ue"]
+script = ExtResource("2_4fqu8")
+value = 279183396
+
+[sub_resource type="Resource" id="Resource_foy3b"]
+script = ExtResource("2_4fqu8")
+value = 304
+
+[resource]
+script = ExtResource("3_461kh")
+ac = 170
+attack = Array[ExtResource("1_f5pgi")]([SubResource("Resource_rldxc"), SubResource("Resource_srk5j"), SubResource("Resource_dd6ry"), SubResource("Resource_rljqf")])
+character = "X"
+colour = 12
+description = "'A belching column of sick greenish flame... spouting volcanically from depths profound and inconceivable, casting no shadows as a healthy flame should, and coating the nitrous stone with a nasty venomous verdigris.' H.P.Lovecraft - 'The Festival'."
+flags_1 = SubResource("Resource_iwyvf")
+flags_2 = SubResource("Resource_04uwc")
+flags_3 = SubResource("Resource_gianw")
+flags_4 = SubResource("Resource_6cd6n")
+flags_5 = SubResource("Resource_lf6ue")
+flags_6 = SubResource("Resource_foy3b")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 60
+hit_dice_sides = 100
+level = 57
+max_num = 1
+experience = 30000
+name = "Tulzscha"
+notice_range = 40
+rarity = 3
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Tulzscha  "

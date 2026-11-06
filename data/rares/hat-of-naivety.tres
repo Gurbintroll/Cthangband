@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_tjn4o"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_8nqdd"]
+
+[sub_resource type="Resource" id="Resource_psm18"]
+script = ExtResource("1_tjn4o")
+value = 4
+
+[sub_resource type="Resource" id="Resource_hb2x6"]
+script = ExtResource("1_tjn4o")
+
+[sub_resource type="Resource" id="Resource_6s37x"]
+script = ExtResource("1_tjn4o")
+
+[resource]
+script = ExtResource("2_8nqdd")
+flags_1 = SubResource("Resource_psm18")
+flags_2 = SubResource("Resource_hb2x6")
+flags_3 = SubResource("Resource_6s37x")
+max_type_specifc_value = 5
+name = "of Naivety"
+slot = 33
+id = 29

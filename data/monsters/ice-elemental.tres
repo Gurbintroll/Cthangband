@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_6fylh"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ci1fv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ogeyw"]
+
+[sub_resource type="Resource" id="Resource_pnbuk"]
+script = ExtResource("1_6fylh")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_k2vy6"]
+script = ExtResource("1_6fylh")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7fiel"]
+script = ExtResource("1_6fylh")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_ncx3t"]
+script = ExtResource("1_6fylh")
+
+[sub_resource type="Resource" id="Resource_b88b0"]
+script = ExtResource("2_ci1fv")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_ipx7l"]
+script = ExtResource("2_ci1fv")
+value = 10621024
+
+[sub_resource type="Resource" id="Resource_jktli"]
+script = ExtResource("2_ci1fv")
+value = 3491364928
+
+[sub_resource type="Resource" id="Resource_h7cbp"]
+script = ExtResource("2_ci1fv")
+
+[sub_resource type="Resource" id="Resource_w3tac"]
+script = ExtResource("2_ci1fv")
+value = 33554440
+
+[sub_resource type="Resource" id="Resource_4m0a0"]
+script = ExtResource("2_ci1fv")
+
+[resource]
+script = ExtResource("3_ogeyw")
+ac = 60
+attack = Array[ExtResource("1_6fylh")]([SubResource("Resource_pnbuk"), SubResource("Resource_k2vy6"), SubResource("Resource_7fiel"), SubResource("Resource_ncx3t")])
+character = "E"
+colour = 30
+description = "It is a towering glacier of ice."
+flags_1 = SubResource("Resource_b88b0")
+flags_2 = SubResource("Resource_ipx7l")
+flags_3 = SubResource("Resource_jktli")
+flags_4 = SubResource("Resource_h7cbp")
+flags_5 = SubResource("Resource_w3tac")
+flags_6 = SubResource("Resource_4m0a0")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 35
+hit_dice_sides = 10
+level = 36
+max_num = 100
+experience = 650
+name = "Ice elemental"
+notice_range = 10
+rarity = 2
+sleep = 90
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Ice     "
+split_name_3 = " elemental  "

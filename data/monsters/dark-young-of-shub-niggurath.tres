@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_srwew"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gn2c0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_56k6c"]
+
+[sub_resource type="Resource" id="Resource_cq75j"]
+script = ExtResource("1_srwew")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_ttxjs"]
+script = ExtResource("1_srwew")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_iurrs"]
+script = ExtResource("1_srwew")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_o0qh0"]
+script = ExtResource("1_srwew")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_f8yi4"]
+script = ExtResource("2_gn2c0")
+value = 18875904
+
+[sub_resource type="Resource" id="Resource_mu28s"]
+script = ExtResource("2_gn2c0")
+value = 208896
+
+[sub_resource type="Resource" id="Resource_juvoy"]
+script = ExtResource("2_gn2c0")
+value = 3357808704
+
+[sub_resource type="Resource" id="Resource_nq3ka"]
+script = ExtResource("2_gn2c0")
+
+[sub_resource type="Resource" id="Resource_av0fu"]
+script = ExtResource("2_gn2c0")
+value = 268443648
+
+[sub_resource type="Resource" id="Resource_78q0y"]
+script = ExtResource("2_gn2c0")
+value = 16777220
+
+[resource]
+script = ExtResource("3_56k6c")
+ac = 75
+attack = Array[ExtResource("1_srwew")]([SubResource("Resource_cq75j"), SubResource("Resource_ttxjs"), SubResource("Resource_iurrs"), SubResource("Resource_o0qh0")])
+character = "A"
+colour = 22
+description = "A black, ropy, slimy jelly tree-thing; an enormous writhing mass."
+flags_1 = SubResource("Resource_f8yi4")
+flags_2 = SubResource("Resource_mu28s")
+flags_3 = SubResource("Resource_juvoy")
+flags_4 = SubResource("Resource_nq3ka")
+flags_5 = SubResource("Resource_av0fu")
+flags_6 = SubResource("Resource_78q0y")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 12
+hit_dice_sides = 100
+level = 43
+max_num = 100
+experience = 5000
+name = "Dark young of Shub-Niggurath"
+notice_range = 20
+rarity = 2
+sleep = 80
+speed = 120
+split_name_1 = "    Dark    "
+split_name_2 = "  young of  "
+split_name_3 = "Shub-Niggura"

@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://xfj37e3l673t"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_n1qfh"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_c048h"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_sncoy"]
+
+[sub_resource type="Resource" id="Resource_mbkjy"]
+script = ExtResource("1_n1qfh")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ina3b"]
+script = ExtResource("1_n1qfh")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_aavfm"]
+script = ExtResource("1_n1qfh")
+
+[sub_resource type="Resource" id="Resource_awqyl"]
+script = ExtResource("1_n1qfh")
+
+[sub_resource type="Resource" id="Resource_ueyw6"]
+script = ExtResource("2_c048h")
+value = 4
+
+[sub_resource type="Resource" id="Resource_dwfbg"]
+script = ExtResource("2_c048h")
+value = 205824
+
+[sub_resource type="Resource" id="Resource_qbcyu"]
+script = ExtResource("2_c048h")
+value = 2552168448
+
+[sub_resource type="Resource" id="Resource_3vom4"]
+script = ExtResource("2_c048h")
+
+[sub_resource type="Resource" id="Resource_3woa1"]
+script = ExtResource("2_c048h")
+
+[sub_resource type="Resource" id="Resource_snopu"]
+script = ExtResource("2_c048h")
+
+[resource]
+script = ExtResource("3_sncoy")
+ac = 70
+attack = Array[ExtResource("1_n1qfh")]([SubResource("Resource_mbkjy"), SubResource("Resource_ina3b"), SubResource("Resource_aavfm"), SubResource("Resource_awqyl")])
+character = "p"
+colour = 13
+description = "The Crawling Chaos with 1000 forms. Nyarlathotep is amused at yourpuny attempts to kill him, and will keep coming back for another go, until he gets bored with the game."
+flags_1 = SubResource("Resource_ueyw6")
+flags_2 = SubResource("Resource_dwfbg")
+flags_3 = SubResource("Resource_qbcyu")
+flags_4 = SubResource("Resource_3vom4")
+flags_5 = SubResource("Resource_3woa1")
+flags_6 = SubResource("Resource_snopu")
+hit_dice = 25
+hit_dice_sides = 25
+level = 45
+max_num = 100
+experience = 500
+name = "Avatar of Nyarlathotep"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "   Avatar   "
+split_name_2 = "     of     "
+split_name_3 = "Nyarlathotep"

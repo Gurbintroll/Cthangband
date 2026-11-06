@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ur515"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_38th7"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_v7vwu"]
+
+[sub_resource type="Resource" id="Resource_ka8gh"]
+script = ExtResource("1_ur515")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 12
+
+[sub_resource type="Resource" id="Resource_no3yn"]
+script = ExtResource("1_ur515")
+
+[sub_resource type="Resource" id="Resource_rh6dc"]
+script = ExtResource("1_ur515")
+
+[sub_resource type="Resource" id="Resource_hy668"]
+script = ExtResource("1_ur515")
+
+[sub_resource type="Resource" id="Resource_3haci"]
+script = ExtResource("2_38th7")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_5us5h"]
+script = ExtResource("2_38th7")
+value = 320
+
+[sub_resource type="Resource" id="Resource_l7qtf"]
+script = ExtResource("2_38th7")
+value = 269484096
+
+[sub_resource type="Resource" id="Resource_lvouj"]
+script = ExtResource("2_38th7")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_2ned6"]
+script = ExtResource("2_38th7")
+value = 671088640
+
+[sub_resource type="Resource" id="Resource_qjtih"]
+script = ExtResource("2_38th7")
+
+[resource]
+script = ExtResource("3_v7vwu")
+ac = 20
+attack = Array[ExtResource("1_ur515")]([SubResource("Resource_ka8gh"), SubResource("Resource_no3yn"), SubResource("Resource_rh6dc"), SubResource("Resource_hy668")])
+character = "j"
+colour = 24
+description = "A chaotic mass of pulsating flesh, mouths and eyes."
+flags_1 = SubResource("Resource_3haci")
+flags_2 = SubResource("Resource_5us5h")
+flags_3 = SubResource("Resource_l7qtf")
+flags_4 = SubResource("Resource_lvouj")
+flags_5 = SubResource("Resource_2ned6")
+flags_6 = SubResource("Resource_qjtih")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 8
+hit_dice_sides = 6
+level = 14
+max_num = 100
+experience = 20
+name = "Gibbering mouther"
+notice_range = 15
+rarity = 4
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Gibbering  "
+split_name_3 = "  mouther   "

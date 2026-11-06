@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_dgpbr"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dd1p5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_hw8dp"]
+
+[sub_resource type="Resource" id="Resource_7wks8"]
+script = ExtResource("1_dgpbr")
+
+[sub_resource type="Resource" id="Resource_hidpn"]
+script = ExtResource("1_dgpbr")
+
+[sub_resource type="Resource" id="Resource_arpac"]
+script = ExtResource("1_dgpbr")
+
+[sub_resource type="Resource" id="Resource_usx5e"]
+script = ExtResource("1_dgpbr")
+
+[sub_resource type="Resource" id="Resource_tmynb"]
+script = ExtResource("2_dd1p5")
+value = 198144
+
+[sub_resource type="Resource" id="Resource_qe4vy"]
+script = ExtResource("2_dd1p5")
+value = 80
+
+[sub_resource type="Resource" id="Resource_85p6b"]
+script = ExtResource("2_dd1p5")
+value = 3491758272
+
+[sub_resource type="Resource" id="Resource_lcqpr"]
+script = ExtResource("2_dd1p5")
+
+[sub_resource type="Resource" id="Resource_eitfs"]
+script = ExtResource("2_dd1p5")
+
+[sub_resource type="Resource" id="Resource_x36hq"]
+script = ExtResource("2_dd1p5")
+value = 1007419392
+
+[resource]
+script = ExtResource("3_hw8dp")
+ac = 1
+attack = Array[ExtResource("1_dgpbr")]([SubResource("Resource_7wks8"), SubResource("Resource_hidpn"), SubResource("Resource_arpac"), SubResource("Resource_usx5e")])
+character = "Q"
+colour = 3
+description = "A pulsating mound of flesh, shining with silver pulses of throbbing light."
+flags_1 = SubResource("Resource_tmynb")
+flags_2 = SubResource("Resource_qe4vy")
+flags_3 = SubResource("Resource_85p6b")
+flags_4 = SubResource("Resource_lcqpr")
+flags_5 = SubResource("Resource_eitfs")
+flags_6 = SubResource("Resource_x36hq")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 20
+hit_dice_sides = 100
+level = 71
+max_num = 100
+experience = 12000
+name = "Master quylthulg"
+notice_range = 20
+rarity = 3
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Master   "
+split_name_3 = " quylthulg  "

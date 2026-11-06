@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_3cncj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2fv84"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mvqaf"]
+
+[sub_resource type="Resource" id="Resource_6fkng"]
+script = ExtResource("1_3cncj")
+damage_dice = 3
+damage_dice_sides = 7
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_x8m5a"]
+script = ExtResource("1_3cncj")
+damage_dice = 3
+damage_dice_sides = 7
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_hprd1"]
+script = ExtResource("1_3cncj")
+
+[sub_resource type="Resource" id="Resource_ywvvy"]
+script = ExtResource("1_3cncj")
+
+[sub_resource type="Resource" id="Resource_0s4yc"]
+script = ExtResource("2_2fv84")
+value = 4194308
+
+[sub_resource type="Resource" id="Resource_0uvux"]
+script = ExtResource("2_2fv84")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_8px7h"]
+script = ExtResource("2_2fv84")
+value = 262212
+
+[sub_resource type="Resource" id="Resource_rptw4"]
+script = ExtResource("2_2fv84")
+
+[sub_resource type="Resource" id="Resource_smvwh"]
+script = ExtResource("2_2fv84")
+
+[sub_resource type="Resource" id="Resource_n8at5"]
+script = ExtResource("2_2fv84")
+
+[resource]
+script = ExtResource("3_mvqaf")
+ac = 60
+attack = Array[ExtResource("1_3cncj")]([SubResource("Resource_6fkng"), SubResource("Resource_x8m5a"), SubResource("Resource_hprd1"), SubResource("Resource_ywvvy")])
+character = "P"
+colour = 27
+description = "A glowing fourteen foot tall giant. Flames drip from its red skin."
+flags_1 = SubResource("Resource_0s4yc")
+flags_2 = SubResource("Resource_0uvux")
+flags_3 = SubResource("Resource_8px7h")
+flags_4 = SubResource("Resource_rptw4")
+flags_5 = SubResource("Resource_smvwh")
+flags_6 = SubResource("Resource_n8at5")
+hit_dice = 20
+hit_dice_sides = 8
+level = 16
+max_num = 100
+experience = 54
+name = "Fire giant"
+notice_range = 20
+rarity = 2
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Fire    "
+split_name_3 = "   giant    "

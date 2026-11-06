@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_py6tg"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_24wq4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4vyvx"]
+
+[sub_resource type="Resource" id="Resource_x6twd"]
+script = ExtResource("1_py6tg")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 12
+method = 10
+
+[sub_resource type="Resource" id="Resource_om4hx"]
+script = ExtResource("1_py6tg")
+
+[sub_resource type="Resource" id="Resource_2objn"]
+script = ExtResource("1_py6tg")
+
+[sub_resource type="Resource" id="Resource_0gmoc"]
+script = ExtResource("1_py6tg")
+
+[sub_resource type="Resource" id="Resource_gcp6x"]
+script = ExtResource("2_24wq4")
+value = 525312
+
+[sub_resource type="Resource" id="Resource_m0eum"]
+script = ExtResource("2_24wq4")
+value = 135232
+
+[sub_resource type="Resource" id="Resource_7iut1"]
+script = ExtResource("2_24wq4")
+value = 3490187264
+
+[sub_resource type="Resource" id="Resource_uktku"]
+script = ExtResource("2_24wq4")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_0a1i4"]
+script = ExtResource("2_24wq4")
+
+[sub_resource type="Resource" id="Resource_ifn4e"]
+script = ExtResource("2_24wq4")
+
+[resource]
+script = ExtResource("3_4vyvx")
+ac = 30
+attack = Array[ExtResource("1_py6tg")]([SubResource("Resource_x6twd"), SubResource("Resource_om4hx"), SubResource("Resource_2objn"), SubResource("Resource_0gmoc")])
+character = "v"
+colour = 20
+description = "A twisting whirlpool of frost."
+flags_1 = SubResource("Resource_gcp6x")
+flags_2 = SubResource("Resource_m0eum")
+flags_3 = SubResource("Resource_7iut1")
+flags_4 = SubResource("Resource_uktku")
+flags_5 = SubResource("Resource_0a1i4")
+flags_6 = SubResource("Resource_ifn4e")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 9
+hit_dice_sides = 9
+level = 21
+max_num = 100
+experience = 100
+name = "Cold vortex"
+notice_range = 100
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Cold    "
+split_name_3 = "   vortex   "

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_y5dp8"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_j46w1"]
+
+[sub_resource type="Resource" id="Resource_8oqwp"]
+script = ExtResource("1_y5dp8")
+
+[sub_resource type="Resource" id="Resource_1y80g"]
+script = ExtResource("1_y5dp8")
+
+[sub_resource type="Resource" id="Resource_dq33n"]
+script = ExtResource("1_y5dp8")
+
+[resource]
+script = ExtResource("2_j46w1")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 30
+cost = 100
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_8oqwp")
+flags_2 = SubResource("Resource_1y80g")
+flags_3 = SubResource("Resource_dq33n")
+flavour_aware = true
+item_category = 90
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "[Book of Common Prayer]"
+stompable = Array[bool]([false, false, false, false])
+weight = 30
+filename = "LifeBook:[Book of Common Prayer]"

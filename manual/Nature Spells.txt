@@ -1,0 +1,106 @@
+﻿[center][font_size=48][color="brown"][b]Nature Spells[/b][/color][/font_size][/center]
+[hr color="brown"]
+Spells are presented here ordered by book. This does not necessarily reflect how difficult each spell is to cast.
+Although within the first two books (Call of the Wild and Nature Mastery) the spells are ordered in increasing difficulty, each of the two rare books that can only be found in the dungeons (Revelations of Glaaki and Cthaat Aquadingen) contain both easy and difficult spells.
+
+The level at which each individual spell is unlocked and the power cost to cast each spell is not given here, since it will vary with each profession that has access to this realm.
+
+[font_size=24][color="brown"][b]Call of the wild[/b][/color][/font_size]
+[b]a) Detect Creatures[/b]
+Reveals the presence of all nearby creatures.
+
+[b]b) First Aid[/b]
+Cures you of 2d8 damage, and reduces your bleeding.
+
+[b]c) Detect Doors and Traps[/b]
+Reveals the location of any nearby secret doors, traps or stairs.
+
+[b]d) Foraging[/b]
+Produces enough food to fill you up.
+
+[b]e) Daylight[/b]
+Lights your immediate area with a permanent light, possibly damaging creatures.
+
+[b]f) Animal Taming[/b]
+Makes an animal your friend.
+
+[b]g) Resist Environment[/b]
+Gives you a temporary resistance to cold, fire and electricity.
+
+[b]h) Cure Wounds & Poison[/b]
+Removes all poison and bleeding.
+
+[font_size=24][color="brown"][b]Nature Mastery[/b][/color][/font_size]
+[b]a) Stone to Mud[/b]
+Turns a square of rock into loose mud, effectively removing it.
+
+[b]b) Lightning Bolt[/b]
+Fires a bolt of lightning doing electricity damage.
+
+[b]c) Nature Awareness[/b]
+Reveals the layout of the local area, as well as finding secret doors, stairs and traps. Also reveals the location of any nearby monsters.
+
+[b]d) Frost Bolt[/b]
+Fires a bolt frost doing cold damage.
+
+[b]e) Ray of Sunlight[/b]
+Creates a beam of permanent light, possibly damaging creatures.
+
+[b]f) Entangle[/b]
+Causes vines to grow from the floor, slowing all nearby monsters.
+
+[b]g) Summon Animal[/b]
+Summons an animal ally to help you.
+
+[b]h) Herbal Healing[/b]
+Cures 1000 damage, and removes bleeding, poison and stunning.
+
+[font_size=24][color="brown"][b]Revelations of Glaaki[/b][/color][/font_size]
+[b]a) Door Building[/b]
+Makes a door to protect you from anything which might be following you.
+
+[b]b) Stair Building[/b]
+Creates a staircase at your feet for quick escape.
+
+[b]c) Stone Skin[/b]
+Adds 50 to your armour class for a short while.
+
+[b]d) Resistance True[/b]
+Gives you a temporary resistance to acid, cold, fire, electricity and poison.
+
+[b]e) Animal Friendship[/b]
+Makes all nearby animals your friends.
+
+[b]f) Stone Tell[/b]
+Fully identifies an item.
+
+[b]g) Wall of Stone[/b]
+Creates a wall of stone to protect you from anything which might be following you.
+
+[b]h) Protect from Corrosion[/b]
+Permanently protects an item from acid damage.
+
+[font_size=24][color="brown"][b]Cthaat Aquadingen[/b][/color][/font_size]
+[b]a) Earthquake[/b]
+Creates a large earthquake centered on your location, strong enough to collapse the roof. You are protected from the effects of this spell, safe in the epicenter.
+
+[b]b) Whirlwind Attack[/b]
+Allows you to attack all adjacent creatures in melee.
+
+[b]c) Blizzard[/b]
+Creates a ball of frost, dealing cold damage.
+
+[b]d) Lightning Storm[/b]
+Creates a ball of lightning, doing electricity damage.
+
+[b]e) Whirlpool[/b]
+Creates a whirling ball of water, doing elemental water damage.
+
+[b]f) Call Sunlight[/b]
+Creates a ball of elemental light, and also lights the whole level permanently.
+
+[b]g) Elemental Branding[/b]
+Permanently engulfs the striking surface of a weapon in an element, causing it to do more damage.
+
+[b]h) Nature’s Wrath[/b]
+Severely damages all nearby creatures and causes an earthquake.

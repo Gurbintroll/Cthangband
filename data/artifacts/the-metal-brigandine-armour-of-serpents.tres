@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_hoshd"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_aum48"]
+
+[sub_resource type="Resource" id="Resource_x2fv5"]
+script = ExtResource("1_hoshd")
+value = 9
+
+[sub_resource type="Resource" id="Resource_282g6"]
+script = ExtResource("1_hoshd")
+value = 101122048
+
+[sub_resource type="Resource" id="Resource_lwasv"]
+script = ExtResource("1_hoshd")
+value = 15729152
+
+[resource]
+script = ExtResource("2_aum48")
+flags_1 = SubResource("Resource_x2fv5")
+flags_2 = SubResource("Resource_282g6")
+flags_3 = SubResource("Resource_lwasv")
+ac = 19
+cost = 30000
+damage_dice = 1
+damage_dice_sides = 4
+item_category = 37
+item_sub_category = 9
+level = 30
+name = "of *Serpents*"
+type_specific_value = 2
+rarity = 3
+to_ac = 15
+weight = 200
+id = 21

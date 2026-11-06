@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_vnaal"]
+
+[resource]
+script = ExtResource("1_vnaal")
+category = 8
+height = 21
+name = "Snake Maze"
+rating = 15
+text = "%%%%%%%%%%%%%%%%%%%%%%%%.....................%%.XXXXXXXXX+XXXXXXXXX.%%.X9X9..XXX..X,,,9X9X.%%.X,XXX.^.XX.X,XXXX,X.%%.X,,,XXX..X.X,,,,X,X.%%.XXX,,,XX.X.XX*X,,,X.%%.X...X*X..X.XXXXXX.X.%%.X.XXXXX.XX.X.^.X..X.%%.X...^........X.X.XX.%%.X#XXXXXXXXXXXX...*X.%%.X&.........^&XX.XXX.%%.X.XXXXXXXXXX.XX,,,X.%%.X.X......^...*XXX,X.%%.X.X,XXXXXXXX&XX,,,X.%%.X.X,XX9,,,,X&9X,XXX.%%.X^X,,XXXXX.XXXX,X*X.%%.X.XX99XX**......^.X.%%.X+XXXXXXXXXXXXXXXXX.%%.....................%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 23

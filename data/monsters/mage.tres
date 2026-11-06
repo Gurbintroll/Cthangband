@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ktdgp"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_p44c3"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_tv8a0"]
+
+[sub_resource type="Resource" id="Resource_tgd76"]
+script = ExtResource("1_ktdgp")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_xmypj"]
+script = ExtResource("1_ktdgp")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_b8ntf"]
+script = ExtResource("1_ktdgp")
+
+[sub_resource type="Resource" id="Resource_xkv30"]
+script = ExtResource("1_ktdgp")
+
+[sub_resource type="Resource" id="Resource_uvojg"]
+script = ExtResource("2_p44c3")
+value = 18875396
+
+[sub_resource type="Resource" id="Resource_domiv"]
+script = ExtResource("2_p44c3")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_rkq5d"]
+script = ExtResource("2_p44c3")
+value = 64
+
+[sub_resource type="Resource" id="Resource_44sm6"]
+script = ExtResource("2_p44c3")
+
+[sub_resource type="Resource" id="Resource_sxg40"]
+script = ExtResource("2_p44c3")
+value = 806223872
+
+[sub_resource type="Resource" id="Resource_d5kw7"]
+script = ExtResource("2_p44c3")
+value = 262433
+
+[resource]
+script = ExtResource("3_tv8a0")
+ac = 40
+attack = Array[ExtResource("1_ktdgp")]([SubResource("Resource_tgd76"), SubResource("Resource_xmypj"), SubResource("Resource_b8ntf"), SubResource("Resource_xkv30")])
+character = "p"
+colour = 27
+description = "A fat mage with glasses."
+flags_1 = SubResource("Resource_uvojg")
+flags_2 = SubResource("Resource_domiv")
+flags_3 = SubResource("Resource_rkq5d")
+flags_4 = SubResource("Resource_44sm6")
+flags_5 = SubResource("Resource_sxg40")
+flags_6 = SubResource("Resource_d5kw7")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 15
+hit_dice_sides = 8
+level = 28
+max_num = 100
+experience = 150
+name = "Mage"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Mage    "

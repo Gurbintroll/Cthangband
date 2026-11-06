@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_j4r21"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_gbare"]
+
+[sub_resource type="Resource" id="Resource_6qypi"]
+script = ExtResource("1_j4r21")
+
+[sub_resource type="Resource" id="Resource_idqmb"]
+script = ExtResource("1_j4r21")
+
+[sub_resource type="Resource" id="Resource_pomji"]
+script = ExtResource("1_j4r21")
+
+[resource]
+script = ExtResource("2_gbare")
+chance = Array[int]([1, 1, 1, 1])
+character = "?"
+colour = 4
+cost = 10
+easy_know = true
+flags_1 = SubResource("Resource_6qypi")
+flags_2 = SubResource("Resource_idqmb")
+flags_3 = SubResource("Resource_pomji")
+has_flavour = true
+item_category = 70
+level = 5
+locale = Array[int]([5, 20, 50, 75])
+name = "Satisfy Hunger"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 32
+weight = 5
+filename = "Scroll:Satisfy Hunger"

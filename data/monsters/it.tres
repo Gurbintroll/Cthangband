@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://nslfhafusx3x"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_4l6ux"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_6q1dw"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_pkq6j"]
+
+[sub_resource type="Resource" id="Resource_71lnv"]
+script = ExtResource("1_4l6ux")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 13
+method = 15
+
+[sub_resource type="Resource" id="Resource_lfuu0"]
+script = ExtResource("1_4l6ux")
+effect = 15
+method = 2
+
+[sub_resource type="Resource" id="Resource_xjghq"]
+script = ExtResource("1_4l6ux")
+effect = 26
+method = 15
+
+[sub_resource type="Resource" id="Resource_sa7mx"]
+script = ExtResource("1_4l6ux")
+effect = 6
+method = 2
+
+[sub_resource type="Resource" id="Resource_eq86l"]
+script = ExtResource("2_6q1dw")
+value = 832569969
+
+[sub_resource type="Resource" id="Resource_d5td1"]
+script = ExtResource("2_6q1dw")
+value = 122
+
+[sub_resource type="Resource" id="Resource_yf3m2"]
+script = ExtResource("2_6q1dw")
+value = 3223715904
+
+[sub_resource type="Resource" id="Resource_36h24"]
+script = ExtResource("2_6q1dw")
+value = 1
+
+[sub_resource type="Resource" id="Resource_smif1"]
+script = ExtResource("2_6q1dw")
+value = 939524608
+
+[sub_resource type="Resource" id="Resource_lnmrl"]
+script = ExtResource("2_6q1dw")
+value = 75789076
+
+[resource]
+script = ExtResource("3_pkq6j")
+ac = 80
+attack = Array[ExtResource("1_4l6ux")]([SubResource("Resource_71lnv"), SubResource("Resource_lfuu0"), SubResource("Resource_xjghq"), SubResource("Resource_sa7mx")])
+character = "·"
+colour = 12
+description = "Nobody has ever seen It."
+flags_1 = SubResource("Resource_eq86l")
+flags_2 = SubResource("Resource_d5td1")
+flags_3 = SubResource("Resource_yf3m2")
+flags_4 = SubResource("Resource_36h24")
+flags_5 = SubResource("Resource_smif1")
+flags_6 = SubResource("Resource_lnmrl")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 77
+hit_dice_sides = 9
+level = 24
+max_num = 1
+experience = 400
+name = "It"
+notice_range = 25
+rarity = 3
+sleep = 25
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "     It     "

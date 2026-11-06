@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qa128"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_50l6a"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_8j4bv"]
+
+[sub_resource type="Resource" id="Resource_kppj6"]
+script = ExtResource("1_qa128")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_wb7ws"]
+script = ExtResource("1_qa128")
+
+[sub_resource type="Resource" id="Resource_1cdj3"]
+script = ExtResource("1_qa128")
+
+[sub_resource type="Resource" id="Resource_pqmam"]
+script = ExtResource("1_qa128")
+
+[sub_resource type="Resource" id="Resource_1lvjv"]
+script = ExtResource("2_50l6a")
+value = 4203524
+
+[sub_resource type="Resource" id="Resource_a4gtq"]
+script = ExtResource("2_50l6a")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_u5g17"]
+script = ExtResource("2_50l6a")
+
+[sub_resource type="Resource" id="Resource_05204"]
+script = ExtResource("2_50l6a")
+
+[sub_resource type="Resource" id="Resource_ai8ob"]
+script = ExtResource("2_50l6a")
+value = 134221824
+
+[sub_resource type="Resource" id="Resource_ju10a"]
+script = ExtResource("2_50l6a")
+value = 4
+
+[resource]
+script = ExtResource("3_8j4bv")
+ac = 10
+attack = Array[ExtResource("1_qa128")]([SubResource("Resource_kppj6"), SubResource("Resource_wb7ws"), SubResource("Resource_1cdj3"), SubResource("Resource_pqmam")])
+character = "p"
+colour = 5
+description = "He is tripping over his fetishes."
+flags_1 = SubResource("Resource_1lvjv")
+flags_2 = SubResource("Resource_a4gtq")
+flags_3 = SubResource("Resource_u5g17")
+flags_4 = SubResource("Resource_05204")
+flags_5 = SubResource("Resource_ai8ob")
+flags_6 = SubResource("Resource_ju10a")
+freq_innate = 12
+freq_spell = 12
+hit_dice = 7
+hit_dice_sides = 4
+level = 6
+max_num = 100
+experience = 7
+name = "Apprentice cultist"
+notice_range = 20
+rarity = 2
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "Apprentice   "
+split_name_3 = "  cultist   "

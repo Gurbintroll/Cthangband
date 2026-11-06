@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_f7iiu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qdx22"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_yffkf"]
+
+[sub_resource type="Resource" id="Resource_5uo4i"]
+script = ExtResource("1_f7iiu")
+effect = 15
+method = 2
+
+[sub_resource type="Resource" id="Resource_kwu71"]
+script = ExtResource("1_f7iiu")
+
+[sub_resource type="Resource" id="Resource_g0unt"]
+script = ExtResource("1_f7iiu")
+
+[sub_resource type="Resource" id="Resource_2g407"]
+script = ExtResource("1_f7iiu")
+
+[sub_resource type="Resource" id="Resource_hnp5c"]
+script = ExtResource("2_qdx22")
+value = 13369344
+
+[sub_resource type="Resource" id="Resource_86tmq"]
+script = ExtResource("2_qdx22")
+value = 4456496
+
+[sub_resource type="Resource" id="Resource_10tyu"]
+script = ExtResource("2_qdx22")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_khacr"]
+script = ExtResource("2_qdx22")
+
+[sub_resource type="Resource" id="Resource_gdutu"]
+script = ExtResource("2_qdx22")
+
+[sub_resource type="Resource" id="Resource_gik8c"]
+script = ExtResource("2_qdx22")
+value = 16
+
+[resource]
+script = ExtResource("3_yffkf")
+ac = 15
+attack = Array[ExtResource("1_f7iiu")]([SubResource("Resource_5uo4i"), SubResource("Resource_kwu71"), SubResource("Resource_g0unt"), SubResource("Resource_2g407")])
+character = "G"
+colour = 23
+description = "It is a ghastly, ghostly form."
+flags_1 = SubResource("Resource_hnp5c")
+flags_2 = SubResource("Resource_86tmq")
+flags_3 = SubResource("Resource_10tyu")
+flags_4 = SubResource("Resource_khacr")
+flags_5 = SubResource("Resource_gdutu")
+flags_6 = SubResource("Resource_gik8c")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 2
+hit_dice_sides = 5
+level = 3
+max_num = 100
+experience = 8
+name = "Poltergeist"
+notice_range = 8
+rarity = 1
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Poltergeist "

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://dshdep54ta6ra"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_4kwu3"]
+[ext_resource type="Script" uid="uid://c8av6fyror3lk" path="res://scripts/data/artifact.gd" id="2_3txw7"]
+
+[sub_resource type="Resource" id="Resource_vsj76"]
+script = ExtResource("1_4kwu3")
+value = 512
+
+[sub_resource type="Resource" id="Resource_03xry"]
+script = ExtResource("1_4kwu3")
+
+[sub_resource type="Resource" id="Resource_qeav6"]
+script = ExtResource("1_4kwu3")
+value = 32507904
+
+[resource]
+script = ExtResource("2_3txw7")
+flags_1 = SubResource("Resource_vsj76")
+flags_2 = SubResource("Resource_03xry")
+flags_3 = SubResource("Resource_qeav6")
+cost = 10000
+damage_dice = 1
+damage_dice_sides = 1
+has_own_type = true
+item_category = 39
+item_sub_category = 4
+level = 1
+name = "of *Polaris*"
+type_specific_value = 1
+rarity = 1
+weight = 10
+id = 1

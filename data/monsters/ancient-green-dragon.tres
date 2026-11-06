@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_5jd1d"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wch14"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_med1b"]
+
+[sub_resource type="Resource" id="Resource_sh1i6"]
+script = ExtResource("1_5jd1d")
+damage_dice = 4
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_e62kk"]
+script = ExtResource("1_5jd1d")
+damage_dice = 4
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_wld00"]
+script = ExtResource("1_5jd1d")
+damage_dice = 5
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_b24q8"]
+script = ExtResource("1_5jd1d")
+
+[sub_resource type="Resource" id="Resource_15n0a"]
+script = ExtResource("2_wch14")
+value = 201328128
+
+[sub_resource type="Resource" id="Resource_sdgy4"]
+script = ExtResource("2_wch14")
+value = 1183746
+
+[sub_resource type="Resource" id="Resource_helpw"]
+script = ExtResource("2_wch14")
+value = 3222274120
+
+[sub_resource type="Resource" id="Resource_i01u6"]
+script = ExtResource("2_wch14")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_458cv"]
+script = ExtResource("2_wch14")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_emkbi"]
+script = ExtResource("2_wch14")
+
+[resource]
+script = ExtResource("3_med1b")
+ac = 85
+attack = Array[ExtResource("1_5jd1d")]([SubResource("Resource_sh1i6"), SubResource("Resource_e62kk"), SubResource("Resource_wld00"), SubResource("Resource_b24q8")])
+character = "D"
+colour = 22
+description = "A huge draconic form enveloped in clouds of poisonous vapour."
+flags_1 = SubResource("Resource_15n0a")
+flags_2 = SubResource("Resource_sdgy4")
+flags_3 = SubResource("Resource_helpw")
+flags_4 = SubResource("Resource_i01u6")
+flags_5 = SubResource("Resource_458cv")
+flags_6 = SubResource("Resource_emkbi")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 72
+hit_dice_sides = 10
+level = 39
+max_num = 100
+experience = 2400
+name = "Ancient green dragon"
+notice_range = 20
+rarity = 1
+sleep = 80
+speed = 120
+split_name_1 = "  Ancient   "
+split_name_2 = "   green    "
+split_name_3 = "   dragon   "

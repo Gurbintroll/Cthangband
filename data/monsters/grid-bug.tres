@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bju4slex4ieco"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_jg8x2"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_uv0lf"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_s24on"]
+
+[sub_resource type="Resource" id="Resource_kpmjp"]
+script = ExtResource("1_jg8x2")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 10
+method = 6
+
+[sub_resource type="Resource" id="Resource_xa5n6"]
+script = ExtResource("1_jg8x2")
+
+[sub_resource type="Resource" id="Resource_fklbr"]
+script = ExtResource("1_jg8x2")
+
+[sub_resource type="Resource" id="Resource_brqc0"]
+script = ExtResource("1_jg8x2")
+
+[sub_resource type="Resource" id="Resource_eaexy"]
+script = ExtResource("2_uv0lf")
+value = 270336
+
+[sub_resource type="Resource" id="Resource_v1j54"]
+script = ExtResource("2_uv0lf")
+value = 129
+
+[sub_resource type="Resource" id="Resource_cring"]
+script = ExtResource("2_uv0lf")
+value = 268566656
+
+[sub_resource type="Resource" id="Resource_o21ra"]
+script = ExtResource("2_uv0lf")
+
+[sub_resource type="Resource" id="Resource_76g6e"]
+script = ExtResource("2_uv0lf")
+
+[sub_resource type="Resource" id="Resource_0y10d"]
+script = ExtResource("2_uv0lf")
+
+[resource]
+script = ExtResource("3_s24on")
+ac = 2
+attack = Array[ExtResource("1_jg8x2")]([SubResource("Resource_kpmjp"), SubResource("Resource_xa5n6"), SubResource("Resource_fklbr"), SubResource("Resource_brqc0")])
+character = "I"
+colour = 7
+description = "A strange electric bug."
+flags_1 = SubResource("Resource_eaexy")
+flags_2 = SubResource("Resource_v1j54")
+flags_3 = SubResource("Resource_cring")
+flags_4 = SubResource("Resource_o21ra")
+flags_5 = SubResource("Resource_76g6e")
+flags_6 = SubResource("Resource_0y10d")
+hit_dice = 2
+hit_dice_sides = 4
+level = 1
+max_num = 100
+experience = 2
+name = "Grid bug"
+notice_range = 10
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Grid    "
+split_name_3 = "    bug     "

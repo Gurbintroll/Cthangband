@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_4ffx3"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_vkbqa"]
+
+[sub_resource type="Resource" id="Resource_5gnau"]
+script = ExtResource("1_4ffx3")
+value = 1048576
+
+[sub_resource type="Resource" id="Resource_c5y8i"]
+script = ExtResource("1_4ffx3")
+
+[sub_resource type="Resource" id="Resource_3dx0w"]
+script = ExtResource("1_4ffx3")
+
+[resource]
+script = ExtResource("2_vkbqa")
+cost = 2500
+flags_1 = SubResource("Resource_5gnau")
+flags_2 = SubResource("Resource_c5y8i")
+flags_3 = SubResource("Resource_3dx0w")
+name = "of Slay Orc"
+rating = 10
+slot = 24
+id = 71

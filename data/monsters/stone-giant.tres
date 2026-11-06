@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_64cqb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_acwjq"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_oi3ew"]
+
+[sub_resource type="Resource" id="Resource_iqwoc"]
+script = ExtResource("1_64cqb")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_csm2f"]
+script = ExtResource("1_64cqb")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7hsi4"]
+script = ExtResource("1_64cqb")
+
+[sub_resource type="Resource" id="Resource_cie0v"]
+script = ExtResource("1_64cqb")
+
+[sub_resource type="Resource" id="Resource_8g0ki"]
+script = ExtResource("2_acwjq")
+value = 4194308
+
+[sub_resource type="Resource" id="Resource_lvdmw"]
+script = ExtResource("2_acwjq")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_l44l8"]
+script = ExtResource("2_acwjq")
+value = 68
+
+[sub_resource type="Resource" id="Resource_2l7s0"]
+script = ExtResource("2_acwjq")
+
+[sub_resource type="Resource" id="Resource_uasdm"]
+script = ExtResource("2_acwjq")
+
+[sub_resource type="Resource" id="Resource_qn30p"]
+script = ExtResource("2_acwjq")
+
+[resource]
+script = ExtResource("3_oi3ew")
+ac = 75
+attack = Array[ExtResource("1_64cqb")]([SubResource("Resource_iqwoc"), SubResource("Resource_csm2f"), SubResource("Resource_7hsi4"), SubResource("Resource_cie0v")])
+character = "P"
+colour = 23
+description = "It is eighteen feet tall and looking at you."
+flags_1 = SubResource("Resource_8g0ki")
+flags_2 = SubResource("Resource_lvdmw")
+flags_3 = SubResource("Resource_l44l8")
+flags_4 = SubResource("Resource_2l7s0")
+flags_5 = SubResource("Resource_uasdm")
+flags_6 = SubResource("Resource_qn30p")
+hit_dice = 24
+hit_dice_sides = 8
+level = 18
+max_num = 100
+experience = 90
+name = "Stone giant"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Stone    "
+split_name_3 = "   giant    "

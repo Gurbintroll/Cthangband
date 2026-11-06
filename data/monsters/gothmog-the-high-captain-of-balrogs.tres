@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://vykrfaec8cdx"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_uasle"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_286e4"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_d2sra"]
+
+[sub_resource type="Resource" id="Resource_reg6j"]
+script = ExtResource("1_uasle")
+damage_dice = 9
+damage_dice_sides = 12
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_cnvqu"]
+script = ExtResource("1_uasle")
+damage_dice = 9
+damage_dice_sides = 12
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_pxwmn"]
+script = ExtResource("1_uasle")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_ousqs"]
+script = ExtResource("1_uasle")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_hdd3h"]
+script = ExtResource("2_286e4")
+value = 1042335237
+
+[sub_resource type="Resource" id="Resource_j84ut"]
+script = ExtResource("2_286e4")
+value = 1789952
+
+[sub_resource type="Resource" id="Resource_lj3vi"]
+script = ExtResource("2_286e4")
+value = 3221620816
+
+[sub_resource type="Resource" id="Resource_3q6y3"]
+script = ExtResource("2_286e4")
+value = 2147484672
+
+[sub_resource type="Resource" id="Resource_ee43y"]
+script = ExtResource("2_286e4")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_84x8h"]
+script = ExtResource("2_286e4")
+value = 302186496
+
+[resource]
+script = ExtResource("3_d2sra")
+ac = 140
+attack = Array[ExtResource("1_uasle")]([SubResource("Resource_reg6j"), SubResource("Resource_cnvqu"), SubResource("Resource_pxwmn"), SubResource("Resource_ousqs")])
+character = "U"
+colour = 12
+description = "Gothmog is the Chief Balrog in Morgoth's personal guard. He is renowned for slaying Ecthelion the Warder of the Gates and he has never been defeated in combat. With his whip of flame and awesome fiery breath he saved his master from Ungoliant's rage."
+flags_1 = SubResource("Resource_hdd3h")
+flags_2 = SubResource("Resource_j84ut")
+flags_3 = SubResource("Resource_lj3vi")
+flags_4 = SubResource("Resource_3q6y3")
+flags_5 = SubResource("Resource_ee43y")
+flags_6 = SubResource("Resource_84x8h")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 80
+hit_dice_sides = 100
+level = 95
+max_num = 1
+experience = 43000
+name = "Gothmog, the High Captain of Balrogs"
+notice_range = 100
+rarity = 1
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Gothmog   "

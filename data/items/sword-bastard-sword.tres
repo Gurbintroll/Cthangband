@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_v51rl"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_1fao4"]
+
+[sub_resource type="Resource" id="Resource_lmj2d"]
+script = ExtResource("1_v51rl")
+
+[sub_resource type="Resource" id="Resource_05t00"]
+script = ExtResource("1_v51rl")
+
+[sub_resource type="Resource" id="Resource_2xotl"]
+script = ExtResource("1_v51rl")
+value = 1024
+
+[resource]
+script = ExtResource("2_1fao4")
+chance = Array[int]([1, 0, 0, 0])
+character = "|"
+colour = 15
+cost = 350
+damage_dice = 3
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_lmj2d")
+flags_2 = SubResource("Resource_05t00")
+flags_3 = SubResource("Resource_2xotl")
+flavour_aware = true
+item_category = 23
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "& Bastard Sword~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 21
+weight = 140
+filename = "Sword:Bastard Sword"

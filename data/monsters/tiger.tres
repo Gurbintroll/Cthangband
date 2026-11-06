@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_32bhb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1ec5w"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_gj6fh"]
+
+[sub_resource type="Resource" id="Resource_1goob"]
+script = ExtResource("1_32bhb")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_gbg6c"]
+script = ExtResource("1_32bhb")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_5422b"]
+script = ExtResource("1_32bhb")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_vhlaq"]
+script = ExtResource("1_32bhb")
+
+[sub_resource type="Resource" id="Resource_kvl2s"]
+script = ExtResource("2_1ec5w")
+
+[sub_resource type="Resource" id="Resource_fyna2"]
+script = ExtResource("2_1ec5w")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_3n6a4"]
+script = ExtResource("2_1ec5w")
+value = 128
+
+[sub_resource type="Resource" id="Resource_ovyic"]
+script = ExtResource("2_1ec5w")
+
+[sub_resource type="Resource" id="Resource_6hs6n"]
+script = ExtResource("2_1ec5w")
+
+[sub_resource type="Resource" id="Resource_0cs0n"]
+script = ExtResource("2_1ec5w")
+
+[resource]
+script = ExtResource("3_gj6fh")
+ac = 40
+attack = Array[ExtResource("1_32bhb")]([SubResource("Resource_1goob"), SubResource("Resource_gbg6c"), SubResource("Resource_5422b"), SubResource("Resource_vhlaq")])
+character = "f"
+colour = 10
+description = "One of the largest of its species, a sleek orange and black shape creeps towards you, ready to pounce."
+flags_1 = SubResource("Resource_kvl2s")
+flags_2 = SubResource("Resource_fyna2")
+flags_3 = SubResource("Resource_3n6a4")
+flags_4 = SubResource("Resource_ovyic")
+flags_5 = SubResource("Resource_6hs6n")
+flags_6 = SubResource("Resource_0cs0n")
+hit_dice = 12
+hit_dice_sides = 10
+level = 12
+max_num = 100
+experience = 40
+name = "Tiger"
+notice_range = 40
+rarity = 2
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Tiger    "

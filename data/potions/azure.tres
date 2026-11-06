@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Flavour" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/flavour.gd" id="1_aoovl"]
+
+[resource]
+script = ExtResource("1_aoovl")
+name = "Azure"
+character = "!"
+colour = 3

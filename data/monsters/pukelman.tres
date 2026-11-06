@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_l436y"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wg8eg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_p4ik3"]
+
+[sub_resource type="Resource" id="Resource_f5uqg"]
+script = ExtResource("1_l436y")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_eq7le"]
+script = ExtResource("1_l436y")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_its0a"]
+script = ExtResource("1_l436y")
+
+[sub_resource type="Resource" id="Resource_jokdf"]
+script = ExtResource("1_l436y")
+
+[sub_resource type="Resource" id="Resource_6q2nj"]
+script = ExtResource("2_wg8eg")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_jjycr"]
+script = ExtResource("2_wg8eg")
+value = 131168
+
+[sub_resource type="Resource" id="Resource_v2eih"]
+script = ExtResource("2_wg8eg")
+value = 3491635200
+
+[sub_resource type="Resource" id="Resource_b7dwe"]
+script = ExtResource("2_wg8eg")
+
+[sub_resource type="Resource" id="Resource_i86rx"]
+script = ExtResource("2_wg8eg")
+value = 1610678272
+
+[sub_resource type="Resource" id="Resource_cq72a"]
+script = ExtResource("2_wg8eg")
+
+[resource]
+script = ExtResource("3_p4ik3")
+ac = 80
+attack = Array[ExtResource("1_l436y")]([SubResource("Resource_f5uqg"), SubResource("Resource_eq7le"), SubResource("Resource_its0a"), SubResource("Resource_jokdf")])
+character = "g"
+colour = 17
+description = "A stumpy figure carved from stone, with glittering eyes."
+flags_1 = SubResource("Resource_6q2nj")
+flags_2 = SubResource("Resource_jjycr")
+flags_3 = SubResource("Resource_v2eih")
+flags_4 = SubResource("Resource_b7dwe")
+flags_5 = SubResource("Resource_i86rx")
+flags_6 = SubResource("Resource_cq72a")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 80
+hit_dice_sides = 12
+level = 25
+max_num = 100
+experience = 600
+name = "Pukelman"
+notice_range = 12
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Pukelman  "

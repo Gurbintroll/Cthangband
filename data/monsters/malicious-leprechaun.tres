@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_q25ke"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_l6jp7"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_w4oxy"]
+
+[sub_resource type="Resource" id="Resource_jt7wg"]
+script = ExtResource("1_q25ke")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_2i1r1"]
+script = ExtResource("1_q25ke")
+effect = 6
+method = 2
+
+[sub_resource type="Resource" id="Resource_prexb"]
+script = ExtResource("1_q25ke")
+
+[sub_resource type="Resource" id="Resource_uansm"]
+script = ExtResource("1_q25ke")
+
+[sub_resource type="Resource" id="Resource_ks7qx"]
+script = ExtResource("2_l6jp7")
+value = 262148
+
+[sub_resource type="Resource" id="Resource_n283h"]
+script = ExtResource("2_l6jp7")
+value = 4260144
+
+[sub_resource type="Resource" id="Resource_yggyf"]
+script = ExtResource("2_l6jp7")
+value = 4160
+
+[sub_resource type="Resource" id="Resource_d5a3o"]
+script = ExtResource("2_l6jp7")
+
+[sub_resource type="Resource" id="Resource_1qwdv"]
+script = ExtResource("2_l6jp7")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_igebc"]
+script = ExtResource("2_l6jp7")
+value = 304
+
+[resource]
+script = ExtResource("3_w4oxy")
+ac = 13
+attack = Array[ExtResource("1_q25ke")]([SubResource("Resource_jt7wg"), SubResource("Resource_2i1r1"), SubResource("Resource_prexb"), SubResource("Resource_uansm")])
+character = "h"
+colour = 18
+description = "This little creature has a fiendish gleam in its eyes."
+flags_1 = SubResource("Resource_ks7qx")
+flags_2 = SubResource("Resource_n283h")
+flags_3 = SubResource("Resource_yggyf")
+flags_4 = SubResource("Resource_d5a3o")
+flags_5 = SubResource("Resource_1qwdv")
+flags_6 = SubResource("Resource_igebc")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 4
+hit_dice_sides = 5
+level = 35
+max_num = 100
+experience = 85
+name = "Malicious leprechaun"
+notice_range = 8
+rarity = 4
+sleep = 8
+speed = 120
+split_name_1 = "            "
+split_name_2 = " Malicious  "
+split_name_3 = " leprechaun "

@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dkcihdge0dtlf"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_rmomc"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_qawar"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_3iwl4"]
+
+[sub_resource type="Resource" id="Resource_thytf"]
+script = ExtResource("1_rmomc")
+damage_dice = 22
+damage_dice_sides = 10
+effect = 28
+method = 9
+
+[sub_resource type="Resource" id="Resource_ohl2r"]
+script = ExtResource("1_rmomc")
+damage_dice = 20
+damage_dice_sides = 10
+effect = 28
+method = 9
+
+[sub_resource type="Resource" id="Resource_pbpql"]
+script = ExtResource("1_rmomc")
+damage_dice = 10
+damage_dice_sides = 12
+effect = 23
+method = 2
+
+[sub_resource type="Resource" id="Resource_6yo01"]
+script = ExtResource("1_rmomc")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_3heyp"]
+script = ExtResource("2_qawar")
+value = 1059063553
+
+[sub_resource type="Resource" id="Resource_4whe5"]
+script = ExtResource("2_qawar")
+value = 2683402
+
+[sub_resource type="Resource" id="Resource_seeq3"]
+script = ExtResource("2_qawar")
+value = 4034857280
+
+[sub_resource type="Resource" id="Resource_hrk0u"]
+script = ExtResource("2_qawar")
+value = 3892588544
+
+[sub_resource type="Resource" id="Resource_axntl"]
+script = ExtResource("2_qawar")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_w5cvj"]
+script = ExtResource("2_qawar")
+value = 4043964419
+
+[resource]
+script = ExtResource("3_3iwl4")
+ac = 175
+attack = Array[ExtResource("1_rmomc")]([SubResource("Resource_thytf"), SubResource("Resource_ohl2r"), SubResource("Resource_pbpql"), SubResource("Resource_6yo01")])
+character = "X"
+colour = 12
+description = "'That last amorphous blight of nethermost confusion which blasphemes and bubbles at the centre of all infinity - the boundless daemon sultan Azathoth, whose name no lips dare speak aloud, and who gnaws hungrily in inconceivable, unlighted chambers beyond time amidst the muffled, maddening beating of vile drums and the thin monotonous whine of accursed flutes' - H.P.Lovecraft, 'The Dream Quest of Unknown Kadath'"
+flags_1 = SubResource("Resource_3heyp")
+flags_2 = SubResource("Resource_4whe5")
+flags_3 = SubResource("Resource_seeq3")
+flags_4 = SubResource("Resource_hrk0u")
+flags_5 = SubResource("Resource_axntl")
+flags_6 = SubResource("Resource_w5cvj")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 200
+hit_dice_sides = 150
+level = 100
+max_num = 1
+experience = 66666
+name = "Azathoth, The Daemon Sultan"
+notice_range = 111
+rarity = 1
+speed = 155
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Azathoth  "

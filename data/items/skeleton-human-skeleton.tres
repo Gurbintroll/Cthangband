@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://dgvdn7wff4jkr"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_eqiun"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_d0y33"]
+
+[sub_resource type="Resource" id="Resource_8rg62"]
+script = ExtResource("1_eqiun")
+
+[sub_resource type="Resource" id="Resource_65f7t"]
+script = ExtResource("1_eqiun")
+
+[sub_resource type="Resource" id="Resource_ol73g"]
+script = ExtResource("1_eqiun")
+
+[resource]
+script = ExtResource("2_d0y33")
+chance = Array[int]([1, 0, 0, 0])
+character = "s"
+colour = 1
+damage_dice = 1
+damage_dice_sides = 2
+easy_know = true
+flags_1 = SubResource("Resource_8rg62")
+flags_2 = SubResource("Resource_65f7t")
+flags_3 = SubResource("Resource_ol73g")
+flavour_aware = true
+item_category = 1
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "& Human Skeleton~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 8
+weight = 60

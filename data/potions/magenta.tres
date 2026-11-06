@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Flavour" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/flavour.gd" id="1_fkxsw"]
+
+[resource]
+script = ExtResource("1_fkxsw")
+name = "Magenta"
+character = "!"
+colour = 12

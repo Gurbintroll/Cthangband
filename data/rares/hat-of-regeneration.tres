@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_psb1p"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_oqrml"]
+
+[sub_resource type="Resource" id="Resource_08s08"]
+script = ExtResource("1_psb1p")
+
+[sub_resource type="Resource" id="Resource_den3g"]
+script = ExtResource("1_psb1p")
+
+[sub_resource type="Resource" id="Resource_5hm3t"]
+script = ExtResource("1_psb1p")
+value = 131072
+
+[resource]
+script = ExtResource("2_oqrml")
+cost = 1500
+flags_1 = SubResource("Resource_08s08")
+flags_2 = SubResource("Resource_den3g")
+flags_3 = SubResource("Resource_5hm3t")
+name = "of Regeneration"
+rating = 10
+slot = 33
+id = 26

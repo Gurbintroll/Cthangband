@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_erutq"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0opk2"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_42osp"]
+
+[sub_resource type="Resource" id="Resource_l612a"]
+script = ExtResource("1_erutq")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_o47im"]
+script = ExtResource("1_erutq")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tupsh"]
+script = ExtResource("1_erutq")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_tq2v1"]
+script = ExtResource("1_erutq")
+
+[sub_resource type="Resource" id="Resource_uswqw"]
+script = ExtResource("2_0opk2")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_io5uh"]
+script = ExtResource("2_0opk2")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_4mxse"]
+script = ExtResource("2_0opk2")
+value = 1048640
+
+[sub_resource type="Resource" id="Resource_o6ent"]
+script = ExtResource("2_0opk2")
+value = 32
+
+[sub_resource type="Resource" id="Resource_dxddq"]
+script = ExtResource("2_0opk2")
+value = 603983872
+
+[sub_resource type="Resource" id="Resource_1k58e"]
+script = ExtResource("2_0opk2")
+value = 4096
+
+[resource]
+script = ExtResource("3_42osp")
+ac = 30
+attack = Array[ExtResource("1_erutq")]([SubResource("Resource_l612a"), SubResource("Resource_o47im"), SubResource("Resource_tupsh"), SubResource("Resource_tq2v1")])
+character = "S"
+colour = 3
+description = "A dark elven torso merged with the bloated form of a giant spider."
+flags_1 = SubResource("Resource_uswqw")
+flags_2 = SubResource("Resource_io5uh")
+flags_3 = SubResource("Resource_4mxse")
+flags_4 = SubResource("Resource_o6ent")
+flags_5 = SubResource("Resource_dxddq")
+flags_6 = SubResource("Resource_1k58e")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 10
+hit_dice_sides = 13
+level = 13
+max_num = 100
+experience = 55
+name = "Drider"
+notice_range = 8
+rarity = 2
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Drider   "

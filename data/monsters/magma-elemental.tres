@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_uk1w4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gbxql"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_0uuaf"]
+
+[sub_resource type="Resource" id="Resource_55m21"]
+script = ExtResource("1_uk1w4")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_h4v5k"]
+script = ExtResource("1_uk1w4")
+damage_dice = 3
+damage_dice_sides = 7
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_677ye"]
+script = ExtResource("1_uk1w4")
+damage_dice = 3
+damage_dice_sides = 7
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_d3pct"]
+script = ExtResource("1_uk1w4")
+
+[sub_resource type="Resource" id="Resource_5ogds"]
+script = ExtResource("2_gbxql")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_48nlf"]
+script = ExtResource("2_gbxql")
+value = 10768448
+
+[sub_resource type="Resource" id="Resource_mg5iq"]
+script = ExtResource("2_gbxql")
+value = 3491102784
+
+[sub_resource type="Resource" id="Resource_s5qxa"]
+script = ExtResource("2_gbxql")
+
+[sub_resource type="Resource" id="Resource_occ4m"]
+script = ExtResource("2_gbxql")
+value = 16777220
+
+[sub_resource type="Resource" id="Resource_rj5gi"]
+script = ExtResource("2_gbxql")
+
+[resource]
+script = ExtResource("3_0uuaf")
+ac = 70
+attack = Array[ExtResource("1_uk1w4")]([SubResource("Resource_55m21"), SubResource("Resource_h4v5k"), SubResource("Resource_677ye"), SubResource("Resource_d3pct")])
+character = "E"
+colour = 24
+description = "It is a towering glowing form of molten hate."
+flags_1 = SubResource("Resource_5ogds")
+flags_2 = SubResource("Resource_48nlf")
+flags_3 = SubResource("Resource_mg5iq")
+flags_4 = SubResource("Resource_s5qxa")
+flags_5 = SubResource("Resource_occ4m")
+flags_6 = SubResource("Resource_rj5gi")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 35
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 950
+name = "Magma elemental"
+notice_range = 10
+rarity = 2
+sleep = 90
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Magma    "
+split_name_3 = " elemental  "

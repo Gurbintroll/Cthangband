@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fy8wj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_uqdb2"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kk2qx"]
+
+[sub_resource type="Resource" id="Resource_xukws"]
+script = ExtResource("1_fy8wj")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_jpvnk"]
+script = ExtResource("1_fy8wj")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_nxmta"]
+script = ExtResource("1_fy8wj")
+
+[sub_resource type="Resource" id="Resource_ole7g"]
+script = ExtResource("1_fy8wj")
+
+[sub_resource type="Resource" id="Resource_7ta05"]
+script = ExtResource("2_uqdb2")
+value = 263168
+
+[sub_resource type="Resource" id="Resource_hnww6"]
+script = ExtResource("2_uqdb2")
+value = 10637376
+
+[sub_resource type="Resource" id="Resource_jqltf"]
+script = ExtResource("2_uqdb2")
+value = 3490971712
+
+[sub_resource type="Resource" id="Resource_7tv1f"]
+script = ExtResource("2_uqdb2")
+
+[sub_resource type="Resource" id="Resource_aysu8"]
+script = ExtResource("2_uqdb2")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_bbdt1"]
+script = ExtResource("2_uqdb2")
+
+[resource]
+script = ExtResource("3_kk2qx")
+ac = 50
+attack = Array[ExtResource("1_fy8wj")]([SubResource("Resource_xukws"), SubResource("Resource_jpvnk"), SubResource("Resource_nxmta"), SubResource("Resource_ole7g")])
+character = "E"
+colour = 27
+description = "It is a towering inferno of flames."
+flags_1 = SubResource("Resource_7ta05")
+flags_2 = SubResource("Resource_hnww6")
+flags_3 = SubResource("Resource_jqltf")
+flags_4 = SubResource("Resource_7tv1f")
+flags_5 = SubResource("Resource_aysu8")
+flags_6 = SubResource("Resource_bbdt1")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 30
+hit_dice_sides = 8
+level = 33
+max_num = 100
+experience = 350
+name = "Fire elemental"
+notice_range = 12
+rarity = 2
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Fire    "
+split_name_3 = " elemental  "

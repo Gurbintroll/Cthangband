@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_a3f41"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xx3nu"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jbm5j"]
+
+[sub_resource type="Resource" id="Resource_3wgjv"]
+script = ExtResource("1_a3f41")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_d8mcb"]
+script = ExtResource("1_a3f41")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mpsco"]
+script = ExtResource("1_a3f41")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_bvai6"]
+script = ExtResource("1_a3f41")
+
+[sub_resource type="Resource" id="Resource_3mwty"]
+script = ExtResource("2_xx3nu")
+value = 44041732
+
+[sub_resource type="Resource" id="Resource_2joa1"]
+script = ExtResource("2_xx3nu")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_domow"]
+script = ExtResource("2_xx3nu")
+value = 3221225536
+
+[sub_resource type="Resource" id="Resource_wj6hs"]
+script = ExtResource("2_xx3nu")
+
+[sub_resource type="Resource" id="Resource_w2ubs"]
+script = ExtResource("2_xx3nu")
+value = 2952806400
+
+[sub_resource type="Resource" id="Resource_4rjgy"]
+script = ExtResource("2_xx3nu")
+value = 84148228
+
+[resource]
+script = ExtResource("3_jbm5j")
+ac = 60
+attack = Array[ExtResource("1_a3f41")]([SubResource("Resource_3wgjv"), SubResource("Resource_d8mcb"), SubResource("Resource_mpsco"), SubResource("Resource_bvai6")])
+character = "p"
+colour = 14
+description = "An evil priest, dressed all in black. Deadly spells hit you at an alarming rate as his black spiked mace rains down Attack after Attack on your pitiful frame."
+flags_1 = SubResource("Resource_3mwty")
+flags_2 = SubResource("Resource_2joa1")
+flags_3 = SubResource("Resource_domow")
+flags_4 = SubResource("Resource_wj6hs")
+flags_5 = SubResource("Resource_w2ubs")
+flags_6 = SubResource("Resource_4rjgy")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 52
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 1800
+name = "Cult leader"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Cult    "
+split_name_3 = "   leader   "

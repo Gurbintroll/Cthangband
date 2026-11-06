@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_inac0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tqoit"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6us8i"]
+
+[sub_resource type="Resource" id="Resource_fa11k"]
+script = ExtResource("1_inac0")
+method = 19
+
+[sub_resource type="Resource" id="Resource_qx0fj"]
+script = ExtResource("1_inac0")
+
+[sub_resource type="Resource" id="Resource_d34u5"]
+script = ExtResource("1_inac0")
+
+[sub_resource type="Resource" id="Resource_0nhkk"]
+script = ExtResource("1_inac0")
+
+[sub_resource type="Resource" id="Resource_w4gar"]
+script = ExtResource("2_tqoit")
+value = 5767172
+
+[sub_resource type="Resource" id="Resource_vtep3"]
+script = ExtResource("2_tqoit")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_0htll"]
+script = ExtResource("2_tqoit")
+
+[sub_resource type="Resource" id="Resource_noebq"]
+script = ExtResource("2_tqoit")
+
+[sub_resource type="Resource" id="Resource_mfxlg"]
+script = ExtResource("2_tqoit")
+
+[sub_resource type="Resource" id="Resource_08wke"]
+script = ExtResource("2_tqoit")
+
+[resource]
+script = ExtResource("3_6us8i")
+ac = 1
+attack = Array[ExtResource("1_inac0")]([SubResource("Resource_fa11k"), SubResource("Resource_qx0fj"), SubResource("Resource_d34u5"), SubResource("Resource_0nhkk")])
+character = "t"
+colour = 31
+description = "He makes you glad to be sober."
+flags_1 = SubResource("Resource_w4gar")
+flags_2 = SubResource("Resource_vtep3")
+flags_3 = SubResource("Resource_0htll")
+flags_4 = SubResource("Resource_noebq")
+flags_5 = SubResource("Resource_mfxlg")
+flags_6 = SubResource("Resource_08wke")
+hit_dice = 2
+hit_dice_sides = 3
+max_num = 100
+name = "Singing, happy drunk"
+notice_range = 10
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Singing   "

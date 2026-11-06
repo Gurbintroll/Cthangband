@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_tq2nm"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_jnsgl"]
+
+[sub_resource type="Resource" id="Resource_6rmnw"]
+script = ExtResource("1_tq2nm")
+
+[sub_resource type="Resource" id="Resource_axvsh"]
+script = ExtResource("1_tq2nm")
+
+[sub_resource type="Resource" id="Resource_stqv1"]
+script = ExtResource("1_tq2nm")
+value = 1024
+
+[resource]
+script = ExtResource("2_jnsgl")
+chance = Array[int]([1, 0, 0, 0])
+character = "/"
+colour = 23
+cost = 500
+damage_dice = 4
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_6rmnw")
+flags_2 = SubResource("Resource_axvsh")
+flags_3 = SubResource("Resource_stqv1")
+flavour_aware = true
+item_category = 22
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "& Great Axe~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 25
+weight = 230
+filename = "Polearm:Great Axe"

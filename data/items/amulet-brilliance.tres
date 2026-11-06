@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_nhqmt"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ff3px"]
+
+[sub_resource type="Resource" id="Resource_nl0kj"]
+script = ExtResource("1_nhqmt")
+value = 6
+
+[sub_resource type="Resource" id="Resource_dqnjo"]
+script = ExtResource("1_nhqmt")
+
+[sub_resource type="Resource" id="Resource_v10it"]
+script = ExtResource("1_nhqmt")
+value = 512
+
+[resource]
+script = ExtResource("2_ff3px")
+chance = Array[int]([1, 0, 0, 0])
+character = "\""
+colour = 3
+cost = 500
+flags_1 = SubResource("Resource_nl0kj")
+flags_2 = SubResource("Resource_dqnjo")
+flags_3 = SubResource("Resource_v10it")
+has_flavour = true
+item_category = 40
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Brilliance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 6
+weight = 3
+filename = "Amulet:Brilliance"

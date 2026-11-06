@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_02woe"]
+
+[resource]
+script = ExtResource("1_02woe")
+alter_action = 1
+appear_as = "Tree"
+blocks_los = true
+category = 2
+character = "#"
+colour = 8
+description = "tree"
+dims_outside_los = true
+name = "Tree"

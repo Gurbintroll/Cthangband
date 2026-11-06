@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_y7w5l"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_gnxts"]
+
+[sub_resource type="Resource" id="Resource_pota6"]
+script = ExtResource("1_y7w5l")
+
+[sub_resource type="Resource" id="Resource_ksc2n"]
+script = ExtResource("1_y7w5l")
+
+[sub_resource type="Resource" id="Resource_1hy03"]
+script = ExtResource("1_y7w5l")
+
+[resource]
+script = ExtResource("2_gnxts")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 23
+cost = 1000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_pota6")
+flags_2 = SubResource("Resource_ksc2n")
+flags_3 = SubResource("Resource_1hy03")
+flavour_aware = true
+item_category = 94
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "[Black Mass]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+weight = 30
+filename = "DeathBook:[Black Mass]"

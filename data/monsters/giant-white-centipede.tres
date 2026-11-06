@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_l5m07"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4p1us"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_dbb5c"]
+
+[sub_resource type="Resource" id="Resource_d6485"]
+script = ExtResource("1_l5m07")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_yhr0d"]
+script = ExtResource("1_l5m07")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 7
+
+[sub_resource type="Resource" id="Resource_mgxcx"]
+script = ExtResource("1_l5m07")
+
+[sub_resource type="Resource" id="Resource_0447e"]
+script = ExtResource("1_l5m07")
+
+[sub_resource type="Resource" id="Resource_ve004"]
+script = ExtResource("2_4p1us")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_l68k3"]
+script = ExtResource("2_4p1us")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_bbijt"]
+script = ExtResource("2_4p1us")
+value = 128
+
+[sub_resource type="Resource" id="Resource_2t1id"]
+script = ExtResource("2_4p1us")
+
+[sub_resource type="Resource" id="Resource_t2sbv"]
+script = ExtResource("2_4p1us")
+
+[sub_resource type="Resource" id="Resource_wiptf"]
+script = ExtResource("2_4p1us")
+
+[resource]
+script = ExtResource("3_dbb5c")
+ac = 10
+attack = Array[ExtResource("1_l5m07")]([SubResource("Resource_d6485"), SubResource("Resource_yhr0d"), SubResource("Resource_mgxcx"), SubResource("Resource_0447e")])
+character = "c"
+colour = 30
+description = "It is about four feet long and carnivorous."
+flags_1 = SubResource("Resource_ve004")
+flags_2 = SubResource("Resource_l68k3")
+flags_3 = SubResource("Resource_bbijt")
+flags_4 = SubResource("Resource_2t1id")
+flags_5 = SubResource("Resource_t2sbv")
+flags_6 = SubResource("Resource_wiptf")
+hit_dice = 3
+hit_dice_sides = 5
+level = 1
+max_num = 100
+experience = 2
+name = "Giant white centipede"
+notice_range = 7
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "   Giant    "
+split_name_2 = "   white    "
+split_name_3 = " centipede  "

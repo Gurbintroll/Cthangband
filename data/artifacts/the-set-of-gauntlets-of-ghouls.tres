@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_1mp1d"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_18fxd"]
+
+[sub_resource type="Resource" id="Resource_4wjfg"]
+script = ExtResource("1_1mp1d")
+value = 16
+
+[sub_resource type="Resource" id="Resource_qy7dl"]
+script = ExtResource("1_1mp1d")
+value = 16
+
+[sub_resource type="Resource" id="Resource_rjcm7"]
+script = ExtResource("1_1mp1d")
+value = 32636928
+
+[resource]
+script = ExtResource("2_18fxd")
+flags_1 = SubResource("Resource_4wjfg")
+flags_2 = SubResource("Resource_qy7dl")
+flags_3 = SubResource("Resource_rjcm7")
+ac = 2
+cost = 33000
+damage_dice = 1
+damage_dice_sides = 1
+item_category = 31
+item_sub_category = 2
+level = 10
+name = "of *Ghouls*"
+type_specific_value = 4
+rarity = 20
+to_ac = 15
+weight = 25
+id = 55

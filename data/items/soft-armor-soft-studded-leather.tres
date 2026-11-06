@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cbesd"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_umfrb"]
+
+[sub_resource type="Resource" id="Resource_sdoic"]
+script = ExtResource("1_cbesd")
+
+[sub_resource type="Resource" id="Resource_rotp8"]
+script = ExtResource("1_cbesd")
+
+[sub_resource type="Resource" id="Resource_dgxp7"]
+script = ExtResource("1_cbesd")
+
+[resource]
+script = ExtResource("2_umfrb")
+ac = 5
+chance = Array[int]([1, 0, 0, 0])
+character = "("
+colour = 6
+cost = 35
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_sdoic")
+flags_2 = SubResource("Resource_rotp8")
+flags_3 = SubResource("Resource_dgxp7")
+flavour_aware = true
+item_category = 36
+level = 3
+locale = Array[int]([3, 0, 0, 0])
+name = "Soft Studded Leather~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 5
+weight = 90
+filename = "SoftArmor:Soft Studded Leather"

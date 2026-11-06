@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2d42q"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_lksqp"]
+
+[sub_resource type="Resource" id="Resource_xfinj"]
+script = ExtResource("1_2d42q")
+
+[sub_resource type="Resource" id="Resource_ny3r8"]
+script = ExtResource("1_2d42q")
+
+[sub_resource type="Resource" id="Resource_yuj3h"]
+script = ExtResource("1_2d42q")
+
+[resource]
+script = ExtResource("2_lksqp")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 5
+cost = 100
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_xfinj")
+flags_2 = SubResource("Resource_ny3r8")
+flags_3 = SubResource("Resource_yuj3h")
+flavour_aware = true
+item_category = 91
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "[Beginner's Handbook]"
+stompable = Array[bool]([false, false, false, false])
+weight = 30
+filename = "SorceryBook:[Beginner's Handbook]"

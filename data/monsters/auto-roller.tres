@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_dd1gn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qjb7p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_46xb8"]
+
+[sub_resource type="Resource" id="Resource_be2mc"]
+script = ExtResource("1_dd1gn")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_fg4ua"]
+script = ExtResource("1_dd1gn")
+damage_dice = 1
+damage_dice_sides = 7
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_76r62"]
+script = ExtResource("1_dd1gn")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_w31ag"]
+script = ExtResource("1_dd1gn")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_h454b"]
+script = ExtResource("2_qjb7p")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_d4h3r"]
+script = ExtResource("2_qjb7p")
+value = 131168
+
+[sub_resource type="Resource" id="Resource_30lcg"]
+script = ExtResource("2_qjb7p")
+value = 3493726208
+
+[sub_resource type="Resource" id="Resource_ldlup"]
+script = ExtResource("2_qjb7p")
+
+[sub_resource type="Resource" id="Resource_vpuoq"]
+script = ExtResource("2_qjb7p")
+
+[sub_resource type="Resource" id="Resource_jvmwn"]
+script = ExtResource("2_qjb7p")
+
+[resource]
+script = ExtResource("3_46xb8")
+ac = 80
+attack = Array[ExtResource("1_dd1gn")]([SubResource("Resource_be2mc"), SubResource("Resource_fg4ua"), SubResource("Resource_76r62"), SubResource("Resource_w31ag")])
+character = "g"
+colour = 30
+description = "It looks like a huge spiked roller, moving on its own towards you."
+flags_1 = SubResource("Resource_h454b")
+flags_2 = SubResource("Resource_d4h3r")
+flags_3 = SubResource("Resource_30lcg")
+flags_4 = SubResource("Resource_ldlup")
+flags_5 = SubResource("Resource_vpuoq")
+flags_6 = SubResource("Resource_jvmwn")
+hit_dice = 70
+hit_dice_sides = 12
+level = 22
+max_num = 100
+experience = 230
+name = "Auto-roller"
+notice_range = 10
+rarity = 2
+sleep = 12
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Auto-roller "

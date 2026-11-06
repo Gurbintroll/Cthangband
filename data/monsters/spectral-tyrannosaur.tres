@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2clhr"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_nokes"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mcfup"]
+
+[sub_resource type="Resource" id="Resource_51fmw"]
+script = ExtResource("1_2clhr")
+damage_dice = 2
+damage_dice_sides = 13
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_0bw62"]
+script = ExtResource("1_2clhr")
+damage_dice = 2
+damage_dice_sides = 13
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_nmj5t"]
+script = ExtResource("1_2clhr")
+damage_dice = 5
+damage_dice_sides = 8
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_05hov"]
+script = ExtResource("1_2clhr")
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_g3cc8"]
+script = ExtResource("2_nokes")
+value = 404751872
+
+[sub_resource type="Resource" id="Resource_1ncs2"]
+script = ExtResource("2_nokes")
+value = 1245184
+
+[sub_resource type="Resource" id="Resource_83uhe"]
+script = ExtResource("2_nokes")
+value = 3526951136
+
+[sub_resource type="Resource" id="Resource_wqryo"]
+script = ExtResource("2_nokes")
+value = 1060864
+
+[sub_resource type="Resource" id="Resource_j5nq5"]
+script = ExtResource("2_nokes")
+value = 2281701376
+
+[sub_resource type="Resource" id="Resource_gcqrf"]
+script = ExtResource("2_nokes")
+
+[resource]
+script = ExtResource("3_mcfup")
+ac = 120
+attack = Array[ExtResource("1_2clhr")]([SubResource("Resource_51fmw"), SubResource("Resource_0bw62"), SubResource("Resource_nmj5t"), SubResource("Resource_05hov")])
+character = "R"
+colour = 29
+description = "A deadly undead horror which looks like a skeletal tyrannosaur surrounded by a sickly green glow."
+flags_1 = SubResource("Resource_g3cc8")
+flags_2 = SubResource("Resource_1ncs2")
+flags_3 = SubResource("Resource_83uhe")
+flags_4 = SubResource("Resource_wqryo")
+flags_5 = SubResource("Resource_j5nq5")
+flags_6 = SubResource("Resource_gcqrf")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 70
+hit_dice_sides = 50
+level = 46
+max_num = 100
+experience = 15000
+name = "Spectral tyrannosaur"
+notice_range = 25
+rarity = 3
+sleep = 30
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Spectral  "
+split_name_3 = "tyrannosaur "

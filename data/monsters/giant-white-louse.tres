@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ukfrv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ghu0v"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ncnjb"]
+
+[sub_resource type="Resource" id="Resource_fpe5l"]
+script = ExtResource("1_ukfrv")
+damage_dice = 1
+damage_dice_sides = 1
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_cf445"]
+script = ExtResource("1_ukfrv")
+
+[sub_resource type="Resource" id="Resource_0b4kf"]
+script = ExtResource("1_ukfrv")
+
+[sub_resource type="Resource" id="Resource_pddeu"]
+script = ExtResource("1_ukfrv")
+
+[sub_resource type="Resource" id="Resource_4yi4k"]
+script = ExtResource("2_ghu0v")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_igtec"]
+script = ExtResource("2_ghu0v")
+value = 384
+
+[sub_resource type="Resource" id="Resource_2fmhv"]
+script = ExtResource("2_ghu0v")
+value = 128
+
+[sub_resource type="Resource" id="Resource_px3no"]
+script = ExtResource("2_ghu0v")
+
+[sub_resource type="Resource" id="Resource_qve3w"]
+script = ExtResource("2_ghu0v")
+
+[sub_resource type="Resource" id="Resource_8c7lq"]
+script = ExtResource("2_ghu0v")
+
+[resource]
+script = ExtResource("3_ncnjb")
+ac = 5
+attack = Array[ExtResource("1_ukfrv")]([SubResource("Resource_fpe5l"), SubResource("Resource_cf445"), SubResource("Resource_0b4kf"), SubResource("Resource_pddeu")])
+character = "l"
+colour = 30
+description = "It is six inches long."
+flags_1 = SubResource("Resource_4yi4k")
+flags_2 = SubResource("Resource_igtec")
+flags_3 = SubResource("Resource_2fmhv")
+flags_4 = SubResource("Resource_px3no")
+flags_5 = SubResource("Resource_qve3w")
+flags_6 = SubResource("Resource_8c7lq")
+hit_dice = 1
+hit_dice_sides = 1
+level = 3
+max_num = 100
+experience = 1
+name = "Giant white louse"
+notice_range = 6
+rarity = 1
+sleep = 10
+speed = 120
+split_name_1 = "   Giant    "
+split_name_2 = "   white    "
+split_name_3 = "   louse    "

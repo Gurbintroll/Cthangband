@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_o6lh5"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_h2q8q"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rqnlv"]
+
+[sub_resource type="Resource" id="Resource_e7lh4"]
+script = ExtResource("1_o6lh5")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_gwv5r"]
+script = ExtResource("1_o6lh5")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_4ohoe"]
+script = ExtResource("1_o6lh5")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ay4hn"]
+script = ExtResource("1_o6lh5")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_pg5li"]
+script = ExtResource("2_h2q8q")
+value = 14681728
+
+[sub_resource type="Resource" id="Resource_efbp5"]
+script = ExtResource("2_h2q8q")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_y73s2"]
+script = ExtResource("2_h2q8q")
+value = 2097280
+
+[sub_resource type="Resource" id="Resource_hdbnl"]
+script = ExtResource("2_h2q8q")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_imn2t"]
+script = ExtResource("2_h2q8q")
+value = 32768
+
+[sub_resource type="Resource" id="Resource_1piue"]
+script = ExtResource("2_h2q8q")
+
+[resource]
+script = ExtResource("3_rqnlv")
+ac = 125
+attack = Array[ExtResource("1_o6lh5")]([SubResource("Resource_e7lh4"), SubResource("Resource_gwv5r"), SubResource("Resource_4ohoe"), SubResource("Resource_ay4hn")])
+character = "H"
+colour = 13
+description = "'Beware the Jabberwock, my son!The jaws that bite, the claws that catch!'"
+flags_1 = SubResource("Resource_pg5li")
+flags_2 = SubResource("Resource_efbp5")
+flags_3 = SubResource("Resource_y73s2")
+flags_4 = SubResource("Resource_hdbnl")
+flags_5 = SubResource("Resource_imn2t")
+flags_6 = SubResource("Resource_1piue")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 32
+hit_dice_sides = 100
+level = 65
+max_num = 100
+experience = 19000
+name = "Jabberwock"
+notice_range = 35
+rarity = 4
+sleep = 255
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Jabberwock "

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_3nxjg"]
+
+[resource]
+script = ExtResource("1_3nxjg")
+category = 8
+height = 21
+name = "Funnel"
+rating = 15
+text = "%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXX%%X&&&...........***X.#%%X&XXXXXXXXXXXXXXX*X.X%%X&X&&&.......***X*X.X%%X.X&XXXXXXXXXX.*X.X.X%%X.X&X8XX,,,,,XX*X.X.X%%X.X.XX*,,,,,,,X.X.X.X%%X.X.XX@@@@@@@@@.X.X.X%%X.X.X89,,,,,,,,.X.X.X%%X.X.X89,,,,,,,,.X.X.X%%X.X.X89,,,,,,,,.X.X.X%%X.X.XX@@@@@@@@@XX.X.X%%X.X.XX*,,,,,,,*XX.X.X%%X.X*X8XX,,,,,XX8X&X.X%%X.X*XXXXXXXXXXXXX&X.X%%X*X***.........&&&X&X%%X*XXXXXXXXXXXXXXXXX&X%%X***.............&&&X%%XXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 23

@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_htli0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_fcjep"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_hcotb"]
+
+[sub_resource type="Resource" id="Resource_kgevj"]
+script = ExtResource("1_htli0")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_ccsit"]
+script = ExtResource("1_htli0")
+
+[sub_resource type="Resource" id="Resource_y8ijc"]
+script = ExtResource("1_htli0")
+
+[sub_resource type="Resource" id="Resource_mx0ur"]
+script = ExtResource("1_htli0")
+
+[sub_resource type="Resource" id="Resource_v06ik"]
+script = ExtResource("2_fcjep")
+value = 525312
+
+[sub_resource type="Resource" id="Resource_koxuk"]
+script = ExtResource("2_fcjep")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_qjlq4"]
+script = ExtResource("2_fcjep")
+value = 524416
+
+[sub_resource type="Resource" id="Resource_0jyob"]
+script = ExtResource("2_fcjep")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_grnxw"]
+script = ExtResource("2_fcjep")
+
+[sub_resource type="Resource" id="Resource_8cl48"]
+script = ExtResource("2_fcjep")
+
+[resource]
+script = ExtResource("3_hcotb")
+ac = 20
+attack = Array[ExtResource("1_htli0")]([SubResource("Resource_kgevj"), SubResource("Resource_ccsit"), SubResource("Resource_y8ijc"), SubResource("Resource_mx0ur")])
+character = "F"
+colour = 30
+description = "It is a large fly that drips frost."
+flags_1 = SubResource("Resource_v06ik")
+flags_2 = SubResource("Resource_koxuk")
+flags_3 = SubResource("Resource_qjlq4")
+flags_4 = SubResource("Resource_0jyob")
+flags_5 = SubResource("Resource_grnxw")
+flags_6 = SubResource("Resource_8cl48")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 5
+hit_dice_sides = 8
+level = 14
+max_num = 100
+experience = 60
+name = "Giant white dragon fly"
+notice_range = 20
+rarity = 3
+sleep = 50
+speed = 110
+split_name_1 = "Giant white "
+split_name_2 = "   dragon   "
+split_name_3 = "    fly     "

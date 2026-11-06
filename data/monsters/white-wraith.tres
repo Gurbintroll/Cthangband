@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1xa8m"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qwg54"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_03lju"]
+
+[sub_resource type="Resource" id="Resource_8axl2"]
+script = ExtResource("1_1xa8m")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_m6m64"]
+script = ExtResource("1_1xa8m")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_78yu8"]
+script = ExtResource("1_1xa8m")
+effect = 25
+method = 2
+
+[sub_resource type="Resource" id="Resource_kfkrn"]
+script = ExtResource("1_1xa8m")
+
+[sub_resource type="Resource" id="Resource_dxoh5"]
+script = ExtResource("2_qwg54")
+value = 16778240
+
+[sub_resource type="Resource" id="Resource_yotx0"]
+script = ExtResource("2_qwg54")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_m207s"]
+script = ExtResource("2_qwg54")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_wpoxx"]
+script = ExtResource("2_qwg54")
+
+[sub_resource type="Resource" id="Resource_2xit4"]
+script = ExtResource("2_qwg54")
+value = 134225920
+
+[sub_resource type="Resource" id="Resource_0xqeb"]
+script = ExtResource("2_qwg54")
+value = 4096
+
+[resource]
+script = ExtResource("3_03lju")
+ac = 40
+attack = Array[ExtResource("1_1xa8m")]([SubResource("Resource_8axl2"), SubResource("Resource_m6m64"), SubResource("Resource_78yu8"), SubResource("Resource_kfkrn")])
+character = "W"
+colour = 30
+description = "It is a tangible but ghostly form made of white fog."
+flags_1 = SubResource("Resource_dxoh5")
+flags_2 = SubResource("Resource_yotx0")
+flags_3 = SubResource("Resource_m207s")
+flags_4 = SubResource("Resource_wpoxx")
+flags_5 = SubResource("Resource_2xit4")
+flags_6 = SubResource("Resource_0xqeb")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 15
+hit_dice_sides = 8
+level = 26
+max_num = 100
+experience = 175
+name = "White wraith"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   White    "
+split_name_3 = "   wraith   "

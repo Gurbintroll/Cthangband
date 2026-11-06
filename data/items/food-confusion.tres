@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_m7bfm"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_iorcq"]
+
+[sub_resource type="Resource" id="Resource_omcgs"]
+script = ExtResource("1_m7bfm")
+
+[sub_resource type="Resource" id="Resource_68e0j"]
+script = ExtResource("1_m7bfm")
+
+[sub_resource type="Resource" id="Resource_stoah"]
+script = ExtResource("1_m7bfm")
+
+[resource]
+script = ExtResource("2_iorcq")
+chance = Array[int]([1, 0, 0, 0])
+character = ","
+colour = 5
+easy_know = true
+flags_1 = SubResource("Resource_omcgs")
+flags_2 = SubResource("Resource_68e0j")
+flags_3 = SubResource("Resource_stoah")
+has_flavour = true
+item_category = 80
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "Confusion"
+type_specific_value = 500
+stompable = Array[bool]([true, false, false, false])
+sub_category = 3
+weight = 1
+filename = "Food:Confusion"

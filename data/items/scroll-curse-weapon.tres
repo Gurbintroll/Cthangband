@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5axqi"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_yjuc5"]
+
+[sub_resource type="Resource" id="Resource_est25"]
+script = ExtResource("1_5axqi")
+
+[sub_resource type="Resource" id="Resource_l74lx"]
+script = ExtResource("1_5axqi")
+
+[sub_resource type="Resource" id="Resource_ag22v"]
+script = ExtResource("1_5axqi")
+
+[resource]
+script = ExtResource("2_yjuc5")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+easy_know = true
+flags_1 = SubResource("Resource_est25")
+flags_2 = SubResource("Resource_l74lx")
+flags_3 = SubResource("Resource_ag22v")
+has_flavour = true
+item_category = 70
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "Curse Weapon"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 3
+weight = 5
+filename = "Scroll:Curse Weapon"

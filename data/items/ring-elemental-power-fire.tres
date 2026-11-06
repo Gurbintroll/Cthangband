@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://ikxct7a1l8hj"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_a843p"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_tnr50"]
+
+[sub_resource type="Resource" id="Resource_6d5ho"]
+script = ExtResource("1_a843p")
+
+[sub_resource type="Resource" id="Resource_8k0r8"]
+script = ExtResource("1_a843p")
+
+[sub_resource type="Resource" id="Resource_7trrr"]
+script = ExtResource("1_a843p")
+value = 2048
+
+[resource]
+script = ExtResource("2_tnr50")
+chance = Array[int]([0, 0, 0, 0])
+character = "="
+colour = 8
+cost = 100000
+flags_1 = SubResource("Resource_6d5ho")
+flags_2 = SubResource("Resource_8k0r8")
+flags_3 = SubResource("Resource_7trrr")
+has_flavour = true
+item_category = 45
+level = 80
+locale = Array[int]([0, 0, 0, 0])
+name = "& Ring~"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 34
+weight = 2
+filename = "Ring:Ring**"

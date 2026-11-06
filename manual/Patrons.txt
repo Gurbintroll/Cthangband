@@ -1,0 +1,172 @@
+﻿[center][font_size=48][color="brown"][b]Patrons[/b][/color][/font_size][/center]
+[hr color="brown"]
+All Cultists and Fanatics are devoted to a particular patron (determined randomly at character generation), and each time a character belonging to one of those classes increases in level their patron will either reward or punish them. This is not based on any specific actions that you may have performed, but is at the capricious whim of the patron (i.e. in game terms it's random).
+
+Because each patron is different, the chances of any particular category of reward or punishment vary from patron to patron. The table below shows the chance for each patron to give you a reward or punishment from each category when you increase in level. The rewards and/or punishments are independent of each other, so getting a reward repeatedly will not make you 'due' a punishment or vice versa. However, the chance of getting a punishment instead of a reward does vary from level to level, although even when they are at their greatest a reward is still far more likely.
+
+[center][table=11][cell][b][/b][/cell][cell][b]Smite You[/b][/cell][cell][b]Summon Monsters[/b][/cell][cell][b]Weaken You[/b][/cell][cell][b]Curse Your Equipment[/b][/cell][cell][b]Ignore You[/b][/cell][cell][b]Change You[/b][/cell][cell][b]Destroy Your Enemies[/b][/cell][cell][b]Provide a Servant[/b][/cell][cell][b]Give You Gifts[/b][/cell][cell][b]Boost Your Abilities[/b][/cell]
+[cell]Abhoth[/cell][cell]3%[/cell][cell]2%[/cell][cell][/cell][cell][/cell][cell]18%[/cell][cell]12%[/cell][cell][/cell][cell]12%[/cell][cell]42%[/cell][cell]6%[/cell]
+[cell]Azathoth[/cell][cell]3%[/cell][cell][/cell][cell]2%[/cell][cell][/cell][cell]6%[/cell][cell]24%[/cell][cell]12%[/cell][cell]6%[/cell][cell]24%[/cell][cell]18%[/cell]
+[cell]Cthulhu[/cell][cell]3%[/cell][cell][/cell][cell]8%[/cell][cell][/cell][cell]18%[/cell][cell]18%[/cell][cell][/cell][cell]6%[/cell][cell]18%[/cell][cell]24%[/cell]
+[cell]Cyaegha[/cell][cell]3%[/cell][cell][/cell][cell]2%[/cell][cell][/cell][cell]12%[/cell][cell]12%[/cell][cell]18%[/cell][cell]6%[/cell][cell]24%[/cell][cell]18%[/cell]
+[cell]Eihort[/cell][cell]1%[/cell][cell][/cell][cell]2%[/cell][cell]2%[/cell][cell]18%[/cell][cell]24%[/cell][cell][/cell][cell][/cell][cell]18%[/cell][cell]30%[/cell]
+[cell]Glaaki[/cell][cell]1%[/cell][cell]8%[/cell][cell][/cell][cell]2%[/cell][cell]12%[/cell][cell]18%[/cell][cell][/cell][cell]6%[/cell][cell]30%[/cell][cell]18%[/cell]
+[cell]Hastur[/cell][cell]7%[/cell][cell]6%[/cell][cell]13%[/cell][cell]2%[/cell][cell]6%[/cell][cell]12%[/cell][cell]12%[/cell][cell]1%[/cell][cell]18%[/cell][cell]18%[/cell]
+[cell]Iod[/cell][cell]1%[/cell][cell][/cell][cell][/cell][cell]4%[/cell][cell]18%[/cell][cell]18%[/cell][cell][/cell][cell][/cell][cell]30%[/cell][cell]24%[/cell]
+[cell]Nyarlathotep[/cell][cell]2%[/cell][cell]6%[/cell][cell]7%[/cell][cell]2%[/cell][cell][/cell][cell]18%[/cell][cell][/cell][cell]6%[/cell][cell]24%[/cell][cell]30%[/cell]
+[cell]Nyogtha[/cell][cell]3%[/cell][cell][/cell][cell]1%[/cell][cell]1%[/cell][cell]12%[/cell][cell]18%[/cell][cell][/cell][cell]6%[/cell][cell]30%[/cell][cell]24%[/cell]
+[cell]Rhan Tegoth[/cell][cell]3%[/cell][cell]2%[/cell][cell][/cell][cell][/cell][cell]18%[/cell][cell]18%[/cell][cell]6%[/cell][cell]6%[/cell][cell]24%[/cell][cell]18%[/cell]
+[cell]Shub Niggurath[/cell][cell]1%[/cell][cell][/cell][cell]8%[/cell][cell]2%[/cell][cell]6%[/cell][cell]30%[/cell][cell][/cell][cell][/cell][cell]12%[/cell][cell]36%[/cell]
+[cell]Tsathoggua[/cell][cell]2%[/cell][cell]1%[/cell][cell]2%[/cell][cell][/cell][cell]24%[/cell][cell]12%[/cell][cell]6%[/cell][cell]6%[/cell][cell]24%[/cell][cell]18%[/cell]
+[cell]Ubbo Sathla[/cell][cell]3%[/cell][cell][/cell][cell]8%[/cell][cell][/cell][cell]12%[/cell][cell]12%[/cell][cell][/cell][cell]6%[/cell][cell]18%[/cell][cell]36%[/cell]
+[cell]Yig[/cell][cell]2%[/cell][cell][/cell][cell]1%[/cell][cell]2%[/cell][cell]12%[/cell][cell][/cell][cell]24%[/cell][cell]6%[/cell][cell]18%[/cell][cell]30%[/cell]
+[cell]Yog Sothoth[/cell][cell]4%[/cell][cell]7%[/cell][cell][/cell][cell][/cell][cell]12%[/cell][cell][/cell][cell]30%[/cell][cell]6%[/cell][cell]24%[/cell][cell]12%[/cell]
+[/table][/center]
+
+(Note that the above percentages don't add up to exactly 100%, due to the chances being rounded to the nearest whole percent for ease of readability in the table.)
+
+Descriptions of the individual rewards and punishment options within each category are given below. Just because a patron chooses to give a reward or punishment from a particular category doesn't mean that there is an equal chance of them giving each of the individual rewards or punishments from within that category. Patrons will usually favour different individual rewards or punishments and often there will be individual rewards or punishments that a patron will never give no matter how many times they choose that category.
+
+[font_size=24][color="brown"][b]Smite You[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron thunders: 'Die Mortal!' [/color][/bgcolor][/font]
+
+You are blasted with fire and disintegration, have all your ability scores drained, have the Dread Curse placed on you, have powerful monsters summoned around you, and possibly have your armour or weapon or both cursed.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron whispers: 'Now thou shalt pay for annoying me.' [/color][/bgcolor][/font]
+
+You either have your weapon cursed or your armour cursed or all your ability scores drained or have the Dread Curse placed on you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron thunders: 'Thou art growing arrogant, mortal!' [/color][/bgcolor][/font]
+
+You have the Dread Curse placed on you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Suffer, pathetic fool!' [/color][/bgcolor][/font]
+
+You are blasted with fire and disintegration.
+
+[font_size=24][color="brown"][b]Summon Monsters[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'My pets, destroy the arrogant mortal!' [/color][/bgcolor][/font]
+
+A number of hostile monsters are summoned around you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Thou needst worthier opponents!' [/color][/bgcolor][/font]
+
+A number of unusually dangerous hostile monsters are summoned around you.
+
+[font_size=24][color="brown"][b]Weaken You[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron thunders: 'Thou needst a lesson in humility, mortal!' [/color][/bgcolor][/font]
+
+All of your ability scores are drained.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'I grow tired of thee, mortal!' [/color][/bgcolor][/font]
+
+A random one of your ability scores is drained (but each patron has a favourite that they choose more often).
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Thou didst not deserve that, slave!' [/color][/bgcolor][/font]
+
+Your experience is drained, meaning you don't gain the new level yet. When you do re-gain the experience and the new level, your patron will not give you an additional reward or punishment.
+
+[font_size=24][color="brown"][b]Curse Your Equipment[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Thou reliest too much on thine equipment.' [/color][/bgcolor][/font]
+
+Your armour is cursed.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Thou reliest too much on thine weapon!' [/color][/bgcolor][/font]
+
+Your weapon is cursed.
+
+[font_size=24][color="brown"][b]Ignore You[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Patron ignores you. [/color][/bgcolor][/font]
+
+Nothing happens.
+
+[font_size=24][color="brown"][b]Change You[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You feel the power of Patron touch you. [/color][/bgcolor][/font]
+
+Your wounds will be made better or worse.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Thou needst a new form, mortal!' [/color][/bgcolor][/font]
+
+Either your wounds will be made better or worse, or you will be given a mutation, or you will be polymorphed into a different ancestry.
+
+[font_size=24][color="brown"][b]Destroy Your Enemies[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Death and destruction! This pleaseth me!' [/color][/bgcolor][/font]
+
+Your patron casts the Earthquake spell around you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Let me relieve thee of thine oppressors!' [/color][/bgcolor][/font]
+
+Your patron casts the Carnage spell around you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron rings out: 'Let me relieve thee of thine oppressors!' [/color][/bgcolor][/font]
+
+Your patron casts the Mass Carnage spell around you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron whispers: 'Death and destruction! This pleaseth me!' [/color][/bgcolor][/font]
+
+Your patron casts the Call Chaos spell around you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can feel the power of Patron assault your enemies! [/color][/bgcolor][/font]
+
+Your patron Dispels all monsters around you.
+
+[font_size=24][color="brown"][b]Provide a Servant[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Patron rewards you with a servant! [/color][/bgcolor][/font]
+
+You are given a random monster as a pet.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Patron rewards you with a demonic servant! [/color][/bgcolor][/font]
+
+You are given a random demon as a pet.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Patron rewards you with an undead servant! [/color][/bgcolor][/font]
+
+You are given a random undead as a pet.
+
+[font_size=24][color="brown"][b]Give You Gifts[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron whispers: 'Use my gift wisely.' [/color][/bgcolor][/font]
+
+A random 'good' object is dropped at your feet.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Thy deed hath earned thee a worthy reward!' [/color][/bgcolor][/font]
+
+A random 'great' object is dropped at your feet.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Thy deed hath earned thee a worthy blade!' [/color][/bgcolor][/font]
+
+A Chaotic weapon (always a blade of some kind) is dropped at your feet.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Use my gift wisely.' [/color][/bgcolor][/font]
+
+A number of 'good' objects are dropped at your feet.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Behold, mortal, how generously I reward thy loyalty.' [/color][/bgcolor][/font]
+
+A number of 'great' objects are dropped at your feet.
+
+[font_size=24][color="brown"][b]Boost Your Abilities[/b][/color][/font_size]
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Rise, my servant!' [/color][/bgcolor][/font]
+
+You are fully healed.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Well done, mortal! Lead on!' [/color][/bgcolor][/font]
+
+You gain in experience. If this is enough to increase your level again your patron will not give you an additional reward or punishment for this new level.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron rings out: 'Stay, mortal, and let me mold thee.' [/color][/bgcolor][/font]
+
+A random one of your ability scores is increased (but each patron has a favourite that they choose more often).
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] The voice of Patron booms out: 'Receive this modest gift from me!' [/color][/bgcolor][/font]
+
+All of your ability scores are increased.

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_nrrqv"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_o7h5c"]
+
+[sub_resource type="Resource" id="Resource_r3jcu"]
+script = ExtResource("1_nrrqv")
+value = 1
+
+[sub_resource type="Resource" id="Resource_nhba4"]
+script = ExtResource("1_nrrqv")
+
+[sub_resource type="Resource" id="Resource_4trsm"]
+script = ExtResource("1_nrrqv")
+value = 1536
+
+[resource]
+script = ExtResource("2_o7h5c")
+cost = 2500
+flags_1 = SubResource("Resource_r3jcu")
+flags_2 = SubResource("Resource_nhba4")
+flags_3 = SubResource("Resource_4trsm")
+max_type_specifc_value = 5
+max_to_damage = 5
+max_to_hit = 5
+name = "of Power"
+rating = 22
+slot = 34
+id = 43

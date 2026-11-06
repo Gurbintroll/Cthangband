@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_wvpoq"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_o5gv1"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_xqr6b"]
+
+[sub_resource type="Resource" id="Resource_bkp7l"]
+script = ExtResource("1_wvpoq")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_bxn7j"]
+script = ExtResource("1_wvpoq")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_ovgpe"]
+script = ExtResource("1_wvpoq")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ra3o5"]
+script = ExtResource("1_wvpoq")
+
+[sub_resource type="Resource" id="Resource_xj4t2"]
+script = ExtResource("2_o5gv1")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_22ghc"]
+script = ExtResource("2_o5gv1")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_xsg8g"]
+script = ExtResource("2_o5gv1")
+value = 128
+
+[sub_resource type="Resource" id="Resource_xh2yw"]
+script = ExtResource("2_o5gv1")
+
+[sub_resource type="Resource" id="Resource_h8bdc"]
+script = ExtResource("2_o5gv1")
+
+[sub_resource type="Resource" id="Resource_tsuxf"]
+script = ExtResource("2_o5gv1")
+
+[resource]
+script = ExtResource("3_xqr6b")
+ac = 35
+attack = Array[ExtResource("1_wvpoq")]([SubResource("Resource_bkp7l"), SubResource("Resource_bxn7j"), SubResource("Resource_ovgpe"), SubResource("Resource_ra3o5")])
+character = "q"
+colour = 17
+description = "Bears with tusks, trained to kill."
+flags_1 = SubResource("Resource_xj4t2")
+flags_2 = SubResource("Resource_22ghc")
+flags_3 = SubResource("Resource_xsg8g")
+flags_4 = SubResource("Resource_xh2yw")
+flags_5 = SubResource("Resource_h8bdc")
+flags_6 = SubResource("Resource_tsuxf")
+hit_dice = 10
+hit_dice_sides = 10
+level = 9
+max_num = 100
+experience = 25
+name = "War bear"
+notice_range = 10
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    War     "
+split_name_3 = "    bear    "

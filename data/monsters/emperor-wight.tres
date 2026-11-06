@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0gktr"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tr3eo"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_wh8j4"]
+
+[sub_resource type="Resource" id="Resource_lwmj1"]
+script = ExtResource("1_0gktr")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0xc0c"]
+script = ExtResource("1_0gktr")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0uhwa"]
+script = ExtResource("1_0gktr")
+effect = 27
+method = 2
+
+[sub_resource type="Resource" id="Resource_50422"]
+script = ExtResource("1_0gktr")
+effect = 27
+method = 2
+
+[sub_resource type="Resource" id="Resource_mvmvp"]
+script = ExtResource("2_tr3eo")
+value = 144705024
+
+[sub_resource type="Resource" id="Resource_65ell"]
+script = ExtResource("2_tr3eo")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_bq2uv"]
+script = ExtResource("2_tr3eo")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_i8sjh"]
+script = ExtResource("2_tr3eo")
+
+[sub_resource type="Resource" id="Resource_gmb27"]
+script = ExtResource("2_tr3eo")
+value = 2283814912
+
+[sub_resource type="Resource" id="Resource_4jega"]
+script = ExtResource("2_tr3eo")
+
+[resource]
+script = ExtResource("3_wh8j4")
+ac = 40
+attack = Array[ExtResource("1_0gktr")]([SubResource("Resource_lwmj1"), SubResource("Resource_0xc0c"), SubResource("Resource_0uhwa"), SubResource("Resource_50422")])
+character = "W"
+colour = 31
+description = "Your life force is torn from your body as this powerful unearthly being approaches."
+flags_1 = SubResource("Resource_mvmvp")
+flags_2 = SubResource("Resource_65ell")
+flags_3 = SubResource("Resource_bq2uv")
+flags_4 = SubResource("Resource_i8sjh")
+flags_5 = SubResource("Resource_gmb27")
+flags_6 = SubResource("Resource_4jega")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 38
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 1600
+name = "Emperor wight"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Emperor   "
+split_name_3 = "   wight    "

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_7fhmg"]
+
+[resource]
+script = ExtResource("1_7fhmg")
+appear_as = "Water"
+character = "~"
+colour = 3
+description = "water"
+dims_outside_los = true
+name = "Water"

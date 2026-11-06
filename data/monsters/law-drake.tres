@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bqayy8sk73ii1"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_4yexe"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_xg1si"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_g8s60"]
+
+[sub_resource type="Resource" id="Resource_2fnqp"]
+script = ExtResource("1_4yexe")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_0b3js"]
+script = ExtResource("1_4yexe")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_3xxfl"]
+script = ExtResource("1_4yexe")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_kbwod"]
+script = ExtResource("1_4yexe")
+
+[sub_resource type="Resource" id="Resource_1xvi2"]
+script = ExtResource("2_xg1si")
+value = 35653120
+
+[sub_resource type="Resource" id="Resource_ug630"]
+script = ExtResource("2_xg1si")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_0ibmq"]
+script = ExtResource("2_xg1si")
+value = 3221750280
+
+[sub_resource type="Resource" id="Resource_eia77"]
+script = ExtResource("2_xg1si")
+value = 16908288
+
+[sub_resource type="Resource" id="Resource_ykupl"]
+script = ExtResource("2_xg1si")
+value = 1744830464
+
+[sub_resource type="Resource" id="Resource_wb566"]
+script = ExtResource("2_xg1si")
+
+[resource]
+script = ExtResource("3_g8s60")
+ac = 100
+attack = Array[ExtResource("1_4yexe")]([SubResource("Resource_2fnqp"), SubResource("Resource_0b3js"), SubResource("Resource_3xxfl"), SubResource("Resource_kbwod")])
+character = "d"
+colour = 28
+description = "This dragon is clever and cunning. It laughs at your puny efforts to disturb it."
+flags_1 = SubResource("Resource_1xvi2")
+flags_2 = SubResource("Resource_ug630")
+flags_3 = SubResource("Resource_0ibmq")
+flags_4 = SubResource("Resource_eia77")
+flags_5 = SubResource("Resource_ykupl")
+flags_6 = SubResource("Resource_wb566")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 55
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 700
+name = "Law drake"
+notice_range = 25
+rarity = 3
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Law     "
+split_name_3 = "   drake    "

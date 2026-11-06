@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Flavour" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/flavour.gd" id="1_7ixn6"]
+
+[resource]
+script = ExtResource("1_7ixn6")
+name = "Bubbling"
+character = "!"
+colour = 20

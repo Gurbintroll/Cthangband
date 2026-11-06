@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_8pmug"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_1j007"]
+
+[sub_resource type="Resource" id="Resource_xmhcy"]
+script = ExtResource("1_8pmug")
+value = 268435456
+
+[sub_resource type="Resource" id="Resource_32f6y"]
+script = ExtResource("1_8pmug")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_xqkut"]
+script = ExtResource("1_8pmug")
+value = 1048576
+
+[resource]
+script = ExtResource("2_1j007")
+cost = 8000
+flags_1 = SubResource("Resource_xmhcy")
+flags_2 = SubResource("Resource_32f6y")
+flags_3 = SubResource("Resource_xqkut")
+name = "of Vitriol"
+rating = 15
+slot = 24
+id = 59

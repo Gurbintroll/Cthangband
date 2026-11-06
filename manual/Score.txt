@@ -1,0 +1,14 @@
+[center][font_size=48][color="brown"][b]Score[/b][/color][/font_size][/center]
+[hr color="brown"]
+As you progress through the game, you will be given a score so that you can compare the progress of your character with previous characters that you have played.
+
+You are given points as follows:
+[ul]10 x the depth (including offset) of the deepest you have dived into each dungeon.
++ 100 points per character level above first.
++ 0-99 points based on the fraction of the way you are towards your next level.
++ 100 points per quest you have completed.
++ 1,000 points if you have won the game by completing all quests.[/ul]
+
+This means that the maximum possible score you can get is if you have fully explored every dungeon, reached character level 50, and won the game by completing all 50 quests.
+
+In this case, you will have a score of 23,680 points.

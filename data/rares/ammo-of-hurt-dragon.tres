@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_rks0g"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_nb5up"]
+
+[sub_resource type="Resource" id="Resource_3hvev"]
+script = ExtResource("1_rks0g")
+value = 8388608
+
+[sub_resource type="Resource" id="Resource_f5keh"]
+script = ExtResource("1_rks0g")
+
+[sub_resource type="Resource" id="Resource_rn4wa"]
+script = ExtResource("1_rks0g")
+
+[resource]
+script = ExtResource("2_nb5up")
+cost = 35
+flags_1 = SubResource("Resource_3hvev")
+flags_2 = SubResource("Resource_f5keh")
+flags_3 = SubResource("Resource_rn4wa")
+name = "of Hurt Dragon"
+rating = 10
+slot = 23
+id = 90

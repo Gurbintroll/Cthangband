@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_47qq6"]
+
+[resource]
+script = ExtResource("1_47qq6")
+category = 8
+height = 13
+name = "Greater vault (nethack tomb)"
+rating = 25
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.......................................................%%..........XXXXX.XXXXX.XXXXX.XXXXX.XXXXX................%%..........X,,,X.X,,,X.X,,,X.X,,,X.X,,,X................%%.XXXXXXXXXX,&,XXX,&,XXX,&,XXX,&,XXX,&,XXXXXXXXXXXXXXXX.%%.X&^&X....^...^...^...^...^...^...^..^..X,,,,,,,,X,,9X.%%.+^^^+..^...^...^...^...^...^...^...^.@.+,,,,,,,,+,98X.%%.X&^&X....^...^...^...^...^...^...^.....X,,,,,,,,X,,9X.%%.XXXXXXXXXX,&,XXX,.,XXX,.,XXX,&,XXX,&,XXXXXXXXXXXXXXXX.%%..........X,,,X.X,,,X.X,,,X.X,,,X.X,,,X................%%..........XXXXX.XXXXX.XXXXX.XXXXX.XXXXX................%%.......................................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 57

@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_tbsw3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ojbps"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ddrmh"]
+
+[sub_resource type="Resource" id="Resource_5kil0"]
+script = ExtResource("1_tbsw3")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mhvsj"]
+script = ExtResource("1_tbsw3")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vfyux"]
+script = ExtResource("1_tbsw3")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_0yysf"]
+script = ExtResource("1_tbsw3")
+
+[sub_resource type="Resource" id="Resource_25w1y"]
+script = ExtResource("2_ojbps")
+value = 12584448
+
+[sub_resource type="Resource" id="Resource_8n437"]
+script = ExtResource("2_ojbps")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_xkdmv"]
+script = ExtResource("2_ojbps")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_plt42"]
+script = ExtResource("2_ojbps")
+
+[sub_resource type="Resource" id="Resource_7mrlm"]
+script = ExtResource("2_ojbps")
+value = 2281717760
+
+[sub_resource type="Resource" id="Resource_ivaed"]
+script = ExtResource("2_ojbps")
+value = 4096
+
+[resource]
+script = ExtResource("3_ddrmh")
+ac = 50
+attack = Array[ExtResource("1_tbsw3")]([SubResource("Resource_5kil0"), SubResource("Resource_mhvsj"), SubResource("Resource_vfyux"), SubResource("Resource_0yysf")])
+character = "W"
+colour = 9
+description = "A tangible but ghostly form, made of grey fog. The air around it feels deathly cold."
+flags_1 = SubResource("Resource_25w1y")
+flags_2 = SubResource("Resource_8n437")
+flags_3 = SubResource("Resource_xkdmv")
+flags_4 = SubResource("Resource_plt42")
+flags_5 = SubResource("Resource_7mrlm")
+flags_6 = SubResource("Resource_ivaed")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 19
+hit_dice_sides = 10
+level = 36
+max_num = 100
+experience = 700
+name = "Grey wraith"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Grey    "
+split_name_3 = "   wraith   "

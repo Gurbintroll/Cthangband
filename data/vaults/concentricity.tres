@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_u7r0x"]
+
+[resource]
+script = ExtResource("1_u7r0x")
+category = 8
+height = 19
+name = "Concentricity"
+rating = 20
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXX##XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX##XXXXXXXXXXXXXX%%X88XXX99XXXXXXX**###^^XXX99###^^XXX8888XXX^^###99XXX^^###**XXXXXXX99XXX88X%%XXX#99XXX,,,,,XXX**XXX^^XXX99XXX^^XX##XX^^XXX99XXX^^XXX**XXX,,,,,XXX99#XXX%%XX99###,,XXXXX,,XXX**XXX^^XXX@@XXX^^XX^^XXX@@XXX^^XXX**XXX,,XXXXX,,###99XX%%X9XXX,,XXX@@@XXX,,XXX**XXX^^XXX@@XXX^^XXX@@XXX^^XXX**XXX,,XXX@@@XXX,,XXX9X%%XXX,,XXX@@XXX@@XXX,,XXX@@XXX^^XXX&&XXXX&&XXX^^XXX@@XXX,,XXX@@XXX@@XXX,,XXX%%X9,XXX@@XXX8XXX@@XXX,,XXX@@XXX^^XXX,,,,XXX^^XXX@@XXX,,XXX@@XXX8XXX@@XXX,9X%%X9XXX&&XXX888XXX&&XXX,,XXX@@XXX^^XXX..XXX^^XXX@@XXX,,XXX&&XXX888XXX&&XXX9X%%X&&&&&XXX99999@@@&&XXX,,###@@XXX^^######^^XXX@@###,,XXX&&@@@99999XXX&&&&&X%%X9XXX&&XXX888XXX&&XXX,,XXX@@XXX^^XXX..XXX^^XXX@@XXX,,XXX&&XXX888XXX&&XXX9X%%X9,XXX@@XXX8XXX@@XXX,,XXX@@XXX^^XXX,,,,XXX^^XXX@@XXX,,XXX@@XXX8XXX@@XXX,9X%%XXX,,XXX@@XXX@@XXX,,XXX@@XXX^^XXX&&XXXX&&XXX^^XXX@@XXX,,XXX@@XXX@@XXX,,XXX%%X9XXX,,XXX@@@XXX,,XXX**XXX^^XXX@@XXX^^XXX@@XXX^^XXX**XXX,,XXX@@@XXX,,XXX9X%%XX99###,,XXXXX,,XXX**XXX^^XXX@@XXX^^XX^^XXX@@XXX^^XXX**XXX,,XXXXX,,###99XX%%XXX#99XXX,,,,,XXX**XXX^^XXX99XXX^^XX##XX^^XXX99XXX^^XXX**XXX,,,,,XXX99#XXX%%X88XXX99XXXXXXX**###^^XXX99###^^XXX8888XXX^^###99XXX^^###**XXXXXXX99XXX88X%%XXXXXXXXXXXXXX##XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX##XXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 76

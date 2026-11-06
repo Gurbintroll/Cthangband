@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2asom"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_01ctp"]
+
+[sub_resource type="Resource" id="Resource_7w6sn"]
+script = ExtResource("1_2asom")
+value = 8
+
+[sub_resource type="Resource" id="Resource_chube"]
+script = ExtResource("1_2asom")
+value = 81920
+
+[sub_resource type="Resource" id="Resource_b4nmh"]
+script = ExtResource("1_2asom")
+value = 32507392
+
+[resource]
+script = ExtResource("2_01ctp")
+flags_1 = SubResource("Resource_7w6sn")
+flags_2 = SubResource("Resource_chube")
+flags_3 = SubResource("Resource_b4nmh")
+ac = 5
+cost = 110000
+damage_dice = 1
+damage_dice_sides = 1
+item_category = 31
+item_sub_category = 5
+level = 40
+name = "of *Combat*"
+type_specific_value = 4
+rarity = 15
+to_ac = 20
+to_hit = 10
+to_damage = 10
+weight = 40
+id = 59

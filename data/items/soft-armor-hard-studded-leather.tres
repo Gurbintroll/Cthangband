@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ihjg5"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_6p76x"]
+
+[sub_resource type="Resource" id="Resource_ma0ld"]
+script = ExtResource("1_ihjg5")
+
+[sub_resource type="Resource" id="Resource_57t4p"]
+script = ExtResource("1_ihjg5")
+
+[sub_resource type="Resource" id="Resource_hdumk"]
+script = ExtResource("1_ihjg5")
+
+[resource]
+script = ExtResource("2_6p76x")
+ac = 7
+chance = Array[int]([1, 0, 0, 0])
+character = "("
+colour = 6
+cost = 200
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_ma0ld")
+flags_2 = SubResource("Resource_57t4p")
+flags_3 = SubResource("Resource_hdumk")
+flavour_aware = true
+item_category = 36
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Hard Studded Leather~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 7
+to_hit = -1
+weight = 110
+filename = "SoftArmor:Hard Studded Leather"

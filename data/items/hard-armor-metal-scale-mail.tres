@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_3b5t7"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_fia8x"]
+
+[sub_resource type="Resource" id="Resource_psq86"]
+script = ExtResource("1_3b5t7")
+
+[sub_resource type="Resource" id="Resource_pd71g"]
+script = ExtResource("1_3b5t7")
+
+[sub_resource type="Resource" id="Resource_s5mc4"]
+script = ExtResource("1_3b5t7")
+
+[resource]
+script = ExtResource("2_fia8x")
+ac = 13
+chance = Array[int]([1, 0, 0, 0])
+character = "["
+colour = 23
+cost = 550
+damage_dice = 1
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_psq86")
+flags_2 = SubResource("Resource_pd71g")
+flags_3 = SubResource("Resource_s5mc4")
+flavour_aware = true
+item_category = 37
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "Metal Scale Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 3
+to_hit = -2
+weight = 250
+filename = "HardArmor:Metal Scale Mail"

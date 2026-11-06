@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_d3lus"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_584ni"]
+
+[sub_resource type="Resource" id="Resource_pp8dx"]
+script = ExtResource("1_d3lus")
+value = 36
+
+[sub_resource type="Resource" id="Resource_frc5n"]
+script = ExtResource("1_d3lus")
+
+[sub_resource type="Resource" id="Resource_ne3w7"]
+script = ExtResource("1_d3lus")
+value = 603980288
+
+[resource]
+script = ExtResource("2_584ni")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 22
+flags_1 = SubResource("Resource_pp8dx")
+flags_2 = SubResource("Resource_frc5n")
+flags_3 = SubResource("Resource_ne3w7")
+has_flavour = true
+item_category = 45
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "Woe"
+type_specific_value = -5
+stompable = Array[bool]([true, false, false, false])
+weight = 2
+filename = "Ring:Woe"

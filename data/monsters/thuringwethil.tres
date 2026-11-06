@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dj8iinu73b2al"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_l2wfy"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_c7lud"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_dtaki"]
+
+[sub_resource type="Resource" id="Resource_ciqw3"]
+script = ExtResource("1_l2wfy")
+damage_dice = 5
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_vacik"]
+script = ExtResource("1_l2wfy")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_w7kga"]
+script = ExtResource("1_l2wfy")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_1cgwf"]
+script = ExtResource("1_l2wfy")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_apyj6"]
+script = ExtResource("2_c7lud")
+value = 505415177
+
+[sub_resource type="Resource" id="Resource_b151j"]
+script = ExtResource("2_c7lud")
+value = 197154
+
+[sub_resource type="Resource" id="Resource_6422n"]
+script = ExtResource("2_c7lud")
+value = 3224899680
+
+[sub_resource type="Resource" id="Resource_fc2gl"]
+script = ExtResource("2_c7lud")
+
+[sub_resource type="Resource" id="Resource_mv5kr"]
+script = ExtResource("2_c7lud")
+value = 2550188576
+
+[sub_resource type="Resource" id="Resource_mdqpf"]
+script = ExtResource("2_c7lud")
+value = 65536
+
+[resource]
+script = ExtResource("3_dtaki")
+ac = 145
+attack = Array[ExtResource("1_l2wfy")]([SubResource("Resource_ciqw3"), SubResource("Resource_vacik"), SubResource("Resource_w7kga"), SubResource("Resource_1cgwf")])
+character = "V"
+colour = 12
+description = "Chief messenger between Sauron and Morgoth, she is surely the most deadly of her vampire race. At first she is charming to meet, but her wings and eyes give away her true form."
+flags_1 = SubResource("Resource_apyj6")
+flags_2 = SubResource("Resource_b151j")
+flags_3 = SubResource("Resource_6422n")
+flags_4 = SubResource("Resource_fc2gl")
+flags_5 = SubResource("Resource_mv5kr")
+flags_6 = SubResource("Resource_mdqpf")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 40
+hit_dice_sides = 100
+level = 55
+max_num = 1
+experience = 23000
+name = "Thuringwethil"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Thuringwethi"

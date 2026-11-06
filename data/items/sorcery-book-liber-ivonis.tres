@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_th1sl"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_1v12f"]
+
+[sub_resource type="Resource" id="Resource_qxiy0"]
+script = ExtResource("1_th1sl")
+
+[sub_resource type="Resource" id="Resource_rn642"]
+script = ExtResource("1_th1sl")
+
+[sub_resource type="Resource" id="Resource_14p4o"]
+script = ExtResource("1_th1sl")
+value = 15728640
+
+[resource]
+script = ExtResource("2_1v12f")
+chance = Array[int]([3, 0, 0, 0])
+character = "?"
+colour = 3
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_qxiy0")
+flags_2 = SubResource("Resource_rn642")
+flags_3 = SubResource("Resource_14p4o")
+flavour_aware = true
+item_category = 91
+level = 90
+locale = Array[int]([90, 0, 0, 0])
+name = "[Liber Ivonis]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 30
+filename = "SorceryBook:[Liber Ivonis]"

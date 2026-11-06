@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bsvfaxetwlg55"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_3lurw"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_l0gwx"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_0i8kn"]
+
+[sub_resource type="Resource" id="Resource_ck0cp"]
+script = ExtResource("1_3lurw")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_jyn1e"]
+script = ExtResource("1_3lurw")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_psc8g"]
+script = ExtResource("1_3lurw")
+damage_dice = 14
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_tbllf"]
+script = ExtResource("1_3lurw")
+damage_dice = 14
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_l13ix"]
+script = ExtResource("2_l0gwx")
+value = 484443653
+
+[sub_resource type="Resource" id="Resource_u0ff1"]
+script = ExtResource("2_l0gwx")
+value = 1183744
+
+[sub_resource type="Resource" id="Resource_pyqfh"]
+script = ExtResource("2_l0gwx")
+value = 3222536264
+
+[sub_resource type="Resource" id="Resource_7qvrp"]
+script = ExtResource("2_l0gwx")
+value = 5120
+
+[sub_resource type="Resource" id="Resource_e7njm"]
+script = ExtResource("2_l0gwx")
+value = 671105024
+
+[sub_resource type="Resource" id="Resource_5qk48"]
+script = ExtResource("2_l0gwx")
+
+[resource]
+script = ExtResource("3_0i8kn")
+ac = 100
+attack = Array[ExtResource("1_3lurw")]([SubResource("Resource_ck0cp"), SubResource("Resource_jyn1e"), SubResource("Resource_psc8g"), SubResource("Resource_tbllf")])
+character = "D"
+colour = 12
+description = "The mighty dragon of the Norse myth, Fafner was a giant who slew his brother to win a treasure hoard, and then transformed himself into a dragon, greedily watching over his hoard."
+flags_1 = SubResource("Resource_l13ix")
+flags_2 = SubResource("Resource_u0ff1")
+flags_3 = SubResource("Resource_pyqfh")
+flags_4 = SubResource("Resource_7qvrp")
+flags_5 = SubResource("Resource_e7njm")
+flags_6 = SubResource("Resource_5qk48")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 25
+hit_dice_sides = 110
+level = 47
+max_num = 1
+experience = 25000
+name = "Fafner the Dragon"
+notice_range = 20
+rarity = 4
+sleep = 70
+speed = 120
+split_name_1 = "   Fafner   "
+split_name_2 = "    the     "
+split_name_3 = "   Dragon   "

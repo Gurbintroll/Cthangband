@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_m680b"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xoplu"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_wqlre"]
+
+[sub_resource type="Resource" id="Resource_o3mcy"]
+script = ExtResource("1_m680b")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 9
+method = 12
+
+[sub_resource type="Resource" id="Resource_l6r5u"]
+script = ExtResource("1_m680b")
+
+[sub_resource type="Resource" id="Resource_vai83"]
+script = ExtResource("1_m680b")
+
+[sub_resource type="Resource" id="Resource_r7elh"]
+script = ExtResource("1_m680b")
+
+[sub_resource type="Resource" id="Resource_j5cd7"]
+script = ExtResource("2_xoplu")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_ul4h0"]
+script = ExtResource("2_xoplu")
+value = 385
+
+[sub_resource type="Resource" id="Resource_fhn2f"]
+script = ExtResource("2_xoplu")
+value = 268505216
+
+[sub_resource type="Resource" id="Resource_n1kh4"]
+script = ExtResource("2_xoplu")
+
+[sub_resource type="Resource" id="Resource_66vb5"]
+script = ExtResource("2_xoplu")
+
+[sub_resource type="Resource" id="Resource_qvhep"]
+script = ExtResource("2_xoplu")
+
+[resource]
+script = ExtResource("3_wqlre")
+ac = 3
+attack = Array[ExtResource("1_m680b")]([SubResource("Resource_o3mcy"), SubResource("Resource_l6r5u"), SubResource("Resource_vai83"), SubResource("Resource_r7elh")])
+character = "w"
+colour = 22
+description = "It is a large slimy mass of worms."
+flags_1 = SubResource("Resource_j5cd7")
+flags_2 = SubResource("Resource_ul4h0")
+flags_3 = SubResource("Resource_fhn2f")
+flags_4 = SubResource("Resource_n1kh4")
+flags_5 = SubResource("Resource_66vb5")
+flags_6 = SubResource("Resource_qvhep")
+hit_dice = 6
+hit_dice_sides = 4
+level = 2
+max_num = 100
+experience = 3
+name = "Green worm mass"
+notice_range = 7
+rarity = 1
+sleep = 10
+speed = 100
+split_name_1 = "   Green    "
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

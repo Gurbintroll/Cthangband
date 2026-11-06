@@ -1,0 +1,58 @@
+﻿[center][font_size=48][color="brown"][b]Wisdom[/b][/color][/font_size][/center]
+[hr color="brown"]
+Wisdom is a measure of your common sense and intuition. It is primarily used by divine spell casters and psionicists, and the Power per Level, Spells per Level, Spell Failure Reduction, and Min Spell Failure scores only apply to Priests, Druids, Paladins, Fanatics, Rangers, and Monks. Wisdom is also useful for protecting yourself against spells.
+
+[center][table=6][cell][b]Wisdom[/b][/cell][cell][b]Save[/b][/cell][cell][b]Power per Level[/b][/cell][cell][b]Spells per Level[/b][/cell][cell][b]Spell Failure Reduction[/b][/cell][cell][b]Min Spell Failure[/b][/cell]
+[cell]3[/cell][cell]+0%[/cell][cell]0[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]4[/cell][cell]+0%[/cell][cell]0[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]5[/cell][cell]+0%[/cell][cell]0[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]6[/cell][cell]+0%[/cell][cell]0[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]7[/cell][cell]+0%[/cell][cell]0[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]8[/cell][cell]+1%[/cell][cell]0.5[/cell][cell]0.5[/cell][cell]-3%[/cell][cell]50%[/cell]
+[cell]9[/cell][cell]+1%[/cell][cell]1[/cell][cell]0.5[/cell][cell]-3%[/cell][cell]30%[/cell]
+[cell]10[/cell][cell]+1%[/cell][cell]1[/cell][cell]0.5[/cell][cell]-3%[/cell][cell]20%[/cell]
+[cell]11[/cell][cell]+1%[/cell][cell]1[/cell][cell]0.5[/cell][cell]-3%[/cell][cell]15%[/cell]
+[cell]12[/cell][cell]+1%[/cell][cell]1[/cell][cell]1[/cell][cell]-3%[/cell][cell]12%[/cell]
+[cell]13[/cell][cell]+1%[/cell][cell]1[/cell][cell]1[/cell][cell]-3%[/cell][cell]11%[/cell]
+[cell]14[/cell][cell]+1%[/cell][cell]1[/cell][cell]1[/cell][cell]-3%[/cell][cell]10%[/cell]
+[cell]15[/cell][cell]+2%[/cell][cell]1[/cell][cell]1[/cell][cell]-6%[/cell][cell]9%[/cell]
+[cell]16[/cell][cell]+2%[/cell][cell]1[/cell][cell]1[/cell][cell]-6%[/cell][cell]8%[/cell]
+[cell]17[/cell][cell]+2%[/cell][cell]1[/cell][cell]1[/cell][cell]-6%[/cell][cell]7%[/cell]
+[cell]18[/cell][cell]+3%[/cell][cell]1.5[/cell][cell]1[/cell][cell]-9%[/cell][cell]6%[/cell]
+[cell]19[/cell][cell]+3%[/cell][cell]1.5[/cell][cell]1[/cell][cell]-9%[/cell][cell]6%[/cell]
+[cell]20[/cell][cell]+3%[/cell][cell]1.5[/cell][cell]1[/cell][cell]-9%[/cell][cell]5%[/cell]
+[cell]21[/cell][cell]+3%[/cell][cell]1.5[/cell][cell]1[/cell][cell]-9%[/cell][cell]5%[/cell]
+[cell]22[/cell][cell]+3%[/cell][cell]1.5[/cell][cell]1[/cell][cell]-9%[/cell][cell]5%[/cell]
+[cell]23[/cell][cell]+4%[/cell][cell]2[/cell][cell]1.5[/cell][cell]-12%[/cell][cell]4%[/cell]
+[cell]24[/cell][cell]+4%[/cell][cell]2[/cell][cell]1.5[/cell][cell]-12%[/cell][cell]4%[/cell]
+[cell]25[/cell][cell]+5%[/cell][cell]2.5[/cell][cell]1.5[/cell][cell]-15%[/cell][cell]4%[/cell]
+[cell]26[/cell][cell]+5%[/cell][cell]3[/cell][cell]1.5[/cell][cell]-18%[/cell][cell]4%[/cell]
+[cell]27[/cell][cell]+6%[/cell][cell]3.5[/cell][cell]2[/cell][cell]-21%[/cell][cell]3%[/cell]
+[cell]28[/cell][cell]+7%[/cell][cell]4[/cell][cell]2[/cell][cell]-24%[/cell][cell]3%[/cell]
+[cell]29[/cell][cell]+8%[/cell][cell]4.5[/cell][cell]2[/cell][cell]-27%[/cell][cell]2%[/cell]
+[cell]30[/cell][cell]+9%[/cell][cell]5[/cell][cell]2.5[/cell][cell]-30%[/cell][cell]2%[/cell]
+[cell]31[/cell][cell]+10%[/cell][cell]5.5[/cell][cell]2.5[/cell][cell]-33%[/cell][cell]2%[/cell]
+[cell]32[/cell][cell]+11%[/cell][cell]6[/cell][cell]2.5[/cell][cell]-36%[/cell][cell]2%[/cell]
+[cell]33[/cell][cell]+12%[/cell][cell]6.5[/cell][cell]2.5[/cell][cell]-39%[/cell][cell]1%[/cell]
+[cell]34[/cell][cell]+13%[/cell][cell]7[/cell][cell]2.5[/cell][cell]-42%[/cell][cell]1%[/cell]
+[cell]35[/cell][cell]+14%[/cell][cell]7.5[/cell][cell]2.5[/cell][cell]-45%[/cell][cell]1%[/cell]
+[cell]36[/cell][cell]+15%[/cell][cell]8[/cell][cell]2.5[/cell][cell]-48%[/cell][cell]1%[/cell]
+[cell]37[/cell][cell]+16%[/cell][cell]8[/cell][cell]2.5[/cell][cell]-51%[/cell][cell]1%[/cell]
+[cell]38[/cell][cell]+17%[/cell][cell]8.5[/cell][cell]2.5[/cell][cell]-54%[/cell][cell]0%[/cell]
+[cell]39[/cell][cell]+18%[/cell][cell]8.5[/cell][cell]3[/cell][cell]-57%[/cell][cell]0%[/cell]
+[cell]40+[/cell][cell]+19%[/cell][cell]9[/cell][cell]3[/cell][cell]-60%[/cell][cell]0%[/cell][/table][/center]
+
+[b]Save[/b]
+This is a bonus to your Saving Throws skill. Your base Saving Throws skill is based on your profession and level, and it gets bonuses for your ancestry and for your wisdom.
+
+[b]Power per Level[/b]
+This is the amount of power per level that you have when fully rested.
+
+[b]Spells per Level[/b]
+This is the number of spells that you can learn per level. You must go back to a library to research new spells although you do not have to do this every level. Spells that remain unresearched are carried over to the next level.
+
+[b]Spell Failure Reduction[/b]
+When casting a spell, each spell has a basic chance of failure. This chance of failure is reduced by 3% per character level and also by the amount shown here for your wisdom score.
+
+[b]Min Spell Failure[/b]
+No matter how much the chance of failure when casting a spell has been reduced, it can't be reduced below this value.

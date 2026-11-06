@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_84hyo"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jsqwl"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_t1ppi"]
+
+[sub_resource type="Resource" id="Resource_ywgeb"]
+script = ExtResource("1_84hyo")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_oeqkr"]
+script = ExtResource("1_84hyo")
+
+[sub_resource type="Resource" id="Resource_b1xnv"]
+script = ExtResource("1_84hyo")
+
+[sub_resource type="Resource" id="Resource_fpjlb"]
+script = ExtResource("1_84hyo")
+
+[sub_resource type="Resource" id="Resource_b5l7h"]
+script = ExtResource("2_jsqwl")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_42iud"]
+script = ExtResource("2_jsqwl")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_1mcvv"]
+script = ExtResource("2_jsqwl")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_pf3jb"]
+script = ExtResource("2_jsqwl")
+
+[sub_resource type="Resource" id="Resource_b06kc"]
+script = ExtResource("2_jsqwl")
+
+[sub_resource type="Resource" id="Resource_2rwt8"]
+script = ExtResource("2_jsqwl")
+
+[resource]
+script = ExtResource("3_t1ppi")
+ac = 24
+attack = Array[ExtResource("1_84hyo")]([SubResource("Resource_ywgeb"), SubResource("Resource_oeqkr"), SubResource("Resource_b1xnv"), SubResource("Resource_fpjlb")])
+character = "J"
+colour = 6
+description = "It is recognized by the hard-scaled end of its body that is often rattled to frighten its prey."
+flags_1 = SubResource("Resource_b5l7h")
+flags_2 = SubResource("Resource_42iud")
+flags_3 = SubResource("Resource_1mcvv")
+flags_4 = SubResource("Resource_pf3jb")
+flags_5 = SubResource("Resource_b06kc")
+flags_6 = SubResource("Resource_2rwt8")
+hit_dice = 6
+hit_dice_sides = 7
+level = 6
+max_num = 100
+experience = 20
+name = "Rattlesnake"
+notice_range = 6
+rarity = 1
+sleep = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Rattlesnake "

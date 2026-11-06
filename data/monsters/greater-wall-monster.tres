@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_51r00"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_t64af"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3hs07"]
+
+[sub_resource type="Resource" id="Resource_2ytwh"]
+script = ExtResource("1_51r00")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fuexh"]
+script = ExtResource("1_51r00")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4vavk"]
+script = ExtResource("1_51r00")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_sfqu4"]
+script = ExtResource("1_51r00")
+
+[sub_resource type="Resource" id="Resource_suh37"]
+script = ExtResource("2_t64af")
+value = 525344
+
+[sub_resource type="Resource" id="Resource_kd1s8"]
+script = ExtResource("2_t64af")
+value = 393568
+
+[sub_resource type="Resource" id="Resource_q6u0c"]
+script = ExtResource("2_t64af")
+value = 3223267328
+
+[sub_resource type="Resource" id="Resource_obljl"]
+script = ExtResource("2_t64af")
+
+[sub_resource type="Resource" id="Resource_wh5wy"]
+script = ExtResource("2_t64af")
+
+[sub_resource type="Resource" id="Resource_pgj3s"]
+script = ExtResource("2_t64af")
+
+[resource]
+script = ExtResource("3_3hs07")
+ac = 80
+attack = Array[ExtResource("1_51r00")]([SubResource("Resource_2ytwh"), SubResource("Resource_fuexh"), SubResource("Resource_4vavk"), SubResource("Resource_sfqu4")])
+character = "#"
+colour = 30
+description = "A sentient, moving section of wall."
+flags_1 = SubResource("Resource_suh37")
+flags_2 = SubResource("Resource_kd1s8")
+flags_3 = SubResource("Resource_q6u0c")
+flags_4 = SubResource("Resource_obljl")
+flags_5 = SubResource("Resource_wh5wy")
+flags_6 = SubResource("Resource_pgj3s")
+hit_dice = 15
+hit_dice_sides = 40
+level = 50
+max_num = 100
+experience = 900
+name = "Greater wall monster"
+notice_range = 20
+rarity = 4
+sleep = 20
+speed = 120
+split_name_1 = "  Greater   "
+split_name_2 = "    wall    "
+split_name_3 = "  monster   "

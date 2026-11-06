@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_nqqbc"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vdnry"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kp26u"]
+
+[sub_resource type="Resource" id="Resource_jqohn"]
+script = ExtResource("1_nqqbc")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 10
+method = 6
+
+[sub_resource type="Resource" id="Resource_ut85h"]
+script = ExtResource("1_nqqbc")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_2nmkn"]
+script = ExtResource("1_nqqbc")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 10
+method = 6
+
+[sub_resource type="Resource" id="Resource_yu4cn"]
+script = ExtResource("1_nqqbc")
+
+[sub_resource type="Resource" id="Resource_u77ri"]
+script = ExtResource("2_vdnry")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_oc0mb"]
+script = ExtResource("2_vdnry")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_wsjat"]
+script = ExtResource("2_vdnry")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_qja6d"]
+script = ExtResource("2_vdnry")
+value = 512
+
+[sub_resource type="Resource" id="Resource_vfgud"]
+script = ExtResource("2_vdnry")
+
+[sub_resource type="Resource" id="Resource_17jaj"]
+script = ExtResource("2_vdnry")
+
+[resource]
+script = ExtResource("3_kp26u")
+ac = 30
+attack = Array[ExtResource("1_nqqbc")]([SubResource("Resource_jqohn"), SubResource("Resource_ut85h"), SubResource("Resource_2nmkn"), SubResource("Resource_yu4cn")])
+character = "Z"
+colour = 16
+description = "Saint Elmo's Fire forms a ghostly halo around this hound, and sparks sting your fingers as energy builds up in the air around you."
+flags_1 = SubResource("Resource_u77ri")
+flags_2 = SubResource("Resource_oc0mb")
+flags_3 = SubResource("Resource_wsjat")
+flags_4 = SubResource("Resource_qja6d")
+flags_5 = SubResource("Resource_vfgud")
+flags_6 = SubResource("Resource_17jaj")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 10
+hit_dice_sides = 6
+level = 18
+max_num = 100
+experience = 70
+name = "Energy hound"
+notice_range = 30
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Energy   "
+split_name_3 = "   hound    "

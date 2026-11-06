@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://knrg5if3gkiw"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_8ulex"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_ppngr"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_7hk8j"]
+
+[sub_resource type="Resource" id="Resource_40306"]
+script = ExtResource("1_8ulex")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_5aupu"]
+script = ExtResource("1_8ulex")
+
+[sub_resource type="Resource" id="Resource_vxsac"]
+script = ExtResource("1_8ulex")
+
+[sub_resource type="Resource" id="Resource_kani8"]
+script = ExtResource("1_8ulex")
+
+[sub_resource type="Resource" id="Resource_bfm1h"]
+script = ExtResource("2_ppngr")
+value = 4194304
+
+[sub_resource type="Resource" id="Resource_tbg45"]
+script = ExtResource("2_ppngr")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_mptvb"]
+script = ExtResource("2_ppngr")
+value = 1048640
+
+[sub_resource type="Resource" id="Resource_38xha"]
+script = ExtResource("2_ppngr")
+
+[sub_resource type="Resource" id="Resource_vfv5x"]
+script = ExtResource("2_ppngr")
+
+[sub_resource type="Resource" id="Resource_8xe8g"]
+script = ExtResource("2_ppngr")
+
+[resource]
+script = ExtResource("3_7hk8j")
+ac = 16
+attack = Array[ExtResource("1_8ulex")]([SubResource("Resource_40306"), SubResource("Resource_5aupu"), SubResource("Resource_vxsac"), SubResource("Resource_kani8")])
+character = "k"
+colour = 22
+description = "It is a small, dog-headed humanoid."
+flags_1 = SubResource("Resource_bfm1h")
+flags_2 = SubResource("Resource_tbg45")
+flags_3 = SubResource("Resource_mptvb")
+flags_4 = SubResource("Resource_38xha")
+flags_5 = SubResource("Resource_vfv5x")
+flags_6 = SubResource("Resource_8xe8g")
+hit_dice = 3
+hit_dice_sides = 7
+level = 1
+max_num = 100
+experience = 5
+name = "Kobold"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Kobold   "

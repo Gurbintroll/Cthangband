@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_bxbg3"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_707ob"]
+
+[sub_resource type="Resource" id="Resource_4sdpf"]
+script = ExtResource("1_bxbg3")
+value = 3670289
+
+[sub_resource type="Resource" id="Resource_hwb2k"]
+script = ExtResource("1_bxbg3")
+value = 17252352
+
+[sub_resource type="Resource" id="Resource_ah1ft"]
+script = ExtResource("1_bxbg3")
+value = 15881728
+
+[resource]
+script = ExtResource("2_707ob")
+flags_1 = SubResource("Resource_4sdpf")
+flags_2 = SubResource("Resource_hwb2k")
+flags_3 = SubResource("Resource_ah1ft")
+cost = 90000
+damage_dice = 3
+damage_dice_sides = 8
+item_category = 22
+item_sub_category = 22
+level = 30
+name = "of *N'Kai*"
+type_specific_value = 3
+rarity = 15
+to_ac = 5
+to_hit = 8
+to_damage = 11
+weight = 170
+id = 103

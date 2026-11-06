@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kudvk"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_lrx50"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_35hy4"]
+
+[sub_resource type="Resource" id="Resource_k040e"]
+script = ExtResource("1_kudvk")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_jhbvh"]
+script = ExtResource("1_kudvk")
+
+[sub_resource type="Resource" id="Resource_2l1c6"]
+script = ExtResource("1_kudvk")
+
+[sub_resource type="Resource" id="Resource_lmlbu"]
+script = ExtResource("1_kudvk")
+
+[sub_resource type="Resource" id="Resource_rsjgj"]
+script = ExtResource("2_lrx50")
+
+[sub_resource type="Resource" id="Resource_ykexs"]
+script = ExtResource("2_lrx50")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_bbr37"]
+script = ExtResource("2_lrx50")
+value = 128
+
+[sub_resource type="Resource" id="Resource_qbpjf"]
+script = ExtResource("2_lrx50")
+
+[sub_resource type="Resource" id="Resource_3f45r"]
+script = ExtResource("2_lrx50")
+
+[sub_resource type="Resource" id="Resource_15yhi"]
+script = ExtResource("2_lrx50")
+
+[resource]
+script = ExtResource("3_35hy4")
+ac = 16
+attack = Array[ExtResource("1_kudvk")]([SubResource("Resource_k040e"), SubResource("Resource_jhbvh"), SubResource("Resource_2l1c6"), SubResource("Resource_lmlbu")])
+character = "a"
+colour = 30
+description = "It is about two feet long and has sharp pincers."
+flags_1 = SubResource("Resource_rsjgj")
+flags_2 = SubResource("Resource_ykexs")
+flags_3 = SubResource("Resource_bbr37")
+flags_4 = SubResource("Resource_qbpjf")
+flags_5 = SubResource("Resource_3f45r")
+flags_6 = SubResource("Resource_15yhi")
+hit_dice = 3
+hit_dice_sides = 6
+level = 3
+max_num = 100
+experience = 7
+name = "Giant white ant"
+notice_range = 8
+rarity = 1
+sleep = 80
+speed = 110
+split_name_1 = "   Giant    "
+split_name_2 = "   white    "
+split_name_3 = "    ant     "

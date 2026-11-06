@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ccu4r"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ttkmw"]
+
+[sub_resource type="Resource" id="Resource_u60wl"]
+script = ExtResource("1_ccu4r")
+
+[sub_resource type="Resource" id="Resource_8rkp4"]
+script = ExtResource("1_ccu4r")
+
+[sub_resource type="Resource" id="Resource_vdbrf"]
+script = ExtResource("1_ccu4r")
+value = 8388608
+
+[resource]
+script = ExtResource("2_ttkmw")
+chance = Array[int]([1, 0, 0, 0])
+character = "-"
+colour = 24
+cost = 1500
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_u60wl")
+flags_2 = SubResource("Resource_8rkp4")
+flags_3 = SubResource("Resource_vdbrf")
+has_flavour = true
+item_category = 65
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Cold Balls"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 23
+weight = 10
+filename = "Wand:Cold Balls"

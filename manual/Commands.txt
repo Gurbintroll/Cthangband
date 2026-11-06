@@ -1,0 +1,178 @@
+﻿[center][font_size=48][color="brown"][b]Commands[/b][/color][/font_size][/center]
+[hr color="brown"]
+For a description of how long these commands take to perform, see [color="blue"][url="Turns, Time, and Speed"]Turns, Time, and Speed[/url][/color].
+
+[font_size=24][color="brown"][b]Movement Commands[/b][/color][/font_size]
+[b]Keypad 1-9 = Move[/b]
+Using the numberpad (or the cursor keys) will move you one space in the direction you press. Note that using the numberpad allows you to make diagonal moves using the 1, 3, 7, and 9 keys; so it is preferable to using the cursor keys. However, you may find using the cursor keys more familiar when navigating menus.
+
+Holding the Shift key while pressing a numberpad movement key will make you auto-move in the indicated direction as if you had pressed '.' followed by that direction.
+
+Auto-movement (sometimes called "running" although that's not strictly accurate since it is no quicker than normal movement) will make your character continue to move in the same direction until they encounter something that they consider "interesting", such as a junction with a choice of which way to go or when they notice a monster moving.
+
+[b]Keypad 5 = Stand Still[/b]
+Standing still for a turn may be useful if you wish to wait for a monster to come to you or if you are waiting for the duration of an effect to run out before you continue exploring.
+
+[b]. = Auto-move[/b]
+Pressing '.' will prompt you for a direction, and then you will auto-move in that direction. Auto-movement (sometimes called "running" although that's not strictly accurate since it is no quicker than normal movement) will make your character continue to move in the same direction until they encounter something that they consider "interesting", such as a junction with a choice of which way to go or when they notice a monster moving.
+
+[b] < = Go Upstairs[/b]
+When you are standing on a staircase that leads upwards (a '<' on the map), this command will make your character ascend the staircase. If you do not wish to ascend the staircase, simply move off it using the normal movement commands.
+
+[b] > = Go Downstairs[/b]
+When you are standing on a staircase that leads downwards (a '>' on the map), this command will make your character descend the staircase. If you do not wish to descend the staircase, simply move off it using the normal movement commands.
+
+[b]T = Tunnel[/b]
+Normally if you attempt to move into something that blocks your way, such as a wall or a tree, you will simply be warned that you can't move in that direction (and this will not take a turn). Pressing 'T' followed by a direction will make your character actively tunnel into the obstacle instead. Tunneling is easier if you are wielding have a shovel or pick, but if you don't, you can still make slow progress using your weapon instead.
+
+If you use this command and fail to tunnel through the blockage at the first attempt, your character will automatically repeat this command up to 99 times, stopping before then if they are disturbed or if they succeed.
+
+[b]o = Open a Door or Chest[/b]
+This command will open a door or chest that is adjacent to you. If there is more than one adjacent door or chest, you will be asked which one you wish to open. If the door or chest is locked, then it will attempt to pick the lock in order to open it. In the case of doors, attempting to move into a closed door will automatically invoke this command and try to open them instead. Chests are not automatically opened when you try to move into them; they are picked up instead.
+
+If you use this command and fail to pick the lock at the first attempt, your character will automatically repeat this command up to 99 times, stopping before then if they are disturbed or if they succeed.
+
+[b]c = Close a Door[/b]
+This command will close an open door that is adjacent to you. If there is more than one adjacent door, you will be asked which one you wish to close. Closing a door will prevent some lesser monsters from getting to you, although intelligent monsters will be able to open doors and some of the stronger ones can simply break a door down.
+
+[b]D = Disarm a Trap[/b]
+This command will attempt to disarm and remove a trap that is adjacent to you. Removal of a trap is not guaranteed, and if it fails then instead you will accidentally move onto the trap and set it off. This command is rarely necessary, since if you attempt to move into a known trap you will automatically try to disarm and remove it.
+
+[b]s = Search[/b]
+Pressing 's' will make your character spend a number of turns searching their adjacent squares for secret doors and traps. With practice and experience it will become more apparent to you as a player where secret doors and traps are likely to be found.
+
+If you use this command and fail to find anything on the first attempt, your character will automatically repeat this command up to 99 times, stopping before then if they are disturbed or if they do find something.
+
+[b]B = Bash a Stuck Door[/b]
+The "Bash" command is used to open doors that are stuck and will not open normally. While bashing a door may open it, it is somewhat dangerous because if it fails it may leave you stunned or hurt you; neither of which is a good idea if you are being chased by monsters.
+
+[b]S = Auto-Search On/Off[/b]
+Switching Auto-Search on means that your character will move more slowly than normal, taking time to perform a single search with each step they take. This is useful, because it may mean that you find secret doors or traps in places where you didn't think to stop and use the search action.
+
+Auto-Search doesn't slow down the game in real time, but it does mean that exploring will take longer in game time, and that will mean you need take more food with you.
+
+[b]+ = Auto-Alter a Space[/b]
+The '+' key will prompt you for a direction, and then perform a command on the space that is adjacent to you in that direction based on what is in that space. If it is a wall, you will tunnel through it; a door will be closed or opened; and a trap will be disarmed.
+
+[b]L = Locate Player[/b]
+This command, which doesn't take any game time to perform, will inform you whereabouts on the current level you are, and allow you to scroll the display to see other parts of the level. Viewing other parts of the level with this command is limited to your vision, so line of sight and lighting rules apply normally.
+
+[b]M = Map[/b]
+Pressing 'M' while you are on the surface brings up a large scale map of the island, showing the location of towns and dungeons. Pressing it when in a dungeon or tower brings up a large scale map of the level that you are in.
+
+In either case, viewing the map does not take any game time to perform.
+
+[font_size=24][color="brown"][b]Object Commands[/b][/color][/font_size]
+[b]i = Show Inventory[/b]
+This will show the list of objects in your backpack. Viewing the contents of your backpack takes no time, and you can issue most other object commands while viewing it (although these may take time as normal). Items that need to be worn or wielded, such as weapons, armour, or magic rings and amulets, do not function while in your backpack; but magical items such as spell books, wands, scrolls, and staves can be activated directly from your pack.
+
+[b]e = Show Equipment[/b]
+Pressing 'e' will show the list of equipment you are wearing and/or wielding. Viewing this list takes no game time. Items that you are wielding will affect you with their passive abilities while you do so.
+
+[b]w = Wield/Wear an Object[/b]
+This command will cause you to put on a wearable or wieldable item that is in your backpack. You may only wear or wield one item in each of your equipment slots, so wearing an item may automatically take off the existing item that was in the slot that the wearable item normally occupies.
+
+[b]t = Take Off an Item[/b]
+Pressing 't' will prompt you to take off an item that you are wearing or wielding without wearing or wielding a new item in its place, leaving the equipment slot formerly occupied by the item empty. The item that you take off will be placed in your backpack. If your backpack is already full, you may need to drop something first in order to make room for the item that you wish to take off. Some items are cursed, and cannot be taken off until their curse has been removed.
+
+[b]k = Destroy ('kill') an Object[/b]
+If you have an item in your backpack that you wish to get rid of, destroying it is an alternative to dropping it, so that you won't accidentally walk over it and pick it up again later. This command lets you destroy any item except an artifact. If the item is not a weapon or armour, you will be asked if you always want to destroy similar items. Answering yes to this prompt means that you will automatically stomp on (i.e. destroy) any further items that you come across of the same item type as the one that you have chosen to destroy; rather than picking them up. You can access the list of items that you consider to be worthless and wish to destroy automatically through your Journal.
+
+[b]a = Aim a Wand[/b]
+The 'a' key will let you aim a wand that is in your inventory at either a target of your choice or in a cardinal direction. Wands always have effects that can be aimed, but not all of them are helpful. You do not have to have identified what a wand does before aiming it at something; and indeed, aiming a wand at something may be a good (if slightly risky) way of identifying it.
+
+[b]b = Browse a Spellbook[/b]
+This command lets you browse through a spellbook that belongs to one of the realms of magic that you are able to use. Browsing a spellbook takes no game time to do, but you cannot learn new spells from a spellbook while adventuring. You must return to the peace and quiet of a library (they are found in most towns) in order to learn new spells.
+
+[b]r = Read a Scroll[/b]
+Reading a scroll will activate it and produce the magical effect that it holds. Scrolls do not need to be identified before they are read, but it is often a good idea to do so because there are a number of scrolls with harmful effects.
+
+[b]z = Zap a Rod[/b]
+This command will activate a rod that you have in your inventory. Rods can hold a variety of magical effects, and do not need to be identified before they are used. A rod does not have charges, although its effect can only be used periodically.
+
+[b]A = Activate an Item[/b]
+Some items have magical powers that can be activated periodically. This is most common on artifacts and legendary items, but a few types of rare item can also be activated. The 'A' command will allow you to activate an item that you are wielding or wearing in order to use its power, if it has one.
+
+[b]q = Quaff a Potion[/b]
+Quaffing a potion will make it have its effect on you. While potions can be extremely useful, especially those that heal, they can also be extremely deadly; and quaffing unidentified potions is something only the truly desperate should do.
+
+[b]u = Use a Staff[/b]
+This command will activate the magic properties of a staff. Like wands, staves have a limited number of charges before they run out; but unlike wands, the spells contained in staves are not the type that are aimed at opponents. Instead, a staff will have a general effect on you or in your area. As with most other magic items, using an unidentified staff can be risky.
+
+[b]E = Eat some Food[/b]
+The 'E' command will let you eat some food. Most food will simply satisfy your hunger and prevent you from starving, but there are many mushrooms that have magical properties; some good and some bad.
+
+[b]f = Fire a Missile Weapon[/b]
+This command lets you fire a missile weapon at an enemy. After you have given this command, you will be prompted for which ammunition (from your inventory) you wish to fire, as well as being prompted for a target. If the ammunition you select matches the missile weapon you are wielding (e.g. arrows match a bow) then you will use that missile weapon to fire the ammunition. If the ammunition doesn't match the missile weapon you are wielding or if you select an item that isn't ammunition, you will throw the item at the enemy instead; probably for far less damage.
+
+[b]j = Jam a Spike in a Door[/b]
+Jamming a spike in a door will block that door and make it more difficult for enemies to break it open, slowing them down if they are chasing you.
+
+[b]F = Fuel a Light Source[/b]
+Torches and lanterns will eventually fun out of fuel, leaving you in darkness. This command lets you add oil to a lanterns (either from a flask or from another lantern) or will let you add an new torch to an existing torch. In either case, the fuel content of the item you use will be added to the light source you are wielding, and the item you use will be used up.
+
+[b]K = Destroy ('kill') Trash Objects[/b]
+Pressing 'K' will run through your backpack and your wielded equipment and automatically destroy any item that you have set as being worthless, either through the interface in your Journal or after having destroyed one item of that type and said that you always want to destroy similar items.
+
+[font_size=24][color="brown"][b]Miscellaneous Commands[/b][/color][/font_size]
+[b]C = Character Sheet[/b]
+This command will display your character sheet; showing your ability scores, skills, and other information. You can also rename your character from the character sheet. Viewing your character sheet does not take any game-time.
+
+[b]J = Journal[/b]
+Your character keeps a journal as they adventure, and this can be accessed with the 'J' command. The journal contains information about:
+[ul]What abilities and resistances your equipment grants you (assuming it has been identified, of course)
+How many monsters of each type you have killed
+What mutations you have
+What pets you have
+Where you have outstanding quests, and what (if anything) you know about those quests
+Where you will arrive if you use a Word of Recall spell
+What types of monster you (and previous characters from the same save game) have seen, and what you have learned about them from observing them
+What unique monsters you (and previous characters from the same save game) have seen, and which are still alive
+What types of item your character considers to be worthless and will therefore stomp on rather than picking up (the list of
+worthless items can be edited from the Journal page).[/ul]
+Viewing your journal does not take any game-time to do.
+
+[b]R = Rest[/b]
+Resting simply skips a number of turns. This can be useful to recover health and/or power if you are low. You will automatically stop resting if you are interrupted by something, for example by seeing a monster move. You may rest for a fixed number of turns or simply rest until you are back to full health and power.
+
+[b]m = Magic[/b]
+The 'm' command will cast a magic spell (if you can cast spells) or use a mentalism power (if you can use mentalism powers).
+
+[b]p = Ancestral/Mutant Power[/b]
+The Power command is used to activate any special powers that your character has. Characters can gain special powers from certain mutations and some ancestries provide special powers as well. Special powers normally cost power to use, although if you are a character profession that does not have power then they will cost health to use instead. If you have any pets, then dismissing them can be done from this command too.
+
+[b]l = Look Around[/b]
+The Look command lets you move the cursor around the screen using the movement keys in order to look around and identify what is around you. You can also recall information about a monster (from your Journal) or target a monster or space using this command.
+
+[b]G = Game Time[/b]
+Pressing 'G' will show you the number of days that have elapsed and the time of day. It is particularly useful for those ancestries that will get burned if they go out in the sunlight.
+
+[b]H = How you Feel Here[/b]
+When you have been on a dungeon or tower level for a while you will pick up an idea of how dangerous it is. This is called a level feeling. Pressing 'h' will repeat the level feeling in case you had forgotten it. If you are on a quest level where you must slay a number of monsters of a particular type, then pressing 'h' will also show you how many more quest monsters you have left to kill.
+
+[b]O = Show Last Message[/b]
+If you need reminding of the last message shown to you, you can press 'O' to re-show it.
+
+[b]P = Previous Messages[/b]
+The 'P' command will let you scroll through previous messages in case you need to look for something in particular or remind yourself of something.
+
+[b]* = Target[/b]
+The Target command is a specialised version of the Look command that jumps directly from monster to monster giving you the chance to recall information about them or target them. When aiming a wand, missile weapon, or spell, you will be given the chance to use this command before the spell goes off.
+
+[b]/ = Identify a Symbol[/b]
+This command lets you type a symbol and it will tell you what that symbol represents on the display.
+
+[b]x = Examine an Item[/b]
+Examining an item tells you what your character knows about it. This is mostly useful on artifacts, since they can have random properties. However, you must have fully identified the item before this command will be useful.
+
+[b]Escape = Menu[/b]
+Pressing 'Escape' will pop up the in-game menu, allowing you to save the game and exit back to the main menu.
+
+[b]Q = Quit (or Retire)[/b]
+Using the 'Q' command will end the game prematurely, causing your character to give up and concede defeat if you have not yet completed all the quests. Once you have completed all the quests, 'Q' will still end the game, but your character will retire as a winner rather than giving up as a loser.
+
+[b]h = Help (Cthangpedia)[/b]
+The Help command will show this manual during the game.
+
+[b]V = Version Info[/b]
+Probably only of interest to sad nerds like myself, the 'V' command will show you the exact build number of the game and the time at which it was compiled.

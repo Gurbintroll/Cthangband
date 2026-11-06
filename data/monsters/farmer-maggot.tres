@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dn65maftaqhmh"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_gu8lh"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_easul"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_vefkg"]
+
+[sub_resource type="Resource" id="Resource_pb2wp"]
+script = ExtResource("1_gu8lh")
+method = 21
+
+[sub_resource type="Resource" id="Resource_exs7k"]
+script = ExtResource("1_gu8lh")
+method = 21
+
+[sub_resource type="Resource" id="Resource_ouwfr"]
+script = ExtResource("1_gu8lh")
+
+[sub_resource type="Resource" id="Resource_486ki"]
+script = ExtResource("1_gu8lh")
+
+[sub_resource type="Resource" id="Resource_nvcn3"]
+script = ExtResource("2_easul")
+value = 815792645
+
+[sub_resource type="Resource" id="Resource_5cvlq"]
+script = ExtResource("2_easul")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_q20a4"]
+script = ExtResource("2_easul")
+value = 3221225472
+
+[sub_resource type="Resource" id="Resource_ttq1c"]
+script = ExtResource("2_easul")
+
+[sub_resource type="Resource" id="Resource_qyrt4"]
+script = ExtResource("2_easul")
+
+[sub_resource type="Resource" id="Resource_j6hok"]
+script = ExtResource("2_easul")
+
+[resource]
+script = ExtResource("3_vefkg")
+ac = 10
+attack = Array[ExtResource("1_gu8lh")]([SubResource("Resource_pb2wp"), SubResource("Resource_exs7k"), SubResource("Resource_ouwfr"), SubResource("Resource_486ki")])
+character = "t"
+colour = 12
+description = "He's lost his dogs. He's had his mushrooms stolen. He's not a happy hobbit!"
+flags_1 = SubResource("Resource_nvcn3")
+flags_2 = SubResource("Resource_5cvlq")
+flags_3 = SubResource("Resource_q20a4")
+flags_4 = SubResource("Resource_ttq1c")
+flags_5 = SubResource("Resource_qyrt4")
+flags_6 = SubResource("Resource_j6hok")
+hit_dice = 35
+hit_dice_sides = 10
+max_num = 1
+name = "Farmer Maggot"
+notice_range = 40
+rarity = 4
+sleep = 3
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Farmer   "
+split_name_3 = "   Maggot   "

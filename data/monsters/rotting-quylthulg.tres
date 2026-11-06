@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_uy4xi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gqahu"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ec61v"]
+
+[sub_resource type="Resource" id="Resource_e441r"]
+script = ExtResource("1_uy4xi")
+
+[sub_resource type="Resource" id="Resource_80nhi"]
+script = ExtResource("1_uy4xi")
+
+[sub_resource type="Resource" id="Resource_qqqj6"]
+script = ExtResource("1_uy4xi")
+
+[sub_resource type="Resource" id="Resource_nmy0c"]
+script = ExtResource("1_uy4xi")
+
+[sub_resource type="Resource" id="Resource_8gfly"]
+script = ExtResource("2_gqahu")
+value = 198144
+
+[sub_resource type="Resource" id="Resource_vfbur"]
+script = ExtResource("2_gqahu")
+value = 80
+
+[sub_resource type="Resource" id="Resource_m3oj3"]
+script = ExtResource("2_gqahu")
+value = 3489661120
+
+[sub_resource type="Resource" id="Resource_rgrvx"]
+script = ExtResource("2_gqahu")
+
+[sub_resource type="Resource" id="Resource_ltpqi"]
+script = ExtResource("2_gqahu")
+
+[sub_resource type="Resource" id="Resource_tbsgp"]
+script = ExtResource("2_gqahu")
+value = 67108912
+
+[resource]
+script = ExtResource("3_ec61v")
+ac = 1
+attack = Array[ExtResource("1_uy4xi")]([SubResource("Resource_e441r"), SubResource("Resource_80nhi"), SubResource("Resource_qqqj6"), SubResource("Resource_nmy0c")])
+character = "Q"
+colour = 6
+description = "It is a pulsing flesh mound that reeks of death and putrefaction."
+flags_1 = SubResource("Resource_8gfly")
+flags_2 = SubResource("Resource_vfbur")
+flags_3 = SubResource("Resource_m3oj3")
+flags_4 = SubResource("Resource_rgrvx")
+flags_5 = SubResource("Resource_ltpqi")
+flags_6 = SubResource("Resource_tbsgp")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 16
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 1500
+name = "Rotting quylthulg"
+notice_range = 20
+rarity = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Rotting   "
+split_name_3 = " quylthulg  "

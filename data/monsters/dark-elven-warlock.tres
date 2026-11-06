@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_8indn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_a6caf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_gkj4h"]
+
+[sub_resource type="Resource" id="Resource_iyg31"]
+script = ExtResource("1_8indn")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_27d4c"]
+script = ExtResource("1_8indn")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_k7v3u"]
+script = ExtResource("1_8indn")
+
+[sub_resource type="Resource" id="Resource_uk4xa"]
+script = ExtResource("1_8indn")
+
+[sub_resource type="Resource" id="Resource_nld33"]
+script = ExtResource("2_a6caf")
+value = 18883588
+
+[sub_resource type="Resource" id="Resource_pjtqb"]
+script = ExtResource("2_a6caf")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_8kh7a"]
+script = ExtResource("2_a6caf")
+value = 1052736
+
+[sub_resource type="Resource" id="Resource_obkkq"]
+script = ExtResource("2_a6caf")
+
+[sub_resource type="Resource" id="Resource_xpvr5"]
+script = ExtResource("2_a6caf")
+value = 612368384
+
+[sub_resource type="Resource" id="Resource_88v8r"]
+script = ExtResource("2_a6caf")
+value = 4096
+
+[resource]
+script = ExtResource("3_gkj4h")
+ac = 16
+attack = Array[ExtResource("1_8indn")]([SubResource("Resource_iyg31"), SubResource("Resource_27d4c"), SubResource("Resource_k7v3u"), SubResource("Resource_uk4xa")])
+character = "h"
+colour = 26
+description = "A dark elven mage with spells of frightening destructive power."
+flags_1 = SubResource("Resource_nld33")
+flags_2 = SubResource("Resource_pjtqb")
+flags_3 = SubResource("Resource_8kh7a")
+flags_4 = SubResource("Resource_obkkq")
+flags_5 = SubResource("Resource_xpvr5")
+flags_6 = SubResource("Resource_88v8r")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 7
+hit_dice_sides = 10
+level = 23
+max_num = 100
+experience = 75
+name = "Dark elven warlock"
+notice_range = 20
+rarity = 1
+sleep = 20
+speed = 120
+split_name_1 = "    Dark    "
+split_name_2 = "   elven    "
+split_name_3 = "  warlock   "

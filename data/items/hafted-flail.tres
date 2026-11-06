@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_rqnt2"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_c326f"]
+
+[sub_resource type="Resource" id="Resource_4s1yb"]
+script = ExtResource("1_rqnt2")
+
+[sub_resource type="Resource" id="Resource_qi4tf"]
+script = ExtResource("1_rqnt2")
+
+[sub_resource type="Resource" id="Resource_wstpp"]
+script = ExtResource("1_rqnt2")
+value = 1024
+
+[resource]
+script = ExtResource("2_c326f")
+chance = Array[int]([1, 0, 0, 0])
+character = "\\"
+colour = 2
+cost = 353
+damage_dice = 2
+damage_dice_sides = 6
+flags_1 = SubResource("Resource_4s1yb")
+flags_2 = SubResource("Resource_qi4tf")
+flags_3 = SubResource("Resource_wstpp")
+flavour_aware = true
+item_category = 21
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "& Flail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 13
+weight = 150
+filename = "Hafted:Flail"

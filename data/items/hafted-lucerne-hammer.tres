@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_hknac"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_pem4d"]
+
+[sub_resource type="Resource" id="Resource_o8ny0"]
+script = ExtResource("1_hknac")
+
+[sub_resource type="Resource" id="Resource_naenj"]
+script = ExtResource("1_hknac")
+
+[sub_resource type="Resource" id="Resource_jjyuh"]
+script = ExtResource("1_hknac")
+value = 1024
+
+[resource]
+script = ExtResource("2_pem4d")
+chance = Array[int]([1, 0, 0, 0])
+character = "\\"
+colour = 5
+cost = 376
+damage_dice = 2
+damage_dice_sides = 5
+flags_1 = SubResource("Resource_o8ny0")
+flags_2 = SubResource("Resource_naenj")
+flags_3 = SubResource("Resource_jjyuh")
+flavour_aware = true
+item_category = 21
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "& Lucerne Hammer~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 10
+weight = 120
+filename = "Hafted:Lucerne Hammer"

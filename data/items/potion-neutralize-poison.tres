@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_utd5s"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_x3t3n"]
+
+[sub_resource type="Resource" id="Resource_1elig"]
+script = ExtResource("1_utd5s")
+
+[sub_resource type="Resource" id="Resource_mdr24"]
+script = ExtResource("1_utd5s")
+
+[sub_resource type="Resource" id="Resource_mw4u1"]
+script = ExtResource("1_utd5s")
+
+[resource]
+script = ExtResource("2_x3t3n")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 31
+cost = 75
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_1elig")
+flags_2 = SubResource("Resource_mdr24")
+flags_3 = SubResource("Resource_mw4u1")
+has_flavour = true
+item_category = 75
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "Neutralize Poison"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 27
+weight = 4
+filename = "Potion:Neutralize Poison"

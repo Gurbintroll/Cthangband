@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_xvsuv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tvqho"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3qhc5"]
+
+[sub_resource type="Resource" id="Resource_qnnym"]
+script = ExtResource("1_xvsuv")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_n6mx5"]
+script = ExtResource("1_xvsuv")
+
+[sub_resource type="Resource" id="Resource_kuoex"]
+script = ExtResource("1_xvsuv")
+
+[sub_resource type="Resource" id="Resource_td1j4"]
+script = ExtResource("1_xvsuv")
+
+[sub_resource type="Resource" id="Resource_pguty"]
+script = ExtResource("2_tvqho")
+value = 270336
+
+[sub_resource type="Resource" id="Resource_nfpum"]
+script = ExtResource("2_tvqho")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_xmpn5"]
+script = ExtResource("2_tvqho")
+value = 192
+
+[sub_resource type="Resource" id="Resource_vac7k"]
+script = ExtResource("2_tvqho")
+
+[sub_resource type="Resource" id="Resource_3bstd"]
+script = ExtResource("2_tvqho")
+
+[sub_resource type="Resource" id="Resource_ihf4b"]
+script = ExtResource("2_tvqho")
+
+[resource]
+script = ExtResource("3_3qhc5")
+ac = 20
+attack = Array[ExtResource("1_xvsuv")]([SubResource("Resource_qnnym"), SubResource("Resource_n6mx5"), SubResource("Resource_kuoex"), SubResource("Resource_td1j4")])
+character = "C"
+colour = 23
+description = "It is a large wolf with eyes full of cunning."
+flags_1 = SubResource("Resource_pguty")
+flags_2 = SubResource("Resource_nfpum")
+flags_3 = SubResource("Resource_xmpn5")
+flags_4 = SubResource("Resource_vac7k")
+flags_5 = SubResource("Resource_3bstd")
+flags_6 = SubResource("Resource_ihf4b")
+hit_dice = 8
+hit_dice_sides = 8
+level = 14
+max_num = 100
+experience = 40
+name = "Warg"
+notice_range = 20
+rarity = 2
+sleep = 40
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Warg    "

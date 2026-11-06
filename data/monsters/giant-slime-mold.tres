@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_txywx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kiuke"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ihgvb"]
+
+[sub_resource type="Resource" id="Resource_8a0gf"]
+script = ExtResource("1_txywx")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_2fv68"]
+script = ExtResource("1_txywx")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_h181a"]
+script = ExtResource("1_txywx")
+
+[sub_resource type="Resource" id="Resource_kmy1q"]
+script = ExtResource("1_txywx")
+
+[sub_resource type="Resource" id="Resource_p38t6"]
+script = ExtResource("2_kiuke")
+value = 9437184
+
+[sub_resource type="Resource" id="Resource_xpt2y"]
+script = ExtResource("2_kiuke")
+value = 196673
+
+[sub_resource type="Resource" id="Resource_orac1"]
+script = ExtResource("2_kiuke")
+value = 3489660992
+
+[sub_resource type="Resource" id="Resource_hbakp"]
+script = ExtResource("2_kiuke")
+value = 1
+
+[sub_resource type="Resource" id="Resource_siawc"]
+script = ExtResource("2_kiuke")
+
+[sub_resource type="Resource" id="Resource_4xcym"]
+script = ExtResource("2_kiuke")
+
+[resource]
+script = ExtResource("3_ihgvb")
+ac = 16
+attack = Array[ExtResource("1_txywx")]([SubResource("Resource_8a0gf"), SubResource("Resource_2fv68"), SubResource("Resource_h181a"), SubResource("Resource_kmy1q")])
+character = ","
+colour = 22
+description = "A pile of rotting vegetation that slides towards you with a disgusting stench, waking all it nears."
+flags_1 = SubResource("Resource_p38t6")
+flags_2 = SubResource("Resource_xpt2y")
+flags_3 = SubResource("Resource_orac1")
+flags_4 = SubResource("Resource_hbakp")
+flags_5 = SubResource("Resource_siawc")
+flags_6 = SubResource("Resource_4xcym")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 20
+hit_dice_sides = 6
+level = 18
+max_num = 100
+experience = 75
+name = "Giant slime mold"
+notice_range = 20
+rarity = 2
+sleep = 40
+speed = 110
+split_name_1 = "   Giant    "
+split_name_2 = "   slime    "
+split_name_3 = "    mold    "

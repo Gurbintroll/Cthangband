@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1ojn7"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_yq7o4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_n30dn"]
+
+[sub_resource type="Resource" id="Resource_1wcis"]
+script = ExtResource("1_1ojn7")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_sewt2"]
+script = ExtResource("1_1ojn7")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_febhk"]
+script = ExtResource("1_1ojn7")
+
+[sub_resource type="Resource" id="Resource_60767"]
+script = ExtResource("1_1ojn7")
+
+[sub_resource type="Resource" id="Resource_yvc7x"]
+script = ExtResource("2_yq7o4")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_lmn4h"]
+script = ExtResource("2_yq7o4")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_fyk35"]
+script = ExtResource("2_yq7o4")
+value = 128
+
+[sub_resource type="Resource" id="Resource_sltkm"]
+script = ExtResource("2_yq7o4")
+
+[sub_resource type="Resource" id="Resource_6yyad"]
+script = ExtResource("2_yq7o4")
+
+[sub_resource type="Resource" id="Resource_c3rc3"]
+script = ExtResource("2_yq7o4")
+
+[resource]
+script = ExtResource("3_n30dn")
+ac = 55
+attack = Array[ExtResource("1_1ojn7")]([SubResource("Resource_1wcis"), SubResource("Resource_sewt2"), SubResource("Resource_febhk"), SubResource("Resource_60767")])
+character = "K"
+colour = 23
+description = "It is a giant beetle with vicious claws."
+flags_1 = SubResource("Resource_yvc7x")
+flags_2 = SubResource("Resource_lmn4h")
+flags_3 = SubResource("Resource_fyk35")
+flags_4 = SubResource("Resource_sltkm")
+flags_5 = SubResource("Resource_6yyad")
+flags_6 = SubResource("Resource_c3rc3")
+hit_dice = 20
+hit_dice_sides = 8
+level = 22
+max_num = 100
+experience = 80
+name = "Killer stag beetle"
+notice_range = 12
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "   Killer   "
+split_name_2 = "    stag    "
+split_name_3 = "   beetle   "

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xsjsq"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_ojp4k"]
+
+[sub_resource type="Resource" id="Resource_7btot"]
+script = ExtResource("1_xsjsq")
+value = 88014848
+
+[sub_resource type="Resource" id="Resource_d5jg8"]
+script = ExtResource("1_xsjsq")
+value = 458752
+
+[sub_resource type="Resource" id="Resource_5jj8h"]
+script = ExtResource("1_xsjsq")
+value = 15780896
+
+[resource]
+script = ExtResource("2_ojp4k")
+flags_1 = SubResource("Resource_7btot")
+flags_2 = SubResource("Resource_d5jg8")
+flags_3 = SubResource("Resource_5jj8h")
+cost = 500000
+damage_dice = 9
+damage_dice_sides = 9
+item_category = 21
+item_sub_category = 50
+level = 100
+name = "of *Worlds*"
+rarity = 1
+to_ac = 10
+to_hit = 5
+to_damage = 25
+weight = 1000
+id = 111

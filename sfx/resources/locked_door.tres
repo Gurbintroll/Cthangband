@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://bnnitqy6x2s4p"]
+
+[ext_resource type="Script" uid="uid://bls4pxxp0hqvj" path="res://scripts/user_interface/sound.gd" id="1_yfnbj"]
+[ext_resource type="AudioStream" uid="uid://bkrcntfrlali3" path="res://sfx/sound_files/locked_door.wav" id="2_dykus"]
+
+[resource]
+script = ExtResource("1_yfnbj")
+stream = ExtResource("2_dykus")
+randomise = true
+metadata/_custom_type_script = "uid://bls4pxxp0hqvj"

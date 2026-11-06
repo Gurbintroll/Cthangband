@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2iufb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kvwdh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kk0ak"]
+
+[sub_resource type="Resource" id="Resource_fh7un"]
+script = ExtResource("1_2iufb")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_gus4y"]
+script = ExtResource("1_2iufb")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_25rr6"]
+script = ExtResource("1_2iufb")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_bnuin"]
+script = ExtResource("1_2iufb")
+
+[sub_resource type="Resource" id="Resource_uiwpe"]
+script = ExtResource("2_kvwdh")
+value = 4202496
+
+[sub_resource type="Resource" id="Resource_4gw6t"]
+script = ExtResource("2_kvwdh")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_0kd1k"]
+script = ExtResource("2_kvwdh")
+value = 66
+
+[sub_resource type="Resource" id="Resource_8h2qu"]
+script = ExtResource("2_kvwdh")
+
+[sub_resource type="Resource" id="Resource_34r2s"]
+script = ExtResource("2_kvwdh")
+
+[sub_resource type="Resource" id="Resource_mbx4h"]
+script = ExtResource("2_kvwdh")
+
+[resource]
+script = ExtResource("3_kk0ak")
+ac = 60
+attack = Array[ExtResource("1_2iufb")]([SubResource("Resource_fh7un"), SubResource("Resource_gus4y"), SubResource("Resource_25rr6"), SubResource("Resource_bnuin")])
+character = "T"
+colour = 23
+description = "A powerful troll form. Venom drips from its needlelike claws."
+flags_1 = SubResource("Resource_uiwpe")
+flags_2 = SubResource("Resource_4gw6t")
+flags_3 = SubResource("Resource_0kd1k")
+flags_4 = SubResource("Resource_8h2qu")
+flags_5 = SubResource("Resource_34r2s")
+flags_6 = SubResource("Resource_mbx4h")
+hit_dice = 21
+hit_dice_sides = 12
+level = 27
+max_num = 100
+experience = 150
+name = "Algroth"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Algroth   "

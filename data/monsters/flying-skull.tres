@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_lmqg2"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_r1kxy"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ifskm"]
+
+[sub_resource type="Resource" id="Resource_x11a0"]
+script = ExtResource("1_lmqg2")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_j3lfy"]
+script = ExtResource("1_lmqg2")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_teh07"]
+script = ExtResource("1_lmqg2")
+
+[sub_resource type="Resource" id="Resource_us1ph"]
+script = ExtResource("1_lmqg2")
+
+[sub_resource type="Resource" id="Resource_gnjrd"]
+script = ExtResource("2_r1kxy")
+value = 4202496
+
+[sub_resource type="Resource" id="Resource_hj414"]
+script = ExtResource("2_r1kxy")
+value = 131232
+
+[sub_resource type="Resource" id="Resource_skewv"]
+script = ExtResource("2_r1kxy")
+value = 3491233888
+
+[sub_resource type="Resource" id="Resource_w6bdw"]
+script = ExtResource("2_r1kxy")
+
+[sub_resource type="Resource" id="Resource_4botd"]
+script = ExtResource("2_r1kxy")
+
+[sub_resource type="Resource" id="Resource_aprlv"]
+script = ExtResource("2_r1kxy")
+
+[resource]
+script = ExtResource("3_ifskm")
+ac = 30
+attack = Array[ExtResource("1_lmqg2")]([SubResource("Resource_x11a0"), SubResource("Resource_j3lfy"), SubResource("Resource_teh07"), SubResource("Resource_us1ph")])
+character = "s"
+colour = 1
+description = "A skullpack animated by necromantic spells."
+flags_1 = SubResource("Resource_gnjrd")
+flags_2 = SubResource("Resource_hj414")
+flags_3 = SubResource("Resource_skewv")
+flags_4 = SubResource("Resource_w6bdw")
+flags_5 = SubResource("Resource_4botd")
+flags_6 = SubResource("Resource_aprlv")
+hit_dice = 10
+hit_dice_sides = 10
+level = 15
+max_num = 100
+experience = 50
+name = "Flying skull"
+notice_range = 30
+rarity = 3
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Flying   "
+split_name_3 = "   skull    "

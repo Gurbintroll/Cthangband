@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_y7b0e"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_yaq4k"]
+
+[sub_resource type="Resource" id="Resource_a4ctr"]
+script = ExtResource("1_y7b0e")
+
+[sub_resource type="Resource" id="Resource_i35o6"]
+script = ExtResource("1_y7b0e")
+
+[sub_resource type="Resource" id="Resource_re2n8"]
+script = ExtResource("1_y7b0e")
+value = 3072
+
+[resource]
+script = ExtResource("2_yaq4k")
+chance = Array[int]([0, 0, 0, 0])
+character = "\\"
+colour = 2
+cost = 1000
+damage_dice = 3
+damage_dice_sides = 9
+flags_1 = SubResource("Resource_a4ctr")
+flags_2 = SubResource("Resource_i35o6")
+flags_3 = SubResource("Resource_re2n8")
+flavour_aware = true
+item_category = 21
+level = 15
+locale = Array[int]([0, 0, 0, 0])
+name = "& Mighty Hammer~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 50
+weight = 200
+filename = "Hafted:Mighty Hammer"

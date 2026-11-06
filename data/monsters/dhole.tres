@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vuuno"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_x7uck"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_tby7a"]
+
+[sub_resource type="Resource" id="Resource_orw8d"]
+script = ExtResource("1_vuuno")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 9
+method = 14
+
+[sub_resource type="Resource" id="Resource_wssfc"]
+script = ExtResource("1_vuuno")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 9
+method = 10
+
+[sub_resource type="Resource" id="Resource_s8mk3"]
+script = ExtResource("1_vuuno")
+damage_dice = 4
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_ydxce"]
+script = ExtResource("1_vuuno")
+
+[sub_resource type="Resource" id="Resource_eofdx"]
+script = ExtResource("2_x7uck")
+
+[sub_resource type="Resource" id="Resource_a2iob"]
+script = ExtResource("2_x7uck")
+value = 532480
+
+[sub_resource type="Resource" id="Resource_r2jwl"]
+script = ExtResource("2_x7uck")
+value = 134283456
+
+[sub_resource type="Resource" id="Resource_602cw"]
+script = ExtResource("2_x7uck")
+value = 256
+
+[sub_resource type="Resource" id="Resource_q6awu"]
+script = ExtResource("2_x7uck")
+
+[sub_resource type="Resource" id="Resource_u8h4d"]
+script = ExtResource("2_x7uck")
+
+[resource]
+script = ExtResource("3_tby7a")
+ac = 64
+attack = Array[ExtResource("1_vuuno")]([SubResource("Resource_orw8d"), SubResource("Resource_wssfc"), SubResource("Resource_s8mk3"), SubResource("Resource_ydxce")])
+character = "A"
+colour = 1
+description = "A gigantic worm dripping with acid."
+flags_1 = SubResource("Resource_eofdx")
+flags_2 = SubResource("Resource_a2iob")
+flags_3 = SubResource("Resource_r2jwl")
+flags_4 = SubResource("Resource_602cw")
+flags_5 = SubResource("Resource_q6awu")
+flags_6 = SubResource("Resource_u8h4d")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 65
+hit_dice_sides = 8
+level = 29
+max_num = 100
+experience = 500
+name = "Dhole"
+notice_range = 14
+rarity = 4
+sleep = 25
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Dhole    "

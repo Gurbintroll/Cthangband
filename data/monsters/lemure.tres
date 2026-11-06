@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ylsrh"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7hhkm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rg0ox"]
+
+[sub_resource type="Resource" id="Resource_xh4kp"]
+script = ExtResource("1_ylsrh")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_d5imr"]
+script = ExtResource("1_ylsrh")
+
+[sub_resource type="Resource" id="Resource_eeuv0"]
+script = ExtResource("1_ylsrh")
+
+[sub_resource type="Resource" id="Resource_7eshl"]
+script = ExtResource("1_ylsrh")
+
+[sub_resource type="Resource" id="Resource_o6257"]
+script = ExtResource("2_7hhkm")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_5wpvs"]
+script = ExtResource("2_7hhkm")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_56l8a"]
+script = ExtResource("2_7hhkm")
+value = 268697680
+
+[sub_resource type="Resource" id="Resource_vkegu"]
+script = ExtResource("2_7hhkm")
+
+[sub_resource type="Resource" id="Resource_p0frm"]
+script = ExtResource("2_7hhkm")
+
+[sub_resource type="Resource" id="Resource_o87p5"]
+script = ExtResource("2_7hhkm")
+
+[resource]
+script = ExtResource("3_rg0ox")
+ac = 32
+attack = Array[ExtResource("1_ylsrh")]([SubResource("Resource_xh4kp"), SubResource("Resource_d5imr"), SubResource("Resource_eeuv0"), SubResource("Resource_7eshl")])
+character = "u"
+colour = 24
+description = "It is the larval form of a major demon."
+flags_1 = SubResource("Resource_o6257")
+flags_2 = SubResource("Resource_5wpvs")
+flags_3 = SubResource("Resource_56l8a")
+flags_4 = SubResource("Resource_vkegu")
+flags_5 = SubResource("Resource_p0frm")
+flags_6 = SubResource("Resource_o87p5")
+hit_dice = 13
+hit_dice_sides = 9
+level = 8
+max_num = 100
+experience = 16
+name = "Lemure"
+notice_range = 20
+rarity = 3
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Lemure   "

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_pecs1"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_uu6i8"]
+
+[sub_resource type="Resource" id="Resource_nfoi5"]
+script = ExtResource("1_pecs1")
+value = 256
+
+[sub_resource type="Resource" id="Resource_6tvak"]
+script = ExtResource("1_pecs1")
+value = 475136
+
+[sub_resource type="Resource" id="Resource_xn6hb"]
+script = ExtResource("1_pecs1")
+value = 15880192
+
+[resource]
+script = ExtResource("2_uu6i8")
+cost = 15000
+flags_1 = SubResource("Resource_nfoi5")
+flags_2 = SubResource("Resource_6tvak")
+flags_3 = SubResource("Resource_xn6hb")
+max_type_specifc_value = 4
+max_to_ac = 8
+max_to_damage = 4
+max_to_hit = 4
+name = "(Defender)"
+rating = 25
+slot = 24
+id = 54

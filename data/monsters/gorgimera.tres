@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ayhxw"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ag1lt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_d46pl"]
+
+[sub_resource type="Resource" id="Resource_wlas0"]
+script = ExtResource("1_ayhxw")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_rsopp"]
+script = ExtResource("1_ayhxw")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_fby1q"]
+script = ExtResource("1_ayhxw")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_0qmb3"]
+script = ExtResource("1_ayhxw")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_5n2h5"]
+script = ExtResource("2_ag1lt")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_bfo5c"]
+script = ExtResource("2_ag1lt")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_sacft"]
+script = ExtResource("2_ag1lt")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_xwdhd"]
+script = ExtResource("2_ag1lt")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_uiw6o"]
+script = ExtResource("2_ag1lt")
+
+[sub_resource type="Resource" id="Resource_2m7k5"]
+script = ExtResource("2_ag1lt")
+
+[resource]
+script = ExtResource("3_d46pl")
+ac = 55
+attack = Array[ExtResource("1_ayhxw")]([SubResource("Resource_wlas0"), SubResource("Resource_rsopp"), SubResource("Resource_fby1q"), SubResource("Resource_0qmb3")])
+character = "H"
+colour = 18
+description = "It has 3 heads - gorgon, goat and dragon - all attached to a lion's body."
+flags_1 = SubResource("Resource_5n2h5")
+flags_2 = SubResource("Resource_bfo5c")
+flags_3 = SubResource("Resource_sacft")
+flags_4 = SubResource("Resource_xwdhd")
+flags_5 = SubResource("Resource_uiw6o")
+flags_6 = SubResource("Resource_2m7k5")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 25
+hit_dice_sides = 20
+level = 27
+max_num = 100
+experience = 200
+name = "Gorgimera"
+notice_range = 12
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Gorgimera  "

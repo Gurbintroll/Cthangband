@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://blklbm0heihnk"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_arpcy"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_rkswc"]
+
+[sub_resource type="Resource" id="Resource_tejag"]
+script = ExtResource("1_arpcy")
+
+[sub_resource type="Resource" id="Resource_12i3h"]
+script = ExtResource("1_arpcy")
+
+[sub_resource type="Resource" id="Resource_fmvfy"]
+script = ExtResource("1_arpcy")
+
+[resource]
+script = ExtResource("2_rkswc")
+chance = Array[int]([0, 0, 0, 0])
+character = "$"
+colour = 19
+cost = 3
+flags_1 = SubResource("Resource_tejag")
+flags_2 = SubResource("Resource_12i3h")
+flags_3 = SubResource("Resource_fmvfy")
+flavour_aware = true
+item_category = 100
+level = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "copper"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+filename = "Gold:copper"

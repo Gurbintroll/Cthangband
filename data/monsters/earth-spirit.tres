@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_sojcg"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_v7dc4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1xkno"]
+
+[sub_resource type="Resource" id="Resource_t0nso"]
+script = ExtResource("1_sojcg")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6s6bm"]
+script = ExtResource("1_sojcg")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_bqk02"]
+script = ExtResource("1_sojcg")
+
+[sub_resource type="Resource" id="Resource_gfpwn"]
+script = ExtResource("1_sojcg")
+
+[sub_resource type="Resource" id="Resource_hp75o"]
+script = ExtResource("2_v7dc4")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_mxuyh"]
+script = ExtResource("2_v7dc4")
+value = 262240
+
+[sub_resource type="Resource" id="Resource_xsn8h"]
+script = ExtResource("2_v7dc4")
+value = 3491635264
+
+[sub_resource type="Resource" id="Resource_n16oj"]
+script = ExtResource("2_v7dc4")
+
+[sub_resource type="Resource" id="Resource_fm43o"]
+script = ExtResource("2_v7dc4")
+
+[sub_resource type="Resource" id="Resource_upg87"]
+script = ExtResource("2_v7dc4")
+
+[resource]
+script = ExtResource("3_1xkno")
+ac = 40
+attack = Array[ExtResource("1_sojcg")]([SubResource("Resource_t0nso"), SubResource("Resource_6s6bm"), SubResource("Resource_bqk02"), SubResource("Resource_gfpwn")])
+character = "E"
+colour = 6
+description = "A whirling form of sentient rock."
+flags_1 = SubResource("Resource_hp75o")
+flags_2 = SubResource("Resource_mxuyh")
+flags_3 = SubResource("Resource_xsn8h")
+flags_4 = SubResource("Resource_n16oj")
+flags_5 = SubResource("Resource_fm43o")
+flags_6 = SubResource("Resource_upg87")
+hit_dice = 13
+hit_dice_sides = 8
+level = 17
+max_num = 100
+experience = 64
+name = "Earth spirit"
+notice_range = 10
+rarity = 2
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Earth    "
+split_name_3 = "   spirit   "

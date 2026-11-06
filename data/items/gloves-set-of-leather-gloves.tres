@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_n2rfu"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_tik5x"]
+
+[sub_resource type="Resource" id="Resource_g48lv"]
+script = ExtResource("1_n2rfu")
+
+[sub_resource type="Resource" id="Resource_fj7n5"]
+script = ExtResource("1_n2rfu")
+
+[sub_resource type="Resource" id="Resource_bfmhi"]
+script = ExtResource("1_n2rfu")
+
+[resource]
+script = ExtResource("2_tik5x")
+ac = 1
+chance = Array[int]([1, 0, 0, 0])
+character = "]"
+colour = 6
+cost = 3
+flags_1 = SubResource("Resource_g48lv")
+flags_2 = SubResource("Resource_fj7n5")
+flags_3 = SubResource("Resource_bfmhi")
+flavour_aware = true
+item_category = 31
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "& Set~ of Leather Gloves"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+weight = 5
+filename = "Gloves:Set of Leather Gloves"

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2gj54"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_l0lgx"]
+
+[sub_resource type="Resource" id="Resource_66vv1"]
+script = ExtResource("1_2gj54")
+value = 4159
+
+[sub_resource type="Resource" id="Resource_f7o0i"]
+script = ExtResource("1_2gj54")
+value = 17416
+
+[sub_resource type="Resource" id="Resource_ntkq1"]
+script = ExtResource("1_2gj54")
+value = 32721408
+
+[resource]
+script = ExtResource("2_l0lgx")
+flags_1 = SubResource("Resource_66vv1")
+flags_2 = SubResource("Resource_f7o0i")
+flags_3 = SubResource("Resource_ntkq1")
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 1
+has_own_type = true
+item_category = 45
+item_sub_category = 34
+level = 70
+name = "of *Elemental Power (Fire)*"
+type_specific_value = 1
+rarity = 30
+to_hit = 10
+to_damage = 10
+weight = 2
+id = 10

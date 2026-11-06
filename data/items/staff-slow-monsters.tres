@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_aj2r8"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ihrpj"]
+
+[sub_resource type="Resource" id="Resource_brneb"]
+script = ExtResource("1_aj2r8")
+
+[sub_resource type="Resource" id="Resource_qasyj"]
+script = ExtResource("1_aj2r8")
+
+[sub_resource type="Resource" id="Resource_r7n45"]
+script = ExtResource("1_aj2r8")
+
+[resource]
+script = ExtResource("2_ihrpj")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 17
+cost = 800
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_brneb")
+flags_2 = SubResource("Resource_qasyj")
+flags_3 = SubResource("Resource_r7n45")
+has_flavour = true
+item_category = 55
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Slow Monsters"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 21
+weight = 50
+filename = "Staff:Slow Monsters"

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_3kw26"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_j0vr2"]
+
+[sub_resource type="Resource" id="Resource_75yv0"]
+script = ExtResource("1_3kw26")
+
+[sub_resource type="Resource" id="Resource_hk2pi"]
+script = ExtResource("1_3kw26")
+
+[sub_resource type="Resource" id="Resource_dleij"]
+script = ExtResource("1_3kw26")
+value = 4352
+
+[resource]
+script = ExtResource("2_j0vr2")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 20
+cost = 200
+easy_know = true
+flags_1 = SubResource("Resource_75yv0")
+flags_2 = SubResource("Resource_hk2pi")
+flags_3 = SubResource("Resource_dleij")
+has_flavour = true
+item_category = 45
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "Levitation"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 7
+weight = 2
+filename = "Ring:Levitation"

@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_t8g2n"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_uytne"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ho2bo"]
+
+[sub_resource type="Resource" id="Resource_c5jkf"]
+script = ExtResource("1_t8g2n")
+
+[sub_resource type="Resource" id="Resource_wq6mn"]
+script = ExtResource("1_t8g2n")
+
+[sub_resource type="Resource" id="Resource_hpjf1"]
+script = ExtResource("1_t8g2n")
+
+[sub_resource type="Resource" id="Resource_u0fq0"]
+script = ExtResource("1_t8g2n")
+
+[sub_resource type="Resource" id="Resource_r53l8"]
+script = ExtResource("2_uytne")
+value = 256
+
+[sub_resource type="Resource" id="Resource_03vx6"]
+script = ExtResource("2_uytne")
+
+[sub_resource type="Resource" id="Resource_ljvhu"]
+script = ExtResource("2_uytne")
+
+[sub_resource type="Resource" id="Resource_sisnx"]
+script = ExtResource("2_uytne")
+
+[sub_resource type="Resource" id="Resource_ln1lu"]
+script = ExtResource("2_uytne")
+
+[sub_resource type="Resource" id="Resource_cqciy"]
+script = ExtResource("2_uytne")
+
+[resource]
+script = ExtResource("3_ho2bo")
+attack = Array[ExtResource("1_t8g2n")]([SubResource("Resource_c5jkf"), SubResource("Resource_wq6mn"), SubResource("Resource_hpjf1"), SubResource("Resource_u0fq0")])
+character = "@"
+colour = 15
+description = "You"
+flags_1 = SubResource("Resource_r53l8")
+flags_2 = SubResource("Resource_03vx6")
+flags_3 = SubResource("Resource_ljvhu")
+flags_4 = SubResource("Resource_sisnx")
+flags_5 = SubResource("Resource_ln1lu")
+flags_6 = SubResource("Resource_cqciy")
+level = -1
+max_num = 100
+name = "Player"
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Player   "

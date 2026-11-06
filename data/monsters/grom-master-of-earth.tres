@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dr03eja5ypcyg"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_w6eko"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_f1v5u"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_ntd7n"]
+
+[sub_resource type="Resource" id="Resource_bgoi7"]
+script = ExtResource("1_w6eko")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_eb1f2"]
+script = ExtResource("1_w6eko")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_nlpcs"]
+script = ExtResource("1_w6eko")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_utvax"]
+script = ExtResource("1_w6eko")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 28
+method = 1
+
+[sub_resource type="Resource" id="Resource_3vjru"]
+script = ExtResource("2_f1v5u")
+value = 1797
+
+[sub_resource type="Resource" id="Resource_xoyb1"]
+script = ExtResource("2_f1v5u")
+value = 11276384
+
+[sub_resource type="Resource" id="Resource_qiq2p"]
+script = ExtResource("2_f1v5u")
+value = 3491635264
+
+[sub_resource type="Resource" id="Resource_ceg1p"]
+script = ExtResource("2_f1v5u")
+
+[sub_resource type="Resource" id="Resource_576kw"]
+script = ExtResource("2_f1v5u")
+value = 65537
+
+[sub_resource type="Resource" id="Resource_s6lp3"]
+script = ExtResource("2_f1v5u")
+
+[resource]
+script = ExtResource("3_ntd7n")
+ac = 97
+attack = Array[ExtResource("1_w6eko")]([SubResource("Resource_bgoi7"), SubResource("Resource_eb1f2"), SubResource("Resource_nlpcs"), SubResource("Resource_utvax")])
+character = "E"
+colour = 12
+description = "A towering stone elemental stands before you. The walls and ceiling are reduced to rubble as Grom advances."
+flags_1 = SubResource("Resource_3vjru")
+flags_2 = SubResource("Resource_xoyb1")
+flags_3 = SubResource("Resource_qiq2p")
+flags_4 = SubResource("Resource_ceg1p")
+flags_5 = SubResource("Resource_576kw")
+flags_6 = SubResource("Resource_s6lp3")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 18
+hit_dice_sides = 100
+level = 43
+max_num = 1
+experience = 6000
+name = "Grom, Master of Earth"
+notice_range = 10
+rarity = 4
+sleep = 90
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Grom    "

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_lix6d"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_4kca6"]
+
+[sub_resource type="Resource" id="Resource_kvtv1"]
+script = ExtResource("1_lix6d")
+
+[sub_resource type="Resource" id="Resource_020k5"]
+script = ExtResource("1_lix6d")
+
+[sub_resource type="Resource" id="Resource_60qwr"]
+script = ExtResource("1_lix6d")
+value = 15728640
+
+[resource]
+script = ExtResource("2_4kca6")
+chance = Array[int]([3, 0, 0, 0])
+character = "?"
+colour = 2
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_kvtv1")
+flags_2 = SubResource("Resource_020k5")
+flags_3 = SubResource("Resource_60qwr")
+flavour_aware = true
+item_category = 94
+level = 90
+locale = Array[int]([90, 0, 0, 0])
+name = "[Necronomicon]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 30
+filename = "DeathBook:[Necronomicon]"

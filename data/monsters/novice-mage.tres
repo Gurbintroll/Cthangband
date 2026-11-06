@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_pdphv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_bs3ia"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_oijhk"]
+
+[sub_resource type="Resource" id="Resource_1e7n4"]
+script = ExtResource("1_pdphv")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_xu8se"]
+script = ExtResource("1_pdphv")
+
+[sub_resource type="Resource" id="Resource_oj65u"]
+script = ExtResource("1_pdphv")
+
+[sub_resource type="Resource" id="Resource_7pvel"]
+script = ExtResource("1_pdphv")
+
+[sub_resource type="Resource" id="Resource_0qcey"]
+script = ExtResource("2_bs3ia")
+value = 4195332
+
+[sub_resource type="Resource" id="Resource_y8paf"]
+script = ExtResource("2_bs3ia")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_ac0ld"]
+script = ExtResource("2_bs3ia")
+
+[sub_resource type="Resource" id="Resource_m7nbl"]
+script = ExtResource("2_bs3ia")
+
+[sub_resource type="Resource" id="Resource_sbrde"]
+script = ExtResource("2_bs3ia")
+value = 872415232
+
+[sub_resource type="Resource" id="Resource_drdtg"]
+script = ExtResource("2_bs3ia")
+value = 16
+
+[resource]
+script = ExtResource("3_oijhk")
+ac = 6
+attack = Array[ExtResource("1_pdphv")]([SubResource("Resource_1e7n4"), SubResource("Resource_xu8se"), SubResource("Resource_oj65u"), SubResource("Resource_7pvel")])
+character = "p"
+colour = 13
+description = "He is leaving behind a trail of dropped spell components."
+flags_1 = SubResource("Resource_0qcey")
+flags_2 = SubResource("Resource_y8paf")
+flags_3 = SubResource("Resource_ac0ld")
+flags_4 = SubResource("Resource_m7nbl")
+flags_5 = SubResource("Resource_sbrde")
+flags_6 = SubResource("Resource_drdtg")
+freq_innate = 12
+freq_spell = 12
+hit_dice = 6
+hit_dice_sides = 4
+level = 2
+max_num = 100
+experience = 7
+name = "Novice mage"
+notice_range = 20
+rarity = 1
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Novice   "
+split_name_3 = "    mage    "

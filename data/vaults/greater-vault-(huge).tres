@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_chwiq"]
+
+[resource]
+script = ExtResource("1_chwiq")
+category = 8
+height = 17
+name = "Greater vault (huge)"
+rating = 45
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%+&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#X%%X8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&X%%X#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#X%%X8#&#8#&#8#&#88888888888#8#&#8#&#8#&X%%X#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#X%%X8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&X%%X#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#8#&#&+%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 39

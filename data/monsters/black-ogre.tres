@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_tvja0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_bt1m4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1qg4d"]
+
+[sub_resource type="Resource" id="Resource_8n3on"]
+script = ExtResource("1_tvja0")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_dex02"]
+script = ExtResource("1_tvja0")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4bm4c"]
+script = ExtResource("1_tvja0")
+
+[sub_resource type="Resource" id="Resource_ewxxt"]
+script = ExtResource("1_tvja0")
+
+[sub_resource type="Resource" id="Resource_ukn1l"]
+script = ExtResource("2_bt1m4")
+value = 4464640
+
+[sub_resource type="Resource" id="Resource_g2nsr"]
+script = ExtResource("2_bt1m4")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_4hmb1"]
+script = ExtResource("2_bt1m4")
+value = 68
+
+[sub_resource type="Resource" id="Resource_opd5j"]
+script = ExtResource("2_bt1m4")
+
+[sub_resource type="Resource" id="Resource_37ogl"]
+script = ExtResource("2_bt1m4")
+
+[sub_resource type="Resource" id="Resource_nn4s2"]
+script = ExtResource("2_bt1m4")
+
+[resource]
+script = ExtResource("3_1qg4d")
+ac = 33
+attack = Array[ExtResource("1_tvja0")]([SubResource("Resource_8n3on"), SubResource("Resource_dex02"), SubResource("Resource_4bm4c"), SubResource("Resource_ewxxt")])
+character = "O"
+colour = 2
+description = "A massive orc-like figure with black skin and powerful arms."
+flags_1 = SubResource("Resource_ukn1l")
+flags_2 = SubResource("Resource_g2nsr")
+flags_3 = SubResource("Resource_4hmb1")
+flags_4 = SubResource("Resource_opd5j")
+flags_5 = SubResource("Resource_37ogl")
+flags_6 = SubResource("Resource_nn4s2")
+hit_dice = 20
+hit_dice_sides = 9
+level = 15
+max_num = 100
+experience = 75
+name = "Black ogre"
+notice_range = 20
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "    ogre    "

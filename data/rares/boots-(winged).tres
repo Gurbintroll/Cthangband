@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wqmda"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_yvqfx"]
+
+[sub_resource type="Resource" id="Resource_lc46d"]
+script = ExtResource("1_wqmda")
+
+[sub_resource type="Resource" id="Resource_2h0rf"]
+script = ExtResource("1_wqmda")
+
+[sub_resource type="Resource" id="Resource_q0r8c"]
+script = ExtResource("1_wqmda")
+value = 4096
+
+[resource]
+script = ExtResource("2_yvqfx")
+cost = 250
+flags_1 = SubResource("Resource_lc46d")
+flags_2 = SubResource("Resource_2h0rf")
+flags_3 = SubResource("Resource_q0r8c")
+name = "(Winged)"
+rating = 7
+slot = 35
+id = 46

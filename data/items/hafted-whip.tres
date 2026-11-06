@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_tmjb6"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_vukhb"]
+
+[sub_resource type="Resource" id="Resource_wr0ew"]
+script = ExtResource("1_tmjb6")
+
+[sub_resource type="Resource" id="Resource_0i5nw"]
+script = ExtResource("1_tmjb6")
+
+[sub_resource type="Resource" id="Resource_nhbv4"]
+script = ExtResource("1_tmjb6")
+value = 1024
+
+[resource]
+script = ExtResource("2_vukhb")
+chance = Array[int]([1, 0, 0, 0])
+character = "\\"
+colour = 2
+cost = 30
+damage_dice = 1
+damage_dice_sides = 6
+flags_1 = SubResource("Resource_wr0ew")
+flags_2 = SubResource("Resource_0i5nw")
+flags_3 = SubResource("Resource_nhbv4")
+flavour_aware = true
+item_category = 21
+level = 3
+locale = Array[int]([3, 0, 0, 0])
+name = "& Whip~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 2
+weight = 30
+filename = "Hafted:Whip"

@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_5ye77"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kh575"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_fl4wr"]
+
+[sub_resource type="Resource" id="Resource_cyaqm"]
+script = ExtResource("1_5ye77")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fpt38"]
+script = ExtResource("1_5ye77")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 1
+method = 4
+
+[sub_resource type="Resource" id="Resource_3d6bi"]
+script = ExtResource("1_5ye77")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 1
+method = 3
+
+[sub_resource type="Resource" id="Resource_f23br"]
+script = ExtResource("1_5ye77")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 1
+method = 4
+
+[sub_resource type="Resource" id="Resource_cfbr8"]
+script = ExtResource("2_kh575")
+value = 18875908
+
+[sub_resource type="Resource" id="Resource_dm8k2"]
+script = ExtResource("2_kh575")
+value = 198672
+
+[sub_resource type="Resource" id="Resource_0dmko"]
+script = ExtResource("2_kh575")
+value = 3222339648
+
+[sub_resource type="Resource" id="Resource_lst3l"]
+script = ExtResource("2_kh575")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_w11wb"]
+script = ExtResource("2_kh575")
+
+[sub_resource type="Resource" id="Resource_r1mbx"]
+script = ExtResource("2_kh575")
+value = 35651588
+
+[resource]
+script = ExtResource("3_fl4wr")
+ac = 50
+attack = Array[ExtResource("1_5ye77")]([SubResource("Resource_cyaqm"), SubResource("Resource_fpt38"), SubResource("Resource_3d6bi"), SubResource("Resource_f23br")])
+character = "p"
+colour = 26
+description = "An adept of chaos, feared for his skill of invoking raw chaos."
+flags_1 = SubResource("Resource_cfbr8")
+flags_2 = SubResource("Resource_dm8k2")
+flags_3 = SubResource("Resource_0dmko")
+flags_4 = SubResource("Resource_lst3l")
+flags_5 = SubResource("Resource_w11wb")
+flags_6 = SubResource("Resource_r1mbx")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 30
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 550
+name = "Chaos master"
+notice_range = 30
+rarity = 3
+sleep = 5
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Chaos    "
+split_name_3 = "   master   "

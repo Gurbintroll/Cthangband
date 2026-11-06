@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ca0nh"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_671os"]
+
+[sub_resource type="Resource" id="Resource_8i0nd"]
+script = ExtResource("1_ca0nh")
+
+[sub_resource type="Resource" id="Resource_svqx7"]
+script = ExtResource("1_ca0nh")
+
+[sub_resource type="Resource" id="Resource_1c42c"]
+script = ExtResource("1_ca0nh")
+
+[resource]
+script = ExtResource("2_671os")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 1
+cost = 150
+easy_know = true
+flags_1 = SubResource("Resource_8i0nd")
+flags_2 = SubResource("Resource_svqx7")
+flags_3 = SubResource("Resource_1c42c")
+has_flavour = true
+item_category = 70
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "Word of Recall"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 11
+weight = 5
+filename = "Scroll:Word of Recall"

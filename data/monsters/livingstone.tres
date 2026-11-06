@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ro2eb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_bcpxt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_hnm84"]
+
+[sub_resource type="Resource" id="Resource_po3i5"]
+script = ExtResource("1_ro2eb")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_688vw"]
+script = ExtResource("1_ro2eb")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_xlhmg"]
+script = ExtResource("1_ro2eb")
+
+[sub_resource type="Resource" id="Resource_drb70"]
+script = ExtResource("1_ro2eb")
+
+[sub_resource type="Resource" id="Resource_7nt25"]
+script = ExtResource("2_bcpxt")
+value = 139296
+
+[sub_resource type="Resource" id="Resource_kqft7"]
+script = ExtResource("2_bcpxt")
+value = 288
+
+[sub_resource type="Resource" id="Resource_qcj38"]
+script = ExtResource("2_bcpxt")
+value = 3491700736
+
+[sub_resource type="Resource" id="Resource_7f0tu"]
+script = ExtResource("2_bcpxt")
+
+[sub_resource type="Resource" id="Resource_5ixvf"]
+script = ExtResource("2_bcpxt")
+
+[sub_resource type="Resource" id="Resource_8m237"]
+script = ExtResource("2_bcpxt")
+
+[resource]
+script = ExtResource("3_hnm84")
+ac = 28
+attack = Array[ExtResource("1_ro2eb")]([SubResource("Resource_po3i5"), SubResource("Resource_688vw"), SubResource("Resource_xlhmg"), SubResource("Resource_drb70")])
+character = "#"
+colour = 30
+description = "A sentient section of wall."
+flags_1 = SubResource("Resource_7nt25")
+flags_2 = SubResource("Resource_kqft7")
+flags_3 = SubResource("Resource_qcj38")
+flags_4 = SubResource("Resource_7f0tu")
+flags_5 = SubResource("Resource_5ixvf")
+flags_6 = SubResource("Resource_8m237")
+hit_dice = 6
+hit_dice_sides = 8
+level = 20
+max_num = 100
+experience = 56
+name = "Livingstone"
+notice_range = 45
+rarity = 4
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Livingstone "

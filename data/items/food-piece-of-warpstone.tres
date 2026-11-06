@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ml2ag"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_p4st3"]
+
+[sub_resource type="Resource" id="Resource_743bc"]
+script = ExtResource("1_ml2ag")
+
+[sub_resource type="Resource" id="Resource_e35ly"]
+script = ExtResource("1_ml2ag")
+
+[sub_resource type="Resource" id="Resource_g2yi6"]
+script = ExtResource("1_ml2ag")
+
+[resource]
+script = ExtResource("2_p4st3")
+chance = Array[int]([1, 0, 0, 0])
+character = "*"
+colour = 26
+cost = 1000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_743bc")
+flags_2 = SubResource("Resource_e35ly")
+flags_3 = SubResource("Resource_g2yi6")
+flavour_aware = true
+item_category = 80
+level = 30
+locale = Array[int]([50, 0, 0, 0])
+name = "& piece~ of Warpstone"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 40
+weight = 1
+filename = "Food:piece of Warpstone"

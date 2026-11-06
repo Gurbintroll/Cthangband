@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ut1a1"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_k48y0"]
+
+[sub_resource type="Resource" id="Resource_hrpqe"]
+script = ExtResource("1_ut1a1")
+value = 33556480
+
+[sub_resource type="Resource" id="Resource_g5yks"]
+script = ExtResource("1_ut1a1")
+
+[sub_resource type="Resource" id="Resource_tyt75"]
+script = ExtResource("1_ut1a1")
+
+[resource]
+script = ExtResource("2_k48y0")
+cost = 5000
+flags_1 = SubResource("Resource_hrpqe")
+flags_2 = SubResource("Resource_g5yks")
+flags_3 = SubResource("Resource_tyt75")
+name = "of Sharpness"
+rating = 20
+slot = 24
+id = 65

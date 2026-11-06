@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_v6b0q"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_5e8lx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_lfhvk"]
+
+[sub_resource type="Resource" id="Resource_cdafy"]
+script = ExtResource("1_v6b0q")
+
+[sub_resource type="Resource" id="Resource_hpgyq"]
+script = ExtResource("1_v6b0q")
+
+[sub_resource type="Resource" id="Resource_bfqy7"]
+script = ExtResource("1_v6b0q")
+
+[sub_resource type="Resource" id="Resource_7s1ge"]
+script = ExtResource("1_v6b0q")
+
+[sub_resource type="Resource" id="Resource_c3svh"]
+script = ExtResource("2_5e8lx")
+value = 196609
+
+[sub_resource type="Resource" id="Resource_pun2a"]
+script = ExtResource("2_5e8lx")
+
+[sub_resource type="Resource" id="Resource_m12im"]
+script = ExtResource("2_5e8lx")
+
+[sub_resource type="Resource" id="Resource_1yqqv"]
+script = ExtResource("2_5e8lx")
+
+[sub_resource type="Resource" id="Resource_jeo28"]
+script = ExtResource("2_5e8lx")
+
+[sub_resource type="Resource" id="Resource_pjcw5"]
+script = ExtResource("2_5e8lx")
+
+[resource]
+script = ExtResource("3_lfhvk")
+attack = Array[ExtResource("1_v6b0q")]([SubResource("Resource_cdafy"), SubResource("Resource_hpgyq"), SubResource("Resource_bfqy7"), SubResource("Resource_7s1ge")])
+character = "G"
+description = "It seems strangely familiar..."
+flags_1 = SubResource("Resource_c3svh")
+flags_2 = SubResource("Resource_pun2a")
+flags_3 = SubResource("Resource_m12im")
+flags_4 = SubResource("Resource_1yqqv")
+flags_5 = SubResource("Resource_jeo28")
+flags_6 = SubResource("Resource_pjcw5")
+hit_dice = 1
+hit_dice_sides = 1
+level = 127
+max_num = 1
+experience = 1
+name = "Nobody, the Undefined Ghost"
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Nobody   "

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ncqwk"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_iur5e"]
+
+[sub_resource type="Resource" id="Resource_y3fgo"]
+script = ExtResource("1_ncqwk")
+
+[sub_resource type="Resource" id="Resource_j3b41"]
+script = ExtResource("1_ncqwk")
+value = 13041664
+
+[sub_resource type="Resource" id="Resource_52djt"]
+script = ExtResource("1_ncqwk")
+value = 15728640
+
+[resource]
+script = ExtResource("2_iur5e")
+flags_1 = SubResource("Resource_y3fgo")
+flags_2 = SubResource("Resource_j3b41")
+flags_3 = SubResource("Resource_52djt")
+ac = 4
+cost = 12000
+damage_dice = 1
+damage_dice_sides = 2
+item_category = 34
+item_sub_category = 4
+level = 30
+name = "*Rawhide*"
+rarity = 3
+to_ac = 20
+weight = 60
+id = 31

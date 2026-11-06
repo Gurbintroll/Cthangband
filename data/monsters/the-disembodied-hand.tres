@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://d23mjvsf455hh"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_igbq5"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_c4cjw"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_85xnu"]
+
+[sub_resource type="Resource" id="Resource_a7oo8"]
+script = ExtResource("1_igbq5")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_h5utw"]
+script = ExtResource("1_igbq5")
+
+[sub_resource type="Resource" id="Resource_m7bva"]
+script = ExtResource("1_igbq5")
+
+[sub_resource type="Resource" id="Resource_fkfuq"]
+script = ExtResource("1_igbq5")
+
+[sub_resource type="Resource" id="Resource_i0fln"]
+script = ExtResource("2_c4cjw")
+value = 769
+
+[sub_resource type="Resource" id="Resource_8uotp"]
+script = ExtResource("2_c4cjw")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_icv6g"]
+script = ExtResource("2_c4cjw")
+value = 3490709600
+
+[sub_resource type="Resource" id="Resource_ateqc"]
+script = ExtResource("2_c4cjw")
+
+[sub_resource type="Resource" id="Resource_dhifw"]
+script = ExtResource("2_c4cjw")
+
+[sub_resource type="Resource" id="Resource_i10g7"]
+script = ExtResource("2_c4cjw")
+
+[resource]
+script = ExtResource("3_85xnu")
+ac = 15
+attack = Array[ExtResource("1_igbq5")]([SubResource("Resource_a7oo8"), SubResource("Resource_h5utw"), SubResource("Resource_m7bva"), SubResource("Resource_fkfuq")])
+character = "z"
+colour = 12
+description = "Even today, nobody knows where it lurks... "
+flags_1 = SubResource("Resource_i0fln")
+flags_2 = SubResource("Resource_8uotp")
+flags_3 = SubResource("Resource_icv6g")
+flags_4 = SubResource("Resource_ateqc")
+flags_5 = SubResource("Resource_dhifw")
+flags_6 = SubResource("Resource_i10g7")
+hit_dice = 10
+hit_dice_sides = 10
+level = 6
+max_num = 1
+experience = 20
+name = "The disembodied hand"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 130
+split_name_1 = "    The     "
+split_name_2 = "disembodied "
+split_name_3 = "    hand    "

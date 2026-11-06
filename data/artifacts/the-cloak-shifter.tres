@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wcbgt"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_apbhm"]
+
+[sub_resource type="Resource" id="Resource_d08ji"]
+script = ExtResource("1_wcbgt")
+value = 256
+
+[sub_resource type="Resource" id="Resource_xim55"]
+script = ExtResource("1_wcbgt")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_snypa"]
+script = ExtResource("1_wcbgt")
+value = 32505856
+
+[resource]
+script = ExtResource("2_apbhm")
+flags_1 = SubResource("Resource_d08ji")
+flags_2 = SubResource("Resource_xim55")
+flags_3 = SubResource("Resource_snypa")
+ac = 1
+cost = 11000
+item_category = 35
+item_sub_category = 1
+level = 3
+name = "*Shifter*"
+type_specific_value = 3
+rarity = 10
+to_ac = 15
+weight = 10
+id = 48

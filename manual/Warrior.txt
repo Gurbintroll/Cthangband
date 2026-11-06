@@ -1,0 +1,16 @@
+[center][font_size=48][color="brown"][b]Warrior[/b][/color][/font_size][/center]
+[hr color="brown"]
+[center][table=2][cell][b]Hit Dice[/b][/cell][cell][b]Experience Factor[/b][/cell]
+[cell]+9[/cell][cell]+0%[/cell][/table][/center]
+
+[center][table=6][cell][b]Strength[/b][/cell][cell][b]Intelligence[/b][/cell][cell][b]Wisdom[/b][/cell][cell][b]Dexterity[/b][/cell][cell][b]Constitution[/b][/cell][cell][b]Charisma[/b][/cell]
+[cell]+5[/cell][cell]-2[/cell][cell]-2[/cell][cell]+2[/cell][cell]+2[/cell][cell]-1[/cell][/table][/center]
+
+[center][table=8][cell][b][/b][/cell][cell][b]Devices[/b][/cell][cell][b]Disarming[/b][/cell][cell][b]Melee[/b][/cell][cell][b]Ranged[/b][/cell][cell][b]Saves[/b][/cell][cell][b]Searching[/b][/cell][cell][b]Stealth[/b][/cell]
+[cell]Base Bonus[/cell][cell]18%[/cell][cell]25%[/cell][cell]70%[/cell][cell]60%[/cell][cell]18%[/cell][cell]14%[/cell][cell]1%[/cell]
+[cell]Bonus per Level[/cell][cell]+0.7%[/cell][cell]+1.2%[/cell][cell]+4.5%[/cell][cell]+4.5%[/cell][cell]+1.0%[/cell][cell]+0.0%[/cell][cell]+0.0%[/cell][/table][/center]
+
+Warriors are better at fighting than any other profession in the game. They are also the only profession that does not use magic of one form or another. This makes warriors the easiest profession for new players to get started with, since in the early game they are simple
+to play and their combat skills help them survive. They also need less experience to increase in level than any other profession.
+
+In the later game they need to use magic items to do things that other classes can do with spells, so they become somewhat trickier to play, although they remain a viable choice (and new players are extremely unlikely to have their character survive to the point where this becomes an issue, so it shouldn't put you off choosing this profession).

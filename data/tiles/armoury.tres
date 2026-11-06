@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_go7g7"]
+
+[resource]
+script = ExtResource("1_go7g7")
+appear_as = "Armoury"
+blocks_los = true
+character = "2"
+colour = 23
+description = "Armoury"
+is_interesting = true
+is_passable = true
+is_permanent = true
+is_shop = true
+name = "Armoury"

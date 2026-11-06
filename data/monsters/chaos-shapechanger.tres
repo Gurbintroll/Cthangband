@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_w30y2"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_aacyo"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_xyxmm"]
+
+[sub_resource type="Resource" id="Resource_2bw2i"]
+script = ExtResource("1_w30y2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ni7jn"]
+script = ExtResource("1_w30y2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_bskfm"]
+script = ExtResource("1_w30y2")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_18cs7"]
+script = ExtResource("1_w30y2")
+
+[sub_resource type="Resource" id="Resource_7vn7q"]
+script = ExtResource("2_aacyo")
+value = 4194432
+
+[sub_resource type="Resource" id="Resource_b43yj"]
+script = ExtResource("2_aacyo")
+value = 3072
+
+[sub_resource type="Resource" id="Resource_avrsw"]
+script = ExtResource("2_aacyo")
+value = 64
+
+[sub_resource type="Resource" id="Resource_fo0fa"]
+script = ExtResource("2_aacyo")
+
+[sub_resource type="Resource" id="Resource_f3er4"]
+script = ExtResource("2_aacyo")
+value = 537657344
+
+[sub_resource type="Resource" id="Resource_sscle"]
+script = ExtResource("2_aacyo")
+
+[resource]
+script = ExtResource("3_xyxmm")
+ac = 14
+attack = Array[ExtResource("1_w30y2")]([SubResource("Resource_2bw2i"), SubResource("Resource_ni7jn"), SubResource("Resource_bskfm"), SubResource("Resource_18cs7")])
+character = "H"
+colour = 26
+description = "A vaguely humanoid form constantly changing its appearance."
+flags_1 = SubResource("Resource_7vn7q")
+flags_2 = SubResource("Resource_b43yj")
+flags_3 = SubResource("Resource_avrsw")
+flags_4 = SubResource("Resource_fo0fa")
+flags_5 = SubResource("Resource_f3er4")
+flags_6 = SubResource("Resource_sscle")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 20
+hit_dice_sides = 9
+level = 11
+max_num = 100
+experience = 38
+name = "Chaos shapechanger"
+notice_range = 10
+rarity = 2
+sleep = 12
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Chaos    "
+split_name_3 = "shapechanger"

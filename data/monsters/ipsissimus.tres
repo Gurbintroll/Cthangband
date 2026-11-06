@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7ve8f"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_6r6o0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rfhyh"]
+
+[sub_resource type="Resource" id="Resource_o7uf7"]
+script = ExtResource("1_7ve8f")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ap6m8"]
+script = ExtResource("1_7ve8f")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0rqim"]
+script = ExtResource("1_7ve8f")
+
+[sub_resource type="Resource" id="Resource_odbti"]
+script = ExtResource("1_7ve8f")
+
+[sub_resource type="Resource" id="Resource_4h4cv"]
+script = ExtResource("2_6r6o0")
+value = 18875908
+
+[sub_resource type="Resource" id="Resource_c5pcl"]
+script = ExtResource("2_6r6o0")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_dpnen"]
+script = ExtResource("2_6r6o0")
+value = 64
+
+[sub_resource type="Resource" id="Resource_8aexn"]
+script = ExtResource("2_6r6o0")
+
+[sub_resource type="Resource" id="Resource_qylfs"]
+script = ExtResource("2_6r6o0")
+value = 2552251392
+
+[sub_resource type="Resource" id="Resource_fes3r"]
+script = ExtResource("2_6r6o0")
+value = 100679969
+
+[resource]
+script = ExtResource("3_rfhyh")
+ac = 50
+attack = Array[ExtResource("1_7ve8f")]([SubResource("Resource_o7uf7"), SubResource("Resource_ap6m8"), SubResource("Resource_0rqim"), SubResource("Resource_odbti")])
+character = "p"
+colour = 27
+description = "A gaunt figure, clothed in black robes."
+flags_1 = SubResource("Resource_4h4cv")
+flags_2 = SubResource("Resource_c5pcl")
+flags_3 = SubResource("Resource_dpnen")
+flags_4 = SubResource("Resource_8aexn")
+flags_5 = SubResource("Resource_qylfs")
+flags_6 = SubResource("Resource_fes3r")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 28
+hit_dice_sides = 10
+level = 36
+max_num = 100
+experience = 666
+name = "Ipsissimus"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Ipsissimus "

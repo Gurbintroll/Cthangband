@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0ng50"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_j4uxp"]
+
+[sub_resource type="Resource" id="Resource_ti4fe"]
+script = ExtResource("1_0ng50")
+
+[sub_resource type="Resource" id="Resource_3fs1w"]
+script = ExtResource("1_0ng50")
+
+[sub_resource type="Resource" id="Resource_vf7ha"]
+script = ExtResource("1_0ng50")
+value = 1024
+
+[resource]
+script = ExtResource("2_j4uxp")
+chance = Array[int]([1, 0, 0, 0])
+character = "|"
+colour = 15
+cost = 90
+damage_dice = 1
+damage_dice_sides = 7
+flags_1 = SubResource("Resource_ti4fe")
+flags_2 = SubResource("Resource_3fs1w")
+flags_3 = SubResource("Resource_vf7ha")
+flavour_aware = true
+item_category = 23
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "& Short Sword~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 10
+weight = 80
+filename = "Sword:Short Sword"

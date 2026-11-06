@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_sqq6j"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_na64o"]
+
+[sub_resource type="Resource" id="Resource_k1xa7"]
+script = ExtResource("1_sqq6j")
+
+[sub_resource type="Resource" id="Resource_2ymia"]
+script = ExtResource("1_sqq6j")
+value = 458752
+
+[sub_resource type="Resource" id="Resource_nrn31"]
+script = ExtResource("1_sqq6j")
+value = 15728640
+
+[resource]
+script = ExtResource("2_na64o")
+cost = 12500
+flags_1 = SubResource("Resource_k1xa7")
+flags_2 = SubResource("Resource_2ymia")
+flags_3 = SubResource("Resource_nrn31")
+max_to_ac = 10
+name = "of Resistance"
+rating = 20
+slot = 30
+id = 8

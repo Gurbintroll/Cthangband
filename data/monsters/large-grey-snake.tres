@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qd0yx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2tnq8"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_q7l8a"]
+
+[sub_resource type="Resource" id="Resource_adfeq"]
+script = ExtResource("1_qd0yx")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_hin3l"]
+script = ExtResource("1_qd0yx")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_krtog"]
+script = ExtResource("1_qd0yx")
+
+[sub_resource type="Resource" id="Resource_ys3yy"]
+script = ExtResource("1_qd0yx")
+
+[sub_resource type="Resource" id="Resource_3d3av"]
+script = ExtResource("2_2tnq8")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_fftsj"]
+script = ExtResource("2_2tnq8")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_72kwj"]
+script = ExtResource("2_2tnq8")
+value = 128
+
+[sub_resource type="Resource" id="Resource_mftp3"]
+script = ExtResource("2_2tnq8")
+
+[sub_resource type="Resource" id="Resource_n0l6s"]
+script = ExtResource("2_2tnq8")
+
+[sub_resource type="Resource" id="Resource_cj1y5"]
+script = ExtResource("2_2tnq8")
+
+[resource]
+script = ExtResource("3_q7l8a")
+ac = 41
+attack = Array[ExtResource("1_qd0yx")]([SubResource("Resource_adfeq"), SubResource("Resource_hin3l"), SubResource("Resource_krtog"), SubResource("Resource_ys3yy")])
+character = "J"
+colour = 23
+description = "It is about ten feet long."
+flags_1 = SubResource("Resource_3d3av")
+flags_2 = SubResource("Resource_fftsj")
+flags_3 = SubResource("Resource_72kwj")
+flags_4 = SubResource("Resource_mftp3")
+flags_5 = SubResource("Resource_n0l6s")
+flags_6 = SubResource("Resource_cj1y5")
+hit_dice = 6
+hit_dice_sides = 8
+level = 4
+max_num = 100
+experience = 14
+name = "Large grey snake"
+notice_range = 6
+rarity = 1
+sleep = 50
+speed = 100
+split_name_1 = "   Large    "
+split_name_2 = "    grey    "
+split_name_3 = "   snake    "

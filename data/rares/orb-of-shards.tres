@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_eb3xv"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_4ehur"]
+
+[sub_resource type="Resource" id="Resource_iglil"]
+script = ExtResource("1_eb3xv")
+
+[sub_resource type="Resource" id="Resource_i2gva"]
+script = ExtResource("1_eb3xv")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_kl5gp"]
+script = ExtResource("1_eb3xv")
+value = 15728640
+
+[resource]
+script = ExtResource("2_4ehur")
+cost = 1000
+flags_1 = SubResource("Resource_iglil")
+flags_2 = SubResource("Resource_i2gva")
+flags_3 = SubResource("Resource_kl5gp")
+name = "of Shards"
+id = 112

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_3jd8r"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_rkpa4"]
+
+[sub_resource type="Resource" id="Resource_ghbhh"]
+script = ExtResource("1_3jd8r")
+
+[sub_resource type="Resource" id="Resource_kmolm"]
+script = ExtResource("1_3jd8r")
+
+[sub_resource type="Resource" id="Resource_1uyii"]
+script = ExtResource("1_3jd8r")
+
+[resource]
+script = ExtResource("2_rkpa4")
+chance = Array[int]([4, 0, 0, 0])
+character = "-"
+colour = 30
+cost = 500
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_ghbhh")
+flags_2 = SubResource("Resource_kmolm")
+flags_3 = SubResource("Resource_1uyii")
+has_flavour = true
+item_category = 65
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Scare Monster"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 11
+weight = 10
+filename = "Wand:Scare Monster"

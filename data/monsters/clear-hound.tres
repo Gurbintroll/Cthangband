@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2hbg8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kxajt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_v1qk3"]
+
+[sub_resource type="Resource" id="Resource_03nnu"]
+script = ExtResource("1_2hbg8")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_872g1"]
+script = ExtResource("1_2hbg8")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_akv4t"]
+script = ExtResource("1_2hbg8")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_b6q4w"]
+script = ExtResource("1_2hbg8")
+
+[sub_resource type="Resource" id="Resource_y7ug5"]
+script = ExtResource("2_kxajt")
+value = 8256
+
+[sub_resource type="Resource" id="Resource_3tm77"]
+script = ExtResource("2_kxajt")
+value = 131088
+
+[sub_resource type="Resource" id="Resource_1x0wv"]
+script = ExtResource("2_kxajt")
+value = 128
+
+[sub_resource type="Resource" id="Resource_04gef"]
+script = ExtResource("2_kxajt")
+
+[sub_resource type="Resource" id="Resource_2xcjb"]
+script = ExtResource("2_kxajt")
+
+[sub_resource type="Resource" id="Resource_g5c7b"]
+script = ExtResource("2_kxajt")
+
+[resource]
+script = ExtResource("3_v1qk3")
+ac = 30
+attack = Array[ExtResource("1_2hbg8")]([SubResource("Resource_03nnu"), SubResource("Resource_872g1"), SubResource("Resource_akv4t"), SubResource("Resource_b6q4w")])
+character = "Z"
+colour = 20
+description = "A completely translucent hound."
+flags_1 = SubResource("Resource_y7ug5")
+flags_2 = SubResource("Resource_3tm77")
+flags_3 = SubResource("Resource_1x0wv")
+flags_4 = SubResource("Resource_04gef")
+flags_5 = SubResource("Resource_2xcjb")
+flags_6 = SubResource("Resource_g5c7b")
+hit_dice = 10
+hit_dice_sides = 6
+level = 15
+max_num = 100
+experience = 50
+name = "Clear hound"
+notice_range = 30
+rarity = 2
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Clear    "
+split_name_3 = "   hound    "

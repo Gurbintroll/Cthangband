@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5fcll"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_rtys0"]
+
+[sub_resource type="Resource" id="Resource_cd3ux"]
+script = ExtResource("1_5fcll")
+
+[sub_resource type="Resource" id="Resource_ernq7"]
+script = ExtResource("1_5fcll")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_xpfu6"]
+script = ExtResource("1_5fcll")
+value = 15728640
+
+[resource]
+script = ExtResource("2_rtys0")
+cost = 1000
+flags_1 = SubResource("Resource_cd3ux")
+flags_2 = SubResource("Resource_ernq7")
+flags_3 = SubResource("Resource_xpfu6")
+name = "of Chaos"
+id = 111

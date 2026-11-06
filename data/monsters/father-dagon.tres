@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://wmv1f3y6kk1p"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_ebk7e"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_0a8rh"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_ryllh"]
+
+[sub_resource type="Resource" id="Resource_fojhf"]
+script = ExtResource("1_ebk7e")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_nw4ch"]
+script = ExtResource("1_ebk7e")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_5xlob"]
+script = ExtResource("1_ebk7e")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_dr8hv"]
+script = ExtResource("1_ebk7e")
+
+[sub_resource type="Resource" id="Resource_6vjvd"]
+script = ExtResource("2_0a8rh")
+value = 405047045
+
+[sub_resource type="Resource" id="Resource_k0fon"]
+script = ExtResource("2_0a8rh")
+value = 139280
+
+[sub_resource type="Resource" id="Resource_dd5qk"]
+script = ExtResource("2_0a8rh")
+value = 136577360
+
+[sub_resource type="Resource" id="Resource_2xsv3"]
+script = ExtResource("2_0a8rh")
+
+[sub_resource type="Resource" id="Resource_25fnu"]
+script = ExtResource("2_0a8rh")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_1w3el"]
+script = ExtResource("2_0a8rh")
+value = 16779056
+
+[resource]
+script = ExtResource("3_ryllh")
+ac = 50
+attack = Array[ExtResource("1_ebk7e")]([SubResource("Resource_fojhf"), SubResource("Resource_nw4ch"), SubResource("Resource_5xlob"), SubResource("Resource_dr8hv")])
+character = "X"
+colour = 12
+description = "A scale-skinned humanoid fish, the ruler of deep ones."
+flags_1 = SubResource("Resource_6vjvd")
+flags_2 = SubResource("Resource_k0fon")
+flags_3 = SubResource("Resource_dd5qk")
+flags_4 = SubResource("Resource_2xsv3")
+flags_5 = SubResource("Resource_25fnu")
+flags_6 = SubResource("Resource_1w3el")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 40
+hit_dice_sides = 12
+level = 28
+max_num = 1
+experience = 750
+name = "Father Dagon"
+notice_range = 20
+rarity = 5
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Father   "
+split_name_3 = "   Dagon    "

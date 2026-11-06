@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://du0tuvvd657ll"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_lynwf"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_ni2ia"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_f3e8g"]
+
+[sub_resource type="Resource" id="Resource_sl0um"]
+script = ExtResource("1_lynwf")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_u1g8m"]
+script = ExtResource("1_lynwf")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_ijgl8"]
+script = ExtResource("1_lynwf")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_jt5fg"]
+script = ExtResource("1_lynwf")
+damage_dice = 6
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_sshix"]
+script = ExtResource("2_ni2ia")
+value = 471860741
+
+[sub_resource type="Resource" id="Resource_ayauk"]
+script = ExtResource("2_ni2ia")
+value = 1183744
+
+[sub_resource type="Resource" id="Resource_ktjcv"]
+script = ExtResource("2_ni2ia")
+value = 3221749832
+
+[sub_resource type="Resource" id="Resource_e7mva"]
+script = ExtResource("2_ni2ia")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_ge4kv"]
+script = ExtResource("2_ni2ia")
+value = 536887296
+
+[sub_resource type="Resource" id="Resource_tlt8t"]
+script = ExtResource("2_ni2ia")
+
+[resource]
+script = ExtResource("3_f3e8g")
+ac = 130
+attack = Array[ExtResource("1_lynwf")]([SubResource("Resource_sl0um"), SubResource("Resource_u1g8m"), SubResource("Resource_ijgl8"), SubResource("Resource_jt5fg")])
+character = "D"
+colour = 12
+description = "An ancient and wise Dragon. Scatha has grown clever over the long years. His scales are covered with frost, and his breath sends a shower of ice into the air."
+flags_1 = SubResource("Resource_sshix")
+flags_2 = SubResource("Resource_ayauk")
+flags_3 = SubResource("Resource_ktjcv")
+flags_4 = SubResource("Resource_e7mva")
+flags_5 = SubResource("Resource_ge4kv")
+flags_6 = SubResource("Resource_tlt8t")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 20
+hit_dice_sides = 100
+level = 44
+max_num = 1
+experience = 17000
+name = "Scatha the Worm"
+notice_range = 20
+rarity = 2
+sleep = 70
+speed = 120
+split_name_1 = "   Scatha   "
+split_name_2 = "    the     "
+split_name_3 = "    Worm    "

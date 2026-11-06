@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_e1w2c"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_myvev"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4xngg"]
+
+[sub_resource type="Resource" id="Resource_pv5tb"]
+script = ExtResource("1_e1w2c")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_nt023"]
+script = ExtResource("1_e1w2c")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_33qvn"]
+script = ExtResource("1_e1w2c")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_4sh1k"]
+script = ExtResource("1_e1w2c")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_p48q1"]
+script = ExtResource("2_myvev")
+value = 52430336
+
+[sub_resource type="Resource" id="Resource_2pmxb"]
+script = ExtResource("2_myvev")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_vjyg7"]
+script = ExtResource("2_myvev")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_js3n3"]
+script = ExtResource("2_myvev")
+
+[sub_resource type="Resource" id="Resource_hg3px"]
+script = ExtResource("2_myvev")
+value = 2552250368
+
+[sub_resource type="Resource" id="Resource_v37o1"]
+script = ExtResource("2_myvev")
+
+[resource]
+script = ExtResource("3_4xngg")
+ac = 55
+attack = Array[ExtResource("1_e1w2c")]([SubResource("Resource_pv5tb"), SubResource("Resource_nt023"), SubResource("Resource_33qvn"), SubResource("Resource_4sh1k")])
+character = "W"
+colour = 23
+description = "A figure that seems made of void, its strangely human shape is cloaked in shadow. It reaches out at you."
+flags_1 = SubResource("Resource_p48q1")
+flags_2 = SubResource("Resource_2pmxb")
+flags_3 = SubResource("Resource_vjyg7")
+flags_4 = SubResource("Resource_js3n3")
+flags_5 = SubResource("Resource_hg3px")
+flags_6 = SubResource("Resource_v37o1")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 50
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 1700
+name = "Black wraith"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "   wraith   "

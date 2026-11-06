@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_3rsmd"]
+
+[resource]
+script = ExtResource("1_3rsmd")
+category = 8
+height = 29
+name = "Greater vault (Pattern 2)"
+rating = 30
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X8+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^+8X%%X+XXXXXXXXXXXXXXXXXXX+XXXXXXXXXXXXXXXXXXX+X%%X^X.....................................X^X%%X^X.................p...................X^X%%X^X.........adcbadcba.dcbadcbad.........X^X%%X@X......dcba.........d.......dcba......X@X%%X,X...baad.....abcdab.dabcda.....addc...X,X%%X,X..cb.....bcda....b......abcd.....cb..X,X%%X,X.dc....dab....adcb.adcb....dab....ba.X,X%%X,X.d....cd....cba....a..bad....bc....a.X,X%%X,X.a...bc...adc...PPPPP...dcb...cd...d.X,X%%X,X.b...b....a....PPPAPPP....b....d...c.X,X%%X,X.c...a....b....PPABAPP....a....a...c.X,X%%X,X.d...d....c....PPPAPPP....d....b...b.X,X%%X,X.a...dc...cda...PPPPP...bcd...cb...b.X,X%%X,X.b....cb....abc.......dab....dc....a.X,X%%X,X.bc....bad....cddaabbcd....bad....da.X,X%%X,X..cd.....dcba...........adcb.....cd..X,X%%X,X...dabc.....adcbadcbadcba.....dabc...X,X%%X^X......cdab.................abcd......X^X%%X^X.........bccddaabcdabcdabcda.........X^X%%X^X.....................................X^X%%X+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX+X%%X9+^^^@,,,,,&,,,,,,,,&,,,,,,,&,,,,,,@^^^+9X%%XXXXXXXXXXXXXXXXXXXXX+XXXXXXXXXXXXXXXXXXXXX%%...........................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 45

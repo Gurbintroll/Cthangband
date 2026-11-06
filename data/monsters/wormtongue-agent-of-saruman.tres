@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dabt3yb25u78h"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_h2h5a"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_p8fgw"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_8c8hn"]
+
+[sub_resource type="Resource" id="Resource_mepnl"]
+script = ExtResource("1_h2h5a")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_kxbeo"]
+script = ExtResource("1_h2h5a")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_m2smp"]
+script = ExtResource("1_h2h5a")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_n8qbr"]
+script = ExtResource("1_h2h5a")
+
+[sub_resource type="Resource" id="Resource_86skv"]
+script = ExtResource("2_p8fgw")
+value = 824182277
+
+[sub_resource type="Resource" id="Resource_hbaf7"]
+script = ExtResource("2_p8fgw")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_c5nu1"]
+script = ExtResource("2_p8fgw")
+value = 2097216
+
+[sub_resource type="Resource" id="Resource_pkvl3"]
+script = ExtResource("2_p8fgw")
+
+[sub_resource type="Resource" id="Resource_kxty2"]
+script = ExtResource("2_p8fgw")
+value = 1074266128
+
+[sub_resource type="Resource" id="Resource_734tr"]
+script = ExtResource("2_p8fgw")
+value = 8196
+
+[resource]
+script = ExtResource("3_8c8hn")
+ac = 30
+attack = Array[ExtResource("1_h2h5a")]([SubResource("Resource_mepnl"), SubResource("Resource_kxbeo"), SubResource("Resource_m2smp"), SubResource("Resource_n8qbr")])
+character = "p"
+colour = 12
+description = "He's been spying for Saruman. He is a snivelling wretch with no morals."
+flags_1 = SubResource("Resource_86skv")
+flags_2 = SubResource("Resource_hbaf7")
+flags_3 = SubResource("Resource_c5nu1")
+flags_4 = SubResource("Resource_pkvl3")
+flags_5 = SubResource("Resource_kxty2")
+flags_6 = SubResource("Resource_734tr")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 25
+hit_dice_sides = 10
+level = 8
+max_num = 1
+experience = 150
+name = "Wormtongue, Agent of Saruman"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Wormtongue "

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_h2bdn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_18m8r"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_gjg0i"]
+
+[sub_resource type="Resource" id="Resource_6ipko"]
+script = ExtResource("1_h2bdn")
+effect = 15
+method = 16
+
+[sub_resource type="Resource" id="Resource_2il4k"]
+script = ExtResource("1_h2bdn")
+effect = 25
+method = 2
+
+[sub_resource type="Resource" id="Resource_lykov"]
+script = ExtResource("1_h2bdn")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 18
+method = 5
+
+[sub_resource type="Resource" id="Resource_n5g8d"]
+script = ExtResource("1_h2bdn")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 19
+method = 5
+
+[sub_resource type="Resource" id="Resource_3r3st"]
+script = ExtResource("2_18m8r")
+value = 21234688
+
+[sub_resource type="Resource" id="Resource_16020"]
+script = ExtResource("2_18m8r")
+value = 4456496
+
+[sub_resource type="Resource" id="Resource_v5tbu"]
+script = ExtResource("2_18m8r")
+value = 3222798432
+
+[sub_resource type="Resource" id="Resource_ogstu"]
+script = ExtResource("2_18m8r")
+
+[sub_resource type="Resource" id="Resource_k3hs8"]
+script = ExtResource("2_18m8r")
+value = 2415919616
+
+[sub_resource type="Resource" id="Resource_uf2vp"]
+script = ExtResource("2_18m8r")
+
+[resource]
+script = ExtResource("3_gjg0i")
+ac = 30
+attack = Array[ExtResource("1_h2bdn")]([SubResource("Resource_6ipko"), SubResource("Resource_2il4k"), SubResource("Resource_lykov"), SubResource("Resource_n5g8d")])
+character = "G"
+colour = 30
+description = "You don't believe in them."
+flags_1 = SubResource("Resource_3r3st")
+flags_2 = SubResource("Resource_16020")
+flags_3 = SubResource("Resource_v5tbu")
+flags_4 = SubResource("Resource_ogstu")
+flags_5 = SubResource("Resource_k3hs8")
+flags_6 = SubResource("Resource_uf2vp")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 13
+hit_dice_sides = 8
+level = 31
+max_num = 100
+experience = 350
+name = "Ghost"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Ghost    "

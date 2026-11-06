@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1arfx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_lulh0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_bbsxa"]
+
+[sub_resource type="Resource" id="Resource_nqa7y"]
+script = ExtResource("1_1arfx")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 3
+method = 12
+
+[sub_resource type="Resource" id="Resource_hswlk"]
+script = ExtResource("1_1arfx")
+
+[sub_resource type="Resource" id="Resource_i7g31"]
+script = ExtResource("1_1arfx")
+
+[sub_resource type="Resource" id="Resource_e0vpp"]
+script = ExtResource("1_1arfx")
+
+[sub_resource type="Resource" id="Resource_bcw6h"]
+script = ExtResource("2_lulh0")
+value = 524416
+
+[sub_resource type="Resource" id="Resource_je3jt"]
+script = ExtResource("2_lulh0")
+value = 131457
+
+[sub_resource type="Resource" id="Resource_fpekw"]
+script = ExtResource("2_lulh0")
+value = 335548544
+
+[sub_resource type="Resource" id="Resource_dlawl"]
+script = ExtResource("2_lulh0")
+
+[sub_resource type="Resource" id="Resource_el56o"]
+script = ExtResource("2_lulh0")
+
+[sub_resource type="Resource" id="Resource_l0ss2"]
+script = ExtResource("2_lulh0")
+
+[resource]
+script = ExtResource("3_bbsxa")
+ac = 5
+attack = Array[ExtResource("1_1arfx")]([SubResource("Resource_nqa7y"), SubResource("Resource_hswlk"), SubResource("Resource_i7g31"), SubResource("Resource_e0vpp")])
+character = "w"
+colour = 18
+description = "It is a strange mass of squirming worms. Magical energy crackles around its disgusting form."
+flags_1 = SubResource("Resource_bcw6h")
+flags_2 = SubResource("Resource_je3jt")
+flags_3 = SubResource("Resource_fpekw")
+flags_4 = SubResource("Resource_dlawl")
+flags_5 = SubResource("Resource_el56o")
+flags_6 = SubResource("Resource_l0ss2")
+hit_dice = 10
+hit_dice_sides = 8
+level = 40
+max_num = 100
+experience = 30
+name = "Disenchanter worm mass"
+notice_range = 7
+rarity = 3
+sleep = 10
+speed = 100
+split_name_1 = "Disenchanter"
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

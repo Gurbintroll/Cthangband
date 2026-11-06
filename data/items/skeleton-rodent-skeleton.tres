@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_87t14"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_p00o7"]
+
+[sub_resource type="Resource" id="Resource_qvj38"]
+script = ExtResource("1_87t14")
+
+[sub_resource type="Resource" id="Resource_bdvtq"]
+script = ExtResource("1_87t14")
+
+[sub_resource type="Resource" id="Resource_5n17j"]
+script = ExtResource("1_87t14")
+
+[resource]
+script = ExtResource("2_p00o7")
+chance = Array[int]([1, 0, 0, 0])
+character = "~"
+colour = 1
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_qvj38")
+flags_2 = SubResource("Resource_bdvtq")
+flags_3 = SubResource("Resource_5n17j")
+flavour_aware = true
+item_category = 1
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "& Rodent Skeleton~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 3
+weight = 10
+filename = "Skeleton:Rodent Skeleton"

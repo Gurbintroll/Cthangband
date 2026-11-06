@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_u3cd0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_3lvu2"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jwhq3"]
+
+[sub_resource type="Resource" id="Resource_3nwhx"]
+script = ExtResource("1_u3cd0")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_pcdto"]
+script = ExtResource("1_u3cd0")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_d1y1m"]
+script = ExtResource("1_u3cd0")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3dk5w"]
+script = ExtResource("1_u3cd0")
+
+[sub_resource type="Resource" id="Resource_nai3s"]
+script = ExtResource("2_3lvu2")
+value = 263168
+
+[sub_resource type="Resource" id="Resource_tujhp"]
+script = ExtResource("2_3lvu2")
+value = 10621024
+
+[sub_resource type="Resource" id="Resource_d373e"]
+script = ExtResource("2_3lvu2")
+value = 3490709568
+
+[sub_resource type="Resource" id="Resource_8m8jb"]
+script = ExtResource("2_3lvu2")
+
+[sub_resource type="Resource" id="Resource_vnh6s"]
+script = ExtResource("2_3lvu2")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_4lqix"]
+script = ExtResource("2_3lvu2")
+
+[resource]
+script = ExtResource("3_jwhq3")
+ac = 40
+attack = Array[ExtResource("1_u3cd0")]([SubResource("Resource_3nwhx"), SubResource("Resource_pcdto"), SubResource("Resource_d1y1m"), SubResource("Resource_3dk5w")])
+character = "E"
+colour = 3
+description = "It is a towering tempest of water."
+flags_1 = SubResource("Resource_nai3s")
+flags_2 = SubResource("Resource_tujhp")
+flags_3 = SubResource("Resource_d373e")
+flags_4 = SubResource("Resource_8m8jb")
+flags_5 = SubResource("Resource_vnh6s")
+flags_6 = SubResource("Resource_4lqix")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 25
+hit_dice_sides = 8
+level = 33
+max_num = 100
+experience = 325
+name = "Water elemental"
+notice_range = 12
+rarity = 2
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Water    "
+split_name_3 = " elemental  "

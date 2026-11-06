@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_nhqcn"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_wiyei"]
+
+[sub_resource type="Resource" id="Resource_xy5sc"]
+script = ExtResource("1_nhqcn")
+
+[sub_resource type="Resource" id="Resource_11m5f"]
+script = ExtResource("1_nhqcn")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_msws4"]
+script = ExtResource("1_nhqcn")
+value = 5242881
+
+[resource]
+script = ExtResource("2_wiyei")
+cost = 4000
+flags_1 = SubResource("Resource_xy5sc")
+flags_2 = SubResource("Resource_11m5f")
+flags_3 = SubResource("Resource_msws4")
+max_to_ac = 4
+name = "of Immolation"
+rating = 16
+slot = 31
+id = 35

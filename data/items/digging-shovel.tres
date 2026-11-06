@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_jc8vo"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_h5hoe"]
+
+[sub_resource type="Resource" id="Resource_2bfab"]
+script = ExtResource("1_jc8vo")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_u5hr3"]
+script = ExtResource("1_jc8vo")
+
+[sub_resource type="Resource" id="Resource_uyms6"]
+script = ExtResource("1_jc8vo")
+value = 1024
+
+[resource]
+script = ExtResource("2_h5hoe")
+chance = Array[int]([16, 0, 0, 0])
+character = "\\"
+colour = 23
+cost = 10
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_2bfab")
+flags_2 = SubResource("Resource_u5hr3")
+flags_3 = SubResource("Resource_uyms6")
+flavour_aware = true
+item_category = 20
+level = 1
+locale = Array[int]([5, 0, 0, 0])
+name = "& Shovel~"
+type_specific_value = 1
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+weight = 60
+filename = "Digging:Shovel"

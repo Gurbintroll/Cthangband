@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1g8t8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_h4av0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1ssq2"]
+
+[sub_resource type="Resource" id="Resource_5dqh5"]
+script = ExtResource("1_1g8t8")
+damage_dice = 2
+damage_dice_sides = 2
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_a38xw"]
+script = ExtResource("1_1g8t8")
+effect = 19
+method = 2
+
+[sub_resource type="Resource" id="Resource_pia2h"]
+script = ExtResource("1_1g8t8")
+
+[sub_resource type="Resource" id="Resource_ugcff"]
+script = ExtResource("1_1g8t8")
+
+[sub_resource type="Resource" id="Resource_ab1f4"]
+script = ExtResource("2_h4av0")
+value = 13107200
+
+[sub_resource type="Resource" id="Resource_tn8ca"]
+script = ExtResource("2_h4av0")
+value = 4456496
+
+[sub_resource type="Resource" id="Resource_snmt8"]
+script = ExtResource("2_h4av0")
+value = 3221749856
+
+[sub_resource type="Resource" id="Resource_p0b0t"]
+script = ExtResource("2_h4av0")
+
+[sub_resource type="Resource" id="Resource_haovt"]
+script = ExtResource("2_h4av0")
+value = 512
+
+[sub_resource type="Resource" id="Resource_qkve0"]
+script = ExtResource("2_h4av0")
+value = 32
+
+[resource]
+script = ExtResource("3_1ssq2")
+ac = 10
+attack = Array[ExtResource("1_1g8t8")]([SubResource("Resource_5dqh5"), SubResource("Resource_a38xw"), SubResource("Resource_pia2h"), SubResource("Resource_ugcff")])
+character = "G"
+colour = 17
+description = "It is almost insubstantial."
+flags_1 = SubResource("Resource_ab1f4")
+flags_2 = SubResource("Resource_tn8ca")
+flags_3 = SubResource("Resource_snmt8")
+flags_4 = SubResource("Resource_p0b0t")
+flags_5 = SubResource("Resource_haovt")
+flags_6 = SubResource("Resource_qkve0")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 2
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 18
+name = "Lost soul"
+notice_range = 12
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Lost    "
+split_name_3 = "    soul    "

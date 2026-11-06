@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_dyeq0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0df5c"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_c0i17"]
+
+[sub_resource type="Resource" id="Resource_2l5vl"]
+script = ExtResource("1_dyeq0")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 10
+method = 1
+
+[sub_resource type="Resource" id="Resource_rd3vf"]
+script = ExtResource("1_dyeq0")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_imeks"]
+script = ExtResource("1_dyeq0")
+
+[sub_resource type="Resource" id="Resource_nwlbp"]
+script = ExtResource("1_dyeq0")
+
+[sub_resource type="Resource" id="Resource_18n3h"]
+script = ExtResource("2_0df5c")
+value = 8388612
+
+[sub_resource type="Resource" id="Resource_w5v0t"]
+script = ExtResource("2_0df5c")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_4wphc"]
+script = ExtResource("2_0df5c")
+value = 131140
+
+[sub_resource type="Resource" id="Resource_wvlo1"]
+script = ExtResource("2_0df5c")
+
+[sub_resource type="Resource" id="Resource_4pxpg"]
+script = ExtResource("2_0df5c")
+
+[sub_resource type="Resource" id="Resource_bx00a"]
+script = ExtResource("2_0df5c")
+
+[resource]
+script = ExtResource("3_c0i17")
+ac = 60
+attack = Array[ExtResource("1_dyeq0")]([SubResource("Resource_2l5vl"), SubResource("Resource_rd3vf"), SubResource("Resource_imeks"), SubResource("Resource_nwlbp")])
+character = "P"
+colour = 5
+description = "It is a twenty foot tall giant wreathed in clouds."
+flags_1 = SubResource("Resource_18n3h")
+flags_2 = SubResource("Resource_w5v0t")
+flags_3 = SubResource("Resource_4wphc")
+flags_4 = SubResource("Resource_wvlo1")
+flags_5 = SubResource("Resource_4pxpg")
+flags_6 = SubResource("Resource_bx00a")
+hit_dice = 24
+hit_dice_sides = 10
+level = 20
+max_num = 100
+experience = 125
+name = "Cloud giant"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Cloud    "
+split_name_3 = "   giant    "

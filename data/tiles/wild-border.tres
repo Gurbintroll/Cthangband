@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_enkxh"]
+
+[resource]
+script = ExtResource("1_enkxh")
+appear_as = "Grass"
+blocks_los = true
+category = 12
+character = "·"
+colour = 8
+description = "border"
+dims_outside_los = true
+is_permanent = true
+name = "WildBorder"
+yellow_in_torch_light = true

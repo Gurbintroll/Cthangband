@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_5jwrw"]
+
+[resource]
+script = ExtResource("1_5jwrw")
+appear_as = "Field"
+category = 1
+character = "·"
+colour = 6
+description = "field"
+dims_outside_los = true
+is_open_floor = true
+is_passable = true
+name = "Field"
+yellow_in_torch_light = true

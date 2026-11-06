@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://4pfb4vuh2c3i"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_d2qi7"]
+[ext_resource type="Script" uid="uid://c8av6fyror3lk" path="res://scripts/data/artifact.gd" id="2_v3wkd"]
+
+[sub_resource type="Resource" id="Resource_s6vbk"]
+script = ExtResource("1_d2qi7")
+value = 518
+
+[sub_resource type="Resource" id="Resource_wetnh"]
+script = ExtResource("1_d2qi7")
+value = 2150713344
+
+[sub_resource type="Resource" id="Resource_nwp5w"]
+script = ExtResource("1_d2qi7")
+value = 99632672
+
+[resource]
+script = ExtResource("2_v3wkd")
+flags_1 = SubResource("Resource_s6vbk")
+flags_2 = SubResource("Resource_wetnh")
+flags_3 = SubResource("Resource_nwp5w")
+ac = 5
+damage_dice = 1
+damage_dice_sides = 3
+item_category = 32
+item_sub_category = 5
+level = 20
+name = "*Terror Mask*"
+type_specific_value = -1
+rarity = 5
+to_ac = 10
+to_hit = 25
+to_damage = 25
+weight = 75
+id = 41

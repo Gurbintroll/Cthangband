@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_s5drn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wmf37"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ebqpf"]
+
+[sub_resource type="Resource" id="Resource_owl7m"]
+script = ExtResource("1_s5drn")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_g7vfq"]
+script = ExtResource("1_s5drn")
+
+[sub_resource type="Resource" id="Resource_ysr26"]
+script = ExtResource("1_s5drn")
+
+[sub_resource type="Resource" id="Resource_77ah0"]
+script = ExtResource("1_s5drn")
+
+[sub_resource type="Resource" id="Resource_a78h2"]
+script = ExtResource("2_wmf37")
+value = 8912900
+
+[sub_resource type="Resource" id="Resource_yqk3e"]
+script = ExtResource("2_wmf37")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_xyil0"]
+script = ExtResource("2_wmf37")
+value = 64
+
+[sub_resource type="Resource" id="Resource_bjttl"]
+script = ExtResource("2_wmf37")
+
+[sub_resource type="Resource" id="Resource_3ptpd"]
+script = ExtResource("2_wmf37")
+
+[sub_resource type="Resource" id="Resource_jjmwl"]
+script = ExtResource("2_wmf37")
+
+[resource]
+script = ExtResource("3_ebqpf")
+ac = 20
+attack = Array[ExtResource("1_s5drn")]([SubResource("Resource_owl7m"), SubResource("Resource_g7vfq"), SubResource("Resource_ysr26"), SubResource("Resource_77ah0")])
+character = "t"
+colour = 13
+description = "No job is too low for him."
+flags_1 = SubResource("Resource_a78h2")
+flags_2 = SubResource("Resource_yqk3e")
+flags_3 = SubResource("Resource_xyil0")
+flags_4 = SubResource("Resource_bjttl")
+flags_5 = SubResource("Resource_3ptpd")
+flags_6 = SubResource("Resource_jjmwl")
+hit_dice = 5
+hit_dice_sides = 8
+max_num = 100
+name = "Mean looking mercenary"
+notice_range = 10
+rarity = 1
+sleep = 250
+speed = 110
+split_name_1 = "    Mean    "
+split_name_2 = "  looking   "
+split_name_3 = " mercenary  "

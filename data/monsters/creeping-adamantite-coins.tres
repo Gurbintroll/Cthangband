@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_4mnwp"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_yse3n"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kj33c"]
+
+[sub_resource type="Resource" id="Resource_yr2ss"]
+script = ExtResource("1_4mnwp")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_wnr7h"]
+script = ExtResource("1_4mnwp")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_6qpo5"]
+script = ExtResource("1_4mnwp")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fq4gn"]
+script = ExtResource("1_4mnwp")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mcpjx"]
+script = ExtResource("2_yse3n")
+value = 42991616
+
+[sub_resource type="Resource" id="Resource_o6x5x"]
+script = ExtResource("2_yse3n")
+value = 131104
+
+[sub_resource type="Resource" id="Resource_ih2vl"]
+script = ExtResource("2_yse3n")
+value = 3222274176
+
+[sub_resource type="Resource" id="Resource_eyqx5"]
+script = ExtResource("2_yse3n")
+
+[sub_resource type="Resource" id="Resource_qv687"]
+script = ExtResource("2_yse3n")
+
+[sub_resource type="Resource" id="Resource_s6drs"]
+script = ExtResource("2_yse3n")
+
+[resource]
+script = ExtResource("3_kj33c")
+ac = 50
+attack = Array[ExtResource("1_4mnwp")]([SubResource("Resource_yr2ss"), SubResource("Resource_wnr7h"), SubResource("Resource_6qpo5"), SubResource("Resource_fq4gn")])
+character = "$"
+colour = 18
+description = "It is a pile of coins, slithering forward on thousands of tiny legs."
+flags_1 = SubResource("Resource_mcpjx")
+flags_2 = SubResource("Resource_o6x5x")
+flags_3 = SubResource("Resource_ih2vl")
+flags_4 = SubResource("Resource_eyqx5")
+flags_5 = SubResource("Resource_qv687")
+flags_6 = SubResource("Resource_s6drs")
+hit_dice = 20
+hit_dice_sides = 25
+level = 27
+max_num = 100
+experience = 45
+name = "Creeping adamantite coins"
+notice_range = 5
+rarity = 4
+sleep = 10
+speed = 120
+split_name_1 = "  Creeping  "
+split_name_2 = " adamantite "
+split_name_3 = "   coins    "

@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_3udn4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_g0v0n"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vxdjl"]
+
+[sub_resource type="Resource" id="Resource_xb2fd"]
+script = ExtResource("1_3udn4")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_u35n4"]
+script = ExtResource("1_3udn4")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 21
+method = 2
+
+[sub_resource type="Resource" id="Resource_hjfx2"]
+script = ExtResource("1_3udn4")
+
+[sub_resource type="Resource" id="Resource_6avue"]
+script = ExtResource("1_3udn4")
+
+[sub_resource type="Resource" id="Resource_nwy31"]
+script = ExtResource("2_g0v0n")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_5w8pk"]
+script = ExtResource("2_g0v0n")
+value = 352
+
+[sub_resource type="Resource" id="Resource_5dvkq"]
+script = ExtResource("2_g0v0n")
+value = 3491237984
+
+[sub_resource type="Resource" id="Resource_v0e0l"]
+script = ExtResource("2_g0v0n")
+
+[sub_resource type="Resource" id="Resource_3qboe"]
+script = ExtResource("2_g0v0n")
+
+[sub_resource type="Resource" id="Resource_l7eh8"]
+script = ExtResource("2_g0v0n")
+
+[resource]
+script = ExtResource("3_vxdjl")
+ac = 12
+attack = Array[ExtResource("1_3udn4")]([SubResource("Resource_xb2fd"), SubResource("Resource_u35n4"), SubResource("Resource_hjfx2"), SubResource("Resource_6avue")])
+character = "j"
+colour = 17
+description = "A sickening mound of decaying flesh, bones, hands and so on. It seems to be growing."
+flags_1 = SubResource("Resource_nwy31")
+flags_2 = SubResource("Resource_5w8pk")
+flags_3 = SubResource("Resource_5dvkq")
+flags_4 = SubResource("Resource_v0e0l")
+flags_5 = SubResource("Resource_3qboe")
+flags_6 = SubResource("Resource_l7eh8")
+hit_dice = 8
+hit_dice_sides = 8
+level = 10
+max_num = 100
+experience = 33
+name = "Undead mass"
+notice_range = 70
+rarity = 2
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Undead   "
+split_name_3 = "    mass    "

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://ckaofanqj3rlp"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_piov6"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_li33p"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_qlwj5"]
+
+[sub_resource type="Resource" id="Resource_0crlt"]
+script = ExtResource("1_piov6")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tlus8"]
+script = ExtResource("1_piov6")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ixh3t"]
+script = ExtResource("1_piov6")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_v8a2w"]
+script = ExtResource("1_piov6")
+
+[sub_resource type="Resource" id="Resource_7wduu"]
+script = ExtResource("2_li33p")
+value = 6301184
+
+[sub_resource type="Resource" id="Resource_mj5h1"]
+script = ExtResource("2_li33p")
+value = 200704
+
+[sub_resource type="Resource" id="Resource_vjcun"]
+script = ExtResource("2_li33p")
+value = 3221489744
+
+[sub_resource type="Resource" id="Resource_3dcw6"]
+script = ExtResource("2_li33p")
+
+[sub_resource type="Resource" id="Resource_rjowb"]
+script = ExtResource("2_li33p")
+value = 805306368
+
+[sub_resource type="Resource" id="Resource_44xi0"]
+script = ExtResource("2_li33p")
+
+[resource]
+script = ExtResource("3_qlwj5")
+ac = 50
+attack = Array[ExtResource("1_piov6")]([SubResource("Resource_0crlt"), SubResource("Resource_tlus8"), SubResource("Resource_ixh3t"), SubResource("Resource_v8a2w")])
+character = "U"
+colour = 17
+description = "It is a demon swinging wildly with two clubs. Not even remotely subtle."
+flags_1 = SubResource("Resource_7wduu")
+flags_2 = SubResource("Resource_mj5h1")
+flags_3 = SubResource("Resource_vjcun")
+flags_4 = SubResource("Resource_3dcw6")
+flags_5 = SubResource("Resource_rjowb")
+flags_6 = SubResource("Resource_44xi0")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 40
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 1000
+name = "Clubber demon"
+notice_range = 20
+rarity = 2
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Clubber   "
+split_name_3 = "   demon    "

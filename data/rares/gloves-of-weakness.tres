@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_q55ga"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_86ffy"]
+
+[sub_resource type="Resource" id="Resource_j5wol"]
+script = ExtResource("1_q55ga")
+value = 1
+
+[sub_resource type="Resource" id="Resource_tjjdk"]
+script = ExtResource("1_q55ga")
+
+[sub_resource type="Resource" id="Resource_8baqm"]
+script = ExtResource("1_q55ga")
+
+[resource]
+script = ExtResource("2_86ffy")
+flags_1 = SubResource("Resource_j5wol")
+flags_2 = SubResource("Resource_tjjdk")
+flags_3 = SubResource("Resource_8baqm")
+max_type_specifc_value = 10
+name = "of Weakness"
+slot = 34
+id = 44

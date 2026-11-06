@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_mrmaw"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_6t0xf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mdfie"]
+
+[sub_resource type="Resource" id="Resource_qkg3m"]
+script = ExtResource("1_mrmaw")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_3bjly"]
+script = ExtResource("1_mrmaw")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_eu2co"]
+script = ExtResource("1_mrmaw")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_ncl0u"]
+script = ExtResource("1_mrmaw")
+damage_dice = 5
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_o7748"]
+script = ExtResource("2_6t0xf")
+value = 505415168
+
+[sub_resource type="Resource" id="Resource_i6ueo"]
+script = ExtResource("2_6t0xf")
+value = 1200128
+
+[sub_resource type="Resource" id="Resource_5ifwm"]
+script = ExtResource("2_6t0xf")
+value = 3221487688
+
+[sub_resource type="Resource" id="Resource_aew5o"]
+script = ExtResource("2_6t0xf")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_ij30w"]
+script = ExtResource("2_6t0xf")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_ebqw1"]
+script = ExtResource("2_6t0xf")
+
+[resource]
+script = ExtResource("3_mdfie")
+ac = 170
+attack = Array[ExtResource("1_mrmaw")]([SubResource("Resource_qkg3m"), SubResource("Resource_3bjly"), SubResource("Resource_eu2co"), SubResource("Resource_ncl0u")])
+character = "D"
+colour = 27
+description = "A vast dragon of immense power. Fire leaps continuously from its huge form. The air around it scalds you. Its slightest glance burns you, and you truly realize how insignificant you are."
+flags_1 = SubResource("Resource_o7748")
+flags_2 = SubResource("Resource_i6ueo")
+flags_3 = SubResource("Resource_5ifwm")
+flags_4 = SubResource("Resource_aew5o")
+flags_5 = SubResource("Resource_ij30w")
+flags_6 = SubResource("Resource_ebqw1")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 54
+hit_dice_sides = 100
+level = 55
+max_num = 100
+experience = 23000
+name = "Great hell wyrm"
+notice_range = 40
+rarity = 2
+sleep = 40
+speed = 120
+split_name_1 = "   Great    "
+split_name_2 = "    hell    "
+split_name_3 = "    wyrm    "

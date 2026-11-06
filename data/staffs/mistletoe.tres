@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Flavour" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/flavour.gd" id="1_iu7n8"]
+
+[resource]
+script = ExtResource("1_iu7n8")
+name = "Mistletoe"
+character = "_"
+colour = 6

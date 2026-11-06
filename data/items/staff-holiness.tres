@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_7aabw"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_tpehc"]
+
+[sub_resource type="Resource" id="Resource_tfu6k"]
+script = ExtResource("1_7aabw")
+
+[sub_resource type="Resource" id="Resource_noqsa"]
+script = ExtResource("1_7aabw")
+
+[sub_resource type="Resource" id="Resource_4eea4"]
+script = ExtResource("1_7aabw")
+
+[resource]
+script = ExtResource("2_tpehc")
+chance = Array[int]([2, 0, 0, 0])
+character = "_"
+colour = 17
+cost = 4500
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_tfu6k")
+flags_2 = SubResource("Resource_noqsa")
+flags_3 = SubResource("Resource_4eea4")
+has_flavour = true
+item_category = 55
+level = 70
+locale = Array[int]([70, 0, 0, 0])
+name = "Holiness"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 26
+weight = 50
+filename = "Staff:Holiness"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_vs8gg"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_p762i"]
+
+[sub_resource type="Resource" id="Resource_4l185"]
+script = ExtResource("1_vs8gg")
+
+[sub_resource type="Resource" id="Resource_v6yqo"]
+script = ExtResource("1_vs8gg")
+
+[sub_resource type="Resource" id="Resource_blukx"]
+script = ExtResource("1_vs8gg")
+value = 8388608
+
+[resource]
+script = ExtResource("2_p762i")
+cost = 600
+flags_1 = SubResource("Resource_4l185")
+flags_2 = SubResource("Resource_v6yqo")
+flags_3 = SubResource("Resource_blukx")
+name = "of Resist Cold"
+rating = 12
+slot = 30
+id = 7

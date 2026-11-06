@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_gkbrb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_myn53"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_blko5"]
+
+[sub_resource type="Resource" id="Resource_m2t6k"]
+script = ExtResource("1_gkbrb")
+effect = 24
+method = 12
+
+[sub_resource type="Resource" id="Resource_qqw08"]
+script = ExtResource("1_gkbrb")
+
+[sub_resource type="Resource" id="Resource_a35n8"]
+script = ExtResource("1_gkbrb")
+
+[sub_resource type="Resource" id="Resource_ndy5h"]
+script = ExtResource("1_gkbrb")
+
+[sub_resource type="Resource" id="Resource_hxbnr"]
+script = ExtResource("2_myn53")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_abqlt"]
+script = ExtResource("2_myn53")
+value = 655793
+
+[sub_resource type="Resource" id="Resource_14mqd"]
+script = ExtResource("2_myn53")
+value = 268439744
+
+[sub_resource type="Resource" id="Resource_wk8dx"]
+script = ExtResource("2_myn53")
+
+[sub_resource type="Resource" id="Resource_p621m"]
+script = ExtResource("2_myn53")
+
+[sub_resource type="Resource" id="Resource_xdj6q"]
+script = ExtResource("2_myn53")
+
+[resource]
+script = ExtResource("3_blko5")
+ac = 15
+attack = Array[ExtResource("1_gkbrb")]([SubResource("Resource_m2t6k"), SubResource("Resource_qqw08"), SubResource("Resource_a35n8"), SubResource("Resource_ndy5h")])
+character = "w"
+colour = 27
+description = "Even more disgusting dark worms, their essence that of unbeing."
+flags_1 = SubResource("Resource_hxbnr")
+flags_2 = SubResource("Resource_abqlt")
+flags_3 = SubResource("Resource_14mqd")
+flags_4 = SubResource("Resource_wk8dx")
+flags_5 = SubResource("Resource_p621m")
+flags_6 = SubResource("Resource_xdj6q")
+hit_dice = 5
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 7
+name = "Abyss worm mass"
+notice_range = 10
+rarity = 4
+sleep = 3
+speed = 100
+split_name_1 = "   Abyss    "
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

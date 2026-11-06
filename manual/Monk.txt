@@ -1,0 +1,74 @@
+[center][font_size=48][color="brown"][b]Monk[/b][/color][/font_size][/center]
+[hr color="brown"]
+[center][table=2][cell][b]Hit Dice[/b][/cell][cell][b]Experience Factor[/b][/cell]
+[cell]+6[/cell][cell]+40%[/cell][/table][/center]
+
+[center][table=6][cell][b]Strength[/b][/cell][cell][b]Intelligence[/b][/cell][cell][b]Wisdom[/b][/cell][cell][b]Dexterity[/b][/cell][cell][b]Constitution[/b][/cell][cell][b]Charisma[/b][/cell]
+[cell]+2[/cell][cell]-1[/cell][cell]+1[/cell][cell]+3[/cell][cell]+2[/cell][cell]+1[/cell][/table][/center]
+
+[center][table=8][cell][b][/b][/cell][cell][b]Devices[/b][/cell][cell][b]Disarming[/b][/cell][cell][b]Melee[/b][/cell][cell][b]Ranged[/b][/cell][cell][b]Saves[/b][/cell][cell][b]Searching[/b][/cell][cell][b]Stealth[/b][/cell]
+[cell]Base Bonus[/cell][cell]32%[/cell][cell]45%[/cell][cell]64%[/cell][cell]50%[/cell][cell]28%[/cell][cell]32%[/cell][cell]5%[/cell]
+[cell]Bonus per Level[/cell][cell]+1.2%[/cell][cell]+1.5%[/cell][cell]+4.0%[/cell][cell]+3.0%[/cell][cell]+1.0%[/cell][cell]+0.0%[/cell][cell]+0.0%[/cell][/table][/center]
+
+Monks are melee combatants who attack without weapons. Although they can use weapons, they get [color="blue"][url="Martial Arts"]special attacks[/url][/color] when not using them. These attacks get more powerful as the monk increases in level and the monk also increases in speed as they increase in level.
+
+As well as their physical abilities, monks are able to use magic. They are [color="blue"][url="Wisdom"]wisdom[/url][/color] based [color="blue"][url="Magic Basics"]divine[/url][/color] spell casters who cast spells from either the [color="blue"][url="Corporeal Spells"]corporeal[/url][/color], [color="blue"][url="Tarot Spells"]tarot[/url][/color], or [color="blue"][url="Chaos Spells"]chaos[/url][/color] realm. They are not as good at spell casting as other casting classes, although they are better with the corporeal realm than either of the others.
+
+(Spells in [i]italics[/i] are found only in rare books.)
+
+[center][table=4][cell][b]Level[/b][/cell][cell][b]Chaos[/b][/cell][cell][b]Corporeal[/b][/cell][cell][b]Tarot[/b][/cell]
+[cell]1[/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]2[/cell][cell]Magic Missile
+Trap and Door Destruction[/cell][cell]Cure Light Wounds
+Blink[/cell][cell]Phase Door[/cell]
+[cell]3[/cell][cell]Flash of Light[/cell][cell]Bravery[/cell][cell][/cell]
+[cell]4[/cell][cell][/cell][cell]Bat's Sense[/cell][cell]Mind Blast[/cell]
+[cell]5[/cell][cell][/cell][cell]Eagle's Vision[/cell][cell][/cell]
+[cell]6[/cell][cell]Touch of Confusion[/cell][cell]Mind Vision[/cell][cell]Tarot Draw[/cell]
+[cell]7[/cell][cell][/cell][cell]Cure Medium Wounds[/cell][cell]Reset Recall[/cell]
+[cell]8[/cell][cell][/cell][cell]Satisfy Hunger[/cell][cell]Teleport[/cell]
+[cell]9[/cell][cell][/cell][cell][i]Horrific Visage[/i][/cell][cell][/cell]
+[cell]10[/cell][cell]Power Burst[/cell][cell]Burn Resistance[/cell][cell]Dimension Door[/cell]
+[cell]11[/cell][cell][/cell][cell]Detoxify[/cell][cell][/cell]
+[cell]12[/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]13[/cell][cell][i]Polymorph Other[/i][/cell][cell]Cure Critical Wounds[/cell][cell][/cell]
+[cell]14[/cell][cell][/cell][cell][i]Move Body[/i][/cell][cell][/cell]
+[cell]15[/cell][cell]Fire Bolt[/cell][cell]See Invisible[/cell][cell][/cell]
+[cell]16[/cell][cell]Fist of Force[/cell][cell][i]Heroism[/i][/cell][cell]Astral Spying[/cell]
+[cell]17[/cell][cell]Teleport Self
+[i]Chain Lightning[/i][/cell][cell][i]See Magic[/i][/cell][cell][/cell]
+[cell]18[/cell][cell][i]Arcane Binding[/i][/cell][cell][i]Stoneskin[/i][/cell][cell][/cell]
+[cell]19[/cell][cell]Wonder[/cell][cell][i]Mutate Body[/i][/cell][cell]Teleport Away[/cell]
+[cell]20[/cell][cell][/cell][cell]Teleport[/cell][cell][/cell]
+[cell]21[/cell][cell]Chaos Bolt[/cell][cell][/cell][cell][/cell]
+[cell]22[/cell][cell][i]Gravity Beam[/i][/cell][cell][i]Know Self[/i][/cell][cell]Summon Object[/cell]
+[cell]23[/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]24[/cell][cell]Sonic Boom[/cell][cell][i]Teleport Level[/i][/cell][cell][/cell]
+[cell]25[/cell][cell][/cell][cell]Haste[/cell][cell][/cell]
+[cell]26[/cell][cell]Doom Bolt[/cell][cell][/cell][cell][i]Summon Spiders[/i][/cell]
+[cell]27[/cell][cell]Teleport Other[/cell][cell][i]Attunement[/i][/cell][cell]Summon Animal[/cell]
+[cell]28[/cell][cell]Fire Ball[/cell][cell][i]Word of Recall[/i][/cell][cell][/cell]
+[cell]29[/cell][cell][/cell][cell][/cell][cell][i][/i][/cell]
+[cell]30[/cell][cell][i]Disintegrate[/i][/cell][cell][i]Wraithform[/i][/cell][cell][/cell]
+[cell]31[/cell][cell][/cell][cell]Healing[/cell][cell]Phantasmal Servant[/cell]
+[cell]32[/cell][cell][/cell][cell][/cell][cell][i]Summon Hounds[/i][/cell]
+[cell]33[/cell][cell]Word of Destruction[/cell][cell][i]Restore Body[/i][/cell][cell]Summon Monster[/cell]
+[cell]34[/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]35[/cell][cell][/cell][cell][/cell][cell][i]Ethereal Divination[/i][/cell]
+[cell]36[/cell][cell][i]Alter Reality[/i][/cell][cell][/cell][cell][i]Astral Lore[/i][/cell]
+[cell]37[/cell][cell][/cell][cell]Resist True[/cell][cell]Conjure Elemental
+[i]The Fool[/i][/cell]
+[cell]38[/cell][cell][i]Meteor Swarm[/i][/cell][cell][/cell][cell][/cell]
+[cell]39[/cell][cell]Invoke Chaos[/cell][cell][/cell][cell]Teleport Level[/cell]
+[cell]40[/cell][cell][/cell][cell][/cell][cell][i]Summon Undead[/i][/cell]
+[cell]41[/cell][cell][i]Flame Strike[/i][/cell][cell][/cell][cell][i]Astral Branding[/i][/cell]
+[cell]42[/cell][cell][/cell][cell][i]Healing True[/i][/cell][cell][/cell]
+[cell]43[/cell][cell][/cell][cell][/cell][cell][i]Summon Dragon[/i][/cell]
+[cell]44[/cell][cell][/cell][cell][i]Hypnotic Eyes[/i][/cell][cell]Word of Recall[/cell]
+[cell]45[/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]46[/cell][cell][i]Call Chaos[/i][/cell][cell][/cell][cell][i]Extradimensional Being[/i][/cell]
+[cell]47[/cell][cell][i]Polymorph Self[/i][/cell][cell][i]Restore Soul[/i][/cell][cell]Banish
+[i]Death Dealing[/i][/cell]
+[cell]48[/cell][cell][i]Power Storm[/i][/cell][cell][/cell][cell][i]Mass Summons[/i][/cell]
+[cell]49[/cell][cell][i]Chaos Branding[/i][/cell][cell][/cell][cell][/cell]
+[cell]50[/cell][cell][i]Power Storm[/i][/cell][cell][i]Invulnerability[/i][/cell][cell][i]Summon Reaver[/i][/cell][/table][/center]

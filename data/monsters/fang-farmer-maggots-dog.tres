@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cimfkvdu2v1vu"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_s14yf"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_26g6n"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_66al0"]
+
+[sub_resource type="Resource" id="Resource_it0fb"]
+script = ExtResource("1_s14yf")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_n3kwk"]
+script = ExtResource("1_s14yf")
+
+[sub_resource type="Resource" id="Resource_gflk0"]
+script = ExtResource("1_s14yf")
+
+[sub_resource type="Resource" id="Resource_1u6ke"]
+script = ExtResource("1_s14yf")
+
+[sub_resource type="Resource" id="Resource_1c3h2"]
+script = ExtResource("2_26g6n")
+value = 262657
+
+[sub_resource type="Resource" id="Resource_bnec3"]
+script = ExtResource("2_26g6n")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_11fwm"]
+script = ExtResource("2_26g6n")
+value = 3489661056
+
+[sub_resource type="Resource" id="Resource_fvg87"]
+script = ExtResource("2_26g6n")
+
+[sub_resource type="Resource" id="Resource_p6loh"]
+script = ExtResource("2_26g6n")
+
+[sub_resource type="Resource" id="Resource_qw0op"]
+script = ExtResource("2_26g6n")
+
+[resource]
+script = ExtResource("3_66al0")
+ac = 30
+attack = Array[ExtResource("1_s14yf")]([SubResource("Resource_it0fb"), SubResource("Resource_n3kwk"), SubResource("Resource_gflk0"), SubResource("Resource_1u6ke")])
+character = "C"
+colour = 12
+description = "A rather vicious dog belonging to Farmer Maggot. It thinks you are stealing mushrooms."
+flags_1 = SubResource("Resource_1c3h2")
+flags_2 = SubResource("Resource_bnec3")
+flags_3 = SubResource("Resource_11fwm")
+flags_4 = SubResource("Resource_fvg87")
+flags_5 = SubResource("Resource_p6loh")
+flags_6 = SubResource("Resource_qw0op")
+hit_dice = 5
+hit_dice_sides = 5
+level = 2
+max_num = 1
+experience = 30
+name = "Fang, Farmer Maggot's dog"
+notice_range = 30
+rarity = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Fang    "

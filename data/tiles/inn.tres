@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_2h1nl"]
+
+[resource]
+script = ExtResource("1_2h1nl")
+appear_as = "Inn"
+blocks_los = true
+character = "&"
+colour = 26
+description = "Inn"
+is_interesting = true
+is_passable = true
+is_permanent = true
+is_shop = true
+name = "Inn"

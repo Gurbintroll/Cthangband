@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_do7sh"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_cmtyh"]
+
+[sub_resource type="Resource" id="Resource_8btc1"]
+script = ExtResource("1_do7sh")
+
+[sub_resource type="Resource" id="Resource_og2f8"]
+script = ExtResource("1_do7sh")
+
+[sub_resource type="Resource" id="Resource_c4bkg"]
+script = ExtResource("1_do7sh")
+
+[resource]
+script = ExtResource("2_cmtyh")
+ac = 6
+chance = Array[int]([1, 0, 0, 0])
+character = "]"
+colour = 15
+cost = 200
+damage_dice = 1
+damage_dice_sides = 3
+flags_1 = SubResource("Resource_8btc1")
+flags_2 = SubResource("Resource_og2f8")
+flags_3 = SubResource("Resource_c4bkg")
+flavour_aware = true
+item_category = 32
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "& Steel Helm~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 6
+weight = 60
+filename = "Helm:Steel Helm"

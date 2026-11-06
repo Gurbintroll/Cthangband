@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_xn3a6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ydagf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ddkjc"]
+
+[sub_resource type="Resource" id="Resource_4hwvo"]
+script = ExtResource("1_xn3a6")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_7gqan"]
+script = ExtResource("1_xn3a6")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_tthlf"]
+script = ExtResource("1_xn3a6")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_bmrfy"]
+script = ExtResource("1_xn3a6")
+
+[sub_resource type="Resource" id="Resource_0aj6m"]
+script = ExtResource("2_ydagf")
+value = 35653248
+
+[sub_resource type="Resource" id="Resource_m7xao"]
+script = ExtResource("2_ydagf")
+value = 198656
+
+[sub_resource type="Resource" id="Resource_wqalh"]
+script = ExtResource("2_ydagf")
+value = 3289120840
+
+[sub_resource type="Resource" id="Resource_jrhir"]
+script = ExtResource("2_ydagf")
+value = 17694720
+
+[sub_resource type="Resource" id="Resource_tgkkb"]
+script = ExtResource("2_ydagf")
+value = 1744830464
+
+[sub_resource type="Resource" id="Resource_uvadw"]
+script = ExtResource("2_ydagf")
+
+[resource]
+script = ExtResource("3_ddkjc")
+ac = 100
+attack = Array[ExtResource("1_xn3a6")]([SubResource("Resource_4hwvo"), SubResource("Resource_7gqan"), SubResource("Resource_tthlf"), SubResource("Resource_bmrfy")])
+character = "d"
+colour = 23
+description = "A mighty dragon, the balance drake seeks to maintain the Cosmic Balance, and despises your feeble efforts to destroy evil."
+flags_1 = SubResource("Resource_0aj6m")
+flags_2 = SubResource("Resource_m7xao")
+flags_3 = SubResource("Resource_wqalh")
+flags_4 = SubResource("Resource_jrhir")
+flags_5 = SubResource("Resource_tgkkb")
+flags_6 = SubResource("Resource_uvadw")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 60
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 700
+name = "Balance drake"
+notice_range = 25
+rarity = 3
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Balance   "
+split_name_3 = "   drake    "

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_myws1"]
+
+[resource]
+script = ExtResource("1_myws1")
+name = "GreenCloud"
+colour = 22
+alternate_colour = 22
+sequence = "+*+*+*+"

@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_olmai"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rg8bf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_2mbki"]
+
+[sub_resource type="Resource" id="Resource_x1sad"]
+script = ExtResource("1_olmai")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_anb7f"]
+script = ExtResource("1_olmai")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_5jl3y"]
+script = ExtResource("1_olmai")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 17
+method = 1
+
+[sub_resource type="Resource" id="Resource_s4xvo"]
+script = ExtResource("1_olmai")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 17
+method = 1
+
+[sub_resource type="Resource" id="Resource_g8t1q"]
+script = ExtResource("2_rg8bf")
+value = 320865792
+
+[sub_resource type="Resource" id="Resource_3ek7n"]
+script = ExtResource("2_rg8bf")
+value = 720930
+
+[sub_resource type="Resource" id="Resource_34vxd"]
+script = ExtResource("2_rg8bf")
+value = 3493331040
+
+[sub_resource type="Resource" id="Resource_gow2s"]
+script = ExtResource("2_rg8bf")
+
+[sub_resource type="Resource" id="Resource_dmv6g"]
+script = ExtResource("2_rg8bf")
+value = 2952841888
+
+[sub_resource type="Resource" id="Resource_o2yhw"]
+script = ExtResource("2_rg8bf")
+value = 67109120
+
+[resource]
+script = ExtResource("3_2mbki")
+ac = 170
+attack = Array[ExtResource("1_olmai")]([SubResource("Resource_x1sad"), SubResource("Resource_anb7f"), SubResource("Resource_5jl3y"), SubResource("Resource_s4xvo")])
+character = "g"
+colour = 4
+description = "A skeletal form, black as night, constructed from the bones of its previous victims and inhabited by the soul of a lich of great power."
+flags_1 = SubResource("Resource_g8t1q")
+flags_2 = SubResource("Resource_3ek7n")
+flags_3 = SubResource("Resource_34vxd")
+flags_4 = SubResource("Resource_gow2s")
+flags_5 = SubResource("Resource_dmv6g")
+flags_6 = SubResource("Resource_o2yhw")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 35
+hit_dice_sides = 100
+level = 71
+max_num = 100
+experience = 23000
+name = "Bone golem"
+notice_range = 20
+rarity = 3
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Bone    "
+split_name_3 = "   golem    "

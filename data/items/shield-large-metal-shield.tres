@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ektfp"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_h840q"]
+
+[sub_resource type="Resource" id="Resource_6qxgt"]
+script = ExtResource("1_ektfp")
+
+[sub_resource type="Resource" id="Resource_llcf4"]
+script = ExtResource("1_ektfp")
+
+[sub_resource type="Resource" id="Resource_dlrwn"]
+script = ExtResource("1_ektfp")
+
+[resource]
+script = ExtResource("2_h840q")
+ac = 5
+chance = Array[int]([1, 0, 0, 0])
+character = ")"
+colour = 23
+cost = 200
+damage_dice = 1
+damage_dice_sides = 3
+flags_1 = SubResource("Resource_6qxgt")
+flags_2 = SubResource("Resource_llcf4")
+flags_3 = SubResource("Resource_dlrwn")
+flavour_aware = true
+item_category = 34
+level = 30
+locale = Array[int]([30, 0, 0, 0])
+name = "& Large Metal Shield~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 5
+weight = 120
+filename = "Shield:Large Metal Shield"

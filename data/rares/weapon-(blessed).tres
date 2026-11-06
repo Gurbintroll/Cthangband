@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xxq7t"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_frfw6"]
+
+[sub_resource type="Resource" id="Resource_kqcqc"]
+script = ExtResource("1_xxq7t")
+value = 4
+
+[sub_resource type="Resource" id="Resource_wj1hn"]
+script = ExtResource("1_xxq7t")
+
+[sub_resource type="Resource" id="Resource_cdl3m"]
+script = ExtResource("1_xxq7t")
+value = 268435456
+
+[resource]
+script = ExtResource("2_frfw6")
+cost = 5000
+flags_1 = SubResource("Resource_kqcqc")
+flags_2 = SubResource("Resource_wj1hn")
+flags_3 = SubResource("Resource_cdl3m")
+max_type_specifc_value = 3
+name = "(Blessed)"
+rating = 20
+slot = 24
+id = 55

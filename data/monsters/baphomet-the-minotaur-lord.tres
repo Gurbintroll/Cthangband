@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://uu8hsf56bv8x"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_tb1e3"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_foi66"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_2blow"]
+
+[sub_resource type="Resource" id="Resource_6n0ce"]
+script = ExtResource("1_tb1e3")
+damage_dice = 12
+damage_dice_sides = 13
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_e7g44"]
+script = ExtResource("1_tb1e3")
+damage_dice = 12
+damage_dice_sides = 13
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_rf7kd"]
+script = ExtResource("1_tb1e3")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_k5rf7"]
+script = ExtResource("1_tb1e3")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7gd12"]
+script = ExtResource("2_foi66")
+value = 421529093
+
+[sub_resource type="Resource" id="Resource_2nm67"]
+script = ExtResource("2_foi66")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_jd6js"]
+script = ExtResource("2_foi66")
+value = 3222536256
+
+[sub_resource type="Resource" id="Resource_md4o3"]
+script = ExtResource("2_foi66")
+value = 67108992
+
+[sub_resource type="Resource" id="Resource_ksptw"]
+script = ExtResource("2_foi66")
+value = 1098907650
+
+[sub_resource type="Resource" id="Resource_5buik"]
+script = ExtResource("2_foi66")
+
+[resource]
+script = ExtResource("3_2blow")
+ac = 120
+attack = Array[ExtResource("1_tb1e3")]([SubResource("Resource_6n0ce"), SubResource("Resource_e7g44"), SubResource("Resource_rf7kd"), SubResource("Resource_k5rf7")])
+character = "H"
+colour = 12
+description = "A fearsome bull-headed demon, Baphomet swings a mighty axe as he curses all that defy him."
+flags_1 = SubResource("Resource_7gd12")
+flags_2 = SubResource("Resource_2nm67")
+flags_3 = SubResource("Resource_jd6js")
+flags_4 = SubResource("Resource_md4o3")
+flags_5 = SubResource("Resource_ksptw")
+flags_6 = SubResource("Resource_5buik")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 35
+hit_dice_sides = 100
+level = 51
+max_num = 1
+experience = 18000
+name = "Baphomet, the Minotaur Lord"
+notice_range = 30
+rarity = 4
+sleep = 30
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Baphomet  "

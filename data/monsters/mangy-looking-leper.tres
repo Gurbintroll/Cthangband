@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dlnletbwyy7a0"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_nv3kf"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_i0afw"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_icxte"]
+
+[sub_resource type="Resource" id="Resource_nrxi1"]
+script = ExtResource("1_nv3kf")
+method = 19
+
+[sub_resource type="Resource" id="Resource_4hiyk"]
+script = ExtResource("1_nv3kf")
+effect = 21
+method = 2
+
+[sub_resource type="Resource" id="Resource_us3fb"]
+script = ExtResource("1_nv3kf")
+
+[sub_resource type="Resource" id="Resource_hodjk"]
+script = ExtResource("1_nv3kf")
+
+[sub_resource type="Resource" id="Resource_7rqnm"]
+script = ExtResource("2_i0afw")
+value = 262148
+
+[sub_resource type="Resource" id="Resource_gkurw"]
+script = ExtResource("2_i0afw")
+value = 4259840
+
+[sub_resource type="Resource" id="Resource_pnb27"]
+script = ExtResource("2_i0afw")
+
+[sub_resource type="Resource" id="Resource_6hwjt"]
+script = ExtResource("2_i0afw")
+
+[sub_resource type="Resource" id="Resource_h5ird"]
+script = ExtResource("2_i0afw")
+
+[sub_resource type="Resource" id="Resource_bc13y"]
+script = ExtResource("2_i0afw")
+
+[resource]
+script = ExtResource("3_icxte")
+ac = 1
+attack = Array[ExtResource("1_nv3kf")]([SubResource("Resource_nrxi1"), SubResource("Resource_4hiyk"), SubResource("Resource_us3fb"), SubResource("Resource_hodjk")])
+character = "t"
+colour = 17
+description = "You feel it isn't safe to touch him."
+flags_1 = SubResource("Resource_7rqnm")
+flags_2 = SubResource("Resource_gkurw")
+flags_3 = SubResource("Resource_pnb27")
+flags_4 = SubResource("Resource_6hwjt")
+flags_5 = SubResource("Resource_h5ird")
+flags_6 = SubResource("Resource_bc13y")
+hit_dice = 1
+hit_dice_sides = 1
+max_num = 100
+name = "Mangy looking leper"
+notice_range = 10
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "   Mangy    "
+split_name_2 = "  looking   "
+split_name_3 = "   leper    "

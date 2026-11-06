@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_84i7c"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_e64sp"]
+
+[sub_resource type="Resource" id="Resource_qkg4w"]
+script = ExtResource("1_84i7c")
+
+[sub_resource type="Resource" id="Resource_injoe"]
+script = ExtResource("1_84i7c")
+value = 4210704
+
+[sub_resource type="Resource" id="Resource_4fsan"]
+script = ExtResource("1_84i7c")
+value = 32514048
+
+[resource]
+script = ExtResource("2_e64sp")
+flags_1 = SubResource("Resource_qkg4w")
+flags_2 = SubResource("Resource_injoe")
+flags_3 = SubResource("Resource_4fsan")
+ac = 1
+cost = 30000
+item_category = 31
+item_sub_category = 1
+level = 10
+name = "of *Light*"
+rarity = 3
+to_ac = 10
+weight = 5
+id = 53

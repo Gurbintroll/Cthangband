@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_m71aj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_b2fvt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_abimv"]
+
+[sub_resource type="Resource" id="Resource_hsdcr"]
+script = ExtResource("1_m71aj")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ieovr"]
+script = ExtResource("1_m71aj")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_14dlf"]
+script = ExtResource("1_m71aj")
+
+[sub_resource type="Resource" id="Resource_kad0n"]
+script = ExtResource("1_m71aj")
+
+[sub_resource type="Resource" id="Resource_mivij"]
+script = ExtResource("2_b2fvt")
+
+[sub_resource type="Resource" id="Resource_y44o4"]
+script = ExtResource("2_b2fvt")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_boc4y"]
+script = ExtResource("2_b2fvt")
+value = 3491233888
+
+[sub_resource type="Resource" id="Resource_vjbtk"]
+script = ExtResource("2_b2fvt")
+
+[sub_resource type="Resource" id="Resource_nt5p2"]
+script = ExtResource("2_b2fvt")
+
+[sub_resource type="Resource" id="Resource_gf3jb"]
+script = ExtResource("2_b2fvt")
+
+[resource]
+script = ExtResource("3_abimv")
+ac = 24
+attack = Array[ExtResource("1_m71aj")]([SubResource("Resource_hsdcr"), SubResource("Resource_ieovr"), SubResource("Resource_14dlf"), SubResource("Resource_kad0n")])
+character = "z"
+colour = 18
+description = "It is a shambling human corpse dropping chunks of flesh behind it."
+flags_1 = SubResource("Resource_mivij")
+flags_2 = SubResource("Resource_y44o4")
+flags_3 = SubResource("Resource_boc4y")
+flags_4 = SubResource("Resource_vjbtk")
+flags_5 = SubResource("Resource_nt5p2")
+flags_6 = SubResource("Resource_gf3jb")
+hit_dice = 12
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 34
+name = "Zombified human"
+notice_range = 20
+rarity = 1
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Zombified  "
+split_name_3 = "   human    "

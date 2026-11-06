@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mt2ci"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_4cgyl"]
+
+[sub_resource type="Resource" id="Resource_ls5oe"]
+script = ExtResource("1_mt2ci")
+
+[sub_resource type="Resource" id="Resource_frjlg"]
+script = ExtResource("1_mt2ci")
+
+[sub_resource type="Resource" id="Resource_xkklb"]
+script = ExtResource("1_mt2ci")
+value = 8388864
+
+[resource]
+script = ExtResource("2_4cgyl")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 15
+cost = 250
+easy_know = true
+flags_1 = SubResource("Resource_ls5oe")
+flags_2 = SubResource("Resource_frjlg")
+flags_3 = SubResource("Resource_xkklb")
+has_flavour = true
+item_category = 45
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Resist Cold"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 9
+weight = 2
+filename = "Ring:Resist Cold"

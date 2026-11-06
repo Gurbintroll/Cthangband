@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5m2lf"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_23x0n"]
+
+[sub_resource type="Resource" id="Resource_t4wko"]
+script = ExtResource("1_5m2lf")
+
+[sub_resource type="Resource" id="Resource_i7gp3"]
+script = ExtResource("1_5m2lf")
+
+[sub_resource type="Resource" id="Resource_62juj"]
+script = ExtResource("1_5m2lf")
+
+[resource]
+script = ExtResource("2_23x0n")
+ac = 18
+chance = Array[int]([1, 0, 0, 0])
+character = "["
+colour = 23
+cost = 950
+damage_dice = 1
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_t4wko")
+flags_2 = SubResource("Resource_i7gp3")
+flags_3 = SubResource("Resource_62juj")
+flavour_aware = true
+item_category = 37
+level = 35
+locale = Array[int]([35, 0, 0, 0])
+name = "Bar Chain Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 8
+to_hit = -2
+weight = 280
+filename = "HardArmor:Bar Chain Mail"

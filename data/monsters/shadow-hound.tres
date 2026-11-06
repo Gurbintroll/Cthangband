@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qd6ht"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_m6sjm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1t0rj"]
+
+[sub_resource type="Resource" id="Resource_g88e2"]
+script = ExtResource("1_qd6ht")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_t75gp"]
+script = ExtResource("1_qd6ht")
+
+[sub_resource type="Resource" id="Resource_ayf08"]
+script = ExtResource("1_qd6ht")
+
+[sub_resource type="Resource" id="Resource_i4yar"]
+script = ExtResource("1_qd6ht")
+
+[sub_resource type="Resource" id="Resource_demic"]
+script = ExtResource("2_m6sjm")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_iyybt"]
+script = ExtResource("2_m6sjm")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_e4b5b"]
+script = ExtResource("2_m6sjm")
+value = 4224
+
+[sub_resource type="Resource" id="Resource_3ddyi"]
+script = ExtResource("2_m6sjm")
+value = 32768
+
+[sub_resource type="Resource" id="Resource_2xr4k"]
+script = ExtResource("2_m6sjm")
+
+[sub_resource type="Resource" id="Resource_bkgip"]
+script = ExtResource("2_m6sjm")
+
+[resource]
+script = ExtResource("3_1t0rj")
+ac = 30
+attack = Array[ExtResource("1_qd6ht")]([SubResource("Resource_g88e2"), SubResource("Resource_t75gp"), SubResource("Resource_ayf08"), SubResource("Resource_i4yar")])
+character = "Z"
+colour = 2
+description = "A hole in the air in the shape of a huge hound. No light falls upon its form."
+flags_1 = SubResource("Resource_demic")
+flags_2 = SubResource("Resource_iyybt")
+flags_3 = SubResource("Resource_e4b5b")
+flags_4 = SubResource("Resource_3ddyi")
+flags_5 = SubResource("Resource_2xr4k")
+flags_6 = SubResource("Resource_bkgip")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 6
+hit_dice_sides = 6
+level = 15
+max_num = 100
+experience = 50
+name = "Shadow hound"
+notice_range = 30
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Shadow   "
+split_name_3 = "   hound    "

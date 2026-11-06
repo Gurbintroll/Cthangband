@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ur6y7"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7vorq"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1i3s5"]
+
+[sub_resource type="Resource" id="Resource_ybjm2"]
+script = ExtResource("1_ur6y7")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 10
+
+[sub_resource type="Resource" id="Resource_2w8ym"]
+script = ExtResource("1_ur6y7")
+
+[sub_resource type="Resource" id="Resource_oryah"]
+script = ExtResource("1_ur6y7")
+
+[sub_resource type="Resource" id="Resource_fep73"]
+script = ExtResource("1_ur6y7")
+
+[sub_resource type="Resource" id="Resource_1pyku"]
+script = ExtResource("2_7vorq")
+value = 787456
+
+[sub_resource type="Resource" id="Resource_mci2o"]
+script = ExtResource("2_7vorq")
+value = 135232
+
+[sub_resource type="Resource" id="Resource_tt17f"]
+script = ExtResource("2_7vorq")
+value = 3525314560
+
+[sub_resource type="Resource" id="Resource_d1r2q"]
+script = ExtResource("2_7vorq")
+value = 1048576
+
+[sub_resource type="Resource" id="Resource_smjdy"]
+script = ExtResource("2_7vorq")
+
+[sub_resource type="Resource" id="Resource_67k2k"]
+script = ExtResource("2_7vorq")
+
+[resource]
+script = ExtResource("3_1i3s5")
+ac = 40
+attack = Array[ExtResource("1_ur6y7")]([SubResource("Resource_ybjm2"), SubResource("Resource_2w8ym"), SubResource("Resource_oryah"), SubResource("Resource_fep73")])
+character = "v"
+colour = 25
+description = "A maelstrom of potent magical energy."
+flags_1 = SubResource("Resource_1pyku")
+flags_2 = SubResource("Resource_mci2o")
+flags_3 = SubResource("Resource_tt17f")
+flags_4 = SubResource("Resource_d1r2q")
+flags_5 = SubResource("Resource_smjdy")
+flags_6 = SubResource("Resource_67k2k")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 32
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 800
+name = "Nexus vortex"
+notice_range = 100
+rarity = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Nexus    "
+split_name_3 = "   vortex   "

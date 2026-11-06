@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_4urwn"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_nfwom"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kxskm"]
+
+[sub_resource type="Resource" id="Resource_fcrd8"]
+script = ExtResource("1_4urwn")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_np5wp"]
+script = ExtResource("1_4urwn")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_nyvq3"]
+script = ExtResource("1_4urwn")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_5xupg"]
+script = ExtResource("1_4urwn")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_6q8hi"]
+script = ExtResource("2_nfwom")
+value = 16778752
+
+[sub_resource type="Resource" id="Resource_goofg"]
+script = ExtResource("2_nfwom")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_b0cjq"]
+script = ExtResource("2_nfwom")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_ul8wp"]
+script = ExtResource("2_nfwom")
+
+[sub_resource type="Resource" id="Resource_4wdgg"]
+script = ExtResource("2_nfwom")
+value = 3623897600
+
+[sub_resource type="Resource" id="Resource_33u2c"]
+script = ExtResource("2_nfwom")
+value = 784
+
+[resource]
+script = ExtResource("3_kxskm")
+ac = 60
+attack = Array[ExtResource("1_4urwn")]([SubResource("Resource_fcrd8"), SubResource("Resource_np5wp"), SubResource("Resource_nyvq3"), SubResource("Resource_5xupg")])
+character = "L"
+colour = 4
+description = "It is a skeletal form dressed in robes. It radiates vastly evil power."
+flags_1 = SubResource("Resource_6q8hi")
+flags_2 = SubResource("Resource_goofg")
+flags_3 = SubResource("Resource_b0cjq")
+flags_4 = SubResource("Resource_ul8wp")
+flags_5 = SubResource("Resource_4wdgg")
+flags_6 = SubResource("Resource_33u2c")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 30
+hit_dice_sides = 10
+level = 34
+max_num = 100
+experience = 800
+name = "Lich"
+notice_range = 20
+rarity = 3
+sleep = 60
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Lich    "

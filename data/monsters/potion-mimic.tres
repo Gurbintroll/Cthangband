@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_odbmi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_e25v4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_8suoh"]
+
+[sub_resource type="Resource" id="Resource_u7gwn"]
+script = ExtResource("1_odbmi")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_0h3uo"]
+script = ExtResource("1_odbmi")
+damage_dice = 2
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_rk1sy"]
+script = ExtResource("1_odbmi")
+damage_dice = 2
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0ap0h"]
+script = ExtResource("1_odbmi")
+
+[sub_resource type="Resource" id="Resource_oxtrk"]
+script = ExtResource("2_e25v4")
+value = 132128
+
+[sub_resource type="Resource" id="Resource_vjecd"]
+script = ExtResource("2_e25v4")
+value = 96
+
+[sub_resource type="Resource" id="Resource_dfxrb"]
+script = ExtResource("2_e25v4")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_d4j2h"]
+script = ExtResource("2_e25v4")
+
+[sub_resource type="Resource" id="Resource_ko8vg"]
+script = ExtResource("2_e25v4")
+value = 940056576
+
+[sub_resource type="Resource" id="Resource_rm088"]
+script = ExtResource("2_e25v4")
+
+[resource]
+script = ExtResource("3_8suoh")
+ac = 30
+attack = Array[ExtResource("1_odbmi")]([SubResource("Resource_u7gwn"), SubResource("Resource_0h3uo"), SubResource("Resource_rk1sy"), SubResource("Resource_0ap0h")])
+character = "!"
+colour = 30
+description = "A strange creature that disguises itself as discarded objects to lure unsuspecting adventurers within reach of its venomous claws."
+flags_1 = SubResource("Resource_oxtrk")
+flags_2 = SubResource("Resource_vjecd")
+flags_3 = SubResource("Resource_dfxrb")
+flags_4 = SubResource("Resource_d4j2h")
+flags_5 = SubResource("Resource_ko8vg")
+flags_6 = SubResource("Resource_rm088")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 10
+hit_dice_sides = 10
+level = 18
+max_num = 100
+experience = 60
+name = "Potion mimic"
+notice_range = 25
+rarity = 3
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Potion   "
+split_name_3 = "   mimic    "

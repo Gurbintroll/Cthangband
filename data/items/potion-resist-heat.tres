@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_61chg"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_g5snn"]
+
+[sub_resource type="Resource" id="Resource_ls8sl"]
+script = ExtResource("1_61chg")
+
+[sub_resource type="Resource" id="Resource_mblph"]
+script = ExtResource("1_61chg")
+
+[sub_resource type="Resource" id="Resource_wwfex"]
+script = ExtResource("1_61chg")
+
+[resource]
+script = ExtResource("2_g5snn")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 4
+cost = 30
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_ls8sl")
+flags_2 = SubResource("Resource_mblph")
+flags_3 = SubResource("Resource_wwfex")
+has_flavour = true
+item_category = 75
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "Resist Heat"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 30
+weight = 4
+filename = "Potion:Resist Heat"

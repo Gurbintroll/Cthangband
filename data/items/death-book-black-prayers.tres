@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xx4xt"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_t03ub"]
+
+[sub_resource type="Resource" id="Resource_v2ddm"]
+script = ExtResource("1_xx4xt")
+
+[sub_resource type="Resource" id="Resource_31q7y"]
+script = ExtResource("1_xx4xt")
+
+[sub_resource type="Resource" id="Resource_p8nql"]
+script = ExtResource("1_xx4xt")
+
+[resource]
+script = ExtResource("2_t03ub")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 23
+cost = 100
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_v2ddm")
+flags_2 = SubResource("Resource_31q7y")
+flags_3 = SubResource("Resource_p8nql")
+flavour_aware = true
+item_category = 94
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "[Black Prayers]"
+stompable = Array[bool]([false, false, false, false])
+weight = 30
+filename = "DeathBook:[Black Prayers]"

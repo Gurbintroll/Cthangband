@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ctvqf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_t1gfb"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_hlh5y"]
+
+[sub_resource type="Resource" id="Resource_5xxu8"]
+script = ExtResource("1_ctvqf")
+
+[sub_resource type="Resource" id="Resource_8ufwl"]
+script = ExtResource("1_ctvqf")
+
+[sub_resource type="Resource" id="Resource_3jk14"]
+script = ExtResource("1_ctvqf")
+
+[sub_resource type="Resource" id="Resource_bxxkx"]
+script = ExtResource("1_ctvqf")
+
+[sub_resource type="Resource" id="Resource_apll1"]
+script = ExtResource("2_t1gfb")
+value = 852992
+
+[sub_resource type="Resource" id="Resource_oy4r2"]
+script = ExtResource("2_t1gfb")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_4bcru"]
+script = ExtResource("2_t1gfb")
+value = 3221225600
+
+[sub_resource type="Resource" id="Resource_otn6y"]
+script = ExtResource("2_t1gfb")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_yeynd"]
+script = ExtResource("2_t1gfb")
+
+[sub_resource type="Resource" id="Resource_g0x3d"]
+script = ExtResource("2_t1gfb")
+
+[resource]
+script = ExtResource("3_hlh5y")
+ac = 20
+attack = Array[ExtResource("1_ctvqf")]([SubResource("Resource_5xxu8"), SubResource("Resource_8ufwl"), SubResource("Resource_3jk14"), SubResource("Resource_bxxkx")])
+character = "F"
+colour = 6
+description = "This vast gleaming bronze fly has wings which beat mesmerically fast."
+flags_1 = SubResource("Resource_apll1")
+flags_2 = SubResource("Resource_oy4r2")
+flags_3 = SubResource("Resource_4bcru")
+flags_4 = SubResource("Resource_otn6y")
+flags_5 = SubResource("Resource_yeynd")
+flags_6 = SubResource("Resource_g0x3d")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 3
+hit_dice_sides = 8
+level = 23
+max_num = 100
+experience = 70
+name = "Giant bronze dragon fly"
+notice_range = 12
+rarity = 1
+sleep = 50
+speed = 120
+split_name_1 = "Giant bronze"
+split_name_2 = "   dragon   "
+split_name_3 = "    fly     "

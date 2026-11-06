@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0e3wv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_3gydk"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kxu6d"]
+
+[sub_resource type="Resource" id="Resource_cjuyu"]
+script = ExtResource("1_0e3wv")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 2
+method = 9
+
+[sub_resource type="Resource" id="Resource_s52ko"]
+script = ExtResource("1_0e3wv")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 11
+method = 9
+
+[sub_resource type="Resource" id="Resource_slxgf"]
+script = ExtResource("1_0e3wv")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 10
+method = 9
+
+[sub_resource type="Resource" id="Resource_6yhnr"]
+script = ExtResource("1_0e3wv")
+damage_dice = 10
+damage_dice_sides = 18
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_id8rs"]
+script = ExtResource("2_3gydk")
+value = 505415168
+
+[sub_resource type="Resource" id="Resource_urb2m"]
+script = ExtResource("2_3gydk")
+value = 1298440
+
+[sub_resource type="Resource" id="Resource_31y1g"]
+script = ExtResource("2_3gydk")
+value = 3346989576
+
+[sub_resource type="Resource" id="Resource_43gg0"]
+script = ExtResource("2_3gydk")
+value = 2952789760
+
+[sub_resource type="Resource" id="Resource_ccd0y"]
+script = ExtResource("2_3gydk")
+
+[sub_resource type="Resource" id="Resource_rru18"]
+script = ExtResource("2_3gydk")
+value = 671154176
+
+[resource]
+script = ExtResource("3_kxu6d")
+ac = 111
+attack = Array[ExtResource("1_0e3wv")]([SubResource("Resource_cjuyu"), SubResource("Resource_s52ko"), SubResource("Resource_slxgf"), SubResource("Resource_6yhnr")])
+character = "D"
+colour = 31
+description = "The mightiest of all dragonkind, a great wyrm of power is seldom encountered in our world. It can crush stars with its might."
+flags_1 = SubResource("Resource_id8rs")
+flags_2 = SubResource("Resource_urb2m")
+flags_3 = SubResource("Resource_31y1g")
+flags_4 = SubResource("Resource_43gg0")
+flags_5 = SubResource("Resource_ccd0y")
+flags_6 = SubResource("Resource_rru18")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 111
+hit_dice_sides = 111
+level = 90
+max_num = 100
+experience = 47500
+name = "Great Wyrm of Power"
+notice_range = 20
+rarity = 4
+sleep = 70
+speed = 130
+split_name_1 = "   Great    "
+split_name_2 = "  Wyrm of   "
+split_name_3 = "   Power    "

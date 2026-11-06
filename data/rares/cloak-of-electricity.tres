@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_oiski"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_ikmkb"]
+
+[sub_resource type="Resource" id="Resource_g8p76"]
+script = ExtResource("1_oiski")
+
+[sub_resource type="Resource" id="Resource_4qgp6"]
+script = ExtResource("1_oiski")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_ow8vx"]
+script = ExtResource("1_oiski")
+value = 3145730
+
+[resource]
+script = ExtResource("2_ikmkb")
+cost = 4000
+flags_1 = SubResource("Resource_g8p76")
+flags_2 = SubResource("Resource_4qgp6")
+flags_3 = SubResource("Resource_ow8vx")
+max_to_ac = 4
+name = "of Electricity"
+rating = 16
+slot = 31
+id = 39

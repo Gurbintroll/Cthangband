@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_32epv"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_dcd1a"]
+
+[sub_resource type="Resource" id="Resource_58pmk"]
+script = ExtResource("1_32epv")
+
+[sub_resource type="Resource" id="Resource_jpl6y"]
+script = ExtResource("1_32epv")
+
+[sub_resource type="Resource" id="Resource_lqeod"]
+script = ExtResource("1_32epv")
+
+[resource]
+script = ExtResource("2_dcd1a")
+chance = Array[int]([8, 0, 0, 0])
+character = "!"
+colour = 23
+damage_dice = 20
+damage_dice_sides = 20
+easy_know = true
+flags_1 = SubResource("Resource_58pmk")
+flags_2 = SubResource("Resource_jpl6y")
+flags_3 = SubResource("Resource_lqeod")
+has_flavour = true
+item_category = 75
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Ruination"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 15
+weight = 4
+filename = "Potion:Ruination"

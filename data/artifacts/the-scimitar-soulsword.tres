@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xxvv5"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_lhrkq"]
+
+[sub_resource type="Resource" id="Resource_e5gwf"]
+script = ExtResource("1_xxvv5")
+value = 9379846
+
+[sub_resource type="Resource" id="Resource_igi6x"]
+script = ExtResource("1_xxvv5")
+value = 3489693696
+
+[sub_resource type="Resource" id="Resource_h1yie"]
+script = ExtResource("1_xxvv5")
+value = 284181504
+
+[resource]
+script = ExtResource("2_lhrkq")
+flags_1 = SubResource("Resource_e5gwf")
+flags_2 = SubResource("Resource_igi6x")
+flags_3 = SubResource("Resource_h1yie")
+cost = 111111
+damage_dice = 2
+damage_dice_sides = 5
+item_category = 23
+item_sub_category = 18
+level = 20
+name = "*Soulsword*"
+type_specific_value = 2
+rarity = 8
+to_hit = 9
+to_damage = 11
+weight = 130
+id = 89

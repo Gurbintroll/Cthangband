@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_825pp"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_htvmd"]
+
+[sub_resource type="Resource" id="Resource_mto2i"]
+script = ExtResource("1_825pp")
+
+[sub_resource type="Resource" id="Resource_2q0gj"]
+script = ExtResource("1_825pp")
+
+[sub_resource type="Resource" id="Resource_x8alg"]
+script = ExtResource("1_825pp")
+value = 65792
+
+[resource]
+script = ExtResource("2_htvmd")
+chance = Array[int]([1, 0, 0, 0])
+character = "\""
+colour = 17
+cost = 200
+easy_know = true
+flags_1 = SubResource("Resource_mto2i")
+flags_2 = SubResource("Resource_2q0gj")
+flags_3 = SubResource("Resource_x8alg")
+has_flavour = true
+item_category = 40
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "Slow Digestion"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 3
+filename = "Amulet:Slow Digestion"

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_hgjdb"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_3xyaj"]
+
+[sub_resource type="Resource" id="Resource_jlg63"]
+script = ExtResource("1_hgjdb")
+
+[sub_resource type="Resource" id="Resource_t8dbf"]
+script = ExtResource("1_hgjdb")
+
+[sub_resource type="Resource" id="Resource_mlb7x"]
+script = ExtResource("1_hgjdb")
+
+[resource]
+script = ExtResource("2_3xyaj")
+chance = Array[int]([1, 1, 0, 0])
+character = "!"
+colour = 13
+cost = 250
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_jlg63")
+flags_2 = SubResource("Resource_t8dbf")
+flags_3 = SubResource("Resource_mlb7x")
+has_flavour = true
+item_category = 75
+level = 18
+locale = Array[int]([18, 40, 0, 0])
+name = "Curing"
+type_specific_value = 100
+stompable = Array[bool]([false, false, false, false])
+sub_category = 61
+weight = 4
+filename = "Potion:Curing"

@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_k61ol"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_mvt4h"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4rvo1"]
+
+[sub_resource type="Resource" id="Resource_sof8r"]
+script = ExtResource("1_k61ol")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_8jk0y"]
+script = ExtResource("1_k61ol")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_vltfu"]
+script = ExtResource("1_k61ol")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_vg2f8"]
+script = ExtResource("1_k61ol")
+
+[sub_resource type="Resource" id="Resource_r7tkb"]
+script = ExtResource("2_mvt4h")
+value = 29361664
+
+[sub_resource type="Resource" id="Resource_ti00d"]
+script = ExtResource("2_mvt4h")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_qangl"]
+script = ExtResource("2_mvt4h")
+value = 524360
+
+[sub_resource type="Resource" id="Resource_a8dim"]
+script = ExtResource("2_mvt4h")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_lg0pm"]
+script = ExtResource("2_mvt4h")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_cmme3"]
+script = ExtResource("2_mvt4h")
+
+[resource]
+script = ExtResource("3_4rvo1")
+ac = 50
+attack = Array[ExtResource("1_k61ol")]([SubResource("Resource_sof8r"), SubResource("Resource_8jk0y"), SubResource("Resource_vltfu"), SubResource("Resource_vg2f8")])
+character = "d"
+colour = 30
+description = "It has a form that legends are made of. Its still-tender scales are a frosty white in hue. Icy blasts of cold air come from it as it breathes."
+flags_1 = SubResource("Resource_r7tkb")
+flags_2 = SubResource("Resource_ti00d")
+flags_3 = SubResource("Resource_qangl")
+flags_4 = SubResource("Resource_a8dim")
+flags_5 = SubResource("Resource_lg0pm")
+flags_6 = SubResource("Resource_cmme3")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 27
+hit_dice_sides = 10
+level = 29
+max_num = 100
+experience = 275
+name = "Young white dragon"
+notice_range = 20
+rarity = 1
+sleep = 70
+speed = 110
+split_name_1 = "   Young    "
+split_name_2 = "   white    "
+split_name_3 = "   dragon   "

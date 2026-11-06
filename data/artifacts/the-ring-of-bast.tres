@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_1mdtx"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_qrihr"]
+
+[sub_resource type="Resource" id="Resource_ax164"]
+script = ExtResource("1_1mdtx")
+value = 4121
+
+[sub_resource type="Resource" id="Resource_30wmt"]
+script = ExtResource("1_1mdtx")
+
+[sub_resource type="Resource" id="Resource_vl2it"]
+script = ExtResource("1_1mdtx")
+value = 32508416
+
+[resource]
+script = ExtResource("2_qrihr")
+flags_1 = SubResource("Resource_ax164")
+flags_2 = SubResource("Resource_30wmt")
+flags_3 = SubResource("Resource_vl2it")
+cost = 175000
+has_own_type = true
+item_category = 45
+item_sub_category = 33
+level = 70
+name = "of *Bast*"
+type_specific_value = 4
+rarity = 50
+weight = 2
+id = 9

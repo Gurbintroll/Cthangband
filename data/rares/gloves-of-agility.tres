@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_7kpsa"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_5c4fh"]
+
+[sub_resource type="Resource" id="Resource_bbgff"]
+script = ExtResource("1_7kpsa")
+value = 8
+
+[sub_resource type="Resource" id="Resource_clns5"]
+script = ExtResource("1_7kpsa")
+
+[sub_resource type="Resource" id="Resource_n7sfh"]
+script = ExtResource("1_7kpsa")
+value = 512
+
+[resource]
+script = ExtResource("2_5c4fh")
+cost = 1000
+flags_1 = SubResource("Resource_bbgff")
+flags_2 = SubResource("Resource_clns5")
+flags_3 = SubResource("Resource_n7sfh")
+max_type_specifc_value = 5
+name = "of Agility"
+rating = 14
+slot = 34
+id = 42

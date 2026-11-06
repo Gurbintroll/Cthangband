@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_i12bf"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_6hu5j"]
+
+[sub_resource type="Resource" id="Resource_lo5o2"]
+script = ExtResource("1_i12bf")
+
+[sub_resource type="Resource" id="Resource_1423r"]
+script = ExtResource("1_i12bf")
+
+[sub_resource type="Resource" id="Resource_fsf6i"]
+script = ExtResource("1_i12bf")
+value = 15728640
+
+[resource]
+script = ExtResource("2_6hu5j")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 16
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_lo5o2")
+flags_2 = SubResource("Resource_1423r")
+flags_3 = SubResource("Resource_fsf6i")
+flavour_aware = true
+item_category = 97
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "[De Vermis Mysteriis]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 2
+weight = 30
+filename = "CorporealBook:[De Vermis Mysteriis]"

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://d3vo100ove2y0"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_yomt8"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_lkm1r"]
+
+[sub_resource type="Resource" id="Resource_bmlto"]
+script = ExtResource("1_yomt8")
+
+[sub_resource type="Resource" id="Resource_aw8kp"]
+script = ExtResource("1_yomt8")
+
+[sub_resource type="Resource" id="Resource_sshp0"]
+script = ExtResource("1_yomt8")
+
+[resource]
+script = ExtResource("2_lkm1r")
+chance = Array[int]([1, 2, 1, 1])
+character = "?"
+colour = 1
+cost = 1000
+easy_know = true
+flags_1 = SubResource("Resource_bmlto")
+flags_2 = SubResource("Resource_aw8kp")
+flags_3 = SubResource("Resource_sshp0")
+has_flavour = true
+item_category = 70
+level = 30
+locale = Array[int]([30, 50, 80, 100])
+name = "*Identify*"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 13
+weight = 5
+filename = "Scroll:*Identify*"

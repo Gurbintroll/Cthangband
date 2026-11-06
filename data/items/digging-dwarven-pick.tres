@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_sciw4"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_pibat"]
+
+[sub_resource type="Resource" id="Resource_fk4ua"]
+script = ExtResource("1_sciw4")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_qhhlr"]
+script = ExtResource("1_sciw4")
+
+[sub_resource type="Resource" id="Resource_wjsuj"]
+script = ExtResource("1_sciw4")
+value = 1024
+
+[resource]
+script = ExtResource("2_pibat")
+chance = Array[int]([1, 0, 0, 0])
+character = "\\"
+colour = 3
+cost = 600
+damage_dice = 1
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_fk4ua")
+flags_2 = SubResource("Resource_qhhlr")
+flags_3 = SubResource("Resource_wjsuj")
+flavour_aware = true
+item_category = 20
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "& Dwarven Pick~"
+type_specific_value = 3
+stompable = Array[bool]([true, false, false, false])
+sub_category = 6
+weight = 200
+filename = "Digging:Dwarven Pick"

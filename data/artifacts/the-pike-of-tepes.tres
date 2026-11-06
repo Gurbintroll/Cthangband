@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_s7rba"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_ks6tq"]
+
+[sub_resource type="Resource" id="Resource_rymlt"]
+script = ExtResource("1_s7rba")
+value = 3228041218
+
+[sub_resource type="Resource" id="Resource_y3xp6"]
+script = ExtResource("1_s7rba")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_afao8"]
+script = ExtResource("1_s7rba")
+value = 15803904
+
+[resource]
+script = ExtResource("2_ks6tq")
+flags_1 = SubResource("Resource_rymlt")
+flags_2 = SubResource("Resource_y3xp6")
+flags_3 = SubResource("Resource_afao8")
+cost = 32000
+damage_dice = 2
+damage_dice_sides = 5
+item_category = 22
+item_sub_category = 8
+level = 20
+name = "of *Tepes*"
+type_specific_value = 2
+rarity = 15
+to_ac = 10
+to_hit = 10
+to_damage = 12
+weight = 160
+id = 96

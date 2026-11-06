@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_71ro2"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_qyy4t"]
+
+[sub_resource type="Resource" id="Resource_0i43p"]
+script = ExtResource("1_71ro2")
+
+[sub_resource type="Resource" id="Resource_3sydg"]
+script = ExtResource("1_71ro2")
+value = 67108864
+
+[sub_resource type="Resource" id="Resource_wlpjg"]
+script = ExtResource("1_71ro2")
+value = 32505856
+
+[resource]
+script = ExtResource("2_qyy4t")
+ac = 30
+chance = Array[int]([8, 0, 0, 0])
+character = "["
+colour = 21
+cost = 40000
+damage_dice = 2
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_0i43p")
+flags_2 = SubResource("Resource_3sydg")
+flags_3 = SubResource("Resource_wlpjg")
+flavour_aware = true
+item_category = 38
+level = 65
+locale = Array[int]([65, 0, 0, 0])
+name = "Gold Dragon Scale Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 16
+to_ac = 10
+to_hit = -2
+weight = 200
+filename = "DragArmor:Gold Dragon Scale Mail"

@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_iqikk"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2c663"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_u3dyp"]
+
+[sub_resource type="Resource" id="Resource_vimx4"]
+script = ExtResource("1_iqikk")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ed8ah"]
+script = ExtResource("1_iqikk")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_55elk"]
+script = ExtResource("1_iqikk")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7kf1k"]
+script = ExtResource("1_iqikk")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_x4thr"]
+script = ExtResource("2_2c663")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_x0dco"]
+script = ExtResource("2_2c663")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_yfvnb"]
+script = ExtResource("2_2c663")
+value = 1052738
+
+[sub_resource type="Resource" id="Resource_756h8"]
+script = ExtResource("2_2c663")
+
+[sub_resource type="Resource" id="Resource_cs3fc"]
+script = ExtResource("2_2c663")
+
+[sub_resource type="Resource" id="Resource_lidvl"]
+script = ExtResource("2_2c663")
+
+[resource]
+script = ExtResource("3_u3dyp")
+ac = 50
+attack = Array[ExtResource("1_iqikk")]([SubResource("Resource_vimx4"), SubResource("Resource_ed8ah"), SubResource("Resource_55elk"), SubResource("Resource_7kf1k")])
+character = "T"
+colour = 17
+description = "He is a vicious monster, feared for his ferocity."
+flags_1 = SubResource("Resource_x4thr")
+flags_2 = SubResource("Resource_x0dco")
+flags_3 = SubResource("Resource_yfvnb")
+flags_4 = SubResource("Resource_756h8")
+flags_5 = SubResource("Resource_cs3fc")
+flags_6 = SubResource("Resource_lidvl")
+hit_dice = 24
+hit_dice_sides = 12
+level = 33
+max_num = 100
+experience = 350
+name = "Cave troll"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Cave    "
+split_name_3 = "   troll    "

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dmf67"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_18guo"]
+
+[sub_resource type="Resource" id="Resource_xmi65"]
+script = ExtResource("1_dmf67")
+
+[sub_resource type="Resource" id="Resource_uafg8"]
+script = ExtResource("1_dmf67")
+
+[sub_resource type="Resource" id="Resource_nsxfq"]
+script = ExtResource("1_dmf67")
+
+[resource]
+script = ExtResource("2_18guo")
+chance = Array[int]([4, 4, 0, 0])
+character = "?"
+colour = 4
+cost = 750
+easy_know = true
+flags_1 = SubResource("Resource_xmi65")
+flags_2 = SubResource("Resource_uafg8")
+flags_3 = SubResource("Resource_nsxfq")
+has_flavour = true
+item_category = 70
+level = 40
+locale = Array[int]([40, 80, 0, 0])
+name = "Carnage"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 44
+weight = 5
+filename = "Scroll:Carnage"

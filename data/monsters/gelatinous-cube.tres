@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rq7xf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_uplrw"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_gjew5"]
+
+[sub_resource type="Resource" id="Resource_ip42m"]
+script = ExtResource("1_rq7xf")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_1lh72"]
+script = ExtResource("1_rq7xf")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_hjt67"]
+script = ExtResource("1_rq7xf")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_cvkbm"]
+script = ExtResource("1_rq7xf")
+
+[sub_resource type="Resource" id="Resource_1bjfe"]
+script = ExtResource("2_uplrw")
+value = 150995456
+
+[sub_resource type="Resource" id="Resource_nc7wi"]
+script = ExtResource("2_uplrw")
+value = 4391009
+
+[sub_resource type="Resource" id="Resource_kxo4b"]
+script = ExtResource("2_uplrw")
+value = 3491692544
+
+[sub_resource type="Resource" id="Resource_41tse"]
+script = ExtResource("2_uplrw")
+
+[sub_resource type="Resource" id="Resource_aqs26"]
+script = ExtResource("2_uplrw")
+
+[sub_resource type="Resource" id="Resource_dne6h"]
+script = ExtResource("2_uplrw")
+
+[resource]
+script = ExtResource("3_gjew5")
+ac = 18
+attack = Array[ExtResource("1_rq7xf")]([SubResource("Resource_ip42m"), SubResource("Resource_1lh72"), SubResource("Resource_hjt67"), SubResource("Resource_cvkbm")])
+character = "j"
+colour = 20
+description = "It is a strange, vast gelatinous structure that assumes cubic proportions as it lines all four walls of the corridors it patrols. Through its transparent jelly structure you can see treasures it has engulfed, and a few corpses as well."
+flags_1 = SubResource("Resource_1bjfe")
+flags_2 = SubResource("Resource_nc7wi")
+flags_3 = SubResource("Resource_kxo4b")
+flags_4 = SubResource("Resource_41tse")
+flags_5 = SubResource("Resource_aqs26")
+flags_6 = SubResource("Resource_dne6h")
+hit_dice = 36
+hit_dice_sides = 10
+level = 16
+max_num = 100
+experience = 80
+name = "Gelatinous cube"
+notice_range = 12
+rarity = 4
+sleep = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Gelatinous "
+split_name_3 = "    cube    "

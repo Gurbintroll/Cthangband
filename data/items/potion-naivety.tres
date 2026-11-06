@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_goeyw"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_dljka"]
+
+[sub_resource type="Resource" id="Resource_lcl4p"]
+script = ExtResource("1_goeyw")
+
+[sub_resource type="Resource" id="Resource_j823s"]
+script = ExtResource("1_goeyw")
+
+[sub_resource type="Resource" id="Resource_f1d31"]
+script = ExtResource("1_goeyw")
+
+[resource]
+script = ExtResource("2_dljka")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 17
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_lcl4p")
+flags_2 = SubResource("Resource_j823s")
+flags_3 = SubResource("Resource_f1d31")
+has_flavour = true
+item_category = 75
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Naivety"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 18
+weight = 4
+filename = "Potion:Naivety"

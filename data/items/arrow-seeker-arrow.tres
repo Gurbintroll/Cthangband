@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0oldu"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_kvagn"]
+
+[sub_resource type="Resource" id="Resource_nn150"]
+script = ExtResource("1_0oldu")
+
+[sub_resource type="Resource" id="Resource_3pctt"]
+script = ExtResource("1_0oldu")
+
+[sub_resource type="Resource" id="Resource_ov4b3"]
+script = ExtResource("1_0oldu")
+value = 1024
+
+[resource]
+script = ExtResource("2_kvagn")
+chance = Array[int]([2, 0, 0, 0])
+character = "{"
+colour = 8
+cost = 20
+damage_dice = 4
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_nn150")
+flags_2 = SubResource("Resource_3pctt")
+flags_3 = SubResource("Resource_ov4b3")
+flavour_aware = true
+item_category = 17
+level = 55
+locale = Array[int]([55, 0, 0, 0])
+name = "& Seeker Arrow~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 2
+weight = 2
+filename = "Arrow:Seeker Arrow"

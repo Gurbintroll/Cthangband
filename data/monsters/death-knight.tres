@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_eubbw"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_a6xde"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_pucby"]
+
+[sub_resource type="Resource" id="Resource_ee5k0"]
+script = ExtResource("1_eubbw")
+damage_dice = 6
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_pulch"]
+script = ExtResource("1_eubbw")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0nla0"]
+script = ExtResource("1_eubbw")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_pt6b1"]
+script = ExtResource("1_eubbw")
+effect = 25
+method = 1
+
+[sub_resource type="Resource" id="Resource_dqwwh"]
+script = ExtResource("2_a6xde")
+value = 52430336
+
+[sub_resource type="Resource" id="Resource_ysv45"]
+script = ExtResource("2_a6xde")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_r6pu1"]
+script = ExtResource("2_a6xde")
+value = 524352
+
+[sub_resource type="Resource" id="Resource_uf7v5"]
+script = ExtResource("2_a6xde")
+
+[sub_resource type="Resource" id="Resource_wj1fp"]
+script = ExtResource("2_a6xde")
+value = 404766720
+
+[sub_resource type="Resource" id="Resource_xocux"]
+script = ExtResource("2_a6xde")
+value = 524288
+
+[resource]
+script = ExtResource("3_pucby")
+ac = 100
+attack = Array[ExtResource("1_eubbw")]([SubResource("Resource_ee5k0"), SubResource("Resource_pulch"), SubResource("Resource_0nla0"), SubResource("Resource_pt6b1")])
+character = "p"
+colour = 23
+description = "It is a humanoid form dressed in armour of an ancient form. From beneath its helmet, eyes glow a baleful red and seem to pierce you like lances of fire."
+flags_1 = SubResource("Resource_dqwwh")
+flags_2 = SubResource("Resource_ysv45")
+flags_3 = SubResource("Resource_r6pu1")
+flags_4 = SubResource("Resource_uf7v5")
+flags_5 = SubResource("Resource_wj1fp")
+flags_6 = SubResource("Resource_xocux")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 60
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 1111
+name = "Death knight"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Death    "
+split_name_3 = "   knight   "

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cjhv4"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_crvt6"]
+
+[sub_resource type="Resource" id="Resource_x6mge"]
+script = ExtResource("1_cjhv4")
+
+[sub_resource type="Resource" id="Resource_6mp4r"]
+script = ExtResource("1_cjhv4")
+
+[sub_resource type="Resource" id="Resource_a5pfx"]
+script = ExtResource("1_cjhv4")
+
+[resource]
+script = ExtResource("2_crvt6")
+flags_1 = SubResource("Resource_x6mge")
+flags_2 = SubResource("Resource_6mp4r")
+flags_3 = SubResource("Resource_a5pfx")
+max_to_ac = 10
+name = "(Blasted)"
+slot = 30
+id = 98

@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2uvl1"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_l1i3v"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3j1xi"]
+
+[sub_resource type="Resource" id="Resource_f47b4"]
+script = ExtResource("1_2uvl1")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_giikj"]
+script = ExtResource("1_2uvl1")
+
+[sub_resource type="Resource" id="Resource_qpgao"]
+script = ExtResource("1_2uvl1")
+
+[sub_resource type="Resource" id="Resource_eumhx"]
+script = ExtResource("1_2uvl1")
+
+[sub_resource type="Resource" id="Resource_cjncd"]
+script = ExtResource("2_l1i3v")
+value = 270336
+
+[sub_resource type="Resource" id="Resource_7tf8r"]
+script = ExtResource("2_l1i3v")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_1qtym"]
+script = ExtResource("2_l1i3v")
+value = 2097280
+
+[sub_resource type="Resource" id="Resource_hybrk"]
+script = ExtResource("2_l1i3v")
+
+[sub_resource type="Resource" id="Resource_8ldis"]
+script = ExtResource("2_l1i3v")
+
+[sub_resource type="Resource" id="Resource_1q6xd"]
+script = ExtResource("2_l1i3v")
+value = 272
+
+[resource]
+script = ExtResource("3_3j1xi")
+ac = 20
+attack = Array[ExtResource("1_2uvl1")]([SubResource("Resource_f47b4"), SubResource("Resource_giikj"), SubResource("Resource_qpgao"), SubResource("Resource_eumhx")])
+character = "C"
+colour = 5
+description = "A strange magical member of the canine race, its form seems to shimmer and fade in front of your very eyes."
+flags_1 = SubResource("Resource_cjncd")
+flags_2 = SubResource("Resource_7tf8r")
+flags_3 = SubResource("Resource_1qtym")
+flags_4 = SubResource("Resource_hybrk")
+flags_5 = SubResource("Resource_8ldis")
+flags_6 = SubResource("Resource_1q6xd")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 8
+hit_dice_sides = 8
+level = 18
+max_num = 100
+experience = 50
+name = "Blink dog"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Blink    "
+split_name_3 = "    dog     "

@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_nxord"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2v6cj"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_5jsrx"]
+
+[sub_resource type="Resource" id="Resource_7w4v2"]
+script = ExtResource("1_nxord")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 2
+
+[sub_resource type="Resource" id="Resource_g8v52"]
+script = ExtResource("1_nxord")
+
+[sub_resource type="Resource" id="Resource_j3tl5"]
+script = ExtResource("1_nxord")
+
+[sub_resource type="Resource" id="Resource_di7is"]
+script = ExtResource("1_nxord")
+
+[sub_resource type="Resource" id="Resource_kde6n"]
+script = ExtResource("2_2v6cj")
+value = 786496
+
+[sub_resource type="Resource" id="Resource_evyh4"]
+script = ExtResource("2_2v6cj")
+value = 80
+
+[sub_resource type="Resource" id="Resource_626al"]
+script = ExtResource("2_2v6cj")
+
+[sub_resource type="Resource" id="Resource_urgm2"]
+script = ExtResource("2_2v6cj")
+
+[sub_resource type="Resource" id="Resource_ull1r"]
+script = ExtResource("2_2v6cj")
+
+[sub_resource type="Resource" id="Resource_ba8iq"]
+script = ExtResource("2_2v6cj")
+
+[resource]
+script = ExtResource("3_5jsrx")
+ac = 6
+attack = Array[ExtResource("1_nxord")]([SubResource("Resource_7w4v2"), SubResource("Resource_g8v52"), SubResource("Resource_j3tl5"), SubResource("Resource_di7is")])
+character = "i"
+colour = 20
+description = "It is a smallish, slimy, icky, blobby creature."
+flags_1 = SubResource("Resource_kde6n")
+flags_2 = SubResource("Resource_evyh4")
+flags_3 = SubResource("Resource_626al")
+flags_4 = SubResource("Resource_urgm2")
+flags_5 = SubResource("Resource_ull1r")
+flags_6 = SubResource("Resource_ba8iq")
+hit_dice = 2
+hit_dice_sides = 5
+level = 1
+max_num = 100
+experience = 1
+name = "Clear icky thing"
+notice_range = 12
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "   Clear    "
+split_name_2 = "    icky    "
+split_name_3 = "   thing    "

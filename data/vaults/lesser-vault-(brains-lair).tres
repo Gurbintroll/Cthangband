@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_fnrb7"]
+
+[resource]
+script = ExtResource("1_fnrb7")
+category = 7
+height = 18
+name = "Lesser vault (brain's lair)"
+rating = 5
+text = "%%%%%%%%%%%%%%%%%%...............%%.#############.%%.#...........#.%%.#.####^####.#.%% #.#...&...#.#.%%.#.#.#####.#.#.%%.#.#.#,,,#.#.#.%%.#.#.#,,,#.#.#.%%.#.#.#,,,#.#.#.%%.#.#.##+##.#.#.%%.^.#..#^#..#.^.%%.####.#^#.####.%%.#,,#.#+#.#,,#.%%.#,,+..&..+,,#.%%.#############.%%...............%%%%%%%%%%%%%%%%%%"
+width = 17

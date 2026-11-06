@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_fxbou"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_o4xyg"]
+
+[sub_resource type="Resource" id="Resource_uuw4h"]
+script = ExtResource("1_fxbou")
+
+[sub_resource type="Resource" id="Resource_0qgvr"]
+script = ExtResource("1_fxbou")
+value = 2147483648
+
+[sub_resource type="Resource" id="Resource_lqlf3"]
+script = ExtResource("1_fxbou")
+value = 256
+
+[resource]
+script = ExtResource("2_o4xyg")
+chance = Array[int]([10, 0, 0, 0])
+character = "="
+colour = 11
+cost = 15000
+easy_know = true
+flags_1 = SubResource("Resource_uuw4h")
+flags_2 = SubResource("Resource_0qgvr")
+flags_3 = SubResource("Resource_lqlf3")
+has_flavour = true
+item_category = 45
+level = 90
+locale = Array[int]([90, 0, 0, 0])
+name = "Disenchantment Resistance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 45
+weight = 2
+filename = "Ring:Disenchantment Resistance"

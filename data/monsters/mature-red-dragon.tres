@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_yi4ob"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kqra4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_xgrdl"]
+
+[sub_resource type="Resource" id="Resource_f2s4b"]
+script = ExtResource("1_yi4ob")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_2j2lt"]
+script = ExtResource("1_yi4ob")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_j6lmt"]
+script = ExtResource("1_yi4ob")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_cb1bj"]
+script = ExtResource("1_yi4ob")
+
+[sub_resource type="Resource" id="Resource_uf8cw"]
+script = ExtResource("2_kqra4")
+value = 150996480
+
+[sub_resource type="Resource" id="Resource_lnhsf"]
+script = ExtResource("2_kqra4")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_n5ysg"]
+script = ExtResource("2_kqra4")
+value = 3221487688
+
+[sub_resource type="Resource" id="Resource_puvga"]
+script = ExtResource("2_kqra4")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_8f8c2"]
+script = ExtResource("2_kqra4")
+value = 671088640
+
+[sub_resource type="Resource" id="Resource_uwtlv"]
+script = ExtResource("2_kqra4")
+
+[resource]
+script = ExtResource("3_xgrdl")
+ac = 80
+attack = Array[ExtResource("1_yi4ob")]([SubResource("Resource_f2s4b"), SubResource("Resource_2j2lt"), SubResource("Resource_j6lmt"), SubResource("Resource_cb1bj")])
+character = "d"
+colour = 27
+description = "A large dragon, scales tinted deep red."
+flags_1 = SubResource("Resource_uf8cw")
+flags_2 = SubResource("Resource_lnhsf")
+flags_3 = SubResource("Resource_n5ysg")
+flags_4 = SubResource("Resource_puvga")
+flags_5 = SubResource("Resource_8f8c2")
+flags_6 = SubResource("Resource_uwtlv")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 48
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 1400
+name = "Mature red dragon"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "   Mature   "
+split_name_2 = "    red     "
+split_name_3 = "   dragon   "

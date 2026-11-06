@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_stkf4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jnxe1"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ll6he"]
+
+[sub_resource type="Resource" id="Resource_o3d5w"]
+script = ExtResource("1_stkf4")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 10
+method = 1
+
+[sub_resource type="Resource" id="Resource_khsa2"]
+script = ExtResource("1_stkf4")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 10
+method = 1
+
+[sub_resource type="Resource" id="Resource_okhsm"]
+script = ExtResource("1_stkf4")
+
+[sub_resource type="Resource" id="Resource_ts10b"]
+script = ExtResource("1_stkf4")
+
+[sub_resource type="Resource" id="Resource_idi2a"]
+script = ExtResource("2_jnxe1")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_15fyc"]
+script = ExtResource("2_jnxe1")
+value = 163944
+
+[sub_resource type="Resource" id="Resource_kkopf"]
+script = ExtResource("2_jnxe1")
+value = 3490842624
+
+[sub_resource type="Resource" id="Resource_c12ie"]
+script = ExtResource("2_jnxe1")
+
+[sub_resource type="Resource" id="Resource_3sdvb"]
+script = ExtResource("2_jnxe1")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_hsiyj"]
+script = ExtResource("2_jnxe1")
+
+[resource]
+script = ExtResource("3_ll6he")
+ac = 80
+attack = Array[ExtResource("1_stkf4")]([SubResource("Resource_o3d5w"), SubResource("Resource_khsa2"), SubResource("Resource_okhsm"), SubResource("Resource_ts10b")])
+character = "g"
+colour = 3
+description = "A man-shaped form of living lightning, sparks and shocks crackle all over this madly capering figure, as it leaps and whirls around and about you."
+flags_1 = SubResource("Resource_idi2a")
+flags_2 = SubResource("Resource_15fyc")
+flags_3 = SubResource("Resource_kkopf")
+flags_4 = SubResource("Resource_c12ie")
+flags_5 = SubResource("Resource_3sdvb")
+flags_6 = SubResource("Resource_hsiyj")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 80
+hit_dice_sides = 12
+level = 27
+max_num = 100
+experience = 900
+name = "Colbran"
+notice_range = 12
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Colbran   "

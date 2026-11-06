@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cpdq6l45f3jep"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_adbua"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_1rdux"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_3bnno"]
+
+[sub_resource type="Resource" id="Resource_dqlhp"]
+script = ExtResource("1_adbua")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_p3ybl"]
+script = ExtResource("1_adbua")
+
+[sub_resource type="Resource" id="Resource_ph3og"]
+script = ExtResource("1_adbua")
+
+[sub_resource type="Resource" id="Resource_ti6gl"]
+script = ExtResource("1_adbua")
+
+[sub_resource type="Resource" id="Resource_ans70"]
+script = ExtResource("2_1rdux")
+value = 816579077
+
+[sub_resource type="Resource" id="Resource_k8cw7"]
+script = ExtResource("2_1rdux")
+value = 4390930
+
+[sub_resource type="Resource" id="Resource_3kapf"]
+script = ExtResource("2_1rdux")
+value = 64
+
+[sub_resource type="Resource" id="Resource_x7xnq"]
+script = ExtResource("2_1rdux")
+
+[sub_resource type="Resource" id="Resource_7d6t8"]
+script = ExtResource("2_1rdux")
+
+[sub_resource type="Resource" id="Resource_axprn"]
+script = ExtResource("2_1rdux")
+
+[resource]
+script = ExtResource("3_3bnno")
+ac = 12
+attack = Array[ExtResource("1_adbua")]([SubResource("Resource_dqlhp"), SubResource("Resource_p3ybl"), SubResource("Resource_ph3og"), SubResource("Resource_ti6gl")])
+character = "h"
+colour = 12
+description = "He's been sneaking, and he wants his 'precious.'"
+flags_1 = SubResource("Resource_ans70")
+flags_2 = SubResource("Resource_k8cw7")
+flags_3 = SubResource("Resource_3kapf")
+flags_4 = SubResource("Resource_x7xnq")
+flags_5 = SubResource("Resource_7d6t8")
+flags_6 = SubResource("Resource_axprn")
+hit_dice = 10
+hit_dice_sides = 20
+level = 3
+max_num = 1
+experience = 16
+name = "Smeagol"
+notice_range = 20
+rarity = 2
+sleep = 5
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Smeagol   "

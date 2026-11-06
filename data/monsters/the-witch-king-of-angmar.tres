@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b6b0lrl72msac"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_sia8v"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_x3n54"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_5jc4y"]
+
+[sub_resource type="Resource" id="Resource_yrwe3"]
+script = ExtResource("1_sia8v")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_53n2q"]
+script = ExtResource("1_sia8v")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_r2glj"]
+script = ExtResource("1_sia8v")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_7wsim"]
+script = ExtResource("1_sia8v")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_m74l0"]
+script = ExtResource("2_x3n54")
+value = 471860997
+
+[sub_resource type="Resource" id="Resource_ljhlc"]
+script = ExtResource("2_x3n54")
+value = 1245218
+
+[sub_resource type="Resource" id="Resource_83mpl"]
+script = ExtResource("2_x3n54")
+value = 3224899680
+
+[sub_resource type="Resource" id="Resource_v8nti"]
+script = ExtResource("2_x3n54")
+
+[sub_resource type="Resource" id="Resource_jyofd"]
+script = ExtResource("2_x3n54")
+value = 2558543904
+
+[sub_resource type="Resource" id="Resource_kbiyh"]
+script = ExtResource("2_x3n54")
+value = 805896704
+
+[resource]
+script = ExtResource("3_5jc4y")
+ac = 120
+attack = Array[ExtResource("1_sia8v")]([SubResource("Resource_yrwe3"), SubResource("Resource_53n2q"), SubResource("Resource_r2glj"), SubResource("Resource_7wsim")])
+character = "W"
+colour = 12
+description = "The Chief of the Ringwraiths. A fell being of devastating power. His spells are lethal and his combat blows crushingly hard. He moves at speed, and commands legions of evil to do his bidding. It is said that he is fated never to die by the hand of mortal man."
+flags_1 = SubResource("Resource_m74l0")
+flags_2 = SubResource("Resource_ljhlc")
+flags_3 = SubResource("Resource_83mpl")
+flags_4 = SubResource("Resource_v8nti")
+flags_5 = SubResource("Resource_jyofd")
+flags_6 = SubResource("Resource_kbiyh")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 60
+hit_dice_sides = 100
+level = 80
+max_num = 1
+experience = 42000
+name = "The Witch-King of Angmar"
+notice_range = 90
+rarity = 3
+sleep = 10
+speed = 130
+split_name_1 = "    The     "
+split_name_2 = "Witch-King o"
+split_name_3 = "   Angmar   "

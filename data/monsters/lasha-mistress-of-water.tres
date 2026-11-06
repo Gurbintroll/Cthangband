@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://d0ayw0qayt36k"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_1s08p"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_tjjph"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_8f40j"]
+
+[sub_resource type="Resource" id="Resource_1jbqo"]
+script = ExtResource("1_1s08p")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6qgn3"]
+script = ExtResource("1_1s08p")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_gq58a"]
+script = ExtResource("1_1s08p")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vryl6"]
+script = ExtResource("1_1s08p")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_m1ode"]
+script = ExtResource("2_tjjph")
+value = 263945
+
+[sub_resource type="Resource" id="Resource_3juid"]
+script = ExtResource("2_tjjph")
+value = 10620928
+
+[sub_resource type="Resource" id="Resource_41tup"]
+script = ExtResource("2_tjjph")
+value = 3490709568
+
+[sub_resource type="Resource" id="Resource_moma2"]
+script = ExtResource("2_tjjph")
+
+[sub_resource type="Resource" id="Resource_ml5j1"]
+script = ExtResource("2_tjjph")
+value = 37748808
+
+[sub_resource type="Resource" id="Resource_6okri"]
+script = ExtResource("2_tjjph")
+
+[resource]
+script = ExtResource("3_8f40j")
+ac = 40
+attack = Array[ExtResource("1_1s08p")]([SubResource("Resource_1jbqo"), SubResource("Resource_6qgn3"), SubResource("Resource_gq58a"), SubResource("Resource_vryl6")])
+character = "E"
+colour = 12
+description = "With the body of a beautiful mermaid, she hides her cruelnature well, until it is too late."
+flags_1 = SubResource("Resource_m1ode")
+flags_2 = SubResource("Resource_3juid")
+flags_3 = SubResource("Resource_41tup")
+flags_4 = SubResource("Resource_moma2")
+flags_5 = SubResource("Resource_ml5j1")
+flags_6 = SubResource("Resource_6okri")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 20
+hit_dice_sides = 100
+level = 39
+max_num = 1
+experience = 3250
+name = "Lasha, Mistress of Water"
+notice_range = 12
+rarity = 3
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Lasha    "

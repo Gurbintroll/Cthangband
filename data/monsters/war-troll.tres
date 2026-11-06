@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_g2hpe"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4vosd"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_witn5"]
+
+[sub_resource type="Resource" id="Resource_qnxmc"]
+script = ExtResource("1_g2hpe")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7ldt1"]
+script = ExtResource("1_g2hpe")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ndult"]
+script = ExtResource("1_g2hpe")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_r24j4"]
+script = ExtResource("1_g2hpe")
+
+[sub_resource type="Resource" id="Resource_tjy6r"]
+script = ExtResource("2_4vosd")
+value = 8397312
+
+[sub_resource type="Resource" id="Resource_q3mml"]
+script = ExtResource("2_4vosd")
+value = 197120
+
+[sub_resource type="Resource" id="Resource_hppea"]
+script = ExtResource("2_4vosd")
+value = 3490709570
+
+[sub_resource type="Resource" id="Resource_if5ye"]
+script = ExtResource("2_4vosd")
+
+[sub_resource type="Resource" id="Resource_06wla"]
+script = ExtResource("2_4vosd")
+
+[sub_resource type="Resource" id="Resource_360sd"]
+script = ExtResource("2_4vosd")
+
+[resource]
+script = ExtResource("3_witn5")
+ac = 100
+attack = Array[ExtResource("1_g2hpe")]([SubResource("Resource_qnxmc"), SubResource("Resource_7ldt1"), SubResource("Resource_ndult"), SubResource("Resource_r24j4")])
+character = "T"
+colour = 27
+description = "A massive troll, equipped with a scimitar and heavy armour."
+flags_1 = SubResource("Resource_tjy6r")
+flags_2 = SubResource("Resource_q3mml")
+flags_3 = SubResource("Resource_hppea")
+flags_4 = SubResource("Resource_if5ye")
+flags_5 = SubResource("Resource_06wla")
+flags_6 = SubResource("Resource_360sd")
+hit_dice = 50
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 800
+name = "War troll"
+notice_range = 20
+rarity = 3
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    War     "
+split_name_3 = "   troll    "

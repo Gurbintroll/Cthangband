@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5sito"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_lbnnh"]
+
+[sub_resource type="Resource" id="Resource_1jvdj"]
+script = ExtResource("1_5sito")
+
+[sub_resource type="Resource" id="Resource_uf8m4"]
+script = ExtResource("1_5sito")
+
+[sub_resource type="Resource" id="Resource_hk8b6"]
+script = ExtResource("1_5sito")
+value = 15728640
+
+[resource]
+script = ExtResource("2_lbnnh")
+chance = Array[int]([1, 1, 1, 1])
+character = "!"
+colour = 27
+cost = 250
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_1jvdj")
+flags_2 = SubResource("Resource_uf8m4")
+flags_3 = SubResource("Resource_hk8b6")
+has_flavour = true
+item_category = 75
+level = 20
+locale = Array[int]([20, 45, 80, 100])
+name = "Resistance"
+type_specific_value = 100
+stompable = Array[bool]([false, false, false, false])
+sub_category = 60
+weight = 4
+filename = "Potion:Resistance"

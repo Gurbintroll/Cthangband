@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_blcfh"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_y2rtn"]
+
+[sub_resource type="Resource" id="Resource_02qxv"]
+script = ExtResource("1_blcfh")
+value = 1087243782
+
+[sub_resource type="Resource" id="Resource_r10w7"]
+script = ExtResource("1_blcfh")
+value = 6586368
+
+[sub_resource type="Resource" id="Resource_2ct4f"]
+script = ExtResource("1_blcfh")
+value = 300971520
+
+[resource]
+script = ExtResource("2_y2rtn")
+flags_1 = SubResource("Resource_02qxv")
+flags_2 = SubResource("Resource_r10w7")
+flags_3 = SubResource("Resource_2ct4f")
+cost = 77777
+damage_dice = 1
+damage_dice_sides = 6
+item_category = 22
+item_sub_category = 2
+level = 15
+name = "of *Destiny*"
+type_specific_value = 4
+rarity = 45
+to_hit = 15
+to_damage = 15
+weight = 50
+id = 98

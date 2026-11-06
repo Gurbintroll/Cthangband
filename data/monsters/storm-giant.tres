@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_hojn1"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_hpen0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_adt1e"]
+
+[sub_resource type="Resource" id="Resource_obp0h"]
+script = ExtResource("1_hojn1")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 10
+method = 1
+
+[sub_resource type="Resource" id="Resource_dnryo"]
+script = ExtResource("1_hojn1")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_21xaa"]
+script = ExtResource("1_hojn1")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_htfjx"]
+script = ExtResource("1_hojn1")
+
+[sub_resource type="Resource" id="Resource_u4qmq"]
+script = ExtResource("2_hpen0")
+value = 16778756
+
+[sub_resource type="Resource" id="Resource_l4r0t"]
+script = ExtResource("2_hpen0")
+value = 4423680
+
+[sub_resource type="Resource" id="Resource_id3m5"]
+script = ExtResource("2_hpen0")
+value = 655428
+
+[sub_resource type="Resource" id="Resource_xj3vg"]
+script = ExtResource("2_hpen0")
+
+[sub_resource type="Resource" id="Resource_n1v58"]
+script = ExtResource("2_hpen0")
+value = 671219714
+
+[sub_resource type="Resource" id="Resource_mrxoe"]
+script = ExtResource("2_hpen0")
+value = 272
+
+[resource]
+script = ExtResource("3_adt1e")
+ac = 60
+attack = Array[ExtResource("1_hojn1")]([SubResource("Resource_obp0h"), SubResource("Resource_dnryo"), SubResource("Resource_21xaa"), SubResource("Resource_htfjx")])
+character = "P"
+colour = 14
+description = "It is a twenty-five foot tall giant wreathed in lighting."
+flags_1 = SubResource("Resource_u4qmq")
+flags_2 = SubResource("Resource_l4r0t")
+flags_3 = SubResource("Resource_id3m5")
+flags_4 = SubResource("Resource_xj3vg")
+flags_5 = SubResource("Resource_n1v58")
+flags_6 = SubResource("Resource_mrxoe")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 38
+hit_dice_sides = 10
+level = 32
+max_num = 100
+experience = 1500
+name = "Storm giant"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Storm    "
+split_name_3 = "   giant    "

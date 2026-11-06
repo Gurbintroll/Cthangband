@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_smu8c"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0rtaw"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ins3o"]
+
+[sub_resource type="Resource" id="Resource_aifwe"]
+script = ExtResource("1_smu8c")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_jcpyg"]
+script = ExtResource("1_smu8c")
+
+[sub_resource type="Resource" id="Resource_kfjby"]
+script = ExtResource("1_smu8c")
+
+[sub_resource type="Resource" id="Resource_m1ylk"]
+script = ExtResource("1_smu8c")
+
+[sub_resource type="Resource" id="Resource_kba2i"]
+script = ExtResource("2_0rtaw")
+value = 35653120
+
+[sub_resource type="Resource" id="Resource_kv3pu"]
+script = ExtResource("2_0rtaw")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_aitp5"]
+script = ExtResource("2_0rtaw")
+value = 3624992768
+
+[sub_resource type="Resource" id="Resource_lc1dd"]
+script = ExtResource("2_0rtaw")
+
+[sub_resource type="Resource" id="Resource_1nd7b"]
+script = ExtResource("2_0rtaw")
+value = 1006632960
+
+[sub_resource type="Resource" id="Resource_bl2sk"]
+script = ExtResource("2_0rtaw")
+value = 16384
+
+[resource]
+script = ExtResource("3_ins3o")
+ac = 60
+attack = Array[ExtResource("1_smu8c")]([SubResource("Resource_aifwe"), SubResource("Resource_jcpyg"), SubResource("Resource_kfjby"), SubResource("Resource_m1ylk")])
+character = "h"
+colour = 22
+description = "A batrachian humanoid with large eyes and a scaly skin suggestive of fishskin, hopping irregularly and casting spells with a croaking, baying voice."
+flags_1 = SubResource("Resource_kba2i")
+flags_2 = SubResource("Resource_kv3pu")
+flags_3 = SubResource("Resource_aitp5")
+flags_4 = SubResource("Resource_lc1dd")
+flags_5 = SubResource("Resource_1nd7b")
+flags_6 = SubResource("Resource_bl2sk")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 30
+hit_dice_sides = 10
+level = 26
+max_num = 100
+experience = 220
+name = "Deep One"
+notice_range = 30
+rarity = 6
+sleep = 255
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Deep    "
+split_name_3 = "    One     "

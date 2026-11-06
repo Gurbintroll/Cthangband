@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_47gb8"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_pvvk3"]
+
+[sub_resource type="Resource" id="Resource_i36r7"]
+script = ExtResource("1_47gb8")
+
+[sub_resource type="Resource" id="Resource_187oq"]
+script = ExtResource("1_47gb8")
+
+[sub_resource type="Resource" id="Resource_rn80x"]
+script = ExtResource("1_47gb8")
+value = 1024
+
+[resource]
+script = ExtResource("2_pvvk3")
+chance = Array[int]([1, 0, 0, 0])
+character = "|"
+colour = 15
+cost = 50
+damage_dice = 1
+damage_dice_sides = 7
+flags_1 = SubResource("Resource_i36r7")
+flags_2 = SubResource("Resource_187oq")
+flags_3 = SubResource("Resource_rn80x")
+flavour_aware = true
+item_category = 23
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "& Sabre~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 11
+weight = 50
+filename = "Sword:Sabre"

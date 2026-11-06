@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_18h5f"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_n70v4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_sa30s"]
+
+[sub_resource type="Resource" id="Resource_glkp5"]
+script = ExtResource("1_18h5f")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_bowt6"]
+script = ExtResource("1_18h5f")
+
+[sub_resource type="Resource" id="Resource_lveps"]
+script = ExtResource("1_18h5f")
+
+[sub_resource type="Resource" id="Resource_e5ar1"]
+script = ExtResource("1_18h5f")
+
+[sub_resource type="Resource" id="Resource_3ggb0"]
+script = ExtResource("2_n70v4")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_7sgiv"]
+script = ExtResource("2_n70v4")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_26ldn"]
+script = ExtResource("2_n70v4")
+value = 128
+
+[sub_resource type="Resource" id="Resource_m2i2d"]
+script = ExtResource("2_n70v4")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_35g3l"]
+script = ExtResource("2_n70v4")
+
+[sub_resource type="Resource" id="Resource_y1vk7"]
+script = ExtResource("2_n70v4")
+
+[resource]
+script = ExtResource("3_sa30s")
+ac = 30
+attack = Array[ExtResource("1_18h5f")]([SubResource("Resource_glkp5"), SubResource("Resource_bowt6"), SubResource("Resource_lveps"), SubResource("Resource_e5ar1")])
+character = "Z"
+colour = 15
+description = "A brilliant canine form whose light hurts your eyes, even at this distance."
+flags_1 = SubResource("Resource_3ggb0")
+flags_2 = SubResource("Resource_7sgiv")
+flags_3 = SubResource("Resource_26ldn")
+flags_4 = SubResource("Resource_m2i2d")
+flags_5 = SubResource("Resource_35g3l")
+flags_6 = SubResource("Resource_y1vk7")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 6
+hit_dice_sides = 6
+level = 15
+max_num = 100
+experience = 50
+name = "Light hound"
+notice_range = 30
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Light    "
+split_name_3 = "   hound    "

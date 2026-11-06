@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wbmjy"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_bv1rq"]
+
+[sub_resource type="Resource" id="Resource_cl15l"]
+script = ExtResource("1_wbmjy")
+
+[sub_resource type="Resource" id="Resource_dn68h"]
+script = ExtResource("1_wbmjy")
+
+[sub_resource type="Resource" id="Resource_0krrl"]
+script = ExtResource("1_wbmjy")
+value = 15728640
+
+[resource]
+script = ExtResource("2_bv1rq")
+cost = 1000
+flags_1 = SubResource("Resource_cl15l")
+flags_2 = SubResource("Resource_dn68h")
+flags_3 = SubResource("Resource_0krrl")
+name = "of Strength"
+id = 117

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_l2o0g"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4ehol"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_yf3b7"]
+
+[sub_resource type="Resource" id="Resource_41bh3"]
+script = ExtResource("1_l2o0g")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 9
+method = 12
+
+[sub_resource type="Resource" id="Resource_hgcw8"]
+script = ExtResource("1_l2o0g")
+
+[sub_resource type="Resource" id="Resource_oh4ud"]
+script = ExtResource("1_l2o0g")
+
+[sub_resource type="Resource" id="Resource_ql8id"]
+script = ExtResource("1_l2o0g")
+
+[sub_resource type="Resource" id="Resource_bd2or"]
+script = ExtResource("2_4ehol")
+value = 9175040
+
+[sub_resource type="Resource" id="Resource_2gw57"]
+script = ExtResource("2_4ehol")
+value = 65
+
+[sub_resource type="Resource" id="Resource_gpdon"]
+script = ExtResource("2_4ehol")
+value = 3490775040
+
+[sub_resource type="Resource" id="Resource_wfqtw"]
+script = ExtResource("2_4ehol")
+
+[sub_resource type="Resource" id="Resource_1qq2a"]
+script = ExtResource("2_4ehol")
+
+[sub_resource type="Resource" id="Resource_p3vjf"]
+script = ExtResource("2_4ehol")
+
+[resource]
+script = ExtResource("3_yf3b7")
+ac = 16
+attack = Array[ExtResource("1_l2o0g")]([SubResource("Resource_41bh3"), SubResource("Resource_hgcw8"), SubResource("Resource_oh4ud"), SubResource("Resource_ql8id")])
+character = "j"
+colour = 8
+description = "It's green and it's oozing."
+flags_1 = SubResource("Resource_bd2or")
+flags_2 = SubResource("Resource_2gw57")
+flags_3 = SubResource("Resource_gpdon")
+flags_4 = SubResource("Resource_wfqtw")
+flags_5 = SubResource("Resource_1qq2a")
+flags_6 = SubResource("Resource_p3vjf")
+hit_dice = 3
+hit_dice_sides = 4
+level = 3
+max_num = 100
+experience = 4
+name = "Green ooze"
+notice_range = 8
+rarity = 2
+sleep = 80
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Green    "
+split_name_3 = "    ooze    "

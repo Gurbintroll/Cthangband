@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2c6vo"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_r3yld"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_y7nh8"]
+
+[sub_resource type="Resource" id="Resource_g1tsb"]
+script = ExtResource("1_2c6vo")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1brjx"]
+script = ExtResource("1_2c6vo")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8ls4k"]
+script = ExtResource("1_2c6vo")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_x6sm4"]
+script = ExtResource("1_2c6vo")
+
+[sub_resource type="Resource" id="Resource_6hhi7"]
+script = ExtResource("2_r3yld")
+value = 144705028
+
+[sub_resource type="Resource" id="Resource_d7osq"]
+script = ExtResource("2_r3yld")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_gtiv8"]
+script = ExtResource("2_r3yld")
+value = 3221225536
+
+[sub_resource type="Resource" id="Resource_8y01v"]
+script = ExtResource("2_r3yld")
+
+[sub_resource type="Resource" id="Resource_hk4tf"]
+script = ExtResource("2_r3yld")
+value = 2415953920
+
+[sub_resource type="Resource" id="Resource_4ig37"]
+script = ExtResource("2_r3yld")
+value = 84410372
+
+[resource]
+script = ExtResource("3_y7nh8")
+ac = 60
+attack = Array[ExtResource("1_2c6vo")]([SubResource("Resource_g1tsb"), SubResource("Resource_1brjx"), SubResource("Resource_8ls4k"), SubResource("Resource_x6sm4")])
+character = "p"
+colour = 20
+description = "A dark priest of the highest order. Powerful and evil, beware his many spells."
+flags_1 = SubResource("Resource_6hhi7")
+flags_2 = SubResource("Resource_d7osq")
+flags_3 = SubResource("Resource_gtiv8")
+flags_4 = SubResource("Resource_8y01v")
+flags_5 = SubResource("Resource_hk4tf")
+flags_6 = SubResource("Resource_4ig37")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 80
+hit_dice_sides = 10
+level = 44
+max_num = 100
+experience = 5000
+name = "Cult high priest"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "    Cult    "
+split_name_2 = "    high    "
+split_name_3 = "   priest   "

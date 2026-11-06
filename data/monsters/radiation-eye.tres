@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kyamv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jix3b"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_r7ku8"]
+
+[sub_resource type="Resource" id="Resource_yrkcr"]
+script = ExtResource("1_kyamv")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 17
+method = 15
+
+[sub_resource type="Resource" id="Resource_jgb2c"]
+script = ExtResource("1_kyamv")
+
+[sub_resource type="Resource" id="Resource_0mv0u"]
+script = ExtResource("1_kyamv")
+
+[sub_resource type="Resource" id="Resource_6vfop"]
+script = ExtResource("1_kyamv")
+
+[sub_resource type="Resource" id="Resource_knodv"]
+script = ExtResource("2_jix3b")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_q7ef1"]
+script = ExtResource("2_jix3b")
+
+[sub_resource type="Resource" id="Resource_wk1se"]
+script = ExtResource("2_jix3b")
+value = 268439552
+
+[sub_resource type="Resource" id="Resource_ovl5a"]
+script = ExtResource("2_jix3b")
+
+[sub_resource type="Resource" id="Resource_sp6hf"]
+script = ExtResource("2_jix3b")
+value = 512
+
+[sub_resource type="Resource" id="Resource_4qw37"]
+script = ExtResource("2_jix3b")
+
+[resource]
+script = ExtResource("3_r7ku8")
+ac = 6
+attack = Array[ExtResource("1_kyamv")]([SubResource("Resource_yrkcr"), SubResource("Resource_jgb2c"), SubResource("Resource_0mv0u"), SubResource("Resource_6vfop")])
+character = "e"
+colour = 13
+description = "A disembodied eye, crackling with energy."
+flags_1 = SubResource("Resource_knodv")
+flags_2 = SubResource("Resource_q7ef1")
+flags_3 = SubResource("Resource_wk1se")
+flags_4 = SubResource("Resource_ovl5a")
+flags_5 = SubResource("Resource_sp6hf")
+flags_6 = SubResource("Resource_4qw37")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 3
+hit_dice_sides = 6
+level = 3
+max_num = 100
+experience = 6
+name = "Radiation eye"
+notice_range = 2
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Radiation  "
+split_name_3 = "    eye     "

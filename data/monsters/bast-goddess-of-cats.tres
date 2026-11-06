@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://c0h66gue4ipks"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_jbwoh"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_khu6e"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_wuiav"]
+
+[sub_resource type="Resource" id="Resource_lpi5q"]
+script = ExtResource("1_jbwoh")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_fq14a"]
+script = ExtResource("1_jbwoh")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_0e2m8"]
+script = ExtResource("1_jbwoh")
+damage_dice = 10
+damage_dice_sides = 5
+effect = 13
+method = 1
+
+[sub_resource type="Resource" id="Resource_duy1p"]
+script = ExtResource("1_jbwoh")
+damage_dice = 15
+damage_dice_sides = 1
+effect = 16
+method = 1
+
+[sub_resource type="Resource" id="Resource_n0lm1"]
+script = ExtResource("2_khu6e")
+value = 404801289
+
+[sub_resource type="Resource" id="Resource_0muj3"]
+script = ExtResource("2_khu6e")
+value = 196624
+
+[sub_resource type="Resource" id="Resource_bsn1b"]
+script = ExtResource("2_khu6e")
+value = 3223060480
+
+[sub_resource type="Resource" id="Resource_6w14o"]
+script = ExtResource("2_khu6e")
+
+[sub_resource type="Resource" id="Resource_l3kx7"]
+script = ExtResource("2_khu6e")
+
+[sub_resource type="Resource" id="Resource_cyige"]
+script = ExtResource("2_khu6e")
+value = 65796
+
+[resource]
+script = ExtResource("3_wuiav")
+ac = 200
+attack = Array[ExtResource("1_jbwoh")]([SubResource("Resource_lpi5q"), SubResource("Resource_fq14a"), SubResource("Resource_0e2m8"), SubResource("Resource_duy1p")])
+character = "f"
+colour = 12
+description = "She looks like a mortal female with a cat's head."
+flags_1 = SubResource("Resource_n0lm1")
+flags_2 = SubResource("Resource_0muj3")
+flags_3 = SubResource("Resource_bsn1b")
+flags_4 = SubResource("Resource_6w14o")
+flags_5 = SubResource("Resource_l3kx7")
+flags_6 = SubResource("Resource_cyige")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 48
+hit_dice_sides = 100
+level = 64
+max_num = 1
+experience = 30500
+name = "Bast, Goddess of Cats"
+notice_range = 100
+rarity = 3
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Bast    "

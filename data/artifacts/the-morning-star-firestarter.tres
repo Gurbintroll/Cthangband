@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ypqbc"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_qit8u"]
+
+[sub_resource type="Resource" id="Resource_1s3mq"]
+script = ExtResource("1_ypqbc")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_fkolp"]
+script = ExtResource("1_ypqbc")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_5katd"]
+script = ExtResource("1_ypqbc")
+value = 32515072
+
+[resource]
+script = ExtResource("2_qit8u")
+flags_1 = SubResource("Resource_1s3mq")
+flags_2 = SubResource("Resource_fkolp")
+flags_3 = SubResource("Resource_5katd")
+cost = 35000
+damage_dice = 2
+damage_dice_sides = 6
+item_category = 21
+item_sub_category = 12
+level = 20
+name = "*Firestarter*"
+rarity = 15
+to_ac = 2
+to_hit = 5
+to_damage = 7
+weight = 150
+id = 115

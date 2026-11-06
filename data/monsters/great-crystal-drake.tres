@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_il2mb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_t316b"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_y0jm0"]
+
+[sub_resource type="Resource" id="Resource_j7d3p"]
+script = ExtResource("1_il2mb")
+damage_dice = 4
+damage_dice_sides = 9
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_qos7j"]
+script = ExtResource("1_il2mb")
+damage_dice = 4
+damage_dice_sides = 9
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_xh8u6"]
+script = ExtResource("1_il2mb")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_dhk2e"]
+script = ExtResource("1_il2mb")
+
+[sub_resource type="Resource" id="Resource_mcbga"]
+script = ExtResource("2_t316b")
+value = 169870848
+
+[sub_resource type="Resource" id="Resource_utn0e"]
+script = ExtResource("2_t316b")
+value = 1249304
+
+[sub_resource type="Resource" id="Resource_cjo74"]
+script = ExtResource("2_t316b")
+value = 3221749832
+
+[sub_resource type="Resource" id="Resource_3s0nl"]
+script = ExtResource("2_t316b")
+value = 16777216
+
+[sub_resource type="Resource" id="Resource_7stpl"]
+script = ExtResource("2_t316b")
+value = 1744830464
+
+[sub_resource type="Resource" id="Resource_v2pn6"]
+script = ExtResource("2_t316b")
+
+[resource]
+script = ExtResource("3_y0jm0")
+ac = 100
+attack = Array[ExtResource("1_il2mb")]([SubResource("Resource_j7d3p"), SubResource("Resource_qos7j"), SubResource("Resource_xh8u6"), SubResource("Resource_dhk2e")])
+character = "D"
+colour = 20
+description = "A huge crystalline dragon. Its claws could cut you to shreds and its teeth are razor sharp. Strange colours ripple through it as it moves in the light."
+flags_1 = SubResource("Resource_mcbga")
+flags_2 = SubResource("Resource_utn0e")
+flags_3 = SubResource("Resource_cjo74")
+flags_4 = SubResource("Resource_3s0nl")
+flags_5 = SubResource("Resource_7stpl")
+flags_6 = SubResource("Resource_v2pn6")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 15
+hit_dice_sides = 100
+level = 40
+max_num = 100
+experience = 3500
+name = "Great crystal drake"
+notice_range = 25
+rarity = 2
+sleep = 30
+speed = 120
+split_name_1 = "   Great    "
+split_name_2 = "  crystal   "
+split_name_3 = "   drake    "

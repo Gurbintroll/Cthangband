@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://dyplm6p6gvb0g"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_26anp"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_uj3fn"]
+
+[sub_resource type="Resource" id="Resource_auia7"]
+script = ExtResource("1_26anp")
+
+[sub_resource type="Resource" id="Resource_lkqcg"]
+script = ExtResource("1_26anp")
+
+[sub_resource type="Resource" id="Resource_1ae6l"]
+script = ExtResource("1_26anp")
+
+[resource]
+script = ExtResource("2_uj3fn")
+chance = Array[int]([0, 0, 0, 0])
+character = "$"
+colour = 18
+cost = 80
+flags_1 = SubResource("Resource_auia7")
+flags_2 = SubResource("Resource_lkqcg")
+flags_3 = SubResource("Resource_1ae6l")
+flavour_aware = true
+item_category = 100
+level = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "adamantite"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 18

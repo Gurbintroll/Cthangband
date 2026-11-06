@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_urhtp"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_2x0qa"]
+
+[sub_resource type="Resource" id="Resource_6xmql"]
+script = ExtResource("1_urhtp")
+
+[sub_resource type="Resource" id="Resource_opy1f"]
+script = ExtResource("1_urhtp")
+
+[sub_resource type="Resource" id="Resource_6rmmp"]
+script = ExtResource("1_urhtp")
+value = 15728640
+
+[resource]
+script = ExtResource("2_2x0qa")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 2
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_6xmql")
+flags_2 = SubResource("Resource_opy1f")
+flags_3 = SubResource("Resource_6rmmp")
+flavour_aware = true
+item_category = 94
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "[Cultes des Goules]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 2
+weight = 30
+filename = "DeathBook:[Cultes des Goules]"

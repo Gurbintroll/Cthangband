@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ln1aj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_y6l7v"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_i4f1i"]
+
+[sub_resource type="Resource" id="Resource_bkfsa"]
+script = ExtResource("1_ln1aj")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1wpmk"]
+script = ExtResource("1_ln1aj")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_te530"]
+script = ExtResource("1_ln1aj")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_gxk7v"]
+script = ExtResource("1_ln1aj")
+
+[sub_resource type="Resource" id="Resource_1yao4"]
+script = ExtResource("2_y6l7v")
+value = 512
+
+[sub_resource type="Resource" id="Resource_esj3s"]
+script = ExtResource("2_y6l7v")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_r12i4"]
+script = ExtResource("2_y6l7v")
+value = 3491233890
+
+[sub_resource type="Resource" id="Resource_wo37v"]
+script = ExtResource("2_y6l7v")
+
+[sub_resource type="Resource" id="Resource_ahetc"]
+script = ExtResource("2_y6l7v")
+
+[sub_resource type="Resource" id="Resource_e56di"]
+script = ExtResource("2_y6l7v")
+
+[resource]
+script = ExtResource("3_i4f1i")
+ac = 50
+attack = Array[ExtResource("1_ln1aj")]([SubResource("Resource_bkfsa"), SubResource("Resource_1wpmk"), SubResource("Resource_te530"), SubResource("Resource_gxk7v")])
+character = "s"
+colour = 31
+description = "It is the animated form of a massive troll."
+flags_1 = SubResource("Resource_1yao4")
+flags_2 = SubResource("Resource_esj3s")
+flags_3 = SubResource("Resource_r12i4")
+flags_4 = SubResource("Resource_wo37v")
+flags_5 = SubResource("Resource_ahetc")
+flags_6 = SubResource("Resource_e56di")
+hit_dice = 45
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 325
+name = "Giant skeleton troll"
+notice_range = 20
+rarity = 1
+sleep = 20
+speed = 110
+split_name_1 = "   Giant    "
+split_name_2 = "  skeleton  "
+split_name_3 = "   troll    "

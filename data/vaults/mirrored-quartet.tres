@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_8vd1h"]
+
+[resource]
+script = ExtResource("1_8vd1h")
+category = 8
+height = 21
+name = "Mirrored Quartet"
+rating = 20
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X89@@@XXX,,,,XXX....^^^^^^^....XXX,,,,XXX@@@98X%%X9@@#XX....XXX**....XXX#XXX....**XXX....XX#@@9X%%X@XXX&&&&XXX**....@XX&&@&&XX@....**XXX&&&&XXX@X%%XXX....XXX**......@X**...**X@......**XXX....XXX%%X@...XXX**.......XXXXX...XXXXX.......**XXX...@X%%X@.#XX**.......9XX888XX^XX888XX9.......**XX#.@X%%XXXX&&&&&&&&&&&9#,,,,,X^X,,,,,#9&&&&&&&&&&&XXXX%%XXXXXXXXXXXXXXXXXXXXXXX#XXXXXXXXXXXXXXXXXXXXXXX%%#,,,,,,,,,,,,,,,,,,,,,#8#,,,,,,,,,,,,,,,,,,,,,#%%XXXXXXXXXXXXXXXXXXXXXXX#XXXXXXXXXXXXXXXXXXXXXXX%%XXXX&&&&&&&&&&&9#,,,,,X^X,,,,,#9&&&&&&&&&&&XXXX%%X@.#XX**.......9XX888XX^XX888XX9.......**XX#.@X%%X@...XXX**.......XXXXX...XXXXX.......**XXX...@X%%XXX....XXX**......@X**...**X@......**XXX....XXX%%X@XXX&&&&XXX**....@XX&&@&&XX@....**XXX&&&&XXX@X%%X9@@#XX....XXX**....XXX#XXX....**XXX....XX#@@9X%%X89@@@XXX,,,,XXX**..^^^^^^^..**XXX,,,,XXX@@@98X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 49

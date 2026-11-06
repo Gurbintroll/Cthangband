@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_0t5en"]
+
+[resource]
+script = ExtResource("1_0t5en")
+category = 8
+height = 20
+name = "Greater vault (nethack samurai castle #2)"
+rating = 35
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%...........................................................%%.XXXXXXXXXXXXX...............................XXXXXXXXXXXXX.%%.X,,^^^^^^^,,X...............................X,,^^^^^^^,,X.%%.X,,^XXXXX^,,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX,,^XXXXX^,,X.%%.X,,^+999X^,,X,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,X,,^X999+^,,X.%%.X,,^XXXXX^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^XXXXX^,,X.%%.X^^^^^^^^^^^XXXXXX+XXXXXXXXXXXXXXXXXXX+XXXXXX^^^^^^^^^^^X.%%.XXXX^^^XXXXXXXX*X,,,,,,,,,,,,,,,,,,,,,,,X*XXXXXXXX^^^XXXX.%%....+^^^X********+,,,,,,,,,,,,,,,,,,,,,,,+********X^^^+....%%....+^^^X********+,,,,,,,,,,,,,,,,,,,,,,,+********X^^^+....%%.XXXX^^^XXXXXXXX*X,,,,,,,,,,,,,,,,,,,,,,,X*XXXXXXXX^^^XXXX.%%.X^^^^^^^^^^^XXXXXX+XXXXXXXXXXXXXXXXXXX+XXXXXX^^^^^^^^^^^X.%%.X,,^XXXXX^,,^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^XXXXX^,,X.%%.X,,^+999X^,,X,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,X,,^X999+^,,X.%%.X,,^XXXXX^,,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX,,^XXXXX^,,X.%%.X,,^^^^^^^,,X...............................X,,^^^^^^^,,X.%%.XXXXXXXXXXXXX...............................XXXXXXXXXXXXX.%%...........................................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 61

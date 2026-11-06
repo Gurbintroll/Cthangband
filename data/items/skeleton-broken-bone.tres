@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://dp2pf7vsnoues"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_fyv04"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_ylyjk"]
+
+[sub_resource type="Resource" id="Resource_6h8qx"]
+script = ExtResource("1_fyv04")
+
+[sub_resource type="Resource" id="Resource_h32ev"]
+script = ExtResource("1_fyv04")
+
+[sub_resource type="Resource" id="Resource_ew6me"]
+script = ExtResource("1_fyv04")
+
+[resource]
+script = ExtResource("2_ylyjk")
+chance = Array[int]([1, 0, 0, 0])
+character = "~"
+colour = 1
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_6h8qx")
+flags_2 = SubResource("Resource_h32ev")
+flags_3 = SubResource("Resource_ew6me")
+flavour_aware = true
+item_category = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "& Broken Bone~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 2
+weight = 2

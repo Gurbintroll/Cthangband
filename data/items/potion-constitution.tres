@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_man5v"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ep1ti"]
+
+[sub_resource type="Resource" id="Resource_paate"]
+script = ExtResource("1_man5v")
+
+[sub_resource type="Resource" id="Resource_lwxiv"]
+script = ExtResource("1_man5v")
+
+[sub_resource type="Resource" id="Resource_akejo"]
+script = ExtResource("1_man5v")
+
+[resource]
+script = ExtResource("2_ep1ti")
+chance = Array[int]([6, 3, 1, 0])
+character = "!"
+colour = 24
+cost = 8000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_paate")
+flags_2 = SubResource("Resource_lwxiv")
+flags_3 = SubResource("Resource_akejo")
+has_flavour = true
+item_category = 75
+level = 20
+locale = Array[int]([20, 25, 30, 0])
+name = "Constitution"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 52
+weight = 4
+filename = "Potion:Constitution"

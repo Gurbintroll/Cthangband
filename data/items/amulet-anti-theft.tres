@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_jdg6i"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_trr8w"]
+
+[sub_resource type="Resource" id="Resource_ykep1"]
+script = ExtResource("1_jdg6i")
+
+[sub_resource type="Resource" id="Resource_io4um"]
+script = ExtResource("1_jdg6i")
+
+[sub_resource type="Resource" id="Resource_6qunw"]
+script = ExtResource("1_jdg6i")
+value = 15728640
+
+[resource]
+script = ExtResource("2_trr8w")
+chance = Array[int]([1, 0, 0, 0])
+character = "\""
+colour = 10
+cost = 1000
+flags_1 = SubResource("Resource_ykep1")
+flags_2 = SubResource("Resource_io4um")
+flags_3 = SubResource("Resource_6qunw")
+has_flavour = true
+item_category = 40
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Anti-Theft"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 16
+weight = 3
+filename = "Amulet:Anti-Theft"

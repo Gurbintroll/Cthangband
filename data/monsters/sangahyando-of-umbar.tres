@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dq0tpsd8yo5gs"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_qwo2e"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_8q57r"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_dpxey"]
+
+[sub_resource type="Resource" id="Resource_wemib"]
+script = ExtResource("1_qwo2e")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6c7rf"]
+script = ExtResource("1_qwo2e")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_thugw"]
+script = ExtResource("1_qwo2e")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vq16l"]
+script = ExtResource("1_qwo2e")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_lmree"]
+script = ExtResource("2_8q57r")
+value = 295700229
+
+[sub_resource type="Resource" id="Resource_hkmfq"]
+script = ExtResource("2_8q57r")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_2sqwa"]
+script = ExtResource("2_8q57r")
+value = 3221618752
+
+[sub_resource type="Resource" id="Resource_pqsj4"]
+script = ExtResource("2_8q57r")
+
+[sub_resource type="Resource" id="Resource_i2c3y"]
+script = ExtResource("2_8q57r")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_fj6gn"]
+script = ExtResource("2_8q57r")
+value = 16384
+
+[resource]
+script = ExtResource("3_dpxey")
+ac = 80
+attack = Array[ExtResource("1_qwo2e")]([SubResource("Resource_wemib"), SubResource("Resource_6c7rf"), SubResource("Resource_thugw"), SubResource("Resource_vq16l")])
+character = "p"
+colour = 12
+description = "A Black Numenorean with a blacker heart."
+flags_1 = SubResource("Resource_lmree")
+flags_2 = SubResource("Resource_hkmfq")
+flags_3 = SubResource("Resource_2sqwa")
+flags_4 = SubResource("Resource_pqsj4")
+flags_5 = SubResource("Resource_i2c3y")
+flags_6 = SubResource("Resource_fj6gn")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 80
+hit_dice_sides = 10
+level = 24
+max_num = 1
+experience = 400
+name = "Sangahyando of Umbar"
+notice_range = 25
+rarity = 2
+sleep = 25
+speed = 110
+split_name_1 = "Sangahyando "
+split_name_2 = "     of     "
+split_name_3 = "   Umbar    "

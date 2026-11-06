@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_y8s3d"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_586ye"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qa2yj"]
+
+[sub_resource type="Resource" id="Resource_tc2gt"]
+script = ExtResource("1_y8s3d")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ifdtd"]
+script = ExtResource("1_y8s3d")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1on5d"]
+script = ExtResource("1_y8s3d")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_1kctt"]
+script = ExtResource("1_y8s3d")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_w6bil"]
+script = ExtResource("2_586ye")
+value = 134219264
+
+[sub_resource type="Resource" id="Resource_d3ajd"]
+script = ExtResource("2_586ye")
+value = 197152
+
+[sub_resource type="Resource" id="Resource_i2ao8"]
+script = ExtResource("2_586ye")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_bicxl"]
+script = ExtResource("2_586ye")
+
+[sub_resource type="Resource" id="Resource_g7fki"]
+script = ExtResource("2_586ye")
+value = 2820686848
+
+[sub_resource type="Resource" id="Resource_6u7vx"]
+script = ExtResource("2_586ye")
+value = 20736
+
+[resource]
+script = ExtResource("3_qa2yj")
+ac = 60
+attack = Array[ExtResource("1_y8s3d")]([SubResource("Resource_tc2gt"), SubResource("Resource_ifdtd"), SubResource("Resource_1on5d"), SubResource("Resource_1kctt")])
+character = "V"
+colour = 23
+description = "It is a humanoid form dressed in robes. Power emanates from its chilling frame."
+flags_1 = SubResource("Resource_w6bil")
+flags_2 = SubResource("Resource_d3ajd")
+flags_3 = SubResource("Resource_i2ao8")
+flags_4 = SubResource("Resource_bicxl")
+flags_5 = SubResource("Resource_g7fki")
+flags_6 = SubResource("Resource_6u7vx")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 34
+hit_dice_sides = 10
+level = 34
+max_num = 100
+experience = 750
+name = "Master vampire"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Master   "
+split_name_3 = "  vampire   "

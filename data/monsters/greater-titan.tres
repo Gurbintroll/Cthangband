@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_udojl"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_eim5s"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1t1q2"]
+
+[sub_resource type="Resource" id="Resource_aah4b"]
+script = ExtResource("1_udojl")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_ywgcb"]
+script = ExtResource("1_udojl")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_6wx10"]
+script = ExtResource("1_udojl")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_pe6sq"]
+script = ExtResource("1_udojl")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_gkbn1"]
+script = ExtResource("2_eim5s")
+value = 404751876
+
+[sub_resource type="Resource" id="Resource_4x75e"]
+script = ExtResource("2_eim5s")
+value = 5439490
+
+[sub_resource type="Resource" id="Resource_5upvg"]
+script = ExtResource("2_eim5s")
+value = 68
+
+[sub_resource type="Resource" id="Resource_xf2l7"]
+script = ExtResource("2_eim5s")
+
+[sub_resource type="Resource" id="Resource_gshmn"]
+script = ExtResource("2_eim5s")
+
+[sub_resource type="Resource" id="Resource_84mle"]
+script = ExtResource("2_eim5s")
+value = 524548
+
+[resource]
+script = ExtResource("3_1t1q2")
+ac = 125
+attack = Array[ExtResource("1_udojl")]([SubResource("Resource_aah4b"), SubResource("Resource_ywgcb"), SubResource("Resource_6wx10"), SubResource("Resource_pe6sq")])
+character = "P"
+colour = 16
+description = "A forty foot tall humanoid that shakes the ground as it walks. The power radiating from its frame shakes your courage, its hatred inspired by your defiance."
+flags_1 = SubResource("Resource_gkbn1")
+flags_2 = SubResource("Resource_4x75e")
+flags_3 = SubResource("Resource_5upvg")
+flags_4 = SubResource("Resource_xf2l7")
+flags_5 = SubResource("Resource_gshmn")
+flags_6 = SubResource("Resource_84mle")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 38
+hit_dice_sides = 100
+level = 46
+max_num = 100
+experience = 13500
+name = "Greater titan"
+notice_range = 30
+rarity = 3
+sleep = 15
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Greater   "
+split_name_3 = "   titan    "

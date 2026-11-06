@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://dec6s16crxr4t"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_5onvl"]
+[ext_resource type="Script" uid="uid://c8av6fyror3lk" path="res://scripts/data/artifact.gd" id="2_f8mag"]
+
+[sub_resource type="Resource" id="Resource_1ba2r"]
+script = ExtResource("1_5onvl")
+value = 536870912
+
+[sub_resource type="Resource" id="Resource_uepv2"]
+script = ExtResource("1_5onvl")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_ghxkt"]
+script = ExtResource("1_5onvl")
+value = 32506880
+
+[resource]
+script = ExtResource("2_f8mag")
+flags_1 = SubResource("Resource_1ba2r")
+flags_2 = SubResource("Resource_uepv2")
+flags_3 = SubResource("Resource_ghxkt")
+cost = 13000
+damage_dice = 1
+damage_dice_sides = 4
+item_category = 23
+item_sub_category = 4
+level = 5
+name = "*Charity*"
+rarity = 10
+to_hit = 4
+to_damage = 6
+weight = 12
+id = 68

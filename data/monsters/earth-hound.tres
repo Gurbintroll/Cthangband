@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_dxhyd"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wmxt7"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mh0vt"]
+
+[sub_resource type="Resource" id="Resource_7xc3c"]
+script = ExtResource("1_dxhyd")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ro660"]
+script = ExtResource("1_dxhyd")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_3y5px"]
+script = ExtResource("1_dxhyd")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_jijb7"]
+script = ExtResource("1_dxhyd")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_tdg0w"]
+script = ExtResource("2_wmxt7")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_x0v4x"]
+script = ExtResource("2_wmxt7")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_wqb0q"]
+script = ExtResource("2_wmxt7")
+value = 128
+
+[sub_resource type="Resource" id="Resource_hvibv"]
+script = ExtResource("2_wmxt7")
+value = 16777216
+
+[sub_resource type="Resource" id="Resource_7bflv"]
+script = ExtResource("2_wmxt7")
+
+[sub_resource type="Resource" id="Resource_05jx5"]
+script = ExtResource("2_wmxt7")
+
+[resource]
+script = ExtResource("3_mh0vt")
+ac = 30
+attack = Array[ExtResource("1_dxhyd")]([SubResource("Resource_7xc3c"), SubResource("Resource_ro660"), SubResource("Resource_3y5px"), SubResource("Resource_jijb7")])
+character = "Z"
+colour = 17
+description = "A beautiful crystalline shape does not disguise the danger this hound clearly presents. Your flesh tingles as it approaches."
+flags_1 = SubResource("Resource_tdg0w")
+flags_2 = SubResource("Resource_x0v4x")
+flags_3 = SubResource("Resource_wqb0q")
+flags_4 = SubResource("Resource_hvibv")
+flags_5 = SubResource("Resource_7bflv")
+flags_6 = SubResource("Resource_05jx5")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 15
+hit_dice_sides = 8
+level = 20
+max_num = 100
+experience = 200
+name = "Earth hound"
+notice_range = 30
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Earth    "
+split_name_3 = "   hound    "

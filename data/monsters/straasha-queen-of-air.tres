@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://uyy1420wfbuk"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_p5epu"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_w22nm"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_o00a0"]
+
+[sub_resource type="Resource" id="Resource_6lsko"]
+script = ExtResource("1_p5epu")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vp02r"]
+script = ExtResource("1_p5epu")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_16yrb"]
+script = ExtResource("1_p5epu")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_v5521"]
+script = ExtResource("1_p5epu")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_ueqyp"]
+script = ExtResource("2_w22nm")
+value = 263689
+
+[sub_resource type="Resource" id="Resource_vcbov"]
+script = ExtResource("2_w22nm")
+value = 10653792
+
+[sub_resource type="Resource" id="Resource_y063i"]
+script = ExtResource("2_w22nm")
+value = 3491692608
+
+[sub_resource type="Resource" id="Resource_igp0g"]
+script = ExtResource("2_w22nm")
+
+[sub_resource type="Resource" id="Resource_u4n3w"]
+script = ExtResource("2_w22nm")
+value = 131082
+
+[sub_resource type="Resource" id="Resource_eq680"]
+script = ExtResource("2_w22nm")
+
+[resource]
+script = ExtResource("3_o00a0")
+ac = 50
+attack = Array[ExtResource("1_p5epu")]([SubResource("Resource_6lsko"), SubResource("Resource_vp02r"), SubResource("Resource_16yrb"), SubResource("Resource_v5521")])
+character = "E"
+colour = 12
+description = "A towering air elemental, Straasha, the sorceress, avoids your blows with her extreme speed."
+flags_1 = SubResource("Resource_ueqyp")
+flags_2 = SubResource("Resource_vcbov")
+flags_3 = SubResource("Resource_y063i")
+flags_4 = SubResource("Resource_igp0g")
+flags_5 = SubResource("Resource_u4n3w")
+flags_6 = SubResource("Resource_eq680")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 27
+hit_dice_sides = 100
+level = 44
+max_num = 1
+experience = 8000
+name = "Straasha, Queen of Air"
+notice_range = 12
+rarity = 4
+sleep = 50
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Straasha  "

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_lhypt"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_jjqs1"]
+
+[sub_resource type="Resource" id="Resource_y1ogx"]
+script = ExtResource("1_lhypt")
+
+[sub_resource type="Resource" id="Resource_o7ljf"]
+script = ExtResource("1_lhypt")
+
+[sub_resource type="Resource" id="Resource_pyxb5"]
+script = ExtResource("1_lhypt")
+
+[resource]
+script = ExtResource("2_jjqs1")
+flags_1 = SubResource("Resource_y1ogx")
+flags_2 = SubResource("Resource_o7ljf")
+flags_3 = SubResource("Resource_pyxb5")
+name = "of Noise"
+slot = 35
+id = 50

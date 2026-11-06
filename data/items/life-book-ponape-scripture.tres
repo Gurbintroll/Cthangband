@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_e6xlh"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_uqxhv"]
+
+[sub_resource type="Resource" id="Resource_kc5hx"]
+script = ExtResource("1_e6xlh")
+
+[sub_resource type="Resource" id="Resource_e6502"]
+script = ExtResource("1_e6xlh")
+
+[sub_resource type="Resource" id="Resource_u5uwv"]
+script = ExtResource("1_e6xlh")
+value = 15728640
+
+[resource]
+script = ExtResource("2_uqxhv")
+chance = Array[int]([3, 0, 0, 0])
+character = "?"
+colour = 15
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_kc5hx")
+flags_2 = SubResource("Resource_e6502")
+flags_3 = SubResource("Resource_u5uwv")
+flavour_aware = true
+item_category = 90
+level = 90
+locale = Array[int]([90, 0, 0, 0])
+name = "[Ponape Scripture]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 30
+filename = "LifeBook:[Ponape Scripture]"

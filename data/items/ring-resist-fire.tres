@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2jwiv"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_k02ot"]
+
+[sub_resource type="Resource" id="Resource_ob2iw"]
+script = ExtResource("1_2jwiv")
+
+[sub_resource type="Resource" id="Resource_2pmnl"]
+script = ExtResource("1_2jwiv")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_1t8kj"]
+script = ExtResource("1_2jwiv")
+value = 4194560
+
+[resource]
+script = ExtResource("2_k02ot")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 4
+cost = 250
+easy_know = true
+flags_1 = SubResource("Resource_ob2iw")
+flags_2 = SubResource("Resource_2pmnl")
+flags_3 = SubResource("Resource_1t8kj")
+has_flavour = true
+item_category = 45
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Resist Fire"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 8
+weight = 2
+filename = "Ring:Resist Fire"

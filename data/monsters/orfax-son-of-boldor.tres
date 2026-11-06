@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://muce3fvfqam3"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_n7f52"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_uswh8"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_s5dxj"]
+
+[sub_resource type="Resource" id="Resource_32f40"]
+script = ExtResource("1_n7f52")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mk7dd"]
+script = ExtResource("1_n7f52")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_l4g4o"]
+script = ExtResource("1_n7f52")
+method = 20
+
+[sub_resource type="Resource" id="Resource_quq07"]
+script = ExtResource("1_n7f52")
+method = 20
+
+[sub_resource type="Resource" id="Resource_2skh2"]
+script = ExtResource("2_uswh8")
+value = 278972165
+
+[sub_resource type="Resource" id="Resource_2rvng"]
+script = ExtResource("2_uswh8")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_wa5go"]
+script = ExtResource("2_uswh8")
+value = 65728
+
+[sub_resource type="Resource" id="Resource_ktmu6"]
+script = ExtResource("2_uswh8")
+
+[sub_resource type="Resource" id="Resource_3faqb"]
+script = ExtResource("2_uswh8")
+value = 1610612736
+
+[sub_resource type="Resource" id="Resource_rcee7"]
+script = ExtResource("2_uswh8")
+value = 262420
+
+[resource]
+script = ExtResource("3_s5dxj")
+ac = 20
+attack = Array[ExtResource("1_n7f52")]([SubResource("Resource_32f40"), SubResource("Resource_mk7dd"), SubResource("Resource_l4g4o"), SubResource("Resource_quq07")])
+character = "y"
+colour = 12
+description = "He's just like daddy! He knows mighty spells, but fortunately he is a yeek."
+flags_1 = SubResource("Resource_2skh2")
+flags_2 = SubResource("Resource_2rvng")
+flags_3 = SubResource("Resource_wa5go")
+flags_4 = SubResource("Resource_ktmu6")
+flags_5 = SubResource("Resource_3faqb")
+flags_6 = SubResource("Resource_rcee7")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 12
+hit_dice_sides = 10
+level = 10
+max_num = 1
+experience = 80
+name = "Orfax, Son of Boldor"
+notice_range = 18
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Orfax    "

@@ -1,0 +1,40 @@
+﻿[center][font_size=48][color="brown"][b]Great Ones[/b][/color][/font_size][/center]
+[hr color="brown"]
+The Great Ones are the lesser gods of the dreamlands. Although powerful, they are far below the Great Old Ones in scale and they are subservient to the whims of Nyarlathotep. The Great Ones formerly lived in the city of Kadath, although they have recently left the city for reasons unknown and it lies empty and in ruins.
+
+The Great Ones are willing to help adventurers who gain their [color="blue"][url="Favour"]favour[/url][/color], and this favour can be gained either by being a priest of one of the Great Ones or by sacrificing items to them at a temple - although the latter is soon forgotten by these fickle entities.
+
+[font_size=24][color="brown"][b]Hagarg Ryonis[/b][/color][/font_size]
+Hagarg Ryonis, goddess of beasts, is also known as She Who Lies in Wait. She is a patron of animals, and usually appears in the form of a great beast. She is also a protector of tombs, and particularly hates undead.
+
+If you have Hagarg Ryonis's favour, she may protect you from the life-draining attacks of undead and from posion.
+
+Hagarg Ryonis is the patron of [color="blue"][url="Nature Spells"]Nature[/url][/color] priests.
+
+[font_size=24][color="brown"][b]Lobon[/b][/color][/font_size]
+Lobon, god of strength and youth, was worshipped in Sarnath until doom came to that city. Although normally depicted with a spear, Lobon is a peaceful god who is a patron of athletic performance and aesthetic beauty.
+
+If you have Lobon's favour, he may protect you from effects that drain your [color="blue"][url="Ability Scores"]ability scores[/url][/color].
+
+Lobon is the patron of [color="blue"][url="Corporeal Spells"]Corporeal[/url][/color] priests.
+
+[font_size=24][color="brown"][b]Nath-Horthath[/b][/color][/font_size]
+Nath-Horthath, god of war, is the patron deity of the city of Celephais - and his protection is the reason why that city is so safe compared to the other towns and cities. Nath-Horthath is usually depicted with two faces, representing the two sides in any conflict.
+
+If you have Nath-Horthath's favour, he will increase your health beyond its normal maximum.
+
+Nath-Horthath is the patron of [color="blue"][url="Chaos Spells"]Chaos[/url][/color] priests.
+
+[font_size=24][color="brown"][b]Tamash[/b][/color][/font_size]
+Tamash, god of illusions and magic, has many different names and faces, and has been known to appear in a variety of male, female, and androgynous forms. They are patron of both magic (especially illusions) and storytelling, and are the inventor of the tarot set.
+
+If you have Tamash's favour, they will increase your power beyond its normal maximum.
+
+Tamash is the patron of [color="blue"][url="Tarot Spells"]Tarot[/url][/color] priests.
+
+[font_size=24][color="brown"][b]Zo-Kalar[/b][/color][/font_size]
+Zo-Kalar, goddess of birth and death, is worshipped throughout the land by people who hope for healthy children and a peaceful end. She is usually depicted with a skeletal head under her hood but with the soft hands of a midwife.
+
+If you have Zo-Kalar's favour, she may save you from death itself.
+
+Zo-Kalar is the patron of [color="blue"][url="Folk Spells"]Folk[/url][/color] priests.

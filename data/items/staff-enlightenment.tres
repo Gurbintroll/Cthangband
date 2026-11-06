@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5pjnc"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_wtyth"]
+
+[sub_resource type="Resource" id="Resource_56kr5"]
+script = ExtResource("1_5pjnc")
+
+[sub_resource type="Resource" id="Resource_f10yr"]
+script = ExtResource("1_5pjnc")
+
+[sub_resource type="Resource" id="Resource_kucb1"]
+script = ExtResource("1_5pjnc")
+
+[resource]
+script = ExtResource("2_wtyth")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 17
+cost = 750
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_56kr5")
+flags_2 = SubResource("Resource_f10yr")
+flags_3 = SubResource("Resource_kucb1")
+has_flavour = true
+item_category = 55
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Enlightenment"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 9
+weight = 50
+filename = "Staff:Enlightenment"

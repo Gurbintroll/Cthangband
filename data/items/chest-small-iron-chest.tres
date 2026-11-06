@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_voj8f"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_5gryx"]
+
+[sub_resource type="Resource" id="Resource_y1f8a"]
+script = ExtResource("1_voj8f")
+
+[sub_resource type="Resource" id="Resource_1ynkk"]
+script = ExtResource("1_voj8f")
+
+[sub_resource type="Resource" id="Resource_phkgr"]
+script = ExtResource("1_voj8f")
+
+[resource]
+script = ExtResource("2_5gryx")
+chance = Array[int]([1, 0, 0, 0])
+character = "~"
+colour = 23
+cost = 100
+damage_dice = 2
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_y1f8a")
+flags_2 = SubResource("Resource_1ynkk")
+flags_3 = SubResource("Resource_phkgr")
+flavour_aware = true
+item_category = 7
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "& Small iron chest~"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 2
+weight = 300
+filename = "Chest:Small iron chest"

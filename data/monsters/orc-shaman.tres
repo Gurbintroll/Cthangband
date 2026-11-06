@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qwdww"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_r5hax"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_g5fgx"]
+
+[sub_resource type="Resource" id="Resource_jx8cf"]
+script = ExtResource("1_qwdww")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1a5xt"]
+script = ExtResource("1_qwdww")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ivk4v"]
+script = ExtResource("1_qwdww")
+
+[sub_resource type="Resource" id="Resource_0oao7"]
+script = ExtResource("1_qwdww")
+
+[sub_resource type="Resource" id="Resource_23q7c"]
+script = ExtResource("2_r5hax")
+value = 8389636
+
+[sub_resource type="Resource" id="Resource_kk4cu"]
+script = ExtResource("2_r5hax")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_20k05"]
+script = ExtResource("2_r5hax")
+value = 4161
+
+[sub_resource type="Resource" id="Resource_03wcu"]
+script = ExtResource("2_r5hax")
+
+[sub_resource type="Resource" id="Resource_n6wck"]
+script = ExtResource("2_r5hax")
+value = 67112960
+
+[sub_resource type="Resource" id="Resource_o7jbl"]
+script = ExtResource("2_r5hax")
+value = 16
+
+[resource]
+script = ExtResource("3_g5fgx")
+ac = 15
+attack = Array[ExtResource("1_qwdww")]([SubResource("Resource_jx8cf"), SubResource("Resource_1a5xt"), SubResource("Resource_ivk4v"), SubResource("Resource_0oao7")])
+character = "o"
+colour = 3
+description = "An orc dressed in skins who gestures wildly."
+flags_1 = SubResource("Resource_23q7c")
+flags_2 = SubResource("Resource_kk4cu")
+flags_3 = SubResource("Resource_20k05")
+flags_4 = SubResource("Resource_03wcu")
+flags_5 = SubResource("Resource_n6wck")
+flags_6 = SubResource("Resource_o7jbl")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 9
+hit_dice_sides = 8
+level = 9
+max_num = 100
+experience = 30
+name = "Orc shaman"
+notice_range = 20
+rarity = 1
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Orc     "
+split_name_3 = "   shaman   "

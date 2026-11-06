@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cwvyu"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_w7ugm"]
+
+[sub_resource type="Resource" id="Resource_wpixa"]
+script = ExtResource("1_cwvyu")
+
+[sub_resource type="Resource" id="Resource_0e30n"]
+script = ExtResource("1_cwvyu")
+value = 4194304
+
+[sub_resource type="Resource" id="Resource_apf0r"]
+script = ExtResource("1_cwvyu")
+value = 8192
+
+[resource]
+script = ExtResource("2_w7ugm")
+cost = 500
+flags_1 = SubResource("Resource_wpixa")
+flags_2 = SubResource("Resource_0e30n")
+flags_3 = SubResource("Resource_apf0r")
+name = "of Light"
+rating = 6
+slot = 33
+id = 24

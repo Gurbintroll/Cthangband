@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_y1sjp"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_adqh5"]
+
+[sub_resource type="Resource" id="Resource_5d3yi"]
+script = ExtResource("1_y1sjp")
+
+[sub_resource type="Resource" id="Resource_u5frp"]
+script = ExtResource("1_y1sjp")
+
+[sub_resource type="Resource" id="Resource_5t1tv"]
+script = ExtResource("1_y1sjp")
+
+[resource]
+script = ExtResource("2_adqh5")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 1
+easy_know = true
+flags_1 = SubResource("Resource_5d3yi")
+flags_2 = SubResource("Resource_u5frp")
+flags_3 = SubResource("Resource_5t1tv")
+has_flavour = true
+item_category = 70
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "Summon Monster"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 4
+weight = 5
+filename = "Scroll:Summon Monster"

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_cj4g7"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4pynt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_886mn"]
+
+[sub_resource type="Resource" id="Resource_bd18p"]
+script = ExtResource("1_cj4g7")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_2ad0p"]
+script = ExtResource("1_cj4g7")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_7fn82"]
+script = ExtResource("1_cj4g7")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_am0sm"]
+script = ExtResource("1_cj4g7")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_q4fob"]
+script = ExtResource("2_4pynt")
+
+[sub_resource type="Resource" id="Resource_dfcbb"]
+script = ExtResource("2_4pynt")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_mw7oc"]
+script = ExtResource("2_4pynt")
+value = 64
+
+[sub_resource type="Resource" id="Resource_px15h"]
+script = ExtResource("2_4pynt")
+
+[sub_resource type="Resource" id="Resource_fnuuf"]
+script = ExtResource("2_4pynt")
+
+[sub_resource type="Resource" id="Resource_o3g5e"]
+script = ExtResource("2_4pynt")
+
+[resource]
+script = ExtResource("3_886mn")
+ac = 25
+attack = Array[ExtResource("1_cj4g7")]([SubResource("Resource_bd18p"), SubResource("Resource_2ad0p"), SubResource("Resource_7fn82"), SubResource("Resource_am0sm")])
+character = "H"
+colour = 6
+description = "It is a cross between a human and a bull."
+flags_1 = SubResource("Resource_q4fob")
+flags_2 = SubResource("Resource_dfcbb")
+flags_3 = SubResource("Resource_mw7oc")
+flags_4 = SubResource("Resource_px15h")
+flags_5 = SubResource("Resource_fnuuf")
+flags_6 = SubResource("Resource_o3g5e")
+hit_dice = 100
+hit_dice_sides = 10
+level = 40
+max_num = 100
+experience = 2100
+name = "Minotaur"
+notice_range = 13
+rarity = 2
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Minotaur  "

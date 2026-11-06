@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_givaw"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_dwfm1"]
+
+[sub_resource type="Resource" id="Resource_7hvts"]
+script = ExtResource("1_givaw")
+value = 1132397601
+
+[sub_resource type="Resource" id="Resource_5wkik"]
+script = ExtResource("1_givaw")
+value = 1074020352
+
+[sub_resource type="Resource" id="Resource_2ugqn"]
+script = ExtResource("1_givaw")
+value = 15754752
+
+[resource]
+script = ExtResource("2_dwfm1")
+flags_1 = SubResource("Resource_7hvts")
+flags_2 = SubResource("Resource_5wkik")
+flags_3 = SubResource("Resource_2ugqn")
+cost = 205000
+damage_dice = 4
+damage_dice_sides = 6
+item_category = 23
+item_sub_category = 25
+level = 30
+name = "*Firetongue*"
+type_specific_value = 4
+rarity = 180
+to_hit = 19
+to_damage = 21
+weight = 250
+id = 77

@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_5u503"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xl4y3"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vtlmt"]
+
+[sub_resource type="Resource" id="Resource_4godh"]
+script = ExtResource("1_5u503")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_him3c"]
+script = ExtResource("1_5u503")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_rxa45"]
+script = ExtResource("1_5u503")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_nk8fi"]
+script = ExtResource("1_5u503")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_syt8m"]
+script = ExtResource("2_xl4y3")
+value = 167773700
+
+[sub_resource type="Resource" id="Resource_y8vwe"]
+script = ExtResource("2_xl4y3")
+value = 4390914
+
+[sub_resource type="Resource" id="Resource_76kmx"]
+script = ExtResource("2_xl4y3")
+value = 68
+
+[sub_resource type="Resource" id="Resource_egqjw"]
+script = ExtResource("2_xl4y3")
+
+[sub_resource type="Resource" id="Resource_wxwow"]
+script = ExtResource("2_xl4y3")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_qlaxu"]
+script = ExtResource("2_xl4y3")
+value = 524548
+
+[resource]
+script = ExtResource("3_vtlmt")
+ac = 80
+attack = Array[ExtResource("1_5u503")]([SubResource("Resource_4godh"), SubResource("Resource_him3c"), SubResource("Resource_rxa45"), SubResource("Resource_nk8fi")])
+character = "P"
+colour = 31
+description = "It is a humanoid figure thirty feet tall that gives off an aura of power and hate."
+flags_1 = SubResource("Resource_syt8m")
+flags_2 = SubResource("Resource_y8vwe")
+flags_3 = SubResource("Resource_76kmx")
+flags_4 = SubResource("Resource_egqjw")
+flags_5 = SubResource("Resource_wxwow")
+flags_6 = SubResource("Resource_qlaxu")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 10
+hit_dice_sides = 100
+level = 40
+max_num = 100
+experience = 3500
+name = "Lesser titan"
+notice_range = 30
+rarity = 3
+sleep = 15
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Lesser   "
+split_name_3 = "   titan    "

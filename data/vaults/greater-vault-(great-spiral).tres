@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_4y1gn"]
+
+[resource]
+script = ExtResource("1_4y1gn")
+category = 8
+height = 39
+name = "Greater vault (great spiral)"
+rating = 40
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.....................................%%.X+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.%%.X@X.^.^.^.^.^.^.^.^.^.^.^.^.^.^.^^+.%%.X.X^XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.%%.X.X.X,..,..,..,..,..,..,..,..,..,.X.%%.X.X^X.XXXXXXXXXXXXXXXXXXXXXXXXXXX.X.%%.X.X.X.X......&...&...&...&...@..X,X.%%.X.X^X,X@XXXXXXXXXXXXXXXXXXXXXXX.X.X.%%.X.X.X.X.X&.........8.........&X*X.X.%%.X.X^X.X.X.XXXXXXXXXXXXXXXXXXX.X.X,X.%%.X.X.X,X.X.X.^.^.^.^.^.^.^.^.X.X.X.X.%%.X.X^X.X.X.X^XXXXXXXXXXXXXXX*X.X*X.X.%%.X.X.X.X&X.X.X,..,..,..,..,X.X.X.X,X.%%.X.X^X,X.X.X^X.XXXXXXXXXXX.X*X.X.X.X.%%.X.X.X.X.X.X.X.X..&..&..9X.X.X.X*X.X.%%.X.X^X.X&X.X^X,X9XXXXXXX.X,X*X.X.X,X.%%.X.X.X,X.X.X.X.X&X@@..&X.X.X.X.X.X.X.%%.X.X^X.X.X9X^X.X*X+XXX.X&X.X*X.X*X.X.%%.X.X.X.X.X.X.X,X^+8+^X.X.X,X.X.X.X,X.%%.X9X^X,X.X.X^X.XXX+X^X.X*X.X*X.X.X.X.%%.X.X.X.X&X.X.X.,.,,X.X9X.X.X.X.X*X.X.%%.X.X^X.X.X.X^XXXXXXX^X.X*X,X*X9X.X,X.%%.X.X.X,X.X.X.^.^.^.^.X.X.X.X.X.X.X.X.%%.X.X^X.X.X.XXXXXXXXXXX.X^X.X^X.X*X.X.%%.X.X.X.X8X&.....9.....&X.X,X.X.X.X,X.%%.X.X^X,X.XXXXXXXXXXXXXXX^X.X^X.X.X.X.%%.X.X.X.X..&....8......@..X.X.X.X*X.X.%%.X.X^X.XXXXXXXXXXXXXXXXXXX,X^X.X.X,X.%%.X.X.X,..,..,..,..,..,..,..X.X.X.X.X.%%.X.X^XXXXXXXXXXXXXXXXXXXXXXX^X.X*X.X.%%.X.X.*.^.*.*.*.*.*.*.*.*.*.^.X.X.X,X.%%.X.XXXXXXXXXXXXXXXXXXXXXXXXXXX.X.X.X.%%.X&.............9.............&X*X.X.%%.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.X,X.%%.+^^.^.^.^.^.^.^.^.^.^.^.^.^.^.^.X,X.%%.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX+X.%%.....................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 39

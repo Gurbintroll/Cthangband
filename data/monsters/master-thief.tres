@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_pfrv6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_fptl7"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_wyab1"]
+
+[sub_resource type="Resource" id="Resource_atx23"]
+script = ExtResource("1_pfrv6")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_r3ff4"]
+script = ExtResource("1_pfrv6")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_oeeya"]
+script = ExtResource("1_pfrv6")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 5
+method = 1
+
+[sub_resource type="Resource" id="Resource_nnmdn"]
+script = ExtResource("1_pfrv6")
+damage_dice = 4
+damage_dice_sides = 5
+effect = 6
+method = 1
+
+[sub_resource type="Resource" id="Resource_60xs0"]
+script = ExtResource("2_fptl7")
+value = 41943044
+
+[sub_resource type="Resource" id="Resource_2tu8w"]
+script = ExtResource("2_fptl7")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_c0dru"]
+script = ExtResource("2_fptl7")
+value = 64
+
+[sub_resource type="Resource" id="Resource_kxloc"]
+script = ExtResource("2_fptl7")
+
+[sub_resource type="Resource" id="Resource_wekin"]
+script = ExtResource("2_fptl7")
+
+[sub_resource type="Resource" id="Resource_npcvo"]
+script = ExtResource("2_fptl7")
+
+[resource]
+script = ExtResource("3_wyab1")
+ac = 30
+attack = Array[ExtResource("1_pfrv6")]([SubResource("Resource_atx23"), SubResource("Resource_r3ff4"), SubResource("Resource_oeeya"), SubResource("Resource_nnmdn")])
+character = "p"
+colour = 2
+description = "Cool and confident, fast and lithe; protect your possessions quickly!"
+flags_1 = SubResource("Resource_60xs0")
+flags_2 = SubResource("Resource_2tu8w")
+flags_3 = SubResource("Resource_c0dru")
+flags_4 = SubResource("Resource_kxloc")
+flags_5 = SubResource("Resource_wekin")
+flags_6 = SubResource("Resource_npcvo")
+hit_dice = 18
+hit_dice_sides = 10
+level = 34
+max_num = 100
+experience = 350
+name = "Master thief"
+notice_range = 20
+rarity = 2
+sleep = 40
+speed = 130
+split_name_1 = "            "
+split_name_2 = "   Master   "
+split_name_3 = "   thief    "

@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ouhpa"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vikt8"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_86sb5"]
+
+[sub_resource type="Resource" id="Resource_6pbnq"]
+script = ExtResource("1_ouhpa")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_5b3sp"]
+script = ExtResource("1_ouhpa")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_41kum"]
+script = ExtResource("1_ouhpa")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 28
+method = 1
+
+[sub_resource type="Resource" id="Resource_hl4kf"]
+script = ExtResource("1_ouhpa")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 28
+method = 1
+
+[sub_resource type="Resource" id="Resource_rsvhx"]
+script = ExtResource("2_vikt8")
+value = 274728448
+
+[sub_resource type="Resource" id="Resource_pb1gb"]
+script = ExtResource("2_vikt8")
+value = 131073
+
+[sub_resource type="Resource" id="Resource_15oe6"]
+script = ExtResource("2_vikt8")
+value = 2359360
+
+[sub_resource type="Resource" id="Resource_21xqn"]
+script = ExtResource("2_vikt8")
+
+[sub_resource type="Resource" id="Resource_d5gm1"]
+script = ExtResource("2_vikt8")
+value = 17039364
+
+[sub_resource type="Resource" id="Resource_m26r2"]
+script = ExtResource("2_vikt8")
+
+[resource]
+script = ExtResource("3_86sb5")
+ac = 50
+attack = Array[ExtResource("1_ouhpa")]([SubResource("Resource_6pbnq"), SubResource("Resource_5b3sp"), SubResource("Resource_41kum"), SubResource("Resource_hl4kf")])
+character = "H"
+colour = 17
+description = "It is a belligrent minotaur with some destructive magical arsenal, armed with a hammer."
+flags_1 = SubResource("Resource_rsvhx")
+flags_2 = SubResource("Resource_pb1gb")
+flags_3 = SubResource("Resource_15oe6")
+flags_4 = SubResource("Resource_21xqn")
+flags_5 = SubResource("Resource_d5gm1")
+flags_6 = SubResource("Resource_m26r2")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 250
+hit_dice_sides = 10
+level = 50
+max_num = 100
+experience = 4500
+name = "Maulotaur"
+notice_range = 13
+rarity = 2
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Maulotaur  "

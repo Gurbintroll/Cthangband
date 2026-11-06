@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qvp0m"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_yd4pj"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_7a3v8"]
+
+[sub_resource type="Resource" id="Resource_oy8ln"]
+script = ExtResource("1_qvp0m")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_p8a1y"]
+script = ExtResource("1_qvp0m")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_fl7cw"]
+script = ExtResource("1_qvp0m")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_tf3w3"]
+script = ExtResource("1_qvp0m")
+
+[sub_resource type="Resource" id="Resource_qkvw8"]
+script = ExtResource("2_yd4pj")
+value = 18884096
+
+[sub_resource type="Resource" id="Resource_wvag8"]
+script = ExtResource("2_yd4pj")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_eqyu6"]
+script = ExtResource("2_yd4pj")
+value = 3222536264
+
+[sub_resource type="Resource" id="Resource_rabbr"]
+script = ExtResource("2_yd4pj")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_k6uxa"]
+script = ExtResource("2_yd4pj")
+
+[sub_resource type="Resource" id="Resource_kbm6a"]
+script = ExtResource("2_yd4pj")
+
+[resource]
+script = ExtResource("3_7a3v8")
+ac = 100
+attack = Array[ExtResource("1_qvp0m")]([SubResource("Resource_oy8ln"), SubResource("Resource_p8a1y"), SubResource("Resource_fl7cw"), SubResource("Resource_tf3w3")])
+character = "d"
+colour = 1
+description = "Doom drakes are trained firedrakes, always moving in pairs, looking for a battle."
+flags_1 = SubResource("Resource_qkvw8")
+flags_2 = SubResource("Resource_wvag8")
+flags_3 = SubResource("Resource_eqyu6")
+flags_4 = SubResource("Resource_rabbr")
+flags_5 = SubResource("Resource_k6uxa")
+flags_6 = SubResource("Resource_kbm6a")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 40
+hit_dice_sides = 11
+level = 34
+max_num = 100
+experience = 450
+name = "Doom drake"
+notice_range = 25
+rarity = 3
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Doom    "
+split_name_3 = "   drake    "

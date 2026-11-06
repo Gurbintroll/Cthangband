@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_my2jx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_bqc5h"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_5e5rq"]
+
+[sub_resource type="Resource" id="Resource_utcrr"]
+script = ExtResource("1_my2jx")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_d6lcd"]
+script = ExtResource("1_my2jx")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_tr7id"]
+script = ExtResource("1_my2jx")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 10
+method = 1
+
+[sub_resource type="Resource" id="Resource_chwd8"]
+script = ExtResource("1_my2jx")
+
+[sub_resource type="Resource" id="Resource_fumy6"]
+script = ExtResource("2_bqc5h")
+
+[sub_resource type="Resource" id="Resource_tm5gr"]
+script = ExtResource("2_bqc5h")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_7dju8"]
+script = ExtResource("2_bqc5h")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_t0vug"]
+script = ExtResource("2_bqc5h")
+
+[sub_resource type="Resource" id="Resource_y4x2d"]
+script = ExtResource("2_bqc5h")
+
+[sub_resource type="Resource" id="Resource_mqwys"]
+script = ExtResource("2_bqc5h")
+
+[resource]
+script = ExtResource("3_5e5rq")
+ac = 70
+attack = Array[ExtResource("1_my2jx")]([SubResource("Resource_utcrr"), SubResource("Resource_d6lcd"), SubResource("Resource_tr7id"), SubResource("Resource_chwd8")])
+character = "B"
+colour = 25
+description = "A vast legendary bird, its iron talons rake the most impenetrable of surfaces and its screech echoes through the many winding dungeon corridors."
+flags_1 = SubResource("Resource_fumy6")
+flags_2 = SubResource("Resource_tm5gr")
+flags_3 = SubResource("Resource_7dju8")
+flags_4 = SubResource("Resource_t0vug")
+flags_5 = SubResource("Resource_y4x2d")
+flags_6 = SubResource("Resource_mqwys")
+hit_dice = 80
+hit_dice_sides = 13
+level = 40
+max_num = 100
+experience = 1000
+name = "Jubjub bird"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Jubjub   "
+split_name_3 = "    bird    "

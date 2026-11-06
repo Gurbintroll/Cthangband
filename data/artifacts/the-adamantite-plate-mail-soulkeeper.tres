@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://bgakj4rmfi4rt"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_fk6yr"]
+[ext_resource type="Script" uid="uid://c8av6fyror3lk" path="res://scripts/data/artifact.gd" id="2_pm50s"]
+
+[sub_resource type="Resource" id="Resource_w3lto"]
+script = ExtResource("1_fk6yr")
+value = 16
+
+[sub_resource type="Resource" id="Resource_fmbo4"]
+script = ExtResource("1_fk6yr")
+value = 1350664208
+
+[sub_resource type="Resource" id="Resource_vnnbp"]
+script = ExtResource("1_fk6yr")
+value = 32505856
+
+[resource]
+script = ExtResource("2_pm50s")
+flags_1 = SubResource("Resource_w3lto")
+flags_2 = SubResource("Resource_fmbo4")
+flags_3 = SubResource("Resource_vnnbp")
+ac = 40
+cost = 300000
+damage_dice = 2
+damage_dice_sides = 4
+item_category = 37
+item_sub_category = 30
+level = 75
+name = "*Soulkeeper*"
+type_specific_value = 2
+rarity = 9
+to_ac = 20
+to_hit = -4
+weight = 420
+id = 19

@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cvu7qxfbt73bl"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_no0cb"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_2j0ee"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_wfmfj"]
+
+[sub_resource type="Resource" id="Resource_vr54k"]
+script = ExtResource("1_no0cb")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_llmjn"]
+script = ExtResource("1_no0cb")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_yi1r7"]
+script = ExtResource("1_no0cb")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_3jd5j"]
+script = ExtResource("1_no0cb")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_l21ln"]
+script = ExtResource("2_2j0ee")
+value = 263685
+
+[sub_resource type="Resource" id="Resource_u564i"]
+script = ExtResource("2_2j0ee")
+value = 10637376
+
+[sub_resource type="Resource" id="Resource_7fh82"]
+script = ExtResource("2_2j0ee")
+value = 3222536256
+
+[sub_resource type="Resource" id="Resource_a61n4"]
+script = ExtResource("2_2j0ee")
+
+[sub_resource type="Resource" id="Resource_jygng"]
+script = ExtResource("2_2j0ee")
+value = 16777220
+
+[sub_resource type="Resource" id="Resource_7jnr3"]
+script = ExtResource("2_2j0ee")
+
+[resource]
+script = ExtResource("3_wfmfj")
+ac = 50
+attack = Array[ExtResource("1_no0cb")]([SubResource("Resource_vr54k"), SubResource("Resource_llmjn"), SubResource("Resource_yi1r7"), SubResource("Resource_3jd5j")])
+character = "E"
+colour = 12
+description = "A towering fire elemental, Karakal burns everything beyond recognition."
+flags_1 = SubResource("Resource_l21ln")
+flags_2 = SubResource("Resource_u564i")
+flags_3 = SubResource("Resource_7fh82")
+flags_4 = SubResource("Resource_a61n4")
+flags_5 = SubResource("Resource_jygng")
+flags_6 = SubResource("Resource_7jnr3")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 15
+hit_dice_sides = 100
+level = 38
+max_num = 1
+experience = 3000
+name = "Karakal, Spirit of Fire"
+notice_range = 12
+rarity = 3
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Karakal   "

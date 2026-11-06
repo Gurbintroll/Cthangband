@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7pru5"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_bvjhd"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_tbfte"]
+
+[sub_resource type="Resource" id="Resource_l3vex"]
+script = ExtResource("1_7pru5")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3s8th"]
+script = ExtResource("1_7pru5")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_enxfp"]
+script = ExtResource("1_7pru5")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_bavkf"]
+script = ExtResource("1_7pru5")
+
+[sub_resource type="Resource" id="Resource_pcne2"]
+script = ExtResource("2_bvjhd")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_ugty2"]
+script = ExtResource("2_bvjhd")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_syths"]
+script = ExtResource("2_bvjhd")
+value = 4162
+
+[sub_resource type="Resource" id="Resource_4tlsj"]
+script = ExtResource("2_bvjhd")
+
+[sub_resource type="Resource" id="Resource_u3chi"]
+script = ExtResource("2_bvjhd")
+
+[sub_resource type="Resource" id="Resource_rftfw"]
+script = ExtResource("2_bvjhd")
+
+[resource]
+script = ExtResource("3_tbfte")
+ac = 50
+attack = Array[ExtResource("1_7pru5")]([SubResource("Resource_l3vex"), SubResource("Resource_3s8th"), SubResource("Resource_enxfp"), SubResource("Resource_bavkf")])
+character = "T"
+colour = 8
+description = "He is green skinned and ugly."
+flags_1 = SubResource("Resource_pcne2")
+flags_2 = SubResource("Resource_ugty2")
+flags_3 = SubResource("Resource_syths")
+flags_4 = SubResource("Resource_4tlsj")
+flags_5 = SubResource("Resource_u3chi")
+flags_6 = SubResource("Resource_rftfw")
+hit_dice = 20
+hit_dice_sides = 10
+level = 17
+max_num = 100
+experience = 70
+name = "Forest troll"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Forest   "
+split_name_3 = "   troll    "

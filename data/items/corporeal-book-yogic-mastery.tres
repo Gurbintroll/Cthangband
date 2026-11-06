@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_g44wa"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ukxgg"]
+
+[sub_resource type="Resource" id="Resource_bvooe"]
+script = ExtResource("1_g44wa")
+
+[sub_resource type="Resource" id="Resource_ksr5r"]
+script = ExtResource("1_g44wa")
+
+[sub_resource type="Resource" id="Resource_f4joh"]
+script = ExtResource("1_g44wa")
+
+[resource]
+script = ExtResource("2_ukxgg")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 31
+cost = 1000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_bvooe")
+flags_2 = SubResource("Resource_ksr5r")
+flags_3 = SubResource("Resource_f4joh")
+flavour_aware = true
+item_category = 97
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "[Yogic Mastery]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+weight = 30
+filename = "CorporealBook:[Yogic Mastery]"

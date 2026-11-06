@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_f8f48"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_w3bey"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_b0bh1"]
+
+[sub_resource type="Resource" id="Resource_04gna"]
+script = ExtResource("1_f8f48")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mfb2o"]
+script = ExtResource("1_f8f48")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8me18"]
+script = ExtResource("1_f8f48")
+damage_dice = 15
+damage_dice_sides = 1
+effect = 16
+method = 1
+
+[sub_resource type="Resource" id="Resource_77bvv"]
+script = ExtResource("1_f8f48")
+damage_dice = 15
+damage_dice_sides = 1
+effect = 16
+method = 1
+
+[sub_resource type="Resource" id="Resource_22qyn"]
+script = ExtResource("2_w3bey")
+value = 131664
+
+[sub_resource type="Resource" id="Resource_ijna1"]
+script = ExtResource("2_w3bey")
+value = 112
+
+[sub_resource type="Resource" id="Resource_ryimg"]
+script = ExtResource("2_w3bey")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_kui0d"]
+script = ExtResource("2_w3bey")
+
+[sub_resource type="Resource" id="Resource_wn165"]
+script = ExtResource("2_w3bey")
+
+[sub_resource type="Resource" id="Resource_sjaqt"]
+script = ExtResource("2_w3bey")
+
+[resource]
+script = ExtResource("3_b0bh1")
+ac = 75
+attack = Array[ExtResource("1_f8f48")]([SubResource("Resource_04gna"), SubResource("Resource_mfb2o"), SubResource("Resource_8me18"), SubResource("Resource_77bvv")])
+character = "·"
+colour = 30
+description = "This creature traps unsuspecting victims and paralyzes them, to be slowly digested later."
+flags_1 = SubResource("Resource_22qyn")
+flags_2 = SubResource("Resource_ijna1")
+flags_3 = SubResource("Resource_ryimg")
+flags_4 = SubResource("Resource_kui0d")
+flags_5 = SubResource("Resource_wn165")
+flags_6 = SubResource("Resource_sjaqt")
+hit_dice = 60
+hit_dice_sides = 10
+level = 36
+max_num = 100
+experience = 580
+name = "Trapper"
+notice_range = 30
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Trapper   "

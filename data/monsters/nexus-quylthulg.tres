@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_hrojx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_u70c6"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qp0kh"]
+
+[sub_resource type="Resource" id="Resource_rtd8g"]
+script = ExtResource("1_hrojx")
+
+[sub_resource type="Resource" id="Resource_2heyi"]
+script = ExtResource("1_hrojx")
+
+[sub_resource type="Resource" id="Resource_7j1yx"]
+script = ExtResource("1_hrojx")
+
+[sub_resource type="Resource" id="Resource_21ngv"]
+script = ExtResource("1_hrojx")
+
+[sub_resource type="Resource" id="Resource_bom1i"]
+script = ExtResource("2_u70c6")
+value = 197632
+
+[sub_resource type="Resource" id="Resource_7bwm4"]
+script = ExtResource("2_u70c6")
+value = 80
+
+[sub_resource type="Resource" id="Resource_68qqc"]
+script = ExtResource("2_u70c6")
+value = 3525312512
+
+[sub_resource type="Resource" id="Resource_v1xbp"]
+script = ExtResource("2_u70c6")
+
+[sub_resource type="Resource" id="Resource_bqgvi"]
+script = ExtResource("2_u70c6")
+
+[sub_resource type="Resource" id="Resource_1ehyp"]
+script = ExtResource("2_u70c6")
+value = 528
+
+[resource]
+script = ExtResource("3_qp0kh")
+ac = 1
+attack = Array[ExtResource("1_hrojx")]([SubResource("Resource_rtd8g"), SubResource("Resource_2heyi"), SubResource("Resource_7j1yx"), SubResource("Resource_21ngv")])
+character = "Q"
+colour = 25
+description = "It is a very unstable, strange pulsing mound of flesh."
+flags_1 = SubResource("Resource_bom1i")
+flags_2 = SubResource("Resource_7bwm4")
+flags_3 = SubResource("Resource_68qqc")
+flags_4 = SubResource("Resource_v1xbp")
+flags_5 = SubResource("Resource_bqgvi")
+flags_6 = SubResource("Resource_1ehyp")
+freq_innate = 1
+freq_spell = 1
+hit_dice = 10
+hit_dice_sides = 12
+level = 32
+max_num = 100
+experience = 300
+name = "Nexus quylthulg"
+notice_range = 10
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Nexus    "
+split_name_3 = " quylthulg  "

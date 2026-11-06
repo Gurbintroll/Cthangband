@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_a5e3f"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vkemw"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kjpep"]
+
+[sub_resource type="Resource" id="Resource_egney"]
+script = ExtResource("1_a5e3f")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_3ly00"]
+script = ExtResource("1_a5e3f")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_aipfq"]
+script = ExtResource("1_a5e3f")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_xyed8"]
+script = ExtResource("1_a5e3f")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_pcwc3"]
+script = ExtResource("2_vkemw")
+value = 132128
+
+[sub_resource type="Resource" id="Resource_40afp"]
+script = ExtResource("2_vkemw")
+value = 96
+
+[sub_resource type="Resource" id="Resource_qx4hu"]
+script = ExtResource("2_vkemw")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_g8ita"]
+script = ExtResource("2_vkemw")
+
+[sub_resource type="Resource" id="Resource_7138i"]
+script = ExtResource("2_vkemw")
+value = 940515328
+
+[sub_resource type="Resource" id="Resource_dfakm"]
+script = ExtResource("2_vkemw")
+value = 278528
+
+[resource]
+script = ExtResource("3_kjpep")
+ac = 60
+attack = Array[ExtResource("1_a5e3f")]([SubResource("Resource_egney"), SubResource("Resource_3ly00"), SubResource("Resource_aipfq"), SubResource("Resource_xyed8")])
+character = "="
+colour = 21
+description = "A strange creature that disguises itself as discarded objects to lure unsuspecting adventurers within reach of its venomous claws."
+flags_1 = SubResource("Resource_pcwc3")
+flags_2 = SubResource("Resource_40afp")
+flags_3 = SubResource("Resource_qx4hu")
+flags_4 = SubResource("Resource_g8ita")
+flags_5 = SubResource("Resource_7138i")
+flags_6 = SubResource("Resource_dfakm")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 10
+hit_dice_sides = 35
+level = 29
+max_num = 100
+experience = 200
+name = "Ring mimic"
+notice_range = 30
+rarity = 4
+sleep = 100
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Ring    "
+split_name_3 = "   mimic    "

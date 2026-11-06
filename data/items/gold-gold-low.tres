@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_o15yw"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_gfcl0"]
+
+[sub_resource type="Resource" id="Resource_l4sff"]
+script = ExtResource("1_o15yw")
+
+[sub_resource type="Resource" id="Resource_sjesf"]
+script = ExtResource("1_o15yw")
+
+[sub_resource type="Resource" id="Resource_3r34g"]
+script = ExtResource("1_o15yw")
+
+[resource]
+script = ExtResource("2_gfcl0")
+chance = Array[int]([0, 0, 0, 0])
+character = "$"
+colour = 21
+cost = 12
+flags_1 = SubResource("Resource_l4sff")
+flags_2 = SubResource("Resource_sjesf")
+flags_3 = SubResource("Resource_3r34g")
+flavour_aware = true
+item_category = 100
+level = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "gold"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 9
+filename = "Gold:gold"

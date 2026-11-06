@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0g5uc"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_t7flh"]
+
+[sub_resource type="Resource" id="Resource_e2pal"]
+script = ExtResource("1_0g5uc")
+
+[sub_resource type="Resource" id="Resource_14u4n"]
+script = ExtResource("1_0g5uc")
+
+[sub_resource type="Resource" id="Resource_cvmdy"]
+script = ExtResource("1_0g5uc")
+
+[resource]
+script = ExtResource("2_t7flh")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 15
+easy_know = true
+flags_1 = SubResource("Resource_e2pal")
+flags_2 = SubResource("Resource_14u4n")
+flags_3 = SubResource("Resource_cvmdy")
+has_flavour = true
+item_category = 70
+locale = Array[int]([0, 0, 0, 0])
+name = "Object Detection"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 27
+weight = 5
+filename = "Scroll:Object Detection"

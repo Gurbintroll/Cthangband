@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_getec"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_2dfsg"]
+
+[sub_resource type="Resource" id="Resource_mbsbk"]
+script = ExtResource("1_getec")
+
+[sub_resource type="Resource" id="Resource_lrjvx"]
+script = ExtResource("1_getec")
+value = 268468224
+
+[sub_resource type="Resource" id="Resource_myhwy"]
+script = ExtResource("1_getec")
+value = 256
+
+[resource]
+script = ExtResource("2_2dfsg")
+chance = Array[int]([2, 0, 0, 0])
+character = "="
+colour = 10
+cost = 14500
+easy_know = true
+flags_1 = SubResource("Resource_mbsbk")
+flags_2 = SubResource("Resource_lrjvx")
+flags_3 = SubResource("Resource_myhwy")
+has_flavour = true
+item_category = 45
+level = 34
+locale = Array[int]([34, 0, 0, 0])
+name = "Nether Resistance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 40
+weight = 2
+filename = "Ring:Nether Resistance"

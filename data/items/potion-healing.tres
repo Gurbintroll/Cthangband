@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://cqtuxlyl3hlei"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_7tunl"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_y4bsk"]
+
+[sub_resource type="Resource" id="Resource_j8015"]
+script = ExtResource("1_7tunl")
+
+[sub_resource type="Resource" id="Resource_hj1wg"]
+script = ExtResource("1_7tunl")
+
+[sub_resource type="Resource" id="Resource_5j6bq"]
+script = ExtResource("1_7tunl")
+
+[resource]
+script = ExtResource("2_y4bsk")
+chance = Array[int]([1, 1, 1, 0])
+character = "!"
+colour = 3
+cost = 300
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_j8015")
+flags_2 = SubResource("Resource_hj1wg")
+flags_3 = SubResource("Resource_5j6bq")
+has_flavour = true
+item_category = 75
+level = 15
+locale = Array[int]([15, 30, 60, 0])
+name = "Healing"
+type_specific_value = 200
+stompable = Array[bool]([false, false, false, false])
+sub_category = 37
+weight = 4
+filename = "Potion:Healing"

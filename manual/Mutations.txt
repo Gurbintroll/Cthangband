@@ -1,0 +1,408 @@
+﻿[center][font_size=48][color="brown"][b]Mutations[/b][/color][/font_size][/center]
+[hr color="brown"]
+Mutations are caused by the inability of mortal bodies to handle the eldritch energies of raw chaos without warping and changing. Mutations can be gained from a number of sources, ranging from the misuse of chaos magic to the whim of patron gods. Additionally, miri nigri gain mutations whenever they increase in level.
+
+There are three basic types of mutation, those that are always active, those that activate randomly, and those that the possessor can voluntarily activate.
+
+Mutations are not named, so the descriptions here are based on the descriptions that you see when you use the journal.
+
+[font_size=24][color="brown"][b]Persistent Mutations[/b][/color][/font_size]
+Persistent mutations are always active once you have acquired them. They have a passive effect that doesn't need to be (and in fact can't be) switched on and off.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have paper-thin skin (-4 CON). [/color][/bgcolor][/font]
+
+This mutation gives you a -4 constitution penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your joints ache constantly (-3 DEX). [/color][/bgcolor][/font]
+
+This mutation gives you a -3 dexterity penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your face is featureless (-1 CHR). [/color][/bgcolor][/font]
+
+This mutation gives you a -1 charisma penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Electricity is running through your veins. [/color][/bgcolor][/font]
+
+This mutation damages anyone who touches you with an electrical shock for 2d6 damage.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are telepathic. [/color][/bgcolor][/font]
+
+This mutation gives you ESP.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are completely fearless. [/color][/bgcolor][/font]
+
+This mutation makes you immune to fear.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your body is enveloped in flames. [/color][/bgcolor][/font]
+
+This mutation damages anyone who touches you by burning them for 2d6 damage.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your flesh is rotting (-2 CON, -1 CHR). [/color][/bgcolor][/font]
+
+This mutation gives you a -2 constitution penalty and a -1 charisma penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your brain is a living computer (+4 INT/WIS). [/color][/bgcolor][/font]
+
+This mutation gives you +4 intelligence and +4 wisdom bonuses.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are superhumanly strong (+4 STR). [/color][/bgcolor][/font]
+
+This mutation gives you a +4 strength bonus.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your appearance is masked with illusion. [/color][/bgcolor][/font]
+
+This mutation completely negates the charisma modifiers that other chaos features give you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have remarkable infravision (+3). [/color][/bgcolor][/font]
+
+This mutation gives you 30’ infravision, or increases your existing infravision by 30’.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your skin is made of steel (-1 DEX, +25 AC). [/color][/bgcolor][/font]
+
+This mutation gives you a +25 bonus to armour class but a -1 penalty to dexterity.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your body is very limber (+3 DEX). [/color][/bgcolor][/font]
+
+This mutation gives you a +3 dexterity bonus.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are resistant to magic. [/color][/bgcolor][/font]
+
+This mutation makes you more likely to resist spells that are cast on you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have a withered brain (-4 INT/WIS). [/color][/bgcolor][/font]
+
+This mutation gives you -4 intelligence and -4 wisdom penalties.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your movements are precise and forceful (+1 STL). [/color][/bgcolor][/font]
+
+This mutation prevents you form being paralysed and gives you a +1 bonus to stealth.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are puny (-4 STR). [/color][/bgcolor][/font]
+
+This mutation gives you a -4 strength penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are regenerating. [/color][/bgcolor][/font]
+
+This mutation makes you regain hit points at a faster rate.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are very resilient (+4 CON). [/color][/bgcolor][/font]
+
+This mutation gives you a +4 constitution bonus.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are protected from the ravages of time. [/color][/bgcolor][/font]
+
+This mutation gives you a resistance to time based attacks.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your skin has turned into scales (-1 CHR, +10 AC). [/color][/bgcolor][/font]
+
+This mutation gives you a +10 bonus to armour class but a -1 penalty to charisma.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your legs are short stubs (-3 speed). [/color][/bgcolor][/font]
+
+This mutation gives you a -3 penalty to speed.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your voice is a silly squeak (-4 CHR). [/color][/bgcolor][/font]
+
+This mutation gives you a -4 charisma penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your body resists serious damage. [/color][/bgcolor][/font]
+
+This mutation stops any of your ability scores from being drained.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are susceptible to damage from the elements. [/color][/bgcolor][/font]
+
+This mutation makes you take extra damage from elemental attacks.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your skin is covered with warts (-2 CHR, +5 AC). [/color][/bgcolor][/font]
+
+This mutation gives you a +5 bonus to armour class but a -2 penalty to charisma.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have wings. [/color][/bgcolor][/font]
+
+This mutation protects you from trap doors and pits.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have an extra pair of eyes (+15 search). [/color][/bgcolor][/font]
+
+This mutation gives you a +15 searching bonus.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have a layer of blubber (+2 CON, -2 speed). [/color][/bgcolor][/font]
+
+This mutation gives you a +2 constitution bonus, but a -2 speed penalty.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have an extra pair of legs (+3 speed). [/color][/bgcolor][/font]
+
+This mutation gives you a +3 bonus to speed.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You make a lot of strange noise (-3 stealth). [/color][/bgcolor][/font]
+
+This mutation gives you a -3 penalty to stealth.
+
+[font_size=24][color="brown"][b]Erratic Mutations[/b][/color][/font_size]
+
+Erratic mutations are those that do not affect you all the time, but which you have no control over the activation of.
+
+An erratic mutation will periodically activate after a random duration. Some have an instant effect when they randomly
+
+activate; whereas others remain active for a duration before switching themselves off once more.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your body produces alcohol. [/color][/bgcolor][/font]
+
+This mutation causes you to have occasional fits of confusion and forgetfulness.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You attract animals. [/color][/bgcolor][/font]
+
+This mutation causes animals to seek you out.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You attract demons. [/color][/bgcolor][/font]
+
+This mutation causes demons to occasionally appear near you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You attract dragons. [/color][/bgcolor][/font]
+
+This mutation causes dragons to occasionally seek you out.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You sometimes cause nearby creatures to vanish. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally teleport nearby creatures away from yourself.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have a beak (dam. 2d4). [/color][/bgcolor][/font]
+
+This mutation gives you an extra attack in melee that does 2d4 damage.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are subject to berserker fits. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally go berserk.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Chaos deities give you gifts. [/color][/bgcolor][/font]
+
+Each time you gain a level, you will be given something by your patron.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are subject to cowardice. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally become afraid.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You occasionally stumble and drop things. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally fall over, possibly dropping your weapon.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You sometimes feed off of the light around you. [/color][/bgcolor][/font]
+
+This mutation causes you to draw in the energy from your light source to heal yourself.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are subject to uncontrollable flatulence. [/color][/bgcolor][/font]
+
+This mutation causes you to be occasionally surrounded by a cloud of poison.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have a hallucinatory insanity. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally hallucinate.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have horns (dam. 2d6). [/color][/bgcolor][/font]
+
+This mutation gives you an extra attack in melee.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your blood sometimes rushes to your head. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally lose some hit points and gain spell points.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You occasionally feel invincible. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally become immune to damage for a short while.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have a seriously upset stomach. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally vomit up your food.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You may be chaotic, but you're recovering. [/color][/bgcolor][/font]
+
+This mutation causes you to slowly become less corrupted, occasionally losing a random mutation.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your health is subject to chaotic forces. [/color][/bgcolor][/font]
+
+This mutation causes your wounds to occasionally get better or worse.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are producing magical energy uncontrollably. [/color][/bgcolor][/font]
+
+This mutation causes you to be occasionally surrounded by a storm of raw magic.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You occasionally are surrounded with raw chaos. [/color][/bgcolor][/font]
+
+This mutation causes you to be occasionally surrounded by a storm of raw chaos.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are teleporting randomly. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally teleport to a random place on the level.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have a scorpion tail (poison, 3d7). [/color][/bgcolor][/font]
+
+This mutation gives you an extra attack in melee that does 3d7 poison damage.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You move faster or slower randomly. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally speed up or slow down.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your blood sometimes rushes to your muscles. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally lose some spell points and gain hit points.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have evil looking tentacles (dam 2d5). [/color][/bgcolor][/font]
+
+This mutation gives you an extra attack in melee for 2d5 damage.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have an elephantine trunk (dam 1d4). [/color][/bgcolor][/font]
+
+This mutation gives you an extra attack in melee that does 1d4 damage.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You occasionally stumble into other shadows. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally notice that the world has changed around you.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You receive warnings about your foes. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally be given feelings about how dangerous the monsters on your level are.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You have a horrible wasting disease. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally have one of your abilities damaged.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your mind randomly expands and contracts. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally have ESP.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You fade in and out of physical reality. [/color][/bgcolor][/font]
+
+This mutation causes you to occasionally take on a ghostly form that can walk through walls.
+
+[font_size=24][color="brown"][b]Controlled Mutations[/b][/color][/font_size]
+
+Controlled mutations are those that heve no effect until you choose to activate them (using the 'p' command).
+
+When you choose to activate a controlled mutation it will cost you power and the effect will happen. If you have no power, activating a controlled mutation will cost you hit points instead.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can send evil creatures directly to Hell. [/color][/bgcolor][/font]
+
+You can teleport evil monsters away, although you get no experience for them if you do this.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can drive yourself into a berserk frenzy. [/color][/bgcolor][/font]
+
+You can enter a temporary frenzy.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can teleport yourself short distances. [/color][/bgcolor][/font]
+
+You can teleport to a random place within 100’ of your current location.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can breathe fire (dam lvl * 2). [/color][/bgcolor][/font]
+
+You can fire a ball of fire.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can freeze things with a touch. [/color][/bgcolor][/font]
+
+You make an attack that does cold damage, although it has no range.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can emit confusing, blinding radiation. [/color][/bgcolor][/font]
+
+You can stun, confuse and scare nearby creatures.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can feel the danger of evil magic. [/color][/bgcolor][/font]
+
+You can discover which items you are carrying are cursed.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can bring down the dungeon around your ears. [/color][/bgcolor][/font]
+
+You can cause small earthquakes.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can consume magic energy for your own use. [/color][/bgcolor][/font]
+
+You can drain the magic energy from items that you carry and convert it into spell points.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can consume solid rock. [/color][/bgcolor][/font]
+
+You can eat a square of wall, removing it and filling you up.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can cause mold to grow near you. [/color][/bgcolor][/font]
+
+You can make molds spring up around you that serve as pets.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your gaze is hypnotic. [/color][/bgcolor][/font]
+
+You can make a monster your friend.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can emit bright light. [/color][/bgcolor][/font]
+
+You can create a permanent light in your surrounding area.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] Your eyes can fire beams of light. [/color][/bgcolor][/font]
+
+You can fire beams that do light damage.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can hurl objects with great force. [/color][/bgcolor][/font]
+
+You can throw objects, and they do more damage than they would normally.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can turn ordinary items to gold. [/color][/bgcolor][/font]
+
+You can transmute items into gold, getting about a third of the money that selling them would get.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can Mind Blast your enemies. [/color][/bgcolor][/font]
+
+You can fire a bolt of psychic energy.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can run for your life after hitting something. [/color][/bgcolor][/font]
+
+You can make an attack against a creature, and immediately teleport to a random location on the level.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can polymorph yourself at will. [/color][/bgcolor][/font]
+
+You can alter your own form, either to another ancestry or in a corrupting manner.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can emit hard radiation at will (dam lvl * 2). [/color][/bgcolor][/font]
+
+You can fire a ball of radiation.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can travel between town and the depths. [/color][/bgcolor][/font]
+
+You can teleport to the town, or - if you are already in the town - to the deepest level of the dungeon that you have been on.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can harden yourself to the ravages of the elements. [/color][/bgcolor][/font]
+
+You can give yourself temporary resistance to poison, and possibly also to electricity, cold, fire and acid.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can emit a horrible shriek. [/color][/bgcolor][/font]
+
+Your scream inflicts sound damage to all those around you, while aggravating those further away.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can smell nearby precious metal. [/color][/bgcolor][/font]
+
+You can detect gold and seams of treasure.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can smell nearby monsters. [/color][/bgcolor][/font]
+
+You can detect nearby monsters.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can spit acid (dam lvl). [/color][/bgcolor][/font]
+
+You can fire a ball of acid.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can cause mass impotence. [/color][/bgcolor][/font]
+
+You can stop reproducing creatures from breeding.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can switch locations with another being. [/color][/bgcolor][/font]
+
+You can teleport to the location of another creature, whilst they simultaneously teleport to your location.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You are telekinetic. [/color][/bgcolor][/font]
+
+You can pick up objects from a distance.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can drain life from a foe like a vampire. [/color][/bgcolor][/font]
+
+You can drain hit points from a foe and add them to yourself.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can teleport at will. [/color][/bgcolor][/font]
+
+You can teleport to a random place on the level when you choose.
+
+[font="res://fonts/AtkinsonHyperlegibleMono-Bold.otf"][bgcolor="black"][color="white"] You can feel the strength of the magics affecting you. [/color][/bgcolor][/font]
+
+You can get a rough idea of how long durated magic effects on you will last.

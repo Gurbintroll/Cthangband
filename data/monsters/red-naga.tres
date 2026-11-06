@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_c14mc"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xucpg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_xmlpo"]
+
+[sub_resource type="Resource" id="Resource_aogef"]
+script = ExtResource("1_c14mc")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_um4yk"]
+script = ExtResource("1_c14mc")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_fgfdl"]
+script = ExtResource("1_c14mc")
+
+[sub_resource type="Resource" id="Resource_2lmnk"]
+script = ExtResource("1_c14mc")
+
+[sub_resource type="Resource" id="Resource_lkwbb"]
+script = ExtResource("2_xucpg")
+value = 4456456
+
+[sub_resource type="Resource" id="Resource_2aqxe"]
+script = ExtResource("2_xucpg")
+value = 4325376
+
+[sub_resource type="Resource" id="Resource_mn8ij"]
+script = ExtResource("2_xucpg")
+value = 64
+
+[sub_resource type="Resource" id="Resource_vkt5q"]
+script = ExtResource("2_xucpg")
+
+[sub_resource type="Resource" id="Resource_12hlr"]
+script = ExtResource("2_xucpg")
+
+[sub_resource type="Resource" id="Resource_7jp72"]
+script = ExtResource("2_xucpg")
+
+[resource]
+script = ExtResource("3_xmlpo")
+ac = 40
+attack = Array[ExtResource("1_c14mc")]([SubResource("Resource_aogef"), SubResource("Resource_um4yk"), SubResource("Resource_fgfdl"), SubResource("Resource_2lmnk")])
+character = "n"
+colour = 13
+description = "A large red snake with a woman's torso."
+flags_1 = SubResource("Resource_lkwbb")
+flags_2 = SubResource("Resource_2aqxe")
+flags_3 = SubResource("Resource_mn8ij")
+flags_4 = SubResource("Resource_vkt5q")
+flags_5 = SubResource("Resource_12hlr")
+flags_6 = SubResource("Resource_7jp72")
+hit_dice = 11
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 40
+name = "Red naga"
+notice_range = 20
+rarity = 2
+sleep = 120
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Red     "
+split_name_3 = "    naga    "

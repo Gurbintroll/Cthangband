@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dw3b0"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_1247i"]
+
+[sub_resource type="Resource" id="Resource_h2d5n"]
+script = ExtResource("1_dw3b0")
+
+[sub_resource type="Resource" id="Resource_x0et3"]
+script = ExtResource("1_dw3b0")
+
+[sub_resource type="Resource" id="Resource_tkm8s"]
+script = ExtResource("1_dw3b0")
+value = 15729664
+
+[resource]
+script = ExtResource("2_1247i")
+flags_1 = SubResource("Resource_h2d5n")
+flags_2 = SubResource("Resource_x0et3")
+flags_3 = SubResource("Resource_tkm8s")
+cost = 50000
+damage_dice = 9
+damage_dice_sides = 6
+item_category = 22
+item_sub_category = 13
+level = 30
+name = "of *Pain*"
+rarity = 25
+to_damage = 30
+weight = 190
+id = 94

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_8lqe6"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_2xf04"]
+
+[sub_resource type="Resource" id="Resource_jj3b4"]
+script = ExtResource("1_8lqe6")
+
+[sub_resource type="Resource" id="Resource_0wkhf"]
+script = ExtResource("1_8lqe6")
+
+[sub_resource type="Resource" id="Resource_t6lgh"]
+script = ExtResource("1_8lqe6")
+
+[resource]
+script = ExtResource("2_2xf04")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 50
+easy_know = true
+flags_1 = SubResource("Resource_jj3b4")
+flags_2 = SubResource("Resource_0wkhf")
+flags_3 = SubResource("Resource_t6lgh")
+has_flavour = true
+item_category = 70
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Teleport Level"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 10
+weight = 5
+filename = "Scroll:Teleport Level"

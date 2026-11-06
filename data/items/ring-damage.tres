@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_05fod"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_qb831"]
+
+[sub_resource type="Resource" id="Resource_2b1s8"]
+script = ExtResource("1_05fod")
+
+[sub_resource type="Resource" id="Resource_g4qyj"]
+script = ExtResource("1_05fod")
+
+[sub_resource type="Resource" id="Resource_l3gcv"]
+script = ExtResource("1_05fod")
+
+[resource]
+script = ExtResource("2_qb831")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 5
+cost = 500
+flags_1 = SubResource("Resource_2b1s8")
+flags_2 = SubResource("Resource_g4qyj")
+flags_3 = SubResource("Resource_l3gcv")
+has_flavour = true
+item_category = 45
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Damage"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 29
+weight = 2
+filename = "Ring:Damage"

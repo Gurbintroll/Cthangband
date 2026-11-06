@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ulpop"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kcbpf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_smkyv"]
+
+[sub_resource type="Resource" id="Resource_d4q8y"]
+script = ExtResource("1_ulpop")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_qoyia"]
+script = ExtResource("1_ulpop")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4ag12"]
+script = ExtResource("1_ulpop")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_bqorq"]
+script = ExtResource("1_ulpop")
+
+[sub_resource type="Resource" id="Resource_yt7up"]
+script = ExtResource("2_kcbpf")
+value = 134219264
+
+[sub_resource type="Resource" id="Resource_0lyrj"]
+script = ExtResource("2_kcbpf")
+value = 459312
+
+[sub_resource type="Resource" id="Resource_udq0r"]
+script = ExtResource("2_kcbpf")
+value = 3224899680
+
+[sub_resource type="Resource" id="Resource_rmgi4"]
+script = ExtResource("2_kcbpf")
+
+[sub_resource type="Resource" id="Resource_dcnd6"]
+script = ExtResource("2_kcbpf")
+value = 2820686848
+
+[sub_resource type="Resource" id="Resource_d5vnh"]
+script = ExtResource("2_kcbpf")
+value = 20736
+
+[resource]
+script = ExtResource("3_smkyv")
+ac = 60
+attack = Array[ExtResource("1_ulpop")]([SubResource("Resource_d4q8y"), SubResource("Resource_qoyia"), SubResource("Resource_4ag12"), SubResource("Resource_bqorq")])
+character = "V"
+colour = 22
+description = "The oriental vampire is a mist-like creature."
+flags_1 = SubResource("Resource_yt7up")
+flags_2 = SubResource("Resource_0lyrj")
+flags_3 = SubResource("Resource_udq0r")
+flags_4 = SubResource("Resource_rmgi4")
+flags_5 = SubResource("Resource_dcnd6")
+flags_6 = SubResource("Resource_d5vnh")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 28
+hit_dice_sides = 12
+level = 34
+max_num = 100
+experience = 750
+name = "Oriental vampire"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Oriental  "
+split_name_3 = "  vampire   "

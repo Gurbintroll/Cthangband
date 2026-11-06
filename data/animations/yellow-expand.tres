@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_h3qb4"]
+
+[resource]
+script = ExtResource("1_h3qb4")
+name = "YellowExpand"
+colour = 31
+alternate_colour = 31
+sequence = "·oO"

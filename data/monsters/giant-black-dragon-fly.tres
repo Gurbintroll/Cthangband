@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_m6rst"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7qd2k"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4sdle"]
+
+[sub_resource type="Resource" id="Resource_j8u0p"]
+script = ExtResource("1_m6rst")
+
+[sub_resource type="Resource" id="Resource_niaxp"]
+script = ExtResource("1_m6rst")
+
+[sub_resource type="Resource" id="Resource_5e713"]
+script = ExtResource("1_m6rst")
+
+[sub_resource type="Resource" id="Resource_2swaf"]
+script = ExtResource("1_m6rst")
+
+[sub_resource type="Resource" id="Resource_qpj27"]
+script = ExtResource("2_7qd2k")
+value = 852992
+
+[sub_resource type="Resource" id="Resource_he05d"]
+script = ExtResource("2_7qd2k")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_kayik"]
+script = ExtResource("2_7qd2k")
+value = 65664
+
+[sub_resource type="Resource" id="Resource_rbp14"]
+script = ExtResource("2_7qd2k")
+value = 256
+
+[sub_resource type="Resource" id="Resource_v0fva"]
+script = ExtResource("2_7qd2k")
+
+[sub_resource type="Resource" id="Resource_edone"]
+script = ExtResource("2_7qd2k")
+
+[resource]
+script = ExtResource("3_4sdle")
+ac = 20
+attack = Array[ExtResource("1_m6rst")]([SubResource("Resource_j8u0p"), SubResource("Resource_niaxp"), SubResource("Resource_5e713"), SubResource("Resource_2swaf")])
+character = "F"
+colour = 2
+description = "The size of a large bird, this fly drips caustic acid."
+flags_1 = SubResource("Resource_qpj27")
+flags_2 = SubResource("Resource_he05d")
+flags_3 = SubResource("Resource_kayik")
+flags_4 = SubResource("Resource_rbp14")
+flags_5 = SubResource("Resource_v0fva")
+flags_6 = SubResource("Resource_edone")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 3
+hit_dice_sides = 8
+level = 18
+max_num = 100
+experience = 68
+name = "Giant black dragon fly"
+notice_range = 12
+rarity = 2
+sleep = 50
+speed = 120
+split_name_1 = "Giant black "
+split_name_2 = "   dragon   "
+split_name_3 = "    fly     "

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_j0r3a"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_yabtg"]
+
+[sub_resource type="Resource" id="Resource_vmvyg"]
+script = ExtResource("1_j0r3a")
+
+[sub_resource type="Resource" id="Resource_6iksy"]
+script = ExtResource("1_j0r3a")
+
+[sub_resource type="Resource" id="Resource_25l6n"]
+script = ExtResource("1_j0r3a")
+value = 15728640
+
+[resource]
+script = ExtResource("2_yabtg")
+chance = Array[int]([4, 0, 0, 0])
+character = "-"
+colour = 23
+cost = 2400
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_vmvyg")
+flags_2 = SubResource("Resource_6iksy")
+flags_3 = SubResource("Resource_25l6n")
+has_flavour = true
+item_category = 65
+level = 60
+locale = Array[int]([60, 0, 0, 0])
+name = "Dragon's Breath"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 28
+weight = 10
+filename = "Wand:Dragon's Breath"

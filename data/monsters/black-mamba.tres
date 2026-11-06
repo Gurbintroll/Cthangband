@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fbe17"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_q20uv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ddnd0"]
+
+[sub_resource type="Resource" id="Resource_s3j6q"]
+script = ExtResource("1_fbe17")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_8p1ii"]
+script = ExtResource("1_fbe17")
+
+[sub_resource type="Resource" id="Resource_ol4vb"]
+script = ExtResource("1_fbe17")
+
+[sub_resource type="Resource" id="Resource_dd4fw"]
+script = ExtResource("1_fbe17")
+
+[sub_resource type="Resource" id="Resource_veu8e"]
+script = ExtResource("2_q20uv")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_afia0"]
+script = ExtResource("2_q20uv")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_rj5jq"]
+script = ExtResource("2_q20uv")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_1t6qy"]
+script = ExtResource("2_q20uv")
+
+[sub_resource type="Resource" id="Resource_xsckc"]
+script = ExtResource("2_q20uv")
+
+[sub_resource type="Resource" id="Resource_e7snm"]
+script = ExtResource("2_q20uv")
+
+[resource]
+script = ExtResource("3_ddnd0")
+ac = 32
+attack = Array[ExtResource("1_fbe17")]([SubResource("Resource_s3j6q"), SubResource("Resource_8p1ii"), SubResource("Resource_ol4vb"), SubResource("Resource_dd4fw")])
+character = "J"
+colour = 2
+description = "It has glistening black skin, a sleek body and highly venomous fangs."
+flags_1 = SubResource("Resource_veu8e")
+flags_2 = SubResource("Resource_afia0")
+flags_3 = SubResource("Resource_rj5jq")
+flags_4 = SubResource("Resource_1t6qy")
+flags_5 = SubResource("Resource_xsckc")
+flags_6 = SubResource("Resource_e7snm")
+hit_dice = 10
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 40
+name = "Black mamba"
+notice_range = 10
+rarity = 3
+sleep = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "   mamba    "

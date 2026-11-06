@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mxrao"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_n6gey"]
+
+[sub_resource type="Resource" id="Resource_nirrm"]
+script = ExtResource("1_mxrao")
+
+[sub_resource type="Resource" id="Resource_27otp"]
+script = ExtResource("1_mxrao")
+
+[sub_resource type="Resource" id="Resource_c4pg5"]
+script = ExtResource("1_mxrao")
+
+[resource]
+script = ExtResource("2_n6gey")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 1
+cost = 40
+easy_know = true
+flags_1 = SubResource("Resource_nirrm")
+flags_2 = SubResource("Resource_27otp")
+flags_3 = SubResource("Resource_c4pg5")
+has_flavour = true
+item_category = 70
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Teleportation"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 9
+weight = 5
+filename = "Scroll:Teleportation"

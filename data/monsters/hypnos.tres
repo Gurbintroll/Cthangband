@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://c5ydv761jgh44"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_wm633"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_4uii0"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_pf8x3"]
+
+[sub_resource type="Resource" id="Resource_xq3bk"]
+script = ExtResource("1_wm633")
+damage_dice = 13
+damage_dice_sides = 13
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_cuuh7"]
+script = ExtResource("1_wm633")
+damage_dice = 13
+damage_dice_sides = 13
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6wqin"]
+script = ExtResource("1_wm633")
+damage_dice = 13
+damage_dice_sides = 13
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6ce3a"]
+script = ExtResource("1_wm633")
+damage_dice = 13
+damage_dice_sides = 13
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_72p86"]
+script = ExtResource("2_4uii0")
+value = 434112005
+
+[sub_resource type="Resource" id="Resource_dpkln"]
+script = ExtResource("2_4uii0")
+value = 197122
+
+[sub_resource type="Resource" id="Resource_dg237"]
+script = ExtResource("2_4uii0")
+value = 3225354560
+
+[sub_resource type="Resource" id="Resource_cqhxo"]
+script = ExtResource("2_4uii0")
+
+[sub_resource type="Resource" id="Resource_dmnw2"]
+script = ExtResource("2_4uii0")
+value = 2818605568
+
+[sub_resource type="Resource" id="Resource_0ri36"]
+script = ExtResource("2_4uii0")
+value = 587753252
+
+[resource]
+script = ExtResource("3_pf8x3")
+ac = 100
+attack = Array[ExtResource("1_wm633")]([SubResource("Resource_xq3bk"), SubResource("Resource_cuuh7"), SubResource("Resource_6wqin"), SubResource("Resource_6ce3a")])
+character = "p"
+colour = 12
+description = "Beautiful and youthful, this Outer God appears almost human. But appearances can be deceptive."
+flags_1 = SubResource("Resource_72p86")
+flags_2 = SubResource("Resource_dpkln")
+flags_3 = SubResource("Resource_dg237")
+flags_4 = SubResource("Resource_cqhxo")
+flags_5 = SubResource("Resource_dmnw2")
+flags_6 = SubResource("Resource_0ri36")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 69
+hit_dice_sides = 100
+level = 79
+max_num = 1
+experience = 38500
+name = "Hypnos"
+notice_range = 100
+rarity = 1
+sleep = 15
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Hypnos   "

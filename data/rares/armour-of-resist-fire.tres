@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xelco"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_vxf1j"]
+
+[sub_resource type="Resource" id="Resource_0d6kt"]
+script = ExtResource("1_xelco")
+
+[sub_resource type="Resource" id="Resource_jjrca"]
+script = ExtResource("1_xelco")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_na7cj"]
+script = ExtResource("1_xelco")
+value = 4194304
+
+[resource]
+script = ExtResource("2_vxf1j")
+cost = 800
+flags_1 = SubResource("Resource_0d6kt")
+flags_2 = SubResource("Resource_jjrca")
+flags_3 = SubResource("Resource_na7cj")
+name = "of Resist Fire"
+rating = 14
+slot = 30
+id = 6

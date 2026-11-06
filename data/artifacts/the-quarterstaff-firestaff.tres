@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_rsvbu"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_7b8jo"]
+
+[sub_resource type="Resource" id="Resource_73d47"]
+script = ExtResource("1_rsvbu")
+value = 1073807362
+
+[sub_resource type="Resource" id="Resource_qm4ro"]
+script = ExtResource("1_rsvbu")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_jtr68"]
+script = ExtResource("1_rsvbu")
+value = 15738368
+
+[resource]
+script = ExtResource("2_7b8jo")
+flags_1 = SubResource("Resource_73d47")
+flags_2 = SubResource("Resource_qm4ro")
+flags_3 = SubResource("Resource_jtr68")
+cost = 70000
+damage_dice = 1
+damage_dice_sides = 9
+item_category = 21
+item_sub_category = 3
+level = 20
+name = "*Firestaff*"
+type_specific_value = 3
+rarity = 18
+to_hit = 10
+to_damage = 20
+weight = 150
+id = 118

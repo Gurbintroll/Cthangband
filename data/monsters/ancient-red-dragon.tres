@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2w3xu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_d2h4v"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_v3k8f"]
+
+[sub_resource type="Resource" id="Resource_x5gku"]
+script = ExtResource("1_2w3xu")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_too5j"]
+script = ExtResource("1_2w3xu")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_mmbkq"]
+script = ExtResource("1_2w3xu")
+damage_dice = 5
+damage_dice_sides = 14
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_n4uvr"]
+script = ExtResource("1_2w3xu")
+
+[sub_resource type="Resource" id="Resource_8li38"]
+script = ExtResource("2_d2h4v")
+value = 201328128
+
+[sub_resource type="Resource" id="Resource_ljm6a"]
+script = ExtResource("2_d2h4v")
+value = 1183746
+
+[sub_resource type="Resource" id="Resource_p5n6h"]
+script = ExtResource("2_d2h4v")
+value = 3221487688
+
+[sub_resource type="Resource" id="Resource_5i36j"]
+script = ExtResource("2_d2h4v")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_jhsse"]
+script = ExtResource("2_d2h4v")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_mnk0u"]
+script = ExtResource("2_d2h4v")
+
+[resource]
+script = ExtResource("3_v3k8f")
+ac = 100
+attack = Array[ExtResource("1_2w3xu")]([SubResource("Resource_x5gku"), SubResource("Resource_too5j"), SubResource("Resource_mmbkq"), SubResource("Resource_n4uvr")])
+character = "D"
+colour = 27
+description = "A huge draconic form. Wisps of smoke steam from its nostrils and the extreme heat surrounding it makes you gasp for breath."
+flags_1 = SubResource("Resource_8li38")
+flags_2 = SubResource("Resource_ljm6a")
+flags_3 = SubResource("Resource_p5n6h")
+flags_4 = SubResource("Resource_5i36j")
+flags_5 = SubResource("Resource_jhsse")
+flags_6 = SubResource("Resource_mnk0u")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 10
+hit_dice_sides = 100
+level = 40
+max_num = 100
+experience = 2750
+name = "Ancient red dragon"
+notice_range = 20
+rarity = 1
+sleep = 70
+speed = 120
+split_name_1 = "  Ancient   "
+split_name_2 = "    red     "
+split_name_3 = "   dragon   "

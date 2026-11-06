@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_e16dj"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_iryqw"]
+
+[sub_resource type="Resource" id="Resource_i08wo"]
+script = ExtResource("1_e16dj")
+
+[sub_resource type="Resource" id="Resource_4k1f8"]
+script = ExtResource("1_e16dj")
+
+[sub_resource type="Resource" id="Resource_1kdpp"]
+script = ExtResource("1_e16dj")
+
+[resource]
+script = ExtResource("2_iryqw")
+chance = Array[int]([16, 0, 0, 0])
+character = "?"
+colour = 1
+cost = 200000
+easy_know = true
+flags_1 = SubResource("Resource_i08wo")
+flags_2 = SubResource("Resource_4k1f8")
+flags_3 = SubResource("Resource_1kdpp")
+has_flavour = true
+item_category = 70
+level = 70
+locale = Array[int]([70, 0, 0, 0])
+name = "Artifact Creation"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 52
+weight = 5
+filename = "Scroll:Artifact Creation"

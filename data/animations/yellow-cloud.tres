@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_bpfuj"]
+
+[resource]
+script = ExtResource("1_bpfuj")
+name = "YellowCloud"
+colour = 31
+alternate_colour = 31
+sequence = "+*+*+*+"

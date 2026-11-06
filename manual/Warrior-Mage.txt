@@ -1,0 +1,97 @@
+[center][font_size=48][color="brown"][b]Warrior-Mage[/b][/color][/font_size][/center]
+[hr color="brown"]
+[center][table=2][cell][b]Hit Dice[/b][/cell][cell][b]Experience Factor[/b][/cell]
+[cell]+4[/cell][cell]+50%[/cell][/table][/center]
+
+[center][table=6][cell][b]Strength[/b][/cell][cell][b]Intelligence[/b][/cell][cell][b]Wisdom[/b][/cell][cell][b]Dexterity[/b][/cell][cell][b]Constitution[/b][/cell][cell][b]Charisma[/b][/cell]
+[cell]+2[/cell][cell]+2[/cell][cell]+0[/cell][cell]+1[/cell][cell]+0[/cell][cell]+1[/cell][/table][/center]
+
+[center][table=8][cell][b][/b][/cell][cell][b]Devices[/b][/cell][cell][b]Disarming[/b][/cell][cell][b]Melee[/b][/cell][cell][b]Ranged[/b][/cell][cell][b]Saves[/b][/cell][cell][b]Searching[/b][/cell][cell][b]Stealth[/b][/cell]
+[cell]Base Bonus[/cell][cell]30%[/cell][cell]30%[/cell][cell]50%[/cell][cell]26%[/cell][cell]28%[/cell][cell]18%[/cell][cell]2%[/cell]
+[cell]Bonus per Level[/cell][cell]+1.0%[/cell][cell]+0.7%[/cell][cell]+2.0%[/cell][cell]+2.0%[/cell][cell]+0.9%[/cell][cell]+0.0%[/cell][cell]+0.0%[/cell][/table][/center]
+
+Warrior-Mages are the ultimate generalists. They are good fighters (although not as good as a [color="blue"][url="Warrior"]Warrior[/url][/color]), and versatile spell casters (although not as good as a [color="blue"][url="Mage"]Mage[/url][/color]). They pay for this versatility by having the largest experience cost to increase in level of any of the classes.
+
+Warrior-Mages can always cast spells from the [color="blue"][url="Folk Spells"]Folk[/url][/color] realm and a second realm of their choice.
+
+They cast these spells as an [color="blue"][url="Intelligence"]intelligence[/url][/color] based [color="blue"][url="Magic Basics"]divine[/url][/color] spell caster, and as such they choose which spells to learn from their realms when they increase in level.
+
+(Spells in [i]italics[/i] are found only in rare books.)
+
+[center][table=9][cell][b]Level[/b][/cell][cell][b]Chaos[/b][/cell][cell][b]Corporeal[/b][/cell][cell][b]Death[/b][/cell][cell][b]Folk[/b][/cell][cell][b]Life[/b][/cell][cell][b]Nature[/b][/cell][cell][b]Sorcery[/b][/cell][cell][b]Tarot[/b][/cell]
+[cell]1[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]2[/cell][cell]Magic Missile
+Trap and Door Destruction[/cell][cell]Cure Light Wounds
+Blink[/cell][cell]Detect Unlife[/cell][cell]Zap
+Wizard Lock
+Detect Invisibility[/cell][cell]Detect Evil[/cell][cell]Detect Creatures[/cell][cell]Detect Monsters
+Phase Door[/cell][cell]Phase Door[/cell]
+[cell]3[/cell][cell]Flash of Light[/cell][cell]Bravery[/cell][cell]Malediction
+Detect Evil[/cell][cell]Detect Monsters
+Blink[/cell][cell][/cell][cell]Daylight[/cell][cell][/cell][cell][/cell]
+[cell]4[/cell][cell][/cell][cell]Bat's Sense[/cell][cell]Stinking Cloud[/cell][cell][/cell][cell]Cure Light Wounds[/cell][cell]First Aid
+Detect Doors & Traps[/cell][cell]Detect Doors & Traps
+Light Area[/cell][cell]Mind Blast[/cell]
+[cell]5[/cell][cell][/cell][cell]Eagle's Vision[/cell][cell][/cell][cell]Light Area[/cell][cell]Bless[/cell][cell]Foraging
+Animal Taming[/cell][cell]Confuse Monster[/cell][cell][/cell]
+[cell]6[/cell][cell]Touch of Confusion[/cell][cell]Mind Vision[/cell][cell]Black Sleep[/cell][cell]Trap & Door Destruction[/cell][cell]Remove Fear[/cell][cell]Lightning Bolt
+Resist Environment[/cell][cell]Teleport
+[i]Detect Objects & Treasure[/i][/cell][cell]Tarot Draw[/cell]
+[cell]7[/cell][cell][/cell][cell]Cure Medium Wounds[/cell][cell][/cell][cell]Cure Light Wounds[/cell][cell][/cell][cell]Cure Wounds & Poison[/cell][cell]Sleep Monster[/cell][cell]Reset Recall[/cell]
+[cell]8[/cell][cell][/cell][cell]Satisfy Hunger[/cell][cell]Resist Poison[/cell][cell]Detect Doors & Traps[/cell][cell]Call Light[/cell][cell]Frost Bolt[/cell][cell]Recharging[/cell][cell]Teleport[/cell]
+[cell]9[/cell][cell][/cell][cell][i]Horrific Visage[/i][/cell][cell][/cell][cell]Phlogiston[/cell][cell][/cell][cell]Nature Awareness[/cell][cell][i]Detect Enchantment[/i][/cell][cell][/cell]
+[cell]10[/cell][cell]Power Burst[/cell][cell]Burn Resistance[/cell][cell]Horrify[/cell][cell]Detect Treasure
+Detect Enchantment
+Detect Objects[/cell][cell]Detect Traps & Secret Doors.[/cell][cell]Ray of Sunlight[/cell][cell]Magic Mapping[/cell][cell]Dimension Door[/cell]
+[cell]11[/cell][cell][/cell][cell]Detoxify[/cell][cell]Enslave Undead
+[i]Berserk[/i][/cell][cell][/cell][cell][i]Heroism[/i][/cell][cell][i]Door Creation[/i][/cell][cell]Identify
+[i]Charm Monster[/i][/cell][cell][/cell]
+[cell]12[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]13[/cell][cell][i]Polymorph Other[/i][/cell][cell]Cure Critical Wounds[/cell][cell][i]Dark Bolt[/i][/cell][cell]Cure Poison[/cell][cell][/cell][cell]Stone to Mud[/cell][cell]Slow Monster
+[i]Stasis[/i][/cell][cell][/cell]
+[cell]14[/cell][cell][/cell][cell][i]Move Body[/i][/cell][cell]Orb of Entropy[/cell][cell]Resist Cold[/cell][cell]Cure Medium Wounds[/cell][cell][i]Stone Skin[/i][/cell][cell][i]Dimension Door[/i][/cell][cell][/cell]
+[cell]15[/cell][cell]Fire Bolt[/cell][cell]See Invisible[/cell][cell]Nether Bolt[/cell][cell]Resist Fire[/cell][cell][/cell][cell][i]Stair Building[/i][/cell][cell]Mass Sleep[/cell][cell][/cell]
+[cell]16[/cell][cell]Fist of Force[/cell][cell][i]Heroism[/i][/cell][cell][/cell][cell]Resist Lightning[/cell][cell][/cell][cell][/cell][cell][i]Sense Minds[/i][/cell][cell]Astral Spying[/cell]
+[cell]17[/cell][cell]Teleport Self
+[i]Chain Lightning[/i][/cell][cell][i]See Magic[/i][/cell][cell][i]Invoke Spirits[/i][/cell][cell]Resist Acid[/cell][cell]Satisfy Hunger[/cell][cell][i]Resistance True[/i][/cell][cell][/cell][cell][/cell]
+[cell]18[/cell][cell][i]Arcane Binding[/i][/cell][cell][i]Stoneskin[/i][/cell][cell][/cell][cell]Cure Medium Wounds[/cell][cell]Remove Curse[/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]19[/cell][cell]Wonder[/cell][cell][i]Mutate Body[/i][/cell][cell][/cell][cell][/cell][cell]Cure Poison[/cell][cell][/cell][cell][/cell][cell]Teleport Away[/cell]
+[cell]20[/cell][cell][/cell][cell]Teleport[/cell][cell]Terror[/cell][cell]Teleport[/cell][cell]Cure Critical Wounds[/cell][cell][/cell][cell]Teleport Away[/cell][cell][/cell]
+[cell]21[/cell][cell]Chaos Bolt[/cell][cell][/cell][cell][/cell][cell][/cell][cell]Sense Unseen[/cell][cell]Entangle[/cell][cell][/cell][cell][/cell]
+[cell]22[/cell][cell][i]Gravity Beam[/i][/cell][cell][i]Know Self[/i][/cell][cell]Poison Branding
+[i]Death Ray[/i][/cell][cell]Stone to Mud[/cell][cell]Holy Orb[/cell][cell][i]Earthquake[/i][/cell][cell]Haste Self[/cell][cell]Summon Object[/cell]
+[cell]23[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]24[/cell][cell]Sonic Boom[/cell][cell][i]Teleport Level[/i][/cell][cell][i]Raise the Dead[/i][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Self Knowledge[/i][/cell][cell][/cell]
+[cell]25[/cell][cell][/cell][cell]Haste[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]26[/cell][cell]Doom Bolt[/cell][cell][/cell][cell]Vampiric Drain[/cell][cell]Ray of Light[/cell][cell]Protection From Evil[/cell][cell][i]Whirlwind Attack[/i][/cell][cell][i]Teleport Level[/i][/cell][cell][i]Summon Spiders[/i][/cell]
+[cell]27[/cell][cell]Teleport Other[/cell][cell][i]Attunement[/i][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell]Summon Animal[/cell]
+[cell]28[/cell][cell]Fire Ball[/cell][cell][i]Word of Recall[/i][/cell][cell][/cell][cell]Satisfy Hunger[/cell][cell][i]Prayer[/i][/cell][cell]Summon Animal[/cell][cell][i]Word of Recall[/i]
+[i]Telekinesis[/i][/cell][cell][/cell]
+[cell]29[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Exorcism[/i][/cell][cell][i]Blizzard[/i][/cell][cell][i]Yellow Sign[/i][/cell][cell][i][/i][/cell]
+[cell]30[/cell][cell][i]Disintegrate[/i][/cell][cell][i]Wraithform[/i][/cell][cell][/cell][cell]See Invisible[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]31[/cell][cell][/cell][cell]Healing[/cell][cell][i]Esoteria[/i][/cell][cell][/cell][cell][i]Dispel Curse[/i][/cell][cell][i]Animal Friendship[/i][/cell][cell]Detection True[/cell][cell]Phantasmal Servant[/cell]
+[cell]32[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Summon Hounds[/i][/cell]
+[cell]33[/cell][cell]Word of Destruction[/cell][cell][i]Restore Body[/i][/cell][cell][i]Battle Frenzy[/i][/cell][cell]Recharging[/cell][cell]Healing[/cell][cell][i]Lightning Storm[/i][/cell][cell][i]Clairvoyance[/i][/cell][cell]Summon Monster[/cell]
+[cell]34[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]35[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Ethereal Divination[/i][/cell]
+[cell]36[/cell][cell][i]Alter Reality[/i][/cell][cell][/cell][cell][i]Vampirism True[/i][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Astral Lore[/i][/cell]
+[cell]37[/cell][cell][/cell][cell]Resist True[/cell][cell]Dispel Good
+[i]Word of Death[/i][/cell][cell][/cell][cell][i]Dispel Undead & Demons[/i][/cell][cell][i]Stone Tell[/i][/cell][cell]Identify True[/cell][cell]Conjure Elemental
+[i]The Fool[/i][/cell]
+[cell]38[/cell][cell][i]Meteor Swarm[/i][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Day of the Dove[/i][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]39[/cell][cell]Invoke Chaos[/cell][cell][/cell][cell][i]Vampiric Branding[/i][/cell][cell]Teleport Level[/cell][cell]Elder Sign
+[i]Dispel Evil[/i][/cell][cell][i]Whirlpool[/i][/cell][cell][/cell][cell]Teleport Level[/cell]
+[cell]40[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Banish[/i][/cell][cell][/cell][cell][/cell][cell][i]Summon Undead[/i][/cell]
+[cell]41[/cell][cell][i]Flame Strike[/i][/cell][cell][/cell][cell]
+[i]Evocation[/i][/cell][cell][/cell][cell][i]Bless Weapon[/i][/cell][cell][i]Call Sunlight[/i][/cell][cell][/cell][cell][i]Astral Branding[/i][/cell]
+[cell]42[/cell][cell][/cell][cell][i]Healing True[/i][/cell][cell][/cell][cell]Identify[/cell][cell][/cell][cell][i]Wall of Stone[/i][/cell][cell][/cell][cell][/cell]
+[cell]43[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Holy Word[/i][/cell][cell][i]Elemental Branding[/i][/cell][cell][/cell][cell][i]Summon Dragon[/i][/cell]
+[cell]44[/cell][cell][/cell][cell][i]Hypnotic Eyes[/i][/cell][cell][i]Darkness Storm[/i][/cell][cell]Teleport Away[/cell][cell][/cell][cell]Herbal Healing[/cell][cell][i]Enchant Weapon[/i]
+[i]Enchant Armour[/i][/cell][cell]Word of Recall[/cell]
+[cell]45[/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]46[/cell][cell][i]Call Chaos[/i][/cell][cell][/cell][cell][i]Mass Carnage[/i][/cell][cell]Elemental Ball[/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Extradimensional Being[/i][/cell]
+[cell]47[/cell][cell][i]Polymorph Self[/i][/cell][cell][i]Restore Soul[/i][/cell][cell][i]Hellfire[/i][/cell][cell]Detection[/cell][cell][i]Restoration[/i][/cell][cell][i]Protection From Corrosion[/i][/cell][cell][i]Alchemy[/i][/cell][cell]Banish
+[i]Death Dealing[/i][/cell]
+[cell]48[/cell][cell][i]Power Storm[/i][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][i]Mass Summons[/i][/cell]
+[cell]49[/cell][cell][i]Chaos Branding[/i][/cell][cell][/cell][cell][i]Annihilation[/i][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell][cell][/cell]
+[cell]50[/cell][cell][i]Power Storm[/i][/cell][cell][i]Invulnerability[/i][/cell][cell]Restore Life[/cell][cell]Word of Recall[/cell][cell][i]Healing True[/i][/cell][cell][i]Nature's Wrath[/i][/cell][cell][i]Globe of Invulnerability[/i][/cell][cell][i]Summon Reaver[/i][/cell][/table][/center]

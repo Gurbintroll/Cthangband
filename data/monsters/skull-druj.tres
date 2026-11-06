@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_crhs3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0mkuu"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kn642"]
+
+[sub_resource type="Resource" id="Resource_2asxa"]
+script = ExtResource("1_crhs3")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_icy1r"]
+script = ExtResource("1_crhs3")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 16
+method = 6
+
+[sub_resource type="Resource" id="Resource_eoqa6"]
+script = ExtResource("1_crhs3")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 18
+method = 6
+
+[sub_resource type="Resource" id="Resource_wvxcv"]
+script = ExtResource("1_crhs3")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 19
+method = 6
+
+[sub_resource type="Resource" id="Resource_mulcb"]
+script = ExtResource("2_0mkuu")
+value = 132608
+
+[sub_resource type="Resource" id="Resource_a7y1x"]
+script = ExtResource("2_0mkuu")
+value = 34
+
+[sub_resource type="Resource" id="Resource_ippsb"]
+script = ExtResource("2_0mkuu")
+value = 3493593184
+
+[sub_resource type="Resource" id="Resource_sb304"]
+script = ExtResource("2_0mkuu")
+
+[sub_resource type="Resource" id="Resource_duas5"]
+script = ExtResource("2_0mkuu")
+value = 1092652096
+
+[sub_resource type="Resource" id="Resource_2ej3k"]
+script = ExtResource("2_0mkuu")
+value = 67117056
+
+[resource]
+script = ExtResource("3_kn642")
+ac = 120
+attack = Array[ExtResource("1_crhs3")]([SubResource("Resource_2asxa"), SubResource("Resource_icy1r"), SubResource("Resource_eoqa6"), SubResource("Resource_wvxcv")])
+character = "s"
+colour = 9
+description = "A glowing skull possessed by sorcerous power. It need not move, but merely blast you with mighty magic."
+flags_1 = SubResource("Resource_mulcb")
+flags_2 = SubResource("Resource_a7y1x")
+flags_3 = SubResource("Resource_ippsb")
+flags_4 = SubResource("Resource_sb304")
+flags_5 = SubResource("Resource_duas5")
+flags_6 = SubResource("Resource_2ej3k")
+freq_innate = 1
+freq_spell = 1
+hit_dice = 14
+hit_dice_sides = 100
+level = 55
+max_num = 100
+experience = 25000
+name = "Skull druj"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "   Skull    "
+split_name_3 = "    druj    "

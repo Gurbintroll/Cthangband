@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_bg2mg"]
+
+[resource]
+script = ExtResource("1_bg2mg")
+appear_as = "InsideGatehouse"
+character = "·"
+colour = 30
+description = "open floor"
+dims_outside_los = true
+name = "InsideGatehouse"
+yellow_in_torch_light = true

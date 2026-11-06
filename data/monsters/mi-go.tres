@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kxryx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_76rn6"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_hxmnp"]
+
+[sub_resource type="Resource" id="Resource_e3ogy"]
+script = ExtResource("1_kxryx")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 7
+
+[sub_resource type="Resource" id="Resource_35naj"]
+script = ExtResource("1_kxryx")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_6m46c"]
+script = ExtResource("1_kxryx")
+
+[sub_resource type="Resource" id="Resource_cyth1"]
+script = ExtResource("1_kxryx")
+
+[sub_resource type="Resource" id="Resource_ixn08"]
+script = ExtResource("2_76rn6")
+
+[sub_resource type="Resource" id="Resource_2mimy"]
+script = ExtResource("2_76rn6")
+value = 32
+
+[sub_resource type="Resource" id="Resource_1v2dj"]
+script = ExtResource("2_76rn6")
+value = 3357016256
+
+[sub_resource type="Resource" id="Resource_gu2tx"]
+script = ExtResource("2_76rn6")
+
+[sub_resource type="Resource" id="Resource_ug0ax"]
+script = ExtResource("2_76rn6")
+value = 536870912
+
+[sub_resource type="Resource" id="Resource_wp8rw"]
+script = ExtResource("2_76rn6")
+value = 17039360
+
+[resource]
+script = ExtResource("3_hxmnp")
+ac = 30
+attack = Array[ExtResource("1_kxryx")]([SubResource("Resource_e3ogy"), SubResource("Resource_35naj"), SubResource("Resource_6m46c"), SubResource("Resource_cyth1")])
+character = "A"
+colour = 11
+description = "Five feet long pinkish insectoids with a multitude of antennae, with a buzzing voice."
+flags_1 = SubResource("Resource_ixn08")
+flags_2 = SubResource("Resource_2mimy")
+flags_3 = SubResource("Resource_1v2dj")
+flags_4 = SubResource("Resource_gu2tx")
+flags_5 = SubResource("Resource_ug0ax")
+flags_6 = SubResource("Resource_wp8rw")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 13
+hit_dice_sides = 8
+level = 15
+max_num = 100
+experience = 80
+name = "Mi-Go"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Mi-Go    "

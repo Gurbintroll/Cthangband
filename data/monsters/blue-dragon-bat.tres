@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_sckf8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_spdyx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_e32ki"]
+
+[sub_resource type="Resource" id="Resource_nq4gp"]
+script = ExtResource("1_sckf8")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 10
+method = 6
+
+[sub_resource type="Resource" id="Resource_bpk1o"]
+script = ExtResource("1_sckf8")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 10
+method = 7
+
+[sub_resource type="Resource" id="Resource_duo8x"]
+script = ExtResource("1_sckf8")
+
+[sub_resource type="Resource" id="Resource_lg6oc"]
+script = ExtResource("1_sckf8")
+
+[sub_resource type="Resource" id="Resource_juiwl"]
+script = ExtResource("2_spdyx")
+value = 525312
+
+[sub_resource type="Resource" id="Resource_4hw64"]
+script = ExtResource("2_spdyx")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_smfgu"]
+script = ExtResource("2_spdyx")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_6ws51"]
+script = ExtResource("2_spdyx")
+value = 512
+
+[sub_resource type="Resource" id="Resource_tqedo"]
+script = ExtResource("2_spdyx")
+
+[sub_resource type="Resource" id="Resource_vfrhf"]
+script = ExtResource("2_spdyx")
+
+[resource]
+script = ExtResource("3_e32ki")
+ac = 26
+attack = Array[ExtResource("1_sckf8")]([SubResource("Resource_nq4gp"), SubResource("Resource_bpk1o"), SubResource("Resource_duo8x"), SubResource("Resource_lg6oc")])
+character = "b"
+colour = 3
+description = "It is a glowing blue bat with a sharp tail."
+flags_1 = SubResource("Resource_juiwl")
+flags_2 = SubResource("Resource_4hw64")
+flags_3 = SubResource("Resource_smfgu")
+flags_4 = SubResource("Resource_6ws51")
+flags_5 = SubResource("Resource_tqedo")
+flags_6 = SubResource("Resource_vfrhf")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 4
+hit_dice_sides = 4
+level = 21
+max_num = 100
+experience = 54
+name = "Blue dragon bat"
+notice_range = 12
+rarity = 1
+sleep = 50
+speed = 130
+split_name_1 = "    Blue    "
+split_name_2 = "   dragon   "
+split_name_3 = "    bat     "

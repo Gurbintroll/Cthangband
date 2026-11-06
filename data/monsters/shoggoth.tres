@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_28afu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ctc5x"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rwu7u"]
+
+[sub_resource type="Resource" id="Resource_70h82"]
+script = ExtResource("1_28afu")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 9
+method = 9
+
+[sub_resource type="Resource" id="Resource_fe30h"]
+script = ExtResource("1_28afu")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 9
+method = 9
+
+[sub_resource type="Resource" id="Resource_dnl15"]
+script = ExtResource("1_28afu")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 9
+method = 9
+
+[sub_resource type="Resource" id="Resource_g12xj"]
+script = ExtResource("1_28afu")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_xwbki"]
+script = ExtResource("2_ctc5x")
+value = 48236032
+
+[sub_resource type="Resource" id="Resource_jkgv4"]
+script = ExtResource("2_ctc5x")
+value = 10629632
+
+[sub_resource type="Resource" id="Resource_u4rf4"]
+script = ExtResource("2_ctc5x")
+value = 3376353344
+
+[sub_resource type="Resource" id="Resource_o1jq6"]
+script = ExtResource("2_ctc5x")
+
+[sub_resource type="Resource" id="Resource_xsofu"]
+script = ExtResource("2_ctc5x")
+
+[sub_resource type="Resource" id="Resource_cxlbj"]
+script = ExtResource("2_ctc5x")
+
+[resource]
+script = ExtResource("3_rwu7u")
+ac = 80
+attack = Array[ExtResource("1_28afu")]([SubResource("Resource_70h82"), SubResource("Resource_fe30h"), SubResource("Resource_dnl15"), SubResource("Resource_g12xj")])
+character = "A"
+colour = 2
+description = "A nightmarish fetid, black irididescence oozing towards you."
+flags_1 = SubResource("Resource_xwbki")
+flags_2 = SubResource("Resource_jkgv4")
+flags_3 = SubResource("Resource_u4rf4")
+flags_4 = SubResource("Resource_o1jq6")
+flags_5 = SubResource("Resource_xsofu")
+flags_6 = SubResource("Resource_cxlbj")
+hit_dice = 50
+hit_dice_sides = 20
+level = 41
+max_num = 100
+experience = 2500
+name = "Shoggoth"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 140
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Shoggoth  "

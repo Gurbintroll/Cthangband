@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rlxmo"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_8xe35"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_lpqxw"]
+
+[sub_resource type="Resource" id="Resource_s8lj5"]
+script = ExtResource("1_rlxmo")
+damage_dice = 4
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_42noa"]
+script = ExtResource("1_rlxmo")
+damage_dice = 4
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_r05a7"]
+script = ExtResource("1_rlxmo")
+damage_dice = 5
+damage_dice_sides = 8
+effect = 5
+method = 6
+
+[sub_resource type="Resource" id="Resource_x2l1b"]
+script = ExtResource("1_rlxmo")
+
+[sub_resource type="Resource" id="Resource_0pkdr"]
+script = ExtResource("2_8xe35")
+value = 150996480
+
+[sub_resource type="Resource" id="Resource_dp4u0"]
+script = ExtResource("2_8xe35")
+value = 1183746
+
+[sub_resource type="Resource" id="Resource_nguew"]
+script = ExtResource("2_8xe35")
+value = 3221356616
+
+[sub_resource type="Resource" id="Resource_yrl0q"]
+script = ExtResource("2_8xe35")
+value = 512
+
+[sub_resource type="Resource" id="Resource_463qx"]
+script = ExtResource("2_8xe35")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_kbh1a"]
+script = ExtResource("2_8xe35")
+
+[resource]
+script = ExtResource("3_lpqxw")
+ac = 80
+attack = Array[ExtResource("1_rlxmo")]([SubResource("Resource_s8lj5"), SubResource("Resource_42noa"), SubResource("Resource_r05a7"), SubResource("Resource_x2l1b")])
+character = "D"
+colour = 3
+description = "A huge draconic form. Lightning crackles along its length."
+flags_1 = SubResource("Resource_0pkdr")
+flags_2 = SubResource("Resource_dp4u0")
+flags_3 = SubResource("Resource_nguew")
+flags_4 = SubResource("Resource_yrl0q")
+flags_5 = SubResource("Resource_463qx")
+flags_6 = SubResource("Resource_kbh1a")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 70
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 1500
+name = "Ancient blue dragon"
+notice_range = 20
+rarity = 1
+sleep = 80
+speed = 120
+split_name_1 = "  Ancient   "
+split_name_2 = "    blue    "
+split_name_3 = "   dragon   "

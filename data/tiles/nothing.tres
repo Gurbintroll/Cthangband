@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_rls0n"]
+
+[resource]
+script = ExtResource("1_rls0n")
+appear_as = "Nothing"
+character = " "
+description = "nothing"
+name = "Nothing"

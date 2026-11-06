@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_e4ifo"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_piq15"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_5p8ap"]
+
+[sub_resource type="Resource" id="Resource_3p28d"]
+script = ExtResource("1_e4ifo")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_uxv7b"]
+script = ExtResource("1_e4ifo")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_6miqm"]
+script = ExtResource("1_e4ifo")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_4nrd0"]
+script = ExtResource("1_e4ifo")
+
+[sub_resource type="Resource" id="Resource_mk47e"]
+script = ExtResource("2_piq15")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_5alrn"]
+script = ExtResource("2_piq15")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_0jrvf"]
+script = ExtResource("2_piq15")
+value = 524416
+
+[sub_resource type="Resource" id="Resource_u7tu2"]
+script = ExtResource("2_piq15")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_ew6ba"]
+script = ExtResource("2_piq15")
+
+[sub_resource type="Resource" id="Resource_rk5s7"]
+script = ExtResource("2_piq15")
+
+[resource]
+script = ExtResource("3_5p8ap")
+ac = 30
+attack = Array[ExtResource("1_e4ifo")]([SubResource("Resource_3p28d"), SubResource("Resource_uxv7b"), SubResource("Resource_6miqm"), SubResource("Resource_4nrd0")])
+character = "Z"
+colour = 30
+description = "A hound as tall as a man, this creature appears to be composed of angular planes of ice. Cold radiates from it and freezes your breath in the air."
+flags_1 = SubResource("Resource_mk47e")
+flags_2 = SubResource("Resource_5alrn")
+flags_3 = SubResource("Resource_0jrvf")
+flags_4 = SubResource("Resource_u7tu2")
+flags_5 = SubResource("Resource_ew6ba")
+flags_6 = SubResource("Resource_rk5s7")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 10
+hit_dice_sides = 6
+level = 18
+max_num = 100
+experience = 70
+name = "Cold hound"
+notice_range = 30
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Cold    "
+split_name_3 = "   hound    "

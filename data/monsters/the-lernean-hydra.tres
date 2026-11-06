@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dxu0brc17c3yh"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_xn3ox"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_fyeab"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_dn4cp"]
+
+[sub_resource type="Resource" id="Resource_35sum"]
+script = ExtResource("1_xn3ox")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_ffuno"]
+script = ExtResource("1_xn3ox")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_3ha84"]
+script = ExtResource("1_xn3ox")
+damage_dice = 12
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_vfmh4"]
+script = ExtResource("1_xn3ox")
+damage_dice = 12
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_a7l0b"]
+script = ExtResource("2_fyeab")
+value = 202376705
+
+[sub_resource type="Resource" id="Resource_k45fu"]
+script = ExtResource("2_fyeab")
+value = 2297858
+
+[sub_resource type="Resource" id="Resource_84pm3"]
+script = ExtResource("2_fyeab")
+value = 3222536320
+
+[sub_resource type="Resource" id="Resource_w0lyf"]
+script = ExtResource("2_fyeab")
+value = 5120
+
+[sub_resource type="Resource" id="Resource_362ui"]
+script = ExtResource("2_fyeab")
+value = 151257108
+
+[sub_resource type="Resource" id="Resource_dc5w1"]
+script = ExtResource("2_fyeab")
+value = 8388608
+
+[resource]
+script = ExtResource("3_dn4cp")
+ac = 140
+attack = Array[ExtResource("1_xn3ox")]([SubResource("Resource_35sum"), SubResource("Resource_ffuno"), SubResource("Resource_3ha84"), SubResource("Resource_vfmh4")])
+character = "M"
+colour = 12
+description = "A massive legendary hydra. It has twelve powerful heads. Its many eyes stare at you as clouds of smoke and poisonous vapour rise from its seething form."
+flags_1 = SubResource("Resource_a7l0b")
+flags_2 = SubResource("Resource_k45fu")
+flags_3 = SubResource("Resource_84pm3")
+flags_4 = SubResource("Resource_w0lyf")
+flags_5 = SubResource("Resource_362ui")
+flags_6 = SubResource("Resource_dc5w1")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 45
+hit_dice_sides = 100
+level = 55
+max_num = 1
+experience = 20000
+name = "The Lernean Hydra"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "    The     "
+split_name_2 = "  Lernean   "
+split_name_3 = "   Hydra    "

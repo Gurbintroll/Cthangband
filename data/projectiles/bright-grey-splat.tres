@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Flavour" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/flavour.gd" id="1_n7w2x"]
+
+[resource]
+script = ExtResource("1_n7w2x")
+name = "BrightGreySplat"
+character = "*"
+colour = 9

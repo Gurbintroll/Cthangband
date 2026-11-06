@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_l0c4d"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_33atv"]
+
+[sub_resource type="Resource" id="Resource_5yvyo"]
+script = ExtResource("1_l0c4d")
+
+[sub_resource type="Resource" id="Resource_e0qci"]
+script = ExtResource("1_l0c4d")
+value = 8
+
+[sub_resource type="Resource" id="Resource_ovhu8"]
+script = ExtResource("1_l0c4d")
+value = 15728640
+
+[resource]
+script = ExtResource("2_33atv")
+cost = 1000
+flags_1 = SubResource("Resource_5yvyo")
+flags_2 = SubResource("Resource_e0qci")
+flags_3 = SubResource("Resource_ovhu8")
+name = "of Dexterity"
+id = 120

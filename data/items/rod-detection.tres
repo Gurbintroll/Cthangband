@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ksddb"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_2dvi7"]
+
+[sub_resource type="Resource" id="Resource_fdjwl"]
+script = ExtResource("1_ksddb")
+
+[sub_resource type="Resource" id="Resource_sw47p"]
+script = ExtResource("1_ksddb")
+
+[sub_resource type="Resource" id="Resource_btewo"]
+script = ExtResource("1_ksddb")
+
+[resource]
+script = ExtResource("2_2dvi7")
+chance = Array[int]([8, 0, 0, 0])
+character = "-"
+colour = 5
+cost = 5000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_fdjwl")
+flags_2 = SubResource("Resource_sw47p")
+flags_3 = SubResource("Resource_btewo")
+has_flavour = true
+item_category = 66
+level = 30
+locale = Array[int]([30, 0, 0, 0])
+name = "Detection"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 6
+weight = 15
+filename = "Rod:Detection"

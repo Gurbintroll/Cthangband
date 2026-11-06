@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qcrpr"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vfcgh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rqo3g"]
+
+[sub_resource type="Resource" id="Resource_yiri1"]
+script = ExtResource("1_qcrpr")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_144f6"]
+script = ExtResource("1_qcrpr")
+damage_dice = 8
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mocb1"]
+script = ExtResource("1_qcrpr")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8qfcv"]
+script = ExtResource("1_qcrpr")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0n1w0"]
+script = ExtResource("2_vfcgh")
+value = 34603008
+
+[sub_resource type="Resource" id="Resource_283ng"]
+script = ExtResource("2_vfcgh")
+value = 131176
+
+[sub_resource type="Resource" id="Resource_ie1of"]
+script = ExtResource("2_vfcgh")
+value = 3491629056
+
+[sub_resource type="Resource" id="Resource_c7wws"]
+script = ExtResource("2_vfcgh")
+
+[sub_resource type="Resource" id="Resource_ormfh"]
+script = ExtResource("2_vfcgh")
+
+[sub_resource type="Resource" id="Resource_tnwqc"]
+script = ExtResource("2_vfcgh")
+
+[resource]
+script = ExtResource("3_rqo3g")
+ac = 125
+attack = Array[ExtResource("1_qcrpr")]([SubResource("Resource_yiri1"), SubResource("Resource_144f6"), SubResource("Resource_mocb1"), SubResource("Resource_8qfcv")])
+character = "g"
+colour = 13
+description = "It is a massive deep brown statue, striding towards you with an all-too-familiar purpose. Your magic surprisingly feels much less powerful now."
+flags_1 = SubResource("Resource_0n1w0")
+flags_2 = SubResource("Resource_283ng")
+flags_3 = SubResource("Resource_ie1of")
+flags_4 = SubResource("Resource_c7wws")
+flags_5 = SubResource("Resource_ormfh")
+flags_6 = SubResource("Resource_tnwqc")
+hit_dice = 100
+hit_dice_sides = 20
+level = 35
+max_num = 100
+experience = 1200
+name = "Eog golem"
+notice_range = 12
+rarity = 4
+sleep = 10
+speed = 100
+split_name_1 = "            "
+split_name_2 = "    Eog     "
+split_name_3 = "   golem    "

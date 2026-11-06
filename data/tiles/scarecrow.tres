@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_rfa20"]
+
+[resource]
+script = ExtResource("1_rfa20")
+alter_action = 1
+appear_as = "Scarecrow"
+blocks_los = true
+category = 2
+character = "t"
+colour = 6
+description = "scarecrow"
+dims_outside_los = true
+name = "Scarecrow"

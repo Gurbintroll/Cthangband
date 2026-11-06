@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_b2wg6"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_uacwp"]
+
+[sub_resource type="Resource" id="Resource_awg1k"]
+script = ExtResource("1_b2wg6")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_g3tbk"]
+script = ExtResource("1_b2wg6")
+
+[sub_resource type="Resource" id="Resource_x4onj"]
+script = ExtResource("1_b2wg6")
+
+[resource]
+script = ExtResource("2_uacwp")
+flags_1 = SubResource("Resource_awg1k")
+flags_2 = SubResource("Resource_g3tbk")
+flags_3 = SubResource("Resource_x4onj")
+max_type_specifc_value = 5
+name = "of Slowness"
+slot = 35
+id = 51

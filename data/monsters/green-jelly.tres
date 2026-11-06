@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7y110"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_n60vp"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_5a8ay"]
+
+[sub_resource type="Resource" id="Resource_o1y8s"]
+script = ExtResource("1_7y110")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_7irce"]
+script = ExtResource("1_7y110")
+
+[sub_resource type="Resource" id="Resource_msatx"]
+script = ExtResource("1_7y110")
+
+[sub_resource type="Resource" id="Resource_bvpga"]
+script = ExtResource("1_7y110")
+
+[sub_resource type="Resource" id="Resource_qexr3"]
+script = ExtResource("2_n60vp")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_vuin0"]
+script = ExtResource("2_n60vp")
+value = 65
+
+[sub_resource type="Resource" id="Resource_mt2ok"]
+script = ExtResource("2_n60vp")
+value = 3489730560
+
+[sub_resource type="Resource" id="Resource_y3ocn"]
+script = ExtResource("2_n60vp")
+
+[sub_resource type="Resource" id="Resource_fg16j"]
+script = ExtResource("2_n60vp")
+
+[sub_resource type="Resource" id="Resource_bplg1"]
+script = ExtResource("2_n60vp")
+
+[resource]
+script = ExtResource("3_5a8ay")
+ac = 1
+attack = Array[ExtResource("1_7y110")]([SubResource("Resource_o1y8s"), SubResource("Resource_7irce"), SubResource("Resource_msatx"), SubResource("Resource_bvpga")])
+character = "j"
+colour = 22
+description = "It is a large pile of pulsing green flesh."
+flags_1 = SubResource("Resource_qexr3")
+flags_2 = SubResource("Resource_vuin0")
+flags_3 = SubResource("Resource_mt2ok")
+flags_4 = SubResource("Resource_y3ocn")
+flags_5 = SubResource("Resource_fg16j")
+flags_6 = SubResource("Resource_bplg1")
+hit_dice = 22
+hit_dice_sides = 8
+level = 5
+max_num = 100
+experience = 18
+name = "Green jelly"
+notice_range = 2
+rarity = 1
+sleep = 99
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Green    "
+split_name_3 = "   jelly    "

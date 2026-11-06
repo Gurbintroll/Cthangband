@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_pmbac"]
+
+[resource]
+script = ExtResource("1_pmbac")
+category = 7
+height = 9
+name = "Lesser vault (mine)"
+rating = 7
+text = "%%%%%%%%%%%%%%%%%%%%%%...................%%.XXXXXXXXXXXXXXXXXX%%.XX##XXXX*,,XX,*,XX%%.*#XX,*##X*#XX***XX%%.XXXX*,XXXXX##,*,XX%%.XXXXXXXXXXXXXXXXXX%%...................%%%%%%%%%%%%%%%%%%%%%%"
+width = 21

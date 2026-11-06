@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_f7v7v"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_t260g"]
+
+[sub_resource type="Resource" id="Resource_fcpps"]
+script = ExtResource("1_f7v7v")
+
+[sub_resource type="Resource" id="Resource_ivowm"]
+script = ExtResource("1_f7v7v")
+
+[sub_resource type="Resource" id="Resource_h0crr"]
+script = ExtResource("1_f7v7v")
+
+[resource]
+script = ExtResource("2_t260g")
+cost = 20
+flags_1 = SubResource("Resource_fcpps")
+flags_2 = SubResource("Resource_ivowm")
+flags_3 = SubResource("Resource_h0crr")
+max_to_damage = 6
+max_to_hit = 6
+name = "of Wounding"
+rating = 5
+slot = 23
+id = 95

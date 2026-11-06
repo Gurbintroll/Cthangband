@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_17jjk"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_owqqy"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_bpb4j"]
+
+[sub_resource type="Resource" id="Resource_5keg6"]
+script = ExtResource("1_17jjk")
+damage_dice = 4
+damage_dice_sides = 9
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_pwv68"]
+script = ExtResource("1_17jjk")
+damage_dice = 4
+damage_dice_sides = 9
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_had42"]
+script = ExtResource("1_17jjk")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_mlgmw"]
+script = ExtResource("1_17jjk")
+
+[sub_resource type="Resource" id="Resource_ovi4o"]
+script = ExtResource("2_owqqy")
+value = 201328128
+
+[sub_resource type="Resource" id="Resource_nefkt"]
+script = ExtResource("2_owqqy")
+value = 1183746
+
+[sub_resource type="Resource" id="Resource_e5e6s"]
+script = ExtResource("2_owqqy")
+value = 3221749832
+
+[sub_resource type="Resource" id="Resource_1vpmx"]
+script = ExtResource("2_owqqy")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_nx5pi"]
+script = ExtResource("2_owqqy")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_caghu"]
+script = ExtResource("2_owqqy")
+
+[resource]
+script = ExtResource("3_bpb4j")
+ac = 90
+attack = Array[ExtResource("1_17jjk")]([SubResource("Resource_5keg6"), SubResource("Resource_pwv68"), SubResource("Resource_had42"), SubResource("Resource_mlgmw")])
+character = "D"
+colour = 30
+description = "A huge draconic form. Frost covers it from head to tail."
+flags_1 = SubResource("Resource_ovi4o")
+flags_2 = SubResource("Resource_nefkt")
+flags_3 = SubResource("Resource_e5e6s")
+flags_4 = SubResource("Resource_1vpmx")
+flags_5 = SubResource("Resource_nx5pi")
+flags_6 = SubResource("Resource_caghu")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 70
+hit_dice_sides = 10
+level = 39
+max_num = 100
+experience = 2500
+name = "Ancient white dragon"
+notice_range = 20
+rarity = 1
+sleep = 80
+speed = 120
+split_name_1 = "  Ancient   "
+split_name_2 = "   white    "
+split_name_3 = "   dragon   "

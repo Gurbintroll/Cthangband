@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_uvaax"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_k3ufw"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_mls1e"]
+
+[sub_resource type="Resource" id="Resource_0ljsm"]
+script = ExtResource("1_uvaax")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_0bbcf"]
+script = ExtResource("1_uvaax")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_o6x7r"]
+script = ExtResource("1_uvaax")
+damage_dice = 6
+damage_dice_sides = 2
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_lsicw"]
+script = ExtResource("1_uvaax")
+damage_dice = 6
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fg57x"]
+script = ExtResource("2_k3ufw")
+value = 304088576
+
+[sub_resource type="Resource" id="Resource_um72v"]
+script = ExtResource("2_k3ufw")
+value = 1789954
+
+[sub_resource type="Resource" id="Resource_o0rx8"]
+script = ExtResource("2_k3ufw")
+value = 3221489744
+
+[sub_resource type="Resource" id="Resource_ca2oc"]
+script = ExtResource("2_k3ufw")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_jhbdk"]
+script = ExtResource("2_k3ufw")
+value = 822085664
+
+[sub_resource type="Resource" id="Resource_64asu"]
+script = ExtResource("2_k3ufw")
+value = 369098752
+
+[resource]
+script = ExtResource("3_mls1e")
+ac = 80
+attack = Array[ExtResource("1_uvaax")]([SubResource("Resource_0ljsm"), SubResource("Resource_0bbcf"), SubResource("Resource_o6x7r"), SubResource("Resource_lsicw")])
+character = "U"
+colour = 13
+description = "It is a massive humanoid demon wreathed in flames."
+flags_1 = SubResource("Resource_fg57x")
+flags_2 = SubResource("Resource_um72v")
+flags_3 = SubResource("Resource_o0rx8")
+flags_4 = SubResource("Resource_ca2oc")
+flags_5 = SubResource("Resource_jhbdk")
+flags_6 = SubResource("Resource_64asu")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 30
+hit_dice_sides = 100
+level = 50
+max_num = 100
+experience = 10000
+name = "Balrog"
+notice_range = 20
+rarity = 3
+sleep = 80
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Balrog   "

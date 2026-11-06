@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_15fcb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dq3d5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_k7qx2"]
+
+[sub_resource type="Resource" id="Resource_1i7xq"]
+script = ExtResource("1_15fcb")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1rl70"]
+script = ExtResource("1_15fcb")
+
+[sub_resource type="Resource" id="Resource_1dejx"]
+script = ExtResource("1_15fcb")
+
+[sub_resource type="Resource" id="Resource_07ttm"]
+script = ExtResource("1_15fcb")
+
+[sub_resource type="Resource" id="Resource_ddhvy"]
+script = ExtResource("2_dq3d5")
+value = 4195332
+
+[sub_resource type="Resource" id="Resource_bdx2q"]
+script = ExtResource("2_dq3d5")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_1otx3"]
+script = ExtResource("2_dq3d5")
+
+[sub_resource type="Resource" id="Resource_r3osf"]
+script = ExtResource("2_dq3d5")
+
+[sub_resource type="Resource" id="Resource_wxlsn"]
+script = ExtResource("2_dq3d5")
+value = 134221824
+
+[sub_resource type="Resource" id="Resource_vp7ys"]
+script = ExtResource("2_dq3d5")
+value = 4
+
+[resource]
+script = ExtResource("3_k7qx2")
+ac = 10
+attack = Array[ExtResource("1_15fcb")]([SubResource("Resource_1i7xq"), SubResource("Resource_1rl70"), SubResource("Resource_1dejx"), SubResource("Resource_07ttm")])
+character = "p"
+colour = 5
+description = "He is tripping over his fetishes."
+flags_1 = SubResource("Resource_ddhvy")
+flags_2 = SubResource("Resource_bdx2q")
+flags_3 = SubResource("Resource_1otx3")
+flags_4 = SubResource("Resource_r3osf")
+flags_5 = SubResource("Resource_wxlsn")
+flags_6 = SubResource("Resource_vp7ys")
+freq_innate = 12
+freq_spell = 12
+hit_dice = 7
+hit_dice_sides = 4
+level = 2
+max_num = 100
+experience = 7
+name = "Novice cultist"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Novice   "
+split_name_3 = "  cultist   "

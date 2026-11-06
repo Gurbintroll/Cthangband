@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_eo4ng"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_xugh0"]
+
+[sub_resource type="Resource" id="Resource_ppdjg"]
+script = ExtResource("1_eo4ng")
+value = 518
+
+[sub_resource type="Resource" id="Resource_1ik18"]
+script = ExtResource("1_eo4ng")
+value = 16777216
+
+[sub_resource type="Resource" id="Resource_05fc8"]
+script = ExtResource("1_eo4ng")
+value = 32522752
+
+[resource]
+script = ExtResource("2_xugh0")
+flags_1 = SubResource("Resource_ppdjg")
+flags_2 = SubResource("Resource_1ik18")
+flags_3 = SubResource("Resource_05fc8")
+ac = 5
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 3
+item_category = 32
+item_sub_category = 5
+level = 20
+name = "*Skullkeeper*"
+type_specific_value = 2
+rarity = 5
+to_ac = 10
+weight = 75
+id = 40

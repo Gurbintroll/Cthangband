@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dchte"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_aqpv8"]
+
+[sub_resource type="Resource" id="Resource_cofv0"]
+script = ExtResource("1_dchte")
+
+[sub_resource type="Resource" id="Resource_3dpf7"]
+script = ExtResource("1_dchte")
+value = 67108864
+
+[sub_resource type="Resource" id="Resource_4l1le"]
+script = ExtResource("1_dchte")
+value = 15728640
+
+[resource]
+script = ExtResource("2_aqpv8")
+cost = 1000
+flags_1 = SubResource("Resource_cofv0")
+flags_2 = SubResource("Resource_3dpf7")
+flags_3 = SubResource("Resource_4l1le")
+name = "of Sound"
+id = 110

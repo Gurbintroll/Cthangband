@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://l6k811dqfft1"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_oktl3"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_k16pn"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_46mle"]
+
+[sub_resource type="Resource" id="Resource_roo85"]
+script = ExtResource("1_oktl3")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_01syv"]
+script = ExtResource("1_oktl3")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_d42ys"]
+script = ExtResource("1_oktl3")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 17
+method = 1
+
+[sub_resource type="Resource" id="Resource_7u60e"]
+script = ExtResource("1_oktl3")
+damage_dice = 8
+damage_dice_sides = 1
+effect = 27
+method = 2
+
+[sub_resource type="Resource" id="Resource_dlx0l"]
+script = ExtResource("2_k16pn")
+value = 404752129
+
+[sub_resource type="Resource" id="Resource_4f772"]
+script = ExtResource("2_k16pn")
+value = 1507360
+
+[sub_resource type="Resource" id="Resource_bhiww"]
+script = ExtResource("2_k16pn")
+value = 1574992
+
+[sub_resource type="Resource" id="Resource_llifj"]
+script = ExtResource("2_k16pn")
+
+[sub_resource type="Resource" id="Resource_wy4vc"]
+script = ExtResource("2_k16pn")
+value = 2418099200
+
+[sub_resource type="Resource" id="Resource_w6765"]
+script = ExtResource("2_k16pn")
+value = 33574912
+
+[resource]
+script = ExtResource("3_46mle")
+ac = 60
+attack = Array[ExtResource("1_oktl3")]([SubResource("Resource_roo85"), SubResource("Resource_01syv"), SubResource("Resource_d42ys"), SubResource("Resource_7u60e")])
+character = "U"
+colour = 12
+description = "Drop dead gorgeous - literally."
+flags_1 = SubResource("Resource_dlx0l")
+flags_2 = SubResource("Resource_4f772")
+flags_3 = SubResource("Resource_bhiww")
+flags_4 = SubResource("Resource_llifj")
+flags_5 = SubResource("Resource_wy4vc")
+flags_6 = SubResource("Resource_w6765")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 12
+hit_dice_sides = 100
+level = 41
+max_num = 1
+experience = 8000
+name = "Glaryssa, Succubus Queen"
+notice_range = 90
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Glaryssa  "

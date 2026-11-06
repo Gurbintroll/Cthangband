@@ -1,0 +1,41 @@
+﻿[center][font_size=48][color="brown"][b]Mentalism Talents[/b][/color][/font_size][/center]
+[hr color="brown"]
+The talents of mentalism work in a simlar way to spells, but they are not found in books and learned. Instead, a mindcrafter or mystic can automatically use any talent for which they have gained the minimum level.
+
+Unlike spells, which usually have a consistent effect with only things like damage increasing based on character level, mentalism talents will often have an increased or changed effect at higher level.
+
+[b]a) Precognition[/b]
+Initially, this detects monsters. It then starts also detecting traps (min lev = 5), invisible creatures (min lev = 15), revealing the layout of your surrounding area (min lev = 20), providing you with temporary ESP (min lev = 25) and revealing the layout of the whole level (min lev = 45).
+
+[b]b) Neural Blast[/b]
+This fires a bolt of psychic energy. Sometimes, this bolt will explode into a ball. It is more likely to become a ball if you are higher level.
+
+[b]c) Minor Displacement[/b]
+This will teleport you to a random nearby location. Once you are practiced with it (min lev = 25), you can choose your destination.
+
+[b]d) Major Displacement[/b]
+This will teleport you to a random place on the level. With practice (min lev = 30), it will also scatter any nearby monsters once you arrive, teleporting them away from your new location and leaving you in safety.
+
+[b]e) Domination[/b]
+This will make all nearby monsters your friends. With practice (min lev = 30), you can use this power at a distance.
+
+[b]f) Pulverise[/b]
+This will fire a ball of sonic energy.
+
+[b]g) Character Armour[/b]
+This will provide a temporary boost to your armour class. With practice it will also give you temporary resistance to acid (min lev = 14), fire (min lev = 20), cold (min lev = 25), electricity (min lev = 30) and poison (min lev = 35).
+
+[b]h) Psychometry[/b]
+This gives you a vague idea of the usefulness of an object. With practice (min lev = 40), you can identify the magical function of the object.
+
+[b]i) Mind Wave[/b]
+This creates a ball of psychic energy around yourself. With practice (min lev = 25), this ball can be fired at a distance.
+
+[b]j) Adrenaline Channelling[/b]
+This stops you from being afraid or stunned, heals you slightly, gives you a temporary boost to your speed, and boosts your fighting ability. With practice (min lev = 35), the fighting bonus is increased.
+
+[b]k) Psychic Drain[/b]
+This fires a ball of negative psychic energy that sucks out the minds of its targets and channels the mental energy back to you, which you absorb as spell points.
+
+[b]l) Telekinetic Wave[/b]
+This fires a fierce blast of stunning telekinetic energy out in all directions.

@@ -1,20 +1,5 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/Cthangband/obj
-/Cthangband/bin
-/.vs
-.vs/Cthangband/v17/.suo
-.vs/Cthangband/v17/fileList.bin
-/Install/Output/cthangband.6.0.install.exe
-/Install/Output/cthangband.6.2.install.exe
-/Install/Output/cthangband.6.3.install.exe
-/Install/Output/cthangband.6.4.install.exe
-/Install/Output/cthangband.6.5.install.exe
-/Install/Output/cthangband.6.6.install.exe
-/Install/Output/cthangband.6.7.install.exe
-/Install/Output/cthangband.6.8.install.exe
-/Install/Payload
-/Install/Output/cthangband.6.9.install.exe
-/Install/Output/cthangband.6.10.install.exe
+# Godot 4+ specific ignores
+.godot/
+/android/
+/addons/
+/export/

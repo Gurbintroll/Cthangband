@@ -1,0 +1,76 @@
+﻿[center][font_size=48][color="brown"][b]Magic Basics[/b][/color][/font_size][/center]
+[hr color="brown"]
+Magic is found throughout Cthangband - from the creatures you fight to the items you use. Magic within items is in varied forms, but magic used by characters is a lot more structured. Characters of certain classes can learn magic. This can be of one of three types: Divine magic, Arcane magic and Mentalism.
+
+[ul]Mages, High Mages, Warrior Mages, Rogues, Cultists, and Channellers all use arcane magic.
+Priests, Paladins, Rangers, Druids, Fanatics, and Monks all use divine magic.
+Mindcrafters and Mystics use Mentalism
+Fighters don't use magic at all[/ul]
+
+[font_size=24][color="brown"][b]Power[/b][/color][/font_size]
+All three types of magic use the caster's Power to power their effects, and this power is represented by a pool of power points.
+
+Characters gain power points based on one of their ability scores and based upon their level. When a spell is cast, some of these points are spent. It is theoretically possible to still cast a spell without having enough power to do so. This is rather dangerous, however, since the caster can damage their health or leave themselves vulnerable to attacks when doing so.
+
+The amount of power you have is based on the following formula:
+
+[ul]1 base power if you are a spell caster with a casting ability score above 7.
++ (power per level for your casting ability score) * level.
++ 25% power if you are a high mage.
+- 25% power if you are wearing gloves (other than gloves that provide Free Action or a Dexterity bonus).
+- 1 power per pound of armour worn above your profession limit:
+[ul]30lb for cultists, high mages, mages, mindcrafters, monks, and mystics.
+35lb for druids, priests, warrior mages, and rogues.
+40lb for channelers, fanatics, paladins, and rangers[/ul]
++ X% based on your [color="blue"][url="Favour"]divine favour[/url][/color] with [color="blue"][url="Great Ones"]Tamash[/url][/color].[/ul]
+
+Spent power returns with time. If you have run out, then resting is the best course of action.
+
+[font_size=24][color="brown"][b]Arcane Magic[/b][/color][/font_size]
+Arcane spell users learn their spells through study at the Library. They need a book to learn the spell from, and they must carry this book to use as a reference when they wish to use the spell. Arcane spell users can choose which spell they will study.
+
+Arcane magic relies on the aura of the caster being relatively free. As such, it is easily disrupted if the caster is wearing too much armour. Wearing heavy armour reduces the amount of spell points that a caster has available. Gloves, in particular, hamper them; as they restrict finger movement (gloves of agility are exempt from this).
+
+[font_size=24][color="brown"][b]Channelling[/b][/color][/font_size]
+Channelling is a subset of arcane magic used by channelers, who do not cast spells directly but instead are able to use their own store of power to power magical devices in order to avoid expending the charges of those items. Channellers need not study books, but they do need to carry around items containing the powers that they wish to use.
+
+Channellers who attempt to channel an item without sufficient power to do so will drain a charge from the item as normal. As with other arcane spell users, channelers are hampered by wearing too much armour, although there are no particular types of armour (e.g. gloves, helmets) that they need to avoid.
+
+[font_size=24][color="brown"][b]Divine Magic[/b][/color][/font_size]
+Divine spell users are granted spells by their patron. They must still use a book of prayers as a reference when casting spells. Divine spell users need to study their prayer books in the Library in order to gain the insights needed to understand the new spells that their patrons give them.
+
+Divine spell users are given spells at the whim of their patron, and do not choose which spells they are given. Divine spell users are not hampered by armour.
+
+[font_size=24][color="brown"][b]Mentalism[/b][/color][/font_size]
+Mentalism users do not need to learn their powers. They automatically gain them as they get more experienced.
+
+Since there is only ever one power to be gained at a particular level, neither choice nor chance determines what power a mentalism user will gain. They have many fewer powers than other spell users have spells, but those powers tend to be more flexible in their usage.
+
+Mindcrafters are not hampered by armour, except for helmets.
+
+[font_size=24][color="brown"][b]Realms[/b][/color][/font_size]
+Magical spells are divided into a number of different realms of magic, each of which is more suited to different types of effect. Spell casters (both arcane and divine) will normally cast spells from either one or two realms only.
+
+[b]Chaos[/b]
+The chaos realm is the most destructive realm. It concentrates on damaging spells. It is a very good choice for anyone who wants to be able to damage their foes directly, but is somewhat lacking in non-combat spells.
+
+[b]Corporeal[/b]
+The corporeal realm contains spells that exclusively effect the caster’s body, although some spells also indirectly effect other creatures or objects. The corporeal realm is particularly good at spells that enhance the senses.
+
+[b]Death[/b]
+The death realm has a combination of life-draining spells, curses and undead summoning. Like chaos, it is a very offensive realm.
+
+[b]Folk[/b]
+The folk realm is the least specialised of all the realms. Folk magic is capable of doing any effect that is possible in other realms - but usually less effectively than the specialist realms. Folk magic is somewhat more common than the other realms, and all four folk spell books can be found for sale in the shops.
+
+[b]Life[/b]
+The life realm is devoted to healing and buffing, with some offensive capability against undead and demons. It is the most defensive of the realms.
+
+[b]Nature[/b]
+Nature has a large number of summoning spells and miscellaneous spells.
+
+[b]Sorcery[/b]
+The sorcery realm contains spells dealing with raw magic itself, for example spells dealing with magical items. It is the premier source of miscellaneous non-combat spells.
+
+[b]Tarot[/b]
+Tarot magic contains spells of summoning and movement.

@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ux4f2"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_uq6e4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_5aulu"]
+
+[sub_resource type="Resource" id="Resource_dsmts"]
+script = ExtResource("1_ux4f2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_fdwc2"]
+script = ExtResource("1_ux4f2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_cb7pg"]
+script = ExtResource("1_ux4f2")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_vbt41"]
+script = ExtResource("1_ux4f2")
+
+[sub_resource type="Resource" id="Resource_sjuwb"]
+script = ExtResource("2_uq6e4")
+value = 29361664
+
+[sub_resource type="Resource" id="Resource_5r8rd"]
+script = ExtResource("2_uq6e4")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_7i6w5"]
+script = ExtResource("2_uq6e4")
+value = 65608
+
+[sub_resource type="Resource" id="Resource_7wp8n"]
+script = ExtResource("2_uq6e4")
+value = 256
+
+[sub_resource type="Resource" id="Resource_ss4lt"]
+script = ExtResource("2_uq6e4")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_uhpmr"]
+script = ExtResource("2_uq6e4")
+
+[resource]
+script = ExtResource("3_5aulu")
+ac = 60
+attack = Array[ExtResource("1_ux4f2")]([SubResource("Resource_dsmts"), SubResource("Resource_fdwc2"), SubResource("Resource_cb7pg"), SubResource("Resource_vbt41")])
+character = "d"
+colour = 2
+description = "It has a form that legends are made of. Its still-tender scales are a darkest black hue. Acid drips from its body."
+flags_1 = SubResource("Resource_sjuwb")
+flags_2 = SubResource("Resource_5r8rd")
+flags_3 = SubResource("Resource_7i6w5")
+flags_4 = SubResource("Resource_7wp8n")
+flags_5 = SubResource("Resource_ss4lt")
+flags_6 = SubResource("Resource_uhpmr")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 25
+hit_dice_sides = 10
+level = 35
+max_num = 100
+experience = 620
+name = "Young black dragon"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "   Young    "
+split_name_2 = "   black    "
+split_name_3 = "   dragon   "

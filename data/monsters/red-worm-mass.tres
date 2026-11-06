@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ycvnp"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_uh67a"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_syld2"]
+
+[sub_resource type="Resource" id="Resource_qumdx"]
+script = ExtResource("1_ycvnp")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 11
+method = 12
+
+[sub_resource type="Resource" id="Resource_c1lv0"]
+script = ExtResource("1_ycvnp")
+
+[sub_resource type="Resource" id="Resource_p2r7f"]
+script = ExtResource("1_ycvnp")
+
+[sub_resource type="Resource" id="Resource_e48de"]
+script = ExtResource("1_ycvnp")
+
+[sub_resource type="Resource" id="Resource_tj5en"]
+script = ExtResource("2_uh67a")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_8tkv3"]
+script = ExtResource("2_uh67a")
+value = 131393
+
+[sub_resource type="Resource" id="Resource_tvbgo"]
+script = ExtResource("2_uh67a")
+value = 268701824
+
+[sub_resource type="Resource" id="Resource_rnsqw"]
+script = ExtResource("2_uh67a")
+
+[sub_resource type="Resource" id="Resource_31664"]
+script = ExtResource("2_uh67a")
+
+[sub_resource type="Resource" id="Resource_kuech"]
+script = ExtResource("2_uh67a")
+
+[resource]
+script = ExtResource("3_syld2")
+ac = 12
+attack = Array[ExtResource("1_ycvnp")]([SubResource("Resource_qumdx"), SubResource("Resource_c1lv0"), SubResource("Resource_p2r7f"), SubResource("Resource_e48de")])
+character = "w"
+colour = 13
+description = "It is a large slimy mass of worms."
+flags_1 = SubResource("Resource_tj5en")
+flags_2 = SubResource("Resource_8tkv3")
+flags_3 = SubResource("Resource_tvbgo")
+flags_4 = SubResource("Resource_rnsqw")
+flags_5 = SubResource("Resource_31664")
+flags_6 = SubResource("Resource_kuech")
+hit_dice = 5
+hit_dice_sides = 8
+level = 5
+max_num = 100
+experience = 6
+name = "Red worm mass"
+notice_range = 7
+rarity = 1
+sleep = 10
+speed = 100
+split_name_1 = "    Red     "
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

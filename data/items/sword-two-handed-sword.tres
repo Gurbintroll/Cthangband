@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xsini"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_wpu7c"]
+
+[sub_resource type="Resource" id="Resource_d7k6d"]
+script = ExtResource("1_xsini")
+
+[sub_resource type="Resource" id="Resource_y0wf4"]
+script = ExtResource("1_xsini")
+
+[sub_resource type="Resource" id="Resource_g42vm"]
+script = ExtResource("1_xsini")
+value = 1024
+
+[resource]
+script = ExtResource("2_wpu7c")
+chance = Array[int]([1, 1, 0, 0])
+character = "|"
+colour = 15
+cost = 775
+damage_dice = 3
+damage_dice_sides = 6
+flags_1 = SubResource("Resource_d7k6d")
+flags_2 = SubResource("Resource_y0wf4")
+flags_3 = SubResource("Resource_g42vm")
+flavour_aware = true
+item_category = 23
+level = 30
+locale = Array[int]([30, 40, 0, 0])
+name = "& Two-Handed Sword~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 25
+weight = 200
+filename = "Sword:Two-Handed Sword"

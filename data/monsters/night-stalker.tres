@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kuhdv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_mdytg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_wobyk"]
+
+[sub_resource type="Resource" id="Resource_qhtd3"]
+script = ExtResource("1_kuhdv")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 15
+
+[sub_resource type="Resource" id="Resource_utwla"]
+script = ExtResource("1_kuhdv")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 15
+
+[sub_resource type="Resource" id="Resource_u05xp"]
+script = ExtResource("1_kuhdv")
+
+[sub_resource type="Resource" id="Resource_npi8n"]
+script = ExtResource("1_kuhdv")
+
+[sub_resource type="Resource" id="Resource_i4miu"]
+script = ExtResource("2_mdytg")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_evtwq"]
+script = ExtResource("2_mdytg")
+value = 200816
+
+[sub_resource type="Resource" id="Resource_pwkpy"]
+script = ExtResource("2_mdytg")
+value = 3491367008
+
+[sub_resource type="Resource" id="Resource_87o1m"]
+script = ExtResource("2_mdytg")
+
+[sub_resource type="Resource" id="Resource_l4clm"]
+script = ExtResource("2_mdytg")
+
+[sub_resource type="Resource" id="Resource_4sa2y"]
+script = ExtResource("2_mdytg")
+
+[resource]
+script = ExtResource("3_wobyk")
+ac = 46
+attack = Array[ExtResource("1_kuhdv")]([SubResource("Resource_qhtd3"), SubResource("Resource_utwla"), SubResource("Resource_u05xp"), SubResource("Resource_npi8n")])
+character = "E"
+colour = 23
+description = "It is impossible to define its form but its violence is legendary."
+flags_1 = SubResource("Resource_i4miu")
+flags_2 = SubResource("Resource_evtwq")
+flags_3 = SubResource("Resource_pwkpy")
+flags_4 = SubResource("Resource_87o1m")
+flags_5 = SubResource("Resource_l4clm")
+flags_6 = SubResource("Resource_4sa2y")
+hit_dice = 20
+hit_dice_sides = 13
+level = 34
+max_num = 100
+experience = 310
+name = "Night stalker"
+notice_range = 20
+rarity = 3
+sleep = 20
+speed = 130
+split_name_1 = "            "
+split_name_2 = "   Night    "
+split_name_3 = "  stalker   "

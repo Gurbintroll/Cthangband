@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_27r5i"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_hy68l"]
+
+[sub_resource type="Resource" id="Resource_eswf3"]
+script = ExtResource("1_27r5i")
+value = 4328960
+
+[sub_resource type="Resource" id="Resource_l0ej2"]
+script = ExtResource("1_27r5i")
+value = 2555904
+
+[sub_resource type="Resource" id="Resource_5gxhy"]
+script = ExtResource("1_27r5i")
+value = 15729664
+
+[resource]
+script = ExtResource("2_hy68l")
+flags_1 = SubResource("Resource_eswf3")
+flags_2 = SubResource("Resource_l0ej2")
+flags_3 = SubResource("Resource_5gxhy")
+cost = 80000
+damage_dice = 3
+damage_dice_sides = 8
+item_category = 22
+item_sub_category = 28
+level = 30
+name = "of the *Dwarves*"
+type_specific_value = 10
+rarity = 8
+to_hit = 12
+to_damage = 17
+weight = 250
+id = 105

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_tglox"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_17vdn"]
+
+[sub_resource type="Resource" id="Resource_rv3mx"]
+script = ExtResource("1_tglox")
+
+[sub_resource type="Resource" id="Resource_nvi4v"]
+script = ExtResource("1_tglox")
+
+[sub_resource type="Resource" id="Resource_huuvx"]
+script = ExtResource("1_tglox")
+value = 262144
+
+[resource]
+script = ExtResource("2_17vdn")
+cost = 10000
+flags_1 = SubResource("Resource_rv3mx")
+flags_2 = SubResource("Resource_nvi4v")
+flags_3 = SubResource("Resource_huuvx")
+max_to_damage = 10
+max_to_hit = 5
+name = "of Extra Might"
+rating = 20
+slot = 25
+id = 86

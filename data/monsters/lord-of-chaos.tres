@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_5vn7p"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_lqc2e"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_53jyt"]
+
+[sub_resource type="Resource" id="Resource_s3ihq"]
+script = ExtResource("1_5vn7p")
+damage_dice = 20
+damage_dice_sides = 2
+effect = 1
+method = 4
+
+[sub_resource type="Resource" id="Resource_utker"]
+script = ExtResource("1_5vn7p")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 1
+method = 4
+
+[sub_resource type="Resource" id="Resource_jj2w6"]
+script = ExtResource("1_5vn7p")
+damage_dice = 20
+damage_dice_sides = 1
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_hbmya"]
+script = ExtResource("1_5vn7p")
+damage_dice = 15
+damage_dice_sides = 1
+effect = 23
+method = 1
+
+[sub_resource type="Resource" id="Resource_ii5tk"]
+script = ExtResource("2_lqc2e")
+value = 136316548
+
+[sub_resource type="Resource" id="Resource_iwsiv"]
+script = ExtResource("2_lqc2e")
+value = 203794
+
+[sub_resource type="Resource" id="Resource_x8nnu"]
+script = ExtResource("2_lqc2e")
+value = 3223257152
+
+[sub_resource type="Resource" id="Resource_0xbeo"]
+script = ExtResource("2_lqc2e")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_eibsu"]
+script = ExtResource("2_lqc2e")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_1upjj"]
+script = ExtResource("2_lqc2e")
+value = 39845892
+
+[resource]
+script = ExtResource("3_53jyt")
+ac = 80
+attack = Array[ExtResource("1_5vn7p")]([SubResource("Resource_s3ihq"), SubResource("Resource_utker"), SubResource("Resource_jj2w6"), SubResource("Resource_hbmya")])
+character = "p"
+colour = 26
+description = "He is one of the few true masters of the art, being extremely skillful in all forms of unarmed combat and controlling the chaos with disdainful ease."
+flags_1 = SubResource("Resource_ii5tk")
+flags_2 = SubResource("Resource_iwsiv")
+flags_3 = SubResource("Resource_x8nnu")
+flags_4 = SubResource("Resource_0xbeo")
+flags_5 = SubResource("Resource_eibsu")
+flags_6 = SubResource("Resource_1upjj")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 45
+hit_dice_sides = 55
+level = 53
+max_num = 100
+experience = 17500
+name = "Lord of Chaos"
+notice_range = 30
+rarity = 3
+sleep = 5
+speed = 130
+split_name_1 = "    Lord    "
+split_name_2 = "     of     "
+split_name_3 = "   Chaos    "

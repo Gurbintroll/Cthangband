@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_l4h7n"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_2y6d7"]
+
+[sub_resource type="Resource" id="Resource_unals"]
+script = ExtResource("1_l4h7n")
+
+[sub_resource type="Resource" id="Resource_2jhxb"]
+script = ExtResource("1_l4h7n")
+
+[sub_resource type="Resource" id="Resource_nciem"]
+script = ExtResource("1_l4h7n")
+
+[resource]
+script = ExtResource("2_2y6d7")
+ac = 6
+chance = Array[int]([1, 0, 0, 0])
+character = "]"
+colour = 23
+cost = 50
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_unals")
+flags_2 = SubResource("Resource_2jhxb")
+flags_3 = SubResource("Resource_nciem")
+flavour_aware = true
+item_category = 30
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "& Pair~ of Metal Shod Boots"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 6
+weight = 80
+filename = "Boots:Pair of Metal Shod Boots"

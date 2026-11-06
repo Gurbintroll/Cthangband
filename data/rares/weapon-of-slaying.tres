@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_x8pvc"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_cq1xn"]
+
+[sub_resource type="Resource" id="Resource_vvumx"]
+script = ExtResource("1_x8pvc")
+
+[sub_resource type="Resource" id="Resource_8ft5y"]
+script = ExtResource("1_x8pvc")
+
+[sub_resource type="Resource" id="Resource_a5pyo"]
+script = ExtResource("1_x8pvc")
+
+[resource]
+script = ExtResource("2_cq1xn")
+cost = 2500
+flags_1 = SubResource("Resource_vvumx")
+flags_2 = SubResource("Resource_8ft5y")
+flags_3 = SubResource("Resource_a5pyo")
+name = "of Slaying"
+rating = 15
+slot = 24
+id = 58

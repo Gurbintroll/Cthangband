@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_lrrsi"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_uenpr"]
+
+[sub_resource type="Resource" id="Resource_kafme"]
+script = ExtResource("1_lrrsi")
+
+[sub_resource type="Resource" id="Resource_b2wwm"]
+script = ExtResource("1_lrrsi")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_pgnd8"]
+script = ExtResource("1_lrrsi")
+value = 256
+
+[resource]
+script = ExtResource("2_uenpr")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 23
+cost = 1500
+easy_know = true
+flags_1 = SubResource("Resource_kafme")
+flags_2 = SubResource("Resource_b2wwm")
+flags_3 = SubResource("Resource_pgnd8")
+has_flavour = true
+item_category = 45
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Free Action"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 21
+weight = 2
+filename = "Ring:Free Action"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_sbfns"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_vts2x"]
+
+[sub_resource type="Resource" id="Resource_7qyyy"]
+script = ExtResource("1_sbfns")
+
+[sub_resource type="Resource" id="Resource_0vq1w"]
+script = ExtResource("1_sbfns")
+
+[sub_resource type="Resource" id="Resource_n5vuf"]
+script = ExtResource("1_sbfns")
+value = 32768
+
+[resource]
+script = ExtResource("2_vts2x")
+cost = 50000
+flags_1 = SubResource("Resource_7qyyy")
+flags_2 = SubResource("Resource_0vq1w")
+flags_3 = SubResource("Resource_n5vuf")
+name = "of Telepathy"
+rating = 20
+slot = 33
+id = 25

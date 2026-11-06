@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qstiu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7ic4x"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jqk16"]
+
+[sub_resource type="Resource" id="Resource_sfivh"]
+script = ExtResource("1_qstiu")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_x5l65"]
+script = ExtResource("1_qstiu")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_w3iud"]
+script = ExtResource("1_qstiu")
+
+[sub_resource type="Resource" id="Resource_j5pr2"]
+script = ExtResource("1_qstiu")
+
+[sub_resource type="Resource" id="Resource_7h1em"]
+script = ExtResource("2_7ic4x")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_co32t"]
+script = ExtResource("2_7ic4x")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_fmx7l"]
+script = ExtResource("2_7ic4x")
+value = 128
+
+[sub_resource type="Resource" id="Resource_vbl6a"]
+script = ExtResource("2_7ic4x")
+
+[sub_resource type="Resource" id="Resource_iev7s"]
+script = ExtResource("2_7ic4x")
+
+[sub_resource type="Resource" id="Resource_0tnxc"]
+script = ExtResource("2_7ic4x")
+
+[resource]
+script = ExtResource("3_jqk16")
+ac = 35
+attack = Array[ExtResource("1_qstiu")]([SubResource("Resource_sfivh"), SubResource("Resource_x5l65"), SubResource("Resource_w3iud"), SubResource("Resource_j5pr2")])
+character = "J"
+colour = 17
+description = "It is about eight feet long."
+flags_1 = SubResource("Resource_7h1em")
+flags_2 = SubResource("Resource_co32t")
+flags_3 = SubResource("Resource_fmx7l")
+flags_4 = SubResource("Resource_vbl6a")
+flags_5 = SubResource("Resource_iev7s")
+flags_6 = SubResource("Resource_0tnxc")
+hit_dice = 4
+hit_dice_sides = 6
+level = 1
+max_num = 100
+experience = 3
+name = "Large brown snake"
+notice_range = 4
+rarity = 1
+sleep = 99
+speed = 100
+split_name_1 = "   Large    "
+split_name_2 = "   brown    "
+split_name_3 = "   snake    "

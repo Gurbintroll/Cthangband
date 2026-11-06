@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_lsgis"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_5uyfh"]
+
+[sub_resource type="Resource" id="Resource_lxvmn"]
+script = ExtResource("1_lsgis")
+value = 8
+
+[sub_resource type="Resource" id="Resource_m73fp"]
+script = ExtResource("1_lsgis")
+value = 134283264
+
+[sub_resource type="Resource" id="Resource_stkaa"]
+script = ExtResource("1_lsgis")
+value = 15729152
+
+[resource]
+script = ExtResource("2_5uyfh")
+flags_1 = SubResource("Resource_lxvmn")
+flags_2 = SubResource("Resource_m73fp")
+flags_3 = SubResource("Resource_stkaa")
+ac = 11
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 1
+item_category = 36
+item_sub_category = 11
+level = 20
+name = "*Wyvernscale*"
+type_specific_value = 3
+rarity = 3
+to_ac = 25
+to_hit = -1
+weight = 60
+id = 28

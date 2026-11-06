@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qyfp1"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_o0fhy"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ao0my"]
+
+[sub_resource type="Resource" id="Resource_tpbnp"]
+script = ExtResource("1_qyfp1")
+damage_dice = 1
+damage_dice_sides = 11
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_qlt53"]
+script = ExtResource("1_qyfp1")
+damage_dice = 1
+damage_dice_sides = 11
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mhshb"]
+script = ExtResource("1_qyfp1")
+
+[sub_resource type="Resource" id="Resource_8wpki"]
+script = ExtResource("1_qyfp1")
+
+[sub_resource type="Resource" id="Resource_86knh"]
+script = ExtResource("2_o0fhy")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_4fvln"]
+script = ExtResource("2_o0fhy")
+value = 262240
+
+[sub_resource type="Resource" id="Resource_iyu36"]
+script = ExtResource("2_o0fhy")
+value = 2415921152
+
+[sub_resource type="Resource" id="Resource_r50ef"]
+script = ExtResource("2_o0fhy")
+
+[sub_resource type="Resource" id="Resource_geuk4"]
+script = ExtResource("2_o0fhy")
+
+[sub_resource type="Resource" id="Resource_5qjvp"]
+script = ExtResource("2_o0fhy")
+
+[resource]
+script = ExtResource("3_ao0my")
+ac = 10
+attack = Array[ExtResource("1_qyfp1")]([SubResource("Resource_tpbnp"), SubResource("Resource_qlt53"), SubResource("Resource_mhshb"), SubResource("Resource_8wpki")])
+character = "G"
+colour = 14
+description = "Creatures that are half real, half illusion."
+flags_1 = SubResource("Resource_86knh")
+flags_2 = SubResource("Resource_4fvln")
+flags_3 = SubResource("Resource_iyu36")
+flags_4 = SubResource("Resource_r50ef")
+flags_5 = SubResource("Resource_geuk4")
+flags_6 = SubResource("Resource_5qjvp")
+hit_dice = 5
+hit_dice_sides = 5
+level = 8
+max_num = 100
+experience = 15
+name = "Phantom warrior"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Phantom   "
+split_name_3 = "  warrior   "

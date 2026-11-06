@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_uokib"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_hhw5v"]
+
+[sub_resource type="Resource" id="Resource_ow5qw"]
+script = ExtResource("1_uokib")
+
+[sub_resource type="Resource" id="Resource_655w7"]
+script = ExtResource("1_uokib")
+value = 16777216
+
+[sub_resource type="Resource" id="Resource_8ar8o"]
+script = ExtResource("1_uokib")
+value = 256
+
+[resource]
+script = ExtResource("2_hhw5v")
+chance = Array[int]([2, 0, 0, 0])
+character = "="
+colour = 24
+cost = 7500
+easy_know = true
+flags_1 = SubResource("Resource_ow5qw")
+flags_2 = SubResource("Resource_655w7")
+flags_3 = SubResource("Resource_8ar8o")
+has_flavour = true
+item_category = 45
+level = 60
+locale = Array[int]([60, 0, 0, 0])
+name = "Blindness Resistance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 47
+weight = 2
+filename = "Ring:Blindness Resistance"

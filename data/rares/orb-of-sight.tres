@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0nry6"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_2wfym"]
+
+[sub_resource type="Resource" id="Resource_86erh"]
+script = ExtResource("1_0nry6")
+
+[sub_resource type="Resource" id="Resource_nf0uh"]
+script = ExtResource("1_0nry6")
+value = 16777216
+
+[sub_resource type="Resource" id="Resource_un4vi"]
+script = ExtResource("1_0nry6")
+value = 15728640
+
+[resource]
+script = ExtResource("2_2wfym")
+cost = 1000
+flags_1 = SubResource("Resource_86erh")
+flags_2 = SubResource("Resource_nf0uh")
+flags_3 = SubResource("Resource_un4vi")
+name = "of Sight"
+id = 106

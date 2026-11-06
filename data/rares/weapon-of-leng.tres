@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_1tsos"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_euxpo"]
+
+[sub_resource type="Resource" id="Resource_tixsx"]
+script = ExtResource("1_1tsos")
+
+[sub_resource type="Resource" id="Resource_vhqvr"]
+script = ExtResource("1_1tsos")
+
+[sub_resource type="Resource" id="Resource_x7jtt"]
+script = ExtResource("1_1tsos")
+value = 1610629120
+
+[resource]
+script = ExtResource("2_euxpo")
+flags_1 = SubResource("Resource_tixsx")
+flags_2 = SubResource("Resource_vhqvr")
+flags_3 = SubResource("Resource_x7jtt")
+max_to_ac = 10
+max_to_damage = 20
+max_to_hit = 20
+name = "of Leng"
+slot = 24
+id = 83

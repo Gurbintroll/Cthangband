@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1im4k"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vl6kt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kvm5i"]
+
+[sub_resource type="Resource" id="Resource_5b7ek"]
+script = ExtResource("1_1im4k")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_kxt7f"]
+script = ExtResource("1_1im4k")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 7
+
+[sub_resource type="Resource" id="Resource_b3341"]
+script = ExtResource("1_1im4k")
+
+[sub_resource type="Resource" id="Resource_5j3ot"]
+script = ExtResource("1_1im4k")
+
+[sub_resource type="Resource" id="Resource_vbfcm"]
+script = ExtResource("2_vl6kt")
+
+[sub_resource type="Resource" id="Resource_d2nci"]
+script = ExtResource("2_vl6kt")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_ditf4"]
+script = ExtResource("2_vl6kt")
+value = 128
+
+[sub_resource type="Resource" id="Resource_08jau"]
+script = ExtResource("2_vl6kt")
+
+[sub_resource type="Resource" id="Resource_lwypp"]
+script = ExtResource("2_vl6kt")
+
+[sub_resource type="Resource" id="Resource_t2t2s"]
+script = ExtResource("2_vl6kt")
+
+[resource]
+script = ExtResource("3_kvm5i")
+ac = 50
+attack = Array[ExtResource("1_1im4k")]([SubResource("Resource_5b7ek"), SubResource("Resource_kxt7f"), SubResource("Resource_b3341"), SubResource("Resource_5j3ot")])
+character = "S"
+colour = 9
+description = "It is a giant grey scorpion. It looks poisonous."
+flags_1 = SubResource("Resource_vbfcm")
+flags_2 = SubResource("Resource_d2nci")
+flags_3 = SubResource("Resource_ditf4")
+flags_4 = SubResource("Resource_08jau")
+flags_5 = SubResource("Resource_lwypp")
+flags_6 = SubResource("Resource_t2t2s")
+hit_dice = 18
+hit_dice_sides = 20
+level = 34
+max_num = 100
+experience = 275
+name = "Giant grey scorpion"
+notice_range = 12
+rarity = 4
+sleep = 40
+speed = 120
+split_name_1 = "   Giant    "
+split_name_2 = "    grey    "
+split_name_3 = "  scorpion  "

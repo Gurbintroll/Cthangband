@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_svu8n"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_qx3ok"]
+
+[sub_resource type="Resource" id="Resource_rrsik"]
+script = ExtResource("1_svu8n")
+value = 131584
+
+[sub_resource type="Resource" id="Resource_u0wuw"]
+script = ExtResource("1_svu8n")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_o6diq"]
+script = ExtResource("1_svu8n")
+value = 84082688
+
+[resource]
+script = ExtResource("2_qx3ok")
+cost = 7000
+flags_1 = SubResource("Resource_rrsik")
+flags_2 = SubResource("Resource_u0wuw")
+flags_3 = SubResource("Resource_o6diq")
+max_type_specifc_value = 2
+max_to_damage = 4
+max_to_hit = 4
+name = "(Planar Weapon)"
+rating = 22
+slot = 24
+id = 80

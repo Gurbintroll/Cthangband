@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_cftlb"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1wj6u"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1488s"]
+
+[sub_resource type="Resource" id="Resource_vwi4e"]
+script = ExtResource("1_cftlb")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 13
+method = 15
+
+[sub_resource type="Resource" id="Resource_n5l6y"]
+script = ExtResource("1_cftlb")
+
+[sub_resource type="Resource" id="Resource_jih1q"]
+script = ExtResource("1_cftlb")
+
+[sub_resource type="Resource" id="Resource_ky0q7"]
+script = ExtResource("1_cftlb")
+
+[sub_resource type="Resource" id="Resource_ai6p6"]
+script = ExtResource("2_1wj6u")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_8s0mc"]
+script = ExtResource("2_1wj6u")
+
+[sub_resource type="Resource" id="Resource_0co7c"]
+script = ExtResource("2_1wj6u")
+value = 268439552
+
+[sub_resource type="Resource" id="Resource_n10uc"]
+script = ExtResource("2_1wj6u")
+
+[sub_resource type="Resource" id="Resource_hxrxo"]
+script = ExtResource("2_1wj6u")
+value = 512
+
+[sub_resource type="Resource" id="Resource_cd44s"]
+script = ExtResource("2_1wj6u")
+
+[resource]
+script = ExtResource("3_1488s")
+ac = 6
+attack = Array[ExtResource("1_cftlb")]([SubResource("Resource_vwi4e"), SubResource("Resource_n5l6y"), SubResource("Resource_jih1q"), SubResource("Resource_ky0q7")])
+character = "e"
+colour = 27
+description = "A disembodied eye, bloodshot and nasty."
+flags_1 = SubResource("Resource_ai6p6")
+flags_2 = SubResource("Resource_8s0mc")
+flags_3 = SubResource("Resource_0co7c")
+flags_4 = SubResource("Resource_n10uc")
+flags_5 = SubResource("Resource_hxrxo")
+flags_6 = SubResource("Resource_cd44s")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 5
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 15
+name = "Bloodshot eye"
+notice_range = 2
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Bloodshot  "
+split_name_3 = "    eye     "

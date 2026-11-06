@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dl1ud"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_6npfd"]
+
+[sub_resource type="Resource" id="Resource_exy8e"]
+script = ExtResource("1_dl1ud")
+
+[sub_resource type="Resource" id="Resource_xsn07"]
+script = ExtResource("1_dl1ud")
+
+[sub_resource type="Resource" id="Resource_o4d4d"]
+script = ExtResource("1_dl1ud")
+value = 8388608
+
+[resource]
+script = ExtResource("2_6npfd")
+chance = Array[int]([6, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 5000
+easy_know = true
+flags_1 = SubResource("Resource_exy8e")
+flags_2 = SubResource("Resource_xsn07")
+flags_3 = SubResource("Resource_o4d4d")
+has_flavour = true
+item_category = 70
+level = 75
+locale = Array[int]([75, 0, 0, 0])
+name = "Ice"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 49
+weight = 5
+filename = "Scroll:Ice"

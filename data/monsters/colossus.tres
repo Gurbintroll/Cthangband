@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_oqibl"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_e3lvv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_l5j82"]
+
+[sub_resource type="Resource" id="Resource_lt7ag"]
+script = ExtResource("1_oqibl")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_dtw1x"]
+script = ExtResource("1_oqibl")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_qin1w"]
+script = ExtResource("1_oqibl")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ql6cr"]
+script = ExtResource("1_oqibl")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_88vyl"]
+script = ExtResource("2_e3lvv")
+value = 512
+
+[sub_resource type="Resource" id="Resource_gdl25"]
+script = ExtResource("2_e3lvv")
+value = 131176
+
+[sub_resource type="Resource" id="Resource_ab1y2"]
+script = ExtResource("2_e3lvv")
+value = 3491629056
+
+[sub_resource type="Resource" id="Resource_e7xua"]
+script = ExtResource("2_e3lvv")
+value = 128
+
+[sub_resource type="Resource" id="Resource_g5tc4"]
+script = ExtResource("2_e3lvv")
+
+[sub_resource type="Resource" id="Resource_mw7hu"]
+script = ExtResource("2_e3lvv")
+
+[resource]
+script = ExtResource("3_l5j82")
+ac = 150
+attack = Array[ExtResource("1_oqibl")]([SubResource("Resource_lt7ag"), SubResource("Resource_dtw1x"), SubResource("Resource_qin1w"), SubResource("Resource_ql6cr")])
+character = "g"
+colour = 31
+description = "An enormous construct resembling a titan made from stone. It strides purposefully towards you, swinging its slow fists with earth-shattering power."
+flags_1 = SubResource("Resource_88vyl")
+flags_2 = SubResource("Resource_gdl25")
+flags_3 = SubResource("Resource_ab1y2")
+flags_4 = SubResource("Resource_e7xua")
+flags_5 = SubResource("Resource_g5tc4")
+flags_6 = SubResource("Resource_mw7hu")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 30
+hit_dice_sides = 100
+level = 36
+max_num = 100
+experience = 900
+name = "Colossus"
+notice_range = 15
+rarity = 4
+sleep = 10
+speed = 100
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Colossus  "

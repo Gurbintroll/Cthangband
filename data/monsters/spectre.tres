@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2i3si"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_sl20t"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_dd323"]
+
+[sub_resource type="Resource" id="Resource_3foet"]
+script = ExtResource("1_2i3si")
+effect = 15
+method = 16
+
+[sub_resource type="Resource" id="Resource_o34bo"]
+script = ExtResource("1_2i3si")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_iwha2"]
+script = ExtResource("1_2i3si")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 19
+method = 5
+
+[sub_resource type="Resource" id="Resource_f7ild"]
+script = ExtResource("1_2i3si")
+
+[sub_resource type="Resource" id="Resource_wyyuk"]
+script = ExtResource("2_sl20t")
+value = 44303360
+
+[sub_resource type="Resource" id="Resource_6yheu"]
+script = ExtResource("2_sl20t")
+value = 4456480
+
+[sub_resource type="Resource" id="Resource_yh65m"]
+script = ExtResource("2_sl20t")
+value = 3222798432
+
+[sub_resource type="Resource" id="Resource_mgnkb"]
+script = ExtResource("2_sl20t")
+
+[sub_resource type="Resource" id="Resource_jij1f"]
+script = ExtResource("2_sl20t")
+value = 2415919616
+
+[sub_resource type="Resource" id="Resource_altaj"]
+script = ExtResource("2_sl20t")
+value = 16384
+
+[resource]
+script = ExtResource("3_dd323")
+ac = 30
+attack = Array[ExtResource("1_2i3si")]([SubResource("Resource_3foet"), SubResource("Resource_o34bo"), SubResource("Resource_iwha2"), SubResource("Resource_f7ild")])
+character = "G"
+colour = 8
+description = "A phantasmal shrieking spirit. Its wail drives the intense cold of pure evil deep within your body."
+flags_1 = SubResource("Resource_wyyuk")
+flags_2 = SubResource("Resource_6yheu")
+flags_3 = SubResource("Resource_yh65m")
+flags_4 = SubResource("Resource_mgnkb")
+flags_5 = SubResource("Resource_jij1f")
+flags_6 = SubResource("Resource_altaj")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 14
+hit_dice_sides = 20
+level = 33
+max_num = 100
+experience = 350
+name = "Spectre"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Spectre   "

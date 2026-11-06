@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://h582q2ahst1t"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_k4wrt"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_6mxgh"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_febba"]
+
+[sub_resource type="Resource" id="Resource_a7rtt"]
+script = ExtResource("1_k4wrt")
+
+[sub_resource type="Resource" id="Resource_7dgdn"]
+script = ExtResource("1_k4wrt")
+
+[sub_resource type="Resource" id="Resource_pck3g"]
+script = ExtResource("1_k4wrt")
+
+[sub_resource type="Resource" id="Resource_jxu1p"]
+script = ExtResource("1_k4wrt")
+
+[sub_resource type="Resource" id="Resource_841j8"]
+script = ExtResource("2_6mxgh")
+value = 853120
+
+[sub_resource type="Resource" id="Resource_lk7m4"]
+script = ExtResource("2_6mxgh")
+value = 135232
+
+[sub_resource type="Resource" id="Resource_wdmip"]
+script = ExtResource("2_6mxgh")
+value = 3491760128
+
+[sub_resource type="Resource" id="Resource_b6mr4"]
+script = ExtResource("2_6mxgh")
+value = 16385
+
+[sub_resource type="Resource" id="Resource_2xgn2"]
+script = ExtResource("2_6mxgh")
+
+[sub_resource type="Resource" id="Resource_tgld2"]
+script = ExtResource("2_6mxgh")
+
+[resource]
+script = ExtResource("3_febba")
+ac = 30
+attack = Array[ExtResource("1_k4wrt")]([SubResource("Resource_a7rtt"), SubResource("Resource_7dgdn"), SubResource("Resource_pck3g"), SubResource("Resource_jxu1p")])
+character = "v"
+colour = 14
+description = "A strange pillar of shining light that hurts your eyes. Its shape changes constantly as it cuts through the air towards you. It is like a beacon, waking monsters from their slumber."
+flags_1 = SubResource("Resource_841j8")
+flags_2 = SubResource("Resource_lk7m4")
+flags_3 = SubResource("Resource_wdmip")
+flags_4 = SubResource("Resource_b6mr4")
+flags_5 = SubResource("Resource_2xgn2")
+flags_6 = SubResource("Resource_tgld2")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 6
+hit_dice_sides = 12
+level = 38
+max_num = 100
+experience = 200
+name = "Shimmering vortex"
+notice_range = 100
+rarity = 4
+speed = 140
+split_name_1 = "            "
+split_name_2 = " Shimmering "
+split_name_3 = "   vortex   "

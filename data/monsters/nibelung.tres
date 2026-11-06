@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_85ke8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_okk6r"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_w1a6d"]
+
+[sub_resource type="Resource" id="Resource_byyra"]
+script = ExtResource("1_85ke8")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vwxay"]
+script = ExtResource("1_85ke8")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_hgfou"]
+script = ExtResource("1_85ke8")
+
+[sub_resource type="Resource" id="Resource_3phes"]
+script = ExtResource("1_85ke8")
+
+[sub_resource type="Resource" id="Resource_un4oo"]
+script = ExtResource("2_okk6r")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_gfigy"]
+script = ExtResource("2_okk6r")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_dhr2l"]
+script = ExtResource("2_okk6r")
+value = 67113024
+
+[sub_resource type="Resource" id="Resource_dy7ac"]
+script = ExtResource("2_okk6r")
+
+[sub_resource type="Resource" id="Resource_lyfhi"]
+script = ExtResource("2_okk6r")
+
+[sub_resource type="Resource" id="Resource_utsq4"]
+script = ExtResource("2_okk6r")
+
+[resource]
+script = ExtResource("3_w1a6d")
+ac = 12
+attack = Array[ExtResource("1_85ke8")]([SubResource("Resource_byyra"), SubResource("Resource_vwxay"), SubResource("Resource_hgfou"), SubResource("Resource_3phes")])
+character = "h"
+colour = 28
+description = "Night dwarfs collecting new riches for their collection. "
+flags_1 = SubResource("Resource_un4oo")
+flags_2 = SubResource("Resource_gfigy")
+flags_3 = SubResource("Resource_dhr2l")
+flags_4 = SubResource("Resource_dy7ac")
+flags_5 = SubResource("Resource_lyfhi")
+flags_6 = SubResource("Resource_utsq4")
+hit_dice = 8
+hit_dice_sides = 4
+level = 6
+max_num = 100
+experience = 6
+name = "Nibelung"
+notice_range = 20
+rarity = 1
+sleep = 5
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Nibelung  "

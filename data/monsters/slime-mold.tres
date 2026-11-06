@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_hoyy0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4p1md"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_e5bfi"]
+
+[sub_resource type="Resource" id="Resource_71atb"]
+script = ExtResource("1_hoyy0")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 12
+
+[sub_resource type="Resource" id="Resource_1excw"]
+script = ExtResource("1_hoyy0")
+effect = 7
+method = 12
+
+[sub_resource type="Resource" id="Resource_5b7ij"]
+script = ExtResource("1_hoyy0")
+method = 13
+
+[sub_resource type="Resource" id="Resource_y8444"]
+script = ExtResource("1_hoyy0")
+method = 13
+
+[sub_resource type="Resource" id="Resource_ildxi"]
+script = ExtResource("2_4p1md")
+value = 8912896
+
+[sub_resource type="Resource" id="Resource_kasr0"]
+script = ExtResource("2_4p1md")
+value = 6291520
+
+[sub_resource type="Resource" id="Resource_55401"]
+script = ExtResource("2_4p1md")
+value = 1048576
+
+[sub_resource type="Resource" id="Resource_058be"]
+script = ExtResource("2_4p1md")
+
+[sub_resource type="Resource" id="Resource_5a2vn"]
+script = ExtResource("2_4p1md")
+
+[sub_resource type="Resource" id="Resource_ohyen"]
+script = ExtResource("2_4p1md")
+
+[resource]
+script = ExtResource("3_e5bfi")
+ac = 4
+attack = Array[ExtResource("1_hoyy0")]([SubResource("Resource_71atb"), SubResource("Resource_1excw"), SubResource("Resource_5b7ij"), SubResource("Resource_y8444")])
+character = ","
+colour = 22
+description = "It is a smallish, slimy, icky, hungry creature."
+flags_1 = SubResource("Resource_ildxi")
+flags_2 = SubResource("Resource_kasr0")
+flags_3 = SubResource("Resource_55401")
+flags_4 = SubResource("Resource_058be")
+flags_5 = SubResource("Resource_5a2vn")
+flags_6 = SubResource("Resource_ohyen")
+hit_dice = 5
+hit_dice_sides = 6
+level = 2
+max_num = 100
+experience = 8
+name = "Slime mold"
+notice_range = 14
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Slime    "
+split_name_3 = "    mold    "

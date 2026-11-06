@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_50u00"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_q7phs"]
+
+[sub_resource type="Resource" id="Resource_mjkjq"]
+script = ExtResource("1_50u00")
+
+[sub_resource type="Resource" id="Resource_y04aw"]
+script = ExtResource("1_50u00")
+
+[sub_resource type="Resource" id="Resource_niiis"]
+script = ExtResource("1_50u00")
+
+[resource]
+script = ExtResource("2_q7phs")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 18
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_mjkjq")
+flags_2 = SubResource("Resource_y04aw")
+flags_3 = SubResource("Resource_niiis")
+has_flavour = true
+item_category = 75
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Sickliness"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 20
+weight = 4
+filename = "Potion:Sickliness"

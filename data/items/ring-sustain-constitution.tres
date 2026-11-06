@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mrrxq"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_68nx7"]
+
+[sub_resource type="Resource" id="Resource_yb1y1"]
+script = ExtResource("1_mrrxq")
+
+[sub_resource type="Resource" id="Resource_dco8h"]
+script = ExtResource("1_mrrxq")
+value = 16
+
+[sub_resource type="Resource" id="Resource_n8rjx"]
+script = ExtResource("1_mrrxq")
+value = 256
+
+[resource]
+script = ExtResource("2_68nx7")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 27
+cost = 750
+easy_know = true
+flags_1 = SubResource("Resource_yb1y1")
+flags_2 = SubResource("Resource_dco8h")
+flags_3 = SubResource("Resource_n8rjx")
+has_flavour = true
+item_category = 45
+level = 30
+locale = Array[int]([30, 0, 0, 0])
+name = "Sustain Constitution"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 13
+weight = 2
+filename = "Ring:Sustain Constitution"

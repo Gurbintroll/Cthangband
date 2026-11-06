@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_emcfm"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_qd7iy"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1bxuv"]
+
+[sub_resource type="Resource" id="Resource_om7xw"]
+script = ExtResource("1_emcfm")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 10
+
+[sub_resource type="Resource" id="Resource_jspcu"]
+script = ExtResource("1_emcfm")
+
+[sub_resource type="Resource" id="Resource_ahu8y"]
+script = ExtResource("1_emcfm")
+
+[sub_resource type="Resource" id="Resource_qi3vx"]
+script = ExtResource("1_emcfm")
+
+[sub_resource type="Resource" id="Resource_uarlb"]
+script = ExtResource("2_qd7iy")
+value = 787456
+
+[sub_resource type="Resource" id="Resource_787b3"]
+script = ExtResource("2_qd7iy")
+value = 135232
+
+[sub_resource type="Resource" id="Resource_7hshv"]
+script = ExtResource("2_qd7iy")
+value = 3489662976
+
+[sub_resource type="Resource" id="Resource_wcqkn"]
+script = ExtResource("2_qd7iy")
+value = 2097152
+
+[sub_resource type="Resource" id="Resource_odivg"]
+script = ExtResource("2_qd7iy")
+
+[sub_resource type="Resource" id="Resource_axusl"]
+script = ExtResource("2_qd7iy")
+
+[resource]
+script = ExtResource("3_1bxuv")
+ac = 40
+attack = Array[ExtResource("1_emcfm")]([SubResource("Resource_om7xw"), SubResource("Resource_jspcu"), SubResource("Resource_ahu8y"), SubResource("Resource_qi3vx")])
+character = "v"
+colour = 8
+description = "You haven't seen it yet."
+flags_1 = SubResource("Resource_uarlb")
+flags_2 = SubResource("Resource_787b3")
+flags_3 = SubResource("Resource_7hshv")
+flags_4 = SubResource("Resource_wcqkn")
+flags_5 = SubResource("Resource_odivg")
+flags_6 = SubResource("Resource_axusl")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 32
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 900
+name = "Time vortex"
+notice_range = 100
+rarity = 4
+speed = 130
+split_name_1 = "            "
+split_name_2 = "    Time    "
+split_name_3 = "   vortex   "

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_42u3g"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_3obd3"]
+
+[sub_resource type="Resource" id="Resource_mm1yj"]
+script = ExtResource("1_42u3g")
+
+[sub_resource type="Resource" id="Resource_udtfd"]
+script = ExtResource("1_42u3g")
+
+[sub_resource type="Resource" id="Resource_8kppq"]
+script = ExtResource("1_42u3g")
+value = 1048576
+
+[resource]
+script = ExtResource("2_3obd3")
+ac = 40
+chance = Array[int]([8, 0, 0, 0])
+character = "["
+colour = 8
+cost = 20000
+damage_dice = 2
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_mm1yj")
+flags_2 = SubResource("Resource_udtfd")
+flags_3 = SubResource("Resource_8kppq")
+flavour_aware = true
+item_category = 37
+level = 75
+locale = Array[int]([75, 0, 0, 0])
+name = "Adamantite Plate Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 30
+to_hit = -4
+weight = 420
+filename = "HardArmor:Adamantite Plate Mail"

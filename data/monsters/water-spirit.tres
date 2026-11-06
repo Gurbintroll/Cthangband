@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_jmroy"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_23l82"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_7ak3r"]
+
+[sub_resource type="Resource" id="Resource_qh7dn"]
+script = ExtResource("1_jmroy")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mc52k"]
+script = ExtResource("1_jmroy")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1udg1"]
+script = ExtResource("1_jmroy")
+
+[sub_resource type="Resource" id="Resource_k5vl6"]
+script = ExtResource("1_jmroy")
+
+[sub_resource type="Resource" id="Resource_r1yu1"]
+script = ExtResource("2_23l82")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_45i1s"]
+script = ExtResource("2_23l82")
+value = 131168
+
+[sub_resource type="Resource" id="Resource_1mh28"]
+script = ExtResource("2_23l82")
+value = 3490709568
+
+[sub_resource type="Resource" id="Resource_f4n8n"]
+script = ExtResource("2_23l82")
+
+[sub_resource type="Resource" id="Resource_vh4yp"]
+script = ExtResource("2_23l82")
+
+[sub_resource type="Resource" id="Resource_sk3mo"]
+script = ExtResource("2_23l82")
+
+[resource]
+script = ExtResource("3_7ak3r")
+ac = 28
+attack = Array[ExtResource("1_jmroy")]([SubResource("Resource_qh7dn"), SubResource("Resource_mc52k"), SubResource("Resource_1udg1"), SubResource("Resource_k5vl6")])
+character = "E"
+colour = 29
+description = "A whirlpool of sentient liquid."
+flags_1 = SubResource("Resource_r1yu1")
+flags_2 = SubResource("Resource_45i1s")
+flags_3 = SubResource("Resource_1mh28")
+flags_4 = SubResource("Resource_f4n8n")
+flags_5 = SubResource("Resource_vh4yp")
+flags_6 = SubResource("Resource_sk3mo")
+hit_dice = 9
+hit_dice_sides = 8
+level = 17
+max_num = 100
+experience = 58
+name = "Water spirit"
+notice_range = 12
+rarity = 1
+sleep = 40
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Water    "
+split_name_3 = "   spirit   "

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_22w5g"]
+
+[resource]
+script = ExtResource("1_22w5g")
+alter_action = 1
+appear_as = "Fountain"
+blocks_los = true
+character = "~"
+colour = 5
+description = "fountain"
+dims_outside_los = true
+name = "Fountain"

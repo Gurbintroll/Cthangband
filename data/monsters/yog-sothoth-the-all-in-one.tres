@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://2s3tkbkl1cua"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_y0yuc"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_wbws0"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_y23c5"]
+
+[sub_resource type="Resource" id="Resource_i3wdj"]
+script = ExtResource("1_y0yuc")
+damage_dice = 40
+damage_dice_sides = 5
+effect = 1
+method = 2
+
+[sub_resource type="Resource" id="Resource_sdvye"]
+script = ExtResource("1_y0yuc")
+damage_dice = 16
+damage_dice_sides = 2
+effect = 21
+method = 2
+
+[sub_resource type="Resource" id="Resource_roxp4"]
+script = ExtResource("1_y0yuc")
+damage_dice = 16
+damage_dice_sides = 2
+effect = 21
+method = 2
+
+[sub_resource type="Resource" id="Resource_jox8u"]
+script = ExtResource("1_y0yuc")
+
+[sub_resource type="Resource" id="Resource_hw3pj"]
+script = ExtResource("2_wbws0")
+value = 404752001
+
+[sub_resource type="Resource" id="Resource_l2ap1"]
+script = ExtResource("2_wbws0")
+value = 518178
+
+[sub_resource type="Resource" id="Resource_xt010"]
+script = ExtResource("2_wbws0")
+value = 3225356608
+
+[sub_resource type="Resource" id="Resource_n81ga"]
+script = ExtResource("2_wbws0")
+value = 3355443200
+
+[sub_resource type="Resource" id="Resource_82n68"]
+script = ExtResource("2_wbws0")
+value = 8390784
+
+[sub_resource type="Resource" id="Resource_ctj4a"]
+script = ExtResource("2_wbws0")
+value = 290062336
+
+[resource]
+script = ExtResource("3_y23c5")
+ac = 100
+attack = Array[ExtResource("1_y0yuc")]([SubResource("Resource_i3wdj"), SubResource("Resource_sdvye"), SubResource("Resource_roxp4"), SubResource("Resource_jox8u")])
+character = "X"
+colour = 12
+description = "An outer god whose form resembles a mass of great floating globes."
+flags_1 = SubResource("Resource_hw3pj")
+flags_2 = SubResource("Resource_l2ap1")
+flags_3 = SubResource("Resource_xt010")
+flags_4 = SubResource("Resource_n81ga")
+flags_5 = SubResource("Resource_82n68")
+flags_6 = SubResource("Resource_ctj4a")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 66
+hit_dice_sides = 99
+level = 90
+max_num = 1
+experience = 45000
+name = "Yog-Sothoth, the All-in-One"
+notice_range = 100
+rarity = 3
+sleep = 20
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Yog-Sothoth "

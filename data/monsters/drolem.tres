@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_52imw"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_e8dap"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_if0wu"]
+
+[sub_resource type="Resource" id="Resource_etoop"]
+script = ExtResource("1_52imw")
+damage_dice = 5
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_mesgi"]
+script = ExtResource("1_52imw")
+damage_dice = 5
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_s2j0b"]
+script = ExtResource("1_52imw")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_a1ose"]
+script = ExtResource("1_52imw")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_ok2on"]
+script = ExtResource("2_e8dap")
+value = 1536
+
+[sub_resource type="Resource" id="Resource_jqgis"]
+script = ExtResource("2_e8dap")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_vdono"]
+script = ExtResource("2_e8dap")
+value = 3493726216
+
+[sub_resource type="Resource" id="Resource_ho07b"]
+script = ExtResource("2_e8dap")
+value = 4160
+
+[sub_resource type="Resource" id="Resource_e0wxo"]
+script = ExtResource("2_e8dap")
+value = 1879048192
+
+[sub_resource type="Resource" id="Resource_scft2"]
+script = ExtResource("2_e8dap")
+
+[resource]
+script = ExtResource("3_if0wu")
+ac = 130
+attack = Array[ExtResource("1_52imw")]([SubResource("Resource_etoop"), SubResource("Resource_mesgi"), SubResource("Resource_s2j0b"), SubResource("Resource_a1ose")])
+character = "g"
+colour = 22
+description = "A constructed dragon, the drolem has massive strength. Powerful spells weaved during its creation make it a fearsome adversary. Its eyes show little intelligence, but it has been instructed to destroy all it meets."
+flags_1 = SubResource("Resource_ok2on")
+flags_2 = SubResource("Resource_jqgis")
+flags_3 = SubResource("Resource_vdono")
+flags_4 = SubResource("Resource_ho07b")
+flags_5 = SubResource("Resource_e0wxo")
+flags_6 = SubResource("Resource_scft2")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 30
+hit_dice_sides = 100
+level = 44
+max_num = 100
+experience = 12000
+name = "Drolem"
+notice_range = 25
+rarity = 3
+sleep = 30
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Drolem   "

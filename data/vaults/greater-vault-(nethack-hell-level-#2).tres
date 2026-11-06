@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_qafy7"]
+
+[resource]
+script = ExtResource("1_qafy7")
+category = 8
+height = 15
+name = "Greater vault (nethack hell level #2)"
+rating = 30
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%....................................................%%.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...%%.+^XX,+^^^^^X^^^^^^^^^^^^^^^^^^^^^X,,,X,@^X*^*+9X...%%.X^XX,X^XXX,X@XXXXXXXXXXXXXXXXXXX^X,X,X,X^X*X*X9X...%%.X^XX,X^^^X,X^^^^^^^^^^^^^^^^^^@X^X,X,X,X^X*X*X9X...%%.X^XXXXXX^X,XXXXXXXXXXXXXXXXXXX^X^X,X,X,X^X*X*X+XXX.%%.X^^^^^^X^X,X,,,,,,,,,,,,,,,,,X^X^X,X,X,X^X*X*X888X.%%.X+XXXX^X^X,X,XXXXXXXXXXXXXXX,X^X^X,X,X,X^X*X*X+XXX.%%.X,XX,X^X^X,X,X,,,,,,,,,,,,,,,X^X^X,X,X,X^X*X*X9X...%%.X,XX,X^X&X,X,X,XXXXXXXXXXXXXXX^X^X,X,X,X^X*X*X9X...%%.X,XX,+^^^X,,,X^^^^^^^^^^^^^^^^^X^@,X,,,X^@*X*+9X...%%.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...%%....................................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 54

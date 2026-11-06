@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_nvey6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_14omh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_bhvbk"]
+
+[sub_resource type="Resource" id="Resource_efort"]
+script = ExtResource("1_nvey6")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_mkhnk"]
+script = ExtResource("1_nvey6")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_ho2uj"]
+script = ExtResource("1_nvey6")
+
+[sub_resource type="Resource" id="Resource_ncsxg"]
+script = ExtResource("1_nvey6")
+
+[sub_resource type="Resource" id="Resource_5wdxc"]
+script = ExtResource("2_14omh")
+value = 19137536
+
+[sub_resource type="Resource" id="Resource_jfhvg"]
+script = ExtResource("2_14omh")
+value = 131122
+
+[sub_resource type="Resource" id="Resource_rt55k"]
+script = ExtResource("2_14omh")
+value = 2359376
+
+[sub_resource type="Resource" id="Resource_uhd8e"]
+script = ExtResource("2_14omh")
+
+[sub_resource type="Resource" id="Resource_cw72h"]
+script = ExtResource("2_14omh")
+value = 939786240
+
+[sub_resource type="Resource" id="Resource_qjtnv"]
+script = ExtResource("2_14omh")
+value = 1328
+
+[resource]
+script = ExtResource("3_bhvbk")
+ac = 30
+attack = Array[ExtResource("1_nvey6")]([SubResource("Resource_efort"), SubResource("Resource_mkhnk"), SubResource("Resource_ho2uj"), SubResource("Resource_ncsxg")])
+character = "u"
+colour = 27
+description = "The lawful evil master's favourite pet."
+flags_1 = SubResource("Resource_5wdxc")
+flags_2 = SubResource("Resource_jfhvg")
+flags_3 = SubResource("Resource_rt55k")
+flags_4 = SubResource("Resource_uhd8e")
+flags_5 = SubResource("Resource_cw72h")
+flags_6 = SubResource("Resource_qjtnv")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 6
+hit_dice_sides = 8
+level = 17
+max_num = 100
+experience = 55
+name = "Imp"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "    Imp     "

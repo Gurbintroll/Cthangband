@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_w3xpa"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_n2dt8"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_pfwpm"]
+
+[sub_resource type="Resource" id="Resource_omw7j"]
+script = ExtResource("1_w3xpa")
+effect = 24
+method = 2
+
+[sub_resource type="Resource" id="Resource_o8vxl"]
+script = ExtResource("1_w3xpa")
+
+[sub_resource type="Resource" id="Resource_eb4vb"]
+script = ExtResource("1_w3xpa")
+
+[sub_resource type="Resource" id="Resource_7ebon"]
+script = ExtResource("1_w3xpa")
+
+[sub_resource type="Resource" id="Resource_sak3r"]
+script = ExtResource("2_n2dt8")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_b4663"]
+script = ExtResource("2_n2dt8")
+value = 65
+
+[sub_resource type="Resource" id="Resource_a43y2"]
+script = ExtResource("2_n2dt8")
+value = 3490713600
+
+[sub_resource type="Resource" id="Resource_2v2op"]
+script = ExtResource("2_n2dt8")
+
+[sub_resource type="Resource" id="Resource_7u520"]
+script = ExtResource("2_n2dt8")
+value = 512
+
+[sub_resource type="Resource" id="Resource_t0sep"]
+script = ExtResource("2_n2dt8")
+
+[resource]
+script = ExtResource("3_pfwpm")
+ac = 1
+attack = Array[ExtResource("1_w3xpa")]([SubResource("Resource_omw7j"), SubResource("Resource_o8vxl"), SubResource("Resource_eb4vb"), SubResource("Resource_7ebon")])
+character = "j"
+colour = 26
+description = "It is a pulsing mound of glowing flesh."
+flags_1 = SubResource("Resource_sak3r")
+flags_2 = SubResource("Resource_b4663")
+flags_3 = SubResource("Resource_a43y2")
+flags_4 = SubResource("Resource_2v2op")
+flags_5 = SubResource("Resource_7u520")
+flags_6 = SubResource("Resource_t0sep")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 52
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 60
+name = "Grape jelly"
+notice_range = 2
+rarity = 3
+sleep = 99
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Grape    "
+split_name_3 = "   jelly    "

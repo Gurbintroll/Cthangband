@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_m4pju"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_6wx8y"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_62t83"]
+
+[sub_resource type="Resource" id="Resource_7pff0"]
+script = ExtResource("1_m4pju")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_o7j0q"]
+script = ExtResource("1_m4pju")
+
+[sub_resource type="Resource" id="Resource_fpegv"]
+script = ExtResource("1_m4pju")
+
+[sub_resource type="Resource" id="Resource_ampn6"]
+script = ExtResource("1_m4pju")
+
+[sub_resource type="Resource" id="Resource_1lw81"]
+script = ExtResource("2_6wx8y")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_mc8jy"]
+script = ExtResource("2_6wx8y")
+value = 256
+
+[sub_resource type="Resource" id="Resource_l8bgw"]
+script = ExtResource("2_6wx8y")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_jld4v"]
+script = ExtResource("2_6wx8y")
+
+[sub_resource type="Resource" id="Resource_hrsa0"]
+script = ExtResource("2_6wx8y")
+
+[sub_resource type="Resource" id="Resource_0d71i"]
+script = ExtResource("2_6wx8y")
+
+[resource]
+script = ExtResource("3_62t83")
+ac = 12
+attack = Array[ExtResource("1_m4pju")]([SubResource("Resource_7pff0"), SubResource("Resource_o7j0q"), SubResource("Resource_fpegv"), SubResource("Resource_ampn6")])
+character = "r"
+colour = 2
+description = "It is a rodent of unusual size."
+flags_1 = SubResource("Resource_1lw81")
+flags_2 = SubResource("Resource_mc8jy")
+flags_3 = SubResource("Resource_l8bgw")
+flags_4 = SubResource("Resource_jld4v")
+flags_5 = SubResource("Resource_hrsa0")
+flags_6 = SubResource("Resource_0d71i")
+hit_dice = 2
+hit_dice_sides = 3
+level = 9
+max_num = 100
+experience = 2
+name = "Giant black rat"
+notice_range = 8
+rarity = 1
+sleep = 20
+speed = 110
+split_name_1 = "   Giant    "
+split_name_2 = "   black    "
+split_name_3 = "    rat     "

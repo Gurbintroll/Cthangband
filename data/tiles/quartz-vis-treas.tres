@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_l1866"]
+
+[resource]
+script = ExtResource("1_l1866")
+alter_action = 1
+appear_as = "QuartzVisTreas"
+blocks_los = true
+category = 9
+character = "*"
+colour = 13
+description = "quartz vein with treasure"
+dims_outside_los = true
+is_wall = true
+map_priority = 19
+name = "QuartzVisTreas"
+run_past = true

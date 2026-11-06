@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_bips5"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_0ojgj"]
+
+[sub_resource type="Resource" id="Resource_3slol"]
+script = ExtResource("1_bips5")
+
+[sub_resource type="Resource" id="Resource_wedec"]
+script = ExtResource("1_bips5")
+
+[sub_resource type="Resource" id="Resource_71dyg"]
+script = ExtResource("1_bips5")
+
+[resource]
+script = ExtResource("2_0ojgj")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 10
+easy_know = true
+flags_1 = SubResource("Resource_3slol")
+flags_2 = SubResource("Resource_wedec")
+flags_3 = SubResource("Resource_71dyg")
+has_flavour = true
+item_category = 70
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "Rumour"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 51
+weight = 5
+filename = "Scroll:Rumour"

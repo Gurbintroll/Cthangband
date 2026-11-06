@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_e76sx"]
+
+[resource]
+script = ExtResource("1_e76sx")
+appear_as = "GeneralStore"
+blocks_los = true
+character = "1"
+colour = 6
+description = "General Store"
+is_interesting = true
+is_passable = true
+is_permanent = true
+is_shop = true
+name = "GeneralStore"

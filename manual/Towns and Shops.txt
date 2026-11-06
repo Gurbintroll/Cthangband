@@ -1,0 +1,79 @@
+﻿[center][font_size=48][color="brown"][b]Towns and Shops[/b][/color][/font_size][/center]
+[hr color="brown"]
+There are a number of towns in Cthangband where you can buy and sell items, and purchase other services that the stores offer. Although the towns are not entirely safe (some residents may pick a fight if provoked, there are usually thieves about, and there are always a few stray animals around) they are the safest places in the game and are generally okay for even a first level character to wander around without much chance of being killed, providing you keep yourself to yourself.
+
+Each town has a different selection of shops and buildings, and you can travel from town to town as you see fit, although starting characters should be aware that the wilderness can be dangerous to travel through, especially in areas containing dungeons or towers.
+
+[font_size=24][color="brown"][b]Celephais[/b][/color][/font_size]
+The beautiful city of Celephais is a nice place to visit or to live, and doesn't have some of the seedier parts that other towns have. While this can be useful for the novice character since it means that there are more useful shops instead, experienced characters may find Celephais bland and long for somewhere they can pick up the sort of goods that its shops don't sell. Additionally, the sewers under Celephais are smaller than under any other town, and characters wishing to go down them to get some practice and experience before moving onto bigger dungeons may find they quickly outgrow them.
+
+[font_size=24][color="brown"][b]Dylath-Leen[/b][/color][/font_size]
+The unwholesome city of Dylath-Leen is well-known for its black markets, where it is said that almost anything can be bought for a price. Of course, these black markets crowd out other shops, making it more difficult to purchase everyday supplies. Beginning characters may find it a struggle getting started in Dylath-Leen, partly because of the supply issue and partly because the sewers under the city are both larger and more dangerous than the sewers under most other towns.
+
+[font_size=24][color="brown"][b]Hlanith[/b][/color][/font_size]
+The market town of Hlanith is a bit smaller than most places and has fewer resources. In particular, it is missing a temple. However, is has the other essentials and this can make it a pleasant place to live.
+
+[font_size=24][color="brown"][b]Ilek-Vad[/b][/color][/font_size]
+The city of Ilek-Vad is the largest city on the island, containing every type of shop except a pawnbroker. This, unfortunately, drives up the price of houses; and it is the most expensive town in the game in which to settle.
+
+[font_size=24][color="brown"][b]Inganok[/b][/color][/font_size]
+The industrious town of Inganok has all the shops and services you could wish for. Unfortunately the locals are rather isolationist and do not wish for outsiders to live in their town. Consequently, while it is a useful place to visit you can't buy a house in Inganok.
+
+[font_size=24][color="brown"][b]Kadath[/b][/color][/font_size]
+Kadath, home of the gods, was once a beautiful and splendid place. However, since the [color="blue"][url="Great Ones"]Great Ones[/url][/color] have left it is now in ruins and is overrun by the foulest of creatures. There are no shops or services to be found here anymore, and it's said that Nyarlathotep himself resides in the catacombs under Kadath. Since Kadath is the most dangerous place in the game, characters never start in this town.
+
+[font_size=24][color="brown"][b]Nir[/b][/color][/font_size]
+The hamlet of Nir can hardly be called a town, being just a few shops huddled together. It is a fairly insignificant place, and would barely deserve a mention if it weren't for the fact that the famous outlaw Robin Hood is rumoured to have his hideout in the vicinity. Because of the lack of resources in Nir, characters never start in this town.
+
+[font_size=24][color="brown"][b]Ulthar[/b][/color][/font_size]
+The picturesque town of Ulthar is generally a nice place to live. It has almost every type of shop, so most goods and services can be got here. However, the citizens of Ulthar are very law-abiding and will not allow a black market to operate in the town, and experienced characters with money to burn and tastes for exotic items may find this slightly limiting.
+
+[center][table=9][cell][b][/b][/cell][cell][b]Celephais[/b][/cell][cell][b]Dylath-Leen[/b][/cell][cell][b]Hlanith[/b][/cell][cell][b]Ilek-Vad[/b][/cell][cell][b]Inganok[/b][/cell][cell][b]Kadath[/b][/cell][cell][b]Nir[/b][/cell][cell][b]Ulthar[/b][/cell]
+[cell]General Store[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]1[/cell][cell]1[/cell]
+[cell]Armoury[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell]
+[cell]Weaponsmith[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell]
+[cell]Temple[/cell][cell]2[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell]
+[cell]Alchemist[/cell][cell]1[/cell][cell]-[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell]
+[cell]Magic Shop[/cell][cell]1[/cell][cell]-[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell]
+[cell]Black Market[/cell][cell]-[/cell][cell]3[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]-[/cell]
+[cell]Hall of Records[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell]
+[cell]Library[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell]
+[cell]Pawnbrokers[/cell][cell]-[/cell][cell]1[/cell][cell]-[/cell][cell]-[/cell][cell]1[/cell][cell]-[/cell][cell]1[/cell][cell]1[/cell]
+[cell]Inn[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]-[/cell][cell]1[/cell][cell]1[/cell]
+[cell]House Cost[/cell][cell]50,000[/cell][cell]25,000[/cell][cell]45,000[/cell][cell]60,000[/cell][cell]-[/cell][cell]-[/cell][cell]-[/cell][cell]45,000[/cell][/table][/center]
+
+[font_size=24][color="brown"][b]General Store[/b][/color][/font_size]
+The general store sells food and basic adventuring equipment such as torches, lanterns, shovels, and cloaks. General stores also maintain the supply routes between the different towns, and (for a price) can provide you with an escort to another town so that you don't have to trek through the wilderness on your own.
+
+[font_size=24][color="brown"][b]Armoury[/b][/color][/font_size]
+The armoury sells armour of all types, including the occasional piece of magical armour. You can also get your armour enchanted here.
+
+[font_size=24][color="brown"][b]Weaponsmith[/b][/color][/font_size]
+The counterpart to the armoury, the weaponsmith sells weapons both magical and mundane. For a price, you can get your existing weapon enchanted here.
+
+[font_size=24][color="brown"][b]Temple[/b][/color][/font_size]
+Temples sell some potions and scrolls, mostly of a restorative nature, and also sell supplies needed by priests such as blunt weapons and Life magic spell books. Each temple also has an altar to the Great Ones at which you can sacrifice items to gain their [color="blue"][url="Favour"]favour[/url][/color]. The priests at a temple are able to remove any curses you might have acquired; for a donation, of course.
+
+[font_size=24][color="brown"][b]Alchemist[/b][/color][/font_size]
+The alchemist sells potions and scrolls of all types, and if you have had your ability scores weakened or your life drained they are able to restore them for you, providing you can pay.
+
+[font_size=24][color="brown"][b]Magic Shop[/b][/color][/font_size]
+The magic shop sells a selection of potions and scrolls, as well as wands, staves, rods, and orbs of all types. They also sell Folk and Sorcery spell books. The scholars who run the shops are able to identify magic items more fully than a simple spell, and can tell you exactly what any magic item does. Naturally, they charge heavily for this service.
+
+[font_size=24][color="brown"][b]Black Market[/b][/color][/font_size]
+The black markets will buy or sell any item, no questions asked about its provenance. While it is possible to find magical or rare items in these establishments that cannot be found anywhere else, black markets are notoriously stingy and sell a higher prices (and buy at lower prices) than other shops do - so you are advised to only buy from them if you are desperate or the item you need cannot be found elsewhere. Black markets provide no other services.
+
+[font_size=24][color="brown"][b]Hall of Records[/b][/color][/font_size]
+The hall of records maintains the records of property ownership and of past adventurers. You can buy a house here if you want to live in a town and always recall back to it, and you can (for free) browse the records of past characters of your ancestry and profession and compare your score with how they did.
+
+[font_size=24][color="brown"][b]Library[/b][/color][/font_size]
+The library sells books for all kinds of magic, although particularly rare magical books will not be found here; only the basic books for each type of magic (although all Folk magic books are considered to be basic ones). If you are a spell caster then the library is also the place you must go in order to study new spells, although they do not charge for this service.
+
+[font_size=24][color="brown"][b]Pawnbrokers[/b][/color][/font_size]
+The pawnbrokers will buy any kind of item from a character who is short of cash. They will then hold onto the items as collatoral (not selling them to anyone else) until you return and buy them back (for much more than you sold them for, of course). As such, they can be a source of quick funds to a character who has seen an expensive item in another shop and is worried that it will have gone by the time they have saved up for it. The pawnbroker also offers an item identification service where for a price they will identify every item you are wearing and/or carrying.
+
+[font_size=24][color="brown"][b]Inn[/b][/color][/font_size]
+Inns sell basic food items, although their main use is as a place to rest. For a small price, you can rest for the night (or for the day if you are an undead) and you will even be fed while you are there.
+
+[font_size=24][color="brown"][b]House[/b][/color][/font_size]
+Houses are normally locked and not open to the public, so you cannot enter a house unless you have bought it at the Hall of Records. Note that although there are houses in many of the towns, you can only own a single house at any one time. However, should you buy a new house then all your belongings from your old house will be moved to your new one at no extra charge. Your house has an inventory space like a shop does, and you can freely drop items off there and pick them up later. You can also rest in your house (as you would in an inn) for free. Finally, your house serves as an anchor point for the Word of Recall spell in that once you own a house, when you use the spell to exit a dungeon or tower you will always be returned directly to your house rather than just to the last town you visited.

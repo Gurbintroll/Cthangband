@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_j86na"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_7nx75"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_fsr5f"]
+
+[sub_resource type="Resource" id="Resource_lrjpk"]
+script = ExtResource("1_j86na")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3eup0"]
+script = ExtResource("1_j86na")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_p80ql"]
+script = ExtResource("1_j86na")
+
+[sub_resource type="Resource" id="Resource_fo80g"]
+script = ExtResource("1_j86na")
+
+[sub_resource type="Resource" id="Resource_utuos"]
+script = ExtResource("2_7nx75")
+value = 8388608
+
+[sub_resource type="Resource" id="Resource_ebecd"]
+script = ExtResource("2_7nx75")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_virx3"]
+script = ExtResource("2_7nx75")
+value = 3491233889
+
+[sub_resource type="Resource" id="Resource_wl3cs"]
+script = ExtResource("2_7nx75")
+
+[sub_resource type="Resource" id="Resource_qaex8"]
+script = ExtResource("2_7nx75")
+
+[sub_resource type="Resource" id="Resource_2xora"]
+script = ExtResource("2_7nx75")
+
+[resource]
+script = ExtResource("3_fsr5f")
+ac = 28
+attack = Array[ExtResource("1_j86na")]([SubResource("Resource_lrjpk"), SubResource("Resource_3eup0"), SubResource("Resource_p80ql"), SubResource("Resource_fo80g")])
+character = "z"
+colour = 31
+description = "It is an orcish figure covered in wrappings."
+flags_1 = SubResource("Resource_utuos")
+flags_2 = SubResource("Resource_ebecd")
+flags_3 = SubResource("Resource_virx3")
+flags_4 = SubResource("Resource_wl3cs")
+flags_5 = SubResource("Resource_qaex8")
+flags_6 = SubResource("Resource_2xora")
+hit_dice = 15
+hit_dice_sides = 8
+level = 21
+max_num = 100
+experience = 56
+name = "Mummified orc"
+notice_range = 20
+rarity = 1
+sleep = 75
+speed = 110
+split_name_1 = "            "
+split_name_2 = " Mummified  "
+split_name_3 = "    orc     "

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_7ojyw"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_r4gbp"]
+
+[sub_resource type="Resource" id="Resource_v80ac"]
+script = ExtResource("1_7ojyw")
+
+[sub_resource type="Resource" id="Resource_o3yi2"]
+script = ExtResource("1_7ojyw")
+
+[sub_resource type="Resource" id="Resource_mxm3h"]
+script = ExtResource("1_7ojyw")
+
+[resource]
+script = ExtResource("2_r4gbp")
+chance = Array[int]([0, 0, 0, 0])
+character = ","
+colour = 6
+cost = 1
+easy_know = true
+flags_1 = SubResource("Resource_v80ac")
+flags_2 = SubResource("Resource_o3yi2")
+flags_3 = SubResource("Resource_mxm3h")
+flavour_aware = true
+item_category = 80
+locale = Array[int]([0, 0, 0, 0])
+name = "& Hard Biscuit~"
+type_specific_value = 500
+stompable = Array[bool]([false, false, false, false])
+sub_category = 32
+weight = 2
+filename = "Food:Hard Biscuit"

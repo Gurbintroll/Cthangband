@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_1iv0q"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_m8w38"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1smqb"]
+
+[sub_resource type="Resource" id="Resource_dqky1"]
+script = ExtResource("1_1iv0q")
+
+[sub_resource type="Resource" id="Resource_0j7x2"]
+script = ExtResource("1_1iv0q")
+
+[sub_resource type="Resource" id="Resource_v2ywc"]
+script = ExtResource("1_1iv0q")
+
+[sub_resource type="Resource" id="Resource_e7cwq"]
+script = ExtResource("1_1iv0q")
+
+[sub_resource type="Resource" id="Resource_mmjgn"]
+script = ExtResource("2_m8w38")
+value = 198144
+
+[sub_resource type="Resource" id="Resource_4dfj2"]
+script = ExtResource("2_m8w38")
+value = 80
+
+[sub_resource type="Resource" id="Resource_lrhek"]
+script = ExtResource("2_m8w38")
+value = 3491758272
+
+[sub_resource type="Resource" id="Resource_rvdxy"]
+script = ExtResource("2_m8w38")
+
+[sub_resource type="Resource" id="Resource_7vqep"]
+script = ExtResource("2_m8w38")
+
+[sub_resource type="Resource" id="Resource_oim6i"]
+script = ExtResource("2_m8w38")
+value = 536871184
+
+[resource]
+script = ExtResource("3_1smqb")
+ac = 1
+attack = Array[ExtResource("1_1iv0q")]([SubResource("Resource_dqky1"), SubResource("Resource_0j7x2"), SubResource("Resource_v2ywc"), SubResource("Resource_e7cwq")])
+character = "Q"
+colour = 22
+description = "A massive mound of scaled flesh, throbbing and pulsating with multi-hued light."
+flags_1 = SubResource("Resource_mmjgn")
+flags_2 = SubResource("Resource_4dfj2")
+flags_3 = SubResource("Resource_lrhek")
+flags_4 = SubResource("Resource_rvdxy")
+flags_5 = SubResource("Resource_7vqep")
+flags_6 = SubResource("Resource_oim6i")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 15
+hit_dice_sides = 100
+level = 71
+max_num = 100
+experience = 10500
+name = "Greater draconic quylthulg"
+notice_range = 20
+rarity = 3
+speed = 120
+split_name_1 = "  Greater   "
+split_name_2 = "  draconic  "
+split_name_3 = " quylthulg  "

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_vlsrw"]
+
+[resource]
+script = ExtResource("1_vlsrw")
+name = "BrightGreyContract"
+colour = 9
+alternate_colour = 9
+sequence = "Oo·"

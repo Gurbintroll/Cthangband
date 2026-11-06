@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_vodi7"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_cxbe0"]
+
+[sub_resource type="Resource" id="Resource_6dgo3"]
+script = ExtResource("1_vodi7")
+value = 15802368
+
+[sub_resource type="Resource" id="Resource_h3356"]
+script = ExtResource("1_vodi7")
+
+[sub_resource type="Resource" id="Resource_qi354"]
+script = ExtResource("1_vodi7")
+value = 15729664
+
+[resource]
+script = ExtResource("2_cxbe0")
+flags_1 = SubResource("Resource_6dgo3")
+flags_2 = SubResource("Resource_h3356")
+flags_3 = SubResource("Resource_qi354")
+cost = 25000
+damage_dice = 1
+damage_dice_sides = 7
+item_category = 23
+item_sub_category = 11
+level = 15
+name = "of *Bluebeard*"
+type_specific_value = 1
+rarity = 8
+to_hit = 6
+to_damage = 8
+weight = 50
+id = 87

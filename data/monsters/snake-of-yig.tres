@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_o8wro"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_a2a7p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6v52p"]
+
+[sub_resource type="Resource" id="Resource_3kxwq"]
+script = ExtResource("1_o8wro")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_e7wxw"]
+script = ExtResource("1_o8wro")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_e61lg"]
+script = ExtResource("1_o8wro")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_uxxf8"]
+script = ExtResource("1_o8wro")
+
+[sub_resource type="Resource" id="Resource_jrgd5"]
+script = ExtResource("2_a2a7p")
+value = 271872
+
+[sub_resource type="Resource" id="Resource_xj7gi"]
+script = ExtResource("2_a2a7p")
+value = 1196032
+
+[sub_resource type="Resource" id="Resource_2f0bc"]
+script = ExtResource("2_a2a7p")
+value = 262336
+
+[sub_resource type="Resource" id="Resource_50d7g"]
+script = ExtResource("2_a2a7p")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_bgguj"]
+script = ExtResource("2_a2a7p")
+
+[sub_resource type="Resource" id="Resource_wcqk8"]
+script = ExtResource("2_a2a7p")
+
+[resource]
+script = ExtResource("3_6v52p")
+ac = 80
+attack = Array[ExtResource("1_o8wro")]([SubResource("Resource_3kxwq"), SubResource("Resource_e7wxw"), SubResource("Resource_e61lg"), SubResource("Resource_uxxf8")])
+character = "J"
+colour = 8
+description = "It is a giant snake that drips with poison."
+flags_1 = SubResource("Resource_jrgd5")
+flags_2 = SubResource("Resource_xj7gi")
+flags_3 = SubResource("Resource_2f0bc")
+flags_4 = SubResource("Resource_50d7g")
+flags_5 = SubResource("Resource_bgguj")
+flags_6 = SubResource("Resource_wcqk8")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 48
+hit_dice_sides = 10
+level = 83
+max_num = 100
+experience = 600
+name = "Snake of Yig"
+notice_range = 25
+rarity = 4
+sleep = 30
+speed = 120
+split_name_1 = "   Snake    "
+split_name_2 = "     of     "
+split_name_3 = "    Yig     "

@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_un4tf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_htt25"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kwqea"]
+
+[sub_resource type="Resource" id="Resource_m7mlv"]
+script = ExtResource("1_un4tf")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_tqovq"]
+script = ExtResource("1_un4tf")
+
+[sub_resource type="Resource" id="Resource_x7k7y"]
+script = ExtResource("1_un4tf")
+
+[sub_resource type="Resource" id="Resource_v5ngm"]
+script = ExtResource("1_un4tf")
+
+[sub_resource type="Resource" id="Resource_ehqdw"]
+script = ExtResource("2_htt25")
+value = 4718592
+
+[sub_resource type="Resource" id="Resource_1fn7k"]
+script = ExtResource("2_htt25")
+value = 6488385
+
+[sub_resource type="Resource" id="Resource_hyaxh"]
+script = ExtResource("2_htt25")
+value = 269484032
+
+[sub_resource type="Resource" id="Resource_2q6k3"]
+script = ExtResource("2_htt25")
+
+[sub_resource type="Resource" id="Resource_e0e2c"]
+script = ExtResource("2_htt25")
+value = 512
+
+[sub_resource type="Resource" id="Resource_l7ix4"]
+script = ExtResource("2_htt25")
+
+[resource]
+script = ExtResource("3_kwqea")
+ac = 6
+attack = Array[ExtResource("1_un4tf")]([SubResource("Resource_m7mlv"), SubResource("Resource_tqovq"), SubResource("Resource_x7k7y"), SubResource("Resource_v5ngm")])
+character = "j"
+colour = 23
+description = "It is a strangely moving puddle."
+flags_1 = SubResource("Resource_ehqdw")
+flags_2 = SubResource("Resource_1fn7k")
+flags_3 = SubResource("Resource_hyaxh")
+flags_4 = SubResource("Resource_2q6k3")
+flags_5 = SubResource("Resource_e0e2c")
+flags_6 = SubResource("Resource_l7ix4")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 6
+hit_dice_sides = 8
+level = 23
+max_num = 100
+experience = 7
+name = "Black ooze"
+notice_range = 10
+rarity = 1
+sleep = 1
+speed = 90
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "    ooze    "

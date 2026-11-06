@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://2ief2fjhw82a"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_2cto4"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_i6edq"]
+
+[sub_resource type="Resource" id="Resource_jbj6c"]
+script = ExtResource("1_2cto4")
+
+[sub_resource type="Resource" id="Resource_bkqn4"]
+script = ExtResource("1_2cto4")
+
+[sub_resource type="Resource" id="Resource_hk1ya"]
+script = ExtResource("1_2cto4")
+
+[resource]
+script = ExtResource("2_i6edq")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 1
+cost = 125
+easy_know = true
+flags_1 = SubResource("Resource_jbj6c")
+flags_2 = SubResource("Resource_bkqn4")
+flags_3 = SubResource("Resource_hk1ya")
+has_flavour = true
+item_category = 70
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "Enchant Armor"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 16
+weight = 5
+filename = "Scroll:Enchant Armor"

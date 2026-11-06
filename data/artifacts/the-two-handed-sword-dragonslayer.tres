@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_sgaxo"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_if3s3"]
+
+[sub_resource type="Resource" id="Resource_f1dif"]
+script = ExtResource("1_sgaxo")
+value = 18874369
+
+[sub_resource type="Resource" id="Resource_lib7u"]
+script = ExtResource("1_sgaxo")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_54j7k"]
+script = ExtResource("1_sgaxo")
+value = 15926784
+
+[resource]
+script = ExtResource("2_if3s3")
+flags_1 = SubResource("Resource_f1dif")
+flags_2 = SubResource("Resource_lib7u")
+flags_3 = SubResource("Resource_54j7k")
+cost = 100000
+damage_dice = 3
+damage_dice_sides = 6
+item_category = 23
+item_sub_category = 25
+level = 30
+name = "*Dragonslayer*"
+type_specific_value = 2
+rarity = 30
+to_hit = 13
+to_damage = 17
+weight = 200
+id = 76

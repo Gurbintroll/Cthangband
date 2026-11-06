@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_4cl7x"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_j2q6j"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_juomi"]
+
+[sub_resource type="Resource" id="Resource_ik808"]
+script = ExtResource("1_4cl7x")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_luayv"]
+script = ExtResource("1_4cl7x")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_e284y"]
+script = ExtResource("1_4cl7x")
+
+[sub_resource type="Resource" id="Resource_2nyl8"]
+script = ExtResource("1_4cl7x")
+
+[sub_resource type="Resource" id="Resource_ld0en"]
+script = ExtResource("2_j2q6j")
+
+[sub_resource type="Resource" id="Resource_qkawt"]
+script = ExtResource("2_j2q6j")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_6uhfi"]
+script = ExtResource("2_j2q6j")
+value = 128
+
+[sub_resource type="Resource" id="Resource_t7ssl"]
+script = ExtResource("2_j2q6j")
+
+[sub_resource type="Resource" id="Resource_e3w7i"]
+script = ExtResource("2_j2q6j")
+
+[sub_resource type="Resource" id="Resource_armnu"]
+script = ExtResource("2_j2q6j")
+
+[resource]
+script = ExtResource("3_juomi")
+ac = 14
+attack = Array[ExtResource("1_4cl7x")]([SubResource("Resource_ik808"), SubResource("Resource_luayv"), SubResource("Resource_e284y"), SubResource("Resource_2nyl8")])
+character = "H"
+colour = 9
+description = "A strange hybrid of eagle, lion and horse. It looks weird."
+flags_1 = SubResource("Resource_ld0en")
+flags_2 = SubResource("Resource_qkawt")
+flags_3 = SubResource("Resource_6uhfi")
+flags_4 = SubResource("Resource_t7ssl")
+flags_5 = SubResource("Resource_e3w7i")
+flags_6 = SubResource("Resource_armnu")
+hit_dice = 20
+hit_dice_sides = 9
+level = 11
+max_num = 100
+experience = 30
+name = "Hippogriff"
+notice_range = 12
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Hippogriff "

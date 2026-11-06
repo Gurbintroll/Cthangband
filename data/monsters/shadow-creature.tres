@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7xv3u"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_he53x"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_myeof"]
+
+[sub_resource type="Resource" id="Resource_beqmk"]
+script = ExtResource("1_7xv3u")
+damage_dice = 1
+damage_dice_sides = 7
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0qf6h"]
+script = ExtResource("1_7xv3u")
+damage_dice = 1
+damage_dice_sides = 7
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_f26jh"]
+script = ExtResource("1_7xv3u")
+
+[sub_resource type="Resource" id="Resource_lv8ax"]
+script = ExtResource("1_7xv3u")
+
+[sub_resource type="Resource" id="Resource_pm3r3"]
+script = ExtResource("2_he53x")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_lvva7"]
+script = ExtResource("2_he53x")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_kkdqc"]
+script = ExtResource("2_he53x")
+value = 3222274048
+
+[sub_resource type="Resource" id="Resource_srv05"]
+script = ExtResource("2_he53x")
+
+[sub_resource type="Resource" id="Resource_lwvfu"]
+script = ExtResource("2_he53x")
+
+[sub_resource type="Resource" id="Resource_wygt5"]
+script = ExtResource("2_he53x")
+
+[resource]
+script = ExtResource("3_myeof")
+ac = 12
+attack = Array[ExtResource("1_7xv3u")]([SubResource("Resource_beqmk"), SubResource("Resource_0qf6h"), SubResource("Resource_f26jh"), SubResource("Resource_lv8ax")])
+character = "h"
+colour = 23
+description = "A humanoid creature with extra joints in its extremities."
+flags_1 = SubResource("Resource_pm3r3")
+flags_2 = SubResource("Resource_lvva7")
+flags_3 = SubResource("Resource_kkdqc")
+flags_4 = SubResource("Resource_srv05")
+flags_5 = SubResource("Resource_lwvfu")
+flags_6 = SubResource("Resource_wygt5")
+hit_dice = 9
+hit_dice_sides = 8
+level = 10
+max_num = 100
+experience = 35
+name = "Shadow creature"
+notice_range = 12
+rarity = 2
+sleep = 16
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Shadow   "
+split_name_3 = "  creature  "

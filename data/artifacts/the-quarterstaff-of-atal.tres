@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wuim8"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_mnt8i"]
+
+[sub_resource type="Resource" id="Resource_1xgjx"]
+script = ExtResource("1_wuim8")
+value = 1077019174
+
+[sub_resource type="Resource" id="Resource_k7q56"]
+script = ExtResource("1_wuim8")
+value = 268730368
+
+[sub_resource type="Resource" id="Resource_udhg3"]
+script = ExtResource("1_wuim8")
+value = 32531968
+
+[resource]
+script = ExtResource("2_mnt8i")
+flags_1 = SubResource("Resource_1xgjx")
+flags_2 = SubResource("Resource_k7q56")
+flags_3 = SubResource("Resource_udhg3")
+cost = 140000
+damage_dice = 2
+damage_dice_sides = 9
+item_category = 21
+item_sub_category = 3
+level = 30
+name = "of *Atal*"
+type_specific_value = 4
+rarity = 105
+to_hit = 10
+to_damage = 13
+weight = 150
+id = 120

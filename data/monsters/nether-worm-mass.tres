@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7io6i"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dqvfq"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3c3n0"]
+
+[sub_resource type="Resource" id="Resource_2wa6e"]
+script = ExtResource("1_7io6i")
+effect = 24
+method = 2
+
+[sub_resource type="Resource" id="Resource_t04g0"]
+script = ExtResource("1_7io6i")
+
+[sub_resource type="Resource" id="Resource_vt0fa"]
+script = ExtResource("1_7io6i")
+
+[sub_resource type="Resource" id="Resource_ie4cx"]
+script = ExtResource("1_7io6i")
+
+[sub_resource type="Resource" id="Resource_6204l"]
+script = ExtResource("2_dqvfq")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_v163f"]
+script = ExtResource("2_dqvfq")
+value = 131457
+
+[sub_resource type="Resource" id="Resource_guxto"]
+script = ExtResource("2_dqvfq")
+value = 268439680
+
+[sub_resource type="Resource" id="Resource_2cw0l"]
+script = ExtResource("2_dqvfq")
+
+[sub_resource type="Resource" id="Resource_y4w8b"]
+script = ExtResource("2_dqvfq")
+
+[sub_resource type="Resource" id="Resource_5ac0r"]
+script = ExtResource("2_dqvfq")
+
+[resource]
+script = ExtResource("3_3c3n0")
+ac = 15
+attack = Array[ExtResource("1_7io6i")]([SubResource("Resource_2wa6e"), SubResource("Resource_t04g0"), SubResource("Resource_vt0fa"), SubResource("Resource_ie4cx")])
+character = "w"
+colour = 2
+description = "It is a disgusting mass of dark worms, eating each other, the floor, the air, you...."
+flags_1 = SubResource("Resource_6204l")
+flags_2 = SubResource("Resource_v163f")
+flags_3 = SubResource("Resource_guxto")
+flags_4 = SubResource("Resource_2cw0l")
+flags_5 = SubResource("Resource_y4w8b")
+flags_6 = SubResource("Resource_5ac0r")
+hit_dice = 5
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 6
+name = "Nether worm mass"
+notice_range = 10
+rarity = 4
+sleep = 3
+speed = 100
+split_name_1 = "   Nether   "
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

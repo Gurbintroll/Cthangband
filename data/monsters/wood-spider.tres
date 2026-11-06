@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_utnb8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wlkai"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_dxvad"]
+
+[sub_resource type="Resource" id="Resource_c4ad3"]
+script = ExtResource("1_utnb8")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_1fa73"]
+script = ExtResource("1_utnb8")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 7
+
+[sub_resource type="Resource" id="Resource_3ns54"]
+script = ExtResource("1_utnb8")
+
+[sub_resource type="Resource" id="Resource_y5byh"]
+script = ExtResource("1_utnb8")
+
+[sub_resource type="Resource" id="Resource_vtflj"]
+script = ExtResource("2_wlkai")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_rcp3p"]
+script = ExtResource("2_wlkai")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_rnxj5"]
+script = ExtResource("2_wlkai")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_c0tc2"]
+script = ExtResource("2_wlkai")
+
+[sub_resource type="Resource" id="Resource_1h8sp"]
+script = ExtResource("2_wlkai")
+
+[sub_resource type="Resource" id="Resource_ngsjw"]
+script = ExtResource("2_wlkai")
+
+[resource]
+script = ExtResource("3_dxvad")
+ac = 16
+attack = Array[ExtResource("1_utnb8")]([SubResource("Resource_c4ad3"), SubResource("Resource_1fa73"), SubResource("Resource_3ns54"), SubResource("Resource_y5byh")])
+character = "S"
+colour = 6
+description = "It scuttles towards you."
+flags_1 = SubResource("Resource_vtflj")
+flags_2 = SubResource("Resource_rcp3p")
+flags_3 = SubResource("Resource_rnxj5")
+flags_4 = SubResource("Resource_c0tc2")
+flags_5 = SubResource("Resource_1h8sp")
+flags_6 = SubResource("Resource_ngsjw")
+hit_dice = 3
+hit_dice_sides = 6
+level = 7
+max_num = 100
+experience = 15
+name = "Wood spider"
+notice_range = 8
+rarity = 3
+sleep = 80
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Wood    "
+split_name_3 = "   spider   "

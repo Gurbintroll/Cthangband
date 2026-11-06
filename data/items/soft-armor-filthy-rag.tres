@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_od7xd"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_jeyuy"]
+
+[sub_resource type="Resource" id="Resource_0uq2d"]
+script = ExtResource("1_od7xd")
+
+[sub_resource type="Resource" id="Resource_mv1ut"]
+script = ExtResource("1_od7xd")
+
+[sub_resource type="Resource" id="Resource_mf45a"]
+script = ExtResource("1_od7xd")
+
+[resource]
+script = ExtResource("2_jeyuy")
+ac = 1
+chance = Array[int]([1, 0, 0, 0])
+character = "("
+colour = 2
+cost = 1
+flags_1 = SubResource("Resource_0uq2d")
+flags_2 = SubResource("Resource_mv1ut")
+flags_3 = SubResource("Resource_mf45a")
+flavour_aware = true
+item_category = 36
+locale = Array[int]([0, 0, 0, 0])
+name = "& Filthy Rag~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+to_ac = -1
+weight = 20
+filename = "SoftArmor:Filthy Rag"

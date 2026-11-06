@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bktw1lm3slf7k"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_q1apw"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_mpsut"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_x38xe"]
+
+[sub_resource type="Resource" id="Resource_snpbb"]
+script = ExtResource("1_q1apw")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_agwdo"]
+script = ExtResource("1_q1apw")
+damage_dice = 12
+damage_dice_sides = 12
+effect = 4
+method = 1
+
+[sub_resource type="Resource" id="Resource_dsyyv"]
+script = ExtResource("1_q1apw")
+damage_dice = 10
+damage_dice_sides = 2
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_gk8ap"]
+script = ExtResource("1_q1apw")
+damage_dice = 3
+damage_dice_sides = 2
+effect = 13
+method = 1
+
+[sub_resource type="Resource" id="Resource_ntve2"]
+script = ExtResource("2_mpsut")
+value = 1042286465
+
+[sub_resource type="Resource" id="Resource_hkqiv"]
+script = ExtResource("2_mpsut")
+value = 1298954
+
+[sub_resource type="Resource" id="Resource_srw1l"]
+script = ExtResource("2_mpsut")
+value = 3493724480
+
+[sub_resource type="Resource" id="Resource_4rs6s"]
+script = ExtResource("2_mpsut")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_w15hw"]
+script = ExtResource("2_mpsut")
+value = 998279396
+
+[sub_resource type="Resource" id="Resource_mflwq"]
+script = ExtResource("2_mpsut")
+value = 1930057506
+
+[resource]
+script = ExtResource("3_x38xe")
+ac = 165
+attack = Array[ExtResource("1_q1apw")]([SubResource("Resource_snpbb"), SubResource("Resource_agwdo"), SubResource("Resource_dsyyv"), SubResource("Resource_gk8ap")])
+character = "X"
+colour = 12
+description = "The Crawling Chaos in it's most monstrous form. It will do all in its power to keep you away from its master, Azathoth."
+flags_1 = SubResource("Resource_ntve2")
+flags_2 = SubResource("Resource_hkqiv")
+flags_3 = SubResource("Resource_srw1l")
+flags_4 = SubResource("Resource_4rs6s")
+flags_5 = SubResource("Resource_w15hw")
+flags_6 = SubResource("Resource_mflwq")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 99
+hit_dice_sides = 111
+level = 99
+max_num = 1
+experience = 65000
+name = "Nyarlathotep"
+notice_range = 100
+rarity = 1
+speed = 145
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Nyarlathotep"

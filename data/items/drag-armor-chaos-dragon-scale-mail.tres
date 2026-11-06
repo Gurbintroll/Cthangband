@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_3hi2w"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ccjw3"]
+
+[sub_resource type="Resource" id="Resource_rsntp"]
+script = ExtResource("1_3hi2w")
+
+[sub_resource type="Resource" id="Resource_rlho1"]
+script = ExtResource("1_3hi2w")
+value = 3221225472
+
+[sub_resource type="Resource" id="Resource_4trh3"]
+script = ExtResource("1_3hi2w")
+value = 32505856
+
+[resource]
+script = ExtResource("2_ccjw3")
+ac = 30
+chance = Array[int]([16, 0, 0, 0])
+character = "["
+colour = 26
+cost = 70000
+damage_dice = 2
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_rsntp")
+flags_2 = SubResource("Resource_rlho1")
+flags_3 = SubResource("Resource_4trh3")
+flavour_aware = true
+item_category = 38
+level = 75
+locale = Array[int]([75, 0, 0, 0])
+name = "Chaos Dragon Scale Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 18
+to_ac = 10
+to_hit = -2
+weight = 200
+filename = "DragArmor:Chaos Dragon Scale Mail"

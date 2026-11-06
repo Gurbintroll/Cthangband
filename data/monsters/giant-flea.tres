@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rbgtd"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4g5hp"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_3mr87"]
+
+[sub_resource type="Resource" id="Resource_xdyc8"]
+script = ExtResource("1_rbgtd")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_psf00"]
+script = ExtResource("1_rbgtd")
+
+[sub_resource type="Resource" id="Resource_5y3ss"]
+script = ExtResource("1_rbgtd")
+
+[sub_resource type="Resource" id="Resource_3vuhh"]
+script = ExtResource("1_rbgtd")
+
+[sub_resource type="Resource" id="Resource_4qlg6"]
+script = ExtResource("2_4g5hp")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_v2n86"]
+script = ExtResource("2_4g5hp")
+value = 384
+
+[sub_resource type="Resource" id="Resource_nngh0"]
+script = ExtResource("2_4g5hp")
+value = 128
+
+[sub_resource type="Resource" id="Resource_1ea72"]
+script = ExtResource("2_4g5hp")
+
+[sub_resource type="Resource" id="Resource_4c71d"]
+script = ExtResource("2_4g5hp")
+
+[sub_resource type="Resource" id="Resource_x3tyj"]
+script = ExtResource("2_4g5hp")
+
+[resource]
+script = ExtResource("3_3mr87")
+ac = 7
+attack = Array[ExtResource("1_rbgtd")]([SubResource("Resource_xdyc8"), SubResource("Resource_psf00"), SubResource("Resource_5y3ss"), SubResource("Resource_3vuhh")])
+character = "I"
+colour = 23
+description = "It makes you itch just to look at it. "
+flags_1 = SubResource("Resource_4qlg6")
+flags_2 = SubResource("Resource_v2n86")
+flags_3 = SubResource("Resource_nngh0")
+flags_4 = SubResource("Resource_1ea72")
+flags_5 = SubResource("Resource_4c71d")
+flags_6 = SubResource("Resource_x3tyj")
+hit_dice = 1
+hit_dice_sides = 2
+level = 14
+max_num = 100
+experience = 3
+name = "Giant flea"
+notice_range = 6
+rarity = 1
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Giant    "
+split_name_3 = "    flea    "

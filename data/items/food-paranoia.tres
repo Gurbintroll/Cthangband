@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5jk0v"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ejxw5"]
+
+[sub_resource type="Resource" id="Resource_ufhq7"]
+script = ExtResource("1_5jk0v")
+
+[sub_resource type="Resource" id="Resource_l1d5y"]
+script = ExtResource("1_5jk0v")
+
+[sub_resource type="Resource" id="Resource_xmw67"]
+script = ExtResource("1_5jk0v")
+
+[resource]
+script = ExtResource("2_ejxw5")
+chance = Array[int]([1, 0, 0, 0])
+character = ","
+colour = 27
+easy_know = true
+flags_1 = SubResource("Resource_ufhq7")
+flags_2 = SubResource("Resource_l1d5y")
+flags_3 = SubResource("Resource_xmw67")
+has_flavour = true
+item_category = 80
+level = 5
+locale = Array[int]([5, 0, 0, 0])
+name = "Paranoia"
+type_specific_value = 500
+stompable = Array[bool]([true, false, false, false])
+sub_category = 2
+weight = 1
+filename = "Food:Paranoia"

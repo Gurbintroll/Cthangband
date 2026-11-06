@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_d0a1e"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_xhqs6"]
+
+[sub_resource type="Resource" id="Resource_btotc"]
+script = ExtResource("1_d0a1e")
+value = 409609
+
+[sub_resource type="Resource" id="Resource_77alp"]
+script = ExtResource("1_d0a1e")
+value = 12582912
+
+[sub_resource type="Resource" id="Resource_bas4u"]
+script = ExtResource("1_d0a1e")
+value = 284182016
+
+[resource]
+script = ExtResource("2_xhqs6")
+flags_1 = SubResource("Resource_btotc")
+flags_2 = SubResource("Resource_77alp")
+flags_3 = SubResource("Resource_bas4u")
+cost = 90000
+damage_dice = 3
+damage_dice_sides = 8
+item_category = 22
+item_sub_category = 5
+level = 15
+name = "of *Wrath*"
+type_specific_value = 2
+rarity = 35
+to_hit = 16
+to_damage = 18
+weight = 300
+id = 107

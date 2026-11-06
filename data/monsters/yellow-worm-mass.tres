@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vjvqr"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_np0or"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_uvyt4"]
+
+[sub_resource type="Resource" id="Resource_48ydi"]
+script = ExtResource("1_vjvqr")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 20
+method = 12
+
+[sub_resource type="Resource" id="Resource_5v0mp"]
+script = ExtResource("1_vjvqr")
+
+[sub_resource type="Resource" id="Resource_cisub"]
+script = ExtResource("1_vjvqr")
+
+[sub_resource type="Resource" id="Resource_6m73y"]
+script = ExtResource("1_vjvqr")
+
+[sub_resource type="Resource" id="Resource_vvstf"]
+script = ExtResource("2_np0or")
+value = 786432
+
+[sub_resource type="Resource" id="Resource_wc51t"]
+script = ExtResource("2_np0or")
+value = 385
+
+[sub_resource type="Resource" id="Resource_wwbki"]
+script = ExtResource("2_np0or")
+value = 268439680
+
+[sub_resource type="Resource" id="Resource_alrn0"]
+script = ExtResource("2_np0or")
+
+[sub_resource type="Resource" id="Resource_f247y"]
+script = ExtResource("2_np0or")
+
+[sub_resource type="Resource" id="Resource_gt0m4"]
+script = ExtResource("2_np0or")
+
+[resource]
+script = ExtResource("3_uvyt4")
+ac = 4
+attack = Array[ExtResource("1_vjvqr")]([SubResource("Resource_48ydi"), SubResource("Resource_5v0mp"), SubResource("Resource_cisub"), SubResource("Resource_6m73y")])
+character = "w"
+colour = 31
+description = "It is a large slimy mass of worms."
+flags_1 = SubResource("Resource_vvstf")
+flags_2 = SubResource("Resource_wc51t")
+flags_3 = SubResource("Resource_wwbki")
+flags_4 = SubResource("Resource_alrn0")
+flags_5 = SubResource("Resource_f247y")
+flags_6 = SubResource("Resource_gt0m4")
+hit_dice = 4
+hit_dice_sides = 8
+level = 3
+max_num = 100
+experience = 4
+name = "Yellow worm mass"
+notice_range = 7
+rarity = 2
+sleep = 10
+speed = 100
+split_name_1 = "   Yellow   "
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

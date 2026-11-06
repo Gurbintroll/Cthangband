@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://nh1ikt437m2w"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_kb1lr"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_arst3"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_celr3"]
+
+[sub_resource type="Resource" id="Resource_stwxl"]
+script = ExtResource("1_kb1lr")
+damage_dice = 3
+damage_dice_sides = 11
+effect = 28
+method = 9
+
+[sub_resource type="Resource" id="Resource_jxgpm"]
+script = ExtResource("1_kb1lr")
+damage_dice = 3
+damage_dice_sides = 11
+effect = 28
+method = 9
+
+[sub_resource type="Resource" id="Resource_4v44j"]
+script = ExtResource("1_kb1lr")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 21
+method = 2
+
+[sub_resource type="Resource" id="Resource_oqxx5"]
+script = ExtResource("1_kb1lr")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 21
+method = 2
+
+[sub_resource type="Resource" id="Resource_po304"]
+script = ExtResource("2_arst3")
+value = 168821249
+
+[sub_resource type="Resource" id="Resource_2hkuk"]
+script = ExtResource("2_arst3")
+value = 532480
+
+[sub_resource type="Resource" id="Resource_0gnk5"]
+script = ExtResource("2_arst3")
+value = 154927168
+
+[sub_resource type="Resource" id="Resource_ilemq"]
+script = ExtResource("2_arst3")
+
+[sub_resource type="Resource" id="Resource_qj060"]
+script = ExtResource("2_arst3")
+value = 2818575360
+
+[sub_resource type="Resource" id="Resource_2jv3e"]
+script = ExtResource("2_arst3")
+value = 16793605
+
+[resource]
+script = ExtResource("3_celr3")
+ac = 90
+attack = Array[ExtResource("1_kb1lr")]([SubResource("Resource_stwxl"), SubResource("Resource_jxgpm"), SubResource("Resource_4v44j"), SubResource("Resource_oqxx5")])
+character = "X"
+colour = 12
+description = "The largest of the cthonians and leader of his kind."
+flags_1 = SubResource("Resource_po304")
+flags_2 = SubResource("Resource_2hkuk")
+flags_3 = SubResource("Resource_0gnk5")
+flags_4 = SubResource("Resource_ilemq")
+flags_5 = SubResource("Resource_qj060")
+flags_6 = SubResource("Resource_2jv3e")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 100
+hit_dice_sides = 10
+level = 56
+max_num = 1
+experience = 2300
+name = "Shudde M'ell"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Shudde   "
+split_name_3 = "   M'ell    "

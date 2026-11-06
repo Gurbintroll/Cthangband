@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_y60qs"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_k678i"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_0mwqp"]
+
+[sub_resource type="Resource" id="Resource_7i5de"]
+script = ExtResource("1_y60qs")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_wkpmw"]
+script = ExtResource("1_y60qs")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_c1vkc"]
+script = ExtResource("1_y60qs")
+
+[sub_resource type="Resource" id="Resource_ym071"]
+script = ExtResource("1_y60qs")
+
+[sub_resource type="Resource" id="Resource_mt5u5"]
+script = ExtResource("2_k678i")
+value = 4202496
+
+[sub_resource type="Resource" id="Resource_0k1s5"]
+script = ExtResource("2_k678i")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_fuapj"]
+script = ExtResource("2_k678i")
+value = 68
+
+[sub_resource type="Resource" id="Resource_fuh6i"]
+script = ExtResource("2_k678i")
+
+[sub_resource type="Resource" id="Resource_ijy5j"]
+script = ExtResource("2_k678i")
+
+[sub_resource type="Resource" id="Resource_akvsx"]
+script = ExtResource("2_k678i")
+
+[resource]
+script = ExtResource("3_0mwqp")
+ac = 33
+attack = Array[ExtResource("1_y60qs")]([SubResource("Resource_7i5de"), SubResource("Resource_wkpmw"), SubResource("Resource_c1vkc"), SubResource("Resource_ym071")])
+character = "O"
+colour = 17
+description = "A giant orc-like figure with an awesomely muscled frame."
+flags_1 = SubResource("Resource_mt5u5")
+flags_2 = SubResource("Resource_0k1s5")
+flags_3 = SubResource("Resource_fuapj")
+flags_4 = SubResource("Resource_fuh6i")
+flags_5 = SubResource("Resource_ijy5j")
+flags_6 = SubResource("Resource_akvsx")
+hit_dice = 30
+hit_dice_sides = 9
+level = 26
+max_num = 100
+experience = 42
+name = "Cave ogre"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Cave    "
+split_name_3 = "    ogre    "

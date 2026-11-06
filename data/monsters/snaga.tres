@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_uttyh"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1orye"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qkxd7"]
+
+[sub_resource type="Resource" id="Resource_r71x6"]
+script = ExtResource("1_uttyh")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_qv5vo"]
+script = ExtResource("1_uttyh")
+
+[sub_resource type="Resource" id="Resource_w8hmu"]
+script = ExtResource("1_uttyh")
+
+[sub_resource type="Resource" id="Resource_pegut"]
+script = ExtResource("1_uttyh")
+
+[sub_resource type="Resource" id="Resource_a0nq3"]
+script = ExtResource("2_1orye")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_l7bkg"]
+script = ExtResource("2_1orye")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_4qq1w"]
+script = ExtResource("2_1orye")
+value = 4161
+
+[sub_resource type="Resource" id="Resource_g2m8n"]
+script = ExtResource("2_1orye")
+
+[sub_resource type="Resource" id="Resource_oo0y1"]
+script = ExtResource("2_1orye")
+
+[sub_resource type="Resource" id="Resource_mepbk"]
+script = ExtResource("2_1orye")
+
+[resource]
+script = ExtResource("3_qkxd7")
+ac = 32
+attack = Array[ExtResource("1_uttyh")]([SubResource("Resource_r71x6"), SubResource("Resource_qv5vo"), SubResource("Resource_w8hmu"), SubResource("Resource_pegut")])
+character = "o"
+colour = 8
+description = "He is one of the many weaker 'slave' orcs, often mistakenly known as a goblin."
+flags_1 = SubResource("Resource_a0nq3")
+flags_2 = SubResource("Resource_l7bkg")
+flags_3 = SubResource("Resource_4qq1w")
+flags_4 = SubResource("Resource_g2m8n")
+flags_5 = SubResource("Resource_oo0y1")
+flags_6 = SubResource("Resource_mepbk")
+hit_dice = 8
+hit_dice_sides = 8
+level = 6
+max_num = 100
+experience = 15
+name = "Snaga"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Snaga    "

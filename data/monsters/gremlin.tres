@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_b8wei"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_pnp5a"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jiwif"]
+
+[sub_resource type="Resource" id="Resource_xrbvj"]
+script = ExtResource("1_b8wei")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 7
+method = 5
+
+[sub_resource type="Resource" id="Resource_tx34x"]
+script = ExtResource("1_b8wei")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 7
+method = 5
+
+[sub_resource type="Resource" id="Resource_t6orj"]
+script = ExtResource("1_b8wei")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 7
+method = 6
+
+[sub_resource type="Resource" id="Resource_n441n"]
+script = ExtResource("1_b8wei")
+
+[sub_resource type="Resource" id="Resource_lcxlv"]
+script = ExtResource("2_pnp5a")
+
+[sub_resource type="Resource" id="Resource_pl0u0"]
+script = ExtResource("2_pnp5a")
+value = 4260096
+
+[sub_resource type="Resource" id="Resource_uerrm"]
+script = ExtResource("2_pnp5a")
+value = 1052752
+
+[sub_resource type="Resource" id="Resource_dn0hg"]
+script = ExtResource("2_pnp5a")
+
+[sub_resource type="Resource" id="Resource_61yle"]
+script = ExtResource("2_pnp5a")
+
+[sub_resource type="Resource" id="Resource_6g1mt"]
+script = ExtResource("2_pnp5a")
+
+[resource]
+script = ExtResource("3_jiwif")
+ac = 30
+attack = Array[ExtResource("1_b8wei")]([SubResource("Resource_xrbvj"), SubResource("Resource_tx34x"), SubResource("Resource_t6orj"), SubResource("Resource_n441n")])
+character = "u"
+colour = 7
+description = "Don't feed them after midnight!"
+flags_1 = SubResource("Resource_lcxlv")
+flags_2 = SubResource("Resource_pl0u0")
+flags_3 = SubResource("Resource_uerrm")
+flags_4 = SubResource("Resource_dn0hg")
+flags_5 = SubResource("Resource_61yle")
+flags_6 = SubResource("Resource_6g1mt")
+hit_dice = 5
+hit_dice_sides = 5
+level = 8
+max_num = 100
+experience = 6
+name = "Gremlin"
+notice_range = 30
+rarity = 3
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Gremlin   "

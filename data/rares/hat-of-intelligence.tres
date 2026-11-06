@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0bgcv"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_hhnsr"]
+
+[sub_resource type="Resource" id="Resource_10j6s"]
+script = ExtResource("1_0bgcv")
+value = 2
+
+[sub_resource type="Resource" id="Resource_fvyrn"]
+script = ExtResource("1_0bgcv")
+
+[sub_resource type="Resource" id="Resource_fb4gd"]
+script = ExtResource("1_0bgcv")
+
+[resource]
+script = ExtResource("2_hhnsr")
+cost = 500
+flags_1 = SubResource("Resource_10j6s")
+flags_2 = SubResource("Resource_fvyrn")
+flags_3 = SubResource("Resource_fb4gd")
+max_type_specifc_value = 2
+name = "of Intelligence"
+rating = 13
+slot = 33
+id = 17

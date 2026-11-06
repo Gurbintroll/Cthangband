@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bj3uvex76n3lk"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_wqe0h"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_v43cc"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_uwe3u"]
+
+[sub_resource type="Resource" id="Resource_li5mr"]
+script = ExtResource("1_wqe0h")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_wcg3k"]
+script = ExtResource("1_wqe0h")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_xba4w"]
+script = ExtResource("1_wqe0h")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_h8kan"]
+script = ExtResource("1_wqe0h")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_rjwcw"]
+script = ExtResource("2_v43cc")
+value = 304349701
+
+[sub_resource type="Resource" id="Resource_6rlaa"]
+script = ExtResource("2_v43cc")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_p3c0s"]
+script = ExtResource("2_v43cc")
+value = 3491692544
+
+[sub_resource type="Resource" id="Resource_r0bdn"]
+script = ExtResource("2_v43cc")
+value = 1
+
+[sub_resource type="Resource" id="Resource_hrt8w"]
+script = ExtResource("2_v43cc")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_i8yvg"]
+script = ExtResource("2_v43cc")
+value = 256
+
+[resource]
+script = ExtResource("3_uwe3u")
+ac = 100
+attack = Array[ExtResource("1_wqe0h")]([SubResource("Resource_li5mr"), SubResource("Resource_wcg3k"), SubResource("Resource_xba4w"), SubResource("Resource_h8kan")])
+character = "p"
+colour = 12
+description = "Once a powerful adventurer, this poor fighter has seen a few too many eldritch horrors in his time. Any shred of lucidity is long gone, but he still remains dangerous. He wanders aimlessly through the dungeon randomly stiking at foes both real and imagined, all the while screaming out at the world which caused his condition."
+flags_1 = SubResource("Resource_rjwcw")
+flags_2 = SubResource("Resource_6rlaa")
+flags_3 = SubResource("Resource_p3c0s")
+flags_4 = SubResource("Resource_r0bdn")
+flags_5 = SubResource("Resource_hrt8w")
+flags_6 = SubResource("Resource_i8yvg")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 18
+hit_dice_sides = 100
+level = 36
+max_num = 1
+experience = 1200
+name = "The Insane Crusader"
+notice_range = 25
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "    The     "
+split_name_2 = "   Insane   "
+split_name_3 = "  Crusader  "

@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qnb86"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_8vlqd"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_q58q0"]
+
+[sub_resource type="Resource" id="Resource_nvln0"]
+script = ExtResource("1_qnb86")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_8ripl"]
+script = ExtResource("1_qnb86")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_0hhcy"]
+script = ExtResource("1_qnb86")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_cnom0"]
+script = ExtResource("1_qnb86")
+effect = 19
+method = 2
+
+[sub_resource type="Resource" id="Resource_8xsip"]
+script = ExtResource("2_8vlqd")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_gntut"]
+script = ExtResource("2_8vlqd")
+value = 204800
+
+[sub_resource type="Resource" id="Resource_pof4v"]
+script = ExtResource("2_8vlqd")
+value = 3358656592
+
+[sub_resource type="Resource" id="Resource_0el7q"]
+script = ExtResource("2_8vlqd")
+value = 268435456
+
+[sub_resource type="Resource" id="Resource_3vla6"]
+script = ExtResource("2_8vlqd")
+value = 671121424
+
+[sub_resource type="Resource" id="Resource_mmbt1"]
+script = ExtResource("2_8vlqd")
+value = 83886592
+
+[resource]
+script = ExtResource("3_q58q0")
+ac = 70
+attack = Array[ExtResource("1_qnb86")]([SubResource("Resource_nvln0"), SubResource("Resource_8ripl"), SubResource("Resource_0hhcy"), SubResource("Resource_cnom0")])
+character = "A"
+colour = 26
+description = "It is barrel-shaped, with horizontal arms and a starfish head."
+flags_1 = SubResource("Resource_8xsip")
+flags_2 = SubResource("Resource_gntut")
+flags_3 = SubResource("Resource_pof4v")
+flags_4 = SubResource("Resource_0el7q")
+flags_5 = SubResource("Resource_3vla6")
+flags_6 = SubResource("Resource_mmbt1")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 35
+hit_dice_sides = 10
+level = 36
+max_num = 100
+experience = 800
+name = "Elder thing"
+notice_range = 10
+rarity = 3
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Elder    "
+split_name_3 = "   thing    "

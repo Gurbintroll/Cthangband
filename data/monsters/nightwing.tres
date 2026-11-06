@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_05m08"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_4du3p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_74vr0"]
+
+[sub_resource type="Resource" id="Resource_lm5vf"]
+script = ExtResource("1_05m08")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_lw0nv"]
+script = ExtResource("1_05m08")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_ffw7c"]
+script = ExtResource("1_05m08")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_sd4pe"]
+script = ExtResource("1_05m08")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_kbfi5"]
+script = ExtResource("2_4du3p")
+value = 304088064
+
+[sub_resource type="Resource" id="Resource_gtppf"]
+script = ExtResource("2_4du3p")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_fa7py"]
+script = ExtResource("2_4du3p")
+value = 3224899680
+
+[sub_resource type="Resource" id="Resource_5bi2g"]
+script = ExtResource("2_4du3p")
+
+[sub_resource type="Resource" id="Resource_nwrxx"]
+script = ExtResource("2_4du3p")
+value = 413173792
+
+[sub_resource type="Resource" id="Resource_prasr"]
+script = ExtResource("2_4du3p")
+value = 67108864
+
+[resource]
+script = ExtResource("3_74vr0")
+ac = 120
+attack = Array[ExtResource("1_05m08")]([SubResource("Resource_lm5vf"), SubResource("Resource_lw0nv"), SubResource("Resource_ffw7c"), SubResource("Resource_sd4pe")])
+character = "z"
+colour = 2
+description = "Everywhere colours seem paler and the air chiller. At the centre of the cold stands a mighty figure. Its wings envelop you in the chill of death as the nightwing reaches out to draw you into oblivion. Your muscles sag and your mind loses all will to fight as you stand in awe of this mighty being."
+flags_1 = SubResource("Resource_kbfi5")
+flags_2 = SubResource("Resource_gtppf")
+flags_3 = SubResource("Resource_fa7py")
+flags_4 = SubResource("Resource_5bi2g")
+flags_5 = SubResource("Resource_nwrxx")
+flags_6 = SubResource("Resource_prasr")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 60
+hit_dice_sides = 30
+level = 50
+max_num = 100
+experience = 6000
+name = "Nightwing"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Nightwing  "

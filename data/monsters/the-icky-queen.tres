@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bl7fq78mueiw"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_ioimj"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_3rg74"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_aacuw"]
+
+[sub_resource type="Resource" id="Resource_vn0yq"]
+script = ExtResource("1_ioimj")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 12
+
+[sub_resource type="Resource" id="Resource_xn5aj"]
+script = ExtResource("1_ioimj")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 7
+method = 12
+
+[sub_resource type="Resource" id="Resource_5fdk0"]
+script = ExtResource("1_ioimj")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_vrshy"]
+script = ExtResource("1_ioimj")
+damage_dice = 3
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_bp2gf"]
+script = ExtResource("2_3rg74")
+value = 287359497
+
+[sub_resource type="Resource" id="Resource_hhmp5"]
+script = ExtResource("2_3rg74")
+value = 4391042
+
+[sub_resource type="Resource" id="Resource_fax87"]
+script = ExtResource("2_3rg74")
+value = 2031680
+
+[sub_resource type="Resource" id="Resource_25apc"]
+script = ExtResource("2_3rg74")
+
+[sub_resource type="Resource" id="Resource_1nim0"]
+script = ExtResource("2_3rg74")
+value = 939524608
+
+[sub_resource type="Resource" id="Resource_v32yt"]
+script = ExtResource("2_3rg74")
+
+[resource]
+script = ExtResource("3_aacuw")
+ac = 50
+attack = Array[ExtResource("1_ioimj")]([SubResource("Resource_vn0yq"), SubResource("Resource_xn5aj"), SubResource("Resource_5fdk0"), SubResource("Resource_vrshy")])
+character = "i"
+colour = 12
+description = "And you thought her offspring were icky!"
+flags_1 = SubResource("Resource_bp2gf")
+flags_2 = SubResource("Resource_hhmp5")
+flags_3 = SubResource("Resource_fax87")
+flags_4 = SubResource("Resource_25apc")
+flags_5 = SubResource("Resource_1nim0")
+flags_6 = SubResource("Resource_v32yt")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 40
+hit_dice_sides = 10
+level = 20
+max_num = 1
+experience = 400
+name = "The Icky Queen"
+notice_range = 20
+rarity = 5
+sleep = 10
+speed = 120
+split_name_1 = "    The     "
+split_name_2 = "    Icky    "
+split_name_3 = "   Queen    "

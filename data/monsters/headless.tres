@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_viyms"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_3drk5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4xi5o"]
+
+[sub_resource type="Resource" id="Resource_wqnii"]
+script = ExtResource("1_viyms")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_nvkpl"]
+script = ExtResource("1_viyms")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_pbv07"]
+script = ExtResource("1_viyms")
+
+[sub_resource type="Resource" id="Resource_6mkmq"]
+script = ExtResource("1_viyms")
+
+[sub_resource type="Resource" id="Resource_w31w3"]
+script = ExtResource("2_3drk5")
+value = 4202496
+
+[sub_resource type="Resource" id="Resource_wp845"]
+script = ExtResource("2_3drk5")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_57biy"]
+script = ExtResource("2_3drk5")
+value = 64
+
+[sub_resource type="Resource" id="Resource_u51od"]
+script = ExtResource("2_3drk5")
+
+[sub_resource type="Resource" id="Resource_20w0f"]
+script = ExtResource("2_3drk5")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_rhtjf"]
+script = ExtResource("2_3drk5")
+
+[resource]
+script = ExtResource("3_4xi5o")
+ac = 50
+attack = Array[ExtResource("1_viyms")]([SubResource("Resource_wqnii"), SubResource("Resource_nvkpl"), SubResource("Resource_pbv07"), SubResource("Resource_6mkmq")])
+character = "H"
+colour = 8
+description = "Headless humanoid abominations created by a magical mutation."
+flags_1 = SubResource("Resource_w31w3")
+flags_2 = SubResource("Resource_wp845")
+flags_3 = SubResource("Resource_57biy")
+flags_4 = SubResource("Resource_u51od")
+flags_5 = SubResource("Resource_20w0f")
+flags_6 = SubResource("Resource_rhtjf")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 21
+hit_dice_sides = 12
+level = 27
+max_num = 100
+experience = 175
+name = "Headless"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Headless  "

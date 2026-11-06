@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_78fod"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_b115b"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jgxgb"]
+
+[sub_resource type="Resource" id="Resource_m35e2"]
+script = ExtResource("1_78fod")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 2
+method = 12
+
+[sub_resource type="Resource" id="Resource_wibjm"]
+script = ExtResource("1_78fod")
+
+[sub_resource type="Resource" id="Resource_fsl8d"]
+script = ExtResource("1_78fod")
+
+[sub_resource type="Resource" id="Resource_rqp5r"]
+script = ExtResource("1_78fod")
+
+[sub_resource type="Resource" id="Resource_nqjjk"]
+script = ExtResource("2_b115b")
+value = 786496
+
+[sub_resource type="Resource" id="Resource_k46ya"]
+script = ExtResource("2_b115b")
+value = 401
+
+[sub_resource type="Resource" id="Resource_phlaf"]
+script = ExtResource("2_b115b")
+value = 269488256
+
+[sub_resource type="Resource" id="Resource_d3gir"]
+script = ExtResource("2_b115b")
+
+[sub_resource type="Resource" id="Resource_iff7l"]
+script = ExtResource("2_b115b")
+
+[sub_resource type="Resource" id="Resource_d1a8o"]
+script = ExtResource("2_b115b")
+
+[resource]
+script = ExtResource("3_jgxgb")
+ac = 1
+attack = Array[ExtResource("1_78fod")]([SubResource("Resource_m35e2"), SubResource("Resource_wibjm"), SubResource("Resource_fsl8d"), SubResource("Resource_rqp5r")])
+character = "w"
+colour = 20
+description = "It is a disgusting mass of poisonous worms."
+flags_1 = SubResource("Resource_nqjjk")
+flags_2 = SubResource("Resource_k46ya")
+flags_3 = SubResource("Resource_phlaf")
+flags_4 = SubResource("Resource_d3gir")
+flags_5 = SubResource("Resource_iff7l")
+flags_6 = SubResource("Resource_d1a8o")
+hit_dice = 4
+hit_dice_sides = 4
+level = 3
+max_num = 100
+experience = 4
+name = "Clear worm mass"
+notice_range = 7
+rarity = 2
+sleep = 10
+speed = 100
+split_name_1 = "   Clear    "
+split_name_2 = "    worm    "
+split_name_3 = "    mass    "

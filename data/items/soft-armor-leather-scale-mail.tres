@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ncsxr"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_w5r8n"]
+
+[sub_resource type="Resource" id="Resource_srks0"]
+script = ExtResource("1_ncsxr")
+
+[sub_resource type="Resource" id="Resource_c4jge"]
+script = ExtResource("1_ncsxr")
+
+[sub_resource type="Resource" id="Resource_n5sx3"]
+script = ExtResource("1_ncsxr")
+
+[resource]
+script = ExtResource("2_w5r8n")
+ac = 11
+chance = Array[int]([1, 0, 0, 0])
+character = "("
+colour = 6
+cost = 450
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_srks0")
+flags_2 = SubResource("Resource_c4jge")
+flags_3 = SubResource("Resource_n5sx3")
+flavour_aware = true
+item_category = 36
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "Leather Scale Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 11
+to_hit = -1
+weight = 140
+filename = "SoftArmor:Leather Scale Mail"

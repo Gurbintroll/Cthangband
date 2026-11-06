@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2hs0y"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_fqa7a"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_yvglx"]
+
+[sub_resource type="Resource" id="Resource_plwk1"]
+script = ExtResource("1_2hs0y")
+effect = 27
+method = 15
+
+[sub_resource type="Resource" id="Resource_mkfhy"]
+script = ExtResource("1_2hs0y")
+effect = 27
+method = 15
+
+[sub_resource type="Resource" id="Resource_us3ye"]
+script = ExtResource("1_2hs0y")
+
+[sub_resource type="Resource" id="Resource_djlhp"]
+script = ExtResource("1_2hs0y")
+
+[sub_resource type="Resource" id="Resource_v5jua"]
+script = ExtResource("2_fqa7a")
+value = 132608
+
+[sub_resource type="Resource" id="Resource_fa4l3"]
+script = ExtResource("2_fqa7a")
+value = 34
+
+[sub_resource type="Resource" id="Resource_knoxe"]
+script = ExtResource("2_fqa7a")
+value = 3493593184
+
+[sub_resource type="Resource" id="Resource_id4dj"]
+script = ExtResource("2_fqa7a")
+
+[sub_resource type="Resource" id="Resource_wvg2i"]
+script = ExtResource("2_fqa7a")
+value = 10485792
+
+[sub_resource type="Resource" id="Resource_bmwry"]
+script = ExtResource("2_fqa7a")
+value = 67108864
+
+[resource]
+script = ExtResource("3_yvglx")
+ac = 90
+attack = Array[ExtResource("1_2hs0y")]([SubResource("Resource_plwk1"), SubResource("Resource_mkfhy"), SubResource("Resource_us3ye"), SubResource("Resource_djlhp")])
+character = "s"
+colour = 9
+description = "A bloodshot eyeball floating in the air, you'd be forgiven for assuming it harmless."
+flags_1 = SubResource("Resource_v5jua")
+flags_2 = SubResource("Resource_fa4l3")
+flags_3 = SubResource("Resource_knoxe")
+flags_4 = SubResource("Resource_id4dj")
+flags_5 = SubResource("Resource_wvg2i")
+flags_6 = SubResource("Resource_bmwry")
+freq_innate = 1
+freq_spell = 1
+hit_dice = 10
+hit_dice_sides = 100
+level = 55
+max_num = 100
+experience = 24000
+name = "Eye druj"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "    Eye     "
+split_name_3 = "    druj    "

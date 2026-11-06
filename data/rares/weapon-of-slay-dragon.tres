@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6g5vt"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_e50jw"]
+
+[sub_resource type="Resource" id="Resource_m5qej"]
+script = ExtResource("1_6g5vt")
+value = 8388608
+
+[sub_resource type="Resource" id="Resource_s6o1s"]
+script = ExtResource("1_6g5vt")
+
+[sub_resource type="Resource" id="Resource_fsmma"]
+script = ExtResource("1_6g5vt")
+
+[resource]
+script = ExtResource("2_e50jw")
+cost = 3500
+flags_1 = SubResource("Resource_m5qej")
+flags_2 = SubResource("Resource_s6o1s")
+flags_3 = SubResource("Resource_fsmma")
+name = "of Slay Dragon"
+rating = 18
+slot = 24
+id = 74

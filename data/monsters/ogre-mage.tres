@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qw110"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_3ocbt"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_724yi"]
+
+[sub_resource type="Resource" id="Resource_u18fx"]
+script = ExtResource("1_qw110")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_bswdm"]
+script = ExtResource("1_qw110")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6smdc"]
+script = ExtResource("1_qw110")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7ikpa"]
+script = ExtResource("1_qw110")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_nwi0c"]
+script = ExtResource("2_3ocbt")
+value = 16778240
+
+[sub_resource type="Resource" id="Resource_n5jbo"]
+script = ExtResource("2_3ocbt")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_baloi"]
+script = ExtResource("2_3ocbt")
+value = 68
+
+[sub_resource type="Resource" id="Resource_w5m5b"]
+script = ExtResource("2_3ocbt")
+
+[sub_resource type="Resource" id="Resource_4d8wb"]
+script = ExtResource("2_3ocbt")
+value = 2147483656
+
+[sub_resource type="Resource" id="Resource_rgnui"]
+script = ExtResource("2_3ocbt")
+value = 270340
+
+[resource]
+script = ExtResource("3_724yi")
+ac = 40
+attack = Array[ExtResource("1_qw110")]([SubResource("Resource_u18fx"), SubResource("Resource_bswdm"), SubResource("Resource_6smdc"), SubResource("Resource_7ikpa")])
+character = "O"
+colour = 24
+description = "A hideous ogre wrapped in black sorcerous robes."
+flags_1 = SubResource("Resource_nwi0c")
+flags_2 = SubResource("Resource_n5jbo")
+flags_3 = SubResource("Resource_baloi")
+flags_4 = SubResource("Resource_w5m5b")
+flags_5 = SubResource("Resource_4d8wb")
+flags_6 = SubResource("Resource_rgnui")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 30
+hit_dice_sides = 12
+level = 27
+max_num = 100
+experience = 300
+name = "Ogre mage"
+notice_range = 20
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Ogre    "
+split_name_3 = "    mage    "

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_uev3k"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_whoxj"]
+
+[sub_resource type="Resource" id="Resource_jkroy"]
+script = ExtResource("1_uev3k")
+
+[sub_resource type="Resource" id="Resource_67wq0"]
+script = ExtResource("1_uev3k")
+
+[sub_resource type="Resource" id="Resource_xk1gk"]
+script = ExtResource("1_uev3k")
+
+[resource]
+script = ExtResource("2_whoxj")
+cost = 1000
+flags_1 = SubResource("Resource_jkroy")
+flags_2 = SubResource("Resource_67wq0")
+flags_3 = SubResource("Resource_xk1gk")
+max_to_damage = 15
+max_to_hit = 5
+name = "of Velocity"
+rating = 10
+slot = 25
+id = 85

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_j5owr"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_fyg4c"]
+
+[sub_resource type="Resource" id="Resource_adg4e"]
+script = ExtResource("1_j5owr")
+
+[sub_resource type="Resource" id="Resource_q45qy"]
+script = ExtResource("1_j5owr")
+
+[sub_resource type="Resource" id="Resource_tbn7x"]
+script = ExtResource("1_j5owr")
+
+[resource]
+script = ExtResource("2_fyg4c")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 6
+cost = 2000
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_adg4e")
+flags_2 = SubResource("Resource_q45qy")
+flags_3 = SubResource("Resource_tbn7x")
+has_flavour = true
+item_category = 55
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Teleportation"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 4
+weight = 50
+filename = "Staff:Teleportation"

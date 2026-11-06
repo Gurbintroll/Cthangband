@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ixon3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_47jlg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_b07kr"]
+
+[sub_resource type="Resource" id="Resource_w8jbv"]
+script = ExtResource("1_ixon3")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_r04cc"]
+script = ExtResource("1_ixon3")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_0jqyp"]
+script = ExtResource("1_ixon3")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_eddq3"]
+script = ExtResource("1_ixon3")
+
+[sub_resource type="Resource" id="Resource_2juqd"]
+script = ExtResource("2_47jlg")
+value = 270336
+
+[sub_resource type="Resource" id="Resource_acsv3"]
+script = ExtResource("2_47jlg")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_gm58j"]
+script = ExtResource("2_47jlg")
+value = 3222278240
+
+[sub_resource type="Resource" id="Resource_6jwvw"]
+script = ExtResource("2_47jlg")
+
+[sub_resource type="Resource" id="Resource_t0ko3"]
+script = ExtResource("2_47jlg")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_pb6ky"]
+script = ExtResource("2_47jlg")
+value = 67108864
+
+[resource]
+script = ExtResource("3_b07kr")
+ac = 12
+attack = Array[ExtResource("1_ixon3")]([SubResource("Resource_w8jbv"), SubResource("Resource_r04cc"), SubResource("Resource_0jqyp"), SubResource("Resource_eddq3")])
+character = "s"
+colour = 2
+description = "Frightening skeletal figures in black robes. "
+flags_1 = SubResource("Resource_2juqd")
+flags_2 = SubResource("Resource_acsv3")
+flags_3 = SubResource("Resource_gm58j")
+flags_4 = SubResource("Resource_6jwvw")
+flags_5 = SubResource("Resource_t0ko3")
+flags_6 = SubResource("Resource_pb6ky")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 6
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 25
+name = "Crypt creep"
+notice_range = 20
+rarity = 2
+sleep = 14
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Crypt    "
+split_name_3 = "   creep    "

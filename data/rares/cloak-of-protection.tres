@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xi2db"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_4fgto"]
+
+[sub_resource type="Resource" id="Resource_ros8l"]
+script = ExtResource("1_xi2db")
+
+[sub_resource type="Resource" id="Resource_hjsm0"]
+script = ExtResource("1_xi2db")
+
+[sub_resource type="Resource" id="Resource_i8v3h"]
+script = ExtResource("1_xi2db")
+value = 15728640
+
+[resource]
+script = ExtResource("2_4fgto")
+cost = 500
+flags_1 = SubResource("Resource_ros8l")
+flags_2 = SubResource("Resource_hjsm0")
+flags_3 = SubResource("Resource_i8v3h")
+max_to_ac = 10
+name = "of Protection"
+rating = 10
+slot = 31
+id = 32

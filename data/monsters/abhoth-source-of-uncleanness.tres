@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://btufqfl8vn6fw"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_ujwd7"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_7hwxn"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_1wrar"]
+
+[sub_resource type="Resource" id="Resource_qgs2e"]
+script = ExtResource("1_ujwd7")
+damage_dice = 30
+damage_dice_sides = 4
+effect = 21
+method = 9
+
+[sub_resource type="Resource" id="Resource_kv3kj"]
+script = ExtResource("1_ujwd7")
+damage_dice = 30
+damage_dice_sides = 4
+effect = 17
+method = 1
+
+[sub_resource type="Resource" id="Resource_u026x"]
+script = ExtResource("1_ujwd7")
+damage_dice = 1
+damage_dice_sides = 50
+effect = 18
+method = 2
+
+[sub_resource type="Resource" id="Resource_k1jjk"]
+script = ExtResource("1_ujwd7")
+damage_dice = 1
+damage_dice_sides = 50
+effect = 19
+method = 12
+
+[sub_resource type="Resource" id="Resource_d3ad8"]
+script = ExtResource("2_7hwxn")
+value = 950011525
+
+[sub_resource type="Resource" id="Resource_37hqv"]
+script = ExtResource("2_7hwxn")
+value = 502274
+
+[sub_resource type="Resource" id="Resource_7k370"]
+script = ExtResource("2_7hwxn")
+value = 3258255696
+
+[sub_resource type="Resource" id="Resource_e6q1p"]
+script = ExtResource("2_7hwxn")
+value = 1074790400
+
+[sub_resource type="Resource" id="Resource_jp182"]
+script = ExtResource("2_7hwxn")
+value = 35972
+
+[sub_resource type="Resource" id="Resource_lshhq"]
+script = ExtResource("2_7hwxn")
+value = 862586663
+
+[resource]
+script = ExtResource("3_1wrar")
+ac = 100
+attack = Array[ExtResource("1_ujwd7")]([SubResource("Resource_qgs2e"), SubResource("Resource_kv3kj"), SubResource("Resource_u026x"), SubResource("Resource_k1jjk")])
+character = "X"
+colour = 12
+description = "A greyish horrid mass, which quobbs and quivers spawning monstrosities."
+flags_1 = SubResource("Resource_d3ad8")
+flags_2 = SubResource("Resource_37hqv")
+flags_3 = SubResource("Resource_7k370")
+flags_4 = SubResource("Resource_e6q1p")
+flags_5 = SubResource("Resource_jp182")
+flags_6 = SubResource("Resource_lshhq")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 90
+hit_dice_sides = 99
+level = 93
+max_num = 1
+experience = 49000
+name = "Abhoth, Source of Uncleanness"
+notice_range = 100
+rarity = 3
+sleep = 20
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Abhoth   "

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_g7cqi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_texm7"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_11sln"]
+
+[sub_resource type="Resource" id="Resource_t22t8"]
+script = ExtResource("1_g7cqi")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 12
+method = 2
+
+[sub_resource type="Resource" id="Resource_adjeo"]
+script = ExtResource("1_g7cqi")
+
+[sub_resource type="Resource" id="Resource_yyoiw"]
+script = ExtResource("1_g7cqi")
+
+[sub_resource type="Resource" id="Resource_cmac0"]
+script = ExtResource("1_g7cqi")
+
+[sub_resource type="Resource" id="Resource_doqs5"]
+script = ExtResource("2_texm7")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_x7hpm"]
+script = ExtResource("2_texm7")
+value = 97
+
+[sub_resource type="Resource" id="Resource_v7h01"]
+script = ExtResource("2_texm7")
+value = 3490189312
+
+[sub_resource type="Resource" id="Resource_j0ysk"]
+script = ExtResource("2_texm7")
+
+[sub_resource type="Resource" id="Resource_6hh17"]
+script = ExtResource("2_texm7")
+
+[sub_resource type="Resource" id="Resource_anp1a"]
+script = ExtResource("2_texm7")
+
+[resource]
+script = ExtResource("3_11sln")
+ac = 1
+attack = Array[ExtResource("1_g7cqi")]([SubResource("Resource_t22t8"), SubResource("Resource_adjeo"), SubResource("Resource_yyoiw"), SubResource("Resource_cmac0")])
+character = "j"
+colour = 3
+description = "It's a large pile of pulsing blue flesh."
+flags_1 = SubResource("Resource_doqs5")
+flags_2 = SubResource("Resource_x7hpm")
+flags_3 = SubResource("Resource_v7h01")
+flags_4 = SubResource("Resource_j0ysk")
+flags_5 = SubResource("Resource_6hh17")
+flags_6 = SubResource("Resource_anp1a")
+hit_dice = 12
+hit_dice_sides = 8
+level = 4
+max_num = 100
+experience = 14
+name = "Blue jelly"
+notice_range = 2
+rarity = 1
+sleep = 99
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Blue    "
+split_name_3 = "   jelly    "

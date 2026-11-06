@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_4oup7"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jsrdh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vbi6k"]
+
+[sub_resource type="Resource" id="Resource_c0op0"]
+script = ExtResource("1_4oup7")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_yocgj"]
+script = ExtResource("1_4oup7")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_w25dq"]
+script = ExtResource("1_4oup7")
+damage_dice = 2
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_sqs76"]
+script = ExtResource("1_4oup7")
+
+[sub_resource type="Resource" id="Resource_cw5o0"]
+script = ExtResource("2_jsrdh")
+value = 144705032
+
+[sub_resource type="Resource" id="Resource_uy7fa"]
+script = ExtResource("2_jsrdh")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_5ln7i"]
+script = ExtResource("2_jsrdh")
+value = 3221229632
+
+[sub_resource type="Resource" id="Resource_w20si"]
+script = ExtResource("2_jsrdh")
+
+[sub_resource type="Resource" id="Resource_qb2rd"]
+script = ExtResource("2_jsrdh")
+value = 872497164
+
+[sub_resource type="Resource" id="Resource_48d08"]
+script = ExtResource("2_jsrdh")
+value = 100929812
+
+[resource]
+script = ExtResource("3_vbi6k")
+ac = 70
+attack = Array[ExtResource("1_4oup7")]([SubResource("Resource_c0op0"), SubResource("Resource_yocgj"), SubResource("Resource_w25dq"), SubResource("Resource_sqs76")])
+character = "h"
+colour = 27
+description = "A dark elven figure, dressed in deepest black. Power seems to crackle from her slender frame."
+flags_1 = SubResource("Resource_cw5o0")
+flags_2 = SubResource("Resource_uy7fa")
+flags_3 = SubResource("Resource_5ln7i")
+flags_4 = SubResource("Resource_w20si")
+flags_5 = SubResource("Resource_qb2rd")
+flags_6 = SubResource("Resource_48d08")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 80
+hit_dice_sides = 10
+level = 41
+max_num = 100
+experience = 3000
+name = "Dark elven thaumaturge"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 130
+split_name_1 = "    Dark    "
+split_name_2 = "   elven    "
+split_name_3 = "thaumaturge "

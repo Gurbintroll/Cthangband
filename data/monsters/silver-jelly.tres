@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_u76y3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_uak0s"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_su8n3"]
+
+[sub_resource type="Resource" id="Resource_u8kps"]
+script = ExtResource("1_u76y3")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 8
+method = 2
+
+[sub_resource type="Resource" id="Resource_2p5eg"]
+script = ExtResource("1_u76y3")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 8
+method = 2
+
+[sub_resource type="Resource" id="Resource_5c2j8"]
+script = ExtResource("1_u76y3")
+
+[sub_resource type="Resource" id="Resource_h24oe"]
+script = ExtResource("1_u76y3")
+
+[sub_resource type="Resource" id="Resource_n478k"]
+script = ExtResource("2_uak0s")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_e0imp"]
+script = ExtResource("2_uak0s")
+value = 65
+
+[sub_resource type="Resource" id="Resource_8vuu0"]
+script = ExtResource("2_uak0s")
+value = 3490713600
+
+[sub_resource type="Resource" id="Resource_xq34q"]
+script = ExtResource("2_uak0s")
+
+[sub_resource type="Resource" id="Resource_khv6m"]
+script = ExtResource("2_uak0s")
+value = 512
+
+[sub_resource type="Resource" id="Resource_84pq3"]
+script = ExtResource("2_uak0s")
+
+[resource]
+script = ExtResource("3_su8n3")
+ac = 1
+attack = Array[ExtResource("1_u76y3")]([SubResource("Resource_u8kps"), SubResource("Resource_2p5eg"), SubResource("Resource_5c2j8"), SubResource("Resource_h24oe")])
+character = "j"
+colour = 28
+description = "It is a large pile of silver flesh that sucks all light from its surroundings."
+flags_1 = SubResource("Resource_n478k")
+flags_2 = SubResource("Resource_e0imp")
+flags_3 = SubResource("Resource_8vuu0")
+flags_4 = SubResource("Resource_xq34q")
+flags_5 = SubResource("Resource_khv6m")
+flags_6 = SubResource("Resource_84pq3")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 10
+hit_dice_sides = 8
+level = 3
+max_num = 100
+experience = 12
+name = "Silver jelly"
+notice_range = 2
+rarity = 2
+sleep = 99
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Silver   "
+split_name_3 = "   jelly    "

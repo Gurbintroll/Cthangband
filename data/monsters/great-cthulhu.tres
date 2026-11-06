@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cpqfccqqd3l8c"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_s5uyw"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_cy5aa"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_af83l"]
+
+[sub_resource type="Resource" id="Resource_ot6pp"]
+script = ExtResource("1_s5uyw")
+damage_dice = 50
+damage_dice_sides = 4
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_hwsjx"]
+script = ExtResource("1_s5uyw")
+damage_dice = 15
+damage_dice_sides = 2
+effect = 4
+method = 5
+
+[sub_resource type="Resource" id="Resource_upfpj"]
+script = ExtResource("1_s5uyw")
+damage_dice = 15
+damage_dice_sides = 2
+effect = 3
+method = 5
+
+[sub_resource type="Resource" id="Resource_hxrgy"]
+script = ExtResource("1_s5uyw")
+damage_dice = 1
+damage_dice_sides = 100
+effect = 2
+method = 2
+
+[sub_resource type="Resource" id="Resource_f2vti"]
+script = ExtResource("2_cy5aa")
+value = 992003585
+
+[sub_resource type="Resource" id="Resource_ia4a4"]
+script = ExtResource("2_cy5aa")
+value = 1257986
+
+[sub_resource type="Resource" id="Resource_8k0i1"]
+script = ExtResource("2_cy5aa")
+value = 3346467152
+
+[sub_resource type="Resource" id="Resource_ihpdj"]
+script = ExtResource("2_cy5aa")
+value = 2719855872
+
+[sub_resource type="Resource" id="Resource_m320a"]
+script = ExtResource("2_cy5aa")
+value = 939527680
+
+[sub_resource type="Resource" id="Resource_r8dds"]
+script = ExtResource("2_cy5aa")
+value = 285429794
+
+[resource]
+script = ExtResource("3_af83l")
+ac = 140
+attack = Array[ExtResource("1_s5uyw")]([SubResource("Resource_ot6pp"), SubResource("Resource_hwsjx"), SubResource("Resource_upfpj"), SubResource("Resource_hxrgy")])
+character = "X"
+colour = 12
+description = "This creature is death incarnate. 'A monster of vaguely anthropoid outline, but with an octopus-like head... and long narrow wings behind... A mountain walked or stumbled.'"
+flags_1 = SubResource("Resource_f2vti")
+flags_2 = SubResource("Resource_ia4a4")
+flags_3 = SubResource("Resource_8k0i1")
+flags_4 = SubResource("Resource_ihpdj")
+flags_5 = SubResource("Resource_m320a")
+flags_6 = SubResource("Resource_r8dds")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 100
+hit_dice_sides = 100
+level = 96
+max_num = 1
+experience = 62500
+name = "Great Cthulhu"
+notice_range = 100
+rarity = 2
+sleep = 100
+speed = 130
+split_name_1 = "            "
+split_name_2 = "   Great    "
+split_name_3 = "  Cthulhu   "

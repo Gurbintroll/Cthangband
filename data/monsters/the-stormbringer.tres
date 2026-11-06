@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b162pvinicw76"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_5iis6"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_pfxsw"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_111pf"]
+
+[sub_resource type="Resource" id="Resource_xnrb6"]
+script = ExtResource("1_5iis6")
+effect = 15
+method = 16
+
+[sub_resource type="Resource" id="Resource_ybk1q"]
+script = ExtResource("1_5iis6")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_lc233"]
+script = ExtResource("1_5iis6")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_7rumg"]
+script = ExtResource("1_5iis6")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 27
+method = 1
+
+[sub_resource type="Resource" id="Resource_o3wwq"]
+script = ExtResource("2_pfxsw")
+value = 1825
+
+[sub_resource type="Resource" id="Resource_ky2jn"]
+script = ExtResource("2_pfxsw")
+value = 131104
+
+[sub_resource type="Resource" id="Resource_wp68f"]
+script = ExtResource("2_pfxsw")
+value = 3495692352
+
+[sub_resource type="Resource" id="Resource_qjls8"]
+script = ExtResource("2_pfxsw")
+
+[sub_resource type="Resource" id="Resource_51y6s"]
+script = ExtResource("2_pfxsw")
+
+[sub_resource type="Resource" id="Resource_yw254"]
+script = ExtResource("2_pfxsw")
+
+[resource]
+script = ExtResource("3_111pf")
+ac = 99
+attack = Array[ExtResource("1_5iis6")]([SubResource("Resource_xnrb6"), SubResource("Resource_ybk1q"), SubResource("Resource_lc233"), SubResource("Resource_7rumg")])
+character = "|"
+colour = 12
+description = "The mightiest of hellblades, a black runesword which thirsts for your soul."
+flags_1 = SubResource("Resource_o3wwq")
+flags_2 = SubResource("Resource_ky2jn")
+flags_3 = SubResource("Resource_wp68f")
+flags_4 = SubResource("Resource_qjls8")
+flags_5 = SubResource("Resource_51y6s")
+flags_6 = SubResource("Resource_yw254")
+hit_dice = 13
+hit_dice_sides = 123
+level = 45
+max_num = 1
+experience = 13333
+name = "The Stormbringer"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    The     "
+split_name_3 = "Stormbringer"

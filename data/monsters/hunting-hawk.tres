@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_xqdn3"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ldkc4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_j3nne"]
+
+[sub_resource type="Resource" id="Resource_lg4sn"]
+script = ExtResource("1_xqdn3")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_a87gc"]
+script = ExtResource("1_xqdn3")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_w201h"]
+script = ExtResource("1_xqdn3")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ti6rc"]
+script = ExtResource("1_xqdn3")
+
+[sub_resource type="Resource" id="Resource_3u26x"]
+script = ExtResource("2_ldkc4")
+
+[sub_resource type="Resource" id="Resource_8ktkb"]
+script = ExtResource("2_ldkc4")
+
+[sub_resource type="Resource" id="Resource_bbe1f"]
+script = ExtResource("2_ldkc4")
+value = 268435584
+
+[sub_resource type="Resource" id="Resource_b1kun"]
+script = ExtResource("2_ldkc4")
+
+[sub_resource type="Resource" id="Resource_jait6"]
+script = ExtResource("2_ldkc4")
+
+[sub_resource type="Resource" id="Resource_ustai"]
+script = ExtResource("2_ldkc4")
+
+[resource]
+script = ExtResource("3_j3nne")
+ac = 25
+attack = Array[ExtResource("1_xqdn3")]([SubResource("Resource_lg4sn"), SubResource("Resource_a87gc"), SubResource("Resource_w201h"), SubResource("Resource_ti6rc")])
+character = "B"
+colour = 17
+description = "Trained to hunt and kill without fear."
+flags_1 = SubResource("Resource_3u26x")
+flags_2 = SubResource("Resource_8ktkb")
+flags_3 = SubResource("Resource_bbe1f")
+flags_4 = SubResource("Resource_b1kun")
+flags_5 = SubResource("Resource_jait6")
+flags_6 = SubResource("Resource_ustai")
+hit_dice = 8
+hit_dice_sides = 8
+level = 8
+max_num = 100
+experience = 22
+name = "Hunting hawk"
+notice_range = 30
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Hunting   "
+split_name_3 = "    hawk    "

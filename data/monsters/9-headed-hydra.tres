@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_sukkq"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_olk6k"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_cap3n"]
+
+[sub_resource type="Resource" id="Resource_nvmis"]
+script = ExtResource("1_sukkq")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_nm5w4"]
+script = ExtResource("1_sukkq")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_51hpg"]
+script = ExtResource("1_sukkq")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_1r2m4"]
+script = ExtResource("1_sukkq")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_opyy0"]
+script = ExtResource("2_olk6k")
+value = 168821760
+
+[sub_resource type="Resource" id="Resource_0umun"]
+script = ExtResource("2_olk6k")
+value = 1245184
+
+[sub_resource type="Resource" id="Resource_fy48u"]
+script = ExtResource("2_olk6k")
+value = 262272
+
+[sub_resource type="Resource" id="Resource_i6w2m"]
+script = ExtResource("2_olk6k")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_4dksi"]
+script = ExtResource("2_olk6k")
+value = 134479872
+
+[sub_resource type="Resource" id="Resource_rosbg"]
+script = ExtResource("2_olk6k")
+
+[resource]
+script = ExtResource("3_cap3n")
+ac = 95
+attack = Array[ExtResource("1_sukkq")]([SubResource("Resource_nvmis"), SubResource("Resource_nm5w4"), SubResource("Resource_51hpg"), SubResource("Resource_1r2m4")])
+character = "M"
+colour = 8
+description = "A strange reptilian hybrid with nine smouldering heads."
+flags_1 = SubResource("Resource_opyy0")
+flags_2 = SubResource("Resource_0umun")
+flags_3 = SubResource("Resource_fy48u")
+flags_4 = SubResource("Resource_i6w2m")
+flags_5 = SubResource("Resource_4dksi")
+flags_6 = SubResource("Resource_rosbg")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 100
+hit_dice_sides = 12
+level = 40
+max_num = 100
+experience = 3000
+name = "9-headed hydra"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  9-headed  "
+split_name_3 = "   hydra    "

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_g0myp"]
+
+[resource]
+script = ExtResource("1_g0myp")
+category = 8
+height = 31
+name = "Lesser vault (Pattern)"
+rating = 30
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.%%X@&+.............................+&@X,,,,,,X.%%XXXX.p...bad.bad.bad.bad.cbb.....XXXX,,,,,,X.%%X@&X.a.dcb.dcb.dcb.dcb.dcc.baa...X&@X,,,,,,X.%%XX+X.b.d.....................ad..X+XX,,,,,,X.%%X....c.a.dabcdabcda...........dc....X,,,,,,X.%%X....d.b.d........a..cbadcba...c....X,,,,,,X.%%X...ad.c.c.dcbadcba..c.....ad..cb...X++XXX+X.%%X...a..d.b.d.........cdabc..d...b...X^^X^^^X.%%X...b.ad.a.a..abcd.......cd.dcb.a...X**X^X+X.%%X..cb.a..d.b..a..d..adcb..d...b.ad..X,,X^X^X.%%X..c..b..c.c..d.ad..a..ba.a...a..d..X&&X^X&X.%%X.dc.cb..b.d..c.a..PPP..a.a.cda..dc.X^^X^X+X.%%X.d..c...a.a..b.b.PPAPP.d.b.c.....c.+^^X^X*X.%%X.da.cd..d.b..a.c.PABAP.c.b.cba..bc.X^^X^X*X.%%X..a..d..c.c..d.d.PPAPP.b.c...a..b..X&&X^XXX.%%X..ab.da.b.d..c.a..PPP..a.c...d.ab..X,,X^X,X.%%X...b..a.a.a..b.ab.....da.d..cd.a...XXXX+X+X.%%X...c..b.d.b..a..bcd.bcd..a.bc..d...X**^^^,X.%%X...cd.bcd.c..ad...dab...ba.b..cd...X,,,,,,X.%%X....d.....d...dc......dcb..a..c....X,,,XXXX.%%X....da....da...cbadcbad...da.bc....X,,,+,,X.%%X.....a.....abc...........cd..b.....X,,,X,,X.%%XX+X..ab......cdabcdabcdabc..ab..X+XXXXXX,,X.%%X@&X...bc...................da...X&@X,,,,,,X.%%XXXX....cddaabbccddaabbcdabcd....XXXX,,,,,&+.%%X@&+.............................+&@X****&&+.%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX++X.%%.............................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 47

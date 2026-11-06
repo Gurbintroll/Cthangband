@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_dr41s"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_pfnp2"]
+
+[sub_resource type="Resource" id="Resource_vdgel"]
+script = ExtResource("1_dr41s")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_pmehk"]
+script = ExtResource("1_dr41s")
+
+[sub_resource type="Resource" id="Resource_1ge7o"]
+script = ExtResource("1_dr41s")
+value = 1024
+
+[resource]
+script = ExtResource("2_pfnp2")
+chance = Array[int]([8, 0, 0, 0])
+character = "\\"
+colour = 26
+cost = 4300
+damage_dice = 5
+damage_dice_sides = 8
+flags_1 = SubResource("Resource_vdgel")
+flags_2 = SubResource("Resource_pmehk")
+flags_3 = SubResource("Resource_1ge7o")
+flavour_aware = true
+item_category = 21
+level = 80
+locale = Array[int]([80, 0, 0, 0])
+name = "& Mace~ of Disruption"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 20
+weight = 400
+filename = "Hafted:Mace of Disruption"

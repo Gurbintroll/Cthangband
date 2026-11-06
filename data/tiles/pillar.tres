@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_t58xc"]
+
+[resource]
+script = ExtResource("1_t58xc")
+alter_action = 1
+appear_as = "Pillar"
+blocks_los = true
+character = "#"
+colour = 30
+description = "pillar"
+dims_outside_los = true
+map_priority = 12
+name = "Pillar"
+run_past = true
+yellow_in_torch_light = true

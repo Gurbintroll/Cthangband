@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_kd0ky"]
+
+[resource]
+script = ExtResource("1_kd0ky")
+category = 8
+height = 17
+name = "Modified Greater Vault (Huge)"
+rating = 45
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#X%%X8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8X8X%%X#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#X#X%%X8X8#8#8#8#8#8#8#8#8#8#8#8#8#8#8X8X8X%%X#X#XXXXXXXXXXXXXXXXXXXXXXXXXXX#X#X#X%%X8X8X8#8#8#8#8#8#8#8#8#8#8#8#8#8X8X8X%%X#X#X#XXXXXXXXXXXXXXXXXXXXXXXXXXX#X#X%%X8X8X8#8#8#8#8#8#8#8#8#8#8#8#8#8#8X8X%%X#X#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#X%%X8X8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8X%%X#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#8#%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 39

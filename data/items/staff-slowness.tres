@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6vwe2"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_82mn8"]
+
+[sub_resource type="Resource" id="Resource_ihhov"]
+script = ExtResource("1_6vwe2")
+
+[sub_resource type="Resource" id="Resource_oi5s6"]
+script = ExtResource("1_6vwe2")
+
+[sub_resource type="Resource" id="Resource_0qync"]
+script = ExtResource("1_6vwe2")
+
+[resource]
+script = ExtResource("2_82mn8")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 6
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_ihhov")
+flags_2 = SubResource("Resource_oi5s6")
+flags_3 = SubResource("Resource_0qync")
+has_flavour = true
+item_category = 55
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Slowness"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 1
+weight = 50
+filename = "Staff:Slowness"

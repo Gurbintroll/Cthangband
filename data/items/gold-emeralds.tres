@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://f3a3ueys5eir"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_hwvyh"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_ns2y3"]
+
+[sub_resource type="Resource" id="Resource_girya"]
+script = ExtResource("1_hwvyh")
+
+[sub_resource type="Resource" id="Resource_lywpa"]
+script = ExtResource("1_hwvyh")
+
+[sub_resource type="Resource" id="Resource_rgp5g"]
+script = ExtResource("1_hwvyh")
+
+[resource]
+script = ExtResource("2_ns2y3")
+chance = Array[int]([0, 0, 0, 0])
+character = "*"
+colour = 22
+cost = 32
+flags_1 = SubResource("Resource_girya")
+flags_2 = SubResource("Resource_lywpa")
+flags_3 = SubResource("Resource_rgp5g")
+flavour_aware = true
+item_category = 100
+level = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "emeralds"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 16

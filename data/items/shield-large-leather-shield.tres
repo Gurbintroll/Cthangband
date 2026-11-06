@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_gj7mp"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_u2fke"]
+
+[sub_resource type="Resource" id="Resource_isauc"]
+script = ExtResource("1_gj7mp")
+
+[sub_resource type="Resource" id="Resource_8mhhy"]
+script = ExtResource("1_gj7mp")
+
+[sub_resource type="Resource" id="Resource_4n3sk"]
+script = ExtResource("1_gj7mp")
+
+[resource]
+script = ExtResource("2_u2fke")
+ac = 4
+chance = Array[int]([1, 0, 0, 0])
+character = ")"
+colour = 6
+cost = 120
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_isauc")
+flags_2 = SubResource("Resource_8mhhy")
+flags_3 = SubResource("Resource_4n3sk")
+flavour_aware = true
+item_category = 34
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "& Large Leather Shield~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 4
+weight = 100
+filename = "Shield:Large Leather Shield"

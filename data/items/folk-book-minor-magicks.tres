@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_sdk28"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_y74sl"]
+
+[sub_resource type="Resource" id="Resource_7p6fx"]
+script = ExtResource("1_sdk28")
+
+[sub_resource type="Resource" id="Resource_f4rr8"]
+script = ExtResource("1_sdk28")
+
+[sub_resource type="Resource" id="Resource_2uabt"]
+script = ExtResource("1_sdk28")
+
+[resource]
+script = ExtResource("2_y74sl")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 12
+cost = 250
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_7p6fx")
+flags_2 = SubResource("Resource_f4rr8")
+flags_3 = SubResource("Resource_2uabt")
+flavour_aware = true
+item_category = 96
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "[Minor Magicks]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 1
+weight = 30
+filename = "FolkBook:[Minor Magicks]"

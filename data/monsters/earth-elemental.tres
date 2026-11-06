@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_y1mdu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dl75n"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1e46e"]
+
+[sub_resource type="Resource" id="Resource_e3btu"]
+script = ExtResource("1_y1mdu")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7bik2"]
+script = ExtResource("1_y1mdu")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_v5mxp"]
+script = ExtResource("1_y1mdu")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_fg6ns"]
+script = ExtResource("1_y1mdu")
+
+[sub_resource type="Resource" id="Resource_vwhb5"]
+script = ExtResource("2_dl75n")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_mlaa4"]
+script = ExtResource("2_dl75n")
+value = 10752096
+
+[sub_resource type="Resource" id="Resource_xsvyk"]
+script = ExtResource("2_dl75n")
+value = 3491635264
+
+[sub_resource type="Resource" id="Resource_cpgrh"]
+script = ExtResource("2_dl75n")
+
+[sub_resource type="Resource" id="Resource_avyi1"]
+script = ExtResource("2_dl75n")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_bcs6d"]
+script = ExtResource("2_dl75n")
+
+[resource]
+script = ExtResource("3_1e46e")
+ac = 60
+attack = Array[ExtResource("1_y1mdu")]([SubResource("Resource_e3btu"), SubResource("Resource_7bik2"), SubResource("Resource_v5mxp"), SubResource("Resource_fg6ns")])
+character = "E"
+colour = 17
+description = "It is a towering form composed of rock with fists of awesome power."
+flags_1 = SubResource("Resource_vwhb5")
+flags_2 = SubResource("Resource_mlaa4")
+flags_3 = SubResource("Resource_xsvyk")
+flags_4 = SubResource("Resource_cpgrh")
+flags_5 = SubResource("Resource_avyi1")
+flags_6 = SubResource("Resource_bcs6d")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 30
+hit_dice_sides = 10
+level = 34
+max_num = 100
+experience = 375
+name = "Earth elemental"
+notice_range = 10
+rarity = 2
+sleep = 90
+speed = 100
+split_name_1 = "            "
+split_name_2 = "   Earth    "
+split_name_3 = " elemental  "

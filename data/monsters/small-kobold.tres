@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_02t04"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_u25hw"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_v7j6g"]
+
+[sub_resource type="Resource" id="Resource_sse7w"]
+script = ExtResource("1_02t04")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tdmlj"]
+script = ExtResource("1_02t04")
+
+[sub_resource type="Resource" id="Resource_r5rfr"]
+script = ExtResource("1_02t04")
+
+[sub_resource type="Resource" id="Resource_f6u6c"]
+script = ExtResource("1_02t04")
+
+[sub_resource type="Resource" id="Resource_tc317"]
+script = ExtResource("2_u25hw")
+value = 4194304
+
+[sub_resource type="Resource" id="Resource_btu5q"]
+script = ExtResource("2_u25hw")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_csg2a"]
+script = ExtResource("2_u25hw")
+value = 1048640
+
+[sub_resource type="Resource" id="Resource_lw1ae"]
+script = ExtResource("2_u25hw")
+
+[sub_resource type="Resource" id="Resource_dyvou"]
+script = ExtResource("2_u25hw")
+
+[sub_resource type="Resource" id="Resource_uuop5"]
+script = ExtResource("2_u25hw")
+
+[resource]
+script = ExtResource("3_v7j6g")
+ac = 16
+attack = Array[ExtResource("1_02t04")]([SubResource("Resource_sse7w"), SubResource("Resource_tdmlj"), SubResource("Resource_r5rfr"), SubResource("Resource_f6u6c")])
+character = "k"
+colour = 8
+description = "It is a squat and ugly humanoid figure."
+flags_1 = SubResource("Resource_tc317")
+flags_2 = SubResource("Resource_btu5q")
+flags_3 = SubResource("Resource_csg2a")
+flags_4 = SubResource("Resource_lw1ae")
+flags_5 = SubResource("Resource_dyvou")
+flags_6 = SubResource("Resource_uuop5")
+hit_dice = 2
+hit_dice_sides = 7
+level = 1
+max_num = 100
+experience = 5
+name = "Small kobold"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Small    "
+split_name_3 = "   kobold   "

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6glxv"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_0rhhb"]
+
+[sub_resource type="Resource" id="Resource_rybo8"]
+script = ExtResource("1_6glxv")
+
+[sub_resource type="Resource" id="Resource_ikweq"]
+script = ExtResource("1_6glxv")
+
+[sub_resource type="Resource" id="Resource_mag2f"]
+script = ExtResource("1_6glxv")
+
+[resource]
+script = ExtResource("2_0rhhb")
+flags_1 = SubResource("Resource_rybo8")
+flags_2 = SubResource("Resource_ikweq")
+flags_3 = SubResource("Resource_mag2f")
+id = 3

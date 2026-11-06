@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://ghk36l4b8yej"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_th6xb"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_o76us"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_ou76i"]
+
+[sub_resource type="Resource" id="Resource_gqmxd"]
+script = ExtResource("1_th6xb")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_2hmsb"]
+script = ExtResource("1_th6xb")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_h0c72"]
+script = ExtResource("1_th6xb")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 4
+method = 1
+
+[sub_resource type="Resource" id="Resource_assg1"]
+script = ExtResource("1_th6xb")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_pn0jb"]
+script = ExtResource("2_o76us")
+value = 304088581
+
+[sub_resource type="Resource" id="Resource_qenj1"]
+script = ExtResource("2_o76us")
+value = 4390914
+
+[sub_resource type="Resource" id="Resource_7qjp7"]
+script = ExtResource("2_o76us")
+value = 2097216
+
+[sub_resource type="Resource" id="Resource_n31dg"]
+script = ExtResource("2_o76us")
+value = 1073741824
+
+[sub_resource type="Resource" id="Resource_1vgtc"]
+script = ExtResource("2_o76us")
+value = 2206990336
+
+[sub_resource type="Resource" id="Resource_qgcjn"]
+script = ExtResource("2_o76us")
+value = 270340
+
+[resource]
+script = ExtResource("3_ou76i")
+ac = 90
+attack = Array[ExtResource("1_th6xb")]([SubResource("Resource_gqmxd"), SubResource("Resource_2hmsb"), SubResource("Resource_h0c72"), SubResource("Resource_assg1")])
+character = "p"
+colour = 12
+description = "Mandor is one of the greatest chaos Masters, a formidable magician."
+flags_1 = SubResource("Resource_pn0jb")
+flags_2 = SubResource("Resource_qenj1")
+flags_3 = SubResource("Resource_7qjp7")
+flags_4 = SubResource("Resource_n31dg")
+flags_5 = SubResource("Resource_1vgtc")
+flags_6 = SubResource("Resource_qgcjn")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 88
+hit_dice_sides = 11
+level = 38
+max_num = 1
+experience = 1600
+name = "Mandor, Master of Chaos"
+notice_range = 20
+rarity = 5
+sleep = 40
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Mandor   "

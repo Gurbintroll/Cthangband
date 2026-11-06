@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_71h85"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_liyb0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_w83jl"]
+
+[sub_resource type="Resource" id="Resource_75drk"]
+script = ExtResource("1_71h85")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_qslex"]
+script = ExtResource("1_71h85")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_w2gd6"]
+script = ExtResource("1_71h85")
+effect = 25
+method = 15
+
+[sub_resource type="Resource" id="Resource_eclxt"]
+script = ExtResource("1_71h85")
+
+[sub_resource type="Resource" id="Resource_qvw0n"]
+script = ExtResource("2_liyb0")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_y28kw"]
+script = ExtResource("2_liyb0")
+value = 4407296
+
+[sub_resource type="Resource" id="Resource_2te36"]
+script = ExtResource("2_liyb0")
+value = 3222538320
+
+[sub_resource type="Resource" id="Resource_6b3p6"]
+script = ExtResource("2_liyb0")
+
+[sub_resource type="Resource" id="Resource_082ts"]
+script = ExtResource("2_liyb0")
+value = 262148
+
+[sub_resource type="Resource" id="Resource_bfii6"]
+script = ExtResource("2_liyb0")
+value = 33554432
+
+[resource]
+script = ExtResource("3_w83jl")
+ac = 68
+attack = Array[ExtResource("1_71h85")]([SubResource("Resource_75drk"), SubResource("Resource_qslex"), SubResource("Resource_w2gd6"), SubResource("Resource_eclxt")])
+character = "u"
+colour = 2
+description = "It is a humanoid form composed of flames and hatred."
+flags_1 = SubResource("Resource_qvw0n")
+flags_2 = SubResource("Resource_y28kw")
+flags_3 = SubResource("Resource_2te36")
+flags_4 = SubResource("Resource_6b3p6")
+flags_5 = SubResource("Resource_082ts")
+flags_6 = SubResource("Resource_bfii6")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 35
+hit_dice_sides = 10
+level = 36
+max_num = 100
+experience = 750
+name = "Bodak"
+notice_range = 10
+rarity = 2
+sleep = 90
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Bodak    "

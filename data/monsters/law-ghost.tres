@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_bycy4"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_cri85"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_h5kao"]
+
+[sub_resource type="Resource" id="Resource_8o81v"]
+script = ExtResource("1_bycy4")
+effect = 27
+method = 2
+
+[sub_resource type="Resource" id="Resource_j4673"]
+script = ExtResource("1_bycy4")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_bvx1o"]
+script = ExtResource("1_bycy4")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 18
+method = 5
+
+[sub_resource type="Resource" id="Resource_wqkjq"]
+script = ExtResource("1_bycy4")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 19
+method = 5
+
+[sub_resource type="Resource" id="Resource_tfcu1"]
+script = ExtResource("2_cri85")
+value = 18875392
+
+[sub_resource type="Resource" id="Resource_wdtqj"]
+script = ExtResource("2_cri85")
+value = 262192
+
+[sub_resource type="Resource" id="Resource_3maap"]
+script = ExtResource("2_cri85")
+value = 3222798432
+
+[sub_resource type="Resource" id="Resource_tv1ju"]
+script = ExtResource("2_cri85")
+
+[sub_resource type="Resource" id="Resource_fghf3"]
+script = ExtResource("2_cri85")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_oia8s"]
+script = ExtResource("2_cri85")
+value = 16384
+
+[resource]
+script = ExtResource("3_h5kao")
+ac = 30
+attack = Array[ExtResource("1_bycy4")]([SubResource("Resource_8o81v"), SubResource("Resource_j4673"), SubResource("Resource_bvx1o"), SubResource("Resource_wqkjq")])
+character = "G"
+colour = 28
+description = "An almost life-like creature which is nothing more than a phantom created by the law."
+flags_1 = SubResource("Resource_tfcu1")
+flags_2 = SubResource("Resource_wdtqj")
+flags_3 = SubResource("Resource_3maap")
+flags_4 = SubResource("Resource_tv1ju")
+flags_5 = SubResource("Resource_fghf3")
+flags_6 = SubResource("Resource_oia8s")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 20
+hit_dice_sides = 25
+level = 36
+max_num = 100
+experience = 400
+name = "Law ghost"
+notice_range = 30
+rarity = 3
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Law     "
+split_name_3 = "   ghost    "

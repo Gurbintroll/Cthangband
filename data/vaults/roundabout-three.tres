@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_oqa7o"]
+
+[resource]
+script = ExtResource("1_oqa7o")
+category = 8
+height = 20
+name = "Roundabout Three"
+rating = 30
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X,&,,,,,,,,,,,^^^^^^^^^^......XX.#X.XXX.......X.X.......XXX.X#.XX......^^^^^^^^^^,,,,,,,,,,,&,X%%X,&,,,,,,,,,,,^^^^^^^^^^.....XX.XX.XXX..XXXX..X.X..XXXX..XXX.XX.XX.....^^^^^^^^^^,,,,,,,,,,,&,X%%X,&,,,,,,,,,,,XXXXXXXXXX....XX.XX.XXX^^XX@@XX.X&X.XX@@XX^^XXX.XX.XX....XXXXXXXXXX,,,,,,,,,,,&,X%%X,&&&&&&&&&&XXX********XXX..XX.XX.XXX^^X****X.X&X.X****X^^XXX.XX.XX..XXX********XXX&&&&&&&&&&,X%%X,,,,,,,,,,XXX..XXXXXX...XX+XX.XX.XXX^^XX&&...X@X...&&XX^^XXX.XX.XX+XX...XXXXXX..XXX,,,,,,,,,,X%%X@@@@@@@@XXX..XXX****XXX.....XX.XX.XXX..XX...XX+XX...XX..XXX.XX.XX.....XXX****XXX..XXX@@@@@@@@X%%X9988899XXX..XXX.XXXX@@XXXXXX.XX.XX.XXX..XXXXX^^^XXXXX..XXX.XX.XX.XXXXXX@@XXXX.XXX..XXX9998999X%%X######XXX**X##&&@**XX&&&@98X^^^^^XX.##X^^^^^^^^^^^^^^^X##.XX^^^^^X89@&&&XX**@&&##X**XXX######X%%X######XXX**X##&&@**XX&&&@98X^^^^^XX.##X^^^^^^^^^^^^^^^X##.XX^^^^^X89@&&&XX**@&&##X**XXX######X%%X9988899XXX..XXX.XXXX@@XXXXXX.XX.XX.XXX..XXXXX^^^XXXXX..XXX.XX.XX.XXXXXX@@XXXX.XXX..XXX9998999X%%X@@@@@@@@XXX..XXX****XXX.....XX.XX.XXX..XX...XX+XX...XX..XXX.XX.XX.....XXX****XXX..XXX@@@@@@@@X%%X,,,,,,,,,,XXX..XXXXXX...XX+XX.XX.XXX^^XX&&...X@X...&&XX^^XXX.XX.XX+XX...XXXXXX..XXX,,,,,,,,,,X%%X,&&&&&&&&&&XXX********XXX..XX.XX.XXX^^X****X.X&X.X****X^^XXX.XX.XX..XXX********XXX&&&&&&&&&&,X%%X,&,,,,,,,,,,,XXXXXXXXXX....XX.XX.XXX^^XX@@XX.X&X.XX@@XX^^XXX.XX.XX....XXXXXXXXXX,,,,,,,,,,,&,X%%X,&,,,,,,,,,,,^^^^^^^^^^.....XX.XX.XXX..XXXX..X.X..XXXX..XXX.XX.XX.....^^^^^^^^^^,,,,,,,,,,,&,X%%X,&,,,,,,,,,,,^^^^^^^^^^......XX.#X.XXX.......X.X.......XXX.X#.XX......^^^^^^^^^^,,,,,,,,,,,&,X%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 97

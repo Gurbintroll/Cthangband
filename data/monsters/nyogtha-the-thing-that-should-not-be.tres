@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://b45h63n2cpees"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_5xd83"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_bdqfi"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_kn5jx"]
+
+[sub_resource type="Resource" id="Resource_a4ldj"]
+script = ExtResource("1_5xd83")
+damage_dice = 10
+damage_dice_sides = 6
+effect = 9
+method = 9
+
+[sub_resource type="Resource" id="Resource_0s1ei"]
+script = ExtResource("1_5xd83")
+damage_dice = 10
+damage_dice_sides = 6
+effect = 12
+method = 9
+
+[sub_resource type="Resource" id="Resource_3800s"]
+script = ExtResource("1_5xd83")
+damage_dice = 10
+damage_dice_sides = 6
+effect = 9
+method = 9
+
+[sub_resource type="Resource" id="Resource_ajeje"]
+script = ExtResource("1_5xd83")
+damage_dice = 16
+damage_dice_sides = 6
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_40dkd"]
+script = ExtResource("2_bdqfi")
+value = 467666433
+
+[sub_resource type="Resource" id="Resource_whwlk"]
+script = ExtResource("2_bdqfi")
+value = 10629634
+
+[sub_resource type="Resource" id="Resource_vo4l1"]
+script = ExtResource("2_bdqfi")
+value = 3246332224
+
+[sub_resource type="Resource" id="Resource_axckn"]
+script = ExtResource("2_bdqfi")
+value = 536908032
+
+[sub_resource type="Resource" id="Resource_cperd"]
+script = ExtResource("2_bdqfi")
+value = 3072
+
+[sub_resource type="Resource" id="Resource_3xjw7"]
+script = ExtResource("2_bdqfi")
+value = 352387105
+
+[resource]
+script = ExtResource("3_kn5jx")
+ac = 120
+attack = Array[ExtResource("1_5xd83")]([SubResource("Resource_a4ldj"), SubResource("Resource_0s1ei"), SubResource("Resource_3800s"), SubResource("Resource_ajeje")])
+character = "X"
+colour = 12
+description = "A nightmarish fetid, black irididescence oozing towards you."
+flags_1 = SubResource("Resource_40dkd")
+flags_2 = SubResource("Resource_whwlk")
+flags_3 = SubResource("Resource_vo4l1")
+flags_4 = SubResource("Resource_axckn")
+flags_5 = SubResource("Resource_cperd")
+flags_6 = SubResource("Resource_3xjw7")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 55
+hit_dice_sides = 99
+level = 56
+max_num = 1
+experience = 20000
+name = "Nyogtha, the Thing that Should not Be"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Nyogtha   "

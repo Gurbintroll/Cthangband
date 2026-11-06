@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_it37e"]
+
+[resource]
+script = ExtResource("1_it37e")
+alter_action = 1
+appear_as = "Bush"
+blocks_los = true
+category = 2
+character = "*"
+colour = 8
+description = "bush"
+dims_outside_los = true
+is_passable = true
+is_permanent = true
+name = "Bush"

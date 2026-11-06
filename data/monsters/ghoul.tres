@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kgtqu"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0feho"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_8fmh0"]
+
+[sub_resource type="Resource" id="Resource_x5c1w"]
+script = ExtResource("1_kgtqu")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_o63ad"]
+script = ExtResource("1_kgtqu")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_uey4w"]
+script = ExtResource("1_kgtqu")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 16
+method = 6
+
+[sub_resource type="Resource" id="Resource_4ttb1"]
+script = ExtResource("1_kgtqu")
+
+[sub_resource type="Resource" id="Resource_on02h"]
+script = ExtResource("2_0feho")
+value = 4202496
+
+[sub_resource type="Resource" id="Resource_5ii34"]
+script = ExtResource("2_0feho")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_q7dhd"]
+script = ExtResource("2_0feho")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_rwjud"]
+script = ExtResource("2_0feho")
+
+[sub_resource type="Resource" id="Resource_sgplv"]
+script = ExtResource("2_0feho")
+value = 2281701376
+
+[sub_resource type="Resource" id="Resource_pjxfb"]
+script = ExtResource("2_0feho")
+
+[resource]
+script = ExtResource("3_8fmh0")
+ac = 30
+attack = Array[ExtResource("1_kgtqu")]([SubResource("Resource_x5c1w"), SubResource("Resource_o63ad"), SubResource("Resource_uey4w"), SubResource("Resource_4ttb1")])
+character = "z"
+colour = 6
+description = "Flesh is falling off in chunks from this decaying abomination."
+flags_1 = SubResource("Resource_on02h")
+flags_2 = SubResource("Resource_5ii34")
+flags_3 = SubResource("Resource_q7dhd")
+flags_4 = SubResource("Resource_rwjud")
+flags_5 = SubResource("Resource_sgplv")
+flags_6 = SubResource("Resource_pjxfb")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 15
+hit_dice_sides = 9
+level = 26
+max_num = 100
+experience = 95
+name = "Ghoul"
+notice_range = 30
+rarity = 1
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Ghoul    "

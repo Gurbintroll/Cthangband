@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_47f13"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_j5qrr"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_wviot"]
+
+[sub_resource type="Resource" id="Resource_7d8sy"]
+script = ExtResource("1_47f13")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_suyno"]
+script = ExtResource("1_47f13")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_u8fx1"]
+script = ExtResource("1_47f13")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_50sav"]
+script = ExtResource("1_47f13")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 9
+
+[sub_resource type="Resource" id="Resource_6j1x3"]
+script = ExtResource("2_j5qrr")
+value = 287311360
+
+[sub_resource type="Resource" id="Resource_j3cqo"]
+script = ExtResource("2_j5qrr")
+value = 1249280
+
+[sub_resource type="Resource" id="Resource_hvx6p"]
+script = ExtResource("2_j5qrr")
+value = 3223322688
+
+[sub_resource type="Resource" id="Resource_5rnlu"]
+script = ExtResource("2_j5qrr")
+value = 512
+
+[sub_resource type="Resource" id="Resource_0c7lv"]
+script = ExtResource("2_j5qrr")
+
+[sub_resource type="Resource" id="Resource_jqitm"]
+script = ExtResource("2_j5qrr")
+
+[resource]
+script = ExtResource("3_wviot")
+ac = 150
+attack = Array[ExtResource("1_47f13")]([SubResource("Resource_7d8sy"), SubResource("Resource_suyno"), SubResource("Resource_u8fx1"), SubResource("Resource_50sav")])
+character = "E"
+colour = 15
+description = "This elemental creature is power incarnate; it looks like a huge polar bear with a huge gaping maw instead of a head."
+flags_1 = SubResource("Resource_6j1x3")
+flags_2 = SubResource("Resource_j3cqo")
+flags_3 = SubResource("Resource_hvx6p")
+flags_4 = SubResource("Resource_5rnlu")
+flags_5 = SubResource("Resource_0c7lv")
+flags_6 = SubResource("Resource_jqitm")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 50
+hit_dice_sides = 100
+level = 67
+max_num = 100
+experience = 22500
+name = "Shambler"
+notice_range = 40
+rarity = 4
+sleep = 50
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Shambler  "

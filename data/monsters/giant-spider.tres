@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_2u4gt"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_gq22d"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_h1ehn"]
+
+[sub_resource type="Resource" id="Resource_4n73a"]
+script = ExtResource("1_2u4gt")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_rlvmp"]
+script = ExtResource("1_2u4gt")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_blh41"]
+script = ExtResource("1_2u4gt")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_flgm0"]
+script = ExtResource("1_2u4gt")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_7j1m0"]
+script = ExtResource("2_gq22d")
+
+[sub_resource type="Resource" id="Resource_gau63"]
+script = ExtResource("2_gq22d")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_xyxg5"]
+script = ExtResource("2_gq22d")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_8su11"]
+script = ExtResource("2_gq22d")
+
+[sub_resource type="Resource" id="Resource_1xasm"]
+script = ExtResource("2_gq22d")
+
+[sub_resource type="Resource" id="Resource_8ahco"]
+script = ExtResource("2_gq22d")
+
+[resource]
+script = ExtResource("3_h1ehn")
+ac = 16
+attack = Array[ExtResource("1_2u4gt")]([SubResource("Resource_4n73a"), SubResource("Resource_rlvmp"), SubResource("Resource_blh41"), SubResource("Resource_flgm0")])
+character = "S"
+colour = 23
+description = "It is a vast black spider whose bulbous body is bloated with poison."
+flags_1 = SubResource("Resource_7j1m0")
+flags_2 = SubResource("Resource_gau63")
+flags_3 = SubResource("Resource_xyxg5")
+flags_4 = SubResource("Resource_8su11")
+flags_5 = SubResource("Resource_1xasm")
+flags_6 = SubResource("Resource_8ahco")
+hit_dice = 10
+hit_dice_sides = 10
+level = 10
+max_num = 100
+experience = 35
+name = "Giant spider"
+notice_range = 8
+rarity = 2
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Giant    "
+split_name_3 = "   spider   "

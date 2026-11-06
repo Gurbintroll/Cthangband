@@ -1,0 +1,71 @@
+[center][font_size=48][color="brown"][b]Pets[/b][/color][/font_size][/center]
+[hr color="brown"]
+Although most of the time you are on your own against the monsters, occasionally you will be able to get one or more creatures to help you. In game terms, these are referred to as "pets".
+
+The most common way to acquire pets is the use of a summoning spell, but you may also be gifted pets by a [color="blue"][url="Patrons"]patron[/url][/color] when you increase in level.
+
+Pets will follow you around and will attack hostile monsters, and hostile monsters will also target your pets. Your pets will never attack you, although you may get accidentally caught in the blast if they perform an area attack. Similarly, you cannot attack your pets (if you try to move into them you will just swap places with them) with melee attacks although you may (accidentally or deliberately) target them with spells and missile attacks. Attacking a pet will probably turn it hostile unless the attack is something that will not hurt it (a pet fire elemental, for example, won't care if you catch it in the radius of a fire ball spell).
+
+Pets that turn hostile because you have hurt them cease to be pets and are now counted as hostile monsters.
+
+Pets will usually follow you from level to level as you explore, but this is not guaranteed. There is a chance that one or more may get lost.
+
+[font_size=24][color="brown"][b]Maximum Pets[/b][/color][/font_size]
+The maximum number of pets that you can have is based on your profession and level, as shown in the table below. The character view shows you how many pets you have and how many you can have.
+
+The numbers shown are not a hard limit. It is possible to have more pets than indicated, but having more pets than your maximum will slow your power regeneration rate by a percentage equal to the sum of the levels of all the pets you have, with a minimum of a 10% reduction and a maximum of a 90% reduction.
+
+[center][table=6][cell][b]Level[/b][/cell][cell][b]Summoner[/b][/cell][cell][b]Mindcrafter[/b][/cell][cell][b]Druid[/b][/cell][cell][b]High-Mage[/b][/cell][cell][b]Other[/b][/cell]
+[cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]2[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]3[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]4[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]5[/cell][cell]2[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]6[/cell][cell]2[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]7[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]8[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]9[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell][cell]1[/cell][cell]1[/cell]
+[cell]10[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell][cell]1[/cell]
+[cell]11[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell][cell]1[/cell]
+[cell]12[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]13[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]14[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]15[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]16[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]17[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]18[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]19[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell][cell]1[/cell]
+[cell]20[/cell][cell]5[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell]
+[cell]21[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell]
+[cell]22[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell]
+[cell]23[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell][cell]2[/cell]
+[cell]24[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell]
+[cell]25[/cell][cell]6[/cell][cell]4[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell]
+[cell]26[/cell][cell]6[/cell][cell]4[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell]
+[cell]27[/cell][cell]6[/cell][cell]4[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell]
+[cell]28[/cell][cell]6[/cell][cell]5[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell]
+[cell]29[/cell][cell]6[/cell][cell]5[/cell][cell]3[/cell][cell]3[/cell][cell]2[/cell]
+[cell]30[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell]
+[cell]31[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell]
+[cell]32[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell]
+[cell]33[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell]
+[cell]34[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell]
+[cell]35[/cell][cell]8[/cell][cell]6[/cell][cell]4[/cell][cell]3[/cell][cell]2[/cell]
+[cell]36[/cell][cell]8[/cell][cell]6[/cell][cell]4[/cell][cell]4[/cell][cell]2[/cell]
+[cell]37[/cell][cell]8[/cell][cell]6[/cell][cell]4[/cell][cell]4[/cell][cell]2[/cell]
+[cell]38[/cell][cell]8[/cell][cell]6[/cell][cell]4[/cell][cell]4[/cell][cell]2[/cell]
+[cell]39[/cell][cell]8[/cell][cell]6[/cell][cell]4[/cell][cell]4[/cell][cell]2[/cell]
+[cell]40[/cell][cell]9[/cell][cell]6[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]41[/cell][cell]9[/cell][cell]6[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]42[/cell][cell]9[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]43[/cell][cell]9[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]44[/cell][cell]9[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]45[/cell][cell]10[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]46[/cell][cell]10[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]47[/cell][cell]10[/cell][cell]7[/cell][cell]5[/cell][cell]4[/cell][cell]3[/cell]
+[cell]48[/cell][cell]10[/cell][cell]7[/cell][cell]5[/cell][cell]5[/cell][cell]3[/cell]
+[cell]49[/cell][cell]10[/cell][cell]8[/cell][cell]5[/cell][cell]5[/cell][cell]3[/cell]
+[cell]50[/cell][cell]11[/cell][cell]8[/cell][cell]6[/cell][cell]5[/cell][cell]3[/cell][/table][/center]
+
+[font_size=24][color="brown"][b]Dismissing Pets[/b][/color][/font_size]
+You can use the [color="blue"][url="Commands"]Ancestral/Mutant Power command ('p')[/url][/color] to dismiss any or all of your pets at any time. This does not take an action, and does not make the pet angry. The dismissed pets will simply leave rather than attacking you.

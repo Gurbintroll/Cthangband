@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_by1c2"]
+
+[resource]
+script = ExtResource("1_by1c2")
+alter_action = 2
+appear_as = "BlindGas"
+character = "^"
+colour = 22
+description = "gas trap"
+is_interesting = true
+is_passable = true
+is_trap = true
+map_priority = 20
+name = "BlindGas"

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_pwsra"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_iidov"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_bgv56"]
+
+[sub_resource type="Resource" id="Resource_ry7kh"]
+script = ExtResource("1_pwsra")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_rntqc"]
+script = ExtResource("1_pwsra")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_gvfbe"]
+script = ExtResource("1_pwsra")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_4e1iw"]
+script = ExtResource("1_pwsra")
+
+[sub_resource type="Resource" id="Resource_716iu"]
+script = ExtResource("2_iidov")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_xrokv"]
+script = ExtResource("2_iidov")
+value = 10621024
+
+[sub_resource type="Resource" id="Resource_50oxm"]
+script = ExtResource("2_iidov")
+value = 3491692608
+
+[sub_resource type="Resource" id="Resource_1gjv2"]
+script = ExtResource("2_iidov")
+
+[sub_resource type="Resource" id="Resource_opruu"]
+script = ExtResource("2_iidov")
+value = 65537
+
+[sub_resource type="Resource" id="Resource_pf4rm"]
+script = ExtResource("2_iidov")
+
+[resource]
+script = ExtResource("3_bgv56")
+ac = 80
+attack = Array[ExtResource("1_pwsra")]([SubResource("Resource_ry7kh"), SubResource("Resource_rntqc"), SubResource("Resource_gvfbe"), SubResource("Resource_4e1iw")])
+character = "E"
+colour = 6
+description = "It is a towering mass of filth, an eyesore of ooze."
+flags_1 = SubResource("Resource_716iu")
+flags_2 = SubResource("Resource_xrokv")
+flags_3 = SubResource("Resource_50oxm")
+flags_4 = SubResource("Resource_1gjv2")
+flags_5 = SubResource("Resource_opruu")
+flags_6 = SubResource("Resource_pf4rm")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 13
+hit_dice_sides = 10
+level = 35
+max_num = 100
+experience = 300
+name = "Ooze elemental"
+notice_range = 10
+rarity = 3
+sleep = 90
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Ooze    "
+split_name_3 = " elemental  "

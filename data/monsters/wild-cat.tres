@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_6xx0m"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1hjt4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_xwwqp"]
+
+[sub_resource type="Resource" id="Resource_6gb46"]
+script = ExtResource("1_6xx0m")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_bp054"]
+script = ExtResource("1_6xx0m")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_1cilx"]
+script = ExtResource("1_6xx0m")
+
+[sub_resource type="Resource" id="Resource_m3pij"]
+script = ExtResource("1_6xx0m")
+
+[sub_resource type="Resource" id="Resource_1j4jx"]
+script = ExtResource("2_1hjt4")
+
+[sub_resource type="Resource" id="Resource_v0772"]
+script = ExtResource("2_1hjt4")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_6wd8r"]
+script = ExtResource("2_1hjt4")
+value = 128
+
+[sub_resource type="Resource" id="Resource_iwrvq"]
+script = ExtResource("2_1hjt4")
+
+[sub_resource type="Resource" id="Resource_uhmbc"]
+script = ExtResource("2_1hjt4")
+
+[sub_resource type="Resource" id="Resource_axmdu"]
+script = ExtResource("2_1hjt4")
+
+[resource]
+script = ExtResource("3_xwwqp")
+ac = 12
+attack = Array[ExtResource("1_6xx0m")]([SubResource("Resource_6gb46"), SubResource("Resource_bp054"), SubResource("Resource_1cilx"), SubResource("Resource_m3pij")])
+character = "f"
+colour = 6
+description = "A larger than normal feline, hissing loudly. Its velvet claws conceal a fistful of needles."
+flags_1 = SubResource("Resource_1j4jx")
+flags_2 = SubResource("Resource_v0772")
+flags_3 = SubResource("Resource_6wd8r")
+flags_4 = SubResource("Resource_iwrvq")
+flags_5 = SubResource("Resource_uhmbc")
+flags_6 = SubResource("Resource_axmdu")
+hit_dice = 3
+hit_dice_sides = 5
+level = 2
+max_num = 100
+experience = 8
+name = "Wild cat"
+notice_range = 40
+rarity = 2
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Wild    "
+split_name_3 = "    cat     "

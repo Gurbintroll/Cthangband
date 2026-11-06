@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_bvdlt"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ciblv"]
+
+[sub_resource type="Resource" id="Resource_qv34u"]
+script = ExtResource("1_bvdlt")
+
+[sub_resource type="Resource" id="Resource_pptmp"]
+script = ExtResource("1_bvdlt")
+
+[sub_resource type="Resource" id="Resource_2nuts"]
+script = ExtResource("1_bvdlt")
+
+[resource]
+script = ExtResource("2_ciblv")
+chance = Array[int]([16, 0, 0, 0])
+character = "!"
+colour = 15
+cost = 60000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_qv34u")
+flags_2 = SubResource("Resource_pptmp")
+flags_3 = SubResource("Resource_2nuts")
+has_flavour = true
+item_category = 75
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Augmentation"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 55
+weight = 4
+filename = "Potion:Augmentation"

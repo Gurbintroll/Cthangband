@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://l45a66j4p11u"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_i74nd"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_0adje"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_74jln"]
+
+[sub_resource type="Resource" id="Resource_hxdsa"]
+script = ExtResource("1_i74nd")
+effect = 27
+method = 2
+
+[sub_resource type="Resource" id="Resource_voous"]
+script = ExtResource("1_i74nd")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_8iw64"]
+script = ExtResource("1_i74nd")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_5t8ua"]
+script = ExtResource("1_i74nd")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_2ga0o"]
+script = ExtResource("2_0adje")
+value = 438322949
+
+[sub_resource type="Resource" id="Resource_bmgqi"]
+script = ExtResource("2_0adje")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_6je87"]
+script = ExtResource("2_0adje")
+value = 3224895584
+
+[sub_resource type="Resource" id="Resource_f6wv7"]
+script = ExtResource("2_0adje")
+
+[sub_resource type="Resource" id="Resource_gqb0f"]
+script = ExtResource("2_0adje")
+value = 3095447712
+
+[sub_resource type="Resource" id="Resource_an52t"]
+script = ExtResource("2_0adje")
+value = 67707152
+
+[resource]
+script = ExtResource("3_74jln")
+ac = 85
+attack = Array[ExtResource("1_i74nd")]([SubResource("Resource_hxdsa"), SubResource("Resource_voous"), SubResource("Resource_8iw64"), SubResource("Resource_5t8ua")])
+character = "L"
+colour = 12
+description = "He is a highly cunning, extremely magical being, spoken of in legends. This ancient shadow of death wilts any living thing it passes."
+flags_1 = SubResource("Resource_2ga0o")
+flags_2 = SubResource("Resource_bmgqi")
+flags_3 = SubResource("Resource_6je87")
+flags_4 = SubResource("Resource_f6wv7")
+flags_5 = SubResource("Resource_gqb0f")
+flags_6 = SubResource("Resource_an52t")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 50
+hit_dice_sides = 100
+level = 72
+max_num = 1
+experience = 30000
+name = "Vecna, the Emperor Lich"
+notice_range = 20
+rarity = 2
+sleep = 50
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Vecna    "

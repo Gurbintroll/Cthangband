@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://w24na3ja1u53"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_g3xw8"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_kfiwh"]
+
+[sub_resource type="Resource" id="Resource_gj2p1"]
+script = ExtResource("1_g3xw8")
+
+[sub_resource type="Resource" id="Resource_mynpd"]
+script = ExtResource("1_g3xw8")
+
+[sub_resource type="Resource" id="Resource_jofn2"]
+script = ExtResource("1_g3xw8")
+
+[resource]
+script = ExtResource("2_kfiwh")
+chance = Array[int]([0, 0, 0, 0])
+character = "*"
+colour = 20
+cost = 28
+flags_1 = SubResource("Resource_gj2p1")
+flags_2 = SubResource("Resource_mynpd")
+flags_3 = SubResource("Resource_jofn2")
+flavour_aware = true
+item_category = 100
+level = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "diamonds"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 15

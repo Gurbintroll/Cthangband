@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://ctkh50cspr23p"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_f4kgi"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_q51xk"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_76s13"]
+
+[sub_resource type="Resource" id="Resource_o3bbv"]
+script = ExtResource("1_f4kgi")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 9
+method = 9
+
+[sub_resource type="Resource" id="Resource_runlx"]
+script = ExtResource("1_f4kgi")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 11
+method = 9
+
+[sub_resource type="Resource" id="Resource_lllw6"]
+script = ExtResource("1_f4kgi")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 10
+method = 9
+
+[sub_resource type="Resource" id="Resource_i8xld"]
+script = ExtResource("1_f4kgi")
+damage_dice = 10
+damage_dice_sides = 14
+effect = 2
+method = 9
+
+[sub_resource type="Resource" id="Resource_2ub5h"]
+script = ExtResource("2_q51xk")
+value = 1042286209
+
+[sub_resource type="Resource" id="Resource_d450w"]
+script = ExtResource("2_q51xk")
+value = 1306624
+
+[sub_resource type="Resource" id="Resource_chobn"]
+script = ExtResource("2_q51xk")
+value = 3223257152
+
+[sub_resource type="Resource" id="Resource_4m8su"]
+script = ExtResource("2_q51xk")
+value = 7936
+
+[sub_resource type="Resource" id="Resource_wse74"]
+script = ExtResource("2_q51xk")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_y0ehc"]
+script = ExtResource("2_q51xk")
+value = 537395200
+
+[resource]
+script = ExtResource("3_76s13")
+ac = 125
+attack = Array[ExtResource("1_f4kgi")]([SubResource("Resource_o3bbv"), SubResource("Resource_runlx"), SubResource("Resource_lllw6"), SubResource("Resource_i8xld")])
+character = "H"
+colour = 12
+description = "An elephantine horror with five trunks, each capable of breathing destructive blasts of elements."
+flags_1 = SubResource("Resource_2ub5h")
+flags_2 = SubResource("Resource_d450w")
+flags_3 = SubResource("Resource_chobn")
+flags_4 = SubResource("Resource_4m8su")
+flags_5 = SubResource("Resource_wse74")
+flags_6 = SubResource("Resource_y0ehc")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 100
+hit_dice_sides = 100
+level = 70
+max_num = 1
+experience = 47500
+name = "The Norsa"
+notice_range = 20
+rarity = 4
+sleep = 70
+speed = 130
+split_name_1 = "            "
+split_name_2 = "    The     "
+split_name_3 = "   Norsa    "

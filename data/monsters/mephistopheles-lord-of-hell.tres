@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dtmuhyblol5bd"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_brph2"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_hfosw"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_bxxk5"]
+
+[sub_resource type="Resource" id="Resource_a5aa1"]
+script = ExtResource("1_brph2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 27
+method = 15
+
+[sub_resource type="Resource" id="Resource_vt1vs"]
+script = ExtResource("1_brph2")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_o32by"]
+script = ExtResource("1_brph2")
+damage_dice = 4
+damage_dice_sides = 5
+effect = 11
+method = 2
+
+[sub_resource type="Resource" id="Resource_ve1wa"]
+script = ExtResource("1_brph2")
+damage_dice = 4
+damage_dice_sides = 5
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_30boc"]
+script = ExtResource("2_hfosw")
+value = 1042318853
+
+[sub_resource type="Resource" id="Resource_xtl17"]
+script = ExtResource("2_hfosw")
+value = 1261568
+
+[sub_resource type="Resource" id="Resource_8ghbx"]
+script = ExtResource("2_hfosw")
+value = 3244034128
+
+[sub_resource type="Resource" id="Resource_8fd5g"]
+script = ExtResource("2_hfosw")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_66rui"]
+script = ExtResource("2_hfosw")
+value = 2281703424
+
+[sub_resource type="Resource" id="Resource_ym7bs"]
+script = ExtResource("2_hfosw")
+value = 369230082
+
+[resource]
+script = ExtResource("3_bxxk5")
+ac = 150
+attack = Array[ExtResource("1_brph2")]([SubResource("Resource_a5aa1"), SubResource("Resource_vt1vs"), SubResource("Resource_o32by"), SubResource("Resource_ve1wa")])
+character = "U"
+colour = 12
+description = "A duke of hell, in the flesh."
+flags_1 = SubResource("Resource_30boc")
+flags_2 = SubResource("Resource_xtl17")
+flags_3 = SubResource("Resource_8ghbx")
+flags_4 = SubResource("Resource_8fd5g")
+flags_5 = SubResource("Resource_66rui")
+flags_6 = SubResource("Resource_ym7bs")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 30
+hit_dice_sides = 222
+level = 84
+max_num = 1
+experience = 42500
+name = "Mephistopheles, Lord of Hell"
+notice_range = 20
+rarity = 2
+sleep = 50
+speed = 140
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Mephistophel"

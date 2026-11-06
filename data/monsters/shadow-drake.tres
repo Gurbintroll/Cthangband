@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_08twl"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_u7i5g"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_y5i47"]
+
+[sub_resource type="Resource" id="Resource_cqquo"]
+script = ExtResource("1_08twl")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_yonn0"]
+script = ExtResource("1_08twl")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_jj40p"]
+script = ExtResource("1_08twl")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_op2h7"]
+script = ExtResource("1_08twl")
+
+[sub_resource type="Resource" id="Resource_qiqlc"]
+script = ExtResource("2_u7i5g")
+value = 35914752
+
+[sub_resource type="Resource" id="Resource_usli2"]
+script = ExtResource("2_u7i5g")
+value = 4390928
+
+[sub_resource type="Resource" id="Resource_7g5ll"]
+script = ExtResource("2_u7i5g")
+value = 524488
+
+[sub_resource type="Resource" id="Resource_ie0p6"]
+script = ExtResource("2_u7i5g")
+
+[sub_resource type="Resource" id="Resource_vbu5i"]
+script = ExtResource("2_u7i5g")
+value = 1744830464
+
+[sub_resource type="Resource" id="Resource_sv5rh"]
+script = ExtResource("2_u7i5g")
+value = 4097
+
+[resource]
+script = ExtResource("3_y5i47")
+ac = 50
+attack = Array[ExtResource("1_08twl")]([SubResource("Resource_cqquo"), SubResource("Resource_yonn0"), SubResource("Resource_jj40p"), SubResource("Resource_op2h7")])
+character = "d"
+colour = 2
+description = "It is a dragon-like form wrapped in shadow. Glowing red eyes shine out in the dark."
+flags_1 = SubResource("Resource_qiqlc")
+flags_2 = SubResource("Resource_usli2")
+flags_3 = SubResource("Resource_7g5ll")
+flags_4 = SubResource("Resource_ie0p6")
+flags_5 = SubResource("Resource_vbu5i")
+flags_6 = SubResource("Resource_sv5rh")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 20
+hit_dice_sides = 10
+level = 30
+max_num = 100
+experience = 700
+name = "Shadow drake"
+notice_range = 25
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Shadow   "
+split_name_3 = "   drake    "

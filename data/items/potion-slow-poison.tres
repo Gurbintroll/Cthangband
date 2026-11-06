@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_7m6cg"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_mixsj"]
+
+[sub_resource type="Resource" id="Resource_j0aak"]
+script = ExtResource("1_7m6cg")
+
+[sub_resource type="Resource" id="Resource_vs4yr"]
+script = ExtResource("1_7m6cg")
+
+[sub_resource type="Resource" id="Resource_c6fcf"]
+script = ExtResource("1_7m6cg")
+
+[resource]
+script = ExtResource("2_mixsj")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 23
+cost = 25
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_j0aak")
+flags_2 = SubResource("Resource_vs4yr")
+flags_3 = SubResource("Resource_c6fcf")
+has_flavour = true
+item_category = 75
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "Slow Poison"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 26
+weight = 4
+filename = "Potion:Slow Poison"

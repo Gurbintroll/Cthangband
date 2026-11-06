@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://crjw78js2xfan"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_6kyjg"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_ucq3p"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_h7xyh"]
+
+[sub_resource type="Resource" id="Resource_v5noc"]
+script = ExtResource("1_6kyjg")
+damage_dice = 10
+damage_dice_sides = 15
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_meik3"]
+script = ExtResource("1_6kyjg")
+damage_dice = 10
+damage_dice_sides = 15
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_27xvy"]
+script = ExtResource("1_6kyjg")
+damage_dice = 10
+damage_dice_sides = 15
+effect = 21
+method = 1
+
+[sub_resource type="Resource" id="Resource_1fx82"]
+script = ExtResource("1_6kyjg")
+
+[sub_resource type="Resource" id="Resource_1eoji"]
+script = ExtResource("2_ucq3p")
+value = 434112005
+
+[sub_resource type="Resource" id="Resource_cyw28"]
+script = ExtResource("2_ucq3p")
+value = 205314
+
+[sub_resource type="Resource" id="Resource_joj0e"]
+script = ExtResource("2_ucq3p")
+value = 3225092416
+
+[sub_resource type="Resource" id="Resource_fhbvy"]
+script = ExtResource("2_ucq3p")
+
+[sub_resource type="Resource" id="Resource_v1tit"]
+script = ExtResource("2_ucq3p")
+value = 2850146924
+
+[sub_resource type="Resource" id="Resource_ulb77"]
+script = ExtResource("2_ucq3p")
+value = 67400484
+
+[resource]
+script = ExtResource("3_h7xyh")
+ac = 100
+attack = Array[ExtResource("1_6kyjg")]([SubResource("Resource_v5noc"), SubResource("Resource_meik3"), SubResource("Resource_27xvy"), SubResource("Resource_1fx82")])
+character = "X"
+colour = 12
+description = "Oval bodied with countless thin spines, and three baleful yellow eyes on thin stalks."
+flags_1 = SubResource("Resource_1eoji")
+flags_2 = SubResource("Resource_cyw28")
+flags_3 = SubResource("Resource_joj0e")
+flags_4 = SubResource("Resource_fhbvy")
+flags_5 = SubResource("Resource_v1tit")
+flags_6 = SubResource("Resource_ulb77")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 59
+hit_dice_sides = 100
+level = 78
+max_num = 1
+experience = 35500
+name = "Glaaki"
+notice_range = 100
+rarity = 1
+sleep = 15
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Glaaki   "

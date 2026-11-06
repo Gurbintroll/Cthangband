@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rw6ag"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rc3ov"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_ery4b"]
+
+[sub_resource type="Resource" id="Resource_a07it"]
+script = ExtResource("1_rw6ag")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 17
+method = 2
+
+[sub_resource type="Resource" id="Resource_snnf6"]
+script = ExtResource("1_rw6ag")
+
+[sub_resource type="Resource" id="Resource_e5si4"]
+script = ExtResource("1_rw6ag")
+
+[sub_resource type="Resource" id="Resource_a3avn"]
+script = ExtResource("1_rw6ag")
+
+[sub_resource type="Resource" id="Resource_jke7o"]
+script = ExtResource("2_rc3ov")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_b1uod"]
+script = ExtResource("2_rc3ov")
+value = 65
+
+[sub_resource type="Resource" id="Resource_wrely"]
+script = ExtResource("2_rc3ov")
+value = 3489665024
+
+[sub_resource type="Resource" id="Resource_fnbmn"]
+script = ExtResource("2_rc3ov")
+
+[sub_resource type="Resource" id="Resource_h7r67"]
+script = ExtResource("2_rc3ov")
+
+[sub_resource type="Resource" id="Resource_basec"]
+script = ExtResource("2_rc3ov")
+
+[resource]
+script = ExtResource("3_ery4b")
+ac = 1
+attack = Array[ExtResource("1_rw6ag")]([SubResource("Resource_a07it"), SubResource("Resource_snnf6"), SubResource("Resource_e5si4"), SubResource("Resource_a3avn")])
+character = "j"
+colour = 13
+description = "It is a large pulsating mound of red flesh."
+flags_1 = SubResource("Resource_jke7o")
+flags_2 = SubResource("Resource_b1uod")
+flags_3 = SubResource("Resource_wrely")
+flags_4 = SubResource("Resource_fnbmn")
+flags_5 = SubResource("Resource_h7r67")
+flags_6 = SubResource("Resource_basec")
+hit_dice = 26
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 26
+name = "Red jelly"
+notice_range = 2
+rarity = 1
+sleep = 99
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Red     "
+split_name_3 = "   jelly    "

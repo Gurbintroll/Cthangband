@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_hwaep"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2fodk"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_n28df"]
+
+[sub_resource type="Resource" id="Resource_e1h3s"]
+script = ExtResource("1_hwaep")
+damage_dice = 2
+damage_dice_sides = 34
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ua8v8"]
+script = ExtResource("1_hwaep")
+damage_dice = 2
+damage_dice_sides = 34
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_sp430"]
+script = ExtResource("1_hwaep")
+
+[sub_resource type="Resource" id="Resource_wyp33"]
+script = ExtResource("1_hwaep")
+
+[sub_resource type="Resource" id="Resource_80s7j"]
+script = ExtResource("2_2fodk")
+value = 512
+
+[sub_resource type="Resource" id="Resource_7j2xv"]
+script = ExtResource("2_2fodk")
+value = 262240
+
+[sub_resource type="Resource" id="Resource_3q3tt"]
+script = ExtResource("2_2fodk")
+value = 2418018304
+
+[sub_resource type="Resource" id="Resource_c4nhy"]
+script = ExtResource("2_2fodk")
+
+[sub_resource type="Resource" id="Resource_puioy"]
+script = ExtResource("2_2fodk")
+
+[sub_resource type="Resource" id="Resource_bjfaw"]
+script = ExtResource("2_2fodk")
+
+[resource]
+script = ExtResource("3_n28df")
+ac = 10
+attack = Array[ExtResource("1_hwaep")]([SubResource("Resource_e1h3s"), SubResource("Resource_ua8v8"), SubResource("Resource_sp430"), SubResource("Resource_wyp33")])
+character = "G"
+colour = 29
+description = "A creature that is half real, half illusion."
+flags_1 = SubResource("Resource_80s7j")
+flags_2 = SubResource("Resource_7j2xv")
+flags_3 = SubResource("Resource_3q3tt")
+flags_4 = SubResource("Resource_c4nhy")
+flags_5 = SubResource("Resource_puioy")
+flags_6 = SubResource("Resource_bjfaw")
+hit_dice = 9
+hit_dice_sides = 9
+level = 24
+max_num = 100
+experience = 100
+name = "Phantom beast"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Phantom   "
+split_name_3 = "   beast    "

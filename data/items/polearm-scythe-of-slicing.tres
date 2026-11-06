@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ff5qf"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_xt8e3"]
+
+[sub_resource type="Resource" id="Resource_rm6e5"]
+script = ExtResource("1_ff5qf")
+
+[sub_resource type="Resource" id="Resource_lb7to"]
+script = ExtResource("1_ff5qf")
+
+[sub_resource type="Resource" id="Resource_xfrip"]
+script = ExtResource("1_ff5qf")
+value = 1024
+
+[resource]
+script = ExtResource("2_xt8e3")
+chance = Array[int]([4, 0, 0, 0])
+character = "/"
+colour = 27
+cost = 3500
+damage_dice = 8
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_rm6e5")
+flags_2 = SubResource("Resource_lb7to")
+flags_3 = SubResource("Resource_xfrip")
+flavour_aware = true
+item_category = 22
+level = 60
+locale = Array[int]([60, 0, 0, 0])
+name = "& Scythe~ of Slicing"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 30
+weight = 250
+filename = "Polearm:Scythe of Slicing"

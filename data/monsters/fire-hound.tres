@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_t7ud5"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_dieoq"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qb7hx"]
+
+[sub_resource type="Resource" id="Resource_tujph"]
+script = ExtResource("1_t7ud5")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_rsj2c"]
+script = ExtResource("1_t7ud5")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_ndmgj"]
+script = ExtResource("1_t7ud5")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_mccpe"]
+script = ExtResource("1_t7ud5")
+
+[sub_resource type="Resource" id="Resource_3kk0h"]
+script = ExtResource("2_dieoq")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_xxuh0"]
+script = ExtResource("2_dieoq")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_7yxnt"]
+script = ExtResource("2_dieoq")
+value = 262272
+
+[sub_resource type="Resource" id="Resource_pv6eb"]
+script = ExtResource("2_dieoq")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_uohwl"]
+script = ExtResource("2_dieoq")
+
+[sub_resource type="Resource" id="Resource_3ypp5"]
+script = ExtResource("2_dieoq")
+
+[resource]
+script = ExtResource("3_qb7hx")
+ac = 30
+attack = Array[ExtResource("1_t7ud5")]([SubResource("Resource_tujph"), SubResource("Resource_rsj2c"), SubResource("Resource_ndmgj"), SubResource("Resource_mccpe")])
+character = "Z"
+colour = 27
+description = "Flames lick at its feet and its tongue is a blade of fire. You can feel a furnace heat radiating from the creature."
+flags_1 = SubResource("Resource_3kk0h")
+flags_2 = SubResource("Resource_xxuh0")
+flags_3 = SubResource("Resource_7yxnt")
+flags_4 = SubResource("Resource_pv6eb")
+flags_5 = SubResource("Resource_uohwl")
+flags_6 = SubResource("Resource_3ypp5")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 10
+hit_dice_sides = 6
+level = 18
+max_num = 100
+experience = 70
+name = "Fire hound"
+notice_range = 30
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Fire    "
+split_name_3 = "   hound    "

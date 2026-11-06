@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_gah5e"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_i7g72"]
+
+[sub_resource type="Resource" id="Resource_unkgu"]
+script = ExtResource("1_gah5e")
+value = 1024
+
+[sub_resource type="Resource" id="Resource_ma7kw"]
+script = ExtResource("1_gah5e")
+
+[sub_resource type="Resource" id="Resource_e2gmy"]
+script = ExtResource("1_gah5e")
+value = 512
+
+[resource]
+script = ExtResource("2_i7g72")
+cost = 500
+flags_1 = SubResource("Resource_unkgu")
+flags_2 = SubResource("Resource_ma7kw")
+flags_3 = SubResource("Resource_e2gmy")
+max_type_specifc_value = 5
+name = "of Infravision"
+rating = 11
+slot = 33
+id = 23

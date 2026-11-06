@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_kb7bs"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_j373u"]
+
+[sub_resource type="Resource" id="Resource_kbb2n"]
+script = ExtResource("1_kb7bs")
+
+[sub_resource type="Resource" id="Resource_ha64a"]
+script = ExtResource("1_kb7bs")
+value = 1048576
+
+[sub_resource type="Resource" id="Resource_xa782"]
+script = ExtResource("1_kb7bs")
+value = 256
+
+[resource]
+script = ExtResource("2_j373u")
+chance = Array[int]([2, 0, 0, 0])
+character = "="
+colour = 13
+cost = 16000
+easy_know = true
+flags_1 = SubResource("Resource_kbb2n")
+flags_2 = SubResource("Resource_ha64a")
+flags_3 = SubResource("Resource_xa782")
+has_flavour = true
+item_category = 45
+level = 60
+locale = Array[int]([60, 0, 0, 0])
+name = "Poison Resistance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 20
+weight = 2
+filename = "Ring:Poison Resistance"

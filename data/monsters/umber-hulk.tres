@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_df3vj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_biu5p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6r7md"]
+
+[sub_resource type="Resource" id="Resource_3anev"]
+script = ExtResource("1_df3vj")
+effect = 14
+method = 15
+
+[sub_resource type="Resource" id="Resource_cwgnw"]
+script = ExtResource("1_df3vj")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_mk8p6"]
+script = ExtResource("1_df3vj")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_pg36x"]
+script = ExtResource("1_df3vj")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_xhrot"]
+script = ExtResource("2_biu5p")
+
+[sub_resource type="Resource" id="Resource_ojdaw"]
+script = ExtResource("2_biu5p")
+value = 655456
+
+[sub_resource type="Resource" id="Resource_qdvtt"]
+script = ExtResource("2_biu5p")
+value = 3222282432
+
+[sub_resource type="Resource" id="Resource_e2k0o"]
+script = ExtResource("2_biu5p")
+
+[sub_resource type="Resource" id="Resource_hl76v"]
+script = ExtResource("2_biu5p")
+
+[sub_resource type="Resource" id="Resource_whsip"]
+script = ExtResource("2_biu5p")
+
+[resource]
+script = ExtResource("3_6r7md")
+ac = 50
+attack = Array[ExtResource("1_df3vj")]([SubResource("Resource_3anev"), SubResource("Resource_cwgnw"), SubResource("Resource_mk8p6"), SubResource("Resource_pg36x")])
+character = "x"
+colour = 17
+description = "This bizarre creature has glaring eyes and large mandibles capable of slicing through rock."
+flags_1 = SubResource("Resource_xhrot")
+flags_2 = SubResource("Resource_ojdaw")
+flags_3 = SubResource("Resource_qdvtt")
+flags_4 = SubResource("Resource_e2k0o")
+flags_5 = SubResource("Resource_hl76v")
+flags_6 = SubResource("Resource_whsip")
+hit_dice = 20
+hit_dice_sides = 10
+level = 16
+max_num = 100
+experience = 75
+name = "Umber hulk"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Umber    "
+split_name_3 = "    hulk    "

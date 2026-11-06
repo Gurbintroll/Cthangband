@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_jnl1d"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_dw1lr"]
+
+[sub_resource type="Resource" id="Resource_ewtmb"]
+script = ExtResource("1_jnl1d")
+
+[sub_resource type="Resource" id="Resource_pvl2r"]
+script = ExtResource("1_jnl1d")
+
+[sub_resource type="Resource" id="Resource_set30"]
+script = ExtResource("1_jnl1d")
+value = 1048576
+
+[resource]
+script = ExtResource("2_dw1lr")
+ac = 28
+chance = Array[int]([4, 0, 0, 0])
+character = "["
+colour = 5
+cost = 7000
+damage_dice = 1
+damage_dice_sides = 4
+flags_1 = SubResource("Resource_ewtmb")
+flags_2 = SubResource("Resource_pvl2r")
+flags_3 = SubResource("Resource_set30")
+flavour_aware = true
+item_category = 37
+level = 55
+locale = Array[int]([55, 0, 0, 0])
+name = "Mithril Chain Mail~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 20
+to_hit = -1
+weight = 150
+filename = "HardArmor:Mithril Chain Mail"

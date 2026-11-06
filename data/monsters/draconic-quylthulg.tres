@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_43c81"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_g5s6y"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_cciww"]
+
+[sub_resource type="Resource" id="Resource_vhuex"]
+script = ExtResource("1_43c81")
+
+[sub_resource type="Resource" id="Resource_x6g0n"]
+script = ExtResource("1_43c81")
+
+[sub_resource type="Resource" id="Resource_evp6a"]
+script = ExtResource("1_43c81")
+
+[sub_resource type="Resource" id="Resource_271xw"]
+script = ExtResource("1_43c81")
+
+[sub_resource type="Resource" id="Resource_vixob"]
+script = ExtResource("2_g5s6y")
+value = 198144
+
+[sub_resource type="Resource" id="Resource_bowkm"]
+script = ExtResource("2_g5s6y")
+value = 80
+
+[sub_resource type="Resource" id="Resource_x4yi6"]
+script = ExtResource("2_g5s6y")
+value = 3489661120
+
+[sub_resource type="Resource" id="Resource_q4kxa"]
+script = ExtResource("2_g5s6y")
+
+[sub_resource type="Resource" id="Resource_3sb0y"]
+script = ExtResource("2_g5s6y")
+
+[sub_resource type="Resource" id="Resource_0sa15"]
+script = ExtResource("2_g5s6y")
+value = 134217776
+
+[resource]
+script = ExtResource("3_cciww")
+ac = 1
+attack = Array[ExtResource("1_43c81")]([SubResource("Resource_vhuex"), SubResource("Resource_x6g0n"), SubResource("Resource_evp6a"), SubResource("Resource_271xw")])
+character = "Q"
+colour = 8
+description = "It looks like it was once a dragon corpse, now deeply infected with magical bacteria that make it pulse in a foul and degrading way."
+flags_1 = SubResource("Resource_vixob")
+flags_2 = SubResource("Resource_bowkm")
+flags_3 = SubResource("Resource_x4yi6")
+flags_4 = SubResource("Resource_q4kxa")
+flags_5 = SubResource("Resource_3sb0y")
+flags_6 = SubResource("Resource_0sa15")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 72
+hit_dice_sides = 10
+level = 55
+max_num = 100
+experience = 5500
+name = "Draconic quylthulg"
+notice_range = 20
+rarity = 3
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Draconic  "
+split_name_3 = " quylthulg  "

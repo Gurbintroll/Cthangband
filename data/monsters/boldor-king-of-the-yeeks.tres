@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://cbsxwjltrcuvs"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_1he7x"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_kawji"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_jbvfd"]
+
+[sub_resource type="Resource" id="Resource_w37uv"]
+script = ExtResource("1_1he7x")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_0gbpl"]
+script = ExtResource("1_1he7x")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_xp6tj"]
+script = ExtResource("1_1he7x")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_vdq5m"]
+script = ExtResource("1_1he7x")
+
+[sub_resource type="Resource" id="Resource_say4a"]
+script = ExtResource("2_kawji")
+value = 295749381
+
+[sub_resource type="Resource" id="Resource_vrjoh"]
+script = ExtResource("2_kawji")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_0228k"]
+script = ExtResource("2_kawji")
+value = 65728
+
+[sub_resource type="Resource" id="Resource_uyv56"]
+script = ExtResource("2_kawji")
+
+[sub_resource type="Resource" id="Resource_r10lc"]
+script = ExtResource("2_kawji")
+value = 1342177280
+
+[sub_resource type="Resource" id="Resource_wsls8"]
+script = ExtResource("2_kawji")
+value = 65588
+
+[resource]
+script = ExtResource("3_jbvfd")
+ac = 24
+attack = Array[ExtResource("1_1he7x")]([SubResource("Resource_w37uv"), SubResource("Resource_0gbpl"), SubResource("Resource_xp6tj"), SubResource("Resource_vdq5m")])
+character = "y"
+colour = 12
+description = "A great yeek, powerful in magic and sorcery, but a yeek all the same."
+flags_1 = SubResource("Resource_say4a")
+flags_2 = SubResource("Resource_vrjoh")
+flags_3 = SubResource("Resource_0228k")
+flags_4 = SubResource("Resource_uyv56")
+flags_5 = SubResource("Resource_r10lc")
+flags_6 = SubResource("Resource_wsls8")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 18
+hit_dice_sides = 10
+level = 13
+max_num = 1
+experience = 200
+name = "Boldor, King of the Yeeks"
+notice_range = 18
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Boldor   "

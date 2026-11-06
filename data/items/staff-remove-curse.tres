@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_rrgjo"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_vb1d6"]
+
+[sub_resource type="Resource" id="Resource_6i6xp"]
+script = ExtResource("1_rrgjo")
+
+[sub_resource type="Resource" id="Resource_0x0af"]
+script = ExtResource("1_rrgjo")
+
+[sub_resource type="Resource" id="Resource_sn0dx"]
+script = ExtResource("1_rrgjo")
+
+[resource]
+script = ExtResource("2_vb1d6")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 27
+cost = 500
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_6i6xp")
+flags_2 = SubResource("Resource_0x0af")
+flags_3 = SubResource("Resource_sn0dx")
+has_flavour = true
+item_category = 55
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "Remove Curse"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 6
+weight = 50
+filename = "Staff:Remove Curse"

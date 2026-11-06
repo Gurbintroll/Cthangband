@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wce3v"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_5s3fc"]
+
+[sub_resource type="Resource" id="Resource_3ye87"]
+script = ExtResource("1_wce3v")
+
+[sub_resource type="Resource" id="Resource_1w475"]
+script = ExtResource("1_wce3v")
+
+[sub_resource type="Resource" id="Resource_pqetj"]
+script = ExtResource("1_wce3v")
+value = 1024
+
+[resource]
+script = ExtResource("2_5s3fc")
+chance = Array[int]([1, 0, 0, 0])
+character = "}"
+colour = 23
+cost = 300
+flags_1 = SubResource("Resource_3ye87")
+flags_2 = SubResource("Resource_1w475")
+flags_3 = SubResource("Resource_pqetj")
+flavour_aware = true
+item_category = 19
+level = 30
+locale = Array[int]([30, 0, 0, 0])
+name = "& Heavy Crossbow~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 24
+weight = 200
+filename = "Bow:Heavy Crossbow"

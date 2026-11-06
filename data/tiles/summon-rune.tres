@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_bps6g"]
+
+[resource]
+script = ExtResource("1_bps6g")
+alter_action = 2
+appear_as = "SummonRune"
+character = "^"
+colour = 31
+description = "strange rune"
+is_interesting = true
+is_passable = true
+is_trap = true
+map_priority = 20
+name = "SummonRune"

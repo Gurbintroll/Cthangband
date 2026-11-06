@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wcymp"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_rm6u3"]
+
+[sub_resource type="Resource" id="Resource_qjdhj"]
+script = ExtResource("1_wcymp")
+
+[sub_resource type="Resource" id="Resource_dnb86"]
+script = ExtResource("1_wcymp")
+
+[sub_resource type="Resource" id="Resource_q11h4"]
+script = ExtResource("1_wcymp")
+
+[resource]
+script = ExtResource("2_rm6u3")
+chance = Array[int]([1, 0, 0, 0])
+character = "~"
+colour = 23
+cost = 60
+damage_dice = 2
+damage_dice_sides = 5
+flags_1 = SubResource("Resource_qjdhj")
+flags_2 = SubResource("Resource_dnb86")
+flags_3 = SubResource("Resource_q11h4")
+flavour_aware = true
+item_category = 7
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "& Large wooden chest~"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 5
+weight = 500
+filename = "Chest:Large wooden chest"

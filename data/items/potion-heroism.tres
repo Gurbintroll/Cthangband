@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2agee"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_2rjac"]
+
+[sub_resource type="Resource" id="Resource_humuk"]
+script = ExtResource("1_2agee")
+
+[sub_resource type="Resource" id="Resource_3cbb4"]
+script = ExtResource("1_2agee")
+
+[sub_resource type="Resource" id="Resource_bwy6s"]
+script = ExtResource("1_2agee")
+
+[resource]
+script = ExtResource("2_2rjac")
+chance = Array[int]([1, 0, 0, 0])
+character = "!"
+colour = 26
+cost = 35
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_humuk")
+flags_2 = SubResource("Resource_3cbb4")
+flags_3 = SubResource("Resource_bwy6s")
+has_flavour = true
+item_category = 75
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "Heroism"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 32
+weight = 4
+filename = "Potion:Heroism"

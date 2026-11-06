@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_efyku"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_xc3ny"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_f3v37"]
+
+[sub_resource type="Resource" id="Resource_g8bac"]
+script = ExtResource("1_efyku")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_te777"]
+script = ExtResource("1_efyku")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_q3k62"]
+script = ExtResource("1_efyku")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_lwwjj"]
+script = ExtResource("1_efyku")
+
+[sub_resource type="Resource" id="Resource_uktri"]
+script = ExtResource("2_xc3ny")
+value = 263168
+
+[sub_resource type="Resource" id="Resource_4kyh3"]
+script = ExtResource("2_xc3ny")
+value = 10621024
+
+[sub_resource type="Resource" id="Resource_k1tr7"]
+script = ExtResource("2_xc3ny")
+value = 3491692608
+
+[sub_resource type="Resource" id="Resource_brmpv"]
+script = ExtResource("2_xc3ny")
+
+[sub_resource type="Resource" id="Resource_3kfuj"]
+script = ExtResource("2_xc3ny")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_tjiho"]
+script = ExtResource("2_xc3ny")
+
+[resource]
+script = ExtResource("3_f3v37")
+ac = 50
+attack = Array[ExtResource("1_efyku")]([SubResource("Resource_g8bac"), SubResource("Resource_te777"), SubResource("Resource_q3k62"), SubResource("Resource_lwwjj")])
+character = "E"
+colour = 5
+description = "It is a towering tornado of winds."
+flags_1 = SubResource("Resource_uktri")
+flags_2 = SubResource("Resource_4kyh3")
+flags_3 = SubResource("Resource_k1tr7")
+flags_4 = SubResource("Resource_brmpv")
+flags_5 = SubResource("Resource_3kfuj")
+flags_6 = SubResource("Resource_tjiho")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 30
+hit_dice_sides = 5
+level = 34
+max_num = 100
+experience = 390
+name = "Air elemental"
+notice_range = 12
+rarity = 2
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Air     "
+split_name_3 = " elemental  "

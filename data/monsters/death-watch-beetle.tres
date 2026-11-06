@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_4aqx1"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vudgf"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6fays"]
+
+[sub_resource type="Resource" id="Resource_th2w5"]
+script = ExtResource("1_4aqx1")
+damage_dice = 5
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_naikm"]
+script = ExtResource("1_4aqx1")
+damage_dice = 5
+damage_dice_sides = 6
+effect = 15
+method = 16
+
+[sub_resource type="Resource" id="Resource_wajrp"]
+script = ExtResource("1_4aqx1")
+
+[sub_resource type="Resource" id="Resource_13gxq"]
+script = ExtResource("1_4aqx1")
+
+[sub_resource type="Resource" id="Resource_c1doj"]
+script = ExtResource("2_vudgf")
+
+[sub_resource type="Resource" id="Resource_sxpis"]
+script = ExtResource("2_vudgf")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_1s5r7"]
+script = ExtResource("2_vudgf")
+value = 128
+
+[sub_resource type="Resource" id="Resource_f2g7e"]
+script = ExtResource("2_vudgf")
+
+[sub_resource type="Resource" id="Resource_ttp8y"]
+script = ExtResource("2_vudgf")
+
+[sub_resource type="Resource" id="Resource_dn7lk"]
+script = ExtResource("2_vudgf")
+
+[resource]
+script = ExtResource("3_6fays")
+ac = 60
+attack = Array[ExtResource("1_4aqx1")]([SubResource("Resource_th2w5"), SubResource("Resource_naikm"), SubResource("Resource_wajrp"), SubResource("Resource_13gxq")])
+character = "K"
+colour = 6
+description = "It is a giant beetle that produces a chilling sound."
+flags_1 = SubResource("Resource_c1doj")
+flags_2 = SubResource("Resource_sxpis")
+flags_3 = SubResource("Resource_1s5r7")
+flags_4 = SubResource("Resource_f2g7e")
+flags_5 = SubResource("Resource_ttp8y")
+flags_6 = SubResource("Resource_dn7lk")
+hit_dice = 25
+hit_dice_sides = 12
+level = 31
+max_num = 100
+experience = 190
+name = "Death watch beetle"
+notice_range = 16
+rarity = 3
+sleep = 30
+speed = 110
+split_name_1 = "   Death    "
+split_name_2 = "   watch    "
+split_name_3 = "   beetle   "

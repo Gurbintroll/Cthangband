@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0e5bk"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_vam0k"]
+
+[sub_resource type="Resource" id="Resource_gwrkn"]
+script = ExtResource("1_0e5bk")
+
+[sub_resource type="Resource" id="Resource_80d8o"]
+script = ExtResource("1_0e5bk")
+value = 268435456
+
+[sub_resource type="Resource" id="Resource_2wdok"]
+script = ExtResource("1_0e5bk")
+value = 15728640
+
+[resource]
+script = ExtResource("2_vam0k")
+cost = 1000
+flags_1 = SubResource("Resource_gwrkn")
+flags_2 = SubResource("Resource_80d8o")
+flags_3 = SubResource("Resource_2wdok")
+name = "of Unlife"
+id = 113

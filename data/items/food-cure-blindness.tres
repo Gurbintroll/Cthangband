@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_4glmv"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_8fl5u"]
+
+[sub_resource type="Resource" id="Resource_1lsuq"]
+script = ExtResource("1_4glmv")
+
+[sub_resource type="Resource" id="Resource_2uv4r"]
+script = ExtResource("1_4glmv")
+
+[sub_resource type="Resource" id="Resource_14nn0"]
+script = ExtResource("1_4glmv")
+
+[resource]
+script = ExtResource("2_8fl5u")
+chance = Array[int]([1, 0, 0, 0])
+character = ","
+colour = 6
+cost = 50
+easy_know = true
+flags_1 = SubResource("Resource_1lsuq")
+flags_2 = SubResource("Resource_2uv4r")
+flags_3 = SubResource("Resource_14nn0")
+has_flavour = true
+item_category = 80
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Cure Blindness"
+type_specific_value = 500
+stompable = Array[bool]([false, false, false, false])
+sub_category = 13
+weight = 1
+filename = "Food:Cure Blindness"

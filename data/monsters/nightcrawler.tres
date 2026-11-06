@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_b0cck"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2u5hp"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_q0qnd"]
+
+[sub_resource type="Resource" id="Resource_oy7eo"]
+script = ExtResource("1_b0cck")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 21
+method = 7
+
+[sub_resource type="Resource" id="Resource_cdn0i"]
+script = ExtResource("1_b0cck")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 21
+method = 7
+
+[sub_resource type="Resource" id="Resource_ey7kc"]
+script = ExtResource("1_b0cck")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 9
+method = 6
+
+[sub_resource type="Resource" id="Resource_3eg12"]
+script = ExtResource("1_b0cck")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 9
+method = 6
+
+[sub_resource type="Resource" id="Resource_2kkh1"]
+script = ExtResource("2_2u5hp")
+value = 320865280
+
+[sub_resource type="Resource" id="Resource_d4odj"]
+script = ExtResource("2_2u5hp")
+value = 720930
+
+[sub_resource type="Resource" id="Resource_5yetx"]
+script = ExtResource("2_2u5hp")
+value = 3225161824
+
+[sub_resource type="Resource" id="Resource_i3hrq"]
+script = ExtResource("2_2u5hp")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_vvtlm"]
+script = ExtResource("2_2u5hp")
+value = 413141024
+
+[sub_resource type="Resource" id="Resource_nj5r5"]
+script = ExtResource("2_2u5hp")
+value = 67108864
+
+[resource]
+script = ExtResource("3_q0qnd")
+ac = 160
+attack = Array[ExtResource("1_b0cck")]([SubResource("Resource_oy7eo"), SubResource("Resource_cdn0i"), SubResource("Resource_ey7kc"), SubResource("Resource_3eg12")])
+character = "z"
+colour = 2
+description = "This intensely evil creature bears the form of a gargantuan black worm. Its gaping maw is a void of blackness, acid drips from its steely hide. It is like nothing you have ever seen before, and a terrible chill runs down your spine as you face it."
+flags_1 = SubResource("Resource_2kkh1")
+flags_2 = SubResource("Resource_d4odj")
+flags_3 = SubResource("Resource_5yetx")
+flags_4 = SubResource("Resource_i3hrq")
+flags_5 = SubResource("Resource_vvtlm")
+flags_6 = SubResource("Resource_nj5r5")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 80
+hit_dice_sides = 60
+level = 54
+max_num = 100
+experience = 8100
+name = "Nightcrawler"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Nightcrawler"

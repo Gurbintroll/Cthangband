@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_acvnw"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_s4g2a"]
+
+[sub_resource type="Resource" id="Resource_yyy44"]
+script = ExtResource("1_acvnw")
+
+[sub_resource type="Resource" id="Resource_y4f78"]
+script = ExtResource("1_acvnw")
+
+[sub_resource type="Resource" id="Resource_lnmix"]
+script = ExtResource("1_acvnw")
+value = 4194304
+
+[resource]
+script = ExtResource("2_s4g2a")
+chance = Array[int]([4, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 1000
+easy_know = true
+flags_1 = SubResource("Resource_yyy44")
+flags_2 = SubResource("Resource_y4f78")
+flags_3 = SubResource("Resource_lnmix")
+has_flavour = true
+item_category = 70
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "Fire"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 48
+weight = 5
+filename = "Scroll:Fire"

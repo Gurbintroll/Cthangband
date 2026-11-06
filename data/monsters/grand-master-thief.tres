@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_olpry"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_yw0vh"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1gxa8"]
+
+[sub_resource type="Resource" id="Resource_in6g8"]
+script = ExtResource("1_olpry")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_f4ues"]
+script = ExtResource("1_olpry")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_eigyy"]
+script = ExtResource("1_olpry")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 6
+method = 2
+
+[sub_resource type="Resource" id="Resource_objwm"]
+script = ExtResource("1_olpry")
+
+[sub_resource type="Resource" id="Resource_gh3r3"]
+script = ExtResource("2_yw0vh")
+value = 421528580
+
+[sub_resource type="Resource" id="Resource_4mv1c"]
+script = ExtResource("2_yw0vh")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_eupks"]
+script = ExtResource("2_yw0vh")
+value = 3224371264
+
+[sub_resource type="Resource" id="Resource_ucowq"]
+script = ExtResource("2_yw0vh")
+
+[sub_resource type="Resource" id="Resource_m7ddy"]
+script = ExtResource("2_yw0vh")
+
+[sub_resource type="Resource" id="Resource_7ciqy"]
+script = ExtResource("2_yw0vh")
+value = 8192
+
+[resource]
+script = ExtResource("3_1gxa8")
+ac = 90
+attack = Array[ExtResource("1_olpry")]([SubResource("Resource_in6g8"), SubResource("Resource_f4ues"), SubResource("Resource_eigyy"), SubResource("Resource_objwm")])
+character = "p"
+colour = 2
+description = "A furtive figure who makes you want to hide all your valuables."
+flags_1 = SubResource("Resource_gh3r3")
+flags_2 = SubResource("Resource_4mv1c")
+flags_3 = SubResource("Resource_eupks")
+flags_4 = SubResource("Resource_ucowq")
+flags_5 = SubResource("Resource_m7ddy")
+flags_6 = SubResource("Resource_7ciqy")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 25
+hit_dice_sides = 100
+level = 52
+max_num = 100
+experience = 20000
+name = "Grand master thief"
+notice_range = 40
+rarity = 3
+speed = 140
+split_name_1 = "   Grand    "
+split_name_2 = "   master   "
+split_name_3 = "   thief    "

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_pw7is"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_swxh2"]
+
+[sub_resource type="Resource" id="Resource_vt6qb"]
+script = ExtResource("1_pw7is")
+
+[sub_resource type="Resource" id="Resource_yh2ls"]
+script = ExtResource("1_pw7is")
+value = 2097152
+
+[sub_resource type="Resource" id="Resource_4rx1s"]
+script = ExtResource("1_pw7is")
+value = 15728640
+
+[resource]
+script = ExtResource("2_swxh2")
+cost = 1000
+flags_1 = SubResource("Resource_vt6qb")
+flags_2 = SubResource("Resource_yh2ls")
+flags_3 = SubResource("Resource_4rx1s")
+name = "of Courage"
+id = 107

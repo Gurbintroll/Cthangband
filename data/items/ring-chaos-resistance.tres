@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_fi8qm"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_u6w2d"]
+
+[sub_resource type="Resource" id="Resource_yvhx8"]
+script = ExtResource("1_fi8qm")
+
+[sub_resource type="Resource" id="Resource_kcj4s"]
+script = ExtResource("1_fi8qm")
+value = 1107296256
+
+[sub_resource type="Resource" id="Resource_6eiji"]
+script = ExtResource("1_fi8qm")
+value = 256
+
+[resource]
+script = ExtResource("2_u6w2d")
+chance = Array[int]([2, 0, 0, 0])
+character = "="
+colour = 26
+cost = 13000
+easy_know = true
+flags_1 = SubResource("Resource_yvhx8")
+flags_2 = SubResource("Resource_kcj4s")
+flags_3 = SubResource("Resource_6eiji")
+has_flavour = true
+item_category = 45
+level = 50
+locale = Array[int]([50, 0, 0, 0])
+name = "Chaos Resistance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 46
+weight = 2
+filename = "Ring:Chaos Resistance"

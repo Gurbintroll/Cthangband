@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_gybwb"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_7lxae"]
+
+[sub_resource type="Resource" id="Resource_v6k83"]
+script = ExtResource("1_gybwb")
+
+[sub_resource type="Resource" id="Resource_7ce35"]
+script = ExtResource("1_gybwb")
+
+[sub_resource type="Resource" id="Resource_34sax"]
+script = ExtResource("1_gybwb")
+
+[resource]
+script = ExtResource("2_7lxae")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 30
+cost = 500
+flags_1 = SubResource("Resource_v6k83")
+flags_2 = SubResource("Resource_7ce35")
+flags_3 = SubResource("Resource_34sax")
+has_flavour = true
+item_category = 45
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "Protection"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 16
+weight = 2
+filename = "Ring:Protection"

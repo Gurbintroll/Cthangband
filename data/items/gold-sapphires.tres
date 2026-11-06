@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://opfixesqqq5e"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_im27j"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_mc3sh"]
+
+[sub_resource type="Resource" id="Resource_o7fgi"]
+script = ExtResource("1_im27j")
+
+[sub_resource type="Resource" id="Resource_0axkq"]
+script = ExtResource("1_im27j")
+
+[sub_resource type="Resource" id="Resource_u2txq"]
+script = ExtResource("1_im27j")
+
+[resource]
+script = ExtResource("2_mc3sh")
+chance = Array[int]([0, 0, 0, 0])
+character = "*"
+colour = 3
+cost = 20
+flags_1 = SubResource("Resource_o7fgi")
+flags_2 = SubResource("Resource_0axkq")
+flags_3 = SubResource("Resource_u2txq")
+flavour_aware = true
+item_category = 100
+level = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "sapphires"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 13

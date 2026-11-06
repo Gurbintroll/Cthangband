@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bxip7mtdpmipv"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_xvybd"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_esdee"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_u6s04"]
+
+[sub_resource type="Resource" id="Resource_amum5"]
+script = ExtResource("1_xvybd")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6r84g"]
+script = ExtResource("1_xvybd")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tov2g"]
+script = ExtResource("1_xvybd")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8su0y"]
+script = ExtResource("1_xvybd")
+damage_dice = 1
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_n723h"]
+script = ExtResource("2_esdee")
+value = 287310341
+
+[sub_resource type="Resource" id="Resource_i5wc0"]
+script = ExtResource("2_esdee")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_386w0"]
+script = ExtResource("2_esdee")
+value = 64
+
+[sub_resource type="Resource" id="Resource_ust4m"]
+script = ExtResource("2_esdee")
+
+[sub_resource type="Resource" id="Resource_xgbbc"]
+script = ExtResource("2_esdee")
+
+[sub_resource type="Resource" id="Resource_el0r0"]
+script = ExtResource("2_esdee")
+
+[resource]
+script = ExtResource("3_u6s04")
+ac = 25
+attack = Array[ExtResource("1_xvybd")]([SubResource("Resource_amum5"), SubResource("Resource_6r84g"), SubResource("Resource_tov2g"), SubResource("Resource_8su0y")])
+character = "p"
+colour = 12
+description = "A nasty piece of work, Brodda picks on defenseless women and children."
+flags_1 = SubResource("Resource_n723h")
+flags_2 = SubResource("Resource_i5wc0")
+flags_3 = SubResource("Resource_386w0")
+flags_4 = SubResource("Resource_ust4m")
+flags_5 = SubResource("Resource_xgbbc")
+flags_6 = SubResource("Resource_el0r0")
+hit_dice = 21
+hit_dice_sides = 10
+level = 9
+max_num = 1
+experience = 100
+name = "Brodda, the Easterling"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Brodda   "

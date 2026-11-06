@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wp0u3"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_gp2sq"]
+
+[sub_resource type="Resource" id="Resource_27c5b"]
+script = ExtResource("1_wp0u3")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_3bvcn"]
+script = ExtResource("1_wp0u3")
+
+[sub_resource type="Resource" id="Resource_71q01"]
+script = ExtResource("1_wp0u3")
+
+[resource]
+script = ExtResource("2_gp2sq")
+cost = 10000
+flags_1 = SubResource("Resource_27c5b")
+flags_2 = SubResource("Resource_3bvcn")
+flags_3 = SubResource("Resource_71q01")
+max_type_specifc_value = 3
+name = "of Extra Attacks"
+rating = 20
+slot = 24
+id = 57

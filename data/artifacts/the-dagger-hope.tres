@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_by3nt"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_h6x50"]
+
+[sub_resource type="Resource" id="Resource_xkqs6"]
+script = ExtResource("1_by3nt")
+value = 2147483648
+
+[sub_resource type="Resource" id="Resource_xv6uy"]
+script = ExtResource("1_by3nt")
+
+[sub_resource type="Resource" id="Resource_qayul"]
+script = ExtResource("1_by3nt")
+value = 32506880
+
+[resource]
+script = ExtResource("2_h6x50")
+flags_1 = SubResource("Resource_xkqs6")
+flags_2 = SubResource("Resource_xv6uy")
+flags_3 = SubResource("Resource_qayul")
+cost = 11000
+damage_dice = 1
+damage_dice_sides = 4
+item_category = 23
+item_sub_category = 4
+level = 3
+name = "*Hope*"
+rarity = 10
+to_hit = 4
+to_damage = 6
+weight = 12
+id = 67

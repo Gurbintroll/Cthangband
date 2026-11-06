@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_qr84u"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_m8bpi"]
+
+[sub_resource type="Resource" id="Resource_xtxb3"]
+script = ExtResource("1_qr84u")
+
+[sub_resource type="Resource" id="Resource_0yto0"]
+script = ExtResource("1_qr84u")
+
+[sub_resource type="Resource" id="Resource_w6vvq"]
+script = ExtResource("1_qr84u")
+value = 15728640
+
+[resource]
+script = ExtResource("2_m8bpi")
+ac = 8
+chance = Array[int]([4, 0, 0, 0])
+character = "]"
+colour = 8
+cost = 10000
+damage_dice = 1
+damage_dice_sides = 3
+flags_1 = SubResource("Resource_xtxb3")
+flags_2 = SubResource("Resource_0yto0")
+flags_3 = SubResource("Resource_w6vvq")
+flavour_aware = true
+item_category = 32
+level = 45
+locale = Array[int]([80, 0, 0, 0])
+name = "& Dragon Helm~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 7
+to_ac = 10
+weight = 50
+filename = "Helm:Dragon Helm"

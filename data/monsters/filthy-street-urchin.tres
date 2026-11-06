@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0p308"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vmdk6"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_fibw5"]
+
+[sub_resource type="Resource" id="Resource_h44cg"]
+script = ExtResource("1_0p308")
+method = 19
+
+[sub_resource type="Resource" id="Resource_mgeo3"]
+script = ExtResource("1_0p308")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_pp2ot"]
+script = ExtResource("1_0p308")
+
+[sub_resource type="Resource" id="Resource_ovrye"]
+script = ExtResource("1_0p308")
+
+[sub_resource type="Resource" id="Resource_h5wws"]
+script = ExtResource("2_vmdk6")
+value = 270340
+
+[sub_resource type="Resource" id="Resource_06g56"]
+script = ExtResource("2_vmdk6")
+value = 4259840
+
+[sub_resource type="Resource" id="Resource_l2e6m"]
+script = ExtResource("2_vmdk6")
+value = 64
+
+[sub_resource type="Resource" id="Resource_i7whh"]
+script = ExtResource("2_vmdk6")
+
+[sub_resource type="Resource" id="Resource_w8pmq"]
+script = ExtResource("2_vmdk6")
+
+[sub_resource type="Resource" id="Resource_7i4ac"]
+script = ExtResource("2_vmdk6")
+
+[resource]
+script = ExtResource("3_fibw5")
+ac = 1
+attack = Array[ExtResource("1_0p308")]([SubResource("Resource_h44cg"), SubResource("Resource_mgeo3"), SubResource("Resource_pp2ot"), SubResource("Resource_ovrye")])
+character = "t"
+colour = 9
+description = "He looks squalid and thoroughly revolting."
+flags_1 = SubResource("Resource_h5wws")
+flags_2 = SubResource("Resource_06g56")
+flags_3 = SubResource("Resource_l2e6m")
+flags_4 = SubResource("Resource_i7whh")
+flags_5 = SubResource("Resource_w8pmq")
+flags_6 = SubResource("Resource_7i4ac")
+hit_dice = 1
+hit_dice_sides = 4
+max_num = 100
+name = "Filthy street urchin"
+notice_range = 4
+rarity = 2
+sleep = 40
+speed = 110
+split_name_1 = "   Filthy   "
+split_name_2 = "   street   "
+split_name_3 = "   urchin   "

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6y4by"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_qt05e"]
+
+[sub_resource type="Resource" id="Resource_60y1n"]
+script = ExtResource("1_6y4by")
+
+[sub_resource type="Resource" id="Resource_52ttl"]
+script = ExtResource("1_6y4by")
+
+[sub_resource type="Resource" id="Resource_xymq8"]
+script = ExtResource("1_6y4by")
+value = 1024
+
+[resource]
+script = ExtResource("2_qt05e")
+chance = Array[int]([1, 0, 0, 0])
+character = "/"
+colour = 23
+cost = 304
+damage_dice = 2
+damage_dice_sides = 6
+flags_1 = SubResource("Resource_60y1n")
+flags_2 = SubResource("Resource_52ttl")
+flags_3 = SubResource("Resource_xymq8")
+flavour_aware = true
+item_category = 22
+level = 15
+locale = Array[int]([15, 0, 0, 0])
+name = "& Broad Axe~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 11
+weight = 160
+filename = "Polearm:Broad Axe"

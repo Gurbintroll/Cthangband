@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://doubfjqtmc76m"]
+
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="1_00ooj"]
+[ext_resource type="Script" uid="uid://dnrto1s0kdshf" path="res://scripts/data/item_type.gd" id="2_u62lp"]
+
+[sub_resource type="Resource" id="Resource_0kfyt"]
+script = ExtResource("1_00ooj")
+
+[sub_resource type="Resource" id="Resource_3ds6i"]
+script = ExtResource("1_00ooj")
+
+[sub_resource type="Resource" id="Resource_db6m5"]
+script = ExtResource("1_00ooj")
+
+[resource]
+script = ExtResource("2_u62lp")
+chance = Array[int]([1, 0, 0, 0])
+character = "s"
+colour = 1
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_0kfyt")
+flags_2 = SubResource("Resource_3ds6i")
+flags_3 = SubResource("Resource_db6m5")
+flavour_aware = true
+item_category = 1
+level = 1
+locale = Array[int]([1, 0, 0, 0])
+name = "& Canine Skeleton~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 4
+weight = 10

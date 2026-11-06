@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_wucvm"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_sqq71"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qu6td"]
+
+[sub_resource type="Resource" id="Resource_l6gg7"]
+script = ExtResource("1_wucvm")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_em1ra"]
+script = ExtResource("1_wucvm")
+
+[sub_resource type="Resource" id="Resource_i57mg"]
+script = ExtResource("1_wucvm")
+
+[sub_resource type="Resource" id="Resource_xoc4o"]
+script = ExtResource("1_wucvm")
+
+[sub_resource type="Resource" id="Resource_1ee0o"]
+script = ExtResource("2_sqq71")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_ow3nc"]
+script = ExtResource("2_sqq71")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_e7qu8"]
+script = ExtResource("2_sqq71")
+value = 268697680
+
+[sub_resource type="Resource" id="Resource_gtg66"]
+script = ExtResource("2_sqq71")
+
+[sub_resource type="Resource" id="Resource_ck36a"]
+script = ExtResource("2_sqq71")
+
+[sub_resource type="Resource" id="Resource_42143"]
+script = ExtResource("2_sqq71")
+
+[resource]
+script = ExtResource("3_qu6td")
+ac = 32
+attack = Array[ExtResource("1_wucvm")]([SubResource("Resource_l6gg7"), SubResource("Resource_em1ra"), SubResource("Resource_i57mg"), SubResource("Resource_xoc4o")])
+character = "u"
+colour = 13
+description = "It is a minor but aggressive demon."
+flags_1 = SubResource("Resource_1ee0o")
+flags_2 = SubResource("Resource_ow3nc")
+flags_3 = SubResource("Resource_e7qu8")
+flags_4 = SubResource("Resource_gtg66")
+flags_5 = SubResource("Resource_ck36a")
+flags_6 = SubResource("Resource_42143")
+hit_dice = 8
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 16
+name = "Manes"
+notice_range = 20
+rarity = 2
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Manes    "

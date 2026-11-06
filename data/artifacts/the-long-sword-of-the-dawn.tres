@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_bprwb"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_7qooa"]
+
+[sub_resource type="Resource" id="Resource_nvmfq"]
+script = ExtResource("1_bprwb")
+value = 1116603424
+
+[sub_resource type="Resource" id="Resource_fiace"]
+script = ExtResource("1_bprwb")
+value = 23347232
+
+[sub_resource type="Resource" id="Resource_7jymj"]
+script = ExtResource("1_bprwb")
+value = 32646144
+
+[resource]
+script = ExtResource("2_7qooa")
+flags_1 = SubResource("Resource_nvmfq")
+flags_2 = SubResource("Resource_fiace")
+flags_3 = SubResource("Resource_7jymj")
+cost = 250000
+damage_dice = 3
+damage_dice_sides = 5
+item_category = 23
+item_sub_category = 17
+level = 40
+name = "of the *Dawn*"
+type_specific_value = 3
+rarity = 120
+to_hit = 20
+to_damage = 20
+weight = 130
+id = 110

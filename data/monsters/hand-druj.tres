@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_5kk1c"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_56phl"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_56do2"]
+
+[sub_resource type="Resource" id="Resource_d7but"]
+script = ExtResource("1_5kk1c")
+
+[sub_resource type="Resource" id="Resource_obo6e"]
+script = ExtResource("1_5kk1c")
+
+[sub_resource type="Resource" id="Resource_3nqry"]
+script = ExtResource("1_5kk1c")
+
+[sub_resource type="Resource" id="Resource_g56gs"]
+script = ExtResource("1_5kk1c")
+
+[sub_resource type="Resource" id="Resource_dtlwb"]
+script = ExtResource("2_56phl")
+value = 198144
+
+[sub_resource type="Resource" id="Resource_fmti0"]
+script = ExtResource("2_56phl")
+value = 34
+
+[sub_resource type="Resource" id="Resource_3uraq"]
+script = ExtResource("2_56phl")
+value = 3493331040
+
+[sub_resource type="Resource" id="Resource_jws45"]
+script = ExtResource("2_56phl")
+
+[sub_resource type="Resource" id="Resource_klyxj"]
+script = ExtResource("2_56phl")
+value = 939540480
+
+[sub_resource type="Resource" id="Resource_5n5eg"]
+script = ExtResource("2_56phl")
+value = 20992
+
+[resource]
+script = ExtResource("3_56do2")
+ac = 110
+attack = Array[ExtResource("1_5kk1c")]([SubResource("Resource_d7but"), SubResource("Resource_obo6e"), SubResource("Resource_3nqry"), SubResource("Resource_g56gs")])
+character = "s"
+colour = 9
+description = "A skeletal hand floating in the air, motionless except for its flexing fingers."
+flags_1 = SubResource("Resource_dtlwb")
+flags_2 = SubResource("Resource_fmti0")
+flags_3 = SubResource("Resource_3uraq")
+flags_4 = SubResource("Resource_jws45")
+flags_5 = SubResource("Resource_klyxj")
+flags_6 = SubResource("Resource_5n5eg")
+freq_innate = 1
+freq_spell = 1
+hit_dice = 60
+hit_dice_sides = 10
+level = 55
+max_num = 100
+experience = 12000
+name = "Hand druj"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "    Hand    "
+split_name_3 = "    druj    "

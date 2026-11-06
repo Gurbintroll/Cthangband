@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_o71af"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_djcgc"]
+
+[sub_resource type="Resource" id="Resource_qsbw7"]
+script = ExtResource("1_o71af")
+
+[sub_resource type="Resource" id="Resource_7cmut"]
+script = ExtResource("1_o71af")
+
+[sub_resource type="Resource" id="Resource_yporr"]
+script = ExtResource("1_o71af")
+
+[resource]
+script = ExtResource("2_djcgc")
+cost = 20
+flags_1 = SubResource("Resource_qsbw7")
+flags_2 = SubResource("Resource_7cmut")
+flags_3 = SubResource("Resource_yporr")
+max_to_damage = 12
+max_to_hit = 12
+name = "of Slaying"
+rating = 15
+slot = 23
+id = 91

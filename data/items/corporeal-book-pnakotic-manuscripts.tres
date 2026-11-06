@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_rpqka"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_g8x4x"]
+
+[sub_resource type="Resource" id="Resource_ndcjf"]
+script = ExtResource("1_rpqka")
+
+[sub_resource type="Resource" id="Resource_k685f"]
+script = ExtResource("1_rpqka")
+
+[sub_resource type="Resource" id="Resource_qngt2"]
+script = ExtResource("1_rpqka")
+value = 15728640
+
+[resource]
+script = ExtResource("2_g8x4x")
+chance = Array[int]([3, 0, 0, 0])
+character = "?"
+colour = 16
+cost = 100000
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_ndcjf")
+flags_2 = SubResource("Resource_k685f")
+flags_3 = SubResource("Resource_qngt2")
+flavour_aware = true
+item_category = 97
+level = 90
+locale = Array[int]([90, 0, 0, 0])
+name = "[Pnakotic Manuscripts]"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 30
+filename = "CorporealBook:[Pnakotic Manuscripts]"

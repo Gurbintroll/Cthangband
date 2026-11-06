@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xami5"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_h8dl3"]
+
+[sub_resource type="Resource" id="Resource_k3jan"]
+script = ExtResource("1_xami5")
+value = 2148533252
+
+[sub_resource type="Resource" id="Resource_8idi5"]
+script = ExtResource("1_xami5")
+value = 4194304
+
+[sub_resource type="Resource" id="Resource_n6c1q"]
+script = ExtResource("1_xami5")
+value = 32646656
+
+[resource]
+script = ExtResource("2_h8dl3")
+flags_1 = SubResource("Resource_k3jan")
+flags_2 = SubResource("Resource_8idi5")
+flags_3 = SubResource("Resource_n6c1q")
+cost = 30000
+damage_dice = 2
+damage_dice_sides = 5
+item_category = 21
+item_sub_category = 10
+level = 20
+name = "*Justice*"
+type_specific_value = 4
+rarity = 15
+to_ac = 8
+to_hit = 10
+to_damage = 6
+weight = 120
+id = 122

@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_kpf88"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_c3p4e"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_pljog"]
+
+[sub_resource type="Resource" id="Resource_p1q1r"]
+script = ExtResource("1_kpf88")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_20mvv"]
+script = ExtResource("1_kpf88")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ft3re"]
+script = ExtResource("1_kpf88")
+damage_dice = 2
+damage_dice_sides = 2
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6dsvx"]
+script = ExtResource("1_kpf88")
+damage_dice = 2
+damage_dice_sides = 2
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4grr1"]
+script = ExtResource("2_c3p4e")
+value = 4203012
+
+[sub_resource type="Resource" id="Resource_2lyel"]
+script = ExtResource("2_c3p4e")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_xevtd"]
+script = ExtResource("2_c3p4e")
+value = 1577026
+
+[sub_resource type="Resource" id="Resource_lc0h6"]
+script = ExtResource("2_c3p4e")
+
+[sub_resource type="Resource" id="Resource_gm6bc"]
+script = ExtResource("2_c3p4e")
+
+[sub_resource type="Resource" id="Resource_gmwr0"]
+script = ExtResource("2_c3p4e")
+
+[resource]
+script = ExtResource("3_pljog")
+ac = 50
+attack = Array[ExtResource("1_kpf88")]([SubResource("Resource_p1q1r"), SubResource("Resource_20mvv"), SubResource("Resource_ft3re"), SubResource("Resource_6dsvx")])
+character = "T"
+colour = 3
+description = "He is a troll that reeks of brine."
+flags_1 = SubResource("Resource_4grr1")
+flags_2 = SubResource("Resource_2lyel")
+flags_3 = SubResource("Resource_xevtd")
+flags_4 = SubResource("Resource_lc0h6")
+flags_5 = SubResource("Resource_gm6bc")
+flags_6 = SubResource("Resource_gmwr0")
+hit_dice = 36
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 420
+name = "Water troll"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Water    "
+split_name_3 = "   troll    "

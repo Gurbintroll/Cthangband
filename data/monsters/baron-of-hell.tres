@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ajiyc"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tgslv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_xqyin"]
+
+[sub_resource type="Resource" id="Resource_6sx2k"]
+script = ExtResource("1_ajiyc")
+damage_dice = 11
+damage_dice_sides = 2
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_x6qut"]
+script = ExtResource("1_ajiyc")
+damage_dice = 11
+damage_dice_sides = 2
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_gpfkc"]
+script = ExtResource("1_ajiyc")
+damage_dice = 11
+damage_dice_sides = 2
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_jqgj8"]
+script = ExtResource("1_ajiyc")
+
+[sub_resource type="Resource" id="Resource_ry3sf"]
+script = ExtResource("2_tgslv")
+value = 516
+
+[sub_resource type="Resource" id="Resource_h2a04"]
+script = ExtResource("2_tgslv")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_4xb6w"]
+script = ExtResource("2_tgslv")
+value = 3241412688
+
+[sub_resource type="Resource" id="Resource_bxugr"]
+script = ExtResource("2_tgslv")
+
+[sub_resource type="Resource" id="Resource_v8883"]
+script = ExtResource("2_tgslv")
+value = 16777216
+
+[sub_resource type="Resource" id="Resource_ktt11"]
+script = ExtResource("2_tgslv")
+
+[resource]
+script = ExtResource("3_xqyin")
+ac = 130
+attack = Array[ExtResource("1_ajiyc")]([SubResource("Resource_6sx2k"), SubResource("Resource_x6qut"), SubResource("Resource_gpfkc"), SubResource("Resource_jqgj8")])
+character = "U"
+colour = 6
+description = "A minor demon lord with a goat's head, tough to kill."
+flags_1 = SubResource("Resource_ry3sf")
+flags_2 = SubResource("Resource_h2a04")
+flags_3 = SubResource("Resource_4xb6w")
+flags_4 = SubResource("Resource_bxugr")
+flags_5 = SubResource("Resource_v8883")
+flags_6 = SubResource("Resource_ktt11")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 150
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 900
+name = "Baron of hell"
+notice_range = 10
+rarity = 3
+sleep = 40
+speed = 110
+split_name_1 = "   Baron    "
+split_name_2 = "     of     "
+split_name_3 = "    hell    "

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_uopk8"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_g7vtv"]
+
+[sub_resource type="Resource" id="Resource_na4l3"]
+script = ExtResource("1_uopk8")
+value = 40
+
+[sub_resource type="Resource" id="Resource_ppmg2"]
+script = ExtResource("1_uopk8")
+value = 1342193712
+
+[sub_resource type="Resource" id="Resource_jgj2j"]
+script = ExtResource("1_uopk8")
+value = 32506368
+
+[resource]
+script = ExtResource("2_g7vtv")
+flags_1 = SubResource("Resource_na4l3")
+flags_2 = SubResource("Resource_ppmg2")
+flags_3 = SubResource("Resource_jgj2j")
+ac = 2
+cost = 40000
+damage_dice = 1
+damage_dice_sides = 1
+item_category = 30
+item_sub_category = 2
+level = 10
+name = "of *Dancing*"
+type_specific_value = 5
+rarity = 25
+to_ac = 15
+weight = 20
+id = 61

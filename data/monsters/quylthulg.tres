@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_k3tti"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_2t4r5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_pojic"]
+
+[sub_resource type="Resource" id="Resource_u6cj7"]
+script = ExtResource("1_k3tti")
+
+[sub_resource type="Resource" id="Resource_r4wg6"]
+script = ExtResource("1_k3tti")
+
+[sub_resource type="Resource" id="Resource_ortc8"]
+script = ExtResource("1_k3tti")
+
+[sub_resource type="Resource" id="Resource_w5nqw"]
+script = ExtResource("1_k3tti")
+
+[sub_resource type="Resource" id="Resource_afv4h"]
+script = ExtResource("2_2t4r5")
+value = 197632
+
+[sub_resource type="Resource" id="Resource_vxr6t"]
+script = ExtResource("2_2t4r5")
+value = 80
+
+[sub_resource type="Resource" id="Resource_5snlj"]
+script = ExtResource("2_2t4r5")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_fv34r"]
+script = ExtResource("2_2t4r5")
+
+[sub_resource type="Resource" id="Resource_n43hj"]
+script = ExtResource("2_2t4r5")
+
+[sub_resource type="Resource" id="Resource_e3l0h"]
+script = ExtResource("2_2t4r5")
+value = 262160
+
+[resource]
+script = ExtResource("3_pojic")
+ac = 1
+attack = Array[ExtResource("1_k3tti")]([SubResource("Resource_u6cj7"), SubResource("Resource_r4wg6"), SubResource("Resource_ortc8"), SubResource("Resource_w5nqw")])
+character = "Q"
+colour = 15
+description = "It is a strange pulsing mound of flesh."
+flags_1 = SubResource("Resource_afv4h")
+flags_2 = SubResource("Resource_vxr6t")
+flags_3 = SubResource("Resource_5snlj")
+flags_4 = SubResource("Resource_fv34r")
+flags_5 = SubResource("Resource_n43hj")
+flags_6 = SubResource("Resource_e3l0h")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 6
+hit_dice_sides = 8
+level = 20
+max_num = 100
+experience = 250
+name = "Quylthulg"
+notice_range = 10
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Quylthulg  "

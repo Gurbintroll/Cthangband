@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_d1hm6"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_vwk4i"]
+
+[sub_resource type="Resource" id="Resource_6as0a"]
+script = ExtResource("1_d1hm6")
+value = 8
+
+[sub_resource type="Resource" id="Resource_hr76v"]
+script = ExtResource("1_d1hm6")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_rxp8i"]
+script = ExtResource("1_d1hm6")
+value = 15992320
+
+[resource]
+script = ExtResource("2_vwk4i")
+flags_1 = SubResource("Resource_6as0a")
+flags_2 = SubResource("Resource_hr76v")
+flags_3 = SubResource("Resource_rxp8i")
+cost = 20000
+item_category = 19
+item_sub_category = 13
+level = 30
+name = "of *Serpents*"
+type_specific_value = 3
+rarity = 20
+to_hit = 17
+to_damage = 19
+weight = 40
+id = 125

@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_p4psq"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_rx4qr"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qmwqt"]
+
+[sub_resource type="Resource" id="Resource_4s65u"]
+script = ExtResource("1_p4psq")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_3pgw4"]
+script = ExtResource("1_p4psq")
+
+[sub_resource type="Resource" id="Resource_ncsmf"]
+script = ExtResource("1_p4psq")
+
+[sub_resource type="Resource" id="Resource_6i3hm"]
+script = ExtResource("1_p4psq")
+
+[sub_resource type="Resource" id="Resource_iku4o"]
+script = ExtResource("2_rx4qr")
+value = 787456
+
+[sub_resource type="Resource" id="Resource_yn3vi"]
+script = ExtResource("2_rx4qr")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_k7d5d"]
+script = ExtResource("2_rx4qr")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_5a73p"]
+script = ExtResource("2_rx4qr")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_8mp0v"]
+script = ExtResource("2_rx4qr")
+
+[sub_resource type="Resource" id="Resource_4bacq"]
+script = ExtResource("2_rx4qr")
+
+[resource]
+script = ExtResource("3_qmwqt")
+ac = 20
+attack = Array[ExtResource("1_p4psq")]([SubResource("Resource_4s65u"), SubResource("Resource_3pgw4"), SubResource("Resource_ncsmf"), SubResource("Resource_6i3hm")])
+character = "F"
+colour = 8
+description = "A vast, foul-smelling dragonfly."
+flags_1 = SubResource("Resource_iku4o")
+flags_2 = SubResource("Resource_yn3vi")
+flags_3 = SubResource("Resource_k7d5d")
+flags_4 = SubResource("Resource_5a73p")
+flags_5 = SubResource("Resource_8mp0v")
+flags_6 = SubResource("Resource_4bacq")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 3
+hit_dice_sides = 8
+level = 16
+max_num = 100
+experience = 70
+name = "Giant green dragon fly"
+notice_range = 12
+rarity = 2
+sleep = 50
+speed = 110
+split_name_1 = "Giant green "
+split_name_2 = "   dragon   "
+split_name_3 = "    fly     "

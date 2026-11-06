@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://ufqtv8o64bfh"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_1mmni"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_lvdjx"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_lwsrx"]
+
+[sub_resource type="Resource" id="Resource_nqltw"]
+script = ExtResource("1_1mmni")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_d0nt6"]
+script = ExtResource("1_1mmni")
+damage_dice = 5
+damage_dice_sides = 5
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_pamnq"]
+script = ExtResource("1_1mmni")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_jbq1m"]
+script = ExtResource("1_1mmni")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_1rkn8"]
+script = ExtResource("2_lvdjx")
+value = 471860741
+
+[sub_resource type="Resource" id="Resource_h3n2a"]
+script = ExtResource("2_lvdjx")
+value = 1245218
+
+[sub_resource type="Resource" id="Resource_kaw8f"]
+script = ExtResource("2_lvdjx")
+value = 3225227360
+
+[sub_resource type="Resource" id="Resource_raud8"]
+script = ExtResource("2_lvdjx")
+
+[sub_resource type="Resource" id="Resource_mnko4"]
+script = ExtResource("2_lvdjx")
+value = 2558574636
+
+[sub_resource type="Resource" id="Resource_er8c3"]
+script = ExtResource("2_lvdjx")
+value = 67175424
+
+[resource]
+script = ExtResource("3_lwsrx")
+ac = 100
+attack = Array[ExtResource("1_1mmni")]([SubResource("Resource_nqltw"), SubResource("Resource_d0nt6"), SubResource("Resource_pamnq"), SubResource("Resource_jbq1m")])
+character = "W"
+colour = 12
+description = "A warrior-king of the East. Khamul is a powerful opponent, his skill in combat awesome and his form twisted by evil cunning."
+flags_1 = SubResource("Resource_1rkn8")
+flags_2 = SubResource("Resource_h3n2a")
+flags_3 = SubResource("Resource_kaw8f")
+flags_4 = SubResource("Resource_raud8")
+flags_5 = SubResource("Resource_mnko4")
+flags_6 = SubResource("Resource_er8c3")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 35
+hit_dice_sides = 100
+level = 53
+max_num = 1
+experience = 50000
+name = "Khamul the Easterling"
+notice_range = 90
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "   Khamul   "
+split_name_2 = "    the     "
+split_name_3 = " Easterling "

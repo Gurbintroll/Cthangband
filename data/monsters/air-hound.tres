@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_uuw22"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1d1ac"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vqs77"]
+
+[sub_resource type="Resource" id="Resource_3jtj5"]
+script = ExtResource("1_uuw22")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_ikpln"]
+script = ExtResource("1_uuw22")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_e2c5j"]
+script = ExtResource("1_uuw22")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_xll0n"]
+script = ExtResource("1_uuw22")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_pifn0"]
+script = ExtResource("2_1d1ac")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_66rdx"]
+script = ExtResource("2_1d1ac")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_cofpk"]
+script = ExtResource("2_1d1ac")
+value = 1048704
+
+[sub_resource type="Resource" id="Resource_lwdq5"]
+script = ExtResource("2_1d1ac")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_niibn"]
+script = ExtResource("2_1d1ac")
+
+[sub_resource type="Resource" id="Resource_hy03y"]
+script = ExtResource("2_1d1ac")
+
+[resource]
+script = ExtResource("3_vqs77")
+ac = 30
+attack = Array[ExtResource("1_uuw22")]([SubResource("Resource_3jtj5"), SubResource("Resource_ikpln"), SubResource("Resource_e2c5j"), SubResource("Resource_xll0n")])
+character = "Z"
+colour = 5
+description = "Swirling vapours surround this beast as it floats towards you, seemingly walking on air. Noxious gases sting your throat."
+flags_1 = SubResource("Resource_pifn0")
+flags_2 = SubResource("Resource_66rdx")
+flags_3 = SubResource("Resource_cofpk")
+flags_4 = SubResource("Resource_lwdq5")
+flags_5 = SubResource("Resource_niibn")
+flags_6 = SubResource("Resource_hy03y")
+freq_innate = 10
+freq_spell = 10
+hit_dice = 15
+hit_dice_sides = 8
+level = 20
+max_num = 100
+experience = 200
+name = "Air hound"
+notice_range = 30
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Air     "
+split_name_3 = "   hound    "

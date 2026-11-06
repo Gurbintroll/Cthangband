@@ -1,0 +1,57 @@
+﻿[center][font_size=48][color="brown"][b]Charisma[/b][/color][/font_size][/center]
+[hr color="brown"]
+Charisma is a combination of your appearance, personality, and willpower. Charisma is the primary spell casting
+ability score for mentalism, and the Power per Level, Power Failure Reduction, and Min Power Failure scores only
+apply to Mindcrafters and Mystics.
+
+[center][table=5][cell][b]Charisma[/b][/cell][cell][b]Price Modifier[/b][/cell][cell][b]Power per Level[/b][/cell][cell][b]Power Failure Reduction[/b][/cell][cell][b]Min Power Failure[/b][/cell]
+[cell]3[/cell][cell]130%[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]4[/cell][cell]125%[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]5[/cell][cell]122%[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]6[/cell][cell]120%[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]7[/cell][cell]118%[/cell][cell]0[/cell][cell]-0%[/cell][cell]99%[/cell]
+[cell]8[/cell][cell]116%[/cell][cell]0.5[/cell][cell]-3%[/cell][cell]50%[/cell]
+[cell]9[/cell][cell]114%[/cell][cell]1[/cell][cell]-3%[/cell][cell]30%[/cell]
+[cell]10[/cell][cell]112%[/cell][cell]1[/cell][cell]-3%[/cell][cell]20%[/cell]
+[cell]11[/cell][cell]110%[/cell][cell]1[/cell][cell]-3%[/cell][cell]15%[/cell]
+[cell]12[/cell][cell]108%[/cell][cell]1[/cell][cell]-3%[/cell][cell]12%[/cell]
+[cell]13[/cell][cell]106%[/cell][cell]1[/cell][cell]-3%[/cell][cell]11%[/cell]
+[cell]14[/cell][cell]104%[/cell][cell]1[/cell][cell]-3%[/cell][cell]10%[/cell]
+[cell]15[/cell][cell]103%[/cell][cell]1[/cell][cell]-6%[/cell][cell]9%[/cell]
+[cell]16[/cell][cell]102%[/cell][cell]1[/cell][cell]-6%[/cell][cell]8%[/cell]
+[cell]17[/cell][cell]101%[/cell][cell]1[/cell][cell]-6%[/cell][cell]7%[/cell]
+[cell]18[/cell][cell]100%[/cell][cell]1.5[/cell][cell]-9%[/cell][cell]6%[/cell]
+[cell]19[/cell][cell]99%[/cell][cell]1.5[/cell][cell]-9%[/cell][cell]6%[/cell]
+[cell]20[/cell][cell]98%[/cell][cell]1.5[/cell][cell]-9%[/cell][cell]5%[/cell]
+[cell]21[/cell][cell]97%[/cell][cell]1.5[/cell][cell]-9%[/cell][cell]5%[/cell]
+[cell]22[/cell][cell]96%[/cell][cell]1.5[/cell][cell]-9%[/cell][cell]5%[/cell]
+[cell]23[/cell][cell]95%[/cell][cell]2[/cell][cell]-12%[/cell][cell]4%[/cell]
+[cell]24[/cell][cell]94%[/cell][cell]2[/cell][cell]-12%[/cell][cell]4%[/cell]
+[cell]25[/cell][cell]93%[/cell][cell]2.5[/cell][cell]-15%[/cell][cell]4%[/cell]
+[cell]26[/cell][cell]92%[/cell][cell]3[/cell][cell]-18%[/cell][cell]4%[/cell]
+[cell]27[/cell][cell]91%[/cell][cell]3.5[/cell][cell]-21%[/cell][cell]3%[/cell]
+[cell]28[/cell][cell]90%[/cell][cell]4[/cell][cell]-24%[/cell][cell]3%[/cell]
+[cell]29[/cell][cell]89%[/cell][cell]4.5[/cell][cell]-27%[/cell][cell]2%[/cell]
+[cell]30[/cell][cell]88%[/cell][cell]5[/cell][cell]-30%[/cell][cell]2%[/cell]
+[cell]31[/cell][cell]87%[/cell][cell]5.5[/cell][cell]-33%[/cell][cell]2%[/cell]
+[cell]32[/cell][cell]86%[/cell][cell]6[/cell][cell]-36%[/cell][cell]2%[/cell]
+[cell]33[/cell][cell]85%[/cell][cell]6.5[/cell][cell]-39%[/cell][cell]1%[/cell]
+[cell]34[/cell][cell]84%[/cell][cell]7[/cell][cell]-42%[/cell][cell]1%[/cell]
+[cell]35[/cell][cell]83%[/cell][cell]7.5[/cell][cell]-45%[/cell][cell]1%[/cell]
+[cell]36[/cell][cell]82%[/cell][cell]8[/cell][cell]-48%[/cell][cell]1%[/cell]
+[cell]37[/cell][cell]81%[/cell][cell]8[/cell][cell]-51%[/cell][cell]1%[/cell]
+[cell]38[/cell][cell]80%[/cell][cell]8.5[/cell][cell]-54%[/cell][cell]0%[/cell]
+[cell]39[/cell][cell]79%[/cell][cell]8.5[/cell][cell]-57%[/cell][cell]0%[/cell]
+[cell]40+[/cell][cell]78%[/cell][cell]9[/cell][cell]-60%[/cell][cell]0%[/cell][/table][/center]
+
+[b]Price Modifier[/b]
+When buying any item or service in the shops, the price you pay will be be multiplied by this percentage. When selling an item,  the price will be divided by this percentage.
+
+[b]Power per Level[/b]
+This is the amount of power per level that you have when fully rested.
+
+[b]Power Failure Reduction[/b]
+When using a mentalism power, each power has a basic chance of failure. This chance of failure is reduced by 3% per character  level and also by the amount shown here for your charisma score.
+
+[b]Min Power Failure[/b]
+No matter how much the chance of failure when using a mentalism power has been reduced, it can't be reduced below this value.

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_cbi5q"]
+
+[resource]
+script = ExtResource("1_cbi5q")
+alter_action = 1
+appear_as = "Quartz"
+blocks_los = true
+category = 9
+character = "#"
+colour = 30
+description = "quartz vein"
+dims_outside_los = true
+is_wall = true
+map_priority = 11
+name = "Quartz"
+run_past = true
+yellow_in_torch_light = true

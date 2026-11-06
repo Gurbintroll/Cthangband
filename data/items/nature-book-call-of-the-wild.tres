@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_hjwlp"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_4a34c"]
+
+[sub_resource type="Resource" id="Resource_cnn7q"]
+script = ExtResource("1_hjwlp")
+
+[sub_resource type="Resource" id="Resource_gr0d6"]
+script = ExtResource("1_hjwlp")
+
+[sub_resource type="Resource" id="Resource_nme48"]
+script = ExtResource("1_hjwlp")
+
+[resource]
+script = ExtResource("2_4a34c")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 8
+cost = 100
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_cnn7q")
+flags_2 = SubResource("Resource_gr0d6")
+flags_3 = SubResource("Resource_nme48")
+flavour_aware = true
+item_category = 92
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "[Call of the Wild]"
+stompable = Array[bool]([false, false, false, false])
+weight = 30
+filename = "NatureBook:[Call of the Wild]"

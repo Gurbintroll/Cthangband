@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_1a4o5"]
+
+[resource]
+script = ExtResource("1_1a4o5")
+name = "BrightBlueSparkle"
+colour = 5
+alternate_colour = 5
+sequence = "·+·x·+·"

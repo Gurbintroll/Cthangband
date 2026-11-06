@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_evhmf"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_8oj4q"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rmqu4"]
+
+[sub_resource type="Resource" id="Resource_khksq"]
+script = ExtResource("1_evhmf")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_74pau"]
+script = ExtResource("1_evhmf")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_81cjn"]
+script = ExtResource("1_evhmf")
+damage_dice = 8
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_86xiy"]
+script = ExtResource("1_evhmf")
+effect = 16
+method = 15
+
+[sub_resource type="Resource" id="Resource_yqha1"]
+script = ExtResource("2_8oj4q")
+value = 404751872
+
+[sub_resource type="Resource" id="Resource_pqua2"]
+script = ExtResource("2_8oj4q")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_lax4g"]
+script = ExtResource("2_8oj4q")
+value = 3227844808
+
+[sub_resource type="Resource" id="Resource_hy6hu"]
+script = ExtResource("2_8oj4q")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_nseiy"]
+script = ExtResource("2_8oj4q")
+value = 2281701376
+
+[sub_resource type="Resource" id="Resource_gqc6x"]
+script = ExtResource("2_8oj4q")
+
+[resource]
+script = ExtResource("3_rmqu4")
+ac = 120
+attack = Array[ExtResource("1_evhmf")]([SubResource("Resource_khksq"), SubResource("Resource_74pau"), SubResource("Resource_81cjn"), SubResource("Resource_86xiy")])
+character = "D"
+colour = 18
+description = "A mixture of dragon and basilisk, the dracolisk stares at you with deep piercing eyes, its evil breath burning the ground where it stands."
+flags_1 = SubResource("Resource_yqha1")
+flags_2 = SubResource("Resource_pqua2")
+flags_3 = SubResource("Resource_lax4g")
+flags_4 = SubResource("Resource_hy6hu")
+flags_5 = SubResource("Resource_nseiy")
+flags_6 = SubResource("Resource_gqc6x")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 35
+hit_dice_sides = 100
+level = 46
+max_num = 100
+experience = 14000
+name = "Dracolisk"
+notice_range = 25
+rarity = 3
+sleep = 30
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Dracolisk  "

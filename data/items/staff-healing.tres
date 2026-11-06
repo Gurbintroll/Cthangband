@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0ovda"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_jpncq"]
+
+[sub_resource type="Resource" id="Resource_da3hc"]
+script = ExtResource("1_0ovda")
+
+[sub_resource type="Resource" id="Resource_85emt"]
+script = ExtResource("1_0ovda")
+
+[sub_resource type="Resource" id="Resource_yfdj5"]
+script = ExtResource("1_0ovda")
+
+[resource]
+script = ExtResource("2_jpncq")
+chance = Array[int]([2, 0, 0, 0])
+character = "_"
+colour = 6
+cost = 5000
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_da3hc")
+flags_2 = SubResource("Resource_85emt")
+flags_3 = SubResource("Resource_yfdj5")
+has_flavour = true
+item_category = 55
+level = 70
+locale = Array[int]([70, 0, 0, 0])
+name = "Healing"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 18
+weight = 50
+filename = "Staff:Healing"

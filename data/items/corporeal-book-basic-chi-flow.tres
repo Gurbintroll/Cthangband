@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_wmbw8"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ov7hc"]
+
+[sub_resource type="Resource" id="Resource_gihw2"]
+script = ExtResource("1_wmbw8")
+
+[sub_resource type="Resource" id="Resource_w7bjq"]
+script = ExtResource("1_wmbw8")
+
+[sub_resource type="Resource" id="Resource_5x84t"]
+script = ExtResource("1_wmbw8")
+
+[resource]
+script = ExtResource("2_ov7hc")
+chance = Array[int]([1, 0, 0, 0])
+character = "?"
+colour = 31
+cost = 100
+damage_dice = 1
+damage_dice_sides = 1
+easy_know = true
+flags_1 = SubResource("Resource_gihw2")
+flags_2 = SubResource("Resource_w7bjq")
+flags_3 = SubResource("Resource_5x84t")
+flavour_aware = true
+item_category = 97
+level = 10
+locale = Array[int]([10, 0, 0, 0])
+name = "[Basic Chi Flow]"
+stompable = Array[bool]([false, false, false, false])
+weight = 30
+filename = "CorporealBook:[Basic Chi Flow]"

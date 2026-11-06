@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_w3s66"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_yhned"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_grb5x"]
+
+[sub_resource type="Resource" id="Resource_qpwjh"]
+script = ExtResource("1_w3s66")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 11
+method = 6
+
+[sub_resource type="Resource" id="Resource_hao2q"]
+script = ExtResource("1_w3s66")
+
+[sub_resource type="Resource" id="Resource_d20wp"]
+script = ExtResource("1_w3s66")
+
+[sub_resource type="Resource" id="Resource_18u6y"]
+script = ExtResource("1_w3s66")
+
+[sub_resource type="Resource" id="Resource_r7ali"]
+script = ExtResource("2_yhned")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_jj27n"]
+script = ExtResource("2_yhned")
+
+[sub_resource type="Resource" id="Resource_cr2lp"]
+script = ExtResource("2_yhned")
+value = 262272
+
+[sub_resource type="Resource" id="Resource_cvuu8"]
+script = ExtResource("2_yhned")
+
+[sub_resource type="Resource" id="Resource_3n011"]
+script = ExtResource("2_yhned")
+
+[sub_resource type="Resource" id="Resource_b346f"]
+script = ExtResource("2_yhned")
+
+[resource]
+script = ExtResource("3_grb5x")
+ac = 20
+attack = Array[ExtResource("1_w3s66")]([SubResource("Resource_qpwjh"), SubResource("Resource_hao2q"), SubResource("Resource_d20wp"), SubResource("Resource_18u6y")])
+character = "R"
+colour = 16
+description = "A small black and orange lizard."
+flags_1 = SubResource("Resource_r7ali")
+flags_2 = SubResource("Resource_jj27n")
+flags_3 = SubResource("Resource_cr2lp")
+flags_4 = SubResource("Resource_cvuu8")
+flags_5 = SubResource("Resource_3n011")
+flags_6 = SubResource("Resource_b346f")
+hit_dice = 4
+hit_dice_sides = 6
+level = 2
+max_num = 100
+experience = 10
+name = "Salamander"
+notice_range = 8
+rarity = 1
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Salamander "

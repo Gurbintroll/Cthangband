@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2ipl4"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_gl4oe"]
+
+[sub_resource type="Resource" id="Resource_73ko4"]
+script = ExtResource("1_2ipl4")
+
+[sub_resource type="Resource" id="Resource_5obr1"]
+script = ExtResource("1_2ipl4")
+
+[sub_resource type="Resource" id="Resource_bl6yl"]
+script = ExtResource("1_2ipl4")
+
+[resource]
+script = ExtResource("2_gl4oe")
+chance = Array[int]([1, 1, 1, 0])
+character = "?"
+colour = 1
+cost = 15
+easy_know = true
+flags_1 = SubResource("Resource_73ko4")
+flags_2 = SubResource("Resource_5obr1")
+flags_3 = SubResource("Resource_bl6yl")
+has_flavour = true
+item_category = 70
+locale = Array[int]([0, 3, 10, 0])
+name = "Light"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 24
+weight = 5
+filename = "Scroll:Light"

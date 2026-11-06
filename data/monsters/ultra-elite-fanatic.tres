@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fict6"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_27ebm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_hvpna"]
+
+[sub_resource type="Resource" id="Resource_j5rah"]
+script = ExtResource("1_fict6")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_d2a2p"]
+script = ExtResource("1_fict6")
+damage_dice = 3
+damage_dice_sides = 12
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_7oc76"]
+script = ExtResource("1_fict6")
+
+[sub_resource type="Resource" id="Resource_rdhph"]
+script = ExtResource("1_fict6")
+
+[sub_resource type="Resource" id="Resource_vltcd"]
+script = ExtResource("2_27ebm")
+value = 29368836
+
+[sub_resource type="Resource" id="Resource_2fxgv"]
+script = ExtResource("2_27ebm")
+value = 196616
+
+[sub_resource type="Resource" id="Resource_jwxdb"]
+script = ExtResource("2_27ebm")
+value = 4135518720
+
+[sub_resource type="Resource" id="Resource_qt7aq"]
+script = ExtResource("2_27ebm")
+
+[sub_resource type="Resource" id="Resource_lbeq6"]
+script = ExtResource("2_27ebm")
+
+[sub_resource type="Resource" id="Resource_w42bk"]
+script = ExtResource("2_27ebm")
+value = 4
+
+[resource]
+script = ExtResource("3_hvpna")
+ac = 100
+attack = Array[ExtResource("1_fict6")]([SubResource("Resource_j5rah"), SubResource("Resource_d2a2p"), SubResource("Resource_7oc76"), SubResource("Resource_rdhph")])
+character = "p"
+colour = 30
+description = "Fighting for a good cause, and they consider you an agent of evil."
+flags_1 = SubResource("Resource_vltcd")
+flags_2 = SubResource("Resource_2fxgv")
+flags_3 = SubResource("Resource_jwxdb")
+flags_4 = SubResource("Resource_qt7aq")
+flags_5 = SubResource("Resource_lbeq6")
+flags_6 = SubResource("Resource_w42bk")
+freq_innate = 12
+freq_spell = 12
+hit_dice = 70
+hit_dice_sides = 10
+level = 45
+max_num = 100
+experience = 1200
+name = "Ultra-elite fanatic"
+notice_range = 20
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "Ultra-elite "
+split_name_3 = "  fanatic   "

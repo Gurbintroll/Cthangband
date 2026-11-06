@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vn7ke"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kei5a"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_b4w0k"]
+
+[sub_resource type="Resource" id="Resource_pyywq"]
+script = ExtResource("1_vn7ke")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_qve1r"]
+script = ExtResource("1_vn7ke")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_o12cj"]
+script = ExtResource("1_vn7ke")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_v2w52"]
+script = ExtResource("1_vn7ke")
+damage_dice = 5
+damage_dice_sides = 14
+effect = 12
+method = 6
+
+[sub_resource type="Resource" id="Resource_tfcg1"]
+script = ExtResource("2_kei5a")
+value = 471860736
+
+[sub_resource type="Resource" id="Resource_q3l7a"]
+script = ExtResource("2_kei5a")
+value = 1183744
+
+[sub_resource type="Resource" id="Resource_4teni"]
+script = ExtResource("2_kei5a")
+value = 3221749832
+
+[sub_resource type="Resource" id="Resource_cgtal"]
+script = ExtResource("2_kei5a")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_1rltl"]
+script = ExtResource("2_kei5a")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_76q3o"]
+script = ExtResource("2_kei5a")
+
+[resource]
+script = ExtResource("3_b4w0k")
+ac = 170
+attack = Array[ExtResource("1_vn7ke")]([SubResource("Resource_pyywq"), SubResource("Resource_qve1r"), SubResource("Resource_o12cj"), SubResource("Resource_v2w52")])
+character = "D"
+colour = 30
+description = "An immense dragon capable of awesome destruction. You have never felt such extreme cold, or witnessed such an icy stare. Begone quickly or feel its wrath!"
+flags_1 = SubResource("Resource_tfcg1")
+flags_2 = SubResource("Resource_q3l7a")
+flags_3 = SubResource("Resource_4teni")
+flags_4 = SubResource("Resource_cgtal")
+flags_5 = SubResource("Resource_1rltl")
+flags_6 = SubResource("Resource_76q3o")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 30
+hit_dice_sides = 100
+level = 54
+max_num = 100
+experience = 20000
+name = "Great ice wyrm"
+notice_range = 30
+rarity = 2
+sleep = 80
+speed = 120
+split_name_1 = "   Great    "
+split_name_2 = "    ice     "
+split_name_3 = "    wyrm    "

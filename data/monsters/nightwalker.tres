@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_lann1"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_1hti6"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_0cm8k"]
+
+[sub_resource type="Resource" id="Resource_8xmta"]
+script = ExtResource("1_lann1")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_f538n"]
+script = ExtResource("1_lann1")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_tw4bp"]
+script = ExtResource("1_lann1")
+damage_dice = 7
+damage_dice_sides = 7
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_d8xy2"]
+script = ExtResource("1_lann1")
+damage_dice = 7
+damage_dice_sides = 7
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_p3kkt"]
+script = ExtResource("2_1hti6")
+value = 404751360
+
+[sub_resource type="Resource" id="Resource_kjpua"]
+script = ExtResource("2_1hti6")
+value = 196642
+
+[sub_resource type="Resource" id="Resource_m6nqk"]
+script = ExtResource("2_1hti6")
+value = 3225292896
+
+[sub_resource type="Resource" id="Resource_k0fdw"]
+script = ExtResource("2_1hti6")
+
+[sub_resource type="Resource" id="Resource_rwnrg"]
+script = ExtResource("2_1hti6")
+value = 413141024
+
+[sub_resource type="Resource" id="Resource_hcfqu"]
+script = ExtResource("2_1hti6")
+value = 67108864
+
+[resource]
+script = ExtResource("3_0cm8k")
+ac = 175
+attack = Array[ExtResource("1_lann1")]([SubResource("Resource_8xmta"), SubResource("Resource_f538n"), SubResource("Resource_tw4bp"), SubResource("Resource_d8xy2")])
+character = "z"
+colour = 2
+description = "A huge giant garbed in black, more massive than a titan and stronger than a dragon. With terrible blows, it breaks your armour from your back, leaving you defenseless against its evil wrath. It can smell your fear, and you in turn smell the awful stench of death as this ghastly figure strides towards you menacingly."
+flags_1 = SubResource("Resource_p3kkt")
+flags_2 = SubResource("Resource_kjpua")
+flags_3 = SubResource("Resource_m6nqk")
+flags_4 = SubResource("Resource_k0fdw")
+flags_5 = SubResource("Resource_rwnrg")
+flags_6 = SubResource("Resource_hcfqu")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 50
+hit_dice_sides = 65
+level = 59
+max_num = 100
+experience = 15000
+name = "Nightwalker"
+notice_range = 20
+rarity = 4
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Nightwalker "

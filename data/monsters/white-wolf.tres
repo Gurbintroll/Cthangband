@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vxmy8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_p8sic"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_7pyih"]
+
+[sub_resource type="Resource" id="Resource_sg077"]
+script = ExtResource("1_vxmy8")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_u2kbh"]
+script = ExtResource("1_vxmy8")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_0dllk"]
+script = ExtResource("1_vxmy8")
+
+[sub_resource type="Resource" id="Resource_gvbty"]
+script = ExtResource("1_vxmy8")
+
+[sub_resource type="Resource" id="Resource_mdmhn"]
+script = ExtResource("2_p8sic")
+value = 270336
+
+[sub_resource type="Resource" id="Resource_comei"]
+script = ExtResource("2_p8sic")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_etxex"]
+script = ExtResource("2_p8sic")
+value = 524416
+
+[sub_resource type="Resource" id="Resource_c1e1x"]
+script = ExtResource("2_p8sic")
+
+[sub_resource type="Resource" id="Resource_cpv82"]
+script = ExtResource("2_p8sic")
+
+[sub_resource type="Resource" id="Resource_7xx3d"]
+script = ExtResource("2_p8sic")
+
+[resource]
+script = ExtResource("3_7pyih")
+ac = 30
+attack = Array[ExtResource("1_vxmy8")]([SubResource("Resource_sg077"), SubResource("Resource_u2kbh"), SubResource("Resource_0dllk"), SubResource("Resource_gvbty")])
+character = "C"
+colour = 30
+description = "A large and muscled wolf from the northern wastes. Its breath is cold and icy and its fur coated in frost."
+flags_1 = SubResource("Resource_mdmhn")
+flags_2 = SubResource("Resource_comei")
+flags_3 = SubResource("Resource_etxex")
+flags_4 = SubResource("Resource_c1e1x")
+flags_5 = SubResource("Resource_cpv82")
+flags_6 = SubResource("Resource_7xx3d")
+hit_dice = 7
+hit_dice_sides = 7
+level = 12
+max_num = 100
+experience = 30
+name = "White wolf"
+notice_range = 30
+rarity = 1
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   White    "
+split_name_3 = "    wolf    "

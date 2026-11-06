@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_h7oj2"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_phpyd"]
+
+[sub_resource type="Resource" id="Resource_nhvw2"]
+script = ExtResource("1_h7oj2")
+
+[sub_resource type="Resource" id="Resource_aan2v"]
+script = ExtResource("1_h7oj2")
+value = 33554432
+
+[sub_resource type="Resource" id="Resource_3sr3x"]
+script = ExtResource("1_h7oj2")
+value = 256
+
+[resource]
+script = ExtResource("2_phpyd")
+chance = Array[int]([2, 0, 0, 0])
+character = "="
+colour = 29
+cost = 3000
+easy_know = true
+flags_1 = SubResource("Resource_nhvw2")
+flags_2 = SubResource("Resource_aan2v")
+flags_3 = SubResource("Resource_3sr3x")
+has_flavour = true
+item_category = 45
+level = 22
+locale = Array[int]([22, 0, 0, 0])
+name = "Confusion Resistance"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 43
+weight = 2
+filename = "Ring:Confusion Resistance"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_mxchh"]
+
+[resource]
+script = ExtResource("1_mxchh")
+category = 8
+height = 24
+name = "Greater Vault (Twisted Cube)"
+rating = 20
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.......................................%%.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....%%.X...............................XX....%%.X..X^^XXXXXXXXXXXXXXXXXXXXX.XXX..#X...%%.X..XX^^XX,,,,,,,,,,,,,,,,,X.X&X+..XX..%%.X..X+X^^XX,,,,,,,,,,,,,,,,+.X9&XX..XX.%%.X..X,XX^^XXXXXXXXXXXXXXXXXX.XXXXXX..X.%%.X..X,,XX..................X.X.......X.%%.X..X,,,XX.XXXXXXXX#XXXXXXXX.XXXXXX..X.%%.X..X^^^^X.X,9,&***&,,,&***X.X****X..X.%%.X..X&&&&X.X9,&***&,8,&***&X.X^^^^X..X.%%.X..X^^^^X.X,&***&,8,&***&9X.X&&&&X..X.%%.X..X****X.X&***&,,,&***&9,X.X^^^^X..X.%%.X..XXXXXX.XXXXXXXX#XXXXXXXX.XX,,,X..X.%%.X.......X.X..................XX,,X..X.%%.X..XXXXXX.XXXXXXXXXXXXXXXXXX^^XX,X..X.%%.XX..XX&9X.+,,,,,,,,,,,,,,,,XX^^X+X..X.%%..XX..+X&X.X,,,,,,,,,,,,,,,,,XX^^XX..X.%%...X#..XXX.XXXXXXXXXXXXXXXXXXXXX^^X..X.%%....XX...............................X.%%.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.%%.......................................%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 41

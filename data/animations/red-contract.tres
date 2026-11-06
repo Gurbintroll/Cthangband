@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_dcrp8"]
+
+[resource]
+script = ExtResource("1_dcrp8")
+name = "RedContract"
+colour = 27
+alternate_colour = 27
+sequence = "Oo·"

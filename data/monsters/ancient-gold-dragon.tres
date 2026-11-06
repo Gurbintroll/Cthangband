@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fcjv0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_unb33"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_lfydh"]
+
+[sub_resource type="Resource" id="Resource_mc30n"]
+script = ExtResource("1_fcjv0")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_fhnow"]
+script = ExtResource("1_fcjv0")
+damage_dice = 4
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_nckp6"]
+script = ExtResource("1_fcjv0")
+damage_dice = 5
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_qadw6"]
+script = ExtResource("1_fcjv0")
+
+[sub_resource type="Resource" id="Resource_nnael"]
+script = ExtResource("2_unb33")
+value = 201328128
+
+[sub_resource type="Resource" id="Resource_6jru7"]
+script = ExtResource("2_unb33")
+value = 1183746
+
+[sub_resource type="Resource" id="Resource_my0co"]
+script = ExtResource("2_unb33")
+value = 3221225480
+
+[sub_resource type="Resource" id="Resource_v8cju"]
+script = ExtResource("2_unb33")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_nsvq8"]
+script = ExtResource("2_unb33")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_1t5mq"]
+script = ExtResource("2_unb33")
+
+[resource]
+script = ExtResource("3_lfydh")
+ac = 100
+attack = Array[ExtResource("1_fcjv0")]([SubResource("Resource_mc30n"), SubResource("Resource_fhnow"), SubResource("Resource_nckp6"), SubResource("Resource_qadw6")])
+character = "D"
+colour = 21
+description = "A huge draconic form wreathed in a nimbus of light."
+flags_1 = SubResource("Resource_nnael")
+flags_2 = SubResource("Resource_6jru7")
+flags_3 = SubResource("Resource_my0co")
+flags_4 = SubResource("Resource_v8cju")
+flags_5 = SubResource("Resource_nsvq8")
+flags_6 = SubResource("Resource_1t5mq")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 15
+hit_dice_sides = 100
+level = 40
+max_num = 100
+experience = 4000
+name = "Ancient gold dragon"
+notice_range = 20
+rarity = 2
+sleep = 200
+speed = 120
+split_name_1 = "  Ancient   "
+split_name_2 = "    gold    "
+split_name_3 = "   dragon   "

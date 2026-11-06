@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_g58wq"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jdnuv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_u0pac"]
+
+[sub_resource type="Resource" id="Resource_vthka"]
+script = ExtResource("1_g58wq")
+effect = 15
+method = 16
+
+[sub_resource type="Resource" id="Resource_joxd8"]
+script = ExtResource("1_g58wq")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 20
+method = 2
+
+[sub_resource type="Resource" id="Resource_0g07s"]
+script = ExtResource("1_g58wq")
+
+[sub_resource type="Resource" id="Resource_1r2oq"]
+script = ExtResource("1_g58wq")
+
+[sub_resource type="Resource" id="Resource_6c5pt"]
+script = ExtResource("2_jdnuv")
+value = 12846080
+
+[sub_resource type="Resource" id="Resource_phjbt"]
+script = ExtResource("2_jdnuv")
+value = 262192
+
+[sub_resource type="Resource" id="Resource_e4cb8"]
+script = ExtResource("2_jdnuv")
+value = 3221749856
+
+[sub_resource type="Resource" id="Resource_3p4lo"]
+script = ExtResource("2_jdnuv")
+
+[sub_resource type="Resource" id="Resource_4ca3f"]
+script = ExtResource("2_jdnuv")
+value = 134217728
+
+[sub_resource type="Resource" id="Resource_ddxqp"]
+script = ExtResource("2_jdnuv")
+value = 32
+
+[resource]
+script = ExtResource("3_u0pac")
+ac = 20
+attack = Array[ExtResource("1_g58wq")]([SubResource("Resource_vthka"), SubResource("Resource_joxd8"), SubResource("Resource_0g07s"), SubResource("Resource_1r2oq")])
+character = "G"
+colour = 6
+description = "A ghostly apparition that shrieks horribly."
+flags_1 = SubResource("Resource_6c5pt")
+flags_2 = SubResource("Resource_phjbt")
+flags_3 = SubResource("Resource_e4cb8")
+flags_4 = SubResource("Resource_3p4lo")
+flags_5 = SubResource("Resource_4ca3f")
+flags_6 = SubResource("Resource_ddxqp")
+freq_innate = 16
+freq_spell = 16
+hit_dice = 5
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 44
+name = "Moaning spirit"
+notice_range = 14
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Moaning   "
+split_name_3 = "   spirit   "

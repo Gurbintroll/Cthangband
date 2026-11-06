@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_pelw2"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_e8155"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_h161v"]
+
+[sub_resource type="Resource" id="Resource_0iiri"]
+script = ExtResource("1_pelw2")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_gox73"]
+script = ExtResource("1_pelw2")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_gc3j7"]
+script = ExtResource("1_pelw2")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_xyom1"]
+script = ExtResource("1_pelw2")
+
+[sub_resource type="Resource" id="Resource_d65m5"]
+script = ExtResource("2_e8155")
+value = 4202500
+
+[sub_resource type="Resource" id="Resource_srd34"]
+script = ExtResource("2_e8155")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_vxx55"]
+script = ExtResource("2_e8155")
+value = 12354
+
+[sub_resource type="Resource" id="Resource_dyh88"]
+script = ExtResource("2_e8155")
+
+[sub_resource type="Resource" id="Resource_wgg84"]
+script = ExtResource("2_e8155")
+
+[sub_resource type="Resource" id="Resource_fbbnb"]
+script = ExtResource("2_e8155")
+
+[resource]
+script = ExtResource("3_h161v")
+ac = 40
+attack = Array[ExtResource("1_pelw2")]([SubResource("Resource_0iiri"), SubResource("Resource_gox73"), SubResource("Resource_gc3j7"), SubResource("Resource_xyom1")])
+character = "T"
+colour = 2
+description = "He is a giant troll with scabrous black skin."
+flags_1 = SubResource("Resource_d65m5")
+flags_2 = SubResource("Resource_srd34")
+flags_3 = SubResource("Resource_vxx55")
+flags_4 = SubResource("Resource_dyh88")
+flags_5 = SubResource("Resource_wgg84")
+flags_6 = SubResource("Resource_fbbnb")
+hit_dice = 23
+hit_dice_sides = 10
+level = 25
+max_num = 100
+experience = 85
+name = "Stone troll"
+notice_range = 20
+rarity = 1
+sleep = 50
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Stone    "
+split_name_3 = "   troll    "

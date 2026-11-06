@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_6elrs"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_s5iga"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_s8g0g"]
+
+[sub_resource type="Resource" id="Resource_stb4e"]
+script = ExtResource("1_6elrs")
+damage_dice = 2
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_f0ko1"]
+script = ExtResource("1_6elrs")
+damage_dice = 2
+damage_dice_sides = 3
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_1fyyy"]
+script = ExtResource("1_6elrs")
+
+[sub_resource type="Resource" id="Resource_5iynn"]
+script = ExtResource("1_6elrs")
+
+[sub_resource type="Resource" id="Resource_76ydc"]
+script = ExtResource("2_s5iga")
+value = 16778244
+
+[sub_resource type="Resource" id="Resource_10lk3"]
+script = ExtResource("2_s5iga")
+value = 196610
+
+[sub_resource type="Resource" id="Resource_1s88e"]
+script = ExtResource("2_s5iga")
+value = 576
+
+[sub_resource type="Resource" id="Resource_tlm74"]
+script = ExtResource("2_s5iga")
+
+[sub_resource type="Resource" id="Resource_ufwya"]
+script = ExtResource("2_s5iga")
+value = 134225920
+
+[sub_resource type="Resource" id="Resource_pvk1g"]
+script = ExtResource("2_s5iga")
+value = 262148
+
+[resource]
+script = ExtResource("3_s8g0g")
+ac = 22
+attack = Array[ExtResource("1_6elrs")]([SubResource("Resource_stb4e"), SubResource("Resource_f0ko1"), SubResource("Resource_1fyyy"), SubResource("Resource_5iynn")])
+character = "p"
+colour = 29
+description = "A robed humanoid dedicated to his outer god."
+flags_1 = SubResource("Resource_76ydc")
+flags_2 = SubResource("Resource_10lk3")
+flags_3 = SubResource("Resource_1s88e")
+flags_4 = SubResource("Resource_tlm74")
+flags_5 = SubResource("Resource_ufwya")
+flags_6 = SubResource("Resource_pvk1g")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 12
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 36
+name = "Cultist"
+notice_range = 20
+rarity = 1
+sleep = 40
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Cultist   "

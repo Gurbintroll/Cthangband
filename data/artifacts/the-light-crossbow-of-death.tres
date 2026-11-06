@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_8y54c"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_3hohq"]
+
+[sub_resource type="Resource" id="Resource_70ggy"]
+script = ExtResource("1_8y54c")
+value = 4096
+
+[sub_resource type="Resource" id="Resource_b7ubq"]
+script = ExtResource("1_8y54c")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_ailm0"]
+script = ExtResource("1_8y54c")
+value = 32769024
+
+[resource]
+script = ExtResource("2_3hohq")
+flags_1 = SubResource("Resource_70ggy")
+flags_2 = SubResource("Resource_b7ubq")
+flags_3 = SubResource("Resource_ailm0")
+cost = 50000
+item_category = 19
+item_sub_category = 23
+level = 50
+name = "of *Death*"
+type_specific_value = 10
+rarity = 25
+to_hit = 10
+to_damage = 14
+weight = 110
+id = 126

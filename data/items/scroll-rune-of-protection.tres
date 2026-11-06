@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_t7rui"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_og7ap"]
+
+[sub_resource type="Resource" id="Resource_8mdwe"]
+script = ExtResource("1_t7rui")
+
+[sub_resource type="Resource" id="Resource_ren4d"]
+script = ExtResource("1_t7rui")
+
+[sub_resource type="Resource" id="Resource_83hlu"]
+script = ExtResource("1_t7rui")
+
+[resource]
+script = ExtResource("2_og7ap")
+chance = Array[int]([2, 4, 0, 0])
+character = "?"
+colour = 1
+cost = 500
+easy_know = true
+flags_1 = SubResource("Resource_8mdwe")
+flags_2 = SubResource("Resource_ren4d")
+flags_3 = SubResource("Resource_83hlu")
+has_flavour = true
+item_category = 70
+level = 50
+locale = Array[int]([50, 90, 0, 0])
+name = "Rune of Protection"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 38
+weight = 5
+filename = "Scroll:Rune of Protection"

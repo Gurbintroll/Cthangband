@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dl06vl7yfkreu"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_orrs3"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_1qjhc"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_flg8b"]
+
+[sub_resource type="Resource" id="Resource_l815w"]
+script = ExtResource("1_orrs3")
+damage_dice = 35
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_ca6on"]
+script = ExtResource("1_orrs3")
+damage_dice = 35
+damage_dice_sides = 5
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_cy8g1"]
+script = ExtResource("1_orrs3")
+damage_dice = 35
+damage_dice_sides = 5
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_kia3p"]
+script = ExtResource("1_orrs3")
+damage_dice = 35
+damage_dice_sides = 5
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_ru1mw"]
+script = ExtResource("2_1qjhc")
+value = 413189761
+
+[sub_resource type="Resource" id="Resource_dstfr"]
+script = ExtResource("2_1qjhc")
+value = 9173569
+
+[sub_resource type="Resource" id="Resource_ihoii"]
+script = ExtResource("2_1qjhc")
+value = 3291810128
+
+[sub_resource type="Resource" id="Resource_vdb0w"]
+script = ExtResource("2_1qjhc")
+value = 2282487808
+
+[sub_resource type="Resource" id="Resource_gy2qg"]
+script = ExtResource("2_1qjhc")
+value = 64
+
+[sub_resource type="Resource" id="Resource_jgaqo"]
+script = ExtResource("2_1qjhc")
+value = 16777216
+
+[resource]
+script = ExtResource("3_flg8b")
+ac = 150
+attack = Array[ExtResource("1_orrs3")]([SubResource("Resource_l815w"), SubResource("Resource_ca6on"), SubResource("Resource_cy8g1"), SubResource("Resource_kia3p")])
+character = "X"
+colour = 12
+description = "Toad shaped and sleepy, don't let his inoffensive appearance fool you. He still bears all the power of a Great Old One."
+flags_1 = SubResource("Resource_ru1mw")
+flags_2 = SubResource("Resource_dstfr")
+flags_3 = SubResource("Resource_ihoii")
+flags_4 = SubResource("Resource_vdb0w")
+flags_5 = SubResource("Resource_gy2qg")
+flags_6 = SubResource("Resource_jgaqo")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 99
+hit_dice_sides = 99
+level = 93
+max_num = 1
+experience = 50000
+name = "Tsathoggua"
+notice_range = 100
+rarity = 3
+sleep = 100
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Tsathoggua "

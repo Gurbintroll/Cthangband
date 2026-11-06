@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_ue5nq"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_jhpvo"]
+
+[sub_resource type="Resource" id="Resource_ffeom"]
+script = ExtResource("1_ue5nq")
+
+[sub_resource type="Resource" id="Resource_qi324"]
+script = ExtResource("1_ue5nq")
+
+[sub_resource type="Resource" id="Resource_uvurj"]
+script = ExtResource("1_ue5nq")
+
+[resource]
+script = ExtResource("2_jhpvo")
+chance = Array[int]([1, 0, 0, 0])
+character = "-"
+colour = 18
+cost = 350
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_ffeom")
+flags_2 = SubResource("Resource_qi324")
+flags_3 = SubResource("Resource_uvurj")
+has_flavour = true
+item_category = 65
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Teleport Other"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 3
+weight = 10
+filename = "Wand:Teleport Other"

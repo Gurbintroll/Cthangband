@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_06q2g"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_501s8"]
+
+[sub_resource type="Resource" id="Resource_ielb8"]
+script = ExtResource("1_06q2g")
+
+[sub_resource type="Resource" id="Resource_poml5"]
+script = ExtResource("1_06q2g")
+
+[sub_resource type="Resource" id="Resource_8i0in"]
+script = ExtResource("1_06q2g")
+
+[resource]
+script = ExtResource("2_501s8")
+ac = 4
+chance = Array[int]([1, 0, 0, 0])
+character = "("
+colour = 6
+cost = 18
+flags_1 = SubResource("Resource_ielb8")
+flags_2 = SubResource("Resource_poml5")
+flags_3 = SubResource("Resource_8i0in")
+flavour_aware = true
+item_category = 36
+level = 3
+locale = Array[int]([3, 0, 0, 0])
+name = "Soft Leather Armour~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 4
+weight = 80
+filename = "SoftArmor:Soft Leather Armour"

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2oqjx"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_t40lk"]
+
+[sub_resource type="Resource" id="Resource_26itu"]
+script = ExtResource("1_2oqjx")
+
+[sub_resource type="Resource" id="Resource_acup8"]
+script = ExtResource("1_2oqjx")
+value = 491580
+
+[sub_resource type="Resource" id="Resource_vvwnu"]
+script = ExtResource("1_2oqjx")
+value = 15728640
+
+[resource]
+script = ExtResource("2_t40lk")
+cost = 30000
+flags_1 = SubResource("Resource_26itu")
+flags_2 = SubResource("Resource_acup8")
+flags_3 = SubResource("Resource_vvwnu")
+max_to_ac = 10
+name = "of Permanence"
+rating = 30
+slot = 30
+id = 10

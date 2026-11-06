@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7w23n"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_fn11v"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_o3on2"]
+
+[sub_resource type="Resource" id="Resource_j8kfy"]
+script = ExtResource("1_7w23n")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_sk8jb"]
+script = ExtResource("1_7w23n")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_02fjk"]
+script = ExtResource("1_7w23n")
+
+[sub_resource type="Resource" id="Resource_8mxq6"]
+script = ExtResource("1_7w23n")
+
+[sub_resource type="Resource" id="Resource_6qume"]
+script = ExtResource("2_fn11v")
+value = 8397316
+
+[sub_resource type="Resource" id="Resource_lg8d2"]
+script = ExtResource("2_fn11v")
+value = 65538
+
+[sub_resource type="Resource" id="Resource_okcdd"]
+script = ExtResource("2_fn11v")
+value = 1572928
+
+[sub_resource type="Resource" id="Resource_ysixl"]
+script = ExtResource("2_fn11v")
+value = 128
+
+[sub_resource type="Resource" id="Resource_6236l"]
+script = ExtResource("2_fn11v")
+
+[sub_resource type="Resource" id="Resource_6e0a2"]
+script = ExtResource("2_fn11v")
+
+[resource]
+script = ExtResource("3_o3on2")
+ac = 40
+attack = Array[ExtResource("1_7w23n")]([SubResource("Resource_j8kfy"), SubResource("Resource_sk8jb"), SubResource("Resource_02fjk"), SubResource("Resource_8mxq6")])
+character = "h"
+colour = 6
+description = "A rebel halfling who has rejected the halfling tradition of archery."
+flags_1 = SubResource("Resource_6qume")
+flags_2 = SubResource("Resource_lg8d2")
+flags_3 = SubResource("Resource_okcdd")
+flags_4 = SubResource("Resource_ysixl")
+flags_5 = SubResource("Resource_6236l")
+flags_6 = SubResource("Resource_6e0a2")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 30
+hit_dice_sides = 9
+level = 35
+max_num = 100
+experience = 330
+name = "Halfling slinger"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Halfling  "
+split_name_3 = "  slinger   "

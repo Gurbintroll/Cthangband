@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_04qpj"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_xptns"]
+
+[sub_resource type="Resource" id="Resource_7vuot"]
+script = ExtResource("1_04qpj")
+
+[sub_resource type="Resource" id="Resource_v11g2"]
+script = ExtResource("1_04qpj")
+
+[sub_resource type="Resource" id="Resource_8tshq"]
+script = ExtResource("1_04qpj")
+value = 1024
+
+[resource]
+script = ExtResource("2_xptns")
+chance = Array[int]([1, 0, 0, 0])
+character = "|"
+colour = 27
+cost = 850
+damage_dice = 4
+damage_dice_sides = 5
+flags_1 = SubResource("Resource_7vuot")
+flags_2 = SubResource("Resource_v11g2")
+flags_3 = SubResource("Resource_8tshq")
+flavour_aware = true
+item_category = 23
+level = 40
+locale = Array[int]([40, 0, 0, 0])
+name = "& Executioner's Sword~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 28
+weight = 260
+filename = "Sword:Executioner's Sword"

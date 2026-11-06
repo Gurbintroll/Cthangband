@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_65xem"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_6yue4"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_suphi"]
+
+[sub_resource type="Resource" id="Resource_kfv4n"]
+script = ExtResource("1_65xem")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 11
+method = 2
+
+[sub_resource type="Resource" id="Resource_asv6t"]
+script = ExtResource("1_65xem")
+
+[sub_resource type="Resource" id="Resource_r1xa4"]
+script = ExtResource("1_65xem")
+
+[sub_resource type="Resource" id="Resource_u3s56"]
+script = ExtResource("1_65xem")
+
+[sub_resource type="Resource" id="Resource_nkslx"]
+script = ExtResource("2_6yue4")
+value = 532480
+
+[sub_resource type="Resource" id="Resource_jyq2y"]
+script = ExtResource("2_6yue4")
+value = 147456
+
+[sub_resource type="Resource" id="Resource_ygc6k"]
+script = ExtResource("2_6yue4")
+value = 134479872
+
+[sub_resource type="Resource" id="Resource_rtp7r"]
+script = ExtResource("2_6yue4")
+
+[sub_resource type="Resource" id="Resource_qwm8k"]
+script = ExtResource("2_6yue4")
+
+[sub_resource type="Resource" id="Resource_htfpl"]
+script = ExtResource("2_6yue4")
+value = 16
+
+[resource]
+script = ExtResource("3_suphi")
+ac = 6
+attack = Array[ExtResource("1_65xem")]([SubResource("Resource_kfv4n"), SubResource("Resource_asv6t"), SubResource("Resource_r1xa4"), SubResource("Resource_u3s56")])
+character = "A"
+colour = 27
+description = "A burning point of light, floating through the air and flickering with sinister purpose."
+flags_1 = SubResource("Resource_nkslx")
+flags_2 = SubResource("Resource_jyq2y")
+flags_3 = SubResource("Resource_ygc6k")
+flags_4 = SubResource("Resource_rtp7r")
+flags_5 = SubResource("Resource_qwm8k")
+flags_6 = SubResource("Resource_htfpl")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 2
+hit_dice_sides = 5
+level = 14
+max_num = 100
+experience = 23
+name = "Fire vampire"
+notice_range = 8
+rarity = 2
+sleep = 6
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Fire    "
+split_name_3 = "  vampire   "

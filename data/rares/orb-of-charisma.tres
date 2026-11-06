@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_phs0m"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_8w5vj"]
+
+[sub_resource type="Resource" id="Resource_8pml2"]
+script = ExtResource("1_phs0m")
+
+[sub_resource type="Resource" id="Resource_hagxl"]
+script = ExtResource("1_phs0m")
+value = 32
+
+[sub_resource type="Resource" id="Resource_r1y7e"]
+script = ExtResource("1_phs0m")
+value = 15728640
+
+[resource]
+script = ExtResource("2_8w5vj")
+cost = 1000
+flags_1 = SubResource("Resource_8pml2")
+flags_2 = SubResource("Resource_hagxl")
+flags_3 = SubResource("Resource_r1y7e")
+name = "of Charisma"
+id = 122

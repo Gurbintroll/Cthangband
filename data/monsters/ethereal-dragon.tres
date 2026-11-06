@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_vnoxx"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_do4j0"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_vkybh"]
+
+[sub_resource type="Resource" id="Resource_tybqb"]
+script = ExtResource("1_vnoxx")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_sntlg"]
+script = ExtResource("1_vnoxx")
+damage_dice = 4
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_2nc5x"]
+script = ExtResource("1_vnoxx")
+damage_dice = 6
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_11cmr"]
+script = ExtResource("1_vnoxx")
+
+[sub_resource type="Resource" id="Resource_72awp"]
+script = ExtResource("2_do4j0")
+value = 236979712
+
+[sub_resource type="Resource" id="Resource_m877x"]
+script = ExtResource("2_do4j0")
+value = 1314832
+
+[sub_resource type="Resource" id="Resource_0sex3"]
+script = ExtResource("2_do4j0")
+value = 3221225480
+
+[sub_resource type="Resource" id="Resource_6j184"]
+script = ExtResource("2_do4j0")
+value = 114688
+
+[sub_resource type="Resource" id="Resource_8427a"]
+script = ExtResource("2_do4j0")
+value = 805306368
+
+[sub_resource type="Resource" id="Resource_t6h1k"]
+script = ExtResource("2_do4j0")
+
+[resource]
+script = ExtResource("3_vkybh")
+ac = 100
+attack = Array[ExtResource("1_vnoxx")]([SubResource("Resource_tybqb"), SubResource("Resource_sntlg"), SubResource("Resource_2nc5x"), SubResource("Resource_11cmr")])
+character = "D"
+colour = 9
+description = "A huge dragon emanating from the elemental plains, the ethereal dragon is a master of light and dark. Its form disappears from sight as it cloaks itself in unearthly shadows."
+flags_1 = SubResource("Resource_72awp")
+flags_2 = SubResource("Resource_m877x")
+flags_3 = SubResource("Resource_0sex3")
+flags_4 = SubResource("Resource_6j184")
+flags_5 = SubResource("Resource_8427a")
+flags_6 = SubResource("Resource_t6h1k")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 21
+hit_dice_sides = 100
+level = 43
+max_num = 100
+experience = 11000
+name = "Ethereal dragon"
+notice_range = 25
+rarity = 2
+sleep = 15
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Ethereal  "
+split_name_3 = "   dragon   "

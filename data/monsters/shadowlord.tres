@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_oclcd"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ami01"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_8yqol"]
+
+[sub_resource type="Resource" id="Resource_mnmdt"]
+script = ExtResource("1_oclcd")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 26
+method = 1
+
+[sub_resource type="Resource" id="Resource_n350t"]
+script = ExtResource("1_oclcd")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 26
+method = 1
+
+[sub_resource type="Resource" id="Resource_xecfk"]
+script = ExtResource("1_oclcd")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 17
+method = 1
+
+[sub_resource type="Resource" id="Resource_n0ni7"]
+script = ExtResource("1_oclcd")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_kbh6w"]
+script = ExtResource("2_ami01")
+value = 236979712
+
+[sub_resource type="Resource" id="Resource_jhsg0"]
+script = ExtResource("2_ami01")
+value = 4456496
+
+[sub_resource type="Resource" id="Resource_s5cgo"]
+script = ExtResource("2_ami01")
+value = 3224895584
+
+[sub_resource type="Resource" id="Resource_p11sl"]
+script = ExtResource("2_ami01")
+value = 1
+
+[sub_resource type="Resource" id="Resource_mvfqa"]
+script = ExtResource("2_ami01")
+value = 3087010336
+
+[sub_resource type="Resource" id="Resource_jt68b"]
+script = ExtResource("2_ami01")
+value = 67113248
+
+[resource]
+script = ExtResource("3_8yqol")
+ac = 150
+attack = Array[ExtResource("1_oclcd")]([SubResource("Resource_mnmdt"), SubResource("Resource_n350t"), SubResource("Resource_xecfk"), SubResource("Resource_n0ni7")])
+character = "G"
+colour = 3
+description = "An aura of hatred, cowardice and falsehood surrounds you as this cloaked figure floats towards you."
+flags_1 = SubResource("Resource_kbh6w")
+flags_2 = SubResource("Resource_jhsg0")
+flags_3 = SubResource("Resource_s5cgo")
+flags_4 = SubResource("Resource_p11sl")
+flags_5 = SubResource("Resource_mvfqa")
+flags_6 = SubResource("Resource_jt68b")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 30
+hit_dice_sides = 100
+level = 62
+max_num = 100
+experience = 22500
+name = "Shadowlord"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Shadowlord "

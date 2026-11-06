@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0s12a"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0um0t"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1chu2"]
+
+[sub_resource type="Resource" id="Resource_hvxlt"]
+script = ExtResource("1_0s12a")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 21
+method = 17
+
+[sub_resource type="Resource" id="Resource_47g8j"]
+script = ExtResource("1_0s12a")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 21
+method = 17
+
+[sub_resource type="Resource" id="Resource_cupij"]
+script = ExtResource("1_0s12a")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 21
+method = 17
+
+[sub_resource type="Resource" id="Resource_00cgq"]
+script = ExtResource("1_0s12a")
+
+[sub_resource type="Resource" id="Resource_nus2o"]
+script = ExtResource("2_0um0t")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_e05o3"]
+script = ExtResource("2_0um0t")
+value = 65
+
+[sub_resource type="Resource" id="Resource_g4w8e"]
+script = ExtResource("2_0um0t")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_bgwnq"]
+script = ExtResource("2_0um0t")
+
+[sub_resource type="Resource" id="Resource_0ktj7"]
+script = ExtResource("2_0um0t")
+
+[sub_resource type="Resource" id="Resource_6gyo3"]
+script = ExtResource("2_0um0t")
+
+[resource]
+script = ExtResource("3_1chu2")
+ac = 1
+attack = Array[ExtResource("1_0s12a")]([SubResource("Resource_hvxlt"), SubResource("Resource_47g8j"), SubResource("Resource_cupij"), SubResource("Resource_00cgq")])
+character = ","
+colour = 26
+description = "Yum! It looks quite tasty."
+flags_1 = SubResource("Resource_nus2o")
+flags_2 = SubResource("Resource_e05o3")
+flags_3 = SubResource("Resource_g4w8e")
+flags_4 = SubResource("Resource_bgwnq")
+flags_5 = SubResource("Resource_0ktj7")
+flags_6 = SubResource("Resource_6gyo3")
+hit_dice = 1
+hit_dice_sides = 1
+level = 6
+max_num = 100
+experience = 15
+name = "Purple mushroom patch"
+notice_range = 2
+rarity = 2
+speed = 110
+split_name_1 = "   Purple   "
+split_name_2 = "  mushroom  "
+split_name_3 = "   patch    "

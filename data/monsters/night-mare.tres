@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_sa6n5"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_g4n1t"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_lt2jj"]
+
+[sub_resource type="Resource" id="Resource_y6fdn"]
+script = ExtResource("1_sa6n5")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_6r0ny"]
+script = ExtResource("1_sa6n5")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_8ytlg"]
+script = ExtResource("1_sa6n5")
+damage_dice = 3
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_kllq7"]
+script = ExtResource("1_sa6n5")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_svdpk"]
+script = ExtResource("2_g4n1t")
+value = 34603520
+
+[sub_resource type="Resource" id="Resource_op8fx"]
+script = ExtResource("2_g4n1t")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_ub4gm"]
+script = ExtResource("2_g4n1t")
+value = 3222798432
+
+[sub_resource type="Resource" id="Resource_j4q03"]
+script = ExtResource("2_g4n1t")
+
+[sub_resource type="Resource" id="Resource_vtb5r"]
+script = ExtResource("2_g4n1t")
+
+[sub_resource type="Resource" id="Resource_01mp6"]
+script = ExtResource("2_g4n1t")
+
+[resource]
+script = ExtResource("3_lt2jj")
+ac = 85
+attack = Array[ExtResource("1_sa6n5")]([SubResource("Resource_y6fdn"), SubResource("Resource_6r0ny"), SubResource("Resource_8ytlg"), SubResource("Resource_kllq7")])
+character = "q"
+colour = 2
+description = "A fearsome skeletal horse with glowing eyes, that watch you with little more than a hatred of all that lives."
+flags_1 = SubResource("Resource_svdpk")
+flags_2 = SubResource("Resource_op8fx")
+flags_3 = SubResource("Resource_ub4gm")
+flags_4 = SubResource("Resource_j4q03")
+flags_5 = SubResource("Resource_vtb5r")
+flags_6 = SubResource("Resource_01mp6")
+hit_dice = 15
+hit_dice_sides = 100
+level = 39
+max_num = 100
+experience = 2900
+name = "Night mare"
+notice_range = 30
+rarity = 3
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Night    "
+split_name_3 = "    mare    "

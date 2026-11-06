@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fsehc"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_b67le"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_u1qmp"]
+
+[sub_resource type="Resource" id="Resource_n6r1q"]
+script = ExtResource("1_fsehc")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 17
+method = 9
+
+[sub_resource type="Resource" id="Resource_7ch14"]
+script = ExtResource("1_fsehc")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 16
+method = 2
+
+[sub_resource type="Resource" id="Resource_1l6kq"]
+script = ExtResource("1_fsehc")
+
+[sub_resource type="Resource" id="Resource_hclm2"]
+script = ExtResource("1_fsehc")
+
+[sub_resource type="Resource" id="Resource_2bqlj"]
+script = ExtResource("2_b67le")
+value = 6292992
+
+[sub_resource type="Resource" id="Resource_sehwq"]
+script = ExtResource("2_b67le")
+value = 208896
+
+[sub_resource type="Resource" id="Resource_ogudf"]
+script = ExtResource("2_b67le")
+value = 3222536272
+
+[sub_resource type="Resource" id="Resource_h5d0o"]
+script = ExtResource("2_b67le")
+
+[sub_resource type="Resource" id="Resource_1qp5c"]
+script = ExtResource("2_b67le")
+value = 805568512
+
+[sub_resource type="Resource" id="Resource_b5x74"]
+script = ExtResource("2_b67le")
+
+[resource]
+script = ExtResource("3_u1qmp")
+ac = 50
+attack = Array[ExtResource("1_fsehc")]([SubResource("Resource_n6r1q"), SubResource("Resource_7ch14"), SubResource("Resource_1l6kq"), SubResource("Resource_hclm2")])
+character = "U"
+colour = 26
+description = "It is a black, horned humanoid with wings."
+flags_1 = SubResource("Resource_2bqlj")
+flags_2 = SubResource("Resource_sehwq")
+flags_3 = SubResource("Resource_ogudf")
+flags_4 = SubResource("Resource_h5d0o")
+flags_5 = SubResource("Resource_1qp5c")
+flags_6 = SubResource("Resource_b5x74")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 24
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 1000
+name = "Nightgaunt"
+notice_range = 20
+rarity = 2
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = " Nightgaunt "

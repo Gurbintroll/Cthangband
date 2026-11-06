@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_w6bkl"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_8epmc"]
+
+[sub_resource type="Resource" id="Resource_0tmd4"]
+script = ExtResource("1_w6bkl")
+
+[sub_resource type="Resource" id="Resource_b56lx"]
+script = ExtResource("1_w6bkl")
+
+[sub_resource type="Resource" id="Resource_nsvbw"]
+script = ExtResource("1_w6bkl")
+value = 15728640
+
+[resource]
+script = ExtResource("2_8epmc")
+chance = Array[int]([8, 0, 0, 0])
+character = "?"
+colour = 4
+cost = 10000
+easy_know = true
+flags_1 = SubResource("Resource_0tmd4")
+flags_2 = SubResource("Resource_b56lx")
+flags_3 = SubResource("Resource_nsvbw")
+has_flavour = true
+item_category = 70
+level = 100
+locale = Array[int]([100, 0, 0, 0])
+name = "Chaos"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 50
+weight = 5
+filename = "Scroll:Chaos"

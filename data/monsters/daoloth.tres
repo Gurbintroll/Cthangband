@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://ciu2481m4ybt5"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_0kklg"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_p8nxs"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_hl5o5"]
+
+[sub_resource type="Resource" id="Resource_jvd7w"]
+script = ExtResource("1_0kklg")
+damage_dice = 6
+damage_dice_sides = 8
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_0f6b6"]
+script = ExtResource("1_0kklg")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 9
+method = 1
+
+[sub_resource type="Resource" id="Resource_jql4v"]
+script = ExtResource("1_0kklg")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_jgks1"]
+script = ExtResource("1_0kklg")
+damage_dice = 10
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4mq3u"]
+script = ExtResource("2_p8nxs")
+value = 471877121
+
+[sub_resource type="Resource" id="Resource_jqe2u"]
+script = ExtResource("2_p8nxs")
+value = 5484554
+
+[sub_resource type="Resource" id="Resource_r8pkr"]
+script = ExtResource("2_p8nxs")
+value = 272566528
+
+[sub_resource type="Resource" id="Resource_r6yc5"]
+script = ExtResource("2_p8nxs")
+
+[sub_resource type="Resource" id="Resource_boc5w"]
+script = ExtResource("2_p8nxs")
+value = 276824064
+
+[sub_resource type="Resource" id="Resource_hdda5"]
+script = ExtResource("2_p8nxs")
+value = 65792
+
+[resource]
+script = ExtResource("3_hl5o5")
+ac = 180
+attack = Array[ExtResource("1_0kklg")]([SubResource("Resource_jvd7w"), SubResource("Resource_0f6b6"), SubResource("Resource_jql4v"), SubResource("Resource_jgks1")])
+character = "X"
+colour = 12
+description = "'Not shapeless, but so complex that the eye could recognise no discernable shape.' J.Ramsey Campbell - 'The Render of the Veils'."
+flags_1 = SubResource("Resource_4mq3u")
+flags_2 = SubResource("Resource_jqe2u")
+flags_3 = SubResource("Resource_r8pkr")
+flags_4 = SubResource("Resource_r6yc5")
+flags_5 = SubResource("Resource_boc5w")
+flags_6 = SubResource("Resource_hdda5")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 75
+hit_dice_sides = 100
+level = 59
+max_num = 1
+experience = 35000
+name = "Daoloth"
+notice_range = 40
+rarity = 3
+sleep = 10
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Daoloth   "

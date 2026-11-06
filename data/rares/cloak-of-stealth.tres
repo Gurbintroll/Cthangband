@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_psj56"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_2kq8q"]
+
+[sub_resource type="Resource" id="Resource_0m7ed"]
+script = ExtResource("1_psj56")
+value = 256
+
+[sub_resource type="Resource" id="Resource_ebqon"]
+script = ExtResource("1_psj56")
+
+[sub_resource type="Resource" id="Resource_l8ipu"]
+script = ExtResource("1_psj56")
+
+[resource]
+script = ExtResource("2_2kq8q")
+cost = 500
+flags_1 = SubResource("Resource_0m7ed")
+flags_2 = SubResource("Resource_ebqon")
+flags_3 = SubResource("Resource_l8ipu")
+max_type_specifc_value = 3
+name = "of Stealth"
+rating = 10
+slot = 31
+id = 33

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_x0gqi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_sho5f"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_q3c0h"]
+
+[sub_resource type="Resource" id="Resource_g5fbf"]
+script = ExtResource("1_x0gqi")
+
+[sub_resource type="Resource" id="Resource_4icxj"]
+script = ExtResource("1_x0gqi")
+
+[sub_resource type="Resource" id="Resource_aqoqw"]
+script = ExtResource("1_x0gqi")
+
+[sub_resource type="Resource" id="Resource_ewqg5"]
+script = ExtResource("1_x0gqi")
+
+[sub_resource type="Resource" id="Resource_ibj7m"]
+script = ExtResource("2_sho5f")
+value = 277022240
+
+[sub_resource type="Resource" id="Resource_s7b5l"]
+script = ExtResource("2_sho5f")
+value = 96
+
+[sub_resource type="Resource" id="Resource_74yb1"]
+script = ExtResource("2_sho5f")
+value = 3497738304
+
+[sub_resource type="Resource" id="Resource_kyda4"]
+script = ExtResource("2_sho5f")
+value = 15360
+
+[sub_resource type="Resource" id="Resource_7v5cs"]
+script = ExtResource("2_sho5f")
+value = 12648464
+
+[sub_resource type="Resource" id="Resource_6wmh1"]
+script = ExtResource("2_sho5f")
+
+[resource]
+script = ExtResource("3_q3c0h")
+ac = 150
+attack = Array[ExtResource("1_x0gqi")]([SubResource("Resource_g5fbf"), SubResource("Resource_4icxj"), SubResource("Resource_aqoqw"), SubResource("Resource_ewqg5")])
+character = "?"
+colour = 16
+description = "A sentient arcane tome casting spells with malevolent intent."
+flags_1 = SubResource("Resource_ibj7m")
+flags_2 = SubResource("Resource_s7b5l")
+flags_3 = SubResource("Resource_74yb1")
+flags_4 = SubResource("Resource_kyda4")
+flags_5 = SubResource("Resource_7v5cs")
+flags_6 = SubResource("Resource_6wmh1")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 50
+hit_dice_sides = 15
+level = 36
+max_num = 100
+experience = 1500
+name = "The King in Yellow"
+notice_range = 20
+rarity = 4
+sleep = 15
+speed = 120
+split_name_1 = "    The     "
+split_name_2 = "  King in   "
+split_name_3 = "   Yellow   "

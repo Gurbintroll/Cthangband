@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_x1fuv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_wqbf8"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_0l7in"]
+
+[sub_resource type="Resource" id="Resource_h3mar"]
+script = ExtResource("1_x1fuv")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_su6c4"]
+script = ExtResource("1_x1fuv")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3qwri"]
+script = ExtResource("1_x1fuv")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_wgn2y"]
+script = ExtResource("1_x1fuv")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 27
+method = 6
+
+[sub_resource type="Resource" id="Resource_2lukq"]
+script = ExtResource("2_wqbf8")
+value = 138413568
+
+[sub_resource type="Resource" id="Resource_kpgwu"]
+script = ExtResource("2_wqbf8")
+value = 197152
+
+[sub_resource type="Resource" id="Resource_g3tvl"]
+script = ExtResource("2_wqbf8")
+value = 3224899680
+
+[sub_resource type="Resource" id="Resource_icv83"]
+script = ExtResource("2_wqbf8")
+
+[sub_resource type="Resource" id="Resource_62fry"]
+script = ExtResource("2_wqbf8")
+value = 2552285696
+
+[sub_resource type="Resource" id="Resource_aj4dg"]
+script = ExtResource("2_wqbf8")
+value = 4096
+
+[resource]
+script = ExtResource("3_0l7in")
+ac = 70
+attack = Array[ExtResource("1_x1fuv")]([SubResource("Resource_h3mar"), SubResource("Resource_su6c4"), SubResource("Resource_3qwri"), SubResource("Resource_wgn2y")])
+character = "V"
+colour = 3
+description = "A foul wind chills your bones as this ghastly figure approaches."
+flags_1 = SubResource("Resource_2lukq")
+flags_2 = SubResource("Resource_kpgwu")
+flags_3 = SubResource("Resource_g3tvl")
+flags_4 = SubResource("Resource_icv83")
+flags_5 = SubResource("Resource_62fry")
+flags_6 = SubResource("Resource_aj4dg")
+freq_innate = 7
+freq_spell = 7
+hit_dice = 16
+hit_dice_sides = 100
+level = 39
+max_num = 100
+experience = 1800
+name = "Vampire lord"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Vampire   "
+split_name_3 = "    lord    "

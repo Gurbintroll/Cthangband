@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_5h3s2"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_hofom"]
+
+[sub_resource type="Resource" id="Resource_700fj"]
+script = ExtResource("1_5h3s2")
+
+[sub_resource type="Resource" id="Resource_dnx3n"]
+script = ExtResource("1_5h3s2")
+
+[sub_resource type="Resource" id="Resource_36wbu"]
+script = ExtResource("1_5h3s2")
+value = 16640
+
+[resource]
+script = ExtResource("2_hofom")
+chance = Array[int]([1, 0, 0, 0])
+character = "="
+colour = 18
+cost = 340
+easy_know = true
+flags_1 = SubResource("Resource_700fj")
+flags_2 = SubResource("Resource_dnx3n")
+flags_3 = SubResource("Resource_36wbu")
+has_flavour = true
+item_category = 45
+level = 30
+locale = Array[int]([30, 0, 0, 0])
+name = "See Invisible"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 22
+weight = 2
+filename = "Ring:See Invisible"

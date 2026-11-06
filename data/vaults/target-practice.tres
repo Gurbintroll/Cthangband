@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_kdgnu"]
+
+[resource]
+script = ExtResource("1_kdgnu")
+category = 8
+height = 20
+name = "Target Practice"
+rating = 20
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%X@........................................................#%%X@XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.#%%X@#89XXXXX...9&..@.9....&....##..........#....#@,,,,,,,,X.#%%X@X9XX,,,XX......@..........XX..........XX....X@....XXX.X.#%%X@XXX,XXX,XX....*.,.&....*.XX***********X.....X@..XXX&+.X.#%%X@XX,XX@XX,X.........,9...XX&&&&&&&&&&&&X@@@@@X@XXX**&+.X.#%%X@XX,X999X,X&.@..,.......XXXXXXXXXXXXXXXXXX+XXXXXX*XXXX.X.#%%X@XX,#989X,#.....9......XX99,,,,,,,,,,#,,,,,,,XXX&*&@@X.#.#%%X@XX,#989X,#.......&..@.XX99,,,,,,,,,,#,,,,,,,XXX&*&@@X.#.#%%X@XX,X999X,X...&.&.......XXXXXXXXXXXXXXXXXX+XXXXXX*XXXX.X.#%%X@XX,XX@XX,X..,...........XX&&&&&&&&&&&&X@@@@@X@XXX**&+.X.#%%X@XXX,XXX,XX......@..@.....XX***********X.....X@..XXX&+.X.#%%X@X9XX,,,XX.....9...........XX..........XX....X@....XXX.X.#%%X@#89XXXXX..&..........9.,...##..........#....#@,,,,,,,,X.#%%X@XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.#%%X@........................................................#%%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+width = 61

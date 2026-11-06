@@ -1,0 +1,1 @@
+find . -name "*.gd" -type f -print0 | wc -l --files0-from=-

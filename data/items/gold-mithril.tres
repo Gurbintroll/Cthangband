@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_364qn"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_818nn"]
+
+[sub_resource type="Resource" id="Resource_2d1lu"]
+script = ExtResource("1_364qn")
+
+[sub_resource type="Resource" id="Resource_b15cg"]
+script = ExtResource("1_364qn")
+
+[sub_resource type="Resource" id="Resource_a6823"]
+script = ExtResource("1_364qn")
+
+[resource]
+script = ExtResource("2_818nn")
+chance = Array[int]([0, 0, 0, 0])
+character = "$"
+colour = 5
+cost = 40
+flags_1 = SubResource("Resource_2d1lu")
+flags_2 = SubResource("Resource_b15cg")
+flags_3 = SubResource("Resource_a6823")
+flavour_aware = true
+item_category = 100
+level = 1
+locale = Array[int]([0, 0, 0, 0])
+name = "mithril"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 17
+filename = "Gold:mithril"

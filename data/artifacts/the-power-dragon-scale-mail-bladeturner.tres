@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_1qpb2"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_ewfuj"]
+
+[sub_resource type="Resource" id="Resource_uac3q"]
+script = ExtResource("1_1qpb2")
+
+[sub_resource type="Resource" id="Resource_b0yy2"]
+script = ExtResource("1_1qpb2")
+value = 3755442176
+
+[sub_resource type="Resource" id="Resource_mewxw"]
+script = ExtResource("1_1qpb2")
+value = 32641024
+
+[resource]
+script = ExtResource("2_ewfuj")
+flags_1 = SubResource("Resource_uac3q")
+flags_2 = SubResource("Resource_b0yy2")
+flags_3 = SubResource("Resource_mewxw")
+ac = 50
+cost = 500000
+damage_dice = 2
+damage_dice_sides = 4
+item_category = 38
+item_sub_category = 30
+level = 95
+name = "*Bladeturner*"
+rarity = 3
+to_ac = 35
+to_hit = -8
+weight = 600
+id = 17

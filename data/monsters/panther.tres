@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qy0ut"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_mvxa3"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_yf3lo"]
+
+[sub_resource type="Resource" id="Resource_c17tu"]
+script = ExtResource("1_qy0ut")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_tm0bp"]
+script = ExtResource("1_qy0ut")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_inae5"]
+script = ExtResource("1_qy0ut")
+
+[sub_resource type="Resource" id="Resource_pxrs8"]
+script = ExtResource("1_qy0ut")
+
+[sub_resource type="Resource" id="Resource_3qgrk"]
+script = ExtResource("2_mvxa3")
+
+[sub_resource type="Resource" id="Resource_hkb0j"]
+script = ExtResource("2_mvxa3")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_cv5hc"]
+script = ExtResource("2_mvxa3")
+value = 128
+
+[sub_resource type="Resource" id="Resource_ne350"]
+script = ExtResource("2_mvxa3")
+
+[sub_resource type="Resource" id="Resource_xivm2"]
+script = ExtResource("2_mvxa3")
+
+[sub_resource type="Resource" id="Resource_gwe4i"]
+script = ExtResource("2_mvxa3")
+
+[resource]
+script = ExtResource("3_yf3lo")
+ac = 30
+attack = Array[ExtResource("1_qy0ut")]([SubResource("Resource_c17tu"), SubResource("Resource_tm0bp"), SubResource("Resource_inae5"), SubResource("Resource_pxrs8")])
+character = "f"
+colour = 2
+description = "A large black cat, stalking you with intent. It thinks you're its next meal."
+flags_1 = SubResource("Resource_3qgrk")
+flags_2 = SubResource("Resource_hkb0j")
+flags_3 = SubResource("Resource_cv5hc")
+flags_4 = SubResource("Resource_ne350")
+flags_5 = SubResource("Resource_xivm2")
+flags_6 = SubResource("Resource_gwe4i")
+hit_dice = 10
+hit_dice_sides = 8
+level = 10
+max_num = 100
+experience = 25
+name = "Panther"
+notice_range = 40
+rarity = 2
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Panther   "

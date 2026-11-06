@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_xkv82"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_phwy7"]
+
+[sub_resource type="Resource" id="Resource_c5f1r"]
+script = ExtResource("1_xkv82")
+
+[sub_resource type="Resource" id="Resource_y77jj"]
+script = ExtResource("1_xkv82")
+
+[sub_resource type="Resource" id="Resource_7q07t"]
+script = ExtResource("1_xkv82")
+
+[resource]
+script = ExtResource("2_phwy7")
+ac = 5
+chance = Array[int]([1, 0, 0, 0])
+character = "]"
+colour = 23
+cost = 75
+damage_dice = 1
+damage_dice_sides = 3
+flags_1 = SubResource("Resource_c5f1r")
+flags_2 = SubResource("Resource_y77jj")
+flags_3 = SubResource("Resource_7q07t")
+flavour_aware = true
+item_category = 32
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "& Iron Helm~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 5
+weight = 75
+filename = "Helm:Iron Helm"

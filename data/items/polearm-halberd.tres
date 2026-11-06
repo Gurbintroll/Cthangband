@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_6x3dy"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_ry1md"]
+
+[sub_resource type="Resource" id="Resource_hrlvv"]
+script = ExtResource("1_6x3dy")
+
+[sub_resource type="Resource" id="Resource_lucau"]
+script = ExtResource("1_6x3dy")
+
+[sub_resource type="Resource" id="Resource_rgq1q"]
+script = ExtResource("1_6x3dy")
+value = 1024
+
+[resource]
+script = ExtResource("2_ry1md")
+chance = Array[int]([1, 0, 0, 0])
+character = "/"
+colour = 23
+cost = 430
+damage_dice = 3
+damage_dice_sides = 5
+flags_1 = SubResource("Resource_hrlvv")
+flags_2 = SubResource("Resource_lucau")
+flags_3 = SubResource("Resource_rgq1q")
+flavour_aware = true
+item_category = 22
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "& Halberd~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 15
+weight = 190
+filename = "Polearm:Halberd"

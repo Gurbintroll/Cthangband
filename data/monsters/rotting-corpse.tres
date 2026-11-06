@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_frkpj"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_0dmjb"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_baydj"]
+
+[sub_resource type="Resource" id="Resource_ulfgb"]
+script = ExtResource("1_frkpj")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_vjnp6"]
+script = ExtResource("1_frkpj")
+damage_dice = 1
+damage_dice_sides = 3
+effect = 2
+method = 5
+
+[sub_resource type="Resource" id="Resource_vs484"]
+script = ExtResource("1_frkpj")
+
+[sub_resource type="Resource" id="Resource_ilu28"]
+script = ExtResource("1_frkpj")
+
+[sub_resource type="Resource" id="Resource_dkc8i"]
+script = ExtResource("2_0dmjb")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_f0rut"]
+script = ExtResource("2_0dmjb")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_dyanq"]
+script = ExtResource("2_0dmjb")
+value = 3491233888
+
+[sub_resource type="Resource" id="Resource_isnpc"]
+script = ExtResource("2_0dmjb")
+
+[sub_resource type="Resource" id="Resource_usq7u"]
+script = ExtResource("2_0dmjb")
+
+[sub_resource type="Resource" id="Resource_buxal"]
+script = ExtResource("2_0dmjb")
+
+[resource]
+script = ExtResource("3_baydj")
+ac = 20
+attack = Array[ExtResource("1_frkpj")]([SubResource("Resource_ulfgb"), SubResource("Resource_vjnp6"), SubResource("Resource_vs484"), SubResource("Resource_ilu28")])
+character = "z"
+colour = 23
+description = "Corpses awakened from their sleep by dark sorceries. "
+flags_1 = SubResource("Resource_dkc8i")
+flags_2 = SubResource("Resource_f0rut")
+flags_3 = SubResource("Resource_dyanq")
+flags_4 = SubResource("Resource_isnpc")
+flags_5 = SubResource("Resource_usq7u")
+flags_6 = SubResource("Resource_buxal")
+hit_dice = 8
+hit_dice_sides = 8
+level = 7
+max_num = 100
+experience = 15
+name = "Rotting corpse"
+notice_range = 20
+rarity = 1
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Rotting   "
+split_name_3 = "   corpse   "

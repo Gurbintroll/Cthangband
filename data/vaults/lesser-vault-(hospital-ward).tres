@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VaultType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/vault_type.gd" id="1_6itpn"]
+
+[resource]
+script = ExtResource("1_6itpn")
+category = 7
+height = 14
+name = "Lesser vault (hospital ward)"
+rating = 5
+text = "%%%%%%%%%%%%%%%%%%%%%..................%%.################.%%.#,,#,,#,,#,,#,,#.%%.#,,#,,#,,#,,#,,#.%%.##+##+##+##+##+#.%%.+..............+.%%.+..............+.%%.#+##+##+##+##+##.%%.#,,#,,#,,#,,#,,#.%%.#,,#,,#,,#,,#,,#.%%.################.%%..................%%%%%%%%%%%%%%%%%%%%%"
+width = 20

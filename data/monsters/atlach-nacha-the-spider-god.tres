@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bfhpnl52y3bq4"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_3tvva"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_2i0eu"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_xmtwc"]
+
+[sub_resource type="Resource" id="Resource_0icb5"]
+script = ExtResource("1_3tvva")
+damage_dice = 3
+damage_dice_sides = 9
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_8f5bo"]
+script = ExtResource("1_3tvva")
+damage_dice = 3
+damage_dice_sides = 9
+effect = 17
+method = 6
+
+[sub_resource type="Resource" id="Resource_fb4u7"]
+script = ExtResource("1_3tvva")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 2
+method = 7
+
+[sub_resource type="Resource" id="Resource_jlxph"]
+script = ExtResource("1_3tvva")
+damage_dice = 2
+damage_dice_sides = 5
+effect = 17
+method = 7
+
+[sub_resource type="Resource" id="Resource_g354d"]
+script = ExtResource("2_2i0eu")
+value = 404751873
+
+[sub_resource type="Resource" id="Resource_gvwfc"]
+script = ExtResource("2_2i0eu")
+value = 1187842
+
+[sub_resource type="Resource" id="Resource_3ou5h"]
+script = ExtResource("2_2i0eu")
+value = 3224377792
+
+[sub_resource type="Resource" id="Resource_oyv06"]
+script = ExtResource("2_2i0eu")
+value = 36864
+
+[sub_resource type="Resource" id="Resource_wbds1"]
+script = ExtResource("2_2i0eu")
+value = 3087008000
+
+[sub_resource type="Resource" id="Resource_o1yc5"]
+script = ExtResource("2_2i0eu")
+value = 18878464
+
+[resource]
+script = ExtResource("3_xmtwc")
+ac = 160
+attack = Array[ExtResource("1_3tvva")]([SubResource("Resource_0icb5"), SubResource("Resource_8f5bo"), SubResource("Resource_fb4u7"), SubResource("Resource_jlxph")])
+character = "S"
+colour = 12
+description = "'...there was a kind of face on the squat ebon body, low down amid the several-jointed legs. The face peered up with a weird expression of doubt and inquiry...'"
+flags_1 = SubResource("Resource_g354d")
+flags_2 = SubResource("Resource_gvwfc")
+flags_3 = SubResource("Resource_3ou5h")
+flags_4 = SubResource("Resource_oyv06")
+flags_5 = SubResource("Resource_wbds1")
+flags_6 = SubResource("Resource_o1yc5")
+freq_innate = 3
+freq_spell = 3
+hit_dice = 130
+hit_dice_sides = 100
+level = 75
+max_num = 1
+experience = 35000
+name = "Atlach-Nacha, the Spider God"
+notice_range = 8
+rarity = 1
+sleep = 80
+speed = 120
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "Atlach-Nacha"

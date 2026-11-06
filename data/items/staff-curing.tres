@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_2ryt4"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_kmppd"]
+
+[sub_resource type="Resource" id="Resource_wwegt"]
+script = ExtResource("1_2ryt4")
+
+[sub_resource type="Resource" id="Resource_0n4qi"]
+script = ExtResource("1_2ryt4")
+
+[sub_resource type="Resource" id="Resource_l0jgb"]
+script = ExtResource("1_2ryt4")
+
+[resource]
+script = ExtResource("2_kmppd")
+chance = Array[int]([1, 0, 0, 0])
+character = "_"
+colour = 6
+cost = 1000
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_wwegt")
+flags_2 = SubResource("Resource_0n4qi")
+flags_3 = SubResource("Resource_l0jgb")
+has_flavour = true
+item_category = 55
+level = 25
+locale = Array[int]([25, 0, 0, 0])
+name = "Curing"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 17
+weight = 50
+filename = "Staff:Curing"

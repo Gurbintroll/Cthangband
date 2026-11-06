@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0n77v"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_5hutm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_78w7w"]
+
+[sub_resource type="Resource" id="Resource_h0evx"]
+script = ExtResource("1_0n77v")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_e6eto"]
+script = ExtResource("1_0n77v")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_cxujb"]
+script = ExtResource("1_0n77v")
+
+[sub_resource type="Resource" id="Resource_njmlh"]
+script = ExtResource("1_0n77v")
+
+[sub_resource type="Resource" id="Resource_4mpex"]
+script = ExtResource("2_5hutm")
+value = 16777220
+
+[sub_resource type="Resource" id="Resource_3ewbb"]
+script = ExtResource("2_5hutm")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_7l03g"]
+script = ExtResource("2_5hutm")
+value = 64
+
+[sub_resource type="Resource" id="Resource_uh1wc"]
+script = ExtResource("2_5hutm")
+
+[sub_resource type="Resource" id="Resource_djg60"]
+script = ExtResource("2_5hutm")
+
+[sub_resource type="Resource" id="Resource_2u3qv"]
+script = ExtResource("2_5hutm")
+
+[resource]
+script = ExtResource("3_78w7w")
+ac = 24
+attack = Array[ExtResource("1_0n77v")]([SubResource("Resource_h0evx"), SubResource("Resource_e6eto"), SubResource("Resource_cxujb"), SubResource("Resource_njmlh")])
+character = "p"
+colour = 2
+description = "He is after your cash!"
+flags_1 = SubResource("Resource_4mpex")
+flags_2 = SubResource("Resource_3ewbb")
+flags_3 = SubResource("Resource_7l03g")
+flags_4 = SubResource("Resource_uh1wc")
+flags_5 = SubResource("Resource_djg60")
+flags_6 = SubResource("Resource_2u3qv")
+hit_dice = 8
+hit_dice_sides = 8
+level = 8
+max_num = 100
+experience = 26
+name = "Bandit"
+notice_range = 20
+rarity = 2
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Bandit   "

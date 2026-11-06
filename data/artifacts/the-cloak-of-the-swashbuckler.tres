@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_efwtw"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_pfwc3"]
+
+[sub_resource type="Resource" id="Resource_fy680"]
+script = ExtResource("1_efwtw")
+value = 40
+
+[sub_resource type="Resource" id="Resource_8judb"]
+script = ExtResource("1_efwtw")
+value = 344064
+
+[sub_resource type="Resource" id="Resource_ndcou"]
+script = ExtResource("1_efwtw")
+value = 32506368
+
+[resource]
+script = ExtResource("2_pfwc3")
+flags_1 = SubResource("Resource_fy680")
+flags_2 = SubResource("Resource_8judb")
+flags_3 = SubResource("Resource_ndcou")
+ac = 1
+cost = 35000
+item_category = 35
+item_sub_category = 1
+level = 10
+name = "of the *Swashbuckler*"
+type_specific_value = 3
+rarity = 90
+to_ac = 18
+weight = 10
+id = 46

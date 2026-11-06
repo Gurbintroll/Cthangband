@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_qghv4"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_a8jby"]
+
+[sub_resource type="Resource" id="Resource_wu4de"]
+script = ExtResource("1_qghv4")
+value = 2048
+
+[sub_resource type="Resource" id="Resource_ko4t5"]
+script = ExtResource("1_qghv4")
+
+[sub_resource type="Resource" id="Resource_0jmod"]
+script = ExtResource("1_qghv4")
+value = 1024
+
+[resource]
+script = ExtResource("2_a8jby")
+chance = Array[int]([4, 0, 0, 0])
+character = "\\"
+colour = 8
+cost = 100
+damage_dice = 1
+damage_dice_sides = 2
+flags_1 = SubResource("Resource_wu4de")
+flags_2 = SubResource("Resource_ko4t5")
+flags_3 = SubResource("Resource_0jmod")
+flavour_aware = true
+item_category = 20
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "& Gnomish Shovel~"
+type_specific_value = 2
+stompable = Array[bool]([true, false, false, false])
+sub_category = 2
+weight = 60
+filename = "Digging:Gnomish Shovel"

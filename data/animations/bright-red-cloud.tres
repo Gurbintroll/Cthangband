@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_gca4d"]
+
+[resource]
+script = ExtResource("1_gca4d")
+name = "BrightRedCloud"
+colour = 13
+alternate_colour = 13
+sequence = "+*+*+*+"

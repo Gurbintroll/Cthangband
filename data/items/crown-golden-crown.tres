@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cla7u"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_a46rn"]
+
+[sub_resource type="Resource" id="Resource_ihh6b"]
+script = ExtResource("1_cla7u")
+
+[sub_resource type="Resource" id="Resource_gd5oc"]
+script = ExtResource("1_cla7u")
+
+[sub_resource type="Resource" id="Resource_603qc"]
+script = ExtResource("1_cla7u")
+value = 1048576
+
+[resource]
+script = ExtResource("2_a46rn")
+chance = Array[int]([1, 0, 0, 0])
+character = "]"
+colour = 21
+cost = 1000
+damage_dice = 1
+damage_dice_sides = 1
+flags_1 = SubResource("Resource_ihh6b")
+flags_2 = SubResource("Resource_gd5oc")
+flags_3 = SubResource("Resource_603qc")
+flavour_aware = true
+item_category = 33
+level = 45
+locale = Array[int]([45, 0, 0, 0])
+name = "& Golden Crown~"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 11
+weight = 30
+filename = "Crown:Golden Crown"

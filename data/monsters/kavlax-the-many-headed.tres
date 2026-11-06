@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://bhdtoc1ku0xnm"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_2uwpa"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_wvelb"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_85qig"]
+
+[sub_resource type="Resource" id="Resource_ioshy"]
+script = ExtResource("1_2uwpa")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_dbj3x"]
+script = ExtResource("1_2uwpa")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_fvyx4"]
+script = ExtResource("1_2uwpa")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_kng6m"]
+script = ExtResource("1_2uwpa")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_urcsm"]
+script = ExtResource("2_wvelb")
+value = 404752005
+
+[sub_resource type="Resource" id="Resource_ilwoi"]
+script = ExtResource("2_wvelb")
+value = 202752
+
+[sub_resource type="Resource" id="Resource_8fsox"]
+script = ExtResource("2_wvelb")
+value = 3255763016
+
+[sub_resource type="Resource" id="Resource_v38yr"]
+script = ExtResource("2_wvelb")
+value = 26414848
+
+[sub_resource type="Resource" id="Resource_vc540"]
+script = ExtResource("2_wvelb")
+
+[sub_resource type="Resource" id="Resource_15hiq"]
+script = ExtResource("2_wvelb")
+
+[resource]
+script = ExtResource("3_85qig")
+ac = 85
+attack = Array[ExtResource("1_2uwpa")]([SubResource("Resource_ioshy"), SubResource("Resource_dbj3x"), SubResource("Resource_fvyx4"), SubResource("Resource_kng6m")])
+character = "d"
+colour = 12
+description = "A large dragon with a selection of heads, all shouting and arguing as they look for prey, but each with its own deadly breath weapon."
+flags_1 = SubResource("Resource_urcsm")
+flags_2 = SubResource("Resource_ilwoi")
+flags_3 = SubResource("Resource_8fsox")
+flags_4 = SubResource("Resource_v38yr")
+flags_5 = SubResource("Resource_vc540")
+flags_6 = SubResource("Resource_15hiq")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 13
+hit_dice_sides = 100
+level = 39
+max_num = 1
+experience = 3000
+name = "Kavlax the Many-Headed"
+notice_range = 20
+rarity = 3
+sleep = 30
+speed = 120
+split_name_1 = "   Kavlax   "
+split_name_2 = "    the     "
+split_name_3 = "Many-Headed "

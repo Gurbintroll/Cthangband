@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_4maqb"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_synys"]
+
+[sub_resource type="Resource" id="Resource_l8kai"]
+script = ExtResource("1_4maqb")
+value = 3276808
+
+[sub_resource type="Resource" id="Resource_0yp2d"]
+script = ExtResource("1_4maqb")
+
+[sub_resource type="Resource" id="Resource_xlr0m"]
+script = ExtResource("1_4maqb")
+value = 15746560
+
+[resource]
+script = ExtResource("2_synys")
+flags_1 = SubResource("Resource_l8kai")
+flags_2 = SubResource("Resource_0yp2d")
+flags_3 = SubResource("Resource_xlr0m")
+cost = 55000
+damage_dice = 3
+damage_dice_sides = 8
+item_category = 22
+item_sub_category = 20
+level = 20
+name = "*Skewer*"
+type_specific_value = 2
+rarity = 23
+to_hit = 3
+to_damage = 21
+weight = 360
+id = 100

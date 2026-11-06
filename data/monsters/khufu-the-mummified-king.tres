@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://idsig1qehs5b"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_008pt"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_8oyhr"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_6cgih"]
+
+[sub_resource type="Resource" id="Resource_ydtt2"]
+script = ExtResource("1_008pt")
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_keg04"]
+script = ExtResource("1_008pt")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_1f7f3"]
+script = ExtResource("1_008pt")
+effect = 21
+method = 5
+
+[sub_resource type="Resource" id="Resource_ep357"]
+script = ExtResource("1_008pt")
+effect = 21
+method = 5
+
+[sub_resource type="Resource" id="Resource_nli8m"]
+script = ExtResource("2_8oyhr")
+value = 278971141
+
+[sub_resource type="Resource" id="Resource_4n4dn"]
+script = ExtResource("2_8oyhr")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_ks0sb"]
+script = ExtResource("2_8oyhr")
+value = 272105568
+
+[sub_resource type="Resource" id="Resource_lxh0q"]
+script = ExtResource("2_8oyhr")
+
+[sub_resource type="Resource" id="Resource_60huf"]
+script = ExtResource("2_8oyhr")
+value = 1207975936
+
+[sub_resource type="Resource" id="Resource_t0fhc"]
+script = ExtResource("2_8oyhr")
+value = 67186688
+
+[resource]
+script = ExtResource("3_6cgih")
+ac = 40
+attack = Array[ExtResource("1_008pt")]([SubResource("Resource_ydtt2"), SubResource("Resource_keg04"), SubResource("Resource_1f7f3"), SubResource("Resource_ep357")])
+character = "z"
+colour = 12
+description = "He is out to have a revenge on you who have desecrated his tomb."
+flags_1 = SubResource("Resource_nli8m")
+flags_2 = SubResource("Resource_4n4dn")
+flags_3 = SubResource("Resource_ks0sb")
+flags_4 = SubResource("Resource_lxh0q")
+flags_5 = SubResource("Resource_60huf")
+flags_6 = SubResource("Resource_t0fhc")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 85
+hit_dice_sides = 11
+level = 26
+max_num = 1
+experience = 500
+name = "Khufu the mummified King"
+notice_range = 20
+rarity = 4
+sleep = 40
+speed = 110
+split_name_1 = " Khufu the  "
+split_name_2 = " mummified  "
+split_name_3 = "    King    "

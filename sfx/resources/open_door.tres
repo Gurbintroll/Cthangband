@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://dfesmd1c7pj4r"]
+
+[ext_resource type="Script" uid="uid://bls4pxxp0hqvj" path="res://scripts/user_interface/sound.gd" id="1_2vn53"]
+[ext_resource type="AudioStream" uid="uid://bs8clkmwnb4ug" path="res://sfx/sound_files/open_door.wav" id="2_2dvr4"]
+
+[resource]
+script = ExtResource("1_2vn53")
+stream = ExtResource("2_2dvr4")
+randomise = true
+metadata/_custom_type_script = "uid://bls4pxxp0hqvj"

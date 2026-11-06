@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_nr4eo"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_oy0j7"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_e1veu"]
+
+[sub_resource type="Resource" id="Resource_55odc"]
+script = ExtResource("1_nr4eo")
+effect = 15
+method = 15
+
+[sub_resource type="Resource" id="Resource_pkkuf"]
+script = ExtResource("1_nr4eo")
+damage_dice = 6
+damage_dice_sides = 6
+effect = 1
+method = 8
+
+[sub_resource type="Resource" id="Resource_6eyvk"]
+script = ExtResource("1_nr4eo")
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_ix3r8"]
+script = ExtResource("1_nr4eo")
+effect = 21
+method = 6
+
+[sub_resource type="Resource" id="Resource_r2783"]
+script = ExtResource("2_oy0j7")
+value = 35653120
+
+[sub_resource type="Resource" id="Resource_7fcpk"]
+script = ExtResource("2_oy0j7")
+value = 1249282
+
+[sub_resource type="Resource" id="Resource_2ijwr"]
+script = ExtResource("2_oy0j7")
+value = 3222018128
+
+[sub_resource type="Resource" id="Resource_pocju"]
+script = ExtResource("2_oy0j7")
+
+[sub_resource type="Resource" id="Resource_uqu7q"]
+script = ExtResource("2_oy0j7")
+value = 939559464
+
+[sub_resource type="Resource" id="Resource_1bnvd"]
+script = ExtResource("2_oy0j7")
+value = 100679680
+
+[resource]
+script = ExtResource("3_e1veu")
+ac = 66
+attack = Array[ExtResource("1_nr4eo")]([SubResource("Resource_55odc"), SubResource("Resource_pkkuf"), SubResource("Resource_6eyvk"), SubResource("Resource_ix3r8")])
+character = "q"
+colour = 27
+description = "It is a demonic creature from the lowest hell, vaguely resembling a large black he-goat."
+flags_1 = SubResource("Resource_r2783")
+flags_2 = SubResource("Resource_7fcpk")
+flags_3 = SubResource("Resource_2ijwr")
+flags_4 = SubResource("Resource_pocju")
+flags_5 = SubResource("Resource_uqu7q")
+flags_6 = SubResource("Resource_1bnvd")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 18
+hit_dice_sides = 111
+level = 50
+max_num = 100
+experience = 6666
+name = "Goat of Mendes"
+notice_range = 30
+rarity = 3
+sleep = 40
+speed = 120
+split_name_1 = "    Goat    "
+split_name_2 = "     of     "
+split_name_3 = "   Mendes   "

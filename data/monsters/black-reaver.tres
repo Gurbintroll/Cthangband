@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://i1uvdsjcuqj4"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_t2n5y"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_m6d7n"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_1j46o"]
+
+[sub_resource type="Resource" id="Resource_rlo4u"]
+script = ExtResource("1_t2n5y")
+damage_dice = 1
+damage_dice_sides = 50
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ksh40"]
+script = ExtResource("1_t2n5y")
+damage_dice = 1
+damage_dice_sides = 50
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_t6w7a"]
+script = ExtResource("1_t2n5y")
+damage_dice = 1
+damage_dice_sides = 50
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_dvbf0"]
+script = ExtResource("1_t2n5y")
+damage_dice = 1
+damage_dice_sides = 50
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_167yo"]
+script = ExtResource("2_m6d7n")
+value = 304350720
+
+[sub_resource type="Resource" id="Resource_ctwva"]
+script = ExtResource("2_m6d7n")
+
+[sub_resource type="Resource" id="Resource_e1kr3"]
+script = ExtResource("2_m6d7n")
+value = 3410032
+
+[sub_resource type="Resource" id="Resource_m5ch0"]
+script = ExtResource("2_m6d7n")
+
+[sub_resource type="Resource" id="Resource_v6i0w"]
+script = ExtResource("2_m6d7n")
+
+[sub_resource type="Resource" id="Resource_jbwfn"]
+script = ExtResource("2_m6d7n")
+
+[resource]
+script = ExtResource("3_1j46o")
+ac = 90
+attack = Array[ExtResource("1_t2n5y")]([SubResource("Resource_rlo4u"), SubResource("Resource_ksh40"), SubResource("Resource_t6w7a"), SubResource("Resource_dvbf0")])
+character = "U"
+colour = 2
+description = "Clicking metal steps announce the arrival of this creature, A powerful undead warrior possessed by a major demon, it is unstoppable."
+flags_1 = SubResource("Resource_167yo")
+flags_2 = SubResource("Resource_ctwva")
+flags_3 = SubResource("Resource_e1kr3")
+flags_4 = SubResource("Resource_m5ch0")
+flags_5 = SubResource("Resource_v6i0w")
+flags_6 = SubResource("Resource_jbwfn")
+hit_dice = 70
+hit_dice_sides = 101
+level = 77
+max_num = 100
+experience = 30000
+name = "Black reaver"
+notice_range = 90
+rarity = 4
+sleep = 90
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Black    "
+split_name_3 = "   reaver   "

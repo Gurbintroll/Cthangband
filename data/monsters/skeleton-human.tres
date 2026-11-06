@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_7tb41"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_pys5o"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_rywvj"]
+
+[sub_resource type="Resource" id="Resource_pnsw0"]
+script = ExtResource("1_7tb41")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_6vt0h"]
+script = ExtResource("1_7tb41")
+
+[sub_resource type="Resource" id="Resource_ra6ym"]
+script = ExtResource("1_7tb41")
+
+[sub_resource type="Resource" id="Resource_ta2je"]
+script = ExtResource("1_7tb41")
+
+[sub_resource type="Resource" id="Resource_fcitr"]
+script = ExtResource("2_pys5o")
+
+[sub_resource type="Resource" id="Resource_7m5cn"]
+script = ExtResource("2_pys5o")
+value = 196704
+
+[sub_resource type="Resource" id="Resource_nk3xr"]
+script = ExtResource("2_pys5o")
+value = 3491233888
+
+[sub_resource type="Resource" id="Resource_efwmr"]
+script = ExtResource("2_pys5o")
+
+[sub_resource type="Resource" id="Resource_cqna4"]
+script = ExtResource("2_pys5o")
+
+[sub_resource type="Resource" id="Resource_ty4b3"]
+script = ExtResource("2_pys5o")
+
+[resource]
+script = ExtResource("3_rywvj")
+ac = 30
+attack = Array[ExtResource("1_7tb41")]([SubResource("Resource_pnsw0"), SubResource("Resource_6vt0h"), SubResource("Resource_ra6ym"), SubResource("Resource_ta2je")])
+character = "s"
+colour = 4
+description = "It is an animated human skeleton."
+flags_1 = SubResource("Resource_fcitr")
+flags_2 = SubResource("Resource_7m5cn")
+flags_3 = SubResource("Resource_nk3xr")
+flags_4 = SubResource("Resource_efwmr")
+flags_5 = SubResource("Resource_cqna4")
+flags_6 = SubResource("Resource_ty4b3")
+hit_dice = 10
+hit_dice_sides = 8
+level = 12
+max_num = 100
+experience = 38
+name = "Skeleton human"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "  Skeleton  "
+split_name_3 = "   human    "

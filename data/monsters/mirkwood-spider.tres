@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_rwblh"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ea6t1"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kyxfq"]
+
+[sub_resource type="Resource" id="Resource_k26sb"]
+script = ExtResource("1_rwblh")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_suqat"]
+script = ExtResource("1_rwblh")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_uwt0u"]
+script = ExtResource("1_rwblh")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 2
+method = 6
+
+[sub_resource type="Resource" id="Resource_a1pw2"]
+script = ExtResource("1_rwblh")
+
+[sub_resource type="Resource" id="Resource_g3f3i"]
+script = ExtResource("2_ea6t1")
+value = 8192
+
+[sub_resource type="Resource" id="Resource_le7qp"]
+script = ExtResource("2_ea6t1")
+value = 131200
+
+[sub_resource type="Resource" id="Resource_10ami"]
+script = ExtResource("2_ea6t1")
+value = 1052864
+
+[sub_resource type="Resource" id="Resource_a5tyx"]
+script = ExtResource("2_ea6t1")
+
+[sub_resource type="Resource" id="Resource_a2wq4"]
+script = ExtResource("2_ea6t1")
+
+[sub_resource type="Resource" id="Resource_ni4xj"]
+script = ExtResource("2_ea6t1")
+
+[resource]
+script = ExtResource("3_kyxfq")
+ac = 25
+attack = Array[ExtResource("1_rwblh")]([SubResource("Resource_k26sb"), SubResource("Resource_suqat"), SubResource("Resource_uwt0u"), SubResource("Resource_a1pw2")])
+character = "S"
+colour = 17
+description = "A strong and powerful spider from Mirkwood forest. Cunning and evil, it seeks to taste your juicy insides."
+flags_1 = SubResource("Resource_g3f3i")
+flags_2 = SubResource("Resource_le7qp")
+flags_3 = SubResource("Resource_10ami")
+flags_4 = SubResource("Resource_a5tyx")
+flags_5 = SubResource("Resource_a2wq4")
+flags_6 = SubResource("Resource_ni4xj")
+hit_dice = 9
+hit_dice_sides = 8
+level = 15
+max_num = 100
+experience = 25
+name = "Mirkwood spider"
+notice_range = 15
+rarity = 2
+sleep = 80
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Mirkwood  "
+split_name_3 = "   spider   "

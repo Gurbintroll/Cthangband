@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_cu4ul"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_j7w41"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_256nu"]
+
+[sub_resource type="Resource" id="Resource_y0usf"]
+script = ExtResource("1_cu4ul")
+damage_dice = 2
+damage_dice_sides = 4
+effect = 2
+method = 17
+
+[sub_resource type="Resource" id="Resource_xrf2k"]
+script = ExtResource("1_cu4ul")
+
+[sub_resource type="Resource" id="Resource_vt86y"]
+script = ExtResource("1_cu4ul")
+
+[sub_resource type="Resource" id="Resource_lodn8"]
+script = ExtResource("1_cu4ul")
+
+[sub_resource type="Resource" id="Resource_0ordw"]
+script = ExtResource("2_j7w41")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_siw6i"]
+script = ExtResource("2_j7w41")
+value = 65
+
+[sub_resource type="Resource" id="Resource_u51sx"]
+script = ExtResource("2_j7w41")
+value = 3490709504
+
+[sub_resource type="Resource" id="Resource_3xm5f"]
+script = ExtResource("2_j7w41")
+
+[sub_resource type="Resource" id="Resource_m8yy4"]
+script = ExtResource("2_j7w41")
+
+[sub_resource type="Resource" id="Resource_u6fml"]
+script = ExtResource("2_j7w41")
+
+[resource]
+script = ExtResource("3_256nu")
+ac = 1
+attack = Array[ExtResource("1_cu4ul")]([SubResource("Resource_y0usf"), SubResource("Resource_xrf2k"), SubResource("Resource_vt86y"), SubResource("Resource_lodn8")])
+character = ","
+colour = 24
+description = "Yum! It looks quite tasty."
+flags_1 = SubResource("Resource_0ordw")
+flags_2 = SubResource("Resource_siw6i")
+flags_3 = SubResource("Resource_u51sx")
+flags_4 = SubResource("Resource_3xm5f")
+flags_5 = SubResource("Resource_m8yy4")
+flags_6 = SubResource("Resource_u6fml")
+hit_dice = 1
+hit_dice_sides = 1
+level = 3
+max_num = 100
+experience = 3
+name = "Spotted mushroom patch"
+notice_range = 2
+rarity = 1
+speed = 110
+split_name_1 = "  Spotted   "
+split_name_2 = "  mushroom  "
+split_name_3 = "   patch    "

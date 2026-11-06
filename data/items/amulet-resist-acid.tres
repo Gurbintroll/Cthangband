@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_un41m"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_fh8j4"]
+
+[sub_resource type="Resource" id="Resource_kvdsd"]
+script = ExtResource("1_un41m")
+
+[sub_resource type="Resource" id="Resource_d1gkk"]
+script = ExtResource("1_un41m")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_yq6oc"]
+script = ExtResource("1_un41m")
+value = 1048832
+
+[resource]
+script = ExtResource("2_fh8j4")
+chance = Array[int]([1, 0, 0, 0])
+character = "\""
+colour = 13
+cost = 300
+easy_know = true
+flags_1 = SubResource("Resource_kvdsd")
+flags_2 = SubResource("Resource_d1gkk")
+flags_3 = SubResource("Resource_yq6oc")
+has_flavour = true
+item_category = 40
+level = 20
+locale = Array[int]([20, 0, 0, 0])
+name = "Resist Acid"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 4
+weight = 3
+filename = "Amulet:Resist Acid"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cu075"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_7gkau"]
+
+[sub_resource type="Resource" id="Resource_4825v"]
+script = ExtResource("1_cu075")
+
+[sub_resource type="Resource" id="Resource_ak1mh"]
+script = ExtResource("1_cu075")
+value = 32768
+
+[sub_resource type="Resource" id="Resource_1n5np"]
+script = ExtResource("1_cu075")
+
+[resource]
+script = ExtResource("2_7gkau")
+cost = 10000
+flags_1 = SubResource("Resource_4825v")
+flags_2 = SubResource("Resource_ak1mh")
+flags_3 = SubResource("Resource_1n5np")
+name = "(Vampiric)"
+rating = 25
+slot = 24
+id = 79

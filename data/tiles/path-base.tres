@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_swq87"]
+
+[resource]
+script = ExtResource("1_swq87")
+appear_as = "PathBase"
+character = "·"
+colour = 6
+description = "path base"
+dims_outside_los = true
+is_passable = true
+name = "PathBase"
+run_past = true

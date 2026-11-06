@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_75vke"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_g72ct"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4lwtp"]
+
+[sub_resource type="Resource" id="Resource_3eyce"]
+script = ExtResource("1_75vke")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 2
+method = 1
+
+[sub_resource type="Resource" id="Resource_1mksc"]
+script = ExtResource("1_75vke")
+damage_dice = 3
+damage_dice_sides = 4
+effect = 14
+method = 1
+
+[sub_resource type="Resource" id="Resource_ht5sl"]
+script = ExtResource("1_75vke")
+
+[sub_resource type="Resource" id="Resource_ilqe2"]
+script = ExtResource("1_75vke")
+
+[sub_resource type="Resource" id="Resource_jp6b6"]
+script = ExtResource("2_g72ct")
+value = 132256
+
+[sub_resource type="Resource" id="Resource_abcbx"]
+script = ExtResource("2_g72ct")
+value = 2400
+
+[sub_resource type="Resource" id="Resource_4xv3f"]
+script = ExtResource("2_g72ct")
+value = 3489660928
+
+[sub_resource type="Resource" id="Resource_1gbe5"]
+script = ExtResource("2_g72ct")
+
+[sub_resource type="Resource" id="Resource_mdcse"]
+script = ExtResource("2_g72ct")
+value = 939532288
+
+[sub_resource type="Resource" id="Resource_ek8cs"]
+script = ExtResource("2_g72ct")
+value = 262160
+
+[resource]
+script = ExtResource("3_4lwtp")
+ac = 60
+attack = Array[ExtResource("1_75vke")]([SubResource("Resource_3eyce"), SubResource("Resource_1mksc"), SubResource("Resource_ht5sl"), SubResource("Resource_ilqe2")])
+character = "·"
+colour = 26
+description = "It is a floor tile corrupted by chaos."
+flags_1 = SubResource("Resource_jp6b6")
+flags_2 = SubResource("Resource_abcbx")
+flags_3 = SubResource("Resource_4xv3f")
+flags_4 = SubResource("Resource_1gbe5")
+flags_5 = SubResource("Resource_mdcse")
+flags_6 = SubResource("Resource_ek8cs")
+freq_innate = 4
+freq_spell = 4
+hit_dice = 3
+hit_dice_sides = 5
+level = 29
+max_num = 100
+experience = 200
+name = "Chaos tile"
+notice_range = 30
+rarity = 6
+sleep = 100
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Chaos    "
+split_name_3 = "    tile    "

@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_a1mnl"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_kc2gg"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_67t6s"]
+
+[sub_resource type="Resource" id="Resource_4uayk"]
+script = ExtResource("1_a1mnl")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_oyrmy"]
+script = ExtResource("1_a1mnl")
+damage_dice = 1
+damage_dice_sides = 8
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_2op7c"]
+script = ExtResource("1_a1mnl")
+effect = 26
+method = 2
+
+[sub_resource type="Resource" id="Resource_2f0j4"]
+script = ExtResource("1_a1mnl")
+
+[sub_resource type="Resource" id="Resource_6xwou"]
+script = ExtResource("2_kc2gg")
+value = 4203520
+
+[sub_resource type="Resource" id="Resource_kuudg"]
+script = ExtResource("2_kc2gg")
+value = 196640
+
+[sub_resource type="Resource" id="Resource_iqntp"]
+script = ExtResource("2_kc2gg")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_7ih3i"]
+script = ExtResource("2_kc2gg")
+
+[sub_resource type="Resource" id="Resource_002e4"]
+script = ExtResource("2_kc2gg")
+value = 2281709568
+
+[sub_resource type="Resource" id="Resource_qnbrw"]
+script = ExtResource("2_kc2gg")
+value = 4096
+
+[resource]
+script = ExtResource("3_67t6s")
+ac = 40
+attack = Array[ExtResource("1_a1mnl")]([SubResource("Resource_4uayk"), SubResource("Resource_oyrmy"), SubResource("Resource_2op7c"), SubResource("Resource_2f0j4")])
+character = "W"
+colour = 15
+description = "It is a ghostly nightmare of a entity."
+flags_1 = SubResource("Resource_6xwou")
+flags_2 = SubResource("Resource_kuudg")
+flags_3 = SubResource("Resource_iqntp")
+flags_4 = SubResource("Resource_7ih3i")
+flags_5 = SubResource("Resource_002e4")
+flags_6 = SubResource("Resource_qnbrw")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 15
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 375
+name = "Barrow wight"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Barrow   "
+split_name_3 = "   wight    "

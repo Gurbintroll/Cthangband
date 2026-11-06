@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://ds682ij17k0a3"]
+
+[ext_resource type="Script" uid="uid://bls4pxxp0hqvj" path="res://scripts/user_interface/sound.gd" id="1_l3hgv"]
+[ext_resource type="AudioStream" uid="uid://im48s51ax6tb" path="res://sfx/sound_files/mon_death.wav" id="2_75mkr"]
+
+[resource]
+script = ExtResource("1_l3hgv")
+stream = ExtResource("2_75mkr")
+randomise = true
+metadata/_custom_type_script = "uid://bls4pxxp0hqvj"

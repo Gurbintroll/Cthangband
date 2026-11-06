@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_3y0r7"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_5s30f"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_5hwmp"]
+
+[sub_resource type="Resource" id="Resource_q7jbl"]
+script = ExtResource("1_3y0r7")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 9
+method = 10
+
+[sub_resource type="Resource" id="Resource_op0x6"]
+script = ExtResource("1_3y0r7")
+
+[sub_resource type="Resource" id="Resource_vcyja"]
+script = ExtResource("1_3y0r7")
+
+[sub_resource type="Resource" id="Resource_dpk45"]
+script = ExtResource("1_3y0r7")
+
+[sub_resource type="Resource" id="Resource_lyocx"]
+script = ExtResource("2_5s30f")
+value = 525312
+
+[sub_resource type="Resource" id="Resource_y12hh"]
+script = ExtResource("2_5s30f")
+value = 135232
+
+[sub_resource type="Resource" id="Resource_4ry7h"]
+script = ExtResource("2_5s30f")
+value = 3489728512
+
+[sub_resource type="Resource" id="Resource_o2bt7"]
+script = ExtResource("2_5s30f")
+value = 256
+
+[sub_resource type="Resource" id="Resource_756kl"]
+script = ExtResource("2_5s30f")
+
+[sub_resource type="Resource" id="Resource_hg4g0"]
+script = ExtResource("2_5s30f")
+
+[resource]
+script = ExtResource("3_5hwmp")
+ac = 30
+attack = Array[ExtResource("1_3y0r7")]([SubResource("Resource_q7jbl"), SubResource("Resource_op0x6"), SubResource("Resource_vcyja"), SubResource("Resource_dpk45")])
+character = "v"
+colour = 3
+description = "A caustic spinning whirlpool of water."
+flags_1 = SubResource("Resource_lyocx")
+flags_2 = SubResource("Resource_y12hh")
+flags_3 = SubResource("Resource_4ry7h")
+flags_4 = SubResource("Resource_o2bt7")
+flags_5 = SubResource("Resource_756kl")
+flags_6 = SubResource("Resource_hg4g0")
+freq_innate = 6
+freq_spell = 6
+hit_dice = 9
+hit_dice_sides = 9
+level = 21
+max_num = 100
+experience = 100
+name = "Water vortex"
+notice_range = 100
+rarity = 1
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Water    "
+split_name_3 = "   vortex   "

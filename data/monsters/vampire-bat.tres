@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_ab3js"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_jbqgi"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6rata"]
+
+[sub_resource type="Resource" id="Resource_i1ofa"]
+script = ExtResource("1_ab3js")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_6hhfd"]
+script = ExtResource("1_ab3js")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 26
+method = 6
+
+[sub_resource type="Resource" id="Resource_p1ygb"]
+script = ExtResource("1_ab3js")
+
+[sub_resource type="Resource" id="Resource_lgpjx"]
+script = ExtResource("1_ab3js")
+
+[sub_resource type="Resource" id="Resource_lc71g"]
+script = ExtResource("2_jbqgi")
+value = 524288
+
+[sub_resource type="Resource" id="Resource_tgiu6"]
+script = ExtResource("2_jbqgi")
+value = 544
+
+[sub_resource type="Resource" id="Resource_6pnvm"]
+script = ExtResource("2_jbqgi")
+value = 3491234016
+
+[sub_resource type="Resource" id="Resource_0njx1"]
+script = ExtResource("2_jbqgi")
+
+[sub_resource type="Resource" id="Resource_lolog"]
+script = ExtResource("2_jbqgi")
+
+[sub_resource type="Resource" id="Resource_yd1cr"]
+script = ExtResource("2_jbqgi")
+
+[resource]
+script = ExtResource("3_6rata")
+ac = 40
+attack = Array[ExtResource("1_ab3js")]([SubResource("Resource_i1ofa"), SubResource("Resource_6hhfd"), SubResource("Resource_p1ygb"), SubResource("Resource_lgpjx")])
+character = "b"
+colour = 2
+description = "An undead bat that flies at your neck hungrily."
+flags_1 = SubResource("Resource_lc71g")
+flags_2 = SubResource("Resource_tgiu6")
+flags_3 = SubResource("Resource_6pnvm")
+flags_4 = SubResource("Resource_0njx1")
+flags_5 = SubResource("Resource_lolog")
+flags_6 = SubResource("Resource_yd1cr")
+hit_dice = 9
+hit_dice_sides = 10
+level = 24
+max_num = 100
+experience = 150
+name = "Vampire bat"
+notice_range = 12
+rarity = 2
+sleep = 50
+speed = 120
+split_name_1 = "            "
+split_name_2 = "  Vampire   "
+split_name_3 = "    bat     "

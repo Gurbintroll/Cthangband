@@ -1,0 +1,107 @@
+﻿[center][font_size=48][color="brown"][b]Life Spells[/b][/color][/font_size][/center]
+[hr color="brown"]
+Spells are presented here ordered by book. This does not necessarily reflect how difficult each spell is to cast.
+
+Although within the first two books (Book of Common Prayer and High Mass) the spells are ordered in increasing difficulty, each of the two rare books that can only be found in the dungeons (Dhol Chants and Ponape Scripture) contain both easy and difficult spells.
+
+The level at which each individual spell is unlocked and the power cost to cast each spell is not given here, since it will vary with each profession that has access to this realm.
+
+[font_size=24][color="brown"][b]Book of Common Prayer[/b][/color][/font_size]
+[b]a) Detect Evil[/b]
+Detects all evil creatures that are nearby.
+
+[b]b) Cure Light Wounds[/b]
+Cures you of 2d10 damage, and reduces bleeding.
+
+[b]c) Bless[/b]
+Blesses you, giving you a +5 bonus to armour class and a +10 bonus to hit.
+
+[b]d) Remove Fear[/b]
+Stops you from being afraid.
+
+[b]e) Call Light[/b]
+Lights the area that you are in with a permanent light - possibly damaging some creatures.
+
+[b]f) Detect Traps and Secret Doors[/b]
+Finds all traps, stairs and secret doors in your surrounding area.
+
+[b]g) Cure Medium Wounds[/b]
+Cures you of 4d10 damage, and reduces bleeding.
+
+[b]h) Satisfy Hunger[/b]
+Removes all hunger, leaving you comfortably full.
+
+[font_size=24][color="brown"][b]High Mass[/b][/color][/font_size]
+[b]a) Remove Curse[/b]
+Removes the minor curses from many objects, allowing them to be taken off.
+
+[b]b) Cure Poison[/b]
+Removes all poison from your system.
+
+[b]c) Cure Critical Wounds[/b]
+Heals 8d10 damage, and completely stops bleeding or stunning.
+
+[b]d) Sense Unseen[/b]
+Allows you to see invisible creatures for a short while.
+
+[b]e) Holy Orb[/b]
+Fires a damaging ball of holy fire.
+
+[b]f) Protection from Evil[/b]
+Puts up a barrier around yourself that has a chance of stopping attacks from evil creatures.
+
+[b]g) Healing[/b]
+Heals 300 damage and completely stops bleeding and stunning.
+
+[b]h) Elder Sign[/b]
+Places a sigil on the floor that many creatures will be unable to pass.
+
+[font_size=24][color="brown"][b]Dhol Chants[/b][/color][/font_size]
+[b]a) Exorcism[/b]
+Banishes demons and undead, and scares other evil creatures.
+
+[b]b) Dispel Curse[/b]
+Removes more powerful curses from objects.
+
+[b]c) Dispel Undead & Demons[/b]
+Triple strength banishment against undead and demonic creatures.
+
+[b]d) Day of the Dove[/b]
+Befriends all nearby monsters.
+
+[b]e) Dispel Evil[/b]
+Quadruple strength banishment against all evil creatures.
+
+[b]f) Banish[/b]
+Teleports away all nearby evil creatures to elsewhere on the level.
+
+[b]g) Holy Word[/b]
+Banishes evil, heals 1000 damage, removes bleeding, removes fear, removes poison and cures stunning.
+
+[b]h) Warding True[/b]
+Surrounds you with Elder Signs.
+
+[font_size=24][color="brown"][b]Ponape Scripture[/b][/color][/font_size]
+[b]a) Heroism[/b]
+Makes you feel heroic, giving you a +12 bonus to hit and 10 extra hit points. Also removes all fear.
+
+[b]b) Prayer[/b]
+Like Bless, except that it lasts longer.
+
+[b]c) Bless Weapon[/b]
+Makes a weapon blessed - and thus usable by priests. This also removes any curse on the weapon. It is dangerous to use this spell on artifacts, as it may damage them.
+
+[b]d) Restoration[/b]
+Removes any drain or damage from any of your abilities, and removes any experience drain.
+
+[b]e) Healing True[/b]
+Heals 2000 damage, all bleeding and all stunning.
+
+[b]f) Holy Vision[/b]
+Fully identifies an item.
+
+[b]g) Divine Intervention[/b]
+This banishes, stuns, confuses, scares, slows and paralyses monsters that surround you, as well as healing you and hasting you to allow you a retreat.
+
+[b]h) Holy Invulnerability[/b]
+Makes you almost completely immune to damage for a short period of time.

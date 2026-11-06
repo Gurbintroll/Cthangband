@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_cntd6"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_wtip8"]
+
+[sub_resource type="Resource" id="Resource_qoy82"]
+script = ExtResource("1_cntd6")
+value = 2147751168
+
+[sub_resource type="Resource" id="Resource_15s2v"]
+script = ExtResource("1_cntd6")
+value = 8388608
+
+[sub_resource type="Resource" id="Resource_dvfjs"]
+script = ExtResource("1_cntd6")
+value = 15746048
+
+[resource]
+script = ExtResource("2_wtip8")
+flags_1 = SubResource("Resource_qoy82")
+flags_2 = SubResource("Resource_15s2v")
+flags_3 = SubResource("Resource_dvfjs")
+cost = 30000
+damage_dice = 1
+damage_dice_sides = 6
+item_category = 22
+item_sub_category = 2
+level = 15
+name = "*Gae Bulg*"
+type_specific_value = 3
+rarity = 12
+to_hit = 11
+to_damage = 13
+weight = 50
+id = 99

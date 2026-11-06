@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_0gibr"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_l82wv"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1unrp"]
+
+[sub_resource type="Resource" id="Resource_s320o"]
+script = ExtResource("1_0gibr")
+damage_dice = 1
+damage_dice_sides = 1
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_icrdh"]
+script = ExtResource("1_0gibr")
+damage_dice = 1
+damage_dice_sides = 1
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_ku1j5"]
+script = ExtResource("1_0gibr")
+damage_dice = 1
+damage_dice_sides = 2
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_mjiv4"]
+script = ExtResource("1_0gibr")
+
+[sub_resource type="Resource" id="Resource_om7su"]
+script = ExtResource("2_l82wv")
+value = 524296
+
+[sub_resource type="Resource" id="Resource_wxdny"]
+script = ExtResource("2_l82wv")
+
+[sub_resource type="Resource" id="Resource_dihpm"]
+script = ExtResource("2_l82wv")
+value = 192
+
+[sub_resource type="Resource" id="Resource_g3bgt"]
+script = ExtResource("2_l82wv")
+
+[sub_resource type="Resource" id="Resource_ugupn"]
+script = ExtResource("2_l82wv")
+
+[sub_resource type="Resource" id="Resource_si4x4"]
+script = ExtResource("2_l82wv")
+
+[resource]
+script = ExtResource("3_1unrp")
+ac = 17
+attack = Array[ExtResource("1_0gibr")]([SubResource("Resource_s320o"), SubResource("Resource_icrdh"), SubResource("Resource_ku1j5"), SubResource("Resource_mjiv4")])
+character = "H"
+colour = 30
+description = "A flying, screeching bird with a woman's face."
+flags_1 = SubResource("Resource_om7su")
+flags_2 = SubResource("Resource_wxdny")
+flags_3 = SubResource("Resource_dihpm")
+flags_4 = SubResource("Resource_g3bgt")
+flags_5 = SubResource("Resource_ugupn")
+flags_6 = SubResource("Resource_si4x4")
+hit_dice = 2
+hit_dice_sides = 5
+level = 2
+max_num = 100
+experience = 5
+name = "White harpy"
+notice_range = 16
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   White    "
+split_name_3 = "   harpy    "

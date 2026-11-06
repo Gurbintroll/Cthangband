@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_lxcgw"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_m013c"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_m8nrq"]
+
+[sub_resource type="Resource" id="Resource_atmal"]
+script = ExtResource("1_lxcgw")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_ytn7v"]
+script = ExtResource("1_lxcgw")
+effect = 5
+method = 2
+
+[sub_resource type="Resource" id="Resource_hwww7"]
+script = ExtResource("1_lxcgw")
+effect = 6
+method = 2
+
+[sub_resource type="Resource" id="Resource_5rlbj"]
+script = ExtResource("1_lxcgw")
+
+[sub_resource type="Resource" id="Resource_k2a0d"]
+script = ExtResource("2_m013c")
+value = 16777220
+
+[sub_resource type="Resource" id="Resource_oqe4k"]
+script = ExtResource("2_m013c")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_rmxwy"]
+script = ExtResource("2_m013c")
+value = 64
+
+[sub_resource type="Resource" id="Resource_kmoql"]
+script = ExtResource("2_m013c")
+
+[sub_resource type="Resource" id="Resource_w5win"]
+script = ExtResource("2_m013c")
+
+[sub_resource type="Resource" id="Resource_oqqq1"]
+script = ExtResource("2_m013c")
+
+[resource]
+script = ExtResource("3_m8nrq")
+ac = 32
+attack = Array[ExtResource("1_lxcgw")]([SubResource("Resource_atmal"), SubResource("Resource_ytn7v"), SubResource("Resource_hwww7"), SubResource("Resource_5rlbj")])
+character = "p"
+colour = 2
+description = "He is eyeing your purse suspiciously."
+flags_1 = SubResource("Resource_k2a0d")
+flags_2 = SubResource("Resource_oqe4k")
+flags_3 = SubResource("Resource_rmxwy")
+flags_4 = SubResource("Resource_kmoql")
+flags_5 = SubResource("Resource_w5win")
+flags_6 = SubResource("Resource_oqqq1")
+hit_dice = 9
+hit_dice_sides = 8
+level = 10
+max_num = 100
+experience = 35
+name = "Brigand"
+notice_range = 20
+rarity = 3
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Brigand   "

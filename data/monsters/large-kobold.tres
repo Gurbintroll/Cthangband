@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_8pydc"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_m5w5y"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jblbx"]
+
+[sub_resource type="Resource" id="Resource_l83wc"]
+script = ExtResource("1_8pydc")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_s621k"]
+script = ExtResource("1_8pydc")
+
+[sub_resource type="Resource" id="Resource_bjtdr"]
+script = ExtResource("1_8pydc")
+
+[sub_resource type="Resource" id="Resource_0v5dw"]
+script = ExtResource("1_8pydc")
+
+[sub_resource type="Resource" id="Resource_5kuhj"]
+script = ExtResource("2_m5w5y")
+value = 8388608
+
+[sub_resource type="Resource" id="Resource_3e046"]
+script = ExtResource("2_m5w5y")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_dvi11"]
+script = ExtResource("2_m5w5y")
+value = 1048640
+
+[sub_resource type="Resource" id="Resource_mmfac"]
+script = ExtResource("2_m5w5y")
+
+[sub_resource type="Resource" id="Resource_qrv8w"]
+script = ExtResource("2_m5w5y")
+
+[sub_resource type="Resource" id="Resource_umns1"]
+script = ExtResource("2_m5w5y")
+
+[resource]
+script = ExtResource("3_jblbx")
+ac = 32
+attack = Array[ExtResource("1_8pydc")]([SubResource("Resource_l83wc"), SubResource("Resource_s621k"), SubResource("Resource_bjtdr"), SubResource("Resource_0v5dw")])
+character = "k"
+colour = 30
+description = "It a man-sized figure with the all too recognizable face of a kobold."
+flags_1 = SubResource("Resource_5kuhj")
+flags_2 = SubResource("Resource_3e046")
+flags_3 = SubResource("Resource_dvi11")
+flags_4 = SubResource("Resource_mmfac")
+flags_5 = SubResource("Resource_qrv8w")
+flags_6 = SubResource("Resource_umns1")
+hit_dice = 13
+hit_dice_sides = 9
+level = 5
+max_num = 100
+experience = 25
+name = "Large kobold"
+notice_range = 20
+rarity = 1
+sleep = 30
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Large    "
+split_name_3 = "   kobold   "

@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_6qf0a"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_te40p"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_bmkbv"]
+
+[sub_resource type="Resource" id="Resource_tntoy"]
+script = ExtResource("1_6qf0a")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_bvvu7"]
+script = ExtResource("1_6qf0a")
+damage_dice = 3
+damage_dice_sides = 6
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_jy5ej"]
+script = ExtResource("1_6qf0a")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_p1usu"]
+script = ExtResource("1_6qf0a")
+damage_dice = 4
+damage_dice_sides = 4
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_nlpig"]
+script = ExtResource("2_te40p")
+value = 9344
+
+[sub_resource type="Resource" id="Resource_ci3oe"]
+script = ExtResource("2_te40p")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_cdfhf"]
+script = ExtResource("2_te40p")
+value = 3223257216
+
+[sub_resource type="Resource" id="Resource_648qc"]
+script = ExtResource("2_te40p")
+value = 7936
+
+[sub_resource type="Resource" id="Resource_yaft3"]
+script = ExtResource("2_te40p")
+
+[sub_resource type="Resource" id="Resource_u1nv8"]
+script = ExtResource("2_te40p")
+
+[resource]
+script = ExtResource("3_bmkbv")
+ac = 40
+attack = Array[ExtResource("1_6qf0a")]([SubResource("Resource_tntoy"), SubResource("Resource_bvvu7"), SubResource("Resource_jy5ej"), SubResource("Resource_p1usu")])
+character = "Z"
+colour = 26
+description = "Shimmering in rainbow hues, this hound is beautiful and deadly. "
+flags_1 = SubResource("Resource_nlpig")
+flags_2 = SubResource("Resource_ci3oe")
+flags_3 = SubResource("Resource_cdfhf")
+flags_4 = SubResource("Resource_648qc")
+flags_5 = SubResource("Resource_yaft3")
+flags_6 = SubResource("Resource_u1nv8")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 30
+hit_dice_sides = 10
+level = 33
+max_num = 100
+experience = 600
+name = "Multi-hued hound"
+notice_range = 25
+rarity = 2
+speed = 120
+split_name_1 = "            "
+split_name_2 = " Multi-hued "
+split_name_3 = "   hound    "

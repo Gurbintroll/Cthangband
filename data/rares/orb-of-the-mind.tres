@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RareItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mgpjb"]
+[ext_resource type="Script" path="res://scripts/data/rare_item_type.gd" id="2_78fbx"]
+
+[sub_resource type="Resource" id="Resource_vsnea"]
+script = ExtResource("1_mgpjb")
+
+[sub_resource type="Resource" id="Resource_a7h3i"]
+script = ExtResource("1_mgpjb")
+
+[sub_resource type="Resource" id="Resource_om15p"]
+script = ExtResource("1_mgpjb")
+value = 15761408
+
+[resource]
+script = ExtResource("2_78fbx")
+cost = 1000
+flags_1 = SubResource("Resource_vsnea")
+flags_2 = SubResource("Resource_a7h3i")
+flags_3 = SubResource("Resource_om15p")
+name = "of the Mind"
+id = 125

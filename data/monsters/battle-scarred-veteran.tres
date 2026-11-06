@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_5s3bg"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_mqowx"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_1hrr6"]
+
+[sub_resource type="Resource" id="Resource_wg318"]
+script = ExtResource("1_5s3bg")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_01tvl"]
+script = ExtResource("1_5s3bg")
+
+[sub_resource type="Resource" id="Resource_2qwk5"]
+script = ExtResource("1_5s3bg")
+
+[sub_resource type="Resource" id="Resource_mnt68"]
+script = ExtResource("1_5s3bg")
+
+[sub_resource type="Resource" id="Resource_syp5k"]
+script = ExtResource("2_mqowx")
+value = 8912900
+
+[sub_resource type="Resource" id="Resource_qd4qp"]
+script = ExtResource("2_mqowx")
+value = 4390912
+
+[sub_resource type="Resource" id="Resource_ckd8y"]
+script = ExtResource("2_mqowx")
+
+[sub_resource type="Resource" id="Resource_42kcc"]
+script = ExtResource("2_mqowx")
+
+[sub_resource type="Resource" id="Resource_akk6i"]
+script = ExtResource("2_mqowx")
+
+[sub_resource type="Resource" id="Resource_ki6xi"]
+script = ExtResource("2_mqowx")
+
+[resource]
+script = ExtResource("3_1hrr6")
+ac = 30
+attack = Array[ExtResource("1_5s3bg")]([SubResource("Resource_wg318"), SubResource("Resource_01tvl"), SubResource("Resource_2qwk5"), SubResource("Resource_mnt68")])
+character = "t"
+colour = 27
+description = "He doesn't take to strangers kindly."
+flags_1 = SubResource("Resource_syp5k")
+flags_2 = SubResource("Resource_qd4qp")
+flags_3 = SubResource("Resource_ckd8y")
+flags_4 = SubResource("Resource_42kcc")
+flags_5 = SubResource("Resource_akk6i")
+flags_6 = SubResource("Resource_ki6xi")
+hit_dice = 7
+hit_dice_sides = 8
+max_num = 100
+name = "Battle scarred veteran"
+notice_range = 10
+rarity = 1
+sleep = 250
+speed = 110
+split_name_1 = "   Battle   "
+split_name_2 = "  scarred   "
+split_name_3 = "  veteran   "

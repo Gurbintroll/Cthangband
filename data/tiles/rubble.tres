@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FloorTileType" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/floor_tile_type.gd" id="1_qpwjc"]
+
+[resource]
+script = ExtResource("1_qpwjc")
+alter_action = 1
+appear_as = "Rubble"
+blocks_los = true
+category = 8
+character = ":"
+colour = 30
+description = "pile of rubble"
+dims_outside_los = true
+is_interesting = true
+map_priority = 12
+name = "Rubble"
+yellow_in_torch_light = true

@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_pxybo"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_o2k24"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6spx7"]
+
+[sub_resource type="Resource" id="Resource_g2umq"]
+script = ExtResource("1_pxybo")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_ortu8"]
+script = ExtResource("1_pxybo")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_pnhjy"]
+script = ExtResource("1_pxybo")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 9
+method = 2
+
+[sub_resource type="Resource" id="Resource_ongng"]
+script = ExtResource("1_pxybo")
+
+[sub_resource type="Resource" id="Resource_oe1ga"]
+script = ExtResource("2_o2k24")
+
+[sub_resource type="Resource" id="Resource_hcjmf"]
+script = ExtResource("2_o2k24")
+value = 4391009
+
+[sub_resource type="Resource" id="Resource_qc8e4"]
+script = ExtResource("2_o2k24")
+value = 3490775040
+
+[sub_resource type="Resource" id="Resource_kn6cg"]
+script = ExtResource("2_o2k24")
+
+[sub_resource type="Resource" id="Resource_tq740"]
+script = ExtResource("2_o2k24")
+
+[sub_resource type="Resource" id="Resource_0oq1y"]
+script = ExtResource("2_o2k24")
+
+[resource]
+script = ExtResource("3_6spx7")
+ac = 18
+attack = Array[ExtResource("1_pxybo")]([SubResource("Resource_g2umq"), SubResource("Resource_ortu8"), SubResource("Resource_pnhjy"), SubResource("Resource_ongng")])
+character = "j"
+colour = 31
+description = "A fast moving highly acidic jelly thing, that is eating away the floor it rests on."
+flags_1 = SubResource("Resource_oe1ga")
+flags_2 = SubResource("Resource_hcjmf")
+flags_3 = SubResource("Resource_qc8e4")
+flags_4 = SubResource("Resource_kn6cg")
+flags_5 = SubResource("Resource_tq740")
+flags_6 = SubResource("Resource_0oq1y")
+hit_dice = 13
+hit_dice_sides = 8
+level = 13
+max_num = 100
+experience = 40
+name = "Ochre jelly"
+notice_range = 12
+rarity = 3
+sleep = 1
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Ochre    "
+split_name_3 = "   jelly    "

@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_cf2h8"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_6bf0g"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_o5fsm"]
+
+[sub_resource type="Resource" id="Resource_4dx5c"]
+script = ExtResource("1_cf2h8")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_56mte"]
+script = ExtResource("1_cf2h8")
+damage_dice = 1
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_puv8b"]
+script = ExtResource("1_cf2h8")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 25
+method = 6
+
+[sub_resource type="Resource" id="Resource_6h0wm"]
+script = ExtResource("1_cf2h8")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 25
+method = 6
+
+[sub_resource type="Resource" id="Resource_vb2nv"]
+script = ExtResource("2_6bf0g")
+value = 20972544
+
+[sub_resource type="Resource" id="Resource_i5y6g"]
+script = ExtResource("2_6bf0g")
+value = 197152
+
+[sub_resource type="Resource" id="Resource_1c3ka"]
+script = ExtResource("2_6bf0g")
+value = 3222802528
+
+[sub_resource type="Resource" id="Resource_3bkdi"]
+script = ExtResource("2_6bf0g")
+
+[sub_resource type="Resource" id="Resource_fudh1"]
+script = ExtResource("2_6bf0g")
+value = 2281710592
+
+[sub_resource type="Resource" id="Resource_adcta"]
+script = ExtResource("2_6bf0g")
+value = 20736
+
+[resource]
+script = ExtResource("3_o5fsm")
+ac = 45
+attack = Array[ExtResource("1_cf2h8")]([SubResource("Resource_4dx5c"), SubResource("Resource_56mte"), SubResource("Resource_puv8b"), SubResource("Resource_6h0wm")])
+character = "V"
+colour = 15
+description = "It is a humanoid with an aura of power. You notice a sharp set of front teeth."
+flags_1 = SubResource("Resource_vb2nv")
+flags_2 = SubResource("Resource_i5y6g")
+flags_3 = SubResource("Resource_1c3ka")
+flags_4 = SubResource("Resource_3bkdi")
+flags_5 = SubResource("Resource_fudh1")
+flags_6 = SubResource("Resource_adcta")
+freq_innate = 9
+freq_spell = 9
+hit_dice = 25
+hit_dice_sides = 12
+level = 27
+max_num = 100
+experience = 175
+name = "Vampire"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "  Vampire   "

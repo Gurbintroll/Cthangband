@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://d1m6mxoyd0i34"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_wyjli"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_gt3ev"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_3trve"]
+
+[sub_resource type="Resource" id="Resource_xvani"]
+script = ExtResource("1_wyjli")
+damage_dice = 10
+damage_dice_sides = 12
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_hp4yc"]
+script = ExtResource("1_wyjli")
+damage_dice = 10
+damage_dice_sides = 12
+effect = 3
+method = 1
+
+[sub_resource type="Resource" id="Resource_1dnc8"]
+script = ExtResource("1_wyjli")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_mwjgl"]
+script = ExtResource("1_wyjli")
+effect = 4
+method = 2
+
+[sub_resource type="Resource" id="Resource_krygq"]
+script = ExtResource("2_gt3ev")
+value = 1042286085
+
+[sub_resource type="Resource" id="Resource_jwcb0"]
+script = ExtResource("2_gt3ev")
+value = 1245706
+
+[sub_resource type="Resource" id="Resource_hx1bt"]
+script = ExtResource("2_gt3ev")
+value = 3493724224
+
+[sub_resource type="Resource" id="Resource_mp43l"]
+script = ExtResource("2_gt3ev")
+
+[sub_resource type="Resource" id="Resource_xsq80"]
+script = ExtResource("2_gt3ev")
+value = 998279652
+
+[sub_resource type="Resource" id="Resource_a613k"]
+script = ExtResource("2_gt3ev")
+value = 839402530
+
+[resource]
+script = ExtResource("3_3trve")
+ac = 160
+attack = Array[ExtResource("1_wyjli")]([SubResource("Resource_xvani"), SubResource("Resource_hp4yc"), SubResource("Resource_1dnc8"), SubResource("Resource_mwjgl")])
+character = "p"
+colour = 12
+description = "Mighty in spells and enchantments,he created the One Ring. His eyes glow with power and his gaze seeks to destroy your soul. He has many servants, and rarely fights without them."
+flags_1 = SubResource("Resource_krygq")
+flags_2 = SubResource("Resource_jwcb0")
+flags_3 = SubResource("Resource_hx1bt")
+flags_4 = SubResource("Resource_mp43l")
+flags_5 = SubResource("Resource_xsq80")
+flags_6 = SubResource("Resource_a613k")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 105
+hit_dice_sides = 100
+level = 98
+max_num = 1
+experience = 50000
+name = "Sauron, the Sorcerer"
+notice_range = 100
+rarity = 1
+speed = 130
+split_name_1 = "            "
+split_name_2 = "            "
+split_name_3 = "   Sauron   "

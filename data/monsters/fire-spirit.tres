@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_uu2st"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ycbyd"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_4atm5"]
+
+[sub_resource type="Resource" id="Resource_havix"]
+script = ExtResource("1_uu2st")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_3muc6"]
+script = ExtResource("1_uu2st")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 11
+method = 1
+
+[sub_resource type="Resource" id="Resource_8clgb"]
+script = ExtResource("1_uu2st")
+
+[sub_resource type="Resource" id="Resource_tfebl"]
+script = ExtResource("1_uu2st")
+
+[sub_resource type="Resource" id="Resource_an6p3"]
+script = ExtResource("2_ycbyd")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_7obeu"]
+script = ExtResource("2_ycbyd")
+value = 147520
+
+[sub_resource type="Resource" id="Resource_qelfx"]
+script = ExtResource("2_ycbyd")
+value = 3490971712
+
+[sub_resource type="Resource" id="Resource_hjqjd"]
+script = ExtResource("2_ycbyd")
+
+[sub_resource type="Resource" id="Resource_4eidn"]
+script = ExtResource("2_ycbyd")
+
+[sub_resource type="Resource" id="Resource_ewmn0"]
+script = ExtResource("2_ycbyd")
+
+[resource]
+script = ExtResource("3_4atm5")
+ac = 30
+attack = Array[ExtResource("1_uu2st")]([SubResource("Resource_havix"), SubResource("Resource_3muc6"), SubResource("Resource_8clgb"), SubResource("Resource_tfebl")])
+character = "E"
+colour = 13
+description = "A whirlwind of sentient flame."
+flags_1 = SubResource("Resource_an6p3")
+flags_2 = SubResource("Resource_7obeu")
+flags_3 = SubResource("Resource_qelfx")
+flags_4 = SubResource("Resource_hjqjd")
+flags_5 = SubResource("Resource_4eidn")
+flags_6 = SubResource("Resource_ewmn0")
+hit_dice = 10
+hit_dice_sides = 9
+level = 18
+max_num = 100
+experience = 75
+name = "Fire spirit"
+notice_range = 16
+rarity = 2
+sleep = 20
+speed = 120
+split_name_1 = "            "
+split_name_2 = "    Fire    "
+split_name_3 = "   spirit   "

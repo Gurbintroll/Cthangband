@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_mbfwi"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_lom1f"]
+
+[sub_resource type="Resource" id="Resource_fexob"]
+script = ExtResource("1_mbfwi")
+
+[sub_resource type="Resource" id="Resource_oj604"]
+script = ExtResource("1_mbfwi")
+
+[sub_resource type="Resource" id="Resource_y01m7"]
+script = ExtResource("1_mbfwi")
+
+[resource]
+script = ExtResource("2_lom1f")
+chance = Array[int]([4, 0, 0, 0])
+character = "!"
+colour = 3
+damage_dice = 20
+damage_dice_sides = 20
+easy_know = true
+flags_1 = SubResource("Resource_fexob")
+flags_2 = SubResource("Resource_oj604")
+flags_3 = SubResource("Resource_y01m7")
+has_flavour = true
+item_category = 75
+level = 55
+locale = Array[int]([55, 0, 0, 0])
+name = "Iocaine"
+stompable = Array[bool]([true, false, false, false])
+sub_category = 23
+weight = 4
+filename = "Potion:Iocaine"

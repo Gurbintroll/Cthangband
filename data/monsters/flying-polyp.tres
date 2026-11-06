@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_lhjnk"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_8h241"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_qau57"]
+
+[sub_resource type="Resource" id="Resource_c4rpm"]
+script = ExtResource("1_lhjnk")
+damage_dice = 4
+damage_dice_sides = 6
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_o0csd"]
+script = ExtResource("1_lhjnk")
+
+[sub_resource type="Resource" id="Resource_3fau1"]
+script = ExtResource("1_lhjnk")
+
+[sub_resource type="Resource" id="Resource_1vwdy"]
+script = ExtResource("1_lhjnk")
+
+[sub_resource type="Resource" id="Resource_lac4f"]
+script = ExtResource("2_8h241")
+value = 52430336
+
+[sub_resource type="Resource" id="Resource_crjdf"]
+script = ExtResource("2_8h241")
+value = 5451930
+
+[sub_resource type="Resource" id="Resource_dsw35"]
+script = ExtResource("2_8h241")
+value = 3628007488
+
+[sub_resource type="Resource" id="Resource_gyfa0"]
+script = ExtResource("2_8h241")
+
+[sub_resource type="Resource" id="Resource_n2ss5"]
+script = ExtResource("2_8h241")
+value = 562036736
+
+[sub_resource type="Resource" id="Resource_vkk6m"]
+script = ExtResource("2_8h241")
+value = 524805
+
+[resource]
+script = ExtResource("3_qau57")
+ac = 68
+attack = Array[ExtResource("1_lhjnk")]([SubResource("Resource_c4rpm"), SubResource("Resource_o0csd"), SubResource("Resource_3fau1"), SubResource("Resource_1vwdy")])
+character = "A"
+colour = 20
+description = "'A horrible elder race of half polypous, utterly alien entities... Suggestions of monstrous plasticity and... lapses of visibility.' H.P.Lovecraft - 'The Shadow Out of Time'"
+flags_1 = SubResource("Resource_lac4f")
+flags_2 = SubResource("Resource_crjdf")
+flags_3 = SubResource("Resource_dsw35")
+flags_4 = SubResource("Resource_gyfa0")
+flags_5 = SubResource("Resource_n2ss5")
+flags_6 = SubResource("Resource_vkk6m")
+freq_innate = 11
+freq_spell = 11
+hit_dice = 50
+hit_dice_sides = 10
+level = 38
+max_num = 100
+experience = 1800
+name = "Flying polyp"
+notice_range = 30
+rarity = 6
+sleep = 255
+speed = 120
+split_name_1 = "            "
+split_name_2 = "   Flying   "
+split_name_3 = "   polyp    "

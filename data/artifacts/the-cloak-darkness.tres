@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_8bfmg"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_ld0uj"]
+
+[sub_resource type="Resource" id="Resource_xwlrn"]
+script = ExtResource("1_8bfmg")
+value = 262
+
+[sub_resource type="Resource" id="Resource_ysvxv"]
+script = ExtResource("1_8bfmg")
+value = 8454144
+
+[sub_resource type="Resource" id="Resource_eejo6"]
+script = ExtResource("1_8bfmg")
+value = 32506368
+
+[resource]
+script = ExtResource("2_ld0uj")
+flags_1 = SubResource("Resource_xwlrn")
+flags_2 = SubResource("Resource_ysvxv")
+flags_3 = SubResource("Resource_eejo6")
+ac = 1
+cost = 13000
+item_category = 35
+item_sub_category = 1
+level = 5
+name = "*Darkness*"
+type_specific_value = 2
+rarity = 45
+to_ac = 4
+weight = 10
+id = 45

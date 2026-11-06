@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsciiAnimation" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ascii_animation.gd" id="1_gm1a5"]
+
+[resource]
+script = ExtResource("1_gm1a5")
+name = "BrightYellowSwirl"
+colour = 16
+alternate_colour = 16
+sequence = "|/-\\|/-\\|/-\\|/-\\"

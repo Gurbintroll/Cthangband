@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Flavour" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/flavour.gd" id="1_fivfm"]
+
+[resource]
+script = ExtResource("1_fivfm")
+name = "Ashen"
+character = "_"
+colour = 6

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Artifact" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_0yn21"]
+[ext_resource type="Script" path="res://scripts/data/artifact.gd" id="2_m56x8"]
+
+[sub_resource type="Resource" id="Resource_05yqe"]
+script = ExtResource("1_0yn21")
+value = 25
+
+[sub_resource type="Resource" id="Resource_j70vm"]
+script = ExtResource("1_0yn21")
+value = 65536
+
+[sub_resource type="Resource" id="Resource_hsbni"]
+script = ExtResource("1_0yn21")
+value = 15729152
+
+[resource]
+script = ExtResource("2_m56x8")
+flags_1 = SubResource("Resource_05yqe")
+flags_2 = SubResource("Resource_j70vm")
+flags_3 = SubResource("Resource_hsbni")
+ac = 6
+cost = 45000
+damage_dice = 1
+damage_dice_sides = 3
+item_category = 32
+item_sub_category = 6
+level = 20
+name = "of *Hammerhand*"
+type_specific_value = 3
+rarity = 2
+to_ac = 20
+weight = 60
+id = 38

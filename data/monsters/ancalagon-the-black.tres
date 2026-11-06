@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3 uid="uid://dnow6jybeafjb"]
+
+[ext_resource type="Script" uid="uid://gagi3qcbcdkc" path="res://scripts/saved/monster_attack.gd" id="1_2fltd"]
+[ext_resource type="Script" uid="uid://gfu1bjv8w5ns" path="res://scripts/saved/flag_set.gd" id="2_ce0vq"]
+[ext_resource type="Script" uid="uid://rdjiquaqnrsp" path="res://scripts/data/monster_type.gd" id="3_cn33o"]
+
+[sub_resource type="Resource" id="Resource_et6u3"]
+script = ExtResource("1_2fltd")
+damage_dice = 5
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_4xnxb"]
+script = ExtResource("1_2fltd")
+damage_dice = 6
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_meppw"]
+script = ExtResource("1_2fltd")
+damage_dice = 8
+damage_dice_sides = 12
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_tr3nq"]
+script = ExtResource("1_2fltd")
+damage_dice = 10
+damage_dice_sides = 14
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_1410s"]
+script = ExtResource("2_ce0vq")
+value = 471860997
+
+[sub_resource type="Resource" id="Resource_0ls36"]
+script = ExtResource("2_ce0vq")
+value = 1249280
+
+[sub_resource type="Resource" id="Resource_mxyqj"]
+script = ExtResource("2_ce0vq")
+value = 3221553224
+
+[sub_resource type="Resource" id="Resource_ofj3q"]
+script = ExtResource("2_ce0vq")
+value = 256
+
+[sub_resource type="Resource" id="Resource_68fki"]
+script = ExtResource("2_ce0vq")
+value = 939524096
+
+[sub_resource type="Resource" id="Resource_pr1vs"]
+script = ExtResource("2_ce0vq")
+value = 671088640
+
+[resource]
+script = ExtResource("3_cn33o")
+ac = 125
+attack = Array[ExtResource("1_2fltd")]([SubResource("Resource_et6u3"), SubResource("Resource_4xnxb"), SubResource("Resource_meppw"), SubResource("Resource_tr3nq")])
+character = "D"
+colour = 12
+description = "'Rushing Jaws' is his name, and death is his game. No dragon of the brood of Glaurung can match him."
+flags_1 = SubResource("Resource_1410s")
+flags_2 = SubResource("Resource_0ls36")
+flags_3 = SubResource("Resource_mxyqj")
+flags_4 = SubResource("Resource_ofj3q")
+flags_5 = SubResource("Resource_68fki")
+flags_6 = SubResource("Resource_pr1vs")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 75
+hit_dice_sides = 100
+level = 58
+max_num = 1
+experience = 30000
+name = "Ancalagon the Black"
+notice_range = 20
+rarity = 3
+sleep = 70
+speed = 120
+split_name_1 = " Ancalagon  "
+split_name_2 = "    the     "
+split_name_3 = "   Black    "

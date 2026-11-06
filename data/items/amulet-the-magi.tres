@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_qtwm3"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_om2u5"]
+
+[sub_resource type="Resource" id="Resource_yixkx"]
+script = ExtResource("1_qtwm3")
+value = 512
+
+[sub_resource type="Resource" id="Resource_xbe5u"]
+script = ExtResource("1_qtwm3")
+value = 16384
+
+[sub_resource type="Resource" id="Resource_xmc4j"]
+script = ExtResource("1_qtwm3")
+value = 15745024
+
+[resource]
+script = ExtResource("2_om2u5")
+chance = Array[int]([4, 3, 0, 0])
+character = "\""
+colour = 19
+cost = 30000
+flags_1 = SubResource("Resource_yixkx")
+flags_2 = SubResource("Resource_xbe5u")
+flags_3 = SubResource("Resource_xmc4j")
+has_flavour = true
+item_category = 40
+level = 50
+locale = Array[int]([50, 80, 0, 0])
+name = "the Magi"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 8
+to_ac = 3
+weight = 3
+filename = "Amulet:the Magi"

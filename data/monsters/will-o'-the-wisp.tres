@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_qhmw0"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_tdfae"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_d40sb"]
+
+[sub_resource type="Resource" id="Resource_158hj"]
+script = ExtResource("1_qhmw0")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_tqxn6"]
+script = ExtResource("1_qhmw0")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_o1eb4"]
+script = ExtResource("1_qhmw0")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_3qyaf"]
+script = ExtResource("1_qhmw0")
+damage_dice = 1
+damage_dice_sides = 9
+effect = 1
+method = 1
+
+[sub_resource type="Resource" id="Resource_4wuke"]
+script = ExtResource("2_tdfae")
+value = 525824
+
+[sub_resource type="Resource" id="Resource_jqohj"]
+script = ExtResource("2_tdfae")
+value = 266322
+
+[sub_resource type="Resource" id="Resource_m1yw3"]
+script = ExtResource("2_tdfae")
+value = 3491694592
+
+[sub_resource type="Resource" id="Resource_7pqgf"]
+script = ExtResource("2_tdfae")
+
+[sub_resource type="Resource" id="Resource_a2ews"]
+script = ExtResource("2_tdfae")
+value = 536879104
+
+[sub_resource type="Resource" id="Resource_rpy7j"]
+script = ExtResource("2_tdfae")
+value = 48
+
+[resource]
+script = ExtResource("3_d40sb")
+ac = 150
+attack = Array[ExtResource("1_qhmw0")]([SubResource("Resource_158hj"), SubResource("Resource_tqxn6"), SubResource("Resource_o1eb4"), SubResource("Resource_3qyaf")])
+character = "E"
+colour = 14
+description = "A strange ball of glowing light. It disappears and reappears and seems to draw you to it. You seem somehow compelled to stand still and watch its strange dancing motion."
+flags_1 = SubResource("Resource_4wuke")
+flags_2 = SubResource("Resource_jqohj")
+flags_3 = SubResource("Resource_m1yw3")
+flags_4 = SubResource("Resource_7pqgf")
+flags_5 = SubResource("Resource_a2ews")
+flags_6 = SubResource("Resource_rpy7j")
+freq_innate = 2
+freq_spell = 2
+hit_dice = 20
+hit_dice_sides = 10
+level = 37
+max_num = 100
+experience = 500
+name = "Will o' the wisp"
+notice_range = 30
+rarity = 4
+speed = 130
+split_name_1 = "    Will    "
+split_name_2 = "   o' the   "
+split_name_3 = "    wisp    "

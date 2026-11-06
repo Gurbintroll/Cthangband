@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_xikvi"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_vkvkm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_jiuyf"]
+
+[sub_resource type="Resource" id="Resource_ltbk8"]
+script = ExtResource("1_xikvi")
+damage_dice = 1
+damage_dice_sides = 5
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_dwtav"]
+script = ExtResource("1_xikvi")
+
+[sub_resource type="Resource" id="Resource_4m0r6"]
+script = ExtResource("1_xikvi")
+
+[sub_resource type="Resource" id="Resource_dqdkn"]
+script = ExtResource("1_xikvi")
+
+[sub_resource type="Resource" id="Resource_veppf"]
+script = ExtResource("2_vkvkm")
+
+[sub_resource type="Resource" id="Resource_ieup1"]
+script = ExtResource("2_vkvkm")
+
+[sub_resource type="Resource" id="Resource_1546x"]
+script = ExtResource("2_vkvkm")
+value = 128
+
+[sub_resource type="Resource" id="Resource_kkbry"]
+script = ExtResource("2_vkvkm")
+
+[sub_resource type="Resource" id="Resource_y3vw2"]
+script = ExtResource("2_vkvkm")
+
+[sub_resource type="Resource" id="Resource_4nohn"]
+script = ExtResource("2_vkvkm")
+
+[resource]
+script = ExtResource("3_jiuyf")
+ac = 16
+attack = Array[ExtResource("1_xikvi")]([SubResource("Resource_ltbk8"), SubResource("Resource_dwtav"), SubResource("Resource_4m0r6"), SubResource("Resource_dqdkn")])
+character = "R"
+colour = 17
+description = "It is an armoured lizard with a powerful bite."
+flags_1 = SubResource("Resource_veppf")
+flags_2 = SubResource("Resource_ieup1")
+flags_3 = SubResource("Resource_1546x")
+flags_4 = SubResource("Resource_kkbry")
+flags_5 = SubResource("Resource_y3vw2")
+flags_6 = SubResource("Resource_4nohn")
+hit_dice = 3
+hit_dice_sides = 6
+level = 4
+max_num = 100
+experience = 8
+name = "Cave lizard"
+notice_range = 8
+rarity = 1
+sleep = 80
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Cave    "
+split_name_3 = "   lizard   "

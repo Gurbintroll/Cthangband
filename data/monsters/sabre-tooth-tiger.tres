@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_h2adv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_ug4f5"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_sulqi"]
+
+[sub_resource type="Resource" id="Resource_asxob"]
+script = ExtResource("1_h2adv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_i3uy6"]
+script = ExtResource("1_h2adv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_bic4o"]
+script = ExtResource("1_h2adv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_04p1m"]
+script = ExtResource("1_h2adv")
+damage_dice = 1
+damage_dice_sides = 10
+effect = 1
+method = 6
+
+[sub_resource type="Resource" id="Resource_kmb0t"]
+script = ExtResource("2_ug4f5")
+
+[sub_resource type="Resource" id="Resource_bjwre"]
+script = ExtResource("2_ug4f5")
+value = 131072
+
+[sub_resource type="Resource" id="Resource_pjm64"]
+script = ExtResource("2_ug4f5")
+value = 128
+
+[sub_resource type="Resource" id="Resource_1q0bf"]
+script = ExtResource("2_ug4f5")
+
+[sub_resource type="Resource" id="Resource_6ycay"]
+script = ExtResource("2_ug4f5")
+
+[sub_resource type="Resource" id="Resource_mcdpa"]
+script = ExtResource("2_ug4f5")
+
+[resource]
+script = ExtResource("3_sulqi")
+ac = 50
+attack = Array[ExtResource("1_h2adv")]([SubResource("Resource_asxob"), SubResource("Resource_i3uy6"), SubResource("Resource_bic4o"), SubResource("Resource_04p1m")])
+character = "f"
+colour = 31
+description = "A fierce and dangerous cat, its huge tusks and sharp claws would lacerate even the strongest armour."
+flags_1 = SubResource("Resource_kmb0t")
+flags_2 = SubResource("Resource_bjwre")
+flags_3 = SubResource("Resource_pjm64")
+flags_4 = SubResource("Resource_1q0bf")
+flags_5 = SubResource("Resource_6ycay")
+flags_6 = SubResource("Resource_mcdpa")
+hit_dice = 20
+hit_dice_sides = 14
+level = 20
+max_num = 100
+experience = 120
+name = "Sabre-tooth tiger"
+notice_range = 40
+rarity = 2
+speed = 120
+split_name_1 = "            "
+split_name_2 = "Sabre-tooth "
+split_name_3 = "   tiger    "

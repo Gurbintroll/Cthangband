@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_q5tbw"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_psni2"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_6116b"]
+
+[sub_resource type="Resource" id="Resource_wj4lp"]
+script = ExtResource("1_q5tbw")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 18
+method = 15
+
+[sub_resource type="Resource" id="Resource_si3wo"]
+script = ExtResource("1_q5tbw")
+damage_dice = 2
+damage_dice_sides = 6
+effect = 19
+method = 15
+
+[sub_resource type="Resource" id="Resource_ggrdr"]
+script = ExtResource("1_q5tbw")
+
+[sub_resource type="Resource" id="Resource_30ndh"]
+script = ExtResource("1_q5tbw")
+
+[sub_resource type="Resource" id="Resource_8os5d"]
+script = ExtResource("2_psni2")
+value = 23070208
+
+[sub_resource type="Resource" id="Resource_3ovx4"]
+script = ExtResource("2_psni2")
+value = 196608
+
+[sub_resource type="Resource" id="Resource_ktmay"]
+script = ExtResource("2_psni2")
+value = 3221225536
+
+[sub_resource type="Resource" id="Resource_3agrn"]
+script = ExtResource("2_psni2")
+
+[sub_resource type="Resource" id="Resource_vl8fb"]
+script = ExtResource("2_psni2")
+value = 2550139904
+
+[sub_resource type="Resource" id="Resource_lbrdq"]
+script = ExtResource("2_psni2")
+value = 16384
+
+[resource]
+script = ExtResource("3_6116b")
+ac = 60
+attack = Array[ExtResource("1_q5tbw")]([SubResource("Resource_wj4lp"), SubResource("Resource_si3wo"), SubResource("Resource_ggrdr"), SubResource("Resource_30ndh")])
+character = "h"
+colour = 25
+description = "A humanoid form with a gruesome head, tentacular mouth, and piercing eyes. Claws reach out for you and you feel a presence invade your mind."
+flags_1 = SubResource("Resource_8os5d")
+flags_2 = SubResource("Resource_3ovx4")
+flags_3 = SubResource("Resource_ktmay")
+flags_4 = SubResource("Resource_3agrn")
+flags_5 = SubResource("Resource_vl8fb")
+flags_6 = SubResource("Resource_lbrdq")
+freq_innate = 8
+freq_spell = 8
+hit_dice = 15
+hit_dice_sides = 10
+level = 28
+max_num = 100
+experience = 200
+name = "Mind flayer"
+notice_range = 20
+rarity = 1
+sleep = 10
+speed = 110
+split_name_1 = "            "
+split_name_2 = "    Mind    "
+split_name_3 = "   flayer   "

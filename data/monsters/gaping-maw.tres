@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_w12cy"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_cr28o"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_p5u5w"]
+
+[sub_resource type="Resource" id="Resource_5t4vr"]
+script = ExtResource("1_w12cy")
+damage_dice = 1
+damage_dice_sides = 4
+effect = 15
+method = 1
+
+[sub_resource type="Resource" id="Resource_3ghoe"]
+script = ExtResource("1_w12cy")
+
+[sub_resource type="Resource" id="Resource_3sfo3"]
+script = ExtResource("1_w12cy")
+
+[sub_resource type="Resource" id="Resource_ipdvm"]
+script = ExtResource("1_w12cy")
+
+[sub_resource type="Resource" id="Resource_qi4u8"]
+script = ExtResource("2_cr28o")
+
+[sub_resource type="Resource" id="Resource_rmaht"]
+script = ExtResource("2_cr28o")
+value = 262144
+
+[sub_resource type="Resource" id="Resource_xn21n"]
+script = ExtResource("2_cr28o")
+value = 3221293056
+
+[sub_resource type="Resource" id="Resource_iu2ac"]
+script = ExtResource("2_cr28o")
+
+[sub_resource type="Resource" id="Resource_2pvyv"]
+script = ExtResource("2_cr28o")
+
+[sub_resource type="Resource" id="Resource_p4g6l"]
+script = ExtResource("2_cr28o")
+
+[resource]
+script = ExtResource("3_p5u5w")
+ac = 14
+attack = Array[ExtResource("1_w12cy")]([SubResource("Resource_5t4vr"), SubResource("Resource_3ghoe"), SubResource("Resource_3sfo3"), SubResource("Resource_ipdvm")])
+character = "·"
+description = "A hole in the fabric of reality, leading to who knows what plane... "
+flags_1 = SubResource("Resource_qi4u8")
+flags_2 = SubResource("Resource_rmaht")
+flags_3 = SubResource("Resource_xn21n")
+flags_4 = SubResource("Resource_iu2ac")
+flags_5 = SubResource("Resource_2pvyv")
+flags_6 = SubResource("Resource_p4g6l")
+hit_dice = 21
+hit_dice_sides = 8
+level = 8
+max_num = 100
+experience = 28
+name = "Gaping Maw"
+notice_range = 30
+rarity = 2
+sleep = 20
+speed = 110
+split_name_1 = "            "
+split_name_2 = "   Gaping   "
+split_name_3 = "    Maw     "

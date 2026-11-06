@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="MonsterType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/monster_attack.gd" id="1_fiitv"]
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="2_korvm"]
+[ext_resource type="Script" path="res://scripts/data/monster_type.gd" id="3_kj76c"]
+
+[sub_resource type="Resource" id="Resource_dufmh"]
+script = ExtResource("1_fiitv")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 19
+method = 6
+
+[sub_resource type="Resource" id="Resource_ao6co"]
+script = ExtResource("1_fiitv")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 19
+method = 6
+
+[sub_resource type="Resource" id="Resource_kfvdh"]
+script = ExtResource("1_fiitv")
+damage_dice = 2
+damage_dice_sides = 12
+effect = 19
+method = 6
+
+[sub_resource type="Resource" id="Resource_aaep4"]
+script = ExtResource("1_fiitv")
+damage_dice = 3
+damage_dice_sides = 3
+effect = 1
+method = 5
+
+[sub_resource type="Resource" id="Resource_v5s71"]
+script = ExtResource("2_korvm")
+value = 9216
+
+[sub_resource type="Resource" id="Resource_ibbsd"]
+script = ExtResource("2_korvm")
+value = 262160
+
+[sub_resource type="Resource" id="Resource_alywm"]
+script = ExtResource("2_korvm")
+value = 3359637696
+
+[sub_resource type="Resource" id="Resource_0arqg"]
+script = ExtResource("2_korvm")
+value = 2105344
+
+[sub_resource type="Resource" id="Resource_kskam"]
+script = ExtResource("2_korvm")
+
+[sub_resource type="Resource" id="Resource_1f0rx"]
+script = ExtResource("2_korvm")
+value = 272
+
+[resource]
+script = ExtResource("3_kj76c")
+ac = 100
+attack = Array[ExtResource("1_fiitv")]([SubResource("Resource_dufmh"), SubResource("Resource_ao6co"), SubResource("Resource_kfvdh"), SubResource("Resource_aaep4")])
+character = "C"
+colour = 18
+description = "'They are lean and athirst!'"
+flags_1 = SubResource("Resource_v5s71")
+flags_2 = SubResource("Resource_ibbsd")
+flags_3 = SubResource("Resource_alywm")
+flags_4 = SubResource("Resource_0arqg")
+flags_5 = SubResource("Resource_kskam")
+flags_6 = SubResource("Resource_1f0rx")
+freq_innate = 5
+freq_spell = 5
+hit_dice = 60
+hit_dice_sides = 15
+level = 54
+max_num = 100
+experience = 8000
+name = "Hound of Tindalos"
+notice_range = 30
+rarity = 3
+speed = 120
+split_name_1 = "   Hound    "
+split_name_2 = "     of     "
+split_name_3 = "  Tindalos  "

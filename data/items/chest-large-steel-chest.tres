@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemType" format=3]
+
+[ext_resource type="Script" path="res://scripts/saved/flag_set.gd" id="1_l7uub"]
+[ext_resource type="Script" path="res://scripts/data/item_type.gd" id="2_rurpl"]
+
+[sub_resource type="Resource" id="Resource_2qeg5"]
+script = ExtResource("1_l7uub")
+
+[sub_resource type="Resource" id="Resource_a0xoe"]
+script = ExtResource("1_l7uub")
+
+[sub_resource type="Resource" id="Resource_ih8mi"]
+script = ExtResource("1_l7uub")
+
+[resource]
+script = ExtResource("2_rurpl")
+chance = Array[int]([1, 0, 0, 0])
+character = "~"
+colour = 23
+cost = 250
+damage_dice = 2
+damage_dice_sides = 6
+flags_1 = SubResource("Resource_2qeg5")
+flags_2 = SubResource("Resource_a0xoe")
+flags_3 = SubResource("Resource_ih8mi")
+flavour_aware = true
+item_category = 7
+level = 55
+locale = Array[int]([55, 0, 0, 0])
+name = "& Large steel chest~"
+stompable = Array[bool]([false, false, false, false])
+sub_category = 7
+weight = 1000
+filename = "Chest:Large steel chest"
