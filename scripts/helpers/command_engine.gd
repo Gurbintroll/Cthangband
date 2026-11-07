@@ -1932,7 +1932,7 @@ func get_rumour() -> void:
 	var max_rumour:int = 0
 	# Add a rumour for each undiscovered quest
 	for i:int in savegame.quests.quests.size():
-		if savegame.quests.quests[i].dungeon_level > 0 and not savegame.quests.quests[i].discovered:
+		if savegame.quests.quests[i].depth > 0 and not savegame.quests.quests[i].discovered:
 			rumour_type.append("q")
 			rumour_index.append(i)
 			max_rumour += 1
@@ -1968,12 +1968,12 @@ func get_rumour() -> void:
 	elif type == "d":
 		# The rumour describes a dungeon depth
 		var d:Dungeon = savegame.dungeons[index]
-		rumour = ("They say that %S has %S floors." if d.is_tower else "They say that %S has %S levels.") % [d.name, d.max_level]
+		rumour = ("They say that %s has %d floors." if d.is_tower else "They say that %s has %d levels.") % [d.name, d.max_level]
 		d.known_depth = true
 	else:
 		# The rumour describes a dungeon difficulty
-		var d: Dungeon = savegame.Dungeons[index]
-		rumour = "They say that %s has a relative difficulty of %s." % [d.name, d.offset]
+		var d: Dungeon = savegame.dungeons[index]
+		rumour = "They say that %s has a relative difficulty of %d." % [d.name, d.offset]
 		d.known_offset = true
 	Profile.instance.message_print(rumour)
 
