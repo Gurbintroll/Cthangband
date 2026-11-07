@@ -1,0 +1,84 @@
+[center][font_size=48][color="brown"][b]Dungeons and Quests[/b][/color][/font_size][/center]
+[hr color="brown"]
+While your character can gain experience and a small amout of treasure by wandering the towns and wilderness, the bulk of the Cthangband game takes place in dungeons. There are twenty dungeons scattered thoughout the island and you will need to explore almost all of them to complete the game. Each of the eight [color="blue"][url="Towns and Shops"]towns[/url][/color] has a dungeon underneath it, and there are twelve more dungeons scattered throughout the wilderness.
+
+While most dungeons are sprawling underground systems of rooms and corridors (and occasional open caves) that you must descend into, a few of them are towers that you must climb. Towers have smaller levels than underground dungeons, but generally operate in the same manner.
+
+Each dungeon has a number of levels, and as you progress through the dungeon the levels get tougher, with more powerful monsters but also more valuable treasure. Additionally, each dungeon has a difficulty score, which makes the whole dungeon harder. For example, level 2 of a dungeon with a difficulty of 6 is treated as if it were dungeon level 8. The exact difficulty of each dungeon will vary from game to game, but each will remain within its own difficulty range.
+
+It should be noted that difficulty and depth do not directly equate to character level. Just because a dungeon might have (for example) a difficulty of 10, doesn't mean that it's suitable for a 10th level character. It's up to you to determine how deep you want to delve based on your abilities and equipment.
+
+Additionally, many dungeons are themed in that they favour a particular type of monster. For example, you are likely to meet a variety of kobolds in the Kobold Fort and you will encounter many spiders in Shelob's Tower. For wilderness dungeons, this also applies to the wilderness area around the dungeon.
+
+You can find out the exact difficulty of a dungeon by entering it, although clearly this is a dangerous way to test. It might be safer to rely on scrolls of rumour to hear about the various dungeons and quests. They're generally reliable.
+
+In approximate order of difficulty, the dungeons are...
+
+[b]The Sewers Under Celephais[/b]
+This is a particularly small dungeon with a low difficulty, suitable for beginning adventurers.
+
+[b]The Sewers Under Hlanith[/b]
+Another low difficulty dungeon for beginning adventurers, with nothing to make it stand out from the other sewers.
+
+[b]The Sewers Under Inganok[/b]
+Another low difficulty dungeon for beginning adventurers, with nothing to make it stand out from the other sewers.
+
+[b]The Sewers Under Ilek-Vad[/b]
+Another low difficulty dungeon for beginning adventurers, with nothing to make it stand out from the other sewers.
+
+[b]The Sewers Under Ulthar[/b]
+A larger sewer that is full of animals, rumoured to be under the leadership of the most fearsome of tigers. While one of the more difficult sewers, it's still suitable for starting characters.
+
+[b]The Sewers Under Nir[/b]
+The rumoured home of the outlaw Robin Hood, this sewer is larger than most. Although it's technically low difficulty, it is full of outlaws, including many spellcasters, so may be trickier than its difficulty would otherwise suggest.
+
+[b]The Sewers Under Dylath Leen[/b]
+The biggest of the basic sewers, this is also a little more difficult than the others. It therefore gives beginning characters a bit of a harder start, but its additional levels means that it remains relevant longer before the character needs to move on.
+
+[b]The Kobold Fort[/b]
+The least difficult of the wilderness dungeons, this tower - as the name might suggest - is home to kobolds.
+
+[b]The Yeek King's Lair[/b]
+Another relatively easy wilderness dungeon, this time full of yeeks, although the more powerful yeeks have magical abilities that might make it a little much for a character's first foray into a wilderness dungeon.
+
+[b]The Orc Tower[/b]
+While it starts off reasonably tame, the Orc Tower is quite tall and you are in danger of getting overwhelmed by the sheer number of orcs that inhabit its upper levels.
+
+[b]Khufu's Tomb[/b]
+A moderate start, but the tomb is quite deep, and it is full of undead. Rumour has it that even its entrance level is defended by a unique guardian.
+
+[b]The Vault of the Sword[/b]
+The resting place of the most evil of intelligent swords, this has a little more difficult start, and this dungeon is quite deep so it gets hard as it gets deeper. Unusually for a wilderness dungeon it has no theme and you can find almost anything in it.
+
+[b]Shelob's Tower[/b]
+As you would expect, Shelob's tower is home to spiders of all kinds. The tower is average difficulty and doesn't have too many levels.
+
+[b]The Demon Spire[/b]
+This average-difficulty tower is home to demons.
+
+[b]The Dragon's Lair[/b]
+Although the Dragon's Lair starts out with average difficulty, it's very deep and the dragons it contains can be very dangerous if you don't have the correct resistances.
+
+[b]The Conflux of the Elements[/b]
+This tower is above average difficulty, and is full of elementals of all types.
+
+[b]The Collector's Cave[/b]
+The first of the very difficult dungeons, The Collector has called creatures of all types to his cave so it has no particular theme.
+
+[b]The Necropolis[/b]
+Another very difficult dungeon, not least because it one of the deepest and is full of the most vile undead.
+
+[b]The Tower of Koth[/b]
+Second only to the Catacombs under Kadath in difficulty, the Tower of Koth is home to eldritch abominations.
+
+[b]The Catacombs Under Kadath[/b]
+The deepest and most difficult of all the dungeons, the Catacombs under Kadath are rumoured to be the home of Nyarlathotep himself.
+
+[font_size=24][color="brown"][b]Quests[/b][/color][/font_size]
+In order to complete Cthangband, you must complete fifty quests, each of which involves killing one or more creatures in a particular dungeon level. Half of these quests are fixed, and each of these fixed quests involves killing a unique monster that is themed to a specific dungeon. All the dungeons except for the basic sewers have at least one of these quests each.
+
+The other half of the quests are randomised at the start of the game. These may be located in any dungeon and will ask you to kill either a single unique monster or a number of non-unique monsters of the same type.
+
+Quest monsters are usually more difficult than other monsters of the level that they are on, so can prove particularly challenging. Additionally, it is not possible to go past a quest level until you have completed the quest.
+
+As with dungeons in general, the main way to discover a quest is to arrive on the level that contains the quest monster(s). However, as with dungeons, scrolls of rumour can give you advanced warning of quests.

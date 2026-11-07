@@ -24,6 +24,7 @@ var _page_list: Array[String] = [
 	"Cultist",
 	"Death Spells",
 	"Dexterity",
+	"Dungeons and Quests",
 	"Druid",
 	"Elements",
 	"Fanatic",

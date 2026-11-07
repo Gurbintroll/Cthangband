@@ -42,7 +42,7 @@ In any case, the actual chance to hit works in exactly the same way for missile 
 Note that ranged magical attacks such as those from spells, mentalism powers, racial powers, and mutations, automatically hit and do not need to make an attack roll.
 
 [font_size=24][color="brown"][b]Damage[/b][/color][/font_size]
-The basic calculation for damage is much simpler than that of whether an attack hits or not. Every weapon has a damage ratiing expressed as a number of dice. For example the broad sword (2d5) (+0,+0) used in the example of an attack roll does 2d5 damage - that's two virtual five sided dice added together. The dice are rolled and then any modifiers from strength or from weapons or other magic items are added.
+The basic calculation for damage is much simpler than that of whether an attack hits or not. Every weapon has a damage rating expressed as a number of dice. For example the broad sword (2d5) (+0,+0) used in the example of an attack roll does 2d5 damage - that's two virtual five sided dice added together. The dice are rolled and then any modifiers from strength or from weapons or other magic items are added.
 
 When you are hit by a monster's attack, your armour protects you from some of the damage. For every five points of armour class you have, you take 2% less damage from all attacks (to a maximum of taking 60% less damage if you have an armour class of 150 or higher).
 
