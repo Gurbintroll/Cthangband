@@ -13,7 +13,7 @@ extends Node
 const MAX_INT: int = 9223372036854775807
 ## Version
 const VERSION_MAJOR: int = 7
-const VERSION_MINOR: int = 0
+const VERSION_MINOR: int = 1
 const VERSION_YEAR: String = "2026"
 ## Screen size
 const SCREEN_WIDTH: int = 66
