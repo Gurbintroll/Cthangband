@@ -67,7 +67,7 @@ func command_activate(item_index:int)->void:
 	var target_engine:TargetEngine = TargetEngine.new_target_engine(player, dungeon_level, savegame)
 	if item_index == -999:
 		# No item passed in, so get one filtering to activatable items only
-		savegame.item_filter_function = savegame.command_engine.ItemFilterActivatable
+		savegame.item_filter_function = savegame.command_engine.item_filter_activatable
 		item_index = savegame.get_item("Activate which item? ", true, false, false)
 		if item_index == 99:
 			return
@@ -77,7 +77,7 @@ func command_activate(item_index:int)->void:
 	# Get the item from the index
 	var item:Item = player.inventory.items[item_index] if item_index >= 0 else dungeon_level.dungeon_items.items[0 - item_index]
 	# Check if the item is activatable
-	savegame.item_filter_function = savegame.command_engine.ItemFilterActivatable
+	savegame.item_filter_function = savegame.command_engine.item_filter_activatable
 	if not player.inventory.item_matches_filter(item):
 		Profile.instance.message_print("You can't activate that!")
 		savegame.item_filter_function = Callable()
