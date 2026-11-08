@@ -1130,8 +1130,8 @@ func command_study() -> void:
 		var gift: int = -1
 		# Gather the potential spells from the book
 		for index: int in 32:
-			if Tables.BOOK_SPELL_FLAGS[sub_category] & (1 << spell_index) != 0:
-				if not player.spell_okay(spell_index, false, use_set_two):
+			if Tables.BOOK_SPELL_FLAGS[sub_category] & (1 << index) != 0:
+				if not player.spell_okay(index, false, use_set_two):
 					continue
 				k += 1
 				if Rng.roll_die(k) == 1:

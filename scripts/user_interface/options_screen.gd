@@ -274,6 +274,7 @@ func _print_options_screen() -> void:
 	Console.print_at(35, 66, "·", Ink.BLACK)
 	Console.print_at(35, 69, "··········", Ink.BLACK)
 	Console.print_at(36, 66, "····", Ink.BLACK)
+	Console.print_centred (43, "[Use arrows to set options, Escape to save and exit]", Ink.ORANGE)
 
 
 ## Print the menu, showing the currently selected option

@@ -122,11 +122,14 @@ func make_chargen_choices() -> bool:
 				_display_menu(menu[stage])
 				match menu[stage]:
 					0:
+						_clear_description_area()
 						Console.print_at(35, 20, "Choose your character's ancestry, gender, and profession;", Ink.PURPLE)
 						Console.print_at(36, 20, " and select which realms of magic your character will use.", Ink.PURPLE)
 					1:
+						_clear_description_area()
 						Console.print_at(35, 20, "Let the game generate a character for you randomly.", Ink.PURPLE)
 					2:
+						_clear_description_area()
 						Console.print_at(35, 20, "Re-play with a character similar to the one you played", Ink.PURPLE)
 						Console.print_at(36, 20, "last time.", Ink.PURPLE)
 				Console.print_centred(43, "[Use up and down to select an option, right to confirm, or left to go back.]", Ink.ORANGE)
@@ -783,7 +786,13 @@ func _display_stat_bonus(row: int, col: int, bonus: int) -> void:
 		Console.print_at(row, col, buffer, Ink.GREEN)
 
 
+func _clear_description_area()->void:
+	for row in range (29, 35):
+		Console.print_line_at(row, 20, "", Ink.WHITE)
+
+
 func _display_realm_info(realm: int) -> void:
+	_clear_description_area()
 	match realm:
 		Realm.CHAOS:
 			Console.print_at(30, 20, "The Chaos realm is the most destructive realm. It focuses", Ink.PURPLE)
