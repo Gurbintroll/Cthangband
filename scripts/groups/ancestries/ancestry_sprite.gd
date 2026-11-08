@@ -52,7 +52,7 @@ func _init() -> void:
 	sanity_immune = false
 	spills_potions = false
 	title = "Sprite"
-	background_starting_chart = 69
+	background_starting_chart = 124
 
 
 func apply_ancestral_status(player: Player) -> void:
