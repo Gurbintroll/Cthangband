@@ -1,10 +1,11 @@
 [center][font_size=48][color="brown"][b]What's New?[/b][/color][/font_size][/center]
 [hr color="brown"]
 Changes to Cthangband are added to the top of this list, so more recent changes are first and older changes can be found towards the end. For a chronological order, read from the bottom up.
-[font_size=24][color="brown"][b]Cthangband 7.1[/b][/color][/font_size]
-[ul]Added a 'Dungeons and Quests' page to the manual.
+[font_size=24][color="brown"][b]Cthangband 7.0-hotfix[/b][/color][/font_size]
+[ul]Fixed activation of artifacts.
+Added a 'Dungeons and Quests' page to the manual.
 Fixed scrolls of rumour failing to give a message and possibly crashing the game.[/ul]
-[font_size=24][color="brown"][b]Cthangband 7.0[/b][/color][/font_size]
+[font_size=24][color="brown"][b]Cthangband 7.0-beta[/b][/color][/font_size]
 [ul]Skeletons (items) now look like skeletons (monsters).
 New, properly licensed, background image for most screens.
 Unique monsters are now coloured magenta to make them visually distinct (existing magenta monsters such as grid bugs, shimmering vortices, and dark elf lords have been recoloured to avoid confusion).
