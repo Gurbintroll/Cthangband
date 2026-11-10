@@ -30,12 +30,12 @@ func show() -> void:
 				# Shift the selected item up, and reprint the menu
 				_selected_item -= 1
 				if _selected_item < 0:
-					_selected_item = 5
+					_selected_item = 6
 			"Down":
 				Console.play_sound("MenuSelect")
 				# Shift the selected item down, and reprint the menu
 				_selected_item += 1
-				if _selected_item > 5:
+				if _selected_item > 6:
 					_selected_item = 0
 			"Right":
 				# Adjust the selected menu item
@@ -85,6 +85,14 @@ func show() -> void:
 							Settings.instance.sound_volume += 5
 							Console.set_sound_volume(Settings.instance.sound_volume)
 							Console.play_sound("MenuSelect")
+					6:
+						# Switch on the CRT effect if possible
+						if Settings.instance.crt_effect == false:
+							Console.play_sound("MenuSelect")
+							User.mutex.lock()
+							Settings.instance.crt_effect = true
+							Console.requires_settings_update = true
+							User.mutex.unlock()
 			"Left":
 				match _selected_item:
 					0:
@@ -131,6 +139,14 @@ func show() -> void:
 							Settings.instance.sound_volume -= 5
 							Console.set_sound_volume(Settings.instance.sound_volume)
 							Console.play_sound("MenuSelect")
+					6:
+						# Switch off the CRT effect if possible
+						if Settings.instance.crt_effect == true:
+							Console.play_sound("MenuSelect")
+							User.mutex.lock()
+							Settings.instance.crt_effect = false
+							Console.requires_settings_update = true
+							User.mutex.unlock()
 			"Escape":
 				Console.play_sound("MenuAccept")
 				# Save the new settings values, and return to the main menu
@@ -150,6 +166,7 @@ func _print_options_screen() -> void:
 	Console.print_at(7, 1, "  Window size:", Ink.BLUE)
 	Console.print_at(8, 1, " Music volume:", Ink.BLUE)
 	Console.print_at(9, 1, " Sound volume:", Ink.BLUE)
+	Console.print_at(10,1, "CRT emulation:", Ink.BLUE)
 	# Print some sample text in all the different colours
 	Console.print_at(12, 8, "Sample Text", Ink.GREEN)
 	Console.print_at(13, 8, "===========", Ink.GREEN)
@@ -280,7 +297,7 @@ func _print_options_screen() -> void:
 ## Print the menu, showing the currently selected option
 func _print_menu() -> void:
 	# First clear the old menu options
-	for row: int in range(4, 10):
+	for row: int in range(4, 11):
 		Console.print_at(row, 16, "                                  ", Ink.WHITE)
 	# Now print the new ones, with colour depending on whether or not they're currently selected
 	Console.print_at(4, 16, Settings.instance.font_weight_as_string(), Ink.BRIGHT_PURPLE if _selected_item == 0 else Ink.GREY)
@@ -289,3 +306,4 @@ func _print_menu() -> void:
 	Console.print_at(7, 16, Settings.instance.window_size_as_string(), Ink.BRIGHT_PURPLE if _selected_item == 3 else Ink.GREY)
 	Console.print_at(8, 16, Settings.instance.music_volume_as_string(), Ink.BRIGHT_PURPLE if _selected_item == 4 else Ink.GREY)
 	Console.print_at(9, 16, Settings.instance.sound_volume_as_string(), Ink.BRIGHT_PURPLE if _selected_item == 5 else Ink.GREY)
+	Console.print_at(10,16, Settings.instance.crt_effect_as_string(), Ink.BRIGHT_PURPLE if _selected_item == 6 else Ink.GREY)

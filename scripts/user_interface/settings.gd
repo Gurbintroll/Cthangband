@@ -43,6 +43,8 @@ static var instance: Settings
 @export var sound_volume: int = 50
 ## Music volume as a percentage
 @export var music_volume: int = 50
+## CRT Effect
+@export var crt_effect: bool = true
 
 
 ## Load a new settings file, or create one if there isn't a saved file to load
@@ -114,6 +116,13 @@ func fullscreen_as_string() -> String:
 	else:
 		return "Windowed"
 
+
+## Whether or not the CRT effect is active, expressed as a string
+func crt_effect_as_string() -> String:
+	if crt_effect:
+		return "On"
+	else:
+		return "Off"
 
 ## Returns the current font as a font object
 func get_font() -> Font:

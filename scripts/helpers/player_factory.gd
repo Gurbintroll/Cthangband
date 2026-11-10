@@ -787,7 +787,7 @@ func _display_stat_bonus(row: int, col: int, bonus: int) -> void:
 
 
 func _clear_description_area()->void:
-	for row in range (29, 35):
+	for row: int in range (29, 35):
 		Console.print_line_at(row, 20, "", Ink.WHITE)
 
 

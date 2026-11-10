@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://vufpk5n1uyme" path="res://music/taureon-the-sorrow-ii-soft-theme.mp3" id="10_eo3c5"]
 [ext_resource type="AudioStream" uid="uid://cupc8mfobqsij" path="res://music/taureon-the-sorrow-ii-tribal-theme-01.mp3" id="11_ubnd6"]
 [ext_resource type="AudioStream" uid="uid://cloect5igt3c6" path="res://sfx/sound_files/menu_select.wav" id="14_dw2pf"]
+[ext_resource type="Shader" uid="uid://hii7d1l5wau6" path="res://scenes/crt.gdshader" id="15_btven"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_c3n2s"]
 clip_count = 8
@@ -41,6 +42,9 @@ clip_6/auto_advance = 0
 clip_7/name = &"Death"
 clip_7/stream = ExtResource("11_ubnd6")
 clip_7/auto_advance = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7i7bt"]
+shader = ExtResource("15_btven")
 
 [node name="Console" type="Node2D" unique_id=2036650021]
 script = ExtResource("1_gf67r")
@@ -87,5 +91,16 @@ bus = &"Sfx"
 [node name="AnimationTimer" type="Timer" parent="." unique_id=1626307263]
 wait_time = 0.064
 one_shot = true
+
+[node name="ShaderOverlay" type="CanvasLayer" parent="." unique_id=175483588]
+visible = false
+
+[node name="Panel" type="Panel" parent="ShaderOverlay" unique_id=116694691]
+material = SubResource("ShaderMaterial_7i7bt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

@@ -105,6 +105,8 @@ static var _sound_players: Dictionary[String, AudioStreamPlayer]
 @onready var _animation_timer: Timer = $AnimationTimer
 ## The title
 @onready var _main_title: MainTitle = $MainTitle
+## The CRT effect overlay
+@onready var _shader_overlay: CanvasLayer = $ShaderOverlay
 
 ## Move the cursor to a specific location, then print a string there in a custom colour, advancing the cursor
 static func print_at(row: int, col: int, text: String, colour: int) -> void:
@@ -415,6 +417,8 @@ func apply_settings(settings: Settings) -> void:
 		get_window().borderless = false
 		get_window().size = settings.get_window_size()
 		get_window().move_to_center()
+	# Apply the CRT shader or not
+	_shader_overlay.visible = settings.crt_effect
 	# Get the font typeface and size
 	var font: Font = settings.get_font()
 	var size: int = settings.font_size
