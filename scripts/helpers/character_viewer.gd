@@ -93,8 +93,8 @@ func _display_player_ability_scores_with_effects() -> void:
 		var score: AbilityScore = _player.ability_scores[i]
 		if score.innate < score.innate_max:
 			Console.print_at(14 + i, 1, Tables.ABILITY_NAMES_REDUCED[i], Ink.BLUE)
-			Console.print_at(14 + i, 6, Util.stat_to_string(score.adjusted), Ink.GREY)
-			Console.print_at(14 + i, 13, _ability_summary(i), Ink.GREY)
+			Console.print_at(14 + i, 6, Util.stat_to_string(score.adjusted), Ink.RED)
+			Console.print_at(14 + i, 13, _ability_summary(i), Ink.RED)
 		else:
 			Console.print_at(14 + i, 1, Tables.ABILITY_NAMES[i], Ink.BLUE)
 			Console.print_at(14 + i, 6, Util.stat_to_string(score.adjusted), Ink.GREEN)
@@ -194,8 +194,8 @@ func _display_player_ability_scores_with_modifiers() -> void:
 		Console.print_at(22 + i, 20, "%+3d" % [_player.profession.ability_bonus[i]], Ink.BROWN)
 		Console.print_at(22 + i, 25, "%+3d" % [equipment_bonus], Ink.BROWN)
 		Console.print_at(22 + i, 28, Util.stat_to_string(score.adjusted_max), Ink.GREEN)
-		if score.adjusted_max < score.adjusted_max:
-			Console.print_at(22 + i, 36, Util.stat_to_string(score.adjusted_max), Ink.RED)
+		if score.adjusted < score.adjusted_max:
+			Console.print_at(22 + i, 36, Util.stat_to_string(score.adjusted), Ink.RED)
 		# Print the bonuses for each score and each item we have
 		Console.print_at(21, 45, "abcdefghijklm@", Ink.BLUE)
 		Console.print_at(28, 45, "Modifications", Ink.BLUE)
