@@ -371,7 +371,7 @@ func wiz_create_item_type() -> int:
 		num = ord(ch) - ord(HEADERS[0])
 	if ord(ch) >= ord(HEADERS[1]) and ord(ch) < ord(HEADERS[1]) + 26:
 		num = ord(ch) - ord(HEADERS[1]) + 26
-	if ord(ch) >= ord(HEADERS[2]) and ord(ch) < ord(HEADERS[2]) + 26:
+	if ord(ch) >= ord(HEADERS[2]) and ord(ch) < ord(HEADERS[2]) + 16:
 		num = ord(ch) - ord(HEADERS[2]) + 52
 	if num < 0 or num >= max_num:
 		return 0
