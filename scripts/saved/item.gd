@@ -234,6 +234,10 @@ func value() -> int:
 	return v
 
 
+func is_blessed() -> bool:
+	return item_type.flags_3.is_set(ItemFlags3.BLESSED)
+
+
 func is_broken() -> bool:
 	return identify_flags.is_set(IdentifyFlags.BROKEN)
 
