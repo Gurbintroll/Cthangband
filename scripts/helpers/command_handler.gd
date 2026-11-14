@@ -400,11 +400,11 @@ func command_view_map() -> void:
 	# If we're on the surface, display the island map
 	if savegame.current_depth == 0:
 		Console.set_background(BackgroundImage.PAPER)
+		Console.set_mask (2,2,12,12)
 		cursor_location = savegame.display_wild_map()
 	else:
 		# We're not on the surface, so draw the level map
 		Console.set_background(BackgroundImage.PAPER)
-		Console.set_mask (1,13,42,66)
 		cursor_location = dungeon_level.display_map()
 	# Give us a prompt, and display the cursor in the player's location
 	Console.show_cursor(cursor_location.row, cursor_location.col)
