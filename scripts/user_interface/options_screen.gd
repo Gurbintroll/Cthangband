@@ -18,7 +18,8 @@ var _selected_item: int = 0
 func show() -> void:
 	Console.save_screen()
 	Console.clear_screen()
-	Console.set_background(BackgroundImage.OPTIONS)
+	Console.set_background(BackgroundImage.PAPER)
+	Console.set_mask (4,50,34,29)
 	Console.full_screen_overlay = true
 	_print_options_screen()
 	while true:

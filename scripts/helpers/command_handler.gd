@@ -174,7 +174,8 @@ func process_command() -> void:
 		"P":
 			# P = show previous messages
 			command_messages()
-			Console.set_background(BackgroundImage.IN_GAME)
+			Console.set_background(BackgroundImage.DEFAULT)
+			Console.set_mask (1,13,42,66)
 		"Q":
 			# Q = quit game
 			command_retire()
@@ -398,11 +399,12 @@ func command_view_map() -> void:
 	Console.clear_screen()
 	# If we're on the surface, display the island map
 	if savegame.current_depth == 0:
-		Console.set_background(BackgroundImage.WILD_MAP)
+		Console.set_background(BackgroundImage.PAPER)
 		cursor_location = savegame.display_wild_map()
 	else:
 		# We're not on the surface, so draw the level map
-		Console.set_background(BackgroundImage.MAP)
+		Console.set_background(BackgroundImage.PAPER)
+		Console.set_mask (1,13,42,66)
 		cursor_location = dungeon_level.display_map()
 	# Give us a prompt, and display the cursor in the player's location
 	Console.show_cursor(cursor_location.row, cursor_location.col)
@@ -411,7 +413,8 @@ func command_view_map() -> void:
 	Console.hide_cursor()
 	Console.restore_screen()
 	Console.full_screen_overlay = false
-	Console.set_background(BackgroundImage.IN_GAME)
+	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (1,13,42,66)
 
 
 func command_popup_menu() -> void:
@@ -431,7 +434,8 @@ func command_popup_menu() -> void:
 			Console.play_sound("MenuAccept")
 			var options: OptionsScreen = OptionsScreen.new()
 			options.show()
-			Console.set_background(BackgroundImage.IN_GAME)
+			Console.set_background(BackgroundImage.DEFAULT)
+			Console.set_mask (1,13,42,66)
 			return
 		"Save & Menu":
 			Console.play_sound("MenuAccept")
@@ -750,6 +754,7 @@ func command_messages() -> void:
 	Console.full_screen_overlay = true
 	Console.save_screen()
 	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (-1, -1, -1, -1)
 	# Infinite loop showing a page of messages from the index
 	while true:
 		# Clear the screen
@@ -868,6 +873,7 @@ func command_command_list() -> void:
 	Console.save_screen()
 	Console.clear_screen()
 	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (-1, -1, -1, -1)
 	Console.print_at(1, 1, "Numpad", Ink.YELLOW)
 	Console.print_at(3, 1, "7 8 9", Ink.WHITE)
 	Console.print_at(4, 1, " \\|/", Ink.WHITE)
@@ -935,7 +941,8 @@ func command_command_list() -> void:
 		Console.print_at(25, 52, "W = Wizard command", Ink.WHITE)
 	Console.any_key(44)
 	Console.restore_screen()
-	Console.set_background(BackgroundImage.IN_GAME)
+	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (1,13,42,66)
 	Console.full_screen_overlay = false
 
 
@@ -958,6 +965,7 @@ func command_view_character() -> void:
 	Console.full_screen_overlay = true
 	Console.save_screen()
 	Console.set_background(BackgroundImage.PAPER)
+	Console.set_mask (-1, -1, -1, -1)
 	# Load the character viewer
 	var character_viewer: CharacterViewer = CharacterViewer.new(player)
 	while true:
@@ -972,7 +980,8 @@ func command_view_character() -> void:
 			player.input_player_name()
 		Profile.instance.message_print()
 	# Restore the screen
-	Console.set_background(BackgroundImage.IN_GAME)
+	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (1,13,42,66)
 	Console.restore_screen()
 	Console.full_screen_overlay = false
 	player.redraw_needed.set_bits(RedrawFlags.REDRAW_WIPE | RedrawFlags.REDRAW_BASIC | RedrawFlags.REDRAW_EXTRA | RedrawFlags.REDRAW_MAP | RedrawFlags.REDRAW_EQUIPPY)
@@ -1288,11 +1297,13 @@ func command_journal()->void:
 func command_query_symbol()->void:
 	Console.save_screen()
 	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (-1, -1, -1, -1)
 	var symbols: SymbolDisplay = SymbolDisplay.new()
 	symbols.display(false)
 	Console.any_key(44)
 	Console.restore_screen()
-	Console.set_background(BackgroundImage.IN_GAME)
+	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (1,13,42,66)
 
 func command_alter()->void:
 	# Assume we won't disturb the player

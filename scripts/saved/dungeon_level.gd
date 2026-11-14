@@ -1265,6 +1265,7 @@ func display_map() -> Location:
 	var border_col: int = max_col + 1
 	var col_offset: int = (80 - border_col) / 2
 	var row_offset: int = (44 - border_row) / 2
+	Console.set_mask (row_offset + 1,col_offset + 1,max_row,max_col)
 	map_character[0][0] = "+"
 	map_ink[0][0] = Ink.PURPLE
 	map_character[0][border_col] = "+"

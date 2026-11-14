@@ -2,7 +2,9 @@
 [hr color="brown"]
 Changes to Cthangband are added to the top of this list, so more recent changes are first and older changes can be found towards the end. For a chronological order, read from the bottom up.
 [font_size=24][color="brown"][b]Cthangband 7.1[/b][/color][/font_size]
-[ul]Fixed inability to sell items at the temple.
+[ul]Updated map screen to fit background to size of map.
+Fixed various code errors resulting from the GDScript port.
+Fixed inability to sell items at the temple.
 Added CRT Emulation for that retro feel (it can be turned off in the options screen).[/ul]
 [font_size=24][color="brown"][b]Cthangband 7.0-hotfix[/b][/color][/font_size]
 [ul]Fixed activation of artifacts.

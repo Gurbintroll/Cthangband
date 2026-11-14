@@ -107,6 +107,8 @@ static var _sound_players: Dictionary[String, AudioStreamPlayer]
 @onready var _main_title: MainTitle = $MainTitle
 ## The CRT effect overlay
 @onready var _shader_overlay: CanvasLayer = $ShaderOverlay
+## The mask for showing maps and the like
+@onready var _mask: ColorRect = $Mask
 
 ## Move the cursor to a specific location, then print a string there in a custom colour, advancing the cursor
 static func print_at(row: int, col: int, text: String, colour: int) -> void:
@@ -315,9 +317,19 @@ func _process(_delta: float) -> void:
 	User.mutex.unlock()
 
 
+static func set_mask(start_row: int, start_col: int, height: int, width: int) -> void:
+	if start_row < 0 or start_col < 0:
+		instance._mask.call_deferred("hide")
+	else:
+		instance._mask.call_deferred("show")
+		instance._mask.set_deferred("position", Vector2i(start_col, start_row) * 24)
+		instance._mask.set_deferred("size", Vector2(width*24, height*24))
+
+
 func show_main_menu() -> void:
 	while true:
 		set_background(BackgroundImage.MENU)
+		set_mask(-1,-1,-1,-1)
 		change_music("Menu")
 		clear_screen()
 		hide_cursor()

@@ -54,6 +54,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_t6k7n")
 
+[node name="Mask" type="ColorRect" parent="." unique_id=384178626]
+visible = false
+color = Color(0, 0, 0, 1)
+
 [node name="MainTitle" type="Label" parent="." unique_id=285389467]
 visible = false
 offset_top = 20.0

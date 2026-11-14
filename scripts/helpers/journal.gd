@@ -41,6 +41,7 @@ func _init(the_player:Player, the_level:DungeonLevel, the_savegame:SaveGame) -> 
 func show_menu() -> void:
 	Console.save_screen()
 	Console.set_background(BackgroundImage.PAPER)
+	Console.set_mask (-1, -1, -1, -1)
 	while true:
 		Console.clear_screen()
 		Console.print_at( 0, 1, "Journal",Ink.BLUE)
@@ -80,7 +81,8 @@ func show_menu() -> void:
 				journal_recall()
 			'w', 'W':
 				journal_worthless_items()
-	Console.set_background(BackgroundImage.IN_GAME)
+	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_mask (1,13,42,66)
 	Console.restore_screen()
 
 func display_flags(mode:int) -> void:

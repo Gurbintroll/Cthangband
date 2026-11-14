@@ -58,6 +58,7 @@ func _init() -> void:
 
 func generate_character(ex: ExPlayer) -> Player:
 	Console.set_background(BackgroundImage.PAPER)
+	Console.set_mask (-1, -1, -1, -1)
 	Console.change_music("Chargen")
 	_player = Player.new_player()
 	return _player if create_player(ex) else null
