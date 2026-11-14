@@ -1013,7 +1013,7 @@ func command_disarm() -> void:
 		var tile: GridTile = dungeon_level.get_grid(row, col)
 		# Check for a chest
 		var item_index: int = dungeon_level.chest_check(row, col)
-		if not tile.feature_type.IsTrap and item_index == 0:
+		if not tile.feature_type.is_trap and item_index == 0:
 			Profile.instance.message_print("You see nothing there to disarm.")
 		# Can't disarm with a monster in the way
 		elif tile.monster_index != 0:
