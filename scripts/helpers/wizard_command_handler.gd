@@ -127,8 +127,7 @@ func command_wiz_help() -> void:
 	Console.full_screen_overlay = true
 	Console.save_screen()
 	Console.clear_screen()
-	Console.set_background(BackgroundImage.DEFAULT)
-	Console.set_mask (-1, -1, -1, -1)
+	Console.set_background(BackgroundImage.DEFAULT, -1, -1, -1, -1)
 	Console.print_at(1, 31, "Wizard Commands", Ink.RED)
 	Console.print_at(2, 31, "===============", Ink.RED)
 	Console.print_at(4, 1, "Character Editing", Ink.RED)
@@ -173,8 +172,7 @@ func command_wiz_help() -> void:
 	Console.print_centred(43, "Hit any key to continue", Ink.ORANGE)
 	User.get_key()
 	Console.restore_screen()
-	Console.set_background(BackgroundImage.DEFAULT)
-	Console.set_mask (1,13,42,66)
+	Console.set_background(BackgroundImage.DEFAULT, 1, 13, 42, 66)
 	Console.full_screen_overlay = false
 
 
@@ -304,13 +302,11 @@ func command_wiz_jump()->void:
 func command_wiz_create_item() -> void:
 	Console.full_screen_overlay = true
 	Console.save_screen()
-	Console.set_background(BackgroundImage.DEFAULT)
-	Console.set_mask (-1, -1, -1, -1)
+	Console.set_background(BackgroundImage.DEFAULT, -1, -1, -1, -1)
 	var item_type_index: int = wiz_create_item_type()
 	Console.restore_screen()
 	Console.full_screen_overlay = false
-	Console.set_background(BackgroundImage.DEFAULT)
-	Console.set_mask (1,13,42,66)
+	Console.set_background(BackgroundImage.DEFAULT, 1, 13, 42, 66)
 	if item_type_index == 0:
 		return
 	var item: Item = Item.new()

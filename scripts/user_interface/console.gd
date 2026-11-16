@@ -188,12 +188,18 @@ static func restore_screen() -> void:
 
 
 ## Set the background
-static func set_background(background: int) -> void:
+static func set_background(background: int, start_row: int, start_col: int, height: int, width: int) -> void:
 	instance._background_image.set_background(background)
 	if background == BackgroundImage.MENU:
 		instance._main_title.call_deferred("show")
 	else:
 		instance._main_title.call_deferred("hide")
+	if start_row < 0 or start_col < 0:
+		instance._mask.call_deferred("hide")
+	else:
+		instance._mask.call_deferred("show")
+		instance._mask.set_deferred("position", Vector2i(start_col, start_row) * 24)
+		instance._mask.set_deferred("size", Vector2(width*24, height*24))
 
 
 static func any_key(row: int) -> void:
@@ -317,19 +323,9 @@ func _process(_delta: float) -> void:
 	User.mutex.unlock()
 
 
-static func set_mask(start_row: int, start_col: int, height: int, width: int) -> void:
-	if start_row < 0 or start_col < 0:
-		instance._mask.call_deferred("hide")
-	else:
-		instance._mask.call_deferred("show")
-		instance._mask.set_deferred("position", Vector2i(start_col, start_row) * 24)
-		instance._mask.set_deferred("size", Vector2(width*24, height*24))
-
-
 func show_main_menu() -> void:
 	while true:
-		set_background(BackgroundImage.MENU)
-		set_mask(-1,-1,-1,-1)
+		set_background(BackgroundImage.MENU, -1, -1, -1, -1)
 		change_music("Menu")
 		clear_screen()
 		hide_cursor()

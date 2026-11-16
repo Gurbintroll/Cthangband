@@ -405,27 +405,23 @@ func carnage(player_cast: bool) -> void:
 		if typ == "*":
 			if needs_screen_restore:
 				Console.restore_screen()
-				Console.set_background(BackgroundImage.DEFAULT)
-				Console.set_mask (1,13,42,66)
+				Console.set_background(BackgroundImage.DEFAULT, 1, 13, 42, 66)
 				needs_screen_restore = false
 			else:
 				Console.save_screen()
-				Console.set_background(BackgroundImage.DEFAULT)
-				Console.set_mask (-1,-1,-1,-1)
+				Console.set_background(BackgroundImage.DEFAULT, -1, -1, -1, -1)
 				symbols.display(true)
 				needs_screen_restore = true
 			continue
 		if typ == "":
 			if needs_screen_restore:
 				Console.restore_screen()
-				Console.set_background(BackgroundImage.DEFAULT)
-				Console.set_mask (1,13,42,66)
+				Console.set_background(BackgroundImage.DEFAULT, 1, 13, 42, 66)
 			return
 		break
 	if needs_screen_restore:
 		Console.restore_screen()
-		Console.set_background(BackgroundImage.DEFAULT)
-		Console.set_mask (1,13,42,66)
+		Console.set_background(BackgroundImage.DEFAULT, 1, 13, 42, 66)
 	for i: int in range(1, dungeon_level.monster_count_max):
 		var monster: Monster = dungeon_level.dungeon_monsters.monsters[i]
 		var monster_type: MonsterType = monster.monster_type

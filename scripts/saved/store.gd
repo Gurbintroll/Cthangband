@@ -470,8 +470,7 @@ func enter_store(the_player: Player, the_command_handler: CommandHandler) -> voi
 	savegame.viewing_item_list = false
 	Profile.instance.message_print("")
 	Console.clear_screen()
-	Console.set_background(BackgroundImage.DEFAULT)
-	Console.set_mask (1,13,42,66)
+	Console.set_background(BackgroundImage.DEFAULT, 1, 13, 42, 66)
 	player.updates_needed.set_bits(UpdateFlags.UPDATE_VIEW | UpdateFlags.UPDATE_LIGHT)
 	player.updates_needed.set_bits(UpdateFlags.UPDATE_MONSTERS)
 	player.redraw_needed.set_bits(RedrawFlags.REDRAW_BASIC | RedrawFlags.REDRAW_EXTRA | RedrawFlags.REDRAW_EQUIPPY)
@@ -537,8 +536,7 @@ func display_inventory() -> void:
 
 func display_store() -> void:
 	Console.clear_screen()
-	Console.set_mask (-1,-1,-1,-1)
-	Console.set_background(BackgroundImage.DEFAULT)
+	Console.set_background(BackgroundImage.DEFAULT, -1, -1, -1, -1)
 	if store_type == StoreType.HOME:
 		Console.print_at(3, 30, "Your Home", Ink.WHITE)
 		Console.print_at(5, 3, "Item Description", Ink.WHITE)

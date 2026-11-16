@@ -229,8 +229,7 @@ func play() -> void:
 	update_handler_objects()
 	# We start with a full screen overlay
 	Console.full_screen_overlay = true
-	Console.set_background(BackgroundImage.DEFAULT)
-	Console.set_mask(-1,-1,-1,-1)
+	Console.set_background(BackgroundImage.DEFAULT, -1, -1, -1, -1)
 	Rng.use_main_sequence()
 	# If we don't have a player then we must be a new save
 	if player == null:
@@ -251,8 +250,7 @@ func play() -> void:
 		factory.generate_new_level()
 	# We're ready to start
 	Console.full_screen_overlay = false
-	Console.set_background(BackgroundImage.DEFAULT)
-	Console.set_mask (1,13,42,66)
+	Console.set_background(BackgroundImage.DEFAULT, 1, 13, 42, 66)
 	playing = true
 	# A quick sanity check
 	if player.health < 0:
@@ -318,8 +316,7 @@ func show_victory_screen() -> void:
 	player.experience_points = player.max_experience_gained
 	player.level = player.max_level_gained
 	player.gold += 10000000
-	Console.set_background(BackgroundImage.CROWN)
-	Console.set_mask(-1,-1,-1,-1)
+	Console.set_background(BackgroundImage.CROWN, -1, -1, -1, -1)
 	Console.clear_screen()
 	Console.any_key(44)
 
@@ -649,6 +646,7 @@ func save_player() -> void:
 
 
 func display_wild_map() -> Location:
+	Console.set_background(BackgroundImage.PAPER, 2, 2, 12, 12)
 	var location: Location = Location.new()
 	location.row = player.wilderness_row + 2
 	location.col = player.wilderness_col + 2
@@ -1241,12 +1239,10 @@ func get_item(prompt: String, can_choose_equip: bool, can_choose_inven: bool, ca
 func print_tomb(corpse: Player) -> void:
 	var ct: String = GameTime.get_current_datetime()
 	if corpse.is_winner:
-		Console.set_background(BackgroundImage.SUNSET)
-		Console.set_mask(-1,-1,-1,-1)
+		Console.set_background(BackgroundImage.SUNSET, -1, -1, -1, -1)
 		Console.change_music("Victory")
 	else:
-		Console.set_background(BackgroundImage.TOMB)
-		Console.set_mask(-1,-1,-1,-1)
+		Console.set_background(BackgroundImage.TOMB, -1, -1, -1, -1)
 		Console.change_music("Death")
 	Console.clear_screen()
 	var text: String = corpse.name + Util.to_roman(corpse.generation, true)

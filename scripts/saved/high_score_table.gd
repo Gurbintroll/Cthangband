@@ -69,8 +69,7 @@ func display_scores(centred_score: int, living: HighScore) -> void:
 		collected_scores = get_all_high_scores()
 	if collected_scores.size() == 0:
 		Console.clear_screen()
-		Console.set_background(BackgroundImage.DEFAULT)
-		Console.set_mask(-1,-1,-1,-1)
+		Console.set_background(BackgroundImage.DEFAULT, -1, -1, -1, -1)
 		Console.print_at(1, 34, "High Scores", Ink.YELLOW)
 		Console.print_at(2, 34, "===========", Ink.YELLOW)
 		Console.any_key(43)
@@ -81,8 +80,7 @@ func display_scores(centred_score: int, living: HighScore) -> void:
 	while collected_scores.size() > 0:
 		if line == 0:
 			Console.clear_screen()
-			Console.set_mask(-1,-1,-1,-1)
-			Console.set_background(BackgroundImage.DEFAULT)
+			Console.set_background(BackgroundImage.DEFAULT, -1, -1, -1, -1)
 			Console.print_at(1, 34, "High Scores", Ink.YELLOW)
 			Console.print_at(2, 34, "===========", Ink.YELLOW)
 		show_score(collected_scores[0], line)
