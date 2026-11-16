@@ -1214,7 +1214,7 @@ func description(use_article: bool, mode: int) -> String:
 			t += " (with "
 			t += str(type_specific_value)
 			t += " turns of light)"
-	if known and f_1.is_set(ItemFlags1.PvalMask):
+	if known and f_1.is_set(ItemFlags1.HAS_TYPE_SPECIFIC_VALUE):
 		t += " ("
 		if type_specific_value >= 0:
 			t += "+"

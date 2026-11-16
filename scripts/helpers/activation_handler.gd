@@ -1335,7 +1335,7 @@ func command_read_scroll(item_index:int)->void:
 		ScrollType.HOLY_CHANT:
 				if player.set_timed_blessing(player.timed_blessing + Rng.roll_die(24) + 12):
 					identified = true
-		ScrollType.HOLYP_RAYER:
+		ScrollType.HOLY_PRAYER:
 				if player.set_timed_blessing(player.timed_blessing + Rng.roll_die(48) + 24):
 					identified = true
 		ScrollType.MONSTER_CONFUSION:
