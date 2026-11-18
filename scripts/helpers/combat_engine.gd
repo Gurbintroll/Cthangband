@@ -223,7 +223,7 @@ func monster_attack_player(monster_index: int) -> void:
 				AttackEffect.UN_BONUS:
 					# Disenchantment might ruin our items
 					player.take_hit(damage, monster_description)
-					if not player.HasDisenchantResistance:
+					if not player.has_disenchant_resistance:
 						if savegame.spell_effects_handler.apply_disenchant():
 							obvious = true
 					dungeon_level.dungeon_monsters.update_smart_learn(monster_index, DamageResistance.DISENCHANTMENT)
