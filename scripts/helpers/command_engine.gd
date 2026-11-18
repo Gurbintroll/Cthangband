@@ -755,14 +755,14 @@ func disarm_trap(row: int, col: int, direction: int) -> int:
 		player.gain_experience(power)
 		tile.tile_flags.clear_bits(GridTile.PLAYER_MEMORISED)
 		dungeon_level.revert_tile_to_background(row, col)
-		move_player(direction, true)
+		move_player(direction, false)
 	# We might set the trap off if we failed to disarm it
 	elif i > 5 and Rng.roll_die(i) > 5:
 		Profile.instance.message_print("You failed to disarm the %s." % [trap_name])
 		more = true
 	else:
 		Profile.instance.message_print("You set off the %s!" % [trap_name])
-		move_player(direction, true)
+		move_player(direction, false)
 	return more
 
 
