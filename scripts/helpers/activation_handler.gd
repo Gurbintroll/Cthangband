@@ -869,7 +869,7 @@ func command_eat_food(item_index:int)->void:
 	var item_level:int = item.item_type.level
 	match item.sub_category:
 		FoodType.POISON:
-				if not (player.HasPoisonResistance or player.timed_poison_resistance != 0):
+				if not (player.has_poison_resistance or player.timed_poison_resistance != 0):
 					# Hagarg Ryonis may protect us from poison
 					if Rng.roll_die(10) <= player.religion.gods[GodName.HAGARG_RYONIS].adjusted_favour():
 						Profile.instance.message_print("Hagarg Ryonis's favour protects you!")
