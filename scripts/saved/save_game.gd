@@ -738,7 +738,7 @@ func process_world() -> void:
 			for row: int in dungeon_level.cur_hgt:
 				for col: int in dungeon_level.cur_wid:
 					var tile: GridTile = dungeon_level.get_grid(row, col)
-					if tile.feature_type.IsOpenFloor:
+					if tile.feature_type.is_open_floor:
 						tile.tile_flags.clear(GridTile.SELF_LIT)
 						dungeon_level.note_spot(row, col)
 			player.updates_needed.set_bits(UpdateFlags.UPDATE_MONSTERS)
