@@ -1169,9 +1169,10 @@ func command_quaff_potion(item_index:int)->void:
 	player.notice_flags.set_bits(NoticeFlags.NOTICE_COMBINE | NoticeFlags.NOTICE_REORDER)
 	# We may now know the potion's type
 	item.item_tried()
+	var gain_xp: bool = false
 	if identified and !item.is_flavour_aware():
 		item.become_flavour_aware()
-		player.gain_experience((item_level + (player.level >> 1)) / player.level)
+		gain_xp = true
 	# Most potions give us a bit of food too
 	player.set_food(player.food + item.type_specific_value)
 	var channeled: bool = false
@@ -1188,6 +1189,8 @@ func command_quaff_potion(item_index:int)->void:
 			dungeon_level.floor_item_increase(0 - item_index, -1)
 			dungeon_level.floor_item_describe(0 - item_index)
 			dungeon_level.floor_item_optimise(0 - item_index)
+	if gain_xp:
+		player.gain_experience((item_level + (player.level >> 1)) / player.level)
 
 func command_read_scroll(item_index:int)->void:
 	# Make sure we're in a situation where we can read
@@ -1402,9 +1405,10 @@ func command_read_scroll(item_index:int)->void:
 	player.notice_flags.set_bits(NoticeFlags.NOTICE_COMBINE | NoticeFlags.NOTICE_REORDER)
 	# We might have just identified the scroll
 	item.item_tried()
+	var gain_xp: bool = false
 	if identified and !item.is_flavour_aware():
 		item.become_flavour_aware()
-		player.gain_experience((item_level + (player.level >> 1)) / player.level)
+		gain_xp = true
 	var channeled: bool = false
 	# Channellers can use power instead of the scroll being used up
 	if player.spellcasting.casting_type == CastingType.CHANNELLING:
@@ -1421,6 +1425,8 @@ func command_read_scroll(item_index:int)->void:
 			dungeon_level.floor_item_increase(0 - item_index, -1)
 			dungeon_level.floor_item_describe(0 - item_index)
 			dungeon_level.floor_item_optimise(0 - item_index)
+	if gain_xp:
+		player.gain_experience((item_level + (player.level >> 1)) / player.level)
 
 func command_refill(item_index:int)->void:
 	# Make sure we actually have a light source to refuel

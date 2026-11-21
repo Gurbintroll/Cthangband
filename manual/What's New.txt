@@ -2,7 +2,8 @@
 [hr color="brown"]
 Changes to Cthangband are added to the top of this list, so more recent changes are first and older changes can be found towards the end. For a chronological order, read from the bottom up.
 [font_size=24][color="brown"][b]Cthangband 7.1[/b][/color][/font_size]
-[ul]Fixed Precognition talent so that it no longer stops after detecting one thing.
+[ul]Fixed bug where using an unidentified potion or scroll for the first time would occasionally use up the wrong item.
+Fixed Precognition talent so that it no longer stops after detecting one thing.
 Replaced last mentions of 'vis' with 'power'.[/ul]
 [font_size=24][color="brown"][b]Cthangband 7.0[/b][/color][/font_size]
 [ul]Updated map screen to fit background to size of map.
