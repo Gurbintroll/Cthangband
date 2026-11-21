@@ -621,7 +621,7 @@ func player_attack_monster(row: int, col: int) -> void:
 				if stun_effect != 0 and total_damage + player.damage_bonus < monster.health:
 					if player.level > Rng.roll_die(monster_type.level + resist_stun + 10):
 						Profile.instance.message_print("%s is more stunned." % [monster_name] if monster.stun_level != 0 else "%s is stunned." % [monster_name])
-						monster.StunLevel += stun_effect
+						monster.stun_level += stun_effect
 			# We have a weapon
 			elif item.item_type != null:
 				# Roll damage for the weapon

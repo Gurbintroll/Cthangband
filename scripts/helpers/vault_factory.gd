@@ -525,8 +525,16 @@ func build_type_5(centre_row: int, centre_col: int) -> void:
 	var tmp: int = Rng.roll_die(SaveGame.instance.total_difficulty())
 	if tmp < 25 and Rng.roll_die(2) != 1:
 		_template_monster_type = Rng.roll_die(Profile.instance.monster_types.types.size() - 2)
-		while (Profile.instance.monster_types.types[_template_monster_type].flags_1.is_set(MonsterFlags1.UNIQUE) or
-			Profile.instance.monster_types.types[_template_monster_type].level + Rng.roll_die(5) > SaveGame.instance.total_difficulty() + Rng.roll_die(5) ):
+		while (
+			Profile
+			.instance
+			.monster_types
+			.types[_template_monster_type]
+			.flags_1
+			.is_set(MonsterFlags1.UNIQUE)
+			or Profile.instance.monster_types.types[_template_monster_type].level + Rng.roll_die(5)
+			> SaveGame.instance.total_difficulty() + Rng.roll_die(5)
+		):
 			_template_monster_type = Rng.roll_die(Profile.instance.monster_types.types.size() - 2)
 		if Rng.roll_die(2) != 1 and SaveGame.instance.total_difficulty() >= 25 + Rng.roll_die(15):
 			_level.dungeon_monsters.monster_validation_function = validation_function_symbol
@@ -548,7 +556,9 @@ func build_type_5(centre_row: int, centre_col: int) -> void:
 			_level.dungeon_monsters.monster_validation_function = validation_function_undead
 	_level.dungeon_monsters.prepare_random_monster_table()
 	for i: int in 64:
-		what[i] = _level.dungeon_monsters.get_random_monster(SaveGame.instance.total_difficulty() + 10)
+		what[i] = _level.dungeon_monsters.get_random_monster(
+			SaveGame.instance.total_difficulty() + 10
+		)
 		if what[i] == 0:
 			empty = true
 	_level.dungeon_monsters.monster_validation_function = Callable()
@@ -556,35 +566,30 @@ func build_type_5(centre_row: int, centre_col: int) -> void:
 	if empty:
 		return
 	_level.danger_rating += 10
-	if SaveGame.instance.total_difficulty() <= 40 and Rng.roll_die((SaveGame.instance.total_difficulty() * SaveGame.instance.total_difficulty()) + 50) < 300:
+	if (
+		SaveGame.instance.total_difficulty() <= 40
+		and Rng.roll_die(
+			(SaveGame.instance.total_difficulty() * SaveGame.instance.total_difficulty()) + 50
+		) < 300
+	):
 		_level.special_danger = true
 	for row: int in range(centre_row - 2, centre_row + 3):
 		for col: int in range(centre_col - 9, centre_col + 10):
 			var index: int = what[Rng.roll_die(64) - 1]
 			var monster_type: MonsterType = Profile.instance.monster_types.types[index]
-			_level.Monsters.place_monster_by_type(row, col, monster_type, false, false, false)
+			_level.dungeon_monsters.place_monster_by_type(
+				row,
+				col,
+				monster_type,
+				false,
+				false,
+				false,
+			)
 
 
 ## Greater monster pit
 func build_type_6(centre_row: int, centre_col: int) -> void:
-	var what: Array[int] = [
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-	]
+	var what: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	var empty: bool = false
 	var tile: GridTile
 	var row_start: int = centre_row - 4
@@ -639,9 +644,20 @@ func build_type_6(centre_row: int, centre_col: int) -> void:
 	elif tmp < 70:
 		if Rng.roll_die(4) != 1:
 			_template_monster_type = Rng.roll_die(Profile.instance.monster_types.types.size() - 2)
-			while (Profile.instance.monster_types.types[_template_monster_type].flags_1.is_set(MonsterFlags1.UNIQUE) or
-				Profile.instance.monster_types.types[_template_monster_type].Level + Rng.roll_die(5) > SaveGame.instance.total_difficulty() + Rng.roll_die(5) ):
-				_template_monster_type = Rng.roll_die(Profile.instance.monster_types.types.size() - 2)
+			while (
+				Profile
+				.instance
+				.monster_types
+				.types[_template_monster_type]
+				.flags_1
+				.is_set(MonsterFlags1.UNIQUE)
+				or Profile.instance.monster_types.types[_template_monster_type].Level
+				+ Rng.roll_die(5)
+				> SaveGame.instance.total_difficulty() + Rng.roll_die(5)
+			):
+				_template_monster_type = Rng.roll_die(
+					Profile.instance.monster_types.types.size() - 2
+				)
 			_level.dungeon_monsters.monster_validation_function = validation_function_symbol
 		else:
 			if Rng.roll_die(2) == 1:
@@ -667,7 +683,9 @@ func build_type_6(centre_row: int, centre_col: int) -> void:
 		_level.dungeon_monsters.monster_validation_function = validation_function_demon
 	_level.dungeon_monsters.prepare_random_monster_table()
 	for i: int in 16:
-		what[i] = _level.dungeon_monsters.get_random_monster(SaveGame.instance.total_difficulty() + 10)
+		what[i] = _level.dungeon_monsters.get_random_monster(
+			SaveGame.instance.total_difficulty() + 10
+		)
 		if what[i] == 0:
 			empty = true
 	_level.dungeon_monsters.monster_validation_function = Callable()
@@ -687,34 +705,200 @@ func build_type_6(centre_row: int, centre_col: int) -> void:
 	for i: int in 8:
 		what[i] = what[i * 2]
 	_level.danger_rating += 10
-	if SaveGame.instance.total_difficulty() <= 40 and Rng.roll_die((SaveGame.instance.total_difficulty() * SaveGame.instance.total_difficulty()) + 50) < 300:
+	if (
+		SaveGame.instance.total_difficulty() <= 40
+		and Rng.roll_die(
+			(SaveGame.instance.total_difficulty() * SaveGame.instance.total_difficulty()) + 50
+		) < 300
+	):
 		_level.special_danger = true
 	for col: int in range(centre_col - 9, centre_col + 10):
-		_level.Monsters.place_monster_by_index(centre_row - 2, col, what[0], false, false, false)
-		_level.Monsters.place_monster_by_index(centre_row + 2, col, what[0], false, false, false)
+		_level.dungeon_monsters.place_monster_by_index(
+			centre_row - 2,
+			col,
+			what[0],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			centre_row + 2,
+			col,
+			what[0],
+			false,
+			false,
+			false,
+		)
 	for row: int in range(centre_row - 1, centre_row + 2):
-		_level.Monsters.place_monster_by_index(row, centre_col - 9, what[0], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 9, what[0], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col - 8, what[1], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 8, what[1], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col - 7, what[1], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 7, what[1], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col - 6, what[2], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 6, what[2], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col - 5, what[2], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 5, what[2], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col - 4, what[3], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 4, what[3], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col - 3, what[3], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 3, what[3], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col - 2, what[4], false, false, false)
-		_level.Monsters.place_monster_by_index(row, centre_col + 2, what[4], false, false, false)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 9,
+			what[0],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 9,
+			what[0],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 8,
+			what[1],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 8,
+			what[1],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 7,
+			what[1],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 7,
+			what[1],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 6,
+			what[2],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 6,
+			what[2],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 5,
+			what[2],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 5,
+			what[2],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 4,
+			what[3],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 4,
+			what[3],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 3,
+			what[3],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 3,
+			what[3],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col - 2,
+			what[4],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			row,
+			centre_col + 2,
+			what[4],
+			false,
+			false,
+			false,
+		)
 	for col: int in range(centre_col - 1, centre_col + 2):
-		_level.Monsters.place_monster_by_index(centre_row + 1, col, what[5], false, false, false)
-		_level.Monsters.place_monster_by_index(centre_row - 1, col, what[5], false, false, false)
-	_level.Monsters.place_monster_by_index(centre_row, centre_col + 1, what[6], false, false, false)
-	_level.Monsters.place_monster_by_index(centre_row, centre_col - 1, what[6], false, false, false)
-	_level.Monsters.place_monster_by_index(centre_row, centre_col, what[7], false, false, false)
+		_level.dungeon_monsters.place_monster_by_index(
+			centre_row + 1,
+			col,
+			what[5],
+			false,
+			false,
+			false,
+		)
+		_level.dungeon_monsters.place_monster_by_index(
+			centre_row - 1,
+			col,
+			what[5],
+			false,
+			false,
+			false,
+		)
+	_level.dungeon_monsters.place_monster_by_index(
+		centre_row,
+		centre_col + 1,
+		what[6],
+		false,
+		false,
+		false,
+	)
+	_level.dungeon_monsters.place_monster_by_index(
+		centre_row,
+		centre_col - 1,
+		what[6],
+		false,
+		false,
+		false,
+	)
+	_level.dungeon_monsters.place_monster_by_index(
+		centre_row,
+		centre_col,
+		what[7],
+		false,
+		false,
+		false,
+	)
 
 
 # Lesser prefab vault
@@ -729,13 +913,25 @@ func build_type_7(centre_row: int, centre_col: int) -> void:
 			var col_max: int = centre_col + (vault.Width / 2)
 			var row_min: int = centre_row - (vault.Height / 2)
 			var row_max: int = centre_row + (vault.Height / 2)
-			if col_min >= 1 and row_min >= 1 and col_max < _level.cur_wid - 1 and row_max < _level.cur_hgt - 1:
+			if (
+				col_min >= 1 and row_min >= 1 and col_max < _level.cur_wid - 1
+				and row_max < _level.cur_hgt - 1
+			):
 				break
 	if tries >= LevelFactory.SAFE_MAX_ATTEMPTS:
 		return
 	_level.danger_rating += vault.rating
-	if (SaveGame.instance.total_difficulty() <= 50 or
-		Rng.roll_die(((SaveGame.instance.total_difficulty() - 40) * (SaveGame.instance.total_difficulty() - 40)) + 50) < 400 ):
+	if (
+		SaveGame.instance.total_difficulty() <= 50
+		or Rng.roll_die(
+			(
+				(SaveGame.instance.total_difficulty() - 40)
+				* (SaveGame.instance.total_difficulty() - 40)
+			)
+			+ 50
+		)
+		< 400
+	):
 		_level.special_danger = true
 	_build_vault(centre_row, centre_col, vault.Height, vault.Width, vault.text)
 
@@ -752,13 +948,25 @@ func build_type_8(centre_row: int, centre_col: int) -> void:
 			var col_max: int = centre_col + (vault.Width / 2)
 			var row_min: int = centre_row - (vault.Height / 2)
 			var row_max: int = centre_row + (vault.Height / 2)
-			if col_min >= 1 and row_min >= 1 and col_max < _level.cur_wid - 1 and row_max < _level.cur_hgt - 1:
+			if (
+				col_min >= 1 and row_min >= 1 and col_max < _level.cur_wid - 1
+				and row_max < _level.cur_hgt - 1
+			):
 				break
 	if tries >= LevelFactory.SAFE_MAX_ATTEMPTS:
 		return
 	_level.danger_rating += vault.Rating
-	if (SaveGame.instance.total_difficulty() <= 50 or
-		Rng.roll_die(((SaveGame.instance.total_difficulty() - 40) * (SaveGame.instance.total_difficulty() - 40)) + 50) < 400 ):
+	if (
+		SaveGame.instance.total_difficulty() <= 50
+		or Rng.roll_die(
+			(
+				(SaveGame.instance.total_difficulty() - 40)
+				* (SaveGame.instance.total_difficulty() - 40)
+			)
+			+ 50
+		)
+		< 400
+	):
 		_level.special_danger = true
 	_build_vault(centre_row, centre_col, vault.Height, vault.Width, vault.text)
 
@@ -778,8 +986,10 @@ func place_random_stairs(row: int, col: int) -> void:
 		return
 	if SaveGame.instance.current_depth <= 0:
 		pass
-	if (SaveGame.instance.quests.is_quest_level(SaveGame.instance.current_depth) or
-		SaveGame.instance.current_depth == SaveGame.instance.current_dungeon.max_level ):
+	if (
+		SaveGame.instance.quests.is_quest_level(SaveGame.instance.current_depth)
+		or SaveGame.instance.current_depth == SaveGame.instance.current_dungeon.max_level
+	):
 		if SaveGame.instance.current_dungeon.is_tower:
 			place_down_stairs(row, col)
 		else:
@@ -888,15 +1098,22 @@ func validation_function_orc(index: int) -> bool:
 
 
 func validation_function_symbol(index: int) -> bool:
-	return (Profile.instance.monster_types.types[index].character == Profile.instance.monster_types.types[_template_monster_type].character and
-		Profile.instance.monster_types.types[index].flags_1.is_set(MonsterFlags1.UNIQUE) )
+	return (
+		Profile.instance.monster_types.types[index].character
+		== Profile.instance.monster_types.types[_template_monster_type].character
+		and Profile.instance.monster_types.types[index].flags_1.is_set(MonsterFlags1.UNIQUE)
+	)
 
 
 func validation_function_treasure(index: int) -> bool:
 	var monster_type: MonsterType = Profile.instance.monster_types.types[index]
 	if monster_type.flags_1.is_set(MonsterFlags1.UNIQUE):
 		return false
-	if not monster_type.character == "!" or monster_type.character == "|" or monster_type.character == "$" or monster_type.character == "?" or monster_type.character == "=":
+	if (
+		not monster_type.character == "!" or monster_type.character == "|"
+		or monster_type.character == "$" or monster_type.character == "?"
+		or monster_type.character == "="
+	):
 		return false
 	return true
 
@@ -977,7 +1194,13 @@ func vault_traps(row: int, col: int, row_d: int, col_d: int, num: int) -> void:
 		vault_trap(row, col, row_d, col_d)
 
 
-func _build_vault(centre_row: int, centre_col: int, row_max: int, col_max: int, data: String) -> void:
+func _build_vault(
+	centre_row: int,
+	centre_col: int,
+	row_max: int,
+	col_max: int,
+	data: String,
+) -> void:
 	var index: int = 0
 	for d_row: int in row_max:
 		for d_col: int in col_max:
@@ -1018,22 +1241,22 @@ func _build_vault(centre_row: int, centre_col: int, row_max: int, col_max: int, 
 			match t:
 				"&":
 					_level.monster_level = SaveGame.instance.total_difficulty() + 5
-					_level.Monsters.place_random_monster(row, col, true, true)
+					_level.dungeon_monsters.place_random_monster(row, col, true, true)
 					_level.monster_level = SaveGame.instance.total_difficulty()
 				"@":
 					_level.monster_level = SaveGame.instance.total_difficulty() + 11
-					_level.Monsters.place_random_monster(row, col, true, true)
+					_level.dungeon_monsters.place_random_monster(row, col, true, true)
 					_level.monster_level = SaveGame.instance.total_difficulty()
 				"9":
 					_level.monster_level = SaveGame.instance.total_difficulty() + 9
-					_level.Monsters.place_random_monster(row, col, true, true)
+					_level.dungeon_monsters.place_random_monster(row, col, true, true)
 					_level.monster_level = SaveGame.instance.total_difficulty()
 					_level.item_level = SaveGame.instance.total_difficulty() + 7
 					_level.place_item(row, col, true, false)
 					_level.item_level = SaveGame.instance.total_difficulty()
 				"8":
 					_level.monster_level = SaveGame.instance.total_difficulty() + 40
-					_level.Monsters.place_random_monster(row, col, true, true)
+					_level.dungeon_monsters.place_random_monster(row, col, true, true)
 					_level.monster_level = SaveGame.instance.total_difficulty()
 					_level.item_level = SaveGame.instance.total_difficulty() + 20
 					_level.place_item(row, col, true, true)
@@ -1041,7 +1264,7 @@ func _build_vault(centre_row: int, centre_col: int, row_max: int, col_max: int, 
 				",":
 					if Rng.roll_die(100) <= 50:
 						_level.monster_level = SaveGame.instance.total_difficulty() + 3
-						_level.Monsters.place_random_monster(row, col, true, true)
+						_level.dungeon_monsters.place_random_monster(row, col, true, true)
 						_level.monster_level = SaveGame.instance.total_difficulty()
 					if Rng.roll_die(100) < 50:
 						_level.item_level = SaveGame.instance.total_difficulty() + 7
