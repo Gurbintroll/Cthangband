@@ -28,7 +28,7 @@ func _init() -> void:
 	description_line_2 = "INT based spell casters who specialise in a single realm"
 	description_line_3 = "of magic. They may choose any realm, and are better at"
 	description_line_4 = "casting spells from that realm than a normal mage. High"
-	description_line_5 = "mages also get more vis than other spell casters do."
+	description_line_5 = "mages also get more power than other spell casters do."
 	description_line_6 = "Wearing too much armour disrupts their casting."
 	device_bonus_per_level = 13
 	disarm_bonus_per_level = 7

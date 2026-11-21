@@ -822,11 +822,11 @@ func command_aim_wand(item_index:int)->void:
 	if ident and not item.is_flavour_aware():
 		item.become_flavour_aware()
 		player.gain_experience((item_level + (player.level >> 1)) / player.level)
-	# If we're a channeler then we should be using vis instead of charges
+	# If we're a channeler then we should be using power instead of charges
 	var channeled:bool = false
 	if player.spellcasting.casting_type == CastingType.CHANNELLING:
 		channeled = savegame.command_engine.command_channel(item)
-	# We didn't use vis, so decrease the wand's charges
+	# We didn't use power, so decrease the wand's charges
 	if not channeled:
 		item.type_specific_value -= 1
 		# If the wand is part of a stack, split it off from the others
@@ -1175,7 +1175,7 @@ func command_quaff_potion(item_index:int)->void:
 	# Most potions give us a bit of food too
 	player.set_food(player.food + item.type_specific_value)
 	var channeled: bool = false
-	# If we're a channeler, we might be able to spend vis instead of using it up
+	# If we're a channeler, we might be able to spend power instead of using it up
 	if player.spellcasting.casting_type == CastingType.CHANNELLING:
 		channeled = savegame.command_engine.command_channel(item)
 	if !channeled:
@@ -1406,7 +1406,7 @@ func command_read_scroll(item_index:int)->void:
 		item.become_flavour_aware()
 		player.gain_experience((item_level + (player.level >> 1)) / player.level)
 	var channeled: bool = false
-	# Channellers can use vis instead of the scroll being used up
+	# Channellers can use power instead of the scroll being used up
 	if player.spellcasting.casting_type == CastingType.CHANNELLING:
 		channeled = savegame.command_engine.command_channel(item)
 	if not channeled:
@@ -1754,7 +1754,7 @@ func command_use_staff(item_index:int)->void:
 		item.become_flavour_aware()
 	if not use_charge:
 		return
-	# Channellers can use vis instead of a charge
+	# Channellers can use power instead of a charge
 	var channeled:bool = false
 	if player.spellcasting.casting_type == CastingType.CHANNELLING:
 		channeled = savegame.command_engine.command_channel(item)
@@ -1983,7 +1983,7 @@ func command_zap_rod(item_index:int)->void:
 	if not use_charge:
 		item.type_specific_value = 0
 		return
-	# Channellers can spend vis instead of a charge
+	# Channellers can spend power instead of a charge
 	var channeled: bool = false
 	if player.spellcasting.casting_type == CastingType.CHANNELLING:
 		channeled = savegame.command_engine.command_channel(item)

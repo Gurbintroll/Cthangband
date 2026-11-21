@@ -169,7 +169,7 @@ func use_mentalism_power() -> void:
 		return
 	var talent: Talent = player.spellcasting.talents.talents[n]
 	if talent.power_cost > player.power:
-		Profile.instance.message_print("You do not have enough vis to use this talent.")
+		Profile.instance.message_print("You do not have enough power to use this talent.")
 		if not User.get_check("Attempt it anyway? "):
 			return
 	var chance: int = talent.failure_chance(player)
@@ -234,7 +234,7 @@ func get_mentalism_talent() -> int:
 				Console.save_screen()
 				Console.clear_to_row_end(y, x)
 				Console.print_at(y, x + 5, "Name", Ink.WHITE)
-				Console.print_at(y, x + 35, "Lv Vis Fail Info", Ink.WHITE)
+				Console.print_at(y, x + 35, "Lev Pow  Fail Info", Ink.WHITE)
 				var row: int = 0
 				for i: int in talents.size():
 					var talent: Talent = talents[i]

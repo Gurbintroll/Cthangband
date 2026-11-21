@@ -866,7 +866,7 @@ func try_casting_spell_against_player(monster_index: int) -> bool:
 		# MonsterFlags5.PowerBall
 		128 + 7:
 			savegame.disturb(true)
-			Profile.instance.message_print("%s mumbles powerfully." % [monster_name] if player_is_blind else "%s invokes a vis storm." % [monster_name])
+			Profile.instance.message_print("%s mumbles powerfully." % [monster_name] if player_is_blind else "%s invokes a power storm." % [monster_name])
 			fire_ball_at_player(monster_index, ProjectilePower.new(savegame.spell_effects_handler), (monster_level * 5) + Rng.roll_dice(10, 10), 4)
 		# MonsterFlags5.DarkBall
 		128 + 8:
@@ -1018,7 +1018,7 @@ func try_casting_spell_against_player(monster_index: int) -> bool:
 		# MonsterFlags5.VisBolt
 		128 + 23:
 			savegame.disturb(true)
-			Profile.instance.message_print("%s mumbles." % [monster_name] if player_is_blind else "%s casts a vis bolt." % [monster_name])
+			Profile.instance.message_print("%s mumbles." % [monster_name] if player_is_blind else "%s casts a power bolt." % [monster_name])
 			fire_bolt_at_player(monster_index, ProjectilePower.new(savegame.spell_effects_handler), Rng.roll_die(monster_level * 7 / 2) + 50)
 			dungeon_level.dungeon_monsters.update_smart_learn(monster_index, DamageResistance.REFLECTION)
 		# MonsterFlags5.PlasmaBolt
@@ -2458,7 +2458,7 @@ func remove_ineffective_spells(monster_index: int, f_4: FlagSet, f_5: FlagSet, f
 			f_5.clear_bits(MonsterFlags5.HOLD)
 		if realise_spell_is_useless(monster_type, 100):
 			f_5.clear_bits(MonsterFlags5.SLOW)
-	# If we know the player has no vis, don't do vis drain
+	# If we know the player has no power, don't do power drain
 	if mind_flags.is_set(MonsterMind.SEEN_NO_POWER):
 		if realise_spell_is_useless(monster_type, 100):
 			f_5.clear_bits(MonsterFlags5.DRAIN_POWER)
