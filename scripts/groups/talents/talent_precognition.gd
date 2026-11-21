@@ -26,9 +26,11 @@ func use(player: Player, dungeon_level: DungeonLevel, savegame: SaveGame) -> voi
 	if player.level < 30:
 		found_something = savegame.spell_effects_handler.detect_monsters_normal()
 		if player.level > 14:
-			found_something = found_something or savegame.spell_effects_handler.detect_monsters_invis()
+			if savegame.spell_effects_handler.detect_monsters_invis():
+				found_something = true
 		if player.level > 4:
-			found_something = found_something or savegame.spell_effects_handler.detect_traps()
+			if savegame.spell_effects_handler.detect_traps():
+				found_something = true
 	else:
 		found_something = savegame.spell_effects_handler.detect_all()
 	if player.level > 24 and player.level < 40:
