@@ -1100,7 +1100,7 @@ func try_casting_spell_against_player(monster_index: int) -> bool:
 		# MonsterFlags6.Haste
 		160 + 0:
 			savegame.disturb(true)
-			Profile.instance.message_print("%s mumbles." % [monster_name] if player_is_blind else "%s concentrates on {monster_possessive} body." % [monster_name])
+			Profile.instance.message_print("%s mumbles." % [monster_name] if player_is_blind else "%s concentrates on %s body." % [monster_possessive])
 			if monster.speed < monster_type.speed + 10:
 				Profile.instance.message_print("%s starts moving faster." % [monster_name])
 				monster.speed += 10
@@ -1123,7 +1123,7 @@ func try_casting_spell_against_player(monster_index: int) -> bool:
 		# MonsterFlags6.Heal
 		160 + 2:
 			savegame.disturb(true)
-			Profile.instance.message_print("%s mumbles." % [monster_name] if player_is_blind else "%s concentrates on {monster_possessive} wounds." % [monster_name])
+			Profile.instance.message_print("%s mumbles." % [monster_name] if player_is_blind else "%s concentrates on %s wounds." % [monster_name, monster_possessive])
 			monster.health += monster_level * 6
 			if monster.health >= monster.max_health:
 				monster.health = monster.max_health
@@ -1134,7 +1134,7 @@ func try_casting_spell_against_player(monster_index: int) -> bool:
 				player.redraw_needed.set_bits(RedrawFlags.REDRAW_HEALTH)
 			if monster.fear_level != 0:
 				monster.fear_level = 0
-				Profile.instance.message_print("%s recovers {monster_possessive} courage." % [monster_name])
+				Profile.instance.message_print("%s recovers %s courage." % [monster_name, monster_possessive])
 		# MonsterFlags6.Xxx2
 		160 + 3:
 			return false
