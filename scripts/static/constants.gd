@@ -13,7 +13,8 @@ extends Node
 const MAX_INT: int = 9223372036854775807
 ## Version
 const VERSION_MAJOR: int = 7
-const VERSION_MINOR: int = 1
+const VERSION_MINOR: int = 0
+const VERSION_DESC: String = "-hotfix3"
 const VERSION_YEAR: String = "2026"
 ## Screen size
 const SCREEN_WIDTH: int = 66
@@ -39,7 +40,7 @@ const FUEL_TORCH: int = 5000
 const SFX_VOLUME_SCALE: float = 0.06
 const MUSIC_VOLUME_SCALE: float = 0.02
 
-static var VERSION_STAMP: String = "v%s.%s" % [VERSION_MAJOR, VERSION_MINOR]
+static var VERSION_STAMP: String = "v%s.%s%s" % [VERSION_MAJOR, VERSION_MINOR, VERSION_DESC]
 static var SAVE_FILE_LOCATION: String = "user://"
 static var SAVE_FILE_FILENAME: String = "savefile_%d_%d.res" % [VERSION_MAJOR, VERSION_MINOR]
 static var SAVE_FILE_PATH: String = "user://savefile_%d_%d.res" % [VERSION_MAJOR, VERSION_MINOR]
