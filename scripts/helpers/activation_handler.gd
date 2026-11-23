@@ -1036,7 +1036,7 @@ func command_fire()->void:
 	var missile_name:String = individual_ammunition.description(false, 3)
 	var missile_colour:int = individual_ammunition.item_type.colour
 	var missile_character:String = individual_ammunition.item_type.character
-	var shot_speed:int = player.MissileAttacksPerRound
+	var shot_speed:int = player.missile_attacks_per_round
 	var shot_damage:int = Rng.roll_dice(individual_ammunition.damage_dice, individual_ammunition.damage_dice_sides) + individual_ammunition.bonus_damage + missile_weapon.bonus_damage
 	var attack_bonus:int = player.attack_bonus + individual_ammunition.bonus_to_hit + missile_weapon.bonus_to_hit
 	var chance_to_hit:int = player.skill_ranged + (attack_bonus * Constants.ITEM_TO_HIT_MULTIPLIER)
@@ -1122,7 +1122,7 @@ func command_fire()->void:
 						monster.mind.clear_bits(MonsterMind.FRIENDLY)
 				# Work out the damage done
 				shot_damage = individual_ammunition.adjust_damage_for_monster_type(shot_damage, monster)
-				shot_damage = savegame.command_engine.player_critical_ranged(individual_ammunition.weight, individual_ammunition.bonus_to_hit, shot_damage)
+				shot_damage = savegame.command_engine.player_critical_range(individual_ammunition.weight, individual_ammunition.bonus_to_hit, shot_damage)
 				if shot_damage < 0:
 					shot_damage = 0
 				if dungeon_level.dungeon_monsters.damage_monster(tile.monster_index, shot_damage, note_dies):
@@ -1138,7 +1138,7 @@ func command_fire()->void:
 	# If we hit something we have a chance to break the ammo, otherwise it just drops at
 	# the end of its travel
 	var j:int = individual_ammunition.breakage_chance() if hit_body else 0
-	dungeon_level.drop_near(individual_ammunition, j, row, col)
+	dungeon_level.dungeon_items.drop_near(individual_ammunition, j, row, col)
 
 func command_quaff_potion(item_index:int)->void:
 	# Get an item if we didn't already have one

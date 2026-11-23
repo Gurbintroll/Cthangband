@@ -458,7 +458,7 @@ func calc_bonuses() -> void:
 		_player.displayed_attack_bonus += 2 * (max_weapon_weight - (item.weight / 10))
 		_player.has_heavy_bow = true
 	if item.item_type != null and _player.has_heavy_bow == false:
-		match item.item_sub_category:
+		match item.sub_category:
 			BowType.SLING:
 				_player.ammunition_item_category = ItemCategory.SHOT
 			BowType.SHORTBOW, BowType.LONGBOW:
